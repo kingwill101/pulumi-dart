@@ -36,7 +36,7 @@ class ClientArgs {
   /// [namespaceName] Name of the namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [state] Indicates if the client is enabled or not. Default value is Enabled.
-  ClientArgs({
+  const ClientArgs({
     this.attributes,
     this.authenticationName,
     this.clientCertificateAuthentication,

@@ -14,7 +14,7 @@ class DeploymentFrontendPrivate {
   /// [allocationMethod] Specify the method for allocating the private IP. Possible values are `Static` and `Dynamic`.
   /// [ipAddress] Specify the private IP Address.
   /// [subnetId] Specify the Subnet Resource ID for this NGINX Deployment.
-  DeploymentFrontendPrivate({
+  const DeploymentFrontendPrivate({
     required this.allocationMethod,
     required this.ipAddress,
     required this.subnetId,

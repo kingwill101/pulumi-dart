@@ -12,7 +12,7 @@ class UefiSettings {
   /// Creates a new [UefiSettings].
   /// [secureBootEnabled] Specifies whether secure boot should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
   /// [vTpmEnabled] Specifies whether vTPM should be enabled on the virtual machine. Minimum api-version: 2020-12-01.
-  UefiSettings({
+  const UefiSettings({
     this.secureBootEnabled,
     this.vTpmEnabled,
   });

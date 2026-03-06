@@ -19,7 +19,7 @@ class GetVersionDialogflowV3Args {
   /// [location] Required.
   /// [project] Optional.
   /// [versionId] Required.
-  GetVersionDialogflowV3Args({
+  const GetVersionDialogflowV3Args({
     required this.agentId,
     required this.flowId,
     required this.location,

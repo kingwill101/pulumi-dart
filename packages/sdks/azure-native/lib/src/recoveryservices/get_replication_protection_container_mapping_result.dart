@@ -24,7 +24,7 @@ class GetReplicationProtectionContainerMappingResult {
   /// [name] Resource Name
   /// [properties] The custom data.
   /// [type] Resource Type
-  GetReplicationProtectionContainerMappingResult({
+  const GetReplicationProtectionContainerMappingResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

@@ -10,7 +10,7 @@ class CxPageForm {
 
   /// Creates a new [CxPageForm].
   /// [parameters] Parameters to collect from the user.
-  CxPageForm({
+  const CxPageForm({
     this.parameters,
   });
 

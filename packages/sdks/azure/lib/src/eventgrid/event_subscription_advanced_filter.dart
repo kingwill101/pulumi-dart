@@ -83,7 +83,7 @@ class EventSubscriptionAdvancedFilter {
   /// [stringNotContains] Compares a value of an event using multiple string values.
   /// [stringNotEndsWiths] Compares a value of an event using multiple string values.
   /// [stringNotIns] Compares a value of an event using multiple string values.
-  EventSubscriptionAdvancedFilter({
+  const EventSubscriptionAdvancedFilter({
     this.boolEquals,
     this.isNotNulls,
     this.isNullOrUndefineds,

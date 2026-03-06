@@ -16,7 +16,7 @@ class DeploymentExtensionConfigItemResponse {
   /// [keyVaultReference] The key vault reference of the config item.
   /// [type] The type of the value.
   /// [value] The value of the config item. The type is determined by the extension config schema.
-  DeploymentExtensionConfigItemResponse({
+  const DeploymentExtensionConfigItemResponse({
     this.keyVaultReference,
     required this.type,
     this.value,

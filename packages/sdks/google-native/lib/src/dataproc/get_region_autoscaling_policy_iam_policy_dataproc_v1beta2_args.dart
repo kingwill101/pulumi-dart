@@ -17,7 +17,7 @@ class GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [regionId] Required.
-  GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args({
+  const GetRegionAutoscalingPolicyIamPolicyDataprocV1beta2Args({
     required this.autoscalingPolicyId,
     this.optionsRequestedPolicyVersion,
     this.project,

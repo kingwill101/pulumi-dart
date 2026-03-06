@@ -15,7 +15,7 @@ class GetClusterArgs {
   /// Creates a new [GetClusterArgs].
   /// [name] Specifies the name of the Kusto Cluster.
   /// [resourceGroupName] The name of the Resource Group where the Kusto Cluster exists.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

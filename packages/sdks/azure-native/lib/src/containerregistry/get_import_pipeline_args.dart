@@ -18,7 +18,7 @@ class GetImportPipelineArgs {
   /// [importPipelineName] The name of the import pipeline.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetImportPipelineArgs({
+  const GetImportPipelineArgs({
     required this.importPipelineName,
     required this.registryName,
     required this.resourceGroupName,

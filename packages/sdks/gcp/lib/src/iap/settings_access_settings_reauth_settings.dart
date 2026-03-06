@@ -26,7 +26,7 @@ class SettingsAccessSettingsReauthSettings {
   /// [maxAge] Reauth session lifetime, how long before a user has to reauthenticate again.
   /// [method] Reauth method requested. The possible values are:
   /// [policyType] How IAP determines the effective policy in cases of hierarchical policies.
-  SettingsAccessSettingsReauthSettings({
+  const SettingsAccessSettingsReauthSettings({
     required this.maxAge,
     required this.method,
     required this.policyType,

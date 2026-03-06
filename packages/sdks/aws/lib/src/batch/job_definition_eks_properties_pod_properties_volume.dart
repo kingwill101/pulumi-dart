@@ -17,7 +17,7 @@ class JobDefinitionEksPropertiesPodPropertiesVolume {
   /// [hostPath] Optional.
   /// [name] Name of the job definition.
   /// [secret] Optional.
-  JobDefinitionEksPropertiesPodPropertiesVolume({
+  const JobDefinitionEksPropertiesPodPropertiesVolume({
     this.emptyDir,
     this.hostPath,
     this.name,

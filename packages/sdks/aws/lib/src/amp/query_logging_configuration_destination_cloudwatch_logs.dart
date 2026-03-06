@@ -8,7 +8,7 @@ class QueryLoggingConfigurationDestinationCloudwatchLogs {
 
   /// Creates a new [QueryLoggingConfigurationDestinationCloudwatchLogs].
   /// [logGroupArn] The ARN of the CloudWatch log group to which query logs will be sent. The ARN must end with `:*`
-  QueryLoggingConfigurationDestinationCloudwatchLogs({
+  const QueryLoggingConfigurationDestinationCloudwatchLogs({
     required this.logGroupArn,
   });
 

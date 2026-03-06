@@ -18,7 +18,7 @@ class IotHubDefinitionDescription {
   /// [applyAllocationPolicy] flag for applying allocationPolicy or not for a given iot hub.
   /// [connectionString] Connection string of the IoT hub.
   /// [location] ARM region of the IoT hub.
-  IotHubDefinitionDescription({
+  const IotHubDefinitionDescription({
     this.allocationWeight,
     this.applyAllocationPolicy,
     required this.connectionString,

@@ -12,7 +12,7 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount {
   /// [mountPath] Required.
   /// [name] Name of the job definition.
   /// [readOnly] Optional.
-  JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount({
+  const JobDefinitionEksPropertiesPodPropertiesInitContainerVolumeMount({
     required this.mountPath,
     required this.name,
     this.readOnly,

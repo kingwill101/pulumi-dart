@@ -21,7 +21,7 @@ class ApprovalResultResponse {
   /// [comment] Optional. An optional comment for this manual approval result.
   /// [decision] The decision of this manual approval.
   /// [url] Optional. An optional URL tied to this manual approval result. This field is essentially the same as comment, except that it will be rendered by the UI differently. An example use case is a link to an external job that approved this Build.
-  ApprovalResultResponse({
+  const ApprovalResultResponse({
     required this.approvalTime,
     required this.approverAccount,
     required this.comment,

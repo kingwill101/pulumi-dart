@@ -17,7 +17,7 @@ class PackageAssociationState {
   /// [packageId] Internal ID of the package to associate with a domain.
   /// [referencePath] Optional.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PackageAssociationState({
+  const PackageAssociationState({
     this.domainName,
     this.packageId,
     this.referencePath,

@@ -9,7 +9,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsNetwork
   /// Creates a new [GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsNetworkBandwidthGbps].
   /// [max] Optional.
   /// [min] Optional.
-  GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsNetworkBandwidthGbps({
+  const GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsNetworkBandwidthGbps({
     this.max,
     this.min,
   });

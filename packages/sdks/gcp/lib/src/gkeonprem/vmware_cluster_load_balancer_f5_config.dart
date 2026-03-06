@@ -16,7 +16,7 @@ class VMwareClusterLoadBalancerF5Config {
   /// [address] The load balancer's IP address.
   /// [partition] he preexisting partition to be used by the load balancer. T
   /// [snatPool] The pool name. Only necessary, if using SNAT.
-  VMwareClusterLoadBalancerF5Config({
+  const VMwareClusterLoadBalancerF5Config({
     this.address,
     this.partition,
     this.snatPool,

@@ -27,7 +27,7 @@ class GetHybridMonitorDatasArgs {
   /// [period] The interval at which monitoring data is collected. Unit: seconds.
   /// [promSql] The name of the metric. Note PromQL statements are supported.
   /// [start] The timestamp that specifies the beginning of the time range to query.
-  GetHybridMonitorDatasArgs({
+  const GetHybridMonitorDatasArgs({
     required this.end,
     required this.namespace,
     this.outputFile,

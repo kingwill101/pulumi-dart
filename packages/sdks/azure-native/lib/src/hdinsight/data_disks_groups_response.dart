@@ -15,7 +15,7 @@ class DataDisksGroupsResponse {
   /// [diskSizeGB] ReadOnly. The DiskSize in GB. Do not set this value.
   /// [disksPerNode] The number of disks per node.
   /// [storageAccountType] ReadOnly. The storage account type. Do not set this value.
-  DataDisksGroupsResponse({
+  const DataDisksGroupsResponse({
     required this.diskSizeGB,
     this.disksPerNode,
     required this.storageAccountType,

@@ -11,7 +11,7 @@ class AlertProcessingRuleSuppressionConditionAlertRuleName {
   /// Creates a new [AlertProcessingRuleSuppressionConditionAlertRuleName].
   /// [operator] The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
   /// [values] Specifies a list of values to match for a given condition.
-  AlertProcessingRuleSuppressionConditionAlertRuleName({
+  const AlertProcessingRuleSuppressionConditionAlertRuleName({
     required this.operator,
     required this.values,
   });

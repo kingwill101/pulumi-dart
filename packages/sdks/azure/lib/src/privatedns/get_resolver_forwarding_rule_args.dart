@@ -15,7 +15,7 @@ class GetResolverForwardingRuleArgs {
   /// Creates a new [GetResolverForwardingRuleArgs].
   /// [dnsForwardingRulesetId] ID of the Private DNS Resolver Forwarding Ruleset.
   /// [name] Name of the Private DNS Resolver Forwarding Rule.
-  GetResolverForwardingRuleArgs({
+  const GetResolverForwardingRuleArgs({
     required this.dnsForwardingRulesetId,
     required this.name,
   });

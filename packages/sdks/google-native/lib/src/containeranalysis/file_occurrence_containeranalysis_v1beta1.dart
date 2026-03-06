@@ -31,7 +31,7 @@ class FileOccurrenceContaineranalysisV1beta1 {
   /// [id] Uniquely identify any element in an SPDX document which may be referenced by other elements
   /// [licenseConcluded] This field contains the license the SPDX file creator has concluded as governing the file or alternative values if the governing license cannot be determined
   /// [notice] This field provides a place for the SPDX file creator to record license notices or other such related notices found in the file
-  FileOccurrenceContaineranalysisV1beta1({
+  const FileOccurrenceContaineranalysisV1beta1({
     this.attributions,
     this.comment,
     this.contributors,

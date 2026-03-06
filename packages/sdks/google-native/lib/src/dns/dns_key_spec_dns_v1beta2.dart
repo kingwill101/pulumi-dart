@@ -19,7 +19,7 @@ class DnsKeySpecDnsV1beta2 {
   /// [keyLength] Length of the keys in bits.
   /// [keyType] Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets.
   /// [kind] Optional.
-  DnsKeySpecDnsV1beta2({
+  const DnsKeySpecDnsV1beta2({
     this.algorithm,
     this.keyLength,
     this.keyType,

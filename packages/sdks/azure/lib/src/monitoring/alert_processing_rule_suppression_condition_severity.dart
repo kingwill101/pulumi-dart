@@ -11,7 +11,7 @@ class AlertProcessingRuleSuppressionConditionSeverity {
   /// Creates a new [AlertProcessingRuleSuppressionConditionSeverity].
   /// [operator] The operator for a given condition. Possible values are `Equals` and `NotEquals`.
   /// [values] Specifies list of values to match for a given condition. Possible values are `Sev0`, `Sev1`, `Sev2`, `Sev3`, and `Sev4`.
-  AlertProcessingRuleSuppressionConditionSeverity({
+  const AlertProcessingRuleSuppressionConditionSeverity({
     required this.operator,
     required this.values,
   });

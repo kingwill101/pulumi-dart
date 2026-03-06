@@ -86,7 +86,7 @@ class DataConnectorArgs {
   /// [refreshInterval] The refresh interval for data sync. If duration is set to 0, the data will
   /// [staticIpEnabled] Whether customer has enabled static IP addresses for this connector.
   /// [syncMode] The data synchronization mode supported by the data connector. The possible value can be:
-  DataConnectorArgs({
+  const DataConnectorArgs({
     this.autoRunDisabled,
     required this.collectionDisplayName,
     required this.collectionId,

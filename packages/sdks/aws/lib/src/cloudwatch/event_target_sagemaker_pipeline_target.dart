@@ -9,7 +9,7 @@ class EventTargetSagemakerPipelineTarget {
 
   /// Creates a new [EventTargetSagemakerPipelineTarget].
   /// [pipelineParameterLists] List of Parameter names and values for SageMaker AI Model Building Pipeline execution.
-  EventTargetSagemakerPipelineTarget({
+  const EventTargetSagemakerPipelineTarget({
     this.pipelineParameterLists,
   });
 

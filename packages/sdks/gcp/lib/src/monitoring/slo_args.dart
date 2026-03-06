@@ -75,7 +75,7 @@ class SloArgs {
   /// [sloId] The id to use for this ServiceLevelObjective. If omitted, an id will be generated instead.
   /// [userLabels] This field is intended to be used for organizing and identifying the AlertPolicy
   /// [windowsBasedSli] A windows-based SLI defines the criteria for time windows.
-  SloArgs({
+  const SloArgs({
     this.basicSli,
     this.calendarPeriod,
     this.displayName,

@@ -15,7 +15,7 @@ class GetManagedDisksDiskEncryptionSetting {
   /// [diskEncryptionKeys] A `disk_encryption_key` block as defined above.
   /// [enabled] Required.
   /// [keyEncryptionKeys] A `key_encryption_key` block as defined below.
-  GetManagedDisksDiskEncryptionSetting({
+  const GetManagedDisksDiskEncryptionSetting({
     required this.diskEncryptionKeys,
     required this.enabled,
     required this.keyEncryptionKeys,

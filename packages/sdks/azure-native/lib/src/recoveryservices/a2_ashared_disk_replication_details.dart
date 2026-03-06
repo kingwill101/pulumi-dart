@@ -42,7 +42,7 @@ class A2ASharedDiskReplicationDetails {
   /// [recoveryFabricLocation] The recovery fabric location.
   /// [rpoInSeconds] The last RPO value in seconds.
   /// [unprotectedDisks] The list of unprotected disks.
-  A2ASharedDiskReplicationDetails({
+  const A2ASharedDiskReplicationDetails({
     this.failoverRecoveryPointId,
     required this.instanceType,
     this.lastRpoCalculatedTime,

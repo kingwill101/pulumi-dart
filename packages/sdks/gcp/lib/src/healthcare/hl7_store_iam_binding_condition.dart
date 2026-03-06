@@ -11,7 +11,7 @@ class Hl7StoreIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  Hl7StoreIamBindingCondition({
+  const Hl7StoreIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

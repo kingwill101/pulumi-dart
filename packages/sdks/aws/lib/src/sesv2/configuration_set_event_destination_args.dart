@@ -22,7 +22,7 @@ class ConfigurationSetEventDestinationArgs {
   /// [eventDestination] A name that identifies the event destination within the configuration set.
   /// [eventDestinationName] An object that defines the event destination. See `event_destination` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ConfigurationSetEventDestinationArgs({
+  const ConfigurationSetEventDestinationArgs({
     required this.configurationSetName,
     required this.eventDestination,
     required this.eventDestinationName,

@@ -13,7 +13,7 @@ class KafkaX509AuthenticationResponse {
   /// Creates a new [KafkaX509AuthenticationResponse].
   /// [keyVault] Keyvault X509 secret properties.
   /// [secretName] Secret where cert details are stored.
-  KafkaX509AuthenticationResponse({
+  const KafkaX509AuthenticationResponse({
     this.keyVault,
     this.secretName,
   });

@@ -12,7 +12,7 @@ class GroupKind {
   /// Creates a new [GroupKind].
   /// [resourceGroup] Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
   /// [resourceKind] Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
-  GroupKind({
+  const GroupKind({
     this.resourceGroup,
     this.resourceKind,
   });

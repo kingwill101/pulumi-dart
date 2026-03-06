@@ -11,7 +11,7 @@ class WebhookPullRequestBuildPolicy {
   /// Creates a new [WebhookPullRequestBuildPolicy].
   /// [approverRoles] List of repository roles that have approval privileges for pull request builds when comment approval is required. This argument must be specified only when `requires_comment_approval` is not `DISABLED`. See the [AWS documentation](https://docs.aws.amazon.com/codebuild/latest/userguide/pull-request-build-policy.html#pull-request-build-policy.configuration) for valid values and defaults.
   /// [requiresCommentApproval] Specifies when comment-based approval is required before triggering a build on pull requests. Valid values are: `DISABLED`, `ALL_PULL_REQUESTS`, and `FORK_PULL_REQUESTS`.
-  WebhookPullRequestBuildPolicy({
+  const WebhookPullRequestBuildPolicy({
     this.approverRoles,
     required this.requiresCommentApproval,
   });

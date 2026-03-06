@@ -21,7 +21,7 @@ class GoogleFirestoreAdminV1IndexField {
   /// [fieldPath] Can be __name__. For single field indexes, this must match the name of the field or may be omitted.
   /// [order] Indicates that this field supports ordering by the specified order or comparing using =, !=, &lt;, &lt;=, &gt;, &gt;=.
   /// [vectorConfig] Indicates that this field supports nearest neighbors and distance operations on vector.
-  GoogleFirestoreAdminV1IndexField({
+  const GoogleFirestoreAdminV1IndexField({
     this.arrayConfig,
     this.fieldPath,
     this.order,

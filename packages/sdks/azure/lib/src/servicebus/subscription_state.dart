@@ -54,7 +54,7 @@ class SubscriptionState {
   /// [requiresSession] Boolean flag which controls whether this Subscription supports the concept of a session. Changing this forces a new resource to be created.
   /// [status] The status of the Subscription. Possible values are `Active`,`ReceiveDisabled`, or `Disabled`. Defaults to `Active`.
   /// [topicId] The ID of the ServiceBus Topic to create this Subscription in. Changing this forces a new resource to be created.
-  SubscriptionState({
+  const SubscriptionState({
     this.autoDeleteOnIdle,
     this.batchedOperationsEnabled,
     this.clientScopedSubscription,

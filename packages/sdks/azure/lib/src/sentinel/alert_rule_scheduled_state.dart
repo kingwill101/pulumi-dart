@@ -86,7 +86,7 @@ class AlertRuleScheduledState {
   /// [techniques] A list of techniques of attacks by which to classify the rule.
   /// [triggerOperator] The alert trigger operator, combined with `trigger_threshold`, setting alert threshold of this Sentinel Scheduled Alert Rule. Possible values are `Equal`, `GreaterThan`, `LessThan`, `NotEqual`. Defaults to `GreaterThan`.
   /// [triggerThreshold] The baseline number of query results generated, combined with `trigger_operator`, setting alert threshold of this Sentinel Scheduled Alert Rule. Defaults to `0`.
-  AlertRuleScheduledState({
+  const AlertRuleScheduledState({
     this.alertDetailsOverrides,
     this.alertRuleTemplateGuid,
     this.alertRuleTemplateVersion,

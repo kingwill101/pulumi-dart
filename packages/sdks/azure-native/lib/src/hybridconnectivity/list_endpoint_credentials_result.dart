@@ -23,7 +23,7 @@ class ListEndpointCredentialsResult {
   /// [namespaceName] The namespace name.
   /// [namespaceNameSuffix] The suffix domain name of relay namespace.
   /// [serviceConfigurationToken] The token to access the enabled service.
-  ListEndpointCredentialsResult({
+  const ListEndpointCredentialsResult({
     required this.accessKey,
     this.expiresOn,
     required this.hybridConnectionName,

@@ -12,7 +12,7 @@ class ScheduleResponseWebsecurityscannerV1alpha {
   /// Creates a new [ScheduleResponseWebsecurityscannerV1alpha].
   /// [intervalDurationDays] The duration of time between executions in days.
   /// [scheduleTime] A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately.
-  ScheduleResponseWebsecurityscannerV1alpha({
+  const ScheduleResponseWebsecurityscannerV1alpha({
     required this.intervalDurationDays,
     required this.scheduleTime,
   });

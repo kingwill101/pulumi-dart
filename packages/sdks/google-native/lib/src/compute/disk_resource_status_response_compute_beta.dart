@@ -11,7 +11,7 @@ class DiskResourceStatusResponseComputeBeta {
   /// Creates a new [DiskResourceStatusResponseComputeBeta].
   /// [asyncPrimaryDisk] Required.
   /// [asyncSecondaryDisks] Key: disk, value: AsyncReplicationStatus message
-  DiskResourceStatusResponseComputeBeta({
+  const DiskResourceStatusResponseComputeBeta({
     required this.asyncPrimaryDisk,
     required this.asyncSecondaryDisks,
   });

@@ -85,7 +85,7 @@ class DatabasePostgresqlState {
   /// [updated] When this Managed Database was last updated.
   /// [updates] Configuration settings for automated patch update maintenance for the Managed Database.
   /// [version] The Managed Database engine version. (e.g. `13.2`)
-  DatabasePostgresqlState({
+  const DatabasePostgresqlState({
     this.allowLists,
     this.caCert,
     this.clusterSize,

@@ -86,7 +86,7 @@ class GetDatabaseInstanceResult {
   /// [serverCaCerts] Required.
   /// [serviceAccountEmailAddress] Required.
   /// [settings] Required.
-  GetDatabaseInstanceResult({
+  const GetDatabaseInstanceResult({
     required this.availableMaintenanceVersions,
     required this.backupdrBackup,
     required this.clones,

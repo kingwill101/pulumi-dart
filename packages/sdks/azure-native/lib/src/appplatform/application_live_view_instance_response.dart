@@ -12,7 +12,7 @@ class ApplicationLiveViewInstanceResponse {
   /// Creates a new [ApplicationLiveViewInstanceResponse].
   /// [name] Name of the Application Live View instance.
   /// [status] Status of the Application Live View instance. It can be Pending, Running, Succeeded, Failed, Unknown.
-  ApplicationLiveViewInstanceResponse({
+  const ApplicationLiveViewInstanceResponse({
     required this.name,
     required this.status,
   });

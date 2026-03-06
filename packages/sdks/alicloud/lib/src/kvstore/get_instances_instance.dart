@@ -164,7 +164,7 @@ class GetInstancesInstance {
   /// [vpcId] Used to retrieve instances belong to specified VPC.
   /// [vswitchId] Used to retrieve instances belong to specified `vswitch` resources.
   /// [zoneId] The ID of the zone.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.architectureType,
     required this.autoRenew,
     required this.autoRenewPeriod,

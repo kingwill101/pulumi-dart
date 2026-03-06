@@ -13,7 +13,7 @@ class GetClustersResult {
   /// [clusterArns] List of ECS cluster ARNs associated with the account.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetClustersResult({
+  const GetClustersResult({
     required this.clusterArns,
     required this.id,
     required this.region,

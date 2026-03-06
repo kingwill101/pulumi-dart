@@ -12,7 +12,7 @@ class IPConfigurationBgpPeeringAddress {
   /// Creates a new [IPConfigurationBgpPeeringAddress].
   /// [customBgpIpAddresses] The list of custom BGP peering addresses which belong to IP configuration.
   /// [ipconfigurationId] The ID of IP configuration which belongs to gateway.
-  IPConfigurationBgpPeeringAddress({
+  const IPConfigurationBgpPeeringAddress({
     this.customBgpIpAddresses,
     this.ipconfigurationId,
   });

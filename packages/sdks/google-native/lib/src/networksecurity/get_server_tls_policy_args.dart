@@ -15,7 +15,7 @@ class GetServerTlsPolicyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [serverTlsPolicyId] Required.
-  GetServerTlsPolicyArgs({
+  const GetServerTlsPolicyArgs({
     required this.location,
     this.project,
     required this.serverTlsPolicyId,

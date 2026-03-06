@@ -11,7 +11,7 @@ class GetGroupsGroup {
   /// Creates a new [GetGroupsGroup].
   /// [groupId] Id of the group.
   /// [groupName] Name of the group.
-  GetGroupsGroup({
+  const GetGroupsGroup({
     required this.groupId,
     required this.groupName,
   });

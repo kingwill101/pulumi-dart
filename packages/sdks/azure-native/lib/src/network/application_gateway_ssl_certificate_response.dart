@@ -33,7 +33,7 @@ class ApplicationGatewaySslCertificateResponse {
   /// [provisioningState] The provisioning state of the SSL certificate resource.
   /// [publicCertData] Base-64 encoded Public cert data corresponding to pfx specified in data. Only applicable in GET request.
   /// [type] Type of the resource.
-  ApplicationGatewaySslCertificateResponse({
+  const ApplicationGatewaySslCertificateResponse({
     this.data,
     required this.etag,
     this.id,

@@ -9,7 +9,7 @@ class DomainOsAcpi {
 
   /// Creates a new [DomainOsAcpi].
   /// [tables] Configures ACPI tables that can be provided to the guest, influencing power management features.
-  DomainOsAcpi({
+  const DomainOsAcpi({
     this.tables,
   });
 

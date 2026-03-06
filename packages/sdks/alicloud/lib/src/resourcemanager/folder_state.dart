@@ -18,7 +18,7 @@ class FolderState {
   /// [folderName] The name of the folder.
   /// [parentFolderId] The ID of the parent folder.
   /// [tags] The tag of the resource.
-  FolderState({
+  const FolderState({
     this.createTime,
     this.folderName,
     this.parentFolderId,

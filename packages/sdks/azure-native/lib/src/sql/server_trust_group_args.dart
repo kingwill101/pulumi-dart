@@ -25,7 +25,7 @@ class ServerTrustGroupArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverTrustGroupName] The name of the server trust group.
   /// [trustScopes] Trust scope of the server trust group.
-  ServerTrustGroupArgs({
+  const ServerTrustGroupArgs({
     required this.groupMembers,
     required this.locationName,
     required this.resourceGroupName,

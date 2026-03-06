@@ -18,7 +18,7 @@ class GetPatchScheduleArgs {
   /// [default_] The name of the RedisPatchSchedule
   /// [name] The name of the redis cache.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPatchScheduleArgs({
+  const GetPatchScheduleArgs({
     required this.default_,
     required this.name,
     required this.resourceGroupName,

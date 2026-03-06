@@ -15,7 +15,7 @@ class GetHciEdgeDeviceArgs {
   /// Creates a new [GetHciEdgeDeviceArgs].
   /// [edgeDeviceName] Name of Device
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetHciEdgeDeviceArgs({
+  const GetHciEdgeDeviceArgs({
     required this.edgeDeviceName,
     required this.resourceUri,
   });

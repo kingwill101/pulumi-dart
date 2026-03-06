@@ -11,7 +11,7 @@ class DomainDevicesDiskBackingStoreSourceCookiesCookie {
   /// Creates a new [DomainDevicesDiskBackingStoreSourceCookiesCookie].
   /// [name] Sets the name of the cookie for use in the backing store source configuration.
   /// [value] Sets the value associated with the cookie defined in the backing store source.
-  DomainDevicesDiskBackingStoreSourceCookiesCookie({
+  const DomainDevicesDiskBackingStoreSourceCookiesCookie({
     required this.name,
     required this.value,
   });

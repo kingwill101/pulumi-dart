@@ -9,7 +9,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineCommonConfig {
 
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaEngineCommonConfig].
   /// [companyName] The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
-  GoogleCloudDiscoveryengineV1alphaEngineCommonConfig({
+  const GoogleCloudDiscoveryengineV1alphaEngineCommonConfig({
     this.companyName,
   });
 

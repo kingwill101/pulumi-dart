@@ -8,7 +8,7 @@ class GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo {
 
   /// Creates a new [GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo].
   /// [segments] A list of strings. The list of segments that the `send-via` `action` uses.
-  GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo({
+  const GetCoreNetworkPolicyDocumentSegmentActionWhenSentTo({
     this.segments,
   });
 

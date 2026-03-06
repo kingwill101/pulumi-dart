@@ -9,7 +9,7 @@ class WorkspaceNoPublicIPBooleanParameter {
 
   /// Creates a new [WorkspaceNoPublicIPBooleanParameter].
   /// [value] The value which should be used for this field.
-  WorkspaceNoPublicIPBooleanParameter({
+  const WorkspaceNoPublicIPBooleanParameter({
     required this.value,
   });
 

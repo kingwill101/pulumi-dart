@@ -52,7 +52,7 @@ class AmiCopyArgs {
   /// [sourceAmiId] Id of the AMI to copy. This id must be valid in the region
   /// [sourceAmiRegion] Region from which the AMI will be copied. This may be the
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  AmiCopyArgs({
+  const AmiCopyArgs({
     this.deprecationTime,
     this.description,
     this.destinationOutpostArn,

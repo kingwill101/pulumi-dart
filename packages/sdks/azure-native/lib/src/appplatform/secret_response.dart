@@ -9,7 +9,7 @@ class SecretResponse {
 
   /// Creates a new [SecretResponse].
   /// [name] Secret Name.
-  SecretResponse({
+  const SecretResponse({
     this.name,
   });
 

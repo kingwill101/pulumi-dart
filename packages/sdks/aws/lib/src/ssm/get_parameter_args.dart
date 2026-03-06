@@ -18,7 +18,7 @@ class GetParameterArgs {
   /// [name] Name of the parameter. To query by parameter version use `name:version` (e.g., `foo:3`).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [withDecryption] Whether to return decrypted `SecureString` value. Defaults to `true`.
-  GetParameterArgs({
+  const GetParameterArgs({
     required this.name,
     this.region,
     this.withDecryption,

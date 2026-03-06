@@ -19,7 +19,7 @@ class FieldLevelEncryptionProfileArgs {
   /// [comment] An optional comment about the Field Level Encryption Profile.
   /// [encryptionEntities] The encryption entities config block for field-level encryption profiles that contains an attribute `items` which includes the encryption key and field pattern specifications.
   /// [name] The name of the Field Level Encryption Profile.
-  FieldLevelEncryptionProfileArgs({
+  const FieldLevelEncryptionProfileArgs({
     this.comment,
     required this.encryptionEntities,
     this.name,

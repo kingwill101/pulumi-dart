@@ -11,7 +11,7 @@ class GetTestResultFileResult {
   /// Creates a new [GetTestResultFileResult].
   /// [data] File contents.
   /// [nextLink] The URI that can be used to request the next section of the result file in the event the file is too large for a single request.
-  GetTestResultFileResult({
+  const GetTestResultFileResult({
     this.data,
     this.nextLink,
   });

@@ -21,7 +21,7 @@ class TrackedResourceResponseSystemData {
   /// [createdByType] The type of identity that created the resource.
   /// [lastModifiedBy] The identity that last modified the resource.
   /// [lastModifiedByType] The type of identity that last modified the resource.
-  TrackedResourceResponseSystemData({
+  const TrackedResourceResponseSystemData({
     this.createdAt,
     this.createdBy,
     this.createdByType,

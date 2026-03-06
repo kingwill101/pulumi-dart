@@ -31,7 +31,7 @@ class Wafv2LoggingConfigurationProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Wafv2LoggingConfigurationProperties({
+  const Wafv2LoggingConfigurationProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

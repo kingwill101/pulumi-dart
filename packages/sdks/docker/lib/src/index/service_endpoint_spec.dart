@@ -12,7 +12,7 @@ class ServiceEndpointSpec {
   /// Creates a new [ServiceEndpointSpec].
   /// [mode] The mode of resolution to use for internal load balancing between tasks
   /// [ports] List of exposed ports that this service is accessible on from the outside. Ports can only be provided if 'vip' resolution mode is used
-  ServiceEndpointSpec({
+  const ServiceEndpointSpec({
     this.mode,
     this.ports,
   });

@@ -89,7 +89,7 @@ class SynapseSparkJobDefinitionActivityResponse {
   /// [targetSparkConfiguration] The spark configuration of the spark job.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  SynapseSparkJobDefinitionActivityResponse({
+  const SynapseSparkJobDefinitionActivityResponse({
     this.arguments,
     this.className,
     this.conf,

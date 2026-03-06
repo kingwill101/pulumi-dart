@@ -11,7 +11,7 @@ class AccessGrantGrantee {
   /// Creates a new [AccessGrantGrantee].
   /// [granteeIdentifier] Grantee identifier.
   /// [granteeType] Grantee types. Valid values: `DIRECTORY_USER`, `DIRECTORY_GROUP`, `IAM`.
-  AccessGrantGrantee({
+  const AccessGrantGrantee({
     required this.granteeIdentifier,
     required this.granteeType,
   });

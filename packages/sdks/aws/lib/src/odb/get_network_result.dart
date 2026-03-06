@@ -74,7 +74,7 @@ class GetNetworkResult {
   /// [status] The status of the network resource.
   /// [statusReason] Additional information about the current status of the ODB network.
   /// [tags] Required.
-  GetNetworkResult({
+  const GetNetworkResult({
     required this.arn,
     required this.availabilityZone,
     required this.availabilityZoneId,

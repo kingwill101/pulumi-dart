@@ -21,7 +21,7 @@ class VirtualDiskResponse {
   /// [totalSize] Disk's total size
   /// [virtualDiskId] Disk's id
   /// [virtualDiskName] Disk's display name
-  VirtualDiskResponse({
+  const VirtualDiskResponse({
     required this.controllerId,
     required this.independenceMode,
     required this.totalSize,

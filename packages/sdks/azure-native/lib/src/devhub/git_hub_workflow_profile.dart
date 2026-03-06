@@ -41,7 +41,7 @@ class GitHubWorkflowProfile {
   /// [oidcCredentials] The fields needed for OIDC with GitHub.
   /// [repositoryName] Repository Name
   /// [repositoryOwner] Repository Owner
-  GitHubWorkflowProfile({
+  const GitHubWorkflowProfile({
     this.acr,
     this.aksResourceId,
     this.branchName,

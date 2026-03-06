@@ -40,7 +40,7 @@ class AccessApprovalSettingsState {
   /// [name] The resource name of the settings. Format is "organizations/{organization_id}/accessApprovalSettings"
   /// [notificationEmails] A list of email addresses to which notifications relating to approval requests should be sent.
   /// [organizationId] ID of the organization of the access approval settings.
-  AccessApprovalSettingsState({
+  const AccessApprovalSettingsState({
     this.activeKeyVersion,
     this.ancestorHasActiveKeyVersion,
     this.enrolledAncestor,

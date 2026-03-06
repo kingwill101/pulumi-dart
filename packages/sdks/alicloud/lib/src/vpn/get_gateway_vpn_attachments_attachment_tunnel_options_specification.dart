@@ -47,7 +47,7 @@ class GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification {
   /// [tunnelIndex] The order in which the tunnel was created.-**1**: First tunnel.-**2**: The second tunnel.
   /// [tunnelIpsecConfig] Configuration information for the second-stage negotiation.
   /// [zoneNo] The zoneNo of tunnel.
-  GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification({
+  const GetGatewayVpnAttachmentsAttachmentTunnelOptionsSpecification({
     required this.customerGatewayId,
     required this.enableDpd,
     required this.enableNatTraversal,

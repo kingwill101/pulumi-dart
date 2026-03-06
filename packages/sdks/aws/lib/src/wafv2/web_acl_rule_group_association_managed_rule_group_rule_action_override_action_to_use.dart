@@ -25,7 +25,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse {
   /// [captcha] Require CAPTCHA verification. See below.
   /// [challenge] Require challenge verification. See below.
   /// [count] Count the request without taking action. See below.
-  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse({
+  const WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUse({
     this.allow,
     this.block,
     this.captcha,

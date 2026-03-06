@@ -11,7 +11,7 @@ class DeploymentLabel {
   /// Creates a new [DeploymentLabel].
   /// [key] Key for label.
   /// [value] Value of label.
-  DeploymentLabel({
+  const DeploymentLabel({
     this.key,
     this.value,
   });

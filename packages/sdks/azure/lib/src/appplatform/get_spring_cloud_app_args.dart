@@ -18,7 +18,7 @@ class GetSpringCloudAppArgs {
   /// [name] The name of the Spring Cloud Application.
   /// [resourceGroupName] The name of the Resource Group where the Spring Cloud Application exists.
   /// [serviceName] The name of the Spring Cloud Service.
-  GetSpringCloudAppArgs({
+  const GetSpringCloudAppArgs({
     required this.name,
     required this.resourceGroupName,
     required this.serviceName,

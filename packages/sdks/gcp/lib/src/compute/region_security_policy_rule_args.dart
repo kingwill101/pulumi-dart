@@ -67,7 +67,7 @@ class RegionSecurityPolicyRuleArgs {
   /// [rateLimitOptions] Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
   /// [region] The Region in which the created Region Security Policy rule should reside.
   /// [securityPolicy] The name of the security policy this rule belongs to.
-  RegionSecurityPolicyRuleArgs({
+  const RegionSecurityPolicyRuleArgs({
     required this.action,
     this.description,
     this.match,

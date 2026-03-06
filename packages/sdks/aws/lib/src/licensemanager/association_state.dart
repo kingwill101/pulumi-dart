@@ -15,7 +15,7 @@ class AssociationState {
   /// [licenseConfigurationArn] ARN of the license configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] ARN of the resource associated with the license configuration.
-  AssociationState({
+  const AssociationState({
     this.licenseConfigurationArn,
     this.region,
     this.resourceArn,

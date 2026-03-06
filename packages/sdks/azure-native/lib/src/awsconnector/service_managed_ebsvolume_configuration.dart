@@ -37,7 +37,7 @@ class ServiceManagedEBSVolumeConfiguration {
   /// [tagSpecifications] The tags to apply to the volume. Amazon ECS applies service-managed tags by default. This parameter maps 1:1 with the ``TagSpecifications.N`` parameter of the [CreateVolume API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVolume.html) in the *Amazon EC2 API Reference*.
   /// [throughput] The throughput to provision for a volume, in MiB/s, with a maximum of 1,000 MiB/s. This parameter maps 1:1 with the ``Throughput`` parameter of the [CreateVolume API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVolume.html) in the *Amazon EC2 API Reference*.  This parameter is only supported for the ``gp3`` volume type.
   /// [volumeType] The volume type. This parameter maps 1:1 with the ``VolumeType`` parameter of the [CreateVolume API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_CreateVolume.html) in the *Amazon EC2 API Reference*. For more information, see [Amazon EBS volume types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-volume-types.html) in the *Amazon EC2 User Guide*. The following are the supported volume types.  +  General Purpose SSD: ``gp2``|``gp3``   +  Provisioned IOPS SSD: ``io1``|``io2``   +  Throughput Optimized HDD: ``st1``   +  Cold HDD: ``sc1``   +  Magnetic: ``standard``   The magnetic volume type is not supported on Fargate.
-  ServiceManagedEBSVolumeConfiguration({
+  const ServiceManagedEBSVolumeConfiguration({
     this.encrypted,
     this.filesystemType,
     this.iops,

@@ -14,7 +14,7 @@ class AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfigurationFieldMappin
   /// [metadataField] The name of the field in which Amazon Bedrock stores metadata about the vector store.
   /// [textField] The name of the field in which Amazon Bedrock stores the raw text from your data. The text is split according to the chunking strategy you choose.
   /// [vectorField] The name of the field in which Amazon Bedrock stores the vector embeddings for your data sources.
-  AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfigurationFieldMapping({
+  const AgentKnowledgeBaseStorageConfigurationMongoDbAtlasConfigurationFieldMapping({
     required this.metadataField,
     required this.textField,
     required this.vectorField,

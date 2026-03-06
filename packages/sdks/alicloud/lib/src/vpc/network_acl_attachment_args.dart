@@ -16,7 +16,7 @@ class NetworkAclAttachmentArgs {
   /// Creates a new [NetworkAclAttachmentArgs].
   /// [networkAclId] The id of the network acl, the field can't be changed.
   /// [resources] List of the resources associated with the network acl. The details see Block Resources.
-  NetworkAclAttachmentArgs({
+  const NetworkAclAttachmentArgs({
     required this.networkAclId,
     required this.resources,
   });

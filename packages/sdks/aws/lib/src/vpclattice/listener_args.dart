@@ -35,7 +35,7 @@ class ListenerArgs {
   /// [serviceArn] Amazon Resource Name (ARN) of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
   /// [serviceIdentifier] ID of the VPC Lattice service. You must include either the `service_arn` or `service_identifier` arguments.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ListenerArgs({
+  const ListenerArgs({
     required this.defaultAction,
     this.name,
     this.port,

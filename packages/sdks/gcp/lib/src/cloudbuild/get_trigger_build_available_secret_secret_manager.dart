@@ -13,7 +13,7 @@ class GetTriggerBuildAvailableSecretSecretManager {
   /// Creates a new [GetTriggerBuildAvailableSecretSecretManager].
   /// [env] Environment variable name to associate with the secret. Secret environment
   /// [versionName] Resource name of the SecretVersion. In format: projects/*/secrets/*/versions/*
-  GetTriggerBuildAvailableSecretSecretManager({
+  const GetTriggerBuildAvailableSecretSecretManager({
     required this.env,
     required this.versionName,
   });

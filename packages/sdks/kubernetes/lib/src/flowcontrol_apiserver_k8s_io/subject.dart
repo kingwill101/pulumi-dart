@@ -21,7 +21,7 @@ class Subject {
   /// [kind] `kind` indicates which one of the other fields is non-empty. Required
   /// [serviceAccount] `serviceAccount` matches ServiceAccounts.
   /// [user] `user` matches based on username.
-  Subject({
+  const Subject({
     this.group,
     required this.kind,
     this.serviceAccount,

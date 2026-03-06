@@ -12,7 +12,7 @@ class InvestigationExecutionResponse {
   /// Creates a new [InvestigationExecutionResponse].
   /// [completedAt] The time at which the investigation execution completed (in UTC)
   /// [runState] The state of the investigation execution
-  InvestigationExecutionResponse({
+  const InvestigationExecutionResponse({
     required this.completedAt,
     required this.runState,
   });

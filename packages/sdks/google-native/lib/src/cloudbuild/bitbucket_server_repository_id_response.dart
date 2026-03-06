@@ -15,7 +15,7 @@ class BitbucketServerRepositoryIdResponse {
   /// [projectKey] Identifier for the project storing the repository.
   /// [repoSlug] Identifier for the repository.
   /// [webhookId] The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo.
-  BitbucketServerRepositoryIdResponse({
+  const BitbucketServerRepositoryIdResponse({
     required this.projectKey,
     required this.repoSlug,
     required this.webhookId,

@@ -25,7 +25,7 @@ class LoadBalancerBackendAddress {
   /// [name] Name of the backend address.
   /// [subnet] Reference to an existing subnet.
   /// [virtualNetwork] Reference to an existing virtual network.
-  LoadBalancerBackendAddress({
+  const LoadBalancerBackendAddress({
     this.adminState,
     this.ipAddress,
     this.loadBalancerFrontendIPConfiguration,

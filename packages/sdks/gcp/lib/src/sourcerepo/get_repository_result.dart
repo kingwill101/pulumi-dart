@@ -22,7 +22,7 @@ class GetRepositoryResult {
   /// [pubsubConfigs] Required.
   /// [size] Required.
   /// [url] Required.
-  GetRepositoryResult({
+  const GetRepositoryResult({
     required this.createIgnoreAlreadyExists,
     required this.id,
     required this.name,

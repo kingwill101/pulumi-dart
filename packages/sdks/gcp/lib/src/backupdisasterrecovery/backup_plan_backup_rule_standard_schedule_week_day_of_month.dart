@@ -13,7 +13,7 @@ class BackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
   /// Creates a new [BackupPlanBackupRuleStandardScheduleWeekDayOfMonth].
   /// [dayOfWeek] Specifies the day of the week.
   /// [weekOfMonth] WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month.
-  BackupPlanBackupRuleStandardScheduleWeekDayOfMonth({
+  const BackupPlanBackupRuleStandardScheduleWeekDayOfMonth({
     required this.dayOfWeek,
     required this.weekOfMonth,
   });

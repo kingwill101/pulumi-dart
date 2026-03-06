@@ -9,7 +9,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceler
   /// Creates a new [GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorTotalMemoryMib].
   /// [max] Optional.
   /// [min] Optional.
-  GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorTotalMemoryMib({
+  const GroupMixedInstancesPolicyLaunchTemplateOverrideInstanceRequirementsAcceleratorTotalMemoryMib({
     this.max,
     this.min,
   });

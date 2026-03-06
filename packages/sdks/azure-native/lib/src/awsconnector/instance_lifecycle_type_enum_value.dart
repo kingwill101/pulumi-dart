@@ -9,7 +9,7 @@ class InstanceLifecycleTypeEnumValue {
 
   /// Creates a new [InstanceLifecycleTypeEnumValue].
   /// [value] Property value
-  InstanceLifecycleTypeEnumValue({
+  const InstanceLifecycleTypeEnumValue({
     this.value,
   });
 

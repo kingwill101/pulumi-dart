@@ -11,7 +11,7 @@ class GetRegionNetworkEndpointGroupPscData {
 
   /// Creates a new [GetRegionNetworkEndpointGroupPscData].
   /// [producerPort] The PSC producer port to use when consumer PSC NEG connects to a producer. If
-  GetRegionNetworkEndpointGroupPscData({
+  const GetRegionNetworkEndpointGroupPscData({
     required this.producerPort,
   });
 

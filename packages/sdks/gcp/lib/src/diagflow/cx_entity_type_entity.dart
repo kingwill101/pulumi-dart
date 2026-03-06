@@ -14,7 +14,7 @@ class CxEntityTypeEntity {
   /// Creates a new [CxEntityTypeEntity].
   /// [synonyms] A collection of value synonyms. For example, if the entity type is vegetable, and value is scallions, a synonym could be green onions.
   /// [value] The primary value associated with this entity entry. For example, if the entity type is vegetable, the value could be scallions.
-  CxEntityTypeEntity({
+  const CxEntityTypeEntity({
     this.synonyms,
     this.value,
   });

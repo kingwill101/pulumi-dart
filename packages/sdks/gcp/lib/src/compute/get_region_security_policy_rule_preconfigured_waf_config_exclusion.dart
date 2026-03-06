@@ -30,7 +30,7 @@ class GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion {
   /// [requestUris] Request URI from the request line to be excluded from inspection during preconfigured WAF evaluation.
   /// [targetRuleIds] A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion.
   /// [targetRuleSet] Target WAF rule set to apply the preconfigured WAF exclusion.
-  GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion({
+  const GetRegionSecurityPolicyRulePreconfiguredWafConfigExclusion({
     required this.requestCookies,
     required this.requestHeaders,
     required this.requestQueryParams,

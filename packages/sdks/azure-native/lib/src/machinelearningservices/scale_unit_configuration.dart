@@ -12,7 +12,7 @@ class ScaleUnitConfiguration {
   /// Creates a new [ScaleUnitConfiguration].
   /// [disablePublicEgress] Gets or sets a value indicating whether PublicEgress is disabled.
   /// [registries] Gets or sets a list of Registry sources that will be used to confirm identity, storage, ACR.
-  ScaleUnitConfiguration({
+  const ScaleUnitConfiguration({
     this.disablePublicEgress,
     this.registries,
   });

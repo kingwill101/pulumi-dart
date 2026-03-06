@@ -10,7 +10,7 @@ class StreamBackfillAllSalesforceExcludedObjects {
 
   /// Creates a new [StreamBackfillAllSalesforceExcludedObjects].
   /// [objects] Salesforce objects in Salesforce Org.
-  StreamBackfillAllSalesforceExcludedObjects({
+  const StreamBackfillAllSalesforceExcludedObjects({
     required this.objects,
   });
 

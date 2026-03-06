@@ -14,7 +14,7 @@ class GetCharacterSetNamesArgs {
   /// Creates a new [GetCharacterSetNamesArgs].
   /// [engine] Database type. Options are `MySQL`, `SQLServer`, `PostgreSQL`, `MariaDB`.
   /// [outputFile] Optional.
-  GetCharacterSetNamesArgs({
+  const GetCharacterSetNamesArgs({
     required this.engine,
     this.outputFile,
   });

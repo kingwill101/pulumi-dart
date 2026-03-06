@@ -38,7 +38,7 @@ class GetMonitorGroupsArgs {
   /// [selectContactGroups] The select contact groups.
   /// [tags] Optional.
   /// [type] The type of the application group. Valid values: `custom`, `ehpc_cluster`, `kubernetes`.
-  GetMonitorGroupsArgs({
+  const GetMonitorGroupsArgs({
     this.dynamicTagRuleId,
     this.ids,
     this.includeTemplateHistory,

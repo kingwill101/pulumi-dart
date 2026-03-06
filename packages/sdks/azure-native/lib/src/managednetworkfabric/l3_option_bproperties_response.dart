@@ -16,7 +16,7 @@ class L3OptionBPropertiesResponse {
   /// [exportRouteTargets] RouteTargets to be applied. This is used for the backward compatibility.
   /// [importRouteTargets] RouteTargets to be applied. This is used for the backward compatibility.
   /// [routeTargets] RouteTargets to be applied.
-  L3OptionBPropertiesResponse({
+  const L3OptionBPropertiesResponse({
     this.exportRouteTargets,
     this.importRouteTargets,
     this.routeTargets,

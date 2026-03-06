@@ -18,7 +18,7 @@ class GetGradientaiRegionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [regions] Required.
   /// [sorts] Optional.
-  GetGradientaiRegionsResult({
+  const GetGradientaiRegionsResult({
     this.filters,
     required this.id,
     required this.regions,

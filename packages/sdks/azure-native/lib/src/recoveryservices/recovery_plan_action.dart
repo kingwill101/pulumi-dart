@@ -19,7 +19,7 @@ class RecoveryPlanAction {
   /// [customDetails] The custom details.
   /// [failoverDirections] The list of failover directions.
   /// [failoverTypes] The list of failover types.
-  RecoveryPlanAction({
+  const RecoveryPlanAction({
     required this.actionName,
     required this.customDetails,
     required this.failoverDirections,

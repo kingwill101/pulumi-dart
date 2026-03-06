@@ -10,7 +10,7 @@ class CustomLevelResponse {
 
   /// Creates a new [CustomLevelResponse].
   /// [expr] A Cloud CEL expression evaluating to a boolean.
-  CustomLevelResponse({
+  const CustomLevelResponse({
     required this.expr,
   });
 

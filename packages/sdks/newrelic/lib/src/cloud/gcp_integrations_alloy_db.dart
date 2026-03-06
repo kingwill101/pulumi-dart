@@ -8,7 +8,7 @@ class GcpIntegrationsAlloyDb {
 
   /// Creates a new [GcpIntegrationsAlloyDb].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsAlloyDb({
+  const GcpIntegrationsAlloyDb({
     this.metricsPollingInterval,
   });
 

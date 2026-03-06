@@ -15,7 +15,7 @@ class GetMachineImageIamPolicyComputeV1Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [resource] Required.
-  GetMachineImageIamPolicyComputeV1Args({
+  const GetMachineImageIamPolicyComputeV1Args({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

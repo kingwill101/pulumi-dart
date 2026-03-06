@@ -10,7 +10,7 @@ class SigningJobDestinationS3 {
   /// Creates a new [SigningJobDestinationS3].
   /// [bucket] Required.
   /// [prefix] An Amazon S3 object key prefix that you can use to limit signed objects keys to begin with the specified prefix.
-  SigningJobDestinationS3({
+  const SigningJobDestinationS3({
     required this.bucket,
     this.prefix,
   });

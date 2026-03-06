@@ -27,7 +27,7 @@ class SubscriptionArgs {
   /// [seatCount] Optional. Number of seats in the subscription.
   /// [sku] SKU of subscription.
   /// [type] Type of subscription.
-  SubscriptionArgs({
+  const SubscriptionArgs({
     this.location,
     this.name,
     required this.organizationId,

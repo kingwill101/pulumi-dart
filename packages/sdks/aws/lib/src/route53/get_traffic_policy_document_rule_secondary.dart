@@ -13,7 +13,7 @@ class GetTrafficPolicyDocumentRuleSecondary {
   /// [evaluateTargetHealth] Optional.
   /// [healthCheck] Optional.
   /// [ruleReference] Optional.
-  GetTrafficPolicyDocumentRuleSecondary({
+  const GetTrafficPolicyDocumentRuleSecondary({
     this.endpointReference,
     this.evaluateTargetHealth,
     this.healthCheck,

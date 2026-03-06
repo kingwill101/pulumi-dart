@@ -42,7 +42,7 @@ class GetCollectorPolicyResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetCollectorPolicyResult({
+  const GetCollectorPolicyResult({
     required this.azureApiVersion,
     this.emissionPolicies,
     required this.etag,

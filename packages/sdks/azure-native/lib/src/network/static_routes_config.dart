@@ -9,7 +9,7 @@ class StaticRoutesConfig {
 
   /// Creates a new [StaticRoutesConfig].
   /// [vnetLocalRouteOverrideCriteria] Parameter determining whether NVA in spoke vnet is bypassed for traffic with destination in spoke.
-  StaticRoutesConfig({
+  const StaticRoutesConfig({
     this.vnetLocalRouteOverrideCriteria,
   });
 

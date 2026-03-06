@@ -24,7 +24,7 @@ class CorsPolicy {
   /// [allowedOrigins] Specifies the content for the access-control-allow-origins header
   /// [exposeHeaders] Specifies the content for the access-control-expose-headers header
   /// [maxAge] Specifies the content for the access-control-max-age header
-  CorsPolicy({
+  const CorsPolicy({
     this.allowCredentials,
     this.allowedHeaders,
     this.allowedMethods,

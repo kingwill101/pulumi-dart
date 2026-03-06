@@ -14,7 +14,7 @@ class DeviceStatusResponse {
   /// Creates a new [DeviceStatusResponse].
   /// [config] Defines the device status config properties.
   /// [endpoints] Defines the device status for inbound/outbound endpoints.
-  DeviceStatusResponse({
+  const DeviceStatusResponse({
     required this.config,
     required this.endpoints,
   });

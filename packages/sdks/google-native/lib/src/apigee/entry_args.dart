@@ -21,7 +21,7 @@ class EntryArgs {
   /// [name] Resource URI that can be used to identify the scope of the key value map entries.
   /// [organizationId] Required.
   /// [value] Data or payload that is being retrieved and associated with the unique key.
-  EntryArgs({
+  const EntryArgs({
     required this.apiId,
     required this.keyvaluemapId,
     this.name,

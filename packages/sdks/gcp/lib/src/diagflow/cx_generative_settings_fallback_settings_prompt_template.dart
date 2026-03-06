@@ -14,7 +14,7 @@ class CxGenerativeSettingsFallbackSettingsPromptTemplate {
   /// [displayName] Prompt name.
   /// [frozen] If the flag is true, the prompt is frozen and cannot be modified by users.
   /// [promptText] Prompt text that is sent to a LLM on no-match default, placeholders are filled downstream. For example: "Here is a conversation $conversation, a response is: "
-  CxGenerativeSettingsFallbackSettingsPromptTemplate({
+  const CxGenerativeSettingsFallbackSettingsPromptTemplate({
     this.displayName,
     this.frozen,
     this.promptText,

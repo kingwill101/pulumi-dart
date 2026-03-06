@@ -11,7 +11,7 @@ class SpringbootappsPropertiesResponseMiscs {
   /// Creates a new [SpringbootappsPropertiesResponseMiscs].
   /// [key] The miscs. key.
   /// [value] The miscs. value.
-  SpringbootappsPropertiesResponseMiscs({
+  const SpringbootappsPropertiesResponseMiscs({
     required this.key,
     this.value,
   });

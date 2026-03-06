@@ -18,7 +18,7 @@ class GetNetworkPackagesResult {
   /// [outputFile] Optional.
   /// [packages] Required.
   /// [status] Optional.
-  GetNetworkPackagesResult({
+  const GetNetworkPackagesResult({
     required this.id,
     required this.ids,
     this.outputFile,

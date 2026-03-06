@@ -9,7 +9,7 @@ class ProductCodeValuesEnumValueResponse {
 
   /// Creates a new [ProductCodeValuesEnumValueResponse].
   /// [value] Property value
-  ProductCodeValuesEnumValueResponse({
+  const ProductCodeValuesEnumValueResponse({
     this.value,
   });
 

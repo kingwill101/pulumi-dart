@@ -58,7 +58,7 @@ class DeploymentDataResponse {
   /// [secretsLocation] Azure keyvault endpoint. This property is deprecated from 2023-12-01-preview. Please use secrets property instead.
   /// [securitySettings] SecuritySettings to deploy AzureStackHCI Cluster.
   /// [storage] Storage config to deploy AzureStackHCI Cluster.
-  DeploymentDataResponse({
+  const DeploymentDataResponse({
     this.adouPath,
     this.cluster,
     this.domainFqdn,

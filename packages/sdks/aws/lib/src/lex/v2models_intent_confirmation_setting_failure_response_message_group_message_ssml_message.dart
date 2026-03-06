@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingFailureResponseMessageGroupMessageSsmlMes
 
   /// Creates a new [V2modelsIntentConfirmationSettingFailureResponseMessageGroupMessageSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentConfirmationSettingFailureResponseMessageGroupMessageSsmlMessage({
+  const V2modelsIntentConfirmationSettingFailureResponseMessageGroupMessageSsmlMessage({
     required this.value,
   });
 

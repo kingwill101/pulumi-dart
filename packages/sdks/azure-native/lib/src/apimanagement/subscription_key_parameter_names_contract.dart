@@ -12,7 +12,7 @@ class SubscriptionKeyParameterNamesContract {
   /// Creates a new [SubscriptionKeyParameterNamesContract].
   /// [header] Subscription key header name.
   /// [query] Subscription key query string parameter name.
-  SubscriptionKeyParameterNamesContract({
+  const SubscriptionKeyParameterNamesContract({
     this.header,
     this.query,
   });

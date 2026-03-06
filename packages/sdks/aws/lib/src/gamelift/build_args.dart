@@ -28,7 +28,7 @@ class BuildArgs {
   /// [storageLocation] Information indicating where your game build files are stored. See below.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [version] Version that is associated with this build.
-  BuildArgs({
+  const BuildArgs({
     this.name,
     required this.operatingSystem,
     this.region,

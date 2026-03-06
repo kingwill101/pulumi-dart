@@ -25,7 +25,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter {
   /// [sharedMemorySize] The value for the size (in MiB) of the `/dev/shm` volume.
   /// [swappiness] You can use this parameter to tune a container's memory swappiness behavior.
   /// [tmpfs] The container path, mount options, and size (in MiB) of the tmpfs mount.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerLinuxParameter({
     required this.devices,
     required this.initProcessEnabled,
     required this.maxSwap,

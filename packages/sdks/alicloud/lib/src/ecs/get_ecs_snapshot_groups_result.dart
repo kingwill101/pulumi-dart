@@ -28,7 +28,7 @@ class GetEcsSnapshotGroupsResult {
   /// [snapshotGroupName] Optional.
   /// [status] Optional.
   /// [tags] Optional.
-  GetEcsSnapshotGroupsResult({
+  const GetEcsSnapshotGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

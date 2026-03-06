@@ -12,7 +12,7 @@ class VirtualMachineOsProfileSecret {
   /// Creates a new [VirtualMachineOsProfileSecret].
   /// [sourceVaultId] Specifies the ID of the Key Vault to use.
   /// [vaultCertificates] One or more `vault_certificates` blocks as defined below.
-  VirtualMachineOsProfileSecret({
+  const VirtualMachineOsProfileSecret({
     required this.sourceVaultId,
     this.vaultCertificates,
   });

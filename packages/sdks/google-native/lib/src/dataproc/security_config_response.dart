@@ -14,7 +14,7 @@ class SecurityConfigResponse {
   /// Creates a new [SecurityConfigResponse].
   /// [identityConfig] Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
   /// [kerberosConfig] Optional. Kerberos related configuration.
-  SecurityConfigResponse({
+  const SecurityConfigResponse({
     required this.identityConfig,
     required this.kerberosConfig,
   });

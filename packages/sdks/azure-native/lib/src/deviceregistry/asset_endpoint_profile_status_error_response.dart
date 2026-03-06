@@ -12,7 +12,7 @@ class AssetEndpointProfileStatusErrorResponse {
   /// Creates a new [AssetEndpointProfileStatusErrorResponse].
   /// [code] Error code for classification of errors (ex: 400, 404, 500, etc.).
   /// [message] Human readable helpful error message to provide additional context for error (ex: “targetAddress 'foo' is not a valid url”).
-  AssetEndpointProfileStatusErrorResponse({
+  const AssetEndpointProfileStatusErrorResponse({
     required this.code,
     required this.message,
   });

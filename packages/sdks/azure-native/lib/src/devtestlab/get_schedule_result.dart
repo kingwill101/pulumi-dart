@@ -60,7 +60,7 @@ class GetScheduleResult {
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [weeklyRecurrence] If the schedule will occur only some days of the week, specify the weekly recurrence.
-  GetScheduleResult({
+  const GetScheduleResult({
     required this.azureApiVersion,
     required this.createdDate,
     this.dailyRecurrence,

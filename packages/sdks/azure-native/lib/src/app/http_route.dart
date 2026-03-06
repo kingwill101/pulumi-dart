@@ -14,7 +14,7 @@ class HttpRoute {
   /// Creates a new [HttpRoute].
   /// [action] Once route is matched, what is the desired action
   /// [match] Conditions route will match on
-  HttpRoute({
+  const HttpRoute({
     this.action,
     this.match,
   });

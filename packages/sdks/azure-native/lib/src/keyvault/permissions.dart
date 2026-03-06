@@ -18,7 +18,7 @@ class Permissions {
   /// [keys] Permissions to keys
   /// [secrets] Permissions to secrets
   /// [storage] Permissions to storage accounts
-  Permissions({
+  const Permissions({
     this.certificates,
     this.keys,
     this.secrets,

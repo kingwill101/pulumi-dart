@@ -8,7 +8,7 @@ class DomainDevicesDiskSourceNetworkConfig {
 
   /// Creates a new [DomainDevicesDiskSourceNetworkConfig].
   /// [file] Specifies a file for loading additional network configuration in the backing store source.
-  DomainDevicesDiskSourceNetworkConfig({
+  const DomainDevicesDiskSourceNetworkConfig({
     required this.file,
   });
 

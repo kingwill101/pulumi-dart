@@ -10,7 +10,7 @@ class UpdateInfoResponseContainerV1beta1 {
 
   /// Creates a new [UpdateInfoResponseContainerV1beta1].
   /// [blueGreenInfo] Information of a blue-green upgrade.
-  UpdateInfoResponseContainerV1beta1({
+  const UpdateInfoResponseContainerV1beta1({
     required this.blueGreenInfo,
   });
 

@@ -21,7 +21,7 @@ class SqlServerEsuLicenseProperties {
   /// [physicalCores] The number of total cores of the license covers.
   /// [scopeType] The Azure scope to which the license will apply.
   /// [version] The SQL Server version the license covers.
-  SqlServerEsuLicenseProperties({
+  const SqlServerEsuLicenseProperties({
     required this.activationState,
     required this.billingPlan,
     required this.physicalCores,

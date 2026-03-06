@@ -12,7 +12,7 @@ class ClusterAddonsConfigCloudrunConfig {
   /// Creates a new [ClusterAddonsConfigCloudrunConfig].
   /// [disabled] The status of the CloudRun addon. It is disabled by default. Set `disabled=false` to enable.
   /// [loadBalancerType] The load balancer type of CloudRun ingress service. It is external load balancer by default.
-  ClusterAddonsConfigCloudrunConfig({
+  const ClusterAddonsConfigCloudrunConfig({
     required this.disabled,
     this.loadBalancerType,
   });

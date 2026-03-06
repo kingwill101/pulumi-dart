@@ -19,7 +19,7 @@ class SsisFolderResponse {
   /// [id] Metadata id.
   /// [name] Metadata name.
   /// [type] The type of SSIS object metadata.
-  SsisFolderResponse({
+  const SsisFolderResponse({
     this.description,
     this.id,
     this.name,

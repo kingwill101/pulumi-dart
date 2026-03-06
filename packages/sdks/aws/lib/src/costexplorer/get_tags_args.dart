@@ -27,7 +27,7 @@ class GetTagsArgs {
   /// [sortBies] Configuration block for the value by which you want to sort the data. `sort_by` block below for details.
   /// [tagKey] Key of the tag that you want to return values for.
   /// [timePeriod] Configuration block for the start and end dates for retrieving the dimension values. See `time_period` block below for details.
-  GetTagsArgs({
+  const GetTagsArgs({
     this.filter,
     this.searchString,
     this.sortBies,

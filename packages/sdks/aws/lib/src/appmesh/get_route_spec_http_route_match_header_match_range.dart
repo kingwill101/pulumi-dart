@@ -9,7 +9,7 @@ class GetRouteSpecHttpRouteMatchHeaderMatchRange {
   /// Creates a new [GetRouteSpecHttpRouteMatchHeaderMatchRange].
   /// [end] Required.
   /// [start] Required.
-  GetRouteSpecHttpRouteMatchHeaderMatchRange({
+  const GetRouteSpecHttpRouteMatchHeaderMatchRange({
     required this.end,
     required this.start,
   });

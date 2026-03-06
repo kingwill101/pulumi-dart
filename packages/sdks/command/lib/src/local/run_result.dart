@@ -126,7 +126,7 @@ class RunResult {
   /// [stderr] The standard error of the command's process
   /// [stdin] Pass a string to the command's process as standard in
   /// [stdout] The standard output of the command's process
-  RunResult({
+  const RunResult({
     this.addPreviousOutputInEnv,
     this.archive,
     this.archivePaths,

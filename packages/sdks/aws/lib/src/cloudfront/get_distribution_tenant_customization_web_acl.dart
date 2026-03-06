@@ -10,7 +10,7 @@ class GetDistributionTenantCustomizationWebAcl {
   /// Creates a new [GetDistributionTenantCustomizationWebAcl].
   /// [action] Required.
   /// [arn] ARN (Amazon Resource Name) for the distribution tenant.
-  GetDistributionTenantCustomizationWebAcl({
+  const GetDistributionTenantCustomizationWebAcl({
     required this.action,
     required this.arn,
   });

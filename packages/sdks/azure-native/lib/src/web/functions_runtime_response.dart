@@ -12,7 +12,7 @@ class FunctionsRuntimeResponse {
   /// Creates a new [FunctionsRuntimeResponse].
   /// [name] Function app runtime name. Available options: dotnet-isolated, node, java, powershell, python, custom
   /// [version] Function app runtime version. Example: 8 (for dotnet-isolated)
-  FunctionsRuntimeResponse({
+  const FunctionsRuntimeResponse({
     this.name,
     this.version,
   });

@@ -12,7 +12,7 @@ class JobResourceRequests {
   /// Creates a new [JobResourceRequests].
   /// [cpu] CPU allocated to each job execution instance.
   /// [memory] Memory allocated to each job execution instance.
-  JobResourceRequests({
+  const JobResourceRequests({
     this.cpu,
     this.memory,
   });

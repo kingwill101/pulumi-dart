@@ -9,7 +9,7 @@ class LabelingJobHumanTaskConfigPublicWorkforceTaskPrice {
 
   /// Creates a new [LabelingJobHumanTaskConfigPublicWorkforceTaskPrice].
   /// [amountInUsd] Amount of money paid to an Amazon Mechanical Turk worker in United States dollars. Fields are documented below.
-  LabelingJobHumanTaskConfigPublicWorkforceTaskPrice({
+  const LabelingJobHumanTaskConfigPublicWorkforceTaskPrice({
     this.amountInUsd,
   });
 

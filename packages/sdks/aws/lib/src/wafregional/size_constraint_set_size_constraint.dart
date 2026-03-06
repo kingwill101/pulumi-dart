@@ -26,7 +26,7 @@ class SizeConstraintSetSizeConstraint {
   /// [fieldToMatch] Specifies where in a web request to look for the size constraint.
   /// [size] The size in bytes that you want to compare against the size of the specified `field_to_match`.
   /// [textTransformation] Text transformations used to eliminate unusual formatting that attackers use in web requests in an effort to bypass AWS WAF.
-  SizeConstraintSetSizeConstraint({
+  const SizeConstraintSetSizeConstraint({
     required this.comparisonOperator,
     required this.fieldToMatch,
     required this.size,

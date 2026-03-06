@@ -42,7 +42,7 @@ class AuthenticateOidcConfigResponse {
   /// [tokenEndpoint] The token endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the domain, and the path.
   /// [useExistingClientSecret] Indicates whether to use the existing client secret when modifying a rule. If you are creating a rule, you can omit this parameter or set it to false.
   /// [userInfoEndpoint] The user info endpoint of the IdP. This must be a full URL, including the HTTPS protocol, the domain, and the path.
-  AuthenticateOidcConfigResponse({
+  const AuthenticateOidcConfigResponse({
     this.authenticationRequestExtraParams,
     this.authorizationEndpoint,
     this.clientId,

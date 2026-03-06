@@ -33,7 +33,7 @@ class DatastoreArgs {
   /// [netAppVolume] An Azure NetApp Files volume
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DatastoreArgs({
+  const DatastoreArgs({
     required this.clusterName,
     this.datastoreName,
     this.diskPoolVolume,

@@ -8,7 +8,7 @@ class GetReplicationVaultRegionsRegion {
 
   /// Creates a new [GetReplicationVaultRegionsRegion].
   /// [replicationRegionId] The ID of the replication region.
-  GetReplicationVaultRegionsRegion({
+  const GetReplicationVaultRegionsRegion({
     required this.replicationRegionId,
   });
 

@@ -21,7 +21,7 @@ class GetProjectCapabilityHostResult {
   /// [name] The name of the resource
   /// [projectCapabilityHostProperties] [Required] Additional attributes of the entity.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetProjectCapabilityHostResult({
+  const GetProjectCapabilityHostResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

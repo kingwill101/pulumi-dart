@@ -8,7 +8,7 @@ class DomainFeaturesNestedHv {
 
   /// Creates a new [DomainFeaturesNestedHv].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesNestedHv({
+  const DomainFeaturesNestedHv({
     this.state,
   });
 

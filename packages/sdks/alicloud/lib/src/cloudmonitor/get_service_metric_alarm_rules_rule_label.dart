@@ -11,7 +11,7 @@ class GetServiceMetricAlarmRulesRuleLabel {
   /// Creates a new [GetServiceMetricAlarmRulesRuleLabel].
   /// [key] The subject of the alert notificaThe key of the annotation.
   /// [value] The value of the annotation.
-  GetServiceMetricAlarmRulesRuleLabel({
+  const GetServiceMetricAlarmRulesRuleLabel({
     required this.key,
     required this.value,
   });

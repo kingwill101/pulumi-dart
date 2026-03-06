@@ -22,7 +22,7 @@ class GatewayVpnAttachmentBgpConfig {
   /// [localBgpIp] The BGP address on the Alibaba Cloud side. This address is an IP address in the IPsec tunnel network segment.
   /// [status] The negotiation status of Tunnel.
   /// [tunnelCidr] IPsec tunnel network segment. This network segment must be a network segment with a mask length of 30 within 169.254.0.0/16
-  GatewayVpnAttachmentBgpConfig({
+  const GatewayVpnAttachmentBgpConfig({
     this.enable,
     this.localAsn,
     this.localBgpIp,

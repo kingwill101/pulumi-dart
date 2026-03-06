@@ -18,7 +18,7 @@ class GetInstanceGroupManagerInstanceLifecyclePolicy {
   /// [forceUpdateOnRepair] Specifies whether to apply the group's latest configuration when repairing a VM. Valid options are: YES, NO. If YES and you updated the group's instance template or per-instance configurations after the VM was created, then these changes are applied when VM is repaired. If NO (default), then updates are applied in accordance with the group's update policy type.
   /// [onFailedHealthCheck] Specifies the action that a MIG performs on an unhealthy VM. A VM is marked as unhealthy when the application running on that VM fails a health check. Valid values are: DEFAULT_ACTION, DO_NOTHING, REPAIR. If DEFAULT_ACTION (default), then MIG uses the same action configured for the  "default_action_on_failure" field. If DO_NOTHING, then MIG does not repair unhealthy VM. If REPAIR, then MIG automatically repairs an unhealthy VM by recreating it.
   /// [onRepairs] Configuration for VM repairs in the MIG.
-  GetInstanceGroupManagerInstanceLifecyclePolicy({
+  const GetInstanceGroupManagerInstanceLifecyclePolicy({
     required this.defaultActionOnFailure,
     required this.forceUpdateOnRepair,
     required this.onFailedHealthCheck,

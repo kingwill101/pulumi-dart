@@ -12,7 +12,7 @@ class IotHubSkuInfo {
   /// Creates a new [IotHubSkuInfo].
   /// [capacity] The number of provisioned IoT Hub units. See: https://docs.microsoft.com/azure/azure-subscription-service-limits#iot-hub-limits.
   /// [name] The name of the SKU.
-  IotHubSkuInfo({
+  const IotHubSkuInfo({
     this.capacity,
     required this.name,
   });

@@ -9,7 +9,7 @@ class RoundToScaleResponse {
 
   /// Creates a new [RoundToScaleResponse].
   /// [scale] Scale value to be used
-  RoundToScaleResponse({
+  const RoundToScaleResponse({
     required this.scale,
   });
 

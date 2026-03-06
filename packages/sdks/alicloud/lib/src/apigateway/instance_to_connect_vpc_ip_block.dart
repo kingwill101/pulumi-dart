@@ -17,7 +17,7 @@ class InstanceToConnectVpcIpBlock {
   /// [customized] Specifies whether the IP block is customized.
   /// [vswitchId] The VSwitch ID.
   /// [zoneId] The zone ID.
-  InstanceToConnectVpcIpBlock({
+  const InstanceToConnectVpcIpBlock({
     required this.cidrBlock,
     this.customized,
     this.vswitchId,

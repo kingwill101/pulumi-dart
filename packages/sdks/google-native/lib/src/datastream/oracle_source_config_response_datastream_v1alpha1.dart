@@ -16,7 +16,7 @@ class OracleSourceConfigResponseDatastreamV1alpha1 {
   /// [allowlist] Oracle objects to include in the stream.
   /// [dropLargeObjects] Drop large object values.
   /// [rejectlist] Oracle objects to exclude from the stream.
-  OracleSourceConfigResponseDatastreamV1alpha1({
+  const OracleSourceConfigResponseDatastreamV1alpha1({
     required this.allowlist,
     required this.dropLargeObjects,
     required this.rejectlist,

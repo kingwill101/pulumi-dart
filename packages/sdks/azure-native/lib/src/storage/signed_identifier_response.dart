@@ -12,7 +12,7 @@ class SignedIdentifierResponse {
   /// Creates a new [SignedIdentifierResponse].
   /// [accessPolicy] Access policy
   /// [id] An unique identifier of the stored access policy.
-  SignedIdentifierResponse({
+  const SignedIdentifierResponse({
     this.accessPolicy,
     this.id,
   });

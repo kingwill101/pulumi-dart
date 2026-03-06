@@ -16,7 +16,7 @@ class ProvisionOsReportedPropertiesResponse {
   /// [deploymentStatus] Deployment status of job.
   /// [percentComplete] The percentage of the job that is complete.
   /// [validationStatus] Validation status of job.
-  ProvisionOsReportedPropertiesResponse({
+  const ProvisionOsReportedPropertiesResponse({
     required this.deploymentStatus,
     required this.percentComplete,
     required this.validationStatus,

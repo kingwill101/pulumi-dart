@@ -8,7 +8,7 @@ class BucketResponseHeaderRuleHideHeaders {
 
   /// Creates a new [BucketResponseHeaderRuleHideHeaders].
   /// [headers] The response header needs to be hidden.
-  BucketResponseHeaderRuleHideHeaders({
+  const BucketResponseHeaderRuleHideHeaders({
     this.headers,
   });
 

@@ -11,7 +11,7 @@ class GetServiceDeploymentConfigurationCanaryConfiguration {
   /// Creates a new [GetServiceDeploymentConfigurationCanaryConfiguration].
   /// [canaryBakeTimeInMinutes] Time to wait before shifting remaining traffic
   /// [canaryPercent] Percentage of traffic to route to canary deployment
-  GetServiceDeploymentConfigurationCanaryConfiguration({
+  const GetServiceDeploymentConfigurationCanaryConfiguration({
     required this.canaryBakeTimeInMinutes,
     required this.canaryPercent,
   });

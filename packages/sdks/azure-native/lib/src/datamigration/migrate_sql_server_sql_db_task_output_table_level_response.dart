@@ -39,7 +39,7 @@ class MigrateSqlServerSqlDbTaskOutputTableLevelResponse {
   /// [startedOn] Migration start time
   /// [state] Current state of migration
   /// [statusMessage] Status message
-  MigrateSqlServerSqlDbTaskOutputTableLevelResponse({
+  const MigrateSqlServerSqlDbTaskOutputTableLevelResponse({
     required this.endedOn,
     required this.errorPrefix,
     required this.id,

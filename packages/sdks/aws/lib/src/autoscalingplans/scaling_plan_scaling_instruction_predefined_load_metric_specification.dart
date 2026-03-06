@@ -11,7 +11,7 @@ class ScalingPlanScalingInstructionPredefinedLoadMetricSpecification {
   /// Creates a new [ScalingPlanScalingInstructionPredefinedLoadMetricSpecification].
   /// [predefinedLoadMetricType] Metric type. Valid values: `ALBTargetGroupRequestCount`, `ASGTotalCPUUtilization`, `ASGTotalNetworkIn`, `ASGTotalNetworkOut`.
   /// [resourceLabel] Identifies the resource associated with the metric type.
-  ScalingPlanScalingInstructionPredefinedLoadMetricSpecification({
+  const ScalingPlanScalingInstructionPredefinedLoadMetricSpecification({
     required this.predefinedLoadMetricType,
     this.resourceLabel,
   });

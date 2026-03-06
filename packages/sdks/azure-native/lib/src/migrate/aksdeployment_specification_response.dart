@@ -15,7 +15,7 @@ class AKSDeploymentSpecificationResponse {
   /// [kubernetesObjectsYaml] Gets or sets the Merged Deployment and service Yaml.
   /// [loadBalancerType] Gets or sets the load balancer type.
   /// [replicaCount] Gets or sets the replica count to be created in AKS.
-  AKSDeploymentSpecificationResponse({
+  const AKSDeploymentSpecificationResponse({
     this.kubernetesObjectsYaml,
     this.loadBalancerType,
     this.replicaCount,

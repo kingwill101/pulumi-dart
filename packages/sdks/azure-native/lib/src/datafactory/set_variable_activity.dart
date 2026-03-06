@@ -43,7 +43,7 @@ class SetVariableActivity {
   /// [userProperties] Activity user properties.
   /// [value] Value to be set. Could be a static value or Expression.
   /// [variableName] Name of the variable whose value needs to be set.
-  SetVariableActivity({
+  const SetVariableActivity({
     this.dependsOn,
     this.description,
     required this.name,

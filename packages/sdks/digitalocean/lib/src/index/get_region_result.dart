@@ -23,7 +23,7 @@ class GetRegionResult {
   /// [name] The display name of the region.
   /// [sizes] A set of identifying slugs for the Droplet sizes available in this region.
   /// [slug] A human-readable string that is used as a unique identifier for each region.
-  GetRegionResult({
+  const GetRegionResult({
     required this.available,
     required this.features,
     required this.id,

@@ -9,7 +9,7 @@ class ImdsSupportValuesEnumValue {
 
   /// Creates a new [ImdsSupportValuesEnumValue].
   /// [value] Property value
-  ImdsSupportValuesEnumValue({
+  const ImdsSupportValuesEnumValue({
     this.value,
   });
 

@@ -24,7 +24,7 @@ class GooglePrivacyDlpV2StoredInfoTypeConfig {
   /// [displayName] Display name of the StoredInfoType (max 256 characters).
   /// [largeCustomDictionary] StoredInfoType where findings are defined by a dictionary of phrases.
   /// [regex] Store regular expression-based StoredInfoType.
-  GooglePrivacyDlpV2StoredInfoTypeConfig({
+  const GooglePrivacyDlpV2StoredInfoTypeConfig({
     this.description,
     this.dictionary,
     this.displayName,

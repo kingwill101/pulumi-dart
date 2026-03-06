@@ -71,7 +71,7 @@ class DbSystemState {
   /// [project] The ID of the project in which the resource belongs.
   /// [properties] The properties of a DbSystem.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  DbSystemState({
+  const DbSystemState({
     this.createTime,
     this.dbSystemId,
     this.deletionProtection,

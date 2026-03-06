@@ -26,7 +26,7 @@ class VmwareAdminClusterPlatformConfigBundleStatusCondition {
   /// [reason] (Output)
   /// [state] (Output)
   /// [type] (Output)
-  VmwareAdminClusterPlatformConfigBundleStatusCondition({
+  const VmwareAdminClusterPlatformConfigBundleStatusCondition({
     this.lastTransitionTime,
     this.message,
     this.reason,

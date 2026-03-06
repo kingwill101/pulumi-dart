@@ -23,7 +23,7 @@ class WebAppArgs {
   /// [deletionPolicy] Optional.
   /// [displayName] The user-assigned display name of the App.
   /// [project] The ID of the project in which the resource belongs.
-  WebAppArgs({
+  const WebAppArgs({
     this.apiKeyId,
     this.deletionPolicy,
     required this.displayName,

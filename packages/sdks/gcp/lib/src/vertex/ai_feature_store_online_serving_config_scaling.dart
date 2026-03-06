@@ -11,7 +11,7 @@ class AiFeatureStoreOnlineServingConfigScaling {
   /// Creates a new [AiFeatureStoreOnlineServingConfigScaling].
   /// [maxNodeCount] The maximum number of nodes to scale up to. Must be greater than minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
   /// [minNodeCount] The minimum number of nodes to scale down to. Must be greater than or equal to 1.
-  AiFeatureStoreOnlineServingConfigScaling({
+  const AiFeatureStoreOnlineServingConfigScaling({
     required this.maxNodeCount,
     required this.minNodeCount,
   });

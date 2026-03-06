@@ -9,7 +9,7 @@ class GetRouteSpecTcpRouteTimeoutIdle {
   /// Creates a new [GetRouteSpecTcpRouteTimeoutIdle].
   /// [unit] Required.
   /// [value] Required.
-  GetRouteSpecTcpRouteTimeoutIdle({
+  const GetRouteSpecTcpRouteTimeoutIdle({
     required this.unit,
     required this.value,
   });

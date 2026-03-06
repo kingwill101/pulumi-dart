@@ -15,7 +15,7 @@ class GetManagementLockByScopeArgs {
   /// Creates a new [GetManagementLockByScopeArgs].
   /// [lockName] The name of lock.
   /// [scope] The scope for the lock.
-  GetManagementLockByScopeArgs({
+  const GetManagementLockByScopeArgs({
     required this.lockName,
     required this.scope,
   });

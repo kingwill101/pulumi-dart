@@ -12,7 +12,7 @@ class GetWebAclResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetWebAclResult({
+  const GetWebAclResult({
     required this.id,
     required this.name,
     required this.region,

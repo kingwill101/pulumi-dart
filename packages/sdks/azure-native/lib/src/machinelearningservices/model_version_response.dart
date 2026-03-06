@@ -40,7 +40,7 @@ class ModelVersionResponse {
   /// [provisioningState] Provisioning state for the model version.
   /// [stage] Stage in the model lifecycle assigned to this model
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  ModelVersionResponse({
+  const ModelVersionResponse({
     this.description,
     this.flavors,
     this.isAnonymous,

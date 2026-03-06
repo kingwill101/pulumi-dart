@@ -47,7 +47,7 @@ class LogViewIamMemberState {
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [parent] The parent of the resource. Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
-  LogViewIamMemberState({
+  const LogViewIamMemberState({
     this.bucket,
     this.condition,
     this.etag,

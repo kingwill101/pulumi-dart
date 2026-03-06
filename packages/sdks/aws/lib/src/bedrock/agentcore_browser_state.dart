@@ -43,7 +43,7 @@ class AgentcoreBrowserState {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
-  AgentcoreBrowserState({
+  const AgentcoreBrowserState({
     this.browserArn,
     this.browserId,
     this.description,

@@ -18,7 +18,7 @@ class GetScopeConnectionArgs {
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
   /// [scopeConnectionName] Name for the cross-tenant connection.
-  GetScopeConnectionArgs({
+  const GetScopeConnectionArgs({
     required this.networkManagerName,
     required this.resourceGroupName,
     required this.scopeConnectionName,

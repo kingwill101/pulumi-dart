@@ -11,7 +11,7 @@ class FilterFilterCriteriaFindingArn {
   /// Creates a new [FilterFilterCriteriaFindingArn].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaFindingArn({
+  const FilterFilterCriteriaFindingArn({
     required this.comparison,
     required this.value,
   });

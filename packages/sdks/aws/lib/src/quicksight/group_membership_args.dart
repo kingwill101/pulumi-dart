@@ -24,7 +24,7 @@ class GroupMembershipArgs {
   /// [memberName] The name of the member to add to the group.
   /// [namespace] The namespace that you want the user to be a part of. Defaults to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GroupMembershipArgs({
+  const GroupMembershipArgs({
     this.awsAccountId,
     required this.groupName,
     required this.memberName,

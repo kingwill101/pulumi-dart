@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageImage {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageImage].
   /// [accessibilityText] A text description of the image to be used for accessibility, e.g., screen readers. Required if image_uri is set for CarouselSelect.
   /// [imageUri] Optional. The public URI to an image file.
-  GoogleCloudDialogflowV2beta1IntentMessageImage({
+  const GoogleCloudDialogflowV2beta1IntentMessageImage({
     this.accessibilityText,
     this.imageUri,
   });

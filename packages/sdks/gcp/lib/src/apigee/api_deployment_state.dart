@@ -18,7 +18,7 @@ class ApiDeploymentState {
   /// [orgId] The Apigee Organization associated with the Apigee API deployment.
   /// [proxyId] The Apigee API associated with the Apigee API deployment.
   /// [revision] The revision of the API proxy to be deployed.
-  ApiDeploymentState({
+  const ApiDeploymentState({
     this.environment,
     this.orgId,
     this.proxyId,

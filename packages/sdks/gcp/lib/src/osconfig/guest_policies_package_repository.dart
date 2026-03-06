@@ -25,7 +25,7 @@ class GuestPoliciesPackageRepository {
   /// [goo] A Goo Repository.
   /// [yum] A Yum Repository.
   /// [zypper] A Zypper Repository.
-  GuestPoliciesPackageRepository({
+  const GuestPoliciesPackageRepository({
     this.apt,
     this.goo,
     this.yum,

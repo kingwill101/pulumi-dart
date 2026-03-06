@@ -11,7 +11,7 @@ class GetEndpointConnectionLogOption {
   /// [cloudwatchLogGroup] Required.
   /// [cloudwatchLogStream] Required.
   /// [enabled] Required.
-  GetEndpointConnectionLogOption({
+  const GetEndpointConnectionLogOption({
     required this.cloudwatchLogGroup,
     required this.cloudwatchLogStream,
     required this.enabled,

@@ -17,7 +17,7 @@ class ClusterNodeGroupAckConfigToleration {
   /// [key] The tag key for this scaling rule specific metrics trigger.
   /// [operator] The operator of ack cluster tolerations.
   /// [value] The tag value for this scaling rule specific metrics trigger.
-  ClusterNodeGroupAckConfigToleration({
+  const ClusterNodeGroupAckConfigToleration({
     this.effect,
     this.key,
     this.operator,

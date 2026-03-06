@@ -15,7 +15,7 @@ class WebProxyConfigurationResponse {
   /// [bypassList] Bypass list for the web proxy.
   /// [connectionUri] Connection URI of the web proxy.
   /// [port] Port of the web proxy.
-  WebProxyConfigurationResponse({
+  const WebProxyConfigurationResponse({
     this.bypassList,
     this.connectionUri,
     this.port,

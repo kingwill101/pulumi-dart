@@ -24,7 +24,7 @@ class GetServiceFabricArgs {
   /// [name] The name of the ServiceFabric
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [userName] The name of the user profile.
-  GetServiceFabricArgs({
+  const GetServiceFabricArgs({
     this.expand,
     required this.labName,
     required this.name,

@@ -15,7 +15,7 @@ class AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration {
   /// [collectionArn] ARN of the OpenSearch Service vector store.
   /// [fieldMapping] The names of the fields to which to map information about the vector store. This block supports the following arguments:
   /// [vectorIndexName] Name of the vector store.
-  AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration({
+  const AgentKnowledgeBaseStorageConfigurationOpensearchServerlessConfiguration({
     required this.collectionArn,
     required this.fieldMapping,
     required this.vectorIndexName,

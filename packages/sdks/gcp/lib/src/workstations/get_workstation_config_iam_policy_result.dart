@@ -23,7 +23,7 @@ class GetWorkstationConfigIamPolicyResult {
   /// [project] Required.
   /// [workstationClusterId] Required.
   /// [workstationConfigId] Required.
-  GetWorkstationConfigIamPolicyResult({
+  const GetWorkstationConfigIamPolicyResult({
     required this.etag,
     required this.id,
     required this.location,

@@ -15,7 +15,7 @@ class BackendServiceConsistentHashHttpCookieTtl {
   /// Creates a new [BackendServiceConsistentHashHttpCookieTtl].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  BackendServiceConsistentHashHttpCookieTtl({
+  const BackendServiceConsistentHashHttpCookieTtl({
     this.nanos,
     required this.seconds,
   });

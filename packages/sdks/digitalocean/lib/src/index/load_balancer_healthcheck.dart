@@ -26,7 +26,7 @@ class LoadBalancerHealthcheck {
   /// [protocol] The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
   /// [responseTimeoutSeconds] The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
   /// [unhealthyThreshold] The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
-  LoadBalancerHealthcheck({
+  const LoadBalancerHealthcheck({
     this.checkIntervalSeconds,
     this.healthyThreshold,
     this.path,

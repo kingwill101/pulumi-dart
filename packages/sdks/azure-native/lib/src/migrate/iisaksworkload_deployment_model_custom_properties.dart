@@ -14,7 +14,7 @@ class IISAKSWorkloadDeploymentModelCustomProperties {
   /// Creates a new [IISAKSWorkloadDeploymentModelCustomProperties].
   /// [iisAksWorkloadDeploymentProperties] IIS AKS workload deployment.
   /// [instanceType] Gets or sets the instance type.
-  IISAKSWorkloadDeploymentModelCustomProperties({
+  const IISAKSWorkloadDeploymentModelCustomProperties({
     this.iisAksWorkloadDeploymentProperties,
     required this.instanceType,
   });

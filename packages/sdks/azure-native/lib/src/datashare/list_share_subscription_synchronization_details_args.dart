@@ -30,7 +30,7 @@ class ListShareSubscriptionSynchronizationDetailsArgs {
   /// [shareSubscriptionName] The name of the share subscription.
   /// [skipToken] Continuation token
   /// [synchronizationId] Synchronization id
-  ListShareSubscriptionSynchronizationDetailsArgs({
+  const ListShareSubscriptionSynchronizationDetailsArgs({
     required this.accountName,
     this.filter,
     this.orderby,

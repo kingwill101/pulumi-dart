@@ -17,7 +17,7 @@ class ReceiptRuleLambdaAction {
   /// [invocationType] `Event` or `RequestResponse`
   /// [position] The position of the action in the receipt rule
   /// [topicArn] The ARN of an SNS topic to notify
-  ReceiptRuleLambdaAction({
+  const ReceiptRuleLambdaAction({
     required this.functionArn,
     this.invocationType,
     required this.position,

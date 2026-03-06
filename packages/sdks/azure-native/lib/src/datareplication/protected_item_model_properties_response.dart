@@ -95,7 +95,7 @@ class ProtectedItemModelPropertiesResponse {
   /// [targetFabricProviderId] Gets or sets the target fabric provider Id.
   /// [testFailoverState] Gets or sets the test failover state.
   /// [testFailoverStateDescription] Gets or sets the Test failover state description.
-  ProtectedItemModelPropertiesResponse({
+  const ProtectedItemModelPropertiesResponse({
     required this.allowedJobs,
     required this.correlationId,
     required this.currentJob,

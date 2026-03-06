@@ -22,7 +22,7 @@ class GetEipsResult {
   /// [publicIps] List of all the Elastic IP addresses.
   /// [region] Required.
   /// [tags] Optional.
-  GetEipsResult({
+  const GetEipsResult({
     required this.allocationIds,
     this.filters,
     required this.id,

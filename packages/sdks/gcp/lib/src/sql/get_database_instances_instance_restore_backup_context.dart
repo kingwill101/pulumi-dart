@@ -14,7 +14,7 @@ class GetDatabaseInstancesInstanceRestoreBackupContext {
   /// [backupRunId] The ID of the backup run to restore from.
   /// [instanceId] The ID of the instance that the backup was taken from.
   /// [project] The ID of the project in which the resources belong. If it is not provided, the provider project is used.
-  GetDatabaseInstancesInstanceRestoreBackupContext({
+  const GetDatabaseInstancesInstanceRestoreBackupContext({
     required this.backupRunId,
     required this.instanceId,
     required this.project,

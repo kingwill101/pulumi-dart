@@ -21,7 +21,7 @@ class BucketLoggingArgs {
   /// [loggingRole] Authorization role used for bucket logging
   /// [targetBucket] The bucket that stores access logs.
   /// [targetPrefix] The prefix of the saved log objects. This element can be left empty.
-  BucketLoggingArgs({
+  const BucketLoggingArgs({
     required this.bucket,
     this.loggingRole,
     required this.targetBucket,

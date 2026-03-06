@@ -36,7 +36,7 @@ class GetVirtualNodeResult {
   /// [resourceOwner] Resource owner's AWS account ID.
   /// [specs] Virtual node specification. See the `aws.appmesh.VirtualNode` resource for details.
   /// [tags] Map of tags.
-  GetVirtualNodeResult({
+  const GetVirtualNodeResult({
     required this.arn,
     required this.createdDate,
     required this.id,

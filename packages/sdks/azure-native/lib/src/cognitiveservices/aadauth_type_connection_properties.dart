@@ -32,7 +32,7 @@ class AADAuthTypeConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  AADAuthTypeConnectionProperties({
+  const AADAuthTypeConnectionProperties({
     required this.authType,
     this.category,
     this.error,

@@ -9,7 +9,7 @@ class GetGradientaiAgentVersionsSort {
   /// Creates a new [GetGradientaiAgentVersionsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGradientaiAgentVersionsSort({
+  const GetGradientaiAgentVersionsSort({
     this.direction,
     required this.key,
   });

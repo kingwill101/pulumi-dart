@@ -10,7 +10,7 @@ class ExtendedLocationOptions {
   /// Creates a new [ExtendedLocationOptions].
   /// [supportedPolicy] Optional.
   /// [type] The type.
-  ExtendedLocationOptions({
+  const ExtendedLocationOptions({
     this.supportedPolicy,
     this.type,
   });

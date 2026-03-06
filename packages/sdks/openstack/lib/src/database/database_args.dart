@@ -19,7 +19,7 @@ class DatabaseArgs {
   /// [instanceId] The ID for the database instance.
   /// [name] A unique name for the resource.
   /// [region] The region in which to create the database. Changing
-  DatabaseArgs({
+  const DatabaseArgs({
     required this.instanceId,
     this.name,
     this.region,

@@ -7,7 +7,7 @@ class ServerBindingResponseComputeBeta {
 
   /// Creates a new [ServerBindingResponseComputeBeta].
   /// [type] Required.
-  ServerBindingResponseComputeBeta({
+  const ServerBindingResponseComputeBeta({
     required this.type,
   });
 

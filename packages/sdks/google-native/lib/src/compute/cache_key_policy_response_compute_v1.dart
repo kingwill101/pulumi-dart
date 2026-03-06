@@ -27,7 +27,7 @@ class CacheKeyPolicyResponseComputeV1 {
   /// [includeQueryString] If true, include query string parameters in the cache key according to query_string_whitelist and query_string_blacklist. If neither is set, the entire query string will be included. If false, the query string will be excluded from the cache key entirely.
   /// [queryStringBlacklist] Names of query string parameters to exclude in cache keys. All other parameters will be included. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters.
   /// [queryStringWhitelist] Names of query string parameters to include in cache keys. All other parameters will be excluded. Either specify query_string_whitelist or query_string_blacklist, not both. '&' and '=' will be percent encoded and not treated as delimiters.
-  CacheKeyPolicyResponseComputeV1({
+  const CacheKeyPolicyResponseComputeV1({
     required this.includeHost,
     required this.includeHttpHeaders,
     required this.includeNamedCookies,

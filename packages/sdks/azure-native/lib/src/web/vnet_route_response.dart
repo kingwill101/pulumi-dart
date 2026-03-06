@@ -32,7 +32,7 @@ class VnetRouteResponse {
   /// [routeType] The type of route this is:
   /// [startAddress] The starting address for this route. This may also include a CIDR notation, in which case the end address must not be specified.
   /// [type] Resource type.
-  VnetRouteResponse({
+  const VnetRouteResponse({
     this.endAddress,
     required this.id,
     this.kind,

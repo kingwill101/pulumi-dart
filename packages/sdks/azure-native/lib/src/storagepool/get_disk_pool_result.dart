@@ -56,7 +56,7 @@ class GetDiskPoolResult {
   /// [tags] Resource tags.
   /// [tier] Sku tier
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetDiskPoolResult({
+  const GetDiskPoolResult({
     this.additionalCapabilities,
     required this.availabilityZones,
     required this.azureApiVersion,

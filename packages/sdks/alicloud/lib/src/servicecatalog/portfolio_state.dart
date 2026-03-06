@@ -21,7 +21,7 @@ class PortfolioState {
   /// [portfolioArn] The ARN of the portfolio
   /// [portfolioName] The name of the portfolio
   /// [providerName] The provider name of the portfolio
-  PortfolioState({
+  const PortfolioState({
     this.createTime,
     this.description,
     this.portfolioArn,

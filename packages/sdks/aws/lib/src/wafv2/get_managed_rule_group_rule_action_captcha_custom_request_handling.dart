@@ -8,7 +8,7 @@ class GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling {
 
   /// Creates a new [GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling].
   /// [insertHeaders] Required.
-  GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling({
+  const GetManagedRuleGroupRuleActionCaptchaCustomRequestHandling({
     required this.insertHeaders,
   });
 

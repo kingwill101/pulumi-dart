@@ -15,7 +15,7 @@ class GetPartnerNamespaceArgs {
   /// Creates a new [GetPartnerNamespaceArgs].
   /// [name] The name of the Event Grid Partner Namespace resource.
   /// [resourceGroupName] The name of the resource group in which the Event Grid Partner Namespace exists.
-  GetPartnerNamespaceArgs({
+  const GetPartnerNamespaceArgs({
     required this.name,
     required this.resourceGroupName,
   });

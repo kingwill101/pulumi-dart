@@ -60,7 +60,7 @@ class AggregateConfigRuleState {
   /// [status] The rule status. The valid values: `ACTIVE`, `INACTIVE`.
   /// [tagKeyScope] The rule monitors the tag key, only applies to rules created based on managed rules.
   /// [tagValueScope] The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
-  AggregateConfigRuleState({
+  const AggregateConfigRuleState({
     this.aggregateConfigRuleName,
     this.aggregatorId,
     this.configRuleId,

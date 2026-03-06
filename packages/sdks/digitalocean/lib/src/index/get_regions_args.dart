@@ -19,7 +19,7 @@ class GetRegionsArgs {
   /// Creates a new [GetRegionsArgs].
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetRegionsArgs({
+  const GetRegionsArgs({
     this.filters,
     this.sorts,
   });

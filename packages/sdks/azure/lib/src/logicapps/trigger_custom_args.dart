@@ -20,7 +20,7 @@ class TriggerCustomArgs {
   /// [body] Specifies the JSON Blob defining the Body of this Custom Trigger.
   /// [logicAppId] Specifies the ID of the Logic App Workflow. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the HTTP Trigger to be created within the Logic App Workflow. Changing this forces a new resource to be created.
-  TriggerCustomArgs({
+  const TriggerCustomArgs({
     required this.body,
     required this.logicAppId,
     this.name,

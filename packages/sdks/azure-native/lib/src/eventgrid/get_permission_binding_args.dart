@@ -18,7 +18,7 @@ class GetPermissionBindingArgs {
   /// [namespaceName] Name of the namespace.
   /// [permissionBindingName] Name of the permission binding.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetPermissionBindingArgs({
+  const GetPermissionBindingArgs({
     required this.namespaceName,
     required this.permissionBindingName,
     required this.resourceGroupName,

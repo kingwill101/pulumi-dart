@@ -19,7 +19,7 @@ class RemotePrivateEndpointConnectionWrapper {
   /// [name] Private Endpoint Connection Name
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [type] Private Endpoint Connection Resource Type
-  RemotePrivateEndpointConnectionWrapper({
+  const RemotePrivateEndpointConnectionWrapper({
     this.id,
     this.name,
     required this.privateLinkServiceConnectionState,

@@ -25,7 +25,7 @@ class RaiTopicArgs {
   /// [raiTopicName] The name of the Rai Topic associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  RaiTopicArgs({
+  const RaiTopicArgs({
     required this.accountName,
     this.properties,
     this.raiTopicName,

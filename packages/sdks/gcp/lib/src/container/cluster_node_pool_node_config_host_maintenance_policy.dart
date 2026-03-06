@@ -8,7 +8,7 @@ class ClusterNodePoolNodeConfigHostMaintenancePolicy {
 
   /// Creates a new [ClusterNodePoolNodeConfigHostMaintenancePolicy].
   /// [maintenanceInterval] .
-  ClusterNodePoolNodeConfigHostMaintenancePolicy({
+  const ClusterNodePoolNodeConfigHostMaintenancePolicy({
     required this.maintenanceInterval,
   });
 

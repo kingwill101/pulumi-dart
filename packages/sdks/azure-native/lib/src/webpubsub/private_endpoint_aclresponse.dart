@@ -15,7 +15,7 @@ class PrivateEndpointACLResponse {
   /// [allow] Allowed request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
   /// [deny] Denied request types. The value can be one or more of: ClientConnection, ServerConnection, RESTAPI.
   /// [name] Name of the private endpoint connection
-  PrivateEndpointACLResponse({
+  const PrivateEndpointACLResponse({
     this.allow,
     this.deny,
     required this.name,

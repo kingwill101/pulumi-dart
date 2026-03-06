@@ -15,7 +15,7 @@ class GetSubscriptionsArgs {
   /// Creates a new [GetSubscriptionsArgs].
   /// [displayNameContains] A case-insensitive value which must be contained within the `display_name` field, used to filter the results
   /// [displayNamePrefix] A case-insensitive prefix which can be used to filter on the `display_name` field
-  GetSubscriptionsArgs({
+  const GetSubscriptionsArgs({
     this.displayNameContains,
     this.displayNamePrefix,
   });

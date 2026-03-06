@@ -12,7 +12,7 @@ class RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption {
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption].
   /// [keyword] Keyword defined by open source detection systems like Snort or Suricata for stateful rule inspection.
   /// [settings] Set of strings for additional settings to use in stateful rule inspection.
-  RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption({
+  const RuleGroupRuleGroupRulesSourceStatefulRuleRuleOption({
     required this.keyword,
     this.settings,
   });

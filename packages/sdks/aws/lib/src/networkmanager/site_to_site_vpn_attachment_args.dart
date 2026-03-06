@@ -23,7 +23,7 @@ class SiteToSiteVpnAttachmentArgs {
   /// [routingPolicyLabel] The routing policy label to apply to the Site-to-Site VPN attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpnConnectionArn] ARN of the site-to-site VPN connection.
-  SiteToSiteVpnAttachmentArgs({
+  const SiteToSiteVpnAttachmentArgs({
     required this.coreNetworkId,
     this.routingPolicyLabel,
     this.tags,

@@ -14,7 +14,7 @@ class AzureOperatorNexusImageArtifactProfileResponse {
   /// Creates a new [AzureOperatorNexusImageArtifactProfileResponse].
   /// [artifactStore] The reference to artifact store.
   /// [imageArtifactProfile] Image artifact profile.
-  AzureOperatorNexusImageArtifactProfileResponse({
+  const AzureOperatorNexusImageArtifactProfileResponse({
     this.artifactStore,
     this.imageArtifactProfile,
   });

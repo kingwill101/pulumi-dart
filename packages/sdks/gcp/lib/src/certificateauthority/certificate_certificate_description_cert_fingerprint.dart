@@ -9,7 +9,7 @@ class CertificateCertificateDescriptionCertFingerprint {
 
   /// Creates a new [CertificateCertificateDescriptionCertFingerprint].
   /// [sha256Hash] (Output)
-  CertificateCertificateDescriptionCertFingerprint({
+  const CertificateCertificateDescriptionCertFingerprint({
     this.sha256Hash,
   });
 

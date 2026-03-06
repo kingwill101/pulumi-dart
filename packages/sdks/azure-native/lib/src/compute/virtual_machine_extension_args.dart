@@ -62,7 +62,7 @@ class VirtualMachineExtensionArgs {
   /// [typeHandlerVersion] Specifies the version of the script handler.
   /// [vmExtensionName] The name of the virtual machine extension.
   /// [vmName] The name of the virtual machine.
-  VirtualMachineExtensionArgs({
+  const VirtualMachineExtensionArgs({
     this.autoUpgradeMinorVersion,
     this.enableAutomaticUpgrade,
     this.forceUpdateTag,

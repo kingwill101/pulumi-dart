@@ -24,7 +24,7 @@ class BackendEnvironmentArgs {
   /// [environmentName] Name for the backend environment.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [stackName] AWS CloudFormation stack name of a backend environment.
-  BackendEnvironmentArgs({
+  const BackendEnvironmentArgs({
     required this.appId,
     this.deploymentArtifacts,
     required this.environmentName,

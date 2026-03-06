@@ -40,7 +40,7 @@ class EnvironmentDaprComponentArgs {
   /// [scopes] A list of scopes to which this component applies.
   /// [secrets] A `secret` block as detailed below.
   /// [version] The version of the component.
-  EnvironmentDaprComponentArgs({
+  const EnvironmentDaprComponentArgs({
     required this.componentType,
     required this.containerAppEnvironmentId,
     this.ignoreErrors,

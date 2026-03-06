@@ -10,7 +10,7 @@ class AttachedClusterLoggingConfig {
 
   /// Creates a new [AttachedClusterLoggingConfig].
   /// [componentConfig] The configuration of the logging components
-  AttachedClusterLoggingConfig({
+  const AttachedClusterLoggingConfig({
     this.componentConfig,
   });
 

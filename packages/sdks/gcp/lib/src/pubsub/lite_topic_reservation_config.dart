@@ -8,7 +8,7 @@ class LiteTopicReservationConfig {
 
   /// Creates a new [LiteTopicReservationConfig].
   /// [throughputReservation] The Reservation to use for this topic's throughput capacity.
-  LiteTopicReservationConfig({
+  const LiteTopicReservationConfig({
     this.throughputReservation,
   });
 

@@ -18,7 +18,7 @@ class GetStorageInsightConfigArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageInsightName] Name of the storageInsightsConfigs resource
   /// [workspaceName] The name of the workspace.
-  GetStorageInsightConfigArgs({
+  const GetStorageInsightConfigArgs({
     required this.resourceGroupName,
     required this.storageInsightName,
     required this.workspaceName,

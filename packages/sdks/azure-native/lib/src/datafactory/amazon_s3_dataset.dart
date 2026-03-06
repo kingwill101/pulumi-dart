@@ -60,7 +60,7 @@ class AmazonS3Dataset {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [type] Type of dataset.
   /// [version] The version for the S3 object. Type: string (or Expression with resultType string).
-  AmazonS3Dataset({
+  const AmazonS3Dataset({
     this.annotations,
     required this.bucketName,
     this.compression,

@@ -9,7 +9,7 @@ class PingConfigResponse {
 
   /// Creates a new [PingConfigResponse].
   /// [pingsCount] Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
-  PingConfigResponse({
+  const PingConfigResponse({
     required this.pingsCount,
   });
 

@@ -11,7 +11,7 @@ class CertificateValidity {
   /// Creates a new [CertificateValidity].
   /// [type] Determines how `value` is interpreted. Valid values: `DAYS`, `MONTHS`, `YEARS`, `ABSOLUTE`, `END_DATE`.
   /// [value] If `type` is `DAYS`, `MONTHS`, or `YEARS`, the relative time until the certificate expires. If `type` is `ABSOLUTE`, the date in seconds since the Unix epoch. If `type` is `END_DATE`, the  date in RFC 3339 format.
-  CertificateValidity({
+  const CertificateValidity({
     required this.type,
     required this.value,
   });

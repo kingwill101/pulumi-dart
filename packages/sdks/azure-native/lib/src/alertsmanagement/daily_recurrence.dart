@@ -16,7 +16,7 @@ class DailyRecurrence {
   /// [endTime] End time for recurrence.
   /// [recurrenceType] Specifies when the recurrence should be applied.
   /// [startTime] Start time for recurrence.
-  DailyRecurrence({
+  const DailyRecurrence({
     required this.endTime,
     required this.recurrenceType,
     required this.startTime,

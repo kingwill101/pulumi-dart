@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlNetWriteTimeout {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlNetWriteTimeout({
+  const GetDatabaseMysqlConfigMysqlNetWriteTimeout({
     required this.description,
     required this.example,
     required this.maximum,

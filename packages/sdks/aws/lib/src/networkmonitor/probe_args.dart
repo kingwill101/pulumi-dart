@@ -33,7 +33,7 @@ class ProbeArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sourceArn] The ARN of the subnet.
   /// [tags] Key-value tags for the monitor. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ProbeArgs({
+  const ProbeArgs({
     required this.destination,
     this.destinationPort,
     required this.monitorName,

@@ -23,7 +23,7 @@ class VpnConnectionVgwTelemetry {
   /// [outsideIpAddress] The Internet-routable IP address of the virtual private gateway's outside interface.
   /// [status] The status of the VPN tunnel.
   /// [statusMessage] If an error occurs, a description of the error.
-  VpnConnectionVgwTelemetry({
+  const VpnConnectionVgwTelemetry({
     this.acceptedRouteCount,
     this.certificateArn,
     this.lastStatusChange,

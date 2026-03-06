@@ -53,7 +53,7 @@ class PlanArgs {
   /// [timeouts] Optional.
   /// [triggers] Set of triggers that can initiate the plan execution. See Triggers below.
   /// [workflows] List of workflows that define the steps to execute. See Workflow below.
-  PlanArgs({
+  const PlanArgs({
     this.associatedAlarms,
     this.description,
     required this.executionRole,

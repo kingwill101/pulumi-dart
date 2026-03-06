@@ -15,7 +15,7 @@ class DataflowEndpointAuthenticationUserAssignedManagedIdentity {
   /// [clientId] Client ID for the user-assigned managed identity.
   /// [scope] Resource identifier (application ID URI) of the resource, affixed with the .default suffix.
   /// [tenantId] Tenant ID.
-  DataflowEndpointAuthenticationUserAssignedManagedIdentity({
+  const DataflowEndpointAuthenticationUserAssignedManagedIdentity({
     required this.clientId,
     this.scope,
     required this.tenantId,

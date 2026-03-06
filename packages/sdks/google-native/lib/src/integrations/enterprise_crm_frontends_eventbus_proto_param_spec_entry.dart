@@ -46,7 +46,7 @@ class EnterpriseCrmFrontendsEventbusProtoParamSpecEntry {
   /// [protoDef] Populated if this represents a proto or proto array.
   /// [required] If set, the user must provide an input value for this parameter.
   /// [validationRule] Rule used to validate inputs (individual values and collection elements) for this parameter.
-  EnterpriseCrmFrontendsEventbusProtoParamSpecEntry({
+  const EnterpriseCrmFrontendsEventbusProtoParamSpecEntry({
     this.className,
     this.collectionElementClassName,
     this.config,

@@ -17,7 +17,7 @@ class GetInstanceIamPolicyArgs {
   /// [project] Optional.
   /// [resource] Required.
   /// [zone] Required.
-  GetInstanceIamPolicyArgs({
+  const GetInstanceIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

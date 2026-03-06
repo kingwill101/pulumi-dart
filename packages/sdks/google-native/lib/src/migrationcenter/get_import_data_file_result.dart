@@ -24,7 +24,7 @@ class GetImportDataFileResult {
   /// [name] The name of the file.
   /// [state] The state of the import data file.
   /// [uploadFileInfo] Information about a file that is uploaded to a storage service.
-  GetImportDataFileResult({
+  const GetImportDataFileResult({
     required this.createTime,
     required this.displayName,
     required this.format,

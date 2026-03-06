@@ -16,7 +16,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
   /// [recordColumns] Describes the mapping of each data element in the streaming source to the corresponding column in the in-application stream.
   /// [recordEncoding] Specifies the encoding of the records in the streaming source. For example, `UTF-8`.
   /// [recordFormat] Specifies the format of the records on the streaming source.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchema({
     required this.recordColumns,
     this.recordEncoding,
     required this.recordFormat,

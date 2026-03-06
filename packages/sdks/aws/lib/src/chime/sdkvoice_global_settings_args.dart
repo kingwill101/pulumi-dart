@@ -13,7 +13,7 @@ class SdkvoiceGlobalSettingsArgs {
 
   /// Creates a new [SdkvoiceGlobalSettingsArgs].
   /// [voiceConnector] The Voice Connector settings. See voice_connector.
-  SdkvoiceGlobalSettingsArgs({
+  const SdkvoiceGlobalSettingsArgs({
     required this.voiceConnector,
   });
 

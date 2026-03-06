@@ -27,7 +27,7 @@ class GetReservationSubBlockArgs {
   /// [reservation] The name of the parent reservation.
   /// [reservationBlock] The name of the parent reservation block.
   /// [zone] The zone where the reservation sub-block resides.
-  GetReservationSubBlockArgs({
+  const GetReservationSubBlockArgs({
     required this.name,
     this.project,
     required this.reservation,

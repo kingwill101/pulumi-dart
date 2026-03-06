@@ -12,7 +12,7 @@ class FloatingIpAssignmentState {
   /// Creates a new [FloatingIpAssignmentState].
   /// [dropletId] The ID of Droplet that the Floating IP will be assigned to.
   /// [ipAddress] The Floating IP to assign to the Droplet.
-  FloatingIpAssignmentState({
+  const FloatingIpAssignmentState({
     this.dropletId,
     this.ipAddress,
   });

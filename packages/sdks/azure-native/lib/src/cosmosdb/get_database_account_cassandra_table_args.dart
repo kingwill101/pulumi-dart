@@ -21,7 +21,7 @@ class GetDatabaseAccountCassandraTableArgs {
   /// [keyspaceName] Cosmos DB keyspace name.
   /// [resourceGroupName] Name of an Azure resource group.
   /// [tableName] Cosmos DB table name.
-  GetDatabaseAccountCassandraTableArgs({
+  const GetDatabaseAccountCassandraTableArgs({
     required this.accountName,
     required this.keyspaceName,
     required this.resourceGroupName,

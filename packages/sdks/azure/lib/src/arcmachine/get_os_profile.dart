@@ -16,7 +16,7 @@ class GetOsProfile {
   /// [computerName] Specifies the host OS name of the Azure Arc machine.
   /// [linuxes] A `linux` block as defined above.
   /// [windows] A `windows` block as defined below.
-  GetOsProfile({
+  const GetOsProfile({
     required this.computerName,
     required this.linuxes,
     required this.windows,

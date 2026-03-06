@@ -15,7 +15,7 @@ class VpnClientRootCertificate {
   /// [id] Resource ID.
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [publicCertData] The certificate public data.
-  VpnClientRootCertificate({
+  const VpnClientRootCertificate({
     this.id,
     this.name,
     required this.publicCertData,

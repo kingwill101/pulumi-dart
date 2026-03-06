@@ -21,7 +21,7 @@ class RestorePointCollectionState {
   /// [resourceGroupName] The name of the Resource Group in which the Virtual Machine Restore Point Collection should exist. Changing this forces a new resource to be created.
   /// [sourceVirtualMachineId] The ID of the virtual machine that will be associated with this Virtual Machine Restore Point Collection. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to this Virtual Machine Restore Point Collection.
-  RestorePointCollectionState({
+  const RestorePointCollectionState({
     this.location,
     this.name,
     this.resourceGroupName,

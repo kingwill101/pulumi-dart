@@ -29,7 +29,7 @@ class IpConfigurationResponse {
   /// [privateIPAddressVersion] Specifies whether the IP configuration's private IP is IPv4 or IPv6. Default is IPv4.
   /// [publicIPAddressConfiguration] The public IP address configuration of the network interface.
   /// [subnet] Specifies the subnet of the network interface.
-  IpConfigurationResponse({
+  const IpConfigurationResponse({
     this.applicationGatewayBackendAddressPools,
     this.loadBalancerBackendAddressPools,
     this.loadBalancerInboundNatPools,

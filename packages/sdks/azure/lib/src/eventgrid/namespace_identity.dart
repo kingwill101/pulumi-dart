@@ -17,7 +17,7 @@ class NamespaceIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Event Grid Namespace. Possible values are `SystemAssigned`, `UserAssigned`.
-  NamespaceIdentity({
+  const NamespaceIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

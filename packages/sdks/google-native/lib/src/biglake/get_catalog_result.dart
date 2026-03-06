@@ -20,7 +20,7 @@ class GetCatalogResult {
   /// [expireTime] The time when this catalog is considered expired. Only set after the catalog is deleted.
   /// [name] The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}
   /// [updateTime] The last modification time of the catalog.
-  GetCatalogResult({
+  const GetCatalogResult({
     required this.createTime,
     required this.deleteTime,
     required this.expireTime,

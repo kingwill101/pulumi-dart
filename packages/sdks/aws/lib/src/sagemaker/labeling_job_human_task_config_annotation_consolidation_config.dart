@@ -8,7 +8,7 @@ class LabelingJobHumanTaskConfigAnnotationConsolidationConfig {
 
   /// Creates a new [LabelingJobHumanTaskConfigAnnotationConsolidationConfig].
   /// [annotationConsolidationLambdaArn] ARN of a Lambda function that implements the logic for annotation consolidation and to process output data.
-  LabelingJobHumanTaskConfigAnnotationConsolidationConfig({
+  const LabelingJobHumanTaskConfigAnnotationConsolidationConfig({
     required this.annotationConsolidationLambdaArn,
   });
 

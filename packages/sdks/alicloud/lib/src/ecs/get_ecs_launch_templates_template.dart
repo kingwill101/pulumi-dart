@@ -146,7 +146,7 @@ class GetEcsLaunchTemplatesTemplate {
   /// [vpcId] VpcId.
   /// [vswitchId] The vSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
   /// [zoneId] The Zone Id.
-  GetEcsLaunchTemplatesTemplate({
+  const GetEcsLaunchTemplatesTemplate({
     required this.autoReleaseTime,
     required this.createdBy,
     required this.dataDisks,

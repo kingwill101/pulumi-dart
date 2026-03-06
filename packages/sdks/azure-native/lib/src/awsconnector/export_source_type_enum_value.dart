@@ -9,7 +9,7 @@ class ExportSourceTypeEnumValue {
 
   /// Creates a new [ExportSourceTypeEnumValue].
   /// [value] Property value
-  ExportSourceTypeEnumValue({
+  const ExportSourceTypeEnumValue({
     this.value,
   });
 

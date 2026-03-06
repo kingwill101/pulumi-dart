@@ -9,7 +9,7 @@ class QuarantinePolicy {
 
   /// Creates a new [QuarantinePolicy].
   /// [status] The value that indicates whether the policy is enabled or not.
-  QuarantinePolicy({
+  const QuarantinePolicy({
     this.status,
   });
 

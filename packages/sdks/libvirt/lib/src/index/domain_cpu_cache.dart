@@ -11,7 +11,7 @@ class DomainCpuCache {
   /// Creates a new [DomainCpuCache].
   /// [level] Specifies the cache level for CPU configurations, such as L1, L2, or L3.
   /// [mode] Determines the mode of operation for CPU caches, affecting how data is stored and retrieved.
-  DomainCpuCache({
+  const DomainCpuCache({
     this.level,
     required this.mode,
   });

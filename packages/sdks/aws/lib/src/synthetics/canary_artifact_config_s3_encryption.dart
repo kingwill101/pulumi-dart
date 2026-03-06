@@ -11,7 +11,7 @@ class CanaryArtifactConfigS3Encryption {
   /// Creates a new [CanaryArtifactConfigS3Encryption].
   /// [encryptionMode] The encryption method to use for artifacts created by this canary. Valid values are: `SSE_S3` and `SSE_KMS`.
   /// [kmsKeyArn] The ARN of the customer-managed KMS key to use, if you specify `SSE_KMS` for `encryption_mode`.
-  CanaryArtifactConfigS3Encryption({
+  const CanaryArtifactConfigS3Encryption({
     this.encryptionMode,
     this.kmsKeyArn,
   });

@@ -36,7 +36,7 @@ class PolicyArgs {
   /// [name] User-assigned name for this policy.
   /// [networks] List of network names specifying networks to which this policy is applied.
   /// [project] Optional.
-  PolicyArgs({
+  const PolicyArgs({
     this.alternativeNameServerConfig,
     this.clientOperationId,
     this.description,

@@ -18,7 +18,7 @@ class OccurenceAttestation {
   /// Creates a new [OccurenceAttestation].
   /// [serializedPayload] The serialized payload that is verified by one or
   /// [signatures] One or more signatures over serializedPayload.
-  OccurenceAttestation({
+  const OccurenceAttestation({
     required this.serializedPayload,
     required this.signatures,
   });

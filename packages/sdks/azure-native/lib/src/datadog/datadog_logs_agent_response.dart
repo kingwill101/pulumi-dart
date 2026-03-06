@@ -8,7 +8,7 @@ class DatadogLogsAgentResponse {
 
   /// Creates a new [DatadogLogsAgentResponse].
   /// [transport] The transport.
-  DatadogLogsAgentResponse({
+  const DatadogLogsAgentResponse({
     this.transport,
   });
 

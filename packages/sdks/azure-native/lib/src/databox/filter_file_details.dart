@@ -12,7 +12,7 @@ class FilterFileDetails {
   /// Creates a new [FilterFileDetails].
   /// [filterFilePath] Path of the file that contains the details of all items to transfer.
   /// [filterFileType] Type of the filter file.
-  FilterFileDetails({
+  const FilterFileDetails({
     required this.filterFilePath,
     required this.filterFileType,
   });

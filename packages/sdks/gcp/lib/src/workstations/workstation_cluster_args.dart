@@ -56,7 +56,7 @@ class WorkstationClusterArgs {
   /// [subnetwork] Name of the Compute Engine subnetwork in which instances associated with this cluster will be created.
   /// [tags] Resource manager tags bound to this resource.
   /// [workstationClusterId] ID to use for the workstation cluster.
-  WorkstationClusterArgs({
+  const WorkstationClusterArgs({
     this.annotations,
     this.displayName,
     this.domainConfig,

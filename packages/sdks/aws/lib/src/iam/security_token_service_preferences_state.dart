@@ -9,7 +9,7 @@ class SecurityTokenServicePreferencesState {
 
   /// Creates a new [SecurityTokenServicePreferencesState].
   /// [globalEndpointTokenVersion] The version of the STS global endpoint token. Valid values: `v1Token`, `v2Token`.
-  SecurityTokenServicePreferencesState({
+  const SecurityTokenServicePreferencesState({
     this.globalEndpointTokenVersion,
   });
 

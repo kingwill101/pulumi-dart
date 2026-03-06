@@ -25,7 +25,7 @@ class EndpointState {
   /// [status] The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
   /// [vpcId] The VPC ID.
   /// [vpcRegionId] The Region of the VPC.
-  EndpointState({
+  const EndpointState({
     this.endpointName,
     this.ipConfigs,
     this.securityGroupId,

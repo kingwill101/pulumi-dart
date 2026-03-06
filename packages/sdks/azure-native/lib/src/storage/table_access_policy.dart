@@ -15,7 +15,7 @@ class TableAccessPolicy {
   /// [expiryTime] Expiry time of the access policy
   /// [permission] Required. List of abbreviated permissions. Supported permission values include 'r','a','u','d'
   /// [startTime] Start time of the access policy
-  TableAccessPolicy({
+  const TableAccessPolicy({
     this.expiryTime,
     required this.permission,
     this.startTime,

@@ -11,7 +11,7 @@ class GetFirewallEncryptionConfiguration {
   /// Creates a new [GetFirewallEncryptionConfiguration].
   /// [keyId] The ID of the AWS Key Management Service (AWS KMS) customer managed key.
   /// [type] The type of the AWS Key Management Service (AWS KMS) key use by the firewall.
-  GetFirewallEncryptionConfiguration({
+  const GetFirewallEncryptionConfiguration({
     required this.keyId,
     required this.type,
   });

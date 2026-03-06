@@ -75,7 +75,7 @@ class EipArgs {
   /// [securityProtectionTypes] Optional.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zone] Optional.
-  EipArgs({
+  const EipArgs({
     this.activityId,
     this.addressName,
     this.allocationId,

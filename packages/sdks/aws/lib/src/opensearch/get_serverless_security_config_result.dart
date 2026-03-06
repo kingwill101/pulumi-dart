@@ -29,7 +29,7 @@ class GetServerlessSecurityConfigResult {
   /// [region] Required.
   /// [samlOptions] SAML options for the security configuration.
   /// [type] The type of security configuration.
-  GetServerlessSecurityConfigResult({
+  const GetServerlessSecurityConfigResult({
     required this.configVersion,
     required this.createdDate,
     required this.description,

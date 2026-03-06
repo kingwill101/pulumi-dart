@@ -13,7 +13,7 @@ class GetSslCertificateComputeV1Args {
   /// Creates a new [GetSslCertificateComputeV1Args].
   /// [project] Optional.
   /// [sslCertificate] Required.
-  GetSslCertificateComputeV1Args({
+  const GetSslCertificateComputeV1Args({
     this.project,
     required this.sslCertificate,
   });

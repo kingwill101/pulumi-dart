@@ -25,7 +25,7 @@ class ManagedOpsPropertiesResponse {
   /// [provisioningState] Provisioning state of the resource.
   /// [services] Services provisioned by this resource.
   /// [sku] Product plan details of this resource.
-  ManagedOpsPropertiesResponse({
+  const ManagedOpsPropertiesResponse({
     required this.desiredConfiguration,
     required this.policyAssignmentProperties,
     required this.provisioningState,

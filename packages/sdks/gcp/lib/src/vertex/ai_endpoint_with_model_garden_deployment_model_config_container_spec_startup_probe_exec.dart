@@ -13,7 +13,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExe
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec].
   /// [commands] Command is the command line to execute inside the container, the working
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpecStartupProbeExec({
     this.commands,
   });
 

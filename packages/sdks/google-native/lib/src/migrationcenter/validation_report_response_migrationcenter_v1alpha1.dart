@@ -14,7 +14,7 @@ class ValidationReportResponseMigrationcenterV1alpha1 {
   /// Creates a new [ValidationReportResponseMigrationcenterV1alpha1].
   /// [fileValidations] List of errors found in files.
   /// [jobErrors] List of job level errors.
-  ValidationReportResponseMigrationcenterV1alpha1({
+  const ValidationReportResponseMigrationcenterV1alpha1({
     required this.fileValidations,
     required this.jobErrors,
   });

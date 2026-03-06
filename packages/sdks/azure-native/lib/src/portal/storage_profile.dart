@@ -15,7 +15,7 @@ class StorageProfile {
   /// [diskSizeInGB] Size of file share
   /// [fileShareName] Name of the mounted file share. 63 characters or less, lowercase alphabet, numbers, and -
   /// [storageAccountResourceId] Full resource ID of storage account.
-  StorageProfile({
+  const StorageProfile({
     this.diskSizeInGB,
     this.fileShareName,
     this.storageAccountResourceId,

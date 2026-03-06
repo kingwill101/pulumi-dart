@@ -33,7 +33,7 @@ class ApiOperationTemplateParameter {
   /// [type] The Type of this Template Parameter, such as a `string`.
   /// [typeName] The type name defined by the Schema.
   /// [values] One or more acceptable values for this Template Parameter.
-  ApiOperationTemplateParameter({
+  const ApiOperationTemplateParameter({
     this.defaultValue,
     this.description,
     this.examples,

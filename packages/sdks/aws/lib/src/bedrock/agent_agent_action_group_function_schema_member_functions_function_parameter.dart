@@ -19,7 +19,7 @@ class AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter {
   /// [mapBlockKey] Name of the parameter.
   /// [required] Whether the parameter is required for the agent to complete the function for action group invocation.
   /// [type] Data type of the parameter. Valid values: `string`, `number`, `integer`, `boolean`, `array`.
-  AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter({
+  const AgentAgentActionGroupFunctionSchemaMemberFunctionsFunctionParameter({
     this.description,
     required this.mapBlockKey,
     this.required,

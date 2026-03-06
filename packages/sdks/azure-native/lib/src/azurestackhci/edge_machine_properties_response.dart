@@ -59,7 +59,7 @@ class EdgeMachinePropertiesResponse {
   /// [provisioningState] The provisioning state of a resource.
   /// [reportedProperties] Reported properties for edge machine.
   /// [siteDetails] Service fetches common configuration from site.
-  EdgeMachinePropertiesResponse({
+  const EdgeMachinePropertiesResponse({
     this.arcGatewayResourceId,
     this.arcMachineResourceGroupId,
     this.arcMachineResourceId,

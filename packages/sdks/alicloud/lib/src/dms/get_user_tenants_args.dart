@@ -18,7 +18,7 @@ class GetUserTenantsArgs {
   /// [ids] A list of DMS User Tenant IDs (TID).
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the user tenant.
-  GetUserTenantsArgs({
+  const GetUserTenantsArgs({
     this.ids,
     this.outputFile,
     this.status,

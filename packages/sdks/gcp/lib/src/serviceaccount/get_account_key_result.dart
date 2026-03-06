@@ -17,7 +17,7 @@ class GetAccountKeyResult {
   /// [name] Required.
   /// [publicKey] The public key, base64 encoded
   /// [publicKeyType] Optional.
-  GetAccountKeyResult({
+  const GetAccountKeyResult({
     required this.id,
     required this.keyAlgorithm,
     required this.name,

@@ -15,7 +15,7 @@ class GetVirtualHardDiskArgs {
   /// Creates a new [GetVirtualHardDiskArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualHardDiskName] Name of the virtual hard disk
-  GetVirtualHardDiskArgs({
+  const GetVirtualHardDiskArgs({
     required this.resourceGroupName,
     required this.virtualHardDiskName,
   });

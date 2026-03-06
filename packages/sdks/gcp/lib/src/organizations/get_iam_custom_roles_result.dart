@@ -19,7 +19,7 @@ class GetIamCustomRolesResult {
   /// [roles] A list of all retrieved custom roles roles. Structure is defined below.
   /// [showDeleted] Optional.
   /// [view] Optional.
-  GetIamCustomRolesResult({
+  const GetIamCustomRolesResult({
     required this.id,
     this.orgId,
     required this.roles,

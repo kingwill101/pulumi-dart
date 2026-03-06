@@ -8,7 +8,7 @@ class GetClustersClusterApplication {
 
   /// Creates a new [GetClustersClusterApplication].
   /// [tag] Application Tags.
-  GetClustersClusterApplication({
+  const GetClustersClusterApplication({
     required this.tag,
   });
 

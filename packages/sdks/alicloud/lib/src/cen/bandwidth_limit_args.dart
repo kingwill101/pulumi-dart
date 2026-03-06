@@ -20,7 +20,7 @@ class BandwidthLimitArgs {
   /// [bandwidthLimit] The bandwidth configured for the interconnected regions communication.
   /// [instanceId] The ID of the CEN.
   /// [regionIds] List of the two regions to interconnect. Must be two different regions.
-  BandwidthLimitArgs({
+  const BandwidthLimitArgs({
     required this.bandwidthLimit,
     required this.instanceId,
     required this.regionIds,

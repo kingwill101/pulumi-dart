@@ -21,7 +21,7 @@ class GetConsumerGroupArgs {
   /// [eventHubName] The Event Hub name
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  GetConsumerGroupArgs({
+  const GetConsumerGroupArgs({
     required this.consumerGroupName,
     required this.eventHubName,
     required this.namespaceName,

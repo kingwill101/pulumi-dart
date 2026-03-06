@@ -13,7 +13,7 @@ class ServiceMeshProfile {
   /// Creates a new [ServiceMeshProfile].
   /// [istio] Istio service mesh configuration.
   /// [mode] Mode of the service mesh.
-  ServiceMeshProfile({
+  const ServiceMeshProfile({
     this.istio,
     required this.mode,
   });

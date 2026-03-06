@@ -12,7 +12,7 @@ class ManagedIdentity {
   /// Creates a new [ManagedIdentity].
   /// [type] Represents the identity type: systemAssigned, userAssigned, None
   /// [userAssignedIdentities] Get or set the user assigned identities
-  ManagedIdentity({
+  const ManagedIdentity({
     this.type,
     this.userAssignedIdentities,
   });

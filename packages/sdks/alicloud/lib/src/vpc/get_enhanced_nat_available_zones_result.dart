@@ -18,7 +18,7 @@ class GetEnhancedNatAvailableZonesResult {
   /// [ids] A list of available zones IDs by the enhanced NAT gateway.
   /// [outputFile] Optional.
   /// [zones] A list of available zones. Each element contains the following attributes:
-  GetEnhancedNatAvailableZonesResult({
+  const GetEnhancedNatAvailableZonesResult({
     required this.id,
     required this.ids,
     this.outputFile,

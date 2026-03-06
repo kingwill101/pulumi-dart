@@ -14,7 +14,7 @@ class StandardAppVersionDeploymentFile {
   /// [name] The identifier for this object. Format specified above.
   /// [sha1Sum] SHA1 checksum of the file
   /// [sourceUrl] Source URL
-  StandardAppVersionDeploymentFile({
+  const StandardAppVersionDeploymentFile({
     required this.name,
     this.sha1Sum,
     required this.sourceUrl,

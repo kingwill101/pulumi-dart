@@ -3,11 +3,11 @@
 import 'package:pulumi_postgresql/index.dart' as module_index;
 import 'package:pulumi_postgresql/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final Database = module_index.Database.new;
   final DatabaseArgs = module_index.DatabaseArgs.new;
   final DatabaseState = module_index.DatabaseState.new;
@@ -97,7 +97,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Postgresql = module_providers.ProviderProvider.new;
   final PostgresqlArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

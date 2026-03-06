@@ -18,7 +18,7 @@ class InstancePublicPortsState {
   /// [instanceName] Name of the instance for which to open ports.
   /// [portInfos] Descriptor of the ports to open for the specified instance. AWS closes all currently open ports that are not included in this argument. See `port_info` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InstancePublicPortsState({
+  const InstancePublicPortsState({
     this.instanceName,
     this.portInfos,
     this.region,

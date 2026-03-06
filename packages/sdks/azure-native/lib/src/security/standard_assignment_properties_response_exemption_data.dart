@@ -13,7 +13,7 @@ class StandardAssignmentPropertiesResponseExemptionData {
   /// Creates a new [StandardAssignmentPropertiesResponseExemptionData].
   /// [assignedAssessment] Component item with key as applied to this standard assignment over the given scope
   /// [exemptionCategory] Exemption category of this assignment
-  StandardAssignmentPropertiesResponseExemptionData({
+  const StandardAssignmentPropertiesResponseExemptionData({
     this.assignedAssessment,
     this.exemptionCategory,
   });

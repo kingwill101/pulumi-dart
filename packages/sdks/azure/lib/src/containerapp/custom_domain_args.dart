@@ -27,7 +27,7 @@ class CustomDomainArgs {
   /// [containerAppEnvironmentCertificateId] The ID of the Container App Environment Certificate to use. Changing this forces a new resource to be created.
   /// [containerAppId] The ID of the Container App to which this Custom Domain should be bound. Changing this forces a new resource to be created.
   /// [name] The fully qualified name of the Custom Domain. Must be the CN or a named SAN in the certificate specified by the `container_app_environment_certificate_id`. Changing this forces a new resource to be created.
-  CustomDomainArgs({
+  const CustomDomainArgs({
     this.certificateBindingType,
     this.containerAppEnvironmentCertificateId,
     required this.containerAppId,

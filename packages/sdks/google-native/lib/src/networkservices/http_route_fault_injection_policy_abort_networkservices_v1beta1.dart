@@ -12,7 +12,7 @@ class HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1 {
   /// Creates a new [HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1].
   /// [httpStatus] The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
   /// [percentage] The percentage of traffic which will be aborted. The value must be between [0, 100]
-  HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1({
+  const HttpRouteFaultInjectionPolicyAbortNetworkservicesV1beta1({
     this.httpStatus,
     this.percentage,
   });

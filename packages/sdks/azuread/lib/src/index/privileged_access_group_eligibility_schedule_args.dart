@@ -41,7 +41,7 @@ class PrivilegedAccessGroupEligibilityScheduleArgs {
   /// [startDate] The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.
   /// [ticketNumber] The ticket number in the ticket system approving this assignment. May be required by the role policy.
   /// [ticketSystem] The ticket system containing the ticket number approving this assignment. May be required by the role policy.
-  PrivilegedAccessGroupEligibilityScheduleArgs({
+  const PrivilegedAccessGroupEligibilityScheduleArgs({
     required this.assignmentType,
     this.duration,
     this.expirationDate,

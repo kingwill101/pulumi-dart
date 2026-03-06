@@ -8,7 +8,7 @@ class DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoard {
 
   /// Creates a new [DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoard].
   /// [copyPaste] Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
-  DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoard({
+  const DomainOsNvRamSourceReservationsSourceQemuvdAgentClipBoard({
     required this.copyPaste,
   });
 

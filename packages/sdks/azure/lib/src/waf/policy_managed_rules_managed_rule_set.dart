@@ -15,7 +15,7 @@ class PolicyManagedRulesManagedRuleSet {
   /// [ruleGroupOverrides] One or more `rule_group_override` block defined below.
   /// [type] The rule set type. Possible values: `Microsoft_BotManagerRuleSet`, `Microsoft_DefaultRuleSet` and `OWASP`. Defaults to `OWASP`.
   /// [version] The rule set version. Possible values: `0.1`, `1.0`, `1.1`, `2.1`, `2.2`, `2.2.9`, `3.0`, `3.1` and `3.2`.
-  PolicyManagedRulesManagedRuleSet({
+  const PolicyManagedRulesManagedRuleSet({
     this.ruleGroupOverrides,
     this.type,
     required this.version,

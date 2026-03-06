@@ -11,7 +11,7 @@ class FirewallPolicyRuleSecureTagResponseComputeV1 {
   /// Creates a new [FirewallPolicyRuleSecureTagResponseComputeV1].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
   /// [state] State of the secure tag, either `EFFECTIVE` or `INEFFECTIVE`. A secure tag is `INEFFECTIVE` when it is deleted or its network is deleted.
-  FirewallPolicyRuleSecureTagResponseComputeV1({
+  const FirewallPolicyRuleSecureTagResponseComputeV1({
     required this.name,
     required this.state,
   });

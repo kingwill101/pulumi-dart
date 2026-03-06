@@ -14,7 +14,7 @@ class GetScriptDagEdge {
   /// [source] ID of the node at which the edge starts.
   /// [target] ID of the node at which the edge ends.
   /// [targetParameter] Target of the edge.
-  GetScriptDagEdge({
+  const GetScriptDagEdge({
     required this.source,
     required this.target,
     this.targetParameter,

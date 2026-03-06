@@ -27,7 +27,7 @@ class TargetGroupConfig {
   /// [protocol] The protocol to use for routing traffic to the targets. Valid Values are `HTTP` | `HTTPS`.
   /// [protocolVersion] The protocol version. Valid Values are `HTTP1` | `HTTP2` | `GRPC`. Default value is `HTTP1`.
   /// [vpcIdentifier] The ID of the VPC.
-  TargetGroupConfig({
+  const TargetGroupConfig({
     this.healthCheck,
     this.ipAddressType,
     this.lambdaEventStructureVersion,

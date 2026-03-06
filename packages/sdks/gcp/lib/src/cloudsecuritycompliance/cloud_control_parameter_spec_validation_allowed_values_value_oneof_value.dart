@@ -13,7 +13,7 @@ class CloudControlParameterSpecValidationAllowedValuesValueOneofValue {
   /// Creates a new [CloudControlParameterSpecValidationAllowedValuesValueOneofValue].
   /// [name] The name of the parameter.
   /// [parameterValue] The value of the parameter.
-  CloudControlParameterSpecValidationAllowedValuesValueOneofValue({
+  const CloudControlParameterSpecValidationAllowedValuesValueOneofValue({
     this.name,
     this.parameterValue,
   });

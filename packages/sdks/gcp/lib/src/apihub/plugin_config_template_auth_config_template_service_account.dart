@@ -10,7 +10,7 @@ class PluginConfigTemplateAuthConfigTemplateServiceAccount {
 
   /// Creates a new [PluginConfigTemplateAuthConfigTemplateServiceAccount].
   /// [serviceAccount] The service account to be used for authenticating request.
-  PluginConfigTemplateAuthConfigTemplateServiceAccount({
+  const PluginConfigTemplateAuthConfigTemplateServiceAccount({
     required this.serviceAccount,
   });
 

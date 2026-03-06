@@ -11,7 +11,7 @@ class BareMetalClusterStorageLvpNodeMountsConfig {
   /// Creates a new [BareMetalClusterStorageLvpNodeMountsConfig].
   /// [path] The host machine path.
   /// [storageClass] The StorageClass name that PVs will be created with.
-  BareMetalClusterStorageLvpNodeMountsConfig({
+  const BareMetalClusterStorageLvpNodeMountsConfig({
     required this.path,
     required this.storageClass,
   });

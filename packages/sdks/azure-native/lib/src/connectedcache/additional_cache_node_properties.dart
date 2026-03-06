@@ -57,7 +57,7 @@ class AdditionalCacheNodeProperties {
   /// [updateCycleType] Update Cycle Type
   /// [updateInfoDetails] Update related information details
   /// [updateRequestedDateTime] customer requested date time for mcc install of update cycle
-  AdditionalCacheNodeProperties({
+  const AdditionalCacheNodeProperties({
     this.autoUpdateVersion,
     this.bgpConfiguration,
     this.cacheNodePropertiesDetailsIssuesList,

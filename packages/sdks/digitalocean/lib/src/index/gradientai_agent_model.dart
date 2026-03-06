@@ -46,7 +46,7 @@ class GradientaiAgentModel {
   /// [url] URL of the Model
   /// [usecases] List of Usecases for the Model
   /// [versions] URL of the Model
-  GradientaiAgentModel({
+  const GradientaiAgentModel({
     this.agreements,
     this.createdAt,
     this.inferenceName,

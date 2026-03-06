@@ -43,7 +43,7 @@ class AnomalyTimelineItemResponse {
   /// [techniques] The techniques of the anomaly.
   /// [timeGenerated] The anomaly generated time.
   /// [vendor] The name of the anomaly vendor.
-  AnomalyTimelineItemResponse({
+  const AnomalyTimelineItemResponse({
     required this.azureResourceId,
     this.description,
     required this.displayName,

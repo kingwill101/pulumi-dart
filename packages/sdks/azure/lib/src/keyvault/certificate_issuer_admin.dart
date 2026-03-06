@@ -17,7 +17,7 @@ class CertificateIssuerAdmin {
   /// [firstName] First name of the admin.
   /// [lastName] Last name of the admin.
   /// [phone] Phone number of the admin.
-  CertificateIssuerAdmin({
+  const CertificateIssuerAdmin({
     required this.emailAddress,
     this.firstName,
     this.lastName,

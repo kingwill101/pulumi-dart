@@ -21,7 +21,7 @@ class ControlBoostActionInterpolationBoostSpec {
   /// [controlPoint] The control points used to define the curve.
   /// [fieldName] The name of the field whose value will be used to determine the boost amount.
   /// [interpolationType] The interpolation type to be applied to connect the control points.
-  ControlBoostActionInterpolationBoostSpec({
+  const ControlBoostActionInterpolationBoostSpec({
     this.attributeType,
     this.controlPoint,
     this.fieldName,

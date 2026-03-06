@@ -19,7 +19,7 @@ class EventHubCaptureDescriptionDestination {
   /// [blobContainerName] The name of the Container within the Blob Storage Account where messages should be archived.
   /// [name] The Name of the Destination where the capture should take place. At this time the only supported value is `EventHubArchive.AzureBlockBlob`.
   /// [storageAccountId] The ID of the Blob Storage Account where messages should be archived.
-  EventHubCaptureDescriptionDestination({
+  const EventHubCaptureDescriptionDestination({
     required this.archiveNameFormat,
     required this.blobContainerName,
     required this.name,

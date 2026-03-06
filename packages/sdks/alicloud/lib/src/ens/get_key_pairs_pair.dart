@@ -20,7 +20,7 @@ class GetKeyPairsPair {
   /// [keyPairFingerPrint] Fingerprint of the key pair.
   /// [keyPairName] The name of the key pair.
   /// [version] The version number.
-  GetKeyPairsPair({
+  const GetKeyPairsPair({
     required this.createTime,
     required this.id,
     required this.keyPairFingerPrint,

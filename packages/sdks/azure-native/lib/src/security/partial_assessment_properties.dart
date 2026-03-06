@@ -9,7 +9,7 @@ class PartialAssessmentProperties {
 
   /// Creates a new [PartialAssessmentProperties].
   /// [assessmentKey] The assessment key
-  PartialAssessmentProperties({
+  const PartialAssessmentProperties({
     this.assessmentKey,
   });
 

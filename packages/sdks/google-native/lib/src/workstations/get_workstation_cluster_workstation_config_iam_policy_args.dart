@@ -19,7 +19,7 @@ class GetWorkstationClusterWorkstationConfigIamPolicyArgs {
   /// [project] Optional.
   /// [workstationClusterId] Required.
   /// [workstationConfigId] Required.
-  GetWorkstationClusterWorkstationConfigIamPolicyArgs({
+  const GetWorkstationClusterWorkstationConfigIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

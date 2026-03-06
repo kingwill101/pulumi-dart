@@ -17,7 +17,7 @@ class GetAccessStrategiesStrategyLine {
   /// [groupName] The name of the source region group.
   /// [lineCode] The line code of the source region.
   /// [lineName] The line name of the source region.
-  GetAccessStrategiesStrategyLine({
+  const GetAccessStrategiesStrategyLine({
     required this.groupCode,
     required this.groupName,
     required this.lineCode,

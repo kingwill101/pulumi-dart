@@ -26,7 +26,7 @@ class ResponsePolicyState {
   /// [networks] The list of network names specifying networks to which this policy is applied.
   /// [project] The ID of the project in which the resource belongs.
   /// [responsePolicyName] The user assigned name for this Response Policy, such as `myresponsepolicy`.
-  ResponsePolicyState({
+  const ResponsePolicyState({
     this.description,
     this.gkeClusters,
     this.networks,

@@ -21,7 +21,7 @@ class ServiceSkuResponse {
   /// [name] The unique name of the SKU, such as 'P3'
   /// [size] The size of the SKU, used when the name alone does not denote a service size or when a SKU has multiple performance classes within a family, e.g. 'A1' for virtual machines
   /// [tier] The tier of the SKU, such as 'Basic', 'General Purpose', or 'Business Critical'
-  ServiceSkuResponse({
+  const ServiceSkuResponse({
     this.capacity,
     this.family,
     this.name,

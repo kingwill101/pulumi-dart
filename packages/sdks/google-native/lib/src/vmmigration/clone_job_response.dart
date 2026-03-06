@@ -37,7 +37,7 @@ class CloneJobResponse {
   /// [state] State of the clone job.
   /// [stateTime] The time the state was last updated.
   /// [steps] The clone steps list representing its progress.
-  CloneJobResponse({
+  const CloneJobResponse({
     required this.computeEngineDisksTargetDetails,
     required this.computeEngineTargetDetails,
     required this.createTime,

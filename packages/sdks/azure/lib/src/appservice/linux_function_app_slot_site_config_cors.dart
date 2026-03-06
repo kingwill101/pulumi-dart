@@ -11,7 +11,7 @@ class LinuxFunctionAppSlotSiteConfigCors {
   /// Creates a new [LinuxFunctionAppSlotSiteConfigCors].
   /// [allowedOrigins] Specifies a list of origins that should be allowed to make cross-origin calls.
   /// [supportCredentials] Are credentials allowed in CORS requests? Defaults to `false`.
-  LinuxFunctionAppSlotSiteConfigCors({
+  const LinuxFunctionAppSlotSiteConfigCors({
     this.allowedOrigins,
     this.supportCredentials,
   });

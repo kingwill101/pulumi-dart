@@ -44,7 +44,7 @@ class GetRestApiResult {
   /// [region] Required.
   /// [rootResourceId] Set to the ID of the API Gateway Resource on the found REST API where the route matches '/'.
   /// [tags] Key-value map of resource tags.
-  GetRestApiResult({
+  const GetRestApiResult({
     required this.apiKeySource,
     required this.arn,
     required this.binaryMediaTypes,

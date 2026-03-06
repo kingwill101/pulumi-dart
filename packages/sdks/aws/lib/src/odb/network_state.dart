@@ -105,7 +105,7 @@ class NetworkState {
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   /// [zeroEtlAccess] Specifies the configuration for Zero-ETL access from the ODB network.
-  NetworkState({
+  const NetworkState({
     this.arn,
     this.availabilityZone,
     this.availabilityZoneId,

@@ -19,7 +19,7 @@ class GetCutoverJobArgs {
   /// [migratingVmId] Required.
   /// [project] Optional.
   /// [sourceId] Required.
-  GetCutoverJobArgs({
+  const GetCutoverJobArgs({
     required this.cutoverJobId,
     required this.location,
     required this.migratingVmId,

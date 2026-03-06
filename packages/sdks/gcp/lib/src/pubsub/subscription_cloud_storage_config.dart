@@ -43,7 +43,7 @@ class SubscriptionCloudStorageConfig {
   /// [maxMessages] The maximum messages that can be written to a Cloud Storage file before a new file is created. Min 1000 messages.
   /// [serviceAccountEmail] The service account to use to write to Cloud Storage. If not specified, the Pub/Sub
   /// [state] (Output)
-  SubscriptionCloudStorageConfig({
+  const SubscriptionCloudStorageConfig({
     this.avroConfig,
     required this.bucket,
     this.filenameDatetimeFormat,

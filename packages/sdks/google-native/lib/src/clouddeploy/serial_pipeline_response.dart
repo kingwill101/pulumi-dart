@@ -10,7 +10,7 @@ class SerialPipelineResponse {
 
   /// Creates a new [SerialPipelineResponse].
   /// [stages] Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
-  SerialPipelineResponse({
+  const SerialPipelineResponse({
     required this.stages,
   });
 

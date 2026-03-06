@@ -50,7 +50,7 @@ class BandwidthPackageState {
   /// [paymentType] The billing method. Valid value: `PostPaid` | `PrePaid`. Default to `PrePaid`. If set to PrePaid, the bandwidth package can't be deleted before expired time.
   /// [period] The purchase period in month. Valid value: `1`, `2`, `3`, `6`, `12`.
   /// [status] The association status of the bandwidth package.
-  BandwidthPackageState({
+  const BandwidthPackageState({
     this.autoRenew,
     this.bandwidth,
     this.cenBandwidthPackageName,

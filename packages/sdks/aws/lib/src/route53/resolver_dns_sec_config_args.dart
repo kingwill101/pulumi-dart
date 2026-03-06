@@ -15,7 +15,7 @@ class ResolverDnsSecConfigArgs {
   /// Creates a new [ResolverDnsSecConfigArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceId] The ID of the virtual private cloud (VPC) that you're updating the DNSSEC validation status for.
-  ResolverDnsSecConfigArgs({
+  const ResolverDnsSecConfigArgs({
     this.region,
     required this.resourceId,
   });

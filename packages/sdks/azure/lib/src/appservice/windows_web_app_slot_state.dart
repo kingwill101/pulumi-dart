@@ -137,7 +137,7 @@ class WindowsWebAppSlotState {
   /// [virtualNetworkSubnetId] The subnet id which will be used by this Web App Slot for [regional virtual network integration](https://docs.microsoft.com/en-us/azure/app-service/overview-vnet-integration#regional-virtual-network-integration).
   /// [webdeployPublishBasicAuthenticationEnabled] Should the default WebDeploy Basic Authentication publishing credentials enabled. Defaults to `true`.
   /// [zipDeployFile] The local path and filename of the Zip packaged application to deploy to this Windows Web App.
-  WindowsWebAppSlotState({
+  const WindowsWebAppSlotState({
     this.appServiceId,
     this.appSettings,
     this.authSettings,

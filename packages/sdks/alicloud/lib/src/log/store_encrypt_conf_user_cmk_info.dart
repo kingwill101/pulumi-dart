@@ -14,7 +14,7 @@ class StoreEncryptConfUserCmkInfo {
   /// [arn] Role arn.
   /// [cmkKeyId] User master key id.
   /// [regionId] Region id where the user master key id is located.
-  StoreEncryptConfUserCmkInfo({
+  const StoreEncryptConfUserCmkInfo({
     this.arn,
     this.cmkKeyId,
     this.regionId,

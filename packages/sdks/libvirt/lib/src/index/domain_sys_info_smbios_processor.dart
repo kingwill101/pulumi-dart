@@ -9,7 +9,7 @@ class DomainSysInfoSmbiosProcessor {
 
   /// Creates a new [DomainSysInfoSmbiosProcessor].
   /// [entries] Specifies individual entries for processor information in the SMBIOS.
-  DomainSysInfoSmbiosProcessor({
+  const DomainSysInfoSmbiosProcessor({
     this.entries,
   });
 

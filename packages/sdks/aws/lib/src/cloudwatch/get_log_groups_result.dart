@@ -18,7 +18,7 @@ class GetLogGroupsResult {
   /// [logGroupNamePrefix] Optional.
   /// [logGroupNames] Set of names of the Cloudwatch log groups
   /// [region] Required.
-  GetLogGroupsResult({
+  const GetLogGroupsResult({
     required this.arns,
     required this.id,
     this.logGroupNamePrefix,

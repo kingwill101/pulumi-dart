@@ -15,7 +15,7 @@ class LogAnalyticsConfigurationResponse {
   /// [dataTypes] The types of data to be ingested to Log Analytics workspace.
   /// [importData] A one-time optional parameter to import data of last 7 days.
   /// [workspaceId] The resource ID of the Log Analytics workspace to be used.
-  LogAnalyticsConfigurationResponse({
+  const LogAnalyticsConfigurationResponse({
     this.dataTypes,
     this.importData,
     this.workspaceId,

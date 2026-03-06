@@ -70,7 +70,7 @@ class DistributedAvailabilityGroupDatabaseResponse {
   /// [replicaState] Current link state
   /// [seedingProgress] Seeding progress
   /// [synchronizationHealth] Link health state
-  DistributedAvailabilityGroupDatabaseResponse({
+  const DistributedAvailabilityGroupDatabaseResponse({
     required this.connectedState,
     this.databaseName,
     required this.instanceRedoReplicationLagSeconds,

@@ -12,7 +12,7 @@ class DicomServiceAuthenticationConfigurationResponse {
   /// Creates a new [DicomServiceAuthenticationConfigurationResponse].
   /// [audiences] The audiences for the service
   /// [authority] The authority url for the service
-  DicomServiceAuthenticationConfigurationResponse({
+  const DicomServiceAuthenticationConfigurationResponse({
     required this.audiences,
     required this.authority,
   });

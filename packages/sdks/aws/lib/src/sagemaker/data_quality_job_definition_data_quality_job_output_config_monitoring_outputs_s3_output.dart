@@ -14,7 +14,7 @@ class DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Outpu
   /// [localPath] The local path to the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job. LocalPath is an absolute path for the output data. Defaults to `/opt/ml/processing/output`.
   /// [s3UploadMode] Whether to upload the results of the monitoring job continuously or after the job completes. Valid values are `Continuous` or `EndOfJob`
   /// [s3Uri] A URI that identifies the Amazon S3 storage location where Amazon SageMaker AI saves the results of a monitoring job.
-  DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output({
+  const DataQualityJobDefinitionDataQualityJobOutputConfigMonitoringOutputsS3Output({
     this.localPath,
     this.s3UploadMode,
     required this.s3Uri,

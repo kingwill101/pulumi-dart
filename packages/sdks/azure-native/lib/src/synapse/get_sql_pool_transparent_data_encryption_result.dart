@@ -23,7 +23,7 @@ class GetSqlPoolTransparentDataEncryptionResult {
   /// [name] The name of the resource
   /// [status] The status of the database transparent data encryption.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSqlPoolTransparentDataEncryptionResult({
+  const GetSqlPoolTransparentDataEncryptionResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

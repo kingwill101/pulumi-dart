@@ -10,7 +10,7 @@ class VmwareAdminClusterAntiAffinityGroups {
 
   /// Creates a new [VmwareAdminClusterAntiAffinityGroups].
   /// [aagConfigDisabled] Spread nodes across at least three physical hosts (requires at least three
-  VmwareAdminClusterAntiAffinityGroups({
+  const VmwareAdminClusterAntiAffinityGroups({
     required this.aagConfigDisabled,
   });
 

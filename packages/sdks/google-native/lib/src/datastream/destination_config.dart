@@ -17,7 +17,7 @@ class DestinationConfig {
   /// [bigqueryDestinationConfig] BigQuery destination configuration.
   /// [destinationConnectionProfile] Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
   /// [gcsDestinationConfig] A configuration for how data should be loaded to Cloud Storage.
-  DestinationConfig({
+  const DestinationConfig({
     this.bigqueryDestinationConfig,
     required this.destinationConnectionProfile,
     this.gcsDestinationConfig,

@@ -31,7 +31,7 @@ class ForwardingRuleArgs {
   /// [metadata] Metadata attached to the forwarding rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [targetDnsServers] DNS servers to forward the DNS query to.
-  ForwardingRuleArgs({
+  const ForwardingRuleArgs({
     required this.dnsForwardingRulesetName,
     required this.domainName,
     this.forwardingRuleName,

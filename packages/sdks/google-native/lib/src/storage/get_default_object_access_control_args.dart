@@ -15,7 +15,7 @@ class GetDefaultObjectAccessControlArgs {
   /// [bucket] Required.
   /// [entity] Required.
   /// [userProject] Optional.
-  GetDefaultObjectAccessControlArgs({
+  const GetDefaultObjectAccessControlArgs({
     required this.bucket,
     required this.entity,
     this.userProject,

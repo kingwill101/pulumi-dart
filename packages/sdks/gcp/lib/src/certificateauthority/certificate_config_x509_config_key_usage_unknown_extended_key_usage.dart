@@ -8,7 +8,7 @@ class CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage {
 
   /// Creates a new [CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage].
   /// [objectIdPaths] An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-  CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage({
+  const CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage({
     required this.objectIdPaths,
   });
 

@@ -11,7 +11,7 @@ class GroupQuotaSubscriptionIdResponseProperties {
   /// Creates a new [GroupQuotaSubscriptionIdResponseProperties].
   /// [provisioningState] Status of this subscriptionId being associated with the GroupQuotasEntity.
   /// [subscriptionId] An Azure subscriptionId.
-  GroupQuotaSubscriptionIdResponseProperties({
+  const GroupQuotaSubscriptionIdResponseProperties({
     required this.provisioningState,
     this.subscriptionId,
   });

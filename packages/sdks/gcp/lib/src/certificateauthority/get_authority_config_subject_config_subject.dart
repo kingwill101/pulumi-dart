@@ -29,7 +29,7 @@ class GetAuthorityConfigSubjectConfigSubject {
   /// [postalCode] The postal code of the subject.
   /// [province] The province, territory, or regional state of the subject.
   /// [streetAddress] The street address of the subject.
-  GetAuthorityConfigSubjectConfigSubject({
+  const GetAuthorityConfigSubjectConfigSubject({
     required this.commonName,
     required this.countryCode,
     required this.locality,

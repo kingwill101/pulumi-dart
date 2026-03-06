@@ -8,7 +8,7 @@ class RuleGroupRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint {
 
   /// Creates a new [RuleGroupRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint].
   /// [fallbackBehavior] The match status to assign to the web request if the request doesn't have a JA4 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
-  RuleGroupRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint({
+  const RuleGroupRuleStatementRegexMatchStatementFieldToMatchJa4Fingerprint({
     required this.fallbackBehavior,
   });
 

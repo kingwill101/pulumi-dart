@@ -38,7 +38,7 @@ class QueueRetryConfig {
   /// [maxDoublings] The time between retries will double maxDoublings times.
   /// [maxRetryDuration] If positive, maxRetryDuration specifies the time limit for
   /// [minBackoff] A task will be scheduled for retry between minBackoff and
-  QueueRetryConfig({
+  const QueueRetryConfig({
     this.maxAttempts,
     this.maxBackoff,
     this.maxDoublings,

@@ -11,7 +11,7 @@ class TopicInboundIpRule {
   /// Creates a new [TopicInboundIpRule].
   /// [action] The action to take when the rule is matched. Possible values are `Allow`. Defaults to `Allow`.
   /// [ipMask] The IP mask (CIDR) to match on.
-  TopicInboundIpRule({
+  const TopicInboundIpRule({
     this.action,
     required this.ipMask,
   });

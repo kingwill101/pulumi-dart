@@ -18,7 +18,7 @@ class ResourceHealthDetailsResponse {
   /// [message] Health Message
   /// [recommendations] Health Recommended Actions
   /// [title] Health Title
-  ResourceHealthDetailsResponse({
+  const ResourceHealthDetailsResponse({
     required this.code,
     required this.message,
     required this.recommendations,

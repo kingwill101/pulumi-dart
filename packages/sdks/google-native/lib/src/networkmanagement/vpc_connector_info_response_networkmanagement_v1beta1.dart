@@ -15,7 +15,7 @@ class VpcConnectorInfoResponseNetworkmanagementV1beta1 {
   /// [displayName] Name of a VPC connector.
   /// [location] Location in which the VPC connector is deployed.
   /// [uri] URI of a VPC connector.
-  VpcConnectorInfoResponseNetworkmanagementV1beta1({
+  const VpcConnectorInfoResponseNetworkmanagementV1beta1({
     required this.displayName,
     required this.location,
     required this.uri,

@@ -17,7 +17,7 @@ class GetGroupIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Container Group.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Container Group.
   /// [type] Type of Managed Service Identity configured on this Container Group.
-  GetGroupIdentity({
+  const GetGroupIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

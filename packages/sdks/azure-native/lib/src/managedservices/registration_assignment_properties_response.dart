@@ -16,7 +16,7 @@ class RegistrationAssignmentPropertiesResponse {
   /// [provisioningState] The current provisioning state of the registration assignment.
   /// [registrationDefinition] The registration definition associated with the registration assignment.
   /// [registrationDefinitionId] The fully qualified path of the registration definition.
-  RegistrationAssignmentPropertiesResponse({
+  const RegistrationAssignmentPropertiesResponse({
     required this.provisioningState,
     required this.registrationDefinition,
     required this.registrationDefinitionId,

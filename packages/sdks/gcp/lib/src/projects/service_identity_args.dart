@@ -18,7 +18,7 @@ class ServiceIdentityArgs {
   /// Creates a new [ServiceIdentityArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The service to generate identity for.
-  ServiceIdentityArgs({
+  const ServiceIdentityArgs({
     this.project,
     required this.service,
   });

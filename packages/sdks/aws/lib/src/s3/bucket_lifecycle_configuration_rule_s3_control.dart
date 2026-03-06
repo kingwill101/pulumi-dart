@@ -23,7 +23,7 @@ class BucketLifecycleConfigurationRuleS3Control {
   /// [filter] Configuration block containing settings for filtering.
   /// [id] Unique identifier for the rule.
   /// [status] Status of the rule. Valid values: `Enabled` and `Disabled`. Defaults to `Enabled`.
-  BucketLifecycleConfigurationRuleS3Control({
+  const BucketLifecycleConfigurationRuleS3Control({
     this.abortIncompleteMultipartUpload,
     this.expiration,
     this.filter,

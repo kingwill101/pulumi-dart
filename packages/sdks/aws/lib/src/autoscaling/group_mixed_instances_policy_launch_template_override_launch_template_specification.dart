@@ -13,7 +13,7 @@ class GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification
   /// [launchTemplateId] ID of the launch template. Conflicts with `launch_template_name`.
   /// [launchTemplateName] Name of the launch template. Conflicts with `launch_template_id`.
   /// [version] Optional.
-  GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification({
+  const GroupMixedInstancesPolicyLaunchTemplateOverrideLaunchTemplateSpecification({
     this.launchTemplateId,
     this.launchTemplateName,
     this.version,

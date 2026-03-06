@@ -33,7 +33,7 @@ class GetBudgetBillingbudgetsV1beta1Result {
   /// [name] Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`.
   /// [ownershipScope] Required.
   /// [thresholdRules] Optional. Rules that trigger alerts (notifications of thresholds being crossed) when spend exceeds the specified percentages of the budget. Optional for `pubsubTopic` notifications. Required if using email notifications.
-  GetBudgetBillingbudgetsV1beta1Result({
+  const GetBudgetBillingbudgetsV1beta1Result({
     required this.allUpdatesRule,
     required this.amount,
     required this.budgetFilter,

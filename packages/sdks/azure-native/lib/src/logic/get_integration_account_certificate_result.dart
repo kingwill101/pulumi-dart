@@ -39,7 +39,7 @@ class GetIntegrationAccountCertificateResult {
   /// [publicCertificate] The public certificate.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetIntegrationAccountCertificateResult({
+  const GetIntegrationAccountCertificateResult({
     required this.azureApiVersion,
     required this.changedTime,
     required this.createdTime,

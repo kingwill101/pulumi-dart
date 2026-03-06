@@ -9,7 +9,7 @@ class AutomationRuleCriteriaProductArn {
   /// Creates a new [AutomationRuleCriteriaProductArn].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaProductArn({
+  const AutomationRuleCriteriaProductArn({
     required this.comparison,
     required this.value,
   });

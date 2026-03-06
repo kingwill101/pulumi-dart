@@ -21,7 +21,7 @@ class AutonomousDatabaseBackupArgs {
   /// [name] The display name of the Autonomous Database Backup. Changing this forces a new resource to be created.
   /// [retentionPeriodInDays] (Updatable) The number of days to retain the backup. Must be between 90 and 3650 days.
   /// [type] The type of backup to create.Currently, only `LongTerm` backup operations are supported through the Oracle database At azure service. Defaults to `LongTerm`. Changing this forces a new resource to be created.
-  AutonomousDatabaseBackupArgs({
+  const AutonomousDatabaseBackupArgs({
     required this.autonomousDatabaseId,
     this.name,
     required this.retentionPeriodInDays,

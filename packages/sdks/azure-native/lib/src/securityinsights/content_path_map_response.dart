@@ -12,7 +12,7 @@ class ContentPathMapResponse {
   /// Creates a new [ContentPathMapResponse].
   /// [contentType] Content type.
   /// [path] The path to the content.
-  ContentPathMapResponse({
+  const ContentPathMapResponse({
     this.contentType,
     this.path,
   });

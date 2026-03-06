@@ -12,7 +12,7 @@ class SourceIamBindingCondition {
   /// [description] The description of the source (max of 1024 characters).
   /// [expression] Required.
   /// [title] Required.
-  SourceIamBindingCondition({
+  const SourceIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

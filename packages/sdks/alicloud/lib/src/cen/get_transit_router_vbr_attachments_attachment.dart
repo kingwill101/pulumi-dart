@@ -30,7 +30,7 @@ class GetTransitRouterVbrAttachmentsAttachment {
   /// [transitRouterAttachmentName] Name of the transit router attachment.
   /// [vbrId] ID of the VBR.
   /// [vbrOwnerId] The Owner ID of the VBR.
-  GetTransitRouterVbrAttachmentsAttachment({
+  const GetTransitRouterVbrAttachmentsAttachment({
     required this.autoPublishRouteEnabled,
     required this.id,
     required this.resourceType,

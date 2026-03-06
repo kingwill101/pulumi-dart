@@ -56,7 +56,7 @@ class GetExtensionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [typeHandlerVersion] Specifies the version of the script handler. Latest version would be used if not specified.
-  GetExtensionResult({
+  const GetExtensionResult({
     required this.aggregateState,
     this.autoUpgradeMinorVersion,
     required this.azureApiVersion,

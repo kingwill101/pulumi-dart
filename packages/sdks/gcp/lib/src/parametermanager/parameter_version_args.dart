@@ -22,7 +22,7 @@ class ParameterVersionArgs {
   /// [parameter] Parameter Manager Parameter resource.
   /// [parameterData] The Parameter data.
   /// [parameterVersionId] Version ID of the Parameter Version Resource. This must be unique within the Parameter.
-  ParameterVersionArgs({
+  const ParameterVersionArgs({
     this.disabled,
     required this.parameter,
     required this.parameterData,

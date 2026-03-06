@@ -15,7 +15,7 @@ class ApplicationOwnerArgs {
   /// Creates a new [ApplicationOwnerArgs].
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [ownerObjectId] The object ID of the owner to assign to the application, typically a user or service principal. Changing this forces a new resource to be created.
-  ApplicationOwnerArgs({
+  const ApplicationOwnerArgs({
     required this.applicationId,
     required this.ownerObjectId,
   });

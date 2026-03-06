@@ -20,7 +20,7 @@ class SecurityPolicyUserDefinedFieldResponseComputeBeta {
   /// [name] The name of this field. Must be unique within the policy.
   /// [offset] Offset of the first byte of the field (in network byte order) relative to 'base'.
   /// [size] Size of the field in bytes. Valid values: 1-4.
-  SecurityPolicyUserDefinedFieldResponseComputeBeta({
+  const SecurityPolicyUserDefinedFieldResponseComputeBeta({
     required this.base,
     required this.mask,
     required this.name,

@@ -11,7 +11,7 @@ class ParameterGroupParameter {
   /// Creates a new [ParameterGroupParameter].
   /// [paramName] The name of the parameter.
   /// [paramValue] The value of the parameter.
-  ParameterGroupParameter({
+  const ParameterGroupParameter({
     this.paramName,
     this.paramValue,
   });

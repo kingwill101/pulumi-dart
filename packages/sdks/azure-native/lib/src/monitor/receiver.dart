@@ -24,7 +24,7 @@ class Receiver {
   /// [syslog] Syslog configurations. This field is mandatory for syslog type receivers.
   /// [type] The type of receiver.
   /// [udp] UDP receiver configurations. This field is mandatory for UDP receivers.
-  Receiver({
+  const Receiver({
     required this.name,
     this.otlp,
     this.syslog,

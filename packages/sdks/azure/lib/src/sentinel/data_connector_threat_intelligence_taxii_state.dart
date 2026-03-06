@@ -38,7 +38,7 @@ class DataConnectorThreatIntelligenceTaxiiState {
   /// [pollingFrequency] The polling frequency for the TAXII server. Possible values are `OnceAMinute`, `OnceAnHour` and `OnceADay`. Defaults to `OnceAnHour`.
   /// [tenantId] The ID of the tenant that this Threat Intelligence TAXII Data Connector connects to. Changing this forces a new Threat Intelligence TAXII Data Connector to be created.
   /// [userName] The user name for the TAXII server.
-  DataConnectorThreatIntelligenceTaxiiState({
+  const DataConnectorThreatIntelligenceTaxiiState({
     this.apiRootUrl,
     this.collectionId,
     this.displayName,

@@ -11,7 +11,7 @@ class GetAppSpecWorkerLogDestinationDatadog {
   /// Creates a new [GetAppSpecWorkerLogDestinationDatadog].
   /// [apiKey] Datadog API key.
   /// [endpoint] OpenSearch API Endpoint. Only HTTPS is supported. Format: https://&lt;host&gt;:&lt;port&gt;.
-  GetAppSpecWorkerLogDestinationDatadog({
+  const GetAppSpecWorkerLogDestinationDatadog({
     required this.apiKey,
     this.endpoint,
   });

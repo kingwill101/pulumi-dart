@@ -23,7 +23,7 @@ class LineChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to line channel resource
   /// [provisioningState] Provisioning state of the resource
-  LineChannelResponse({
+  const LineChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

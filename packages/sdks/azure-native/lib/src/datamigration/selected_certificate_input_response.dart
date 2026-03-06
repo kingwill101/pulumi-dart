@@ -12,7 +12,7 @@ class SelectedCertificateInputResponse {
   /// Creates a new [SelectedCertificateInputResponse].
   /// [certificateName] Name of certificate to be exported.
   /// [password] Password to use for encrypting the exported certificate.
-  SelectedCertificateInputResponse({
+  const SelectedCertificateInputResponse({
     required this.certificateName,
     required this.password,
   });

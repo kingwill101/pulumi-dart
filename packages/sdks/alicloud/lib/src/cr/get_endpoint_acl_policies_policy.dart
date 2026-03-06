@@ -20,7 +20,7 @@ class GetEndpointAclPoliciesPolicy {
   /// [entry] The IP segment that allowed to access.
   /// [id] The ID of the Endpoint Acl Policy.
   /// [instanceId] The ID of the CR Instance.
-  GetEndpointAclPoliciesPolicy({
+  const GetEndpointAclPoliciesPolicy({
     required this.description,
     required this.endpointType,
     required this.entry,

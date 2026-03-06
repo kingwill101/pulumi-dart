@@ -14,7 +14,7 @@ class GetLinuxWebAppAuthSettingsV2GithubV2 {
   /// [clientId] The OAuth 2.0 client ID used by the app for authentication.
   /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret used by the app for authentication.
   /// [loginScopes] The list of Login scopes that are requested as part of Microsoft Account authentication.
-  GetLinuxWebAppAuthSettingsV2GithubV2({
+  const GetLinuxWebAppAuthSettingsV2GithubV2({
     required this.clientId,
     required this.clientSecretSettingName,
     required this.loginScopes,

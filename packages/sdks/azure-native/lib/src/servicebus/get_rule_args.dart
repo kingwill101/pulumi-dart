@@ -24,7 +24,7 @@ class GetRuleArgs {
   /// [ruleName] The rule name.
   /// [subscriptionName] The subscription name.
   /// [topicName] The topic name.
-  GetRuleArgs({
+  const GetRuleArgs({
     required this.namespaceName,
     required this.resourceGroupName,
     required this.ruleName,

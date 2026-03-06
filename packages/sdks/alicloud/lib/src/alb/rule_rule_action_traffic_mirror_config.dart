@@ -12,7 +12,7 @@ class RuleRuleActionTrafficMirrorConfig {
   /// Creates a new [RuleRuleActionTrafficMirrorConfig].
   /// [mirrorGroupConfig] The Traffic is mirrored to the server group. See `mirror_group_config` below.
   /// [targetType] The Mirror target type.
-  RuleRuleActionTrafficMirrorConfig({
+  const RuleRuleActionTrafficMirrorConfig({
     this.mirrorGroupConfig,
     this.targetType,
   });

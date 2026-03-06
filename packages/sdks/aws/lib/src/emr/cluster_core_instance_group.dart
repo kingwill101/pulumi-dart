@@ -27,7 +27,7 @@ class ClusterCoreInstanceGroup {
   /// [instanceCount] Target number of instances for the instance group. Must be at least 1. Defaults to 1.
   /// [instanceType] EC2 instance type for all instances in the instance group.
   /// [name] Friendly name given to the instance group.
-  ClusterCoreInstanceGroup({
+  const ClusterCoreInstanceGroup({
     this.autoscalingPolicy,
     this.bidPrice,
     this.ebsConfigs,

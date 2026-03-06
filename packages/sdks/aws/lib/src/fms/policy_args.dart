@@ -59,7 +59,7 @@ class PolicyArgs {
   /// [resourceTypeLists] A list of resource types to protect. Conflicts with `resource_type`. See the [FMS API Reference](https://docs.aws.amazon.com/fms/2018-01-01/APIReference/API_Policy.html#fms-Type-Policy-ResourceType) for more information about supported values. Lists with only one element are not supported, instead use `resource_type`.
   /// [securityServicePolicyData] The objects to include in Security Service Policy Data. See the `security_service_policy_data` block.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
-  PolicyArgs({
+  const PolicyArgs({
     this.deleteAllPolicyResources,
     this.deleteUnusedFmManagedResources,
     this.description,

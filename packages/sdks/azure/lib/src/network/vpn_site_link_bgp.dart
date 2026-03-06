@@ -11,7 +11,7 @@ class VpnSiteLinkBgp {
   /// Creates a new [VpnSiteLinkBgp].
   /// [asn] The BGP speaker's ASN.
   /// [peeringAddress] The BGP peering IP address.
-  VpnSiteLinkBgp({
+  const VpnSiteLinkBgp({
     required this.asn,
     required this.peeringAddress,
   });

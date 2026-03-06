@@ -42,7 +42,7 @@ class PushInfo {
   /// [destination] Information about the destination where events have to be delivered for the event subscription.
   /// [eventTimeToLive] Time span duration in ISO 8601 format that determines how long messages are available to the subscription from the time the message was published.
   /// [maxDeliveryCount] The maximum delivery count of the events.
-  PushInfo({
+  const PushInfo({
     this.deadLetterDestinationWithResourceIdentity,
     this.deliveryWithResourceIdentity,
     this.destination,

@@ -34,7 +34,7 @@ class MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse {
   /// [resultType] Result type
   /// [startedOn] Migration start time
   /// [state] Current state of migration
-  MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse({
+  const MigrateSqlServerSqlMITaskOutputAgentJobLevelResponse({
     required this.endedOn,
     required this.exceptionsAndWarnings,
     required this.id,

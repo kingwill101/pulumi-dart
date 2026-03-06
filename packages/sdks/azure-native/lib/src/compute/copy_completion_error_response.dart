@@ -12,7 +12,7 @@ class CopyCompletionErrorResponse {
   /// Creates a new [CopyCompletionErrorResponse].
   /// [errorCode] Indicates the error code if the background copy of a resource created via the CopyStart operation fails.
   /// [errorMessage] Indicates the error message if the background copy of a resource created via the CopyStart operation fails.
-  CopyCompletionErrorResponse({
+  const CopyCompletionErrorResponse({
     required this.errorCode,
     required this.errorMessage,
   });

@@ -35,7 +35,7 @@ class AFDCustomDomainArgs {
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tlsSettings] The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
-  AFDCustomDomainArgs({
+  const AFDCustomDomainArgs({
     this.azureDnsZone,
     this.customDomainName,
     this.extendedProperties,

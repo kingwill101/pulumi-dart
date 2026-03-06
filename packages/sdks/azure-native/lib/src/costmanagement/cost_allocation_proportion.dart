@@ -12,7 +12,7 @@ class CostAllocationProportion {
   /// Creates a new [CostAllocationProportion].
   /// [name] Target resource for cost allocation
   /// [percentage] Percentage of source cost to allocate to this resource. This value can be specified to two decimal places and the total percentage of all resources in this rule must sum to 100.00.
-  CostAllocationProportion({
+  const CostAllocationProportion({
     required this.name,
     required this.percentage,
   });

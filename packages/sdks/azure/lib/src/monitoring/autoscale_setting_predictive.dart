@@ -11,7 +11,7 @@ class AutoscaleSettingPredictive {
   /// Creates a new [AutoscaleSettingPredictive].
   /// [lookAheadTime] Specifies the amount of time by which instances are launched in advance. It must be between `PT1M` and `PT1H` in ISO 8601 format.
   /// [scaleMode] Specifies the predictive scale mode. Possible values are `Enabled` or `ForecastOnly`.
-  AutoscaleSettingPredictive({
+  const AutoscaleSettingPredictive({
     this.lookAheadTime,
     required this.scaleMode,
   });

@@ -13,7 +13,7 @@ class CompoundAssessmentProperties {
   /// Creates a new [CompoundAssessmentProperties].
   /// [fallbackMachineAssessmentArmId] Fallback machine assessment ARM ID.
   /// [targetAssessmentArmIds] ARM IDs of the target assessments.
-  CompoundAssessmentProperties({
+  const CompoundAssessmentProperties({
     this.fallbackMachineAssessmentArmId,
     required this.targetAssessmentArmIds,
   });

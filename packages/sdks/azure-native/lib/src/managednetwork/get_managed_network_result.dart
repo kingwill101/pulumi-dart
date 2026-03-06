@@ -37,7 +37,7 @@ class GetManagedNetworkResult {
   /// [scope] The collection of management groups, subscriptions, virtual networks, and subnets by the Managed Network. This is a read-only property that is reflective of all ScopeAssignments for this Managed Network
   /// [tags] Resource tags
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetManagedNetworkResult({
+  const GetManagedNetworkResult({
     required this.azureApiVersion,
     required this.connectivity,
     required this.etag,

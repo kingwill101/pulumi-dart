@@ -11,7 +11,7 @@ class LaunchTemplateInstanceRequirementsMemoryMib {
   /// Creates a new [LaunchTemplateInstanceRequirementsMemoryMib].
   /// [max] Maximum.
   /// [min] Minimum.
-  LaunchTemplateInstanceRequirementsMemoryMib({
+  const LaunchTemplateInstanceRequirementsMemoryMib({
     this.max,
     required this.min,
   });

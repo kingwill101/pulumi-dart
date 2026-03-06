@@ -43,7 +43,7 @@ class GetAttributeResult {
   /// [resourceAccessSpec] Optional. Specified when applied to a resource (eg: Cloud Storage bucket, BigQuery dataset, BigQuery table).
   /// [uid] System generated globally unique ID for the DataAttribute. This ID will be different if the DataAttribute is deleted and re-created with the same name.
   /// [updateTime] The time when the DataAttribute was last updated.
-  GetAttributeResult({
+  const GetAttributeResult({
     required this.attributeCount,
     required this.createTime,
     required this.dataAccessSpec,

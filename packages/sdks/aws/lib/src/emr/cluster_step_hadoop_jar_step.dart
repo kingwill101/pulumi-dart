@@ -17,7 +17,7 @@ class ClusterStepHadoopJarStep {
   /// [jar] Path to a JAR file run during the step.
   /// [mainClass] Name of the main class in the specified Java file. If not specified, the JAR file should specify a Main-Class in its manifest file.
   /// [properties] Key-Value map of Java properties that are set when the step runs. You can use these properties to pass key value pairs to your main function.
-  ClusterStepHadoopJarStep({
+  const ClusterStepHadoopJarStep({
     this.args,
     required this.jar,
     this.mainClass,

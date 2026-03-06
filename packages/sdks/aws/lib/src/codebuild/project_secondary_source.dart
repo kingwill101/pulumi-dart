@@ -50,7 +50,7 @@ class ProjectSecondarySource {
   /// [reportBuildStatus] Whether to report the status of a build's start and finish to your source provider.
   /// [sourceIdentifier] An identifier for this project source. The identifier can only contain alphanumeric
   /// [type] Type of repository that contains the source code to be built. Valid values: `BITBUCKET`,
-  ProjectSecondarySource({
+  const ProjectSecondarySource({
     this.auth,
     this.buildStatusConfig,
     this.buildspec,

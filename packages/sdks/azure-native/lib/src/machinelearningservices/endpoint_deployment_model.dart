@@ -17,7 +17,7 @@ class EndpointDeploymentModel {
   /// [name] Model name.
   /// [source] Optional. Deployment model source ARM resource ID.
   /// [version] Model version.
-  EndpointDeploymentModel({
+  const EndpointDeploymentModel({
     this.format,
     this.name,
     this.source,

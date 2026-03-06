@@ -27,7 +27,7 @@ class AvailabilityGroupStateResponse {
   /// [operationalStateDescription] Current operational state of the availability group replica
   /// [recoveryHealthDescription] Recovery health of the availability group replica.
   /// [synchronizationHealthDescription] Reflects a rollup of the database synchronization state (synchronization_state) of all joined availability databases (also known as replicas) and the availability mode of the replica (synchronous-commit or asynchronous-commit mode). The rollup will reflect the least healthy accumulated state the databases on the replica.
-  AvailabilityGroupStateResponse({
+  const AvailabilityGroupStateResponse({
     required this.availabilityGroupReplicaRole,
     required this.connectedStateDescription,
     required this.lastConnectErrorDescription,

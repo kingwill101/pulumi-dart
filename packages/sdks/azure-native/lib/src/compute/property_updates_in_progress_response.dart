@@ -9,7 +9,7 @@ class PropertyUpdatesInProgressResponse {
 
   /// Creates a new [PropertyUpdatesInProgressResponse].
   /// [targetTier] The target performance tier of the disk if a tier change operation is in progress.
-  PropertyUpdatesInProgressResponse({
+  const PropertyUpdatesInProgressResponse({
     this.targetTier,
   });
 

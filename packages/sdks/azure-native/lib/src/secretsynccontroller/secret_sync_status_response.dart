@@ -13,7 +13,7 @@ class SecretSyncStatusResponse {
   /// Creates a new [SecretSyncStatusResponse].
   /// [conditions] Conditions represent the status of the secret create and update processes. The status can be True, False, or Unknown with various reasons and messages explaining the state. Examples of reasons include CreateSucceeded, ProviderError, InvalidClusterSecretLabelError, InvalidClusterSecretAnnotationError, UnknownError, ValidatingAdmissionPolicyCheckFailed, UserInputValidationFailed, ControllerSpcError, ControllerInternalError, NoValueChange, and ValueChangeOrForceUpdateDetected.
   /// [lastSuccessfulSyncTime] LastSuccessfulSyncTime represents the last time the secret was retrieved from the Provider and updated.
-  SecretSyncStatusResponse({
+  const SecretSyncStatusResponse({
     required this.conditions,
     required this.lastSuccessfulSyncTime,
   });

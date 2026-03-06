@@ -8,7 +8,7 @@ class V2modelsIntentClosingSettingClosingResponseMessageGroupMessageCustomPayloa
 
   /// Creates a new [V2modelsIntentClosingSettingClosingResponseMessageGroupMessageCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentClosingSettingClosingResponseMessageGroupMessageCustomPayload({
+  const V2modelsIntentClosingSettingClosingResponseMessageGroupMessageCustomPayload({
     required this.value,
   });
 

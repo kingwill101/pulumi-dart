@@ -15,7 +15,7 @@ class RegionSettingResponse {
   /// [customsubdomain] Maps the region to the regional custom subdomain.
   /// [name] Name of the region.
   /// [value] A value for priority or weighted routing methods.
-  RegionSettingResponse({
+  const RegionSettingResponse({
     this.customsubdomain,
     this.name,
     this.value,

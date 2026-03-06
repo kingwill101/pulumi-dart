@@ -9,7 +9,7 @@ class WorkspaceCapping {
 
   /// Creates a new [WorkspaceCapping].
   /// [dailyQuotaGb] The workspace daily quota for ingestion.
-  WorkspaceCapping({
+  const WorkspaceCapping({
     this.dailyQuotaGb,
   });
 

@@ -35,7 +35,7 @@ class GetModelResult {
   /// [trainExampleCount] Number of examples (sentence pairs) used to train the model.
   /// [updateTime] Timestamp when this model was last updated.
   /// [validateExampleCount] Number of examples (sentence pairs) used to validate the model.
-  GetModelResult({
+  const GetModelResult({
     required this.createTime,
     required this.dataset,
     required this.displayName,

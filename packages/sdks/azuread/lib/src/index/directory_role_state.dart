@@ -20,7 +20,7 @@ class DirectoryRoleState {
   /// [displayName] The display name of the directory role to activate. Changing this forces a new resource to be created.
   /// [objectId] The object ID of the directory role.
   /// [templateId] The object ID of the role template from which to activate the directory role. Changing this forces a new resource to be created.
-  DirectoryRoleState({
+  const DirectoryRoleState({
     this.description,
     this.displayName,
     this.objectId,

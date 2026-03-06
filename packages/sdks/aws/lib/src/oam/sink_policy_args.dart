@@ -18,7 +18,7 @@ class SinkPolicyArgs {
   /// [policy] JSON policy to use. If you are updating an existing policy, the entire existing policy is replaced by what you specify here.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sinkIdentifier] ARN of the sink to attach this policy to.
-  SinkPolicyArgs({
+  const SinkPolicyArgs({
     required this.policy,
     this.region,
     required this.sinkIdentifier,

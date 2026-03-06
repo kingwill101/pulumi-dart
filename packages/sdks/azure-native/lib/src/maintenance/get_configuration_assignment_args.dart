@@ -24,7 +24,7 @@ class GetConfigurationAssignmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Resource parent name
   /// [resourceType] Resource parent type
-  GetConfigurationAssignmentArgs({
+  const GetConfigurationAssignmentArgs({
     required this.configurationAssignmentName,
     required this.providerName,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class GetRegionUrlMapComputeV1Args {
   /// [project] Optional.
   /// [region] Required.
   /// [urlMap] Required.
-  GetRegionUrlMapComputeV1Args({
+  const GetRegionUrlMapComputeV1Args({
     this.project,
     required this.region,
     required this.urlMap,

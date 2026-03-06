@@ -31,7 +31,7 @@ class StudioApplicationState {
   /// [status] The status of the Application.
   /// [templateId] The id of the template.
   /// [variables] The variables of the application.
-  StudioApplicationState({
+  const StudioApplicationState({
     this.applicationName,
     this.areaId,
     this.configuration,

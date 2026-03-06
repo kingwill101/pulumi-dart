@@ -18,7 +18,7 @@ class GetBmcKeySetArgs {
   /// [bmcKeySetName] The name of the baseboard management controller key set.
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBmcKeySetArgs({
+  const GetBmcKeySetArgs({
     required this.bmcKeySetName,
     required this.clusterName,
     required this.resourceGroupName,

@@ -12,7 +12,7 @@ class WorkloadMetadataConfigResponseContainerV1beta1 {
   /// Creates a new [WorkloadMetadataConfigResponseContainerV1beta1].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node pool.
   /// [nodeMetadata] NodeMetadata is the configuration for how to expose metadata to the workloads running on the node.
-  WorkloadMetadataConfigResponseContainerV1beta1({
+  const WorkloadMetadataConfigResponseContainerV1beta1({
     required this.mode,
     required this.nodeMetadata,
   });

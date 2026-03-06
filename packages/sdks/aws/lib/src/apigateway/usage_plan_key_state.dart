@@ -24,7 +24,7 @@ class UsagePlanKeyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [usagePlanId] Id of the usage plan resource representing to associate the key to.
   /// [value] Value of a usage plan key.
-  UsagePlanKeyState({
+  const UsagePlanKeyState({
     this.keyId,
     this.keyType,
     this.name,

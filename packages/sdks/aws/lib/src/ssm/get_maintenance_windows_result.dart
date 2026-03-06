@@ -17,7 +17,7 @@ class GetMaintenanceWindowsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] List of window IDs of the matched SSM maintenance windows.
   /// [region] Required.
-  GetMaintenanceWindowsResult({
+  const GetMaintenanceWindowsResult({
     this.filters,
     required this.id,
     required this.ids,

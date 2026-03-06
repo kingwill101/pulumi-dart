@@ -12,7 +12,7 @@ class BucketTransferAccelerationState {
   /// Creates a new [BucketTransferAccelerationState].
   /// [bucket] The name of the Bucket.
   /// [enabled] Specifies whether to enable transfer acceleration for the bucket. Valid values: true: transfer acceleration for the bucket is enabled. false: transfer acceleration for the bucket is disabled.
-  BucketTransferAccelerationState({
+  const BucketTransferAccelerationState({
     this.bucket,
     this.enabled,
   });

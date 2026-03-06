@@ -15,7 +15,7 @@ class RuntimeTemplateSoftwareConfigPostStartupScriptConfig {
   /// [postStartupScript] Post startup script to run after runtime is started.
   /// [postStartupScriptBehavior] Post startup script behavior that defines download and execution behavior.
   /// [postStartupScriptUrl] Post startup script url to download. Example: https://bucket/script.sh.
-  RuntimeTemplateSoftwareConfigPostStartupScriptConfig({
+  const RuntimeTemplateSoftwareConfigPostStartupScriptConfig({
     this.postStartupScript,
     this.postStartupScriptBehavior,
     this.postStartupScriptUrl,

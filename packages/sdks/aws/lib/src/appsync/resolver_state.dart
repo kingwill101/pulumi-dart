@@ -55,7 +55,7 @@ class ResolverState {
   /// [runtime] Describes a runtime used by an AWS AppSync pipeline resolver or AWS AppSync function. Specifies the name and version of the runtime to use. Note that if a runtime is specified, code must also be specified. See Runtime.
   /// [syncConfig] Describes a Sync configuration for a resolver. See Sync Config.
   /// [type] Type name from the schema defined in the GraphQL API.
-  ResolverState({
+  const ResolverState({
     this.apiId,
     this.arn,
     this.cachingConfig,

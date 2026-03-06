@@ -27,7 +27,7 @@ class FlowState {
   /// [name] The name of the flow. The name must be unique in an Alibaba Cloud account.
   /// [roleArn] The ARN of the specified RAM role that Serverless Workflow uses to assume the role when Serverless Workflow executes a flow.
   /// [type] The type of the flow. Valid values are `FDL` or `DEFAULT`.
-  FlowState({
+  const FlowState({
     this.definition,
     this.description,
     this.flowId,

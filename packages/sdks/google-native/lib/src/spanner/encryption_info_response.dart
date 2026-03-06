@@ -16,7 +16,7 @@ class EncryptionInfoResponse {
   /// [encryptionStatus] If present, the status of a recent encrypt/decrypt call on underlying data for this database or backup. Regardless of status, data is always encrypted at rest.
   /// [encryptionType] The type of encryption.
   /// [kmsKeyVersion] A Cloud KMS key version that is being used to protect the database or backup.
-  EncryptionInfoResponse({
+  const EncryptionInfoResponse({
     required this.encryptionStatus,
     required this.encryptionType,
     required this.kmsKeyVersion,

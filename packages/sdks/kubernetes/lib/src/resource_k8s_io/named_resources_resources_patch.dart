@@ -10,7 +10,7 @@ class NamedResourcesResourcesPatch {
 
   /// Creates a new [NamedResourcesResourcesPatch].
   /// [instances] The list of all individual resources instances currently available.
-  NamedResourcesResourcesPatch({
+  const NamedResourcesResourcesPatch({
     this.instances,
   });
 

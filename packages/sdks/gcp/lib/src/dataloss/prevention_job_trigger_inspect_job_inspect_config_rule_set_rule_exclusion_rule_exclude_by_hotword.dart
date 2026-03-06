@@ -19,7 +19,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExclude
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword].
   /// [hotwordRegex] Regular expression pattern defining what qualifies as a hotword.
   /// [proximity] Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword({
     this.hotwordRegex,
     this.proximity,
   });

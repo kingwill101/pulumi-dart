@@ -37,7 +37,7 @@ class SapHanaTableDatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [table] The table name of SAP HANA. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  SapHanaTableDatasetResponse({
+  const SapHanaTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

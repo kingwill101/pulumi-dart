@@ -13,7 +13,7 @@ class PublicKey {
   /// Creates a new [PublicKey].
   /// [format] The format of the public key.
   /// [key] A public key. The padding and encoding must match with the `KeyFormat` value specified for the `format` field.
-  PublicKey({
+  const PublicKey({
     required this.format,
     required this.key,
   });

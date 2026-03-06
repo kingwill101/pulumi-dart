@@ -69,7 +69,7 @@ class StoredIscsiVolumeState {
   /// [volumeSizeInBytes] The size of the data stored on the volume in bytes.
   /// [volumeStatus] indicates the state of the storage volume.
   /// [volumeType] indicates the type of the volume.
-  StoredIscsiVolumeState({
+  const StoredIscsiVolumeState({
     this.arn,
     this.chapEnabled,
     this.diskId,

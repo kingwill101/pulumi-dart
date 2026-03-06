@@ -15,7 +15,7 @@ class RoutineState {
   /// [createTime] The time when the routine was created.
   /// [description] The routine name, which must be unique in the same account.
   /// [name] Routine Name
-  RoutineState({
+  const RoutineState({
     this.createTime,
     this.description,
     this.name,

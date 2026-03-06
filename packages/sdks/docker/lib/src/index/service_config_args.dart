@@ -15,7 +15,7 @@ class ServiceConfigArgs {
   /// Creates a new [ServiceConfigArgs].
   /// [data] Base64-url-safe-encoded config data
   /// [name] User-defined name of the config
-  ServiceConfigArgs({
+  const ServiceConfigArgs({
     required this.data,
     this.name,
   });

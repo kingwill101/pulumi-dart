@@ -12,7 +12,7 @@ class JustificationResponse {
   /// Creates a new [JustificationResponse].
   /// [details] Additional details on why this justification was chosen.
   /// [justificationType] The justification type for this vulnerability.
-  JustificationResponse({
+  const JustificationResponse({
     required this.details,
     required this.justificationType,
   });

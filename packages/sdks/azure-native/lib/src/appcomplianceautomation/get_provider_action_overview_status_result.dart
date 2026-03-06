@@ -10,7 +10,7 @@ class GetProviderActionOverviewStatusResult {
 
   /// Creates a new [GetProviderActionOverviewStatusResult].
   /// [statusList] List of different status items.
-  GetProviderActionOverviewStatusResult({
+  const GetProviderActionOverviewStatusResult({
     this.statusList,
   });
 

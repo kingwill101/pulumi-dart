@@ -24,7 +24,7 @@ class GetDatabaseArgs {
   /// [filter] An OData filter expression that filters elements in the collection.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetDatabaseArgs({
+  const GetDatabaseArgs({
     required this.databaseName,
     this.expand,
     this.filter,

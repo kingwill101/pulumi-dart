@@ -125,7 +125,7 @@ class GetRegionSnapshotResult {
   /// [storageBytesStatus] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
   /// [storageLocations] Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
   /// [userLicenses] A list of user provided licenses represented by a list of URLs to the license resource.
-  GetRegionSnapshotResult({
+  const GetRegionSnapshotResult({
     required this.architecture,
     required this.autoCreated,
     required this.chainName,

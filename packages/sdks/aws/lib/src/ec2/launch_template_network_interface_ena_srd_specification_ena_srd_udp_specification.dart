@@ -10,7 +10,7 @@ class LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification {
 
   /// Creates a new [LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification].
   /// [enaSrdUdpEnabled] Whether to enable UDP traffic optimization through ENA Express. Requires `ena_srd_enabled` to be `true`.
-  LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification({
+  const LaunchTemplateNetworkInterfaceEnaSrdSpecificationEnaSrdUdpSpecification({
     this.enaSrdUdpEnabled,
   });
 

@@ -46,7 +46,7 @@ class GetSubnetIdsV2Result {
   /// [subnetpoolId] Optional.
   /// [tags] Optional.
   /// [tenantId] Optional.
-  GetSubnetIdsV2Result({
+  const GetSubnetIdsV2Result({
     this.cidr,
     this.description,
     this.dhcpEnabled,

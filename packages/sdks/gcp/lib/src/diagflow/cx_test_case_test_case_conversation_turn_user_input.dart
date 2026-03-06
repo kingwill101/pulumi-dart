@@ -19,7 +19,7 @@ class CxTestCaseTestCaseConversationTurnUserInput {
   /// [injectedParameters] Parameters that need to be injected into the conversation during intent detection.
   /// [input] User input. Supports text input, event input, dtmf input in the test case.
   /// [isWebhookEnabled] If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
-  CxTestCaseTestCaseConversationTurnUserInput({
+  const CxTestCaseTestCaseConversationTurnUserInput({
     this.enableSentimentAnalysis,
     this.injectedParameters,
     this.input,

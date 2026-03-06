@@ -36,7 +36,7 @@ class GoogleCloudAiplatformV1beta1SavedQueryResponse {
   /// [problemType] Problem type of the SavedQuery. Allowed values: * IMAGE_CLASSIFICATION_SINGLE_LABEL * IMAGE_CLASSIFICATION_MULTI_LABEL * IMAGE_BOUNDING_POLY * IMAGE_BOUNDING_BOX * TEXT_CLASSIFICATION_SINGLE_LABEL * TEXT_CLASSIFICATION_MULTI_LABEL * TEXT_EXTRACTION * TEXT_SENTIMENT * VIDEO_CLASSIFICATION * VIDEO_OBJECT_TRACKING
   /// [supportAutomlTraining] If the Annotations belonging to the SavedQuery can be used for AutoML training.
   /// [updateTime] Timestamp when SavedQuery was last updated.
-  GoogleCloudAiplatformV1beta1SavedQueryResponse({
+  const GoogleCloudAiplatformV1beta1SavedQueryResponse({
     required this.annotationFilter,
     required this.annotationSpecCount,
     required this.createTime,

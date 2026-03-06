@@ -8,7 +8,7 @@ class DomainDevicesInterfaceVirtualPortParamsMidoNet {
 
   /// Creates a new [DomainDevicesInterfaceVirtualPortParamsMidoNet].
   /// [interfaceId] Sets the interface ID for the MidoNet virtual port parameters.
-  DomainDevicesInterfaceVirtualPortParamsMidoNet({
+  const DomainDevicesInterfaceVirtualPortParamsMidoNet({
     this.interfaceId,
   });
 

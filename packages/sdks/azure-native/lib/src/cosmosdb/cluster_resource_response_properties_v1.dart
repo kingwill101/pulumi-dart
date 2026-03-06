@@ -41,7 +41,7 @@ class ClusterResourceResponsePropertiesV1 {
   /// [provisioningState] The status of the resource at the time the operation was called.
   /// [replicationFactor] Number of copies of data maintained by the cluster
   /// [subnetId] Resource id of a subnet that this cluster's management service should have its network interface attached to. The subnet must be routable to all subnets that will be delegated to data centers. The resource id must be of the form '/subscriptions/&lt;subscription id&gt;/resourceGroups/&lt;resource group&gt;/providers/Microsoft.Network/virtualNetworks/&lt;virtual network&gt;/subnets/&lt;subnet&gt;'
-  ClusterResourceResponsePropertiesV1({
+  const ClusterResourceResponsePropertiesV1({
     this.allocationState,
     this.availabilityZone,
     this.clusterType,

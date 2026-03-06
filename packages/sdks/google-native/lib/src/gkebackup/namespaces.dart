@@ -9,7 +9,7 @@ class Namespaces {
 
   /// Creates a new [Namespaces].
   /// [namespaces] Optional. A list of Kubernetes Namespaces
-  Namespaces({
+  const Namespaces({
     this.namespaces,
   });
 

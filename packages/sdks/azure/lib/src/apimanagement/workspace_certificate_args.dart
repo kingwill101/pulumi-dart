@@ -31,7 +31,7 @@ class WorkspaceCertificateArgs {
   /// [name] Specifies the name of the API Management Workspace Certificate. Changing this forces a new resource to be created.
   /// [password] Specifies the password used to access the `certificate_data_base64`.
   /// [userAssignedIdentityClientId] Specifies the client ID of user-assigned identity to be used for accessing the `key_vault_secret_id`.
-  WorkspaceCertificateArgs({
+  const WorkspaceCertificateArgs({
     required this.apiManagementWorkspaceId,
     this.certificateDataBase64,
     this.keyVaultSecretId,

@@ -14,7 +14,7 @@ class JsonReadSettings {
   /// Creates a new [JsonReadSettings].
   /// [compressionProperties] Compression settings.
   /// [type] The read setting type.
-  JsonReadSettings({
+  const JsonReadSettings({
     this.compressionProperties,
     required this.type,
   });

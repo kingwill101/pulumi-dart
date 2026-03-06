@@ -16,7 +16,7 @@ class ResourceResponse {
   /// [contentHash] The hash of the resource content. E.g., the Docker digest.
   /// [name] The name of the resource. E.g., the name of a Docker image - "Debian".
   /// [uri] The unique URI of the resource. E.g., "https://gcr.io/project/image@sha256:foo" for a Docker image.
-  ResourceResponse({
+  const ResourceResponse({
     required this.contentHash,
     required this.name,
     required this.uri,

@@ -25,7 +25,7 @@ class GetDocumentResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetDocumentResult({
+  const GetDocumentResult({
     required this.arn,
     required this.content,
     this.documentFormat,

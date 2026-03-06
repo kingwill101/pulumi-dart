@@ -15,7 +15,7 @@ class ApplicationUrlDispatchRulesState {
   /// Creates a new [ApplicationUrlDispatchRulesState].
   /// [dispatchRules] Rules to match an HTTP request and dispatch that request to a service.
   /// [project] The ID of the project in which the resource belongs.
-  ApplicationUrlDispatchRulesState({
+  const ApplicationUrlDispatchRulesState({
     this.dispatchRules,
     this.project,
   });

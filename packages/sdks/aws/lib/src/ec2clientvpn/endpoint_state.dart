@@ -86,7 +86,7 @@ class EndpointState {
   /// [transportProtocol] The transport protocol to be used by the VPN session. Default value is `udp`.
   /// [vpcId] The ID of the VPC to associate with the Client VPN endpoint. If no security group IDs are specified in the request, the default security group for the VPC is applied.
   /// [vpnPort] The port number for the Client VPN endpoint. Valid values are `443` and `1194`. Default value is `443`.
-  EndpointState({
+  const EndpointState({
     this.arn,
     this.authenticationOptions,
     this.clientCidrBlock,

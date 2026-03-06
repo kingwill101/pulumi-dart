@@ -23,7 +23,7 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1 {
   /// [locationHint] An opaque location hint used to place the allocation close to other resources. This field is for use by internal tools that use the public API.
   /// [machineType] Specifies type of machine (name only) which has fixed number of vCPUs and fixed amount of memory. This also includes specifying custom machine type following custom-NUMBER_OF_CPUS-AMOUNT_OF_MEMORY pattern.
   /// [minCpuPlatform] Minimum cpu platform the reservation.
-  AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1({
+  const AllocationSpecificSKUAllocationReservedInstancePropertiesComputeV1({
     this.guestAccelerators,
     this.localSsds,
     this.locationHint,

@@ -16,7 +16,7 @@ class AzureCoreNFVIDetailsResponse {
   /// [location] Location of the Azure core.
   /// [name] Name of the nfvi.
   /// [nfviType] The NFVI type.
-  AzureCoreNFVIDetailsResponse({
+  const AzureCoreNFVIDetailsResponse({
     this.location,
     this.name,
     required this.nfviType,

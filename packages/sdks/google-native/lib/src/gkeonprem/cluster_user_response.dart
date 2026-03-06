@@ -9,7 +9,7 @@ class ClusterUserResponse {
 
   /// Creates a new [ClusterUserResponse].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  ClusterUserResponse({
+  const ClusterUserResponse({
     required this.username,
   });
 

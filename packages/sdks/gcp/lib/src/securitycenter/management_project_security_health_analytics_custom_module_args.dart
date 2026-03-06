@@ -32,7 +32,7 @@ class ManagementProjectSecurityHealthAnalyticsCustomModuleArgs {
   /// [enablementState] The enablement state of the custom module.
   /// [location] Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   /// [project] The ID of the project in which the resource belongs.
-  ManagementProjectSecurityHealthAnalyticsCustomModuleArgs({
+  const ManagementProjectSecurityHealthAnalyticsCustomModuleArgs({
     this.customConfig,
     this.displayName,
     this.enablementState,

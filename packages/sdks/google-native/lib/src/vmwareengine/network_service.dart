@@ -9,7 +9,7 @@ class NetworkService {
 
   /// Creates a new [NetworkService].
   /// [enabled] True if the service is enabled; false otherwise.
-  NetworkService({
+  const NetworkService({
     this.enabled,
   });
 

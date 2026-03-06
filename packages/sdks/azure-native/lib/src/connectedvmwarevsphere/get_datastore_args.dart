@@ -15,7 +15,7 @@ class GetDatastoreArgs {
   /// Creates a new [GetDatastoreArgs].
   /// [datastoreName] Name of the datastore.
   /// [resourceGroupName] The Resource Group Name.
-  GetDatastoreArgs({
+  const GetDatastoreArgs({
     required this.datastoreName,
     required this.resourceGroupName,
   });

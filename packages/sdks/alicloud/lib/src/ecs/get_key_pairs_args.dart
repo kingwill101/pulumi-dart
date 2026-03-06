@@ -27,7 +27,7 @@ class GetKeyPairsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The Id of resource group which the key pair belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  GetKeyPairsArgs({
+  const GetKeyPairsArgs({
     this.fingerPrint,
     this.ids,
     this.nameRegex,

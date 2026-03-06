@@ -9,7 +9,7 @@ class ScheduledQueryLastRunSummaryErrorReportLocation {
 
   /// Creates a new [ScheduledQueryLastRunSummaryErrorReportLocation].
   /// [s3ReportLocations] S3 location where error reports are written.
-  ScheduledQueryLastRunSummaryErrorReportLocation({
+  const ScheduledQueryLastRunSummaryErrorReportLocation({
     this.s3ReportLocations,
   });
 

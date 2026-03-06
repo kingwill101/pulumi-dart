@@ -20,7 +20,7 @@ class RegistryPrivateEndpointConnectionProperties {
   /// [privateEndpoint] The PE network resource that is linked to this PE connection.
   /// [provisioningState] One of null, "Succeeded", "Provisioning", "Failed". While not approved, it's null.
   /// [registryPrivateLinkServiceConnectionState] The connection state.
-  RegistryPrivateEndpointConnectionProperties({
+  const RegistryPrivateEndpointConnectionProperties({
     this.groupIds,
     this.privateEndpoint,
     this.provisioningState,

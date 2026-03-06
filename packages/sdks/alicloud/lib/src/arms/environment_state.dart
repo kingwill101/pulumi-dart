@@ -42,7 +42,7 @@ class EnvironmentState {
   /// [managedType] Hosting type:
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
-  EnvironmentState({
+  const EnvironmentState({
     this.aliyunLang,
     this.bindResourceId,
     this.dropMetrics,

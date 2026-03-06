@@ -14,7 +14,7 @@ class Oauth2JwtBearer {
   /// Creates a new [Oauth2JwtBearer].
   /// [clientKey] Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*/secrets/*/versions/*`.
   /// [jwtClaims] JwtClaims providers fields to generate the token.
-  Oauth2JwtBearer({
+  const Oauth2JwtBearer({
     this.clientKey,
     this.jwtClaims,
   });

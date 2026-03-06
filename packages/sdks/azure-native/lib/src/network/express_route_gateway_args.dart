@@ -40,7 +40,7 @@ class ExpressRouteGatewayArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
   /// [virtualHub] The Virtual Hub where the ExpressRoute gateway is or will be deployed.
-  ExpressRouteGatewayArgs({
+  const ExpressRouteGatewayArgs({
     this.allowNonVirtualWanTraffic,
     this.autoScaleConfiguration,
     this.expressRouteConnections,

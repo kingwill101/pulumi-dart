@@ -9,7 +9,7 @@ class GetApplicationInfosDimension {
   /// Creates a new [GetApplicationInfosDimension].
   /// [key] Optional.
   /// [value] Optional.
-  GetApplicationInfosDimension({
+  const GetApplicationInfosDimension({
     this.key,
     this.value,
   });

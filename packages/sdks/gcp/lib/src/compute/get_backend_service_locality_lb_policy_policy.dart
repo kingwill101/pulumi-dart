@@ -10,7 +10,7 @@ class GetBackendServiceLocalityLbPolicyPolicy {
 
   /// Creates a new [GetBackendServiceLocalityLbPolicyPolicy].
   /// [name] The name of the Backend Service.
-  GetBackendServiceLocalityLbPolicyPolicy({
+  const GetBackendServiceLocalityLbPolicyPolicy({
     required this.name,
   });
 

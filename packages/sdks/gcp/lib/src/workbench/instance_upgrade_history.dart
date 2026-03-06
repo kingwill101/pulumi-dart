@@ -34,7 +34,7 @@ class InstanceUpgradeHistory {
   /// [targetVersion] Optional. Target VM Version, like m63.
   /// [version] Optional. The version of the workbench instance before this upgrade.
   /// [vmImage] Optional. The VM image before this instance upgrade.
-  InstanceUpgradeHistory({
+  const InstanceUpgradeHistory({
     this.action,
     this.containerImage,
     this.createTime,

@@ -21,7 +21,7 @@ class GetContextArgs {
   /// [project] Optional.
   /// [sessionId] Required.
   /// [userId] Required.
-  GetContextArgs({
+  const GetContextArgs({
     required this.contextId,
     required this.environmentId,
     required this.location,

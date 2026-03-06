@@ -25,7 +25,7 @@ class Ec2VolumeArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  Ec2VolumeArgs({
+  const Ec2VolumeArgs({
     this.location,
     this.name,
     this.properties,

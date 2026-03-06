@@ -10,7 +10,7 @@ class IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket {
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket].
   /// [bucketName] Required.
   /// [prefix] The object key to use.
-  IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket({
+  const IngestionDestinationDestinationConfigurationAuditLogDestinationS3Bucket({
     required this.bucketName,
     this.prefix,
   });

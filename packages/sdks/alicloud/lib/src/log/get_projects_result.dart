@@ -22,7 +22,7 @@ class GetProjectsResult {
   /// [outputFile] Optional.
   /// [projects] Required.
   /// [status] Optional.
-  GetProjectsResult({
+  const GetProjectsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

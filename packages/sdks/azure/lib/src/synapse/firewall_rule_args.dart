@@ -25,7 +25,7 @@ class FirewallRuleArgs {
   /// [name] The Name of the firewall rule. Changing this forces a new resource to be created.
   /// [startIpAddress] The starting IP address to allow through the firewall for this rule.
   /// [synapseWorkspaceId] The ID of the Synapse Workspace on which to create the Firewall Rule. Changing this forces a new resource to be created.
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     required this.endIpAddress,
     this.name,
     required this.startIpAddress,

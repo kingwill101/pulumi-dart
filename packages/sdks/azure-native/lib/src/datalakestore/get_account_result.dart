@@ -86,7 +86,7 @@ class GetAccountResult {
   /// [trustedIdProviders] The list of trusted identity providers associated with this Data Lake Store account.
   /// [type] The resource type.
   /// [virtualNetworkRules] The list of virtual network rules associated with this Data Lake Store account.
-  GetAccountResult({
+  const GetAccountResult({
     required this.accountId,
     required this.azureApiVersion,
     required this.creationTime,

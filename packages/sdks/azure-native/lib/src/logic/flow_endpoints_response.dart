@@ -13,7 +13,7 @@ class FlowEndpointsResponse {
   /// Creates a new [FlowEndpointsResponse].
   /// [accessEndpointIpAddresses] The access endpoint ip address.
   /// [outgoingIpAddresses] The outgoing ip address.
-  FlowEndpointsResponse({
+  const FlowEndpointsResponse({
     this.accessEndpointIpAddresses,
     this.outgoingIpAddresses,
   });

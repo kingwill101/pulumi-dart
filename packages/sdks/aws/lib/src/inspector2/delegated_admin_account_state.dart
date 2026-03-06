@@ -15,7 +15,7 @@ class DelegatedAdminAccountState {
   /// [accountId] Account to enable as delegated admin account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [relationshipStatus] Status of this delegated admin account.
-  DelegatedAdminAccountState({
+  const DelegatedAdminAccountState({
     this.accountId,
     this.region,
     this.relationshipStatus,

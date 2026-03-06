@@ -52,7 +52,7 @@ class ApiArgs {
   /// [termsOfService] Terms of service for the API.
   /// [title] API title.
   /// [workspaceName] The name of the workspace.
-  ApiArgs({
+  const ApiArgs({
     this.apiName,
     this.contacts,
     this.customProperties,

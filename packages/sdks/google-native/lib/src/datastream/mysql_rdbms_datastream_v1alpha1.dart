@@ -10,7 +10,7 @@ class MysqlRdbmsDatastreamV1alpha1 {
 
   /// Creates a new [MysqlRdbmsDatastreamV1alpha1].
   /// [mysqlDatabases] Mysql databases on the server
-  MysqlRdbmsDatastreamV1alpha1({
+  const MysqlRdbmsDatastreamV1alpha1({
     this.mysqlDatabases,
   });
 

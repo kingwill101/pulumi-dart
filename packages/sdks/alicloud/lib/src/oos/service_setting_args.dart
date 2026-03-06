@@ -24,7 +24,7 @@ class ServiceSettingArgs {
   /// [deliveryOssKeyPrefix] The Directory of the OSS bucket. **NOTE:** When the `delivery_oss_enabled` is `true`, The `delivery_oss_bucket_name` is valid.
   /// [deliverySlsEnabled] Is the execution record function to SLS delivery Template turned on.
   /// [deliverySlsProjectName] The name of SLS  Project. **NOTE:** When the `delivery_sls_enabled` is `true`, The `delivery_sls_project_name` is valid.
-  ServiceSettingArgs({
+  const ServiceSettingArgs({
     this.deliveryOssBucketName,
     this.deliveryOssEnabled,
     this.deliveryOssKeyPrefix,

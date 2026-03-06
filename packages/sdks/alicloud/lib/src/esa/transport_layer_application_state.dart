@@ -31,7 +31,7 @@ class TransportLayerApplicationState {
   /// [rules] The list of forwarding rules. Rule details. For each rule, other parameters are required except comments. See `rules` below.
   /// [siteId] Site ID.
   /// [status] Status of the transport layer application, modification and deletion are not allowed.
-  TransportLayerApplicationState({
+  const TransportLayerApplicationState({
     this.applicationId,
     this.crossBorderOptimization,
     this.ipAccessRule,

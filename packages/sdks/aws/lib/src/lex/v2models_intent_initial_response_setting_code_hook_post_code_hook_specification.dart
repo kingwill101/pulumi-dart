@@ -41,7 +41,7 @@ class V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecification {
   /// [timeoutConditional] Configuration block for conditional branches to evaluate if the code hook times out. See `timeout_conditional`.
   /// [timeoutNextStep] Configuration block for the next step that the bot runs when the code hook times out. See `timeout_next_step`.
   /// [timeoutResponse] Configuration block for a list of message groups that Amazon Lex uses to respond the user input. See `timeout_response`.
-  V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecification({
+  const V2modelsIntentInitialResponseSettingCodeHookPostCodeHookSpecification({
     this.failureConditional,
     this.failureNextStep,
     this.failureResponse,

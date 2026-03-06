@@ -12,7 +12,7 @@ class RangeInfoResponse {
   /// Creates a new [RangeInfoResponse].
   /// [rangeName] [Output only] Name of a range.
   /// [utilization] [Output only] The utilization of the range.
-  RangeInfoResponse({
+  const RangeInfoResponse({
     required this.rangeName,
     required this.utilization,
   });

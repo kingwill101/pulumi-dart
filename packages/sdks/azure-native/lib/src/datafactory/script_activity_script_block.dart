@@ -16,7 +16,7 @@ class ScriptActivityScriptBlock {
   /// [parameters] Array of script parameters. Type: array.
   /// [text] The query text. Type: string (or Expression with resultType string).
   /// [type] The type of the query. Please refer to the ScriptType for valid options. Type: string (or Expression with resultType string).
-  ScriptActivityScriptBlock({
+  const ScriptActivityScriptBlock({
     this.parameters,
     required this.text,
     required this.type,

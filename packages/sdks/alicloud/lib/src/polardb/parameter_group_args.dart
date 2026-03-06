@@ -40,7 +40,7 @@ class ParameterGroupArgs {
   /// [name] . Field 'name' has been deprecated from provider version 1.263.0. New field 'parameter_group_name' instead.
   /// [parameterGroupName] The name of the parameter template. The name must meet the following requirements:
   /// [parameters] Details about the parameters. See `parameters` below.
-  ParameterGroupArgs({
+  const ParameterGroupArgs({
     required this.dbType,
     required this.dbVersion,
     this.description,

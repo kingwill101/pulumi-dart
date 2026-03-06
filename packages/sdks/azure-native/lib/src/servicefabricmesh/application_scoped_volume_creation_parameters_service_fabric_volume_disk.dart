@@ -16,7 +16,7 @@ class ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk {
   /// [description] User readable description of the volume.
   /// [kind] Specifies the application-scoped volume kind.
   /// [sizeDisk] Volume size
-  ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk({
+  const ApplicationScopedVolumeCreationParametersServiceFabricVolumeDisk({
     this.description,
     required this.kind,
     required this.sizeDisk,

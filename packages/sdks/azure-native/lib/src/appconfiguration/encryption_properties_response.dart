@@ -10,7 +10,7 @@ class EncryptionPropertiesResponse {
 
   /// Creates a new [EncryptionPropertiesResponse].
   /// [keyVaultProperties] Key vault properties.
-  EncryptionPropertiesResponse({
+  const EncryptionPropertiesResponse({
     this.keyVaultProperties,
   });
 

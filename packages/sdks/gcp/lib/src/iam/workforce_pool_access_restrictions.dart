@@ -15,7 +15,7 @@ class WorkforcePoolAccessRestrictions {
   /// Creates a new [WorkforcePoolAccessRestrictions].
   /// [allowedServices] Services allowed for web sign-in with the workforce pool.
   /// [disableProgrammaticSignin] Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
-  WorkforcePoolAccessRestrictions({
+  const WorkforcePoolAccessRestrictions({
     this.allowedServices,
     this.disableProgrammaticSignin,
   });

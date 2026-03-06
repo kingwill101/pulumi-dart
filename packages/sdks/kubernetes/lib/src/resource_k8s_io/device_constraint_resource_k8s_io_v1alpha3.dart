@@ -16,7 +16,7 @@ class DeviceConstraintResourceK8sIoV1alpha3 {
   /// Creates a new [DeviceConstraintResourceK8sIoV1alpha3].
   /// [matchAttribute] MatchAttribute requires that all devices in question have this attribute and that its type and value are the same across those devices.
   /// [requests] Requests is a list of the one or more requests in this claim which must co-satisfy this constraint. If a request is fulfilled by multiple devices, then all of the devices must satisfy the constraint. If this is not specified, this constraint applies to all requests in this claim.
-  DeviceConstraintResourceK8sIoV1alpha3({
+  const DeviceConstraintResourceK8sIoV1alpha3({
     this.matchAttribute,
     this.requests,
   });

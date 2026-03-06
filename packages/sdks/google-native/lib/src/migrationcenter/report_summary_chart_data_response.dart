@@ -10,7 +10,7 @@ class ReportSummaryChartDataResponse {
 
   /// Creates a new [ReportSummaryChartDataResponse].
   /// [dataPoints] Each data point in the chart is represented as a name-value pair with the name being the x-axis label, and the value being the y-axis value.
-  ReportSummaryChartDataResponse({
+  const ReportSummaryChartDataResponse({
     required this.dataPoints,
   });
 

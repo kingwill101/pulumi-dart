@@ -9,7 +9,7 @@ class LogTransformerTransformerConfigSubstituteString {
 
   /// Creates a new [LogTransformerTransformerConfigSubstituteString].
   /// [entries] Objects containing the information about the fields to substitute. You must include at least one entry, and ten at most. See `substitute_string` `entry` below for details.
-  LogTransformerTransformerConfigSubstituteString({
+  const LogTransformerTransformerConfigSubstituteString({
     required this.entries,
   });
 

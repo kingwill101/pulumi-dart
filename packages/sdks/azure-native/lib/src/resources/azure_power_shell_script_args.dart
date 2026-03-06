@@ -68,7 +68,7 @@ class AzurePowerShellScriptArgs {
   /// [supportingScriptUris] Supporting files for the external script.
   /// [tags] Resource tags.
   /// [timeout] Maximum allowed script execution time specified in ISO 8601 format. Default value is P1D
-  AzurePowerShellScriptArgs({
+  const AzurePowerShellScriptArgs({
     this.arguments,
     required this.azPowerShellVersion,
     this.cleanupPreference,

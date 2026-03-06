@@ -24,7 +24,7 @@ class ConnectionProfileSqlServerProfile {
   /// [port] Port for the SQL Server connection.
   /// [secretManagerStoredPassword] A reference to a Secret Manager resource name storing the user's password.
   /// [username] Username for the SQL Server connection.
-  ConnectionProfileSqlServerProfile({
+  const ConnectionProfileSqlServerProfile({
     required this.database,
     required this.hostname,
     this.password,

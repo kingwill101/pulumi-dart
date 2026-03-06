@@ -9,7 +9,7 @@ class RuleGroupRuleActionBlock {
 
   /// Creates a new [RuleGroupRuleActionBlock].
   /// [customResponse] Defines a custom response for the web request. See Custom Response below for details.
-  RuleGroupRuleActionBlock({
+  const RuleGroupRuleActionBlock({
     this.customResponse,
   });
 

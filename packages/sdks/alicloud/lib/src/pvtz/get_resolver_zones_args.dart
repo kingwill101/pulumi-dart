@@ -15,7 +15,7 @@ class GetResolverZonesArgs {
   /// Creates a new [GetResolverZonesArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
-  GetResolverZonesArgs({
+  const GetResolverZonesArgs({
     this.outputFile,
     this.status,
   });

@@ -13,7 +13,7 @@ class GetSubnetworkSecondaryIpRange {
   /// Creates a new [GetSubnetworkSecondaryIpRange].
   /// [ipCidrRange] The range of IP addresses belonging to this subnetwork
   /// [rangeName] The name associated with this subnetwork secondary range, used
-  GetSubnetworkSecondaryIpRange({
+  const GetSubnetworkSecondaryIpRange({
     required this.ipCidrRange,
     required this.rangeName,
   });

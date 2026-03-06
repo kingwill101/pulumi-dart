@@ -11,7 +11,7 @@ class LinkedServiceSqlServerKeyVaultConnectionString {
   /// Creates a new [LinkedServiceSqlServerKeyVaultConnectionString].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the secret name in Azure Key Vault that stores SQL Server connection string.
-  LinkedServiceSqlServerKeyVaultConnectionString({
+  const LinkedServiceSqlServerKeyVaultConnectionString({
     required this.linkedServiceName,
     required this.secretName,
   });

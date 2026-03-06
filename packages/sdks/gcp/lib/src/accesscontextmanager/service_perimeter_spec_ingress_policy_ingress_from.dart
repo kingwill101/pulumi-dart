@@ -21,7 +21,7 @@ class ServicePerimeterSpecIngressPolicyIngressFrom {
   /// [identities] A list of identities that are allowed access through this ingress policy.
   /// [identityType] Specifies the type of identities that are allowed access from outside the
   /// [sources] Sources that this `IngressPolicy` authorizes access from.
-  ServicePerimeterSpecIngressPolicyIngressFrom({
+  const ServicePerimeterSpecIngressPolicyIngressFrom({
     this.identities,
     this.identityType,
     this.sources,

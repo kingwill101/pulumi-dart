@@ -11,7 +11,7 @@ class SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkInt
   /// Creates a new [SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount].
   /// [max] Maximum.
   /// [min] Minimum.
-  SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount({
+  const SpotFleetRequestLaunchTemplateConfigOverrideInstanceRequirementsNetworkInterfaceCount({
     this.max,
     this.min,
   });

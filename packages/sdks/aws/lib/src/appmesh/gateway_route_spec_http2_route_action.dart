@@ -13,7 +13,7 @@ class GatewayRouteSpecHttp2RouteAction {
   /// Creates a new [GatewayRouteSpecHttp2RouteAction].
   /// [rewrite] Gateway route action to rewrite.
   /// [target] Target that traffic is routed to when a request matches the gateway route.
-  GatewayRouteSpecHttp2RouteAction({
+  const GatewayRouteSpecHttp2RouteAction({
     this.rewrite,
     required this.target,
   });

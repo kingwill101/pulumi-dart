@@ -16,7 +16,7 @@ class EnableProtectionInputProperties {
   /// [policyId] The Policy Id.
   /// [protectableItemId] The protectable item Id.
   /// [providerSpecificDetails] The ReplicationProviderInput. For HyperVReplicaAzure provider, it will be AzureEnableProtectionInput object. For San provider, it will be SanEnableProtectionInput object. For HyperVReplicaAzure provider, it can be null.
-  EnableProtectionInputProperties({
+  const EnableProtectionInputProperties({
     this.policyId,
     this.protectableItemId,
     this.providerSpecificDetails,

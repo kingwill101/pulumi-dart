@@ -15,7 +15,7 @@ class Date {
   /// [day] Day of month. Must be from 1 to 31 and valid for the year and month.
   /// [month] Month of date. Must be from 1 to 12.
   /// [year] Year of date. Must be from 1 to 9999.
-  Date({
+  const Date({
     this.day,
     this.month,
     this.year,

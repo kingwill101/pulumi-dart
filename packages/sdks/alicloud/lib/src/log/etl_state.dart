@@ -79,7 +79,7 @@ class EtlState {
   /// [status] Log project tags. the default value is RUNNING, Only 4 values are supported: `STARTING`，`RUNNING`，`STOPPING`，`STOPPED`.
   /// [toTime] Deadline of processing job, if not set the value is 0, indicates that new data will be processed continuously.
   /// [version] Log etl job version. the default value is `2`.
-  EtlState({
+  const EtlState({
     this.accessKeyId,
     this.accessKeySecret,
     this.createTime,

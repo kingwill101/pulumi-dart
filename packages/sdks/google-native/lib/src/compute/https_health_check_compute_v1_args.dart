@@ -44,7 +44,7 @@ class HttpsHealthCheckComputeV1Args {
   /// [requestPath] The request path of the HTTPS health check request. The default value is "/". Must comply with RFC3986.
   /// [timeoutSec] How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have a greater value than checkIntervalSec.
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-  HttpsHealthCheckComputeV1Args({
+  const HttpsHealthCheckComputeV1Args({
     this.checkIntervalSec,
     this.description,
     this.healthyThreshold,

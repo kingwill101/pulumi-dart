@@ -12,7 +12,7 @@ class GoogleCloudDatacatalogV1PersonalDetailsResponse {
   /// Creates a new [GoogleCloudDatacatalogV1PersonalDetailsResponse].
   /// [starTime] Set if the entry is starred; unset otherwise.
   /// [starred] True if the entry is starred by the user; false otherwise.
-  GoogleCloudDatacatalogV1PersonalDetailsResponse({
+  const GoogleCloudDatacatalogV1PersonalDetailsResponse({
     required this.starTime,
     required this.starred,
   });

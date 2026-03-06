@@ -158,7 +158,7 @@ class S3EndpointArgs {
   /// [timestampColumnName] Column to add with timestamp information to the endpoint data for an Amazon S3 target.
   /// [useCsvNoSupValue] Whether to use `csv_no_sup_value` for columns not included in the supplemental log. (Ignored for source endpoints.)
   /// [useTaskStartTimeForFullLoadTimestamp] When set to `true`, uses the task start time as the timestamp column value instead of the time data is written to target. For full load, when set to `true`, each row of the timestamp column contains the task start time. For CDC loads, each row of the timestamp column contains the transaction commit time.When set to false, the full load timestamp in the timestamp column increments with the time data arrives at the target. Default is `false`.
-  S3EndpointArgs({
+  const S3EndpointArgs({
     this.addColumnName,
     this.addTrailingPaddingCharacter,
     this.bucketFolder,

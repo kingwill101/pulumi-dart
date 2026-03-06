@@ -17,7 +17,7 @@ class PickTimeSeriesFilter {
   /// [direction] How to use the ranking to select time series that pass through the filter.
   /// [numTimeSeries] How many time series to allow to pass through the filter.
   /// [rankingMethod] ranking_method is applied to each time series independently to produce the value which will be used to compare the time series to other time series.
-  PickTimeSeriesFilter({
+  const PickTimeSeriesFilter({
     this.direction,
     this.numTimeSeries,
     this.rankingMethod,

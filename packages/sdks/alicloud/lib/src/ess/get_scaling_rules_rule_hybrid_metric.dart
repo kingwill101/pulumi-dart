@@ -21,7 +21,7 @@ class GetScalingRulesRuleHybridMetric {
   /// [id] (Available since v1.250.0) The reference ID of the metric in the metric expression.
   /// [metricName] (Available since v1.250.0) The name of the Hybrid Cloud Monitoring metric.
   /// [statistic] (Available since v1.250.0) The statistical method of the metric data.
-  GetScalingRulesRuleHybridMetric({
+  const GetScalingRulesRuleHybridMetric({
     required this.dimensions,
     required this.expression,
     required this.id,

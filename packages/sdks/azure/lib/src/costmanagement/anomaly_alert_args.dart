@@ -30,7 +30,7 @@ class AnomalyAlertArgs {
   /// [name] The name which should be used for this Cost Anomaly Alert. Changing this forces a new resource to be created. The name can contain only lowercase letters, numbers and hyphens.
   /// [notificationEmail] The email address of the point of contact that should get the unsubscribe requests and notification emails.
   /// [subscriptionId] The ID of the Subscription this Cost Anomaly Alert is scoped to. Changing this forces a new resource to be created. When not supplied this defaults to the subscription configured in the provider.
-  AnomalyAlertArgs({
+  const AnomalyAlertArgs({
     required this.displayName,
     required this.emailAddresses,
     required this.emailSubject,

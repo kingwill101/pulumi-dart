@@ -47,7 +47,7 @@ class MdsResourceProperties {
   /// [resourceState] State of the resource
   /// [userManagedOpenAIProfile] Profile of User Managed OpenAI Resource.
   /// [version] Mds Resource Version.
-  MdsResourceProperties({
+  const MdsResourceProperties({
     required this.aadApplicationId,
     this.aksAdminGroupId,
     this.cmkProfile,

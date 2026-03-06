@@ -28,7 +28,7 @@ class RouteTable {
   /// [provisioningState] The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   /// [routes] Collection of routes contained within a route table.
   /// [tags] Resource tags.
-  RouteTable({
+  const RouteTable({
     this.disableBgpRoutePropagation,
     this.etag,
     this.id,

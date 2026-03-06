@@ -24,7 +24,7 @@ class SourceState {
   /// [displayName] The source’s display name. A source’s display name must be unique
   /// [name] The resource name of this source, in the format
   /// [organization] The organization whose Cloud Security Command Center the Source
-  SourceState({
+  const SourceState({
     this.description,
     this.displayName,
     this.name,

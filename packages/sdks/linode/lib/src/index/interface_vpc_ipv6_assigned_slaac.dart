@@ -11,7 +11,7 @@ class InterfaceVpcIpv6AssignedSlaac {
   /// Creates a new [InterfaceVpcIpv6AssignedSlaac].
   /// [address] The assigned IPv4 address.
   /// [range] The IPv6 network range in CIDR notation.
-  InterfaceVpcIpv6AssignedSlaac({
+  const InterfaceVpcIpv6AssignedSlaac({
     this.address,
     this.range,
   });

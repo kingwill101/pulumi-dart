@@ -20,7 +20,7 @@ class DiagnosticSettingEnabledLog {
   /// [category] The name of a Diagnostic Log Category for this Resource.
   /// [categoryGroup] The name of a Diagnostic Log Category Group for this Resource.
   /// [retentionPolicy] Optional.
-  DiagnosticSettingEnabledLog({
+  const DiagnosticSettingEnabledLog({
     this.category,
     this.categoryGroup,
     this.retentionPolicy,

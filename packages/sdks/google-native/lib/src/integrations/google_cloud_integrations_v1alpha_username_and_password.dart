@@ -12,7 +12,7 @@ class GoogleCloudIntegrationsV1alphaUsernameAndPassword {
   /// Creates a new [GoogleCloudIntegrationsV1alphaUsernameAndPassword].
   /// [password] Password to be used
   /// [username] Username to be used
-  GoogleCloudIntegrationsV1alphaUsernameAndPassword({
+  const GoogleCloudIntegrationsV1alphaUsernameAndPassword({
     this.password,
     this.username,
   });

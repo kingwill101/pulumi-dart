@@ -25,7 +25,7 @@ class DeploymentOccurrence {
   /// [platform] Platform hosting this deployment.
   /// [undeployTime] End of the lifetime of this deployment.
   /// [userEmail] Identity of the user that triggered this deployment.
-  DeploymentOccurrence({
+  const DeploymentOccurrence({
     this.address,
     this.config,
     required this.deployTime,

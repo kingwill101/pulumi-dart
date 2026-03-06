@@ -24,7 +24,7 @@ class ManagedInstanceKeyArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverKeyType] The key type like 'ServiceManaged', 'AzureKeyVault'.
   /// [uri] The URI of the key. If the ServerKeyType is AzureKeyVault, then the URI is required.
-  ManagedInstanceKeyArgs({
+  const ManagedInstanceKeyArgs({
     this.keyName,
     required this.managedInstanceName,
     required this.resourceGroupName,

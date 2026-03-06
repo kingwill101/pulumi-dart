@@ -49,7 +49,7 @@ class GetAssetResult {
   /// [state] Current state of the asset.
   /// [uid] System generated globally unique ID for the asset. This ID will be different if the asset is deleted and re-created with the same name.
   /// [updateTime] The time when the asset was last updated.
-  GetAssetResult({
+  const GetAssetResult({
     required this.createTime,
     required this.description,
     required this.discoverySpec,

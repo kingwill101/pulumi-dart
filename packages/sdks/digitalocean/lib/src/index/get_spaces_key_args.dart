@@ -12,7 +12,7 @@ class GetSpacesKeyArgs {
 
   /// Creates a new [GetSpacesKeyArgs].
   /// [accessKey] The Access Key ID of the Spaces key.
-  GetSpacesKeyArgs({
+  const GetSpacesKeyArgs({
     required this.accessKey,
   });
 

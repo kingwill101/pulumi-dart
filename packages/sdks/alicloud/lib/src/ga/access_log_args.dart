@@ -27,7 +27,7 @@ class AccessLogArgs {
   /// [slsLogStoreName] The name of the Log Store.
   /// [slsProjectName] The name of the Log Service project.
   /// [slsRegionId] The region ID of the Log Service project.
-  AccessLogArgs({
+  const AccessLogArgs({
     required this.acceleratorId,
     required this.endpointGroupId,
     required this.listenerId,

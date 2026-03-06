@@ -38,7 +38,7 @@ class OdbNetworkArgs {
   /// [network] The name of the VPC network in the following format:
   /// [odbNetworkId] The ID of the OdbNetwork to create. This value is restricted
   /// [project] The ID of the project in which the resource belongs.
-  OdbNetworkArgs({
+  const OdbNetworkArgs({
     this.deletionProtection,
     this.gcpOracleZone,
     this.labels,

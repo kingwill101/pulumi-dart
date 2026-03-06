@@ -15,7 +15,7 @@ class ExpressRouteCircuitServiceProviderProperties {
   /// [bandwidthInMbps] The BandwidthInMbps.
   /// [peeringLocation] The peering location.
   /// [serviceProviderName] The serviceProviderName.
-  ExpressRouteCircuitServiceProviderProperties({
+  const ExpressRouteCircuitServiceProviderProperties({
     this.bandwidthInMbps,
     this.peeringLocation,
     this.serviceProviderName,

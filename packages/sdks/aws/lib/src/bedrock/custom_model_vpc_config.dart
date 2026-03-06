@@ -11,7 +11,7 @@ class CustomModelVpcConfig {
   /// Creates a new [CustomModelVpcConfig].
   /// [securityGroupIds] VPC configuration security group IDs.
   /// [subnetIds] VPC configuration subnets.
-  CustomModelVpcConfig({
+  const CustomModelVpcConfig({
     required this.securityGroupIds,
     required this.subnetIds,
   });

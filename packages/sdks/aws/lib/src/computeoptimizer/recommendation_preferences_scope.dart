@@ -11,7 +11,7 @@ class RecommendationPreferencesScope {
   /// Creates a new [RecommendationPreferencesScope].
   /// [name] The name of the scope. Valid values: `Organization`, `AccountId`, `ResourceArn`.
   /// [value] The value of the scope. `ALL_ACCOUNTS` for `Organization` scopes, AWS account ID for `AccountId` scopes, ARN of an EC2 instance or an Auto Scaling group for `ResourceArn` scopes.
-  RecommendationPreferencesScope({
+  const RecommendationPreferencesScope({
     required this.name,
     required this.value,
   });

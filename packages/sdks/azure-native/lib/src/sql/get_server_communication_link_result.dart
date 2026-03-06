@@ -29,7 +29,7 @@ class GetServerCommunicationLinkResult {
   /// [partnerServer] The name of the partner server.
   /// [state] The state.
   /// [type] Resource type.
-  GetServerCommunicationLinkResult({
+  const GetServerCommunicationLinkResult({
     required this.azureApiVersion,
     required this.id,
     required this.kind,

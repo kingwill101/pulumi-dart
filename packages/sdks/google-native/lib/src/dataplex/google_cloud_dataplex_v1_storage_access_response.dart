@@ -9,7 +9,7 @@ class GoogleCloudDataplexV1StorageAccessResponse {
 
   /// Creates a new [GoogleCloudDataplexV1StorageAccessResponse].
   /// [read] Describes the read access mechanism of the data. Not user settable.
-  GoogleCloudDataplexV1StorageAccessResponse({
+  const GoogleCloudDataplexV1StorageAccessResponse({
     required this.read,
   });
 

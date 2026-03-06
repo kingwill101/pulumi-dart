@@ -36,7 +36,7 @@ class CxAgentAdvancedSettings {
   /// [dtmfSettings] Define behaviors for DTMF (dual tone multi frequency). DTMF settings does not override each other. DTMF settings set at different levels define DTMF detections running in parallel. Exposed at the following levels:
   /// [loggingSettings] Settings for logging. Settings for Dialogflow History, Contact Center messages, StackDriver logs, and speech logging. Exposed at the following levels:
   /// [speechSettings] Settings for speech to text detection. Exposed at the following levels:
-  CxAgentAdvancedSettings({
+  const CxAgentAdvancedSettings({
     this.audioExportGcsDestination,
     this.dtmfSettings,
     this.loggingSettings,

@@ -8,7 +8,7 @@ class RuleEvaluationMode {
 
   /// Creates a new [RuleEvaluationMode].
   /// [mode] The mode of an evaluation.
-  RuleEvaluationMode({
+  const RuleEvaluationMode({
     this.mode,
   });
 

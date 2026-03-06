@@ -60,7 +60,7 @@ class MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse {
   /// [statusMessage] Migration status message
   /// [targetServerBrandVersion] Target server brand version
   /// [targetServerVersion] Target server version
-  MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse({
+  const MigrateMySqlAzureDbForMySqlOfflineTaskOutputMigrationLevelResponse({
     required this.databaseSummary,
     this.databases,
     required this.durationInSeconds,

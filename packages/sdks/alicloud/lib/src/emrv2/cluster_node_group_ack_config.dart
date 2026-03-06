@@ -63,7 +63,7 @@ class ClusterNodeGroupAckConfig {
   /// [tolerations] The ack cluster tolerations. See `tolerations` below.
   /// [volumeMounts] The ack cluster volume mounts. See `volume_mounts` below.
   /// [volumes] The ack cluster volumes. See `volumes` below.
-  ClusterNodeGroupAckConfig({
+  const ClusterNodeGroupAckConfig({
     required this.ackInstanceId,
     this.customAnnotations,
     this.customLabels,

@@ -17,7 +17,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndC
   /// [frequencyInSeconds] How often a message should be sent to the user.
   /// [messageGroups] Optional.
   /// [timeoutInSeconds] If Amazon Lex waits longer than this length of time for a response, it will stop sending messages.
-  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse({
+  const V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingWaitAndContinueSpecificationStillWaitingResponse({
     this.allowInterrupt,
     required this.frequencyInSeconds,
     this.messageGroups,

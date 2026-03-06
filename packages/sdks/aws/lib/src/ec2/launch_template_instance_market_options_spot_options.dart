@@ -21,7 +21,7 @@ class LaunchTemplateInstanceMarketOptionsSpotOptions {
   /// [maxPrice] The maximum hourly price you're willing to pay for the Spot Instances.
   /// [spotInstanceType] The Spot Instance request type. Can be `one-time`, or `persistent`.
   /// [validUntil] The end date of the request.
-  LaunchTemplateInstanceMarketOptionsSpotOptions({
+  const LaunchTemplateInstanceMarketOptionsSpotOptions({
     this.blockDurationMinutes,
     this.instanceInterruptionBehavior,
     this.maxPrice,

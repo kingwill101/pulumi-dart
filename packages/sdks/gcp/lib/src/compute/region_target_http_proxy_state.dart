@@ -46,7 +46,7 @@ class RegionTargetHttpProxyState {
   /// [region] The Region in which the created target https proxy should reside.
   /// [selfLink] The URI of the created resource.
   /// [urlMap] A reference to the RegionUrlMap resource that defines the mapping from URL
-  RegionTargetHttpProxyState({
+  const RegionTargetHttpProxyState({
     this.creationTimestamp,
     this.description,
     this.httpKeepAliveTimeoutSec,

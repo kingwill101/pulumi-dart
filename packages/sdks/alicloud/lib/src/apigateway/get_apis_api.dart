@@ -25,7 +25,7 @@ class GetApisApi {
   /// [id] Required.
   /// [name] The name of the API.
   /// [regionId] The region ID of the API.
-  GetApisApi({
+  const GetApisApi({
     required this.apiId,
     required this.description,
     required this.groupId,

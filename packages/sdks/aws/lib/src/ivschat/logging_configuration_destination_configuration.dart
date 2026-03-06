@@ -17,7 +17,7 @@ class LoggingConfigurationDestinationConfiguration {
   /// [cloudwatchLogs] An Amazon CloudWatch Logs destination configuration where chat activity will be logged.
   /// [firehose] An Amazon Kinesis Data Firehose destination configuration where chat activity will be logged.
   /// [s3] An Amazon S3 destination configuration where chat activity will be logged.
-  LoggingConfigurationDestinationConfiguration({
+  const LoggingConfigurationDestinationConfiguration({
     this.cloudwatchLogs,
     this.firehose,
     this.s3,

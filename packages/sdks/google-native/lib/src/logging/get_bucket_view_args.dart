@@ -17,7 +17,7 @@ class GetBucketViewArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [viewId] Required.
-  GetBucketViewArgs({
+  const GetBucketViewArgs({
     required this.bucketId,
     required this.location,
     this.project,

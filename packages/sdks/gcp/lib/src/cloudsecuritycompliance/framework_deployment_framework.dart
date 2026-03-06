@@ -12,7 +12,7 @@ class FrameworkDeploymentFramework {
   /// Creates a new [FrameworkDeploymentFramework].
   /// [framework] In the format:
   /// [majorRevisionId] Major revision id of the framework.
-  FrameworkDeploymentFramework({
+  const FrameworkDeploymentFramework({
     required this.framework,
     required this.majorRevisionId,
   });

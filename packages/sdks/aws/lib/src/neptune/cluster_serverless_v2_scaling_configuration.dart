@@ -11,7 +11,7 @@ class ClusterServerlessV2ScalingConfiguration {
   /// Creates a new [ClusterServerlessV2ScalingConfiguration].
   /// [maxCapacity] Maximum Neptune Capacity Units (NCUs) for this cluster. Must be lower or equal than **128**. See [AWS Documentation](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-capacity-scaling.html) for more details.
   /// [minCapacity] Minimum Neptune Capacity Units (NCUs) for this cluster. Must be greater or equal than **1**. See [AWS Documentation](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-capacity-scaling.html) for more details.
-  ClusterServerlessV2ScalingConfiguration({
+  const ClusterServerlessV2ScalingConfiguration({
     this.maxCapacity,
     this.minCapacity,
   });

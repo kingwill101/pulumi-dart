@@ -22,7 +22,7 @@ class DomainPropertiesResponseVerificationStates {
   /// [dMARC] A class that represents a VerificationStatus record.
   /// [domain] A class that represents a VerificationStatus record.
   /// [sPF] A class that represents a VerificationStatus record.
-  DomainPropertiesResponseVerificationStates({
+  const DomainPropertiesResponseVerificationStates({
     this.dKIM,
     this.dKIM2,
     this.dMARC,

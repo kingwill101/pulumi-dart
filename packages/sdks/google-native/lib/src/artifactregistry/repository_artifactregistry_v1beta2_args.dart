@@ -36,7 +36,7 @@ class RepositoryArtifactregistryV1beta2Args {
   /// [name] The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`.
   /// [project] Optional.
   /// [repositoryId] Required. The repository id to use for this repository.
-  RepositoryArtifactregistryV1beta2Args({
+  const RepositoryArtifactregistryV1beta2Args({
     this.description,
     this.format,
     this.kmsKeyName,

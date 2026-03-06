@@ -14,7 +14,7 @@ class RocketMQInstanceSoftware {
   /// [maintainTime] Upgrade time period.
   /// [softwareVersion] Software version.
   /// [upgradeMethod] Upgrade method.
-  RocketMQInstanceSoftware({
+  const RocketMQInstanceSoftware({
     this.maintainTime,
     this.softwareVersion,
     this.upgradeMethod,

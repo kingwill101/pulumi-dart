@@ -8,7 +8,7 @@ class PipeSourceParametersRabbitmqBrokerParametersCredentials {
 
   /// Creates a new [PipeSourceParametersRabbitmqBrokerParametersCredentials].
   /// [basicAuth] The ARN of the Secrets Manager secret containing the credentials.
-  PipeSourceParametersRabbitmqBrokerParametersCredentials({
+  const PipeSourceParametersRabbitmqBrokerParametersCredentials({
     required this.basicAuth,
   });
 

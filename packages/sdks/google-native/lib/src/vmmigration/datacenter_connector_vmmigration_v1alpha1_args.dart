@@ -30,7 +30,7 @@ class DatacenterConnectorVmmigrationV1alpha1Args {
   /// [serviceAccount] The service account to use in the connector when communicating with the cloud.
   /// [sourceId] Required.
   /// [version] The version running in the DatacenterConnector. This is supplied by the OVA connector during the registration process and can not be modified.
-  DatacenterConnectorVmmigrationV1alpha1Args({
+  const DatacenterConnectorVmmigrationV1alpha1Args({
     required this.datacenterConnectorId,
     this.location,
     this.project,

@@ -70,7 +70,7 @@ class ListStorageAccountServiceSASArgs {
   /// [rowKeyStart] The start of row key.
   /// [sharedAccessExpiryTime] The time at which the shared access signature becomes invalid.
   /// [sharedAccessStartTime] The time at which the SAS becomes valid.
-  ListStorageAccountServiceSASArgs({
+  const ListStorageAccountServiceSASArgs({
     required this.accountName,
     this.cacheControl,
     required this.canonicalizedResource,

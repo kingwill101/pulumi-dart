@@ -24,7 +24,7 @@ class DistributionOriginCustomOriginConfig {
   /// [originProtocolPolicy] Origin protocol policy to apply to your origin. One of `http-only`, `https-only`, or `match-viewer`.
   /// [originReadTimeout] Optional.
   /// [originSslProtocols] List of SSL/TLS protocols that CloudFront can use when connecting to your origin over HTTPS. Valid values: `SSLv3`, `TLSv1`, `TLSv1.1`, `TLSv1.2`. For more information, see [Minimum Origin SSL Protocol](https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOriginSSLProtocols) in the Amazon CloudFront Developer Guide.
-  DistributionOriginCustomOriginConfig({
+  const DistributionOriginCustomOriginConfig({
     required this.httpPort,
     required this.httpsPort,
     this.ipAddressType,

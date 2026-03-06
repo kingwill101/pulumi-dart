@@ -26,7 +26,7 @@ class CertificateState {
   /// [notValidBefore] Optional.
   /// [privateKey] Optional.
   /// [type] Optional.
-  CertificateState({
+  const CertificateState({
     this.certificate,
     this.created,
     this.domainNames,

@@ -8,7 +8,7 @@ class GetResponseHeadersPolicyRemoveHeadersConfig {
 
   /// Creates a new [GetResponseHeadersPolicyRemoveHeadersConfig].
   /// [items] Required.
-  GetResponseHeadersPolicyRemoveHeadersConfig({
+  const GetResponseHeadersPolicyRemoveHeadersConfig({
     required this.items,
   });
 

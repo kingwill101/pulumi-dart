@@ -12,7 +12,7 @@ class EndpointScheduleActionResponse {
   /// Creates a new [EndpointScheduleActionResponse].
   /// [actionType] Expected value is 'InvokeBatchEndpoint'.
   /// [endpointInvocationDefinition] [Required] Defines Schedule action definition details.
-  EndpointScheduleActionResponse({
+  const EndpointScheduleActionResponse({
     required this.actionType,
     required this.endpointInvocationDefinition,
   });

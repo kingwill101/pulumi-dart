@@ -9,7 +9,7 @@ class Account {
 
   /// Creates a new [Account].
   /// [googleAuto] An automatic google login account.
-  Account({
+  const Account({
     this.googleAuto,
   });
 

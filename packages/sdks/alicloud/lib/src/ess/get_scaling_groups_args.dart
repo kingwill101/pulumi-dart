@@ -18,7 +18,7 @@ class GetScalingGroupsArgs {
   /// [ids] A list of scaling group IDs.
   /// [nameRegex] A regex string to filter resulting scaling groups by name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetScalingGroupsArgs({
+  const GetScalingGroupsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

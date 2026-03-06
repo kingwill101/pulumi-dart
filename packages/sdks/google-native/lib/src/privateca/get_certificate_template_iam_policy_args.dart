@@ -17,7 +17,7 @@ class GetCertificateTemplateIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetCertificateTemplateIamPolicyArgs({
+  const GetCertificateTemplateIamPolicyArgs({
     required this.certificateTemplateId,
     required this.location,
     this.optionsRequestedPolicyVersion,

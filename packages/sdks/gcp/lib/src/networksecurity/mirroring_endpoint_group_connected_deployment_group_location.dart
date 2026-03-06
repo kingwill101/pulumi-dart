@@ -16,7 +16,7 @@ class MirroringEndpointGroupConnectedDeploymentGroupLocation {
   /// Creates a new [MirroringEndpointGroupConnectedDeploymentGroupLocation].
   /// [location] The cloud location of the endpoint group, currently restricted to `global`.
   /// [state] (Output)
-  MirroringEndpointGroupConnectedDeploymentGroupLocation({
+  const MirroringEndpointGroupConnectedDeploymentGroupLocation({
     this.location,
     this.state,
   });

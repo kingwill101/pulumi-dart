@@ -11,7 +11,7 @@ class DatasetCreateRequestDataPath {
   /// Creates a new [DatasetCreateRequestDataPath].
   /// [datastoreName] The datastore name.
   /// [relativePath] Path within the datastore.
-  DatasetCreateRequestDataPath({
+  const DatasetCreateRequestDataPath({
     this.datastoreName,
     this.relativePath,
   });

@@ -10,7 +10,7 @@ class Experiments {
 
   /// Creates a new [Experiments].
   /// [rampUpRules] List of ramp-up rules.
-  Experiments({
+  const Experiments({
     this.rampUpRules,
   });
 

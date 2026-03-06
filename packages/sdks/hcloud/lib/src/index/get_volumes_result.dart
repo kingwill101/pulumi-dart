@@ -17,7 +17,7 @@ class GetVolumesResult {
   /// [volumes] (list) List of all matching volumes. See `data.hcloud_volume` for schema.
   /// [withSelector] Optional.
   /// [withStatuses] Optional.
-  GetVolumesResult({
+  const GetVolumesResult({
     required this.id,
     required this.volumes,
     this.withSelector,

@@ -24,7 +24,7 @@ class RegistryScopeMapArgs {
   /// [description] The description of the Container Registry.
   /// [name] Specifies the name of the scope map. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Container Registry token. Changing this forces a new resource to be created.
-  RegistryScopeMapArgs({
+  const RegistryScopeMapArgs({
     required this.actions,
     required this.containerRegistryName,
     this.description,

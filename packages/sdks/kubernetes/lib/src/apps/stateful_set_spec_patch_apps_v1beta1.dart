@@ -34,7 +34,7 @@ class StatefulSetSpecPatchAppsV1beta1 {
   /// [template] template is the object that describes the pod that will be created if insufficient replicas are detected. Each pod stamped out by the StatefulSet will fulfill this Template, but have a unique identity from the rest of the StatefulSet.
   /// [updateStrategy] updateStrategy indicates the StatefulSetUpdateStrategy that will be employed to update Pods in the StatefulSet when a revision is made to Template.
   /// [volumeClaimTemplates] volumeClaimTemplates is a list of claims that pods are allowed to reference. The StatefulSet controller is responsible for mapping network identities to claims in a way that maintains the identity of a pod. Every claim in this list must have at least one matching (by name) volumeMount in one container in the template. A claim in this list takes precedence over any volumes in the template, with the same name.
-  StatefulSetSpecPatchAppsV1beta1({
+  const StatefulSetSpecPatchAppsV1beta1({
     this.podManagementPolicy,
     this.replicas,
     this.revisionHistoryLimit,

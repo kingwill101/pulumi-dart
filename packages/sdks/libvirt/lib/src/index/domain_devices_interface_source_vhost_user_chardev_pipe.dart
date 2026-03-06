@@ -12,7 +12,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevPipe {
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevPipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainDevicesInterfaceSourceVhostUserChardevPipe({
+  const DomainDevicesInterfaceSourceVhostUserChardevPipe({
     required this.path,
     this.secLabels,
   });

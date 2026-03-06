@@ -17,7 +17,7 @@ class FeatureStatusResponse {
   /// [detailedStatusMessage] The descriptive message about the current detailed status.
   /// [name] The name of the feature.
   /// [version] The version of the feature.
-  FeatureStatusResponse({
+  const FeatureStatusResponse({
     required this.detailedStatus,
     required this.detailedStatusMessage,
     required this.name,

@@ -12,7 +12,7 @@ class PartnerPropertiesResponse {
   /// Creates a new [PartnerPropertiesResponse].
   /// [region] The region of the instance
   /// [subdomain] The subdomain of the instance
-  PartnerPropertiesResponse({
+  const PartnerPropertiesResponse({
     required this.region,
     required this.subdomain,
   });

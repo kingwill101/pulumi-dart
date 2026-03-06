@@ -12,7 +12,7 @@ class ServiceMeshTypeResponse {
   /// Creates a new [ServiceMeshTypeResponse].
   /// [code] A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.)
   /// [displayName] A human-readable name for the message type. e.g. "InternalError", "PodMissingProxy". This should be the same for all messages of the same type. (This corresponds to the `name` field in open-source Istio.)
-  ServiceMeshTypeResponse({
+  const ServiceMeshTypeResponse({
     required this.code,
     required this.displayName,
   });

@@ -25,7 +25,7 @@ class GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse {
   /// [newestDate] The date of the newest log entry replayed.
   /// [oldestDate] The date of the oldest log entry replayed.
   /// [unchangedCount] The number of replayed log entries with no difference between baseline and simulated policies.
-  GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse({
+  const GoogleCloudPolicysimulatorV1beta1ReplayResultsSummaryResponse({
     required this.differenceCount,
     required this.errorCount,
     required this.logCount,

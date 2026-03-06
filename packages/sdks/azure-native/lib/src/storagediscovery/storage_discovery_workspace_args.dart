@@ -25,7 +25,7 @@ class StorageDiscoveryWorkspaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageDiscoveryWorkspaceName] The name of the StorageDiscoveryWorkspace
   /// [tags] Resource tags.
-  StorageDiscoveryWorkspaceArgs({
+  const StorageDiscoveryWorkspaceArgs({
     this.location,
     this.properties,
     required this.resourceGroupName,

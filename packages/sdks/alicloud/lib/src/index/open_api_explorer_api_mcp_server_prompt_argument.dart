@@ -14,7 +14,7 @@ class OpenApiExplorerApiMcpServerPromptArgument {
   /// [description] Description of the API MCP service.
   /// [name] Name of the MCP Server. It can contain digits, English letters, and hyphens (-).
   /// [required] Indicates whether the prompt parameter is required.
-  OpenApiExplorerApiMcpServerPromptArgument({
+  const OpenApiExplorerApiMcpServerPromptArgument({
     this.description,
     this.name,
     this.required,

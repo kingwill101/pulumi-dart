@@ -12,7 +12,7 @@ class OriginResponse {
   /// Creates a new [OriginResponse].
   /// [addedBy] The ID of the origin - for example, in case of 'Manual', the object ID of the identity, and in case of 'Automatic', the name of the automatic system
   /// [addedByType] The source of the origin - Manual or Automatic
-  OriginResponse({
+  const OriginResponse({
     required this.addedBy,
     required this.addedByType,
   });

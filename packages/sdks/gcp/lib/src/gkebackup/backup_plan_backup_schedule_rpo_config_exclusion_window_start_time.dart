@@ -17,7 +17,7 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime {
   /// [minutes] Minutes of hour of day.
   /// [nanos] Fractions of seconds in nanoseconds.
   /// [seconds] Seconds of minutes of the time.
-  BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime({
+  const BackupPlanBackupScheduleRpoConfigExclusionWindowStartTime({
     this.hours,
     this.minutes,
     this.nanos,

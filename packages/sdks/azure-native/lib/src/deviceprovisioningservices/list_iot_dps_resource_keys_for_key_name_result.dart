@@ -17,7 +17,7 @@ class ListIotDpsResourceKeysForKeyNameResult {
   /// [primaryKey] Primary SAS key value.
   /// [rights] Rights that this key has.
   /// [secondaryKey] Secondary SAS key value.
-  ListIotDpsResourceKeysForKeyNameResult({
+  const ListIotDpsResourceKeysForKeyNameResult({
     required this.keyName,
     this.primaryKey,
     required this.rights,

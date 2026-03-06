@@ -20,7 +20,7 @@ class ManagedIdentityResponse {
   /// [tenantId] The tenant id of the managed identity. This property will only be provided for a system assigned identity.
   /// [type] The type of managed identity for the resource.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
-  ManagedIdentityResponse({
+  const ManagedIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

@@ -10,7 +10,7 @@ class PropertiesNetworkInjection {
 
   /// Creates a new [PropertiesNetworkInjection].
   /// [virtualNetworks] Network injection configuration
-  PropertiesNetworkInjection({
+  const PropertiesNetworkInjection({
     this.virtualNetworks,
   });
 

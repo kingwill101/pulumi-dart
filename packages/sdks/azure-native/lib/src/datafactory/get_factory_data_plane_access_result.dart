@@ -15,7 +15,7 @@ class GetFactoryDataPlaneAccessResult {
   /// [accessToken] Data Plane read only access token.
   /// [dataPlaneUrl] Data Plane service base URL.
   /// [policy] The user access policy.
-  GetFactoryDataPlaneAccessResult({
+  const GetFactoryDataPlaneAccessResult({
     this.accessToken,
     this.dataPlaneUrl,
     this.policy,

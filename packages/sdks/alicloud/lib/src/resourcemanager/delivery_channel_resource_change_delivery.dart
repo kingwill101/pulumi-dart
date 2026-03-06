@@ -25,7 +25,7 @@ class DeliveryChannelResourceChangeDelivery {
   /// [slsProperties] The Simple Log Service configurations. See `sls_properties` below.
   /// [targetArn] The ARN of the delivery destination.
   /// [targetType] The type of the delivery destination.
-  DeliveryChannelResourceChangeDelivery({
+  const DeliveryChannelResourceChangeDelivery({
     this.enabled,
     this.slsProperties,
     this.targetArn,

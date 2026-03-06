@@ -13,7 +13,7 @@ class IntentFollowupIntentInfo {
   /// Creates a new [IntentFollowupIntentInfo].
   /// [followupIntentName] The unique identifier of the followup intent.
   /// [parentFollowupIntentName] The unique identifier of the parent intent in the chain of followup intents.
-  IntentFollowupIntentInfo({
+  const IntentFollowupIntentInfo({
     this.followupIntentName,
     this.parentFollowupIntentName,
   });

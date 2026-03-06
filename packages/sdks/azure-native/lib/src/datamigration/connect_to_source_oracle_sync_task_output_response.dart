@@ -19,7 +19,7 @@ class ConnectToSourceOracleSyncTaskOutputResponse {
   /// [sourceServerBrandVersion] Source server brand version
   /// [sourceServerVersion] Version of the source server
   /// [validationErrors] Validation errors associated with the task
-  ConnectToSourceOracleSyncTaskOutputResponse({
+  const ConnectToSourceOracleSyncTaskOutputResponse({
     required this.databases,
     required this.sourceServerBrandVersion,
     required this.sourceServerVersion,

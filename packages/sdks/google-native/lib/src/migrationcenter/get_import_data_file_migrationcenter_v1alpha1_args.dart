@@ -17,7 +17,7 @@ class GetImportDataFileMigrationcenterV1alpha1Args {
   /// [importJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetImportDataFileMigrationcenterV1alpha1Args({
+  const GetImportDataFileMigrationcenterV1alpha1Args({
     required this.importDataFileId,
     required this.importJobId,
     required this.location,

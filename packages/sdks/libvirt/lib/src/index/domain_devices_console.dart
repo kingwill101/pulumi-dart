@@ -35,7 +35,7 @@ class DomainDevicesConsole {
   /// [source] Defines the source settings for the EGD backend.
   /// [target] Defines the target configuration for the console output.
   /// [tty] Defines the TTY settings for the console configuration.
-  DomainDevicesConsole({
+  const DomainDevicesConsole({
     this.acpi,
     this.address,
     this.alias,

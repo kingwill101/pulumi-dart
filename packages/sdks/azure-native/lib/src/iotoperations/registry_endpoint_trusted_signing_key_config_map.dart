@@ -13,7 +13,7 @@ class RegistryEndpointTrustedSigningKeyConfigMap {
   /// Creates a new [RegistryEndpointTrustedSigningKeyConfigMap].
   /// [configMapRef] The name of the configmap.
   /// [type] RegistryEndpointTrustedSigningKeyType values
-  RegistryEndpointTrustedSigningKeyConfigMap({
+  const RegistryEndpointTrustedSigningKeyConfigMap({
     required this.configMapRef,
     required this.type,
   });

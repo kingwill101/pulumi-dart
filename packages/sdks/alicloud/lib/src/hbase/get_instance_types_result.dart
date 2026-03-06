@@ -43,7 +43,7 @@ class GetInstanceTypesResult {
   /// [types] (Deprecated) A list of instance types. Each element contains the following attributes:
   /// [version] The version of the engine.
   /// [zoneId] Optional.
-  GetInstanceTypesResult({
+  const GetInstanceTypesResult({
     this.chargeType,
     required this.coreInstanceTypes,
     this.diskType,

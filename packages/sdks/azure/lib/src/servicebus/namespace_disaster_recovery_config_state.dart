@@ -30,7 +30,7 @@ class NamespaceDisasterRecoveryConfigState {
   /// [primaryConnectionStringAlias] The alias Primary Connection String for the ServiceBus Namespace.
   /// [primaryNamespaceId] The ID of the primary Service Bus Namespace to replicate. Changing this forces a new resource to be created.
   /// [secondaryConnectionStringAlias] The alias Secondary Connection String for the ServiceBus Namespace
-  NamespaceDisasterRecoveryConfigState({
+  const NamespaceDisasterRecoveryConfigState({
     this.aliasAuthorizationRuleId,
     this.defaultPrimaryKey,
     this.defaultSecondaryKey,

@@ -13,7 +13,7 @@ class AuditConfigNetworkmanagementV1beta1 {
   /// Creates a new [AuditConfigNetworkmanagementV1beta1].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  AuditConfigNetworkmanagementV1beta1({
+  const AuditConfigNetworkmanagementV1beta1({
     this.auditLogConfigs,
     this.service,
   });

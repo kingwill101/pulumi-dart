@@ -11,7 +11,7 @@ class ExperimentTemplateLogConfigurationS3Configuration {
   /// Creates a new [ExperimentTemplateLogConfigurationS3Configuration].
   /// [bucketName] The name of the destination bucket.
   /// [prefix] The bucket prefix.
-  ExperimentTemplateLogConfigurationS3Configuration({
+  const ExperimentTemplateLogConfigurationS3Configuration({
     required this.bucketName,
     this.prefix,
   });

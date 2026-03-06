@@ -8,7 +8,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig 
 
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig].
   /// [enableConfidentialCompute] Optional. Defines whether the instance should have confidential compute enabled.
-  RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig({
+  const RestoreWorkloadComputeInstanceRestorePropertiesConfidentialInstanceConfig({
     this.enableConfidentialCompute,
   });
 

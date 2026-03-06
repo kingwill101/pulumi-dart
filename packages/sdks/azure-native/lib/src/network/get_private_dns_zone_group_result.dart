@@ -25,7 +25,7 @@ class GetPrivateDnsZoneGroupResult {
   /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [privateDnsZoneConfigs] A collection of private dns zone configurations of the private dns zone group.
   /// [provisioningState] The provisioning state of the private dns zone group resource.
-  GetPrivateDnsZoneGroupResult({
+  const GetPrivateDnsZoneGroupResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

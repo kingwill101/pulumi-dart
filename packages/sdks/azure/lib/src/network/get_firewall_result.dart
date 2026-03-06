@@ -52,7 +52,7 @@ class GetFirewallResult {
   /// [threatIntelMode] The operation mode for threat intelligence-based filtering.
   /// [virtualHubs] A `virtual_hub` block as defined below.
   /// [zones] A list of Availability Zones in which this Azure Firewall is located.
-  GetFirewallResult({
+  const GetFirewallResult({
     required this.dnsProxyEnabled,
     required this.dnsServers,
     required this.firewallPolicyId,

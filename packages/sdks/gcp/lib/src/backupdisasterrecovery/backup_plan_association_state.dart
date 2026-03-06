@@ -49,7 +49,7 @@ class BackupPlanAssociationState {
   /// [resourceType] The resource type of workload on which backupplan is applied.
   /// [rulesConfigInfos] Message for rules config info
   /// [updateTime] The time when the instance was updated.
-  BackupPlanAssociationState({
+  const BackupPlanAssociationState({
     this.backupPlan,
     this.backupPlanAssociationId,
     this.createTime,

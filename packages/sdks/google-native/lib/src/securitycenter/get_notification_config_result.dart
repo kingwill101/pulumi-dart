@@ -21,7 +21,7 @@ class GetNotificationConfigResult {
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is "projects/[project_id]/topics/[topic]".
   /// [serviceAccount] The service account that needs "pubsub.topics.publish" permission to publish to the Pub/Sub topic.
   /// [streamingConfig] The config for triggering streaming-based notifications.
-  GetNotificationConfigResult({
+  const GetNotificationConfigResult({
     required this.description,
     required this.name,
     required this.pubsubTopic,

@@ -15,7 +15,7 @@ class GetWorkerPoolArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [workerPoolId] Required.
-  GetWorkerPoolArgs({
+  const GetWorkerPoolArgs({
     required this.location,
     this.project,
     required this.workerPoolId,

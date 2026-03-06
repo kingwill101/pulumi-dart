@@ -21,7 +21,7 @@ class GetDefaultSupportedIdpConfigResult {
   /// [clientSecret] OAuth client secret.
   /// [enabled] True if allows the user to sign in with the provider.
   /// [name] The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com"
-  GetDefaultSupportedIdpConfigResult({
+  const GetDefaultSupportedIdpConfigResult({
     required this.appleSignInConfig,
     required this.clientId,
     required this.clientSecret,

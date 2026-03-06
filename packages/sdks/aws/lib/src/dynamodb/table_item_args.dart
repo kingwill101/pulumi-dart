@@ -26,7 +26,7 @@ class TableItemArgs {
   /// [rangeKey] Range key to use for lookups and identification of the item. Required if there is range key defined in the table.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tableName] Name or ARN of the table to contain the item.
-  TableItemArgs({
+  const TableItemArgs({
     required this.hashKey,
     required this.item,
     this.rangeKey,

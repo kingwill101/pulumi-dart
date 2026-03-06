@@ -12,7 +12,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPre
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics].
   /// [enabled] Whether prefix-level storage metrics are enabled.
   /// [selectionCriteria] Selection criteria. See Selection Criteria below for more details.
-  StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics({
+  const StorageLensConfigurationStorageLensConfigurationAccountLevelBucketLevelPrefixLevelStorageMetrics({
     this.enabled,
     this.selectionCriteria,
   });

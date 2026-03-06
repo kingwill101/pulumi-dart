@@ -14,7 +14,7 @@ class SourceLocation {
   /// Creates a new [SourceLocation].
   /// [azureBlob] Source Azure Blob.
   /// [fileShare] Source File share.
-  SourceLocation({
+  const SourceLocation({
     this.azureBlob,
     this.fileShare,
   });

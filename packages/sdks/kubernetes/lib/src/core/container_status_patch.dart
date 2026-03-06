@@ -58,7 +58,7 @@ class ContainerStatusPatch {
   /// [stopSignal] StopSignal reports the effective stop signal for this container
   /// [user] User represents user identity information initially attached to the first process of the container
   /// [volumeMounts] Status of volume mounts.
-  ContainerStatusPatch({
+  const ContainerStatusPatch({
     this.allocatedResources,
     this.allocatedResourcesStatus,
     this.containerID,

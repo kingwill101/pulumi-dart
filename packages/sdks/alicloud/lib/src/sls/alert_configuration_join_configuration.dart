@@ -10,7 +10,7 @@ class AlertConfigurationJoinConfiguration {
   /// Creates a new [AlertConfigurationJoinConfiguration].
   /// [condition] Data matching expression. When the data content does not need to be determined, set it to an empty string. In other cases, it needs to be set as an expression, for example, errCnt&gt; 10.
   /// [type] Optional.
-  AlertConfigurationJoinConfiguration({
+  const AlertConfigurationJoinConfiguration({
     this.condition,
     this.type,
   });

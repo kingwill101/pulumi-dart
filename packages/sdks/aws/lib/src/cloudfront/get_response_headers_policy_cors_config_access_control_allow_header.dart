@@ -7,7 +7,7 @@ class GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader {
 
   /// Creates a new [GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader].
   /// [items] Required.
-  GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader({
+  const GetResponseHeadersPolicyCorsConfigAccessControlAllowHeader({
     required this.items,
   });
 

@@ -32,7 +32,7 @@ class LoadBalancerServiceArgs {
   /// [loadBalancerId] Id of the load balancer this service belongs to.
   /// [protocol] Protocol of the service. `http`, `https` or `tcp`
   /// [proxyprotocol] Enable proxyprotocol.
-  LoadBalancerServiceArgs({
+  const LoadBalancerServiceArgs({
     this.destinationPort,
     this.healthCheck,
     this.http,

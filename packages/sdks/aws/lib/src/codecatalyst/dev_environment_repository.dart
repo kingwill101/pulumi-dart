@@ -13,7 +13,7 @@ class DevEnvironmentRepository {
   /// Creates a new [DevEnvironmentRepository].
   /// [branchName] The name of the branch in a source repository.
   /// [repositoryName] The name of the source repository.
-  DevEnvironmentRepository({
+  const DevEnvironmentRepository({
     this.branchName,
     required this.repositoryName,
   });

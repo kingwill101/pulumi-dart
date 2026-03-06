@@ -34,7 +34,7 @@ class GetJitNetworkAccessPolicyResult {
   /// [requests] Optional.
   /// [type] Resource type
   /// [virtualMachines] Configurations for Microsoft.Compute/virtualMachines resource type.
-  GetJitNetworkAccessPolicyResult({
+  const GetJitNetworkAccessPolicyResult({
     required this.azureApiVersion,
     required this.id,
     this.kind,

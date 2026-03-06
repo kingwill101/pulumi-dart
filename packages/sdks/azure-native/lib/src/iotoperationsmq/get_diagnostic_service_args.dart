@@ -18,7 +18,7 @@ class GetDiagnosticServiceArgs {
   /// [diagnosticServiceName] Name of MQ diagnostic resource
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDiagnosticServiceArgs({
+  const GetDiagnosticServiceArgs({
     required this.diagnosticServiceName,
     required this.mqName,
     required this.resourceGroupName,

@@ -17,7 +17,7 @@ class ServicePerimeterDryRunResourceArgs {
   /// Creates a new [ServicePerimeterDryRunResourceArgs].
   /// [perimeterName] The name of the Service Perimeter to add this resource to.
   /// [resource] A GCP resource that is inside of the service perimeter.
-  ServicePerimeterDryRunResourceArgs({
+  const ServicePerimeterDryRunResourceArgs({
     required this.perimeterName,
     required this.resource,
   });

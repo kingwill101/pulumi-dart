@@ -11,7 +11,7 @@ class DiJobResourceSettingsOfflineResourceSettings {
   /// Creates a new [DiJobResourceSettingsOfflineResourceSettings].
   /// [requestedCu] Scheduling resource group cu
   /// [resourceGroupIdentifier] Scheduling resource group name
-  DiJobResourceSettingsOfflineResourceSettings({
+  const DiJobResourceSettingsOfflineResourceSettings({
     this.requestedCu,
     this.resourceGroupIdentifier,
   });

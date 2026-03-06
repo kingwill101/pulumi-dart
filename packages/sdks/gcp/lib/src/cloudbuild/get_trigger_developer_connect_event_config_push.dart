@@ -14,7 +14,7 @@ class GetTriggerDeveloperConnectEventConfigPush {
   /// [branch] Regex of branches to match.
   /// [invertRegex] If true, only trigger a build if the revision regex does NOT match the git_ref regex.
   /// [tag] Regex of tags to match.
-  GetTriggerDeveloperConnectEventConfigPush({
+  const GetTriggerDeveloperConnectEventConfigPush({
     required this.branch,
     required this.invertRegex,
     required this.tag,

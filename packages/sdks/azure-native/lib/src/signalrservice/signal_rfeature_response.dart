@@ -19,7 +19,7 @@ class SignalRFeatureResponse {
   /// [flag] FeatureFlags is the supported features of Azure SignalR service.
   /// [properties] Optional properties related to this feature.
   /// [value] Value of the feature flag. See Azure SignalR service document https://docs.microsoft.com/azure/azure-signalr/ for allowed values.
-  SignalRFeatureResponse({
+  const SignalRFeatureResponse({
     required this.flag,
     this.properties,
     required this.value,

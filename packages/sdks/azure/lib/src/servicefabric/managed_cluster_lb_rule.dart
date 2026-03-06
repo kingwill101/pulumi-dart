@@ -20,7 +20,7 @@ class ManagedClusterLbRule {
   /// [probeProtocol] Protocol for the probe. Can be one of `tcp`, `udp`, `http`, or `https`.
   /// [probeRequestPath] Path for the probe to check, when probe protocol is set to `http`.
   /// [protocol] The transport protocol used in this rule. Can be one of `tcp` or `udp`.
-  ManagedClusterLbRule({
+  const ManagedClusterLbRule({
     required this.backendPort,
     required this.frontendPort,
     required this.probeProtocol,

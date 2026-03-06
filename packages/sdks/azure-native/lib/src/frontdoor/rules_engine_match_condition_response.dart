@@ -24,7 +24,7 @@ class RulesEngineMatchConditionResponse {
   /// [rulesEngineOperator] Describes operator to apply to the match condition.
   /// [selector] Name of selector in RequestHeader or RequestBody to be matched
   /// [transforms] List of transforms
-  RulesEngineMatchConditionResponse({
+  const RulesEngineMatchConditionResponse({
     this.negateCondition,
     required this.rulesEngineMatchValue,
     required this.rulesEngineMatchVariable,

@@ -10,7 +10,7 @@ class ClusterTelemetry {
 
   /// Creates a new [ClusterTelemetry].
   /// [type] Type of the integration.
-  ClusterTelemetry({
+  const ClusterTelemetry({
     this.type,
   });
 

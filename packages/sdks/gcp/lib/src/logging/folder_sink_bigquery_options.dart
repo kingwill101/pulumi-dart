@@ -11,7 +11,7 @@ class FolderSinkBigqueryOptions {
 
   /// Creates a new [FolderSinkBigqueryOptions].
   /// [usePartitionedTables] Whether to use [BigQuery's partition tables](https://cloud.google.com/bigquery/docs/partitioned-tables).
-  FolderSinkBigqueryOptions({
+  const FolderSinkBigqueryOptions({
     required this.usePartitionedTables,
   });
 

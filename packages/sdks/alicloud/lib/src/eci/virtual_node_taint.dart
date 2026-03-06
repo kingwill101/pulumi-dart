@@ -14,7 +14,7 @@ class VirtualNodeTaint {
   /// [effect] The effect of the taint. Valid values: `NoSchedule`, `NoExecute` and `PreferNoSchedule`.
   /// [key] The key of the taint.
   /// [value] The value of the taint.
-  VirtualNodeTaint({
+  const VirtualNodeTaint({
     this.effect,
     this.key,
     this.value,

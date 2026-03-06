@@ -15,7 +15,7 @@ class GetEkmConnectionArgs {
   /// [ekmConnectionId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEkmConnectionArgs({
+  const GetEkmConnectionArgs({
     required this.ekmConnectionId,
     required this.location,
     this.project,

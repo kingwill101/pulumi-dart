@@ -9,7 +9,7 @@ class ScraperSource {
 
   /// Creates a new [ScraperSource].
   /// [eks] Configuration block for an EKS cluster source. See `eks`.
-  ScraperSource({
+  const ScraperSource({
     required this.eks,
   });
 

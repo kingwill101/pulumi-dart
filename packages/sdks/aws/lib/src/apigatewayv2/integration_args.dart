@@ -76,7 +76,7 @@ class IntegrationArgs {
   /// [templateSelectionExpression] The [template selection expression](https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-template-selection-expressions) for the integration.
   /// [timeoutMilliseconds] Custom timeout between 50 and 29,000 milliseconds for WebSocket APIs and between 50 and 30,000 milliseconds for HTTP APIs.
   /// [tlsConfig] TLS configuration for a private integration. Supported only for HTTP APIs.
-  IntegrationArgs({
+  const IntegrationArgs({
     required this.apiId,
     this.connectionId,
     this.connectionType,

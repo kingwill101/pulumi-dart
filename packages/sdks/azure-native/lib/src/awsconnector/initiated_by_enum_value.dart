@@ -9,7 +9,7 @@ class InitiatedByEnumValue {
 
   /// Creates a new [InitiatedByEnumValue].
   /// [value] Property value
-  InitiatedByEnumValue({
+  const InitiatedByEnumValue({
     this.value,
   });
 

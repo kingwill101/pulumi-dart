@@ -77,7 +77,7 @@ class LbLoadbalancerV2State {
   /// [vipPortId] The port UUID that the loadbalancer will use.
   /// [vipQosPolicyId] The ID of the QoS Policy which will
   /// [vipSubnetId] The subnet on which to allocate the
-  LbLoadbalancerV2State({
+  const LbLoadbalancerV2State({
     this.adminStateUp,
     this.availabilityZone,
     this.description,

@@ -11,7 +11,7 @@ class ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTran
   /// Creates a new [ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda].
   /// [functionArn] The Amazon Resource Name (ARN) of the AWS Lambda function.
   /// [functionPayload] Additional JSON that provides supplemental data to the Lambda function used to transform objects.
-  ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda({
+  const ObjectLambdaAccessPointConfigurationTransformationConfigurationContentTransformationAwsLambda({
     required this.functionArn,
     this.functionPayload,
   });

@@ -12,7 +12,7 @@ class OpenAuthenticationPolicyClaimResponse {
   /// Creates a new [OpenAuthenticationPolicyClaimResponse].
   /// [name] The name of the claim.
   /// [value] The value of the claim.
-  OpenAuthenticationPolicyClaimResponse({
+  const OpenAuthenticationPolicyClaimResponse({
     this.name,
     this.value,
   });

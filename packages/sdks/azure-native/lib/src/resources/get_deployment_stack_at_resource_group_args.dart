@@ -15,7 +15,7 @@ class GetDeploymentStackAtResourceGroupArgs {
   /// Creates a new [GetDeploymentStackAtResourceGroupArgs].
   /// [deploymentStackName] Name of the deployment stack.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDeploymentStackAtResourceGroupArgs({
+  const GetDeploymentStackAtResourceGroupArgs({
     required this.deploymentStackName,
     required this.resourceGroupName,
   });

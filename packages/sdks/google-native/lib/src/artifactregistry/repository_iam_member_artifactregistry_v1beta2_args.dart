@@ -27,7 +27,7 @@ class RepositoryIamMemberArtifactregistryV1beta2Args {
   /// [member] Identity that will be granted the privilege in role. The entry can have one of the following values:
   /// [name] The name of the resource to manage IAM policies for.
   /// [role] The role that should be applied.
-  RepositoryIamMemberArtifactregistryV1beta2Args({
+  const RepositoryIamMemberArtifactregistryV1beta2Args({
     this.condition,
     required this.member,
     required this.name,

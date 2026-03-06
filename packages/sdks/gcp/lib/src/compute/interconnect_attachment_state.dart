@@ -218,7 +218,7 @@ class InterconnectAttachmentState {
   /// [subnetLength] Length of the IPv4 subnet mask. Allowed values: 29 (default), 30. The default value is 29,
   /// [type] The type of InterconnectAttachment you wish to create. Defaults to
   /// [vlanTag8021q] The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. When
-  InterconnectAttachmentState({
+  const InterconnectAttachmentState({
     this.adminEnabled,
     this.attachmentGroup,
     this.bandwidth,

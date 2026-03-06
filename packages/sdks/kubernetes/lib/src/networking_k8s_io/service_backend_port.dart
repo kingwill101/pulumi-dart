@@ -12,7 +12,7 @@ class ServiceBackendPort {
   /// Creates a new [ServiceBackendPort].
   /// [name] name is the name of the port on the Service. This is a mutually exclusive setting with "Number".
   /// [number] number is the numerical port number (e.g. 80) on the Service. This is a mutually exclusive setting with "Name".
-  ServiceBackendPort({
+  const ServiceBackendPort({
     this.name,
     this.number,
   });

@@ -24,7 +24,7 @@ class ConsentConfig {
   /// [consentHeaderHandling] Optional. Different options to configure the behaviour of the server when handling the `X-Consent-Scope` header.
   /// [enforcedAdminConsents] The versioned names of the enforced admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. This field can only be updated using ApplyAdminConsents.
   /// [version] Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version.
-  ConsentConfig({
+  const ConsentConfig({
     this.accessDeterminationLogConfig,
     this.accessEnforced,
     this.consentHeaderHandling,

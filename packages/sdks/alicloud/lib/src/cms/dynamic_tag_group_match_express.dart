@@ -11,7 +11,7 @@ class DynamicTagGroupMatchExpress {
   /// Creates a new [DynamicTagGroupMatchExpress].
   /// [tagValue] The tag values of the cloud resources.
   /// [tagValueMatchFunction] The method that is used to match the tag values of the cloud resources. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
-  DynamicTagGroupMatchExpress({
+  const DynamicTagGroupMatchExpress({
     required this.tagValue,
     required this.tagValueMatchFunction,
   });

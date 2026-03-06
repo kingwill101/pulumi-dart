@@ -11,7 +11,7 @@ class TableIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  TableIamBindingCondition({
+  const TableIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

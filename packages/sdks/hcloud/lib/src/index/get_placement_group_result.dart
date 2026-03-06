@@ -23,7 +23,7 @@ class GetPlacementGroupResult {
   /// [servers] Required.
   /// [type] (string) Type of the Placement Group.
   /// [withSelector] Optional.
-  GetPlacementGroupResult({
+  const GetPlacementGroupResult({
     required this.id,
     required this.labels,
     this.mostRecent,

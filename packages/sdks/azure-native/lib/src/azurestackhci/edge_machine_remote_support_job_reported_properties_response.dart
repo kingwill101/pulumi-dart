@@ -24,7 +24,7 @@ class EdgeMachineRemoteSupportJobReportedPropertiesResponse {
   /// [percentComplete] The percentage of the job that is complete.
   /// [sessionDetails] Details of the remote support session.
   /// [validationStatus] Validation status of job.
-  EdgeMachineRemoteSupportJobReportedPropertiesResponse({
+  const EdgeMachineRemoteSupportJobReportedPropertiesResponse({
     required this.deploymentStatus,
     required this.nodeSettings,
     required this.percentComplete,

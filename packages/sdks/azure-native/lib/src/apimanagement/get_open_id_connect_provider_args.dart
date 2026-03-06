@@ -18,7 +18,7 @@ class GetOpenIdConnectProviderArgs {
   /// [opid] Identifier of the OpenID Connect Provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetOpenIdConnectProviderArgs({
+  const GetOpenIdConnectProviderArgs({
     required this.opid,
     required this.resourceGroupName,
     required this.serviceName,

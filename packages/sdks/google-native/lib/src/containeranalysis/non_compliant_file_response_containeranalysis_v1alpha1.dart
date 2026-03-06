@@ -15,7 +15,7 @@ class NonCompliantFileResponseContaineranalysisV1alpha1 {
   /// [displayCommand] Command to display the non-compliant files.
   /// [path] display_command is a single command that can be used to display a list of non compliant files. When there is no such command, we can also iterate a list of non compliant file using 'path'. Empty if `display_command` is set.
   /// [reason] Explains why a file is non compliant for a CIS check.
-  NonCompliantFileResponseContaineranalysisV1alpha1({
+  const NonCompliantFileResponseContaineranalysisV1alpha1({
     required this.displayCommand,
     required this.path,
     required this.reason,

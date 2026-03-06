@@ -9,7 +9,7 @@ class ContainerServicePublicDomainNames {
 
   /// Creates a new [ContainerServicePublicDomainNames].
   /// [certificates] Set of certificate configurations for the public domain names. Each element contains the following attributes:
-  ContainerServicePublicDomainNames({
+  const ContainerServicePublicDomainNames({
     required this.certificates,
   });
 

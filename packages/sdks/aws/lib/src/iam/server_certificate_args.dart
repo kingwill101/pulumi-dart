@@ -39,7 +39,7 @@ class ServerCertificateArgs {
   /// [path] The IAM path for the server certificate.  If it is not
   /// [privateKey] The contents of the private key in PEM-encoded format.
   /// [tags] Map of resource tags for the server certificate. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ServerCertificateArgs({
+  const ServerCertificateArgs({
     required this.certificateBody,
     this.certificateChain,
     this.name,

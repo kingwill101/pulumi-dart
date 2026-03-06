@@ -18,7 +18,7 @@ class TableEntityState {
   /// [partitionKey] The key for the partition where the entity will be inserted/merged. Changing this forces a new resource to be created.
   /// [rowKey] The key for the row where the entity will be inserted/merged. Changing this forces a new resource to be created.
   /// [storageTableId] The Storage Share ID in which this file will be placed into.
-  TableEntityState({
+  const TableEntityState({
     this.entity,
     this.partitionKey,
     this.rowKey,

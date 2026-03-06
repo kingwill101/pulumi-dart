@@ -12,7 +12,7 @@ class LegacyS3OriginResponse {
   /// Creates a new [LegacyS3OriginResponse].
   /// [dnsName] Property dnsName
   /// [originAccessIdentity] Property originAccessIdentity
-  LegacyS3OriginResponse({
+  const LegacyS3OriginResponse({
     this.dnsName,
     this.originAccessIdentity,
   });

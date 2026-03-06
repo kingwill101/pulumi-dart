@@ -22,7 +22,7 @@ class ManagementConfigurationArgs {
   /// [managementConfigurationName] User Management Configuration Name.
   /// [properties] Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
   /// [resourceGroupName] The name of the resource group to get. The name is case insensitive.
-  ManagementConfigurationArgs({
+  const ManagementConfigurationArgs({
     this.location,
     this.managementConfigurationName,
     this.properties,

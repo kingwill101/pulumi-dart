@@ -13,7 +13,7 @@ class RouteWarningData {
   /// Creates a new [RouteWarningData].
   /// [key] (Output)
   /// [value] (Output)
-  RouteWarningData({
+  const RouteWarningData({
     this.key,
     this.value,
   });

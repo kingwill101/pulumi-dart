@@ -12,7 +12,7 @@ class PackageCarrierInfoResponse {
   /// Creates a new [PackageCarrierInfoResponse].
   /// [carrierName] Name of the carrier.
   /// [trackingId] Tracking Id of shipment.
-  PackageCarrierInfoResponse({
+  const PackageCarrierInfoResponse({
     this.carrierName,
     this.trackingId,
   });

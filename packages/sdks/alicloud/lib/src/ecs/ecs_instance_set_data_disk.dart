@@ -36,7 +36,7 @@ class EcsInstanceSetDataDisk {
   /// [kmsKeyId] The KMS key ID corresponding to the data disk.
   /// [performanceLevel] The performance level of the ESSD used as data disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
   /// [snapshotId] The snapshot ID used to initialize the data disk. If the size specified by snapshot is greater that the size of the disk, use the size specified by snapshot as the size of the data disk.
-  EcsInstanceSetDataDisk({
+  const EcsInstanceSetDataDisk({
     this.autoSnapshotPolicyId,
     this.diskCategory,
     this.diskDescription,

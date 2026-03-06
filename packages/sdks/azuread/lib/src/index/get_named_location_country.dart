@@ -11,7 +11,7 @@ class GetNamedLocationCountry {
   /// [countriesAndRegions] Required.
   /// [countryLookupMethod] Required.
   /// [includeUnknownCountriesAndRegions] Required.
-  GetNamedLocationCountry({
+  const GetNamedLocationCountry({
     required this.countriesAndRegions,
     required this.countryLookupMethod,
     required this.includeUnknownCountriesAndRegions,

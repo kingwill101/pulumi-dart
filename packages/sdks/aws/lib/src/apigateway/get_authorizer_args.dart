@@ -18,7 +18,7 @@ class GetAuthorizerArgs {
   /// [authorizerId] Authorizer identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] ID of the associated REST API.
-  GetAuthorizerArgs({
+  const GetAuthorizerArgs({
     required this.authorizerId,
     this.region,
     required this.restApiId,

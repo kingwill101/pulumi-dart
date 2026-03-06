@@ -18,7 +18,7 @@ class StorageTaskOperationResponse {
   /// [onFailure] Action to be taken when the operation fails for a object.
   /// [onSuccess] Action to be taken when the operation is successful for a object.
   /// [parameters] Key-value parameters for the operation.
-  StorageTaskOperationResponse({
+  const StorageTaskOperationResponse({
     required this.name,
     this.onFailure,
     this.onSuccess,

@@ -16,7 +16,7 @@ class GetAutonomousDatabasesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   /// [project] Optional.
-  GetAutonomousDatabasesResult({
+  const GetAutonomousDatabasesResult({
     required this.autonomousDatabases,
     required this.id,
     required this.location,

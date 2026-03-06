@@ -12,7 +12,7 @@ class GetPeerAsnArgs {
 
   /// Creates a new [GetPeerAsnArgs].
   /// [peerAsnName] The peer ASN name.
-  GetPeerAsnArgs({
+  const GetPeerAsnArgs({
     required this.peerAsnName,
   });
 

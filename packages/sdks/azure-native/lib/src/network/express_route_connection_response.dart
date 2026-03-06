@@ -38,7 +38,7 @@ class ExpressRouteConnectionResponse {
   /// [provisioningState] The provisioning state of the express route connection resource.
   /// [routingConfiguration] The Routing Configuration indicating the associated and propagated route tables on this connection.
   /// [routingWeight] The routing weight associated to the connection.
-  ExpressRouteConnectionResponse({
+  const ExpressRouteConnectionResponse({
     this.authorizationKey,
     this.enableInternetSecurity,
     this.enablePrivateLinkFastPath,

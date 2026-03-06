@@ -22,7 +22,7 @@ class GetActivationsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetActivationsArgs({
+  const GetActivationsArgs({
     this.ids,
     this.instanceName,
     this.outputFile,

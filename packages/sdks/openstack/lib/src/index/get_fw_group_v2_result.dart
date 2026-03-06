@@ -44,7 +44,7 @@ class GetFwGroupV2Result {
   /// [shared] See Argument Reference above.
   /// [status] See Argument Reference above.
   /// [tenantId] See Argument Reference above.
-  GetFwGroupV2Result({
+  const GetFwGroupV2Result({
     required this.adminStateUp,
     this.description,
     this.egressFirewallPolicyId,

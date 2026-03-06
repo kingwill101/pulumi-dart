@@ -40,7 +40,7 @@ class ServerArgs {
   /// [resourceGroupName] The name of the Resource Group in which the Analysis Services Server should be exist. Changing this forces a new resource to be created.
   /// [sku] SKU for the Analysis Services Server. Possible values are: `D1`, `B1`, `B2`, `S0`, `S1`, `S2`, `S4`, `S8`, `S9`, `S8v2` and `S9v2`.
   /// [tags] A mapping of tags to assign to the resource.
-  ServerArgs({
+  const ServerArgs({
     this.adminUsers,
     this.backupBlobContainerUri,
     this.ipv4FirewallRules,

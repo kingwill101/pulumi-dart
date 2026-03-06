@@ -20,7 +20,7 @@ class DataConnectorMicrosoftDefenderAdvancedThreatProtectionArgs {
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace that this Microsoft Defender Advanced Threat Protection Data Connector resides in. Changing this forces a new Microsoft Defender Advanced Threat Protection Data Connector to be created.
   /// [name] The name which should be used for this Microsoft Defender Advanced Threat Protection Data Connector. Changing this forces a new Microsoft Defender Advanced Threat Protection Data Connector to be created.
   /// [tenantId] The ID of the tenant that this Microsoft Defender Advanced Threat Protection Data Connector connects to. Changing this forces a new Microsoft Defender Advanced Threat Protection Data Connector to be created.
-  DataConnectorMicrosoftDefenderAdvancedThreatProtectionArgs({
+  const DataConnectorMicrosoftDefenderAdvancedThreatProtectionArgs({
     required this.logAnalyticsWorkspaceId,
     this.name,
     this.tenantId,

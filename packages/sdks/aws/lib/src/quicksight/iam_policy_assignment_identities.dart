@@ -11,7 +11,7 @@ class IamPolicyAssignmentIdentities {
   /// Creates a new [IamPolicyAssignmentIdentities].
   /// [groups] Array of Quicksight group names to assign the policy to.
   /// [users] Array of Quicksight user names to assign the policy to.
-  IamPolicyAssignmentIdentities({
+  const IamPolicyAssignmentIdentities({
     this.groups,
     this.users,
   });

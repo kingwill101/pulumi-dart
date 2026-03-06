@@ -132,7 +132,7 @@ class TableExternalDataConfiguration {
   /// [schema] A JSON schema for the external table. Schema is required
   /// [sourceFormat] The data format. Please see sourceFormat under
   /// [sourceUris] A list of the fully-qualified URIs that point to
-  TableExternalDataConfiguration({
+  const TableExternalDataConfiguration({
     required this.autodetect,
     this.avroOptions,
     this.bigtableOptions,

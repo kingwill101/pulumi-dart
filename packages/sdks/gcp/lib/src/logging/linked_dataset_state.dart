@@ -40,7 +40,7 @@ class LinkedDatasetState {
   /// [location] The location of the linked dataset.
   /// [name] The resource name of the linked dataset. The name can have up to 100 characters. A valid link id
   /// [parent] The parent of the linked dataset.
-  LinkedDatasetState({
+  const LinkedDatasetState({
     this.bigqueryDatasets,
     this.bucket,
     this.createTime,

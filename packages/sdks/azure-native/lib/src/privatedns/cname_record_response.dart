@@ -9,7 +9,7 @@ class CnameRecordResponse {
 
   /// Creates a new [CnameRecordResponse].
   /// [cname] The canonical name for this CNAME record.
-  CnameRecordResponse({
+  const CnameRecordResponse({
     this.cname,
   });
 

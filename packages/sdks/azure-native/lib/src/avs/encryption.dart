@@ -13,7 +13,7 @@ class Encryption {
   /// Creates a new [Encryption].
   /// [keyVaultProperties] The key vault where the encryption key is stored
   /// [status] Status of customer managed encryption key
-  Encryption({
+  const Encryption({
     this.keyVaultProperties,
     this.status,
   });

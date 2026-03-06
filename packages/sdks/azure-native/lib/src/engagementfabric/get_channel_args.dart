@@ -18,7 +18,7 @@ class GetChannelArgs {
   /// [accountName] Account Name
   /// [channelName] Channel Name
   /// [resourceGroupName] Resource Group Name
-  GetChannelArgs({
+  const GetChannelArgs({
     required this.accountName,
     required this.channelName,
     required this.resourceGroupName,

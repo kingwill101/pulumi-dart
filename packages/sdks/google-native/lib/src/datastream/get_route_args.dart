@@ -17,7 +17,7 @@ class GetRouteArgs {
   /// [privateConnectionId] Required.
   /// [project] Optional.
   /// [routeId] Required.
-  GetRouteArgs({
+  const GetRouteArgs({
     required this.location,
     required this.privateConnectionId,
     this.project,

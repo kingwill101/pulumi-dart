@@ -8,7 +8,7 @@ class ClusterServerSideEncryption {
 
   /// Creates a new [ClusterServerSideEncryption].
   /// [enabled] Whether to enable encryption at rest. Defaults to `false`.
-  ClusterServerSideEncryption({
+  const ClusterServerSideEncryption({
     this.enabled,
   });
 

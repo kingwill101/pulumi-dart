@@ -17,7 +17,7 @@ class GetDatasetIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDatasetIamPolicyArgs({
+  const GetDatasetIamPolicyArgs({
     required this.datasetId,
     required this.location,
     this.optionsRequestedPolicyVersion,

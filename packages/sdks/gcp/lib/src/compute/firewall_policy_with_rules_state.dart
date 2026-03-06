@@ -44,7 +44,7 @@ class FirewallPolicyWithRulesState {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [shortName] A textual name of the security policy.
-  FirewallPolicyWithRulesState({
+  const FirewallPolicyWithRulesState({
     this.creationTimestamp,
     this.description,
     this.fingerprint,

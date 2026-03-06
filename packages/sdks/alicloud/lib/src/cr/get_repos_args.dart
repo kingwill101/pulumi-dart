@@ -21,7 +21,7 @@ class GetReposArgs {
   /// [nameRegex] A regex string to filter results by repository name.
   /// [namespace] Name of container registry namespace where the repositories are located in.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetReposArgs({
+  const GetReposArgs({
     this.enableDetails,
     this.nameRegex,
     this.namespace,

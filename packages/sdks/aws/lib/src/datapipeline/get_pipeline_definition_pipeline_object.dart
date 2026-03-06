@@ -15,7 +15,7 @@ class GetPipelineDefinitionPipelineObject {
   /// [fields] Key-value pairs that define the properties of the object. See below
   /// [id] ID of the object.
   /// [name] ARN of the storage connector.
-  GetPipelineDefinitionPipelineObject({
+  const GetPipelineDefinitionPipelineObject({
     this.fields,
     required this.id,
     required this.name,

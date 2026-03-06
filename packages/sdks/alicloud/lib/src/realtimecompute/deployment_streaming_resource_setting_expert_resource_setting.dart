@@ -11,7 +11,7 @@ class DeploymentStreamingResourceSettingExpertResourceSetting {
   /// Creates a new [DeploymentStreamingResourceSettingExpertResourceSetting].
   /// [jobmanagerResourceSettingSpec] Optional.
   /// [resourcePlan] Resource plan for expert mode
-  DeploymentStreamingResourceSettingExpertResourceSetting({
+  const DeploymentStreamingResourceSettingExpertResourceSetting({
     this.jobmanagerResourceSettingSpec,
     this.resourcePlan,
   });

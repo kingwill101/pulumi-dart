@@ -63,7 +63,7 @@ class DesktopState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [userAssignMode] The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
   /// [userDiskSizeGib] The user disk size gib of the Desktop.
-  DesktopState({
+  const DesktopState({
     this.amount,
     this.autoPay,
     this.autoRenew,

@@ -15,7 +15,7 @@ class GetFailoverGroupArgs {
   /// Creates a new [GetFailoverGroupArgs].
   /// [name] The name of the Failover Group.
   /// [serverId] The ID of the primary SQL Server where the Failover Group exists.
-  GetFailoverGroupArgs({
+  const GetFailoverGroupArgs({
     required this.name,
     required this.serverId,
   });

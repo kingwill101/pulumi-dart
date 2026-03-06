@@ -12,7 +12,7 @@ class SubnetNatGatewayAssociationState {
   /// Creates a new [SubnetNatGatewayAssociationState].
   /// [natGatewayId] The ID of the NAT Gateway which should be associated with the Subnet. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet. Changing this forces a new resource to be created.
-  SubnetNatGatewayAssociationState({
+  const SubnetNatGatewayAssociationState({
     this.natGatewayId,
     this.subnetId,
   });

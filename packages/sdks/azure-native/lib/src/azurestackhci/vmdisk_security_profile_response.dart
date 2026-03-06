@@ -9,7 +9,7 @@ class VMDiskSecurityProfileResponse {
 
   /// Creates a new [VMDiskSecurityProfileResponse].
   /// [securityEncryptionType] Specifies the EncryptionType of the managed disk. It is set to NonPersistedTPM for not persisting firmware state in the VMGuestState blob. NOTE: It can be set for only Confidential VMs.
-  VMDiskSecurityProfileResponse({
+  const VMDiskSecurityProfileResponse({
     this.securityEncryptionType,
   });
 

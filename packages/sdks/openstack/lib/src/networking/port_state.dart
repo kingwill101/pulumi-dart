@@ -121,7 +121,7 @@ class PortState {
   /// [tags] A set of string tags for the port.
   /// [tenantId] The owner of the port. Required if admin wants
   /// [valueSpecs] Map of additional options.
-  PortState({
+  const PortState({
     this.adminStateUp,
     this.allFixedIps,
     this.allSecurityGroupIds,

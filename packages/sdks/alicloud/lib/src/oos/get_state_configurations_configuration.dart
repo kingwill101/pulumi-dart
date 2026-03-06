@@ -50,7 +50,7 @@ class GetStateConfigurationsConfiguration {
   /// [templateName] The name of the template.
   /// [templateVersion] The version of the template.
   /// [updateTime] The time when the configuration is updated.
-  GetStateConfigurationsConfiguration({
+  const GetStateConfigurationsConfiguration({
     required this.configureMode,
     required this.createTime,
     required this.description,

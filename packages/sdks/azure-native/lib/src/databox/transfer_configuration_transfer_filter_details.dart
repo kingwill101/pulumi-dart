@@ -10,7 +10,7 @@ class TransferConfigurationTransferFilterDetails {
 
   /// Creates a new [TransferConfigurationTransferFilterDetails].
   /// [include] Details of the filtering the transfer of data.
-  TransferConfigurationTransferFilterDetails({
+  const TransferConfigurationTransferFilterDetails({
     this.include,
   });
 

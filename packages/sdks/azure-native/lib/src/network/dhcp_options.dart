@@ -9,7 +9,7 @@ class DhcpOptions {
 
   /// Creates a new [DhcpOptions].
   /// [dnsServers] The list of DNS servers IP addresses.
-  DhcpOptions({
+  const DhcpOptions({
     this.dnsServers,
   });
 

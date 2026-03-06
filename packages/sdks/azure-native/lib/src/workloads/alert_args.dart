@@ -31,7 +31,7 @@ class AlertArgs {
   /// [providerType] The provider type for alert. For example, the value can be SapHana.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [templateName] Name of the alert template from which it was created.
-  AlertArgs({
+  const AlertArgs({
     this.alertName,
     this.alertRuleProperties,
     required this.monitorName,

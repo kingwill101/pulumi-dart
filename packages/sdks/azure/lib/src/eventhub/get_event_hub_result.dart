@@ -20,7 +20,7 @@ class GetEventHubResult {
   /// [partitionCount] The number of partitions in the EventHub.
   /// [partitionIds] The identifiers for the partitions of this EventHub.
   /// [resourceGroupName] Required.
-  GetEventHubResult({
+  const GetEventHubResult({
     required this.id,
     required this.name,
     required this.namespaceName,

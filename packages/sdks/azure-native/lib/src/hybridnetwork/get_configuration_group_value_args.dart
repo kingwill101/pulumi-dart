@@ -15,7 +15,7 @@ class GetConfigurationGroupValueArgs {
   /// Creates a new [GetConfigurationGroupValueArgs].
   /// [configurationGroupValueName] The name of the configuration group value.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConfigurationGroupValueArgs({
+  const GetConfigurationGroupValueArgs({
     required this.configurationGroupValueName,
     required this.resourceGroupName,
   });

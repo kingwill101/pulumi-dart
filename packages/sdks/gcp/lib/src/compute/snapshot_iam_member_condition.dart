@@ -11,7 +11,7 @@ class SnapshotIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  SnapshotIamMemberCondition({
+  const SnapshotIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

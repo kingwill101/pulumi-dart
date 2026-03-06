@@ -13,7 +13,7 @@ class GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse {
   /// Creates a new [GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse].
   /// [featureStatsAnomaly] The stats and anomalies generated at specific timestamp.
   /// [objective] The objective for each stats.
-  GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse({
+  const GoogleCloudAiplatformV1FeatureMonitoringStatsAnomalyResponse({
     required this.featureStatsAnomaly,
     required this.objective,
   });

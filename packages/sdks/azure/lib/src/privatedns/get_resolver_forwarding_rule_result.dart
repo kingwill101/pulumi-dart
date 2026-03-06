@@ -26,7 +26,7 @@ class GetResolverForwardingRuleResult {
   /// [metadata] The metadata attached to the Private DNS Resolver Forwarding Rule.
   /// [name] Required.
   /// [targetDnsServers] A list of `target_dns_servers` block as defined below.
-  GetResolverForwardingRuleResult({
+  const GetResolverForwardingRuleResult({
     required this.dnsForwardingRulesetId,
     required this.domainName,
     required this.enabled,

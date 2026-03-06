@@ -14,7 +14,7 @@ class GetServiceEvent {
   /// [createdAt] Time when task set was created (RFC3339 format)
   /// [id] Task set ID
   /// [message] Event message
-  GetServiceEvent({
+  const GetServiceEvent({
     required this.createdAt,
     required this.id,
     required this.message,

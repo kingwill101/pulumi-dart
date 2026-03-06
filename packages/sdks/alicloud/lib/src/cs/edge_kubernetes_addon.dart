@@ -30,7 +30,7 @@ class EdgeKubernetesAddon {
   /// [disabled] Disables the automatic installation of a component. Default is `false`.
   /// [name] Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
   /// [version] It specifies the version of the component.
-  EdgeKubernetesAddon({
+  const EdgeKubernetesAddon({
     this.config,
     this.disabled,
     this.name,

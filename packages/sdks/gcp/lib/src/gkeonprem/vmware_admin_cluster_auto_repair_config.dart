@@ -8,7 +8,7 @@ class VmwareAdminClusterAutoRepairConfig {
 
   /// Creates a new [VmwareAdminClusterAutoRepairConfig].
   /// [enabled] Whether auto repair is enabled.
-  VmwareAdminClusterAutoRepairConfig({
+  const VmwareAdminClusterAutoRepairConfig({
     required this.enabled,
   });
 

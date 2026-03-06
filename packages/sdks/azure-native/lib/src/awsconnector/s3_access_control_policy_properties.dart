@@ -31,7 +31,7 @@ class S3AccessControlPolicyProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  S3AccessControlPolicyProperties({
+  const S3AccessControlPolicyProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

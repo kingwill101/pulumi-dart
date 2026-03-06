@@ -14,7 +14,7 @@ class SharedImagePurchasePlan {
   /// [name] The Purchase Plan Name for this Shared Image. Changing this forces a new resource to be created.
   /// [product] The Purchase Plan Product for this Gallery Image. Changing this forces a new resource to be created.
   /// [publisher] The Purchase Plan Publisher for this Gallery Image. Changing this forces a new resource to be created.
-  SharedImagePurchasePlan({
+  const SharedImagePurchasePlan({
     required this.name,
     this.product,
     this.publisher,

@@ -12,7 +12,7 @@ class ResourceGroupValue {
   /// Creates a new [ResourceGroupValue].
   /// [location] Location of the resource group.
   /// [name] Name of the resource group.
-  ResourceGroupValue({
+  const ResourceGroupValue({
     this.location,
     this.name,
   });

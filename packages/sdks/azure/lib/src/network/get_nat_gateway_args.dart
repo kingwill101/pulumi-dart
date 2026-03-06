@@ -21,7 +21,7 @@ class GetNatGatewayArgs {
   /// [publicIpAddressIds] A list of existing Public IP Address resource IDs which the NAT Gateway is using.
   /// [publicIpPrefixIds] A list of existing Public IP Prefix resource IDs which the NAT Gateway is using.
   /// [resourceGroupName] Specifies the name of the Resource Group where the NAT Gateway exists.
-  GetNatGatewayArgs({
+  const GetNatGatewayArgs({
     required this.name,
     this.publicIpAddressIds,
     this.publicIpPrefixIds,

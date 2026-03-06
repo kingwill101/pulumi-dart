@@ -13,7 +13,7 @@ class BlobRestoreParametersResponse {
   /// Creates a new [BlobRestoreParametersResponse].
   /// [blobRanges] Blob ranges to restore.
   /// [timeToRestore] Restore blob to the specified time.
-  BlobRestoreParametersResponse({
+  const BlobRestoreParametersResponse({
     required this.blobRanges,
     required this.timeToRestore,
   });

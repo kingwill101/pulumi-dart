@@ -77,7 +77,7 @@ class NetworkInterfaceArgs {
   /// [sourceDestCheck] Whether to enable source destination checking for the ENI. Default true.
   /// [subnetId] Subnet ID to create the ENI in.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  NetworkInterfaceArgs({
+  const NetworkInterfaceArgs({
     this.attachments,
     this.description,
     this.enablePrimaryIpv6,

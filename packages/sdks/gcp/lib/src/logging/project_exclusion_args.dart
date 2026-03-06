@@ -28,7 +28,7 @@ class ProjectExclusionArgs {
   /// [filter] The filter to apply when excluding logs. Only log entries that match the filter are excluded.
   /// [name] The name of the logging exclusion.
   /// [project] The project to create the exclusion in. If omitted, the project associated with the provider is
-  ProjectExclusionArgs({
+  const ProjectExclusionArgs({
     this.description,
     this.disabled,
     required this.filter,

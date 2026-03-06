@@ -12,7 +12,7 @@ class ApplicationSecurityGroupAssociationState {
   /// Creates a new [ApplicationSecurityGroupAssociationState].
   /// [applicationSecurityGroupId] The id of application security group to associate. Changing this forces a new resource to be created.
   /// [privateEndpointId] The id of private endpoint to associate. Changing this forces a new resource to be created.
-  ApplicationSecurityGroupAssociationState({
+  const ApplicationSecurityGroupAssociationState({
     this.applicationSecurityGroupId,
     this.privateEndpointId,
   });

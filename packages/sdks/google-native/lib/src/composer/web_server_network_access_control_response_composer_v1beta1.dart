@@ -10,7 +10,7 @@ class WebServerNetworkAccessControlResponseComposerV1beta1 {
 
   /// Creates a new [WebServerNetworkAccessControlResponseComposerV1beta1].
   /// [allowedIpRanges] A collection of allowed IP ranges with descriptions.
-  WebServerNetworkAccessControlResponseComposerV1beta1({
+  const WebServerNetworkAccessControlResponseComposerV1beta1({
     required this.allowedIpRanges,
   });
 

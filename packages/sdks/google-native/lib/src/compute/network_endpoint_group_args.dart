@@ -71,7 +71,7 @@ class NetworkEndpointGroupArgs {
   /// [subnetwork] Optional URL of the subnetwork to which all network endpoints in the NEG belong.
   /// [type] Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
   /// [zone] Optional.
-  NetworkEndpointGroupArgs({
+  const NetworkEndpointGroupArgs({
     this.annotations,
     this.appEngine,
     this.clientPortMappingMode,

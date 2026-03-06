@@ -12,7 +12,7 @@ class LinkedDatasetBigqueryDataset {
 
   /// Creates a new [LinkedDatasetBigqueryDataset].
   /// [datasetId] (Output)
-  LinkedDatasetBigqueryDataset({
+  const LinkedDatasetBigqueryDataset({
     this.datasetId,
   });
 

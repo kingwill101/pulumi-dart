@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2UnwrappedCryptoKey {
 
   /// Creates a new [GooglePrivacyDlpV2UnwrappedCryptoKey].
   /// [key] A 128/192/256 bit key.
-  GooglePrivacyDlpV2UnwrappedCryptoKey({
+  const GooglePrivacyDlpV2UnwrappedCryptoKey({
     required this.key,
   });
 

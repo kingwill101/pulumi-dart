@@ -11,7 +11,7 @@ class StandardAppVersionLibrary {
   /// Creates a new [StandardAppVersionLibrary].
   /// [name] Name of the library. Example "django".
   /// [version] Version of the library to select, or "latest".
-  StandardAppVersionLibrary({
+  const StandardAppVersionLibrary({
     this.name,
     this.version,
   });

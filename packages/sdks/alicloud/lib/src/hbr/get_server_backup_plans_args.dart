@@ -19,7 +19,7 @@ class GetServerBackupPlansArgs {
   /// [filters] The filters.
   /// [ids] A list of Server Backup Plan IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetServerBackupPlansArgs({
+  const GetServerBackupPlansArgs({
     this.filters,
     this.ids,
     this.outputFile,

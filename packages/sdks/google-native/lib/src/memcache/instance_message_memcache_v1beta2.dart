@@ -12,7 +12,7 @@ class InstanceMessageMemcacheV1beta2 {
   /// Creates a new [InstanceMessageMemcacheV1beta2].
   /// [code] A code that correspond to one type of user-facing message.
   /// [message] Message on memcached instance which will be exposed to users.
-  InstanceMessageMemcacheV1beta2({
+  const InstanceMessageMemcacheV1beta2({
     this.code,
     this.message,
   });

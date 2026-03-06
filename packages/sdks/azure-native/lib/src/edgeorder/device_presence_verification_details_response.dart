@@ -12,7 +12,7 @@ class DevicePresenceVerificationDetailsResponse {
   /// Creates a new [DevicePresenceVerificationDetailsResponse].
   /// [message] Insights on current status.
   /// [status] Proof of possession status.
-  DevicePresenceVerificationDetailsResponse({
+  const DevicePresenceVerificationDetailsResponse({
     required this.message,
     required this.status,
   });

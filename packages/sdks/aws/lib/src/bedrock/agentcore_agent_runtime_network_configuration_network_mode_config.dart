@@ -11,7 +11,7 @@ class AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig {
   /// Creates a new [AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig].
   /// [securityGroups] Security groups associated with the VPC configuration.
   /// [subnets] Subnets associated with the VPC configuration.
-  AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig({
+  const AgentcoreAgentRuntimeNetworkConfigurationNetworkModeConfig({
     required this.securityGroups,
     required this.subnets,
   });

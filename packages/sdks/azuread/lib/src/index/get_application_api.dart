@@ -18,7 +18,7 @@ class GetApplicationApi {
   /// [mappedClaimsEnabled] Allows an application to use claims mapping without specifying a custom signing key.
   /// [oauth2PermissionScopes] One or more `oauth2_permission_scope` blocks as documented below, to describe delegated permissions exposed by the web API represented by this application.
   /// [requestedAccessTokenVersion] The access token version expected by this resource. Possible values are `1` or `2`.
-  GetApplicationApi({
+  const GetApplicationApi({
     required this.knownClientApplications,
     required this.mappedClaimsEnabled,
     required this.oauth2PermissionScopes,

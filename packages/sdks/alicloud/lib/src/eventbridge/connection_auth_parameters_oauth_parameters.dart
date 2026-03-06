@@ -19,7 +19,7 @@ class ConnectionAuthParametersOauthParameters {
   /// [clientParameters] The parameters that are configured for the client. See `client_parameters` below.
   /// [httpMethod] The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
   /// [oauthHttpParameters] The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
-  ConnectionAuthParametersOauthParameters({
+  const ConnectionAuthParametersOauthParameters({
     this.authorizationEndpoint,
     this.clientParameters,
     this.httpMethod,

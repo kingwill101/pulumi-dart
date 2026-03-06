@@ -11,7 +11,7 @@ class OneDashboardPageWidgetLogTableInitialSorting {
   /// Creates a new [OneDashboardPageWidgetLogTableInitialSorting].
   /// [direction] (Required) Defines the sort order. Accepted values are `asc` for ascending or `desc` for descending.
   /// [name] The title of the dashboard.
-  OneDashboardPageWidgetLogTableInitialSorting({
+  const OneDashboardPageWidgetLogTableInitialSorting({
     required this.direction,
     required this.name,
   });

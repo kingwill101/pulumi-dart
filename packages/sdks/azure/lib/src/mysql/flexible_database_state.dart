@@ -21,7 +21,7 @@ class FlexibleDatabaseState {
   /// [name] Specifies the name of the MySQL Database, which needs [to be a valid MySQL identifier](https://dev.mysql.com/doc/refman/5.7/en/identifiers.html). Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the MySQL Server exists. Changing this forces a new resource to be created.
   /// [serverName] Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
-  FlexibleDatabaseState({
+  const FlexibleDatabaseState({
     this.charset,
     this.collation,
     this.name,

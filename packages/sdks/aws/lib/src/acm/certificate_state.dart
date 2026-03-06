@@ -75,7 +75,7 @@ class CertificateState {
   /// [validationEmails] List of addresses that received a validation email. Only set if `EMAIL` validation was used.
   /// [validationMethod] Optional.
   /// [validationOptions] Optional.
-  CertificateState({
+  const CertificateState({
     this.arn,
     this.certificateAuthorityArn,
     this.certificateBody,

@@ -8,7 +8,7 @@ class GetManagedRuleGroupRuleActionChallenge {
 
   /// Creates a new [GetManagedRuleGroupRuleActionChallenge].
   /// [customRequestHandlings] Required.
-  GetManagedRuleGroupRuleActionChallenge({
+  const GetManagedRuleGroupRuleActionChallenge({
     required this.customRequestHandlings,
   });
 

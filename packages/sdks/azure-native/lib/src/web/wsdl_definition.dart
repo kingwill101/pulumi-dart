@@ -19,7 +19,7 @@ class WsdlDefinition {
   /// [importMethod] The WSDL import method
   /// [service] The service with name and endpoint names
   /// [url] The WSDL URL
-  WsdlDefinition({
+  const WsdlDefinition({
     this.content,
     this.importMethod,
     this.service,

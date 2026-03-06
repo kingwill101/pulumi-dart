@@ -7,7 +7,7 @@ class ProviderFeaturesCognitiveAccount {
 
   /// Creates a new [ProviderFeaturesCognitiveAccount].
   /// [purgeSoftDeleteOnDestroy] Optional.
-  ProviderFeaturesCognitiveAccount({
+  const ProviderFeaturesCognitiveAccount({
     this.purgeSoftDeleteOnDestroy,
   });
 

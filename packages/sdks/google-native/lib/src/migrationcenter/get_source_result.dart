@@ -38,7 +38,7 @@ class GetSourceResult {
   /// [state] The state of the source.
   /// [type] Data source type.
   /// [updateTime] The timestamp when the source was last updated.
-  GetSourceResult({
+  const GetSourceResult({
     required this.createTime,
     required this.description,
     required this.displayName,

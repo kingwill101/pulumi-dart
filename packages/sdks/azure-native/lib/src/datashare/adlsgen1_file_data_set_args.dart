@@ -37,7 +37,7 @@ class ADLSGen1FileDataSetArgs {
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share to add the data set to.
   /// [subscriptionId] Subscription id of ADLS account.
-  ADLSGen1FileDataSetArgs({
+  const ADLSGen1FileDataSetArgs({
     required this.accountName,
     this.dataSetName,
     required this.fileName,

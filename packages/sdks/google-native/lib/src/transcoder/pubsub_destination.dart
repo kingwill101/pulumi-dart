@@ -9,7 +9,7 @@ class PubsubDestination {
 
   /// Creates a new [PubsubDestination].
   /// [topic] The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
-  PubsubDestination({
+  const PubsubDestination({
     this.topic,
   });
 

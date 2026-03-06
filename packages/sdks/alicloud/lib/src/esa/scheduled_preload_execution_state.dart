@@ -27,7 +27,7 @@ class ScheduledPreloadExecutionState {
   /// [sliceLen] The number of URLs prefetched in each batch.
   /// [startTime] The start time of the prefetch plan.
   /// [status] The status of the prefetch plan, including the following statuses.
-  ScheduledPreloadExecutionState({
+  const ScheduledPreloadExecutionState({
     this.endTime,
     this.interval,
     this.scheduledPreloadExecutionId,

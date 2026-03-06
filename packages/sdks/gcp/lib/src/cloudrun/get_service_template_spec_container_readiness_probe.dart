@@ -29,7 +29,7 @@ class GetServiceTemplateSpecContainerReadinessProbe {
   /// [periodSeconds] How often (in seconds) to perform the probe.
   /// [successThreshold] Minimum consecutive successes for the probe to be considered successful after having failed.
   /// [timeoutSeconds] Number of seconds after which the probe times out.
-  GetServiceTemplateSpecContainerReadinessProbe({
+  const GetServiceTemplateSpecContainerReadinessProbe({
     required this.failureThreshold,
     required this.grpcs,
     required this.httpGets,

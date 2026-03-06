@@ -21,7 +21,7 @@ class GetViewArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [userId] The user ID. Use * to retrieve hub level view.
   /// [viewName] The name of the view.
-  GetViewArgs({
+  const GetViewArgs({
     required this.hubName,
     required this.resourceGroupName,
     required this.userId,

@@ -11,7 +11,7 @@ class GetInboundSamlSsoProfileArgs {
 
   /// Creates a new [GetInboundSamlSsoProfileArgs].
   /// [inboundSamlSsoProfileId] Required.
-  GetInboundSamlSsoProfileArgs({
+  const GetInboundSamlSsoProfileArgs({
     required this.inboundSamlSsoProfileId,
   });
 

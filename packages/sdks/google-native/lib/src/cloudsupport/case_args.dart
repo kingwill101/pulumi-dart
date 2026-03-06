@@ -52,7 +52,7 @@ class CaseArgs {
   /// [timeZone] The timezone of the user who created the support case. It should be in a format IANA recognizes: https://www.iana.org/time-zones. There is no additional validation done by the API.
   /// [v2Id] Required.
   /// [v2Id1] Required.
-  CaseArgs({
+  const CaseArgs({
     this.classification,
     this.contactEmail,
     this.creator,

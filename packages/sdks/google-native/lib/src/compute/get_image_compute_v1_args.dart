@@ -13,7 +13,7 @@ class GetImageComputeV1Args {
   /// Creates a new [GetImageComputeV1Args].
   /// [image] Required.
   /// [project] Optional.
-  GetImageComputeV1Args({
+  const GetImageComputeV1Args({
     required this.image,
     this.project,
   });

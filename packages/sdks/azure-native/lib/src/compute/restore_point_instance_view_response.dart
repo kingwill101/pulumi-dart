@@ -14,7 +14,7 @@ class RestorePointInstanceViewResponse {
   /// Creates a new [RestorePointInstanceViewResponse].
   /// [diskRestorePoints] The disk restore points information.
   /// [statuses] The resource status information.
-  RestorePointInstanceViewResponse({
+  const RestorePointInstanceViewResponse({
     this.diskRestorePoints,
     this.statuses,
   });

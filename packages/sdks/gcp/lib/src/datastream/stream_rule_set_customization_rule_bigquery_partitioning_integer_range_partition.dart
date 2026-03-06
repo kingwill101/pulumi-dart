@@ -17,7 +17,7 @@ class StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition {
   /// [end] The ending value for range partitioning (exclusive).
   /// [interval] The interval of each range within the partition.
   /// [start] The starting value for range partitioning (inclusive).
-  StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition({
+  const StreamRuleSetCustomizationRuleBigqueryPartitioningIntegerRangePartition({
     required this.column,
     required this.end,
     required this.interval,

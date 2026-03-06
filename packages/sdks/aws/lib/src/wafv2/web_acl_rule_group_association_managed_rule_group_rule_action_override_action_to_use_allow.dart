@@ -9,7 +9,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAll
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow].
   /// [customRequestHandling] Custom handling for allowed requests. See below.
-  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow({
+  const WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseAllow({
     this.customRequestHandling,
   });
 

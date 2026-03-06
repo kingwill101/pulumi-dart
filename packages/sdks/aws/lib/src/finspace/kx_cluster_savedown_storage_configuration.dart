@@ -15,7 +15,7 @@ class KxClusterSavedownStorageConfiguration {
   /// [size] Size of temporary storage in gigabytes. Must be between 10 and 16000.
   /// [type] Type of writeable storage space for temporarily storing your savedown data. The valid values are:
   /// [volumeName] The name of the kdb volume that you want to use as writeable save-down storage for clusters.
-  KxClusterSavedownStorageConfiguration({
+  const KxClusterSavedownStorageConfiguration({
     this.size,
     this.type,
     this.volumeName,

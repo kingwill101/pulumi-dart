@@ -10,7 +10,7 @@ class ServerGroupClusterAuthConfig {
   /// Creates a new [ServerGroupClusterAuthConfig].
   /// [activeDirectoryAuth] Optional.
   /// [passwordAuth] Optional.
-  ServerGroupClusterAuthConfig({
+  const ServerGroupClusterAuthConfig({
     this.activeDirectoryAuth,
     this.passwordAuth,
   });

@@ -35,7 +35,7 @@ class VersionArtifactArgs {
   /// [name] Resource name.
   /// [project] Optional.
   /// [versionId] Required.
-  VersionArtifactArgs({
+  const VersionArtifactArgs({
     this.annotations,
     required this.apiId,
     required this.artifactId,

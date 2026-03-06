@@ -35,7 +35,7 @@ class GetProjectResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Dev Center Project.
-  GetProjectResult({
+  const GetProjectResult({
     required this.description,
     required this.devCenterId,
     required this.devCenterUri,

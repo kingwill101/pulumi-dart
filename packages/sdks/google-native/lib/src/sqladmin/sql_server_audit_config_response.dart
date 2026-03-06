@@ -18,7 +18,7 @@ class SqlServerAuditConfigResponse {
   /// [kind] This is always sql#sqlServerAuditConfig
   /// [retentionInterval] How long to keep generated audit files.
   /// [uploadInterval] How often to upload generated audit files.
-  SqlServerAuditConfigResponse({
+  const SqlServerAuditConfigResponse({
     required this.bucket,
     required this.kind,
     required this.retentionInterval,

@@ -13,7 +13,7 @@ class ImageTemplateSharedImageVersionSource {
   /// Creates a new [ImageTemplateSharedImageVersionSource].
   /// [imageVersionId] ARM resource id of the image version. When image version name is 'latest', the version is evaluated when the image build takes place.
   /// [type] Specifies the type of source image you want to start with.
-  ImageTemplateSharedImageVersionSource({
+  const ImageTemplateSharedImageVersionSource({
     required this.imageVersionId,
     required this.type,
   });

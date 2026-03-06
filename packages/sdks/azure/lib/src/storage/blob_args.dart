@@ -58,7 +58,7 @@ class BlobArgs {
   /// [storageAccountName] Specifies the storage account in which to create the storage container. Changing this forces a new resource to be created.
   /// [storageContainerName] The name of the storage container in which this blob should be created. Changing this forces a new resource to be created.
   /// [type] The type of the storage blob to be created. Possible values are `Append`, `Block` or `Page`. Changing this forces a new resource to be created.
-  BlobArgs({
+  const BlobArgs({
     this.accessTier,
     this.cacheControl,
     this.contentMd5,

@@ -41,7 +41,7 @@ class GetEnvironmentResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [title] Environment title.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetEnvironmentResult({
+  const GetEnvironmentResult({
     required this.azureApiVersion,
     this.customProperties,
     this.description,

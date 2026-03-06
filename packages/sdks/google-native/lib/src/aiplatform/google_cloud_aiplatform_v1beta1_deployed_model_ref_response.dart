@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1DeployedModelRefResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1DeployedModelRefResponse].
   /// [deployedModelId] Immutable. An ID of a DeployedModel in the above Endpoint.
   /// [endpoint] Immutable. A resource name of an Endpoint.
-  GoogleCloudAiplatformV1beta1DeployedModelRefResponse({
+  const GoogleCloudAiplatformV1beta1DeployedModelRefResponse({
     required this.deployedModelId,
     required this.endpoint,
   });

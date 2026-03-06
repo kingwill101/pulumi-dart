@@ -23,7 +23,7 @@ class NamespaceArgs {
   /// [description] The description of the namespace, The description can be up to `128` characters in length.
   /// [namespaceLogicalId] The ID of the namespace.
   /// [namespaceName] The name of the namespace, The name can be up to `63` characters in length.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.debugEnable,
     this.description,
     required this.namespaceLogicalId,

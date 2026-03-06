@@ -36,7 +36,7 @@ class GetManagedHardwareSecurityModuleResult {
   /// [softDeleteRetentionDays] The number of days that items should be retained for soft-deleted.
   /// [tags] A mapping of tags assigned to the Key Vault Managed Hardware Security Module.
   /// [tenantId] The Azure Active Directory Tenant ID used for authenticating requests to the Key Vault Managed Hardware Security Module.
-  GetManagedHardwareSecurityModuleResult({
+  const GetManagedHardwareSecurityModuleResult({
     required this.adminObjectIds,
     required this.hsmUri,
     required this.id,

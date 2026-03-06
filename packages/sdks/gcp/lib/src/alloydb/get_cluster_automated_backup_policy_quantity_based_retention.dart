@@ -8,7 +8,7 @@ class GetClusterAutomatedBackupPolicyQuantityBasedRetention {
 
   /// Creates a new [GetClusterAutomatedBackupPolicyQuantityBasedRetention].
   /// [count] The number of backups to retain.
-  GetClusterAutomatedBackupPolicyQuantityBasedRetention({
+  const GetClusterAutomatedBackupPolicyQuantityBasedRetention({
     required this.count,
   });
 

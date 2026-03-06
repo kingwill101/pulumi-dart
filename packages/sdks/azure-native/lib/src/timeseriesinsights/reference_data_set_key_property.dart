@@ -12,7 +12,7 @@ class ReferenceDataSetKeyProperty {
   /// Creates a new [ReferenceDataSetKeyProperty].
   /// [name] The name of the key property.
   /// [type] The type of the key property.
-  ReferenceDataSetKeyProperty({
+  const ReferenceDataSetKeyProperty({
     this.name,
     this.type,
   });

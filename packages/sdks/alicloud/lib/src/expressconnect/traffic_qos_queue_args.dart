@@ -34,7 +34,7 @@ class TrafficQosQueueArgs {
   /// [queueDescription] The description of the QoS queue.
   /// [queueName] The name of the QoS queue.
   /// [queueType] QoS queue type, value:
-  TrafficQosQueueArgs({
+  const TrafficQosQueueArgs({
     this.bandwidthPercent,
     required this.qosId,
     this.queueDescription,

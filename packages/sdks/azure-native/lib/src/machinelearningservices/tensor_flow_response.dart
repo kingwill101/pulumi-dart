@@ -16,7 +16,7 @@ class TensorFlowResponse {
   /// [distributionType] Enum to determine the job distribution type.
   /// [parameterServerCount] Number of parameter server tasks.
   /// [workerCount] Number of workers. If not specified, will default to the instance count.
-  TensorFlowResponse({
+  const TensorFlowResponse({
     required this.distributionType,
     this.parameterServerCount,
     this.workerCount,

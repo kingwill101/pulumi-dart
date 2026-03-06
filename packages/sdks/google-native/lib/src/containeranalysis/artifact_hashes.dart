@@ -8,7 +8,7 @@ class ArtifactHashes {
 
   /// Creates a new [ArtifactHashes].
   /// [sha256] Optional.
-  ArtifactHashes({
+  const ArtifactHashes({
     this.sha256,
   });
 

@@ -10,7 +10,7 @@ class UserManagedResponse {
 
   /// Creates a new [UserManagedResponse].
   /// [replicas] The list of Replicas for this Secret. Cannot be empty.
-  UserManagedResponse({
+  const UserManagedResponse({
     required this.replicas,
   });
 

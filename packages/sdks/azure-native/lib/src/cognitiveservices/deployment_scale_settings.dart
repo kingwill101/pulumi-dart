@@ -12,7 +12,7 @@ class DeploymentScaleSettings {
   /// Creates a new [DeploymentScaleSettings].
   /// [capacity] Deployment capacity.
   /// [scaleType] Deployment scale type.
-  DeploymentScaleSettings({
+  const DeploymentScaleSettings({
     this.capacity,
     this.scaleType,
   });

@@ -12,7 +12,7 @@ class RedirectIncompatibleRowSettingsResponse {
   /// Creates a new [RedirectIncompatibleRowSettingsResponse].
   /// [linkedServiceName] Name of the Azure Storage, Storage SAS, or Azure Data Lake Store linked service used for redirecting incompatible row. Must be specified if redirectIncompatibleRowSettings is specified. Type: string (or Expression with resultType string).
   /// [path] The path for storing the redirect incompatible row data. Type: string (or Expression with resultType string).
-  RedirectIncompatibleRowSettingsResponse({
+  const RedirectIncompatibleRowSettingsResponse({
     required this.linkedServiceName,
     this.path,
   });

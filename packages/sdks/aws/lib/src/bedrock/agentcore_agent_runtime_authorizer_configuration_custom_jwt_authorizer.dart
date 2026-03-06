@@ -14,7 +14,7 @@ class AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer {
   /// [allowedAudiences] Set of allowed audience values for JWT token validation.
   /// [allowedClients] Set of allowed client IDs for JWT token validation.
   /// [discoveryUrl] URL used to fetch OpenID Connect configuration or authorization server metadata. Must end with `.well-known/openid-configuration`.
-  AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer({
+  const AgentcoreAgentRuntimeAuthorizerConfigurationCustomJwtAuthorizer({
     this.allowedAudiences,
     this.allowedClients,
     required this.discoveryUrl,

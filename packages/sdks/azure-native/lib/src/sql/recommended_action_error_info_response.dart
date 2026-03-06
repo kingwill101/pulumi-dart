@@ -12,7 +12,7 @@ class RecommendedActionErrorInfoResponse {
   /// Creates a new [RecommendedActionErrorInfoResponse].
   /// [errorCode] Gets the reason why the recommended action was put to error state. e.g., DatabaseHasQdsOff, IndexAlreadyExists
   /// [isRetryable] Gets whether the error could be ignored and recommended action could be retried. Possible values are: Yes/No
-  RecommendedActionErrorInfoResponse({
+  const RecommendedActionErrorInfoResponse({
     required this.errorCode,
     required this.isRetryable,
   });

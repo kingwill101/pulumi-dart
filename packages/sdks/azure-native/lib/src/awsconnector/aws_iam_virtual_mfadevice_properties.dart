@@ -22,7 +22,7 @@ class AwsIamVirtualMFADeviceProperties {
   /// [tags] Property tags
   /// [users] Property users
   /// [virtualMfaDeviceName] Property virtualMfaDeviceName
-  AwsIamVirtualMFADeviceProperties({
+  const AwsIamVirtualMFADeviceProperties({
     this.path,
     this.serialNumber,
     this.tags,

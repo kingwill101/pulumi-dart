@@ -13,7 +13,7 @@ class ProjectDataDelivery {
   /// Creates a new [ProjectDataDelivery].
   /// [cloudwatchLogs] A block that defines the CloudWatch Log Group that stores the evaluation events. See below.
   /// [s3Destination] A block that defines the S3 bucket and prefix that stores the evaluation events. See below.
-  ProjectDataDelivery({
+  const ProjectDataDelivery({
     this.cloudwatchLogs,
     this.s3Destination,
   });

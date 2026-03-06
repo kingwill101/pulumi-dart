@@ -11,7 +11,7 @@ class HttpRouteRuleActionFaultInjectionPolicyAbort {
   /// Creates a new [HttpRouteRuleActionFaultInjectionPolicyAbort].
   /// [httpStatus] The HTTP status code used to abort the request.
   /// [percentage] The percentage of traffic which will be aborted.
-  HttpRouteRuleActionFaultInjectionPolicyAbort({
+  const HttpRouteRuleActionFaultInjectionPolicyAbort({
     this.httpStatus,
     this.percentage,
   });

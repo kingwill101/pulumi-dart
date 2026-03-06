@@ -32,7 +32,7 @@ class BucketV2ReplicationConfigurationRule {
   /// [priority] Priority associated with the rule. Priority should only be set if `filter` is configured. If not provided, defaults to `0`. Priority must be unique between multiple rules.
   /// [sourceSelectionCriterias] Specifies special object selection criteria (documented below).
   /// [status] Status of the rule. Either `Enabled` or `Disabled`. The rule is ignored if status is not Enabled.
-  BucketV2ReplicationConfigurationRule({
+  const BucketV2ReplicationConfigurationRule({
     this.deleteMarkerReplicationStatus,
     required this.destinations,
     this.filters,

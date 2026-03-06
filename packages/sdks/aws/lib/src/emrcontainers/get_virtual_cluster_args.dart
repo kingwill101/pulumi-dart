@@ -18,7 +18,7 @@ class GetVirtualClusterArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value mapping of resource tags.
   /// [virtualClusterId] ID of the cluster.
-  GetVirtualClusterArgs({
+  const GetVirtualClusterArgs({
     this.region,
     this.tags,
     required this.virtualClusterId,

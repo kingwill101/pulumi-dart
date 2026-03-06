@@ -27,7 +27,7 @@ class MongoDbMigrationSettings {
   /// [source] Settings used to connect to the source cluster
   /// [target] Settings used to connect to the target cluster
   /// [throttling] Settings used to limit the resource usage of the migration
-  MongoDbMigrationSettings({
+  const MongoDbMigrationSettings({
     this.boostRUs,
     required this.databases,
     this.replication,

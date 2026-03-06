@@ -23,7 +23,7 @@ class ResizeRequestStatusLastAttemptErrorError {
   /// [errorDetails] (Output)
   /// [location] (Output)
   /// [message] (Output)
-  ResizeRequestStatusLastAttemptErrorError({
+  const ResizeRequestStatusLastAttemptErrorError({
     this.code,
     this.errorDetails,
     this.location,

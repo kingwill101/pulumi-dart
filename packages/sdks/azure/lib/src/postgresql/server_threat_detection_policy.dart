@@ -26,7 +26,7 @@ class ServerThreatDetectionPolicy {
   /// [retentionDays] Specifies the number of days to keep in the Threat Detection audit logs.
   /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all Threat Detection audit logs.
-  ServerThreatDetectionPolicy({
+  const ServerThreatDetectionPolicy({
     this.disabledAlerts,
     this.emailAccountAdmins,
     this.emailAddresses,

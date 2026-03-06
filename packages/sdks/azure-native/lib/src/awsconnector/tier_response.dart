@@ -15,7 +15,7 @@ class TierResponse {
   /// [name] The name of this environment tier.
   /// [type] The type of this environment tier.
   /// [version] The version of this environment tier. When you don't set a value to it, Elastic Beanstalk uses the latest compatible worker tier version.
-  TierResponse({
+  const TierResponse({
     this.name,
     this.type,
     this.version,

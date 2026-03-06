@@ -37,7 +37,7 @@ class PointToPointVpnGatewayState {
   /// [tags] A mapping of tags to assign to the Point-to-Site VPN Gateway.
   /// [virtualHubId] The ID of the Virtual Hub where this Point-to-Site VPN Gateway should exist. Changing this forces a new resource to be created.
   /// [vpnServerConfigurationId] The ID of the VPN Server Configuration which this Point-to-Site VPN Gateway should use. Changing this forces a new resource to be created.
-  PointToPointVpnGatewayState({
+  const PointToPointVpnGatewayState({
     this.connectionConfigurations,
     this.dnsServers,
     this.location,

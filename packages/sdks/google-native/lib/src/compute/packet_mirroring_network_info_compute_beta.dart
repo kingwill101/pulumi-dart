@@ -8,7 +8,7 @@ class PacketMirroringNetworkInfoComputeBeta {
 
   /// Creates a new [PacketMirroringNetworkInfoComputeBeta].
   /// [url] URL of the network resource.
-  PacketMirroringNetworkInfoComputeBeta({
+  const PacketMirroringNetworkInfoComputeBeta({
     this.url,
   });
 

@@ -7,7 +7,7 @@ class WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfigurat
 
   /// Creates a new [WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration].
   /// [kmsKey] Optional.
-  WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration({
+  const WorkgroupConfigurationManagedQueryResultsConfigurationEncryptionConfiguration({
     this.kmsKey,
   });
 

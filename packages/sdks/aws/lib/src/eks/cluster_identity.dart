@@ -9,7 +9,7 @@ class ClusterIdentity {
 
   /// Creates a new [ClusterIdentity].
   /// [oidcs] Nested block containing [OpenID Connect](https://openid.net/connect/) identity provider information for the cluster. Detailed below.
-  ClusterIdentity({
+  const ClusterIdentity({
     this.oidcs,
   });
 

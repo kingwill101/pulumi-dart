@@ -13,7 +13,7 @@ class DomainFeaturesHyperVTlbFlush {
   /// Creates a new [DomainFeaturesHyperVTlbFlush].
   /// [direct] Enables or disables support for PS/2 devices in the virtual machine.
   /// [extended] Enables or disables support for PS/2 devices in the virtual machine.
-  DomainFeaturesHyperVTlbFlush({
+  const DomainFeaturesHyperVTlbFlush({
     this.direct,
     this.extended,
   });

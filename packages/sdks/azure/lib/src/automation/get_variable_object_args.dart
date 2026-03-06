@@ -18,7 +18,7 @@ class GetVariableObjectArgs {
   /// [automationAccountName] The name of the automation account in which the Automation Variable exists.
   /// [name] The name of the Automation Variable.
   /// [resourceGroupName] The Name of the Resource Group where the automation account exists.
-  GetVariableObjectArgs({
+  const GetVariableObjectArgs({
     required this.automationAccountName,
     required this.name,
     required this.resourceGroupName,

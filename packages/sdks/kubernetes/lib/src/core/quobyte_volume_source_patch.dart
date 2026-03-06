@@ -24,7 +24,7 @@ class QuobyteVolumeSourcePatch {
   /// [tenant] tenant owning the given Quobyte volume in the Backend Used with dynamically provisioned Quobyte volumes, value is set by the plugin
   /// [user] user to map volume access to Defaults to serivceaccount user
   /// [volume] volume is a string that references an already created Quobyte volume by name.
-  QuobyteVolumeSourcePatch({
+  const QuobyteVolumeSourcePatch({
     this.group,
     this.readOnly,
     this.registry,

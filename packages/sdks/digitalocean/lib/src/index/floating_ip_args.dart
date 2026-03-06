@@ -18,7 +18,7 @@ class FloatingIpArgs {
   /// [dropletId] The ID of Droplet that the Floating IP will be assigned to.
   /// [ipAddress] The IP Address of the resource
   /// [region] The region that the Floating IP is reserved to.
-  FloatingIpArgs({
+  const FloatingIpArgs({
     this.dropletId,
     this.ipAddress,
     required this.region,

@@ -10,7 +10,7 @@ class ProvenanceBuilderResponse {
   /// Creates a new [ProvenanceBuilderResponse].
   /// [builderDependencies] Required.
   /// [version] Required.
-  ProvenanceBuilderResponse({
+  const ProvenanceBuilderResponse({
     required this.builderDependencies,
     required this.version,
   });

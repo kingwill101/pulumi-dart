@@ -11,7 +11,7 @@ class DomainDevicesHostdevSubsysPciDriver {
   /// Creates a new [DomainDevicesHostdevSubsysPciDriver].
   /// [model] Specifies the model of the driver being used for the PCI subsystem device.
   /// [name] Sets the name of the driver associated with the PCI subsystem device.
-  DomainDevicesHostdevSubsysPciDriver({
+  const DomainDevicesHostdevSubsysPciDriver({
     this.model,
     this.name,
   });

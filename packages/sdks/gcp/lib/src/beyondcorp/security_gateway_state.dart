@@ -69,7 +69,7 @@ class SecurityGatewayState {
   /// [serviceDiscovery] Settings related to the Service Discovery.
   /// [state] Output only. The operational state of the SecurityGateway.
   /// [updateTime] Output only. Timestamp when the resource was last modified.
-  SecurityGatewayState({
+  const SecurityGatewayState({
     this.createTime,
     this.delegatingServiceAccount,
     this.displayName,

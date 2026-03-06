@@ -9,7 +9,7 @@ class GetAppConnectorPrincipalInfo {
 
   /// Creates a new [GetAppConnectorPrincipalInfo].
   /// [serviceAccounts] ServiceAccount represents a GCP service account.
-  GetAppConnectorPrincipalInfo({
+  const GetAppConnectorPrincipalInfo({
     required this.serviceAccounts,
   });
 

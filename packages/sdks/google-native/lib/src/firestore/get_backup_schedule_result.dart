@@ -24,7 +24,7 @@ class GetBackupScheduleResult {
   /// [retention] At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days.
   /// [updateTime] The timestamp at which this backup schedule was most recently updated. When a backup schedule is first created, this is the same as create_time.
   /// [weeklyRecurrence] For a schedule that runs weekly on a specific day and time.
-  GetBackupScheduleResult({
+  const GetBackupScheduleResult({
     required this.createTime,
     required this.dailyRecurrence,
     required this.name,

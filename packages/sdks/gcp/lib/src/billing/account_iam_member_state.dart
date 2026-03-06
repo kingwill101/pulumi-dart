@@ -32,7 +32,7 @@ class AccountIamMemberState {
   /// [etag] (Computed) The etag of the billing account's IAM policy.
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  AccountIamMemberState({
+  const AccountIamMemberState({
     this.billingAccountId,
     this.condition,
     this.etag,

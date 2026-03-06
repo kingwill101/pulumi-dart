@@ -32,7 +32,7 @@ class GalleryImageVersionPublishingProfileResponse {
   /// [storageAccountType] Specifies the storage account type to be used to store the image. Cannot be specified along with storageAccountStrategy. This property is not updatable.
   /// [targetExtendedLocations] The target extended locations where the Image Version is going to be replicated to. This property is updatable.
   /// [targetRegions] The target regions where the Image Version is going to be replicated to. This property is updatable.
-  GalleryImageVersionPublishingProfileResponse({
+  const GalleryImageVersionPublishingProfileResponse({
     this.endOfLifeDate,
     this.excludeFromLatest,
     required this.publishedDate,

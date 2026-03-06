@@ -12,7 +12,7 @@ class ReportSummaryChartDataDataPointResponseMigrationcenterV1alpha1 {
   /// Creates a new [ReportSummaryChartDataDataPointResponseMigrationcenterV1alpha1].
   /// [label] The X-axis label for this data point.
   /// [value] The Y-axis value for this data point.
-  ReportSummaryChartDataDataPointResponseMigrationcenterV1alpha1({
+  const ReportSummaryChartDataDataPointResponseMigrationcenterV1alpha1({
     required this.label,
     required this.value,
   });

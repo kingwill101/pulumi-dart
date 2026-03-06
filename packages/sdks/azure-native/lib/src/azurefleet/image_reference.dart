@@ -43,7 +43,7 @@ class ImageReference {
   /// [sharedGalleryImageId] Specified the shared gallery image unique id for vm deployment. This can be
   /// [sku] The image SKU.
   /// [version] Specifies the version of the platform image or marketplace image used to create
-  ImageReference({
+  const ImageReference({
     this.communityGalleryImageId,
     this.id,
     this.offer,

@@ -24,7 +24,7 @@ class BqmlTrainingRunTrainingOptionsResponse {
   /// [maxIteration] Required.
   /// [minRelProgress] Required.
   /// [warmStart] Required.
-  BqmlTrainingRunTrainingOptionsResponse({
+  const BqmlTrainingRunTrainingOptionsResponse({
     required this.earlyStop,
     required this.l1Reg,
     required this.l2Reg,

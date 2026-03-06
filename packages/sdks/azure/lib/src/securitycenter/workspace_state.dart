@@ -12,7 +12,7 @@ class WorkspaceState {
   /// Creates a new [WorkspaceState].
   /// [scope] The scope of VMs to send their security data to the desired workspace, unless overridden by a setting with more specific scope.
   /// [workspaceId] The ID of the Log Analytics Workspace to save the data in.
-  WorkspaceState({
+  const WorkspaceState({
     this.scope,
     this.workspaceId,
   });

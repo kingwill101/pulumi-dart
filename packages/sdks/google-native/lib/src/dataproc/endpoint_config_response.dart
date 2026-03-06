@@ -12,7 +12,7 @@ class EndpointConfigResponse {
   /// Creates a new [EndpointConfigResponse].
   /// [enableHttpPortAccess] Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
   /// [httpPorts] The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-  EndpointConfigResponse({
+  const EndpointConfigResponse({
     required this.enableHttpPortAccess,
     required this.httpPorts,
   });

@@ -8,7 +8,7 @@ class ResourceDeploymentScriptAzureCliContainer {
 
   /// Creates a new [ResourceDeploymentScriptAzureCliContainer].
   /// [containerGroupName] Container group name, if not specified then the name will get auto-generated. For more information, please refer to the [Container Configuration](https://learn.microsoft.com/en-us/rest/api/resources/deployment-scripts/create?tabs=HTTP#containerconfiguration) documentation.
-  ResourceDeploymentScriptAzureCliContainer({
+  const ResourceDeploymentScriptAzureCliContainer({
     this.containerGroupName,
   });
 

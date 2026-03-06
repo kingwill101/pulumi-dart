@@ -24,7 +24,7 @@ class RegistrationManagementSettings {
   /// [preferredRenewalMethod] The desired renewal method for this Registration. The actual renewalMethod is automatically updated to reflect this choice.
   /// [renewalMethod] (Output)
   /// [transferLockState] Controls whether the domain can be transferred to another registrar. Values are UNLOCKED or LOCKED.
-  RegistrationManagementSettings({
+  const RegistrationManagementSettings({
     this.preferredRenewalMethod,
     this.renewalMethod,
     this.transferLockState,

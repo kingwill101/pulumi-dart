@@ -36,7 +36,7 @@ class GetNatGatewayArgs {
   /// [subnetId] ID of subnet that the NAT Gateway resides in.
   /// [tags] Map of tags, each pair of which must exactly match
   /// [vpcId] ID of the VPC that the NAT Gateway resides in.
-  GetNatGatewayArgs({
+  const GetNatGatewayArgs({
     this.filters,
     this.id,
     this.region,

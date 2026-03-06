@@ -8,7 +8,7 @@ class TenantInboundSamlConfigSpConfigSpCertificate {
 
   /// Creates a new [TenantInboundSamlConfigSpConfigSpCertificate].
   /// [x509Certificate] The x509 certificate
-  TenantInboundSamlConfigSpConfigSpCertificate({
+  const TenantInboundSamlConfigSpConfigSpCertificate({
     this.x509Certificate,
   });
 

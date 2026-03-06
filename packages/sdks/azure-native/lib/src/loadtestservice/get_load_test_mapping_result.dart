@@ -30,7 +30,7 @@ class GetLoadTestMappingResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [testId] Mapped Azure Load Test resource test-id.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLoadTestMappingResult({
+  const GetLoadTestMappingResult({
     required this.azureApiVersion,
     this.azureLoadTestingResourceId,
     required this.id,

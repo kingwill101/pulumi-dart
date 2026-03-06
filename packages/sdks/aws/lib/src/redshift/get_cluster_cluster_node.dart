@@ -14,7 +14,7 @@ class GetClusterClusterNode {
   /// [nodeRole] Whether the node is a leader node or a compute node
   /// [privateIpAddress] Private IP address of a node within a cluster
   /// [publicIpAddress] Public IP address of a node within a cluster
-  GetClusterClusterNode({
+  const GetClusterClusterNode({
     required this.nodeRole,
     required this.privateIpAddress,
     required this.publicIpAddress,

@@ -53,7 +53,7 @@ class GetSwitchesVswitch {
   /// [vswitchId] ID of the vSwitch.
   /// [vswitchName] The name of the vSwitch.
   /// [zoneId] The availability zone of the vSwitch.
-  GetSwitchesVswitch({
+  const GetSwitchesVswitch({
     required this.availableIpAddressCount,
     required this.cidrBlock,
     required this.creationTime,

@@ -63,7 +63,7 @@ class FileSharePropertiesResponse {
   /// [publicAccessProperties] The set of properties for control public access.
   /// [publicNetworkAccess] Gets or sets allow or disallow public network access to azure managed file share
   /// [redundancy] The chosen redundancy level of the file share.
-  FileSharePropertiesResponse({
+  const FileSharePropertiesResponse({
     required this.hostName,
     required this.includedBurstIOPerSec,
     required this.maxBurstIOPerSecCredits,

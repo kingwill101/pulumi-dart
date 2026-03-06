@@ -13,7 +13,7 @@ class GetFirewallpolicyArgs {
   /// Creates a new [GetFirewallpolicyArgs].
   /// [firewallpolicyId] Required.
   /// [project] Optional.
-  GetFirewallpolicyArgs({
+  const GetFirewallpolicyArgs({
     required this.firewallpolicyId,
     this.project,
   });

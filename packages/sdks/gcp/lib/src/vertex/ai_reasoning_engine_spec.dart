@@ -37,7 +37,7 @@ class AiReasoningEngineSpec {
   /// [packageSpec] Optional. User provided package spec of the ReasoningEngine.
   /// [serviceAccount] Optional. The service account that the Reasoning Engine artifact runs
   /// [sourceCodeSpec] Specification for deploying from source code.
-  AiReasoningEngineSpec({
+  const AiReasoningEngineSpec({
     this.agentFramework,
     this.classMethods,
     this.deploymentSpec,

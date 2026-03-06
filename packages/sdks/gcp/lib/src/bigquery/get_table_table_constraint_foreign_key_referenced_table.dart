@@ -14,7 +14,7 @@ class GetTableTableConstraintForeignKeyReferencedTable {
   /// [datasetId] The dataset ID.
   /// [projectId] The ID of the project containing this table.
   /// [tableId] The table ID.
-  GetTableTableConstraintForeignKeyReferencedTable({
+  const GetTableTableConstraintForeignKeyReferencedTable({
     required this.datasetId,
     required this.projectId,
     required this.tableId,

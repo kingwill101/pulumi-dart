@@ -12,7 +12,7 @@ class PrivateSrvNetworkAddressArgs {
 
   /// Creates a new [PrivateSrvNetworkAddressArgs].
   /// [dbInstanceId] The instance ID.
-  PrivateSrvNetworkAddressArgs({
+  const PrivateSrvNetworkAddressArgs({
     required this.dbInstanceId,
   });
 

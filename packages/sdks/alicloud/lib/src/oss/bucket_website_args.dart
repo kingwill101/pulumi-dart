@@ -24,7 +24,7 @@ class BucketWebsiteArgs {
   /// [errorDocument] The container that holds the error page configuration information. See `error_document` below.
   /// [indexDocument] Static Website Default Home Page Configuration See `index_document` below.
   /// [routingRules] The container that holds the jump rule or the mirroring back-to-origin rule. See `routing_rules` below.
-  BucketWebsiteArgs({
+  const BucketWebsiteArgs({
     required this.bucket,
     this.errorDocument,
     this.indexDocument,

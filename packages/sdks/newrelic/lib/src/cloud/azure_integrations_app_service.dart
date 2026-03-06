@@ -11,7 +11,7 @@ class AzureIntegrationsAppService {
   /// Creates a new [AzureIntegrationsAppService].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsAppService({
+  const AzureIntegrationsAppService({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

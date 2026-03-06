@@ -21,7 +21,7 @@ class GetPricesResult {
   /// [prices] A list of Price Entries. Each element contains the following attributes:
   /// [product] Required.
   /// [resourceCode] Required.
-  GetPricesResult({
+  const GetPricesResult({
     this.desireAttributes,
     required this.id,
     this.outputFile,

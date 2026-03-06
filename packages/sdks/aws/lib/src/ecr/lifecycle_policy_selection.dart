@@ -23,7 +23,7 @@ class LifecyclePolicySelection {
   /// [countUnit] The unit of time for sinceImagePushed. Either 'days'.
   /// [tagPrefixList] A list of image tag prefixes on which to take action.
   /// [tagStatus] The tag status of the image. Either 'tagged', 'untagged', or 'any'.
-  LifecyclePolicySelection({
+  const LifecyclePolicySelection({
     required this.countNumber,
     required this.countType,
     this.countUnit,

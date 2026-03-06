@@ -14,7 +14,7 @@ class InstanceFromMachineImageSchedulingGracefulShutdown {
   /// Creates a new [InstanceFromMachineImageSchedulingGracefulShutdown].
   /// [enabled] Opts-in for graceful shutdown.
   /// [maxDuration] The time allotted for the instance to gracefully shut down.
-  InstanceFromMachineImageSchedulingGracefulShutdown({
+  const InstanceFromMachineImageSchedulingGracefulShutdown({
     required this.enabled,
     this.maxDuration,
   });

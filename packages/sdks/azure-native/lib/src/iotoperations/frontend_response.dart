@@ -12,7 +12,7 @@ class FrontendResponse {
   /// Creates a new [FrontendResponse].
   /// [replicas] The desired number of frontend instances (pods).
   /// [workers] Number of logical frontend workers per instance (pod).
-  FrontendResponse({
+  const FrontendResponse({
     required this.replicas,
     this.workers,
   });

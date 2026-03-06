@@ -105,7 +105,7 @@ class WorkloadCrrAccessTokenResponse {
   /// [rpVMSizeDescription] Recovery point information: VM size description
   /// [subscriptionId] Subscription Id of the source vault
   /// [tokenExtendedInformation] Extended Information about the token like FileSpec etc.
-  WorkloadCrrAccessTokenResponse({
+  const WorkloadCrrAccessTokenResponse({
     this.accessTokenString,
     this.bMSActiveRegion,
     this.backupManagementType,

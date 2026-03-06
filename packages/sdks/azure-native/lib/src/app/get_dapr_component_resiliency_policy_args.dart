@@ -21,7 +21,7 @@ class GetDaprComponentResiliencyPolicyArgs {
   /// [environmentName] Name of the Managed Environment.
   /// [name] Name of the Dapr Component Resiliency Policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDaprComponentResiliencyPolicyArgs({
+  const GetDaprComponentResiliencyPolicyArgs({
     required this.componentName,
     required this.environmentName,
     required this.name,

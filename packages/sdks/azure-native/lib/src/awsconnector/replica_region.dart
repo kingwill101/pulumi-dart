@@ -12,7 +12,7 @@ class ReplicaRegion {
   /// Creates a new [ReplicaRegion].
   /// [kmsKeyId] The ARN, key ID, or alias of the KMS key to encrypt the secret. If you don't include this field, Secrets Manager uses ``aws/secretsmanager``.
   /// [region] A string that represents a ``Region``, for example 'us-east-1'.
-  ReplicaRegion({
+  const ReplicaRegion({
     this.kmsKeyId,
     this.region,
   });

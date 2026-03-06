@@ -9,7 +9,7 @@ class GuestCredentialResponse {
 
   /// Creates a new [GuestCredentialResponse].
   /// [username] Gets or sets username to connect with the guest.
-  GuestCredentialResponse({
+  const GuestCredentialResponse({
     required this.username,
   });
 

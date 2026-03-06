@@ -21,7 +21,7 @@ class DirectoryRoleAssignmentArgs {
   /// [directoryScopeId] Identifier of the directory object representing the scope of the assignment. Cannot be used with `app_scope_id`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
   /// [principalObjectId] The object ID of the principal for you want to create a role assignment. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   /// [roleId] The template ID (in the case of built-in roles) or object ID (in the case of custom roles) of the directory role you want to assign. Changing this forces a new resource to be created.
-  DirectoryRoleAssignmentArgs({
+  const DirectoryRoleAssignmentArgs({
     this.appScopeId,
     this.directoryScopeId,
     required this.principalObjectId,

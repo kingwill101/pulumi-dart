@@ -14,7 +14,7 @@ class EncryptionPropertiesResponse {
   /// Creates a new [EncryptionPropertiesResponse].
   /// [encryptionIdentity] The identity to be used with service-side encryption at rest.
   /// [keyVaultProperties] Properties provided by key vault.
-  EncryptionPropertiesResponse({
+  const EncryptionPropertiesResponse({
     this.encryptionIdentity,
     this.keyVaultProperties,
   });

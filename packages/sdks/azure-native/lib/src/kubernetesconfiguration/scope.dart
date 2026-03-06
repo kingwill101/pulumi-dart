@@ -14,7 +14,7 @@ class Scope {
   /// Creates a new [Scope].
   /// [cluster] Specifies that the scope of the extension is Cluster
   /// [namespace] Specifies that the scope of the extension is Namespace
-  Scope({
+  const Scope({
     this.cluster,
     this.namespace,
   });

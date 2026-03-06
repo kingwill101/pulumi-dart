@@ -13,7 +13,7 @@ class AzureMachineLearningWebServiceInputs {
   /// Creates a new [AzureMachineLearningWebServiceInputs].
   /// [columnNames] A list of input columns for the Azure Machine Learning web service endpoint.
   /// [name] The name of the input. This is the name provided while authoring the endpoint.
-  AzureMachineLearningWebServiceInputs({
+  const AzureMachineLearningWebServiceInputs({
     this.columnNames,
     this.name,
   });

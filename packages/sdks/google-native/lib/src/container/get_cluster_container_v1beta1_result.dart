@@ -277,7 +277,7 @@ class GetClusterContainerV1beta1Result {
   /// [workloadCertificates] Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
   /// [workloadIdentityConfig] Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
   /// [zone] [Output only] The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field is deprecated, use location instead.
-  GetClusterContainerV1beta1Result({
+  const GetClusterContainerV1beta1Result({
     required this.addonsConfig,
     required this.authenticatorGroupsConfig,
     required this.autopilot,

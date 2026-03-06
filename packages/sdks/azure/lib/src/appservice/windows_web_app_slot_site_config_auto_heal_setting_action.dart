@@ -15,7 +15,7 @@ class WindowsWebAppSlotSiteConfigAutoHealSettingAction {
   /// [actionType] Predefined action to be taken to an Auto Heal trigger. Possible values are `CustomAction`, `LogEvent` and `Recycle`.
   /// [customAction] A `custom_action` block as defined below.
   /// [minimumProcessExecutionTime] The minimum amount of time in `hh:mm:ss` the Windows Web App Slot must have been running before the defined action will be run in the event of a trigger.
-  WindowsWebAppSlotSiteConfigAutoHealSettingAction({
+  const WindowsWebAppSlotSiteConfigAutoHealSettingAction({
     required this.actionType,
     this.customAction,
     this.minimumProcessExecutionTime,

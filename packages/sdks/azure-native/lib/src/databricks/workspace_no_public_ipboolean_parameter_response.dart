@@ -12,7 +12,7 @@ class WorkspaceNoPublicIPBooleanParameterResponse {
   /// Creates a new [WorkspaceNoPublicIPBooleanParameterResponse].
   /// [type] The type of variable that this is
   /// [value] The value which should be used for this field.
-  WorkspaceNoPublicIPBooleanParameterResponse({
+  const WorkspaceNoPublicIPBooleanParameterResponse({
     required this.type,
     required this.value,
   });

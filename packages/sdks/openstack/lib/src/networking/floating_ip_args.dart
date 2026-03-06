@@ -71,7 +71,7 @@ class FloatingIpArgs {
   /// [tags] A set of string tags for the floating IP.
   /// [tenantId] The target tenant ID in which to allocate the floating
   /// [valueSpecs] Map of additional options.
-  FloatingIpArgs({
+  const FloatingIpArgs({
     this.address,
     this.description,
     this.dnsDomain,

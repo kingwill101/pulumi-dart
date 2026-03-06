@@ -11,7 +11,7 @@ class ListTopicSharedAccessKeysResult {
   /// Creates a new [ListTopicSharedAccessKeysResult].
   /// [key1] Shared access key1 for the topic.
   /// [key2] Shared access key2 for the topic.
-  ListTopicSharedAccessKeysResult({
+  const ListTopicSharedAccessKeysResult({
     this.key1,
     this.key2,
   });

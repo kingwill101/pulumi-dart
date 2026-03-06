@@ -15,7 +15,7 @@ class ApplicationFromTemplateArgs {
   /// Creates a new [ApplicationFromTemplateArgs].
   /// [displayName] The display name for the application.
   /// [templateId] Unique ID for a templated application in the Azure AD App Gallery, from which to create the application. Changing this forces a new resource to be created.
-  ApplicationFromTemplateArgs({
+  const ApplicationFromTemplateArgs({
     required this.displayName,
     required this.templateId,
   });

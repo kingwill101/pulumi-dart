@@ -12,7 +12,7 @@ class NonResourceAttributesPatch {
   /// Creates a new [NonResourceAttributesPatch].
   /// [path] Path is the URL path of the request
   /// [verb] Verb is the standard HTTP verb
-  NonResourceAttributesPatch({
+  const NonResourceAttributesPatch({
     this.path,
     this.verb,
   });

@@ -18,7 +18,7 @@ class ListenerAdditionalCertificateAttachmentState {
   /// [dryRun] Specifies whether to perform a dry run, without performing the actual request. Valid values:
   /// [listenerId] The listener ID. You must specify the ID of a listener that uses SSL over TCP.
   /// [status] The status of the resource
-  ListenerAdditionalCertificateAttachmentState({
+  const ListenerAdditionalCertificateAttachmentState({
     this.certificateId,
     this.dryRun,
     this.listenerId,

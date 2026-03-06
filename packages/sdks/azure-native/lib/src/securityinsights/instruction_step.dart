@@ -20,7 +20,7 @@ class InstructionStep {
   /// [innerSteps] Gets or sets the inner instruction steps details.
   /// [instructions] Gets or sets the instruction step details.
   /// [title] Gets or sets the instruction step title.
-  InstructionStep({
+  const InstructionStep({
     this.description,
     this.innerSteps,
     this.instructions,

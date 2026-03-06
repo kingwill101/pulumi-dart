@@ -11,7 +11,7 @@ class LinkedServiceSqlManagedInstanceKeyVaultPassword {
   /// Creates a new [LinkedServiceSqlManagedInstanceKeyVaultPassword].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the secret name in Azure Key Vault that stores SQL Managed Instance password.
-  LinkedServiceSqlManagedInstanceKeyVaultPassword({
+  const LinkedServiceSqlManagedInstanceKeyVaultPassword({
     required this.linkedServiceName,
     required this.secretName,
   });

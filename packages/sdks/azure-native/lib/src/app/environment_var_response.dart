@@ -15,7 +15,7 @@ class EnvironmentVarResponse {
   /// [name] Environment variable name.
   /// [secretRef] Name of the Container App secret from which to pull the environment variable value.
   /// [value] Non-secret environment variable value.
-  EnvironmentVarResponse({
+  const EnvironmentVarResponse({
     this.name,
     this.secretRef,
     this.value,

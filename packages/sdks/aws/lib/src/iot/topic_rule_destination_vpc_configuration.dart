@@ -17,7 +17,7 @@ class TopicRuleDestinationVpcConfiguration {
   /// [securityGroups] The security groups of the VPC destination.
   /// [subnetIds] The subnet IDs of the VPC destination.
   /// [vpcId] The ID of the VPC.
-  TopicRuleDestinationVpcConfiguration({
+  const TopicRuleDestinationVpcConfiguration({
     required this.roleArn,
     this.securityGroups,
     required this.subnetIds,

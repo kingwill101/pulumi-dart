@@ -23,7 +23,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallAction {
   /// [redirect] This action will redirect the request to a ReCaptcha interstitial to attach a token.
   /// [setHeader] This action will set a custom header but allow the request to continue to the customer backend.
   /// [substitute] This action will transparently serve a different page to an offending user.
-  GoogleCloudRecaptchaenterpriseV1FirewallAction({
+  const GoogleCloudRecaptchaenterpriseV1FirewallAction({
     this.allow,
     this.block,
     this.redirect,

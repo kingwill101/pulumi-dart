@@ -13,7 +13,7 @@ class WebRegionBackendServiceIamMemberCondition {
   /// [description] Optional.
   /// [expression] Textual representation of an expression in Common Expression Language syntax.
   /// [title] A title for the expression, i.e. a short string describing its purpose.
-  WebRegionBackendServiceIamMemberCondition({
+  const WebRegionBackendServiceIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

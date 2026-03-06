@@ -8,7 +8,7 @@ class MeshSpecEgressFilter {
 
   /// Creates a new [MeshSpecEgressFilter].
   /// [type] Egress filter type. By default, the type is `DROP_ALL`. Valid values are `ALLOW_ALL` and `DROP_ALL`.
-  MeshSpecEgressFilter({
+  const MeshSpecEgressFilter({
     this.type,
   });
 

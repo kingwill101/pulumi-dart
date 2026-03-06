@@ -22,7 +22,7 @@ class PrivateEndpointConnectionArgs {
   /// [properties] The connection properties.
   /// [resourceGroupName] The name of the resource group that contains the DigitalTwinsInstance.
   /// [resourceName] The name of the DigitalTwinsInstance.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
     required this.properties,
     required this.resourceGroupName,

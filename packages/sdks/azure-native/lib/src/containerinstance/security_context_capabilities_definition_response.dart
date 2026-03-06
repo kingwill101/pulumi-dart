@@ -12,7 +12,7 @@ class SecurityContextCapabilitiesDefinitionResponse {
   /// Creates a new [SecurityContextCapabilitiesDefinitionResponse].
   /// [add] The capabilities to add to the container.
   /// [drop] The capabilities to drop from the container.
-  SecurityContextCapabilitiesDefinitionResponse({
+  const SecurityContextCapabilitiesDefinitionResponse({
     this.add,
     this.drop,
   });

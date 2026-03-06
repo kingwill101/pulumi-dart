@@ -44,7 +44,7 @@ class GetRepositoryRemoteRepositoryConfig {
   /// [pythonRepositories] Specific settings for a Python remote repository.
   /// [upstreamCredentials] The credentials used to access the remote repository.
   /// [yumRepositories] Specific settings for an Yum remote repository.
-  GetRepositoryRemoteRepositoryConfig({
+  const GetRepositoryRemoteRepositoryConfig({
     required this.aptRepositories,
     required this.commonRepositories,
     required this.description,

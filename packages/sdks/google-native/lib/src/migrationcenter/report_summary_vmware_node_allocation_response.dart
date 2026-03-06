@@ -16,7 +16,7 @@ class ReportSummaryVMWareNodeAllocationResponse {
   /// [allocatedAssetCount] Count of assets allocated to these nodes
   /// [nodeCount] Count of this node type to be provisioned
   /// [vmwareNode] VMWare node type, e.g. "ve1-standard-72"
-  ReportSummaryVMWareNodeAllocationResponse({
+  const ReportSummaryVMWareNodeAllocationResponse({
     required this.allocatedAssetCount,
     required this.nodeCount,
     required this.vmwareNode,

@@ -40,7 +40,7 @@ class GetNetworkPeeringResult {
   /// [updateTime] Required.
   /// [vmwareEngineNetwork] Required.
   /// [vmwareEngineNetworkCanonical] Required.
-  GetNetworkPeeringResult({
+  const GetNetworkPeeringResult({
     required this.createTime,
     required this.description,
     required this.exportCustomRoutes,

@@ -58,7 +58,7 @@ class ListWebAppBackupStatusSecretsResult {
   /// [storageAccountUrl] SAS URL for the storage account container which contains this backup.
   /// [type] Resource type.
   /// [websiteSizeInBytes] Size of the original web app which has been backed up.
-  ListWebAppBackupStatusSecretsResult({
+  const ListWebAppBackupStatusSecretsResult({
     required this.backupId,
     required this.blobName,
     required this.correlationId,

@@ -23,7 +23,7 @@ class DatabaseConfiguration {
   /// [instanceCount] The number of database VMs.
   /// [subnetId] The subnet id.
   /// [virtualMachineConfiguration] Gets or sets the virtual machine configuration.
-  DatabaseConfiguration({
+  const DatabaseConfiguration({
     this.databaseType,
     this.diskConfiguration,
     required this.instanceCount,

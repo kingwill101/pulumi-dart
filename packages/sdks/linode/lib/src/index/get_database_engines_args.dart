@@ -23,7 +23,7 @@ class GetDatabaseEnginesArgs {
   /// [latest] If true, only the latest engine version will be returned.
   /// [order] The order in which results should be returned. (`asc`, `desc`; default `asc`)
   /// [orderBy] The attribute to order the results by. (`version`)
-  GetDatabaseEnginesArgs({
+  const GetDatabaseEnginesArgs({
     this.filters,
     this.latest,
     this.order,

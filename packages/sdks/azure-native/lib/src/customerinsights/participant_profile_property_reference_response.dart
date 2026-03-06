@@ -12,7 +12,7 @@ class ParticipantProfilePropertyReferenceResponse {
   /// Creates a new [ParticipantProfilePropertyReferenceResponse].
   /// [interactionPropertyName] The source interaction property that maps to the target profile property.
   /// [profilePropertyName] The target profile property that maps to the source interaction property.
-  ParticipantProfilePropertyReferenceResponse({
+  const ParticipantProfilePropertyReferenceResponse({
     required this.interactionPropertyName,
     required this.profilePropertyName,
   });

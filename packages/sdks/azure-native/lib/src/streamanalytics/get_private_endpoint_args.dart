@@ -18,7 +18,7 @@ class GetPrivateEndpointArgs {
   /// [clusterName] The name of the cluster.
   /// [privateEndpointName] The name of the private endpoint.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateEndpointArgs({
+  const GetPrivateEndpointArgs({
     required this.clusterName,
     required this.privateEndpointName,
     required this.resourceGroupName,

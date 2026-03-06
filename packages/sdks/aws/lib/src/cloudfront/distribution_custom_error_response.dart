@@ -17,7 +17,7 @@ class DistributionCustomErrorResponse {
   /// [errorCode] 4xx or 5xx HTTP status code that you want to customize.
   /// [responseCode] HTTP status code that you want CloudFront to return with the custom error page to the viewer.
   /// [responsePagePath] Path of the custom error page (for example, `/custom_404.html`).
-  DistributionCustomErrorResponse({
+  const DistributionCustomErrorResponse({
     this.errorCachingMinTtl,
     required this.errorCode,
     this.responseCode,

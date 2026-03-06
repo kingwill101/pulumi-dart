@@ -38,7 +38,7 @@ class PreventionDeidentifyTemplateState {
   /// [parent] The parent of the template in any of the following formats:
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens;
   /// [updateTime] The last update timestamp of an deidentifyTemplate. Set by the server.
-  PreventionDeidentifyTemplateState({
+  const PreventionDeidentifyTemplateState({
     this.createTime,
     this.deidentifyConfig,
     this.description,

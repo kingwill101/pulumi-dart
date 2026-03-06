@@ -33,7 +33,7 @@ class UserFacingErrorResponse {
   /// [properties] Any key value pairs that can be injected inside error object
   /// [recommendedAction] RecommendedAction � localized.
   /// [target] Target of the error.
-  UserFacingErrorResponse({
+  const UserFacingErrorResponse({
     this.code,
     this.details,
     this.innerError,

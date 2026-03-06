@@ -18,7 +18,7 @@ class GetIntegrationAccountPartnerArgs {
   /// [integrationAccountName] The integration account name.
   /// [partnerName] The integration account partner name.
   /// [resourceGroupName] The resource group name.
-  GetIntegrationAccountPartnerArgs({
+  const GetIntegrationAccountPartnerArgs({
     required this.integrationAccountName,
     required this.partnerName,
     required this.resourceGroupName,

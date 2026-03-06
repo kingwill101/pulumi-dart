@@ -11,7 +11,7 @@ class TriggerTumblingWindowPipeline {
   /// Creates a new [TriggerTumblingWindowPipeline].
   /// [name] The Data Factory Pipeline name that the trigger will act on.
   /// [parameters] The Data Factory Pipeline parameters that the trigger will act on.
-  TriggerTumblingWindowPipeline({
+  const TriggerTumblingWindowPipeline({
     required this.name,
     this.parameters,
   });

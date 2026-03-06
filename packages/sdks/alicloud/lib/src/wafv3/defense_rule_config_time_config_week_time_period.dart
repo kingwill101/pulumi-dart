@@ -12,7 +12,7 @@ class DefenseRuleConfigTimeConfigWeekTimePeriod {
   /// Creates a new [DefenseRuleConfigTimeConfigWeekTimePeriod].
   /// [day] The time period of each day when the rule is effective. It includes the start time start and end time end. You can specify multiple time periods.
   /// [dayPeriods] The time period of each day when the rule is effective.  See `day_periods` below.
-  DefenseRuleConfigTimeConfigWeekTimePeriod({
+  const DefenseRuleConfigTimeConfigWeekTimePeriod({
     this.day,
     this.dayPeriods,
   });

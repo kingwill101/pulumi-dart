@@ -15,7 +15,7 @@ class GetDeploymentResourcePoolAiplatformV1beta1Args {
   /// [deploymentResourcePoolId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDeploymentResourcePoolAiplatformV1beta1Args({
+  const GetDeploymentResourcePoolAiplatformV1beta1Args({
     required this.deploymentResourcePoolId,
     required this.location,
     this.project,

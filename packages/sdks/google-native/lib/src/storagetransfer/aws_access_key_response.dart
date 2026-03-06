@@ -12,7 +12,7 @@ class AwsAccessKeyResponse {
   /// Creates a new [AwsAccessKeyResponse].
   /// [accessKeyId] AWS access key ID.
   /// [secretAccessKey] AWS secret access key. This field is not returned in RPC responses.
-  AwsAccessKeyResponse({
+  const AwsAccessKeyResponse({
     required this.accessKeyId,
     required this.secretAccessKey,
   });

@@ -28,7 +28,7 @@ class GetIpaDomainsResult {
   /// [names] A list of Dcdn Ipa Domain names.
   /// [outputFile] Optional.
   /// [status] The status of the accelerated domain name.
-  GetIpaDomainsResult({
+  const GetIpaDomainsResult({
     this.domainName,
     required this.domains,
     this.enableDetails,

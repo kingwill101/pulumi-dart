@@ -18,7 +18,7 @@ class InviteAccepterArgs {
   /// [detectorId] The detector ID of the member GuardDuty account.
   /// [masterAccountId] AWS account ID for primary account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InviteAccepterArgs({
+  const InviteAccepterArgs({
     required this.detectorId,
     required this.masterAccountId,
     this.region,

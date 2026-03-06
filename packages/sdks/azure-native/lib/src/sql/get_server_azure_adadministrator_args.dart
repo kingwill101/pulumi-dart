@@ -18,7 +18,7 @@ class GetServerAzureADAdministratorArgs {
   /// [administratorName] The name of server active directory administrator.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetServerAzureADAdministratorArgs({
+  const GetServerAzureADAdministratorArgs({
     required this.administratorName,
     required this.resourceGroupName,
     required this.serverName,

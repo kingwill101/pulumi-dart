@@ -27,7 +27,7 @@ class ConnectionGatewayDefinitionProperties {
   /// [displayName] The gateway display name
   /// [machineName] The machine name of the gateway
   /// [status] The gateway status
-  ConnectionGatewayDefinitionProperties({
+  const ConnectionGatewayDefinitionProperties({
     this.backendUri,
     this.connectionGatewayInstallation,
     this.contactInformation,

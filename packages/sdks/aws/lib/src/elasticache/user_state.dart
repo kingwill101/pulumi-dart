@@ -41,7 +41,7 @@ class UserState {
   /// [tagsAll] Optional.
   /// [userId] The ID of the user.
   /// [userName] The username of the user.
-  UserState({
+  const UserState({
     this.accessString,
     this.arn,
     this.authenticationMode,

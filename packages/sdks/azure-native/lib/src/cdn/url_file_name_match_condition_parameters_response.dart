@@ -21,7 +21,7 @@ class UrlFileNameMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleUrlFilenameConditionParameters'.
-  UrlFileNameMatchConditionParametersResponse({
+  const UrlFileNameMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

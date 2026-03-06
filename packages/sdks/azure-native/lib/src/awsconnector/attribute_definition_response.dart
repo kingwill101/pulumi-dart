@@ -12,7 +12,7 @@ class AttributeDefinitionResponse {
   /// Creates a new [AttributeDefinitionResponse].
   /// [attributeName] A name for the attribute.
   /// [attributeType] The data type for the attribute, where:  +   ``S`` - the attribute is of type String  +   ``N`` - the attribute is of type Number  +   ``B`` - the attribute is of type Binary
-  AttributeDefinitionResponse({
+  const AttributeDefinitionResponse({
     this.attributeName,
     this.attributeType,
   });

@@ -22,7 +22,7 @@ class GetVoicesResult {
   /// [languageCode] Language code of the voice.
   /// [region] Required.
   /// [voices] List of voices with their properties. See `voices` Attribute Reference below.
-  GetVoicesResult({
+  const GetVoicesResult({
     this.engine,
     required this.id,
     this.includeAdditionalLanguageCodes,

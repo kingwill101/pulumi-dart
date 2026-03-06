@@ -17,7 +17,7 @@ class IndividualOutcomeResponse {
   /// [outcomeSummary] Required.
   /// [runDuration] How long it took for this step to run.
   /// [stepId] Required.
-  IndividualOutcomeResponse({
+  const IndividualOutcomeResponse({
     required this.multistepNumber,
     required this.outcomeSummary,
     required this.runDuration,

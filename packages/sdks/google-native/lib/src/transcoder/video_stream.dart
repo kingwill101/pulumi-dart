@@ -18,7 +18,7 @@ class VideoStream {
   /// [h264] H264 codec settings.
   /// [h265] H265 codec settings.
   /// [vp9] VP9 codec settings.
-  VideoStream({
+  const VideoStream({
     this.h264,
     this.h265,
     this.vp9,

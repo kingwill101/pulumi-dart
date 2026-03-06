@@ -16,7 +16,7 @@ class DeviceAllocationResultPatch {
   /// Creates a new [DeviceAllocationResultPatch].
   /// [config] This field is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag.
   /// [results] Results lists all allocated devices.
-  DeviceAllocationResultPatch({
+  const DeviceAllocationResultPatch({
     this.config,
     this.results,
   });

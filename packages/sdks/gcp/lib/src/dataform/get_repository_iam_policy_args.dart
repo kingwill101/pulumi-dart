@@ -21,7 +21,7 @@ class GetRepositoryIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] A reference to the region Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [repository] Used to find the parent resource to bind the IAM policy to
-  GetRepositoryIamPolicyArgs({
+  const GetRepositoryIamPolicyArgs({
     this.project,
     this.region,
     required this.repository,

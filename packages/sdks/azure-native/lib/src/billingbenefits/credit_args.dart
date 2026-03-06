@@ -72,7 +72,7 @@ class CreditArgs {
   /// [status] Status of the credit
   /// [systemId] System identifier
   /// [tags] Resource tags.
-  CreditArgs({
+  const CreditArgs({
     this.billingAccountResourceId,
     this.breakdown,
     this.credit,

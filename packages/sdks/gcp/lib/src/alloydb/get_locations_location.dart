@@ -20,7 +20,7 @@ class GetLocationsLocation {
   /// [locationId] The canonical id for this location. For example: "us-east1"..
   /// [metadata] Service-specific metadata. For example the available capacity at the given location.
   /// [name] Resource name for the location, which may vary between implementations. For example: "projects/example-project/locations/us-east1".
-  GetLocationsLocation({
+  const GetLocationsLocation({
     required this.displayName,
     required this.labels,
     required this.locationId,

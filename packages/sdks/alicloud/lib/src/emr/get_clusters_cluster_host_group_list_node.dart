@@ -36,7 +36,7 @@ class GetClustersClusterHostGroupListNode {
   /// [status] Status.
   /// [supportIpv6] Whether IPV6 is supported.
   /// [zoneId] The zone ID.
-  GetClustersClusterHostGroupListNode({
+  const GetClustersClusterHostGroupListNode({
     required this.createTime,
     required this.diskInfos,
     required this.emrExpiredTime,

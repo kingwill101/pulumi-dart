@@ -23,7 +23,7 @@ class OSPolicyAssignmentInstanceFilterOsconfigV1alpha {
   /// [inclusionLabels] List of label sets used for VM inclusion. If the list has more than one `LabelSet`, the VM is included if any of the label sets are applicable for the VM.
   /// [inventories] List of inventories to select VMs. A VM is selected if its inventory data matches at least one of the following inventories.
   /// [osShortNames] Deprecated. Use the `inventories` field instead. A VM is selected if it's OS short name matches with any of the values provided in this list.
-  OSPolicyAssignmentInstanceFilterOsconfigV1alpha({
+  const OSPolicyAssignmentInstanceFilterOsconfigV1alpha({
     this.all,
     this.exclusionLabels,
     this.inclusionLabels,

@@ -8,7 +8,7 @@ class DomainFeaturesPvSpinlock {
 
   /// Creates a new [DomainFeaturesPvSpinlock].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesPvSpinlock({
+  const DomainFeaturesPvSpinlock({
     this.state,
   });
 

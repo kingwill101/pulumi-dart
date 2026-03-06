@@ -26,7 +26,7 @@ class ServerlessSecurityPolicyArgs {
   /// [policy] JSON policy document to use as the content for the new policy
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [type] Type of security policy. One of `encryption` or `network`.
-  ServerlessSecurityPolicyArgs({
+  const ServerlessSecurityPolicyArgs({
     this.description,
     this.name,
     required this.policy,

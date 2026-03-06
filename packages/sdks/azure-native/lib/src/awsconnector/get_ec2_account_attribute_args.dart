@@ -15,7 +15,7 @@ class GetEc2AccountAttributeArgs {
   /// Creates a new [GetEc2AccountAttributeArgs].
   /// [name] Name of Ec2AccountAttribute
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2AccountAttributeArgs({
+  const GetEc2AccountAttributeArgs({
     required this.name,
     required this.resourceGroupName,
   });

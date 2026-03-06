@@ -11,7 +11,7 @@ class DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover {
   /// Creates a new [DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover].
   /// [principalDisplayName] The display name of the Azure Active Directory Principal for the approver.
   /// [principalId] The Principal ID of the Azure Active Directory principal for the approver.
-  DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover({
+  const DefinitionEligibleAuthorizationJustInTimeAccessPolicyApprover({
     this.principalDisplayName,
     required this.principalId,
   });

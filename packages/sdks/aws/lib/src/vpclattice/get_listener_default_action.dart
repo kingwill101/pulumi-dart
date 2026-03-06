@@ -11,7 +11,7 @@ class GetListenerDefaultAction {
   /// Creates a new [GetListenerDefaultAction].
   /// [fixedResponses] Required.
   /// [forwards] Required.
-  GetListenerDefaultAction({
+  const GetListenerDefaultAction({
     required this.fixedResponses,
     required this.forwards,
   });

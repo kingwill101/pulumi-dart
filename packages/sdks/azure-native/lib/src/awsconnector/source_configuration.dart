@@ -12,7 +12,7 @@ class SourceConfiguration {
   /// Creates a new [SourceConfiguration].
   /// [applicationName] The name of the application associated with the configuration.
   /// [templateName] The name of the configuration template.
-  SourceConfiguration({
+  const SourceConfiguration({
     this.applicationName,
     this.templateName,
   });

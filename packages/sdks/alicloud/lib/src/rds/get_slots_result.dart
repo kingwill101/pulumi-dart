@@ -19,7 +19,7 @@ class GetSlotsResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] Optional.
   /// [slots] A list of Rds Replication Slots. Each element contains the following attributes:
-  GetSlotsResult({
+  const GetSlotsResult({
     required this.dbInstanceId,
     required this.id,
     this.outputFile,

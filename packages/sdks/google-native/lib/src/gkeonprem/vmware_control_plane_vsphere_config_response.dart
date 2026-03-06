@@ -12,7 +12,7 @@ class VmwareControlPlaneVsphereConfigResponse {
   /// Creates a new [VmwareControlPlaneVsphereConfigResponse].
   /// [datastore] The Vsphere datastore used by the control plane Node.
   /// [storagePolicyName] The Vsphere storage policy used by the control plane Node.
-  VmwareControlPlaneVsphereConfigResponse({
+  const VmwareControlPlaneVsphereConfigResponse({
     required this.datastore,
     required this.storagePolicyName,
   });

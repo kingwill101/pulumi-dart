@@ -8,7 +8,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableSecretValue {
 
   /// Creates a new [ConnectionEventingConfigAuthConfigAdditionalVariableSecretValue].
   /// [secretVersion] Secret version of Secret Value for Config variable.
-  ConnectionEventingConfigAuthConfigAdditionalVariableSecretValue({
+  const ConnectionEventingConfigAuthConfigAdditionalVariableSecretValue({
     required this.secretVersion,
   });
 

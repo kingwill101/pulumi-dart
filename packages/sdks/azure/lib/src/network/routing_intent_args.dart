@@ -19,7 +19,7 @@ class RoutingIntentArgs {
   /// [name] The name which should be used for this Virtual Hub Routing Intent. Changing this forces a new resource to be created.
   /// [routingPolicies] One or more `routing_policy` blocks as defined below.
   /// [virtualHubId] The resource ID of the Virtual Hub. Changing this forces a new resource to be created.
-  RoutingIntentArgs({
+  const RoutingIntentArgs({
     this.name,
     required this.routingPolicies,
     required this.virtualHubId,

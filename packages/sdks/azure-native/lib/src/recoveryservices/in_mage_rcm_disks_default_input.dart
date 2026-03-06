@@ -18,7 +18,7 @@ class InMageRcmDisksDefaultInput {
   /// [diskType] The disk type.
   /// [logStorageAccountId] The log storage account ARM Id.
   /// [sectorSizeInBytes] The logical sector size (in bytes), 512 by default.
-  InMageRcmDisksDefaultInput({
+  const InMageRcmDisksDefaultInput({
     this.diskEncryptionSetId,
     required this.diskType,
     required this.logStorageAccountId,

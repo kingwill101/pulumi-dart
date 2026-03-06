@@ -15,7 +15,7 @@ class GetZoneRrsetsArgs {
   /// Creates a new [GetZoneRrsetsArgs].
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   /// [zone] ID or Name of the parent Zone.
-  GetZoneRrsetsArgs({
+  const GetZoneRrsetsArgs({
     this.withSelector,
     required this.zone,
   });

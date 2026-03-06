@@ -21,7 +21,7 @@ class GetBuildServiceBuilderArgs {
   /// [builderName] The name of the builder resource.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  GetBuildServiceBuilderArgs({
+  const GetBuildServiceBuilderArgs({
     required this.buildServiceName,
     required this.builderName,
     required this.resourceGroupName,

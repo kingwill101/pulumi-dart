@@ -41,7 +41,7 @@ class WebAppState {
   /// [webAppEndpointPolicy] Type of endpoint policy for the web app. Valid values are: `STANDARD`(default) or `FIPS`.
   /// [webAppId] ID of the Wep App resource.
   /// [webAppUnits] Block for number of concurrent connections or the user sessions on the web app.
-  WebAppState({
+  const WebAppState({
     this.accessEndpoint,
     this.arn,
     this.endpointDetails,

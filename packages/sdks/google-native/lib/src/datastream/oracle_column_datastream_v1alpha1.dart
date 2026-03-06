@@ -33,7 +33,7 @@ class OracleColumnDatastreamV1alpha1 {
   /// [precision] Column precision.
   /// [primaryKey] Whether or not the column represents a primary key.
   /// [scale] Column scale.
-  OracleColumnDatastreamV1alpha1({
+  const OracleColumnDatastreamV1alpha1({
     this.columnName,
     this.dataType,
     this.encoding,

@@ -17,7 +17,7 @@ class GetDomainCognitoOption {
   /// [identityPoolId] Cognito Identity pool used by the domain.
   /// [roleArn] IAM Role with the AmazonOpenSearchServiceCognitoAccess policy attached.
   /// [userPoolId] Cognito User pool used by the domain.
-  GetDomainCognitoOption({
+  const GetDomainCognitoOption({
     required this.enabled,
     required this.identityPoolId,
     required this.roleArn,

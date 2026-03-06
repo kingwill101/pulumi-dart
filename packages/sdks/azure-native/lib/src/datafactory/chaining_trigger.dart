@@ -27,7 +27,7 @@ class ChainingTrigger {
   /// [pipeline] Pipeline for which runs are created when all upstream pipelines complete successfully.
   /// [runDimension] Run Dimension property that needs to be emitted by upstream pipelines.
   /// [type] Trigger type.
-  ChainingTrigger({
+  const ChainingTrigger({
     this.annotations,
     required this.dependsOn,
     this.description,

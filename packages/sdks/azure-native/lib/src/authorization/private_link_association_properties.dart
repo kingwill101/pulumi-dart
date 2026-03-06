@@ -10,7 +10,7 @@ class PrivateLinkAssociationProperties {
   /// Creates a new [PrivateLinkAssociationProperties].
   /// [privateLink] The rmpl Resource ID.
   /// [publicNetworkAccess] Optional.
-  PrivateLinkAssociationProperties({
+  const PrivateLinkAssociationProperties({
     this.privateLink,
     this.publicNetworkAccess,
   });

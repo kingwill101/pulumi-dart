@@ -42,7 +42,7 @@ class PolicySetDefinitionVersionArgs {
   /// [policySetDefinitionName] The name of the policy set definition.
   /// [policyType] The type of policy definition. Possible values are NotSpecified, BuiltIn, Custom, and Static.
   /// [version] The policy set definition version in #.#.# format.
-  PolicySetDefinitionVersionArgs({
+  const PolicySetDefinitionVersionArgs({
     this.description,
     this.displayName,
     this.metadata,

@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [enterprisePolicyName] EnterprisePolicy for the Microsoft Azure subscription.
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.enterprisePolicyName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

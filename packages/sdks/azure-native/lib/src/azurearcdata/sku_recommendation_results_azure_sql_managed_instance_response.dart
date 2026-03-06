@@ -19,7 +19,7 @@ class SkuRecommendationResultsAzureSqlManagedInstanceResponse {
   /// [numberOfServerBlockerIssues] Number of blocker issues to fix before migrating to the target platform.
   /// [recommendationStatus] The target recommendation Status for this database.
   /// [targetSku] Optional.
-  SkuRecommendationResultsAzureSqlManagedInstanceResponse({
+  const SkuRecommendationResultsAzureSqlManagedInstanceResponse({
     this.monthlyCost,
     this.numberOfServerBlockerIssues,
     this.recommendationStatus,

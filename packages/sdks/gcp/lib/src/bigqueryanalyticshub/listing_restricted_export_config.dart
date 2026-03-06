@@ -15,7 +15,7 @@ class ListingRestrictedExportConfig {
   /// [enabled] If true, enable restricted export.
   /// [restrictDirectTableAccess] (Output)
   /// [restrictQueryResult] If true, restrict export of query result derived from restricted linked dataset table.
-  ListingRestrictedExportConfig({
+  const ListingRestrictedExportConfig({
     this.enabled,
     this.restrictDirectTableAccess,
     this.restrictQueryResult,

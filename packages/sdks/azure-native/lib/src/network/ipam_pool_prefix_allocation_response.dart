@@ -15,7 +15,7 @@ class IpamPoolPrefixAllocationResponse {
   /// [allocatedAddressPrefixes] List of assigned IP address prefixes in the IpamPool of the associated resource.
   /// [id] Resource id of the associated Azure IpamPool resource.
   /// [numberOfIpAddresses] Number of IP addresses to allocate.
-  IpamPoolPrefixAllocationResponse({
+  const IpamPoolPrefixAllocationResponse({
     required this.allocatedAddressPrefixes,
     this.id,
     this.numberOfIpAddresses,

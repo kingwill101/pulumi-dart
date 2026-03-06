@@ -20,7 +20,7 @@ class HostNetworkResponse {
   /// [intents] The network intents assigned to the network reference pattern used for the deployment. Each intent will define its own name, traffic type, adapter names, and overrides as recommended by your OEM.
   /// [storageConnectivitySwitchless] Defines how the storage adapters between nodes are connected either switch or switch less.
   /// [storageNetworks] List of StorageNetworks config to deploy AzureStackHCI Cluster.
-  HostNetworkResponse({
+  const HostNetworkResponse({
     required this.enableStorageAutoIp,
     required this.intents,
     required this.storageConnectivitySwitchless,

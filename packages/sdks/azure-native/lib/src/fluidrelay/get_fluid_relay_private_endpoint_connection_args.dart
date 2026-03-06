@@ -18,7 +18,7 @@ class GetFluidRelayPrivateEndpointConnectionArgs {
   /// [fluidRelayServerName] The Fluid Relay server resource name.
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Azure resource.
   /// [resourceGroup] The resource group containing the resource.
-  GetFluidRelayPrivateEndpointConnectionArgs({
+  const GetFluidRelayPrivateEndpointConnectionArgs({
     required this.fluidRelayServerName,
     required this.privateEndpointConnectionName,
     required this.resourceGroup,

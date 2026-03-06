@@ -12,7 +12,7 @@ class Digest {
   /// Creates a new [Digest].
   /// [algo] `SHA1`, `SHA512` etc.
   /// [digestBytes] Value of the digest.
-  Digest({
+  const Digest({
     this.algo,
     this.digestBytes,
   });

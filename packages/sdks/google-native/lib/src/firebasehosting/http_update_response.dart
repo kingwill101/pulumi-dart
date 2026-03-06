@@ -22,7 +22,7 @@ class HttpUpdateResponse {
   /// [discovered] Whether Hosting was able to find the required file contents on the specified path during its last check.
   /// [lastCheckTime] The last time Hosting systems checked for the file contents.
   /// [path] The path to the file.
-  HttpUpdateResponse({
+  const HttpUpdateResponse({
     required this.checkError,
     required this.desired,
     required this.discovered,

@@ -9,7 +9,7 @@ class ServiceAccountResponse {
 
   /// Creates a new [ServiceAccountResponse].
   /// [email] The IAM service account email address like test@myproject.iam.gserviceaccount.com
-  ServiceAccountResponse({
+  const ServiceAccountResponse({
     required this.email,
   });
 

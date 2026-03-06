@@ -17,7 +17,7 @@ class GetCertificateArgs {
   /// [name] Specifies the name of the certificate.
   /// [resourceGroupName] The name of the resource group in which to create the certificate.
   /// [tags] Optional.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

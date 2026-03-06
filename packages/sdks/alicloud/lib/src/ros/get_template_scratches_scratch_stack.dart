@@ -8,7 +8,7 @@ class GetTemplateScratchesScratchStack {
 
   /// Creates a new [GetTemplateScratchesScratchStack].
   /// [stackId] The ID of the Resource stack.
-  GetTemplateScratchesScratchStack({
+  const GetTemplateScratchesScratchStack({
     required this.stackId,
   });
 

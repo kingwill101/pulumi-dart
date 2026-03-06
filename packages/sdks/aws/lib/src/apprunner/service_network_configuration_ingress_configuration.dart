@@ -8,7 +8,7 @@ class ServiceNetworkConfigurationIngressConfiguration {
 
   /// Creates a new [ServiceNetworkConfigurationIngressConfiguration].
   /// [isPubliclyAccessible] Specifies whether your App Runner service is publicly accessible. To make the service publicly accessible set it to True. To make the service privately accessible, from only within an Amazon VPC set it to False.
-  ServiceNetworkConfigurationIngressConfiguration({
+  const ServiceNetworkConfigurationIngressConfiguration({
     this.isPubliclyAccessible,
   });
 

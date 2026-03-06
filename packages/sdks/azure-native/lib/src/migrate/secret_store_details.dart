@@ -10,7 +10,7 @@ class SecretStoreDetails {
   /// Creates a new [SecretStoreDetails].
   /// [secretStore] Optional.
   /// [secretStoreProperties] Optional.
-  SecretStoreDetails({
+  const SecretStoreDetails({
     this.secretStore,
     this.secretStoreProperties,
   });

@@ -9,7 +9,7 @@ class ServerlessClusterClientAuthentication {
 
   /// Creates a new [ServerlessClusterClientAuthentication].
   /// [sasl] Details for client authentication using SASL. See below.
-  ServerlessClusterClientAuthentication({
+  const ServerlessClusterClientAuthentication({
     required this.sasl,
   });
 

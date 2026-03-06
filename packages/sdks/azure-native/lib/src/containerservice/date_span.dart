@@ -12,7 +12,7 @@ class DateSpan {
   /// Creates a new [DateSpan].
   /// [end] The end date of the date span.
   /// [start] The start date of the date span.
-  DateSpan({
+  const DateSpan({
     required this.end,
     required this.start,
   });

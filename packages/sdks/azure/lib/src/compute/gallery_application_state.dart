@@ -36,7 +36,7 @@ class GalleryApplicationState {
   /// [releaseNoteUri] The URI containing the Release Notes associated with the Gallery Application.
   /// [supportedOsType] The type of the Operating System supported for the Gallery Application. Possible values are `Linux` and `Windows`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Gallery Application.
-  GalleryApplicationState({
+  const GalleryApplicationState({
     this.description,
     this.endOfLifeDate,
     this.eula,

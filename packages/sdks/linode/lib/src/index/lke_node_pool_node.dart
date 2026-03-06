@@ -14,7 +14,7 @@ class LkeNodePoolNode {
   /// [id] The ID of the node.
   /// [instanceId] The ID of the underlying Linode instance.
   /// [status] The status of the node. (`ready`, `not_ready`)
-  LkeNodePoolNode({
+  const LkeNodePoolNode({
     required this.id,
     required this.instanceId,
     required this.status,

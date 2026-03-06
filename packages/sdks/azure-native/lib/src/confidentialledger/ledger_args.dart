@@ -25,7 +25,7 @@ class LedgerArgs {
   /// [properties] Properties of Confidential Ledger Resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  LedgerArgs({
+  const LedgerArgs({
     this.ledgerName,
     this.location,
     this.properties,

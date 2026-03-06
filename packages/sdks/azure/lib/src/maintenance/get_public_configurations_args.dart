@@ -18,7 +18,7 @@ class GetPublicConfigurationsArgs {
   /// [location] The Azure location to filter the list of Public Maintenance Configurations against.
   /// [recurEvery] The recurring window to filter the list of Public Maintenance Configurations against. Possible values are `Monday-Thursday` and `Friday-Sunday`
   /// [scope] The scope to filter the list of Public Maintenance Configurations against. Possible values are `Extension`, `Host`, `InGuestPatch`, `OSImage`, `SQLDB` and `SQLManagedInstance`.
-  GetPublicConfigurationsArgs({
+  const GetPublicConfigurationsArgs({
     this.location,
     this.recurEvery,
     this.scope,

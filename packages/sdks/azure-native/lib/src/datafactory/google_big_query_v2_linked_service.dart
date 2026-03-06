@@ -49,7 +49,7 @@ class GoogleBigQueryV2LinkedService {
   /// [refreshToken] The refresh token obtained from Google for authorizing access to BigQuery for UserAuthentication.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  GoogleBigQueryV2LinkedService({
+  const GoogleBigQueryV2LinkedService({
     this.annotations,
     required this.authenticationType,
     this.clientId,

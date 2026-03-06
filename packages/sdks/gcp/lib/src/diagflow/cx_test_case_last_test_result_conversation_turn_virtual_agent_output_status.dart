@@ -14,7 +14,7 @@ class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus {
   /// [code] The status code, which should be an enum value of google.rpc.Code.
   /// [details] A JSON encoded list of messages that carry the error details.
   /// [message] A developer-facing error message.
-  CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus({
+  const CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus({
     this.code,
     this.details,
     this.message,

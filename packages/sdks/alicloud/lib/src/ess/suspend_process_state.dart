@@ -12,7 +12,7 @@ class SuspendProcessState {
   /// Creates a new [SuspendProcessState].
   /// [process] Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
   /// [scalingGroupId] ID of the scaling group.
-  SuspendProcessState({
+  const SuspendProcessState({
     this.process,
     this.scalingGroupId,
   });

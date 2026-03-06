@@ -17,7 +17,7 @@ class GetBandwidthLimitsResult {
   /// [instanceIds] Optional.
   /// [limits] A list of CEN Bandwidth Limits. Each element contains the following attributes:
   /// [outputFile] Optional.
-  GetBandwidthLimitsResult({
+  const GetBandwidthLimitsResult({
     required this.id,
     this.instanceIds,
     required this.limits,

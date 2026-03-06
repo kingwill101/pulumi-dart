@@ -22,7 +22,7 @@ class LandingZoneRegistrationOperationArgs {
   /// [landingZoneRegistrationName] The name of the landing zone registration resource.
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  LandingZoneRegistrationOperationArgs({
+  const LandingZoneRegistrationOperationArgs({
     required this.landingZoneAccountName,
     this.landingZoneRegistrationName,
     this.properties,

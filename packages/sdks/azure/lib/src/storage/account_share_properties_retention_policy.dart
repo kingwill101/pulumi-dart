@@ -8,7 +8,7 @@ class AccountSharePropertiesRetentionPolicy {
 
   /// Creates a new [AccountSharePropertiesRetentionPolicy].
   /// [days] Specifies the number of days that the `azure.storage.Share` should be retained, between `1` and `365` days. Defaults to `7`.
-  AccountSharePropertiesRetentionPolicy({
+  const AccountSharePropertiesRetentionPolicy({
     this.days,
   });
 

@@ -14,7 +14,7 @@ class GetVirtualNetworkAllowedSubnet {
   /// [allowPublicIp] Indicates if this subnet allows public IP addresses. Possible values are `Allow`, `Default` and `Deny`.
   /// [labSubnetName] The name of the subnet.
   /// [resourceId] The resource identifier for the subnet.
-  GetVirtualNetworkAllowedSubnet({
+  const GetVirtualNetworkAllowedSubnet({
     required this.allowPublicIp,
     required this.labSubnetName,
     required this.resourceId,

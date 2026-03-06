@@ -18,7 +18,7 @@ class SqlDbSettingsV3Response {
   /// [azureSqlDataBaseType] Gets or sets the azure PAAS SQL instance type.
   /// [azureSqlPurchaseModel] Gets or sets the azure SQL purchase model.
   /// [azureSqlServiceTier] Gets or sets the azure SQL service tier.
-  SqlDbSettingsV3Response({
+  const SqlDbSettingsV3Response({
     this.azureSqlComputeTier,
     this.azureSqlDataBaseType,
     this.azureSqlPurchaseModel,

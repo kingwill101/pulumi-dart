@@ -20,7 +20,7 @@ class GetServiceCorsConfiguration {
   /// [allowedMethods] The methods to be allowed via CORS.
   /// [allowedOrigins] The set of origins to be allowed via CORS.
   /// [maxAgeInSeconds] The max age to be allowed via CORS.
-  GetServiceCorsConfiguration({
+  const GetServiceCorsConfiguration({
     required this.allowCredentials,
     required this.allowedHeaders,
     required this.allowedMethods,

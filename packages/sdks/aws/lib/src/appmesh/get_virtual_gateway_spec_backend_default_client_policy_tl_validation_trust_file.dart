@@ -7,7 +7,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustFile {
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustFile].
   /// [certificateChain] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustFile({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrustFile({
     required this.certificateChain,
   });
 

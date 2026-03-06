@@ -32,7 +32,7 @@ class InstanceState {
   /// [resourceGroupId] The ID of the resource group
   /// [status] The state of the CEN instance.   Creating: The CEN instance is being created. Active: The CEN instance is running. Deleting: The CEN instance is being deleted.
   /// [tags] The tags of the CEN instance.
-  InstanceState({
+  const InstanceState({
     this.cenInstanceName,
     this.createTime,
     this.description,

@@ -12,7 +12,7 @@ class GoogleCloudRetailV2alphaConditionQueryTermResponse {
   /// Creates a new [GoogleCloudRetailV2alphaConditionQueryTermResponse].
   /// [fullMatch] Whether this is supposed to be a full or partial match.
   /// [value] The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
-  GoogleCloudRetailV2alphaConditionQueryTermResponse({
+  const GoogleCloudRetailV2alphaConditionQueryTermResponse({
     required this.fullMatch,
     required this.value,
   });

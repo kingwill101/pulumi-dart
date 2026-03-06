@@ -92,7 +92,7 @@ class ManagedZoneState {
   /// [reverseLookup] Specifies if this is a managed reverse lookup zone. If true, Cloud DNS will resolve reverse
   /// [serviceDirectoryConfig] The presence of this field indicates that this zone is backed by Service Directory. The value of this field contains information related to the namespace associated with the zone.
   /// [visibility] The zone's visibility: public zones are exposed to the Internet,
-  ManagedZoneState({
+  const ManagedZoneState({
     this.cloudLoggingConfig,
     this.creationTime,
     this.description,

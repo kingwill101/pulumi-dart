@@ -39,7 +39,7 @@ class VswitchCidrReservationState {
   /// [vswitchCidrReservationId] The resource attribute field of the resource ID.
   /// [vswitchCidrReservationName] The name of the resource.
   /// [vswitchId] The Id of the switch instance.
-  VswitchCidrReservationState({
+  const VswitchCidrReservationState({
     this.cidrReservationCidr,
     this.cidrReservationDescription,
     this.cidrReservationMask,

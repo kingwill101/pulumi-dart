@@ -27,7 +27,7 @@ class AlertProcessingRulePropertiesResponse {
   /// [enabled] Indicates if the given alert processing rule is enabled or disabled.
   /// [schedule] Scheduling for alert processing rule.
   /// [scopes] Scopes on which alert processing rule will apply.
-  AlertProcessingRulePropertiesResponse({
+  const AlertProcessingRulePropertiesResponse({
     required this.actions,
     this.conditions,
     this.description,

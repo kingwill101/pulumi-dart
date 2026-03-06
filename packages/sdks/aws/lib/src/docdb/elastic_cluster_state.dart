@@ -64,7 +64,7 @@ class ElasticClusterState {
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   /// [vpcSecurityGroupIds] List of VPC security groups to associate with the Elastic DocumentDB Cluster
-  ElasticClusterState({
+  const ElasticClusterState({
     this.adminUserName,
     this.adminUserPassword,
     this.arn,

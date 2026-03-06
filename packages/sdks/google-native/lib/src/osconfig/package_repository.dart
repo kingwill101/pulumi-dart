@@ -22,7 +22,7 @@ class PackageRepository {
   /// [goo] A Goo Repository.
   /// [yum] A Yum Repository.
   /// [zypper] A Zypper Repository.
-  PackageRepository({
+  const PackageRepository({
     this.apt,
     this.goo,
     this.yum,

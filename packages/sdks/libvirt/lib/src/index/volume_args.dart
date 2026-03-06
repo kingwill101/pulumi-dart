@@ -41,7 +41,7 @@ class VolumeArgs {
   /// [pool] Name of the storage pool where the volume will be created
   /// [target] Optional.
   /// [type] Specifies the type of the storage volume, allowing for distinction of different volume types.
-  VolumeArgs({
+  const VolumeArgs({
     this.allocationUnit,
     this.backingStore,
     this.capacity,

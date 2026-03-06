@@ -15,7 +15,7 @@ class GetWorkflowWorkflowsV1betaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [workflowId] Required.
-  GetWorkflowWorkflowsV1betaArgs({
+  const GetWorkflowWorkflowsV1betaArgs({
     required this.location,
     this.project,
     required this.workflowId,

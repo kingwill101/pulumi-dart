@@ -27,7 +27,7 @@ class GetAcceleratorsResult {
   /// [names] A list of Accelerator names.
   /// [outputFile] Optional.
   /// [status] The status of the GA instance.
-  GetAcceleratorsResult({
+  const GetAcceleratorsResult({
     required this.accelerators,
     this.bandwidthBillingType,
     required this.id,

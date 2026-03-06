@@ -94,7 +94,7 @@ class SpringbootappsPropertiesResponse {
   /// [servers] The server list the app installed
   /// [springBootVersion] The spring boot version.
   /// [staticContentLocations] The static content location list.
-  SpringbootappsPropertiesResponse({
+  const SpringbootappsPropertiesResponse({
     this.appName,
     this.appPort,
     this.appType,

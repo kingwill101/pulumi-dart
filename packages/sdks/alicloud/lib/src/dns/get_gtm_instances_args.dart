@@ -18,7 +18,7 @@ class GetGtmInstancesArgs {
   /// [ids] A list of Gtm Instance IDs.
   /// [lang] The lang.
   /// [resourceGroupId] The ID of the resource group.
-  GetGtmInstancesArgs({
+  const GetGtmInstancesArgs({
     this.ids,
     this.lang,
     this.resourceGroupId,

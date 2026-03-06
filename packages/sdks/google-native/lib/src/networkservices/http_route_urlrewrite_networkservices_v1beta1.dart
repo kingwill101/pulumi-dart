@@ -12,7 +12,7 @@ class HttpRouteURLRewriteNetworkservicesV1beta1 {
   /// Creates a new [HttpRouteURLRewriteNetworkservicesV1beta1].
   /// [hostRewrite] Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
   /// [pathPrefixRewrite] Prior to forwarding the request to the selected destination, the matching portion of the requests path is replaced by this value.
-  HttpRouteURLRewriteNetworkservicesV1beta1({
+  const HttpRouteURLRewriteNetworkservicesV1beta1({
     this.hostRewrite,
     this.pathPrefixRewrite,
   });

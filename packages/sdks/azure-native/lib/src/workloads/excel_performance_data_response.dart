@@ -16,7 +16,7 @@ class ExcelPerformanceDataResponse {
   /// [dataSource] The data source for this resource.
   /// [maxCpuLoad] Provide the max CPU percentage load on the server. Omit the percentage symbol while filling this value.
   /// [totalSourceDbSizeGB] Provide the source Database size in GB. Applicable only if SAP instance type for this server instance is 'DB'.
-  ExcelPerformanceDataResponse({
+  const ExcelPerformanceDataResponse({
     required this.dataSource,
     required this.maxCpuLoad,
     required this.totalSourceDbSizeGB,

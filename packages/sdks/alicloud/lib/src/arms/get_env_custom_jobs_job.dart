@@ -23,7 +23,7 @@ class GetEnvCustomJobsJob {
   /// [id] The ID of the custom job. It formats as `&lt;environment_id&gt;:&lt;env_custom_job_name&gt;`.
   /// [regionId] The region ID.
   /// [status] The status of the custom job.
-  GetEnvCustomJobsJob({
+  const GetEnvCustomJobsJob({
     required this.configYaml,
     required this.envCustomJobName,
     required this.environmentId,

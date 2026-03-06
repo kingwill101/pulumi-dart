@@ -18,7 +18,7 @@ class ConnectionAssociationArgs {
   /// [connectionId] The ID of the connection.
   /// [lagId] The ID of the LAG with which to associate the connection.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ConnectionAssociationArgs({
+  const ConnectionAssociationArgs({
     required this.connectionId,
     required this.lagId,
     this.region,

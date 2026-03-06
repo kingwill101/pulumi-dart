@@ -16,7 +16,7 @@ class GetDatasetArgs {
   /// Creates a new [GetDatasetArgs].
   /// [datasetId] The dataset ID.
   /// [project] The ID of the project in which the resource belongs.
-  GetDatasetArgs({
+  const GetDatasetArgs({
     required this.datasetId,
     this.project,
   });

@@ -7,7 +7,7 @@ class EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse].
   /// [objectValue] Required.
-  EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse({
+  const EnterpriseCrmFrontendsEventbusProtoSerializedObjectParameterResponse({
     required this.objectValue,
   });
 

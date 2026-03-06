@@ -20,7 +20,7 @@ class AttackPathSensitiveAssetConfigAttackPathAssetList {
   /// [instanceId] The ID of the cloud product instance.
   /// [regionId] The region ID of the cloud product.
   /// [vendor] Cloud product asset vendor. Valid values: `0`.
-  AttackPathSensitiveAssetConfigAttackPathAssetList({
+  const AttackPathSensitiveAssetConfigAttackPathAssetList({
     required this.assetSubType,
     required this.assetType,
     required this.instanceId,

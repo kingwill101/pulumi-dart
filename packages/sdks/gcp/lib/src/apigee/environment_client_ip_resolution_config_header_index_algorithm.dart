@@ -11,7 +11,7 @@ class EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm {
   /// Creates a new [EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm].
   /// [ipHeaderIndex] The index of the ip in the header. Positive indices 0, 1, 2, 3 chooses indices from the left (first ips). Negative indices -1, -2, -3 chooses indices from the right (last ips).
   /// [ipHeaderName] The name of the header to extract the client ip from. We are currently only supporting the X-Forwarded-For header.
-  EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm({
+  const EnvironmentClientIpResolutionConfigHeaderIndexAlgorithm({
     required this.ipHeaderIndex,
     required this.ipHeaderName,
   });

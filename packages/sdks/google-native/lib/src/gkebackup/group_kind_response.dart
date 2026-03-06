@@ -12,7 +12,7 @@ class GroupKindResponse {
   /// Creates a new [GroupKindResponse].
   /// [resourceGroup] Optional. API group string of a Kubernetes resource, e.g. "apiextensions.k8s.io", "storage.k8s.io", etc. Note: use empty string for core API group
   /// [resourceKind] Optional. Kind of a Kubernetes resource, must be in UpperCamelCase (PascalCase) and singular form. E.g. "CustomResourceDefinition", "StorageClass", etc.
-  GroupKindResponse({
+  const GroupKindResponse({
     required this.resourceGroup,
     required this.resourceKind,
   });

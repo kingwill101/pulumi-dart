@@ -8,7 +8,7 @@ class GetTableTableConstraintPrimaryKey {
 
   /// Creates a new [GetTableTableConstraintPrimaryKey].
   /// [columns] The columns that are composed of the primary key constraint.
-  GetTableTableConstraintPrimaryKey({
+  const GetTableTableConstraintPrimaryKey({
     required this.columns,
   });
 

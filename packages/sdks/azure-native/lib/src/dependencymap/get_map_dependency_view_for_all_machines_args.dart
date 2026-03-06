@@ -19,7 +19,7 @@ class GetMapDependencyViewForAllMachinesArgs {
   /// [filters] Filters for GetDependencyViewForAllMachines
   /// [mapName] Maps resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMapDependencyViewForAllMachinesArgs({
+  const GetMapDependencyViewForAllMachinesArgs({
     this.filters,
     required this.mapName,
     required this.resourceGroupName,

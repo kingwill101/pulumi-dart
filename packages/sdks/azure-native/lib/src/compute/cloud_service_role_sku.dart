@@ -15,7 +15,7 @@ class CloudServiceRoleSku {
   /// [capacity] Specifies the number of role instances in the cloud service.
   /// [name] The sku name. NOTE: If the new SKU is not supported on the hardware the cloud service is currently on, you need to delete and recreate the cloud service or move back to the old sku.
   /// [tier] Specifies the tier of the cloud service. Possible Values are &lt;br /&gt;&lt;br /&gt; **Standard** &lt;br /&gt;&lt;br /&gt; **Basic**
-  CloudServiceRoleSku({
+  const CloudServiceRoleSku({
     this.capacity,
     this.name,
     this.tier,

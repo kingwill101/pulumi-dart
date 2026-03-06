@@ -13,7 +13,7 @@ class ExternalInstallationSoftwareConfigurationResponse {
   /// Creates a new [ExternalInstallationSoftwareConfigurationResponse].
   /// [centralServerVmId] The resource ID of the virtual machine containing the central server instance.
   /// [softwareInstallationType] The SAP software installation Type.
-  ExternalInstallationSoftwareConfigurationResponse({
+  const ExternalInstallationSoftwareConfigurationResponse({
     this.centralServerVmId,
     required this.softwareInstallationType,
   });

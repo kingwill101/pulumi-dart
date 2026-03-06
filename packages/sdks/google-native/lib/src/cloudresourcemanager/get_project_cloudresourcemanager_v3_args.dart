@@ -11,7 +11,7 @@ class GetProjectCloudresourcemanagerV3Args {
 
   /// Creates a new [GetProjectCloudresourcemanagerV3Args].
   /// [project] Optional.
-  GetProjectCloudresourcemanagerV3Args({
+  const GetProjectCloudresourcemanagerV3Args({
     this.project,
   });
 

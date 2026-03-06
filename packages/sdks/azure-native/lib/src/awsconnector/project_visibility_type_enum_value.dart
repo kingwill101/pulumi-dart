@@ -9,7 +9,7 @@ class ProjectVisibilityTypeEnumValue {
 
   /// Creates a new [ProjectVisibilityTypeEnumValue].
   /// [value] Property value
-  ProjectVisibilityTypeEnumValue({
+  const ProjectVisibilityTypeEnumValue({
     this.value,
   });
 

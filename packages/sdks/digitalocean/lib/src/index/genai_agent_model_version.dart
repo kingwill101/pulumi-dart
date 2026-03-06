@@ -14,7 +14,7 @@ class GenaiAgentModelVersion {
   /// [major] Major version of the model
   /// [minor] Minor version of the model
   /// [patch] Patch version of the model
-  GenaiAgentModelVersion({
+  const GenaiAgentModelVersion({
     this.major,
     this.minor,
     this.patch,

@@ -73,7 +73,7 @@ class RuntimeTemplateArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [shieldedVmConfig] Runtime Shielded VM spec.
   /// [softwareConfig] The notebook software configuration of the notebook runtime.
-  RuntimeTemplateArgs({
+  const RuntimeTemplateArgs({
     this.dataPersistentDiskSpec,
     this.description,
     required this.displayName,

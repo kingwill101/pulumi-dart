@@ -22,7 +22,7 @@ class IntegrationRuntimeArgs {
   /// [properties] Integration runtime properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  IntegrationRuntimeArgs({
+  const IntegrationRuntimeArgs({
     this.integrationRuntimeName,
     required this.properties,
     required this.resourceGroupName,

@@ -11,7 +11,7 @@ class NetworkLabel {
   /// Creates a new [NetworkLabel].
   /// [label] Name of the label
   /// [value] Value of the label
-  NetworkLabel({
+  const NetworkLabel({
     required this.label,
     required this.value,
   });

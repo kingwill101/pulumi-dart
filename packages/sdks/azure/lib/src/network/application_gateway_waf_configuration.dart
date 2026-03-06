@@ -34,7 +34,7 @@ class ApplicationGatewayWafConfiguration {
   /// [requestBodyCheck] Is Request Body Inspection enabled? Defaults to `true`.
   /// [ruleSetType] The Type of the Rule Set used for this Web Application Firewall. Possible values are `OWASP`, `Microsoft_BotManagerRuleSet` and `Microsoft_DefaultRuleSet`. Defaults to `OWASP`.
   /// [ruleSetVersion] The Version of the Rule Set used for this Web Application Firewall. Possible values are `0.1`, `1.0`, `1.1`, `2.1`, `2.2`, `2.2.9`, `3.0`, `3.1` and `3.2`.
-  ApplicationGatewayWafConfiguration({
+  const ApplicationGatewayWafConfiguration({
     this.disabledRuleGroups,
     required this.enabled,
     this.exclusions,

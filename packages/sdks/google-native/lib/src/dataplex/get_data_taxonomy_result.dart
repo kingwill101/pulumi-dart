@@ -35,7 +35,7 @@ class GetDataTaxonomyResult {
   /// [name] The relative resource name of the DataTaxonomy, of the form: projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}.
   /// [uid] System generated globally unique ID for the dataTaxonomy. This ID will be different if the DataTaxonomy is deleted and re-created with the same name.
   /// [updateTime] The time when the DataTaxonomy was last updated.
-  GetDataTaxonomyResult({
+  const GetDataTaxonomyResult({
     required this.attributeCount,
     required this.classCount,
     required this.createTime,

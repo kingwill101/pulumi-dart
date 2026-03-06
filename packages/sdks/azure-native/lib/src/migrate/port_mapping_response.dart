@@ -12,7 +12,7 @@ class PortMappingResponse {
   /// Creates a new [PortMappingResponse].
   /// [externalPort] Gets or sets the External Port.
   /// [internalPort] Gets or sets the Internal Port.
-  PortMappingResponse({
+  const PortMappingResponse({
     this.externalPort,
     this.internalPort,
   });

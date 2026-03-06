@@ -45,7 +45,7 @@ class GetShareArgs {
   /// [shareNetworkId] The UUID of the share's share network.
   /// [snapshotId] The UUID of the share's base snapshot.
   /// [status] A share status filter. A valid value is `creating`,
-  GetShareArgs({
+  const GetShareArgs({
     this.description,
     this.exportLocationPath,
     this.isPublic,

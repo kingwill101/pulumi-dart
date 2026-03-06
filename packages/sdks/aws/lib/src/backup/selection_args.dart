@@ -35,7 +35,7 @@ class SelectionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resources] An array of strings that either contain Amazon Resource Names (ARNs) or match patterns of resources to assign to a backup plan.
   /// [selectionTags] Tag-based conditions used to specify a set of resources to assign to a backup plan. See below for details.
-  SelectionArgs({
+  const SelectionArgs({
     this.conditions,
     required this.iamRoleArn,
     this.name,

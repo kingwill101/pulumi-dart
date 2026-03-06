@@ -15,7 +15,7 @@ class GetConversationDatasetArgs {
   /// [conversationDatasetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConversationDatasetArgs({
+  const GetConversationDatasetArgs({
     required this.conversationDatasetId,
     required this.location,
     this.project,

@@ -12,7 +12,7 @@ class GetAlertsAlertConfigurationSeverityConfiguration {
   /// Creates a new [GetAlertsAlertConfigurationSeverityConfiguration].
   /// [evalCondition] Trigger condition.
   /// [severity] Alarm severity.
-  GetAlertsAlertConfigurationSeverityConfiguration({
+  const GetAlertsAlertConfigurationSeverityConfiguration({
     required this.evalCondition,
     required this.severity,
   });

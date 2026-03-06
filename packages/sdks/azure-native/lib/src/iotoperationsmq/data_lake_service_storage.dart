@@ -13,7 +13,7 @@ class DataLakeServiceStorage {
   /// Creates a new [DataLakeServiceStorage].
   /// [authentication] DataLake service storage authentication details. NOTE - Enum only one method is supported.
   /// [endpoint] DataLake service storage endpoint to use.
-  DataLakeServiceStorage({
+  const DataLakeServiceStorage({
     required this.authentication,
     required this.endpoint,
   });

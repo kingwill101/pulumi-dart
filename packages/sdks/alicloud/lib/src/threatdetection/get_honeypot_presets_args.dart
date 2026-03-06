@@ -37,7 +37,7 @@ class GetHoneypotPresetsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [presetName] Honeypot template custom name
-  GetHoneypotPresetsArgs({
+  const GetHoneypotPresetsArgs({
     this.currentPage,
     this.enableDetails,
     this.honeypotImageName,

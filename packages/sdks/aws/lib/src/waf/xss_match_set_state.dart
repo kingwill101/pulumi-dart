@@ -16,7 +16,7 @@ class XssMatchSetState {
   /// [arn] Amazon Resource Name (ARN)
   /// [name] The name or description of the SizeConstraintSet.
   /// [xssMatchTuples] The parts of web requests that you want to inspect for cross-site scripting attacks.
-  XssMatchSetState({
+  const XssMatchSetState({
     this.arn,
     this.name,
     this.xssMatchTuples,

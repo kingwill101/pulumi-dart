@@ -23,7 +23,7 @@ class ApplicationApiAccessArgs {
   /// [applicationId] The resource ID of the application registration. Changing this forces a new resource to be created.
   /// [roleIds] A set of role IDs to be granted to the application, as published by the API.
   /// [scopeIds] A set of scope IDs to be granted to the application, as published by the API.
-  ApplicationApiAccessArgs({
+  const ApplicationApiAccessArgs({
     required this.apiClientId,
     required this.applicationId,
     this.roleIds,

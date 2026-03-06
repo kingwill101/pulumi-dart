@@ -8,7 +8,7 @@ class GetConnectivityTestsConnectivityTestSourceCloudRunRevision {
 
   /// Creates a new [GetConnectivityTestsConnectivityTestSourceCloudRunRevision].
   /// [uri] A Cloud Run revision URI.
-  GetConnectivityTestsConnectivityTestSourceCloudRunRevision({
+  const GetConnectivityTestsConnectivityTestSourceCloudRunRevision({
     required this.uri,
   });
 

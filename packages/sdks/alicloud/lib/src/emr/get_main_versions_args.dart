@@ -19,7 +19,7 @@ class GetMainVersionsArgs {
   /// [clusterTypes] The supported clusterType of this emr version.
   /// [emrVersion] The version of the emr cluster instance. Possible values: `EMR-4.0.0`, `EMR-3.23.0`, `EMR-3.22.0`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetMainVersionsArgs({
+  const GetMainVersionsArgs({
     this.clusterTypes,
     this.emrVersion,
     this.outputFile,

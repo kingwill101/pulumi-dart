@@ -11,7 +11,7 @@ class DeploymentWebApplicationFirewallStatusComponentVersion {
   /// Creates a new [DeploymentWebApplicationFirewallStatusComponentVersion].
   /// [wafEngineVersion] The version of the WAF Engine.
   /// [wafNginxVersion] The version of the WAF Nginx module.
-  DeploymentWebApplicationFirewallStatusComponentVersion({
+  const DeploymentWebApplicationFirewallStatusComponentVersion({
     this.wafEngineVersion,
     this.wafNginxVersion,
   });

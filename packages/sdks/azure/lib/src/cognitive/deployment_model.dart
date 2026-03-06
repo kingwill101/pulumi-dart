@@ -16,7 +16,7 @@ class DeploymentModel {
   /// [format] The format of the Cognitive Services Account Deployment model. Changing this forces a new resource to be created.
   /// [name] The name of the Cognitive Services Account Deployment model. Changing this forces a new resource to be created.
   /// [version] The version of Cognitive Services Account Deployment model. If `version` is not specified, the default version of the model at the time will be assigned.
-  DeploymentModel({
+  const DeploymentModel({
     required this.format,
     required this.name,
     this.version,

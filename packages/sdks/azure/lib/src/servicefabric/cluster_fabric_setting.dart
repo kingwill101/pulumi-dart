@@ -11,7 +11,7 @@ class ClusterFabricSetting {
   /// Creates a new [ClusterFabricSetting].
   /// [name] The name of the Fabric Setting, such as `Security` or `Federation`.
   /// [parameters] A map containing settings for the specified Fabric Setting.
-  ClusterFabricSetting({
+  const ClusterFabricSetting({
     required this.name,
     this.parameters,
   });

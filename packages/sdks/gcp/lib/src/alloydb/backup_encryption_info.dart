@@ -13,7 +13,7 @@ class BackupEncryptionInfo {
   /// Creates a new [BackupEncryptionInfo].
   /// [encryptionType] (Output)
   /// [kmsKeyVersions] (Output)
-  BackupEncryptionInfo({
+  const BackupEncryptionInfo({
     this.encryptionType,
     this.kmsKeyVersions,
   });

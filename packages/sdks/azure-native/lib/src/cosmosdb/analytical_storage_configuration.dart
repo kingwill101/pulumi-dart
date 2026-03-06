@@ -9,7 +9,7 @@ class AnalyticalStorageConfiguration {
 
   /// Creates a new [AnalyticalStorageConfiguration].
   /// [schemaType] Describes the types of schema for analytical storage.
-  AnalyticalStorageConfiguration({
+  const AnalyticalStorageConfiguration({
     this.schemaType,
   });
 

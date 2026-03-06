@@ -11,7 +11,7 @@ class KafkaClusterComputeIsolation {
   /// Creates a new [KafkaClusterComputeIsolation].
   /// [computeIsolationEnabled] This field indicates whether enable compute isolation or not. Possible values are `true` or `false`.
   /// [hostSku] The name of the host SKU.
-  KafkaClusterComputeIsolation({
+  const KafkaClusterComputeIsolation({
     this.computeIsolationEnabled,
     this.hostSku,
   });

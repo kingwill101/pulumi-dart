@@ -18,7 +18,7 @@ class GetCAARecordArgs {
   /// [name] The name of the DNS CAA Record.
   /// [resourceGroupName] Specifies the resource group where the DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the DNS Zone where the resource exists.
-  GetCAARecordArgs({
+  const GetCAARecordArgs({
     required this.name,
     required this.resourceGroupName,
     required this.zoneName,

@@ -80,7 +80,7 @@ class VirtualHubArgs {
   /// [virtualRouterIps] VirtualRouter IPs.
   /// [virtualWan] The VirtualWAN to which the VirtualHub belongs.
   /// [vpnGateway] The VpnGateway associated with this VirtualHub.
-  VirtualHubArgs({
+  const VirtualHubArgs({
     this.addressPrefix,
     this.allowBranchToBranchTraffic,
     this.azureFirewall,

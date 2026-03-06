@@ -20,7 +20,7 @@ class GetNetworkInterfaceStatusResult {
   /// [operationalStatus] The interface operational status.
   /// [phyStatus] The physical status.
   /// [transceiverStatus] The interface transceiver type. Example: up or down
-  GetNetworkInterfaceStatusResult({
+  const GetNetworkInterfaceStatusResult({
     required this.administrativeState,
     this.connectedTo,
     this.operationalStatus,

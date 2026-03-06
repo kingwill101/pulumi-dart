@@ -9,7 +9,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange {
 
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange].
   /// [maxes] Insights into the most sub-optimal performing table on the temporal axis:
-  ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange({
+  const ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRange({
     this.maxes,
   });
 

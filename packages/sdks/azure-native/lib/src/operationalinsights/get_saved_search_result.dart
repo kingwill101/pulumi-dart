@@ -43,7 +43,7 @@ class GetSavedSearchResult {
   /// [tags] The tags attached to the saved search.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] The version number of the query language. The current version is 2 and is the default.
-  GetSavedSearchResult({
+  const GetSavedSearchResult({
     required this.azureApiVersion,
     required this.category,
     required this.displayName,

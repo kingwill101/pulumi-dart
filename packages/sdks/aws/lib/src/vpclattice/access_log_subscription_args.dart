@@ -25,7 +25,7 @@ class AccessLogSubscriptionArgs {
   /// [resourceIdentifier] The ID or Amazon Resource Identifier (ARN) of the service network or service. You must use the ARN if the resources specified in the operation are in different accounts.
   /// [serviceNetworkLogType] Type of log that monitors your Amazon VPC Lattice service networks. Valid values are: `SERVICE`, `RESOURCE`. Defaults to `SERVICE`.
   /// [tags] Optional.
-  AccessLogSubscriptionArgs({
+  const AccessLogSubscriptionArgs({
     required this.destinationArn,
     this.region,
     required this.resourceIdentifier,

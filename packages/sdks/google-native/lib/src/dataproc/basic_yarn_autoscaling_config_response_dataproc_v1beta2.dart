@@ -21,7 +21,7 @@ class BasicYarnAutoscalingConfigResponseDataprocV1beta2 {
   /// [scaleDownMinWorkerFraction] Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
   /// [scaleUpFactor] Fraction of average YARN pending memory in the last cooldown period for which to add workers. A scale-up factor of 1.0 will result in scaling up so that there is no pending memory remaining after the update (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling). See How autoscaling works for more information.Bounds: 0.0, 1.0.
   /// [scaleUpMinWorkerFraction] Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
-  BasicYarnAutoscalingConfigResponseDataprocV1beta2({
+  const BasicYarnAutoscalingConfigResponseDataprocV1beta2({
     required this.gracefulDecommissionTimeout,
     required this.scaleDownFactor,
     required this.scaleDownMinWorkerFraction,

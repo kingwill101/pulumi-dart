@@ -41,7 +41,7 @@ class GetJobTemplateTemplate {
   /// [timeout] Max allowed time duration the Task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
   /// [volumes] A list of Volumes to make available to containers.
   /// [vpcAccesses] VPC Access configuration to use for this Task. For more information, visit https://cloud.google.com/run/docs/configuring/connecting-vpc.
-  GetJobTemplateTemplate({
+  const GetJobTemplateTemplate({
     required this.containers,
     required this.encryptionKey,
     required this.executionEnvironment,

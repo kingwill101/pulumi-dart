@@ -19,7 +19,7 @@ class GetSchemaDiscoveryengineV1betaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [schemaId] Required.
-  GetSchemaDiscoveryengineV1betaArgs({
+  const GetSchemaDiscoveryengineV1betaArgs({
     required this.collectionId,
     required this.dataStoreId,
     required this.location,

@@ -14,7 +14,7 @@ class BackupConfigurationResponse {
   /// Creates a new [BackupConfigurationResponse].
   /// [sourceLocation] Source location of backups.
   /// [targetLocation] Target location for copying backups.
-  BackupConfigurationResponse({
+  const BackupConfigurationResponse({
     this.sourceLocation,
     this.targetLocation,
   });

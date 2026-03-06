@@ -10,7 +10,7 @@ class ClusterLoggingInfoBrokerLogsCloudwatchLogs {
   /// Creates a new [ClusterLoggingInfoBrokerLogsCloudwatchLogs].
   /// [enabled] Required.
   /// [logGroup] Name of the Cloudwatch Log Group to deliver logs to.
-  ClusterLoggingInfoBrokerLogsCloudwatchLogs({
+  const ClusterLoggingInfoBrokerLogsCloudwatchLogs({
     required this.enabled,
     this.logGroup,
   });

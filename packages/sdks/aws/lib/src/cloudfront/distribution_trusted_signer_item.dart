@@ -11,7 +11,7 @@ class DistributionTrustedSignerItem {
   /// Creates a new [DistributionTrustedSignerItem].
   /// [awsAccountNumber] AWS account ID or `self`
   /// [keyPairIds] Set of active CloudFront key pairs associated with the signer account
-  DistributionTrustedSignerItem({
+  const DistributionTrustedSignerItem({
     this.awsAccountNumber,
     this.keyPairIds,
   });

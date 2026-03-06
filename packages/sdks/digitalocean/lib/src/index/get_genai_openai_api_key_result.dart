@@ -24,7 +24,7 @@ class GetGenaiOpenaiApiKeyResult {
   /// [name] Required.
   /// [updatedAt] Required.
   /// [uuid] Required.
-  GetGenaiOpenaiApiKeyResult({
+  const GetGenaiOpenaiApiKeyResult({
     required this.createdAt,
     required this.createdBy,
     required this.deletedAt,

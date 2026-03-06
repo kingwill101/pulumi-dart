@@ -13,7 +13,7 @@ class OracleSchema {
   /// Creates a new [OracleSchema].
   /// [oracleTables] Tables in the schema.
   /// [schema] Schema name.
-  OracleSchema({
+  const OracleSchema({
     this.oracleTables,
     this.schema,
   });

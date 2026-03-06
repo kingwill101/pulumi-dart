@@ -11,7 +11,7 @@ class RegionResizeRequestStatusError {
 
   /// Creates a new [RegionResizeRequestStatusError].
   /// [errors] (Output)
-  RegionResizeRequestStatusError({
+  const RegionResizeRequestStatusError({
     this.errors,
   });
 

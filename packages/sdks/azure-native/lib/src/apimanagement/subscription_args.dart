@@ -48,7 +48,7 @@ class SubscriptionArgs {
   /// [serviceName] The name of the API Management service.
   /// [sid] Subscription entity Identifier. The entity represents the association between a user and a product in API Management.
   /// [state] Initial subscription state. If no value is specified, subscription is created with Submitted state. Possible states are * active – the subscription is active, * suspended – the subscription is blocked, and the subscriber cannot call any APIs of the product, * submitted – the subscription request has been made by the developer, but has not yet been approved or rejected, * rejected – the subscription request has been denied by an administrator, * cancelled – the subscription has been cancelled by the developer or administrator, * expired – the subscription reached its expiration date and was deactivated.
-  SubscriptionArgs({
+  const SubscriptionArgs({
     this.allowTracing,
     this.appType,
     required this.displayName,

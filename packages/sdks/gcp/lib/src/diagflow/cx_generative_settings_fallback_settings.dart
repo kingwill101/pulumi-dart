@@ -13,7 +13,7 @@ class CxGenerativeSettingsFallbackSettings {
   /// Creates a new [CxGenerativeSettingsFallbackSettings].
   /// [promptTemplates] Stored prompts that can be selected, for example default templates like "conservative" or "chatty", or user defined ones.
   /// [selectedPrompt] Display name of the selected prompt.
-  CxGenerativeSettingsFallbackSettings({
+  const CxGenerativeSettingsFallbackSettings({
     this.promptTemplates,
     this.selectedPrompt,
   });

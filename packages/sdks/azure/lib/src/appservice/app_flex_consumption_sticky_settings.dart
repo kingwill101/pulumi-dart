@@ -11,7 +11,7 @@ class AppFlexConsumptionStickySettings {
   /// Creates a new [AppFlexConsumptionStickySettings].
   /// [appSettingNames] A list of `app_setting` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
   /// [connectionStringNames] A list of `connection_string` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
-  AppFlexConsumptionStickySettings({
+  const AppFlexConsumptionStickySettings({
     this.appSettingNames,
     this.connectionStringNames,
   });

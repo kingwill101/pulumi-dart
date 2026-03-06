@@ -56,7 +56,7 @@ class GetLinuxWebAppAuthSetting {
   /// [tokenStoreEnabled] Is the Token Store configuration Enabled.
   /// [twitters] A `twitter` block as defined below.
   /// [unauthenticatedClientAction] The action to take when an unauthenticated client attempts to access the app.
-  GetLinuxWebAppAuthSetting({
+  const GetLinuxWebAppAuthSetting({
     required this.activeDirectories,
     required this.additionalLoginParameters,
     required this.allowedExternalRedirectUrls,

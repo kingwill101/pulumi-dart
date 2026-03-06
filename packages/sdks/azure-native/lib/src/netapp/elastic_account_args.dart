@@ -29,7 +29,7 @@ class ElasticAccountArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ElasticAccountArgs({
+  const ElasticAccountArgs({
     this.accountName,
     this.identity,
     this.location,

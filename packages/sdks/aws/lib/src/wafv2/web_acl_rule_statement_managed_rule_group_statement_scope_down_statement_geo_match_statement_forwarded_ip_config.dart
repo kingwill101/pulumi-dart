@@ -11,7 +11,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStat
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig].
   /// [fallbackBehavior] Match status to assign to the web request if the request doesn't have a valid IP address in the specified position. Valid values include: `MATCH` or `NO_MATCH`.
   /// [headerName] Name of the HTTP header to use for the IP address.
-  WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig({
+  const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementGeoMatchStatementForwardedIpConfig({
     required this.fallbackBehavior,
     required this.headerName,
   });

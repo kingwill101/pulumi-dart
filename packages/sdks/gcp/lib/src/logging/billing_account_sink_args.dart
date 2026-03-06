@@ -45,7 +45,7 @@ class BillingAccountSinkArgs {
   /// [exclusions] Log entries that match any of the exclusion filters will not be exported. If a log entry is matched by both `filter` and one of `exclusions.filter`, it will not be exported.  Can be repeated multiple times for multiple exclusions. Structure is documented below.
   /// [filter] The filter to apply when exporting logs. Only log entries that match the filter are exported.
   /// [name] The name of the logging sink.
-  BillingAccountSinkArgs({
+  const BillingAccountSinkArgs({
     this.bigqueryOptions,
     required this.billingAccount,
     this.description,

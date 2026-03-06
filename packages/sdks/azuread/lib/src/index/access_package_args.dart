@@ -21,7 +21,7 @@ class AccessPackageArgs {
   /// [description] The description of the access package.
   /// [displayName] The display name of the access package.
   /// [hidden] Whether the access package is hidden from the requestor.
-  AccessPackageArgs({
+  const AccessPackageArgs({
     required this.catalogId,
     required this.description,
     required this.displayName,

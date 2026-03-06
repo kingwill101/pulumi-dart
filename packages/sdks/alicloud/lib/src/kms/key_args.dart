@@ -68,7 +68,7 @@ class KeyArgs {
   /// [rotationInterval] The period of automatic key rotation. The following units are supported: d (day), h (hour), m (minute), and s (second). For example, you can use either 7d or 604800s to specify a seven-day interval. **NOTE**: If `automatic_rotation` is set to `Enabled`, `rotation_interval` is required.
   /// [status] The status of key. Default value: `Enabled`. Valid values: `Enabled`, `Disabled`, `PendingDeletion`.
   /// [tags] A mapping of tags to assign to the resource.
-  KeyArgs({
+  const KeyArgs({
     this.automaticRotation,
     this.deletionProtection,
     this.deletionProtectionDescription,

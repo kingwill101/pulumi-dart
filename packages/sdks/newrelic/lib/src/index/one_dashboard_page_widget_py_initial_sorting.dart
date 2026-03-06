@@ -11,7 +11,7 @@ class OneDashboardPageWidgetPyInitialSorting {
   /// Creates a new [OneDashboardPageWidgetPyInitialSorting].
   /// [direction] (Required) Defines the sort order. Accepted values are `asc` for ascending or `desc` for descending.
   /// [name] The title of the dashboard.
-  OneDashboardPageWidgetPyInitialSorting({
+  const OneDashboardPageWidgetPyInitialSorting({
     required this.direction,
     required this.name,
   });

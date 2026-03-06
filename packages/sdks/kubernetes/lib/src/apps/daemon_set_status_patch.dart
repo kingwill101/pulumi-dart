@@ -37,7 +37,7 @@ class DaemonSetStatusPatch {
   /// [numberUnavailable] The number of nodes that should be running the daemon pod and have none of the daemon pod running and available (ready for at least spec.minReadySeconds)
   /// [observedGeneration] The most recent generation observed by the daemon set controller.
   /// [updatedNumberScheduled] The total number of nodes that are running updated daemon pod
-  DaemonSetStatusPatch({
+  const DaemonSetStatusPatch({
     this.collisionCount,
     this.conditions,
     this.currentNumberScheduled,

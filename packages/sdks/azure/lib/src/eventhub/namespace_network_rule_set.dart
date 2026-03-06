@@ -23,7 +23,7 @@ class NamespaceNetworkRuleSet {
   /// [networkRules] One or more `network_rules` blocks as defined below.
   /// [publicNetworkAccessEnabled] Whether to allow traffic over public network. Possible values are `true` and `false`. Defaults to `true`.
   /// [trustedServicesAllowed] Are Azure Services that are known and trusted for this resource type are allowed to bypass firewall configuration? See [Trusted Microsoft Services](https://github.com/MicrosoftDocs/azure-docs/blob/master/articles/service-bus-messaging/includes/service-bus-trusted-services.md)
-  NamespaceNetworkRuleSet({
+  const NamespaceNetworkRuleSet({
     this.defaultAction,
     this.ipRules,
     this.networkRules,

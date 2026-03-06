@@ -25,7 +25,7 @@ class RaiToolLabelArgs {
   /// [raiToolConnectionName] The name of the Rai Tool Label
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  RaiToolLabelArgs({
+  const RaiToolLabelArgs({
     required this.accountName,
     this.properties,
     this.raiToolConnectionName,

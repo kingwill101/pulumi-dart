@@ -17,7 +17,7 @@ class VectorsVectorBucketPolicyState {
   /// [policy] The policy document.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vectorBucketArn] ARN of the vector bucket.
-  VectorsVectorBucketPolicyState({
+  const VectorsVectorBucketPolicyState({
     this.policy,
     this.region,
     this.vectorBucketArn,

@@ -134,7 +134,7 @@ class GetApplicationGatewayResult {
   /// [urlPathMaps] One or more `url_path_map` blocks as defined below.
   /// [wafConfigurations] A `waf_configuration` block as defined below.
   /// [zones] The list of Availability Zones in which this Application Gateway can use.
-  GetApplicationGatewayResult({
+  const GetApplicationGatewayResult({
     required this.authenticationCertificates,
     required this.autoscaleConfigurations,
     required this.backendAddressPools,

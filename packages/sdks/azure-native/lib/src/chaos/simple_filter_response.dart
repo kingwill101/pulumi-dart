@@ -14,7 +14,7 @@ class SimpleFilterResponse {
   /// Creates a new [SimpleFilterResponse].
   /// [parameters] Model that represents the Simple filter parameters.
   /// [type] Enum that discriminates between filter types. Currently only `Simple` type is supported.
-  SimpleFilterResponse({
+  const SimpleFilterResponse({
     this.parameters,
     required this.type,
   });

@@ -12,7 +12,7 @@ class GetCallerIdentityArgs {
 
   /// Creates a new [GetCallerIdentityArgs].
   /// [id] Account ID number of the account that owns or contains the calling entity.
-  GetCallerIdentityArgs({
+  const GetCallerIdentityArgs({
     this.id,
   });
 

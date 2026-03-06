@@ -9,7 +9,7 @@ class CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio {
 
   /// Creates a new [CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio].
   /// [segments] Segments this audio response is composed of.
-  CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio({
+  const CxPageKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudio({
     this.segments,
   });
 

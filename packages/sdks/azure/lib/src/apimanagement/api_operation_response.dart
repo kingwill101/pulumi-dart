@@ -19,7 +19,7 @@ class ApiOperationResponse {
   /// [headers] One or more `header` blocks as defined above.
   /// [representations] One or more `representation` blocks as defined above.
   /// [statusCode] The HTTP Status Code.
-  ApiOperationResponse({
+  const ApiOperationResponse({
     this.description,
     this.headers,
     this.representations,

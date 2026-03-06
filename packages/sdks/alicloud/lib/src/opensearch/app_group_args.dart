@@ -38,7 +38,7 @@ class AppGroupArgs {
   /// [paymentType] The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
   /// [quota] Quota information.  The details see Block quota.
   /// [type] Application type. Valid Values: `standard`, `enhanced`.
-  AppGroupArgs({
+  const AppGroupArgs({
     required this.appGroupName,
     this.chargeWay,
     this.currentVersion,

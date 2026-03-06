@@ -8,7 +8,7 @@ class ReferenceListEntry {
 
   /// Creates a new [ReferenceListEntry].
   /// [value] Required. The value of the entry. Maximum length is 512 characters.
-  ReferenceListEntry({
+  const ReferenceListEntry({
     required this.value,
   });
 

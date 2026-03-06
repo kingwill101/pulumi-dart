@@ -17,7 +17,7 @@ class GetFeaturesetVersionFeatureResult {
   /// [description] Specifies description
   /// [featureName] Specifies name
   /// [tags] Specifies tags
-  GetFeaturesetVersionFeatureResult({
+  const GetFeaturesetVersionFeatureResult({
     this.dataType,
     this.description,
     this.featureName,

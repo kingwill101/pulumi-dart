@@ -10,7 +10,7 @@ class BareMetalLoadBalancerNodePoolConfigResponse {
 
   /// Creates a new [BareMetalLoadBalancerNodePoolConfigResponse].
   /// [nodePoolConfig] The generic configuration for a node pool running a load balancer.
-  BareMetalLoadBalancerNodePoolConfigResponse({
+  const BareMetalLoadBalancerNodePoolConfigResponse({
     required this.nodePoolConfig,
   });
 

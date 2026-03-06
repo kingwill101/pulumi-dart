@@ -30,7 +30,7 @@ class GetApiToolResult {
   /// [operationId] Identifier of the operation this MCP tool is associated with in the form of /apis/{apiId}/operations/{operationId}.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApiToolResult({
+  const GetApiToolResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

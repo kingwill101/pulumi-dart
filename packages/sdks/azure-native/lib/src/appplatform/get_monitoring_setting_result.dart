@@ -25,7 +25,7 @@ class GetMonitoringSettingResult {
   /// [properties] Properties of the Monitoring Setting resource
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetMonitoringSettingResult({
+  const GetMonitoringSettingResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

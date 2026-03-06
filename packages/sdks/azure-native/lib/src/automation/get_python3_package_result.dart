@@ -57,7 +57,7 @@ class GetPython3PackageResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource.
   /// [version] Gets the version of the module.
-  GetPython3PackageResult({
+  const GetPython3PackageResult({
     this.activityCount,
     required this.azureApiVersion,
     this.creationTime,

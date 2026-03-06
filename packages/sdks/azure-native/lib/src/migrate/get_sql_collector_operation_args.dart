@@ -18,7 +18,7 @@ class GetSqlCollectorOperationArgs {
   /// [collectorName] Sql collector ARM name.
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSqlCollectorOperationArgs({
+  const GetSqlCollectorOperationArgs({
     required this.collectorName,
     required this.projectName,
     required this.resourceGroupName,

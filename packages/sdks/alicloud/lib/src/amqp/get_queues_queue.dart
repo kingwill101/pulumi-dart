@@ -32,7 +32,7 @@ class GetQueuesQueue {
   /// [lastConsumeTime] The last consume time.
   /// [queueName] The queue name.
   /// [virtualHostName] The name of the virtual host.
-  GetQueuesQueue({
+  const GetQueuesQueue({
     required this.attributes,
     required this.autoDeleteState,
     required this.createTime,

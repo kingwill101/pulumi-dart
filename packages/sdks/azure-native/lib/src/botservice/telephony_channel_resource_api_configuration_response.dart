@@ -24,7 +24,7 @@ class TelephonyChannelResourceApiConfigurationResponse {
   /// [defaultLocale] The default locale.
   /// [id] The id of config.
   /// [providerName] The provider name.
-  TelephonyChannelResourceApiConfigurationResponse({
+  const TelephonyChannelResourceApiConfigurationResponse({
     this.cognitiveServiceRegion,
     this.cognitiveServiceResourceId,
     this.cognitiveServiceSubscriptionKey,

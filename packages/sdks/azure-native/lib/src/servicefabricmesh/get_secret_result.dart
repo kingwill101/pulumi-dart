@@ -27,7 +27,7 @@ class GetSecretResult {
   /// [properties] Describes the properties of a secret resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetSecretResult({
+  const GetSecretResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

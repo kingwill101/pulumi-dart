@@ -12,7 +12,7 @@ class StepResponseWorkflowexecutionsV1beta {
   /// Creates a new [StepResponseWorkflowexecutionsV1beta].
   /// [routine] Name of a routine within the workflow.
   /// [step] Name of a step within the routine.
-  StepResponseWorkflowexecutionsV1beta({
+  const StepResponseWorkflowexecutionsV1beta({
     required this.routine,
     required this.step,
   });

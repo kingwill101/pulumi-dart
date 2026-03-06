@@ -51,7 +51,7 @@ class ImageArgs {
   /// [tags] A list of customized tags.
   /// [timeouts] Optional.
   /// [waitForReplications] Whether to wait for all image replications become `available`. Default to false.
-  ImageArgs({
+  const ImageArgs({
     this.cloudInit,
     this.description,
     this.diskId,

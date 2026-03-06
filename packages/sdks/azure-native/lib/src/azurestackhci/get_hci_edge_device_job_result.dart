@@ -29,7 +29,7 @@ class GetHciEdgeDeviceJobResult {
   /// [properties] HCI Edge device job properties
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetHciEdgeDeviceJobResult({
+  const GetHciEdgeDeviceJobResult({
     required this.azureApiVersion,
     required this.id,
     required this.kind,

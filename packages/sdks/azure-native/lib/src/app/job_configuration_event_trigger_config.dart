@@ -16,7 +16,7 @@ class JobConfigurationEventTriggerConfig {
   /// [parallelism] Number of parallel replicas of a job that can run at a given time.
   /// [replicaCompletionCount] Minimum number of successful replica completions before overall job completion.
   /// [scale] Scaling configurations for event driven jobs.
-  JobConfigurationEventTriggerConfig({
+  const JobConfigurationEventTriggerConfig({
     this.parallelism,
     this.replicaCompletionCount,
     this.scale,

@@ -9,7 +9,7 @@ class OrganizationConfigurationDatasourcesKubernetesAuditLogs {
 
   /// Creates a new [OrganizationConfigurationDatasourcesKubernetesAuditLogs].
   /// [enable] If true, enables Kubernetes audit logs as a data source for [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
-  OrganizationConfigurationDatasourcesKubernetesAuditLogs({
+  const OrganizationConfigurationDatasourcesKubernetesAuditLogs({
     required this.enable,
   });
 

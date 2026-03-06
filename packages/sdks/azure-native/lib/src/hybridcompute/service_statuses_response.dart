@@ -13,7 +13,7 @@ class ServiceStatusesResponse {
   /// Creates a new [ServiceStatusesResponse].
   /// [extensionService] The state of the extension service on the Arc-enabled machine.
   /// [guestConfigurationService] The state of the guest configuration service on the Arc-enabled machine.
-  ServiceStatusesResponse({
+  const ServiceStatusesResponse({
     this.extensionService,
     this.guestConfigurationService,
   });

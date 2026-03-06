@@ -15,7 +15,7 @@ class GetAdbsNationalCharacterSetsResult {
   /// [characterSets] A `character_sets` block as defined below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
-  GetAdbsNationalCharacterSetsResult({
+  const GetAdbsNationalCharacterSetsResult({
     required this.characterSets,
     required this.id,
     required this.location,

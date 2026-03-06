@@ -62,7 +62,7 @@ class GetImageResult {
   /// [region] Region of the container image.
   /// [tags] Key-value map of resource tags for the image.
   /// [version] Version of the image.
-  GetImageResult({
+  const GetImageResult({
     required this.arn,
     required this.buildVersionArn,
     required this.containerRecipeArn,

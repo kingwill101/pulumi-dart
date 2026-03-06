@@ -12,7 +12,7 @@ class InnerErrorResponse {
   /// Creates a new [InnerErrorResponse].
   /// [errordetail] The internal error message or exception dump.
   /// [exceptiontype] The exception type.
-  InnerErrorResponse({
+  const InnerErrorResponse({
     this.errordetail,
     this.exceptiontype,
   });

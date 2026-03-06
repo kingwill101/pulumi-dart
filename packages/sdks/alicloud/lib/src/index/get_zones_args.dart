@@ -48,7 +48,7 @@ class GetZonesArgs {
   /// [networkType] Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [spotStrategy] - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
-  GetZonesArgs({
+  const GetZonesArgs({
     this.availableDiskCategory,
     this.availableInstanceType,
     this.availableResourceCreation,

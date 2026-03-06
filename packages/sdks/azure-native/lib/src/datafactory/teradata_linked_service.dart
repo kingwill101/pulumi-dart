@@ -64,7 +64,7 @@ class TeradataLinkedService {
   /// [useDataEncryption] Specifies whether to encrypt all communication with the Teradata database. Allowed values are 0 or 1. This setting will be ignored for HTTPS/TLS connections. Type: integer (or Expression with resultType integer). Only applied for version 2.0.
   /// [username] Username for authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  TeradataLinkedService({
+  const TeradataLinkedService({
     this.annotations,
     this.authenticationType,
     this.characterSet,

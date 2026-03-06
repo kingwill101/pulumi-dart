@@ -11,7 +11,7 @@ class GetApplicationGatewayAutoscaleConfiguration {
   /// Creates a new [GetApplicationGatewayAutoscaleConfiguration].
   /// [maxCapacity] Maximum capacity for autoscaling.
   /// [minCapacity] Minimum capacity for autoscaling.
-  GetApplicationGatewayAutoscaleConfiguration({
+  const GetApplicationGatewayAutoscaleConfiguration({
     required this.maxCapacity,
     required this.minCapacity,
   });

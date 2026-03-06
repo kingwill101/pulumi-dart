@@ -30,7 +30,7 @@ class TrialArgs {
   /// [project] Optional.
   /// [state] The detailed state of a trial.
   /// [studyId] Required.
-  TrialArgs({
+  const TrialArgs({
     this.finalMeasurement,
     this.location,
     this.measurements,

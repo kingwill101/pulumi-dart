@@ -21,7 +21,7 @@ class EcsNetworkInterfaceAttachmentState {
   /// [networkInterfaceId] The ID of the network interface.
   /// [trunkNetworkInstanceId] The ID of the trunk network instance.
   /// [waitForNetworkConfigurationReady] The wait for network configuration ready.
-  EcsNetworkInterfaceAttachmentState({
+  const EcsNetworkInterfaceAttachmentState({
     this.instanceId,
     this.networkCardIndex,
     this.networkInterfaceId,

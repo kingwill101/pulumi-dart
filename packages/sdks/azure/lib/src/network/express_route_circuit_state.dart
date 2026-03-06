@@ -58,7 +58,7 @@ class ExpressRouteCircuitState {
   /// [serviceProviderProvisioningState] The ExpressRoute circuit provisioning state from your chosen service provider. Possible values are `NotProvisioned`, `Provisioning`, `Provisioned`, and `Deprovisioning`.
   /// [sku] A `sku` block for the ExpressRoute circuit as documented below.
   /// [tags] A mapping of tags to assign to the resource.
-  ExpressRouteCircuitState({
+  const ExpressRouteCircuitState({
     this.allowClassicOperations,
     this.authorizationKey,
     this.bandwidthInGbps,

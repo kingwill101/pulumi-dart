@@ -21,7 +21,7 @@ class AlarmContactGroupArgs {
   /// [contacts] The name of the alert contact.
   /// [describe] The description of the alert group.
   /// [enableSubscribed] Whether to open weekly subscription.
-  AlarmContactGroupArgs({
+  const AlarmContactGroupArgs({
     required this.alarmContactGroupName,
     this.contacts,
     this.describe,

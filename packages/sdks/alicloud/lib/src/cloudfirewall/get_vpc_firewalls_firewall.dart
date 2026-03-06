@@ -34,7 +34,7 @@ class GetVpcFirewallsFirewall {
   /// [status] The status of the resource
   /// [vpcFirewallId] The ID of the VPC firewall instance.
   /// [vpcFirewallName] The name of the VPC firewall instance.
-  GetVpcFirewallsFirewall({
+  const GetVpcFirewallsFirewall({
     required this.bandwidth,
     required this.connectType,
     required this.id,

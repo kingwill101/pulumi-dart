@@ -16,7 +16,7 @@ class GoogleCloudAiplatformV1CreatePipelineJobRequest {
   /// [parent] The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}`
   /// [pipelineJob] The PipelineJob to create.
   /// [pipelineJobId] The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`.
-  GoogleCloudAiplatformV1CreatePipelineJobRequest({
+  const GoogleCloudAiplatformV1CreatePipelineJobRequest({
     required this.parent,
     required this.pipelineJob,
     this.pipelineJobId,

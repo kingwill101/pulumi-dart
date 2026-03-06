@@ -14,7 +14,7 @@ class ConnectToTargetSqlMISyncTaskInputResponse {
   /// Creates a new [ConnectToTargetSqlMISyncTaskInputResponse].
   /// [azureApp] Azure Active Directory Application the DMS (classic) instance will use to connect to the target instance of Azure SQL Database Managed Instance and the Azure Storage Account
   /// [targetConnectionInfo] Connection information for Azure SQL Database Managed Instance
-  ConnectToTargetSqlMISyncTaskInputResponse({
+  const ConnectToTargetSqlMISyncTaskInputResponse({
     required this.azureApp,
     required this.targetConnectionInfo,
   });

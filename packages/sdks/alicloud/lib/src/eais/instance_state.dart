@@ -46,7 +46,7 @@ class InstanceState {
   /// [status] The status of the resource
   /// [tags] The tags.
   /// [vswitchId] Switch ID.
-  InstanceState({
+  const InstanceState({
     this.category,
     this.createTime,
     this.environmentVars,

@@ -84,7 +84,7 @@ class GetFluxConfigurationResult {
   /// [systemData] Top level metadata https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/common-api-contracts.md#system-metadata-for-all-azure-resources
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [waitForReconciliation] Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
-  GetFluxConfigurationResult({
+  const GetFluxConfigurationResult({
     required this.azureApiVersion,
     this.azureBlob,
     this.bucket,

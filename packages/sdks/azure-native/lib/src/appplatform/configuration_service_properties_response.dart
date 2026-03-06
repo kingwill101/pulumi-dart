@@ -24,7 +24,7 @@ class ConfigurationServicePropertiesResponse {
   /// [provisioningState] State of the Application Configuration Service.
   /// [resourceRequests] The requested resource quantity for required CPU and Memory.
   /// [settings] The settings of Application Configuration Service.
-  ConfigurationServicePropertiesResponse({
+  const ConfigurationServicePropertiesResponse({
     this.generation,
     required this.instances,
     required this.provisioningState,

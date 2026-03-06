@@ -21,7 +21,7 @@ class GetResolverFirewallRulesArgs {
   /// [firewallRuleGroupId] The unique identifier of the firewall rule group that you want to retrieve the rules for.
   /// [priority] The setting that determines the processing order of the rules in a rule group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetResolverFirewallRulesArgs({
+  const GetResolverFirewallRulesArgs({
     this.action,
     required this.firewallRuleGroupId,
     this.priority,

@@ -18,7 +18,7 @@ class ServiceApi {
   /// [name] The simple name of the endpoint as described in the config.
   /// [syntax] `SYNTAX_PROTO2` or `SYNTAX_PROTO3`.
   /// [version] A version string for this api. If specified, will have the form major-version.minor-version, e.g. `1.10`.
-  ServiceApi({
+  const ServiceApi({
     this.methods,
     this.name,
     this.syntax,

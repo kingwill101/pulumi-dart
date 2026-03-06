@@ -11,7 +11,7 @@ class GetOrganizationPolicyListPolicyAllow {
   /// Creates a new [GetOrganizationPolicyListPolicyAllow].
   /// [all] The policy allows or denies all values.
   /// [values] The policy can define specific values that are allowed or denied.
-  GetOrganizationPolicyListPolicyAllow({
+  const GetOrganizationPolicyListPolicyAllow({
     required this.all,
     required this.values,
   });

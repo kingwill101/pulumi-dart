@@ -14,7 +14,7 @@ class NetworkProfile {
   /// Creates a new [NetworkProfile].
   /// [networkInterfaces] Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
   /// [subnet] Specifies the identifier of the subnet.
-  NetworkProfile({
+  const NetworkProfile({
     this.networkInterfaces,
     this.subnet,
   });

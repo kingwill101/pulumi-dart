@@ -33,7 +33,7 @@ class GroupPolicyExemptionState {
   /// [name] The name of the Policy Exemption. Changing this forces a new resource to be created.
   /// [policyAssignmentId] The ID of the Policy Assignment to be exempted at the specified Scope.
   /// [policyDefinitionReferenceIds] The policy definition reference ID list when the associated policy assignment is an assignment of a policy set definition.
-  GroupPolicyExemptionState({
+  const GroupPolicyExemptionState({
     this.description,
     this.displayName,
     this.exemptionCategory,

@@ -32,7 +32,7 @@ class MethodResponseArgs {
   /// [responseParameters] A map specifying required or optional response parameters that API Gateway can send back to the caller. A key defines a method response header name and the associated value is a boolean flag indicating whether the method response parameter is required. The method response header names must match the pattern of `method.response.header.{name}`, where `name` is a valid and unique header name.
   /// [restApi] The string identifier of the associated REST API.
   /// [statusCode] The method response's status code.
-  MethodResponseArgs({
+  const MethodResponseArgs({
     required this.httpMethod,
     this.region,
     required this.resourceId,

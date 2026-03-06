@@ -8,7 +8,7 @@ class NetworkVirtualPortParamsVnTag8011qbh {
 
   /// Creates a new [NetworkVirtualPortParamsVnTag8011qbh].
   /// [profileId] Specifies the profile ID for VNTag 8011QBH virtual port parameters.
-  NetworkVirtualPortParamsVnTag8011qbh({
+  const NetworkVirtualPortParamsVnTag8011qbh({
     this.profileId,
   });
 

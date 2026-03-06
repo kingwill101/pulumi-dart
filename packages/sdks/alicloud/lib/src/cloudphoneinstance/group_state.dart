@@ -59,7 +59,7 @@ class GroupState {
   /// [policyGroupId] The policy ID. You can query the list of policies by calling ListPolicyGroups.
   /// [status] Instance group status
   /// [vswitchId] The vSwitch ID.
-  GroupState({
+  const GroupState({
     this.amount,
     this.autoPay,
     this.autoRenew,

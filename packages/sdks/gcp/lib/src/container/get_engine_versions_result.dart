@@ -38,7 +38,7 @@ class GetEngineVersionsResult {
   /// [validMasterVersions] A list of versions available in the given zone for use with master instances.
   /// [validNodeVersions] A list of versions available in the given zone for use with node instances.
   /// [versionPrefix] Optional.
-  GetEngineVersionsResult({
+  const GetEngineVersionsResult({
     required this.defaultClusterVersion,
     required this.id,
     required this.latestMasterVersion,

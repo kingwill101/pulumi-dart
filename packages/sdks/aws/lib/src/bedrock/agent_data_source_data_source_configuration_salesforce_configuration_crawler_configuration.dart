@@ -9,7 +9,7 @@ class AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfig
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration].
   /// [filterConfiguration] The Salesforce standard object configuration. See `filter_configuration` block for details.
-  AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration({
+  const AgentDataSourceDataSourceConfigurationSalesforceConfigurationCrawlerConfiguration({
     this.filterConfiguration,
   });
 

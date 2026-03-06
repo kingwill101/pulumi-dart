@@ -32,7 +32,7 @@ class DiskDiskEncryptionKey {
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [rsaEncryptedKey] Specifies an RFC 4648 base64 encoded, RSA-wrapped 2048-bit
   /// [sha256] (Output)
-  DiskDiskEncryptionKey({
+  const DiskDiskEncryptionKey({
     this.kmsKeySelfLink,
     this.kmsKeyServiceAccount,
     this.rawKey,

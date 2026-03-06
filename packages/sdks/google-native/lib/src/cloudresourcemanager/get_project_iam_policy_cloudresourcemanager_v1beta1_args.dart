@@ -11,7 +11,7 @@ class GetProjectIamPolicyCloudresourcemanagerV1beta1Args {
 
   /// Creates a new [GetProjectIamPolicyCloudresourcemanagerV1beta1Args].
   /// [resource] Required.
-  GetProjectIamPolicyCloudresourcemanagerV1beta1Args({
+  const GetProjectIamPolicyCloudresourcemanagerV1beta1Args({
     required this.resource,
   });
 

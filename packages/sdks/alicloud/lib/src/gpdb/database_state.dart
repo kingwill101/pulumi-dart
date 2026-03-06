@@ -27,7 +27,7 @@ class DatabaseState {
   /// [dbInstanceId] Instance ID
   /// [description] Database Description
   /// [owner] Data Sheet owner
-  DatabaseState({
+  const DatabaseState({
     this.characterSetName,
     this.collate,
     this.ctype,

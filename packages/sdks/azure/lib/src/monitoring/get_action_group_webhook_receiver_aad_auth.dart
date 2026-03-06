@@ -12,7 +12,7 @@ class GetActionGroupWebhookReceiverAadAuth {
   /// [identifierUri] Required.
   /// [objectId] Required.
   /// [tenantId] The Tenant ID for the subscription containing this Event Hub.
-  GetActionGroupWebhookReceiverAadAuth({
+  const GetActionGroupWebhookReceiverAadAuth({
     required this.identifierUri,
     required this.objectId,
     required this.tenantId,

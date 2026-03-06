@@ -17,7 +17,7 @@ class GetMetadataImportArgs {
   /// [metadataImportId] Required.
   /// [project] Optional.
   /// [serviceId] Required.
-  GetMetadataImportArgs({
+  const GetMetadataImportArgs({
     required this.location,
     required this.metadataImportId,
     this.project,

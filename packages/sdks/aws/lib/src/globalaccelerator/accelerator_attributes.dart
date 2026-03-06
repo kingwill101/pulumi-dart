@@ -14,7 +14,7 @@ class AcceleratorAttributes {
   /// [flowLogsEnabled] Indicates whether flow logs are enabled. Defaults to `false`. Valid values: `true`, `false`.
   /// [flowLogsS3Bucket] The name of the Amazon S3 bucket for the flow logs. Required if `flow_logs_enabled` is `true`.
   /// [flowLogsS3Prefix] The prefix for the location in the Amazon S3 bucket for the flow logs. Required if `flow_logs_enabled` is `true`.
-  AcceleratorAttributes({
+  const AcceleratorAttributes({
     this.flowLogsEnabled,
     this.flowLogsS3Bucket,
     this.flowLogsS3Prefix,

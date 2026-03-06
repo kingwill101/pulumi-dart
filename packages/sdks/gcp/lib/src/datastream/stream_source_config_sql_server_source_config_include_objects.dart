@@ -10,7 +10,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjects {
 
   /// Creates a new [StreamSourceConfigSqlServerSourceConfigIncludeObjects].
   /// [schemas] Spanner schemas in the database
-  StreamSourceConfigSqlServerSourceConfigIncludeObjects({
+  const StreamSourceConfigSqlServerSourceConfigIncludeObjects({
     required this.schemas,
   });
 

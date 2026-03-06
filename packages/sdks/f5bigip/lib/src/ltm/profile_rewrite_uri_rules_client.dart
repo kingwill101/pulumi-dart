@@ -17,7 +17,7 @@ class ProfileRewriteUriRulesClient {
   /// [path] Path part of the uri, must always end with `/`. Default value is: `/`
   /// [port] Port part of the uri. Default value is: `none`
   /// [scheme] Scheme part of the uri, e.g. `https`, `ftp`.
-  ProfileRewriteUriRulesClient({
+  const ProfileRewriteUriRulesClient({
     required this.host,
     this.path,
     this.port,

@@ -18,7 +18,7 @@ class GetDatacentersResult {
   /// [descriptions] Required.
   /// [id] The ID of this resource.
   /// [names] Required.
-  GetDatacentersResult({
+  const GetDatacentersResult({
     required this.datacenterIds,
     required this.datacenters,
     required this.descriptions,

@@ -15,7 +15,7 @@ class LabelingJobLabelingJobAlgorithmsConfig {
   /// [initialActiveLearningModelArn] ARN of the final model used for auto-labeling.
   /// [labelingJobAlgorithmSpecificationArn] ARN of the algorithm used for auto-labeling.
   /// [labelingJobResourceConfig] Configuration information for the labeling job. Fields are documented below.
-  LabelingJobLabelingJobAlgorithmsConfig({
+  const LabelingJobLabelingJobAlgorithmsConfig({
     this.initialActiveLearningModelArn,
     required this.labelingJobAlgorithmSpecificationArn,
     this.labelingJobResourceConfig,

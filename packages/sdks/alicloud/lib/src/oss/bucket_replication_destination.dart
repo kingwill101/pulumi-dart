@@ -16,7 +16,7 @@ class BucketReplicationDestination {
   /// [bucket] The destination bucket to which the data is replicated.
   /// [location] The region in which the destination bucket is located.
   /// [transferType] The link used to transfer data in data replication.. Can be `internal` or `oss_acc`. Defaults to `internal`.
-  BucketReplicationDestination({
+  const BucketReplicationDestination({
     required this.bucket,
     required this.location,
     this.transferType,

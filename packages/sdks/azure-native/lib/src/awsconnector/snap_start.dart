@@ -9,7 +9,7 @@ class SnapStart {
 
   /// Creates a new [SnapStart].
   /// [applyOn] Set ``ApplyOn`` to ``PublishedVersions`` to create a snapshot of the initialized execution environment when you publish a function version.
-  SnapStart({
+  const SnapStart({
     this.applyOn,
   });
 

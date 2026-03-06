@@ -12,7 +12,7 @@ class ApiConnectionTestLink {
   /// Creates a new [ApiConnectionTestLink].
   /// [method] HTTP Method
   /// [requestUri] Test link request URI
-  ApiConnectionTestLink({
+  const ApiConnectionTestLink({
     this.method,
     this.requestUri,
   });

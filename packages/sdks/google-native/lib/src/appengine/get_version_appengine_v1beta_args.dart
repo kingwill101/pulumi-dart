@@ -19,7 +19,7 @@ class GetVersionAppengineV1betaArgs {
   /// [serviceId] Required.
   /// [versionId] Required.
   /// [view] Optional.
-  GetVersionAppengineV1betaArgs({
+  const GetVersionAppengineV1betaArgs({
     required this.appId,
     this.includeExtraData,
     required this.serviceId,

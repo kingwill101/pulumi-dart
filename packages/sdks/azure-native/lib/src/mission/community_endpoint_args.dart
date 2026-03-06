@@ -28,7 +28,7 @@ class CommunityEndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleCollection] Community Endpoint Rule Collection.
   /// [tags] Resource tags.
-  CommunityEndpointArgs({
+  const CommunityEndpointArgs({
     this.communityEndpointName,
     required this.communityName,
     this.location,

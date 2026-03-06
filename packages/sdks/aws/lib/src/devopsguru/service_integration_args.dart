@@ -24,7 +24,7 @@ class ServiceIntegrationArgs {
   /// [logsAnomalyDetection] Information about whether DevOps Guru is configured to perform log anomaly detection on Amazon CloudWatch log groups. See `logs_anomaly_detection` below.
   /// [opsCenter] Information about whether DevOps Guru is configured to create an OpsItem in AWS Systems Manager OpsCenter for each created insight. See `ops_center` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ServiceIntegrationArgs({
+  const ServiceIntegrationArgs({
     required this.kmsServerSideEncryption,
     required this.logsAnomalyDetection,
     required this.opsCenter,

@@ -66,7 +66,7 @@ class GetRoutineResult {
   /// [securityMode] Optional. The security mode of the routine, if defined. If not defined, the security mode is automatically determined from the routine's configuration.
   /// [sparkOptions] Optional. Spark specific options.
   /// [strictMode] Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
-  GetRoutineResult({
+  const GetRoutineResult({
     required this.arguments,
     required this.creationTime,
     required this.dataGovernanceType,

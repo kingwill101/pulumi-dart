@@ -7,7 +7,7 @@ class BackendServiceUsedByResponseComputeBeta {
 
   /// Creates a new [BackendServiceUsedByResponseComputeBeta].
   /// [reference] Required.
-  BackendServiceUsedByResponseComputeBeta({
+  const BackendServiceUsedByResponseComputeBeta({
     required this.reference,
   });
 

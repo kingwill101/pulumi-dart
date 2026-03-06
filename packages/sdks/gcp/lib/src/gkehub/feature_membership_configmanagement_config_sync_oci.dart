@@ -20,7 +20,7 @@ class FeatureMembershipConfigmanagementConfigSyncOci {
   /// [secretType] Type of secret configured for access to the OCI Image. Must be one of gcenode, gcpserviceaccount or none.
   /// [syncRepo] The OCI image repository URL for the package to sync from. e.g. LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME.
   /// [syncWaitSecs] Period in seconds(int64 format) between consecutive syncs. Default: 15.
-  FeatureMembershipConfigmanagementConfigSyncOci({
+  const FeatureMembershipConfigmanagementConfigSyncOci({
     this.gcpServiceAccountEmail,
     this.policyDir,
     this.secretType,

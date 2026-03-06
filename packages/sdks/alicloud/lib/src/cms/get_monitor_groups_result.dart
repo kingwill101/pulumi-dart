@@ -34,7 +34,7 @@ class GetMonitorGroupsResult {
   /// [selectContactGroups] Optional.
   /// [tags] Optional.
   /// [type] Optional.
-  GetMonitorGroupsResult({
+  const GetMonitorGroupsResult({
     this.dynamicTagRuleId,
     required this.groups,
     required this.id,

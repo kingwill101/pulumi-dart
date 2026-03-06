@@ -52,7 +52,7 @@ class DbInstanceState {
   /// [vpcId] ID of the VPC.
   /// [vswitchId] The ID of attaching vswitch to instance.
   /// [zoneId] The zone ID of the resource.
-  DbInstanceState({
+  const DbInstanceState({
     this.connectionString,
     this.dbInstanceCategory,
     this.dbInstanceDescription,

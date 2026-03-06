@@ -48,7 +48,7 @@ class GetNestServiceInstancesServiceInstance {
   /// [status] The status of the Service Instance. Valid Values: `Created`, `Deploying`, `DeployedFailed`, `Deployed`, `Upgrading`, `Deleting`, `Deleted`, `DeletedFailed`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [templateName] The name of the template.
-  GetNestServiceInstancesServiceInstance({
+  const GetNestServiceInstancesServiceInstance({
     required this.enableInstanceOps,
     required this.id,
     required this.operatedServiceInstanceId,

@@ -18,7 +18,7 @@ class ListScheduleApplicableArgs {
   /// [labName] labs
   /// [name] The name of the Schedule
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListScheduleApplicableArgs({
+  const ListScheduleApplicableArgs({
     required this.labName,
     required this.name,
     required this.resourceGroupName,

@@ -8,7 +8,7 @@ class UserApiKeyResponsePropertiesResponse {
 
   /// Creates a new [UserApiKeyResponsePropertiesResponse].
   /// [apiKey] The User Api Key Generated based on GenerateApiKey flag. This is applicable for non-Portal clients only.
-  UserApiKeyResponsePropertiesResponse({
+  const UserApiKeyResponsePropertiesResponse({
     this.apiKey,
   });
 

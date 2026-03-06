@@ -11,7 +11,7 @@ class TopicRuleErrorActionHttpHttpHeader {
   /// Creates a new [TopicRuleErrorActionHttpHttpHeader].
   /// [key] The name of the HTTP header.
   /// [value] The value of the HTTP header.
-  TopicRuleErrorActionHttpHttpHeader({
+  const TopicRuleErrorActionHttpHttpHeader({
     required this.key,
     required this.value,
   });

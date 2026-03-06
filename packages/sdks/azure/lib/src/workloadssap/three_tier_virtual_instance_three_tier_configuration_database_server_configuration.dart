@@ -22,7 +22,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration 
   /// [instanceCount] The number of instances for the Database Server. Possible values are at least `1`. Changing this forces a new resource to be created.
   /// [subnetId] The resource ID of the Subnet for the Database Server. Changing this forces a new resource to be created.
   /// [virtualMachineConfiguration] A `virtual_machine_configuration` block as defined below. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration({
+  const ThreeTierVirtualInstanceThreeTierConfigurationDatabaseServerConfiguration({
     this.databaseType,
     this.diskVolumeConfigurations,
     required this.instanceCount,

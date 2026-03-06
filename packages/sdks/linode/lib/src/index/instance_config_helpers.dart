@@ -20,7 +20,7 @@ class InstanceConfigHelpers {
   /// [modulesDep] Creates a modules dependency file for the Kernel you run.
   /// [network] Controls the behavior of the Linode Config's Network Helper setting, used to automatically configure additional IP addresses assigned to this instance.
   /// [updatedbDisabled] Disables updatedb cron job to avoid disk thrashing.
-  InstanceConfigHelpers({
+  const InstanceConfigHelpers({
     this.devtmpfsAutomount,
     this.distro,
     this.modulesDep,

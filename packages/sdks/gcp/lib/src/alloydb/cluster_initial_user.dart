@@ -12,7 +12,7 @@ class ClusterInitialUser {
   /// Creates a new [ClusterInitialUser].
   /// [password] The initial password for the user.
   /// [user] The database username.
-  ClusterInitialUser({
+  const ClusterInitialUser({
     this.password,
     this.user,
   });

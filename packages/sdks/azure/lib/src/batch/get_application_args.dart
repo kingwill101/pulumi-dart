@@ -18,7 +18,7 @@ class GetApplicationArgs {
   /// [accountName] The name of the Batch account.
   /// [name] The name of the Application.
   /// [resourceGroupName] The name of the Resource Group where this Batch account exists.
-  GetApplicationArgs({
+  const GetApplicationArgs({
     required this.accountName,
     required this.name,
     required this.resourceGroupName,

@@ -14,7 +14,7 @@ class GetEnvironmentV3InboundNetworkDependency {
   /// [description] A short description of the purpose of the network traffic.
   /// [ipAddresses] A list of IP addresses that network traffic will originate from in CIDR notation.
   /// [ports] The ports that network traffic will arrive to the App Service Environment V3 on.
-  GetEnvironmentV3InboundNetworkDependency({
+  const GetEnvironmentV3InboundNetworkDependency({
     required this.description,
     required this.ipAddresses,
     required this.ports,

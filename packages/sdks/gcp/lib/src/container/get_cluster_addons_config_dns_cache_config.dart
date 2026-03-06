@@ -7,7 +7,7 @@ class GetClusterAddonsConfigDnsCacheConfig {
 
   /// Creates a new [GetClusterAddonsConfigDnsCacheConfig].
   /// [enabled] Required.
-  GetClusterAddonsConfigDnsCacheConfig({
+  const GetClusterAddonsConfigDnsCacheConfig({
     required this.enabled,
   });
 

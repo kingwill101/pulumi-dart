@@ -40,7 +40,7 @@ class CassandraTableDatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [tableName] The table name of the Cassandra database. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  CassandraTableDatasetResponse({
+  const CassandraTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

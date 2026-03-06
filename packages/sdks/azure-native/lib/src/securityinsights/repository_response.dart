@@ -22,7 +22,7 @@ class RepositoryResponse {
   /// [displayUrl] Display url of repository.
   /// [pathMapping] Dictionary of source control content type and path mapping.
   /// [url] Url of repository.
-  RepositoryResponse({
+  const RepositoryResponse({
     this.branch,
     this.deploymentLogsUrl,
     this.displayUrl,

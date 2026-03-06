@@ -14,7 +14,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
   /// Creates a new [CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio].
   /// [allowPlaybackInterruption] (Output)
   /// [audioUri] URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-  CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio({
+  const CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio({
     this.allowPlaybackInterruption,
     required this.audioUri,
   });

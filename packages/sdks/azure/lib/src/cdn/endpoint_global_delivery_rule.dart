@@ -29,7 +29,7 @@ class EndpointGlobalDeliveryRule {
   /// [modifyResponseHeaderActions] A `modify_response_header_action` block as defined below.
   /// [urlRedirectAction] A `url_redirect_action` block as defined below.
   /// [urlRewriteAction] A `url_rewrite_action` block as defined below.
-  EndpointGlobalDeliveryRule({
+  const EndpointGlobalDeliveryRule({
     this.cacheExpirationAction,
     this.cacheKeyQueryStringAction,
     this.modifyRequestHeaderActions,

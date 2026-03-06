@@ -15,7 +15,7 @@ class GetGrafanaArgs {
   /// Creates a new [GetGrafanaArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
-  GetGrafanaArgs({
+  const GetGrafanaArgs({
     required this.resourceGroupName,
     required this.workspaceName,
   });

@@ -8,7 +8,7 @@ class IPRuleResponse {
 
   /// Creates a new [IPRuleResponse].
   /// [addressPrefix] Specifies the IP or IP range in CIDR format. Only IPV4 address is allowed.
-  IPRuleResponse({
+  const IPRuleResponse({
     this.addressPrefix,
   });
 

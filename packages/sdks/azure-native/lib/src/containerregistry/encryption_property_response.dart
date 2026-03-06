@@ -12,7 +12,7 @@ class EncryptionPropertyResponse {
   /// Creates a new [EncryptionPropertyResponse].
   /// [keyVaultProperties] Key vault properties.
   /// [status] Indicates whether or not the encryption is enabled for container registry.
-  EncryptionPropertyResponse({
+  const EncryptionPropertyResponse({
     this.keyVaultProperties,
     this.status,
   });

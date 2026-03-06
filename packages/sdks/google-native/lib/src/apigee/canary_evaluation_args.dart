@@ -29,7 +29,7 @@ class CanaryEvaluationArgs {
   /// [organizationId] Required.
   /// [startTime] Start time for the canary evaluation's analysis.
   /// [treatment] The newer version that is serving requests.
-  CanaryEvaluationArgs({
+  const CanaryEvaluationArgs({
     required this.control,
     required this.endTime,
     required this.instanceId,

@@ -10,7 +10,7 @@ class GoogleCloudChannelV1PercentageAdjustment {
 
   /// Creates a new [GoogleCloudChannelV1PercentageAdjustment].
   /// [percentage] The percentage of the bill to adjust. For example: Mark down by 1% =&gt; "-1.00" Mark up by 1% =&gt; "1.00" Pass-Through =&gt; "0.00"
-  GoogleCloudChannelV1PercentageAdjustment({
+  const GoogleCloudChannelV1PercentageAdjustment({
     this.percentage,
   });
 

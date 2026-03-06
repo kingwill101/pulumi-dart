@@ -43,7 +43,7 @@ class ChatEngineArgs {
   /// [industryVertical] The industry vertical that the chat engine registers. Vertical on Engine has to match vertical of the DataStore linked to the engine.
   /// [location] Location.
   /// [project] The ID of the project in which the resource belongs.
-  ChatEngineArgs({
+  const ChatEngineArgs({
     required this.chatEngineConfig,
     required this.collectionId,
     this.commonConfig,

@@ -55,7 +55,7 @@ class DataSourceArgs {
   /// [relationalDatabaseConfig] AWS RDS settings. See `relational_database_config` Block for details.
   /// [serviceRoleArn] IAM service role ARN for the data source. Required if `type` is specified as `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `AMAZON_EVENTBRIDGE`, or `AMAZON_OPENSEARCH_SERVICE`.
   /// [type] Type of the Data Source. Valid values: `AWS_LAMBDA`, `AMAZON_DYNAMODB`, `AMAZON_ELASTICSEARCH`, `HTTP`, `NONE`, `RELATIONAL_DATABASE`, `AMAZON_EVENTBRIDGE`, `AMAZON_OPENSEARCH_SERVICE`.
-  DataSourceArgs({
+  const DataSourceArgs({
     required this.apiId,
     this.description,
     this.dynamodbConfig,

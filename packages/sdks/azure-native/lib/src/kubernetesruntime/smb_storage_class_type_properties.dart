@@ -25,7 +25,7 @@ class SmbStorageClassTypeProperties {
   /// [subDir] Sub directory under share. If the sub directory doesn't exist, driver will create it
   /// [type] Type of a storage class
   /// [username] Server username
-  SmbStorageClassTypeProperties({
+  const SmbStorageClassTypeProperties({
     this.domain,
     this.password,
     required this.source,

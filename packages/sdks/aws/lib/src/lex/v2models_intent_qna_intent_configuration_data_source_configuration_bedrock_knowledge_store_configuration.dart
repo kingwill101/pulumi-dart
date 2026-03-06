@@ -15,7 +15,7 @@ class V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledg
   /// [bedrockKnowledgeBaseArn] ARN of the Bedrock Knowledge Base.
   /// [exactResponse] Whether to return exact responses from the knowledge base. Defaults to `false`.
   /// [exactResponseFields] Configuration block for exact response fields. See `exact_response_fields`.
-  V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration({
+  const V2modelsIntentQnaIntentConfigurationDataSourceConfigurationBedrockKnowledgeStoreConfiguration({
     required this.bedrockKnowledgeBaseArn,
     this.exactResponse,
     this.exactResponseFields,

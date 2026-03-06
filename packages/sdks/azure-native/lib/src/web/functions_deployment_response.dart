@@ -10,7 +10,7 @@ class FunctionsDeploymentResponse {
 
   /// Creates a new [FunctionsDeploymentResponse].
   /// [storage] Storage for deployed package used by the function app.
-  FunctionsDeploymentResponse({
+  const FunctionsDeploymentResponse({
     this.storage,
   });
 

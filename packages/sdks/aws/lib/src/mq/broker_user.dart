@@ -22,7 +22,7 @@ class BrokerUser {
   /// [password] Password of the user. Must be 12 to 250 characters long, contain at least 4 unique characters, and must not contain commas.
   /// [replicationUser] Whether to set replication user. Defaults to `false`.
   /// [username] Username of the user.
-  BrokerUser({
+  const BrokerUser({
     this.consoleAccess,
     this.groups,
     required this.password,

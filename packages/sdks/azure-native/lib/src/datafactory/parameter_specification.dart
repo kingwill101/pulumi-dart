@@ -12,7 +12,7 @@ class ParameterSpecification {
   /// Creates a new [ParameterSpecification].
   /// [defaultValue] Default value of parameter.
   /// [type] Parameter type.
-  ParameterSpecification({
+  const ParameterSpecification({
     this.defaultValue,
     required this.type,
   });

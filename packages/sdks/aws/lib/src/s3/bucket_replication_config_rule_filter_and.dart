@@ -11,7 +11,7 @@ class BucketReplicationConfigRuleFilterAnd {
   /// Creates a new [BucketReplicationConfigRuleFilterAnd].
   /// [prefix] Object key name prefix that identifies subset of objects to which the rule applies. Must be less than or equal to 1024 characters in length.
   /// [tags] Map of tags (key and value pairs) that identifies a subset of objects to which the rule applies. The rule applies only to objects having all the tags in its tagset.
-  BucketReplicationConfigRuleFilterAnd({
+  const BucketReplicationConfigRuleFilterAnd({
     this.prefix,
     this.tags,
   });

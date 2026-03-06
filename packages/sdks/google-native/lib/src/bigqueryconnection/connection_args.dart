@@ -29,7 +29,7 @@ class ConnectionArgs {
   /// [location] Optional.
   /// [name] The resource name of the connection in the form of: `projects/{project_id}/locations/{location_id}/connections/{connection_id}`
   /// [project] Optional.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.cloudSql,
     this.connectionId,
     this.description,

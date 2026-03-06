@@ -26,7 +26,7 @@ class WorkstationConfigHostGceInstanceBoostConfig {
   /// [id] The id to be used for the boost config.
   /// [machineType] The type of machine that boosted VM instances will use—for example, e2-standard-4. For more information about machine types that Cloud Workstations supports, see the list of available machine types https://cloud.google.com/workstations/docs/available-machine-types. Defaults to e2-standard-4.
   /// [poolSize] Number of instances to pool for faster workstation boosting.
-  WorkstationConfigHostGceInstanceBoostConfig({
+  const WorkstationConfigHostGceInstanceBoostConfig({
     this.accelerators,
     this.bootDiskSizeGb,
     this.enableNestedVirtualization,

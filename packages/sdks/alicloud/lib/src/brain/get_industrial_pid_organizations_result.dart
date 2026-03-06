@@ -24,7 +24,7 @@ class GetIndustrialPidOrganizationsResult {
   /// [organizations] A list of Brain Industrial Pid Organizations. Each element contains the following attributes:
   /// [outputFile] Optional.
   /// [parentOrganizationId] Optional.
-  GetIndustrialPidOrganizationsResult({
+  const GetIndustrialPidOrganizationsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

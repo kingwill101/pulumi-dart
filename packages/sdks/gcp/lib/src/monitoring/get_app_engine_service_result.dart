@@ -28,7 +28,7 @@ class GetAppEngineServiceResult {
   /// [serviceId] Required.
   /// [telemetries] Configuration for how to query telemetry on the Service. Structure is documented below.
   /// [userLabels] Required.
-  GetAppEngineServiceResult({
+  const GetAppEngineServiceResult({
     required this.displayName,
     required this.id,
     required this.moduleId,

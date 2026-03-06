@@ -10,7 +10,7 @@ class CustomResourceValidationPatch {
 
   /// Creates a new [CustomResourceValidationPatch].
   /// [openAPIV3Schema] openAPIV3Schema is the OpenAPI v3 schema to use for validation and pruning.
-  CustomResourceValidationPatch({
+  const CustomResourceValidationPatch({
     this.openAPIV3Schema,
   });
 

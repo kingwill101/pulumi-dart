@@ -45,7 +45,7 @@ class ScheduleArgs {
   /// [timeZone] The IANA timezone id at which the schedule should execute.
   /// [top] The maximum number of resources to return from the operation. Example: '$top=10'.
   /// [type] Supported type this scheduled task represents.
-  ScheduleArgs({
+  const ScheduleArgs({
     required this.frequency,
     this.location,
     required this.poolName,

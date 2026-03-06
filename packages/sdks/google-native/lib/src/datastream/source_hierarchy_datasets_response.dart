@@ -10,7 +10,7 @@ class SourceHierarchyDatasetsResponse {
 
   /// Creates a new [SourceHierarchyDatasetsResponse].
   /// [datasetTemplate] The dataset template to use for dynamic dataset creation.
-  SourceHierarchyDatasetsResponse({
+  const SourceHierarchyDatasetsResponse({
     required this.datasetTemplate,
   });
 

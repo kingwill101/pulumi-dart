@@ -12,7 +12,7 @@ class MetricDimensionResponse {
   /// Creates a new [MetricDimensionResponse].
   /// [sourceName] The dimension value.
   /// [sourceType] The dimension type.
-  MetricDimensionResponse({
+  const MetricDimensionResponse({
     required this.sourceName,
     required this.sourceType,
   });

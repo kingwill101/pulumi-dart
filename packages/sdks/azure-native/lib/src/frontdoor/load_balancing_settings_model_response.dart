@@ -27,7 +27,7 @@ class LoadBalancingSettingsModelResponse {
   /// [sampleSize] The number of samples to consider for load balancing decisions
   /// [successfulSamplesRequired] The number of samples within the sample period that must succeed
   /// [type] Resource type.
-  LoadBalancingSettingsModelResponse({
+  const LoadBalancingSettingsModelResponse({
     this.additionalLatencyMilliseconds,
     this.id,
     this.name,

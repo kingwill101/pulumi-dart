@@ -21,7 +21,7 @@ class ImageArgs {
   /// [imageName] The name of the image. The name must be 2 to 128 characters in length. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. The name can contain letters, digits, colons (:), underscores (_), and hyphens (-).
   /// [instanceId] The ID of the instance.
   /// [targetOssRegionId] The region of the target OSS where the image is to be stored.
-  ImageArgs({
+  const ImageArgs({
     this.deleteAfterImageUpload,
     required this.imageName,
     this.instanceId,

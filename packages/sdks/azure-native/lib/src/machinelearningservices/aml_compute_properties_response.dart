@@ -63,7 +63,7 @@ class AmlComputePropertiesResponse {
   /// [virtualMachineImage] Virtual Machine image for AML Compute - windows only
   /// [vmPriority] Virtual Machine priority
   /// [vmSize] Virtual Machine Size
-  AmlComputePropertiesResponse({
+  const AmlComputePropertiesResponse({
     required this.allocationState,
     required this.allocationStateTransitionTime,
     required this.currentNodeCount,

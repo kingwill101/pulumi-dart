@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1Property {
   /// Creates a new [GoogleCloudApigeeV1Property].
   /// [name] The property key
   /// [value] The property value
-  GoogleCloudApigeeV1Property({
+  const GoogleCloudApigeeV1Property({
     this.name,
     this.value,
   });

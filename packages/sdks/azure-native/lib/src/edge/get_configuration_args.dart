@@ -15,7 +15,7 @@ class GetConfigurationArgs {
   /// Creates a new [GetConfigurationArgs].
   /// [configurationName] Name of the Configuration
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConfigurationArgs({
+  const GetConfigurationArgs({
     required this.configurationName,
     required this.resourceGroupName,
   });

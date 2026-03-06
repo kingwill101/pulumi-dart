@@ -25,7 +25,7 @@ class GetTokenArgs {
   /// [identifier] The site identifier. If the type is set to SITE, the identifier is a URL. If the type is
   /// [type] The type of resource to be verified, either a domain or a web site.
   /// [verificationMethod] The verification method for the Site Verification system to use to verify
-  GetTokenArgs({
+  const GetTokenArgs({
     required this.identifier,
     required this.type,
     required this.verificationMethod,

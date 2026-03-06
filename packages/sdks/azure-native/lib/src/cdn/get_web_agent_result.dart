@@ -45,7 +45,7 @@ class GetWebAgentResult {
   /// [systemPrompt] System prompt for the web agent.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWebAgentResult({
+  const GetWebAgentResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

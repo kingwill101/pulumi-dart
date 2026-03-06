@@ -13,7 +13,7 @@ class NGroupIdentity {
   /// Creates a new [NGroupIdentity].
   /// [type] The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
   /// [userAssignedIdentities] The list of user identities associated with the NGroup.
-  NGroupIdentity({
+  const NGroupIdentity({
     this.type,
     this.userAssignedIdentities,
   });

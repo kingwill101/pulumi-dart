@@ -24,7 +24,7 @@ class GetAssessmentResult {
   /// [name] Unique name of an assessment.
   /// [properties] Properties of the assessment.
   /// [type] Type of the object = [Microsoft.Migrate/assessmentProjects/groups/assessments].
-  GetAssessmentResult({
+  const GetAssessmentResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

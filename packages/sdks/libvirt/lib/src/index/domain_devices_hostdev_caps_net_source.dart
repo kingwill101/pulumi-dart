@@ -8,7 +8,7 @@ class DomainDevicesHostdevCapsNetSource {
 
   /// Creates a new [DomainDevicesHostdevCapsNetSource].
   /// [interface] Specifies the network interface to which the host device is associated.
-  DomainDevicesHostdevCapsNetSource({
+  const DomainDevicesHostdevCapsNetSource({
     required this.interface,
   });
 

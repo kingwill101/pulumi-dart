@@ -17,7 +17,7 @@ class GetPrivateCloudVcenter {
   /// [internalIp] Internal IP address of the appliance.
   /// [state] State of the appliance. Possible values: ["ACTIVE", "CREATING"]
   /// [version] Version of the appliance.
-  GetPrivateCloudVcenter({
+  const GetPrivateCloudVcenter({
     required this.fqdn,
     required this.internalIp,
     required this.state,

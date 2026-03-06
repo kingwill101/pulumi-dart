@@ -45,7 +45,7 @@ class DwResourceGroupState {
   /// [specification] Package year and package month resource group specifications, unit CU
   /// [status] Resource group status:
   /// [tags] The tag of the resource
-  DwResourceGroupState({
+  const DwResourceGroupState({
     this.autoRenew,
     this.createTime,
     this.defaultVpcId,

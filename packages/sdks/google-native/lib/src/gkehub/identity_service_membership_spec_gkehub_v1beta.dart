@@ -10,7 +10,7 @@ class IdentityServiceMembershipSpecGkehubV1beta {
 
   /// Creates a new [IdentityServiceMembershipSpecGkehubV1beta].
   /// [authMethods] A member may support multiple auth methods.
-  IdentityServiceMembershipSpecGkehubV1beta({
+  const IdentityServiceMembershipSpecGkehubV1beta({
     this.authMethods,
   });
 

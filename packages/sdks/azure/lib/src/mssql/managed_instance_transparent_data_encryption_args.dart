@@ -24,7 +24,7 @@ class ManagedInstanceTransparentDataEncryptionArgs {
   /// [keyVaultKeyId] To use customer managed keys from Azure Key Vault, provide the AKV Key ID. To use service managed keys, omit this field.
   /// [managedHsmKeyId] Optional.
   /// [managedInstanceId] Specifies the name of the MS SQL Managed Instance. Changing this forces a new resource to be created.
-  ManagedInstanceTransparentDataEncryptionArgs({
+  const ManagedInstanceTransparentDataEncryptionArgs({
     this.autoRotationEnabled,
     this.keyVaultKeyId,
     this.managedHsmKeyId,

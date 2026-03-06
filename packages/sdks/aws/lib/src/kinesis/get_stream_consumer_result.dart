@@ -24,7 +24,7 @@ class GetStreamConsumerResult {
   /// [status] Current status of the stream consumer.
   /// [streamArn] Required.
   /// [tags] Required.
-  GetStreamConsumerResult({
+  const GetStreamConsumerResult({
     required this.arn,
     required this.creationTimestamp,
     required this.id,

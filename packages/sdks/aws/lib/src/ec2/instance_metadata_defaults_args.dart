@@ -24,7 +24,7 @@ class InstanceMetadataDefaultsArgs {
   /// [httpTokens] Whether the metadata service requires session tokens, also referred to as _Instance Metadata Service Version 2 (IMDSv2)_. Can be `"optional"`, `"required"`, or `"no-preference"`. Default: `"no-preference"`.
   /// [instanceMetadataTags] Enables or disables access to instance tags from the instance metadata service. Can be `"enabled"`, `"disabled"`, or `"no-preference"`. Default: `"no-preference"`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InstanceMetadataDefaultsArgs({
+  const InstanceMetadataDefaultsArgs({
     this.httpEndpoint,
     this.httpPutResponseHopLimit,
     this.httpTokens,

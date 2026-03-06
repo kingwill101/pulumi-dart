@@ -52,7 +52,7 @@ class SecurityScanConfigArgs {
   /// [startingUrls] The starting URLs from which the scanner finds site pages.
   /// [targetPlatforms] Set of Cloud Platforms targeted by the scan. If empty, APP_ENGINE will be used as a default.
   /// [userAgent] Type of the user agents used for scanning
-  SecurityScanConfigArgs({
+  const SecurityScanConfigArgs({
     this.authentication,
     this.blacklistPatterns,
     required this.displayName,

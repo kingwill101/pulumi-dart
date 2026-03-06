@@ -15,7 +15,7 @@ class UserGroupAttachmentArgs {
   /// Creates a new [UserGroupAttachmentArgs].
   /// [groupName] The name of group.
   /// [userName] The name of user.
-  UserGroupAttachmentArgs({
+  const UserGroupAttachmentArgs({
     required this.groupName,
     required this.userName,
   });

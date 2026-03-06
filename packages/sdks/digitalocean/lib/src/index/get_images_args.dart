@@ -19,7 +19,7 @@ class GetImagesArgs {
   /// Creates a new [GetImagesArgs].
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetImagesArgs({
+  const GetImagesArgs({
     this.filters,
     this.sorts,
   });

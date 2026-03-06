@@ -12,7 +12,7 @@ class SubscriberQueueLimitResponse {
   /// Creates a new [SubscriberQueueLimitResponse].
   /// [length] The maximum length of the queue before messages start getting dropped.
   /// [strategy] The strategy to use for dropping messages from the queue.
-  SubscriberQueueLimitResponse({
+  const SubscriberQueueLimitResponse({
     this.length,
     this.strategy,
   });

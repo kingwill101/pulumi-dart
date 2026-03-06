@@ -36,7 +36,7 @@ class GetOpenZfsSnapshotResult {
   /// [snapshotIds] Optional.
   /// [tags] List of Tag values, with a maximum of 50 elements.
   /// [volumeId] ID of the volume that the snapshot is of.
-  GetOpenZfsSnapshotResult({
+  const GetOpenZfsSnapshotResult({
     required this.arn,
     required this.creationTime,
     this.filters,

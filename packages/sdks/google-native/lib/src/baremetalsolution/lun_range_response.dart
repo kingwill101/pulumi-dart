@@ -12,7 +12,7 @@ class LunRangeResponse {
   /// Creates a new [LunRangeResponse].
   /// [quantity] Number of LUNs to create.
   /// [sizeGb] The requested size of each LUN, in GB.
-  LunRangeResponse({
+  const LunRangeResponse({
     required this.quantity,
     required this.sizeGb,
   });

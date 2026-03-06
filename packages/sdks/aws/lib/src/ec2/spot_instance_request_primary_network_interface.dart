@@ -11,7 +11,7 @@ class SpotInstanceRequestPrimaryNetworkInterface {
   /// Creates a new [SpotInstanceRequestPrimaryNetworkInterface].
   /// [deleteOnTermination] Whether the network interface will be deleted when the instance terminates.
   /// [networkInterfaceId] ID of the network interface to attach.
-  SpotInstanceRequestPrimaryNetworkInterface({
+  const SpotInstanceRequestPrimaryNetworkInterface({
     this.deleteOnTermination,
     this.networkInterfaceId,
   });

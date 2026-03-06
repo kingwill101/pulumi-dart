@@ -18,7 +18,7 @@ class UserMembershipV3State {
   /// [groupId] The UUID of group to which the user will be added.
   /// [region] The region in which to obtain the V3 Identity client.
   /// [userId] The UUID of user to use. Changing this creates a new user membership.
-  UserMembershipV3State({
+  const UserMembershipV3State({
     this.groupId,
     this.region,
     this.userId,

@@ -11,7 +11,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetricMetric {
   /// Creates a new [GetApplicationScalingRulesRuleScalingRuleMetricMetric].
   /// [metricTargetAverageUtilization] The target value of the monitoring indicator.
   /// [metricType] The metric type of the Application Scaling Rule.
-  GetApplicationScalingRulesRuleScalingRuleMetricMetric({
+  const GetApplicationScalingRulesRuleScalingRuleMetricMetric({
     required this.metricTargetAverageUtilization,
     required this.metricType,
   });

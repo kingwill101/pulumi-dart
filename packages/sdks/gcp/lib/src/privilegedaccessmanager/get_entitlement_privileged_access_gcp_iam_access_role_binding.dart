@@ -15,7 +15,7 @@ class GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding {
   /// [conditionExpression] The expression field of the IAM condition to be associated with the role. If specified, a user with an active grant for this entitlement would be able to access the resource only if this condition evaluates to true for their request.
   /// [id] Output Only. The ID corresponding to this role binding in the policy binding. This will be unique within an entitlement across time. Gets re-generated each time the entitlement is updated.
   /// [role] IAM role to be granted. https://cloud.google.com/iam/docs/roles-overview.
-  GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding({
+  const GetEntitlementPrivilegedAccessGcpIamAccessRoleBinding({
     required this.conditionExpression,
     required this.id,
     required this.role,

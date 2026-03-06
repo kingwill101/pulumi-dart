@@ -31,7 +31,7 @@ class GetTransitRouterRouteEntriesArgs {
   /// [transitRouterRouteEntryNames] A list of name of the cen transit router route entry.
   /// [transitRouterRouteEntryStatus] The status of the resource.Valid values `Creating`, `Active` and `Deleting`.
   /// [transitRouterRouteTableId] ID of the CEN Transit Router Route Table.
-  GetTransitRouterRouteEntriesArgs({
+  const GetTransitRouterRouteEntriesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -24,7 +24,7 @@ class GetResourceGroupsArgs {
   /// [nameRegex] A regex string to filter results by resource group identifier.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
-  GetResourceGroupsArgs({
+  const GetResourceGroupsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

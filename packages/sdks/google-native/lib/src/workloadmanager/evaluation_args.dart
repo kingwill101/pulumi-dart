@@ -41,7 +41,7 @@ class EvaluationArgs {
   /// [resourceFilter] annotations as key value pairs
   /// [ruleNames] the name of the rule
   /// [schedule] crontab format schedule for scheduled evaluation, currently only support the following schedule: "0 */1 * * *", "0 */6 * * *", "0 */12 * * *", "0 0 */1 * *", "0 0 */7 * *",
-  EvaluationArgs({
+  const EvaluationArgs({
     this.customRulesBucket,
     this.description,
     required this.evaluationId,

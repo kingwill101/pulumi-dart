@@ -12,7 +12,7 @@ class ManagedZoneServiceDirectoryConfigResponse {
   /// Creates a new [ManagedZoneServiceDirectoryConfigResponse].
   /// [kind] Required.
   /// [namespace] Contains information about the namespace associated with the zone.
-  ManagedZoneServiceDirectoryConfigResponse({
+  const ManagedZoneServiceDirectoryConfigResponse({
     required this.kind,
     required this.namespace,
   });

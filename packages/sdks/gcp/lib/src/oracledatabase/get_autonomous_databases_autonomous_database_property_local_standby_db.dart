@@ -46,7 +46,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyLocalStandbyDb {
   /// [lagTimeDuration] The amount of time, in seconds, that the data of the standby database lags
   /// [lifecycleDetails] The additional details about the current lifecycle state of the
   /// [state] Possible values:
-  GetAutonomousDatabasesAutonomousDatabasePropertyLocalStandbyDb({
+  const GetAutonomousDatabasesAutonomousDatabasePropertyLocalStandbyDb({
     required this.dataGuardRoleChangedTime,
     required this.disasterRecoveryRoleChangedTime,
     required this.lagTimeDuration,

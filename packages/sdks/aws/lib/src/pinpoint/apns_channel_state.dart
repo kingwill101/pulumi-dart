@@ -45,7 +45,7 @@ class ApnsChannelState {
   /// [teamId] The ID assigned to your Apple developer account team. This value is provided on the Membership page.
   /// [tokenKey] The `.p8` file that you download from your Apple developer account when you create an authentication key.
   /// [tokenKeyId] The ID assigned to your signing key. To find this value, choose Certificates, IDs & Profiles, and choose your key in the Keys section.
-  ApnsChannelState({
+  const ApnsChannelState({
     this.applicationId,
     this.bundleId,
     this.certificate,

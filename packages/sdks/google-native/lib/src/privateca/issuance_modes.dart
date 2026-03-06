@@ -12,7 +12,7 @@ class IssuanceModes {
   /// Creates a new [IssuanceModes].
   /// [allowConfigBasedIssuance] Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
   /// [allowCsrBasedIssuance] Optional. When true, allows callers to create Certificates by specifying a CSR.
-  IssuanceModes({
+  const IssuanceModes({
     this.allowConfigBasedIssuance,
     this.allowCsrBasedIssuance,
   });

@@ -41,7 +41,7 @@ class DirectoryPasswordPolicy {
   /// [requireNumbers] Whether numbers are required in the password.
   /// [requireSymbols] Whether symbols are required in the password.
   /// [requireUpperCaseChars] Whether uppercase letters are required in the password.
-  DirectoryPasswordPolicy({
+  const DirectoryPasswordPolicy({
     this.hardExpire,
     this.maxLoginAttempts,
     this.maxPasswordAge,

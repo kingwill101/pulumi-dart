@@ -11,7 +11,7 @@ class PacketMirroringNetworkInfoResponseComputeBeta {
   /// Creates a new [PacketMirroringNetworkInfoResponseComputeBeta].
   /// [canonicalUrl] Unique identifier for the network; defined by the server.
   /// [url] URL of the network resource.
-  PacketMirroringNetworkInfoResponseComputeBeta({
+  const PacketMirroringNetworkInfoResponseComputeBeta({
     required this.canonicalUrl,
     required this.url,
   });

@@ -21,7 +21,7 @@ class ManagedIdentityResponse {
   /// [tenantId] Get the tenant id for the system assigned identity.
   /// [type] Represents the identity type: systemAssigned, userAssigned, None
   /// [userAssignedIdentities] Get or set the user assigned identities
-  ManagedIdentityResponse({
+  const ManagedIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

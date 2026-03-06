@@ -9,7 +9,7 @@ class Identity {
 
   /// Creates a new [Identity].
   /// [type] The type of managed service identity.
-  Identity({
+  const Identity({
     required this.type,
   });
 

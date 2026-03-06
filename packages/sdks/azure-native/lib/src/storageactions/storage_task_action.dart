@@ -14,7 +14,7 @@ class StorageTaskAction {
   /// Creates a new [StorageTaskAction].
   /// [else_] The else block of storage task operation
   /// [if_] The if block of storage task operation
-  StorageTaskAction({
+  const StorageTaskAction({
     this.else_,
     required this.if_,
   });

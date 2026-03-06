@@ -51,7 +51,7 @@ class ClusterState {
   /// [resourceGroupId] The ID of the resource group
   /// [status] The status of the resource
   /// [tags] tag
-  ClusterState({
+  const ClusterState({
     this.clusterDescription,
     this.clusterName,
     this.clusterType,

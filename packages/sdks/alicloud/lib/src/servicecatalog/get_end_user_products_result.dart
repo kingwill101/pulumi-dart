@@ -28,7 +28,7 @@ class GetEndUserProductsResult {
   /// [pageSize] Optional.
   /// [sortBy] Optional.
   /// [sortOrder] Optional.
-  GetEndUserProductsResult({
+  const GetEndUserProductsResult({
     required this.endUserProducts,
     required this.id,
     required this.ids,

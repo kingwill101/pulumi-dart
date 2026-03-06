@@ -10,7 +10,7 @@ class GetDataSetRowLevelPermissionTagConfiguration {
   /// Creates a new [GetDataSetRowLevelPermissionTagConfiguration].
   /// [status] Required.
   /// [tagRules] Required.
-  GetDataSetRowLevelPermissionTagConfiguration({
+  const GetDataSetRowLevelPermissionTagConfiguration({
     required this.status,
     required this.tagRules,
   });

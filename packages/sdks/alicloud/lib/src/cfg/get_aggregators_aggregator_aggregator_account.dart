@@ -14,7 +14,7 @@ class GetAggregatorsAggregatorAggregatorAccount {
   /// [accountId] Aggregator account uid.
   /// [accountName] Aggregator account name.
   /// [accountType] Aggregator account source type.
-  GetAggregatorsAggregatorAggregatorAccount({
+  const GetAggregatorsAggregatorAggregatorAccount({
     required this.accountId,
     required this.accountName,
     required this.accountType,

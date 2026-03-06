@@ -53,7 +53,7 @@ class BatchAccountArgs {
   /// [publicNetworkAccess] The network access type for operating on the resources in the Batch account.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] The user-specified tags associated with the account.
-  BatchAccountArgs({
+  const BatchAccountArgs({
     this.accountName,
     this.allowedAuthenticationModes,
     this.autoStorage,

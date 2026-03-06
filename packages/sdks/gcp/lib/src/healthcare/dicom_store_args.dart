@@ -41,7 +41,7 @@ class DicomStoreArgs {
   /// [name] The resource name for the DicomStore.
   /// [notificationConfig] A nested object resource.
   /// [streamConfigs] To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
-  DicomStoreArgs({
+  const DicomStoreArgs({
     required this.dataset,
     this.labels,
     this.name,

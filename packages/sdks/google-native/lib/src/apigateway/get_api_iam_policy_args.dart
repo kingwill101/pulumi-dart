@@ -17,7 +17,7 @@ class GetApiIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetApiIamPolicyArgs({
+  const GetApiIamPolicyArgs({
     required this.apiId,
     required this.location,
     this.optionsRequestedPolicyVersion,

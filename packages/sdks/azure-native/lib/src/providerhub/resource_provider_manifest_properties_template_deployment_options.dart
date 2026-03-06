@@ -12,7 +12,7 @@ class ResourceProviderManifestPropertiesTemplateDeploymentOptions {
   /// Creates a new [ResourceProviderManifestPropertiesTemplateDeploymentOptions].
   /// [preflightOptions] The preflight options.
   /// [preflightSupported] Whether preflight is supported.
-  ResourceProviderManifestPropertiesTemplateDeploymentOptions({
+  const ResourceProviderManifestPropertiesTemplateDeploymentOptions({
     this.preflightOptions,
     this.preflightSupported,
   });

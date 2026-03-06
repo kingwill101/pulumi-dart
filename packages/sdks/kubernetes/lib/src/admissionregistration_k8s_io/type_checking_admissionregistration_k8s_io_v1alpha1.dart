@@ -10,7 +10,7 @@ class TypeCheckingAdmissionregistrationK8sIoV1alpha1 {
 
   /// Creates a new [TypeCheckingAdmissionregistrationK8sIoV1alpha1].
   /// [expressionWarnings] The type checking warnings for each expression.
-  TypeCheckingAdmissionregistrationK8sIoV1alpha1({
+  const TypeCheckingAdmissionregistrationK8sIoV1alpha1({
     this.expressionWarnings,
   });
 

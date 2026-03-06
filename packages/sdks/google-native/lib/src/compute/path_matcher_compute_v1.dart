@@ -35,7 +35,7 @@ class PathMatcherComputeV1 {
   /// [name] The name to which this PathMatcher is referred by the HostRule.
   /// [pathRules] The list of path rules. Use this list instead of routeRules when routing based on simple path matching is all that's required. The order by which path rules are specified does not matter. Matches are always done on the longest-path-first basis. For example: a pathRule with a path /a/b/c/* will match before /a/b/* irrespective of the order in which those paths appear in this list. Within a given pathMatcher, only one of pathRules or routeRules must be set.
   /// [routeRules] The list of HTTP route rules. Use this list instead of pathRules when advanced route matching and routing actions are desired. routeRules are evaluated in order of priority, from the lowest to highest number. Within a given pathMatcher, you can set only one of pathRules or routeRules.
-  PathMatcherComputeV1({
+  const PathMatcherComputeV1({
     this.defaultRouteAction,
     this.defaultService,
     this.defaultUrlRedirect,

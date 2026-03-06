@@ -11,7 +11,7 @@ class AlertProcessingRuleActionGroupConditionAlertRuleId {
   /// Creates a new [AlertProcessingRuleActionGroupConditionAlertRuleId].
   /// [operator] The operator for a given condition. Possible values are `Equals`, `NotEquals`, `Contains`, and `DoesNotContain`.
   /// [values] Specifies a list of values to match for a given condition.
-  AlertProcessingRuleActionGroupConditionAlertRuleId({
+  const AlertProcessingRuleActionGroupConditionAlertRuleId({
     required this.operator,
     required this.values,
   });

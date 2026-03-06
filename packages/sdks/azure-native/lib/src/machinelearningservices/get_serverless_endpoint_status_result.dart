@@ -8,7 +8,7 @@ class GetServerlessEndpointStatusResult {
 
   /// Creates a new [GetServerlessEndpointStatusResult].
   /// [metrics] The model-specific metrics from the backing inference endpoint.
-  GetServerlessEndpointStatusResult({
+  const GetServerlessEndpointStatusResult({
     required this.metrics,
   });
 

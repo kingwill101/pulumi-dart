@@ -14,7 +14,7 @@ class GetFrontdoorSecretSecretCustomerCertificate {
   /// [expirationDate] The key vault certificate expiration date.
   /// [keyVaultCertificateId] The key vault certificate ID.
   /// [subjectAlternativeNames] One or more `subject alternative names` contained within the key vault certificate.
-  GetFrontdoorSecretSecretCustomerCertificate({
+  const GetFrontdoorSecretSecretCustomerCertificate({
     required this.expirationDate,
     required this.keyVaultCertificateId,
     required this.subjectAlternativeNames,

@@ -130,7 +130,7 @@ class AttachedClusterState {
   /// [uid] A globally unique identifier for the cluster.
   /// [updateTime] The time at which this cluster was last updated.
   /// [workloadIdentityConfigs] Workload Identity settings.
-  AttachedClusterState({
+  const AttachedClusterState({
     this.annotations,
     this.authorization,
     this.binaryAuthorization,

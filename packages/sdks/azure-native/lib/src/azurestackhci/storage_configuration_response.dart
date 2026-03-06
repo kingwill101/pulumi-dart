@@ -9,7 +9,7 @@ class StorageConfigurationResponse {
 
   /// Creates a new [StorageConfigurationResponse].
   /// [partitionSize] Partition size.
-  StorageConfigurationResponse({
+  const StorageConfigurationResponse({
     this.partitionSize,
   });
 

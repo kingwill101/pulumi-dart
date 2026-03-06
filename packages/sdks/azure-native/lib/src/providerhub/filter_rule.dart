@@ -12,7 +12,7 @@ class FilterRule {
   /// Creates a new [FilterRule].
   /// [endpointInformation] The endpoint information.
   /// [filterQuery] The filter query.
-  FilterRule({
+  const FilterRule({
     this.endpointInformation,
     this.filterQuery,
   });

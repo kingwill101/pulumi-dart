@@ -27,7 +27,7 @@ class FlexibleAppVersionReadinessCheck {
   /// [path] The request path.
   /// [successThreshold] Number of consecutive successful checks required before receiving traffic. Default: 2.
   /// [timeout] Time before the check is considered failed. Default: "4s"
-  FlexibleAppVersionReadinessCheck({
+  const FlexibleAppVersionReadinessCheck({
     this.appStartTimeout,
     this.checkInterval,
     this.failureThreshold,

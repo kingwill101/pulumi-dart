@@ -24,7 +24,7 @@ class EndpointAclPolicyArgs {
   /// [entry] The IP segment that allowed to access.
   /// [instanceId] The ID of the CR Instance.
   /// [moduleName] The module that needs to set the access policy. Valid values: `Registry`.
-  EndpointAclPolicyArgs({
+  const EndpointAclPolicyArgs({
     this.description,
     required this.endpointType,
     required this.entry,

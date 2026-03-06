@@ -32,7 +32,7 @@ class GetAutoSnapshotPoliciesPolicy {
   /// [retentionDays] The number of days for which you want to retain auto snapshots.
   /// [status] The status of the automatic snapshot policy. Valid values: `Creating`, `Available`.
   /// [timePoints] The point in time at which an auto snapshot was created. Unit: hours.
-  GetAutoSnapshotPoliciesPolicy({
+  const GetAutoSnapshotPoliciesPolicy({
     required this.autoSnapshotPolicyId,
     required this.autoSnapshotPolicyName,
     required this.createTime,

@@ -48,7 +48,7 @@ class RoleState {
   /// [services] Field `services` has been deprecated from provider version 1.49.0. New field `document` instead.
   /// [tags] The list of tags for the role.
   /// [version] Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
-  RoleState({
+  const RoleState({
     this.arn,
     this.assumeRolePolicyDocument,
     this.createTime,

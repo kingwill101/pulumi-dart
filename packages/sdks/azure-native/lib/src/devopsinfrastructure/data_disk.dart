@@ -18,7 +18,7 @@ class DataDisk {
   /// [diskSizeGiB] The initial disk size in gigabytes.
   /// [driveLetter] The drive letter for the empty data disk. If not specified, it will be the first available letter.
   /// [storageAccountType] The storage Account type to be used for the data disk. If omitted, the default is "standard_lrs".
-  DataDisk({
+  const DataDisk({
     this.caching,
     this.diskSizeGiB,
     this.driveLetter,

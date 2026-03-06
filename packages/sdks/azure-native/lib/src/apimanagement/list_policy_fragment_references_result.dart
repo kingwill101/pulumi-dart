@@ -16,7 +16,7 @@ class ListPolicyFragmentReferencesResult {
   /// [count] Total record count number.
   /// [nextLink] Next page link if any.
   /// [value] A collection of resources.
-  ListPolicyFragmentReferencesResult({
+  const ListPolicyFragmentReferencesResult({
     this.count,
     this.nextLink,
     this.value,

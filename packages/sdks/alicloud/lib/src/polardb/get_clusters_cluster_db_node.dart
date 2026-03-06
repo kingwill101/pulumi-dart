@@ -32,7 +32,7 @@ class GetClustersClusterDbNode {
   /// [maxIops] The max_iops of the db_nodes.
   /// [regionId] The region_id of the db_nodes.
   /// [zoneId] The zone_id of the db_nodes.
-  GetClustersClusterDbNode({
+  const GetClustersClusterDbNode({
     required this.createTime,
     required this.dbNodeClass,
     required this.dbNodeId,

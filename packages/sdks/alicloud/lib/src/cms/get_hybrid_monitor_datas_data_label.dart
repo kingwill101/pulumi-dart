@@ -11,7 +11,7 @@ class GetHybridMonitorDatasDataLabel {
   /// Creates a new [GetHybridMonitorDatasDataLabel].
   /// [key] Label key.
   /// [value] Label value.
-  GetHybridMonitorDatasDataLabel({
+  const GetHybridMonitorDatasDataLabel({
     required this.key,
     required this.value,
   });

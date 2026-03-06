@@ -27,7 +27,7 @@ class GetPullThroughCacheRuleResult {
   /// [registryId] The registry ID where the repository was created.
   /// [upstreamRegistryUrl] The registry URL of the upstream registry to use as the source.
   /// [upstreamRepositoryPrefix] The upstream repository prefix associated with the pull through cache rule.
-  GetPullThroughCacheRuleResult({
+  const GetPullThroughCacheRuleResult({
     required this.credentialArn,
     required this.customRoleArn,
     required this.ecrRepositoryPrefix,

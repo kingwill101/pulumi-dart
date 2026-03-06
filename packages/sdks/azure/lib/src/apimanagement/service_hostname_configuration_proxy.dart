@@ -47,7 +47,7 @@ class ServiceHostnameConfigurationProxy {
   /// [sslKeyvaultIdentityClientId] The Managed Identity Client ID to use to access the Key Vault. This Identity must be specified in the `identity` block to be used.
   /// [subject] The subject of the certificate.
   /// [thumbprint] The thumbprint of the certificate.
-  ServiceHostnameConfigurationProxy({
+  const ServiceHostnameConfigurationProxy({
     this.certificate,
     this.certificatePassword,
     this.certificateSource,

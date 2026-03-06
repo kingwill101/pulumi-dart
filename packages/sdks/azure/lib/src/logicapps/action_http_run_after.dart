@@ -11,7 +11,7 @@ class ActionHttpRunAfter {
   /// Creates a new [ActionHttpRunAfter].
   /// [actionName] Specifies the name of the precedent HTTP Action.
   /// [actionResult] Specifies the expected result of the precedent HTTP Action, only after which the current HTTP Action will be triggered. Possible values include `Succeeded`, `Failed`, `Skipped` and `TimedOut`.
-  ActionHttpRunAfter({
+  const ActionHttpRunAfter({
     required this.actionName,
     required this.actionResult,
   });

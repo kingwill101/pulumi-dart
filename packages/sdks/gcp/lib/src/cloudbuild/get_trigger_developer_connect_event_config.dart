@@ -19,7 +19,7 @@ class GetTriggerDeveloperConnectEventConfig {
   /// [gitRepositoryLinkType] The type of DeveloperConnect GitRepositoryLink.
   /// [pullRequests] Filter to match changes in pull requests.
   /// [pushes] Filter to match changes in refs like branches and tags.
-  GetTriggerDeveloperConnectEventConfig({
+  const GetTriggerDeveloperConnectEventConfig({
     required this.gitRepositoryLink,
     required this.gitRepositoryLinkType,
     required this.pullRequests,

@@ -34,7 +34,7 @@ class IamRolePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamRolePropertiesResponse({
+  const IamRolePropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

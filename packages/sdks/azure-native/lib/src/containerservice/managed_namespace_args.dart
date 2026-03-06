@@ -28,7 +28,7 @@ class ManagedNamespaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
   /// [tags] The tags to be persisted on the managed cluster namespace.
-  ManagedNamespaceArgs({
+  const ManagedNamespaceArgs({
     this.location,
     this.managedNamespaceName,
     this.properties,

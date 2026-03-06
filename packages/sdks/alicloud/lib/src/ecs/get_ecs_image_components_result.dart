@@ -28,7 +28,7 @@ class GetEcsImageComponentsResult {
   /// [owner] Optional.
   /// [resourceGroupId] Optional.
   /// [tags] Optional.
-  GetEcsImageComponentsResult({
+  const GetEcsImageComponentsResult({
     required this.components,
     required this.id,
     required this.ids,

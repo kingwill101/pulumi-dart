@@ -26,7 +26,7 @@ class StandardsSubscriptionState {
   /// Creates a new [StandardsSubscriptionState].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [standardsArn] The ARN of a standard - see below.
-  StandardsSubscriptionState({
+  const StandardsSubscriptionState({
     this.region,
     this.standardsArn,
   });

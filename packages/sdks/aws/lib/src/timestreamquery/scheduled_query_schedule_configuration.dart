@@ -8,7 +8,7 @@ class ScheduledQueryScheduleConfiguration {
 
   /// Creates a new [ScheduledQueryScheduleConfiguration].
   /// [scheduleExpression] When to trigger the scheduled query run. This can be a cron expression or a rate expression.
-  ScheduledQueryScheduleConfiguration({
+  const ScheduledQueryScheduleConfiguration({
     required this.scheduleExpression,
   });
 

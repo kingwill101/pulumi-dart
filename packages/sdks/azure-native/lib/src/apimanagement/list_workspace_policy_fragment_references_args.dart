@@ -27,7 +27,7 @@ class ListWorkspacePolicyFragmentReferencesArgs {
   /// [skip] Number of records to skip.
   /// [top] Number of records to return.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  ListWorkspacePolicyFragmentReferencesArgs({
+  const ListWorkspacePolicyFragmentReferencesArgs({
     required this.id,
     required this.resourceGroupName,
     required this.serviceName,

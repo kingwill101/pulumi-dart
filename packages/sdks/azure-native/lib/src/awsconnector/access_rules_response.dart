@@ -12,7 +12,7 @@ class AccessRulesResponse {
   /// Creates a new [AccessRulesResponse].
   /// [allowPublicOverrides] A Boolean value that indicates whether the access control list (ACL) permissions that are applied to individual objects override the getObject option that is currently specified.
   /// [getObject] Specifies the anonymous access to all objects in a bucket.
-  AccessRulesResponse({
+  const AccessRulesResponse({
     this.allowPublicOverrides,
     this.getObject,
   });

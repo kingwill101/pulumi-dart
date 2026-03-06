@@ -8,7 +8,7 @@ class ConnectionGitlabConfigServiceDirectoryConfig {
 
   /// Creates a new [ConnectionGitlabConfigServiceDirectoryConfig].
   /// [service] Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  ConnectionGitlabConfigServiceDirectoryConfig({
+  const ConnectionGitlabConfigServiceDirectoryConfig({
     required this.service,
   });
 

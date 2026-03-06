@@ -21,7 +21,7 @@ class GetNotificationsResult {
   /// [notifications] A list of notifications. Each element contains the following attributes:
   /// [outputFile] Optional.
   /// [scalingGroupId] ID of the scaling group.
-  GetNotificationsResult({
+  const GetNotificationsResult({
     required this.id,
     this.ids,
     required this.notifications,

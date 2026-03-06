@@ -32,7 +32,7 @@ class GetRouterInterfacesResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetRouterInterfacesResult({
+  const GetRouterInterfacesResult({
     this.filters,
     required this.id,
     required this.ids,

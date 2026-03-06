@@ -18,7 +18,7 @@ class GetGraphResourceGraphArgs {
   /// [accountName] Cosmos DB database account name.
   /// [graphName] Cosmos DB graph resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGraphResourceGraphArgs({
+  const GetGraphResourceGraphArgs({
     required this.accountName,
     required this.graphName,
     required this.resourceGroupName,

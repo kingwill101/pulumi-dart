@@ -10,7 +10,7 @@ class AwsNodePoolMaxPodsConstraint {
 
   /// Creates a new [AwsNodePoolMaxPodsConstraint].
   /// [maxPodsPerNode] The maximum number of pods to schedule on a single node.
-  AwsNodePoolMaxPodsConstraint({
+  const AwsNodePoolMaxPodsConstraint({
     required this.maxPodsPerNode,
   });
 

@@ -12,7 +12,7 @@ class GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse {
   /// Creates a new [GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse].
   /// [displayName] The human-readable name of the phrase matcher.
   /// [phraseMatcher] The unique identifier (the resource name) of the phrase matcher.
-  GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse({
+  const GoogleCloudContactcenterinsightsV1PhraseMatchDataResponse({
     required this.displayName,
     required this.phraseMatcher,
   });

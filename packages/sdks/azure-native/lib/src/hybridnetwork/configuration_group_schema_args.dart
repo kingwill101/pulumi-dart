@@ -28,7 +28,7 @@ class ConfigurationGroupSchemaArgs {
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ConfigurationGroupSchemaArgs({
+  const ConfigurationGroupSchemaArgs({
     this.configurationGroupSchemaName,
     this.location,
     this.properties,

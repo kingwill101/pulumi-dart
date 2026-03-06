@@ -16,7 +16,7 @@ class CredentialsResponse {
   /// Creates a new [CredentialsResponse].
   /// [customRegistries] Describes the credential parameters for accessing other custom registries. The key
   /// [sourceRegistry] Describes the credential parameters for accessing the source registry.
-  CredentialsResponse({
+  const CredentialsResponse({
     this.customRegistries,
     this.sourceRegistry,
   });

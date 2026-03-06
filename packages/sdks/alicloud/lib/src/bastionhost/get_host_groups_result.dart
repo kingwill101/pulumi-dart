@@ -24,7 +24,7 @@ class GetHostGroupsResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetHostGroupsResult({
+  const GetHostGroupsResult({
     required this.groups,
     this.hostGroupName,
     required this.id,

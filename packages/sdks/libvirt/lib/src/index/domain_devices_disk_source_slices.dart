@@ -9,7 +9,7 @@ class DomainDevicesDiskSourceSlices {
 
   /// Creates a new [DomainDevicesDiskSourceSlices].
   /// [slices] Specifies individual slice configurations within the mirror source.
-  DomainDevicesDiskSourceSlices({
+  const DomainDevicesDiskSourceSlices({
     this.slices,
   });
 

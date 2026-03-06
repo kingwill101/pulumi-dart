@@ -37,7 +37,7 @@ class LabArgs {
   /// [expirationDate] Default expiration date for each student in this lab
   /// [invoiceSectionName] The ID that uniquely identifies an invoice section.
   /// [value] Amount value.
-  LabArgs({
+  const LabArgs({
     required this.billingAccountName,
     required this.billingProfileName,
     required this.budgetPerStudent,

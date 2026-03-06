@@ -10,7 +10,7 @@ class TableMetadataIceberg {
 
   /// Creates a new [TableMetadataIceberg].
   /// [schema] Schema configuration for the Iceberg table.
-  TableMetadataIceberg({
+  const TableMetadataIceberg({
     required this.schema,
   });
 

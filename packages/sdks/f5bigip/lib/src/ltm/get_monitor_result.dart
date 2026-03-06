@@ -62,7 +62,7 @@ class GetMonitorResult {
   /// [timeout] Required.
   /// [transparent] Displays whether the monitor operates in transparent mode.
   /// [username] Required.
-  GetMonitorResult({
+  const GetMonitorResult({
     required this.adaptive,
     required this.adaptiveLimit,
     required this.base,

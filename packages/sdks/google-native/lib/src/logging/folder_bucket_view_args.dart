@@ -27,7 +27,7 @@ class FolderBucketViewArgs {
   /// [location] Optional.
   /// [name] The resource name of the view.For example:projects/my-project/locations/global/buckets/my-bucket/views/my-view
   /// [viewId] Required. A client-assigned identifier such as "my-view". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
-  FolderBucketViewArgs({
+  const FolderBucketViewArgs({
     required this.bucketId,
     this.description,
     this.filter,

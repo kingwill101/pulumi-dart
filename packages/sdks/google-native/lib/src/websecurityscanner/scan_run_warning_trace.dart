@@ -10,7 +10,7 @@ class ScanRunWarningTrace {
 
   /// Creates a new [ScanRunWarningTrace].
   /// [code] Indicates the warning code.
-  ScanRunWarningTrace({
+  const ScanRunWarningTrace({
     this.code,
   });
 

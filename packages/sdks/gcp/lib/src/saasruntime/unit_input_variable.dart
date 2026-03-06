@@ -18,7 +18,7 @@ class UnitInputVariable {
   /// [type] Name of a supported variable type. Supported types are string, int, bool.
   /// [value] String encoded value for the variable.
   /// [variable] Name of the variable from actuation configs.
-  UnitInputVariable({
+  const UnitInputVariable({
     this.type,
     this.value,
     required this.variable,

@@ -231,7 +231,7 @@ class GetDatabasePostgresqlV2Result {
   /// [updated] When this Managed Database was last updated.
   /// [updates] Required.
   /// [version] The Managed Database engine version. (e.g. `13.2`)
-  GetDatabasePostgresqlV2Result({
+  const GetDatabasePostgresqlV2Result({
     required this.allowLists,
     required this.caCert,
     required this.clusterSize,

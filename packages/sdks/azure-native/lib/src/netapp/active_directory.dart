@@ -70,7 +70,7 @@ class ActiveDirectory {
   /// [site] The Active Directory site the service will limit Domain Controller discovery to
   /// [smbServerName] NetBIOS name of the SMB server. This name will be registered as a computer account in the AD and used to mount volumes
   /// [username] A domain user account with permission to create machine accounts
-  ActiveDirectory({
+  const ActiveDirectory({
     this.activeDirectoryId,
     this.adName,
     this.administrators,

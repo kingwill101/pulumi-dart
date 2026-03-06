@@ -48,7 +48,7 @@ class GetDnsSecurityRuleResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDnsSecurityRuleResult({
+  const GetDnsSecurityRuleResult({
     required this.action,
     required this.azureApiVersion,
     required this.dnsResolverDomainLists,

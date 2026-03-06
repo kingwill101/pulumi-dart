@@ -9,7 +9,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAudit {
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperationAudit].
   /// [findingsDestination] Configures destinations to send audit findings to.
-  GetLogDataProtectionPolicyDocumentStatementOperationAudit({
+  const GetLogDataProtectionPolicyDocumentStatementOperationAudit({
     required this.findingsDestination,
   });
 

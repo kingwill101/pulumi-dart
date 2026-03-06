@@ -29,7 +29,7 @@ class MacsecKeyAssociationState {
   /// [secretArn] The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key to associate with the dedicated connection.
   /// [startOn] The date in UTC format that the MAC Security (MACsec) secret key takes effect.
   /// [state] The state of the MAC Security (MACsec) secret key. The possible values are: associating, associated, disassociating, disassociated. See [MacSecKey](https://docs.aws.amazon.com/directconnect/latest/APIReference/API_MacSecKey.html#DX-Type-MacSecKey-state) for descriptions of each state.
-  MacsecKeyAssociationState({
+  const MacsecKeyAssociationState({
     this.cak,
     this.ckn,
     this.connectionId,

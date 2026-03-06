@@ -15,7 +15,7 @@ class GetServiceAccountIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [serviceAccountId] Required.
-  GetServiceAccountIamPolicyArgs({
+  const GetServiceAccountIamPolicyArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.serviceAccountId,

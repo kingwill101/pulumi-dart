@@ -10,7 +10,7 @@ class DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption {
 
   /// Creates a new [DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption].
   /// [action] The method used to add instances to a replacement environment.
-  DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption({
+  const DeploymentGroupBlueGreenDeploymentConfigGreenFleetProvisioningOption({
     this.action,
   });
 

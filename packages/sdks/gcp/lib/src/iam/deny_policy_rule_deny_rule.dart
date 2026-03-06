@@ -26,7 +26,7 @@ class DenyPolicyRuleDenyRule {
   /// [deniedPrincipals] The identities that are prevented from using one or more permissions on Google Cloud resources.
   /// [exceptionPermissions] Specifies the permissions that this rule excludes from the set of denied permissions given by deniedPermissions.
   /// [exceptionPrincipals] The identities that are excluded from the deny rule, even if they are listed in the deniedPrincipals.
-  DenyPolicyRuleDenyRule({
+  const DenyPolicyRuleDenyRule({
     this.denialCondition,
     this.deniedPermissions,
     this.deniedPrincipals,

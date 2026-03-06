@@ -9,7 +9,7 @@ class ReportDatasetConfigurationResponse {
 
   /// Creates a new [ReportDatasetConfigurationResponse].
   /// [columns] Array of column names to be included in the report. Any valid report column name is allowed. If not provided, then report includes all columns.
-  ReportDatasetConfigurationResponse({
+  const ReportDatasetConfigurationResponse({
     this.columns,
   });
 

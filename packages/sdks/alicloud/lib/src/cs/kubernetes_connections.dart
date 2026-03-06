@@ -17,7 +17,7 @@ class KubernetesConnections {
   /// [apiServerIntranet] API Server Intranet endpoint.
   /// [masterPublicIp] Master node SSH IP address.
   /// [serviceDomain] Service Access Domain.
-  KubernetesConnections({
+  const KubernetesConnections({
     this.apiServerInternet,
     this.apiServerIntranet,
     this.masterPublicIp,

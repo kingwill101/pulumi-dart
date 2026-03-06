@@ -8,7 +8,7 @@ class AwsIntegrationsBilling {
 
   /// Creates a new [AwsIntegrationsBilling].
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsBilling({
+  const AwsIntegrationsBilling({
     this.metricsPollingInterval,
   });
 

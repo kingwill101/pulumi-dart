@@ -12,7 +12,7 @@ class GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse {
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse].
   /// [testingChallenge] Optional. For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
   /// [testingScore] Optional. All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
-  GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse({
+  const GoogleCloudRecaptchaenterpriseV1TestingOptionsResponse({
     required this.testingChallenge,
     required this.testingScore,
   });

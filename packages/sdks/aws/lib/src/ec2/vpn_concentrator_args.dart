@@ -23,7 +23,7 @@ class VpnConcentratorArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayId] ID of the transit gateway to attach the VPN concentrator to.
   /// [type] Type of VPN concentrator. Valid value: `ipsec.1`.
-  VpnConcentratorArgs({
+  const VpnConcentratorArgs({
     this.region,
     this.tags,
     required this.transitGatewayId,

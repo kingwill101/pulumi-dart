@@ -32,7 +32,7 @@ class BucketNotificationArgs {
   /// [queues] Notification configuration to SQS Queue. See below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [topics] Notification configuration to SNS Topic. See below.
-  BucketNotificationArgs({
+  const BucketNotificationArgs({
     required this.bucket,
     this.eventbridge,
     this.lambdaFunctions,

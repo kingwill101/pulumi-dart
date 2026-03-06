@@ -37,7 +37,7 @@ class GetSSLPolicyResult {
   /// [profile] The Google-curated or custom profile used by this policy.
   /// [project] Optional.
   /// [selfLink] The URI of the created resource.
-  GetSSLPolicyResult({
+  const GetSSLPolicyResult({
     required this.creationTimestamp,
     required this.customFeatures,
     required this.description,

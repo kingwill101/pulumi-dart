@@ -7,7 +7,7 @@ class GetVirtualNodeSpecListenerTlCertificateAcm {
 
   /// Creates a new [GetVirtualNodeSpecListenerTlCertificateAcm].
   /// [certificateArn] Required.
-  GetVirtualNodeSpecListenerTlCertificateAcm({
+  const GetVirtualNodeSpecListenerTlCertificateAcm({
     required this.certificateArn,
   });
 

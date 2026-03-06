@@ -17,7 +17,7 @@ class WorkgroupEndpointVpcEndpointNetworkInterface {
   /// [networkInterfaceId] The unique identifier of the network interface.
   /// [privateIpAddress] The IPv4 address of the network interface within the subnet.
   /// [subnetId] The unique identifier of the subnet.
-  WorkgroupEndpointVpcEndpointNetworkInterface({
+  const WorkgroupEndpointVpcEndpointNetworkInterface({
     this.availabilityZone,
     this.networkInterfaceId,
     this.privateIpAddress,

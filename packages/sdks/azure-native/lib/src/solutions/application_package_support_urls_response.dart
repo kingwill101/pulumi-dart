@@ -12,7 +12,7 @@ class ApplicationPackageSupportUrlsResponse {
   /// Creates a new [ApplicationPackageSupportUrlsResponse].
   /// [governmentCloud] The government cloud support URL.
   /// [publicAzure] The public azure support URL.
-  ApplicationPackageSupportUrlsResponse({
+  const ApplicationPackageSupportUrlsResponse({
     this.governmentCloud,
     this.publicAzure,
   });

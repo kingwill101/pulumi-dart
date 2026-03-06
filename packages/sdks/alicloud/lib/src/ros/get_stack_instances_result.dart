@@ -26,7 +26,7 @@ class GetStackInstancesResult {
   /// [stackInstanceAccountId] Optional.
   /// [stackInstanceRegionId] Optional.
   /// [status] Optional.
-  GetStackInstancesResult({
+  const GetStackInstancesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

@@ -26,7 +26,7 @@ class LogTransformerTransformerConfigParseKeyValue {
   /// [nonMatchValue] Specifies a value to insert into the value field in the result if a key-value pair is not successfully split.
   /// [overwriteIfExists] Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// [source] Specifies the path to the field in the log event that will be parsed. Defaults to `@message`.
-  LogTransformerTransformerConfigParseKeyValue({
+  const LogTransformerTransformerConfigParseKeyValue({
     this.destination,
     this.fieldDelimiter,
     this.keyPrefix,

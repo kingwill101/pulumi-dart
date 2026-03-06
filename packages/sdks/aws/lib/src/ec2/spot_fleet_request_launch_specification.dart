@@ -54,7 +54,7 @@ class SpotFleetRequestLaunchSpecification {
   /// [userData] Optional.
   /// [vpcSecurityGroupIds] Optional.
   /// [weightedCapacity] The capacity added to the fleet by a fulfilled request.
-  SpotFleetRequestLaunchSpecification({
+  const SpotFleetRequestLaunchSpecification({
     required this.ami,
     this.associatePublicIpAddress,
     this.availabilityZone,

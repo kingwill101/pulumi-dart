@@ -9,7 +9,7 @@ class PatchDeploymentRecurringScheduleWeekly {
 
   /// Creates a new [PatchDeploymentRecurringScheduleWeekly].
   /// [dayOfWeek] IANA Time Zone Database time zone, e.g. "America/New_York".
-  PatchDeploymentRecurringScheduleWeekly({
+  const PatchDeploymentRecurringScheduleWeekly({
     required this.dayOfWeek,
   });
 

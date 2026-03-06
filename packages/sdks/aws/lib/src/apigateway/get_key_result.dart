@@ -36,7 +36,7 @@ class GetKeyResult {
   /// [region] Required.
   /// [tags] Map of tags for the resource.
   /// [value] Set to the value of the API Key.
-  GetKeyResult({
+  const GetKeyResult({
     required this.arn,
     required this.createdDate,
     required this.customerId,

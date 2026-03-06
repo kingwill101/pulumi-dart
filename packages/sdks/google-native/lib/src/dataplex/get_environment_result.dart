@@ -45,7 +45,7 @@ class GetEnvironmentResult {
   /// [state] Current state of the environment.
   /// [uid] System generated globally unique ID for the environment. This ID will be different if the environment is deleted and re-created with the same name.
   /// [updateTime] The time when the environment was last updated.
-  GetEnvironmentResult({
+  const GetEnvironmentResult({
     required this.createTime,
     required this.description,
     required this.displayName,

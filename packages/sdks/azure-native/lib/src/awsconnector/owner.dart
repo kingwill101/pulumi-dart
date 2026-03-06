@@ -12,7 +12,7 @@ class Owner {
   /// Creates a new [Owner].
   /// [displayName] &lt;p&gt;Container for the display name of the owner. This value is only supported in the following Amazon Web Services Regions:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt;US East (N. Virginia)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;US West (N. California)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;US West (Oregon)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Singapore)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Sydney)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Asia Pacific (Tokyo)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;Europe (Ireland)&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt;South America (São Paulo)&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt; &lt;note&gt; &lt;p&gt;This functionality is not supported for directory buckets.&lt;/p&gt; &lt;/note&gt;
   /// [id] &lt;p&gt;Container for the ID of the owner.&lt;/p&gt;
-  Owner({
+  const Owner({
     this.displayName,
     this.id,
   });

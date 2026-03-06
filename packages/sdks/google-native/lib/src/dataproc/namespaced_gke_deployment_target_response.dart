@@ -12,7 +12,7 @@ class NamespacedGkeDeploymentTargetResponse {
   /// Creates a new [NamespacedGkeDeploymentTargetResponse].
   /// [clusterNamespace] Optional. A namespace within the GKE cluster to deploy into.
   /// [targetGkeCluster] Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  NamespacedGkeDeploymentTargetResponse({
+  const NamespacedGkeDeploymentTargetResponse({
     required this.clusterNamespace,
     required this.targetGkeCluster,
   });

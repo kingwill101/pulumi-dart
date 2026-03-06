@@ -20,7 +20,7 @@ class GetTopicResult {
   /// [partitionConfig] The settings for this topic's partitions.
   /// [reservationConfig] The settings for this topic's Reservation usage.
   /// [retentionConfig] The settings for this topic's message retention.
-  GetTopicResult({
+  const GetTopicResult({
     required this.name,
     required this.partitionConfig,
     required this.reservationConfig,

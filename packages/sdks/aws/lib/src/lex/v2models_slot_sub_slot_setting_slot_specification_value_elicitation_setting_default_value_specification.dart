@@ -11,7 +11,7 @@ class V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultV
 
   /// Creates a new [V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification].
   /// [defaultValueLists] List of default values.
-  V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification({
+  const V2modelsSlotSubSlotSettingSlotSpecificationValueElicitationSettingDefaultValueSpecification({
     required this.defaultValueLists,
   });
 

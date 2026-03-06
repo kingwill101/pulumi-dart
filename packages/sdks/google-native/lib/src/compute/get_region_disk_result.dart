@@ -176,7 +176,7 @@ class GetRegionDiskResult {
   /// [userLicenses] A list of publicly visible user-licenses. Unlike regular licenses, user provided licenses can be modified after the disk is created. This includes a list of URLs to the license resource. For example, to provide a debian license: https://www.googleapis.com/compute/v1/projects/debian-cloud/global/licenses/debian-9-stretch
   /// [users] Links to the users of the disk (attached instances) in form: projects/project/zones/zone/instances/instance
   /// [zone] URL of the zone where the disk resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  GetRegionDiskResult({
+  const GetRegionDiskResult({
     required this.accessMode,
     required this.architecture,
     required this.asyncPrimaryDisk,

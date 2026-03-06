@@ -20,7 +20,7 @@ class FeatureFleetDefaultMemberConfig {
   /// [configmanagement] Config Management spec
   /// [mesh] Service Mesh spec
   /// [policycontroller] Policy Controller spec
-  FeatureFleetDefaultMemberConfig({
+  const FeatureFleetDefaultMemberConfig({
     this.configmanagement,
     this.mesh,
     this.policycontroller,

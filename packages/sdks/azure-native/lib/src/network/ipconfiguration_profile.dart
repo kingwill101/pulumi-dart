@@ -16,7 +16,7 @@ class IPConfigurationProfile {
   /// [id] Resource ID.
   /// [name] The name of the resource. This name can be used to access the resource.
   /// [subnet] The reference to the subnet resource to create a container network interface ip configuration.
-  IPConfigurationProfile({
+  const IPConfigurationProfile({
     this.id,
     this.name,
     this.subnet,

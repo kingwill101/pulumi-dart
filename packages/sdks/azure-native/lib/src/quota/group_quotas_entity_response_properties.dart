@@ -11,7 +11,7 @@ class GroupQuotasEntityResponseProperties {
   /// Creates a new [GroupQuotasEntityResponseProperties].
   /// [displayName] Display name of the GroupQuota entity.
   /// [provisioningState] Provisioning state of the operation.
-  GroupQuotasEntityResponseProperties({
+  const GroupQuotasEntityResponseProperties({
     this.displayName,
     required this.provisioningState,
   });

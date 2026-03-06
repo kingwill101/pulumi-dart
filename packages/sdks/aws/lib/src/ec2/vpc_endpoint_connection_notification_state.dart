@@ -29,7 +29,7 @@ class VpcEndpointConnectionNotificationState {
   /// [state] The state of the notification.
   /// [vpcEndpointId] The ID of the VPC Endpoint to receive notifications for.
   /// [vpcEndpointServiceId] The ID of the VPC Endpoint Service to receive notifications for.
-  VpcEndpointConnectionNotificationState({
+  const VpcEndpointConnectionNotificationState({
     this.connectionEvents,
     this.connectionNotificationArn,
     this.notificationType,

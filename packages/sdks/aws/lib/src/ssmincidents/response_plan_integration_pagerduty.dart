@@ -16,7 +16,7 @@ class ResponsePlanIntegrationPagerduty {
   /// [name] The name of the PagerDuty configuration.
   /// [secretId] The ID of the AWS Secrets Manager secret that stores your PagerDuty key &mdash; either a General Access REST API Key or User Token REST API Key &mdash; and other user credentials.
   /// [serviceId] The ID of the PagerDuty service that the response plan associated with the incident at launch.
-  ResponsePlanIntegrationPagerduty({
+  const ResponsePlanIntegrationPagerduty({
     required this.name,
     required this.secretId,
     required this.serviceId,

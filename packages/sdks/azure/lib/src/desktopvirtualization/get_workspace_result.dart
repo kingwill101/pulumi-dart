@@ -27,7 +27,7 @@ class GetWorkspaceResult {
   /// [publicNetworkAccessEnabled] Is public network access enabled?
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Virtual Desktop Workspace.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.description,
     required this.friendlyName,
     required this.id,

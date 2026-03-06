@@ -9,7 +9,7 @@ class WorkteamWorkerAccessConfigurationS3Presign {
 
   /// Creates a new [WorkteamWorkerAccessConfigurationS3Presign].
   /// [iamPolicyConstraints] Use this parameter to specify the allowed request source. Possible sources are either SourceIp or VpcSourceIp. see IAM Policy Constraints details below.
-  WorkteamWorkerAccessConfigurationS3Presign({
+  const WorkteamWorkerAccessConfigurationS3Presign({
     this.iamPolicyConstraints,
   });
 

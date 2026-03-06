@@ -15,7 +15,7 @@ class GetSourceVmmigrationV1alpha1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [sourceId] Required.
-  GetSourceVmmigrationV1alpha1Args({
+  const GetSourceVmmigrationV1alpha1Args({
     required this.location,
     this.project,
     required this.sourceId,

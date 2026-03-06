@@ -13,7 +13,7 @@ class CertificateContactsState {
   /// Creates a new [CertificateContactsState].
   /// [contacts] One or more `contact` blocks as defined below.
   /// [keyVaultId] The ID of the Key Vault. Changing this forces a new resource to be created.
-  CertificateContactsState({
+  const CertificateContactsState({
     this.contacts,
     this.keyVaultId,
   });

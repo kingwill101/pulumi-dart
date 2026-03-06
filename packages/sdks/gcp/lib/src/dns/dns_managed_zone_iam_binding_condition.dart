@@ -11,7 +11,7 @@ class DnsManagedZoneIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  DnsManagedZoneIamBindingCondition({
+  const DnsManagedZoneIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

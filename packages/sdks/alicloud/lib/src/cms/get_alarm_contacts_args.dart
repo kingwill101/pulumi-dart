@@ -26,7 +26,7 @@ class GetAlarmContactsArgs {
   /// [ids] A list of alarm contact IDs.
   /// [nameRegex] A regex string to filter results by alarm contact name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAlarmContactsArgs({
+  const GetAlarmContactsArgs({
     this.chanelType,
     this.chanelValue,
     this.ids,

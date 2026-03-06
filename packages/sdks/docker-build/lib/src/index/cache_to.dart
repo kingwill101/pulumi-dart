@@ -41,7 +41,7 @@ class CacheTo {
   /// [raw] A raw string as you would provide it to the Docker CLI (e.g.,
   /// [registry] Push caches to remote registries. Incompatible with the `docker` build
   /// [s3] Push cache to AWS S3 or S3-compatible services such as MinIO.
-  CacheTo({
+  const CacheTo({
     this.azblob,
     this.disabled,
     this.gha,

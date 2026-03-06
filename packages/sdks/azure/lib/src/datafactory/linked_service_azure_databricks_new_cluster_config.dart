@@ -35,7 +35,7 @@ class LinkedServiceAzureDatabricksNewClusterConfig {
   /// [nodeType] Node type for the new cluster.
   /// [sparkConfig] User-specified Spark configuration variables key-value pairs.
   /// [sparkEnvironmentVariables] User-specified Spark environment variables key-value pairs.
-  LinkedServiceAzureDatabricksNewClusterConfig({
+  const LinkedServiceAzureDatabricksNewClusterConfig({
     required this.clusterVersion,
     this.customTags,
     this.driverNodeType,

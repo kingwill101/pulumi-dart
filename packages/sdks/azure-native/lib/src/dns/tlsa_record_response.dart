@@ -18,7 +18,7 @@ class TlsaRecordResponse {
   /// [matchingType] The matching type specifies how the certificate association is presented.
   /// [selector] The selector specifies which part of the TLS certificate presented by the server will be matched against the association data.
   /// [usage] The usage specifies the provided association that will be used to match the certificate presented in the TLS handshake.
-  TlsaRecordResponse({
+  const TlsaRecordResponse({
     this.certAssociationData,
     this.matchingType,
     this.selector,

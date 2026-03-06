@@ -15,7 +15,7 @@ class VpnConnectionRouteState {
   /// [destinationCidrBlock] The CIDR block associated with the local subnet of the customer network.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpnConnectionId] The ID of the VPN connection.
-  VpnConnectionRouteState({
+  const VpnConnectionRouteState({
     this.destinationCidrBlock,
     this.region,
     this.vpnConnectionId,

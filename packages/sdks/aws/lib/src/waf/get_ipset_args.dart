@@ -12,7 +12,7 @@ class GetIpsetArgs {
 
   /// Creates a new [GetIpsetArgs].
   /// [name] Name of the WAF IP set.
-  GetIpsetArgs({
+  const GetIpsetArgs({
     required this.name,
   });
 

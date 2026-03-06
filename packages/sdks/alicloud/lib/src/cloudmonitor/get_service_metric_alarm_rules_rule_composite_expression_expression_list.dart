@@ -20,7 +20,7 @@ class GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList {
   /// [period] The aggregation period of the metric.
   /// [statistics] The statistical methods for Warn-level alerts.
   /// [threshold] The threshold for Warn-level alerts.
-  GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList({
+  const GetServiceMetricAlarmRulesRuleCompositeExpressionExpressionList({
     required this.comparisonOperator,
     required this.metricName,
     required this.period,

@@ -9,7 +9,7 @@ class ImageFreshnessCheck {
 
   /// Creates a new [ImageFreshnessCheck].
   /// [maxUploadAgeDays] The max number of days that is allowed since the image was uploaded. Must be greater than zero.
-  ImageFreshnessCheck({
+  const ImageFreshnessCheck({
     required this.maxUploadAgeDays,
   });
 

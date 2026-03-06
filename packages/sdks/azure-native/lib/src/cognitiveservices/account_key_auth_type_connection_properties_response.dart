@@ -41,7 +41,7 @@ class AccountKeyAuthTypeConnectionPropertiesResponse {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  AccountKeyAuthTypeConnectionPropertiesResponse({
+  const AccountKeyAuthTypeConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

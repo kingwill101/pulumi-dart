@@ -15,7 +15,7 @@ class FastTemplateState {
   /// [md5Hash] MD5 hash of the zip archive file containing FAST template
   /// [name] Name of the FAST template set to be created on to BIGIP
   /// [source] Path to the zip archive file containing FAST template set on Local Disk
-  FastTemplateState({
+  const FastTemplateState({
     this.md5Hash,
     this.name,
     this.source,

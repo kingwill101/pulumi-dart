@@ -12,7 +12,7 @@ class GetVolumeArgs {
 
   /// Creates a new [GetVolumeArgs].
   /// [id] The unique numeric ID of the Volume record to query.
-  GetVolumeArgs({
+  const GetVolumeArgs({
     required this.id,
   });
 

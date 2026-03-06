@@ -17,7 +17,7 @@ class BgpPolicyContentSourceBlockList {
   /// [everySeconds] The time (unit second) for automatically releasing the black after triggering the speed limit is 60~2592000.
   /// [exceedLimitTimes] The number of times the speed limit is exceeded in a statistical period ranges from 1 to 1200.
   /// [type] Type
-  BgpPolicyContentSourceBlockList({
+  const BgpPolicyContentSourceBlockList({
     required this.blockExpireSeconds,
     required this.everySeconds,
     required this.exceedLimitTimes,

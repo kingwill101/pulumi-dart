@@ -45,7 +45,7 @@ class ExtensionState {
   /// [tags] A mapping of tags which should be assigned to the Hybrid Compute Machine Extension.
   /// [type] Specifies the type of the extension. For example `CustomScriptExtension` or `AzureMonitorLinuxAgent`. Changing this forces a new Hybrid Compute Machine Extension to be created.
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  ExtensionState({
+  const ExtensionState({
     this.arcMachineId,
     this.automaticUpgradeEnabled,
     this.forceUpdateTag,

@@ -8,7 +8,7 @@ class WorkteamMemberDefinitionOidcMemberDefinition {
 
   /// Creates a new [WorkteamMemberDefinitionOidcMemberDefinition].
   /// [groups] A list of comma separated strings that identifies user groups in your OIDC IdP. Each user group is made up of a group of private workers.
-  WorkteamMemberDefinitionOidcMemberDefinition({
+  const WorkteamMemberDefinitionOidcMemberDefinition({
     required this.groups,
   });
 

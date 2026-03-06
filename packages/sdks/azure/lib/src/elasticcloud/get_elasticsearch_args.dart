@@ -19,7 +19,7 @@ class GetElasticsearchArgs {
   /// [logs] A `logs` block as defined below.
   /// [name] The name of the Elasticsearch resource.
   /// [resourceGroupName] The name of the resource group in which the Elasticsearch exists.
-  GetElasticsearchArgs({
+  const GetElasticsearchArgs({
     this.logs,
     required this.name,
     required this.resourceGroupName,

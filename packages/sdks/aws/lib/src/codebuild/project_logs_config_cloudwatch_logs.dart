@@ -15,7 +15,7 @@ class ProjectLogsConfigCloudwatchLogs {
   /// [groupName] Group name of the logs in CloudWatch Logs.
   /// [status] Current status of logs in CloudWatch Logs for a build project. Valid values: `ENABLED`,
   /// [streamName] Prefix of the log stream name of the logs in CloudWatch Logs.
-  ProjectLogsConfigCloudwatchLogs({
+  const ProjectLogsConfigCloudwatchLogs({
     this.groupName,
     this.status,
     this.streamName,

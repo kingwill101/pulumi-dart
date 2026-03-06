@@ -48,7 +48,7 @@ class DataControllerProperties {
   /// [onPremiseProperty] Properties from the Kubernetes data controller
   /// [uploadServicePrincipal] Deprecated. Service principal is deprecated in favor of Arc Kubernetes service extension managed identity.
   /// [uploadWatermark] Properties on upload watermark.  Mostly timestamp for each upload data type
-  DataControllerProperties({
+  const DataControllerProperties({
     this.basicLoginInformation,
     this.clusterId,
     this.extensionId,

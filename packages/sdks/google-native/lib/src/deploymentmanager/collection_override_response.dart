@@ -17,7 +17,7 @@ class CollectionOverrideResponse {
   /// [collection] The collection that identifies this resource within its service.
   /// [methodMap] Custom verb method mappings to support unordered list API mappings.
   /// [options] The options to apply to this resource-level override
-  CollectionOverrideResponse({
+  const CollectionOverrideResponse({
     required this.collection,
     required this.methodMap,
     required this.options,

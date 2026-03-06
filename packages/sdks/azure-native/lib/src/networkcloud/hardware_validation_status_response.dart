@@ -11,7 +11,7 @@ class HardwareValidationStatusResponse {
   /// Creates a new [HardwareValidationStatusResponse].
   /// [lastValidationTime] The timestamp of the hardware validation execution.
   /// [result] The outcome of the hardware validation.
-  HardwareValidationStatusResponse({
+  const HardwareValidationStatusResponse({
     required this.lastValidationTime,
     required this.result,
   });

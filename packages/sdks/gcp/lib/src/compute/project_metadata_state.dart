@@ -15,7 +15,7 @@ class ProjectMetadataState {
   /// Creates a new [ProjectMetadataState].
   /// [metadata] A series of key value pairs.
   /// [project] The ID of the project in which the resource belongs. If it
-  ProjectMetadataState({
+  const ProjectMetadataState({
     this.metadata,
     this.project,
   });

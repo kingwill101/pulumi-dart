@@ -10,7 +10,7 @@ class MachinePreferencesMigrationcenterV1alpha1 {
 
   /// Creates a new [MachinePreferencesMigrationcenterV1alpha1].
   /// [allowedMachineSeries] Compute Engine machine series to consider for insights and recommendations. If empty, no restriction is applied on the machine series.
-  MachinePreferencesMigrationcenterV1alpha1({
+  const MachinePreferencesMigrationcenterV1alpha1({
     this.allowedMachineSeries,
   });
 

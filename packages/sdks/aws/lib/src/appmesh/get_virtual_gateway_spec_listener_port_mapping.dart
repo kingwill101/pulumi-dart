@@ -9,7 +9,7 @@ class GetVirtualGatewaySpecListenerPortMapping {
   /// Creates a new [GetVirtualGatewaySpecListenerPortMapping].
   /// [port] Required.
   /// [protocol] Required.
-  GetVirtualGatewaySpecListenerPortMapping({
+  const GetVirtualGatewaySpecListenerPortMapping({
     required this.port,
     required this.protocol,
   });

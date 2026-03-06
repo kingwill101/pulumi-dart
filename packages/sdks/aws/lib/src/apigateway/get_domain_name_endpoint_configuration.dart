@@ -11,7 +11,7 @@ class GetDomainNameEndpointConfiguration {
   /// Creates a new [GetDomainNameEndpointConfiguration].
   /// [ipAddressType] The IP address types that can invoke an API (RestApi).
   /// [types] List of endpoint types.
-  GetDomainNameEndpointConfiguration({
+  const GetDomainNameEndpointConfiguration({
     required this.ipAddressType,
     required this.types,
   });

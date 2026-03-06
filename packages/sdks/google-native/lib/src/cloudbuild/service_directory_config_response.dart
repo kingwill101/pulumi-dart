@@ -9,7 +9,7 @@ class ServiceDirectoryConfigResponse {
 
   /// Creates a new [ServiceDirectoryConfigResponse].
   /// [service] The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  ServiceDirectoryConfigResponse({
+  const ServiceDirectoryConfigResponse({
     required this.service,
   });
 

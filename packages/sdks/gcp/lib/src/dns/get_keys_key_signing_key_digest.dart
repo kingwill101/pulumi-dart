@@ -11,7 +11,7 @@ class GetKeysKeySigningKeyDigest {
   /// Creates a new [GetKeysKeySigningKeyDigest].
   /// [digest] The base-16 encoded bytes of this digest. Suitable for use in a DS resource record.
   /// [type] Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
-  GetKeysKeySigningKeyDigest({
+  const GetKeysKeySigningKeyDigest({
     this.digest,
     this.type,
   });

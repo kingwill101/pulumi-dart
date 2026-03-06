@@ -43,7 +43,7 @@ class ApplicationArgs {
   /// [project] The project ID to create the application under.
   /// [servingStatus] The serving status of the app.
   /// [sslPolicy] A list of the SSL policy that will be applied. Each block has a `SSL_POLICY_UNSPECIFIED`, `DEFAULT`, and `MODERN` field.
-  ApplicationArgs({
+  const ApplicationArgs({
     this.authDomain,
     this.databaseType,
     this.featureSettings,

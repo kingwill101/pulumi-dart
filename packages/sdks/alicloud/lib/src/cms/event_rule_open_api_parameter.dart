@@ -26,7 +26,7 @@ class EventRuleOpenApiParameter {
   /// [region] The region where the resource resides.
   /// [role] The name of the role.
   /// [version] The version of the API.
-  EventRuleOpenApiParameter({
+  const EventRuleOpenApiParameter({
     this.action,
     this.arn,
     this.openApiParametersId,

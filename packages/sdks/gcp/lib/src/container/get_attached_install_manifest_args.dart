@@ -22,7 +22,7 @@ class GetAttachedInstallManifestArgs {
   /// [location] The location to list versions for.
   /// [platformVersion] The platform version for the cluster. A list of valid values can be retrieved using the `gcp.container.getAttachedVersions` data source.
   /// [project] ID of the project to list available platform versions for. Should match the project the cluster will be deployed to.
-  GetAttachedInstallManifestArgs({
+  const GetAttachedInstallManifestArgs({
     required this.clusterId,
     required this.location,
     required this.platformVersion,

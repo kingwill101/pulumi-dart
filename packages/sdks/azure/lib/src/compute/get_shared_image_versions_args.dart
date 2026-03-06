@@ -21,7 +21,7 @@ class GetSharedImageVersionsArgs {
   /// [imageName] The name of the Shared Image in which this Version exists.
   /// [resourceGroupName] The name of the Resource Group in which the Shared Image Gallery exists.
   /// [tagsFilter] A mapping of tags to filter the list of images against.
-  GetSharedImageVersionsArgs({
+  const GetSharedImageVersionsArgs({
     required this.galleryName,
     required this.imageName,
     required this.resourceGroupName,

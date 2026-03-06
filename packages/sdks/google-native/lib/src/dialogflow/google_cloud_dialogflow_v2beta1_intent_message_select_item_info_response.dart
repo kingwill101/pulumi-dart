@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse].
   /// [key] A unique key that will be sent back to the agent if this response is given.
   /// [synonyms] Optional. A list of synonyms that can also be used to trigger this item in dialog.
-  GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoResponse({
     required this.key,
     required this.synonyms,
   });

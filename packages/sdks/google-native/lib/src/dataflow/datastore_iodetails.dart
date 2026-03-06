@@ -12,7 +12,7 @@ class DatastoreIODetails {
   /// Creates a new [DatastoreIODetails].
   /// [namespace] Namespace used in the connection.
   /// [project] ProjectId accessed in the connection.
-  DatastoreIODetails({
+  const DatastoreIODetails({
     this.namespace,
     this.project,
   });

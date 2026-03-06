@@ -31,7 +31,7 @@ class GetPrivateLinkScopeResult {
   /// [systemData] The system meta data relating to this resource.
   /// [tags] Resource tags
   /// [type] Azure resource type
-  GetPrivateLinkScopeResult({
+  const GetPrivateLinkScopeResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

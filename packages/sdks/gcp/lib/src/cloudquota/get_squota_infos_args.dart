@@ -15,7 +15,7 @@ class GetSQuotaInfosArgs {
   /// Creates a new [GetSQuotaInfosArgs].
   /// [parent] Parent value of QuotaInfo resources. Listing across different resource containers (such as 'projects/-') is not allowed. Allowed parents are "projects/[project-id / number]" or "folders/[folder-id / number]" or "organizations/[org-id / number].
   /// [service] The name of the service in which the quotas are defined.
-  GetSQuotaInfosArgs({
+  const GetSQuotaInfosArgs({
     required this.parent,
     required this.service,
   });

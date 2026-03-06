@@ -28,7 +28,7 @@ class WorkflowVersionPropertiesResponse {
   /// [specification] Execution specification
   /// [stageSpec] A list of stage specs
   /// [state] State of workflow version
-  WorkflowVersionPropertiesResponse({
+  const WorkflowVersionPropertiesResponse({
     required this.configuration,
     required this.provisioningState,
     required this.reviewId,

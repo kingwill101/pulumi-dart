@@ -18,7 +18,7 @@ class HybridMonitorFcTaskState {
   /// [namespace] The index warehouse where the host belongs.
   /// [targetUserId] The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
   /// [yarmConfig] The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-  HybridMonitorFcTaskState({
+  const HybridMonitorFcTaskState({
     this.hybridMonitorFcTaskId,
     this.namespace,
     this.targetUserId,

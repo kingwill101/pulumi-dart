@@ -16,7 +16,7 @@ class ValidationCheckResponse {
   /// [option] Options used for the validation check
   /// [scenario] The scenario when the preflight checks were run.
   /// [status] The detailed validation check status.
-  ValidationCheckResponse({
+  const ValidationCheckResponse({
     required this.option,
     required this.scenario,
     required this.status,

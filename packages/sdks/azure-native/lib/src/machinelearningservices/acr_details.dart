@@ -10,7 +10,7 @@ class AcrDetails {
 
   /// Creates a new [AcrDetails].
   /// [systemCreatedAcrAccount] Details of system created ACR account to be used for the Registry
-  AcrDetails({
+  const AcrDetails({
     this.systemCreatedAcrAccount,
   });
 

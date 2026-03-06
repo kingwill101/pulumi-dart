@@ -28,7 +28,7 @@ class GetApiVersionSetResult {
   /// [versionHeaderName] The name of the Header which should be read from Inbound Requests which defines the API Version.
   /// [versionQueryName] The name of the Query String which should be read from Inbound Requests which defines the API Version.
   /// [versioningScheme] Required.
-  GetApiVersionSetResult({
+  const GetApiVersionSetResult({
     required this.apiManagementName,
     required this.description,
     required this.displayName,

@@ -188,7 +188,7 @@ class DatabaseArgs {
   /// [tags] Resource tags.
   /// [useFreeLimit] Whether or not the database uses free monthly limits. Allowed on one database in a subscription.
   /// [zoneRedundant] Whether or not this database is zone redundant, which means the replicas of this database will be spread across multiple availability zones.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.autoPauseDelay,
     this.availabilityZone,
     this.catalogCollation,

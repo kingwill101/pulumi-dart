@@ -11,7 +11,7 @@ class GetRepositoryCleanupPolicyMostRecentVersion {
   /// Creates a new [GetRepositoryCleanupPolicyMostRecentVersion].
   /// [keepCount] Minimum number of versions to keep.
   /// [packageNamePrefixes] Match versions by package prefix. Applied on any prefix match.
-  GetRepositoryCleanupPolicyMostRecentVersion({
+  const GetRepositoryCleanupPolicyMostRecentVersion({
     required this.keepCount,
     required this.packageNamePrefixes,
   });

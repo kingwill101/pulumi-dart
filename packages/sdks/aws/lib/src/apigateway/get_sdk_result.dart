@@ -27,7 +27,7 @@ class GetSdkResult {
   /// [restApiId] Required.
   /// [sdkType] Required.
   /// [stageName] Required.
-  GetSdkResult({
+  const GetSdkResult({
     required this.body,
     required this.contentDisposition,
     required this.contentType,

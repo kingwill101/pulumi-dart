@@ -43,7 +43,7 @@ class StackInstanceState {
   /// [stackInstanceRegionId] The region of the stack instance.
   /// [status] The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
   /// [timeoutInMinutes] The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
-  StackInstanceState({
+  const StackInstanceState({
     this.operationDescription,
     this.operationPreferences,
     this.parameterOverrides,

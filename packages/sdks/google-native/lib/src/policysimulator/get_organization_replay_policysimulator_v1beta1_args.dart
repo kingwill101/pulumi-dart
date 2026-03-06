@@ -15,7 +15,7 @@ class GetOrganizationReplayPolicysimulatorV1beta1Args {
   /// [location] Required.
   /// [organizationId] Required.
   /// [replayId] Required.
-  GetOrganizationReplayPolicysimulatorV1beta1Args({
+  const GetOrganizationReplayPolicysimulatorV1beta1Args({
     required this.location,
     required this.organizationId,
     required this.replayId,

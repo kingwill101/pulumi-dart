@@ -14,7 +14,7 @@ class GetTableRangePartitioningRange {
   /// [end] End of the range partitioning, exclusive.
   /// [interval] The width of each range within the partition.
   /// [start] Start of the range partitioning, inclusive.
-  GetTableRangePartitioningRange({
+  const GetTableRangePartitioningRange({
     required this.end,
     required this.interval,
     required this.start,

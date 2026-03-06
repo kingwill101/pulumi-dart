@@ -26,7 +26,7 @@ class OccurenceAttestationSignature {
   /// Creates a new [OccurenceAttestationSignature].
   /// [publicKeyId] The identifier for the public key that verifies this
   /// [signature] The content of the signature, an opaque bytestring.
-  OccurenceAttestationSignature({
+  const OccurenceAttestationSignature({
     required this.publicKeyId,
     this.signature,
   });

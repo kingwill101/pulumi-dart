@@ -12,7 +12,7 @@ class VPCResponse {
   /// Creates a new [VPCResponse].
   /// [vpcId] *Private hosted zones only:* The ID of an Amazon VPC.  For public hosted zones, omit ``VPCs``, ``VPCId``, and ``VPCRegion``.
   /// [vpcRegion] *Private hosted zones only:* The region that an Amazon VPC was created in.  For public hosted zones, omit ``VPCs``, ``VPCId``, and ``VPCRegion``.
-  VPCResponse({
+  const VPCResponse({
     this.vpcId,
     this.vpcRegion,
   });

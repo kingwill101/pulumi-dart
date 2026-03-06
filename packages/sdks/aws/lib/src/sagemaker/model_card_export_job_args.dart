@@ -27,7 +27,7 @@ class ModelCardExportJobArgs {
   /// [outputConfig] Export output details. Fields are documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration
   /// [timeouts] Optional.
-  ModelCardExportJobArgs({
+  const ModelCardExportJobArgs({
     required this.modelCardExportJobName,
     required this.modelCardName,
     this.modelCardVersion,

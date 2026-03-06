@@ -11,7 +11,7 @@ class AppSpecFunctionLogDestinationDatadog {
   /// Creates a new [AppSpecFunctionLogDestinationDatadog].
   /// [apiKey] Datadog API key.
   /// [endpoint] Datadog HTTP log intake endpoint.
-  AppSpecFunctionLogDestinationDatadog({
+  const AppSpecFunctionLogDestinationDatadog({
     required this.apiKey,
     this.endpoint,
   });

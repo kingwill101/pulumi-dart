@@ -14,7 +14,7 @@ class GetFhirResult {
   /// [contentType] The HTTP Content-Type header value specifying the content type of the body.
   /// [data] The HTTP request/response body as raw binary.
   /// [extensions] Application specific response metadata. Must be set in the first response for streaming APIs.
-  GetFhirResult({
+  const GetFhirResult({
     required this.contentType,
     required this.data,
     required this.extensions,

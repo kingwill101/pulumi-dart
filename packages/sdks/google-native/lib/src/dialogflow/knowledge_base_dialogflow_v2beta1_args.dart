@@ -22,7 +22,7 @@ class KnowledgeBaseDialogflowV2beta1Args {
   /// [location] Optional.
   /// [name] The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
   /// [project] Optional.
-  KnowledgeBaseDialogflowV2beta1Args({
+  const KnowledgeBaseDialogflowV2beta1Args({
     required this.displayName,
     this.languageCode,
     this.location,

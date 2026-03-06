@@ -36,7 +36,7 @@ class TargetGroupConfigHealthCheck {
   /// [protocol] The protocol used when performing health checks on targets. The possible protocols are `HTTP` and `HTTPS`.
   /// [protocolVersion] The protocol version used when performing health checks on targets. The possible protocol versions are `HTTP1` and `HTTP2`. The default is `HTTP1`.
   /// [unhealthyThresholdCount] The number of consecutive failed health checks required before considering a target unhealthy. The range is 2–10. The default is 2.
-  TargetGroupConfigHealthCheck({
+  const TargetGroupConfigHealthCheck({
     this.enabled,
     this.healthCheckIntervalSeconds,
     this.healthCheckTimeoutSeconds,

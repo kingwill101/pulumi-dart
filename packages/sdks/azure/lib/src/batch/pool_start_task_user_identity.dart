@@ -14,7 +14,7 @@ class PoolStartTaskUserIdentity {
   /// Creates a new [PoolStartTaskUserIdentity].
   /// [autoUser] A `auto_user` block that describes the user identity under which the start task runs as defined below.
   /// [userName] The username to be used by the Batch pool start task.
-  PoolStartTaskUserIdentity({
+  const PoolStartTaskUserIdentity({
     this.autoUser,
     this.userName,
   });

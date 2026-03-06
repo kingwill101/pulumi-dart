@@ -64,7 +64,7 @@ class GetDnsZoneArgs {
   /// [type] The type of the zone. Can either be `PRIMARY` or `SECONDARY`.
   /// [updatedAt] The time the zone was last updated.
   /// [version] The version of the zone.
-  GetDnsZoneArgs({
+  const GetDnsZoneArgs({
     this.allProjects,
     this.attributes,
     this.createdAt,

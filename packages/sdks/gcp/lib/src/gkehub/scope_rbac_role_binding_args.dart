@@ -41,7 +41,7 @@ class ScopeRbacRoleBindingArgs {
   /// [scopeId] Id of the scope
   /// [scopeRbacRoleBindingId] The client-provided identifier of the RBAC Role Binding.
   /// [user] Principal that is be authorized in the cluster (at least of one the oneof
-  ScopeRbacRoleBindingArgs({
+  const ScopeRbacRoleBindingArgs({
     this.group,
     this.labels,
     this.project,

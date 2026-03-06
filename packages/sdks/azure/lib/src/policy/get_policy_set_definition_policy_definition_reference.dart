@@ -20,7 +20,7 @@ class GetPolicySetDefinitionPolicyDefinitionReference {
   /// [policyDefinitionId] The ID of the policy definition or policy set definition that is included in this policy set definition.
   /// [policyGroupNames] The list of names of the policy definition groups that this policy definition reference belongs to.
   /// [referenceId] The unique ID within this policy set definition for this policy definition reference.
-  GetPolicySetDefinitionPolicyDefinitionReference({
+  const GetPolicySetDefinitionPolicyDefinitionReference({
     required this.parameterValues,
     required this.parameters,
     required this.policyDefinitionId,

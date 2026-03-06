@@ -32,7 +32,7 @@ class BlobOutputDataSourceResponse {
   /// [storageAccounts] A list of one or more Azure Storage accounts. Required on PUT (CreateOrReplace) requests.
   /// [timeFormat] The time format. Wherever {time} appears in pathPattern, the value of this property is used as the time format instead.
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
-  BlobOutputDataSourceResponse({
+  const BlobOutputDataSourceResponse({
     this.authenticationMode,
     this.blobPathPrefix,
     this.container,

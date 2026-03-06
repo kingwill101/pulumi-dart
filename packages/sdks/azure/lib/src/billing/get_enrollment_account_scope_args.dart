@@ -15,7 +15,7 @@ class GetEnrollmentAccountScopeArgs {
   /// Creates a new [GetEnrollmentAccountScopeArgs].
   /// [billingAccountName] The Billing Account Name of the Enterprise Account.
   /// [enrollmentAccountName] The Enrollment Account Name in the above Enterprise Account.
-  GetEnrollmentAccountScopeArgs({
+  const GetEnrollmentAccountScopeArgs({
     required this.billingAccountName,
     required this.enrollmentAccountName,
   });

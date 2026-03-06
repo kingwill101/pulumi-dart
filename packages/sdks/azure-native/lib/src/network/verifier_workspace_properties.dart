@@ -8,7 +8,7 @@ class VerifierWorkspaceProperties {
 
   /// Creates a new [VerifierWorkspaceProperties].
   /// [description] Optional.
-  VerifierWorkspaceProperties({
+  const VerifierWorkspaceProperties({
     this.description,
   });
 

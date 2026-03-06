@@ -41,7 +41,7 @@ class StorageApplianceArgs {
   /// [storageApplianceName] The name of the storage appliance.
   /// [storageApplianceSkuId] The SKU for the storage appliance.
   /// [tags] Resource tags.
-  StorageApplianceArgs({
+  const StorageApplianceArgs({
     required this.administratorCredentials,
     required this.extendedLocation,
     this.location,

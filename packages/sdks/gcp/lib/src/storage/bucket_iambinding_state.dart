@@ -35,7 +35,7 @@ class BucketIAMBindingState {
   /// [etag] (Computed) The etag of the IAM policy.
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  BucketIAMBindingState({
+  const BucketIAMBindingState({
     this.bucket,
     this.condition,
     this.etag,

@@ -74,7 +74,7 @@ class ProvisionedProductState {
   /// [status] Instance status
   /// [statusMessage] The status message of the product instance
   /// [tags] A mapping of tags to assign to the resource.
-  ProvisionedProductState({
+  const ProvisionedProductState({
     this.createTime,
     this.lastProvisioningTaskId,
     this.lastSuccessfulProvisioningTaskId,

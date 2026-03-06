@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisExplanationElasticLoadBalancerListener {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisExplanationElasticLoadBalancerListener({
+  const NetworkInsightsAnalysisExplanationElasticLoadBalancerListener({
     this.arn,
     this.id,
     this.name,

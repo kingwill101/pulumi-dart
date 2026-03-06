@@ -142,7 +142,7 @@ class GetMachineResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vmId] Specifies the hybrid machine unique ID.
   /// [vmUuid] Specifies the Arc Machine's unique SMBIOS ID
-  GetMachineResult({
+  const GetMachineResult({
     required this.adFqdn,
     required this.agentConfiguration,
     this.agentUpgrade,

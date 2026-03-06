@@ -14,7 +14,7 @@ class ServerGroupClusterDataEncryptionResponse {
   /// [primaryKeyUri] URI for the key in keyvault for data encryption of the primary server.
   /// [primaryUserAssignedIdentityId] Resource Id for the User assigned identity to be used for data encryption of the primary server.
   /// [type] Optional.
-  ServerGroupClusterDataEncryptionResponse({
+  const ServerGroupClusterDataEncryptionResponse({
     this.primaryKeyUri,
     this.primaryUserAssignedIdentityId,
     this.type,

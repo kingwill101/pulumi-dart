@@ -16,7 +16,7 @@ class GetResolverZonesResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [zones] Required.
-  GetResolverZonesResult({
+  const GetResolverZonesResult({
     required this.id,
     this.outputFile,
     this.status,

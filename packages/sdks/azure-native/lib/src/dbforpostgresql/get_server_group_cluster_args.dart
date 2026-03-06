@@ -15,7 +15,7 @@ class GetServerGroupClusterArgs {
   /// Creates a new [GetServerGroupClusterArgs].
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetServerGroupClusterArgs({
+  const GetServerGroupClusterArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

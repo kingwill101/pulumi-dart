@@ -37,7 +37,7 @@ class GetAscriptsAscript {
   /// [position] Script execution location.
   /// [scriptContent] Script content.
   /// [status] Script status.
-  GetAscriptsAscript({
+  const GetAscriptsAscript({
     required this.ascriptId,
     required this.ascriptName,
     required this.enabled,

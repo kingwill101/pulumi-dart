@@ -45,7 +45,7 @@ class TableState {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [rowKeySchema] Defines the row key schema of a table. To create or update a table with a row key schema, specify this argument.
   /// [splitKeys] A list of predefined keys to split the table on.
-  TableState({
+  const TableState({
     this.automatedBackupPolicy,
     this.changeStreamRetention,
     this.columnFamilies,

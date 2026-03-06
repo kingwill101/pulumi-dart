@@ -14,7 +14,7 @@ class GetDatabaseInstancesInstanceSettingMaintenanceWindow {
   /// [day] Day of week (1-7), starting on Monday
   /// [hour] Hour of day (0-23), ignored if day not set
   /// [updateTrack] Receive updates after one week (canary) or after two weeks (stable) or after five weeks (week5) of notification.
-  GetDatabaseInstancesInstanceSettingMaintenanceWindow({
+  const GetDatabaseInstancesInstanceSettingMaintenanceWindow({
     required this.day,
     required this.hour,
     required this.updateTrack,

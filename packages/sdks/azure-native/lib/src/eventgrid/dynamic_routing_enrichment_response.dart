@@ -11,7 +11,7 @@ class DynamicRoutingEnrichmentResponse {
   /// Creates a new [DynamicRoutingEnrichmentResponse].
   /// [key] Dynamic routing enrichment key.
   /// [value] Dynamic routing enrichment value.
-  DynamicRoutingEnrichmentResponse({
+  const DynamicRoutingEnrichmentResponse({
     this.key,
     this.value,
   });

@@ -34,7 +34,7 @@ class GetNetblockIPRangesArgs {
 
   /// Creates a new [GetNetblockIPRangesArgs].
   /// [rangeType] The type of range for which to provide results.
-  GetNetblockIPRangesArgs({
+  const GetNetblockIPRangesArgs({
     this.rangeType,
   });
 

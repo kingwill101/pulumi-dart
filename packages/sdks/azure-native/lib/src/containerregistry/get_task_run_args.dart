@@ -18,7 +18,7 @@ class GetTaskRunArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   /// [taskRunName] The name of the task run.
-  GetTaskRunArgs({
+  const GetTaskRunArgs({
     required this.registryName,
     required this.resourceGroupName,
     required this.taskRunName,

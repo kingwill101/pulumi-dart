@@ -55,7 +55,7 @@ class ServicePlanArgs {
   /// [tags] A mapping of tags which should be assigned to the AppService.
   /// [workerCount] The number of Workers (instances) to be allocated.
   /// [zoneBalancingEnabled] Should the Service Plan balance across Availability Zones in the region.
-  ServicePlanArgs({
+  const ServicePlanArgs({
     this.appServiceEnvironmentId,
     this.location,
     this.maximumElasticWorkerCount,

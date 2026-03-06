@@ -8,7 +8,7 @@ class MultiLocationAlertConditionWarning {
 
   /// Creates a new [MultiLocationAlertConditionWarning].
   /// [threshold] The minimum number of monitor locations that must be concurrently failing before an incident is opened.
-  MultiLocationAlertConditionWarning({
+  const MultiLocationAlertConditionWarning({
     required this.threshold,
   });
 

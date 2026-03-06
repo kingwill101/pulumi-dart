@@ -66,7 +66,7 @@ class FunctionState {
   /// [state] Describes the current state of the function.
   /// [updateTime] The last update timestamp of a Cloud Function.
   /// [url] Output only. The deployed url for the function.
-  FunctionState({
+  const FunctionState({
     this.buildConfig,
     this.description,
     this.effectiveLabels,

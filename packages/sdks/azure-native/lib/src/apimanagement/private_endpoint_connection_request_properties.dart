@@ -10,7 +10,7 @@ class PrivateEndpointConnectionRequestProperties {
 
   /// Creates a new [PrivateEndpointConnectionRequestProperties].
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
-  PrivateEndpointConnectionRequestProperties({
+  const PrivateEndpointConnectionRequestProperties({
     this.privateLinkServiceConnectionState,
   });
 

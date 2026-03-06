@@ -23,7 +23,7 @@ class DatabasePostgresqlConfigPgbouncer {
   /// [serverIdleTimeout] Optional.
   /// [serverLifetime] Optional.
   /// [serverResetQueryAlways] Optional.
-  DatabasePostgresqlConfigPgbouncer({
+  const DatabasePostgresqlConfigPgbouncer({
     this.autodbIdleTimeout,
     this.autodbMaxDbConnections,
     this.autodbPoolMode,

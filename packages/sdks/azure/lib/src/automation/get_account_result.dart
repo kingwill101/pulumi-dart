@@ -32,7 +32,7 @@ class GetAccountResult {
   /// [privateEndpointConnections] Required.
   /// [resourceGroupName] Required.
   /// [secondaryKey] The Secondary Access Key for the Automation Account.
-  GetAccountResult({
+  const GetAccountResult({
     required this.endpoint,
     required this.hybridServiceUrl,
     required this.id,

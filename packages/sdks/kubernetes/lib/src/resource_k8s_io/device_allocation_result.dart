@@ -16,7 +16,7 @@ class DeviceAllocationResult {
   /// Creates a new [DeviceAllocationResult].
   /// [config] This field is a combination of all the claim and class configuration parameters. Drivers can distinguish between those based on a flag.
   /// [results] Results lists all allocated devices.
-  DeviceAllocationResult({
+  const DeviceAllocationResult({
     this.config,
     this.results,
   });

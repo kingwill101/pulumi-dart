@@ -19,7 +19,7 @@ class CloudSqlConnectionProfileResponseDatamigrationV1beta1 {
   /// [privateIp] The Cloud SQL database instance's private IP.
   /// [publicIp] The Cloud SQL database instance's public IP.
   /// [settings] Immutable. Metadata used to create the destination Cloud SQL database.
-  CloudSqlConnectionProfileResponseDatamigrationV1beta1({
+  const CloudSqlConnectionProfileResponseDatamigrationV1beta1({
     required this.cloudSqlId,
     required this.privateIp,
     required this.publicIp,

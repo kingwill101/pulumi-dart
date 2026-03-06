@@ -9,7 +9,7 @@ class InsightFiltersNetworkSourceMac {
   /// Creates a new [InsightFiltersNetworkSourceMac].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersNetworkSourceMac({
+  const InsightFiltersNetworkSourceMac({
     required this.comparison,
     required this.value,
   });

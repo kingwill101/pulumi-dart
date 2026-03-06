@@ -18,7 +18,7 @@ class DomainDevicesHostdevSubsysMDev {
   /// [model] Specifies the model of the multimedia subsystem device being used by the host device.
   /// [ramFb] Configures the video memory settings for the multimedia subsystem device.
   /// [source] Defines the source attributes for the multimedia subsystem device.
-  DomainDevicesHostdevSubsysMDev({
+  const DomainDevicesHostdevSubsysMDev({
     this.display,
     this.model,
     this.ramFb,

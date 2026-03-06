@@ -30,7 +30,7 @@ class GetPartnerAttachmentResult {
   /// [region] Required.
   /// [state] Required.
   /// [vpcIds] Required.
-  GetPartnerAttachmentResult({
+  const GetPartnerAttachmentResult({
     this.bgp,
     required this.childrens,
     required this.connectionBandwidthInMbps,

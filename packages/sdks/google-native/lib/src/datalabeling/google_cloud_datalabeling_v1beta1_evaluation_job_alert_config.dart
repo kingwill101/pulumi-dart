@@ -12,7 +12,7 @@ class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig {
   /// Creates a new [GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig].
   /// [email] An email address to send alerts to.
   /// [minAcceptableMeanAveragePrecision] A number between 0 and 1 that describes a minimum mean average precision threshold. When the evaluation job runs, if it calculates that your model version's predictions from the recent interval have meanAveragePrecision below this threshold, then it sends an alert to your specified email.
-  GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig({
+  const GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig({
     required this.email,
     required this.minAcceptableMeanAveragePrecision,
   });

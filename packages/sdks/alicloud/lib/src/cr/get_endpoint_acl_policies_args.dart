@@ -21,7 +21,7 @@ class GetEndpointAclPoliciesArgs {
   /// [ids] A list of Endpoint Acl Policy IDs.
   /// [instanceId] The ID of the CR Instance.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEndpointAclPoliciesArgs({
+  const GetEndpointAclPoliciesArgs({
     required this.endpointType,
     this.ids,
     required this.instanceId,

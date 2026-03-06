@@ -9,7 +9,7 @@ class ImageDefinitionBuildTaskResponseParameters {
   /// Creates a new [ImageDefinitionBuildTaskResponseParameters].
   /// [key] Required.
   /// [value] Required.
-  ImageDefinitionBuildTaskResponseParameters({
+  const ImageDefinitionBuildTaskResponseParameters({
     required this.key,
     required this.value,
   });

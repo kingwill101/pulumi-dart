@@ -25,7 +25,7 @@ class ExecutionArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [workflowId] Required.
-  ExecutionArgs({
+  const ExecutionArgs({
     this.argument,
     this.callLogLevel,
     this.labels,

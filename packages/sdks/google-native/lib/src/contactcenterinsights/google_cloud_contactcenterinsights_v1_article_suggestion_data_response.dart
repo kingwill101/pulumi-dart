@@ -24,7 +24,7 @@ class GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse {
   /// [source] The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}
   /// [title] Article title.
   /// [uri] Article URI.
-  GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse({
+  const GoogleCloudContactcenterinsightsV1ArticleSuggestionDataResponse({
     required this.confidenceScore,
     required this.metadata,
     required this.queryRecord,

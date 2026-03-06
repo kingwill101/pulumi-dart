@@ -17,7 +17,7 @@ class GenaiAgentModelAgreement {
   /// [name] Name of the agreement
   /// [url] URL of the agreement
   /// [uuid] UUID of the agreement
-  GenaiAgentModelAgreement({
+  const GenaiAgentModelAgreement({
     this.description,
     this.name,
     this.url,

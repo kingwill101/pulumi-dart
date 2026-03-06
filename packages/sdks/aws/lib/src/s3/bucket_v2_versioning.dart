@@ -11,7 +11,7 @@ class BucketV2Versioning {
   /// Creates a new [BucketV2Versioning].
   /// [enabled] Enable versioning. Once you version-enable a bucket, it can never return to an unversioned state. You can, however, suspend versioning on that bucket.
   /// [mfaDelete] Enable MFA delete for either `Change the versioning state of your bucket` or `Permanently delete an object version`. Default is `false`. This cannot be used to toggle this setting but is available to allow managed buckets to reflect the state in AWS
-  BucketV2Versioning({
+  const BucketV2Versioning({
     this.enabled,
     this.mfaDelete,
   });

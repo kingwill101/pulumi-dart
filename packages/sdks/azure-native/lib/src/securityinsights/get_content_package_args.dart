@@ -18,7 +18,7 @@ class GetContentPackageArgs {
   /// [packageId] package Id
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetContentPackageArgs({
+  const GetContentPackageArgs({
     required this.packageId,
     required this.resourceGroupName,
     required this.workspaceName,

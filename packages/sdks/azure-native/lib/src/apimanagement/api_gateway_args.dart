@@ -32,7 +32,7 @@ class ApiGatewayArgs {
   /// [sku] SKU properties of the API Management gateway.
   /// [tags] Resource tags.
   /// [virtualNetworkType] The type of VPN in which API Management gateway needs to be configured in.
-  ApiGatewayArgs({
+  const ApiGatewayArgs({
     this.backend,
     this.gatewayName,
     this.location,

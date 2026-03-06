@@ -18,7 +18,7 @@ class GetOrganizationEnvironmentByIdArgs {
   /// [environmentId] Confluent environment id
   /// [organizationName] Organization resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetOrganizationEnvironmentByIdArgs({
+  const GetOrganizationEnvironmentByIdArgs({
     required this.environmentId,
     required this.organizationName,
     required this.resourceGroupName,

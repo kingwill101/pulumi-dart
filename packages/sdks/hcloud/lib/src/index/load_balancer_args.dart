@@ -34,7 +34,7 @@ class LoadBalancerArgs {
   /// [name] Name of the Load Balancer.
   /// [networkZone] The Network Zone of the Load Balancer. Require when no location is set.
   /// [targets] Optional.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     this.algorithm,
     this.deleteProtection,
     this.labels,

@@ -38,7 +38,7 @@ class OSPolicyResourcePackageResourceOsconfigV1alpha {
   /// [rpm] An rpm package file.
   /// [yum] A package managed by YUM.
   /// [zypper] A package managed by Zypper.
-  OSPolicyResourcePackageResourceOsconfigV1alpha({
+  const OSPolicyResourcePackageResourceOsconfigV1alpha({
     this.apt,
     this.deb,
     required this.desiredState,

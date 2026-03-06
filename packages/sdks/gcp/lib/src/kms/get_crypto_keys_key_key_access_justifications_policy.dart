@@ -10,7 +10,7 @@ class GetCryptoKeysKeyKeyAccessJustificationsPolicy {
 
   /// Creates a new [GetCryptoKeysKeyKeyAccessJustificationsPolicy].
   /// [allowedAccessReasons] The list of allowed reasons for access to this CryptoKey. Zero allowed
-  GetCryptoKeysKeyKeyAccessJustificationsPolicy({
+  const GetCryptoKeysKeyKeyAccessJustificationsPolicy({
     required this.allowedAccessReasons,
   });
 

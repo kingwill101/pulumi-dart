@@ -167,7 +167,7 @@ class GetLoadBalancersArgs {
   /// [tags] A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
   /// [vpcId] ID of the VPC linked to the SLBs.
   /// [vswitchId] ID of the vSwitch linked to the SLBs.
-  GetLoadBalancersArgs({
+  const GetLoadBalancersArgs({
     this.address,
     this.addressIpVersion,
     this.addressType,

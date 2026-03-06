@@ -22,7 +22,7 @@ class ImageTemplateFileValidator {
   /// [sha256Checksum] SHA256 checksum of the file provided in the sourceUri field above
   /// [sourceUri] The URI of the file to be uploaded to the VM for validation. It can be a github link, Azure Storage URI (authorized or SAS), etc
   /// [type] The type of validation you want to use on the Image. For example, "Shell" can be shell validation
-  ImageTemplateFileValidator({
+  const ImageTemplateFileValidator({
     this.destination,
     this.name,
     this.sha256Checksum,

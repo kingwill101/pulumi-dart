@@ -20,7 +20,7 @@ class StreamConsumerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [streamArn] Amazon Resource Name (ARN) of the data stream the consumer is registered with.
   /// [tags] Optional.
-  StreamConsumerArgs({
+  const StreamConsumerArgs({
     this.name,
     this.region,
     required this.streamArn,

@@ -18,7 +18,7 @@ class GetResourceSyncRuleArgs {
   /// [childResourceName] Resource Sync Rule name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Custom Locations name.
-  GetResourceSyncRuleArgs({
+  const GetResourceSyncRuleArgs({
     required this.childResourceName,
     required this.resourceGroupName,
     required this.resourceName,

@@ -11,7 +11,7 @@ class ApiProductAttribute {
   /// Creates a new [ApiProductAttribute].
   /// [name] Key of the attribute.
   /// [value] Value of the attribute.
-  ApiProductAttribute({
+  const ApiProductAttribute({
     this.name,
     this.value,
   });

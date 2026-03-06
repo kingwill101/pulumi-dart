@@ -14,7 +14,7 @@ class OntapVolumeAggregateConfiguration {
   /// [aggregates] Used to specify the names of the aggregates on which the volume will be created. Each aggregate needs to be in the format aggrX where X is the number of the aggregate.
   /// [constituentsPerAggregate] Used to explicitly set the number of constituents within the FlexGroup per storage aggregate. the default value is `8`.
   /// [totalConstituents] The total amount of constituents for a `FLEXGROUP` volume. This would equal constituents_per_aggregate x aggregates.
-  OntapVolumeAggregateConfiguration({
+  const OntapVolumeAggregateConfiguration({
     this.aggregates,
     this.constituentsPerAggregate,
     this.totalConstituents,

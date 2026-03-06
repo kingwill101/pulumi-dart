@@ -24,7 +24,7 @@ class HttpRouteConfigResponseProperties {
   /// [provisioningErrors] List of errors when trying to reconcile http routes
   /// [provisioningState] The provisioning state of the Http Route Config in cluster
   /// [rules] Routing Rules for http route resource.
-  HttpRouteConfigResponseProperties({
+  const HttpRouteConfigResponseProperties({
     this.customDomains,
     required this.fqdn,
     required this.provisioningErrors,

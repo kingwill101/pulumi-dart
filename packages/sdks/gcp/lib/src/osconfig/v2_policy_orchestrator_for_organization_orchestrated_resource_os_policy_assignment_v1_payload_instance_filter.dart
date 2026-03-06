@@ -30,7 +30,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// [exclusionLabels] List of label sets used for VM exclusion.
   /// [inclusionLabels] List of label sets used for VM inclusion.
   /// [inventories] List of inventories to select VMs.
-  V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter({
+  const V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadInstanceFilter({
     this.all,
     this.exclusionLabels,
     this.inclusionLabels,

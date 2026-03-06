@@ -14,7 +14,7 @@ class DiagnosticsProfileResponse {
 
   /// Creates a new [DiagnosticsProfileResponse].
   /// [bootDiagnostics] Boot Diagnostics is a debugging feature which allows you to view Console Output
-  DiagnosticsProfileResponse({
+  const DiagnosticsProfileResponse({
     this.bootDiagnostics,
   });
 

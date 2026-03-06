@@ -11,7 +11,7 @@ class Route {
   /// Creates a new [Route].
   /// [path] [Required] The path for the route.
   /// [port] [Required] The port for the route.
-  Route({
+  const Route({
     required this.path,
     required this.port,
   });

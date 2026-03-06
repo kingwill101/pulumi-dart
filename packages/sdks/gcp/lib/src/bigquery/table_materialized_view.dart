@@ -20,7 +20,7 @@ class TableMaterializedView {
   /// [enableRefresh] Specifies whether to use BigQuery's automatic refresh for this materialized view when the base table is updated.
   /// [query] A query whose result is persisted.
   /// [refreshIntervalMs] The maximum frequency at which this materialized view will be refreshed.
-  TableMaterializedView({
+  const TableMaterializedView({
     this.allowNonIncrementalDefinition,
     this.enableRefresh,
     required this.query,

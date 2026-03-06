@@ -15,7 +15,7 @@ class EthereumEndpointsResponse {
   /// [beaconApiEndpoint] The assigned URL for the node's Beacon API endpoint.
   /// [beaconPrometheusMetricsApiEndpoint] The assigned URL for the node's Beacon Prometheus metrics endpoint. See [Prometheus Metrics](https://lighthouse-book.sigmaprime.io/advanced_metrics.html) for more details.
   /// [executionClientPrometheusMetricsApiEndpoint] The assigned URL for the node's execution client's Prometheus metrics endpoint.
-  EthereumEndpointsResponse({
+  const EthereumEndpointsResponse({
     required this.beaconApiEndpoint,
     required this.beaconPrometheusMetricsApiEndpoint,
     required this.executionClientPrometheusMetricsApiEndpoint,

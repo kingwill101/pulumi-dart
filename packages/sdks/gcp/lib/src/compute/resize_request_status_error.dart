@@ -11,7 +11,7 @@ class ResizeRequestStatusError {
 
   /// Creates a new [ResizeRequestStatusError].
   /// [errors] (Output)
-  ResizeRequestStatusError({
+  const ResizeRequestStatusError({
     this.errors,
   });
 

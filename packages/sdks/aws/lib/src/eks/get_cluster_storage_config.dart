@@ -9,7 +9,7 @@ class GetClusterStorageConfig {
 
   /// Creates a new [GetClusterStorageConfig].
   /// [blockStorages] Contains block storage configuration for EKS Auto Mode enabled cluster.
-  GetClusterStorageConfig({
+  const GetClusterStorageConfig({
     required this.blockStorages,
   });
 

@@ -28,7 +28,7 @@ class AzureBlobFileSystemConfiguration {
   /// [identityReference] This property is mutually exclusive with both accountKey and sasKey; exactly one must be specified.
   /// [relativeMountPath] All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
   /// [sasKey] This property is mutually exclusive with both accountKey and identity; exactly one must be specified.
-  AzureBlobFileSystemConfiguration({
+  const AzureBlobFileSystemConfiguration({
     this.accountKey,
     required this.accountName,
     this.blobfuseOptions,

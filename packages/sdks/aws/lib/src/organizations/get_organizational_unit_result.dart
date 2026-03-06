@@ -15,7 +15,7 @@ class GetOrganizationalUnitResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [parentId] Required.
-  GetOrganizationalUnitResult({
+  const GetOrganizationalUnitResult({
     required this.arn,
     required this.id,
     required this.name,

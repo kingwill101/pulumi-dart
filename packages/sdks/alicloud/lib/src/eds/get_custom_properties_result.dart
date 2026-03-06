@@ -16,7 +16,7 @@ class GetCustomPropertiesResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [properties] Required.
-  GetCustomPropertiesResult({
+  const GetCustomPropertiesResult({
     required this.id,
     required this.ids,
     this.outputFile,

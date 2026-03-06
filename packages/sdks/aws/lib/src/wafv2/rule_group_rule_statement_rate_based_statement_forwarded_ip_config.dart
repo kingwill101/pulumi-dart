@@ -11,7 +11,7 @@ class RuleGroupRuleStatementRateBasedStatementForwardedIpConfig {
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementForwardedIpConfig].
   /// [fallbackBehavior] The match status to assign to the web request if the request doesn't have a valid IP address in the specified position. Valid values include: `MATCH` or `NO_MATCH`.
   /// [headerName] The name of the HTTP header to use for the IP address.
-  RuleGroupRuleStatementRateBasedStatementForwardedIpConfig({
+  const RuleGroupRuleStatementRateBasedStatementForwardedIpConfig({
     required this.fallbackBehavior,
     required this.headerName,
   });

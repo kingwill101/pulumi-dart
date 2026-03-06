@@ -29,7 +29,7 @@ class GetSingleServerServerAdministratorResult {
   /// [sid] The server administrator Sid (Secure ID).
   /// [tenantId] The server Active Directory Administrator tenant id.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSingleServerServerAdministratorResult({
+  const GetSingleServerServerAdministratorResult({
     required this.administratorType,
     required this.azureApiVersion,
     required this.id,

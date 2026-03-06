@@ -15,7 +15,7 @@ class ServiceImportConfigurationInfo {
   /// [enabled] If the import operation is enabled.
   /// [initialImportMode] If the FHIR service is in InitialImportMode.
   /// [integrationDataStore] The name of the default integration storage account.
-  ServiceImportConfigurationInfo({
+  const ServiceImportConfigurationInfo({
     this.enabled,
     this.initialImportMode,
     this.integrationDataStore,

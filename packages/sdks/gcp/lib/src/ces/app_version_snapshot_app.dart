@@ -119,7 +119,7 @@ class AppVersionSnapshotApp {
   /// [timeZoneSettings] (Output)
   /// [updateTime] (Output)
   /// [variableDeclarations] (Output)
-  AppVersionSnapshotApp({
+  const AppVersionSnapshotApp({
     this.audioProcessingConfigs,
     this.clientCertificateSettings,
     this.createTime,

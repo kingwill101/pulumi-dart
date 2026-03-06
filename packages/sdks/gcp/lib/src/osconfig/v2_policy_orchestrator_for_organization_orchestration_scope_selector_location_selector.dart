@@ -9,7 +9,7 @@ class V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelec
 
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelector].
   /// [includedLocations] Optional. Names of the locations in scope.
-  V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelector({
+  const V2PolicyOrchestratorForOrganizationOrchestrationScopeSelectorLocationSelector({
     this.includedLocations,
   });
 

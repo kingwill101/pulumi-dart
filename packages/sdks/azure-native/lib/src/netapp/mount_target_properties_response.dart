@@ -18,7 +18,7 @@ class MountTargetPropertiesResponse {
   /// [ipAddress] The mount target's IPv4 address
   /// [mountTargetId] UUID v4 used to identify the MountTarget
   /// [smbServerFqdn] The SMB server's Fully Qualified Domain Name, FQDN
-  MountTargetPropertiesResponse({
+  const MountTargetPropertiesResponse({
     required this.fileSystemId,
     required this.ipAddress,
     required this.mountTargetId,

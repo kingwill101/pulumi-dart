@@ -48,7 +48,7 @@ class SyncMemberArgs {
   /// [syncMemberName] The name of the sync member.
   /// [usePrivateLinkConnection] Whether to use private link connection.
   /// [userName] User name of the member database in the sync member.
-  SyncMemberArgs({
+  const SyncMemberArgs({
     required this.databaseName,
     this.databaseType,
     this.password,

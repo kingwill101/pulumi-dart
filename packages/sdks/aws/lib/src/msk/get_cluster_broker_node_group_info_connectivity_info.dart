@@ -11,7 +11,7 @@ class GetClusterBrokerNodeGroupInfoConnectivityInfo {
   /// Creates a new [GetClusterBrokerNodeGroupInfoConnectivityInfo].
   /// [publicAccesses] Required.
   /// [vpcConnectivities] Required.
-  GetClusterBrokerNodeGroupInfoConnectivityInfo({
+  const GetClusterBrokerNodeGroupInfoConnectivityInfo({
     required this.publicAccesses,
     required this.vpcConnectivities,
   });

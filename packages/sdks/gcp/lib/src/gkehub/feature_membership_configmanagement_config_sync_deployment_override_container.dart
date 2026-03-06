@@ -20,7 +20,7 @@ class FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer {
   /// [cpuRequest] The CPU request of the container.
   /// [memoryLimit] The memory limit of the container.
   /// [memoryRequest] The memory request of the container.
-  FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer({
+  const FeatureMembershipConfigmanagementConfigSyncDeploymentOverrideContainer({
     this.containerName,
     this.cpuLimit,
     this.cpuRequest,

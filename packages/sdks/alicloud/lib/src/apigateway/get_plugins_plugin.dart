@@ -32,7 +32,7 @@ class GetPluginsPlugin {
   /// [pluginName] The name of the plug-in that you want to create.
   /// [pluginType] The type of the plug-in.
   /// [tags] The tag of the resource.
-  GetPluginsPlugin({
+  const GetPluginsPlugin({
     required this.createTime,
     required this.description,
     required this.id,

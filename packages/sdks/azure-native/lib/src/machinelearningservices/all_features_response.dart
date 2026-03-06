@@ -8,7 +8,7 @@ class AllFeaturesResponse {
 
   /// Creates a new [AllFeaturesResponse].
   /// [filterType] Expected value is 'AllFeatures'.
-  AllFeaturesResponse({
+  const AllFeaturesResponse({
     required this.filterType,
   });
 

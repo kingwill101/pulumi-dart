@@ -13,7 +13,7 @@ class SubscriptionListResponse {
   /// Creates a new [SubscriptionListResponse].
   /// [monitoredSubscriptionList] List of subscriptions and the state of the monitoring.
   /// [provisioningState] Provisioning State of the resource
-  SubscriptionListResponse({
+  const SubscriptionListResponse({
     this.monitoredSubscriptionList,
     required this.provisioningState,
   });

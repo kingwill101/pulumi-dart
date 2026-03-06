@@ -11,7 +11,7 @@ class EndpointDeliveryRuleCacheKeyQueryStringAction {
   /// Creates a new [EndpointDeliveryRuleCacheKeyQueryStringAction].
   /// [behavior] The behavior of the cache key for query strings. Valid values are `Exclude`, `ExcludeAll`, `Include` and `IncludeAll`.
   /// [parameters] Comma separated list of parameter values.
-  EndpointDeliveryRuleCacheKeyQueryStringAction({
+  const EndpointDeliveryRuleCacheKeyQueryStringAction({
     required this.behavior,
     this.parameters,
   });

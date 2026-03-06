@@ -15,7 +15,7 @@ class RouteTableAttachmentState {
   /// [routeTableId] The ID of the route table to be bound to the switch.
   /// [status] The status of the resource.
   /// [vswitchId] The ID of the switch to bind the route table.
-  RouteTableAttachmentState({
+  const RouteTableAttachmentState({
     this.routeTableId,
     this.status,
     this.vswitchId,

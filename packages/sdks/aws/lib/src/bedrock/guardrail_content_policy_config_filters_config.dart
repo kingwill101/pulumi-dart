@@ -32,7 +32,7 @@ class GuardrailContentPolicyConfigFiltersConfig {
   /// [outputModalities] List of selected output modalities. Valid values: `IMAGE`, `TEXT`.
   /// [outputStrength] Strength for filters. Valid values: `NONE`, `LOW`, `MEDIUM`, `HIGH`.
   /// [type] Type of contextual grounding filter.
-  GuardrailContentPolicyConfigFiltersConfig({
+  const GuardrailContentPolicyConfigFiltersConfig({
     this.inputAction,
     this.inputEnabled,
     this.inputModalities,

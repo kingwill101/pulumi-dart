@@ -15,7 +15,7 @@ class DatadogOrganizationPropertiesResponse {
   /// [cspm] The configuration which describes the state of cloud security posture management. This collects configuration information for all resources in a subscription and track conformance to industry benchmarks.
   /// [id] Id of the Datadog organization.
   /// [name] Name of the Datadog organization.
-  DatadogOrganizationPropertiesResponse({
+  const DatadogOrganizationPropertiesResponse({
     this.cspm,
     this.id,
     this.name,

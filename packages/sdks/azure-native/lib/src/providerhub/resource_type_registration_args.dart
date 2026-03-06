@@ -21,7 +21,7 @@ class ResourceTypeRegistrationArgs {
   /// [properties] Optional.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [resourceType] The resource type.
-  ResourceTypeRegistrationArgs({
+  const ResourceTypeRegistrationArgs({
     this.kind,
     this.properties,
     required this.providerNamespace,

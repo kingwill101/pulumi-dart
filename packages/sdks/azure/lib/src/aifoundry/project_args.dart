@@ -37,7 +37,7 @@ class ProjectArgs {
   /// [name] The name which should be used for this AI Foundry Project. Changing this forces a new AI Foundry Project to be created.
   /// [primaryUserAssignedIdentity] The user assigned identity ID that represents the AI Foundry Hub identity. This must be set when enabling encryption with a user assigned identity.
   /// [tags] A mapping of tags which should be assigned to the AI Foundry Project.
-  ProjectArgs({
+  const ProjectArgs({
     required this.aiServicesHubId,
     this.description,
     this.friendlyName,

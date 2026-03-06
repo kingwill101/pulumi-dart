@@ -15,7 +15,7 @@ class ManagedVirtualNetworkSettingsResponse {
   /// [allowedAadTenantIdsForLinking] Allowed Aad Tenant Ids For Linking
   /// [linkedAccessCheckOnTargetResource] Linked Access Check On Target Resource
   /// [preventDataExfiltration] Prevent Data Exfiltration
-  ManagedVirtualNetworkSettingsResponse({
+  const ManagedVirtualNetworkSettingsResponse({
     this.allowedAadTenantIdsForLinking,
     this.linkedAccessCheckOnTargetResource,
     this.preventDataExfiltration,

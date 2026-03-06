@@ -23,7 +23,7 @@ class GetRedisFirewallRuleResult {
   /// [name] name of the firewall rule
   /// [startIP] lowest IP address included in the range
   /// [type] type (of the firewall rule resource = 'Microsoft.Cache/redis/firewallRule')
-  GetRedisFirewallRuleResult({
+  const GetRedisFirewallRuleResult({
     required this.azureApiVersion,
     required this.endIP,
     required this.id,

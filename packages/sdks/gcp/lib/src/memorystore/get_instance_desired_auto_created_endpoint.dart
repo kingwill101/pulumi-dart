@@ -12,7 +12,7 @@ class GetInstanceDesiredAutoCreatedEndpoint {
   /// Creates a new [GetInstanceDesiredAutoCreatedEndpoint].
   /// [network] Required. The consumer network where the IP address resides, in the form of
   /// [projectId] Required. The consumer project_id where the forwarding rule is created from.
-  GetInstanceDesiredAutoCreatedEndpoint({
+  const GetInstanceDesiredAutoCreatedEndpoint({
     required this.network,
     required this.projectId,
   });

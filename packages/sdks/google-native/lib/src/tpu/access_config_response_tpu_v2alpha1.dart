@@ -9,7 +9,7 @@ class AccessConfigResponseTpuV2alpha1 {
 
   /// Creates a new [AccessConfigResponseTpuV2alpha1].
   /// [externalIp] An external IP address associated with the TPU worker.
-  AccessConfigResponseTpuV2alpha1({
+  const AccessConfigResponseTpuV2alpha1({
     required this.externalIp,
   });
 

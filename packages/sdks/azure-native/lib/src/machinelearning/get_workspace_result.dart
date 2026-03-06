@@ -51,7 +51,7 @@ class GetWorkspaceResult {
   /// [workspaceId] The immutable id associated with this workspace.
   /// [workspaceState] The current state of workspace resource.
   /// [workspaceType] The type of this workspace.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.azureApiVersion,
     required this.creationTime,
     required this.id,

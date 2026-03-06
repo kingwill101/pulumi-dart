@@ -15,7 +15,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag {
   /// Creates a new [RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
   /// [state] (Output)
-  RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag({
+  const RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTag({
     this.name,
     this.state,
   });

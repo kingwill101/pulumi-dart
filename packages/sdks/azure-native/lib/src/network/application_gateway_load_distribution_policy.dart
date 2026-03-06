@@ -19,7 +19,7 @@ class ApplicationGatewayLoadDistributionPolicy {
   /// [loadDistributionAlgorithm] Load Distribution Targets resource of an application gateway.
   /// [loadDistributionTargets] Load Distribution Targets resource of an application gateway.
   /// [name] Name of the load distribution policy that is unique within an Application Gateway.
-  ApplicationGatewayLoadDistributionPolicy({
+  const ApplicationGatewayLoadDistributionPolicy({
     this.id,
     this.loadDistributionAlgorithm,
     this.loadDistributionTargets,

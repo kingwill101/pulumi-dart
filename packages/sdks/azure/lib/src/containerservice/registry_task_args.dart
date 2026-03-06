@@ -75,7 +75,7 @@ class RegistryTaskArgs {
   /// [tags] Optional.
   /// [timeoutInSeconds] Optional.
   /// [timerTriggers] One or more `timer_trigger` blocks as defined below.
-  RegistryTaskArgs({
+  const RegistryTaskArgs({
     this.agentPoolName,
     this.agentSetting,
     this.baseImageTrigger,

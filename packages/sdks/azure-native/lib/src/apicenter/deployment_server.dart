@@ -9,7 +9,7 @@ class DeploymentServer {
 
   /// Creates a new [DeploymentServer].
   /// [runtimeUri] Base runtime URLs for this deployment.
-  DeploymentServer({
+  const DeploymentServer({
     this.runtimeUri,
   });
 

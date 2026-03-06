@@ -12,7 +12,7 @@ class SkuResponse {
   /// Creates a new [SkuResponse].
   /// [capacity] The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
   /// [name] The name of this SKU.
-  SkuResponse({
+  const SkuResponse({
     required this.capacity,
     required this.name,
   });

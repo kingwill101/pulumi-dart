@@ -50,7 +50,7 @@ class V2FolderSccBigQueryExportArgs {
   /// [filter] Expression that defines the filter to apply across create/update
   /// [folder] The folder where Cloud Security Command Center Big Query Export
   /// [location] The BigQuery export configuration is stored in this location. If not provided, Use global as default.
-  V2FolderSccBigQueryExportArgs({
+  const V2FolderSccBigQueryExportArgs({
     required this.bigQueryExportId,
     this.dataset,
     this.description,

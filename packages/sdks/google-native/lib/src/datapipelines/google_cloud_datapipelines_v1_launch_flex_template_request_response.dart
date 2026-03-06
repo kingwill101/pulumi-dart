@@ -19,7 +19,7 @@ class GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse {
   /// [location] The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. For example, `us-central1`, `us-west1`.
   /// [project] The ID of the Cloud Platform project that the job belongs to.
   /// [validateOnly] If true, the request is validated but not actually executed. Defaults to false.
-  GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse({
+  const GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestResponse({
     required this.launchParameter,
     required this.location,
     required this.project,

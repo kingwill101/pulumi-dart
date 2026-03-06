@@ -9,7 +9,7 @@ class ProviderHubMetadataProviderAuthentication {
 
   /// Creates a new [ProviderHubMetadataProviderAuthentication].
   /// [allowedAudiences] The allowed audiences.
-  ProviderHubMetadataProviderAuthentication({
+  const ProviderHubMetadataProviderAuthentication({
     required this.allowedAudiences,
   });
 

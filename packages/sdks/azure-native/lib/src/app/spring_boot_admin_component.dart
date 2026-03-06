@@ -22,7 +22,7 @@ class SpringBootAdminComponent {
   /// [configurations] List of Java Components configuration properties
   /// [scale] Java component scaling configurations
   /// [serviceBinds] List of Java Components that are bound to the Java component
-  SpringBootAdminComponent({
+  const SpringBootAdminComponent({
     required this.componentType,
     this.configurations,
     this.scale,

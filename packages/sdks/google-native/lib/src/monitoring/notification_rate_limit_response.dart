@@ -9,7 +9,7 @@ class NotificationRateLimitResponse {
 
   /// Creates a new [NotificationRateLimitResponse].
   /// [period] Not more than one notification per period.
-  NotificationRateLimitResponse({
+  const NotificationRateLimitResponse({
     required this.period,
   });
 

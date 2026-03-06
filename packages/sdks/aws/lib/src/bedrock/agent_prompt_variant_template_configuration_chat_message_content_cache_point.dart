@@ -8,7 +8,7 @@ class AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint {
 
   /// Creates a new [AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint].
   /// [type] Indicates that the CachePointBlock is of the default type. Valid values: `default`.
-  AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint({
+  const AgentPromptVariantTemplateConfigurationChatMessageContentCachePoint({
     required this.type,
   });
 

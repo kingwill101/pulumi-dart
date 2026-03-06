@@ -90,7 +90,7 @@ class KxClusterArgs {
   /// [tickerplantLogConfigurations] A configuration to store Tickerplant logs. It consists of a list of volumes that will be mounted to your cluster. For the cluster type Tickerplant , the location of the TP volume on the cluster will be available by using the global variable .aws.tp_log_path.
   /// [type] Type of KDB database. The following types are available:
   /// [vpcConfiguration] Configuration details about the network where the Privatelink endpoint of the cluster resides. See vpc_configuration.
-  KxClusterArgs({
+  const KxClusterArgs({
     this.autoScalingConfiguration,
     this.availabilityZoneId,
     required this.azMode,

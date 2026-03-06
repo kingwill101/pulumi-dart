@@ -32,7 +32,7 @@ class EndpointArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [severity] The minimum alert severity level that is reported by the endpoint.
   /// [threatExceptions] Configuration for threat IDs excluded from generating alerts. Limit: 99 IDs.
-  EndpointArgs({
+  const EndpointArgs({
     this.description,
     required this.location,
     this.name,

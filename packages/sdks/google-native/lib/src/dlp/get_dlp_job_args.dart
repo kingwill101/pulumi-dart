@@ -15,7 +15,7 @@ class GetDlpJobArgs {
   /// [dlpJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDlpJobArgs({
+  const GetDlpJobArgs({
     required this.dlpJobId,
     required this.location,
     this.project,

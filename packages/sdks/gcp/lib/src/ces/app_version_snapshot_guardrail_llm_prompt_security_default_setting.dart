@@ -11,7 +11,7 @@ class AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting {
 
   /// Creates a new [AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting].
   /// [defaultPromptTemplate] (Output)
-  AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting({
+  const AppVersionSnapshotGuardrailLlmPromptSecurityDefaultSetting({
     this.defaultPromptTemplate,
   });
 

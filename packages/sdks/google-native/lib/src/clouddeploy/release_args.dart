@@ -52,7 +52,7 @@ class ReleaseArgs {
   /// [skaffoldConfigPath] Filepath of the Skaffold config inside of the config URI.
   /// [skaffoldConfigUri] Cloud Storage URI of tar.gz archive containing Skaffold configuration.
   /// [skaffoldVersion] The Skaffold version to use when operating on this release, such as "1.20.0". Not all versions are valid; Cloud Deploy supports a specific set of versions. If unset, the most recent supported Skaffold version will be used.
-  ReleaseArgs({
+  const ReleaseArgs({
     this.annotations,
     this.buildArtifacts,
     required this.deliveryPipelineId,

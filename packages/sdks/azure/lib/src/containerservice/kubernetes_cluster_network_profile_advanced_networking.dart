@@ -11,7 +11,7 @@ class KubernetesClusterNetworkProfileAdvancedNetworking {
   /// Creates a new [KubernetesClusterNetworkProfileAdvancedNetworking].
   /// [observabilityEnabled] Is observability enabled? Defaults to `false`.
   /// [securityEnabled] Is security enabled? Defaults to `false`.
-  KubernetesClusterNetworkProfileAdvancedNetworking({
+  const KubernetesClusterNetworkProfileAdvancedNetworking({
     this.observabilityEnabled,
     this.securityEnabled,
   });

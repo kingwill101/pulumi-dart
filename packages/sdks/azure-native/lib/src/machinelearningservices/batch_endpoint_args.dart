@@ -39,7 +39,7 @@ class BatchEndpointArgs {
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [tags] Resource tags.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  BatchEndpointArgs({
+  const BatchEndpointArgs({
     required this.batchEndpointProperties,
     this.endpointName,
     this.identity,

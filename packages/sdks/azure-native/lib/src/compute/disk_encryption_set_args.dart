@@ -38,7 +38,7 @@ class DiskEncryptionSetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rotationToLatestKeyVersionEnabled] Set this flag to true to enable auto-updating of this disk encryption set to the latest key version.
   /// [tags] Resource tags.
-  DiskEncryptionSetArgs({
+  const DiskEncryptionSetArgs({
     this.activeKey,
     this.diskEncryptionSetName,
     this.encryptionType,

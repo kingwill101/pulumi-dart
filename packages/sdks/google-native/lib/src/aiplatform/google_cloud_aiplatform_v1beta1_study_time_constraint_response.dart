@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse].
   /// [endTime] Compares the wallclock time to this time. Must use UTC timezone.
   /// [maxDuration] Counts the wallclock time passed since the creation of this Study.
-  GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse({
+  const GoogleCloudAiplatformV1beta1StudyTimeConstraintResponse({
     required this.endTime,
     required this.maxDuration,
   });

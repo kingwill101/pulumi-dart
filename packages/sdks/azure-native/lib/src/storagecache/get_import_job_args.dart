@@ -18,7 +18,7 @@ class GetImportJobArgs {
   /// [amlFilesystemName] Name for the AML file system. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   /// [importJobName] Name for the import job. Allows alphanumerics, underscores, and hyphens. Start and end with alphanumeric.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetImportJobArgs({
+  const GetImportJobArgs({
     required this.amlFilesystemName,
     required this.importJobName,
     required this.resourceGroupName,

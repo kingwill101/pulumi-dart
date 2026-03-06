@@ -11,7 +11,7 @@ class UptimeAlertNotification {
   /// Creates a new [UptimeAlertNotification].
   /// [emails] List of email addresses to sent notifications to.
   /// [slacks] Optional.
-  UptimeAlertNotification({
+  const UptimeAlertNotification({
     this.emails,
     this.slacks,
   });

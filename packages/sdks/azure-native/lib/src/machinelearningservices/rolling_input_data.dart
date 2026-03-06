@@ -31,7 +31,7 @@ class RollingInputData {
   /// [uri] [Required] Input Asset URI.
   /// [windowOffset] [Required] The time offset between the end of the data window and the monitor's current run time.
   /// [windowSize] [Required] The size of the rolling data window.
-  RollingInputData({
+  const RollingInputData({
     this.columns,
     this.dataContext,
     required this.inputDataType,

@@ -30,7 +30,7 @@ class ServicePerimeterDryRunIngressPolicyState {
   /// [ingressTo] Defines the conditions on the `ApiOperation` and request destination that cause
   /// [perimeter] The name of the Service Perimeter to add this resource to.
   /// [title] Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  ServicePerimeterDryRunIngressPolicyState({
+  const ServicePerimeterDryRunIngressPolicyState({
     this.accessPolicyId,
     this.etag,
     this.ingressFrom,

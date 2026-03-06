@@ -14,7 +14,7 @@ class ReplicatedVMUnmanagedDisk {
   /// [diskUri] Id of disk that should be replicated. Changing this forces a new resource to be created.
   /// [stagingStorageAccountId] Storage account that should be used for caching. Changing this forces a new resource to be created.
   /// [targetStorageAccountId] Storage account disk should belong to when a failover is done. Changing this forces a new resource to be created.
-  ReplicatedVMUnmanagedDisk({
+  const ReplicatedVMUnmanagedDisk({
     required this.diskUri,
     required this.stagingStorageAccountId,
     required this.targetStorageAccountId,

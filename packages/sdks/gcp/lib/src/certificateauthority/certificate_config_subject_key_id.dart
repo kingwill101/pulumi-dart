@@ -8,7 +8,7 @@ class CertificateConfigSubjectKeyId {
 
   /// Creates a new [CertificateConfigSubjectKeyId].
   /// [keyId] The value of the KeyId in lowercase hexadecimal.
-  CertificateConfigSubjectKeyId({
+  const CertificateConfigSubjectKeyId({
     this.keyId,
   });
 

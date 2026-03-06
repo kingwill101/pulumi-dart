@@ -23,7 +23,7 @@ class LifecyclePolicyPolicyDetailsScheduleCreateRuleScripts {
   /// [executionTimeout] Specifies a timeout period, in seconds, after which Amazon Data Lifecycle Manager fails the script run attempt if it has not completed. In case automating VSS Backups, omit this parameter. The default is `10`.
   /// [maximumRetryCount] Specifies the number of times Amazon Data Lifecycle Manager should retry scripts that fail. Must be an integer between `0` and `3`. The default is `0`.
   /// [stages] List to indicate which scripts Amazon Data Lifecycle Manager should run on target instances. Pre scripts run before Amazon Data Lifecycle Manager initiates snapshot creation. Post scripts run after Amazon Data Lifecycle Manager initiates snapshot creation. Valid values: `PRE` and `POST`. The default is `PRE` and `POST`
-  LifecyclePolicyPolicyDetailsScheduleCreateRuleScripts({
+  const LifecyclePolicyPolicyDetailsScheduleCreateRuleScripts({
     this.executeOperationOnScriptFailure,
     required this.executionHandler,
     this.executionHandlerService,

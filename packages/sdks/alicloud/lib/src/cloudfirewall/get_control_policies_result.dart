@@ -43,7 +43,7 @@ class GetControlPoliciesResult {
   /// [policies] A list of Cloud Firewall Control Policies. Each element contains the following attributes:
   /// [proto] The type of the protocol in the access control policy.
   /// [source] The source address in the access control policy.
-  GetControlPoliciesResult({
+  const GetControlPoliciesResult({
     this.aclAction,
     this.aclUuid,
     this.description,

@@ -23,7 +23,7 @@ class GetDatabaseInstancesInstanceClone {
   /// [preferredZone] (Point-in-time recovery for PostgreSQL only) Clone to an instance in the specified zone. If no zone is specified, clone to the same zone as the source instance.
   /// [sourceInstanceDeletionTime] The timestamp of when the source instance was deleted for a clone from a deleted instance.
   /// [sourceInstanceName] The name of the instance from which the point in time should be restored.
-  GetDatabaseInstancesInstanceClone({
+  const GetDatabaseInstancesInstanceClone({
     required this.allocatedIpRange,
     required this.databaseNames,
     required this.pointInTime,

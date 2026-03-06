@@ -9,7 +9,7 @@ class GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse].
   /// [instanceDisplayName] Display name of the Instance. This is user specified and different from the resource name.
-  GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse({
+  const GoogleCloudDatacatalogV1CloudBigtableSystemSpecResponse({
     required this.instanceDisplayName,
   });
 

@@ -13,7 +13,7 @@ class WorkflowStepCopyStepDetailsDestinationFileLocation {
   /// Creates a new [WorkflowStepCopyStepDetailsDestinationFileLocation].
   /// [efsFileLocation] Specifies the details for the EFS file being copied.
   /// [s3FileLocation] Specifies the details for the S3 file being copied.
-  WorkflowStepCopyStepDetailsDestinationFileLocation({
+  const WorkflowStepCopyStepDetailsDestinationFileLocation({
     this.efsFileLocation,
     this.s3FileLocation,
   });

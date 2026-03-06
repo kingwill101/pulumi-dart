@@ -14,7 +14,7 @@ class Overlay {
   /// Creates a new [Overlay].
   /// [animations] List of animations. The list should be chronological, without any time overlap.
   /// [image] Image overlay.
-  Overlay({
+  const Overlay({
     this.animations,
     this.image,
   });

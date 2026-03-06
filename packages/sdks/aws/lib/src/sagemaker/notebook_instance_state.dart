@@ -68,7 +68,7 @@ class NotebookInstanceState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [url] The URL that you use to connect to the Jupyter notebook that is running in your notebook instance.
   /// [volumeSize] The size, in GB, of the ML storage volume to attach to the notebook instance. The default value is 5 GB.
-  NotebookInstanceState({
+  const NotebookInstanceState({
     this.additionalCodeRepositories,
     this.arn,
     this.defaultCodeRepository,

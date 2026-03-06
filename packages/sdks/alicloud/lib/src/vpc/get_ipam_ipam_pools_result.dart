@@ -44,7 +44,7 @@ class GetIpamIpamPoolsResult {
   /// [resourceGroupId] The ID of the resource group.
   /// [sourceIpamPoolId] The instance ID of the source IPAM address pool.&gt; If this parameter is not entered, the created address pool is the parent address pool.
   /// [tags] The tag of the resource.
-  GetIpamIpamPoolsResult({
+  const GetIpamIpamPoolsResult({
     required this.id,
     required this.ids,
     this.ipamPoolId,

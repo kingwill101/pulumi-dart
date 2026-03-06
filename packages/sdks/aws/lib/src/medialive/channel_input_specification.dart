@@ -11,7 +11,7 @@ class ChannelInputSpecification {
   /// [codec] Required.
   /// [inputResolution] Required.
   /// [maximumBitrate] Required.
-  ChannelInputSpecification({
+  const ChannelInputSpecification({
     required this.codec,
     required this.inputResolution,
     required this.maximumBitrate,

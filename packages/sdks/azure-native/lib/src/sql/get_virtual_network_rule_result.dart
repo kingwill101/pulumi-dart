@@ -26,7 +26,7 @@ class GetVirtualNetworkRuleResult {
   /// [state] Virtual Network Rule State
   /// [type] Resource type.
   /// [virtualNetworkSubnetId] The ARM resource id of the virtual network subnet.
-  GetVirtualNetworkRuleResult({
+  const GetVirtualNetworkRuleResult({
     required this.azureApiVersion,
     required this.id,
     this.ignoreMissingVnetServiceEndpoint,

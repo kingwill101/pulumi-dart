@@ -21,7 +21,7 @@ class GetConfigurationKeysResult {
   /// [items] A list of `items` blocks as defined below.
   /// [key] The name of the App Configuration Key.
   /// [label] The label of the App Configuration Key.
-  GetConfigurationKeysResult({
+  const GetConfigurationKeysResult({
     required this.configurationStoreId,
     required this.id,
     required this.items,

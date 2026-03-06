@@ -22,7 +22,7 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig {
   /// [retryIntervalMinutes] Retry interval in minutes.
   /// [timeoutMinutes] Timeout in minutes.
   /// [ungracefuls] Ungraceful behavior configuration. See Ungraceful below.
-  PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig({
+  const PlanWorkflowStepParallelConfigStepCustomActionLambdaConfig({
     this.lambdas,
     required this.regionToRun,
     required this.retryIntervalMinutes,

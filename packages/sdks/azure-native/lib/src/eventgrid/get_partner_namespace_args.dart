@@ -15,7 +15,7 @@ class GetPartnerNamespaceArgs {
   /// Creates a new [GetPartnerNamespaceArgs].
   /// [partnerNamespaceName] Name of the partner namespace.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  GetPartnerNamespaceArgs({
+  const GetPartnerNamespaceArgs({
     required this.partnerNamespaceName,
     required this.resourceGroupName,
   });

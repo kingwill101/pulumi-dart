@@ -14,7 +14,7 @@ class DefenderCspmAwsOfferingResponseCiem {
   /// Creates a new [DefenderCspmAwsOfferingResponseCiem].
   /// [ciemDiscovery] Defender CSPM Permissions Management discovery configuration
   /// [ciemOidc] AWS Defender CSPM Permissions Management OIDC (open id connect) connection configurations
-  DefenderCspmAwsOfferingResponseCiem({
+  const DefenderCspmAwsOfferingResponseCiem({
     this.ciemDiscovery,
     this.ciemOidc,
   });

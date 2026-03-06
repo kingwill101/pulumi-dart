@@ -15,7 +15,7 @@ class GetBackupPlansArgs {
   /// Creates a new [GetBackupPlansArgs].
   /// [clusterId] The ID of the cluster for the backup.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetBackupPlansArgs({
+  const GetBackupPlansArgs({
     required this.clusterId,
     this.outputFile,
   });

@@ -17,7 +17,7 @@ class ImportPipelineSourcePropertiesResponse {
   /// [keyVaultUri] They key vault secret uri to obtain the source storage SAS token.
   /// [type] The type of source for the import pipeline.
   /// [uri] The source uri of the import pipeline.
-  ImportPipelineSourcePropertiesResponse({
+  const ImportPipelineSourcePropertiesResponse({
     required this.keyVaultUri,
     this.type,
     this.uri,

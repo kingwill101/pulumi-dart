@@ -12,7 +12,7 @@ class GlobalEventsStorageRegionArgs {
 
   /// Creates a new [GlobalEventsStorageRegionArgs].
   /// [storageRegion] Global Events Storage Region.
-  GlobalEventsStorageRegionArgs({
+  const GlobalEventsStorageRegionArgs({
     this.storageRegion,
   });
 

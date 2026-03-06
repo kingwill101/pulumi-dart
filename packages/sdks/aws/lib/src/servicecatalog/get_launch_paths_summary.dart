@@ -18,7 +18,7 @@ class GetLaunchPathsSummary {
   /// [name] Name of the portfolio to which the path was assigned.
   /// [pathId] Identifier of the product path.
   /// [tags] Tags associated with this product path.
-  GetLaunchPathsSummary({
+  const GetLaunchPathsSummary({
     required this.constraintSummaries,
     required this.name,
     required this.pathId,

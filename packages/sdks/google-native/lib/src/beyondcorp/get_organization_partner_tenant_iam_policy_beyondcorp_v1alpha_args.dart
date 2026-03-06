@@ -15,7 +15,7 @@ class GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [organizationId] Required.
   /// [partnerTenantId] Required.
-  GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs({
+  const GetOrganizationPartnerTenantIamPolicyBeyondcorpV1alphaArgs({
     this.optionsRequestedPolicyVersion,
     required this.organizationId,
     required this.partnerTenantId,

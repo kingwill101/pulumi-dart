@@ -12,7 +12,7 @@ class DeblockResponse {
   /// Creates a new [DeblockResponse].
   /// [enabled] Enable deblocker. The default is `false`.
   /// [strength] Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0.
-  DeblockResponse({
+  const DeblockResponse({
     required this.enabled,
     required this.strength,
   });

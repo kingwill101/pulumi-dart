@@ -17,7 +17,7 @@ class SpotInstanceRequestNetworkInterface {
   /// [deviceIndex] Integer index of the network interface attachment. Limited by instance type.
   /// [networkCardIndex] Integer index of the network card. Limited by instance type. The default index is `0`.
   /// [networkInterfaceId] ID of the network interface to attach.
-  SpotInstanceRequestNetworkInterface({
+  const SpotInstanceRequestNetworkInterface({
     this.deleteOnTermination,
     required this.deviceIndex,
     this.networkCardIndex,

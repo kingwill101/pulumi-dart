@@ -41,7 +41,7 @@ class TriggerBuildArtifacts {
   /// [npmPackages] Npm package to upload to Artifact Registry upon successful completion of all build steps.
   /// [objects] A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
   /// [pythonPackages] Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
-  TriggerBuildArtifacts({
+  const TriggerBuildArtifacts({
     this.images,
     this.mavenArtifacts,
     this.npmPackages,

@@ -8,7 +8,7 @@ class InterfaceVpcIpv6Slaac {
 
   /// Creates a new [InterfaceVpcIpv6Slaac].
   /// [range] The IPv6 network range in CIDR notation.
-  InterfaceVpcIpv6Slaac({
+  const InterfaceVpcIpv6Slaac({
     this.range,
   });
 

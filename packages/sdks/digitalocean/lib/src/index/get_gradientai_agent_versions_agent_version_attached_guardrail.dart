@@ -17,7 +17,7 @@ class GetGradientaiAgentVersionsAgentVersionAttachedGuardrail {
   /// [name] Name of the guardrail
   /// [priority] Guardrail priority
   /// [uuid] Guardrail UUID
-  GetGradientaiAgentVersionsAgentVersionAttachedGuardrail({
+  const GetGradientaiAgentVersionsAgentVersionAttachedGuardrail({
     required this.isDeleted,
     required this.name,
     required this.priority,

@@ -11,7 +11,7 @@ class GetAiIndexIndexStat {
   /// Creates a new [GetAiIndexIndexStat].
   /// [shardsCount] The number of shards in the Index.
   /// [vectorsCount] The number of vectors in the Index.
-  GetAiIndexIndexStat({
+  const GetAiIndexIndexStat({
     required this.shardsCount,
     required this.vectorsCount,
   });

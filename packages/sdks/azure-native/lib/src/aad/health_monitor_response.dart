@@ -15,7 +15,7 @@ class HealthMonitorResponse {
   /// [details] Health Monitor Details
   /// [id] Health Monitor Id
   /// [name] Health Monitor Name
-  HealthMonitorResponse({
+  const HealthMonitorResponse({
     required this.details,
     required this.id,
     required this.name,

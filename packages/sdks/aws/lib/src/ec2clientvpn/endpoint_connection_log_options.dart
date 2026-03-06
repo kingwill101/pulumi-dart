@@ -14,7 +14,7 @@ class EndpointConnectionLogOptions {
   /// [cloudwatchLogGroup] The name of the CloudWatch Logs log group.
   /// [cloudwatchLogStream] The name of the CloudWatch Logs log stream to which the connection data is published.
   /// [enabled] Indicates whether connection logging is enabled.
-  EndpointConnectionLogOptions({
+  const EndpointConnectionLogOptions({
     this.cloudwatchLogGroup,
     this.cloudwatchLogStream,
     required this.enabled,

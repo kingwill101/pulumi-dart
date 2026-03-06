@@ -15,7 +15,7 @@ class TrackingEventDefinitionResponse {
   /// [operationName] The operation name.
   /// [operationType] The operation type.
   /// [properties] The properties to be collected for event.
-  TrackingEventDefinitionResponse({
+  const TrackingEventDefinitionResponse({
     this.operationName,
     this.operationType,
     this.properties,

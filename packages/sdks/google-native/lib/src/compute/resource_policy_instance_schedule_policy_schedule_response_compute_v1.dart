@@ -9,7 +9,7 @@ class ResourcePolicyInstanceSchedulePolicyScheduleResponseComputeV1 {
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicyScheduleResponseComputeV1].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
-  ResourcePolicyInstanceSchedulePolicyScheduleResponseComputeV1({
+  const ResourcePolicyInstanceSchedulePolicyScheduleResponseComputeV1({
     required this.schedule,
   });
 

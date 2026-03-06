@@ -20,7 +20,7 @@ class TelegramChannel {
   /// [etag] Entity Tag of the resource
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Telegram channel resource
-  TelegramChannel({
+  const TelegramChannel({
     required this.channelName,
     this.etag,
     this.location,

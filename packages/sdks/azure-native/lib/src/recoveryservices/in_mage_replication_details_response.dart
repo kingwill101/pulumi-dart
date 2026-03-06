@@ -136,7 +136,7 @@ class InMageReplicationDetailsResponse {
   /// [vmNics] The PE Network details.
   /// [vmProtectionState] The protection state for the vm.
   /// [vmProtectionStateDescription] The protection state description for the vm.
-  InMageReplicationDetailsResponse({
+  const InMageReplicationDetailsResponse({
     this.activeSiteType,
     this.agentDetails,
     this.azureStorageAccountId,

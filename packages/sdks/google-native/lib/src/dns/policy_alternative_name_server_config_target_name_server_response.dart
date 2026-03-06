@@ -16,7 +16,7 @@ class PolicyAlternativeNameServerConfigTargetNameServerResponse {
   /// [ipv4Address] IPv4 address to forward queries to.
   /// [ipv6Address] IPv6 address to forward to. Does not accept both fields (ipv4 & ipv6) being populated. Public preview as of November 2022.
   /// [kind] Required.
-  PolicyAlternativeNameServerConfigTargetNameServerResponse({
+  const PolicyAlternativeNameServerConfigTargetNameServerResponse({
     required this.forwardingPath,
     required this.ipv4Address,
     required this.ipv6Address,

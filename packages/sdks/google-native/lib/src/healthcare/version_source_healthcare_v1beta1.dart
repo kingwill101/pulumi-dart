@@ -12,7 +12,7 @@ class VersionSourceHealthcareV1beta1 {
   /// Creates a new [VersionSourceHealthcareV1beta1].
   /// [mshField] The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
   /// [value] The value to match with the field. For example, "My Application Name" or "2.3".
-  VersionSourceHealthcareV1beta1({
+  const VersionSourceHealthcareV1beta1({
     this.mshField,
     this.value,
   });

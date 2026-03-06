@@ -22,7 +22,7 @@ class PatchScheduleArgs {
   /// [name] The name of the redis cache.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduleEntries] List of patch schedules for a Redis cache.
-  PatchScheduleArgs({
+  const PatchScheduleArgs({
     this.default_,
     required this.name,
     required this.resourceGroupName,

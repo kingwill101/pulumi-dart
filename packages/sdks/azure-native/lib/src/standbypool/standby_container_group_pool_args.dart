@@ -29,7 +29,7 @@ class StandbyContainerGroupPoolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [standbyContainerGroupPoolName] Name of the standby container group pool
   /// [tags] Resource tags.
-  StandbyContainerGroupPoolArgs({
+  const StandbyContainerGroupPoolArgs({
     required this.containerGroupProperties,
     required this.elasticityProfile,
     this.location,

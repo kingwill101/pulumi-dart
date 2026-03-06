@@ -24,7 +24,7 @@ class GetServiceMeshesArgs {
   /// [nameRegex] A regex string to filter results by Service Mesh name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the Service Mesh. Valid values: `running`, `initial`.
-  GetServiceMeshesArgs({
+  const GetServiceMeshesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

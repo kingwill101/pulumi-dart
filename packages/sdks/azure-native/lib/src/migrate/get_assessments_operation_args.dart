@@ -21,7 +21,7 @@ class GetAssessmentsOperationArgs {
   /// [groupName] Group ARM name
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAssessmentsOperationArgs({
+  const GetAssessmentsOperationArgs({
     required this.assessmentName,
     required this.groupName,
     required this.projectName,

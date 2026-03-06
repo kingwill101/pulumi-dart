@@ -25,7 +25,7 @@ class SubnetSpec {
   /// [size] Optional size of the subnet's CIDR block - the number of hosts. This value must be a power of 2 (e.g. 256, 512, 1024, etc.). This is optional, the default value is inferred from the `cidrMask`, `cidrBlocks` or based on an even distribution of available space from the VPC's CIDR block after being divided evenly by availability zone.
   /// [tags] A map of tags to assign to the resource.
   /// [type] The type of subnet.
-  SubnetSpec({
+  const SubnetSpec({
     this.cidrBlocks,
     this.cidrMask,
     this.name,

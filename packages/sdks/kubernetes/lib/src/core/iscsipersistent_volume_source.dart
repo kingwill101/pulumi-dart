@@ -40,7 +40,7 @@ class ISCSIPersistentVolumeSource {
   /// [readOnly] readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false.
   /// [secretRef] secretRef is the CHAP Secret for iSCSI target and initiator authentication
   /// [targetPortal] targetPortal is iSCSI Target Portal. The Portal is either an IP or ip_addr:port if the port is other than default (typically TCP ports 860 and 3260).
-  ISCSIPersistentVolumeSource({
+  const ISCSIPersistentVolumeSource({
     this.chapAuthDiscovery,
     this.chapAuthSession,
     this.fsType,

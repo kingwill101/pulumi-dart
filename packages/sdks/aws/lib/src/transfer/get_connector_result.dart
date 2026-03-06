@@ -43,7 +43,7 @@ class GetConnectorResult {
   /// [sftpConfigs] Object containing the following attributes:
   /// [tags] Object containing the following attributes:
   /// [url] URL of the partner's AS2 or SFTP endpoint.
-  GetConnectorResult({
+  const GetConnectorResult({
     required this.accessRole,
     required this.arn,
     required this.as2Configs,

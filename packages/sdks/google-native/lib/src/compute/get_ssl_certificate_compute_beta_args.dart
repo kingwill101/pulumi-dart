@@ -13,7 +13,7 @@ class GetSslCertificateComputeBetaArgs {
   /// Creates a new [GetSslCertificateComputeBetaArgs].
   /// [project] Optional.
   /// [sslCertificate] Required.
-  GetSslCertificateComputeBetaArgs({
+  const GetSslCertificateComputeBetaArgs({
     this.project,
     required this.sslCertificate,
   });

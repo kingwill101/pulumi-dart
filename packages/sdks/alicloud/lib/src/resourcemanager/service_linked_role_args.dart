@@ -18,7 +18,7 @@ class ServiceLinkedRoleArgs {
   /// [customSuffix] The suffix of the role name. Only a few service linked roles support custom suffixes. The role name (including its suffix) must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-). For example, if the suffix is Example, the role name is ServiceLinkedRoleName_Example.
   /// [description] The description of the service linked role.  This parameter must be specified for only the service linked roles that support custom suffixes. Otherwise, the preset value is used and cannot be modified. The description must be 1 to 1,024 characters in length.
   /// [serviceName] The service name. For more information about the service name, see [Cloud services that support service linked roles](https://www.alibabacloud.com/help/en/doc-detail/160674.htm)
-  ServiceLinkedRoleArgs({
+  const ServiceLinkedRoleArgs({
     this.customSuffix,
     this.description,
     required this.serviceName,

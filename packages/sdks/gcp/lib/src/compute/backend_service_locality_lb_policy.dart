@@ -16,7 +16,7 @@ class BackendServiceLocalityLbPolicy {
   /// Creates a new [BackendServiceLocalityLbPolicy].
   /// [customPolicy] The configuration for a custom policy implemented by the user and
   /// [policy] The configuration for a built-in load balancing policy.
-  BackendServiceLocalityLbPolicy({
+  const BackendServiceLocalityLbPolicy({
     this.customPolicy,
     this.policy,
   });

@@ -9,7 +9,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataB
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataBasicAuthCredentials].
   /// [password] Required.
   /// [username] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataBasicAuthCredentials({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoDataBasicAuthCredentials({
     required this.password,
     required this.username,
   });

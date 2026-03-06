@@ -15,7 +15,7 @@ class GetInstanceTypeArgs {
   /// Creates a new [GetInstanceTypeArgs].
   /// [id] Label used to identify instance type
   /// [label] The Linode Type's label is for display purposes only
-  GetInstanceTypeArgs({
+  const GetInstanceTypeArgs({
     required this.id,
     this.label,
   });

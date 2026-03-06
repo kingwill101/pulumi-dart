@@ -35,7 +35,7 @@ class CassandraResourceCassandraRoleDefinitionArgs {
   /// [roleDefinitionId] The GUID for the Role Definition.
   /// [roleName] A user-friendly name for the Role Definition. Must be unique for the database account.
   /// [type] Indicates whether the Role Definition was built-in or user created.
-  CassandraResourceCassandraRoleDefinitionArgs({
+  const CassandraResourceCassandraRoleDefinitionArgs({
     required this.accountName,
     this.assignableScopes,
     this.id,

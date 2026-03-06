@@ -11,7 +11,7 @@ class ManagedInstanceFailoverGroupPartnerRegion {
   /// Creates a new [ManagedInstanceFailoverGroupPartnerRegion].
   /// [location] The Azure Region where the Managed Instance Failover Group should exist. Changing this forces a new resource to be created.
   /// [role] The partner replication role of the Managed Instance Failover Group.
-  ManagedInstanceFailoverGroupPartnerRegion({
+  const ManagedInstanceFailoverGroupPartnerRegion({
     this.location,
     this.role,
   });

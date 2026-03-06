@@ -9,7 +9,7 @@ class SecretPasswordIdentity {
 
   /// Creates a new [SecretPasswordIdentity].
   /// [userAssignedIdentity] The Azure resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
-  SecretPasswordIdentity({
+  const SecretPasswordIdentity({
     this.userAssignedIdentity,
   });
 

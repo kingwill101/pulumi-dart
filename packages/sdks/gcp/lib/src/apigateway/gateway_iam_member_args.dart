@@ -44,7 +44,7 @@ class GatewayIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the gateway for the API.
   /// [role] The role that should be applied. Only one
-  GatewayIamMemberArgs({
+  const GatewayIamMemberArgs({
     this.condition,
     required this.gateway,
     required this.member,

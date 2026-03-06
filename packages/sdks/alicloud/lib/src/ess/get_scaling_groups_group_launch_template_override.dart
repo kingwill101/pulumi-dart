@@ -14,7 +14,7 @@ class GetScalingGroupsGroupLaunchTemplateOverride {
   /// [instanceType] (Available since v1.249.0) The instance type. The instance type that is specified by this parameter overwrites the instance type that is specified in the launch template.
   /// [spotPriceLimit] (Available since v1.249.0) The maximum bid price of instance type N that is specified by LaunchTemplateOverride.N.InstanceType. You can specify N instance types by using the Extend Launch Template feature. Valid values of N: 1 to 10.
   /// [weightedCapacity] (Available since v1.249.0) The weight of the instance type. The value of this parameter indicates the capacity of a single instance of the specified instance type in the scaling group. A greater weight indicates that a smaller number of instances of the specified instance type are required to reach the expected capacity.
-  GetScalingGroupsGroupLaunchTemplateOverride({
+  const GetScalingGroupsGroupLaunchTemplateOverride({
     required this.instanceType,
     required this.spotPriceLimit,
     required this.weightedCapacity,

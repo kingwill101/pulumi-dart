@@ -65,7 +65,7 @@ class RuleArgs {
   /// [status] The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
   /// [tagKeyScope] The rule monitors the tag key, only applies to rules created based on managed rules.
   /// [tagValueScope] The rule monitors the tag value, only applies to rules created based on managed rules.
-  RuleArgs({
+  const RuleArgs({
     this.configRuleTriggerTypes,
     this.description,
     this.excludeResourceIdsScope,

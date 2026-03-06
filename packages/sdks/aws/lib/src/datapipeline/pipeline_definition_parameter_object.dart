@@ -12,7 +12,7 @@ class PipelineDefinitionParameterObject {
   /// Creates a new [PipelineDefinitionParameterObject].
   /// [attributes] Configuration block for attributes of the parameter object. See below
   /// [id] ID of the parameter object.
-  PipelineDefinitionParameterObject({
+  const PipelineDefinitionParameterObject({
     this.attributes,
     required this.id,
   });

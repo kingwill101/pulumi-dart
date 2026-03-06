@@ -28,7 +28,7 @@ class GetPolicyDnsV1beta2Result {
   /// [kind] Required.
   /// [name] User-assigned name for this policy.
   /// [networks] List of network names specifying networks to which this policy is applied.
-  GetPolicyDnsV1beta2Result({
+  const GetPolicyDnsV1beta2Result({
     required this.alternativeNameServerConfig,
     required this.description,
     required this.enableInboundForwarding,

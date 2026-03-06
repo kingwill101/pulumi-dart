@@ -20,7 +20,7 @@ class MHSMNetworkRuleSet {
   /// [defaultAction] The default action when no rule from ipRules and from virtualNetworkRules match. This is only used after the bypass property has been evaluated.
   /// [ipRules] The list of IP address rules.
   /// [virtualNetworkRules] The list of virtual network rules.
-  MHSMNetworkRuleSet({
+  const MHSMNetworkRuleSet({
     this.bypass,
     this.defaultAction,
     this.ipRules,

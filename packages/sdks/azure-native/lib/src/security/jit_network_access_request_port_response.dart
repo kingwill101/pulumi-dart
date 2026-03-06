@@ -25,7 +25,7 @@ class JitNetworkAccessRequestPortResponse {
   /// [number] Required.
   /// [status] The status of the port
   /// [statusReason] A description of why the `status` has its value
-  JitNetworkAccessRequestPortResponse({
+  const JitNetworkAccessRequestPortResponse({
     this.allowedSourceAddressPrefix,
     this.allowedSourceAddressPrefixes,
     required this.endTimeUtc,

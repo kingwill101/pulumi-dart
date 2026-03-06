@@ -12,7 +12,7 @@ class S3BucketDefinitionForJobResponse {
   /// Creates a new [S3BucketDefinitionForJobResponse].
   /// [accountId] &lt;p&gt;The unique identifier for the Amazon Web Services account that owns the buckets.&lt;/p&gt;
   /// [buckets] &lt;p&gt;An array that lists the names of the buckets.&lt;/p&gt;
-  S3BucketDefinitionForJobResponse({
+  const S3BucketDefinitionForJobResponse({
     this.accountId,
     this.buckets,
   });

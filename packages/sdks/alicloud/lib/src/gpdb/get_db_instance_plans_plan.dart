@@ -35,7 +35,7 @@ class GetDbInstancePlansPlan {
   /// [planStartDate] The start time of the Plan.
   /// [planType] The type of the Plan. Valid values: `PauseResume`, `Resize`.
   /// [status] The Status of the Plan.
-  GetDbInstancePlansPlan({
+  const GetDbInstancePlansPlan({
     required this.dbInstancePlanName,
     required this.id,
     required this.planConfigs,

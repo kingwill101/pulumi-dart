@@ -12,7 +12,7 @@ class NonAzureQueryProperties {
   /// Creates a new [NonAzureQueryProperties].
   /// [functionAlias] Log Analytics Saved Search name.
   /// [workspaceId] Workspace Id for Log Analytics in which the saved Search is resided.
-  NonAzureQueryProperties({
+  const NonAzureQueryProperties({
     this.functionAlias,
     this.workspaceId,
   });

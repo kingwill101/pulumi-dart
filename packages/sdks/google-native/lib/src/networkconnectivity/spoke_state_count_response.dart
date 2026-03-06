@@ -12,7 +12,7 @@ class SpokeStateCountResponse {
   /// Creates a new [SpokeStateCountResponse].
   /// [count] The total number of spokes that are in this state and associated with a given hub.
   /// [state] The state of the spokes.
-  SpokeStateCountResponse({
+  const SpokeStateCountResponse({
     required this.count,
     required this.state,
   });

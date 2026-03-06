@@ -12,7 +12,7 @@ class LandingZoneAccountResourcePropertiesResponse {
   /// Creates a new [LandingZoneAccountResourcePropertiesResponse].
   /// [provisioningState] The state that reflects the current stage in the creation, updating, or deletion process of the landing zone account.
   /// [storageAccount] The storage account that will host the generated infrastructure as code (IaC) for a landing zone deployment.
-  LandingZoneAccountResourcePropertiesResponse({
+  const LandingZoneAccountResourcePropertiesResponse({
     required this.provisioningState,
     required this.storageAccount,
   });

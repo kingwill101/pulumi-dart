@@ -90,7 +90,7 @@ class GetSiteCertificateResult {
   /// [thumbprint] Certificate thumbprint.
   /// [type] Resource type.
   /// [valid] Is the certificate valid?.
-  GetSiteCertificateResult({
+  const GetSiteCertificateResult({
     required this.azureApiVersion,
     this.canonicalName,
     required this.cerBlob,

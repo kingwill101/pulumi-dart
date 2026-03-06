@@ -24,7 +24,7 @@ class GetVaultsResult {
   /// [status] Optional.
   /// [vaultType] Optional.
   /// [vaults] Required.
-  GetVaultsResult({
+  const GetVaultsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

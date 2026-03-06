@@ -10,7 +10,7 @@ class DestinationResponseEventarcV1beta1 {
 
   /// Creates a new [DestinationResponseEventarcV1beta1].
   /// [cloudRunService] Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
-  DestinationResponseEventarcV1beta1({
+  const DestinationResponseEventarcV1beta1({
     required this.cloudRunService,
   });
 

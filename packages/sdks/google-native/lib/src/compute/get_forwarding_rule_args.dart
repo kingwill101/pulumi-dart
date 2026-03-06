@@ -15,7 +15,7 @@ class GetForwardingRuleArgs {
   /// [forwardingRule] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetForwardingRuleArgs({
+  const GetForwardingRuleArgs({
     required this.forwardingRule,
     this.project,
     required this.region,

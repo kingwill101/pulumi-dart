@@ -19,7 +19,7 @@ class ConnectToTargetSqlMITaskInput {
   /// [collectLogins] Flag for whether to collect logins from target SQL MI server.
   /// [targetConnectionInfo] Connection information for target SQL Server
   /// [validateSsisCatalogOnly] Flag for whether to validate SSIS catalog is reachable on the target SQL MI server.
-  ConnectToTargetSqlMITaskInput({
+  const ConnectToTargetSqlMITaskInput({
     this.collectAgentJobs,
     this.collectLogins,
     required this.targetConnectionInfo,

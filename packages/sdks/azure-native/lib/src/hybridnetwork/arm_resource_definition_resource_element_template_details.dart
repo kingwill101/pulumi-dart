@@ -21,7 +21,7 @@ class ArmResourceDefinitionResourceElementTemplateDetails {
   /// [dependsOnProfile] The depends on profile.
   /// [name] Name of the resource element template.
   /// [resourceElementType] The resource element template type.
-  ArmResourceDefinitionResourceElementTemplateDetails({
+  const ArmResourceDefinitionResourceElementTemplateDetails({
     this.configuration,
     this.dependsOnProfile,
     this.name,

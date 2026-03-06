@@ -21,7 +21,7 @@ class GetSkusNestedResourceTypeFirstArgs {
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [resourceType] The resource type.
   /// [sku] The SKU.
-  GetSkusNestedResourceTypeFirstArgs({
+  const GetSkusNestedResourceTypeFirstArgs({
     required this.nestedResourceTypeFirst,
     required this.providerNamespace,
     required this.resourceType,

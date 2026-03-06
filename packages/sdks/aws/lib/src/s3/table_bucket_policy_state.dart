@@ -15,7 +15,7 @@ class TableBucketPolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourcePolicy] Amazon Web Services resource-based policy document in JSON format.
   /// [tableBucketArn] ARN referencing the Table Bucket that owns this policy.
-  TableBucketPolicyState({
+  const TableBucketPolicyState({
     this.region,
     this.resourcePolicy,
     this.tableBucketArn,

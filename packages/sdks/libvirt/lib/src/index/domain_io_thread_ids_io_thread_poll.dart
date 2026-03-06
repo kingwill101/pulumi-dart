@@ -14,7 +14,7 @@ class DomainIoThreadIDsIoThreadPoll {
   /// [grow] Sets the policy for growing the I/O thread's polling behavior.
   /// [max] Configures the maximum polling rate for the I/O thread.
   /// [shrink] Sets the policy for shrinking the I/O thread's polling behavior.
-  DomainIoThreadIDsIoThreadPoll({
+  const DomainIoThreadIDsIoThreadPoll({
     this.grow,
     this.max,
     this.shrink,

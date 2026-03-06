@@ -30,7 +30,7 @@ class MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse {
   /// [startedOn] Migration start time
   /// [targetServer] Target server name
   /// [targetServerVersion] Target server version
-  MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse({
+  const MigrateMySqlAzureDbForMySqlSyncTaskOutputMigrationLevelResponse({
     required this.endedOn,
     required this.id,
     required this.resultType,

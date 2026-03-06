@@ -137,7 +137,7 @@ class DatabaseMysqlV2Args {
   /// [timeouts] Optional.
   /// [type] The Linode Instance type used for the nodes of the Managed Database.
   /// [updates] Configuration settings for automated patch update maintenance for the Managed Database.
-  DatabaseMysqlV2Args({
+  const DatabaseMysqlV2Args({
     this.allowLists,
     this.clusterSize,
     this.engineConfigBinlogRetentionPeriod,

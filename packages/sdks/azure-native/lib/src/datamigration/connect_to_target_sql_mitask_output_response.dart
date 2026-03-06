@@ -25,7 +25,7 @@ class ConnectToTargetSqlMITaskOutputResponse {
   /// [targetServerBrandVersion] Target server brand version
   /// [targetServerVersion] Target server version
   /// [validationErrors] Validation errors
-  ConnectToTargetSqlMITaskOutputResponse({
+  const ConnectToTargetSqlMITaskOutputResponse({
     required this.agentJobs,
     required this.id,
     required this.logins,

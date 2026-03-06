@@ -12,7 +12,7 @@ class StorageContainerProperties {
   /// Creates a new [StorageContainerProperties].
   /// [clusterSharedVolumePath] Gets or sets the ClusterSharedVolumePath.
   /// [name] Gets or sets the Name.
-  StorageContainerProperties({
+  const StorageContainerProperties({
     required this.clusterSharedVolumePath,
     required this.name,
   });

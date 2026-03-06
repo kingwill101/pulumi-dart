@@ -9,7 +9,7 @@ class SkuResponse {
 
   /// Creates a new [SkuResponse].
   /// [name] The name of the Azure Health Bot SKU
-  SkuResponse({
+  const SkuResponse({
     required this.name,
   });
 

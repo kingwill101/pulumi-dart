@@ -26,7 +26,7 @@ class Binding {
   /// [port] Gets or sets the application port.
   /// [portMapping] WebApplication port mapping.
   /// [protocol] Gets or sets the protocol.
-  Binding({
+  const Binding({
     this.cert,
     this.hostName,
     this.ipAddress,

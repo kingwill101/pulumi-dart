@@ -59,7 +59,7 @@ class ElasticClusterArgs {
   /// [tags] A map of tags to assign to the collection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [vpcSecurityGroupIds] List of VPC security groups to associate with the Elastic DocumentDB Cluster
-  ElasticClusterArgs({
+  const ElasticClusterArgs({
     required this.adminUserName,
     required this.adminUserPassword,
     required this.authType,

@@ -22,7 +22,7 @@ class GetIpv6InternetBandwidthsResult {
   /// [ipv6InternetBandwidthId] Optional.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetIpv6InternetBandwidthsResult({
+  const GetIpv6InternetBandwidthsResult({
     required this.bandwidths,
     required this.id,
     required this.ids,

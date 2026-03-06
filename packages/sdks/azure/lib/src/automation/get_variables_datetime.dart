@@ -19,7 +19,7 @@ class GetVariablesDatetime {
   /// [id] Required.
   /// [name] The name of the Automation Variable.
   /// [value] The value of the Automation Variable.
-  GetVariablesDatetime({
+  const GetVariablesDatetime({
     required this.description,
     required this.encrypted,
     required this.id,

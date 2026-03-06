@@ -17,7 +17,7 @@ class GetBackendServiceStrongSessionAffinityCooky {
   /// [name] The name of the Backend Service.
   /// [path] Path to set for the cookie.
   /// [ttls] Lifetime of the cookie.
-  GetBackendServiceStrongSessionAffinityCooky({
+  const GetBackendServiceStrongSessionAffinityCooky({
     required this.name,
     required this.path,
     required this.ttls,

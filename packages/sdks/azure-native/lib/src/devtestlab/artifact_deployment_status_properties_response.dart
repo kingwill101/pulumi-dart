@@ -15,7 +15,7 @@ class ArtifactDeploymentStatusPropertiesResponse {
   /// [artifactsApplied] The total count of the artifacts that were successfully applied.
   /// [deploymentStatus] The deployment status of the artifact.
   /// [totalArtifacts] The total count of the artifacts that were tentatively applied.
-  ArtifactDeploymentStatusPropertiesResponse({
+  const ArtifactDeploymentStatusPropertiesResponse({
     this.artifactsApplied,
     this.deploymentStatus,
     this.totalArtifacts,

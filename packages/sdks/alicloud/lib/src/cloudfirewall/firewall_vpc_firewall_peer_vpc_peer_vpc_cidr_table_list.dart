@@ -12,7 +12,7 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
   /// Creates a new [FirewallVpcFirewallPeerVpcPeerVpcCidrTableList].
   /// [peerRouteEntryLists] Peer VPC route entry list information. See `peer_route_entry_list` below.
   /// [peerRouteTableId] The ID of the route table of the peer VPC.
-  FirewallVpcFirewallPeerVpcPeerVpcCidrTableList({
+  const FirewallVpcFirewallPeerVpcPeerVpcCidrTableList({
     required this.peerRouteEntryLists,
     required this.peerRouteTableId,
   });

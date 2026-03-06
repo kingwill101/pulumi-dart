@@ -11,7 +11,7 @@ class GetChangeSetsSetParameter {
   /// Creates a new [GetChangeSetsSetParameter].
   /// [parameterKey] The parameters.
   /// [parameterValue] The parameters.
-  GetChangeSetsSetParameter({
+  const GetChangeSetsSetParameter({
     required this.parameterKey,
     required this.parameterValue,
   });

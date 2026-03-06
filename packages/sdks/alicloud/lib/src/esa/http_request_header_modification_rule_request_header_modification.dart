@@ -17,7 +17,7 @@ class HttpRequestHeaderModificationRuleRequestHeaderModification {
   /// [operation] Mode of operation. Value range:
   /// [type] Value type. Value range:
   /// [value] Request header value
-  HttpRequestHeaderModificationRuleRequestHeaderModification({
+  const HttpRequestHeaderModificationRuleRequestHeaderModification({
     required this.name,
     required this.operation,
     this.type,

@@ -34,7 +34,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResource {
   /// [id] The id of the resource with the following restrictions:
   /// [pkg] Package resource Structure is
   /// [repository] Package repository resource Structure is
-  OsPolicyAssignmentOsPolicyResourceGroupResource({
+  const OsPolicyAssignmentOsPolicyResourceGroupResource({
     this.exec,
     this.file,
     required this.id,

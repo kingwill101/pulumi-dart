@@ -10,7 +10,7 @@ class ListStorageAccountKeysResult {
 
   /// Creates a new [ListStorageAccountKeysResult].
   /// [keys] Gets the list of storage account keys and their properties for the specified storage account.
-  ListStorageAccountKeysResult({
+  const ListStorageAccountKeysResult({
     required this.keys,
   });
 

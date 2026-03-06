@@ -29,7 +29,7 @@ class GetServerlessSecurityPolicyResult {
   /// [policyVersion] Version of the policy.
   /// [region] Required.
   /// [type] Required.
-  GetServerlessSecurityPolicyResult({
+  const GetServerlessSecurityPolicyResult({
     required this.createdDate,
     required this.description,
     required this.id,

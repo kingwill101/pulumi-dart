@@ -29,7 +29,7 @@ class NodeSpec {
   /// [providerID] ID of the node assigned by the cloud provider in the format: &lt;ProviderName&gt;://&lt;ProviderSpecificNodeID&gt;
   /// [taints] If specified, the node's taints.
   /// [unschedulable] Unschedulable controls node schedulability of new pods. By default, node is schedulable. More info: https://kubernetes.io/docs/concepts/nodes/node/#manual-node-administration
-  NodeSpec({
+  const NodeSpec({
     this.configSource,
     this.externalID,
     this.podCIDR,

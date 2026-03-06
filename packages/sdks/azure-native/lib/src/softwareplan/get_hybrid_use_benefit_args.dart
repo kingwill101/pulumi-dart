@@ -15,7 +15,7 @@ class GetHybridUseBenefitArgs {
   /// Creates a new [GetHybridUseBenefitArgs].
   /// [planId] This is a unique identifier for a plan. Should be a guid.
   /// [scope] The scope at which the operation is performed. This is limited to Microsoft.Compute/virtualMachines and Microsoft.Compute/hostGroups/hosts for now
-  GetHybridUseBenefitArgs({
+  const GetHybridUseBenefitArgs({
     required this.planId,
     required this.scope,
   });

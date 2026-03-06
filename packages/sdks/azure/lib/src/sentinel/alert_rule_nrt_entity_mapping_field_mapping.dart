@@ -11,7 +11,7 @@ class AlertRuleNrtEntityMappingFieldMapping {
   /// Creates a new [AlertRuleNrtEntityMappingFieldMapping].
   /// [columnName] The column name to be mapped to the identifier.
   /// [identifier] The identifier of the entity.
-  AlertRuleNrtEntityMappingFieldMapping({
+  const AlertRuleNrtEntityMappingFieldMapping({
     required this.columnName,
     required this.identifier,
   });

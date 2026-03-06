@@ -8,7 +8,7 @@ class DomainDevicesFilesystemSourceTemplate {
 
   /// Creates a new [DomainDevicesFilesystemSourceTemplate].
   /// [name] Configures the name of the template source for the filesystem.
-  DomainDevicesFilesystemSourceTemplate({
+  const DomainDevicesFilesystemSourceTemplate({
     required this.name,
   });
 

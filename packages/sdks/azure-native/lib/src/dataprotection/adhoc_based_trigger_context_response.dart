@@ -14,7 +14,7 @@ class AdhocBasedTriggerContextResponse {
   /// Creates a new [AdhocBasedTriggerContextResponse].
   /// [objectType] Type of the specific object - used for deserializing
   /// [taggingCriteria] Tagging Criteria containing retention tag for adhoc backup.
-  AdhocBasedTriggerContextResponse({
+  const AdhocBasedTriggerContextResponse({
     required this.objectType,
     required this.taggingCriteria,
   });

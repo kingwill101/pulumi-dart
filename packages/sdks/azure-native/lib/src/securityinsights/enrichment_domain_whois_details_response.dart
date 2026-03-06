@@ -20,7 +20,7 @@ class EnrichmentDomainWhoisDetailsResponse {
   /// [nameServers] A list of name servers associated with this domain
   /// [registrar] The registrar associated with this domain
   /// [statuses] The set of status flags for this whois record
-  EnrichmentDomainWhoisDetailsResponse({
+  const EnrichmentDomainWhoisDetailsResponse({
     this.contacts,
     this.nameServers,
     this.registrar,

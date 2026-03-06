@@ -18,7 +18,7 @@ class GetScopeMapArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeMapName] The name of the scope map.
-  GetScopeMapArgs({
+  const GetScopeMapArgs({
     required this.registryName,
     required this.resourceGroupName,
     required this.scopeMapName,

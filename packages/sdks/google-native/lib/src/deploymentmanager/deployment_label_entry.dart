@@ -12,7 +12,7 @@ class DeploymentLabelEntry {
   /// Creates a new [DeploymentLabelEntry].
   /// [key] Key of the label
   /// [value] Value of the label
-  DeploymentLabelEntry({
+  const DeploymentLabelEntry({
     this.key,
     this.value,
   });

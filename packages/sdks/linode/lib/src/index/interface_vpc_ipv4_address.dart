@@ -14,7 +14,7 @@ class InterfaceVpcIpv4Address {
   /// [address] The IPv4 address. Defaults to "auto" for automatic assignment.
   /// [nat11Address] The 1:1 NAT IPv4 address used to associate a public IPv4 address with the interface's VPC subnet IPv4 address.
   /// [primary] Whether this address is the primary address for the interface.
-  InterfaceVpcIpv4Address({
+  const InterfaceVpcIpv4Address({
     this.address,
     this.nat11Address,
     this.primary,

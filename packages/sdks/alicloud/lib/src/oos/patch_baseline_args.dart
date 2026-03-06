@@ -42,7 +42,7 @@ class PatchBaselineArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [sources] Source.
   /// [tags] Label.
-  PatchBaselineArgs({
+  const PatchBaselineArgs({
     required this.approvalRules,
     this.approvedPatches,
     this.approvedPatchesEnableNonSecurity,

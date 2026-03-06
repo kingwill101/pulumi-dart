@@ -14,7 +14,7 @@ class PoolMountNfsMount {
   /// [mountOptions] Additional command line options to pass to the mount command. These are 'net use' options in Windows and 'mount' options in Linux.
   /// [relativeMountPath] The relative path on compute node where the file system will be mounted All file systems are mounted relative to the Batch mounts directory, accessible via the `AZ_BATCH_NODE_MOUNTS_DIR` environment variable.
   /// [source] The URI of the file system to mount.
-  PoolMountNfsMount({
+  const PoolMountNfsMount({
     this.mountOptions,
     required this.relativeMountPath,
     required this.source,

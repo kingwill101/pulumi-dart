@@ -13,7 +13,7 @@ class ConnectionMonitorOutput {
   /// Creates a new [ConnectionMonitorOutput].
   /// [type] Connection monitor output destination type. Currently, only "Workspace" is supported.
   /// [workspaceSettings] Describes the settings for producing output into a log analytics workspace.
-  ConnectionMonitorOutput({
+  const ConnectionMonitorOutput({
     this.type,
     this.workspaceSettings,
   });

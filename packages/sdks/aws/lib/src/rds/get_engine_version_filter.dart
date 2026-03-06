@@ -9,7 +9,7 @@ class GetEngineVersionFilter {
   /// Creates a new [GetEngineVersionFilter].
   /// [name] Required.
   /// [values] Required.
-  GetEngineVersionFilter({
+  const GetEngineVersionFilter({
     required this.name,
     required this.values,
   });

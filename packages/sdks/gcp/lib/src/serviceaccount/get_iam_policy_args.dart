@@ -12,7 +12,7 @@ class GetIamPolicyArgs {
 
   /// Creates a new [GetIamPolicyArgs].
   /// [serviceAccountId] The fully-qualified name of the service account to apply policy to.
-  GetIamPolicyArgs({
+  const GetIamPolicyArgs({
     required this.serviceAccountId,
   });
 

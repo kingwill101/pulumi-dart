@@ -36,7 +36,7 @@ class ServerArgs {
   /// [serverOwner] By default, the user who defines the server becomes its owner. Set this value to configure the new owner of the foreign server.
   /// [serverType] Optional server type, potentially useful to foreign-data wrappers.
   /// [serverVersion] Optional server version, potentially useful to foreign-data wrappers.
-  ServerArgs({
+  const ServerArgs({
     this.dropCascade,
     required this.fdwName,
     this.options,

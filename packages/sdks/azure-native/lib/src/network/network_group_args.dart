@@ -24,7 +24,7 @@ class NetworkGroupArgs {
   /// [networkGroupName] The name of the network group.
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
-  NetworkGroupArgs({
+  const NetworkGroupArgs({
     this.description,
     this.memberType,
     this.networkGroupName,

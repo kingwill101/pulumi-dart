@@ -21,7 +21,7 @@ class GetEnvPodMonitorsArgs {
   /// [ids] A list of ARMS Env Pod Monitor IDs.
   /// [nameRegex] A regex string to filter results by ARMS Env Pod Monitor name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEnvPodMonitorsArgs({
+  const GetEnvPodMonitorsArgs({
     required this.environmentId,
     this.ids,
     this.nameRegex,

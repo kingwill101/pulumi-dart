@@ -36,7 +36,7 @@ class GetNetworkResult {
   /// [project] Optional.
   /// [selfLink] The URI of the resource.
   /// [subnetworksSelfLinks] the list of subnetworks which belong to the network
-  GetNetworkResult({
+  const GetNetworkResult({
     required this.description,
     required this.gatewayIpv4,
     required this.id,

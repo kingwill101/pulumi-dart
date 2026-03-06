@@ -15,7 +15,7 @@ class GetExportArgs {
   /// [environmentId] Required.
   /// [exportId] Required.
   /// [organizationId] Required.
-  GetExportArgs({
+  const GetExportArgs({
     required this.environmentId,
     required this.exportId,
     required this.organizationId,

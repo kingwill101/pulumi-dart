@@ -12,7 +12,7 @@ class DefenderFoDatabasesAwsOfferingRds {
   /// Creates a new [DefenderFoDatabasesAwsOfferingRds].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
   /// [enabled] Is RDS protection enabled
-  DefenderFoDatabasesAwsOfferingRds({
+  const DefenderFoDatabasesAwsOfferingRds({
     this.cloudRoleArn,
     this.enabled,
   });

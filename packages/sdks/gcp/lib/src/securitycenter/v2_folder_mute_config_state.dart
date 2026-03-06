@@ -49,7 +49,7 @@ class V2FolderMuteConfigState {
   /// [name] Name of the mute config. Its format is
   /// [type] The type of the mute config.
   /// [updateTime] Output only. The most recent time at which the mute config was
-  V2FolderMuteConfigState({
+  const V2FolderMuteConfigState({
     this.createTime,
     this.description,
     this.filter,

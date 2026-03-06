@@ -11,7 +11,7 @@ class JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver {
   /// Creates a new [JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver].
   /// [entryPoint] The SQL file to be executed.
   /// [sparkSqlParameters] The Spark parameters to be included in the Spark SQL command.
-  JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver({
+  const JobTemplateJobTemplateDataJobDriverSparkSqlJobDriver({
     this.entryPoint,
     this.sparkSqlParameters,
   });

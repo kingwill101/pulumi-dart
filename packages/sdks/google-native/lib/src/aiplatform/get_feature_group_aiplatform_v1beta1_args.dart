@@ -15,7 +15,7 @@ class GetFeatureGroupAiplatformV1beta1Args {
   /// [featureGroupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeatureGroupAiplatformV1beta1Args({
+  const GetFeatureGroupAiplatformV1beta1Args({
     required this.featureGroupId,
     required this.location,
     this.project,

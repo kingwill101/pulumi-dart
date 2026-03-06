@@ -55,7 +55,7 @@ class DiagnosticArgs {
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   /// [samplingPercentage] Sampling (%). For high traffic APIs, please read this [documentation](https://docs.microsoft.com/azure/api-management/api-management-howto-app-insights#performance-implications-and-log-sampling) to understand performance implications and log sampling. Valid values are between `0.0` and `100.0`.
   /// [verbosity] Logging verbosity. Possible values are `verbose`, `information` or `error`.
-  DiagnosticArgs({
+  const DiagnosticArgs({
     this.alwaysLogErrors,
     required this.apiManagementLoggerId,
     required this.apiManagementName,

@@ -11,7 +11,7 @@ class EdgeCacheOriginFlexShielding {
 
   /// Creates a new [EdgeCacheOriginFlexShielding].
   /// [flexShieldingRegions] Whenever possible, content will be fetched from origin and cached in or
-  EdgeCacheOriginFlexShielding({
+  const EdgeCacheOriginFlexShielding({
     this.flexShieldingRegions,
   });
 

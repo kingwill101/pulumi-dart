@@ -13,7 +13,7 @@ class GetProducerImageShareGroupImageSharesImageShareImageSharing {
   /// Creates a new [GetProducerImageShareGroupImageSharesImageShareImageSharing].
   /// [sharedBy] Details about who the image is shared by.
   /// [sharedWith] Details about who the image is shared with.
-  GetProducerImageShareGroupImageSharesImageShareImageSharing({
+  const GetProducerImageShareGroupImageSharesImageShareImageSharing({
     required this.sharedBy,
     required this.sharedWith,
   });

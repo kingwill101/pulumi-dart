@@ -12,7 +12,7 @@ class GetTiersArgs {
 
   /// Creates a new [GetTiersArgs].
   /// [project] The Project ID for which to list tiers. If `project` is not provided, the project defined within the default provider configuration is used.
-  GetTiersArgs({
+  const GetTiersArgs({
     this.project,
   });
 

@@ -54,7 +54,7 @@ class GetApplicationGatewayHttpListener {
   /// [sslCertificateName] The name of the associated SSL Certificate which is used for this HTTP Listener.
   /// [sslProfileId] The ID of the associated SSL Profile.
   /// [sslProfileName] The name of the associated SSL Profile which is used for this HTTP Listener.
-  GetApplicationGatewayHttpListener({
+  const GetApplicationGatewayHttpListener({
     required this.customErrorConfigurations,
     required this.firewallPolicyId,
     required this.frontendIpConfigurationId,

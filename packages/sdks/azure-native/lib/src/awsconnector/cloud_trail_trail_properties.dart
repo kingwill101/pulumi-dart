@@ -31,7 +31,7 @@ class CloudTrailTrailProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CloudTrailTrailProperties({
+  const CloudTrailTrailProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

@@ -12,7 +12,7 @@ class ResourcePolicyAssignmentResourceSelector {
   /// Creates a new [ResourcePolicyAssignmentResourceSelector].
   /// [name] Specifies a name for the resource selector.
   /// [selectors] One or more `resource_selector` block as defined below.
-  ResourcePolicyAssignmentResourceSelector({
+  const ResourcePolicyAssignmentResourceSelector({
     this.name,
     required this.selectors,
   });

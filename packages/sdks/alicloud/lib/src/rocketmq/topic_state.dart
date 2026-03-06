@@ -31,7 +31,7 @@ class TopicState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [topic] Replaced by `topic_name` after version 1.97.0.
   /// [topicName] Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with 'GID' or 'CID'. The length cannot exceed 64 characters.
-  TopicState({
+  const TopicState({
     this.instanceId,
     this.messageType,
     this.perm,

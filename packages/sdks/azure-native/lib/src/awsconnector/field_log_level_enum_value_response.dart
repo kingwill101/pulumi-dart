@@ -9,7 +9,7 @@ class FieldLogLevelEnumValueResponse {
 
   /// Creates a new [FieldLogLevelEnumValueResponse].
   /// [value] Property value
-  FieldLogLevelEnumValueResponse({
+  const FieldLogLevelEnumValueResponse({
     this.value,
   });
 

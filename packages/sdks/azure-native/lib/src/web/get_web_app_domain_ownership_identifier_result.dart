@@ -23,7 +23,7 @@ class GetWebAppDomainOwnershipIdentifierResult {
   /// [name] Resource Name.
   /// [type] Resource type.
   /// [value] String representation of the identity.
-  GetWebAppDomainOwnershipIdentifierResult({
+  const GetWebAppDomainOwnershipIdentifierResult({
     required this.azureApiVersion,
     required this.id,
     this.kind,

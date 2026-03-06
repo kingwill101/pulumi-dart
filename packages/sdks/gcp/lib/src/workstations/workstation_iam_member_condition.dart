@@ -11,7 +11,7 @@ class WorkstationIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  WorkstationIamMemberCondition({
+  const WorkstationIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

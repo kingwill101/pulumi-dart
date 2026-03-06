@@ -41,7 +41,7 @@ class VpcConnectionArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [vpcConnectionId] The ID of the VPC connection.
-  VpcConnectionArgs({
+  const VpcConnectionArgs({
     this.awsAccountId,
     this.dnsResolvers,
     this.name,

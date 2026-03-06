@@ -15,7 +15,7 @@ class ServiceEmailDomainAssociationArgs {
   /// Creates a new [ServiceEmailDomainAssociationArgs].
   /// [communicationServiceId] The ID of the Communication Service. Changing this forces a new communication service email domain association to be created.
   /// [emailServiceDomainId] The ID of the EMail Service Domain. Changing this forces a new communication service email domain association to be created.
-  ServiceEmailDomainAssociationArgs({
+  const ServiceEmailDomainAssociationArgs({
     required this.communicationServiceId,
     required this.emailServiceDomainId,
   });

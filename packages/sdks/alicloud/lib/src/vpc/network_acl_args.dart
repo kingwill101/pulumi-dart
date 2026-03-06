@@ -42,7 +42,7 @@ class NetworkAclArgs {
   /// [sourceNetworkAclId] SOURCE NetworkAcl specified by CopyNetworkAclEntries
   /// [tags] The tags of this resource.
   /// [vpcId] The ID of the associated VPC.
-  NetworkAclArgs({
+  const NetworkAclArgs({
     this.description,
     this.egressAclEntries,
     this.ingressAclEntries,

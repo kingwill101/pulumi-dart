@@ -19,7 +19,7 @@ class ScalingGroupVServerGroupsArgs {
   /// [force] If instances of scaling group are attached/removed from slb backend server when attach/detach vserver group from scaling group. Default to true.
   /// [scalingGroupId] ID of the scaling group.
   /// [vserverGroups] A list of vserver groups attached on scaling group. See `vserver_groups` below.
-  ScalingGroupVServerGroupsArgs({
+  const ScalingGroupVServerGroupsArgs({
     this.force,
     required this.scalingGroupId,
     required this.vserverGroups,

@@ -15,7 +15,7 @@ class ConnectedClusterIdentityResponse {
   /// [principalId] The principal id of connected cluster identity. This property will only be provided for a system assigned identity.
   /// [tenantId] The tenant id associated with the connected cluster. This property will only be provided for a system assigned identity.
   /// [type] The type of identity used for the connected cluster. The type 'SystemAssigned, includes a system created identity. The type 'None' means no identity is assigned to the connected cluster.
-  ConnectedClusterIdentityResponse({
+  const ConnectedClusterIdentityResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

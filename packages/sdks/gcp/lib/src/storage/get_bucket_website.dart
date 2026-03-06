@@ -11,7 +11,7 @@ class GetBucketWebsite {
   /// Creates a new [GetBucketWebsite].
   /// [mainPageSuffix] Behaves as the bucket's directory index where missing objects are treated as potential directories.
   /// [notFoundPage] The custom object to return when a requested resource is not found.
-  GetBucketWebsite({
+  const GetBucketWebsite({
     required this.mainPageSuffix,
     required this.notFoundPage,
   });

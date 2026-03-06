@@ -10,7 +10,7 @@ class ListDatabasePrincipalsResult {
 
   /// Creates a new [ListDatabasePrincipalsResult].
   /// [value] The list of Kusto database principals.
-  ListDatabasePrincipalsResult({
+  const ListDatabasePrincipalsResult({
     this.value,
   });
 

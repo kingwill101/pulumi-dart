@@ -15,7 +15,7 @@ class GetInstanceTemplateIamPolicyComputeV1Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [resource] Required.
-  GetInstanceTemplateIamPolicyComputeV1Args({
+  const GetInstanceTemplateIamPolicyComputeV1Args({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

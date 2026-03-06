@@ -16,7 +16,7 @@ class AzureToAzureNetworkMappingSettingsResponse {
   /// [instanceType] Gets the Instance type.
   /// [primaryFabricLocation] The primary fabric location.
   /// [recoveryFabricLocation] The recovery fabric location.
-  AzureToAzureNetworkMappingSettingsResponse({
+  const AzureToAzureNetworkMappingSettingsResponse({
     required this.instanceType,
     this.primaryFabricLocation,
     this.recoveryFabricLocation,

@@ -11,7 +11,7 @@ class AwsIntegrationsAwsWaf {
   /// Creates a new [AwsIntegrationsAwsWaf].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsAwsWaf({
+  const AwsIntegrationsAwsWaf({
     this.awsRegions,
     this.metricsPollingInterval,
   });

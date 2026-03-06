@@ -14,7 +14,7 @@ class ServerIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this PostgreSQL Server. The only possible value is `SystemAssigned`.
-  ServerIdentity({
+  const ServerIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

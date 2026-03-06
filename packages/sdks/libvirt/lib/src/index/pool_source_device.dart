@@ -15,7 +15,7 @@ class PoolSourceDevice {
   /// [freeExtents] Controls the free extents available for allocation within the source device.
   /// [partSeparator] Configures the separator character used for partitioning in the device path.
   /// [path] Specifies the physical path to the device used as the source for the storage pool.
-  PoolSourceDevice({
+  const PoolSourceDevice({
     this.freeExtents,
     this.partSeparator,
     required this.path,

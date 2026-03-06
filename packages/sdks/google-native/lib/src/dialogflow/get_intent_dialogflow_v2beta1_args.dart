@@ -19,7 +19,7 @@ class GetIntentDialogflowV2beta1Args {
   /// [languageCode] Optional.
   /// [location] Required.
   /// [project] Optional.
-  GetIntentDialogflowV2beta1Args({
+  const GetIntentDialogflowV2beta1Args({
     required this.intentId,
     this.intentView,
     this.languageCode,

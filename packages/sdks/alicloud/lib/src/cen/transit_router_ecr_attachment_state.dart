@@ -33,7 +33,7 @@ class TransitRouterEcrAttachmentState {
   /// [transitRouterAttachmentDescription] TransitRouterAttachmentDescription
   /// [transitRouterEcrAttachmentName] TransitRouterAttachmentName
   /// [transitRouterId] TransitRouterId
-  TransitRouterEcrAttachmentState({
+  const TransitRouterEcrAttachmentState({
     this.cenId,
     this.createTime,
     this.ecrId,

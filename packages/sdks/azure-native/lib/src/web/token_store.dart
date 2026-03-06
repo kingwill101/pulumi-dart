@@ -22,7 +22,7 @@ class TokenStore {
   /// [enabled] &lt;code&gt;true&lt;/code&gt; to durably store platform-specific security tokens that are obtained during login flows; otherwise, &lt;code&gt;false&lt;/code&gt;.
   /// [fileSystem] The configuration settings of the storage of the tokens if a file system is used.
   /// [tokenRefreshExtensionHours] The number of hours after session token expiration that a session token can be used to
-  TokenStore({
+  const TokenStore({
     this.azureBlobStorage,
     this.enabled,
     this.fileSystem,

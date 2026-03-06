@@ -15,7 +15,7 @@ class ShieldedInstanceConfig {
   /// [enableIntegrityMonitoring] Optional. Defines whether instances have integrity monitoring enabled.
   /// [enableSecureBoot] Optional. Defines whether instances have Secure Boot enabled.
   /// [enableVtpm] Optional. Defines whether instances have the vTPM enabled.
-  ShieldedInstanceConfig({
+  const ShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
     this.enableVtpm,

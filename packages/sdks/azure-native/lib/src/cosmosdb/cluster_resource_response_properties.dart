@@ -63,7 +63,7 @@ class ClusterResourceResponseProperties {
   /// [provisioningState] The status of the resource at the time the operation was called.
   /// [repairEnabled] Should automatic repairs run on this cluster? If omitted, this is true, and should stay true unless you are running a hybrid cluster where you are already doing your own repairs.
   /// [seedNodes] List of IP addresses of seed nodes in the managed data centers. These should be added to the seed node lists of all unmanaged nodes.
-  ClusterResourceResponseProperties({
+  const ClusterResourceResponseProperties({
     this.authenticationMethod,
     this.azureConnectionMethod,
     this.cassandraAuditLoggingEnabled,

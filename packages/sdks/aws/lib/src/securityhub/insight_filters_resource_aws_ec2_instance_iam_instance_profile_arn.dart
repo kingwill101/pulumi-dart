@@ -9,7 +9,7 @@ class InsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn {
   /// Creates a new [InsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn({
+  const InsightFiltersResourceAwsEc2InstanceIamInstanceProfileArn({
     required this.comparison,
     required this.value,
   });

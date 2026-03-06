@@ -22,7 +22,7 @@ class GetQosMinimumBandwidthRuleArgs {
   /// [minKbps] The value of a minimum kbps bandwidth.
   /// [qosPolicyId] The QoS policy reference.
   /// [region] The region in which to obtain the V2 Networking client.
-  GetQosMinimumBandwidthRuleArgs({
+  const GetQosMinimumBandwidthRuleArgs({
     this.direction,
     this.minKbps,
     required this.qosPolicyId,

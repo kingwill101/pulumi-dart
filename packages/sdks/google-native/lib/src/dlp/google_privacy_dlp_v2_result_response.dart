@@ -20,7 +20,7 @@ class GooglePrivacyDlpV2ResultResponse {
   /// [infoTypeStats] Statistics of how many instances of each info type were found during inspect job.
   /// [processedBytes] Total size in bytes that were processed.
   /// [totalEstimatedBytes] Estimate of the number of bytes to process.
-  GooglePrivacyDlpV2ResultResponse({
+  const GooglePrivacyDlpV2ResultResponse({
     required this.hybridStats,
     required this.infoTypeStats,
     required this.processedBytes,

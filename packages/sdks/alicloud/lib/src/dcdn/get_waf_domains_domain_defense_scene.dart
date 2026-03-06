@@ -11,7 +11,7 @@ class GetWafDomainsDomainDefenseScene {
   /// Creates a new [GetWafDomainsDomainDefenseScene].
   /// [defenseScene] The type of protection policy.
   /// [policyId] The protection policy ID.
-  GetWafDomainsDomainDefenseScene({
+  const GetWafDomainsDomainDefenseScene({
     required this.defenseScene,
     required this.policyId,
   });

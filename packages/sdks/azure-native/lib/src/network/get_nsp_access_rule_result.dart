@@ -53,7 +53,7 @@ class GetNspAccessRuleResult {
   /// [subscriptions] List of subscription ids
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNspAccessRuleResult({
+  const GetNspAccessRuleResult({
     this.addressPrefixes,
     required this.azureApiVersion,
     this.direction,

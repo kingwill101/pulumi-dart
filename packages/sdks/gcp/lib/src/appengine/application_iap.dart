@@ -19,7 +19,7 @@ class ApplicationIap {
   /// [oauth2ClientId] OAuth2 client ID to use for the authentication flow.
   /// [oauth2ClientSecret] OAuth2 client secret to use for the authentication flow.
   /// [oauth2ClientSecretSha256] Hex-encoded SHA-256 hash of the client secret.
-  ApplicationIap({
+  const ApplicationIap({
     this.enabled,
     required this.oauth2ClientId,
     required this.oauth2ClientSecret,

@@ -75,7 +75,7 @@ class NatGatewayArgs {
   /// [tags] The tags of NAT gateway.
   /// [vpcId] The VPC ID.
   /// [vswitchId] The id of VSwitch.
-  NatGatewayArgs({
+  const NatGatewayArgs({
     this.accessMode,
     this.deletionProtection,
     this.description,

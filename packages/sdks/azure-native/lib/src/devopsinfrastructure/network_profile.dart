@@ -9,7 +9,7 @@ class NetworkProfile {
 
   /// Creates a new [NetworkProfile].
   /// [subnetId] The subnet id on which to put all machines created in the pool.
-  NetworkProfile({
+  const NetworkProfile({
     required this.subnetId,
   });
 

@@ -44,7 +44,7 @@ class GetAlarmContactsContact {
   /// [describe] The description of the alarm contact.
   /// [id] The ID of the alarm contact.
   /// [lang] Required.
-  GetAlarmContactsContact({
+  const GetAlarmContactsContact({
     required this.alarmContactName,
     required this.channelsAliim,
     required this.channelsDingWebHook,

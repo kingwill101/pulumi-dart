@@ -15,7 +15,7 @@ class GetNodeTemplateComputeBetaArgs {
   /// [nodeTemplate] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetNodeTemplateComputeBetaArgs({
+  const GetNodeTemplateComputeBetaArgs({
     required this.nodeTemplate,
     this.project,
     required this.region,

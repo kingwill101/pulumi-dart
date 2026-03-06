@@ -13,7 +13,7 @@ class StorageAccountDetailsResponse {
   /// Creates a new [StorageAccountDetailsResponse].
   /// [dataAccountType] Account Type of the data to be transferred.
   /// [storageAccountId] Storage Account Resource Id.
-  StorageAccountDetailsResponse({
+  const StorageAccountDetailsResponse({
     required this.dataAccountType,
     required this.storageAccountId,
   });

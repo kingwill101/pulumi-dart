@@ -39,7 +39,7 @@ class TlsRouteState {
   /// [rules] Rules that define how traffic is routed and handled.
   /// [selfLink] Server-defined URL of this resource.
   /// [updateTime] Time the TlsRoute was updated in UTC.
-  TlsRouteState({
+  const TlsRouteState({
     this.createTime,
     this.description,
     this.gateways,

@@ -12,7 +12,7 @@ class FilterItems {
   /// Creates a new [FilterItems].
   /// [field] The name of the field we would like to filter
   /// [values] List of values to filter the current field by
-  FilterItems({
+  const FilterItems({
     this.field,
     this.values,
   });

@@ -18,7 +18,7 @@ class GetAgreementArgs {
   /// [offer] The Offer of the Marketplace Image.
   /// [plan] The Plan of the Marketplace Image.
   /// [publisher] The Publisher of the Marketplace Image.
-  GetAgreementArgs({
+  const GetAgreementArgs({
     required this.offer,
     required this.plan,
     required this.publisher,

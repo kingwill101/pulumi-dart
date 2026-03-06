@@ -18,7 +18,7 @@ class GetVNetPeeringArgs {
   /// [peeringName] The name of the workspace vNet peering.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetVNetPeeringArgs({
+  const GetVNetPeeringArgs({
     required this.peeringName,
     required this.resourceGroupName,
     required this.workspaceName,

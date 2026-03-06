@@ -11,7 +11,7 @@ class GetTestResultConsoleLogDownloadURLResult {
   /// Creates a new [GetTestResultConsoleLogDownloadURLResult].
   /// [downloadUrl] The download URL.
   /// [expirationTime] Expiry date of the download URL.
-  GetTestResultConsoleLogDownloadURLResult({
+  const GetTestResultConsoleLogDownloadURLResult({
     required this.downloadUrl,
     required this.expirationTime,
   });

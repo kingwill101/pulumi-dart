@@ -12,7 +12,7 @@ class KubernetesVersionProfileResponseProperties {
   /// Creates a new [KubernetesVersionProfileResponseProperties].
   /// [provisioningState] Provisioning state of the resource
   /// [values] List of supported Kubernetes versions
-  KubernetesVersionProfileResponseProperties({
+  const KubernetesVersionProfileResponseProperties({
     required this.provisioningState,
     this.values,
   });

@@ -14,7 +14,7 @@ class ResourceClaimSchedulingStatusResourceK8sIoV1alpha3 {
   /// Creates a new [ResourceClaimSchedulingStatusResourceK8sIoV1alpha3].
   /// [name] Name matches the pod.spec.resourceClaims[*].Name field.
   /// [unsuitableNodes] UnsuitableNodes lists nodes that the ResourceClaim cannot be allocated for.
-  ResourceClaimSchedulingStatusResourceK8sIoV1alpha3({
+  const ResourceClaimSchedulingStatusResourceK8sIoV1alpha3({
     required this.name,
     this.unsuitableNodes,
   });

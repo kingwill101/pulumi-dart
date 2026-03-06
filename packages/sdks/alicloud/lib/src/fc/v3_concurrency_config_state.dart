@@ -15,7 +15,7 @@ class V3ConcurrencyConfigState {
   /// [functionArn] (Available since v1.234.0) Resource identity of the function
   /// [functionName] Function Name
   /// [reservedConcurrency] Reserved Concurrency. Functions reserve a part of account concurrency. Other functions cannot use this part of concurrency. Reserved concurrency includes the total concurrency of Reserved Instances and As-You-go instances.
-  V3ConcurrencyConfigState({
+  const V3ConcurrencyConfigState({
     this.functionArn,
     this.functionName,
     this.reservedConcurrency,

@@ -11,7 +11,7 @@ class DomainDevicesInterfaceWaitForIp {
   /// Creates a new [DomainDevicesInterfaceWaitForIp].
   /// [source] Source to query for IP addresses: 'lease', 'agent', or 'any'. Default: 'any'.
   /// [timeout] Maximum time to wait for IP address in seconds. Default: 300.
-  DomainDevicesInterfaceWaitForIp({
+  const DomainDevicesInterfaceWaitForIp({
     this.source,
     this.timeout,
   });

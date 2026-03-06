@@ -10,7 +10,7 @@ class VmmToAzureNetworkMappingSettingsResponse {
 
   /// Creates a new [VmmToAzureNetworkMappingSettingsResponse].
   /// [instanceType] Gets the Instance type.
-  VmmToAzureNetworkMappingSettingsResponse({
+  const VmmToAzureNetworkMappingSettingsResponse({
     required this.instanceType,
   });
 

@@ -65,7 +65,7 @@ class GetDataQualityRulesRule {
   /// [tableConditionExpectations] Aggregate rule which evaluates whether the provided expression is true for a table.
   /// [threshold] The minimum ratio of passing_rows / total_rows required to pass this rule, with a range of [0.0, 1.0]. 0 indicates default value (i.e. 1.0). This field is only valid for row-level type rules.
   /// [uniquenessExpectations] Row-level rule which evaluates whether each column value is unique.
-  GetDataQualityRulesRule({
+  const GetDataQualityRulesRule({
     required this.column,
     required this.description,
     required this.dimension,

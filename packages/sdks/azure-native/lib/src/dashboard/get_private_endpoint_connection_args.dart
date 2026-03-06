@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The private endpoint connection name of Azure Managed Grafana.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The workspace name of Azure Managed Grafana.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,
     required this.workspaceName,

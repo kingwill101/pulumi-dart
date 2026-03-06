@@ -64,7 +64,7 @@ class GoogleBigQueryLinkedService {
   /// [type] Type of linked service.
   /// [useSystemTrustStore] Specifies whether to use a CA certificate from the system trust store or from a specified PEM file. The default value is false.Type: boolean (or Expression with resultType boolean).
   /// [version] Version of the linked service.
-  GoogleBigQueryLinkedService({
+  const GoogleBigQueryLinkedService({
     this.additionalProjects,
     this.annotations,
     required this.authenticationType,

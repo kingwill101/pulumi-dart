@@ -13,7 +13,7 @@ class GetAccountGeoLocation {
   /// [failoverPriority] Required.
   /// [id] The ID of the virtual network subnet.
   /// [location] The name of the Azure region hosting replicated data.
-  GetAccountGeoLocation({
+  const GetAccountGeoLocation({
     required this.failoverPriority,
     required this.id,
     required this.location,

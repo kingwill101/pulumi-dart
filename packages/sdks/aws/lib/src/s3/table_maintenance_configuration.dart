@@ -15,7 +15,7 @@ class TableMaintenanceConfiguration {
   /// Creates a new [TableMaintenanceConfiguration].
   /// [icebergCompaction] A single Iceberg compaction settings object.
   /// [icebergSnapshotManagement] A single Iceberg snapshot management settings object.
-  TableMaintenanceConfiguration({
+  const TableMaintenanceConfiguration({
     required this.icebergCompaction,
     required this.icebergSnapshotManagement,
   });

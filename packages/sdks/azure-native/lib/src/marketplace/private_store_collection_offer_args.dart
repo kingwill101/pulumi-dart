@@ -34,7 +34,7 @@ class PrivateStoreCollectionOfferArgs {
   /// [privateStoreId] The store ID - must use the tenant ID
   /// [specificPlanIdsLimitation] Plan ids limitation for this offer
   /// [updateSuppressedDueIdempotence] Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated.
-  PrivateStoreCollectionOfferArgs({
+  const PrivateStoreCollectionOfferArgs({
     required this.collectionId,
     this.eTag,
     this.iconFileUris,

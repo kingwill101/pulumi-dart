@@ -94,7 +94,7 @@ class GetClusterResult {
   /// [subscriptionType] Required.
   /// [trialMetadatas] Required.
   /// [uid] Required.
-  GetClusterResult({
+  const GetClusterResult({
     required this.annotations,
     required this.automatedBackupPolicies,
     required this.backupSources,

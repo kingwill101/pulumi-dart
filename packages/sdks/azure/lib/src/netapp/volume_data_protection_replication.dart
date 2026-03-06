@@ -23,7 +23,7 @@ class VolumeDataProtectionReplication {
   /// [remoteVolumeLocation] Location of the primary volume. Changing this forces a new resource to be created.
   /// [remoteVolumeResourceId] Resource ID of the primary volume.
   /// [replicationFrequency] Replication frequency, supported values are '10minutes', 'hourly', 'daily', values are case sensitive.
-  VolumeDataProtectionReplication({
+  const VolumeDataProtectionReplication({
     this.endpointType,
     required this.remoteVolumeLocation,
     required this.remoteVolumeResourceId,

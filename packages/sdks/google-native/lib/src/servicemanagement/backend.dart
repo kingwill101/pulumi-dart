@@ -10,7 +10,7 @@ class Backend {
 
   /// Creates a new [Backend].
   /// [rules] A list of API backend rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  Backend({
+  const Backend({
     this.rules,
   });
 

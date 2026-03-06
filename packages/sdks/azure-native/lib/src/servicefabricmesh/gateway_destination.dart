@@ -15,7 +15,7 @@ class GatewayDestination {
   /// [applicationName] Name of the service fabric Mesh application.
   /// [endpointName] name of the endpoint in the service.
   /// [serviceName] service that contains the endpoint.
-  GatewayDestination({
+  const GatewayDestination({
     required this.applicationName,
     required this.endpointName,
     required this.serviceName,

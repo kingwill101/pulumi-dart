@@ -21,7 +21,7 @@ class ListDisasterRecoveryConfigKeysArgs {
   /// [authorizationRuleName] The authorization rule name.
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListDisasterRecoveryConfigKeysArgs({
+  const ListDisasterRecoveryConfigKeysArgs({
     required this.alias,
     required this.authorizationRuleName,
     required this.namespaceName,

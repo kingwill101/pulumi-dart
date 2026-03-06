@@ -9,7 +9,7 @@ class SubResourceResponse {
 
   /// Creates a new [SubResourceResponse].
   /// [id] Azure resource identifier.
-  SubResourceResponse({
+  const SubResourceResponse({
     this.id,
   });
 

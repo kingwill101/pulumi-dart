@@ -8,7 +8,7 @@ class DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard {
 
   /// Creates a new [DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard].
   /// [copyPaste] Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
-  DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard({
+  const DomainDevicesSmartcardPassthroughQemuvdAgentClipBoard({
     required this.copyPaste,
   });
 

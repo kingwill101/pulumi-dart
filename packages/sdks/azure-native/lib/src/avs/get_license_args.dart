@@ -18,7 +18,7 @@ class GetLicenseArgs {
   /// [licenseName] Name of the license.
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetLicenseArgs({
+  const GetLicenseArgs({
     required this.licenseName,
     required this.privateCloudName,
     required this.resourceGroupName,

@@ -21,7 +21,7 @@ class BucketHttpsConfigCipherSuit {
   /// [enable] Configures TLS encryption algorithm suites. Valid values:
   /// [strongCipherSuite] Specifies whether to use strong encryption algorithm suites. Valid values:
   /// [tls13CustomCipherSuites] Specifies custom encryption algorithm suites. You can specify multiple suites. This field is used to configure custom encryption algorithm suites for TLS 1.3.
-  BucketHttpsConfigCipherSuit({
+  const BucketHttpsConfigCipherSuit({
     this.customCipherSuites,
     this.enable,
     this.strongCipherSuite,

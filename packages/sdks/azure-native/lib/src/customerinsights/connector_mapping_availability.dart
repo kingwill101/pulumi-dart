@@ -13,7 +13,7 @@ class ConnectorMappingAvailability {
   /// Creates a new [ConnectorMappingAvailability].
   /// [frequency] The frequency to update.
   /// [interval] The interval of the given frequency to use.
-  ConnectorMappingAvailability({
+  const ConnectorMappingAvailability({
     this.frequency,
     required this.interval,
   });

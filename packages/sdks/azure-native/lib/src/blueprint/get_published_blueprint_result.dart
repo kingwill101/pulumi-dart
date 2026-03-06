@@ -45,7 +45,7 @@ class GetPublishedBlueprintResult {
   /// [status] Status of the blueprint. This field is readonly.
   /// [targetScope] The scope where this blueprint definition can be assigned.
   /// [type] Type of this resource.
-  GetPublishedBlueprintResult({
+  const GetPublishedBlueprintResult({
     required this.azureApiVersion,
     this.blueprintName,
     this.changeNotes,

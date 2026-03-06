@@ -14,7 +14,7 @@ class NodeGroupUpdateConfig {
   /// [maxUnavailable] Desired max number of unavailable worker nodes during node group update.
   /// [maxUnavailablePercentage] Desired max percentage of unavailable worker nodes during node group update.
   /// [updateStrategy] Strategy to use for updating the node group. Valid values: `MINIMAL` and `DEFAULT`.
-  NodeGroupUpdateConfig({
+  const NodeGroupUpdateConfig({
     this.maxUnavailable,
     this.maxUnavailablePercentage,
     this.updateStrategy,

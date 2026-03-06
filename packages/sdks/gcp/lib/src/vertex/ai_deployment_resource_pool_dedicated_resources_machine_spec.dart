@@ -14,7 +14,7 @@ class AiDeploymentResourcePoolDedicatedResourcesMachineSpec {
   /// [acceleratorCount] The number of accelerators to attach to the machine.
   /// [acceleratorType] The type of accelerator(s) that may be attached to the machine as per accelerator_count. See possible values [here](https://cloud.google.com/vertex-ai/docs/reference/rest/v1/MachineSpec#AcceleratorType).
   /// [machineType] The type of the machine. See the [list of machine types supported for prediction](https://cloud.google.com/vertex-ai/docs/predictions/configure-compute#machine-types).
-  AiDeploymentResourcePoolDedicatedResourcesMachineSpec({
+  const AiDeploymentResourcePoolDedicatedResourcesMachineSpec({
     this.acceleratorCount,
     this.acceleratorType,
     this.machineType,

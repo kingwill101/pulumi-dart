@@ -19,7 +19,7 @@ class PublicIpAddressPoolCidrBlockArgs {
   /// [cidrBlock] The CIDR block.
   /// [cidrMask] IP address and network segment mask. After you enter the mask, the system automatically allocates the IP address network segment. Value range: **24** to **28**.
   /// [publicIpAddressPoolId] The ID of the VPC Public IP address pool.
-  PublicIpAddressPoolCidrBlockArgs({
+  const PublicIpAddressPoolCidrBlockArgs({
     this.cidrBlock,
     this.cidrMask,
     required this.publicIpAddressPoolId,

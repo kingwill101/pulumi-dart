@@ -18,7 +18,7 @@ class GetSecretArgs {
   /// [childResourceName] The name of the Secret resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the OpenShift cluster resource.
-  GetSecretArgs({
+  const GetSecretArgs({
     required this.childResourceName,
     required this.resourceGroupName,
     required this.resourceName,

@@ -11,7 +11,7 @@ class KMSEnvMap {
   /// Creates a new [KMSEnvMap].
   /// [cipherText] The value of the cipherText response from the `encrypt` method.
   /// [keyName] The name of the KMS key that will be used to decrypt the cipher text.
-  KMSEnvMap({
+  const KMSEnvMap({
     this.cipherText,
     this.keyName,
   });

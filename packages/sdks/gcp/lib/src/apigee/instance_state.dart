@@ -62,7 +62,7 @@ class InstanceState {
   /// [peeringCidrRange] The size of the CIDR block range that will be reserved by the instance. For valid values,
   /// [port] Output only. Port number of the exposed Apigee endpoint.
   /// [serviceAttachment] Output only. Resource name of the service attachment created for the instance in
-  InstanceState({
+  const InstanceState({
     this.accessLoggingConfig,
     this.consumerAcceptLists,
     this.description,

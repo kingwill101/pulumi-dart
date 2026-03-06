@@ -12,7 +12,7 @@ class DomainValidationPropertiesResponse {
   /// Creates a new [DomainValidationPropertiesResponse].
   /// [expirationDate] The date time that the token expires
   /// [validationToken] Challenge used for DNS TXT record or file based validation
-  DomainValidationPropertiesResponse({
+  const DomainValidationPropertiesResponse({
     required this.expirationDate,
     required this.validationToken,
   });

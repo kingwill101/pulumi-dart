@@ -15,7 +15,7 @@ class GetWorkspaceArgs {
   /// Creates a new [GetWorkspaceArgs].
   /// [name] Specifies the name of the Workspace.
   /// [resourceGroupName] Specifies the name of the resource group the Workspace is located in.
-  GetWorkspaceArgs({
+  const GetWorkspaceArgs({
     required this.name,
     required this.resourceGroupName,
   });

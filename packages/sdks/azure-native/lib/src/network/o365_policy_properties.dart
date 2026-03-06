@@ -10,7 +10,7 @@ class O365PolicyProperties {
 
   /// Creates a new [O365PolicyProperties].
   /// [breakOutCategories] Office365 breakout categories.
-  O365PolicyProperties({
+  const O365PolicyProperties({
     this.breakOutCategories,
   });
 

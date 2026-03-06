@@ -11,7 +11,7 @@ class LinkedServiceSynapseKeyVaultPassword {
   /// Creates a new [LinkedServiceSynapseKeyVaultPassword].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the secret name in Azure Key Vault that stores Synapse password.
-  LinkedServiceSynapseKeyVaultPassword({
+  const LinkedServiceSynapseKeyVaultPassword({
     required this.linkedServiceName,
     required this.secretName,
   });

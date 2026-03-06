@@ -25,7 +25,7 @@ class GetServerTrustGroupResult {
   /// [name] Resource name.
   /// [trustScopes] Trust scope of the server trust group.
   /// [type] Resource type.
-  GetServerTrustGroupResult({
+  const GetServerTrustGroupResult({
     required this.azureApiVersion,
     required this.groupMembers,
     required this.id,

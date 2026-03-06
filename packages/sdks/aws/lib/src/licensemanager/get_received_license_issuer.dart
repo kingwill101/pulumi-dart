@@ -14,7 +14,7 @@ class GetReceivedLicenseIssuer {
   /// [keyFingerprint] Issuer key fingerprint.
   /// [name] The key name.
   /// [signKey] Asymmetric KMS key from AWS Key Management Service. The KMS key must have a key usage of sign and verify, and support the RSASSA-PSS SHA-256 signing algorithm.
-  GetReceivedLicenseIssuer({
+  const GetReceivedLicenseIssuer({
     required this.keyFingerprint,
     required this.name,
     required this.signKey,

@@ -14,7 +14,7 @@ class FirewallPolicyLogAnalyticsResources {
   /// Creates a new [FirewallPolicyLogAnalyticsResources].
   /// [defaultWorkspaceId] The default workspace Id for Firewall Policy Insights.
   /// [workspaces] List of workspaces for Firewall Policy Insights.
-  FirewallPolicyLogAnalyticsResources({
+  const FirewallPolicyLogAnalyticsResources({
     this.defaultWorkspaceId,
     this.workspaces,
   });

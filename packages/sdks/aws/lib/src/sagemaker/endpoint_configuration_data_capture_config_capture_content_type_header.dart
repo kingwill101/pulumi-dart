@@ -11,7 +11,7 @@ class EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader {
   /// Creates a new [EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader].
   /// [csvContentTypes] CSV content type headers to capture. One of `csv_content_types` or `json_content_types` is required.
   /// [jsonContentTypes] The JSON content type headers to capture. One of `json_content_types` or `csv_content_types` is required.
-  EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader({
+  const EndpointConfigurationDataCaptureConfigCaptureContentTypeHeader({
     this.csvContentTypes,
     this.jsonContentTypes,
   });

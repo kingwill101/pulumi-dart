@@ -20,7 +20,7 @@ class ReportDefinitionResponse {
   /// [timePeriod] Has time period for pulling data for the report.
   /// [timeframe] The time frame for pulling data for the report. If custom, then a specific time period must be provided.
   /// [type] The type of the report.
-  ReportDefinitionResponse({
+  const ReportDefinitionResponse({
     this.dataset,
     this.timePeriod,
     required this.timeframe,

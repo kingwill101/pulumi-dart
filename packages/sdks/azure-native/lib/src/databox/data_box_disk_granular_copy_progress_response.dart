@@ -65,7 +65,7 @@ class DataBoxDiskGranularCopyProgressResponse {
   /// [totalBytesToProcess] Total amount of data to be processed by the job.
   /// [totalFilesToProcess] Total files to process
   /// [transferType] Transfer type of data
-  DataBoxDiskGranularCopyProgressResponse({
+  const DataBoxDiskGranularCopyProgressResponse({
     required this.accountId,
     required this.actions,
     required this.bytesProcessed,

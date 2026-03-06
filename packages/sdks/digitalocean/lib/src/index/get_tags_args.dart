@@ -19,7 +19,7 @@ class GetTagsArgs {
   /// Creates a new [GetTagsArgs].
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetTagsArgs({
+  const GetTagsArgs({
     this.filters,
     this.sorts,
   });

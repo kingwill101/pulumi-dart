@@ -47,7 +47,7 @@ class Condition {
   /// [resourceIdColumn] The column containing the resource id. The content of the column must be a uri formatted as resource id. Relevant only for rules of the kind LogAlert.
   /// [threshold] the criteria threshold value that activates the alert. Relevant and required only for static threshold rules of the kind LogAlert.
   /// [timeAggregation] Aggregation type. Relevant and required only for rules of the kind LogAlert.
-  Condition({
+  const Condition({
     this.alertSensitivity,
     this.criterionType,
     this.dimensions,

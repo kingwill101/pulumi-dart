@@ -11,7 +11,7 @@ class DistributionCacheBehaviorSettingsForwardedCookies {
   /// Creates a new [DistributionCacheBehaviorSettingsForwardedCookies].
   /// [cookiesAllowLists] Specific cookies to forward to your distribution's origin.
   /// [option] Which cookies to forward to the distribution's origin for a cache behavior. Valid values: `all`, `none`, `allow-list`.
-  DistributionCacheBehaviorSettingsForwardedCookies({
+  const DistributionCacheBehaviorSettingsForwardedCookies({
     this.cookiesAllowLists,
     this.option,
   });

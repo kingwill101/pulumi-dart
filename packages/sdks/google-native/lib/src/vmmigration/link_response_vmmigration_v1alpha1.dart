@@ -12,7 +12,7 @@ class LinkResponseVmmigrationV1alpha1 {
   /// Creates a new [LinkResponseVmmigrationV1alpha1].
   /// [description] Describes what the link offers.
   /// [url] The URL of the link.
-  LinkResponseVmmigrationV1alpha1({
+  const LinkResponseVmmigrationV1alpha1({
     required this.description,
     required this.url,
   });

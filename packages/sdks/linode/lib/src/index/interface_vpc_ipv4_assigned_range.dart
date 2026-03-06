@@ -8,7 +8,7 @@ class InterfaceVpcIpv4AssignedRange {
 
   /// Creates a new [InterfaceVpcIpv4AssignedRange].
   /// [range] The IPv6 network range in CIDR notation.
-  InterfaceVpcIpv4AssignedRange({
+  const InterfaceVpcIpv4AssignedRange({
     this.range,
   });
 

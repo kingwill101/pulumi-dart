@@ -9,7 +9,7 @@ class AiTensorboardEncryptionSpec {
 
   /// Creates a new [AiTensorboardEncryptionSpec].
   /// [kmsKeyName] The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource.
-  AiTensorboardEncryptionSpec({
+  const AiTensorboardEncryptionSpec({
     required this.kmsKeyName,
   });
 

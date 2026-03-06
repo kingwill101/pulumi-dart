@@ -75,7 +75,7 @@ class GetCryptoKeysKey {
   /// [rotationPeriod] Every time this period passes, generate a new CryptoKeyVersion and set it as the primary.
   /// [skipInitialVersionCreation] If set to true, the request will create a CryptoKey without any CryptoKeyVersions.
   /// [versionTemplates] A template describing settings for new crypto key versions.
-  GetCryptoKeysKey({
+  const GetCryptoKeysKey({
     required this.cryptoKeyBackend,
     required this.destroyScheduledDuration,
     required this.effectiveLabels,

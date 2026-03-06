@@ -52,7 +52,7 @@ class FlexibleAppVersionAutomaticScaling {
   /// [minTotalInstances] Minimum number of running instances that should be maintained for this version. Default: 2
   /// [networkUtilization] Target scaling by network usage.
   /// [requestUtilization] Target scaling by request utilization.
-  FlexibleAppVersionAutomaticScaling({
+  const FlexibleAppVersionAutomaticScaling({
     this.coolDownPeriod,
     required this.cpuUtilization,
     this.diskUtilization,

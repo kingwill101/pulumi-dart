@@ -22,7 +22,7 @@ class StatusEventResponse {
   /// [taskExecution] Task Execution
   /// [taskState] Task State
   /// [type] Type of the event.
-  StatusEventResponse({
+  const StatusEventResponse({
     required this.description,
     required this.eventTime,
     required this.taskExecution,

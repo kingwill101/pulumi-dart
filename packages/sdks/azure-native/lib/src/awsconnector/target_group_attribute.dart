@@ -12,7 +12,7 @@ class TargetGroupAttribute {
   /// Creates a new [TargetGroupAttribute].
   /// [key] The value of the attribute.
   /// [value] The name of the attribute.
-  TargetGroupAttribute({
+  const TargetGroupAttribute({
     this.key,
     this.value,
   });

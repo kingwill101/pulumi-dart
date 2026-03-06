@@ -100,7 +100,7 @@ class EnvironmentState {
   /// [triggers] Autoscaling triggers in use by this Environment.
   /// [version] The name of the Elastic Beanstalk Application Version
   /// [waitForReadyTimeout] The maximum
-  EnvironmentState({
+  const EnvironmentState({
     this.allSettings,
     this.application,
     this.arn,

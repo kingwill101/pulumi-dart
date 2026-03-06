@@ -7,7 +7,7 @@ class GetBucketReplicationConfigurationRuleDeleteMarkerReplication {
 
   /// Creates a new [GetBucketReplicationConfigurationRuleDeleteMarkerReplication].
   /// [status] Required.
-  GetBucketReplicationConfigurationRuleDeleteMarkerReplication({
+  const GetBucketReplicationConfigurationRuleDeleteMarkerReplication({
     required this.status,
   });
 

@@ -12,7 +12,7 @@ class RunAsAccountResponse {
   /// Creates a new [RunAsAccountResponse].
   /// [accountId] The CS RunAs account Id.
   /// [accountName] The CS RunAs account name.
-  RunAsAccountResponse({
+  const RunAsAccountResponse({
     this.accountId,
     this.accountName,
   });

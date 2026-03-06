@@ -15,7 +15,7 @@ class PredictionMappings {
   /// [grade] The grade of the link mapping.
   /// [reason] The reason of the link mapping.
   /// [score] The score of the link mapping.
-  PredictionMappings({
+  const PredictionMappings({
     required this.grade,
     required this.reason,
     required this.score,

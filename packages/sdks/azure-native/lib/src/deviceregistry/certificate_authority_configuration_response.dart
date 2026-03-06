@@ -18,7 +18,7 @@ class CertificateAuthorityConfigurationResponse {
   /// [subject] Certificate subject.
   /// [validityNotAfter] Certificate is valid not after this date. Format ISO8601. Generated based on validity period.
   /// [validityNotBefore] Certificate is valid not before this date. Format ISO8601. Generated based on on validity period.
-  CertificateAuthorityConfigurationResponse({
+  const CertificateAuthorityConfigurationResponse({
     required this.keyType,
     required this.subject,
     required this.validityNotAfter,

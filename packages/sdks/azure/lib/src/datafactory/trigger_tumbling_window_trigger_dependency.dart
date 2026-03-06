@@ -14,7 +14,7 @@ class TriggerTumblingWindowTriggerDependency {
   /// [offset] The offset of the dependency trigger. Must be in Timespan format (±hh:mm:ss) and must be a negative offset for a self dependency.
   /// [size] The size of the dependency tumbling window. Must be in Timespan format (hh:mm:ss).
   /// [triggerName] The dependency trigger name. If not specified, it will use self dependency.
-  TriggerTumblingWindowTriggerDependency({
+  const TriggerTumblingWindowTriggerDependency({
     this.offset,
     this.size,
     this.triggerName,

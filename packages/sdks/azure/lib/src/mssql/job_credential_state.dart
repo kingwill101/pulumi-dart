@@ -21,7 +21,7 @@ class JobCredentialState {
   /// [password] The password to use for this Elastic Job credential.
   /// [passwordWoVersion] An integer value used to trigger an update for `password_wo`. This property should be incremented when updating `password_wo`.
   /// [username] The username to use for this Elastic Job credential.
-  JobCredentialState({
+  const JobCredentialState({
     this.jobAgentId,
     this.name,
     this.password,

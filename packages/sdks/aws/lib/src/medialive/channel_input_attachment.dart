@@ -19,7 +19,7 @@ class ChannelInputAttachment {
   /// [inputAttachmentName] User-specified name for the attachment.
   /// [inputId] The ID of the input.
   /// [inputSettings] Settings of an input. See Input Settings for more details.
-  ChannelInputAttachment({
+  const ChannelInputAttachment({
     this.automaticInputFailoverSettings,
     required this.inputAttachmentName,
     required this.inputId,

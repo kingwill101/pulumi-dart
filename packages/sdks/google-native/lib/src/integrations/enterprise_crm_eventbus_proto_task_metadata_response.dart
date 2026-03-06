@@ -69,7 +69,7 @@ class EnterpriseCrmEventbusProtoTaskMetadataResponse {
   /// [status] Allows author to indicate if the task is ready to use or not. If not set, then it will default to INACTIVE.
   /// [system] Required.
   /// [tags] A set of tags that pertain to a particular task. This can be used to improve the searchability of tasks with several names ("REST Caller" vs. "Call REST Endpoint") or to help users find tasks based on related words.
-  EnterpriseCrmEventbusProtoTaskMetadataResponse({
+  const EnterpriseCrmEventbusProtoTaskMetadataResponse({
     required this.activeTaskName,
     required this.admins,
     required this.category,

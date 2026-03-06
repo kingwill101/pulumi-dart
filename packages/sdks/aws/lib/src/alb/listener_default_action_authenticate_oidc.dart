@@ -40,7 +40,7 @@ class ListenerDefaultActionAuthenticateOidc {
   /// [sessionTimeout] Maximum duration of the authentication session, in seconds.
   /// [tokenEndpoint] Token endpoint of the IdP.
   /// [userInfoEndpoint] User info endpoint of the IdP.
-  ListenerDefaultActionAuthenticateOidc({
+  const ListenerDefaultActionAuthenticateOidc({
     this.authenticationRequestExtraParams,
     required this.authorizationEndpoint,
     required this.clientId,

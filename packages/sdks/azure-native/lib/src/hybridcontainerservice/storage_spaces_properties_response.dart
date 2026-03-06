@@ -18,7 +18,7 @@ class StorageSpacesPropertiesResponse {
   /// [provisioningState] Required.
   /// [status] HybridAKSStorageStatus defines the observed state of HybridAKSStorage
   /// [vmwareStorageProfile] Optional.
-  StorageSpacesPropertiesResponse({
+  const StorageSpacesPropertiesResponse({
     this.hciStorageProfile,
     required this.provisioningState,
     this.status,

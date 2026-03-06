@@ -8,7 +8,7 @@ class DistributionPolicyZoneConfigurationResponseComputeBeta {
 
   /// Creates a new [DistributionPolicyZoneConfigurationResponseComputeBeta].
   /// [zone] The URL of the zone. The zone must exist in the region where the managed instance group is located.
-  DistributionPolicyZoneConfigurationResponseComputeBeta({
+  const DistributionPolicyZoneConfigurationResponseComputeBeta({
     required this.zone,
   });
 

@@ -12,7 +12,7 @@ class MapperDslConnectorProperties {
   /// Creates a new [MapperDslConnectorProperties].
   /// [name] Name of the property.
   /// [value] Value of the property.
-  MapperDslConnectorProperties({
+  const MapperDslConnectorProperties({
     this.name,
     this.value,
   });

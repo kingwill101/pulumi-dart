@@ -14,7 +14,7 @@ class PipelineThumbnailConfigPermission {
   /// [accesses] The permission that you want to give to the AWS user that you specified in `thumbnail_config_permissions.grantee`. Valid values are `Read`, `ReadAcp`, `WriteAcp` or `FullControl`.
   /// [grantee] The AWS user or group that you want to have access to thumbnail files.
   /// [granteeType] Specify the type of value that appears in the `thumbnail_config_permissions.grantee` object. Valid values are `Canonical`, `Email` or `Group`.
-  PipelineThumbnailConfigPermission({
+  const PipelineThumbnailConfigPermission({
     this.accesses,
     this.grantee,
     this.granteeType,

@@ -12,7 +12,7 @@ class PrometheusRuleGroupActionResponse {
   /// Creates a new [PrometheusRuleGroupActionResponse].
   /// [actionGroupId] The resource id of the action group to use.
   /// [actionProperties] The properties of an action group object.
-  PrometheusRuleGroupActionResponse({
+  const PrometheusRuleGroupActionResponse({
     this.actionGroupId,
     this.actionProperties,
   });

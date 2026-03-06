@@ -32,7 +32,7 @@ class PATAuthTypeWorkspaceConnectionProperties {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  PATAuthTypeWorkspaceConnectionProperties({
+  const PATAuthTypeWorkspaceConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

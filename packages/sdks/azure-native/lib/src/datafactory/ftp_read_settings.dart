@@ -43,7 +43,7 @@ class FtpReadSettings {
   /// [useBinaryTransfer] Specify whether to use binary transfer mode for FTP stores. Type: boolean (or Expression with resultType boolean).
   /// [wildcardFileName] Ftp wildcardFileName. Type: string (or Expression with resultType string).
   /// [wildcardFolderPath] Ftp wildcardFolderPath. Type: string (or Expression with resultType string).
-  FtpReadSettings({
+  const FtpReadSettings({
     this.deleteFilesAfterCompletion,
     this.disableChunking,
     this.disableMetricsCollection,

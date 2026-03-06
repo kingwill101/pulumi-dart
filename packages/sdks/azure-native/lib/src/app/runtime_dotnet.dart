@@ -9,7 +9,7 @@ class RuntimeDotnet {
 
   /// Creates a new [RuntimeDotnet].
   /// [autoConfigureDataProtection] Auto configure the ASP.NET Core Data Protection feature
-  RuntimeDotnet({
+  const RuntimeDotnet({
     this.autoConfigureDataProtection,
   });
 

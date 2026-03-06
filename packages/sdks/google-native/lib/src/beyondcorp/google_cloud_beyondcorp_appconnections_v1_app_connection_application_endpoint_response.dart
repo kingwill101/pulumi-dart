@@ -12,7 +12,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointRespo
   /// Creates a new [GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponse].
   /// [host] Hostname or IP address of the remote application endpoint.
   /// [port] Port of the remote application endpoint.
-  GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponse({
+  const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpointResponse({
     required this.host,
     required this.port,
   });

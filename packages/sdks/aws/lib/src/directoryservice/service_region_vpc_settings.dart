@@ -11,7 +11,7 @@ class ServiceRegionVpcSettings {
   /// Creates a new [ServiceRegionVpcSettings].
   /// [subnetIds] The identifiers of the subnets for the directory servers.
   /// [vpcId] The identifier of the VPC in which to create the directory.
-  ServiceRegionVpcSettings({
+  const ServiceRegionVpcSettings({
     required this.subnetIds,
     required this.vpcId,
   });

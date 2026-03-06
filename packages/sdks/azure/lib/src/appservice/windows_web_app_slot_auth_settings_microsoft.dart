@@ -17,7 +17,7 @@ class WindowsWebAppSlotAuthSettingsMicrosoft {
   /// [clientSecret] The OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `client_secret_setting_name`.
   /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret that was created for the app used for authentication. Cannot be specified with `client_secret`.
   /// [oauthScopes] Specifies a list of OAuth 2.0 scopes that will be requested as part of Microsoft Account authentication. If not specified, "wl.basic" is used as the default scope.
-  WindowsWebAppSlotAuthSettingsMicrosoft({
+  const WindowsWebAppSlotAuthSettingsMicrosoft({
     required this.clientId,
     this.clientSecret,
     this.clientSecretSettingName,

@@ -15,7 +15,7 @@ class GetDatabaseArgs {
   /// Creates a new [GetDatabaseArgs].
   /// [name] The name of the MS SQL Database.
   /// [serverId] The id of the MS SQL Server on which to read the database.
-  GetDatabaseArgs({
+  const GetDatabaseArgs({
     required this.name,
     required this.serverId,
   });

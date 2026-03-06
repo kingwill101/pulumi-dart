@@ -29,7 +29,7 @@ class GetServiceResult {
   /// [statuses] Required.
   /// [templates] Required.
   /// [traffics] Required.
-  GetServiceResult({
+  const GetServiceResult({
     required this.autogenerateRevisionName,
     required this.id,
     required this.location,

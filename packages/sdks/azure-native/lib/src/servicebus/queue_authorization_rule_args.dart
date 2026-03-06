@@ -25,7 +25,7 @@ class QueueAuthorizationRuleArgs {
   /// [queueName] The queue name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rights] The rights associated with the rule.
-  QueueAuthorizationRuleArgs({
+  const QueueAuthorizationRuleArgs({
     this.authorizationRuleName,
     required this.namespaceName,
     required this.queueName,

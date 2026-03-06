@@ -11,7 +11,7 @@ class LedgerCertificateBasedSecurityPrincipal {
   /// Creates a new [LedgerCertificateBasedSecurityPrincipal].
   /// [ledgerRoleName] Specifies the Ledger Role to grant this Certificate Security Principal. Possible values are `Administrator`, `Contributor` and `Reader`.
   /// [pemPublicKey] The public key, in PEM format, of the certificate used by this identity to authenticate with the Confidential Ledger.
-  LedgerCertificateBasedSecurityPrincipal({
+  const LedgerCertificateBasedSecurityPrincipal({
     required this.ledgerRoleName,
     required this.pemPublicKey,
   });

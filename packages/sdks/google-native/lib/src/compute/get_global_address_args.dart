@@ -13,7 +13,7 @@ class GetGlobalAddressArgs {
   /// Creates a new [GetGlobalAddressArgs].
   /// [address] Required.
   /// [project] Optional.
-  GetGlobalAddressArgs({
+  const GetGlobalAddressArgs({
     required this.address,
     this.project,
   });

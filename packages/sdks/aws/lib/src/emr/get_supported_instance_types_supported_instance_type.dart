@@ -38,7 +38,7 @@ class GetSupportedInstanceTypesSupportedInstanceType {
   /// [storageGb] Storage capacity of the instance type.
   /// [type] Amazon EC2 instance type. For example, `m5.xlarge`.
   /// [vcpu] The number of vCPUs available for the instance type.
-  GetSupportedInstanceTypesSupportedInstanceType({
+  const GetSupportedInstanceTypesSupportedInstanceType({
     required this.architecture,
     required this.ebsOptimizedAvailable,
     required this.ebsOptimizedByDefault,

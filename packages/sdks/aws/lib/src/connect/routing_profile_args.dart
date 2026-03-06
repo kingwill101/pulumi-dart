@@ -36,7 +36,7 @@ class RoutingProfileArgs {
   /// [queueConfigs] One or more `queue_configs` blocks that specify the inbound queues associated with the routing profile. If no queue is added, the agent only can make outbound calls. The `queue_configs` block is documented below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the Routing Profile. If configured with a provider
-  RoutingProfileArgs({
+  const RoutingProfileArgs({
     required this.defaultOutboundQueueId,
     required this.description,
     required this.instanceId,

@@ -20,7 +20,7 @@ class GetIpaDomainsDomainSource {
   /// [priority] The priority of the origin server if multiple origin servers are specified.
   /// [type] The type of the origin server.
   /// [weight] The weight of the origin server if multiple origin servers are specified.
-  GetIpaDomainsDomainSource({
+  const GetIpaDomainsDomainSource({
     required this.content,
     required this.port,
     required this.priority,

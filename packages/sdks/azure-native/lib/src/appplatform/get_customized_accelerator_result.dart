@@ -29,7 +29,7 @@ class GetCustomizedAcceleratorResult {
   /// [sku] Sku of the customized accelerator resource
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetCustomizedAcceleratorResult({
+  const GetCustomizedAcceleratorResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

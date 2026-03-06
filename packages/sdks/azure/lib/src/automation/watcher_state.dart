@@ -39,7 +39,7 @@ class WatcherState {
   /// [scriptRunOn] Specify the name of the Hybrid work group the watcher will run on.
   /// [status] The current status of the Automation Watcher.
   /// [tags] A mapping of tags which should be assigned to the Automation Watcher.
-  WatcherState({
+  const WatcherState({
     this.automationAccountId,
     this.description,
     this.etag,

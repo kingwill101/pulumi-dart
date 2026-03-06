@@ -9,7 +9,7 @@ class AkriConnectorTemplateTrustList {
 
   /// Creates a new [AkriConnectorTemplateTrustList].
   /// [trustListSecretRef] The secret reference for certificates to trust.
-  AkriConnectorTemplateTrustList({
+  const AkriConnectorTemplateTrustList({
     required this.trustListSecretRef,
   });
 

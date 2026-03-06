@@ -17,7 +17,7 @@ class DomainAssociationSubDomain {
   /// [dnsRecord] DNS record for the subdomain in a space-prefixed and space-delimited format (` CNAME &lt;target&gt;`).
   /// [prefix] Prefix setting for the subdomain.
   /// [verified] Verified status of the subdomain.
-  DomainAssociationSubDomain({
+  const DomainAssociationSubDomain({
     required this.branchName,
     this.dnsRecord,
     required this.prefix,

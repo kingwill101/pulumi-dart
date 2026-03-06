@@ -24,7 +24,7 @@ class GetReplicationPolicyResult {
   /// [name] Resource Name
   /// [properties] The custom data.
   /// [type] Resource Type
-  GetReplicationPolicyResult({
+  const GetReplicationPolicyResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

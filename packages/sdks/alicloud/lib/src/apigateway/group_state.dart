@@ -31,7 +31,7 @@ class GroupState {
   /// [userLogConfig] user_log_config defines the config of user log of the group. See `user_log_config` below.
   /// [vpcDomain] (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
   /// [vpcIntranetEnable] Whether to enable `vpc_domain`. Defaults to `false`.
-  GroupState({
+  const GroupState({
     this.basePath,
     this.description,
     this.instanceId,

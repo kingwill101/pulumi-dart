@@ -20,7 +20,7 @@ class GetIpv6RangeResult {
   /// [prefix] The prefix length of the address, denoting how many addresses can be assigned from this range.
   /// [range] Required.
   /// [region] The region for this range of IPv6 addresses.
-  GetIpv6RangeResult({
+  const GetIpv6RangeResult({
     required this.id,
     required this.isBgp,
     required this.linodes,

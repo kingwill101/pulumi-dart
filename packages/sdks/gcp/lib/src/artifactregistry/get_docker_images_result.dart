@@ -19,7 +19,7 @@ class GetDockerImagesResult {
   /// [location] Required.
   /// [project] Optional.
   /// [repositoryId] Required.
-  GetDockerImagesResult({
+  const GetDockerImagesResult({
     required this.dockerImages,
     required this.id,
     required this.location,

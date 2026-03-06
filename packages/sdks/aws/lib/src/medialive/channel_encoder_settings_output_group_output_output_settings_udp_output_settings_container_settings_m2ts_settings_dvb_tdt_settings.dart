@@ -7,7 +7,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
 
   /// Creates a new [ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings].
   /// [repInterval] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbTdtSettings({
     this.repInterval,
   });
 

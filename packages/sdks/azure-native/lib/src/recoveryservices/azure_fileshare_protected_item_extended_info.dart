@@ -15,7 +15,7 @@ class AzureFileshareProtectedItemExtendedInfo {
   /// [oldestRecoveryPoint] The oldest backup copy available for this item in the service.
   /// [policyState] Indicates consistency of policy object and policy applied to this backup item.
   /// [recoveryPointCount] Number of available backup copies associated with this backup item.
-  AzureFileshareProtectedItemExtendedInfo({
+  const AzureFileshareProtectedItemExtendedInfo({
     this.oldestRecoveryPoint,
     this.policyState,
     this.recoveryPointCount,

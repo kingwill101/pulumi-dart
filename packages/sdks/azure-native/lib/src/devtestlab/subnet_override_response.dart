@@ -25,7 +25,7 @@ class SubnetOverrideResponse {
   /// [useInVmCreationPermission] Indicates whether this subnet can be used during virtual machine creation (i.e. Allow, Deny).
   /// [usePublicIpAddressPermission] Indicates whether public IP addresses can be assigned to virtual machines on this subnet (i.e. Allow, Deny).
   /// [virtualNetworkPoolName] The virtual network pool associated with this subnet.
-  SubnetOverrideResponse({
+  const SubnetOverrideResponse({
     this.labSubnetName,
     this.resourceId,
     this.sharedPublicIpAddressConfiguration,

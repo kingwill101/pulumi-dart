@@ -16,7 +16,7 @@ class IngressLoadBalancerIngress {
   /// [hostname] hostname is set for load-balancer ingress points that are DNS based.
   /// [ip] ip is set for load-balancer ingress points that are IP based.
   /// [ports] ports provides information about the ports exposed by this LoadBalancer.
-  IngressLoadBalancerIngress({
+  const IngressLoadBalancerIngress({
     this.hostname,
     this.ip,
     this.ports,

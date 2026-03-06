@@ -27,7 +27,7 @@ class EmbeddedState {
   /// [resourceGroupName] The name of the Resource Group where the PowerBI Embedded should be created. Changing this forces a new resource to be created.
   /// [skuName] Sets the PowerBI Embedded's pricing level's SKU. Possible values include: `A1`, `A2`, `A3`, `A4`, `A5`, `A6`, `A7` and `A8`.
   /// [tags] A mapping of tags to assign to the resource.
-  EmbeddedState({
+  const EmbeddedState({
     this.administrators,
     this.location,
     this.mode,

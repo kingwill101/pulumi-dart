@@ -32,7 +32,7 @@ class NodeBalancerNodeArgs {
   /// [nodebalancerId] The ID of the NodeBalancer to access.
   /// [subnetId] The ID of the related VPC subnet. This is only set for VPC nodes. NOTE: VPC-attached NodeBalancers may not currently be available to all users and may require the `api_version` provider argument must be set to `v4beta`.
   /// [weight] Used when picking a backend to serve a request and is not pinned to a single backend yet. Nodes with a higher weight will receive more traffic. (1-255).
-  NodeBalancerNodeArgs({
+  const NodeBalancerNodeArgs({
     required this.address,
     required this.configId,
     required this.label,

@@ -12,7 +12,7 @@ class CompositeTypeLabelEntryResponseDeploymentmanagerV2beta {
   /// Creates a new [CompositeTypeLabelEntryResponseDeploymentmanagerV2beta].
   /// [key] Key of the label
   /// [value] Value of the label
-  CompositeTypeLabelEntryResponseDeploymentmanagerV2beta({
+  const CompositeTypeLabelEntryResponseDeploymentmanagerV2beta({
     required this.key,
     required this.value,
   });

@@ -8,7 +8,7 @@ class FolderCustomModuleCustomConfigResourceSelector {
 
   /// Creates a new [FolderCustomModuleCustomConfigResourceSelector].
   /// [resourceTypes] The resource types to run the detector on.
-  FolderCustomModuleCustomConfigResourceSelector({
+  const FolderCustomModuleCustomConfigResourceSelector({
     required this.resourceTypes,
   });
 

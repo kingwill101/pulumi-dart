@@ -24,7 +24,7 @@ class RouterRouteState {
   /// [nextHop] IP address of the next hop gateway.  Changing
   /// [region] The region in which to obtain the V2 networking client.
   /// [routerId] ID of the router this routing entry belongs to. Changing
-  RouterRouteState({
+  const RouterRouteState({
     this.destinationCidr,
     this.nextHop,
     this.region,

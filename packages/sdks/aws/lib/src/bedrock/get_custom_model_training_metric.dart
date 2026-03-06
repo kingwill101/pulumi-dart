@@ -8,7 +8,7 @@ class GetCustomModelTrainingMetric {
 
   /// Creates a new [GetCustomModelTrainingMetric].
   /// [trainingLoss] Loss metric associated with the customization job.
-  GetCustomModelTrainingMetric({
+  const GetCustomModelTrainingMetric({
     required this.trainingLoss,
   });
 

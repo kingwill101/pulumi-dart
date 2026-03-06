@@ -34,7 +34,7 @@ class AutomatedBackupPolicyResponse {
   /// [quantityBasedRetention] Quantity-based Backup retention policy to retain recent backups.
   /// [timeBasedRetention] Time-based Backup retention policy.
   /// [weeklySchedule] Weekly schedule for the Backup.
-  AutomatedBackupPolicyResponse({
+  const AutomatedBackupPolicyResponse({
     required this.backupWindow,
     required this.enabled,
     required this.encryptionConfig,

@@ -70,7 +70,7 @@ class GetInstancesResult {
   /// [vpcId] VPC ID the instance belongs to.
   /// [vswitchId] VSwitch ID the instance belongs to.
   /// [zoneId] The ID of zone.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.architectureType,
     this.editionType,
     this.enableDetails,

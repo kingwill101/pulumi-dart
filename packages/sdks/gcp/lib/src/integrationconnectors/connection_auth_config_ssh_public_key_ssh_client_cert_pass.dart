@@ -11,7 +11,7 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPass {
 
   /// Creates a new [ConnectionAuthConfigSshPublicKeySshClientCertPass].
   /// [secretVersion] The resource name of the secret version in the format,
-  ConnectionAuthConfigSshPublicKeySshClientCertPass({
+  const ConnectionAuthConfigSshPublicKeySshClientCertPass({
     required this.secretVersion,
   });
 

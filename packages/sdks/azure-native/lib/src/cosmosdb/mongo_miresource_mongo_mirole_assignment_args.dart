@@ -27,7 +27,7 @@ class MongoMIResourceMongoMIRoleAssignmentArgs {
   /// [roleAssignmentId] The GUID for the Role Assignment.
   /// [roleDefinitionId] The unique identifier for the associated Role Definition.
   /// [scope] The data plane resource path for which access is being granted through this MongoMI Role Assignment.
-  MongoMIResourceMongoMIRoleAssignmentArgs({
+  const MongoMIResourceMongoMIRoleAssignmentArgs({
     required this.accountName,
     this.principalId,
     required this.resourceGroupName,

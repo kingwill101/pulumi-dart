@@ -24,7 +24,7 @@ class GetHttpNamespaceResult {
   /// [name] Required.
   /// [region] Required.
   /// [tags] Map of tags for the resource.
-  GetHttpNamespaceResult({
+  const GetHttpNamespaceResult({
     required this.arn,
     required this.description,
     required this.httpName,

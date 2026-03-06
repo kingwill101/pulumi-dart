@@ -13,7 +13,7 @@ class DiJobTableMapping {
   /// Creates a new [DiJobTableMapping].
   /// [sourceObjectSelectionRules] Each rule can select different types of source objects to be synchronized, such as source database and source data table. See `source_object_selection_rules` below.
   /// [transformationRules] A list of conversion rule definitions for a synchronization object. Each element in the list defines a conversion rule. See `transformation_rules` below.
-  DiJobTableMapping({
+  const DiJobTableMapping({
     this.sourceObjectSelectionRules,
     this.transformationRules,
   });

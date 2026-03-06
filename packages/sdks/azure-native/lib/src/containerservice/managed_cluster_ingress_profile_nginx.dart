@@ -8,7 +8,7 @@ class ManagedClusterIngressProfileNginx {
 
   /// Creates a new [ManagedClusterIngressProfileNginx].
   /// [defaultIngressControllerType] Ingress type for the default NginxIngressController custom resource
-  ManagedClusterIngressProfileNginx({
+  const ManagedClusterIngressProfileNginx({
     this.defaultIngressControllerType,
   });
 

@@ -17,7 +17,7 @@ class CassandraTableSchema {
   /// [clusterKeys] One or more `cluster_key` blocks as defined below.
   /// [columns] One or more `column` blocks as defined below.
   /// [partitionKeys] One or more `partition_key` blocks as defined below.
-  CassandraTableSchema({
+  const CassandraTableSchema({
     this.clusterKeys,
     required this.columns,
     required this.partitionKeys,

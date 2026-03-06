@@ -19,7 +19,7 @@ class AmlFilesystemIdentityResponse {
   /// [tenantId] The tenant ID associated with the resource.
   /// [type] The type of identity used for the resource.
   /// [userAssignedIdentities] A dictionary where each key is a user assigned identity resource ID, and each key's value is an empty dictionary.
-  AmlFilesystemIdentityResponse({
+  const AmlFilesystemIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

@@ -18,7 +18,7 @@ class LifecyclePolicyArgs {
   /// [policy] The policy document. This is a JSON formatted string. See more details about [Policy Parameters](http://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html#lifecycle_policy_parameters) in the official AWS docs. Consider using the `aws.ecr.getLifecyclePolicyDocument` data_source to generate/manage the JSON document used for the `policy` argument.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repository] Name of the repository to apply the policy.
-  LifecyclePolicyArgs({
+  const LifecyclePolicyArgs({
     required this.policy,
     this.region,
     required this.repository,

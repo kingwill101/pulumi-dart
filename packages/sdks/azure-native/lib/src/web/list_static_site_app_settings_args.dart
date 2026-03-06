@@ -15,7 +15,7 @@ class ListStaticSiteAppSettingsArgs {
   /// Creates a new [ListStaticSiteAppSettingsArgs].
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListStaticSiteAppSettingsArgs({
+  const ListStaticSiteAppSettingsArgs({
     required this.name,
     required this.resourceGroupName,
   });

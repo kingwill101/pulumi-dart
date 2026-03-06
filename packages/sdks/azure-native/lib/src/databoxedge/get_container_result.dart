@@ -34,7 +34,7 @@ class GetContainerResult {
   /// [refreshDetails] Details of the refresh job on this container.
   /// [systemData] Metadata pertaining to creation and last modification of Container
   /// [type] The hierarchical type of the object.
-  GetContainerResult({
+  const GetContainerResult({
     required this.azureApiVersion,
     required this.containerStatus,
     required this.createdDateTime,

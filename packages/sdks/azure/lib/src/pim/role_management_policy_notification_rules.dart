@@ -17,7 +17,7 @@ class RoleManagementPolicyNotificationRules {
   /// [activeAssignments] A `notification_target` block as defined below to configure notfications on active role assignments.
   /// [eligibleActivations] A `notification_target` block as defined below for configuring notifications on activation of eligible role.
   /// [eligibleAssignments] A `notification_target` block as defined below to configure notification on eligible role assignments.
-  RoleManagementPolicyNotificationRules({
+  const RoleManagementPolicyNotificationRules({
     this.activeAssignments,
     this.eligibleActivations,
     this.eligibleAssignments,

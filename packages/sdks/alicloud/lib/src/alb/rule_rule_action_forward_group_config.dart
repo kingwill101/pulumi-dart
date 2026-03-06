@@ -13,7 +13,7 @@ class RuleRuleActionForwardGroupConfig {
   /// Creates a new [RuleRuleActionForwardGroupConfig].
   /// [serverGroupStickySession] The configuration of session persistence for server groups. See `server_group_sticky_session` below.
   /// [serverGroupTuples] The destination server group to which requests are forwarded. See `server_group_tuples` below.
-  RuleRuleActionForwardGroupConfig({
+  const RuleRuleActionForwardGroupConfig({
     this.serverGroupStickySession,
     this.serverGroupTuples,
   });

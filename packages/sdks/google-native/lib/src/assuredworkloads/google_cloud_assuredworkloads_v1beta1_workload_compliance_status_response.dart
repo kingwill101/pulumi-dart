@@ -18,7 +18,7 @@ class GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse {
   /// [acknowledgedViolationCount] Number of current orgPolicy violations which are acknowledged.
   /// [activeResourceViolationCount] Number of current resource violations which are acknowledged.
   /// [activeViolationCount] Number of current orgPolicy violations which are not acknowledged.
-  GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse({
+  const GoogleCloudAssuredworkloadsV1beta1WorkloadComplianceStatusResponse({
     required this.acknowledgedResourceViolationCount,
     required this.acknowledgedViolationCount,
     required this.activeResourceViolationCount,

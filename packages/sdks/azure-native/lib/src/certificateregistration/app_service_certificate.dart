@@ -12,7 +12,7 @@ class AppServiceCertificate {
   /// Creates a new [AppServiceCertificate].
   /// [keyVaultId] Key Vault resource Id.
   /// [keyVaultSecretName] Key Vault secret name.
-  AppServiceCertificate({
+  const AppServiceCertificate({
     this.keyVaultId,
     this.keyVaultSecretName,
   });

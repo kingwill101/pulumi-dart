@@ -28,7 +28,7 @@ class AssessmentArgs {
   /// [projectName] Name of the Azure Migrate project.
   /// [properties] Properties of the assessment.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  AssessmentArgs({
+  const AssessmentArgs({
     this.assessmentName,
     this.eTag,
     required this.groupName,

@@ -25,7 +25,7 @@ class WinRMListener {
   /// Creates a new [WinRMListener].
   /// [certificateUrl] This is the URL of a certificate that has been uploaded to Key Vault as a
   /// [protocol] Specifies the protocol of WinRM listener. Possible values are: **http,**
-  WinRMListener({
+  const WinRMListener({
     this.certificateUrl,
     this.protocol,
   });

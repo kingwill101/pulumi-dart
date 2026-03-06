@@ -19,7 +19,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload 
   /// [inputSchema] Schema for the tool's input. See `schema_definition` below.
   /// [name] Name of the tool.
   /// [outputSchema] Schema for the tool's output. See `schema_definition` below.
-  AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload({
+  const AgentcoreGatewayTargetTargetConfigurationMcpLambdaToolSchemaInlinePayload({
     required this.description,
     required this.inputSchema,
     required this.name,

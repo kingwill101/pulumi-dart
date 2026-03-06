@@ -21,7 +21,7 @@ class GetProjectCapabilityHostArgs {
   /// [capabilityHostName] The name of the capability host associated with the Cognitive Services Resource
   /// [projectName] The name of Cognitive Services account's project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProjectCapabilityHostArgs({
+  const GetProjectCapabilityHostArgs({
     required this.accountName,
     required this.capabilityHostName,
     required this.projectName,

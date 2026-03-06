@@ -22,7 +22,7 @@ class TargetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [targetName] The target resource name.
   /// [watcherName] The database watcher name.
-  TargetArgs({
+  const TargetArgs({
     this.properties,
     required this.resourceGroupName,
     this.targetName,

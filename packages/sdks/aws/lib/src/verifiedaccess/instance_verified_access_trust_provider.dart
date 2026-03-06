@@ -20,7 +20,7 @@ class InstanceVerifiedAccessTrustProvider {
   /// [trustProviderType] The type of trust provider (user- or device-based).
   /// [userTrustProviderType] The type of user-based trust provider.
   /// [verifiedAccessTrustProviderId] The ID of the trust provider.
-  InstanceVerifiedAccessTrustProvider({
+  const InstanceVerifiedAccessTrustProvider({
     this.description,
     this.deviceTrustProviderType,
     this.trustProviderType,

@@ -25,7 +25,7 @@ class GetReleaseResult {
   /// [releaseUser] Identifies the user who created the release.
   /// [type] Explains the reason for the release. Specify a value for this field only when creating a `SITE_DISABLE` type release.
   /// [version] The configuration and content that was released.
-  GetReleaseResult({
+  const GetReleaseResult({
     required this.message,
     required this.name,
     required this.releaseTime,

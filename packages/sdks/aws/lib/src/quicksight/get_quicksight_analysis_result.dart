@@ -34,7 +34,7 @@ class GetQuicksightAnalysisResult {
   /// [status] Required.
   /// [tags] Required.
   /// [themeArn] Required.
-  GetQuicksightAnalysisResult({
+  const GetQuicksightAnalysisResult({
     required this.analysisId,
     required this.arn,
     required this.awsAccountId,

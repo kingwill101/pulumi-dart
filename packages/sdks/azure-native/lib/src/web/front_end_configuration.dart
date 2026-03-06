@@ -8,7 +8,7 @@ class FrontEndConfiguration {
 
   /// Creates a new [FrontEndConfiguration].
   /// [kind] Optional.
-  FrontEndConfiguration({
+  const FrontEndConfiguration({
     this.kind,
   });
 

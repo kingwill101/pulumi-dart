@@ -9,7 +9,7 @@ class PodIPPatch {
 
   /// Creates a new [PodIPPatch].
   /// [ip] IP is the IP address assigned to the pod
-  PodIPPatch({
+  const PodIPPatch({
     this.ip,
   });
 

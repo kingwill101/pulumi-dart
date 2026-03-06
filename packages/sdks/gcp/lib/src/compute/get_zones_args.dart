@@ -19,7 +19,7 @@ class GetZonesArgs {
   /// [project] Project from which to list available zones. Defaults to project declared in the provider.
   /// [region] Region from which to list available zones. Defaults to region declared in the provider.
   /// [status] Allows to filter list of zones based on their current status. Status can be either `UP` or `DOWN`.
-  GetZonesArgs({
+  const GetZonesArgs({
     this.project,
     this.region,
     this.status,

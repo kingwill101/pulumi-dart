@@ -14,7 +14,7 @@ class NetworkConnectionMonitorTestConfigurationTcpConfiguration {
   /// [destinationPortBehavior] The destination port behavior for the TCP connection. Possible values are `None` and `ListenIfAvailable`.
   /// [port] The port for the TCP connection.
   /// [traceRouteEnabled] Should path evaluation with trace route be enabled? Defaults to `true`.
-  NetworkConnectionMonitorTestConfigurationTcpConfiguration({
+  const NetworkConnectionMonitorTestConfigurationTcpConfiguration({
     this.destinationPortBehavior,
     required this.port,
     this.traceRouteEnabled,

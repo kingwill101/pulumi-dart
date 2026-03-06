@@ -9,7 +9,7 @@ class VirtualizationSoftwareSettings {
 
   /// Creates a new [VirtualizationSoftwareSettings].
   /// [vMwareCloudFoundationLicenseCost] VMware cloud foundation license cost.
-  VirtualizationSoftwareSettings({
+  const VirtualizationSoftwareSettings({
     required this.vMwareCloudFoundationLicenseCost,
   });
 

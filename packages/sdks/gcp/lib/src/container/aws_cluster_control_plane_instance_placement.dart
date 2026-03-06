@@ -8,7 +8,7 @@ class AwsClusterControlPlaneInstancePlacement {
 
   /// Creates a new [AwsClusterControlPlaneInstancePlacement].
   /// [tenancy] The tenancy for the instance. Possible values: TENANCY_UNSPECIFIED, DEFAULT, DEDICATED, HOST
-  AwsClusterControlPlaneInstancePlacement({
+  const AwsClusterControlPlaneInstancePlacement({
     this.tenancy,
   });
 

@@ -23,7 +23,7 @@ class GetKeypairResult {
   /// [publicKey] The OpenSSH-formatted public key of the keypair.
   /// [region] See Argument Reference above.
   /// [userId] See Argument Reference above.
-  GetKeypairResult({
+  const GetKeypairResult({
     required this.fingerprint,
     required this.id,
     required this.name,

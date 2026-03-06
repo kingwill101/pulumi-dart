@@ -12,7 +12,7 @@ class RevocationDetailsResponse {
   /// Creates a new [RevocationDetailsResponse].
   /// [revocationState] Indicates why a Certificate was revoked.
   /// [revocationTime] The time at which this Certificate was revoked.
-  RevocationDetailsResponse({
+  const RevocationDetailsResponse({
     required this.revocationState,
     required this.revocationTime,
   });

@@ -11,7 +11,7 @@ class OptInResourceDataLfTagExpression {
   /// Creates a new [OptInResourceDataLfTagExpression].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
   /// [name] Name of the table.
-  OptInResourceDataLfTagExpression({
+  const OptInResourceDataLfTagExpression({
     this.catalogId,
     required this.name,
   });

@@ -7,7 +7,7 @@ class RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody {
 
   /// Creates a new [RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.
-  RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody({
+  const RuleGroupRuleStatementSizeConstraintStatementFieldToMatchBody({
     this.oversizeHandling,
   });
 

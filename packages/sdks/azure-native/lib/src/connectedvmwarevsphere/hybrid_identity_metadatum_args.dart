@@ -24,7 +24,7 @@ class HybridIdentityMetadatumArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [virtualMachineName] Name of the vm.
   /// [vmId] Gets or sets the Vm Id.
-  HybridIdentityMetadatumArgs({
+  const HybridIdentityMetadatumArgs({
     this.metadataName,
     this.publicKey,
     required this.resourceGroupName,

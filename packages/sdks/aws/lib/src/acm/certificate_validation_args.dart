@@ -18,7 +18,7 @@ class CertificateValidationArgs {
   /// [certificateArn] ARN of the certificate that is being validated.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [validationRecordFqdns] List of FQDNs that implement the validation. Only valid for DNS validation method ACM certificates. If this is set, the resource can implement additional sanity checks and has an explicit dependency on the resource that is implementing the validation
-  CertificateValidationArgs({
+  const CertificateValidationArgs({
     required this.certificateArn,
     this.region,
     this.validationRecordFqdns,

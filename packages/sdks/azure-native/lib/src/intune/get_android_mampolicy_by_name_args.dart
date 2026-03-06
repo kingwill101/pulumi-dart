@@ -18,7 +18,7 @@ class GetAndroidMAMPolicyByNameArgs {
   /// [hostName] Location hostName for the tenant
   /// [policyName] Unique name for the policy
   /// [select] select specific fields in entity.
-  GetAndroidMAMPolicyByNameArgs({
+  const GetAndroidMAMPolicyByNameArgs({
     required this.hostName,
     required this.policyName,
     this.select,

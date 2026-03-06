@@ -17,7 +17,7 @@ class GetTableArgs {
   /// [project] Optional.
   /// [tableId] Required.
   /// [view] Optional.
-  GetTableArgs({
+  const GetTableArgs({
     required this.instanceId,
     this.project,
     required this.tableId,

@@ -21,7 +21,7 @@ class UserPolicyArgs {
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [policy] The policy document. This is a JSON formatted string.
   /// [user] IAM user to which to attach this policy.
-  UserPolicyArgs({
+  const UserPolicyArgs({
     this.name,
     this.namePrefix,
     required this.policy,

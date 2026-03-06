@@ -53,7 +53,7 @@ class ProductSubscriptionState {
   /// [arn] The ARN of a resource that represents your subscription to the product that generates the findings that you want to import into Security Hub.
   /// [productArn] The ARN of the product that generates findings that you want to import into Security Hub - see below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ProductSubscriptionState({
+  const ProductSubscriptionState({
     this.arn,
     this.productArn,
     this.region,

@@ -14,7 +14,7 @@ class VnetRoute {
   /// Creates a new [VnetRoute].
   /// [staticRoutes] List of all Static Routes.
   /// [staticRoutesConfig] Configuration for static routes on this HubVnetConnection.
-  VnetRoute({
+  const VnetRoute({
     this.staticRoutes,
     this.staticRoutesConfig,
   });

@@ -13,7 +13,7 @@ class AccountStorage {
   /// Creates a new [AccountStorage].
   /// [identityClientId] The client ID of the managed identity associated with the storage resource.
   /// [storageAccountId] Full resource id of a Microsoft.Storage resource.
-  AccountStorage({
+  const AccountStorage({
     this.identityClientId,
     required this.storageAccountId,
   });

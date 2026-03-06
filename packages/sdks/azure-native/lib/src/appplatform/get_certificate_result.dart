@@ -25,7 +25,7 @@ class GetCertificateResult {
   /// [properties] Properties of the certificate resource payload.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

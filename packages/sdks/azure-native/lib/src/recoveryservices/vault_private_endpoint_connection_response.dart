@@ -20,7 +20,7 @@ class VaultPrivateEndpointConnectionResponse {
   /// [privateEndpoint] The Private Endpoint network resource that is linked to the Private Endpoint connection.
   /// [privateLinkServiceConnectionState] Gets or sets private link service connection state.
   /// [provisioningState] Gets or sets provisioning state of the private endpoint connection.
-  VaultPrivateEndpointConnectionResponse({
+  const VaultPrivateEndpointConnectionResponse({
     this.groupIds,
     required this.privateEndpoint,
     required this.privateLinkServiceConnectionState,

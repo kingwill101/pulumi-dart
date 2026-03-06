@@ -12,7 +12,7 @@ class GetInstanceProfilesArgs {
 
   /// Creates a new [GetInstanceProfilesArgs].
   /// [roleName] IAM role name.
-  GetInstanceProfilesArgs({
+  const GetInstanceProfilesArgs({
     required this.roleName,
   });
 

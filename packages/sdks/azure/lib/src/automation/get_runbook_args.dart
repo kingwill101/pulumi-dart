@@ -18,7 +18,7 @@ class GetRunbookArgs {
   /// [automationAccountName] The name of the Automation Account the runbook belongs to.
   /// [name] The name of the Automation Runbook.
   /// [resourceGroupName] The name of the Resource Group where the Automation exists.
-  GetRunbookArgs({
+  const GetRunbookArgs({
     required this.automationAccountName,
     required this.name,
     required this.resourceGroupName,

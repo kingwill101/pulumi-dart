@@ -11,7 +11,7 @@ class GetDropletAutoscaleCurrentUtilization {
   /// Creates a new [GetDropletAutoscaleCurrentUtilization].
   /// [cpu] Average CPU utilization
   /// [memory] Average Memory utilization
-  GetDropletAutoscaleCurrentUtilization({
+  const GetDropletAutoscaleCurrentUtilization({
     required this.cpu,
     required this.memory,
   });

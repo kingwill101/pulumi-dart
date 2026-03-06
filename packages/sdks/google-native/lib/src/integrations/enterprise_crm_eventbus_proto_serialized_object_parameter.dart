@@ -7,7 +7,7 @@ class EnterpriseCrmEventbusProtoSerializedObjectParameter {
 
   /// Creates a new [EnterpriseCrmEventbusProtoSerializedObjectParameter].
   /// [objectValue] Optional.
-  EnterpriseCrmEventbusProtoSerializedObjectParameter({
+  const EnterpriseCrmEventbusProtoSerializedObjectParameter({
     this.objectValue,
   });
 

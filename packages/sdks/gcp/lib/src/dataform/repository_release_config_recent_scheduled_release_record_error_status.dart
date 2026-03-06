@@ -13,7 +13,7 @@ class RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus {
   /// Creates a new [RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus].
   /// [code] (Output)
   /// [message] (Output)
-  RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus({
+  const RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus({
     this.code,
     this.message,
   });

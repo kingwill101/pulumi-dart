@@ -13,7 +13,7 @@ class GetSshPublicKeyOsloginV1betaArgs {
   /// Creates a new [GetSshPublicKeyOsloginV1betaArgs].
   /// [sshPublicKeyId] Required.
   /// [userId] Required.
-  GetSshPublicKeyOsloginV1betaArgs({
+  const GetSshPublicKeyOsloginV1betaArgs({
     required this.sshPublicKeyId,
     required this.userId,
   });

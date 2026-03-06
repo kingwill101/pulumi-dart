@@ -29,7 +29,7 @@ class GetReplicationRecoveryPlanRecoveryGroupPostAction {
   /// [runbookId] Id of runbook.
   /// [scriptPath] Path of action script.
   /// [type] Type of the action detail.
-  GetReplicationRecoveryPlanRecoveryGroupPostAction({
+  const GetReplicationRecoveryPlanRecoveryGroupPostAction({
     required this.fabricLocation,
     required this.failOverDirections,
     required this.failOverTypes,

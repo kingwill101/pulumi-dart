@@ -11,7 +11,7 @@ class ServiceSourceConfigurationCodeRepositorySourceCodeVersion {
   /// Creates a new [ServiceSourceConfigurationCodeRepositorySourceCodeVersion].
   /// [type] Type of version identifier. For a git-based repository, branches represent versions. Valid values: `BRANCH`.
   /// [value] Source code version. For a git-based repository, a branch name maps to a specific version. App Runner uses the most recent commit to the branch.
-  ServiceSourceConfigurationCodeRepositorySourceCodeVersion({
+  const ServiceSourceConfigurationCodeRepositorySourceCodeVersion({
     required this.type,
     required this.value,
   });

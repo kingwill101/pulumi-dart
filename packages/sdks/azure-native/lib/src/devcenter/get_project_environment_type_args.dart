@@ -18,7 +18,7 @@ class GetProjectEnvironmentTypeArgs {
   /// [environmentTypeName] The name of the environment type.
   /// [projectName] The name of the project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProjectEnvironmentTypeArgs({
+  const GetProjectEnvironmentTypeArgs({
     required this.environmentTypeName,
     required this.projectName,
     required this.resourceGroupName,

@@ -18,7 +18,7 @@ class GetWorkspaceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of Azure API Center service.
   /// [workspaceName] The name of the workspace.
-  GetWorkspaceArgs({
+  const GetWorkspaceArgs({
     required this.resourceGroupName,
     required this.serviceName,
     required this.workspaceName,

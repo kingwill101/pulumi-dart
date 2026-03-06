@@ -16,7 +16,7 @@ class AiRagEngineConfigRagManagedDbConfig {
   /// [basic] Basic tier is a cost-effective and low compute tier suitable for the following cases: Experimenting with RagManagedDb, Small data size, Latency insensitive workload, Only using RAG Engine with external vector DBs.
   /// [scaled] Scaled tier offers production grade performance along with autoscaling functionality. It is suitable for customers with large amounts of data or performance sensitive workloads.
   /// [unprovisioned] Disables the RAG Engine service and deletes all your data held within this service. This will halt the billing of the service.
-  AiRagEngineConfigRagManagedDbConfig({
+  const AiRagEngineConfigRagManagedDbConfig({
     this.basic,
     this.scaled,
     this.unprovisioned,

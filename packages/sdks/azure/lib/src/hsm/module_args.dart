@@ -40,7 +40,7 @@ class ModuleArgs {
   /// [stampId] The ID of the stamp. Possible values are `stamp1` or `stamp2`. Changing this forces a new Dedicated Hardware Security Module to be created.
   /// [tags] A mapping of tags which should be assigned to the Dedicated Hardware Security Module.
   /// [zones] Specifies a list of Availability Zones in which this Dedicated Hardware Security Module should be located. Changing this forces a new Dedicated Hardware Security Module to be created.
-  ModuleArgs({
+  const ModuleArgs({
     this.location,
     this.managementNetworkProfile,
     this.name,

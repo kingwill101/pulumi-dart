@@ -21,7 +21,7 @@ class GetIpamPreviewNextCidrArgs {
   /// [ipamPoolId] ID of the pool to which you want to assign a CIDR.
   /// [netmaskLength] Netmask length of the CIDR you would like to preview from the IPAM pool.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetIpamPreviewNextCidrArgs({
+  const GetIpamPreviewNextCidrArgs({
     this.disallowedCidrs,
     required this.ipamPoolId,
     this.netmaskLength,

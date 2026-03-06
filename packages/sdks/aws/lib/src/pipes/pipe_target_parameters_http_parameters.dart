@@ -11,7 +11,7 @@ class PipeTargetParametersHttpParameters {
   /// [headerParameters] Optional.
   /// [pathParameterValues] Optional.
   /// [queryStringParameters] Optional.
-  PipeTargetParametersHttpParameters({
+  const PipeTargetParametersHttpParameters({
     this.headerParameters,
     this.pathParameterValues,
     this.queryStringParameters,

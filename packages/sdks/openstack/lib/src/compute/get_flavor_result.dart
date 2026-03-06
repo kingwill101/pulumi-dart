@@ -35,7 +35,7 @@ class GetFlavorResult {
   /// [rxTxFactor] Optional.
   /// [swap] Optional.
   /// [vcpus] Optional.
-  GetFlavorResult({
+  const GetFlavorResult({
     this.description,
     this.disk,
     required this.extraSpecs,

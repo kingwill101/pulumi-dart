@@ -15,7 +15,7 @@ class WorkloadWorkloadPropertyExtendedMetadata {
   /// Creates a new [WorkloadWorkloadPropertyExtendedMetadata].
   /// [key] (Output)
   /// [values] (Output)
-  WorkloadWorkloadPropertyExtendedMetadata({
+  const WorkloadWorkloadPropertyExtendedMetadata({
     this.key,
     this.values,
   });

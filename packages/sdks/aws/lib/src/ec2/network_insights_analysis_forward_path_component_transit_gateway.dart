@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisForwardPathComponentTransitGateway {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisForwardPathComponentTransitGateway({
+  const NetworkInsightsAnalysisForwardPathComponentTransitGateway({
     this.arn,
     this.id,
     this.name,

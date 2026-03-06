@@ -29,7 +29,7 @@ class GetResourcePolicyGroupPlacementPolicy {
   /// [maxDistance] Specifies the number of max logical switches.
   /// [tpuTopology] Specifies the shape of the TPU slice.
   /// [vmCount] Number of VMs in this placement group. Google does not recommend that you use this field
-  GetResourcePolicyGroupPlacementPolicy({
+  const GetResourcePolicyGroupPlacementPolicy({
     required this.availabilityDomainCount,
     required this.collocation,
     required this.gpuTopology,

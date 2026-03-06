@@ -63,7 +63,7 @@ class GetAdminRuleResult {
   /// [sources] The CIDR or source IP ranges.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetAdminRuleResult({
+  const GetAdminRuleResult({
     required this.access,
     required this.azureApiVersion,
     this.description,

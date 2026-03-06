@@ -11,7 +11,7 @@ class GetTemplateScratchesScratchSourceTag {
   /// Creates a new [GetTemplateScratchesScratchSourceTag].
   /// [resourceTags] Source label.
   /// [resourceTypeFilters] Source resource type filter list.
-  GetTemplateScratchesScratchSourceTag({
+  const GetTemplateScratchesScratchSourceTag({
     required this.resourceTags,
     required this.resourceTypeFilters,
   });

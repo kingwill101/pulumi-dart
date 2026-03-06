@@ -122,7 +122,7 @@ class InstanceArgs {
   /// [shardCount] Required. Number of shards for the instance.
   /// [transitEncryptionMode] Optional. Immutable. In-transit encryption mode of the instance.
   /// [zoneDistributionConfig] Zone distribution configuration for allocation of instance resources.
-  InstanceArgs({
+  const InstanceArgs({
     this.authorizationMode,
     this.automatedBackupConfig,
     this.crossInstanceReplicationConfig,

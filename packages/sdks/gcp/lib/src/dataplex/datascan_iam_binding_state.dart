@@ -44,7 +44,7 @@ class DatascanIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  DatascanIamBindingState({
+  const DatascanIamBindingState({
     this.condition,
     this.dataScanId,
     this.etag,

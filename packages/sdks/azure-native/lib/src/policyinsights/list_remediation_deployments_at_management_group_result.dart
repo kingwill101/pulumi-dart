@@ -13,7 +13,7 @@ class ListRemediationDeploymentsAtManagementGroupResult {
   /// Creates a new [ListRemediationDeploymentsAtManagementGroupResult].
   /// [nextLink] The URL to get the next set of results.
   /// [value] Array of deployments for the remediation.
-  ListRemediationDeploymentsAtManagementGroupResult({
+  const ListRemediationDeploymentsAtManagementGroupResult({
     required this.nextLink,
     required this.value,
   });

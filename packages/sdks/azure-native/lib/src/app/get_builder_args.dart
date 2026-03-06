@@ -15,7 +15,7 @@ class GetBuilderArgs {
   /// Creates a new [GetBuilderArgs].
   /// [builderName] The name of the builder.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBuilderArgs({
+  const GetBuilderArgs({
     required this.builderName,
     required this.resourceGroupName,
   });

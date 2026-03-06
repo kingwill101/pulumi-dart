@@ -11,7 +11,7 @@ class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
   /// Creates a new [FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList].
   /// [peerDestinationCidr] The target network segment of the peer VPC.
   /// [peerNextHopInstanceId] The ID of the next-hop instance in the peer VPC.
-  FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList({
+  const FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList({
     required this.peerDestinationCidr,
     required this.peerNextHopInstanceId,
   });

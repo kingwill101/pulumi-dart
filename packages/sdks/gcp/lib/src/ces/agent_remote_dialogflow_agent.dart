@@ -27,7 +27,7 @@ class AgentRemoteDialogflowAgent {
   /// [flowId] The flow ID of the flow in the Dialogflow agent.
   /// [inputVariableMapping] The mapping of the app variables names to the Dialogflow session
   /// [outputVariableMapping] The mapping of the Dialogflow session parameters names to the app
-  AgentRemoteDialogflowAgent({
+  const AgentRemoteDialogflowAgent({
     required this.agent,
     this.environmentId,
     required this.flowId,

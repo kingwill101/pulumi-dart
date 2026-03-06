@@ -123,7 +123,7 @@ class SpotFleetRequestState {
   /// [validFrom] The start date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). The default is to start fulfilling the request immediately.
   /// [validUntil] The end date and time of the request, in UTC [RFC3339](https://tools.ietf.org/html/rfc3339#section-5.8) format(for example, YYYY-MM-DDTHH:MM:SSZ). At this point, no new Spot instance requests are placed or enabled to fulfill the request.
   /// [waitForFulfillment] If set, this provider will
-  SpotFleetRequestState({
+  const SpotFleetRequestState({
     this.allocationStrategy,
     this.clientToken,
     this.context,

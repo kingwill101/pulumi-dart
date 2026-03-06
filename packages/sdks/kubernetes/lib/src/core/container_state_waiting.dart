@@ -12,7 +12,7 @@ class ContainerStateWaiting {
   /// Creates a new [ContainerStateWaiting].
   /// [message] Message regarding why the container is not yet running.
   /// [reason] (brief) reason the container is not yet running.
-  ContainerStateWaiting({
+  const ContainerStateWaiting({
     this.message,
     this.reason,
   });

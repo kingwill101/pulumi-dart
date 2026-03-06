@@ -15,7 +15,7 @@ class GetBackendBucketIamPolicyComputeBetaArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [resource] Required.
-  GetBackendBucketIamPolicyComputeBetaArgs({
+  const GetBackendBucketIamPolicyComputeBetaArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

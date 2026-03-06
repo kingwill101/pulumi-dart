@@ -22,7 +22,7 @@ class SAMLOptionsOutput {
   /// [rolesKey] &lt;p&gt;The key used for matching the SAML roles attribute.&lt;/p&gt;
   /// [sessionTimeoutMinutes] &lt;p&gt;The duration, in minutes, after which a user session becomes inactive.&lt;/p&gt;
   /// [subjectKey] &lt;p&gt;The key used for matching the SAML subject attribute.&lt;/p&gt;
-  SAMLOptionsOutput({
+  const SAMLOptionsOutput({
     this.enabled,
     this.idp,
     this.rolesKey,

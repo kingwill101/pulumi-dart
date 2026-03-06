@@ -36,7 +36,7 @@ class GetMavenArtifactResult {
   /// [repositoryId] Required.
   /// [updateTime] The time the artifact was last updated.
   /// [version] The version of the Maven artifact.
-  GetMavenArtifactResult({
+  const GetMavenArtifactResult({
     required this.artifactId,
     required this.createTime,
     required this.groupId,

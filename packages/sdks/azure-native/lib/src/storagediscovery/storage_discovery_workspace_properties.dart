@@ -19,7 +19,7 @@ class StorageDiscoveryWorkspaceProperties {
   /// [scopes] The scopes of the storage discovery workspace.
   /// [sku] The storage discovery sku
   /// [workspaceRoots] The view level storage discovery data estate
-  StorageDiscoveryWorkspaceProperties({
+  const StorageDiscoveryWorkspaceProperties({
     this.description,
     required this.scopes,
     this.sku,

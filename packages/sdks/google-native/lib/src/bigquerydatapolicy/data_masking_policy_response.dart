@@ -12,7 +12,7 @@ class DataMaskingPolicyResponse {
   /// Creates a new [DataMaskingPolicyResponse].
   /// [predefinedExpression] A predefined masking expression.
   /// [routine] The name of the BigQuery routine that contains the custom masking routine, in the format of `projects/{project_number}/datasets/{dataset_id}/routines/{routine_id}`.
-  DataMaskingPolicyResponse({
+  const DataMaskingPolicyResponse({
     required this.predefinedExpression,
     required this.routine,
   });

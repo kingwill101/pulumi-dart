@@ -21,7 +21,7 @@ class GetIncidentRelationArgs {
   /// [relationName] Relation Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetIncidentRelationArgs({
+  const GetIncidentRelationArgs({
     required this.incidentId,
     required this.relationName,
     required this.resourceGroupName,

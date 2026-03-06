@@ -15,7 +15,7 @@ class CreatorProperties {
   /// [consumedStorageUnitSizeInBytes] The consumed storage unit size in bytes for the creator resource.
   /// [storageUnits] The storage units to be allocated. Integer values from 1 to 100, inclusive.
   /// [totalStorageUnitSizeInBytes] The total allocated storage unit size in bytes for the creator resource.
-  CreatorProperties({
+  const CreatorProperties({
     this.consumedStorageUnitSizeInBytes,
     required this.storageUnits,
     this.totalStorageUnitSizeInBytes,

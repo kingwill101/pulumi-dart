@@ -19,7 +19,7 @@ class DeploymentJobsResponse {
   /// [postdeployJob] The postdeploy Job, which is the last job on the phase.
   /// [predeployJob] The predeploy Job, which is the first job on the phase.
   /// [verifyJob] The verify Job. Runs after a deploy if the deploy succeeds.
-  DeploymentJobsResponse({
+  const DeploymentJobsResponse({
     required this.deployJob,
     required this.postdeployJob,
     required this.predeployJob,

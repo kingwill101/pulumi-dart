@@ -18,7 +18,7 @@ class GetClusterArgs {
   /// [clusterName] Name of the cluster
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.clusterName,
     required this.privateCloudName,
     required this.resourceGroupName,

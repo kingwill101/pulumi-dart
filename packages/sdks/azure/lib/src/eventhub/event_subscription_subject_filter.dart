@@ -14,7 +14,7 @@ class EventSubscriptionSubjectFilter {
   /// [caseSensitive] Specifies if `subject_begins_with` and `subject_ends_with` case sensitive. This value
   /// [subjectBeginsWith] A string to filter events for an event subscription based on a resource path prefix.
   /// [subjectEndsWith] A string to filter events for an event subscription based on a resource path suffix.
-  EventSubscriptionSubjectFilter({
+  const EventSubscriptionSubjectFilter({
     this.caseSensitive,
     this.subjectBeginsWith,
     this.subjectEndsWith,

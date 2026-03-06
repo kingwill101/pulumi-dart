@@ -9,7 +9,7 @@ class BuildInfoResponse {
 
   /// Creates a new [BuildInfoResponse].
   /// [cloudBuildId] The Google Cloud Build id. Example: "f966068f-08b2-42c8-bdfe-74137dff2bf9"
-  BuildInfoResponse({
+  const BuildInfoResponse({
     required this.cloudBuildId,
   });
 

@@ -10,7 +10,7 @@ class AutomationRuleConditionResponse {
 
   /// Creates a new [AutomationRuleConditionResponse].
   /// [targetsPresentCondition] Optional. Details around targets enumerated in the rule.
-  AutomationRuleConditionResponse({
+  const AutomationRuleConditionResponse({
     required this.targetsPresentCondition,
   });
 

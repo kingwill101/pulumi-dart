@@ -20,7 +20,7 @@ class DataExchangeSubscriptionLinkedDatasetMap {
   /// [linkedPubsubSubscription] (Output)
   /// [listing] (Output)
   /// [resourceName] (Required) The identifier for this object. Format specified above.
-  DataExchangeSubscriptionLinkedDatasetMap({
+  const DataExchangeSubscriptionLinkedDatasetMap({
     this.linkedDataset,
     this.linkedPubsubSubscription,
     this.listing,

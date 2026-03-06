@@ -33,7 +33,7 @@ class NamedValueState {
   /// [tags] A list of tags to be applied to the API Management Named Value.
   /// [value] The value of this API Management Named Value.
   /// [valueFromKeyVault] A `value_from_key_vault` block as defined below. If specified, `secret` must also be set to `true`.
-  NamedValueState({
+  const NamedValueState({
     this.apiManagementName,
     this.displayName,
     this.name,

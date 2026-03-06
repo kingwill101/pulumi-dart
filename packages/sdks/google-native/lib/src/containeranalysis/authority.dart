@@ -10,7 +10,7 @@ class Authority {
 
   /// Creates a new [Authority].
   /// [hint] Hint hints at the purpose of the attestation authority.
-  Authority({
+  const Authority({
     this.hint,
   });
 

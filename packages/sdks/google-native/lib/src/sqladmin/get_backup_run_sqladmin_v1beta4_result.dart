@@ -56,7 +56,7 @@ class GetBackupRunSqladminV1beta4Result {
   /// [timeZone] Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
   /// [type] The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
   /// [windowStartTime] The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
-  GetBackupRunSqladminV1beta4Result({
+  const GetBackupRunSqladminV1beta4Result({
     required this.backupKind,
     required this.description,
     required this.diskEncryptionConfiguration,

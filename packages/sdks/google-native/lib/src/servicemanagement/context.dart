@@ -10,7 +10,7 @@ class Context {
 
   /// Creates a new [Context].
   /// [rules] A list of RPC context rules that apply to individual API methods. **NOTE:** All service configuration rules follow "last one wins" order.
-  Context({
+  const Context({
     this.rules,
   });
 

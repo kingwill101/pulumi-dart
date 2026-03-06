@@ -11,7 +11,7 @@ class MetricAlertAction {
   /// Creates a new [MetricAlertAction].
   /// [actionGroupId] The ID of the Action Group can be sourced from the `azure.monitoring.ActionGroup` resource
   /// [webhookProperties] The map of custom string properties to include with the post operation. These data are appended to the webhook payload.
-  MetricAlertAction({
+  const MetricAlertAction({
     required this.actionGroupId,
     this.webhookProperties,
   });

@@ -17,7 +17,7 @@ class GetConnectionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] IDs of the connections.
   /// [tags] Optional.
-  GetConnectionsResult({
+  const GetConnectionsResult({
     this.deviceId,
     required this.globalNetworkId,
     required this.id,

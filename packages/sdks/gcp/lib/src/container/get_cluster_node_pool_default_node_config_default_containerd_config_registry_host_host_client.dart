@@ -13,7 +13,7 @@ class GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHost
   /// Creates a new [GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient].
   /// [certs] Configures the client certificate.
   /// [keys] Configures the client private key.
-  GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient({
+  const GetClusterNodePoolDefaultNodeConfigDefaultContainerdConfigRegistryHostHostClient({
     required this.certs,
     required this.keys,
   });

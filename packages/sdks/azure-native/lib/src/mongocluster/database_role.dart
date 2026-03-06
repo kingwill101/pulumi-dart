@@ -12,7 +12,7 @@ class DatabaseRole {
   /// Creates a new [DatabaseRole].
   /// [db] Database scope that the role is assigned to.
   /// [role] The role that is assigned to the user on the database scope.
-  DatabaseRole({
+  const DatabaseRole({
     required this.db,
     required this.role,
   });

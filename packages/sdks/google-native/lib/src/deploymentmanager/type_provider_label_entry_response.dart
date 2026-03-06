@@ -12,7 +12,7 @@ class TypeProviderLabelEntryResponse {
   /// Creates a new [TypeProviderLabelEntryResponse].
   /// [key] Key of the label
   /// [value] Value of the label
-  TypeProviderLabelEntryResponse({
+  const TypeProviderLabelEntryResponse({
     required this.key,
     required this.value,
   });

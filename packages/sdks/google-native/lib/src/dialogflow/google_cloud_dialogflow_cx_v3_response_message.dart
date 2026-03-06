@@ -43,7 +43,7 @@ class GoogleCloudDialogflowCxV3ResponseMessage {
   /// [responseType] Response type.
   /// [telephonyTransferCall] A signal that the client should transfer the phone call connected to this agent to a third-party endpoint.
   /// [text] Returns a text response.
-  GoogleCloudDialogflowCxV3ResponseMessage({
+  const GoogleCloudDialogflowCxV3ResponseMessage({
     this.channel,
     this.conversationSuccess,
     this.knowledgeInfoCard,

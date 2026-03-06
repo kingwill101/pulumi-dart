@@ -21,7 +21,7 @@ class UrlPathMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleUrlPathMatchConditionParameters'.
-  UrlPathMatchConditionParametersResponse({
+  const UrlPathMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

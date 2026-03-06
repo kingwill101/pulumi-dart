@@ -37,7 +37,7 @@ class GetDnsResolverPolicyVirtualNetworkLinkResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualNetwork] The reference to the virtual network. This cannot be changed after creation.
-  GetDnsResolverPolicyVirtualNetworkLinkResult({
+  const GetDnsResolverPolicyVirtualNetworkLinkResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

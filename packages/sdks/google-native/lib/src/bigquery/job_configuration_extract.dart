@@ -34,7 +34,7 @@ class JobConfigurationExtract {
   /// [sourceModel] A reference to the model being exported.
   /// [sourceTable] A reference to the table being exported.
   /// [useAvroLogicalTypes] [Optional] If destinationFormat is set to "AVRO", this flag indicates whether to enable extracting applicable column types (such as TIMESTAMP) to their corresponding AVRO logical types (timestamp-micros), instead of only using their raw types (avro-long). Not applicable when extracting models.
-  JobConfigurationExtract({
+  const JobConfigurationExtract({
     this.compression,
     this.destinationFormat,
     this.destinationUri,

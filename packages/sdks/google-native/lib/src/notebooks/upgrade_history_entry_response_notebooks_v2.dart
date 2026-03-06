@@ -33,7 +33,7 @@ class UpgradeHistoryEntryResponseNotebooksV2 {
   /// [targetVersion] Optional. Target VM Version, like m63.
   /// [version] Optional. The version of the notebook instance before this upgrade.
   /// [vmImage] Optional. The VM image before this instance upgrade.
-  UpgradeHistoryEntryResponseNotebooksV2({
+  const UpgradeHistoryEntryResponseNotebooksV2({
     required this.action,
     required this.containerImage,
     required this.createTime,

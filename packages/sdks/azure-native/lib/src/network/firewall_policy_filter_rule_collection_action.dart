@@ -9,7 +9,7 @@ class FirewallPolicyFilterRuleCollectionAction {
 
   /// Creates a new [FirewallPolicyFilterRuleCollectionAction].
   /// [type] The type of action.
-  FirewallPolicyFilterRuleCollectionAction({
+  const FirewallPolicyFilterRuleCollectionAction({
     this.type,
   });
 

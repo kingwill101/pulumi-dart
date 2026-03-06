@@ -42,7 +42,7 @@ class DatabaseConnectionPoolState {
   /// [size] The desired size of the PGBouncer connection pool.
   /// [uri] The full URI for connecting to the database connection pool.
   /// [user] The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
-  DatabaseConnectionPoolState({
+  const DatabaseConnectionPoolState({
     this.clusterId,
     this.dbName,
     this.host,

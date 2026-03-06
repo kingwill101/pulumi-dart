@@ -28,7 +28,7 @@ class SqlServerAvailabilityGroupArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerInstanceName] Name of SQL Server Instance
   /// [tags] Resource tags.
-  SqlServerAvailabilityGroupArgs({
+  const SqlServerAvailabilityGroupArgs({
     this.availabilityGroupName,
     this.location,
     required this.properties,

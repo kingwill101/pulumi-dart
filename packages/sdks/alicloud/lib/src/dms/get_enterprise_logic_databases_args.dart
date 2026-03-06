@@ -15,7 +15,7 @@ class GetEnterpriseLogicDatabasesArgs {
   /// Creates a new [GetEnterpriseLogicDatabasesArgs].
   /// [ids] A list of Logic Database IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEnterpriseLogicDatabasesArgs({
+  const GetEnterpriseLogicDatabasesArgs({
     this.ids,
     this.outputFile,
   });

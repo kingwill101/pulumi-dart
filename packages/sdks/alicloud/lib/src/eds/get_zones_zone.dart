@@ -8,7 +8,7 @@ class GetZonesZone {
 
   /// Creates a new [GetZonesZone].
   /// [zoneId] String to filter results by zone id.
-  GetZonesZone({
+  const GetZonesZone({
     required this.zoneId,
   });
 

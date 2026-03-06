@@ -12,7 +12,7 @@ class ReferenceDataSetKeyPropertyResponse {
   /// Creates a new [ReferenceDataSetKeyPropertyResponse].
   /// [name] The name of the key property.
   /// [type] The type of the key property.
-  ReferenceDataSetKeyPropertyResponse({
+  const ReferenceDataSetKeyPropertyResponse({
     this.name,
     this.type,
   });

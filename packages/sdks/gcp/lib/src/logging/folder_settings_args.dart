@@ -21,7 +21,7 @@ class FolderSettingsArgs {
   /// [folder] The folder for which to retrieve settings.
   /// [kmsKeyName] The resource name for the configured Cloud KMS key.
   /// [storageLocation] The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
-  FolderSettingsArgs({
+  const FolderSettingsArgs({
     this.disableDefaultSink,
     required this.folder,
     this.kmsKeyName,

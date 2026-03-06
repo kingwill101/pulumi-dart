@@ -28,7 +28,7 @@ class PoolStartTaskResourceFile {
   /// [httpUrl] The URL of the file to download. If the URL is Azure Blob Storage, it must be readable using anonymous access; that is, the Batch service does not present any credentials when downloading the blob. There are two ways to get such a URL for a blob in Azure storage: include a Shared Access Signature (SAS) granting read permissions on the blob, or set the ACL for the blob or its container to allow public access.
   /// [storageContainerUrl] The URL of the blob container within Azure Blob Storage. This URL must be readable and listable using anonymous access; that is, the Batch service does not present any credentials when downloading the blob. There are two ways to get such a URL for a blob in Azure storage: include a Shared Access Signature (SAS) granting read and list permissions on the blob, or set the ACL for the blob or its container to allow public access.
   /// [userAssignedIdentityId] An identity reference from pool's user assigned managed identity list.
-  PoolStartTaskResourceFile({
+  const PoolStartTaskResourceFile({
     this.autoStorageContainerName,
     this.blobPrefix,
     this.fileMode,

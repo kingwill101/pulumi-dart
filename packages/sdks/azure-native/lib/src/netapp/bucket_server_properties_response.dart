@@ -18,7 +18,7 @@ class BucketServerPropertiesResponse {
   /// [certificateExpiryDate] The bucket server's certificate expiry date.
   /// [fqdn] The host part of the bucket URL, resolving to the bucket IP address and allowed by the server certificate.
   /// [ipAddress] The bucket server's IPv4 address
-  BucketServerPropertiesResponse({
+  const BucketServerPropertiesResponse({
     required this.certificateCommonName,
     required this.certificateExpiryDate,
     this.fqdn,

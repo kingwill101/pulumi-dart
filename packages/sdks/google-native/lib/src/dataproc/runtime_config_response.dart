@@ -19,7 +19,7 @@ class RuntimeConfigResponse {
   /// [properties] Optional. A mapping of property names to values, which are used to configure workload execution.
   /// [repositoryConfig] Optional. Dependency repository configuration.
   /// [version] Optional. Version of the batch runtime.
-  RuntimeConfigResponse({
+  const RuntimeConfigResponse({
     required this.containerImage,
     required this.properties,
     required this.repositoryConfig,

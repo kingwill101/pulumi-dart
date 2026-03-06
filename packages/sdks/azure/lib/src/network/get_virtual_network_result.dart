@@ -36,7 +36,7 @@ class GetVirtualNetworkResult {
   /// [tags] A mapping of tags to assigned to the resource.
   /// [vnetPeerings] A mapping of name - virtual network id of the virtual network peerings.
   /// [vnetPeeringsAddresses] A list of virtual network peerings IP addresses.
-  GetVirtualNetworkResult({
+  const GetVirtualNetworkResult({
     required this.addressSpaces,
     required this.dnsServers,
     required this.guid,

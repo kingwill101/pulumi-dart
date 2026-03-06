@@ -17,7 +17,7 @@ class GetApiIamPolicyApigatewayV1betaArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetApiIamPolicyApigatewayV1betaArgs({
+  const GetApiIamPolicyApigatewayV1betaArgs({
     required this.apiId,
     required this.location,
     this.optionsRequestedPolicyVersion,

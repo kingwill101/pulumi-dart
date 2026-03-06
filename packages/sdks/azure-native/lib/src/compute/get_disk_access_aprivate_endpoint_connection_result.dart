@@ -32,7 +32,7 @@ class GetDiskAccessAPrivateEndpointConnectionResult {
   /// [provisioningState] The provisioning state of the private endpoint connection resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetDiskAccessAPrivateEndpointConnectionResult({
+  const GetDiskAccessAPrivateEndpointConnectionResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

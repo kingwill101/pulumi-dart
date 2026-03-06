@@ -36,7 +36,7 @@ class SQLTempDbSettingsResponse {
   /// [persistFolder] SQL Server tempdb persist folder choice
   /// [persistFolderPath] SQL Server tempdb persist folder location
   /// [useStoragePool] Use storage pool to build a drive if true or not provided
-  SQLTempDbSettingsResponse({
+  const SQLTempDbSettingsResponse({
     this.dataFileCount,
     this.dataFileSize,
     this.dataGrowth,

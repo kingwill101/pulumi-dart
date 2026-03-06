@@ -21,7 +21,7 @@ class PrivateLinkServiceProxyResponse {
   /// [id] Gets or sets private link service proxy id.
   /// [remotePrivateEndpointConnection] Represent remote private endpoint connection.
   /// [remotePrivateLinkServiceConnectionState] Represents Private link service connection state.
-  PrivateLinkServiceProxyResponse({
+  const PrivateLinkServiceProxyResponse({
     this.groupConnectivityInformation,
     this.id,
     this.remotePrivateEndpointConnection,

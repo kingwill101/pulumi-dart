@@ -16,7 +16,7 @@ class PartnerConfigurationPartnerAuthorization {
   /// [authorizationExpirationTimeInUtc] Expiration time of the partner authorization. Value should be in RFC 3339 format in UTC time zone, for example: "2025-02-04T00:00:00Z".
   /// [partnerName] The partner name.
   /// [partnerRegistrationId] The immutable id of the corresponding partner registration.
-  PartnerConfigurationPartnerAuthorization({
+  const PartnerConfigurationPartnerAuthorization({
     this.authorizationExpirationTimeInUtc,
     required this.partnerName,
     required this.partnerRegistrationId,

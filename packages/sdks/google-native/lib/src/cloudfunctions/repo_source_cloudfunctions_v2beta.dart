@@ -24,7 +24,7 @@ class RepoSourceCloudfunctionsV2beta {
   /// [project] ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed.
   /// [repoName] Name of the Cloud Source Repository.
   /// [tagName] Regex matching tags to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
-  RepoSourceCloudfunctionsV2beta({
+  const RepoSourceCloudfunctionsV2beta({
     this.branchName,
     this.commitSha,
     this.dir,

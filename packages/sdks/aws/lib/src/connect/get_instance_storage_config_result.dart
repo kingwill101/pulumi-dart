@@ -21,7 +21,7 @@ class GetInstanceStorageConfigResult {
   /// [region] Required.
   /// [resourceType] Required.
   /// [storageConfigs] Specifies the storage configuration options for the Connect Instance. Documented below.
-  GetInstanceStorageConfigResult({
+  const GetInstanceStorageConfigResult({
     required this.associationId,
     required this.id,
     required this.instanceId,

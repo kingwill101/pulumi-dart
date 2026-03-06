@@ -8,7 +8,7 @@ class CustomKeysResponse {
 
   /// Creates a new [CustomKeysResponse].
   /// [keys] Optional.
-  CustomKeysResponse({
+  const CustomKeysResponse({
     this.keys,
   });
 

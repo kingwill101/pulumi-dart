@@ -24,7 +24,7 @@ class EntryAspectAspect {
   /// [data] The content of the aspect in JSON form, according to its aspect type schema. The maximum size of the field is 120KB (encoded as UTF-8).
   /// [path] (Output)
   /// [updateTime] (Output)
-  EntryAspectAspect({
+  const EntryAspectAspect({
     this.aspectType,
     this.createTime,
     required this.data,

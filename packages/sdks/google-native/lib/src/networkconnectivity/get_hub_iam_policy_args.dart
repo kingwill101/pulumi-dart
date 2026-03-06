@@ -15,7 +15,7 @@ class GetHubIamPolicyArgs {
   /// [hubId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetHubIamPolicyArgs({
+  const GetHubIamPolicyArgs({
     required this.hubId,
     this.optionsRequestedPolicyVersion,
     this.project,

@@ -12,7 +12,7 @@ class GetSshKeyArgs {
 
   /// Creates a new [GetSshKeyArgs].
   /// [name] The name of the ssh key.
-  GetSshKeyArgs({
+  const GetSshKeyArgs({
     required this.name,
   });
 

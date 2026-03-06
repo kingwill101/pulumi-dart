@@ -19,7 +19,7 @@ class BareMetalClusterValidationCheck {
   /// [options] (Output)
   /// [scenario] (Output)
   /// [statuses] (Output)
-  BareMetalClusterValidationCheck({
+  const BareMetalClusterValidationCheck({
     this.options,
     this.scenario,
     this.statuses,

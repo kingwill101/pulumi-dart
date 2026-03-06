@@ -14,7 +14,7 @@ class GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse {
   /// Creates a new [GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse].
   /// [dialogflowSource] The source when the conversation comes from Dialogflow.
   /// [gcsSource] A Cloud Storage location specification for the audio and transcript.
-  GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse({
+  const GoogleCloudContactcenterinsightsV1ConversationDataSourceResponse({
     required this.dialogflowSource,
     required this.gcsSource,
   });

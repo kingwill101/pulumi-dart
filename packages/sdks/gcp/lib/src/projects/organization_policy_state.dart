@@ -40,7 +40,7 @@ class OrganizationPolicyState {
   /// [restorePolicy] A restore policy is a constraint to restore the default policy. Structure is documented below.
   /// [updateTime] (Computed) The timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds, representing when the variable was last updated. Example: "2016-10-09T12:33:37.578138407Z".
   /// [version] Version of the Policy. Default version is 0.
-  OrganizationPolicyState({
+  const OrganizationPolicyState({
     this.booleanPolicy,
     this.constraint,
     this.etag,

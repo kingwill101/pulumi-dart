@@ -14,7 +14,7 @@ class CoreNetworkSegment {
   /// [edgeLocations] Regions where the edges are located.
   /// [name] Name of a core network segment.
   /// [sharedSegments] Shared segments of a core network.
-  CoreNetworkSegment({
+  const CoreNetworkSegment({
     this.edgeLocations,
     this.name,
     this.sharedSegments,

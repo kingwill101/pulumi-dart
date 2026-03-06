@@ -191,7 +191,7 @@ class GetGatewayFileSharesShare {
   /// [transferAcceleration] The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version &gt;= 1.3.0 above support.
   /// [used] Used cache. Unit: `B`.
   /// [windowsAcl] The set up gateway file share Server Message Block (SMB) protocol, whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.45 above support.
-  GetGatewayFileSharesShare({
+  const GetGatewayFileSharesShare({
     required this.accessBasedEnumeration,
     required this.address,
     required this.backendLimit,

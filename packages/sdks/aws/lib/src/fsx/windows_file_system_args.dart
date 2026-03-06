@@ -80,7 +80,7 @@ class WindowsFileSystemArgs {
   /// [tags] A map of tags to assign to the file system. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [throughputCapacity] Throughput (megabytes per second) of the file system. For valid values, refer to the [AWS documentation](https://docs.aws.amazon.com/fsx/latest/WindowsGuide/performance.html).
   /// [weeklyMaintenanceStartTime] The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-  WindowsFileSystemArgs({
+  const WindowsFileSystemArgs({
     this.activeDirectoryId,
     this.aliases,
     this.auditLogConfiguration,

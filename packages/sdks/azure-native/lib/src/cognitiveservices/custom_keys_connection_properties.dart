@@ -40,7 +40,7 @@ class CustomKeysConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  CustomKeysConnectionProperties({
+  const CustomKeysConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

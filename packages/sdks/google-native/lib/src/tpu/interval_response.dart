@@ -12,7 +12,7 @@ class IntervalResponse {
   /// Creates a new [IntervalResponse].
   /// [endTime] Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end.
   /// [startTime] Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start.
-  IntervalResponse({
+  const IntervalResponse({
     required this.endTime,
     required this.startTime,
   });

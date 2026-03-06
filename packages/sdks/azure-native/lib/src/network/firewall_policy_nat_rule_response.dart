@@ -30,7 +30,7 @@ class FirewallPolicyNatRuleResponse {
   /// [ruleType] The type of the rule.
   /// [translatedAddress] The translated address for this NAT rule.
   /// [translatedPort] The translated port for this NAT rule.
-  FirewallPolicyNatRuleResponse({
+  const FirewallPolicyNatRuleResponse({
     this.action,
     this.name,
     this.priority,

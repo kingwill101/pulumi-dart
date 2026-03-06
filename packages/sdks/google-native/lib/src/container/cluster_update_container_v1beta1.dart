@@ -233,7 +233,7 @@ class ClusterUpdateContainerV1beta1 {
   /// [enableK8sBetaApis] Kubernetes open source beta apis enabled on the cluster. Only beta apis
   /// [etag] The current etag of the cluster. If an etag is provided and does not match the current etag of the cluster, update will be blocked and an ABORTED error will be returned.
   /// [removedAdditionalPodRangesConfig] The additional pod ranges that are to be removed from the cluster. The pod ranges specified here must have been specified earlier in the 'additional_pod_ranges_config' argument.
-  ClusterUpdateContainerV1beta1({
+  const ClusterUpdateContainerV1beta1({
     this.additionalPodRangesConfig,
     this.desiredAddonsConfig,
     this.desiredAuthenticatorGroupsConfig,

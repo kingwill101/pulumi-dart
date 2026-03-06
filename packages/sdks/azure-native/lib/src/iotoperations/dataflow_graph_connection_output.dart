@@ -9,7 +9,7 @@ class DataflowGraphConnectionOutput {
 
   /// Creates a new [DataflowGraphConnectionOutput].
   /// [name] Name of the destination node.
-  DataflowGraphConnectionOutput({
+  const DataflowGraphConnectionOutput({
     required this.name,
   });
 

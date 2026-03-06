@@ -11,7 +11,7 @@ class BucketWebsiteConfigurationRoutingRuleCondition {
   /// Creates a new [BucketWebsiteConfigurationRoutingRuleCondition].
   /// [httpErrorCodeReturnedEquals] HTTP error code when the redirect is applied. If specified with `key_prefix_equals`, then both must be true for the redirect to be applied.
   /// [keyPrefixEquals] Object key name prefix when the redirect is applied. If specified with `http_error_code_returned_equals`, then both must be true for the redirect to be applied.
-  BucketWebsiteConfigurationRoutingRuleCondition({
+  const BucketWebsiteConfigurationRoutingRuleCondition({
     this.httpErrorCodeReturnedEquals,
     this.keyPrefixEquals,
   });

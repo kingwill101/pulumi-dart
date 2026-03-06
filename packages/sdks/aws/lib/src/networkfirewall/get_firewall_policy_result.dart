@@ -28,7 +28,7 @@ class GetFirewallPolicyResult {
   /// [region] Required.
   /// [tags] Key-value tags for the firewall policy.
   /// [updateToken] Token used for optimistic locking.
-  GetFirewallPolicyResult({
+  const GetFirewallPolicyResult({
     this.arn,
     required this.description,
     required this.firewallPolicies,

@@ -13,7 +13,7 @@ class NGroupCGPropertyVolume {
   /// Creates a new [NGroupCGPropertyVolume].
   /// [azureFile] The Azure File volume.
   /// [name] The name of the volume.
-  NGroupCGPropertyVolume({
+  const NGroupCGPropertyVolume({
     this.azureFile,
     required this.name,
   });

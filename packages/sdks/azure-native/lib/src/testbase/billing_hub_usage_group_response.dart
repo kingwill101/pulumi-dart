@@ -28,7 +28,7 @@ class BillingHubUsageGroupResponse {
   /// [totalCharges] Optional.
   /// [totalUsedBillableHours] Optional.
   /// [totalUsedFreeHours] Optional.
-  BillingHubUsageGroupResponse({
+  const BillingHubUsageGroupResponse({
     this.executionUsageDetails,
     this.osBuild,
     this.productFamily,

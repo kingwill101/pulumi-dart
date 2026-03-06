@@ -22,7 +22,7 @@ class CloudErrorResponse {
   /// [details] Gets or sets details for the error.
   /// [message] The error message parsed from the body of the http error response.
   /// [target] Gets or sets the target of the error.
-  CloudErrorResponse({
+  const CloudErrorResponse({
     required this.additionalInfo,
     this.code,
     required this.details,

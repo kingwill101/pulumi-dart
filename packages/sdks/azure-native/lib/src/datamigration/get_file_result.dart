@@ -28,7 +28,7 @@ class GetFileResult {
   /// [properties] Custom file properties
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Resource type.
-  GetFileResult({
+  const GetFileResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

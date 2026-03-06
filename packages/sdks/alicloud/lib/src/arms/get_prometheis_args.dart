@@ -27,7 +27,7 @@ class GetPrometheisArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] A mapping of tags to assign to the resource.
-  GetPrometheisArgs({
+  const GetPrometheisArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

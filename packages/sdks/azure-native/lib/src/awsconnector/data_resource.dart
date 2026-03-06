@@ -12,7 +12,7 @@ class DataResource {
   /// Creates a new [DataResource].
   /// [type] The resource type in which you want to log data events. You can specify AWS::S3::Object or AWS::Lambda::Function resources.
   /// [values] An array of Amazon Resource Name (ARN) strings or partial ARN strings for the specified objects.
-  DataResource({
+  const DataResource({
     this.type,
     this.values,
   });

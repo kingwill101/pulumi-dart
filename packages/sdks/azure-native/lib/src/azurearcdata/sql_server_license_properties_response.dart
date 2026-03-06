@@ -30,7 +30,7 @@ class SqlServerLicensePropertiesResponse {
   /// [physicalCores] The number of total cores of the license covers.
   /// [scopeType] The Azure scope to which the license will apply.
   /// [tenantId] The tenantId the SQL Server license resource subscription resides in.
-  SqlServerLicensePropertiesResponse({
+  const SqlServerLicensePropertiesResponse({
     required this.activationState,
     required this.billingPlan,
     required this.lastActivatedAt,

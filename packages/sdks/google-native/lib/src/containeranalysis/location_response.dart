@@ -16,7 +16,7 @@ class LocationResponse {
   /// [cpeUri] Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
   /// [path] The path from which we gathered that this package/version is installed.
   /// [version] Deprecated. The version installed at this location.
-  LocationResponse({
+  const LocationResponse({
     required this.cpeUri,
     required this.path,
     required this.version,

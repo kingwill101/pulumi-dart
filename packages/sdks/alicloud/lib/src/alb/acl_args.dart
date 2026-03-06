@@ -26,7 +26,7 @@ class AclArgs {
   /// [dryRun] Specifies whether to precheck the API request.
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] A mapping of tags to assign to the resource.
-  AclArgs({
+  const AclArgs({
     this.aclEntries,
     this.aclName,
     this.dryRun,

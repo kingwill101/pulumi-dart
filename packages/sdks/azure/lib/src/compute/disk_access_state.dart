@@ -18,7 +18,7 @@ class DiskAccessState {
   /// [name] The name which should be used for this Disk Access. Changing this forces a new Disk Access to be created.
   /// [resourceGroupName] The name of the Resource Group where the Disk Access should exist. Changing this forces a new Disk Access to be created.
   /// [tags] A mapping of tags which should be assigned to the Disk Access.
-  DiskAccessState({
+  const DiskAccessState({
     this.location,
     this.name,
     this.resourceGroupName,

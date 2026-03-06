@@ -42,7 +42,7 @@ class RoutingProfileState {
   /// [routingProfileId] Identifier for the Routing Profile.
   /// [tags] Tags to apply to the Routing Profile. If configured with a provider
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  RoutingProfileState({
+  const RoutingProfileState({
     this.arn,
     this.defaultOutboundQueueId,
     this.description,

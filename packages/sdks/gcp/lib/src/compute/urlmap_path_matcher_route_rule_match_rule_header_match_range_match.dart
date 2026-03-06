@@ -11,7 +11,7 @@ class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch {
   /// Creates a new [URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch].
   /// [rangeEnd] The end of the range (exclusive).
   /// [rangeStart] The start of the range (inclusive).
-  URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch({
+  const URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch({
     required this.rangeEnd,
     required this.rangeStart,
   });

@@ -15,7 +15,7 @@ class ManifestArtifactFormatResponse {
   /// [artifactName] The artifact name
   /// [artifactType] The artifact type.
   /// [artifactVersion] The artifact version.
-  ManifestArtifactFormatResponse({
+  const ManifestArtifactFormatResponse({
     this.artifactName,
     this.artifactType,
     this.artifactVersion,

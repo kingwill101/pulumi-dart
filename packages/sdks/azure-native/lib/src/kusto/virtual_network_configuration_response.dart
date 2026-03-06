@@ -18,7 +18,7 @@ class VirtualNetworkConfigurationResponse {
   /// [enginePublicIpId] Engine service's public IP address resource id.
   /// [state] When enabled, the cluster is deployed into the configured subnet, when disabled it will be removed from the subnet.
   /// [subnetId] The subnet resource id.
-  VirtualNetworkConfigurationResponse({
+  const VirtualNetworkConfigurationResponse({
     required this.dataManagementPublicIpId,
     required this.enginePublicIpId,
     this.state,

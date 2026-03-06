@@ -30,7 +30,7 @@ class GetCrossRegionBackupsResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] Optional.
   /// [startTime] Optional.
-  GetCrossRegionBackupsResult({
+  const GetCrossRegionBackupsResult({
     this.backupId,
     required this.backups,
     this.crossBackupId,

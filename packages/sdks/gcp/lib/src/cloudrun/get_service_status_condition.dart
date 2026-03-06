@@ -17,7 +17,7 @@ class GetServiceStatusCondition {
   /// [reason] One-word CamelCase reason for the condition's current status.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of domain mapping condition.
-  GetServiceStatusCondition({
+  const GetServiceStatusCondition({
     required this.message,
     required this.reason,
     required this.status,

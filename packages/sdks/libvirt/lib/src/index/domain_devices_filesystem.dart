@@ -70,7 +70,7 @@ class DomainDevicesFilesystem {
   /// [spaceSoftLimit] Configures the soft limit on the space allocated for the filesystem.
   /// [spaceSoftLimitUnit] Sets the unit of measure for the soft limit space allocation for the filesystem.
   /// [target] Specifies the target element defining where the filesystem is mounted in the guest.
-  DomainDevicesFilesystem({
+  const DomainDevicesFilesystem({
     this.accessMode,
     this.acpi,
     this.address,

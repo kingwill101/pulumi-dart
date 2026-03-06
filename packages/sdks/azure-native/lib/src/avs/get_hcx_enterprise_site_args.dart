@@ -18,7 +18,7 @@ class GetHcxEnterpriseSiteArgs {
   /// [hcxEnterpriseSiteName] Name of the HCX Enterprise Site
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetHcxEnterpriseSiteArgs({
+  const GetHcxEnterpriseSiteArgs({
     required this.hcxEnterpriseSiteName,
     required this.privateCloudName,
     required this.resourceGroupName,

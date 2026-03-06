@@ -8,7 +8,7 @@ class DatascanDataQualitySpecRuleSqlAssertion {
 
   /// Creates a new [DatascanDataQualitySpecRuleSqlAssertion].
   /// [sqlStatement] The SQL statement.
-  DatascanDataQualitySpecRuleSqlAssertion({
+  const DatascanDataQualitySpecRuleSqlAssertion({
     required this.sqlStatement,
   });
 

@@ -23,7 +23,7 @@ class GetHybridMonitorFcTasksTask {
   /// [namespace] The index warehouse where the host belongs.
   /// [targetUserId] The ID of the member account.
   /// [yarmConfig] The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
-  GetHybridMonitorFcTasksTask({
+  const GetHybridMonitorFcTasksTask({
     required this.createTime,
     required this.hybridMonitorFcTaskId,
     required this.id,

@@ -12,7 +12,7 @@ class ApplianceNetworkConfigurationResponse {
   /// Creates a new [ApplianceNetworkConfigurationResponse].
   /// [macAddress] Mac Address.
   /// [name] Name of the network.
-  ApplianceNetworkConfigurationResponse({
+  const ApplianceNetworkConfigurationResponse({
     required this.macAddress,
     required this.name,
   });

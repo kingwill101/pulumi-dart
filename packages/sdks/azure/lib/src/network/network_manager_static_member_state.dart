@@ -20,7 +20,7 @@ class NetworkManagerStaticMemberState {
   /// [networkGroupId] Specifies the ID of the Network Manager Group. Changing this forces a new Network Manager Static Member to be created.
   /// [region] The region of the Network Manager Static Member.
   /// [targetVirtualNetworkId] Specifies the Resource ID of the Virtual Network or Subnet used as the Static Member. Changing this forces a new Network Manager Static Member to be created.
-  NetworkManagerStaticMemberState({
+  const NetworkManagerStaticMemberState({
     this.name,
     this.networkGroupId,
     this.region,

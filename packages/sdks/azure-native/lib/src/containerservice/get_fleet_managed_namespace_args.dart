@@ -18,7 +18,7 @@ class GetFleetManagedNamespaceArgs {
   /// [fleetName] The name of the Fleet resource.
   /// [managedNamespaceName] The name of the fleet managed namespace resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFleetManagedNamespaceArgs({
+  const GetFleetManagedNamespaceArgs({
     required this.fleetName,
     required this.managedNamespaceName,
     required this.resourceGroupName,

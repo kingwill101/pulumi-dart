@@ -24,7 +24,7 @@ class GetEcsDeploymentSetsArgs {
   /// [nameRegex] A regex string to filter results by Deployment Set name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [strategy] The deployment strategy. Valid values: `Availability`.
-  GetEcsDeploymentSetsArgs({
+  const GetEcsDeploymentSetsArgs({
     this.deploymentSetName,
     this.ids,
     this.nameRegex,

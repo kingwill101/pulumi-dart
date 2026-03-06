@@ -14,7 +14,7 @@ class GetListenerRuleConditionHttpHeader {
   /// [httpHeaderName] Name of the HTTP header to match.
   /// [regexValues] Set of regular expressions to compare against the request URL.
   /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
-  GetListenerRuleConditionHttpHeader({
+  const GetListenerRuleConditionHttpHeader({
     required this.httpHeaderName,
     required this.regexValues,
     required this.values,

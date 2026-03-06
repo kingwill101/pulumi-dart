@@ -18,7 +18,7 @@ class GetAccountNetworkAcl {
   /// [defaultAction] The Default Action to use when no rules match from `ip_rules` / `virtual_network_rules`.
   /// [ipRules] One or more IP Addresses, or CIDR Blocks that are able to access the Cognitive Services Account.
   /// [virtualNetworkRules] A `virtual_network_rules` block as defined below.
-  GetAccountNetworkAcl({
+  const GetAccountNetworkAcl({
     required this.bypass,
     required this.defaultAction,
     required this.ipRules,

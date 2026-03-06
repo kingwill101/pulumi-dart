@@ -14,7 +14,7 @@ class AzureArcKubernetesNetworkFunctionTemplate {
   /// Creates a new [AzureArcKubernetesNetworkFunctionTemplate].
   /// [networkFunctionApplications] Network function applications.
   /// [nfviType] The network function type.
-  AzureArcKubernetesNetworkFunctionTemplate({
+  const AzureArcKubernetesNetworkFunctionTemplate({
     this.networkFunctionApplications,
     required this.nfviType,
   });

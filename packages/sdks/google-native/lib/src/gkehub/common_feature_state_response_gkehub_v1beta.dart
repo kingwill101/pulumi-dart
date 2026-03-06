@@ -22,7 +22,7 @@ class CommonFeatureStateResponseGkehubV1beta {
   /// [clusterupgrade] ClusterUpgrade fleet-level state.
   /// [fleetobservability] FleetObservability feature state.
   /// [state] The "running state" of the Feature in this Hub.
-  CommonFeatureStateResponseGkehubV1beta({
+  const CommonFeatureStateResponseGkehubV1beta({
     required this.appdevexperience,
     required this.clusterupgrade,
     required this.fleetobservability,

@@ -13,7 +13,7 @@ class VirtualMachineScaleSetNetworkConfiguration {
   /// Creates a new [VirtualMachineScaleSetNetworkConfiguration].
   /// [name] The network configuration name.
   /// [properties] Describes a virtual machine scale set network profile's IP configuration.
-  VirtualMachineScaleSetNetworkConfiguration({
+  const VirtualMachineScaleSetNetworkConfiguration({
     required this.name,
     this.properties,
   });

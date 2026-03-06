@@ -54,7 +54,7 @@ class DataDiskResponse {
   /// [toBeDetached] Specifies whether the data disk is in process of detachment from the VirtualMachine/VirtualMachineScaleset
   /// [vhd] The virtual hard disk.
   /// [writeAcceleratorEnabled] Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  DataDiskResponse({
+  const DataDiskResponse({
     this.caching,
     required this.createOption,
     this.deleteOption,

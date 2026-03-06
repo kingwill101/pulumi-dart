@@ -25,7 +25,7 @@ class RouteSpec {
   /// [httpRoute] HTTP routing information for the route.
   /// [priority] Priority for the route, between `0` and `1000`.
   /// [tcpRoute] TCP routing information for the route.
-  RouteSpec({
+  const RouteSpec({
     this.grpcRoute,
     this.http2Route,
     this.httpRoute,

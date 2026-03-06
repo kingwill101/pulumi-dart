@@ -20,7 +20,7 @@ class GetIndexsIndexLine {
   /// [excludeKeys] List of excluded fields.
   /// [includeKeys] Include field list.
   /// [tokens] Delimiter.
-  GetIndexsIndexLine({
+  const GetIndexsIndexLine({
     required this.caseSensitive,
     required this.chn,
     required this.excludeKeys,

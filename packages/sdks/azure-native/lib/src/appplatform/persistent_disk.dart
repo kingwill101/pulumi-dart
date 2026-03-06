@@ -12,7 +12,7 @@ class PersistentDisk {
   /// Creates a new [PersistentDisk].
   /// [mountPath] Mount path of the persistent disk
   /// [sizeInGB] Size of the persistent disk in GB
-  PersistentDisk({
+  const PersistentDisk({
     this.mountPath,
     this.sizeInGB,
   });

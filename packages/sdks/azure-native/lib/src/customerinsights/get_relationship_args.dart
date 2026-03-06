@@ -18,7 +18,7 @@ class GetRelationshipArgs {
   /// [hubName] The name of the hub.
   /// [relationshipName] The name of the relationship.
   /// [resourceGroupName] The name of the resource group.
-  GetRelationshipArgs({
+  const GetRelationshipArgs({
     required this.hubName,
     required this.relationshipName,
     required this.resourceGroupName,

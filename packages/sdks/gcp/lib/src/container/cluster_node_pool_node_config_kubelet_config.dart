@@ -84,7 +84,7 @@ class ClusterNodePoolNodeConfigKubeletConfig {
   /// [podPidsLimit] Controls the maximum number of processes allowed to run in a pod. The value must be greater than or equal to 1024 and less than 4194304.
   /// [singleProcessOomKill] Defines whether to enable single process OOM killer. If true, the processes in the container will be OOM killed individually instead of as a group.
   /// [topologyManager] These settings control the kubelet's [Topology Manager policy](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies), which coordinates the set of components responsible for performance optimizations related to CPU isolation, memory, and device locality. Structure is documented below.
-  ClusterNodePoolNodeConfigKubeletConfig({
+  const ClusterNodePoolNodeConfigKubeletConfig({
     this.allowedUnsafeSysctls,
     this.containerLogMaxFiles,
     this.containerLogMaxSize,

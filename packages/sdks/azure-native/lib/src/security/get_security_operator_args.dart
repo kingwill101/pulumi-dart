@@ -15,7 +15,7 @@ class GetSecurityOperatorArgs {
   /// Creates a new [GetSecurityOperatorArgs].
   /// [pricingName] name of the pricing configuration
   /// [securityOperatorName] name of the securityOperator
-  GetSecurityOperatorArgs({
+  const GetSecurityOperatorArgs({
     required this.pricingName,
     required this.securityOperatorName,
   });

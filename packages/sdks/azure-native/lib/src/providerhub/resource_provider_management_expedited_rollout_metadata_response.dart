@@ -12,7 +12,7 @@ class ResourceProviderManagementExpeditedRolloutMetadataResponse {
   /// Creates a new [ResourceProviderManagementExpeditedRolloutMetadataResponse].
   /// [enabled] Expedited rollout enabled?
   /// [expeditedRolloutIntent] Expedited rollout intent.
-  ResourceProviderManagementExpeditedRolloutMetadataResponse({
+  const ResourceProviderManagementExpeditedRolloutMetadataResponse({
     this.enabled,
     this.expeditedRolloutIntent,
   });

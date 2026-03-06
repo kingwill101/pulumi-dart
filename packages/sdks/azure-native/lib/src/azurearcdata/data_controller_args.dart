@@ -29,7 +29,7 @@ class DataControllerArgs {
   /// [properties] The data controller's properties
   /// [resourceGroupName] The name of the Azure resource group
   /// [tags] Resource tags.
-  DataControllerArgs({
+  const DataControllerArgs({
     this.dataControllerName,
     this.extendedLocation,
     this.location,

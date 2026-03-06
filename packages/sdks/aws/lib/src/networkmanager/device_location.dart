@@ -14,7 +14,7 @@ class DeviceLocation {
   /// [address] Physical address.
   /// [latitude] Latitude.
   /// [longitude] Longitude.
-  DeviceLocation({
+  const DeviceLocation({
     this.address,
     this.latitude,
     this.longitude,

@@ -15,7 +15,7 @@ class GetRegionDiskComputeV1Args {
   /// [disk] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionDiskComputeV1Args({
+  const GetRegionDiskComputeV1Args({
     required this.disk,
     this.project,
     required this.region,

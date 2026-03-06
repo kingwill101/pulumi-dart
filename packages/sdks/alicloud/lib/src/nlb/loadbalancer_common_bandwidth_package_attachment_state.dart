@@ -15,7 +15,7 @@ class LoadbalancerCommonBandwidthPackageAttachmentState {
   /// [bandwidthPackageId] Specifies whether only to precheck the request. Valid values:
   /// [loadBalancerId] The ID of the EIP bandwidth plan.
   /// [status] Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
-  LoadbalancerCommonBandwidthPackageAttachmentState({
+  const LoadbalancerCommonBandwidthPackageAttachmentState({
     this.bandwidthPackageId,
     this.loadBalancerId,
     this.status,

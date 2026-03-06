@@ -12,7 +12,7 @@ class BotAliasConversationLogs {
   /// Creates a new [BotAliasConversationLogs].
   /// [iamRoleArn] The Amazon Resource Name (ARN) of the IAM role used to write your logs to CloudWatch Logs or an S3 bucket. Must be between 20 and 2048 characters in length.
   /// [logSettings] The settings for your conversation logs. You can log text, audio, or both. Attributes are documented under log_settings.
-  BotAliasConversationLogs({
+  const BotAliasConversationLogs({
     required this.iamRoleArn,
     this.logSettings,
   });

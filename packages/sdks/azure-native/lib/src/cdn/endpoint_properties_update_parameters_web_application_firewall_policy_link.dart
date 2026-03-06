@@ -9,7 +9,7 @@ class EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink {
 
   /// Creates a new [EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink].
   /// [id] Resource ID.
-  EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink({
+  const EndpointPropertiesUpdateParametersWebApplicationFirewallPolicyLink({
     this.id,
   });
 

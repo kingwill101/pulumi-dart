@@ -9,7 +9,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMe
 
   /// Creates a new [PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification].
   /// [metricDataQueries] List of up to 10 structures that defines custom scaling metric in predictive scaling policy
-  PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification({
+  const PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedScalingMetricSpecification({
     required this.metricDataQueries,
   });
 

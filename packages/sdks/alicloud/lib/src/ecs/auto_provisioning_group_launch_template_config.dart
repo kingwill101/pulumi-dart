@@ -20,7 +20,7 @@ class AutoProvisioningGroupLaunchTemplateConfig {
   /// [priority] The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
   /// [vswitchId] The ID of the VSwitch in the Nth extended configurations of the launch template.
   /// [weightedCapacity] The weight of the instance type specified in the Nth extended configurations of the launch template.
-  AutoProvisioningGroupLaunchTemplateConfig({
+  const AutoProvisioningGroupLaunchTemplateConfig({
     this.instanceType,
     required this.maxPrice,
     this.priority,

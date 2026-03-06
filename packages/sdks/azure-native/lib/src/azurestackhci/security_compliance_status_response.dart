@@ -21,7 +21,7 @@ class SecurityComplianceStatusResponse {
   /// [lastUpdated] Time in UTC when compliance status was last updated.
   /// [securedCoreCompliance] Indicates whether HCI hosts meets secured-core server requirements.
   /// [wdacCompliance] Indicates whether HCI hosts have enforced consistent Windows Defender Application Control.
-  SecurityComplianceStatusResponse({
+  const SecurityComplianceStatusResponse({
     required this.dataAtRestEncrypted,
     required this.dataInTransitProtected,
     required this.lastUpdated,

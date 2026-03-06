@@ -15,7 +15,7 @@ class HostAttachmentState {
   /// [hostGroupId] Specifies the added to the host group ID.
   /// [hostId] Specified to be part of a host group of host ID.
   /// [instanceId] The bastion host instance id.
-  HostAttachmentState({
+  const HostAttachmentState({
     this.hostGroupId,
     this.hostId,
     this.instanceId,

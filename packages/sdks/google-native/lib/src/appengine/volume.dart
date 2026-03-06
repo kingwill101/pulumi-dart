@@ -15,7 +15,7 @@ class Volume {
   /// [name] Unique name for the volume.
   /// [sizeGb] Volume size in gigabytes.
   /// [volumeType] Underlying volume type, e.g. 'tmpfs'.
-  Volume({
+  const Volume({
     this.name,
     this.sizeGb,
     this.volumeType,

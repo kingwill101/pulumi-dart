@@ -12,7 +12,7 @@ class ContentPathMap {
   /// Creates a new [ContentPathMap].
   /// [contentType] Content type.
   /// [path] The path to the content.
-  ContentPathMap({
+  const ContentPathMap({
     this.contentType,
     this.path,
   });

@@ -31,7 +31,7 @@ class GetServiceLbPolicyResult {
   /// [loadBalancingAlgorithm] Optional. The type of load balancing algorithm to be used. The default behavior is WATERFALL_BY_REGION.
   /// [name] Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`.
   /// [updateTime] The timestamp when this resource was last updated.
-  GetServiceLbPolicyResult({
+  const GetServiceLbPolicyResult({
     required this.autoCapacityDrain,
     required this.createTime,
     required this.description,

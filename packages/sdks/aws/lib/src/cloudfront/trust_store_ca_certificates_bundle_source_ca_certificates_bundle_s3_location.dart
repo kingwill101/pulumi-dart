@@ -17,7 +17,7 @@ class TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location {
   /// [key] S3 object key for the CA certificates bundle.
   /// [region] AWS region of the S3 bucket.
   /// [version] S3 object version ID for the CA certificates bundle.
-  TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location({
+  const TrustStoreCaCertificatesBundleSourceCaCertificatesBundleS3Location({
     required this.bucket,
     required this.key,
     required this.region,

@@ -9,7 +9,7 @@ class GetWorkerPoolTemplateContainerEnvValueSource {
 
   /// Creates a new [GetWorkerPoolTemplateContainerEnvValueSource].
   /// [secretKeyReves] Selects a secret and a specific version from Cloud Secret Manager.
-  GetWorkerPoolTemplateContainerEnvValueSource({
+  const GetWorkerPoolTemplateContainerEnvValueSource({
     required this.secretKeyReves,
   });
 

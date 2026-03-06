@@ -44,7 +44,7 @@ class NetworkAttachment {
   /// [ipv4Address] The IPv4 address of the virtual machine.
   /// [ipv6Address] The IPv6 address of the virtual machine.
   /// [networkAttachmentName] The associated network's interface name.
-  NetworkAttachment({
+  const NetworkAttachment({
     required this.attachedNetworkId,
     this.defaultGateway,
     required this.ipAllocationMethod,

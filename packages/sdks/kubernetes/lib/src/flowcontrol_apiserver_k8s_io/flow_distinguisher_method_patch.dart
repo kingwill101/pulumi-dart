@@ -9,7 +9,7 @@ class FlowDistinguisherMethodPatch {
 
   /// Creates a new [FlowDistinguisherMethodPatch].
   /// [type] `type` is the type of flow distinguisher method The supported types are "ByUser" and "ByNamespace". Required.
-  FlowDistinguisherMethodPatch({
+  const FlowDistinguisherMethodPatch({
     this.type,
   });
 

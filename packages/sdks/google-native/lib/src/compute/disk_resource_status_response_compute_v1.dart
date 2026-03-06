@@ -11,7 +11,7 @@ class DiskResourceStatusResponseComputeV1 {
   /// Creates a new [DiskResourceStatusResponseComputeV1].
   /// [asyncPrimaryDisk] Required.
   /// [asyncSecondaryDisks] Key: disk, value: AsyncReplicationStatus message
-  DiskResourceStatusResponseComputeV1({
+  const DiskResourceStatusResponseComputeV1({
     required this.asyncPrimaryDisk,
     required this.asyncSecondaryDisks,
   });

@@ -20,7 +20,7 @@ class GetPolicyRuleActionVersion {
   /// [deleteAfterDaysSinceCreation] The age in days after creation to delete the blob version.
   /// [tierToArchiveAfterDaysSinceLastTierChangeGreaterThan] The age in days after last tier change to the blobs to skip to be archived.
   /// [tierToColdAfterDaysSinceCreationGreaterThan] Optional The age in days after creation to cold storage. Supports blob currently at Hot tier.
-  GetPolicyRuleActionVersion({
+  const GetPolicyRuleActionVersion({
     required this.changeTierToArchiveAfterDaysSinceCreation,
     required this.changeTierToCoolAfterDaysSinceCreation,
     required this.deleteAfterDaysSinceCreation,

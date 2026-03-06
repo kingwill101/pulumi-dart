@@ -10,7 +10,7 @@ class TableMetadata {
 
   /// Creates a new [TableMetadata].
   /// [iceberg] Contains details about the metadata for an Iceberg table. This block defines the schema structure for the Apache Iceberg table format.
-  TableMetadata({
+  const TableMetadata({
     required this.iceberg,
   });
 

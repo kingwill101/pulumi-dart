@@ -13,7 +13,7 @@ class GoogleCloudIntegrationsV1alphaParameterMapEntryResponse {
   /// Creates a new [GoogleCloudIntegrationsV1alphaParameterMapEntryResponse].
   /// [key] Key of the map entry.
   /// [value] Value of the map entry.
-  GoogleCloudIntegrationsV1alphaParameterMapEntryResponse({
+  const GoogleCloudIntegrationsV1alphaParameterMapEntryResponse({
     required this.key,
     required this.value,
   });

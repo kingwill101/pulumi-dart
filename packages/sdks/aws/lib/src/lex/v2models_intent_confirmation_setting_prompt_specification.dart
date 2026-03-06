@@ -22,7 +22,7 @@ class V2modelsIntentConfirmationSettingPromptSpecification {
   /// [messageGroups] Configuration block for messages that Amazon Lex can send to the user. Amazon Lex chooses the actual message to send at runtime. See `message_group`.
   /// [messageSelectionStrategy] How a message is selected from a message group among retries. Valid values are `Random` and `Ordered`.
   /// [promptAttemptsSpecifications] Configuration block for advanced settings on each attempt of the prompt. See `prompt_attempts_specification`.
-  V2modelsIntentConfirmationSettingPromptSpecification({
+  const V2modelsIntentConfirmationSettingPromptSpecification({
     this.allowInterrupt,
     required this.maxRetries,
     this.messageGroups,

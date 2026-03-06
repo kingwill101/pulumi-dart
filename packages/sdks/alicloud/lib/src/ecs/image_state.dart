@@ -90,7 +90,7 @@ class ImageState {
   /// [snapshotId] The ID of the snapshot that you want to use to create the custom image.
   /// [status] The status of the image. By default, if you do not specify this parameter, only images in the Available state are returned.
   /// [tags] The tag
-  ImageState({
+  const ImageState({
     this.architecture,
     this.bootMode,
     this.createTime,

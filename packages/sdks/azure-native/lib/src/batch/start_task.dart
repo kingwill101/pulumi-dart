@@ -31,7 +31,7 @@ class StartTask {
   /// [resourceFiles] A list of files that the Batch service will download to the compute node before running the command line.
   /// [userIdentity] If omitted, the task runs as a non-administrative user unique to the task.
   /// [waitForSuccess] If true and the start task fails on a compute node, the Batch service retries the start task up to its maximum retry count (maxTaskRetryCount). If the task has still not completed successfully after all retries, then the Batch service marks the compute node unusable, and will not schedule tasks to it. This condition can be detected via the node state and scheduling error detail. If false, the Batch service will not wait for the start task to complete. In this case, other tasks can start executing on the compute node while the start task is still running; and even if the start task fails, new tasks will continue to be scheduled on the node. The default is true.
-  StartTask({
+  const StartTask({
     this.commandLine,
     this.containerSettings,
     this.environmentSettings,

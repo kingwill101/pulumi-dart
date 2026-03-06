@@ -28,7 +28,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
   /// [labels] To organize findings, these labels will be added to each finding.
   /// [requiredFindingLabelKeys] These are labels that each inspection request must include within their 'finding_labels' map. Request
   /// [tableOptions] If the container is a table, additional information to make findings meaningful such as the columns that are primary keys.
-  PreventionJobTriggerInspectJobStorageConfigHybridOptions({
+  const PreventionJobTriggerInspectJobStorageConfigHybridOptions({
     this.description,
     this.labels,
     this.requiredFindingLabelKeys,

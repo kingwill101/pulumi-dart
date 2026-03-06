@@ -21,7 +21,7 @@ class GetAssessmentArgs {
   /// [groupName] Unique name of a group within a project.
   /// [projectName] Name of the Azure Migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  GetAssessmentArgs({
+  const GetAssessmentArgs({
     required this.assessmentName,
     required this.groupName,
     required this.projectName,

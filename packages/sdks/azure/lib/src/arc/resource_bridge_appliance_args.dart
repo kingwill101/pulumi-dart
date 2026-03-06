@@ -34,7 +34,7 @@ class ResourceBridgeApplianceArgs {
   /// [publicKeyBase64] The `public_key_base64` is an RSA public key in PKCS1 format encoded in base64. Changing this forces a new resource to be created.
   /// [resourceGroupName] Specifies the resource group where the Arc Resource Bridge Appliance exists. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Arc Resource Bridge Appliance.
-  ResourceBridgeApplianceArgs({
+  const ResourceBridgeApplianceArgs({
     required this.distro,
     required this.identity,
     required this.infrastructureProvider,

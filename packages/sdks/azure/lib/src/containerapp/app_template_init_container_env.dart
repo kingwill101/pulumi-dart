@@ -16,7 +16,7 @@ class AppTemplateInitContainerEnv {
   /// [name] The name of the environment variable for the container.
   /// [secretName] The name of the secret that contains the value for this environment variable.
   /// [value] The value for this environment variable.
-  AppTemplateInitContainerEnv({
+  const AppTemplateInitContainerEnv({
     required this.name,
     this.secretName,
     this.value,

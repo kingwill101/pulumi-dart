@@ -34,7 +34,7 @@ class IntegrationAccountCertificateArgs {
   /// [publicCertificate] The public certificate.
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
-  IntegrationAccountCertificateArgs({
+  const IntegrationAccountCertificateArgs({
     this.certificateName,
     required this.integrationAccountName,
     this.key,

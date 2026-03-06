@@ -19,7 +19,7 @@ class ConfigMapKeySelectorResponse {
   /// [localObjectReference] Not supported by Cloud Run.
   /// [name] Not supported by Cloud Run.
   /// [optional] Not supported by Cloud Run.
-  ConfigMapKeySelectorResponse({
+  const ConfigMapKeySelectorResponse({
     required this.key,
     required this.localObjectReference,
     required this.name,

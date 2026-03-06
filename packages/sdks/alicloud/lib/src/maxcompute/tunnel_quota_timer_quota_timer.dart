@@ -15,7 +15,7 @@ class TunnelQuotaTimerQuotaTimer {
   /// [beginTime] The time-sharing configuration start time. Reference value: 00:00
   /// [endTime] The end time of the timesharing configuration. Reference value: 24:00
   /// [tunnelQuotaParameter] Time-sharing configuration parameters. See `tunnel_quota_parameter` below.
-  TunnelQuotaTimerQuotaTimer({
+  const TunnelQuotaTimerQuotaTimer({
     required this.beginTime,
     required this.endTime,
     this.tunnelQuotaParameter,

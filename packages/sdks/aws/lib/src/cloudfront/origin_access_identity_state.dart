@@ -34,7 +34,7 @@ class OriginAccessIdentityState {
   /// [etag] The current version of the origin access identity's information.
   /// [iamArn] A pre-generated ARN for use in S3 bucket policies (see below).
   /// [s3CanonicalUserId] The Amazon S3 canonical user ID for the origin
-  OriginAccessIdentityState({
+  const OriginAccessIdentityState({
     this.arn,
     this.callerReference,
     this.cloudfrontAccessIdentityPath,

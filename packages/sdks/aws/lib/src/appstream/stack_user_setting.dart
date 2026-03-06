@@ -13,7 +13,7 @@ class StackUserSetting {
   /// Creates a new [StackUserSetting].
   /// [action] Action that is enabled or disabled.
   /// [permission] Whether the action is enabled or disabled.
-  StackUserSetting({
+  const StackUserSetting({
     required this.action,
     required this.permission,
   });

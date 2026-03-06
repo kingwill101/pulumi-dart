@@ -15,7 +15,7 @@ class GetNetworkPeeringArgs {
   /// Creates a new [GetNetworkPeeringArgs].
   /// [name] Name of the peering.
   /// [network] The primary network of the peering.
-  GetNetworkPeeringArgs({
+  const GetNetworkPeeringArgs({
     required this.name,
     required this.network,
   });

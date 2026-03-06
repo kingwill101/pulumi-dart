@@ -15,7 +15,7 @@ class CertificateConfigSubjectConfig {
   /// Creates a new [CertificateConfigSubjectConfig].
   /// [subject] Contains distinguished name fields such as the location and organization.
   /// [subjectAltName] The subject alternative name fields.
-  CertificateConfigSubjectConfig({
+  const CertificateConfigSubjectConfig({
     required this.subject,
     this.subjectAltName,
   });

@@ -10,7 +10,7 @@ class GoogleCloudDataplexV1ScannedDataResponse {
 
   /// Creates a new [GoogleCloudDataplexV1ScannedDataResponse].
   /// [incrementalField] The range denoted by values of an incremental field
-  GoogleCloudDataplexV1ScannedDataResponse({
+  const GoogleCloudDataplexV1ScannedDataResponse({
     required this.incrementalField,
   });
 

@@ -30,7 +30,7 @@ class ClusterManagedPrivateEndpointArgs {
   /// [privateLinkResourceRegion] The region of the resource to which the managed private endpoint is created. Changing this forces a new resource to be created.
   /// [requestMessage] The user request message.
   /// [resourceGroupName] Specifies the Resource Group where the Kusto Cluster should exist. Changing this forces a new resource to be created.
-  ClusterManagedPrivateEndpointArgs({
+  const ClusterManagedPrivateEndpointArgs({
     required this.clusterName,
     required this.groupId,
     this.name,

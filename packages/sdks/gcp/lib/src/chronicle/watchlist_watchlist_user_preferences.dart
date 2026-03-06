@@ -8,7 +8,7 @@ class WatchlistWatchlistUserPreferences {
 
   /// Creates a new [WatchlistWatchlistUserPreferences].
   /// [pinned] Optional. Whether the watchlist is pinned on the dashboard.
-  WatchlistWatchlistUserPreferences({
+  const WatchlistWatchlistUserPreferences({
     this.pinned,
   });
 

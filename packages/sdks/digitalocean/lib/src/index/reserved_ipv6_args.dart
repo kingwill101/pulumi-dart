@@ -16,7 +16,7 @@ class ReservedIpv6Args {
   /// [dropletId] Optional.
   /// [ip] Optional.
   /// [regionSlug] The region that the reserved IPv6 needs to be reserved to.
-  ReservedIpv6Args({
+  const ReservedIpv6Args({
     this.dropletId,
     this.ip,
     required this.regionSlug,

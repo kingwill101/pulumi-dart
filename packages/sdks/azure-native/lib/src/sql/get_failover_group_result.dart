@@ -45,7 +45,7 @@ class GetFailoverGroupResult {
   /// [replicationState] Replication state of the failover group instance.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetFailoverGroupResult({
+  const GetFailoverGroupResult({
     required this.azureApiVersion,
     this.databases,
     required this.id,

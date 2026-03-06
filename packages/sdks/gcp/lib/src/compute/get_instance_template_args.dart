@@ -28,7 +28,7 @@ class GetInstanceTemplateArgs {
   /// [name] The name of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLinkUnique] The self_link_unique URI of the instance template. One of `name`, `filter` or `self_link_unique` must be provided.
-  GetInstanceTemplateArgs({
+  const GetInstanceTemplateArgs({
     this.filter,
     this.mostRecent,
     this.name,

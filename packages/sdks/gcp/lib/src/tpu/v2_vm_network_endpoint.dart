@@ -19,7 +19,7 @@ class V2VmNetworkEndpoint {
   /// [accessConfigs] (Output)
   /// [ipAddress] (Output)
   /// [port] (Output)
-  V2VmNetworkEndpoint({
+  const V2VmNetworkEndpoint({
     this.accessConfigs,
     this.ipAddress,
     this.port,

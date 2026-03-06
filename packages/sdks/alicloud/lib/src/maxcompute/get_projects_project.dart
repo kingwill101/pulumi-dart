@@ -41,7 +41,7 @@ class GetProjectsProject {
   /// [securityProperties] Security-related attributes
   /// [status] The project status. Default value: AVAILABLE. Value: (AVAILABLE/READONLY/FROZEN/DELETING)
   /// [type] Project type
-  GetProjectsProject({
+  const GetProjectsProject({
     required this.comment,
     required this.costStorage,
     required this.createTime,

@@ -17,7 +17,7 @@ class GetDpsArgs {
   /// [name] Specifies the name of the Iot Device Provisioning Service resource.
   /// [resourceGroupName] The name of the resource group under which the Iot Device Provisioning Service is located in.
   /// [tags] Optional.
-  GetDpsArgs({
+  const GetDpsArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

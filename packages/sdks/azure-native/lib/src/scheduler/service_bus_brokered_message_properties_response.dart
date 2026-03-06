@@ -44,7 +44,7 @@ class ServiceBusBrokeredMessagePropertiesResponse {
   /// [timeToLive] Gets or sets the time to live.
   /// [to] Gets or sets the to.
   /// [viaPartitionKey] Gets or sets the via partition key.
-  ServiceBusBrokeredMessagePropertiesResponse({
+  const ServiceBusBrokeredMessagePropertiesResponse({
     this.contentType,
     this.correlationId,
     this.forcePersistence,

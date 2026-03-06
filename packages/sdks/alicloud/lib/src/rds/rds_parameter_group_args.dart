@@ -25,7 +25,7 @@ class RdsParameterGroupArgs {
   /// [paramDetails] Parameter list. See `param_detail` below.
   /// [parameterGroupDesc] The description of the parameter template.
   /// [parameterGroupName] The name of the parameter template.
-  RdsParameterGroupArgs({
+  const RdsParameterGroupArgs({
     required this.engine,
     required this.engineVersion,
     required this.paramDetails,

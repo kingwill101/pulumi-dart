@@ -57,7 +57,7 @@ class EndpointPolicyState {
   /// [trafficPortSelector] Port selector for the (matched) endpoints. If no port selector is provided, the matched config is applied to all ports.
   /// [type] The type of endpoint policy. This is primarily used to validate the configuration.
   /// [updateTime] Time the TcpRoute was updated in UTC.
-  EndpointPolicyState({
+  const EndpointPolicyState({
     this.authorizationPolicy,
     this.clientTlsPolicy,
     this.createTime,

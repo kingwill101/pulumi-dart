@@ -56,7 +56,7 @@ class EcsImagePipelineArgs {
   /// [tags] A mapping of tags to assign to the resource.
   /// [toRegionIds] The ID of region to which to distribute the created image.
   /// [vswitchId] The ID of the vSwitch. If you do not specify this parameter, a virtual private cloud (VPC) and a vSwitch are created by default.
-  EcsImagePipelineArgs({
+  const EcsImagePipelineArgs({
     this.addAccounts,
     required this.baseImage,
     required this.baseImageType,

@@ -20,7 +20,7 @@ class ContainerNetworksAdvanced {
   /// [ipv6Address] The IPV6 address of the container in the specific network.
   /// [macAddress] The MAC address of the container in the specific network.
   /// [name] The name or id of the network to use. You can use `name` or `id` attribute from a `docker.Network` resource.
-  ContainerNetworksAdvanced({
+  const ContainerNetworksAdvanced({
     this.aliases,
     this.ipv4Address,
     this.ipv6Address,

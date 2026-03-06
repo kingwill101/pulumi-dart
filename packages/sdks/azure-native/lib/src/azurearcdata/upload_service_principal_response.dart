@@ -15,7 +15,7 @@ class UploadServicePrincipalResponse {
   /// [authority] Authority for the service principal. Example: https://login.microsoftonline.com/
   /// [clientId] Client ID of the service principal for uploading data.
   /// [tenantId] Tenant ID of the service principal.
-  UploadServicePrincipalResponse({
+  const UploadServicePrincipalResponse({
     this.authority,
     this.clientId,
     this.tenantId,

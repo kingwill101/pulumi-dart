@@ -18,7 +18,7 @@ class DomainDevicesInterfacePortForward {
   /// [dev] Sets the device associated with the port forwarding configuration.
   /// [proto] Configures the protocol used for port forwarding (e.g., TCP or UDP).
   /// [ranges] Defines the range of ports to be forwarded.
-  DomainDevicesInterfacePortForward({
+  const DomainDevicesInterfacePortForward({
     this.address,
     this.dev,
     required this.proto,

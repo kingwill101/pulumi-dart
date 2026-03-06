@@ -9,7 +9,7 @@ class SpaceSpaceSettingsCustomFileSystem {
 
   /// Creates a new [SpaceSpaceSettingsCustomFileSystem].
   /// [efsFileSystem] A custom file system in Amazon EFS. See `efs_file_system` Block below.
-  SpaceSpaceSettingsCustomFileSystem({
+  const SpaceSpaceSettingsCustomFileSystem({
     required this.efsFileSystem,
   });
 

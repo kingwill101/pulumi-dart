@@ -22,7 +22,7 @@ class FailoverGroupArgs {
   /// [properties] null
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlManagedInstanceName] Name of SQL Managed Instance
-  FailoverGroupArgs({
+  const FailoverGroupArgs({
     this.failoverGroupName,
     required this.properties,
     required this.resourceGroupName,

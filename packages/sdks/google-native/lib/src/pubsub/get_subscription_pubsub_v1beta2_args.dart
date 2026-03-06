@@ -13,7 +13,7 @@ class GetSubscriptionPubsubV1beta2Args {
   /// Creates a new [GetSubscriptionPubsubV1beta2Args].
   /// [project] Optional.
   /// [subscriptionId] Required.
-  GetSubscriptionPubsubV1beta2Args({
+  const GetSubscriptionPubsubV1beta2Args({
     this.project,
     required this.subscriptionId,
   });

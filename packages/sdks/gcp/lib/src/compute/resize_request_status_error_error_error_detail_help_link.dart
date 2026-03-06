@@ -12,7 +12,7 @@ class ResizeRequestStatusErrorErrorErrorDetailHelpLink {
   /// Creates a new [ResizeRequestStatusErrorErrorErrorDetailHelpLink].
   /// [description] An optional description of this resize-request.
   /// [url] (Output)
-  ResizeRequestStatusErrorErrorErrorDetailHelpLink({
+  const ResizeRequestStatusErrorErrorErrorDetailHelpLink({
     this.description,
     this.url,
   });

@@ -11,7 +11,7 @@ class ChangeSetParameter {
   /// Creates a new [ChangeSetParameter].
   /// [parameterKey] The parameter key.
   /// [parameterValue] The parameter value.
-  ChangeSetParameter({
+  const ChangeSetParameter({
     required this.parameterKey,
     required this.parameterValue,
   });

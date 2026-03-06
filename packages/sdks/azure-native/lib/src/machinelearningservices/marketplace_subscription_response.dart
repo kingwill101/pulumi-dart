@@ -18,7 +18,7 @@ class MarketplaceSubscriptionResponse {
   /// [marketplaceSubscriptionStatus] Current status of the Marketplace Subscription.
   /// [modelId] [Required] Target Marketplace Model ID to create a Marketplace Subscription for.
   /// [provisioningState] Provisioning State of the Marketplace Subscription.
-  MarketplaceSubscriptionResponse({
+  const MarketplaceSubscriptionResponse({
     required this.marketplacePlan,
     required this.marketplaceSubscriptionStatus,
     required this.modelId,

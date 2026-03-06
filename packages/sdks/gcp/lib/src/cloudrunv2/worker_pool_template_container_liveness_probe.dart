@@ -32,7 +32,7 @@ class WorkerPoolTemplateContainerLivenessProbe {
   /// [periodSeconds] Optional. How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
   /// [tcpSocket] Optional. TCPSocket specifies an action involving a TCP port. Exactly one of httpGet, tcpSocket, or grpc must be specified.
   /// [timeoutSeconds] Optional. Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds.
-  WorkerPoolTemplateContainerLivenessProbe({
+  const WorkerPoolTemplateContainerLivenessProbe({
     this.failureThreshold,
     this.grpc,
     this.httpGet,

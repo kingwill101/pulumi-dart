@@ -13,7 +13,7 @@ class KafkaClusterRestProxy {
   /// Creates a new [KafkaClusterRestProxy].
   /// [securityGroupId] The Azure Active Directory Security Group ID. Changing this forces a new resource to be created.
   /// [securityGroupName] The Azure Active Directory Security Group name. Changing this forces a new resource to be created.
-  KafkaClusterRestProxy({
+  const KafkaClusterRestProxy({
     required this.securityGroupId,
     required this.securityGroupName,
   });

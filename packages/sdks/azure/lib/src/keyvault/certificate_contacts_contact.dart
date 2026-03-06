@@ -14,7 +14,7 @@ class CertificateContactsContact {
   /// [email] E-mail address of the contact.
   /// [name] Name of the contact.
   /// [phone] Phone number of the contact.
-  CertificateContactsContact({
+  const CertificateContactsContact({
     required this.email,
     this.name,
     this.phone,

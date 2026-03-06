@@ -15,7 +15,7 @@ class GetRestorePlanArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [restorePlanId] Required.
-  GetRestorePlanArgs({
+  const GetRestorePlanArgs({
     required this.location,
     this.project,
     required this.restorePlanId,

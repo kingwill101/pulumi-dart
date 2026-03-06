@@ -17,7 +17,7 @@ class LoadTestIdentity {
   /// [principalId] The Principal ID for the System-Assigned Managed Identity assigned to this Load Test.
   /// [tenantId] The Tenant ID for the System-Assigned Managed Identity assigned to this Load Test.
   /// [type] Specifies the type of Managed Identity that should be assigned to this Load Test Encryption. Possible values are `SystemAssigned` or `UserAssigned`. Changing this forces a new Load Test to be created.
-  LoadTestIdentity({
+  const LoadTestIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

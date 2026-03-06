@@ -48,7 +48,7 @@ class DPMProtectedItemExtendedInfo {
   /// [protectionGroupName] Protection group name of the backup item.
   /// [recoveryPointCount] cloud recovery point count.
   /// [totalDiskStorageSizeInBytes] total Disk storage in bytes.
-  DPMProtectedItemExtendedInfo({
+  const DPMProtectedItemExtendedInfo({
     this.diskStorageUsedInBytes,
     this.isCollocated,
     this.isPresentOnCloud,

@@ -18,7 +18,7 @@ class CustomEntityStoreAssignmentArgs {
   /// [customEntityStoreAssignmentName] Name of the custom entity store assignment. Generated name is GUID.
   /// [principal] The principal assigned with entity store. If not provided, will use caller principal. Format of principal is: [AAD type]=[PrincipalObjectId];[TenantId]
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  CustomEntityStoreAssignmentArgs({
+  const CustomEntityStoreAssignmentArgs({
     this.customEntityStoreAssignmentName,
     this.principal,
     required this.resourceGroupName,

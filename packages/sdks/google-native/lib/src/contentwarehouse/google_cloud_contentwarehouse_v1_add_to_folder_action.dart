@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1AddToFolderAction {
 
   /// Creates a new [GoogleCloudContentwarehouseV1AddToFolderAction].
   /// [folders] Names of the folder under which new document is to be added. Format: projects/{project_number}/locations/{location}/documents/{document_id}.
-  GoogleCloudContentwarehouseV1AddToFolderAction({
+  const GoogleCloudContentwarehouseV1AddToFolderAction({
     this.folders,
   });
 

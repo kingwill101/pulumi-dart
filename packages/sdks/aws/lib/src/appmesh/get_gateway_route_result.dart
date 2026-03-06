@@ -38,7 +38,7 @@ class GetGatewayRouteResult {
   /// [specs] Gateway route specification. See the `aws.appmesh.GatewayRoute` resource for details.
   /// [tags] Map of tags.
   /// [virtualGatewayName] Required.
-  GetGatewayRouteResult({
+  const GetGatewayRouteResult({
     required this.arn,
     required this.createdDate,
     required this.id,

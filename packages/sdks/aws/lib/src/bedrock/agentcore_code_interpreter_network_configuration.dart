@@ -12,7 +12,7 @@ class AgentcoreCodeInterpreterNetworkConfiguration {
   /// Creates a new [AgentcoreCodeInterpreterNetworkConfiguration].
   /// [networkMode] Network mode for the code interpreter. Valid values: `PUBLIC`, `SANDBOX`, `VPC`.
   /// [vpcConfig] VPC configuration. See `vpc_config` below.
-  AgentcoreCodeInterpreterNetworkConfiguration({
+  const AgentcoreCodeInterpreterNetworkConfiguration({
     required this.networkMode,
     this.vpcConfig,
   });

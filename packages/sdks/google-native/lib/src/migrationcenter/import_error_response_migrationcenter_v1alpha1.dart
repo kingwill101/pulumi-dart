@@ -12,7 +12,7 @@ class ImportErrorResponseMigrationcenterV1alpha1 {
   /// Creates a new [ImportErrorResponseMigrationcenterV1alpha1].
   /// [errorDetails] The error information.
   /// [severity] The severity of the error.
-  ImportErrorResponseMigrationcenterV1alpha1({
+  const ImportErrorResponseMigrationcenterV1alpha1({
     required this.errorDetails,
     required this.severity,
   });

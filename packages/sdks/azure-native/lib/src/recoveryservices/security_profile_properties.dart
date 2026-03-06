@@ -21,7 +21,7 @@ class SecurityProfileProperties {
   /// [targetVmSecureBoot] A value indicating whether secure boot to be enabled.
   /// [targetVmSecurityType] The target VM security type.
   /// [targetVmTpm] A value indicating whether trusted platform module to be enabled.
-  SecurityProfileProperties({
+  const SecurityProfileProperties({
     this.targetVmConfidentialEncryption,
     this.targetVmMonitoring,
     this.targetVmSecureBoot,

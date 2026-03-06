@@ -58,7 +58,7 @@ class QuickBooksLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [useEncryptedEndpoints] Specifies whether the data source endpoints are encrypted using HTTPS. The default value is true. Only used for version 1.0.
   /// [version] Version of the linked service.
-  QuickBooksLinkedServiceResponse({
+  const QuickBooksLinkedServiceResponse({
     this.accessToken,
     this.accessTokenSecret,
     this.annotations,

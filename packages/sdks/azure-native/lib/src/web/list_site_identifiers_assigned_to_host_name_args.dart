@@ -12,7 +12,7 @@ class ListSiteIdentifiersAssignedToHostNameArgs {
 
   /// Creates a new [ListSiteIdentifiersAssignedToHostNameArgs].
   /// [name] Name of the object.
-  ListSiteIdentifiersAssignedToHostNameArgs({
+  const ListSiteIdentifiersAssignedToHostNameArgs({
     this.name,
   });
 

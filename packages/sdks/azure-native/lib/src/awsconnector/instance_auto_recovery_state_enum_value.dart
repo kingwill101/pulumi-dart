@@ -9,7 +9,7 @@ class InstanceAutoRecoveryStateEnumValue {
 
   /// Creates a new [InstanceAutoRecoveryStateEnumValue].
   /// [value] Property value
-  InstanceAutoRecoveryStateEnumValue({
+  const InstanceAutoRecoveryStateEnumValue({
     this.value,
   });
 

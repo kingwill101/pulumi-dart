@@ -42,7 +42,7 @@ class IotHubDpsArgs {
   /// [resourceGroupName] The name of the resource group under which the Iot Device Provisioning Service resource has to be created. Changing this forces a new resource to be created.
   /// [sku] A `sku` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  IotHubDpsArgs({
+  const IotHubDpsArgs({
     this.allocationPolicy,
     this.dataResidencyEnabled,
     this.ipFilterRules,

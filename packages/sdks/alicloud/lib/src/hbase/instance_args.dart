@@ -84,7 +84,7 @@ class InstanceArgs {
   /// [vpcId] The id of the VPC.
   /// [vswitchId] If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
   /// [zoneId] The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be "" or consistent.
-  InstanceArgs({
+  const InstanceArgs({
     this.account,
     this.autoRenew,
     this.coldStorageSize,

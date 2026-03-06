@@ -25,7 +25,7 @@ class ReportDatasetResponse {
   /// [filter] Has filter expression to use in the report.
   /// [granularity] The granularity of rows in the report.
   /// [grouping] Array of group by expression to use in the report. Report can have up to 2 group by clauses.
-  ReportDatasetResponse({
+  const ReportDatasetResponse({
     this.aggregation,
     this.configuration,
     this.filter,

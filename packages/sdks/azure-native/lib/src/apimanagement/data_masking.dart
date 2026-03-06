@@ -12,7 +12,7 @@ class DataMasking {
   /// Creates a new [DataMasking].
   /// [headers] Masking settings for headers
   /// [queryParams] Masking settings for Url query parameters
-  DataMasking({
+  const DataMasking({
     this.headers,
     this.queryParams,
   });

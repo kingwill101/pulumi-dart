@@ -24,7 +24,7 @@ class ScaleAppsV1beta2 {
   /// [metadata] Standard object metadata; More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata.
   /// [spec] defines the behavior of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status.
   /// [status] current status of the scale. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status. Read-only.
-  ScaleAppsV1beta2({
+  const ScaleAppsV1beta2({
     this.apiVersion,
     this.kind,
     this.metadata,

@@ -24,7 +24,7 @@ class GetCaCertificatesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The Id of resource group which ca certificates belongs.
   /// [tags] A mapping of tags to assign to the resource.
-  GetCaCertificatesArgs({
+  const GetCaCertificatesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

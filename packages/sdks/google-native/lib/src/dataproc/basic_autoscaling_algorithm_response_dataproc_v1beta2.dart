@@ -13,7 +13,7 @@ class BasicAutoscalingAlgorithmResponseDataprocV1beta2 {
   /// Creates a new [BasicAutoscalingAlgorithmResponseDataprocV1beta2].
   /// [cooldownPeriod] Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
   /// [yarnConfig] Optional. YARN autoscaling configuration.
-  BasicAutoscalingAlgorithmResponseDataprocV1beta2({
+  const BasicAutoscalingAlgorithmResponseDataprocV1beta2({
     required this.cooldownPeriod,
     required this.yarnConfig,
   });

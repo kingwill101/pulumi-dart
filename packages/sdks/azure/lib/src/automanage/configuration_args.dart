@@ -50,7 +50,7 @@ class ConfigurationArgs {
   /// [resourceGroupName] The name of the Resource Group where the Automanage Configuration should exist. Changing this forces a new Automanage Configuration to be created.
   /// [statusChangeAlertEnabled] Whether the status change alert is enabled. Defaults to `false`.
   /// [tags] Optional.
-  ConfigurationArgs({
+  const ConfigurationArgs({
     this.antimalware,
     this.automationAccountEnabled,
     this.azureSecurityBaseline,

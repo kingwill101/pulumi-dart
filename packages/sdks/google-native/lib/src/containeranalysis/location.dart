@@ -16,7 +16,7 @@ class Location {
   /// [cpeUri] Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
   /// [path] The path from which we gathered that this package/version is installed.
   /// [version] Deprecated. The version installed at this location.
-  Location({
+  const Location({
     this.cpeUri,
     this.path,
     this.version,

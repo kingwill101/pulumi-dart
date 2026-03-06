@@ -12,7 +12,7 @@ class AutomaticShortfallSuppressReason {
   /// Creates a new [AutomaticShortfallSuppressReason].
   /// [code] Code for the suppression reason.
   /// [message] Message for suppression reason.
-  AutomaticShortfallSuppressReason({
+  const AutomaticShortfallSuppressReason({
     this.code,
     this.message,
   });

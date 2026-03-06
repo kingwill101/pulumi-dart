@@ -8,7 +8,7 @@ class EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigS
 
   /// Creates a new [EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig].
   /// [attribute] Message attribute to validate. Valid values: `KEY`, `VALUE`.
-  EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig({
+  const EventSourceMappingAmazonManagedKafkaEventSourceConfigSchemaRegistryConfigSchemaValidationConfig({
     this.attribute,
   });
 

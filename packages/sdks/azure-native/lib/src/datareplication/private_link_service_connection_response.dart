@@ -15,7 +15,7 @@ class PrivateLinkServiceConnectionResponse {
   /// [groupIds] Gets or sets group ids.
   /// [name] Gets or sets private link service connection name.
   /// [requestMessage] Gets or sets the request message for the private link service connection.
-  PrivateLinkServiceConnectionResponse({
+  const PrivateLinkServiceConnectionResponse({
     this.groupIds,
     this.name,
     this.requestMessage,

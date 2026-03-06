@@ -15,7 +15,7 @@ class BucketArchiveDirectReadArgs {
   /// Creates a new [BucketArchiveDirectReadArgs].
   /// [bucket] The name of the bucket
   /// [enabled] Specifies whether to enable real-time access of Archive objects for a bucket. Valid values: true and false.
-  BucketArchiveDirectReadArgs({
+  const BucketArchiveDirectReadArgs({
     required this.bucket,
     required this.enabled,
   });

@@ -58,7 +58,7 @@ class FirewallEndpointState {
   /// [selfLink] Server-defined URL of this resource.
   /// [state] The current state of the endpoint.
   /// [updateTime] Time the firewall endpoint was updated in UTC.
-  FirewallEndpointState({
+  const FirewallEndpointState({
     this.associatedNetworks,
     this.billingProjectId,
     this.createTime,

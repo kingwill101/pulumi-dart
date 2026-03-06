@@ -27,7 +27,7 @@ class GetRulesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [ruleNamePrefix] The rule name prefix.
   /// [status] Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
-  GetRulesArgs({
+  const GetRulesArgs({
     required this.eventBusName,
     this.ids,
     this.nameRegex,

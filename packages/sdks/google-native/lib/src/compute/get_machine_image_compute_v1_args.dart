@@ -13,7 +13,7 @@ class GetMachineImageComputeV1Args {
   /// Creates a new [GetMachineImageComputeV1Args].
   /// [machineImage] Required.
   /// [project] Optional.
-  GetMachineImageComputeV1Args({
+  const GetMachineImageComputeV1Args({
     required this.machineImage,
     this.project,
   });

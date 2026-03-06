@@ -57,7 +57,7 @@ class VpnSiteArgs {
   /// [virtualWan] The VirtualWAN to which the vpnSite belongs.
   /// [vpnSiteLinks] List of all vpn site links.
   /// [vpnSiteName] The name of the VpnSite being created or updated.
-  VpnSiteArgs({
+  const VpnSiteArgs({
     this.addressSpace,
     this.bgpProperties,
     this.deviceProperties,

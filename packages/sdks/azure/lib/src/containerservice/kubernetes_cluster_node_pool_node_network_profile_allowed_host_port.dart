@@ -14,7 +14,7 @@ class KubernetesClusterNodePoolNodeNetworkProfileAllowedHostPort {
   /// [portEnd] Specifies the end of the port range.
   /// [portStart] Specifies the start of the port range.
   /// [protocol] Specifies the protocol of the port range. Possible values are `TCP` and `UDP`.
-  KubernetesClusterNodePoolNodeNetworkProfileAllowedHostPort({
+  const KubernetesClusterNodePoolNodeNetworkProfileAllowedHostPort({
     this.portEnd,
     this.portStart,
     this.protocol,

@@ -10,7 +10,7 @@ class GoogleCloudRetailV2ModelModelFeaturesConfigResponse {
 
   /// Creates a new [GoogleCloudRetailV2ModelModelFeaturesConfigResponse].
   /// [frequentlyBoughtTogetherConfig] Additional configs for frequently-bought-together models.
-  GoogleCloudRetailV2ModelModelFeaturesConfigResponse({
+  const GoogleCloudRetailV2ModelModelFeaturesConfigResponse({
     required this.frequentlyBoughtTogetherConfig,
   });
 

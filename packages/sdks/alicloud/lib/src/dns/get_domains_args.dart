@@ -53,7 +53,7 @@ class GetDomainsArgs {
   /// [starmark] Whether to query the domain name star.
   /// [tags] A mapping of tags to assign to the resource.
   /// [versionCode] Cloud analysis version code.
-  GetDomainsArgs({
+  const GetDomainsArgs({
     this.aliDomain,
     this.domainNameRegex,
     this.enableDetails,

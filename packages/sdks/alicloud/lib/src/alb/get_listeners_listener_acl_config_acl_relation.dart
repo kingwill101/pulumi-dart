@@ -11,7 +11,7 @@ class GetListenersListenerAclConfigAclRelation {
   /// Creates a new [GetListenersListenerAclConfigAclRelation].
   /// [aclId] Snooping Binding of the Access Policy Group ID List.
   /// [status] The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
-  GetListenersListenerAclConfigAclRelation({
+  const GetListenersListenerAclConfigAclRelation({
     required this.aclId,
     required this.status,
   });

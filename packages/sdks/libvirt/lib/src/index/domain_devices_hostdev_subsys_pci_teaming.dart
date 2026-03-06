@@ -11,7 +11,7 @@ class DomainDevicesHostdevSubsysPciTeaming {
   /// Creates a new [DomainDevicesHostdevSubsysPciTeaming].
   /// [persistent] Specifies if the teaming configuration is persistent across reboots.
   /// [type] Defines the type of teaming used for the PCI device.
-  DomainDevicesHostdevSubsysPciTeaming({
+  const DomainDevicesHostdevSubsysPciTeaming({
     this.persistent,
     required this.type,
   });

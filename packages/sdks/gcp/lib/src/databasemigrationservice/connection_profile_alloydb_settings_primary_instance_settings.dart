@@ -23,7 +23,7 @@ class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings {
   /// [labels] Labels for the AlloyDB primary instance created by DMS.
   /// [machineConfig] Configuration for the machines that host the underlying database engine.
   /// [privateIp] (Output)
-  ConnectionProfileAlloydbSettingsPrimaryInstanceSettings({
+  const ConnectionProfileAlloydbSettingsPrimaryInstanceSettings({
     this.databaseFlags,
     required this.id,
     this.labels,

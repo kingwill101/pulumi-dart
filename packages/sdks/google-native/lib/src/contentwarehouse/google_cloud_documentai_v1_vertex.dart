@@ -12,7 +12,7 @@ class GoogleCloudDocumentaiV1Vertex {
   /// Creates a new [GoogleCloudDocumentaiV1Vertex].
   /// [x] X coordinate.
   /// [y] Y coordinate (starts from the top of the image).
-  GoogleCloudDocumentaiV1Vertex({
+  const GoogleCloudDocumentaiV1Vertex({
     this.x,
     this.y,
   });

@@ -49,7 +49,7 @@ class DicomServiceState {
   /// [storage] A `storage` block as defined below. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Healthcare DICOM Service.
   /// [workspaceId] Specifies the ID of the Healthcare Workspace where the Healthcare DICOM Service should exist. Changing this forces a new Healthcare DICOM Service to be created.
-  DicomServiceState({
+  const DicomServiceState({
     this.authentications,
     this.cors,
     this.dataPartitionsEnabled,

@@ -13,7 +13,7 @@ class GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse {
   /// Creates a new [GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse].
   /// [status] The status of a reload attempt or the initial load.
   /// [time] The time of a reload attempt. This reload may have been triggered automatically or manually and may not have succeeded.
-  GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse({
+  const GoogleCloudDialogflowV2beta1DocumentReloadStatusResponse({
     required this.status,
     required this.time,
   });

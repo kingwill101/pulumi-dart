@@ -17,7 +17,7 @@ class GetDbNodesArgs {
   /// Creates a new [GetDbNodesArgs].
   /// [cloudVmClusterId] The unique identifier of the cloud vm cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDbNodesArgs({
+  const GetDbNodesArgs({
     required this.cloudVmClusterId,
     this.region,
   });

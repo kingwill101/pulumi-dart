@@ -13,7 +13,7 @@ class GetAccountIdentity {
   /// [principalId] Required.
   /// [tenantId] Required.
   /// [type] Required.
-  GetAccountIdentity({
+  const GetAccountIdentity({
     this.identityIds,
     required this.principalId,
     required this.tenantId,

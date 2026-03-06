@@ -25,7 +25,7 @@ class ApiGatewayStageArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ApiGatewayStageArgs({
+  const ApiGatewayStageArgs({
     this.location,
     this.name,
     this.properties,

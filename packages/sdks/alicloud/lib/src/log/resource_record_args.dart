@@ -21,7 +21,7 @@ class ResourceRecordArgs {
   /// [resourceName] The name defined in log_resource, log service have some internal resource, like sls.common.user, sls.common.user_group. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
   /// [tag] The record's tag, can be used for search.
   /// [value] The json value of record. More detail see [Resource Data Structure](https://www.alibabacloud.com/help/en/sls/developer-reference/data-structure-of-alert-resource-data).
-  ResourceRecordArgs({
+  const ResourceRecordArgs({
     required this.recordId,
     required this.resourceName,
     required this.tag,

@@ -62,7 +62,7 @@ class StoragePoolArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [storagePoolType] Type of the storage pool. For example, the
   /// [zone] A reference to the zone where the storage pool resides.
-  StoragePoolArgs({
+  const StoragePoolArgs({
     this.capacityProvisioningType,
     this.deletionProtection,
     this.description,

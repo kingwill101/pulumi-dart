@@ -8,7 +8,7 @@ class GetClusterKubernetesNetworkConfigElasticLoadBalancing {
 
   /// Creates a new [GetClusterKubernetesNetworkConfigElasticLoadBalancing].
   /// [enabled] Whether zonal shift is enabled.
-  GetClusterKubernetesNetworkConfigElasticLoadBalancing({
+  const GetClusterKubernetesNetworkConfigElasticLoadBalancing({
     required this.enabled,
   });
 

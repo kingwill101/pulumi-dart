@@ -15,7 +15,7 @@ class DashboardPartMetadata {
   /// [inputs] Inputs to dashboard part.
   /// [settings] Settings of dashboard part.
   /// [type] The type of dashboard part.
-  DashboardPartMetadata({
+  const DashboardPartMetadata({
     this.inputs,
     this.settings,
     required this.type,

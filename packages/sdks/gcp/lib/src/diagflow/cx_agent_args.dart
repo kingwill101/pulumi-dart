@@ -103,7 +103,7 @@ class CxAgentArgs {
   /// [supportedLanguageCodes] The list of all languages supported by this agent (except for the default_language_code).
   /// [textToSpeechSettings] Settings related to speech synthesizing.
   /// [timeZone] The time zone of this agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York,
-  CxAgentArgs({
+  const CxAgentArgs({
     this.advancedSettings,
     this.answerFeedbackSettings,
     this.avatarUri,

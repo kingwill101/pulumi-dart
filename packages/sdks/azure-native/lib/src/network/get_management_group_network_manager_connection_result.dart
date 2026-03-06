@@ -30,7 +30,7 @@ class GetManagementGroupNetworkManagerConnectionResult {
   /// [networkManagerId] Network Manager Id.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetManagementGroupNetworkManagerConnectionResult({
+  const GetManagementGroupNetworkManagerConnectionResult({
     required this.azureApiVersion,
     this.description,
     required this.etag,

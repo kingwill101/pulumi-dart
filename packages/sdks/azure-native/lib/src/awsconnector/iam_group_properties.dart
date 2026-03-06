@@ -31,7 +31,7 @@ class IamGroupProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamGroupProperties({
+  const IamGroupProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

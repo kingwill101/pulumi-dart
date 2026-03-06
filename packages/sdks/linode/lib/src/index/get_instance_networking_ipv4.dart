@@ -21,7 +21,7 @@ class GetInstanceNetworkingIpv4 {
   /// [reserveds] Required.
   /// [shareds] Required.
   /// [vpcs] Required.
-  GetInstanceNetworkingIpv4({
+  const GetInstanceNetworkingIpv4({
     required this.privates,
     required this.publics,
     required this.reserveds,

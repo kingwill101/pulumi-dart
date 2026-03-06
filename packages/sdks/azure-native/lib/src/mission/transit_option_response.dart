@@ -13,7 +13,7 @@ class TransitOptionResponse {
   /// Creates a new [TransitOptionResponse].
   /// [params] Transit Option Params
   /// [type] Transit Option Type.
-  TransitOptionResponse({
+  const TransitOptionResponse({
     this.params,
     this.type,
   });

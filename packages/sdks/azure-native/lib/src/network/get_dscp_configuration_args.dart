@@ -15,7 +15,7 @@ class GetDscpConfigurationArgs {
   /// Creates a new [GetDscpConfigurationArgs].
   /// [dscpConfigurationName] The name of the resource.
   /// [resourceGroupName] The name of the resource group.
-  GetDscpConfigurationArgs({
+  const GetDscpConfigurationArgs({
     required this.dscpConfigurationName,
     required this.resourceGroupName,
   });

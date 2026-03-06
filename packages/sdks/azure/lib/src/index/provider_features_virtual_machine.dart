@@ -13,7 +13,7 @@ class ProviderFeaturesVirtualMachine {
   /// [detachImplicitDataDiskOnDeletion] Optional.
   /// [gracefulShutdown] Optional.
   /// [skipShutdownAndForceDelete] Optional.
-  ProviderFeaturesVirtualMachine({
+  const ProviderFeaturesVirtualMachine({
     this.deleteOsDiskOnDeletion,
     this.detachImplicitDataDiskOnDeletion,
     this.gracefulShutdown,

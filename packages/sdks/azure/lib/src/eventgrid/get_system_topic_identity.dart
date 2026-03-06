@@ -17,7 +17,7 @@ class GetSystemTopicIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Event Grid System Topic.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Event Grid System Topic.
   /// [type] The type of Managed Service Identity that is configured on this Event Grid System Topic.
-  GetSystemTopicIdentity({
+  const GetSystemTopicIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

@@ -15,7 +15,7 @@ class GetOsPolicyAssignmentArgs {
   /// [location] Required.
   /// [osPolicyAssignmentId] Required.
   /// [project] Optional.
-  GetOsPolicyAssignmentArgs({
+  const GetOsPolicyAssignmentArgs({
     required this.location,
     required this.osPolicyAssignmentId,
     this.project,

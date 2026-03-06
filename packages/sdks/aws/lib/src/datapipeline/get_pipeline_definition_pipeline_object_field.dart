@@ -14,7 +14,7 @@ class GetPipelineDefinitionPipelineObjectField {
   /// [key] Field identifier.
   /// [refValue] Field value, expressed as the identifier of another object
   /// [stringValue] Field value, expressed as a String.
-  GetPipelineDefinitionPipelineObjectField({
+  const GetPipelineDefinitionPipelineObjectField({
     required this.key,
     required this.refValue,
     required this.stringValue,

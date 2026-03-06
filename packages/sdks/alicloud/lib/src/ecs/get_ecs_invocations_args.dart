@@ -28,7 +28,7 @@ class GetEcsInvocationsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetEcsInvocationsArgs({
+  const GetEcsInvocationsArgs({
     this.commandId,
     this.contentEncoding,
     this.ids,

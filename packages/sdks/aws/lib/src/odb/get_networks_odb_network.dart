@@ -23,7 +23,7 @@ class GetNetworksOdbNetwork {
   /// [ociNetworkAnchorId] The unique identifier of the OCI network anchor for the ODB network.
   /// [ociVcnId] The unique identifier  Oracle Cloud ID (OCID) of the OCI VCN for the ODB network.
   /// [ociVcnUrl] The URL of the OCI VCN for the ODB network.
-  GetNetworksOdbNetwork({
+  const GetNetworksOdbNetwork({
     required this.arn,
     required this.displayName,
     required this.id,

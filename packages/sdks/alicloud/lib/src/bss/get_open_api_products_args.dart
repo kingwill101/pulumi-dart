@@ -18,7 +18,7 @@ class GetOpenApiProductsArgs {
   /// [ids] A list of product IDs.
   /// [nameRegex] A regex string to filter results by Product name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetOpenApiProductsArgs({
+  const GetOpenApiProductsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

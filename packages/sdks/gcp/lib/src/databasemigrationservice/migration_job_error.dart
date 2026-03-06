@@ -17,7 +17,7 @@ class MigrationJobError {
   /// [code] (Output)
   /// [details] (Output)
   /// [message] (Output)
-  MigrationJobError({
+  const MigrationJobError({
     this.code,
     this.details,
     this.message,

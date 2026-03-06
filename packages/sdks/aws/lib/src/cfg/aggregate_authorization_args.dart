@@ -21,7 +21,7 @@ class AggregateAuthorizationArgs {
   /// [authorizedAwsRegion] The region authorized to collect aggregated data.
   /// [region] The region authorized to collect aggregated data. Use `authorized_aws_region` instead.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  AggregateAuthorizationArgs({
+  const AggregateAuthorizationArgs({
     required this.accountId,
     this.authorizedAwsRegion,
     this.region,

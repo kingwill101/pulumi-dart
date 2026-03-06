@@ -17,7 +17,7 @@ class GetUserGroupsGroup {
   /// [groupName] Name of the user group.
   /// [precedence] Precedence of the user group.
   /// [roleArn] ARN of the IAM role to be associated with the user group.
-  GetUserGroupsGroup({
+  const GetUserGroupsGroup({
     required this.description,
     required this.groupName,
     required this.precedence,

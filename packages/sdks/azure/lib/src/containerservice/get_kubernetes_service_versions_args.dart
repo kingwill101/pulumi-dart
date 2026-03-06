@@ -18,7 +18,7 @@ class GetKubernetesServiceVersionsArgs {
   /// [includePreview] Should Preview versions of Kubernetes in AKS be included? Defaults to `true`
   /// [location] Specifies the location in which to query for versions.
   /// [versionPrefix] A prefix filter for the versions of Kubernetes which should be returned; for example `1.` will return `1.9` to `1.14`, whereas `1.12` will return `1.12.2`.
-  GetKubernetesServiceVersionsArgs({
+  const GetKubernetesServiceVersionsArgs({
     this.includePreview,
     required this.location,
     this.versionPrefix,

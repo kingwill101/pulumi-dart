@@ -9,7 +9,7 @@ class ProjectCatalogSettings {
 
   /// Creates a new [ProjectCatalogSettings].
   /// [catalogItemSyncTypes] Indicates catalog item types that can be synced.
-  ProjectCatalogSettings({
+  const ProjectCatalogSettings({
     this.catalogItemSyncTypes,
   });
 

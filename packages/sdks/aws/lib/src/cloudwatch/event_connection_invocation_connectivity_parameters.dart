@@ -9,7 +9,7 @@ class EventConnectionInvocationConnectivityParameters {
 
   /// Creates a new [EventConnectionInvocationConnectivityParameters].
   /// [resourceParameters] The parameters for EventBridge to use when invoking the resource endpoint. Documented below.
-  EventConnectionInvocationConnectivityParameters({
+  const EventConnectionInvocationConnectivityParameters({
     required this.resourceParameters,
   });
 

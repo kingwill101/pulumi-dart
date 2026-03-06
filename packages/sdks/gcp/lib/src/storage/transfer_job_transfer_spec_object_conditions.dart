@@ -23,7 +23,7 @@ class TransferJobTransferSpecObjectConditions {
   /// [lastModifiedSince] If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   /// [maxTimeElapsedSinceLastModification] A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
   /// [minTimeElapsedSinceLastModification] A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
-  TransferJobTransferSpecObjectConditions({
+  const TransferJobTransferSpecObjectConditions({
     this.excludePrefixes,
     this.includePrefixes,
     this.lastModifiedBefore,

@@ -24,7 +24,7 @@ class ArtifactStorePropertiesFormatResponse {
   /// [replicationStrategy] The replication strategy.
   /// [storageResourceId] The created storage resource id
   /// [storeType] The artifact store type.
-  ArtifactStorePropertiesFormatResponse({
+  const ArtifactStorePropertiesFormatResponse({
     this.backingResourcePublicNetworkAccess,
     this.managedResourceGroupConfiguration,
     required this.provisioningState,

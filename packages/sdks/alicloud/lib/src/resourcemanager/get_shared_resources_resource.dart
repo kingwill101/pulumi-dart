@@ -20,7 +20,7 @@ class GetSharedResourcesResource {
   /// [resourceShareId] The resource share ID of resource manager.
   /// [resourceType] The type of shared resource.
   /// [status] The status of share resource. Valid values: `Associated`, `Associating`, `Disassociated`, `Disassociating` and `Failed`.
-  GetSharedResourcesResource({
+  const GetSharedResourcesResource({
     required this.id,
     required this.resourceId,
     required this.resourceShareId,

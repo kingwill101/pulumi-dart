@@ -30,7 +30,7 @@ class GetCertificateResult {
   /// [subject] Subject attribute of the certificate.
   /// [thumbprint] Thumbprint of the certificate.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.azureApiVersion,
     required this.expirationDate,
     required this.id,

@@ -9,7 +9,7 @@ class IdcApplicationServiceIntegrationS3AccessGrants {
 
   /// Creates a new [IdcApplicationServiceIntegrationS3AccessGrants].
   /// [readWriteAccess] S3 Access grants integration scope.
-  IdcApplicationServiceIntegrationS3AccessGrants({
+  const IdcApplicationServiceIntegrationS3AccessGrants({
     this.readWriteAccess,
   });
 

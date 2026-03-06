@@ -25,7 +25,7 @@ class WebRegionBackendServiceIamPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [webRegionBackendService] Used to find the parent resource to bind the IAM policy to
-  WebRegionBackendServiceIamPolicyState({
+  const WebRegionBackendServiceIamPolicyState({
     this.etag,
     this.policyData,
     this.project,

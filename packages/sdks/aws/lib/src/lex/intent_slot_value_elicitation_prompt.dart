@@ -13,7 +13,7 @@ class IntentSlotValueElicitationPrompt {
   /// [maxAttempts] The number of times to prompt the user for information. Must be a number between 1 and 5 (inclusive).
   /// [messages] Required.
   /// [responseCard] Optional.
-  IntentSlotValueElicitationPrompt({
+  const IntentSlotValueElicitationPrompt({
     required this.maxAttempts,
     required this.messages,
     this.responseCard,

@@ -87,7 +87,7 @@ class ImageArgs {
   /// [resourceGroupId] The ID of the resource group to which to assign the custom image. If you do not specify this parameter, the image is assigned to the default resource group.
   /// [snapshotId] The ID of the snapshot that you want to use to create the custom image.
   /// [tags] The tag
-  ImageArgs({
+  const ImageArgs({
     this.architecture,
     this.bootMode,
     this.deleteAutoSnapshot,

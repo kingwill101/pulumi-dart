@@ -21,7 +21,7 @@ class InstanceRefreshDesiredConfigurationContainer {
   /// [environmentVars] Information about the environment variables. See `environment_vars` below for details.
   /// [image] The container image.
   /// [name] The custom name of the container.
-  InstanceRefreshDesiredConfigurationContainer({
+  const InstanceRefreshDesiredConfigurationContainer({
     this.args,
     this.commands,
     this.environmentVars,

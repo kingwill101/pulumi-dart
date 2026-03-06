@@ -11,7 +11,7 @@ class GetAppTemplateContainerLivenessProbeHeader {
   /// Creates a new [GetAppTemplateContainerLivenessProbeHeader].
   /// [name] The name of the Container App.
   /// [value] The HTTP Header value.
-  GetAppTemplateContainerLivenessProbeHeader({
+  const GetAppTemplateContainerLivenessProbeHeader({
     required this.name,
     required this.value,
   });

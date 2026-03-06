@@ -10,7 +10,7 @@ class HubEventHandlerAuth {
 
   /// Creates a new [HubEventHandlerAuth].
   /// [managedIdentityId] Specify the identity ID of the target resource.
-  HubEventHandlerAuth({
+  const HubEventHandlerAuth({
     required this.managedIdentityId,
   });
 

@@ -33,7 +33,7 @@ class GetSqlServerInstanceTelemetryArgs {
   /// [resourceGroupName] The name of the Azure resource group
   /// [sqlServerInstanceName] Name of SQL Server Instance
   /// [startTime] The start time for the time range to fetch telemetry for. If not specified, the current time minus 1 hour is used.
-  GetSqlServerInstanceTelemetryArgs({
+  const GetSqlServerInstanceTelemetryArgs({
     this.aggregationType,
     this.databaseNames,
     required this.datasetName,

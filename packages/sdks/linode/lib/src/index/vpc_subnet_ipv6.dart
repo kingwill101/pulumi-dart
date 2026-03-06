@@ -11,7 +11,7 @@ class VpcSubnetIpv6 {
   /// Creates a new [VpcSubnetIpv6].
   /// [allocatedRange] The IPv6 range assigned to this subnet.
   /// [range] An existing IPv6 prefix owned by the current account or a forward slash (/) followed by a valid prefix length. If unspecified, a range with the default prefix will be allocated for this VPC.
-  VpcSubnetIpv6({
+  const VpcSubnetIpv6({
     this.allocatedRange,
     this.range,
   });

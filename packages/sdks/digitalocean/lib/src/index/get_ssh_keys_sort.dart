@@ -11,7 +11,7 @@ class GetSshKeysSort {
   /// Creates a new [GetSshKeysSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
   /// [key] Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
-  GetSshKeysSort({
+  const GetSshKeysSort({
     this.direction,
     required this.key,
   });

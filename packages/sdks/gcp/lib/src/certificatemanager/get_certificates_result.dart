@@ -17,7 +17,7 @@ class GetCertificatesResult {
   /// [filter] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Optional.
-  GetCertificatesResult({
+  const GetCertificatesResult({
     required this.certificates,
     this.filter,
     required this.id,

@@ -15,7 +15,7 @@ class DiagnosticFrontendResponse {
   /// [bodyBytes] Number of payload bytes to log (up to 8192).
   /// [dataMasking] A `data_masking` block as defined below.
   /// [headersToLogs] Specifies a list of headers to log.
-  DiagnosticFrontendResponse({
+  const DiagnosticFrontendResponse({
     this.bodyBytes,
     this.dataMasking,
     this.headersToLogs,

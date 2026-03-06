@@ -26,7 +26,7 @@ class VMwareNodePoolStatusCondition {
   /// [reason] (Output)
   /// [state] (Output)
   /// [type] (Output)
-  VMwareNodePoolStatusCondition({
+  const VMwareNodePoolStatusCondition({
     this.lastTransitionTime,
     this.message,
     this.reason,

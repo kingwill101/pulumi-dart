@@ -13,7 +13,7 @@ class ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult {
   /// Creates a new [ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult].
   /// [nextLink] The URI to fetch the next page of events. Call ListNext() with this URI to fetch the next page of impacted resource.
   /// [value] The list of eventImpactedResources.
-  ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult({
+  const ListSecurityAdvisoryImpactedResourceByTenantIdAndEventIdResult({
     this.nextLink,
     required this.value,
   });

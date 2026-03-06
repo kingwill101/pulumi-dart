@@ -33,7 +33,7 @@ class GrafanaManagedPrivateEndpointState {
   /// [privateLinkServiceUrl] A domain name for this endpoint to be used within Grafana. Must be just a domain, without schema, and with at least three parts.
   /// [requestMessage] A message to provide in the request which will be seen by approvers.
   /// [tags] A mapping of tags which should be assigned to the Dashboard Grafana Managed Private Endpoint.
-  GrafanaManagedPrivateEndpointState({
+  const GrafanaManagedPrivateEndpointState({
     this.grafanaId,
     this.groupIds,
     this.location,

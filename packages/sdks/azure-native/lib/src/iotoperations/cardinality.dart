@@ -14,7 +14,7 @@ class Cardinality {
   /// Creates a new [Cardinality].
   /// [backendChain] The backend broker desired properties
   /// [frontend] The frontend desired properties
-  Cardinality({
+  const Cardinality({
     required this.backendChain,
     required this.frontend,
   });

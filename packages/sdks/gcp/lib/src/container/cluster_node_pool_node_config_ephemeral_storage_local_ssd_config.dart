@@ -11,7 +11,7 @@ class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
   /// Creates a new [ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig].
   /// [dataCacheCount] Number of raw-block local NVMe SSD disks to be attached to the node utilized for GKE Data Cache. If zero, then GKE Data Cache will not be enabled in the nodes.
   /// [localSsdCount] Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-  ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig({
+  const ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig({
     this.dataCacheCount,
     required this.localSsdCount,
   });

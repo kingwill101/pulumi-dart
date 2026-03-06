@@ -14,7 +14,7 @@ class GetDeploymentFrontendPrivate {
   /// [allocationMethod] The method of allocating the private IP to the NGINX Deployment.
   /// [ipAddress] The list of Public IP Resource IDs for this NGINX Deployment.
   /// [subnetId] The subnet resource ID of the NGINX Deployment.
-  GetDeploymentFrontendPrivate({
+  const GetDeploymentFrontendPrivate({
     required this.allocationMethod,
     required this.ipAddress,
     required this.subnetId,

@@ -15,7 +15,7 @@ class ComplianceVersionResponse {
   /// [benchmarkDocument] The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
   /// [cpeUri] The CPE URI (https://cpe.mitre.org/specification/) this benchmark is applicable to.
   /// [version] The version of the benchmark. This is set to the version of the OS-specific CIS document the benchmark is defined in.
-  ComplianceVersionResponse({
+  const ComplianceVersionResponse({
     required this.benchmarkDocument,
     required this.cpeUri,
     required this.version,

@@ -7,7 +7,7 @@ class WorkgroupConfigurationCustomerContentEncryptionConfiguration {
 
   /// Creates a new [WorkgroupConfigurationCustomerContentEncryptionConfiguration].
   /// [kmsKey] Optional.
-  WorkgroupConfigurationCustomerContentEncryptionConfiguration({
+  const WorkgroupConfigurationCustomerContentEncryptionConfiguration({
     this.kmsKey,
   });
 

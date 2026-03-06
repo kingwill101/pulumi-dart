@@ -14,7 +14,7 @@ class MonitorUser {
   /// [email] Email of the user used by Datadog for contacting them if needed. Changing this forces a new Datadog Monitor to be created.
   /// [name] The name which should be used for this user_info. Changing this forces a new resource to be created.
   /// [phoneNumber] Phone number of the user used by Datadog for contacting them if needed. Changing this forces a new resource to be created.
-  MonitorUser({
+  const MonitorUser({
     required this.email,
     required this.name,
     this.phoneNumber,

@@ -27,7 +27,7 @@ class GatewayCorsPropertiesResponse {
   /// [allowedOrigins] Allowed origins to make cross-site requests. The special value `*` allows all domains.
   /// [exposedHeaders] HTTP response headers to expose for cross-site requests.
   /// [maxAge] How long, in seconds, the response from a pre-flight request can be cached by clients.
-  GatewayCorsPropertiesResponse({
+  const GatewayCorsPropertiesResponse({
     this.allowCredentials,
     this.allowedHeaders,
     this.allowedMethods,

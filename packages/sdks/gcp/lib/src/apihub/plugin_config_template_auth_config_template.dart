@@ -13,7 +13,7 @@ class PluginConfigTemplateAuthConfigTemplate {
   /// Creates a new [PluginConfigTemplateAuthConfigTemplate].
   /// [serviceAccount] Config for Google service account authentication.
   /// [supportedAuthTypes] The list of authentication types supported by the plugin.
-  PluginConfigTemplateAuthConfigTemplate({
+  const PluginConfigTemplateAuthConfigTemplate({
     this.serviceAccount,
     required this.supportedAuthTypes,
   });

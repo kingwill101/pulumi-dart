@@ -31,7 +31,7 @@ class NetworkProfileResponse {
   /// [podCidrs] The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
   /// [serviceCidr] ServiceCidr - A CIDR notation IP range from which to assign service cluster IPs. It must not overlap with any Subnet IP ranges.
   /// [serviceCidrs] The CIDR notation IP ranges from which to assign service cluster IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking. They must not overlap with any Subnet IP ranges.
-  NetworkProfileResponse({
+  const NetworkProfileResponse({
     this.dnsServiceIP,
     this.loadBalancerProfile,
     this.loadBalancerSku,

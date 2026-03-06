@@ -44,7 +44,7 @@ class SubnetArgs {
   /// [subnetId] A unique ID that identifies this subnet.
   /// [vlanId] VLAN ID for this subnetwork. If not specified, one is assigned automatically.
   /// [zone] The name of the target Distributed Cloud Edge zone.
-  SubnetArgs({
+  const SubnetArgs({
     this.description,
     this.ipv4Cidrs,
     this.ipv6Cidrs,

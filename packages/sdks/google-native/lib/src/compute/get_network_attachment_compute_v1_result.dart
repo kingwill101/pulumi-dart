@@ -48,7 +48,7 @@ class GetNetworkAttachmentComputeV1Result {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource's resource id.
   /// [subnetworks] An array of URLs where each entry is the URL of a subnet provided by the service consumer to use for endpoints in the producers that connect to this network attachment.
-  GetNetworkAttachmentComputeV1Result({
+  const GetNetworkAttachmentComputeV1Result({
     required this.connectionEndpoints,
     required this.connectionPreference,
     required this.creationTimestamp,

@@ -24,7 +24,7 @@ class VMwareToAzStackHCINicInputResponse {
   /// [selectionTypeForFailover] Gets or sets the selection type of the NIC.
   /// [targetNetworkId] Gets or sets the target network Id within AzStackHCI Cluster.
   /// [testNetworkId] Gets or sets the target test network Id within AzStackHCI Cluster.
-  VMwareToAzStackHCINicInputResponse({
+  const VMwareToAzStackHCINicInputResponse({
     required this.label,
     required this.networkName,
     required this.nicId,

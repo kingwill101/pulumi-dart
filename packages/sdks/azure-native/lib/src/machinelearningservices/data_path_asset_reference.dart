@@ -16,7 +16,7 @@ class DataPathAssetReference {
   /// [datastoreId] ARM resource ID of the datastore where the asset is located.
   /// [path] The path of the file/directory in the datastore.
   /// [referenceType] Enum to determine which reference method to use for an asset.
-  DataPathAssetReference({
+  const DataPathAssetReference({
     this.datastoreId,
     this.path,
     required this.referenceType,

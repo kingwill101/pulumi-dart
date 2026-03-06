@@ -21,7 +21,7 @@ class QueueAppEngineRoutingOverride {
   /// [instance] App instance.
   /// [service] App service.
   /// [version] App version.
-  QueueAppEngineRoutingOverride({
+  const QueueAppEngineRoutingOverride({
     this.host,
     this.instance,
     this.service,

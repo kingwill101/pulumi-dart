@@ -14,7 +14,7 @@ class GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse {
   /// Creates a new [GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse].
   /// [compute] Optional. Compute resources needed for analyze interactive workloads.
   /// [osImage] Software Runtime Configuration for analyze interactive workloads.
-  GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse({
+  const GoogleCloudDataplexV1EnvironmentInfrastructureSpecResponse({
     required this.compute,
     required this.osImage,
   });

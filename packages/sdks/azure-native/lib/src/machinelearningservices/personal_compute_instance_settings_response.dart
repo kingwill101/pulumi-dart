@@ -10,7 +10,7 @@ class PersonalComputeInstanceSettingsResponse {
 
   /// Creates a new [PersonalComputeInstanceSettingsResponse].
   /// [assignedUser] A user explicitly assigned to a personal compute instance.
-  PersonalComputeInstanceSettingsResponse({
+  const PersonalComputeInstanceSettingsResponse({
     this.assignedUser,
   });
 

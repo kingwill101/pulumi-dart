@@ -13,7 +13,7 @@ class ClusterNodeGroupAutoScalingPolicy {
   /// Creates a new [ClusterNodeGroupAutoScalingPolicy].
   /// [constraints] The constraints of auto scaling policy. See `constraints` below.
   /// [scalingRules] The scaling rules of auto scaling policy. See `scaling_rules` below.
-  ClusterNodeGroupAutoScalingPolicy({
+  const ClusterNodeGroupAutoScalingPolicy({
     this.constraints,
     this.scalingRules,
   });

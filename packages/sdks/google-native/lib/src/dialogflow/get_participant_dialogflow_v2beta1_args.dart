@@ -17,7 +17,7 @@ class GetParticipantDialogflowV2beta1Args {
   /// [location] Required.
   /// [participantId] Required.
   /// [project] Optional.
-  GetParticipantDialogflowV2beta1Args({
+  const GetParticipantDialogflowV2beta1Args({
     required this.conversationId,
     required this.location,
     required this.participantId,

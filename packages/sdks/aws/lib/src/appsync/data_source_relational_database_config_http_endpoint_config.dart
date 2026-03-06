@@ -20,7 +20,7 @@ class DataSourceRelationalDatabaseConfigHttpEndpointConfig {
   /// [dbClusterIdentifier] Amazon RDS cluster identifier.
   /// [region] AWS Region for RDS HTTP endpoint. Defaults to current region.
   /// [schema] Logical schema name.
-  DataSourceRelationalDatabaseConfigHttpEndpointConfig({
+  const DataSourceRelationalDatabaseConfigHttpEndpointConfig({
     required this.awsSecretStoreArn,
     this.databaseName,
     required this.dbClusterIdentifier,

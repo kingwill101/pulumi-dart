@@ -21,7 +21,7 @@ class ConnectionAuthConfigOauth2AuthCodeFlow {
   /// [clientSecret] Client secret for user-provided OAuth app.
   /// [enablePkce] Whether to enable PKCE when the user performs the auth code flow.
   /// [scopes] Scopes the connection will request when the user performs the auth code flow.
-  ConnectionAuthConfigOauth2AuthCodeFlow({
+  const ConnectionAuthConfigOauth2AuthCodeFlow({
     this.authUri,
     this.clientId,
     this.clientSecret,

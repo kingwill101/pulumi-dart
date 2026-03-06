@@ -53,7 +53,7 @@ class StreamProcessorArgs {
   /// [settings] Input parameters used in a streaming video analyzed by a stream processor. See `settings`.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  StreamProcessorArgs({
+  const StreamProcessorArgs({
     this.dataSharingPreference,
     required this.input,
     this.kmsKeyId,

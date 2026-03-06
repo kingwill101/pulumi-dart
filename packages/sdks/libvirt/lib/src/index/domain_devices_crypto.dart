@@ -22,7 +22,7 @@ class DomainDevicesCrypto {
   /// [backend] Sets the backend configuration for the crypto device.
   /// [model] Specifies the model type for the crypto device.
   /// [type] Sets the type attribute for the crypto device.
-  DomainDevicesCrypto({
+  const DomainDevicesCrypto({
     this.address,
     this.alias,
     this.backend,

@@ -31,7 +31,7 @@ class TagKeyArgs {
   /// [purpose] Optional. A purpose cannot be changed once set.
   /// [purposeData] Optional. Purpose data cannot be changed once set.
   /// [shortName] Input only. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace.
-  TagKeyArgs({
+  const TagKeyArgs({
     this.allowedValuesRegex,
     this.description,
     required this.parent,

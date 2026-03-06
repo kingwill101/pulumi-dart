@@ -8,7 +8,7 @@ class CodeSigningConfigAllowedPublishers {
 
   /// Creates a new [CodeSigningConfigAllowedPublishers].
   /// [signingProfileVersionArns] Set of ARNs for each of the signing profiles. A signing profile defines a trusted user who can sign a code package. Maximum of 20 signing profiles.
-  CodeSigningConfigAllowedPublishers({
+  const CodeSigningConfigAllowedPublishers({
     required this.signingProfileVersionArns,
   });
 

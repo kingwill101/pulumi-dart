@@ -12,7 +12,7 @@ class ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2 {
   /// Creates a new [ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2].
   /// [name] `name` is the name of matching ServiceAccount objects, or "*" to match regardless of name. Required.
   /// [namespace] `namespace` is the namespace of matching ServiceAccount objects. Required.
-  ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2({
+  const ServiceAccountSubjectPatchFlowcontrolApiserverK8sIoV1beta2({
     this.name,
     this.namespace,
   });

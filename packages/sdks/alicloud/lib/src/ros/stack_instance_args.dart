@@ -38,7 +38,7 @@ class StackInstanceArgs {
   /// [stackInstanceAccountId] The account to which the stack instance belongs.
   /// [stackInstanceRegionId] The region of the stack instance.
   /// [timeoutInMinutes] The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
-  StackInstanceArgs({
+  const StackInstanceArgs({
     this.operationDescription,
     this.operationPreferences,
     this.parameterOverrides,

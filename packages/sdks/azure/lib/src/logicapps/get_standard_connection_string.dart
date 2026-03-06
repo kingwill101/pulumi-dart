@@ -13,7 +13,7 @@ class GetStandardConnectionString {
   /// [name] The name of the Logic App.
   /// [type] The Type of Managed Identity assigned to this Logic App Workflow.
   /// [value] Required.
-  GetStandardConnectionString({
+  const GetStandardConnectionString({
     required this.name,
     required this.type,
     required this.value,

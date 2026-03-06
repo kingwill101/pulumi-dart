@@ -21,7 +21,7 @@ class GetIpamIpamPoolCidrsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ipamPoolId] The ID of the IPAM pool instance.
   /// [outputFile] Optional.
-  GetIpamIpamPoolCidrsResult({
+  const GetIpamIpamPoolCidrsResult({
     this.cidr,
     required this.cidrs,
     required this.id,

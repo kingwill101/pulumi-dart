@@ -25,7 +25,7 @@ class InvocationConfigResponse {
   /// [serviceAccount] Optional. The service account to run workflow invocations under.
   /// [transitiveDependenciesIncluded] Optional. When set to true, transitive dependencies of included actions will be executed.
   /// [transitiveDependentsIncluded] Optional. When set to true, transitive dependents of included actions will be executed.
-  InvocationConfigResponse({
+  const InvocationConfigResponse({
     required this.fullyRefreshIncrementalTablesEnabled,
     required this.includedTags,
     required this.includedTargets,

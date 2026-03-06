@@ -24,7 +24,7 @@ class AzureMonitorWorkspaceArgs {
   /// [publicNetworkAccess] Gets or sets allow or disallow public network access to Azure Monitor Workspace
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  AzureMonitorWorkspaceArgs({
+  const AzureMonitorWorkspaceArgs({
     this.azureMonitorWorkspaceName,
     this.location,
     this.publicNetworkAccess,

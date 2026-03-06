@@ -65,7 +65,7 @@ class GetClusterResult {
   /// [sku] The sku properties.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetClusterResult({
+  const GetClusterResult({
     this.associatedWorkspaces,
     required this.azureApiVersion,
     this.billingType,

@@ -45,7 +45,7 @@ class GetRepositoryCreationTemplateResult {
   /// [registryId] The registry ID the repository creation template applies to.
   /// [repositoryPolicy] The registry policy document to apply to any created repositories.
   /// [resourceTags] A map of tags to assign to any created repositories.
-  GetRepositoryCreationTemplateResult({
+  const GetRepositoryCreationTemplateResult({
     required this.appliedFors,
     required this.customRoleArn,
     required this.description,

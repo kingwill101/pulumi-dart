@@ -9,7 +9,7 @@ class DatabaseInstanceSettingsActiveDirectoryConfig {
 
   /// Creates a new [DatabaseInstanceSettingsActiveDirectoryConfig].
   /// [domain] The domain name for the active directory (e.g., mydomain.com).
-  DatabaseInstanceSettingsActiveDirectoryConfig({
+  const DatabaseInstanceSettingsActiveDirectoryConfig({
     required this.domain,
   });
 

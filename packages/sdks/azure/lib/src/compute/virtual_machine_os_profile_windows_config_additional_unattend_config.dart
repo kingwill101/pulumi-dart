@@ -17,7 +17,7 @@ class VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfig {
   /// [content] Specifies the base-64 encoded XML formatted content that is added to the unattend.xml file for the specified path and component.
   /// [pass] Specifies the name of the pass that the content applies to. The only allowable value is `oobeSystem`.
   /// [settingName] Specifies the name of the setting to which the content applies. Possible values are: `FirstLogonCommands` and `AutoLogon`.
-  VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfig({
+  const VirtualMachineOsProfileWindowsConfigAdditionalUnattendConfig({
     required this.component,
     required this.content,
     required this.pass,

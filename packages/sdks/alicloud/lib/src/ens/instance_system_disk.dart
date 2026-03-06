@@ -15,7 +15,7 @@ class InstanceSystemDisk {
   /// Creates a new [InstanceSystemDisk].
   /// [category] System disk type. Value
   /// [size] System disk size, unit: GB.
-  InstanceSystemDisk({
+  const InstanceSystemDisk({
     this.category,
     this.size,
   });

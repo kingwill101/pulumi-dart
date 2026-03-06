@@ -29,7 +29,7 @@ class InstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionName] Name of the solution
   /// [targetName] Name of the target
-  InstanceArgs({
+  const InstanceArgs({
     this.extendedLocation,
     this.instanceName,
     this.properties,

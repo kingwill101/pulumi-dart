@@ -37,7 +37,7 @@ class GetBaselineStrategiesStrategy {
   /// [riskSubTypeName] Required.
   /// [startTime] The baseline check policy start time.
   /// [targetType] Required.
-  GetBaselineStrategiesStrategy({
+  const GetBaselineStrategiesStrategy({
     required this.baselineStrategyId,
     required this.baselineStrategyName,
     required this.customType,

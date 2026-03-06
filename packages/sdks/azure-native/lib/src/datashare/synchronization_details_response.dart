@@ -51,7 +51,7 @@ class SynchronizationDetailsResponse {
   /// [startTime] Start time of data set level copy
   /// [status] Raw Status
   /// [vCore] The vCore units consumed for the data set synchronization
-  SynchronizationDetailsResponse({
+  const SynchronizationDetailsResponse({
     required this.dataSetId,
     required this.dataSetType,
     required this.durationMs,

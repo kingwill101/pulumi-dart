@@ -15,7 +15,7 @@ class WorkgroupEndpointVpcEndpoint {
   /// [networkInterfaces] The network interfaces of the endpoint.. See `Network Interface` below.
   /// [vpcEndpointId] The DNS address of the VPC endpoint.
   /// [vpcId] The port that Amazon Redshift Serverless listens on.
-  WorkgroupEndpointVpcEndpoint({
+  const WorkgroupEndpointVpcEndpoint({
     this.networkInterfaces,
     this.vpcEndpointId,
     this.vpcId,

@@ -18,7 +18,7 @@ class EmailReceiverResponse {
   /// [name] The name of the email receiver. Names must be unique across all receivers within a tenant action group.
   /// [status] The receiver status of the e-mail.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  EmailReceiverResponse({
+  const EmailReceiverResponse({
     required this.emailAddress,
     required this.name,
     required this.status,

@@ -9,7 +9,7 @@ class ForZone {
 
   /// Creates a new [ForZone].
   /// [name] name represents the name of the zone.
-  ForZone({
+  const ForZone({
     required this.name,
   });
 

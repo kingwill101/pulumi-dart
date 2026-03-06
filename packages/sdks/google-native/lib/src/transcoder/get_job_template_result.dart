@@ -15,7 +15,7 @@ class GetJobTemplateResult {
   /// [config] The configuration for this template.
   /// [labels] The labels associated with this job template. You can use these to organize and group your job templates.
   /// [name] The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
-  GetJobTemplateResult({
+  const GetJobTemplateResult({
     required this.config,
     required this.labels,
     required this.name,

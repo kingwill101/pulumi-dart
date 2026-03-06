@@ -28,7 +28,7 @@ class ResponsePolicyRuleState {
   /// [project] The ID of the project in which the resource belongs.
   /// [responsePolicy] Identifies the response policy addressed by this request.
   /// [ruleName] An identifier for this rule. Must be unique with the ResponsePolicy.
-  ResponsePolicyRuleState({
+  const ResponsePolicyRuleState({
     this.behavior,
     this.dnsName,
     this.localData,

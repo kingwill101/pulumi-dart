@@ -18,7 +18,7 @@ class VsphereVirtualDiskVolumeSource {
   /// [storagePolicyID] storagePolicyID is the storage Policy Based Management (SPBM) profile ID associated with the StoragePolicyName.
   /// [storagePolicyName] storagePolicyName is the storage Policy Based Management (SPBM) profile name.
   /// [volumePath] volumePath is the path that identifies vSphere volume vmdk
-  VsphereVirtualDiskVolumeSource({
+  const VsphereVirtualDiskVolumeSource({
     this.fsType,
     this.storagePolicyID,
     this.storagePolicyName,

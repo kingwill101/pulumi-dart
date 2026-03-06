@@ -57,7 +57,7 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinati
   /// [teletextGridControl] Controls whether a fixed grid size will be used to generate the output subtitles bitmap. Only applicable for Teletext inputs and DVB-Sub/Burn-in outputs.
   /// [xPosition] Specifies the horizontal position of the caption relative to the left side of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the left of the output. If no explicit xPosition is provided, the horizontal caption position will be determined by the alignment parameter. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
   /// [yPosition] Specifies the vertical position of the caption relative to the top of the output in pixels. A value of 10 would result in the captions starting 10 pixels from the top of the output. If no explicit yPosition is provided, the caption will be positioned towards the bottom of the output. This option is not valid for source captions that are STL, 608/embedded or teletext. These source settings are already pre-defined by the caption stream. All burn-in and DVB-Sub font settings must match.
-  ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings({
+  const ChannelEncoderSettingsCaptionDescriptionDestinationSettingsDvbSubDestinationSettings({
     this.alignment,
     this.backgroundColor,
     this.backgroundOpacity,

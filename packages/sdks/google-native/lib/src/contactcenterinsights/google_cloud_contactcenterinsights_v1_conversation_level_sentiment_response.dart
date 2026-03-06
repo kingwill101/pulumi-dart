@@ -13,7 +13,7 @@ class GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse {
   /// Creates a new [GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse].
   /// [channelTag] The channel of the audio that the data applies to.
   /// [sentimentData] Data specifying sentiment.
-  GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse({
+  const GoogleCloudContactcenterinsightsV1ConversationLevelSentimentResponse({
     required this.channelTag,
     required this.sentimentData,
   });

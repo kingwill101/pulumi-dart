@@ -11,7 +11,7 @@ class DistributionTenantDomain {
   /// Creates a new [DistributionTenantDomain].
   /// [domain] Set of domains associated with the distribution tenant.
   /// [status] Current status of the distribution tenant.
-  DistributionTenantDomain({
+  const DistributionTenantDomain({
     required this.domain,
     this.status,
   });

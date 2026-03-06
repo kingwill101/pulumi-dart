@@ -18,7 +18,7 @@ class AdvancedQueryTemplateArgs {
   /// [simpleQuery] Distinguish whether the current template is a simple query
   /// [templateName] The name of the resource
   /// [templateSql] SQL content saved on behalf of the current template
-  AdvancedQueryTemplateArgs({
+  const AdvancedQueryTemplateArgs({
     required this.simpleQuery,
     this.templateName,
     required this.templateSql,

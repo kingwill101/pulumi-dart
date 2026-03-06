@@ -34,7 +34,7 @@ class ConsumerGroupState {
   /// [regionId] (Available since v1.247.0) The ID of the region in which the instance resides.
   /// [remark] Custom remarks.
   /// [status] The status of the resource.
-  ConsumerGroupState({
+  const ConsumerGroupState({
     this.consumeRetryPolicy,
     this.consumerGroupId,
     this.createTime,

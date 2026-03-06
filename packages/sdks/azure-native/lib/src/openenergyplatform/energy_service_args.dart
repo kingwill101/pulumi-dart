@@ -24,7 +24,7 @@ class EnergyServiceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The resource name.
   /// [tags] Resource tags.
-  EnergyServiceArgs({
+  const EnergyServiceArgs({
     this.location,
     this.properties,
     required this.resourceGroupName,

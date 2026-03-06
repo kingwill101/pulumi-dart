@@ -19,7 +19,7 @@ class WorkloadIdentityPoolProviderX509TrustStore {
   /// Creates a new [WorkloadIdentityPoolProviderX509TrustStore].
   /// [intermediateCas] Set of intermediate CA certificates used for building the trust chain to
   /// [trustAnchors] List of Trust Anchors to be used while performing validation
-  WorkloadIdentityPoolProviderX509TrustStore({
+  const WorkloadIdentityPoolProviderX509TrustStore({
     this.intermediateCas,
     required this.trustAnchors,
   });

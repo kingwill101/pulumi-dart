@@ -24,7 +24,7 @@ class ClientCaCertificateState {
   /// [createTime] Creation time.
   /// [siteId] Site Id
   /// [status] Certificate status.
-  ClientCaCertificateState({
+  const ClientCaCertificateState({
     this.certificate,
     this.clientCaCertId,
     this.clientCaCertName,

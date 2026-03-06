@@ -21,7 +21,7 @@ class GetMongoDBResourceMongoDBCollectionArgs {
   /// [collectionName] Cosmos DB collection name.
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetMongoDBResourceMongoDBCollectionArgs({
+  const GetMongoDBResourceMongoDBCollectionArgs({
     required this.accountName,
     required this.collectionName,
     required this.databaseName,

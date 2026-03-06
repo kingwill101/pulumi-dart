@@ -19,7 +19,7 @@ class EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfig {
   /// [eventRecordFormat] Record format that Lambda delivers to the function after schema validation. Valid values: `JSON`, `SOURCE`.
   /// [schemaRegistryUri] URI of the schema registry. For AWS Glue schema registries, use the ARN of the registry. For Confluent schema registries, use the registry URL.
   /// [schemaValidationConfigs] Repeatable block that defines schema validation settings. These specify the message attributes that Lambda should validate and filter using the schema registry.
-  EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfig({
+  const EventSourceMappingSelfManagedKafkaEventSourceConfigSchemaRegistryConfig({
     this.accessConfigs,
     this.eventRecordFormat,
     this.schemaRegistryUri,

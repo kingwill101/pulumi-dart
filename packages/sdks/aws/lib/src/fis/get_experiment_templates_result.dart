@@ -15,7 +15,7 @@ class GetExperimentTemplatesResult {
   /// [ids] List of all the experiment template ids found.
   /// [region] Required.
   /// [tags] Optional.
-  GetExperimentTemplatesResult({
+  const GetExperimentTemplatesResult({
     required this.id,
     required this.ids,
     required this.region,

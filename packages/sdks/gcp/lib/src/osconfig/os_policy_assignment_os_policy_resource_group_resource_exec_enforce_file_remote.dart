@@ -12,7 +12,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote {
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote].
   /// [sha256Checksum] SHA256 checksum of the remote file.
   /// [uri] URI from which to fetch the object. It should contain
-  OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileRemote({
     this.sha256Checksum,
     required this.uri,
   });

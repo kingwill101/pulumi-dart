@@ -8,7 +8,7 @@ class DistributionOriginGroupFailoverCriteria {
 
   /// Creates a new [DistributionOriginGroupFailoverCriteria].
   /// [statusCodes] List of HTTP status codes for the origin group.
-  DistributionOriginGroupFailoverCriteria({
+  const DistributionOriginGroupFailoverCriteria({
     required this.statusCodes,
   });
 

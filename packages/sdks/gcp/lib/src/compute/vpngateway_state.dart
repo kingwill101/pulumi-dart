@@ -37,7 +37,7 @@ class VPNGatewayState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region this gateway should sit in.
   /// [selfLink] The URI of the created resource.
-  VPNGatewayState({
+  const VPNGatewayState({
     this.creationTimestamp,
     this.description,
     this.gatewayId,

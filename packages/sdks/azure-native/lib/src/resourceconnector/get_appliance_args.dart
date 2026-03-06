@@ -15,7 +15,7 @@ class GetApplianceArgs {
   /// Creates a new [GetApplianceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Appliances name.
-  GetApplianceArgs({
+  const GetApplianceArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

@@ -25,7 +25,7 @@ class IosTestResponse {
   /// [iosTestLoop] An iOS test loop.
   /// [iosXcTest] An iOS XCTest.
   /// [testTimeout] Max time a test is allowed to run before it is automatically cancelled.
-  IosTestResponse({
+  const IosTestResponse({
     required this.iosAppInfo,
     required this.iosRoboTest,
     required this.iosTestLoop,

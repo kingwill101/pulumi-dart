@@ -12,7 +12,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode
   /// [accessToken] Optional.
   /// [oauthRequest] Optional.
   /// [refreshToken] Optional.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsHoneycode({
     this.accessToken,
     this.oauthRequest,
     this.refreshToken,

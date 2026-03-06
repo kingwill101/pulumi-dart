@@ -89,7 +89,7 @@ class ListingState {
   /// [requestAccess] Email or URL of the request access of the listing. Subscribers can use this reference to request access.
   /// [restrictedExportConfig] If set, restricted export configuration will be propagated and enforced on the linked dataset.
   /// [state] Current state of the listing.
-  ListingState({
+  const ListingState({
     this.allowOnlyMetadataSharing,
     this.bigqueryDataset,
     this.categories,

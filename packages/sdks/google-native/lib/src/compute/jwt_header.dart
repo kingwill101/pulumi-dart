@@ -12,7 +12,7 @@ class JwtHeader {
   /// Creates a new [JwtHeader].
   /// [name] The HTTP header name.
   /// [valuePrefix] The value prefix. The value format is "value_prefix" For example, for "Authorization: Bearer ", value_prefix="Bearer " with a space at the end.
-  JwtHeader({
+  const JwtHeader({
     this.name,
     this.valuePrefix,
   });

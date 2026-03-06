@@ -25,7 +25,7 @@ class GetFloatingIpsFloatingIp {
   /// [name] Optional.
   /// [serverId] Required.
   /// [type] Required.
-  GetFloatingIpsFloatingIp({
+  const GetFloatingIpsFloatingIp({
     required this.deleteProtection,
     required this.description,
     required this.homeLocation,

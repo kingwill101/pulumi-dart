@@ -48,7 +48,7 @@ class WebAppAssessmentSettings {
   /// [savingsSettings] Gets or sets the savings settings.
   /// [scalingFactor] Percentage of buffer that user wants on performance metrics when recommending
   /// [sizingCriterion] Assessment sizing criterion.
-  WebAppAssessmentSettings({
+  const WebAppAssessmentSettings({
     required this.appSvcContainerSettings,
     required this.appSvcNativeSettings,
     this.azureLocation,

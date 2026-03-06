@@ -37,7 +37,7 @@ class LinkedServiceOdbcArgs {
   /// [integrationRuntimeName] The integration runtime reference to associate with the Data Factory Linked Service ODBC.
   /// [name] Specifies the name of the Data Factory Linked Service ODBC. Changing this forces a new resource to be created. Must be unique within a data factory. See the [Microsoft documentation](https://docs.microsoft.com/azure/data-factory/naming-rules) for all restrictions.
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service ODBC.
-  LinkedServiceOdbcArgs({
+  const LinkedServiceOdbcArgs({
     this.additionalProperties,
     this.annotations,
     this.basicAuthentication,

@@ -9,7 +9,7 @@ class AttestationSourceResponse {
 
   /// Creates a new [AttestationSourceResponse].
   /// [containerAnalysisAttestationProjects] The IDs of the GCP projects storing the SLSA attestations as Container Analysis Occurrences.
-  AttestationSourceResponse({
+  const AttestationSourceResponse({
     required this.containerAnalysisAttestationProjects,
   });
 

@@ -11,7 +11,7 @@ class AggregateCompliancePackConfigRuleConfigRuleParameter {
   /// Creates a new [AggregateCompliancePackConfigRuleConfigRuleParameter].
   /// [parameterName] The Parameter Name.
   /// [parameterValue] The Parameter Value.
-  AggregateCompliancePackConfigRuleConfigRuleParameter({
+  const AggregateCompliancePackConfigRuleConfigRuleParameter({
     this.parameterName,
     this.parameterValue,
   });

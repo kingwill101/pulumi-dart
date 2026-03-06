@@ -7,7 +7,7 @@ class ListWorkspaceStorageAccountKeysResult {
 
   /// Creates a new [ListWorkspaceStorageAccountKeysResult].
   /// [userStorageKey] Required.
-  ListWorkspaceStorageAccountKeysResult({
+  const ListWorkspaceStorageAccountKeysResult({
     required this.userStorageKey,
   });
 

@@ -30,7 +30,7 @@ class GetProtectionPolicyResult {
   /// [properties] ProtectionPolicyResource properties
   /// [tags] Resource tags.
   /// [type] Resource type represents the complete path of the form Namespace/ResourceType/ResourceType/...
-  GetProtectionPolicyResult({
+  const GetProtectionPolicyResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

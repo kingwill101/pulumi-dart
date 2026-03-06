@@ -19,7 +19,7 @@ class JobStorageAccountArgs {
   /// [storageAccountKey] Optional.
   /// [storageAccountName] Required.
   /// [streamAnalyticsJobId] The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
-  JobStorageAccountArgs({
+  const JobStorageAccountArgs({
     required this.authenticationMode,
     this.storageAccountKey,
     required this.storageAccountName,

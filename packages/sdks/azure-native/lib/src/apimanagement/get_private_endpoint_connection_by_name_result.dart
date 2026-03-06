@@ -28,7 +28,7 @@ class GetPrivateEndpointConnectionByNameResult {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [provisioningState] The provisioning state of the private endpoint connection resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateEndpointConnectionByNameResult({
+  const GetPrivateEndpointConnectionByNameResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -38,7 +38,7 @@ class InfoPatch {
   /// [minCompatibilityMinor] MinCompatibilityMinor is the minor version of the minimum compatibility version
   /// [minor] Minor is the minor version of the binary version
   /// [platform] Optional.
-  InfoPatch({
+  const InfoPatch({
     this.buildDate,
     this.compiler,
     this.emulationMajor,

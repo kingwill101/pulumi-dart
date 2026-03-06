@@ -27,7 +27,7 @@ class NamespaceAuthorizationRuleArgs {
   /// [namespaceName] Name of the Azure Relay Namespace for which this Azure Relay Namespace Authorization Rule will be created. Changing this forces a new Azure Relay Namespace Authorization Rule to be created.
   /// [resourceGroupName] The name of the Resource Group where the Azure Relay Namespace Authorization Rule should exist. Changing this forces a new Azure Relay Namespace Authorization Rule to be created.
   /// [send] Grants send access to this Authorization Rule. Defaults to `false`.
-  NamespaceAuthorizationRuleArgs({
+  const NamespaceAuthorizationRuleArgs({
     this.listen,
     this.manage,
     this.name,

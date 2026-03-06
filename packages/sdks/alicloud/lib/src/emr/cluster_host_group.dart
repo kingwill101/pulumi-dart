@@ -52,7 +52,7 @@ class ClusterHostGroup {
   /// [period] If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
   /// [sysDiskCapacity] System disk capacity.
   /// [sysDiskType] System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-  ClusterHostGroup({
+  const ClusterHostGroup({
     this.autoRenew,
     this.chargeType,
     this.decommissionTimeout,

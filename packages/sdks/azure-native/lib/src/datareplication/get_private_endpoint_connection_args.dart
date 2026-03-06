@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The private endpoint connection name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
-  GetPrivateEndpointConnectionArgs({
+  const GetPrivateEndpointConnectionArgs({
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,
     required this.vaultName,

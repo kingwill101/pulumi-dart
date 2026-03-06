@@ -10,7 +10,7 @@ class PeerAuthenticationMethod {
 
   /// Creates a new [PeerAuthenticationMethod].
   /// [mtls] Set if mTLS is used for peer authentication.
-  PeerAuthenticationMethod({
+  const PeerAuthenticationMethod({
     this.mtls,
   });
 

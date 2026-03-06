@@ -24,7 +24,7 @@ class UserPoolDomainArgs {
   /// [managedLoginVersion] A version number that indicates the state of managed login for your domain. Valid values: `1` for hosted UI (classic), `2` for the newer managed login with the branding designer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] The user pool ID.
-  UserPoolDomainArgs({
+  const UserPoolDomainArgs({
     this.certificateArn,
     required this.domain,
     this.managedLoginVersion,

@@ -24,7 +24,7 @@ class ChatEngineChatEngineConfig {
   /// [agentCreationConfig] The configuration to generate the Dialogflow agent that is associated to this Engine.
   /// [allowCrossRegion] If the flag set to true, we allow the agent and engine are in
   /// [dialogflowAgentToLink] The resource name of an existing Dialogflow agent to link to this Chat Engine. Format: `projects/&lt;Project_ID&gt;/locations/&lt;Location_ID&gt;/agents/&lt;Agent_ID&gt;`.
-  ChatEngineChatEngineConfig({
+  const ChatEngineChatEngineConfig({
     this.agentCreationConfig,
     this.allowCrossRegion,
     this.dialogflowAgentToLink,

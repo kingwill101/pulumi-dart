@@ -15,7 +15,7 @@ class GetCommunityArgs {
   /// Creates a new [GetCommunityArgs].
   /// [communityName] The name of the communityResource Resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCommunityArgs({
+  const GetCommunityArgs({
     required this.communityName,
     required this.resourceGroupName,
   });

@@ -36,7 +36,7 @@ class TagState {
   /// [parent] The name of the parent this tag is attached to. This can be the name of an entry or an entry group. If an entry group, the tag will be attached to
   /// [template] The resource name of the tag template that this tag uses. Example:
   /// [templateDisplayname] The display name of the tag template.
-  TagState({
+  const TagState({
     this.column,
     this.fields,
     this.name,

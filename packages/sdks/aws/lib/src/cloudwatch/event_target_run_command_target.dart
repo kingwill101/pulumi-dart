@@ -11,7 +11,7 @@ class EventTargetRunCommandTarget {
   /// Creates a new [EventTargetRunCommandTarget].
   /// [key] Can be either `tag:tag-key` or `InstanceIds`.
   /// [values] If Key is `tag:tag-key`, Values is a list of tag values. If Key is `InstanceIds`, Values is a list of Amazon EC2 instance IDs.
-  EventTargetRunCommandTarget({
+  const EventTargetRunCommandTarget({
     required this.key,
     required this.values,
   });

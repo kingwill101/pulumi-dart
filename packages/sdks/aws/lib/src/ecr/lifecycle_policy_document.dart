@@ -10,7 +10,7 @@ class LifecyclePolicyDocument {
 
   /// Creates a new [LifecyclePolicyDocument].
   /// [rules] The rules that comprise the lifecycle policy.
-  LifecyclePolicyDocument({
+  const LifecyclePolicyDocument({
     required this.rules,
   });
 

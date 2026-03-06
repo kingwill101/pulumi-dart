@@ -47,7 +47,7 @@ class SecurityActionArgs {
   /// [securityActionId] Required. The ID to use for the SecurityAction, which will become the final component of the action's resource name. This value should be 0-61 characters, and valid format is (^[a-z]([a-z0-9-]{​0,61}[a-z0-9])?$).
   /// [state] Only an ENABLED SecurityAction is enforced. An ENABLED SecurityAction past its expiration time will not be enforced.
   /// [ttl] Input only. The TTL for this SecurityAction.
-  SecurityActionArgs({
+  const SecurityActionArgs({
     this.allow,
     required this.conditionConfig,
     this.deny,

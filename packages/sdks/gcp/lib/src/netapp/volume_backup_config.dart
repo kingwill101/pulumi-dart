@@ -15,7 +15,7 @@ class VolumeBackupConfig {
   /// [backupPolicies] Specify a single backup policy ID for scheduled backups. Format: `projects/{{projectId}}/locations/{{location}}/backupPolicies/{{backupPolicyName}}`
   /// [backupVault] ID of the backup vault to use. A backup vault is reqired to create manual or scheduled backups.
   /// [scheduledBackupEnabled] When set to true, scheduled backup is enabled on the volume. Omit if no backup_policy is specified.
-  VolumeBackupConfig({
+  const VolumeBackupConfig({
     this.backupPolicies,
     this.backupVault,
     this.scheduledBackupEnabled,

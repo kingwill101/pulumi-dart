@@ -14,7 +14,7 @@ class Quota {
   /// Creates a new [Quota].
   /// [limits] List of QuotaLimit definitions for the service.
   /// [metricRules] List of MetricRule definitions, each one mapping a selected method to one or more metrics.
-  Quota({
+  const Quota({
     this.limits,
     this.metricRules,
   });

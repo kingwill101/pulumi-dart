@@ -14,7 +14,7 @@ class HostMaintenancePolicy {
   /// Creates a new [HostMaintenancePolicy].
   /// [maintenanceInterval] Specifies the frequency of planned maintenance events.
   /// [opportunisticMaintenanceStrategy] Strategy that will trigger maintenance on behalf of the customer.
-  HostMaintenancePolicy({
+  const HostMaintenancePolicy({
     this.maintenanceInterval,
     this.opportunisticMaintenanceStrategy,
   });

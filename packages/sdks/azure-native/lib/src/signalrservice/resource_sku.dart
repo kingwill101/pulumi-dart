@@ -26,7 +26,7 @@ class ResourceSku {
   /// [capacity] Optional, integer. The unit count of the resource.
   /// [name] The name of the SKU. Required.
   /// [tier] Optional tier of this particular SKU. 'Standard' or 'Free'.
-  ResourceSku({
+  const ResourceSku({
     this.capacity,
     required this.name,
     this.tier,

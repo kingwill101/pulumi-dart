@@ -22,7 +22,7 @@ class SolutionArgs {
   /// [properties] Solution resource properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionId] SolutionId for Data Manager For Agriculture Resource.
-  SolutionArgs({
+  const SolutionArgs({
     required this.dataManagerForAgricultureResourceName,
     this.properties,
     required this.resourceGroupName,

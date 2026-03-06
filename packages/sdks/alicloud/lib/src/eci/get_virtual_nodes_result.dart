@@ -32,7 +32,7 @@ class GetVirtualNodesResult {
   /// [tags] Optional.
   /// [virtualNodeName] Optional.
   /// [vswitchId] Optional.
-  GetVirtualNodesResult({
+  const GetVirtualNodesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

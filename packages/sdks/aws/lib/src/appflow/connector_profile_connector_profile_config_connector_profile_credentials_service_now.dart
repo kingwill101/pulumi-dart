@@ -9,7 +9,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNo
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNow].
   /// [password] Required.
   /// [username] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNow({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsServiceNow({
     required this.password,
     required this.username,
   });

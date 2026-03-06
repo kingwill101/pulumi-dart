@@ -38,7 +38,7 @@ class SourceControlArgs {
   /// [useLocalGit] Should the App use local Git configuration. Changing this forces a new resource to be created.
   /// [useManualIntegration] Should code be deployed manually. Set to `false` to enable continuous integration, such as webhooks into online repos such as GitHub. Defaults to `false`. Changing this forces a new resource to be created.
   /// [useMercurial] The repository specified is Mercurial. Defaults to `false`. Changing this forces a new resource to be created.
-  SourceControlArgs({
+  const SourceControlArgs({
     required this.appId,
     this.branch,
     this.githubActionConfiguration,

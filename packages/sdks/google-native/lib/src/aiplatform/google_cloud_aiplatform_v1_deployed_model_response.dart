@@ -43,7 +43,7 @@ class GoogleCloudAiplatformV1DeployedModelResponse {
   /// [modelVersionId] The version ID of the model that is deployed.
   /// [privateEndpoints] Provide paths for users to send predict/explain/health requests directly to the deployed model services running on Cloud via private services access. This field is populated if network is configured.
   /// [serviceAccount] The service account that the DeployedModel's container runs as. Specify the email address of the service account. If this service account is not specified, the container runs as a service account that doesn't have access to the resource project. Users deploying the Model must have the `iam.serviceAccounts.actAs` permission on this service account.
-  GoogleCloudAiplatformV1DeployedModelResponse({
+  const GoogleCloudAiplatformV1DeployedModelResponse({
     required this.automaticResources,
     required this.createTime,
     required this.dedicatedResources,

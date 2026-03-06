@@ -10,7 +10,7 @@ class RouteSpecHttpRouteAction {
 
   /// Creates a new [RouteSpecHttpRouteAction].
   /// [weightedTargets] Targets that traffic is routed to when a request matches the route.
-  RouteSpecHttpRouteAction({
+  const RouteSpecHttpRouteAction({
     required this.weightedTargets,
   });
 

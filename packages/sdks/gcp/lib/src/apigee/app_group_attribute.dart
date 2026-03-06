@@ -11,7 +11,7 @@ class AppGroupAttribute {
   /// Creates a new [AppGroupAttribute].
   /// [name] Key of the attribute
   /// [value] Value of the attribute
-  AppGroupAttribute({
+  const AppGroupAttribute({
     this.name,
     this.value,
   });

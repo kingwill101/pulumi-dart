@@ -26,7 +26,7 @@ class GetInstanceSpecificationsSpecification {
   /// [memory] The Memory specifications for the MB.
   /// [specInfo] The specification configuration name.
   /// [version] The specification configuration version.
-  GetInstanceSpecificationsSpecification({
+  const GetInstanceSpecificationsSpecification({
     required this.cpu,
     required this.enable,
     required this.id,

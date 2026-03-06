@@ -47,7 +47,7 @@ class WasmPluginVersion {
   /// [pluginConfigUri] URI of the plugin configuration stored in the Artifact Registry. The configuration is provided to the plugin at runtime through the ON_CONFIGURE callback.
   /// [updateTime] (Output)
   /// [versionName] The identifier for this object. Format specified above.
-  WasmPluginVersion({
+  const WasmPluginVersion({
     this.createTime,
     this.description,
     this.imageDigest,

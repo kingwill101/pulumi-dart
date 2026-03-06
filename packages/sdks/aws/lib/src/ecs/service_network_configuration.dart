@@ -16,7 +16,7 @@ class ServiceNetworkConfiguration {
   /// [assignPublicIp] Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Default `false`.
   /// [securityGroups] Security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
   /// [subnets] Subnets associated with the task or service.
-  ServiceNetworkConfiguration({
+  const ServiceNetworkConfiguration({
     this.assignPublicIp,
     this.securityGroups,
     required this.subnets,

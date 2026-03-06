@@ -21,7 +21,7 @@ class GetGatewayCacheDisksArgs {
   /// [ids] A list of Gateway Cache Disk IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `0`, `1`, `2`. `0`: Normal. `1`: Is about to expire. `2`: Has expired.
-  GetGatewayCacheDisksArgs({
+  const GetGatewayCacheDisksArgs({
     required this.gatewayId,
     this.ids,
     this.outputFile,

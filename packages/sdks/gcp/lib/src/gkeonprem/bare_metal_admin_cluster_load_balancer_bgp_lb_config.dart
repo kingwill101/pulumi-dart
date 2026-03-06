@@ -24,7 +24,7 @@ class BareMetalAdminClusterLoadBalancerBgpLbConfig {
   /// [asn] BGP autonomous system number (ASN) of the cluster.
   /// [bgpPeerConfigs] BGP autonomous system number (ASN) of the cluster.
   /// [loadBalancerNodePoolConfig] A nested object resource.
-  BareMetalAdminClusterLoadBalancerBgpLbConfig({
+  const BareMetalAdminClusterLoadBalancerBgpLbConfig({
     this.addressPools,
     this.asn,
     this.bgpPeerConfigs,

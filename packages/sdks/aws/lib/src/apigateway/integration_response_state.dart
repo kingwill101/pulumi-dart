@@ -35,7 +35,7 @@ class IntegrationResponseState {
   /// [restApi] ID of the associated REST API.
   /// [selectionPattern] Regular expression pattern used to choose an integration response based on the response from the backend. Omit configuring this to make the integration the default one. If the backend is an `AWS` Lambda function, the AWS Lambda function error header is matched. For all other `HTTP` and `AWS` backends, the HTTP status code is matched.
   /// [statusCode] HTTP status code.
-  IntegrationResponseState({
+  const IntegrationResponseState({
     this.contentHandling,
     this.httpMethod,
     this.region,

@@ -13,7 +13,7 @@ class GcpUserAccessBindingScopedAccessSettingActiveSettings {
   /// Creates a new [GcpUserAccessBindingScopedAccessSettingActiveSettings].
   /// [accessLevels] Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
   /// [sessionSettings] Optional. Session settings applied to user access on a given AccessScope.
-  GcpUserAccessBindingScopedAccessSettingActiveSettings({
+  const GcpUserAccessBindingScopedAccessSettingActiveSettings({
     this.accessLevels,
     this.sessionSettings,
   });

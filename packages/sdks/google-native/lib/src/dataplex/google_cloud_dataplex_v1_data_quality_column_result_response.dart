@@ -12,7 +12,7 @@ class GoogleCloudDataplexV1DataQualityColumnResultResponse {
   /// Creates a new [GoogleCloudDataplexV1DataQualityColumnResultResponse].
   /// [column] The column specified in the DataQualityRule.
   /// [score] The column-level data quality score for this data scan job if and only if the 'column' field is set.The score ranges between between 0, 100 (up to two decimal points).
-  GoogleCloudDataplexV1DataQualityColumnResultResponse({
+  const GoogleCloudDataplexV1DataQualityColumnResultResponse({
     required this.column,
     required this.score,
   });

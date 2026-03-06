@@ -18,7 +18,7 @@ class AccountSettingDefaultArgs {
   /// [name] Name of the account setting to set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [value] State of the setting.
-  AccountSettingDefaultArgs({
+  const AccountSettingDefaultArgs({
     this.name,
     this.region,
     required this.value,

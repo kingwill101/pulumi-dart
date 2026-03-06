@@ -15,7 +15,7 @@ class ConfigBlockingFunctions {
   /// Creates a new [ConfigBlockingFunctions].
   /// [forwardInboundCredentials] The user credentials to include in the JWT payload that is sent to the registered Blocking Functions.
   /// [triggers] Map of Trigger to event type. Key should be one of the supported event types: "beforeCreate", "beforeSignIn".
-  ConfigBlockingFunctions({
+  const ConfigBlockingFunctions({
     this.forwardInboundCredentials,
     required this.triggers,
   });

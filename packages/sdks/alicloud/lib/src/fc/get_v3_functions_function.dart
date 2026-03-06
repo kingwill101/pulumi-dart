@@ -143,7 +143,7 @@ class GetV3FunctionsFunction {
   /// [timeout] The maximum running time of the function, in seconds.
   /// [tracingConfig] Tracing configuration
   /// [vpcConfig] VPC configuration. After this parameter is configured, the function can access the specified VPC resources.
-  GetV3FunctionsFunction({
+  const GetV3FunctionsFunction({
     required this.codeSize,
     required this.cpu,
     required this.createTime,

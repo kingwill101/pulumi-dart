@@ -51,7 +51,7 @@ class ApplicationArgs {
   /// [msixPackageFamilyName] Specifies the package family name for MSIX applications
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [showInPortal] Specifies whether to show the RemoteApp program in the RD Web Access server.
-  ApplicationArgs({
+  const ApplicationArgs({
     required this.applicationGroupName,
     this.applicationName,
     this.applicationType,

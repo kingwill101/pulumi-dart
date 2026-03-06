@@ -13,7 +13,7 @@ class IsNullOrUndefinedFilterResponse {
   /// Creates a new [IsNullOrUndefinedFilterResponse].
   /// [key] The field/property in the event based on which you want to filter.
   /// [operatorType] The operator type used for filtering, e.g., NumberIn, StringContains, BoolEquals and others.
-  IsNullOrUndefinedFilterResponse({
+  const IsNullOrUndefinedFilterResponse({
     this.key,
     required this.operatorType,
   });

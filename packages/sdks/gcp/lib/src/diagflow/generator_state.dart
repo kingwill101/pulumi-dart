@@ -39,7 +39,7 @@ class GeneratorState {
   /// [publishedModel] Optional. The published Large Language Model name. * To use the latest model version, specify the model name without version number. Example: text-bison * To use a stable model version, specify the version number as well. Example: text-bison@002.
   /// [summarizationContext] Input of prebuilt Summarization feature.
   /// [triggerEvent] Optional. The trigger event of the generator. It defines when the generator is triggered in a conversation.
-  GeneratorState({
+  const GeneratorState({
     this.description,
     this.generatorId,
     this.inferenceParameter,

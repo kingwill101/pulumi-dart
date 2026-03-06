@@ -45,7 +45,7 @@ class ManagementFolderSecurityHealthAnalyticsCustomModuleState {
   /// [location] Location ID of the parent organization. If not provided, 'global' will be used as the default location.
   /// [name] The resource name of the custom module. Its format is "folders/{folder}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
   /// [updateTime] The time at which the custom module was last updated.
-  ManagementFolderSecurityHealthAnalyticsCustomModuleState({
+  const ManagementFolderSecurityHealthAnalyticsCustomModuleState({
     this.ancestorModule,
     this.customConfig,
     this.displayName,

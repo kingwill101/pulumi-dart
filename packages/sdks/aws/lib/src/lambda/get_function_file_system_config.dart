@@ -11,7 +11,7 @@ class GetFunctionFileSystemConfig {
   /// Creates a new [GetFunctionFileSystemConfig].
   /// [arn] ARN of the Amazon EFS Access Point that provides access to the file system.
   /// [localMountPath] Path where the function can access the file system, starting with `/mnt/`.
-  GetFunctionFileSystemConfig({
+  const GetFunctionFileSystemConfig({
     required this.arn,
     required this.localMountPath,
   });

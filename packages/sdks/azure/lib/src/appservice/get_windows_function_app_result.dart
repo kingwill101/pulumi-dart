@@ -136,7 +136,7 @@ class GetWindowsFunctionAppResult {
   /// [virtualNetworkBackupRestoreEnabled] Whether backup and restore operations over the linked virtual network are enabled.
   /// [virtualNetworkSubnetId] The subnet id which the Windows Function App is vNet Integrated with.
   /// [webdeployPublishBasicAuthenticationEnabled] Are the default WebDeploy Basic Authentication publishing credentials enabled.
-  GetWindowsFunctionAppResult({
+  const GetWindowsFunctionAppResult({
     required this.appSettings,
     required this.authSettings,
     required this.authSettingsV2s,

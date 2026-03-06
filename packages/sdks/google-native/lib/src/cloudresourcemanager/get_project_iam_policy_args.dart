@@ -11,7 +11,7 @@ class GetProjectIamPolicyArgs {
 
   /// Creates a new [GetProjectIamPolicyArgs].
   /// [resource] Required.
-  GetProjectIamPolicyArgs({
+  const GetProjectIamPolicyArgs({
     required this.resource,
   });
 

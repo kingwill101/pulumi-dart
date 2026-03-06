@@ -18,7 +18,7 @@ class AccessGroupArgs {
   /// [accessGroupName] The permission group name. The naming rules are as follows: The length is 6~64 characters. Globally unique and cannot be an empty string. English letters are supported and can contain numbers, underscores (_), and dashes (-).
   /// [description] The permission group description.  No more than 32 characters in length.
   /// [networkType] The permission group type. Only VPC (VPC) is supported.
-  AccessGroupArgs({
+  const AccessGroupArgs({
     required this.accessGroupName,
     this.description,
     required this.networkType,

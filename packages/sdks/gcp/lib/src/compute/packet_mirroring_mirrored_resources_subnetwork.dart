@@ -8,7 +8,7 @@ class PacketMirroringMirroredResourcesSubnetwork {
 
   /// Creates a new [PacketMirroringMirroredResourcesSubnetwork].
   /// [url] The URL of the subnetwork where this rule should be active.
-  PacketMirroringMirroredResourcesSubnetwork({
+  const PacketMirroringMirroredResourcesSubnetwork({
     required this.url,
   });
 

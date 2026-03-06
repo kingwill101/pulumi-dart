@@ -14,7 +14,7 @@ class Registry {
   /// [address] The registry's address (e.g. "docker.io").
   /// [password] Password or token for the registry.
   /// [username] Username for the registry.
-  Registry({
+  const Registry({
     required this.address,
     this.password,
     this.username,

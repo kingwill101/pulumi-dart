@@ -11,7 +11,7 @@ class WorkflowStepCopyStepDetailsDestinationFileLocationEfsFileLocation {
   /// Creates a new [WorkflowStepCopyStepDetailsDestinationFileLocationEfsFileLocation].
   /// [fileSystemId] The ID of the file system, assigned by Amazon EFS.
   /// [path] The pathname for the folder being used by a workflow.
-  WorkflowStepCopyStepDetailsDestinationFileLocationEfsFileLocation({
+  const WorkflowStepCopyStepDetailsDestinationFileLocationEfsFileLocation({
     this.fileSystemId,
     this.path,
   });

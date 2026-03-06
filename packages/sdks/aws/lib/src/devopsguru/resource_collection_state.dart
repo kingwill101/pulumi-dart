@@ -22,7 +22,7 @@ class ResourceCollectionState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] AWS tags used to filter the resources in the resource collection. See `tags` below for additional details.
   /// [type] Type of AWS resource collection to create. Valid values are `AWS_CLOUD_FORMATION`, `AWS_SERVICE`, and `AWS_TAGS`.
-  ResourceCollectionState({
+  const ResourceCollectionState({
     this.cloudformation,
     this.region,
     this.tags,

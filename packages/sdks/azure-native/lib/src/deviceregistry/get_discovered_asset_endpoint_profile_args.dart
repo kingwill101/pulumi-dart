@@ -15,7 +15,7 @@ class GetDiscoveredAssetEndpointProfileArgs {
   /// Creates a new [GetDiscoveredAssetEndpointProfileArgs].
   /// [discoveredAssetEndpointProfileName] Discovered Asset Endpoint Profile name parameter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDiscoveredAssetEndpointProfileArgs({
+  const GetDiscoveredAssetEndpointProfileArgs({
     required this.discoveredAssetEndpointProfileName,
     required this.resourceGroupName,
   });

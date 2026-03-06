@@ -52,7 +52,7 @@ class PlanArgs {
   /// [sku] A `sku` block as documented below.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneRedundant] Specifies if the App Service Plan should be Zone Redundant. Changing this forces a new resource to be created.
-  PlanArgs({
+  const PlanArgs({
     this.appServiceEnvironmentId,
     this.isXenon,
     this.kind,

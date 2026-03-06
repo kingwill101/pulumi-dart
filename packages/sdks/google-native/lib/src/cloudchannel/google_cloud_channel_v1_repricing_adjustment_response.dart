@@ -10,7 +10,7 @@ class GoogleCloudChannelV1RepricingAdjustmentResponse {
 
   /// Creates a new [GoogleCloudChannelV1RepricingAdjustmentResponse].
   /// [percentageAdjustment] Flat markup or markdown on an entire bill.
-  GoogleCloudChannelV1RepricingAdjustmentResponse({
+  const GoogleCloudChannelV1RepricingAdjustmentResponse({
     required this.percentageAdjustment,
   });
 

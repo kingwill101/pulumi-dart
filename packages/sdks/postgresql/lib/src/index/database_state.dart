@@ -58,7 +58,7 @@ class DatabaseState {
   /// [owner] The role name of the user who will own the database, or
   /// [tablespaceName] The name of the tablespace that will be
   /// [template] The name of the template from which to create the new database
-  DatabaseState({
+  const DatabaseState({
     this.allowConnections,
     this.alterObjectOwnership,
     this.connectionLimit,

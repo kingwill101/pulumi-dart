@@ -11,7 +11,7 @@ class ApplicationRuntimeConfiguration {
   /// Creates a new [ApplicationRuntimeConfiguration].
   /// [classification] The classification within a configuration.
   /// [properties] A set of properties specified within a configuration classification.
-  ApplicationRuntimeConfiguration({
+  const ApplicationRuntimeConfiguration({
     required this.classification,
     this.properties,
   });

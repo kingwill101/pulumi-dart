@@ -26,7 +26,7 @@ class ApiConnectionState {
   /// [parameterValues] A map of parameter values associated with this API Connection.
   /// [resourceGroupName] The name of the Resource Group where this API Connection should exist. Changing this forces a new API Connection to be created.
   /// [tags] A mapping of tags which should be assigned to the API Connection.
-  ApiConnectionState({
+  const ApiConnectionState({
     this.displayName,
     this.managedApiId,
     this.name,

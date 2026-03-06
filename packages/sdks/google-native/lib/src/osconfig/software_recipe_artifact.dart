@@ -20,7 +20,7 @@ class SoftwareRecipeArtifact {
   /// [gcs] A Google Cloud Storage artifact.
   /// [id] Id of the artifact, which the installation and update steps of this recipe can reference. Artifacts in a recipe cannot have the same id.
   /// [remote] A generic remote artifact.
-  SoftwareRecipeArtifact({
+  const SoftwareRecipeArtifact({
     this.allowInsecure,
     this.gcs,
     required this.id,

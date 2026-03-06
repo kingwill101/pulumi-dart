@@ -30,7 +30,7 @@ class RocketMQTopicState {
   /// [remark] Custom remarks.
   /// [status] The status of the resource.
   /// [topicName] Topic name and identification.
-  RocketMQTopicState({
+  const RocketMQTopicState({
     this.createTime,
     this.instanceId,
     this.maxSendTps,

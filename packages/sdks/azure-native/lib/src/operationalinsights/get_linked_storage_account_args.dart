@@ -18,7 +18,7 @@ class GetLinkedStorageAccountArgs {
   /// [dataSourceType] Linked storage accounts type.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetLinkedStorageAccountArgs({
+  const GetLinkedStorageAccountArgs({
     required this.dataSourceType,
     required this.resourceGroupName,
     required this.workspaceName,

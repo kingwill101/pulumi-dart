@@ -12,7 +12,7 @@ class GetAccessKeysArgs {
 
   /// Creates a new [GetAccessKeysArgs].
   /// [user] Name of the IAM user associated with the access keys.
-  GetAccessKeysArgs({
+  const GetAccessKeysArgs({
     required this.user,
   });
 

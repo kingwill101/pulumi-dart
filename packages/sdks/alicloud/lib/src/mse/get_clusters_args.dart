@@ -30,7 +30,7 @@ class GetClustersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [requestPars] The extended request parameters. The JSON format is supported.
   /// [status] The status of MSE Cluster. Valid: `DESTROY_FAILED`, `DESTROY_ING`, `DESTROY_SUCCESS`, `INIT_FAILED`, `INIT_ING`, `INIT_SUCCESS`, `INIT_TIME_OUT`, `RESTART_FAILED`, `RESTART_ING`, `RESTART_SUCCESS`, `SCALE_FAILED`, `SCALE_ING`, `SCALE_SUCCESS`
-  GetClustersArgs({
+  const GetClustersArgs({
     this.clusterAliasName,
     this.enableDetails,
     this.ids,

@@ -12,7 +12,7 @@ class GetIpsetResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetIpsetResult({
+  const GetIpsetResult({
     required this.id,
     required this.name,
     required this.region,

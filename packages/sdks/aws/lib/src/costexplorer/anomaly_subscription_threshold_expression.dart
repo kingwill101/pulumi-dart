@@ -29,7 +29,7 @@ class AnomalySubscriptionThresholdExpression {
   /// [not] Return results that do not match the Dimension object.
   /// [ors] Return results that match either Dimension object.
   /// [tags] Configuration block for the specific Tag to use for. See Tags below.
-  AnomalySubscriptionThresholdExpression({
+  const AnomalySubscriptionThresholdExpression({
     this.ands,
     this.costCategory,
     this.dimension,

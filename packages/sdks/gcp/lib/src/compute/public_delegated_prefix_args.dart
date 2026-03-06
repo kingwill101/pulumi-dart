@@ -47,7 +47,7 @@ class PublicDelegatedPrefixArgs {
   /// [parentPrefix] The URL of parent prefix. Either PublicAdvertisedPrefix or PublicDelegatedPrefix.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] A region where the prefix will reside.
-  PublicDelegatedPrefixArgs({
+  const PublicDelegatedPrefixArgs({
     this.allocatablePrefixLength,
     this.description,
     required this.ipCidrRange,

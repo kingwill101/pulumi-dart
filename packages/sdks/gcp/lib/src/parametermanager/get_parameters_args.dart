@@ -15,7 +15,7 @@ class GetParametersArgs {
   /// Creates a new [GetParametersArgs].
   /// [filter] Filter string, adhering to the rules in List-operation filtering. List only parameters matching the filter. If filter is empty, all parameters are listed.
   /// [project] The ID of the project.
-  GetParametersArgs({
+  const GetParametersArgs({
     this.filter,
     this.project,
   });

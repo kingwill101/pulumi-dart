@@ -8,7 +8,7 @@ class RuntimeTemplateShieldedVmConfig {
 
   /// Creates a new [RuntimeTemplateShieldedVmConfig].
   /// [enableSecureBoot] Enables secure boot for the runtime.
-  RuntimeTemplateShieldedVmConfig({
+  const RuntimeTemplateShieldedVmConfig({
     this.enableSecureBoot,
   });
 

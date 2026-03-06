@@ -20,7 +20,7 @@ class AccountQueuePropertiesLogging {
   /// [retentionPolicyDays] Specifies the number of days that logs will be retained.
   /// [version] The version of storage analytics to configure.
   /// [write] Indicates whether all write requests should be logged.
-  AccountQueuePropertiesLogging({
+  const AccountQueuePropertiesLogging({
     required this.delete,
     required this.read,
     this.retentionPolicyDays,

@@ -16,7 +16,7 @@ class ShareAclAccessPolicy {
   /// [expiry] The time at which this Access Policy should be valid untilWhen using `storage_account_id` this should be in RFC3339 format. If using the deprecated `storage_account_name` property, this uses the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
   /// [permissions] The permissions which should be associated with this Shared Identifier. Possible value is combination of `r` (read), `w` (write), `d` (delete), and `l` (list).
   /// [start] The time at which this Access Policy should be valid from. When using `storage_account_id` this should be in RFC3339 format. If using the deprecated `storage_account_name` property, this uses the [ISO8601](https://en.wikipedia.org/wiki/ISO_8601) format.
-  ShareAclAccessPolicy({
+  const ShareAclAccessPolicy({
     this.expiry,
     required this.permissions,
     this.start,

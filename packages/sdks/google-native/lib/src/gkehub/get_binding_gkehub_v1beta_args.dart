@@ -17,7 +17,7 @@ class GetBindingGkehubV1betaArgs {
   /// [location] Required.
   /// [membershipId] Required.
   /// [project] Optional.
-  GetBindingGkehubV1betaArgs({
+  const GetBindingGkehubV1betaArgs({
     required this.bindingId,
     required this.location,
     required this.membershipId,

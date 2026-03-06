@@ -18,7 +18,7 @@ class GetChannelFullUrlArgs {
   /// [channelName] Name of the Channel.
   /// [partnerNamespaceName] Name of the partner namespace.
   /// [resourceGroupName] The name of the resource group within the partners subscription.
-  GetChannelFullUrlArgs({
+  const GetChannelFullUrlArgs({
     required this.channelName,
     required this.partnerNamespaceName,
     required this.resourceGroupName,

@@ -17,7 +17,7 @@ class GetSystemSecurityPoliciesArgs {
   /// [ids] A list of System Security Policy IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [tags] Optional.
-  GetSystemSecurityPoliciesArgs({
+  const GetSystemSecurityPoliciesArgs({
     this.ids,
     this.outputFile,
     this.tags,

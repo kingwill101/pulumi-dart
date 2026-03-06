@@ -30,7 +30,7 @@ class GroupState {
   /// [groupId] The identifier of the newly created group in the identity store.
   /// [identityStoreId] The globally unique identifier for the identity store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GroupState({
+  const GroupState({
     this.arn,
     this.description,
     this.displayName,

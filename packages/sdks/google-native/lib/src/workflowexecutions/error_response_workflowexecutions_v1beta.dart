@@ -16,7 +16,7 @@ class ErrorResponseWorkflowexecutionsV1beta {
   /// [context] Human-readable stack trace string.
   /// [payload] Error message and data returned represented as a JSON string.
   /// [stackTrace] Stack trace with detailed information of where error was generated.
-  ErrorResponseWorkflowexecutionsV1beta({
+  const ErrorResponseWorkflowexecutionsV1beta({
     required this.context,
     required this.payload,
     required this.stackTrace,

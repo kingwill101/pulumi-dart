@@ -31,7 +31,7 @@ class GalleryScriptVersionArgs {
   /// [properties] Describes the properties of a gallery Script Version.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  GalleryScriptVersionArgs({
+  const GalleryScriptVersionArgs({
     required this.galleryName,
     required this.galleryScriptName,
     this.galleryScriptVersionName,

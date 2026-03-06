@@ -11,7 +11,7 @@ class BuildMetadataResponseContaineranalysisV1alpha1 {
   /// [finishedOn] Required.
   /// [invocationId] Required.
   /// [startedOn] Required.
-  BuildMetadataResponseContaineranalysisV1alpha1({
+  const BuildMetadataResponseContaineranalysisV1alpha1({
     required this.finishedOn,
     required this.invocationId,
     required this.startedOn,

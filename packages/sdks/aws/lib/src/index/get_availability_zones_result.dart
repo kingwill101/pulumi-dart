@@ -31,7 +31,7 @@ class GetAvailabilityZonesResult {
   /// [region] Required.
   /// [state] Optional.
   /// [zoneIds] List of the Availability Zone IDs available to the account.
-  GetAvailabilityZonesResult({
+  const GetAvailabilityZonesResult({
     this.allAvailabilityZones,
     this.excludeNames,
     this.excludeZoneIds,

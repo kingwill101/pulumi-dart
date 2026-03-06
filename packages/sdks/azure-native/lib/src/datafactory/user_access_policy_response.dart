@@ -21,7 +21,7 @@ class UserAccessPolicyResponse {
   /// [permissions] The string with permissions for Data Plane access. Currently only 'r' is supported which grants read only access.
   /// [profileName] The name of the profile. Currently only the default is supported. The default value is DefaultProfile.
   /// [startTime] Start time for the token. If not specified the current time will be used.
-  UserAccessPolicyResponse({
+  const UserAccessPolicyResponse({
     this.accessResourcePath,
     this.expireTime,
     this.permissions,

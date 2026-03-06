@@ -15,7 +15,7 @@ class NotificationSettingsResponse {
   /// [additionalRecipients] The list of additional recipients
   /// [notifyDcAdmins] Should domain controller admins be notified
   /// [notifyGlobalAdmins] Should global admins be notified
-  NotificationSettingsResponse({
+  const NotificationSettingsResponse({
     this.additionalRecipients,
     this.notifyDcAdmins,
     this.notifyGlobalAdmins,

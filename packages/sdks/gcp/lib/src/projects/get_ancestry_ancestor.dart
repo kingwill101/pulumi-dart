@@ -11,7 +11,7 @@ class GetAncestryAncestor {
   /// Creates a new [GetAncestryAncestor].
   /// [id] If it's a project, the `project_id` is exported, else the numeric folder id or organization id.
   /// [type] One of `"project"`, `"folder"` or `"organization"`.
-  GetAncestryAncestor({
+  const GetAncestryAncestor({
     required this.id,
     required this.type,
   });

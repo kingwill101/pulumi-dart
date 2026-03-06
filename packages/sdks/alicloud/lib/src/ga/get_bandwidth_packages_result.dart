@@ -30,7 +30,7 @@ class GetBandwidthPackagesResult {
   /// [packages] A list of Ga Bandwidth Packages. Each element contains the following attributes:
   /// [status] The status of the bandwidth plan.
   /// [type] The type of the bandwidth packet. China station only supports return to basic.
-  GetBandwidthPackagesResult({
+  const GetBandwidthPackagesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

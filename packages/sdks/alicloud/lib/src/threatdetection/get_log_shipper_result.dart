@@ -28,7 +28,7 @@ class GetLogShipperResult {
   /// [slsProjectStatus] Log analysis project status.
   /// [slsServiceStatus] Log Analysis Service is activated.
   /// [status] The current service enable status.
-  GetLogShipperResult({
+  const GetLogShipperResult({
     required this.authStatus,
     required this.buyStatus,
     this.enable,

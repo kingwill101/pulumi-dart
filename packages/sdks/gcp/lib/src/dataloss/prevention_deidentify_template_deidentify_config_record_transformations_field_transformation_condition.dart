@@ -10,7 +10,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition].
   /// [expressions] An expression, consisting of an operator and conditions.
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition({
     this.expressions,
   });
 

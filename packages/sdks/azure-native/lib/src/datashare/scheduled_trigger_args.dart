@@ -34,7 +34,7 @@ class ScheduledTriggerArgs {
   /// [synchronizationMode] Synchronization mode
   /// [synchronizationTime] Synchronization time
   /// [triggerName] The name of the trigger.
-  ScheduledTriggerArgs({
+  const ScheduledTriggerArgs({
     required this.accountName,
     required this.kind,
     required this.recurrenceInterval,

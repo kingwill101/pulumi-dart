@@ -9,7 +9,7 @@ class MqttConfigResponse {
 
   /// Creates a new [MqttConfigResponse].
   /// [mqttEnabledState] If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
-  MqttConfigResponse({
+  const MqttConfigResponse({
     required this.mqttEnabledState,
   });
 

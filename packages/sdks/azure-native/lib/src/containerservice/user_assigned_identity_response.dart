@@ -18,7 +18,7 @@ class UserAssignedIdentityResponse {
   /// [objectId] The object ID of the user assigned identity.
   /// [principalId] The principal ID of the assigned identity.
   /// [resourceId] The resource ID of the user assigned identity.
-  UserAssignedIdentityResponse({
+  const UserAssignedIdentityResponse({
     required this.clientId,
     this.objectId,
     required this.principalId,

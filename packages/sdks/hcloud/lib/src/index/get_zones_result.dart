@@ -15,7 +15,7 @@ class GetZonesResult {
   /// [id] The ID of this resource.
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
   /// [zones] Required.
-  GetZonesResult({
+  const GetZonesResult({
     required this.id,
     this.withSelector,
     required this.zones,

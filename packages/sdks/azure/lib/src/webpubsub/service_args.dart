@@ -49,7 +49,7 @@ class ServiceArgs {
   /// [sku] Specifies which SKU to use. Possible values are `Free_F1`, `Standard_S1`, `Premium_P1` and `Premium_P2`.
   /// [tags] A mapping of tags to assign to the resource.
   /// [tlsClientCertEnabled] Whether to request client certificate during TLS handshake? Defaults to `false`.
-  ServiceArgs({
+  const ServiceArgs({
     this.aadAuthEnabled,
     this.capacity,
     this.identity,

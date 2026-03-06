@@ -32,7 +32,7 @@ class AuthorizationRuleArgs {
   /// [namespaceName] Specifies the name of the grandparent EventHub Namespace. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the EventHub Namespace exists. Changing this forces a new resource to be created.
   /// [send] Does this Authorization Rule have permissions to Send to the Event Hub? Defaults to `false`.
-  AuthorizationRuleArgs({
+  const AuthorizationRuleArgs({
     required this.eventhubName,
     this.listen,
     this.manage,

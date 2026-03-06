@@ -10,7 +10,7 @@ class SubscriptionListResponse {
 
   /// Creates a new [SubscriptionListResponse].
   /// [monitoredSubscriptionList] List of subscriptions and the state of the monitoring.
-  SubscriptionListResponse({
+  const SubscriptionListResponse({
     this.monitoredSubscriptionList,
   });
 

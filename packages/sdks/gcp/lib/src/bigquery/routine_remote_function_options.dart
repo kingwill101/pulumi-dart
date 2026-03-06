@@ -25,7 +25,7 @@ class RoutineRemoteFunctionOptions {
   /// [endpoint] Endpoint of the user-provided remote service, e.g.
   /// [maxBatchingRows] Max number of rows in each batch sent to the remote service. If absent or if 0,
   /// [userDefinedContext] User-defined context as a set of key/value pairs, which will be sent as function
-  RoutineRemoteFunctionOptions({
+  const RoutineRemoteFunctionOptions({
     this.connection,
     this.endpoint,
     this.maxBatchingRows,

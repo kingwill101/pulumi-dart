@@ -14,7 +14,7 @@ class AuthomationRuleActionIncidentTask {
   /// [description] The description of the incident task.
   /// [order] The execution order of this action.
   /// [title] The title of the incident task.
-  AuthomationRuleActionIncidentTask({
+  const AuthomationRuleActionIncidentTask({
     this.description,
     required this.order,
     required this.title,

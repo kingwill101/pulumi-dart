@@ -12,7 +12,7 @@ class RetentionPolicyParameters {
   /// Creates a new [RetentionPolicyParameters].
   /// [days] Number of days to retain flow log records.
   /// [enabled] Flag to enable/disable retention.
-  RetentionPolicyParameters({
+  const RetentionPolicyParameters({
     this.days,
     this.enabled,
   });

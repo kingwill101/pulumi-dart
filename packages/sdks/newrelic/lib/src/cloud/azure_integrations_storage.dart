@@ -11,7 +11,7 @@ class AzureIntegrationsStorage {
   /// Creates a new [AzureIntegrationsStorage].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsStorage({
+  const AzureIntegrationsStorage({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

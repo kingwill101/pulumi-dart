@@ -49,7 +49,7 @@ class GetFormulaResult {
   /// [type] The type of the resource.
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
   /// [vm] Information about a VM from which a formula is to be created.
-  GetFormulaResult({
+  const GetFormulaResult({
     required this.author,
     required this.azureApiVersion,
     required this.creationDate,

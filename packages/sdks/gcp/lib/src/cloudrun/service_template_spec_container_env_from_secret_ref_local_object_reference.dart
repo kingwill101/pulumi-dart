@@ -8,7 +8,7 @@ class ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference {
 
   /// Creates a new [ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference].
   /// [name] Name of the referent.
-  ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference({
+  const ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference({
     required this.name,
   });
 

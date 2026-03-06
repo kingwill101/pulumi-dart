@@ -13,7 +13,7 @@ class PolicyControllerPolicyContentSpecResponseGkehubV1alpha {
   /// Creates a new [PolicyControllerPolicyContentSpecResponseGkehubV1alpha].
   /// [bundles] map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint.
   /// [templateLibrary] Configures the installation of the Template Library.
-  PolicyControllerPolicyContentSpecResponseGkehubV1alpha({
+  const PolicyControllerPolicyContentSpecResponseGkehubV1alpha({
     required this.bundles,
     required this.templateLibrary,
   });

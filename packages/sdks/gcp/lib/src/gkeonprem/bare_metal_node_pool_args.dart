@@ -43,7 +43,7 @@ class BareMetalNodePoolArgs {
   /// [name] The bare metal node pool name.
   /// [nodePoolConfig] Node pool configuration.
   /// [project] The ID of the project in which the resource belongs.
-  BareMetalNodePoolArgs({
+  const BareMetalNodePoolArgs({
     this.annotations,
     required this.bareMetalCluster,
     this.displayName,

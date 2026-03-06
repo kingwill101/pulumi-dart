@@ -15,7 +15,7 @@ class GetVirtualNetworkGatewayLearnedRoutesArgs {
   /// Creates a new [GetVirtualNetworkGatewayLearnedRoutesArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayName] The name of the virtual network gateway.
-  GetVirtualNetworkGatewayLearnedRoutesArgs({
+  const GetVirtualNetworkGatewayLearnedRoutesArgs({
     required this.resourceGroupName,
     required this.virtualNetworkGatewayName,
   });

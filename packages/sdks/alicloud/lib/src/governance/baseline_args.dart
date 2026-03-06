@@ -21,7 +21,7 @@ class BaselineArgs {
   /// [baselineItems] List of baseline items.
   /// [baselineName] Baseline Name.
   /// [description] Baseline Description.
-  BaselineArgs({
+  const BaselineArgs({
     this.baselineItems,
     this.baselineName,
     this.description,

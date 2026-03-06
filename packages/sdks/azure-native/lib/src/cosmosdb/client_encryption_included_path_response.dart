@@ -18,7 +18,7 @@ class ClientEncryptionIncludedPathResponse {
   /// [encryptionAlgorithm] The encryption algorithm which will be used. Eg - AEAD_AES_256_CBC_HMAC_SHA256.
   /// [encryptionType] The type of encryption to be performed. Eg - Deterministic, Randomized.
   /// [path] Path that needs to be encrypted.
-  ClientEncryptionIncludedPathResponse({
+  const ClientEncryptionIncludedPathResponse({
     required this.clientEncryptionKeyId,
     required this.encryptionAlgorithm,
     required this.encryptionType,

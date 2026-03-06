@@ -60,7 +60,7 @@ class WebAppFunctionArgs {
   /// [secretsFileHref] Secrets file URI.
   /// [testData] Test data used when testing via the Azure Portal.
   /// [testDataHref] Test data URI.
-  WebAppFunctionArgs({
+  const WebAppFunctionArgs({
     this.config,
     this.configHref,
     this.files,

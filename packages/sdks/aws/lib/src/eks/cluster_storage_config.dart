@@ -9,7 +9,7 @@ class ClusterStorageConfig {
 
   /// Creates a new [ClusterStorageConfig].
   /// [blockStorage] Configuration block with block storage configuration for the cluster. Detailed below.
-  ClusterStorageConfig({
+  const ClusterStorageConfig({
     this.blockStorage,
   });
 

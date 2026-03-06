@@ -15,7 +15,7 @@ class MLAssistConfigurationEnabled {
   /// [inferencingComputeBinding] [Required] AML compute binding used in inferencing.
   /// [mlAssist] Expected value is 'Enabled'.
   /// [trainingComputeBinding] [Required] AML compute binding used in training.
-  MLAssistConfigurationEnabled({
+  const MLAssistConfigurationEnabled({
     required this.inferencingComputeBinding,
     required this.mlAssist,
     required this.trainingComputeBinding,

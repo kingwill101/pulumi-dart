@@ -21,7 +21,7 @@ class NetworkState {
   /// [status] Network Resource Status
   /// [vpcId] Virtual Private Cloud ID of network resources
   /// [vswitchId] The vSwitch ID of the network resource.
-  NetworkState({
+  const NetworkState({
     this.createTime,
     this.dwResourceGroupId,
     this.status,

@@ -9,7 +9,7 @@ class MetastoreConfigResponse {
 
   /// Creates a new [MetastoreConfigResponse].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
-  MetastoreConfigResponse({
+  const MetastoreConfigResponse({
     required this.dataprocMetastoreService,
   });
 

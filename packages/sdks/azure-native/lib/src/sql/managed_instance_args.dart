@@ -130,7 +130,7 @@ class ManagedInstanceArgs {
   /// [timezoneId] Id of the timezone. Allowed values are timezones supported by Windows.
   /// [vCores] The number of vCores. Allowed values: 8, 16, 24, 32, 40, 64, 80.
   /// [zoneRedundant] Whether or not the multi-az is enabled.
-  ManagedInstanceArgs({
+  const ManagedInstanceArgs({
     this.administratorLogin,
     this.administratorLoginPassword,
     this.administrators,

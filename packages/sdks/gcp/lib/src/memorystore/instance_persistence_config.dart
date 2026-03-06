@@ -23,7 +23,7 @@ class InstancePersistenceConfig {
   /// [aofConfig] Configuration for AOF based persistence.
   /// [mode] Optional. Current persistence mode.
   /// [rdbConfig] Configuration for RDB based persistence.
-  InstancePersistenceConfig({
+  const InstancePersistenceConfig({
     this.aofConfig,
     this.mode,
     this.rdbConfig,

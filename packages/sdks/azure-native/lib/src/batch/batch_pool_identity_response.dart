@@ -13,7 +13,7 @@ class BatchPoolIdentityResponse {
   /// Creates a new [BatchPoolIdentityResponse].
   /// [type] The type of identity used for the Batch Pool.
   /// [userAssignedIdentities] The list of user identities associated with the Batch pool.
-  BatchPoolIdentityResponse({
+  const BatchPoolIdentityResponse({
     required this.type,
     this.userAssignedIdentities,
   });

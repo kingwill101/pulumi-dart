@@ -28,7 +28,7 @@ class P2sVpnServerConfigurationArgs {
   /// [properties] Properties of the P2SVpnServer configuration.
   /// [resourceGroupName] The resource group name of the VirtualWan.
   /// [virtualWanName] The name of the VirtualWan.
-  P2sVpnServerConfigurationArgs({
+  const P2sVpnServerConfigurationArgs({
     this.id,
     this.name,
     this.p2SVpnServerConfigurationName,

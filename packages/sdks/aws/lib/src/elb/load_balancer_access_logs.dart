@@ -17,7 +17,7 @@ class LoadBalancerAccessLogs {
   /// [bucketPrefix] The S3 bucket prefix. Logs are stored in the root if not configured.
   /// [enabled] Boolean to enable / disable `access_logs`. Default is `true`
   /// [interval] The publishing interval in minutes. Valid values: `5` and `60`. Default: `60`
-  LoadBalancerAccessLogs({
+  const LoadBalancerAccessLogs({
     required this.bucket,
     this.bucketPrefix,
     this.enabled,

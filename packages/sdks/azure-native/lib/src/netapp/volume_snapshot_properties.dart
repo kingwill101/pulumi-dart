@@ -9,7 +9,7 @@ class VolumeSnapshotProperties {
 
   /// Creates a new [VolumeSnapshotProperties].
   /// [snapshotPolicyId] Snapshot Policy ResourceId
-  VolumeSnapshotProperties({
+  const VolumeSnapshotProperties({
     this.snapshotPolicyId,
   });
 

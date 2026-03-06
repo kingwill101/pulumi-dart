@@ -8,7 +8,7 @@ class AzureNodePoolConfigSshConfig {
 
   /// Creates a new [AzureNodePoolConfigSshConfig].
   /// [authorizedKey] The SSH public key data for VMs managed by Anthos. This accepts the authorized_keys file format used in OpenSSH according to the sshd(8) manual page.
-  AzureNodePoolConfigSshConfig({
+  const AzureNodePoolConfigSshConfig({
     required this.authorizedKey,
   });
 

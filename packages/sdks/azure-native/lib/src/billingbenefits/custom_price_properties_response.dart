@@ -29,7 +29,7 @@ class CustomPricePropertiesResponse {
   /// [meterType] Must be present if the market, product, sku, and claims, and optional term information resolves to multiple availabilities that only differ by meter type. Validation: Maximum length 128 characters.
   /// [ruleType] The type of the priceable node pricing rule. Validation: Required. Supported values are fixedPriceLock, fixedListPrice, and priceCeiling.
   /// [termUnits] The term units for the priceable node. Validation: Optional, Maximum length 128 characters. Must be present if and only if the availability derived by market, product, sku, and claims has terms.
-  CustomPricePropertiesResponse({
+  const CustomPricePropertiesResponse({
     this.billingPeriod,
     required this.catalogClaims,
     required this.catalogId,

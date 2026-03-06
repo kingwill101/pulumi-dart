@@ -22,7 +22,7 @@ class GetRecordsArgs {
   /// [domain] The domain name to search for DNS records
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetRecordsArgs({
+  const GetRecordsArgs({
     required this.domain,
     this.filters,
     this.sorts,

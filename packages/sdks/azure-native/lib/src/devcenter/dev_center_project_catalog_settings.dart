@@ -9,7 +9,7 @@ class DevCenterProjectCatalogSettings {
 
   /// Creates a new [DevCenterProjectCatalogSettings].
   /// [catalogItemSyncEnableStatus] Whether project catalogs associated with projects in this dev center can be configured to sync catalog items.
-  DevCenterProjectCatalogSettings({
+  const DevCenterProjectCatalogSettings({
     this.catalogItemSyncEnableStatus,
   });
 

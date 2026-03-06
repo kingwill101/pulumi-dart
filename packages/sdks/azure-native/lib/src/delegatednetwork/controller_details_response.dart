@@ -9,7 +9,7 @@ class ControllerDetailsResponse {
 
   /// Creates a new [ControllerDetailsResponse].
   /// [id] controller arm resource id
-  ControllerDetailsResponse({
+  const ControllerDetailsResponse({
     this.id,
   });
 

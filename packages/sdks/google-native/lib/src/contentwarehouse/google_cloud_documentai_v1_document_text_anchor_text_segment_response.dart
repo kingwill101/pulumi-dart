@@ -12,7 +12,7 @@ class GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse].
   /// [endIndex] TextSegment half open end UTF-8 char index in the Document.text.
   /// [startIndex] TextSegment start UTF-8 char index in the Document.text.
-  GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse({
+  const GoogleCloudDocumentaiV1DocumentTextAnchorTextSegmentResponse({
     required this.endIndex,
     required this.startIndex,
   });

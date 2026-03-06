@@ -10,7 +10,7 @@ class BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging {
   /// Creates a new [BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging].
   /// [key] Optional.
   /// [value] Set the value of the Header to 1024 bytes at most. \r\n. It takes effect only when the RedirectType is set to Mirror.
-  BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging({
+  const BucketWebsiteRoutingRulesRoutingRuleRedirectMirrorTaggingsTagging({
     this.key,
     this.value,
   });

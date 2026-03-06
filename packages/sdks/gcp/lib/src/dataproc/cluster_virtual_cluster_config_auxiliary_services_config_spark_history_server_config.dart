@@ -9,7 +9,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig
 
   /// Creates a new [ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig].
   /// [dataprocCluster] Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.
-  ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig({
+  const ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig({
     this.dataprocCluster,
   });
 

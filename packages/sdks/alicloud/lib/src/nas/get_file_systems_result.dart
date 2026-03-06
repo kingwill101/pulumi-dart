@@ -29,7 +29,7 @@ class GetFileSystemsResult {
   /// [protocolType] ProtocolType block of the FileSystem
   /// [storageType] StorageType block of the FileSystem.
   /// [systems] A list of VPCs. Each element contains the following attributes:
-  GetFileSystemsResult({
+  const GetFileSystemsResult({
     this.descriptionRegex,
     required this.descriptions,
     required this.id,

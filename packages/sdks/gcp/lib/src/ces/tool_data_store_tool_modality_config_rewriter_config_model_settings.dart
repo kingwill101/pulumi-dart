@@ -15,7 +15,7 @@ class ToolDataStoreToolModalityConfigRewriterConfigModelSettings {
   /// Creates a new [ToolDataStoreToolModalityConfigRewriterConfigModelSettings].
   /// [model] The LLM model that the agent should use.
   /// [temperature] If set, this temperature will be used for the LLM model. Temperature
-  ToolDataStoreToolModalityConfigRewriterConfigModelSettings({
+  const ToolDataStoreToolModalityConfigRewriterConfigModelSettings({
     this.model,
     this.temperature,
   });

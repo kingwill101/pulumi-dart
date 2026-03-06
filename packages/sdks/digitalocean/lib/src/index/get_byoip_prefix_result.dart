@@ -26,7 +26,7 @@ class GetByoipPrefixResult {
   /// [region] The DigitalOcean region where the prefix is deployed.
   /// [status] The current status of the BYOIP prefix (e.g., "verified", "pending", "failed").
   /// [uuid] The UUID of the BYOIP prefix.
-  GetByoipPrefixResult({
+  const GetByoipPrefixResult({
     required this.advertised,
     required this.failureReason,
     required this.id,

@@ -8,7 +8,7 @@ class ListNamedValueResult {
 
   /// Creates a new [ListNamedValueResult].
   /// [value] This is secret value of the NamedValue entity.
-  ListNamedValueResult({
+  const ListNamedValueResult({
     this.value,
   });
 

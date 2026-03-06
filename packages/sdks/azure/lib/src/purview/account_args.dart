@@ -38,7 +38,7 @@ class AccountArgs {
   /// [publicNetworkEnabled] Should the Purview Account be visible to the public network? Defaults to `true`.
   /// [resourceGroupName] The name of the Resource Group where the Purview Account should exist. Changing this forces a new Purview Account to be created.
   /// [tags] A mapping of tags which should be assigned to the Purview Account.
-  AccountArgs({
+  const AccountArgs({
     required this.identity,
     this.location,
     this.managedEventHubEnabled,

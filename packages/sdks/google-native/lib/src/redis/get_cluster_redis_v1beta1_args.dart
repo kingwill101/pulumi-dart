@@ -15,7 +15,7 @@ class GetClusterRedisV1beta1Args {
   /// [clusterId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetClusterRedisV1beta1Args({
+  const GetClusterRedisV1beta1Args({
     required this.clusterId,
     required this.location,
     this.project,

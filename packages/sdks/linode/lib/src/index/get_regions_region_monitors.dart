@@ -11,7 +11,7 @@ class GetRegionsRegionMonitors {
   /// Creates a new [GetRegionsRegionMonitors].
   /// [alerts] A list of ACLP alerts services supported in the region.
   /// [metrics] A list of ACLP metrics services supported in the region.
-  GetRegionsRegionMonitors({
+  const GetRegionsRegionMonitors({
     required this.alerts,
     required this.metrics,
   });

@@ -43,7 +43,7 @@ class ApplicationGatewayRedirectConfigurationResponse {
   /// [targetUrl] Url to redirect the request to.
   /// [type] Type of the resource.
   /// [urlPathMaps] Url path maps specifying default redirect configuration.
-  ApplicationGatewayRedirectConfigurationResponse({
+  const ApplicationGatewayRedirectConfigurationResponse({
     required this.etag,
     this.id,
     this.includePath,

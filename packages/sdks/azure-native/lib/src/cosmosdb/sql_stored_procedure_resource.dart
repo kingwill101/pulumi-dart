@@ -12,7 +12,7 @@ class SqlStoredProcedureResource {
   /// Creates a new [SqlStoredProcedureResource].
   /// [body] Body of the Stored Procedure
   /// [id] Name of the Cosmos DB SQL storedProcedure
-  SqlStoredProcedureResource({
+  const SqlStoredProcedureResource({
     this.body,
     required this.id,
   });

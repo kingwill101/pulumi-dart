@@ -17,7 +17,7 @@ class GetApplicationGatewayRewriteRuleSetRewriteRuleUrl {
   /// [path] The URL path to rewrite.
   /// [queryString] The query string to rewrite.
   /// [reroute] Whether the URL path map is reevaluated after this rewrite has been applied.
-  GetApplicationGatewayRewriteRuleSetRewriteRuleUrl({
+  const GetApplicationGatewayRewriteRuleSetRewriteRuleUrl({
     required this.components,
     required this.path,
     required this.queryString,

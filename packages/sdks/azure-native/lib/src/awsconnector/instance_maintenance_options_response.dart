@@ -10,7 +10,7 @@ class InstanceMaintenanceOptionsResponse {
 
   /// Creates a new [InstanceMaintenanceOptionsResponse].
   /// [autoRecovery] &lt;p&gt;Provides information on the current automatic recovery behavior of your instance.&lt;/p&gt;
-  InstanceMaintenanceOptionsResponse({
+  const InstanceMaintenanceOptionsResponse({
     this.autoRecovery,
   });
 

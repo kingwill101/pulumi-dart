@@ -11,7 +11,7 @@ class DataSetPhysicalTableMapRelationalTableInputColumn {
   /// Creates a new [DataSetPhysicalTableMapRelationalTableInputColumn].
   /// [name] Name of this column in the underlying data source.
   /// [type] Data type of the column.
-  DataSetPhysicalTableMapRelationalTableInputColumn({
+  const DataSetPhysicalTableMapRelationalTableInputColumn({
     required this.name,
     required this.type,
   });

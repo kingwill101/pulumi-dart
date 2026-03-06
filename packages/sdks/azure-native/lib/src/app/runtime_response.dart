@@ -14,7 +14,7 @@ class RuntimeResponse {
   /// Creates a new [RuntimeResponse].
   /// [dotnet] .NET app configuration
   /// [java] Java app configuration
-  RuntimeResponse({
+  const RuntimeResponse({
     this.dotnet,
     this.java,
   });

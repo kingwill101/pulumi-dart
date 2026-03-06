@@ -12,7 +12,7 @@ class EsuKeyResponse {
   /// Creates a new [EsuKeyResponse].
   /// [licenseStatus] The current status of the license profile key. Represented by the same integer value that is presented on the machine itself when querying the license key status.
   /// [sku] SKU number.
-  EsuKeyResponse({
+  const EsuKeyResponse({
     this.licenseStatus,
     this.sku,
   });

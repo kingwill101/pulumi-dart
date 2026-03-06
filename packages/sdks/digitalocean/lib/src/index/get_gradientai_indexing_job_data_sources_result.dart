@@ -14,7 +14,7 @@ class GetGradientaiIndexingJobDataSourcesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [indexedDataSources] Required.
   /// [indexingJobUuid] Required.
-  GetGradientaiIndexingJobDataSourcesResult({
+  const GetGradientaiIndexingJobDataSourcesResult({
     required this.id,
     required this.indexedDataSources,
     required this.indexingJobUuid,

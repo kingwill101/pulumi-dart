@@ -15,7 +15,7 @@ class VMwareNodePoolConfigTaint {
   /// [effect] Available taint effects.
   /// [key] Key associated with the effect.
   /// [value] Value associated with the effect.
-  VMwareNodePoolConfigTaint({
+  const VMwareNodePoolConfigTaint({
     this.effect,
     required this.key,
     required this.value,

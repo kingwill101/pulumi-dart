@@ -21,7 +21,7 @@ class ManagedDiskSasTokenArgs {
   /// [accessLevel] The level of access required on the disk. Supported are Read, Write. Changing this forces a new resource to be created.
   /// [durationInSeconds] The duration for which the export should be allowed. Should be between 30 & 4294967295 seconds. Changing this forces a new resource to be created.
   /// [managedDiskId] The ID of an existing Managed Disk which should be exported. Changing this forces a new resource to be created.
-  ManagedDiskSasTokenArgs({
+  const ManagedDiskSasTokenArgs({
     required this.accessLevel,
     required this.durationInSeconds,
     required this.managedDiskId,

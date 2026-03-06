@@ -9,7 +9,7 @@ class VirtualMachinePropertiesImageReference {
 
   /// Creates a new [VirtualMachinePropertiesImageReference].
   /// [id] Resource ID of the image
-  VirtualMachinePropertiesImageReference({
+  const VirtualMachinePropertiesImageReference({
     this.id,
   });
 

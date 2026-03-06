@@ -33,7 +33,7 @@ class ApiVersionSetArgs {
   /// [versionQueryName] Name of query parameter that indicates the API Version if versioningScheme is set to `query`.
   /// [versionSetId] Api Version Set identifier. Must be unique in the current API Management service instance.
   /// [versioningScheme] An value that determines where the API Version identifier will be located in a HTTP request.
-  ApiVersionSetArgs({
+  const ApiVersionSetArgs({
     this.description,
     required this.displayName,
     required this.resourceGroupName,

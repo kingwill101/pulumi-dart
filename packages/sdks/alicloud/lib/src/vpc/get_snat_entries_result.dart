@@ -40,7 +40,7 @@ class GetSnatEntriesResult {
   /// [sourceCidr] The source CIDR block of the Snat Entry.
   /// [sourceVswitchId] The source vswitch ID.
   /// [status] The status of the Snat Entry.
-  GetSnatEntriesResult({
+  const GetSnatEntriesResult({
     required this.entries,
     required this.id,
     required this.ids,

@@ -58,7 +58,7 @@ class DomainState {
   /// [resourceGroupName] The name of the resource group in which the EventGrid Domain exists. Changing this forces a new resource to be created.
   /// [secondaryAccessKey] The Secondary Shared Access Key associated with the EventGrid Domain.
   /// [tags] A mapping of tags to assign to the resource.
-  DomainState({
+  const DomainState({
     this.autoCreateTopicWithFirstSubscription,
     this.autoDeleteTopicWithLastSubscription,
     this.endpoint,

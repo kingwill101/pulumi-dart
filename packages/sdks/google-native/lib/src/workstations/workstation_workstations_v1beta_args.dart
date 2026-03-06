@@ -38,7 +38,7 @@ class WorkstationWorkstationsV1betaArgs {
   /// [workstationClusterId] Required.
   /// [workstationConfigId] Required.
   /// [workstationId] Required. ID to use for the workstation.
-  WorkstationWorkstationsV1betaArgs({
+  const WorkstationWorkstationsV1betaArgs({
     this.annotations,
     this.displayName,
     this.env,

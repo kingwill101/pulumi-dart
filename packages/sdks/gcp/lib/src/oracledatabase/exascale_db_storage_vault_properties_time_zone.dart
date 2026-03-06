@@ -11,7 +11,7 @@ class ExascaleDbStorageVaultPropertiesTimeZone {
   /// Creates a new [ExascaleDbStorageVaultPropertiesTimeZone].
   /// [id] IANA Time Zone Database time zone. For example "America/New_York".
   /// [version] IANA Time Zone Database version number. For example "2019a".
-  ExascaleDbStorageVaultPropertiesTimeZone({
+  const ExascaleDbStorageVaultPropertiesTimeZone({
     this.id,
     this.version,
   });

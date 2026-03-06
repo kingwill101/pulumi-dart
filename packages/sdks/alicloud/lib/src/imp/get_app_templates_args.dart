@@ -21,7 +21,7 @@ class GetAppTemplatesArgs {
   /// [nameRegex] A regex string to filter results by App Template name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Application template usage status. Valid values: ["attached", "unattached"].
-  GetAppTemplatesArgs({
+  const GetAppTemplatesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

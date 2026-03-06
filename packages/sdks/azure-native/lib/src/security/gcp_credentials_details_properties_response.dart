@@ -49,7 +49,7 @@ class GcpCredentialsDetailsPropertiesResponse {
   /// [projectId] Project ID field of the API key (write only)
   /// [tokenUri] Token URI field of the API key (write only)
   /// [type] Type field of the API key (write only)
-  GcpCredentialsDetailsPropertiesResponse({
+  const GcpCredentialsDetailsPropertiesResponse({
     required this.authProviderX509CertUrl,
     required this.authUri,
     required this.authenticationProvisioningState,

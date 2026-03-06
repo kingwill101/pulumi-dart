@@ -21,7 +21,7 @@ class SiteNetworkServicePropertiesFormat {
   /// [managedResourceGroupConfiguration] Managed resource group configuration.
   /// [networkServiceDesignVersionResourceReference] The network service design version resource reference.
   /// [siteReference] The site details
-  SiteNetworkServicePropertiesFormat({
+  const SiteNetworkServicePropertiesFormat({
     this.desiredStateConfigurationGroupValueReferences,
     this.managedResourceGroupConfiguration,
     this.networkServiceDesignVersionResourceReference,

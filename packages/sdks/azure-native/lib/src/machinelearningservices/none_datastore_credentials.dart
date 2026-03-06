@@ -10,7 +10,7 @@ class NoneDatastoreCredentials {
 
   /// Creates a new [NoneDatastoreCredentials].
   /// [credentialsType] Enum to determine the datastore credentials type.
-  NoneDatastoreCredentials({
+  const NoneDatastoreCredentials({
     required this.credentialsType,
   });
 

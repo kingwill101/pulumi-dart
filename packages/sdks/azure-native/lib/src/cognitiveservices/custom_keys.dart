@@ -8,7 +8,7 @@ class CustomKeys {
 
   /// Creates a new [CustomKeys].
   /// [keys] Optional.
-  CustomKeys({
+  const CustomKeys({
     this.keys,
   });
 

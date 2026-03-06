@@ -14,7 +14,7 @@ class ServiceSignUpTermsOfService {
   /// [consentRequired] Should the user be asked for consent during sign up?
   /// [enabled] Should Terms of Service be displayed during sign up?.
   /// [text] The Terms of Service which users are required to agree to in order to sign up.
-  ServiceSignUpTermsOfService({
+  const ServiceSignUpTermsOfService({
     required this.consentRequired,
     required this.enabled,
     this.text,

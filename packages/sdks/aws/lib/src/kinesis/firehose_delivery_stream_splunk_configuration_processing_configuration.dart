@@ -12,7 +12,7 @@ class FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration {
   /// Creates a new [FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
   /// [processors] Specifies the data processors as multiple blocks. See `processors` block below for details.
-  FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration({
+  const FirehoseDeliveryStreamSplunkConfigurationProcessingConfiguration({
     this.enabled,
     this.processors,
   });

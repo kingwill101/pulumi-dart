@@ -17,7 +17,7 @@ class BuildApprovalResponse {
   /// [config] Configuration for manual approval of this build.
   /// [result] Result of manual approval for this Build.
   /// [state] The state of this build's approval.
-  BuildApprovalResponse({
+  const BuildApprovalResponse({
     required this.config,
     required this.result,
     required this.state,

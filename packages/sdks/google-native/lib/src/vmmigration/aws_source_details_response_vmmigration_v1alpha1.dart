@@ -33,7 +33,7 @@ class AwsSourceDetailsResponseVmmigrationV1alpha1 {
   /// [migrationResourcesUserTags] User specified tags to add to every M2VM generated resource in AWS. These tags will be set in addition to the default tags that are set as part of the migration process. The tags must not begin with the reserved prefix `m2vm`.
   /// [publicIp] The source's public IP. All communication initiated by this source will originate from this IP.
   /// [state] State of the source as determined by the health check.
-  AwsSourceDetailsResponseVmmigrationV1alpha1({
+  const AwsSourceDetailsResponseVmmigrationV1alpha1({
     required this.accessKeyCreds,
     required this.awsRegion,
     required this.error,

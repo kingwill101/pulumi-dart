@@ -11,7 +11,7 @@ class ListNotebookWorkspaceConnectionInfoResult {
   /// Creates a new [ListNotebookWorkspaceConnectionInfoResult].
   /// [authToken] Specifies auth token used for connecting to Notebook server (uses token-based auth).
   /// [notebookServerEndpoint] Specifies the endpoint of Notebook server.
-  ListNotebookWorkspaceConnectionInfoResult({
+  const ListNotebookWorkspaceConnectionInfoResult({
     required this.authToken,
     required this.notebookServerEndpoint,
   });

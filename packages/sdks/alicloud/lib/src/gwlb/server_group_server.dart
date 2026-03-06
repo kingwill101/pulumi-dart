@@ -31,7 +31,7 @@ class ServerGroupServer {
   /// [serverIp] The IP address of the backend server.
   /// [serverType] The type of the backend server. Valid values:
   /// [status] Indicates the status of the backend server.
-  ServerGroupServer({
+  const ServerGroupServer({
     this.port,
     this.serverGroupId,
     required this.serverId,

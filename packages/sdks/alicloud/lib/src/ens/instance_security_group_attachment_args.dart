@@ -15,7 +15,7 @@ class InstanceSecurityGroupAttachmentArgs {
   /// Creates a new [InstanceSecurityGroupAttachmentArgs].
   /// [instanceId] Instance ID.
   /// [securityGroupId] Security group ID.
-  InstanceSecurityGroupAttachmentArgs({
+  const InstanceSecurityGroupAttachmentArgs({
     this.instanceId,
     required this.securityGroupId,
   });

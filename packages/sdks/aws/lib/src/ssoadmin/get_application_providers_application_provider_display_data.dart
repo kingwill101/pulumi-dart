@@ -14,7 +14,7 @@ class GetApplicationProvidersApplicationProviderDisplayData {
   /// [description] Description of the application provider.
   /// [displayName] Name of the application provider.
   /// [iconUrl] URL that points to an icon that represents the application provider.
-  GetApplicationProvidersApplicationProviderDisplayData({
+  const GetApplicationProvidersApplicationProviderDisplayData({
     required this.description,
     required this.displayName,
     required this.iconUrl,

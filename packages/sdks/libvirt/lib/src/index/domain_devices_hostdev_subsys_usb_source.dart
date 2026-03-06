@@ -23,7 +23,7 @@ class DomainDevicesHostdevSubsysUsbSource {
   /// [product] Identifies the vendor of the USB device.
   /// [startUpPolicy] Configures the startup policy for the USB subsystem device.
   /// [vendor] Identifies the vendor of the USB device.
-  DomainDevicesHostdevSubsysUsbSource({
+  const DomainDevicesHostdevSubsysUsbSource({
     this.address,
     this.guestReset,
     this.product,

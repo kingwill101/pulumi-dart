@@ -15,7 +15,7 @@ class GetFirewallArgs {
   /// Creates a new [GetFirewallArgs].
   /// [firewallName] Firewall resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFirewallArgs({
+  const GetFirewallArgs({
     required this.firewallName,
     required this.resourceGroupName,
   });

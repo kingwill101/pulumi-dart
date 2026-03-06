@@ -9,7 +9,7 @@ class BuildServiceAgentPoolSizeProperties {
 
   /// Creates a new [BuildServiceAgentPoolSizeProperties].
   /// [name] The name of build service agent pool size
-  BuildServiceAgentPoolSizeProperties({
+  const BuildServiceAgentPoolSizeProperties({
     this.name,
   });
 

@@ -27,7 +27,7 @@ class GetSpacesBucketObjectsArgs {
   /// [maxKeys] Maximum object keys to return (Default: 1000)
   /// [prefix] Limits results to object keys with this prefix (Default: none)
   /// [region] The slug of the region where the bucket is stored.
-  GetSpacesBucketObjectsArgs({
+  const GetSpacesBucketObjectsArgs({
     required this.bucket,
     this.delimiter,
     this.encodingType,

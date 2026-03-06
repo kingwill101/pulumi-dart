@@ -39,7 +39,7 @@ class TrustConfigArgs {
   /// [name] A user-defined name of the trust config. Trust config names must be unique globally.
   /// [project] The ID of the project in which the resource belongs.
   /// [trustStores] Set of trust stores to perform validation against.
-  TrustConfigArgs({
+  const TrustConfigArgs({
     this.allowlistedCertificates,
     this.description,
     this.labels,

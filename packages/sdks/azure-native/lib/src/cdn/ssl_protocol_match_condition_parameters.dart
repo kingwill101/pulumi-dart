@@ -21,7 +21,7 @@ class SslProtocolMatchConditionParameters {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleSslProtocolConditionParameters'.
-  SslProtocolMatchConditionParameters({
+  const SslProtocolMatchConditionParameters({
     this.matchValues,
     this.negateCondition,
     required this.operator,

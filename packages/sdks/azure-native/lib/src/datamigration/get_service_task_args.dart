@@ -21,7 +21,7 @@ class GetServiceTaskArgs {
   /// [groupName] Name of the resource group
   /// [serviceName] Name of the service
   /// [taskName] Name of the Task
-  GetServiceTaskArgs({
+  const GetServiceTaskArgs({
     this.expand,
     required this.groupName,
     required this.serviceName,

@@ -21,7 +21,7 @@ class GetFunctionIamPolicyArgs {
   /// [cloudFunction] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location of this cloud function. Used to find the parent resource to bind the IAM policy to. If not specified,
-  GetFunctionIamPolicyArgs({
+  const GetFunctionIamPolicyArgs({
     required this.cloudFunction,
     this.project,
     this.region,

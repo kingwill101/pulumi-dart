@@ -17,7 +17,7 @@ class ServiceDelegation {
   /// [url] The delegation URL.
   /// [userRegistrationEnabled] Should user registration requests be delegated to an external url? Defaults to `false`.
   /// [validationKey] A base64-encoded validation key to validate, that a request is coming from Azure API Management.
-  ServiceDelegation({
+  const ServiceDelegation({
     this.subscriptionsEnabled,
     this.url,
     this.userRegistrationEnabled,

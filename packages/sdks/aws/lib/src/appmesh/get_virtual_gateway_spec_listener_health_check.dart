@@ -19,7 +19,7 @@ class GetVirtualGatewaySpecListenerHealthCheck {
   /// [protocol] Required.
   /// [timeoutMillis] Required.
   /// [unhealthyThreshold] Required.
-  GetVirtualGatewaySpecListenerHealthCheck({
+  const GetVirtualGatewaySpecListenerHealthCheck({
     required this.healthyThreshold,
     required this.intervalMillis,
     required this.path,

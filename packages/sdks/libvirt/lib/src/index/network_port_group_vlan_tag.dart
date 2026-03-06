@@ -11,7 +11,7 @@ class NetworkPortGroupVlanTag {
   /// Creates a new [NetworkPortGroupVlanTag].
   /// [id] Sets the identifier for the VLAN tag within the port group.
   /// [nativeMode] Indicates whether the VLAN tag operates in native mode for the port group.
-  NetworkPortGroupVlanTag({
+  const NetworkPortGroupVlanTag({
     this.id,
     this.nativeMode,
   });

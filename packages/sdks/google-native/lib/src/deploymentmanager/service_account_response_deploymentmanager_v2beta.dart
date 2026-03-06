@@ -9,7 +9,7 @@ class ServiceAccountResponseDeploymentmanagerV2beta {
 
   /// Creates a new [ServiceAccountResponseDeploymentmanagerV2beta].
   /// [email] The IAM service account email address like test@myproject.iam.gserviceaccount.com
-  ServiceAccountResponseDeploymentmanagerV2beta({
+  const ServiceAccountResponseDeploymentmanagerV2beta({
     required this.email,
   });
 

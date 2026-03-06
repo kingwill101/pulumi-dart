@@ -21,7 +21,7 @@ class StatefulSetConditionAppsV1beta1 {
   /// [reason] The reason for the condition's last transition.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of statefulset condition.
-  StatefulSetConditionAppsV1beta1({
+  const StatefulSetConditionAppsV1beta1({
     this.lastTransitionTime,
     this.message,
     this.reason,

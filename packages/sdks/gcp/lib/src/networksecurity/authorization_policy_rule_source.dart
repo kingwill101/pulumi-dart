@@ -13,7 +13,7 @@ class AuthorizationPolicyRuleSource {
   /// Creates a new [AuthorizationPolicyRuleSource].
   /// [ipBlocks] List of CIDR ranges to match based on source IP address. At least one IP block should match. Single IP (e.g., "1.2.3.4") and CIDR (e.g., "1.2.3.0/24") are supported. Authorization based on source IP alone should be avoided.
   /// [principals] List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "*/service-account") or a presence match "*".
-  AuthorizationPolicyRuleSource({
+  const AuthorizationPolicyRuleSource({
     this.ipBlocks,
     this.principals,
   });

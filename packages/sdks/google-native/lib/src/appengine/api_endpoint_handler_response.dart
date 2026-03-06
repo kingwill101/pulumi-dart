@@ -9,7 +9,7 @@ class ApiEndpointHandlerResponse {
 
   /// Creates a new [ApiEndpointHandlerResponse].
   /// [scriptPath] Path to the script from the application root directory.
-  ApiEndpointHandlerResponse({
+  const ApiEndpointHandlerResponse({
     required this.scriptPath,
   });
 

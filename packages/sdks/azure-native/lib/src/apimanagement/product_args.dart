@@ -40,7 +40,7 @@ class ProductArgs {
   /// [subscriptionRequired] Whether a product subscription is required for accessing APIs included in this product. If true, the product is referred to as "protected" and a valid subscription key is required for a request to an API included in the product to succeed. If false, the product is referred to as "open" and requests to an API included in the product can be made without a subscription key. If property is omitted when creating a new product it's value is assumed to be true.
   /// [subscriptionsLimit] Whether the number of subscriptions a user can have to this product at the same time. Set to null or omit to allow unlimited per user subscriptions. Can be present only if subscriptionRequired property is present and has a value of false.
   /// [terms] Product terms of use. Developers trying to subscribe to the product will be presented and required to accept these terms before they can complete the subscription process.
-  ProductArgs({
+  const ProductArgs({
     this.approvalRequired,
     this.description,
     required this.displayName,

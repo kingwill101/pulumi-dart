@@ -21,7 +21,7 @@ class DataStoreDocumentProcessingConfigParsingConfigOverride {
   /// [fileType] The identifier for this object. Format specified above.
   /// [layoutParsingConfig] Configurations applied to layout parser.
   /// [ocrParsingConfig] Configurations applied to OCR parser. Currently it only applies to PDFs.
-  DataStoreDocumentProcessingConfigParsingConfigOverride({
+  const DataStoreDocumentProcessingConfigParsingConfigOverride({
     this.digitalParsingConfig,
     required this.fileType,
     this.layoutParsingConfig,

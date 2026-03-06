@@ -50,7 +50,7 @@ class IotDpsPropertiesDescriptionResponse {
   /// [publicNetworkAccess] Whether requests from Public Network are allowed
   /// [serviceOperationsHostName] Service endpoint for provisioning service.
   /// [state] Current state of the provisioning service.
-  IotDpsPropertiesDescriptionResponse({
+  const IotDpsPropertiesDescriptionResponse({
     this.allocationPolicy,
     this.authorizationPolicies,
     required this.deviceProvisioningHostName,

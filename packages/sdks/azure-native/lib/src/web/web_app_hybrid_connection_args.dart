@@ -46,7 +46,7 @@ class WebAppHybridConnectionArgs {
   /// [sendKeyValue] The value of the Service Bus key. This is used to authenticate to Service Bus. In ARM this key will not be returned
   /// [serviceBusNamespace] The name of the Service Bus namespace.
   /// [serviceBusSuffix] The suffix for the service bus endpoint. By default this is .servicebus.windows.net
-  WebAppHybridConnectionArgs({
+  const WebAppHybridConnectionArgs({
     this.hostname,
     this.kind,
     required this.name,

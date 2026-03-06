@@ -17,7 +17,7 @@ class DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleS
   /// [lifecycleManagement] Indicates whether idle shutdown is activated for the application type. Valid values are `ENABLED` and `DISABLED`.
   /// [maxIdleTimeoutInMinutes] The maximum value in minutes that custom idle shutdown can be set to by the user. Valid values are between `60` and `525600`.
   /// [minIdleTimeoutInMinutes] The minimum value in minutes that custom idle shutdown can be set to by the user. Valid values are between `60` and `525600`.
-  DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings({
+  const DomainDefaultSpaceSettingsJupyterLabAppSettingsAppLifecycleManagementIdleSettings({
     this.idleTimeoutInMinutes,
     this.lifecycleManagement,
     this.maxIdleTimeoutInMinutes,

@@ -18,7 +18,7 @@ class GetAdministratorsMicrosoftEntraArgs {
   /// [objectId] Object identifier of the Microsoft Entra principal.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverName] The name of the server.
-  GetAdministratorsMicrosoftEntraArgs({
+  const GetAdministratorsMicrosoftEntraArgs({
     required this.objectId,
     required this.resourceGroupName,
     required this.serverName,

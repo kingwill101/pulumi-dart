@@ -14,7 +14,7 @@ class IoTHubNetworkRuleSetIpRule {
   /// [action] The desired action for requests captured by this rule. Possible values are `Allow`. Defaults to `Allow`.
   /// [ipMask] The IP address range in CIDR notation for the ip rule.
   /// [name] The name of the ip rule.
-  IoTHubNetworkRuleSetIpRule({
+  const IoTHubNetworkRuleSetIpRule({
     this.action,
     required this.ipMask,
     required this.name,

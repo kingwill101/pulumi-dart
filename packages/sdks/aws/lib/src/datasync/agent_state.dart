@@ -39,7 +39,7 @@ class AgentState {
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Agent. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcEndpointId] The ID of the VPC (virtual private cloud) endpoint that the agent has access to.
-  AgentState({
+  const AgentState({
     this.activationKey,
     this.arn,
     this.ipAddress,

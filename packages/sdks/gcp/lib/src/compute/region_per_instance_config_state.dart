@@ -49,7 +49,7 @@ class RegionPerInstanceConfigState {
   /// [regionInstanceGroupManager] The region instance group manager this instance config is part of.
   /// [removeInstanceOnDestroy] When true, deleting this config will immediately remove the underlying instance.
   /// [removeInstanceStateOnDestroy] When true, deleting this config will immediately remove any specified state from the underlying instance.
-  RegionPerInstanceConfigState({
+  const RegionPerInstanceConfigState({
     this.minimalAction,
     this.mostDisruptiveAllowedAction,
     this.name,

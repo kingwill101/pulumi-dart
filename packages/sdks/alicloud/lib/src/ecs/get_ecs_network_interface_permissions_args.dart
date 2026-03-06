@@ -25,7 +25,7 @@ class GetEcsNetworkInterfacePermissionsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
-  GetEcsNetworkInterfacePermissionsArgs({
+  const GetEcsNetworkInterfacePermissionsArgs({
     this.ids,
     required this.networkInterfaceId,
     this.outputFile,

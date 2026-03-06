@@ -21,7 +21,7 @@ class GetConnectivityTestRunReachabilityDetailTrace {
   /// [endpointInfos] (Output)
   /// [forwardTraceId] (Output)
   /// [steps] (Output)
-  GetConnectivityTestRunReachabilityDetailTrace({
+  const GetConnectivityTestRunReachabilityDetailTrace({
     required this.endpointInfos,
     required this.forwardTraceId,
     required this.steps,

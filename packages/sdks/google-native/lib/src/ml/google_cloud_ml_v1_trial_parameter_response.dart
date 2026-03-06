@@ -18,7 +18,7 @@ class GoogleCloudMlV1TrialParameterResponse {
   /// [intValue] Must be set if ParameterType is INTEGER
   /// [parameter] The name of the parameter.
   /// [stringValue] Must be set if ParameterTypeis CATEGORICAL
-  GoogleCloudMlV1TrialParameterResponse({
+  const GoogleCloudMlV1TrialParameterResponse({
     required this.floatValue,
     required this.intValue,
     required this.parameter,

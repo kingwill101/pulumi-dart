@@ -21,7 +21,7 @@ class LogicAppReceiverResponse {
   /// [name] The name of the logic app receiver. Names must be unique across all receivers within an action group.
   /// [resourceId] The azure resource id of the logic app receiver.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  LogicAppReceiverResponse({
+  const LogicAppReceiverResponse({
     required this.callbackUrl,
     this.managedIdentity,
     required this.name,

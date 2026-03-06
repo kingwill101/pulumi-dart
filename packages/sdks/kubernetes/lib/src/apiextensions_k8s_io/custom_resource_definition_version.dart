@@ -37,7 +37,7 @@ class CustomResourceDefinitionVersion {
   /// [served] served is a flag enabling/disabling this version from being served via REST APIs
   /// [storage] storage indicates this version should be used when persisting custom resources to storage. There must be exactly one version with storage=true.
   /// [subresources] subresources specify what subresources this version of the defined custom resource have.
-  CustomResourceDefinitionVersion({
+  const CustomResourceDefinitionVersion({
     this.additionalPrinterColumns,
     this.deprecated,
     this.deprecationWarning,

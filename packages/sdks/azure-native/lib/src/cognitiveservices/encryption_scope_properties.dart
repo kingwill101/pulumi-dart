@@ -16,7 +16,7 @@ class EncryptionScopeProperties {
   /// [keySource] Enumerates the possible value of keySource for Encryption
   /// [keyVaultProperties] Properties of KeyVault
   /// [state] The encryptionScope state.
-  EncryptionScopeProperties({
+  const EncryptionScopeProperties({
     this.keySource,
     this.keyVaultProperties,
     this.state,

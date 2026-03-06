@@ -15,7 +15,7 @@ class PolicyVersionState {
   /// [isDefaultVersion] Specifies whether to set the policy version as the default version. Default to `false`.
   /// [policyDocument] The content of the policy. The content must be 1 to 2,048 characters in length.
   /// [policyName] The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
-  PolicyVersionState({
+  const PolicyVersionState({
     this.isDefaultVersion,
     this.policyDocument,
     this.policyName,

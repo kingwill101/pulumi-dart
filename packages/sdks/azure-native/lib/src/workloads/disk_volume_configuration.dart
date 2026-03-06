@@ -16,7 +16,7 @@ class DiskVolumeConfiguration {
   /// [count] The total number of disks required for the concerned volume.
   /// [sizeGB] The disk size in GB.
   /// [sku] The disk SKU details.
-  DiskVolumeConfiguration({
+  const DiskVolumeConfiguration({
     this.count,
     this.sizeGB,
     this.sku,

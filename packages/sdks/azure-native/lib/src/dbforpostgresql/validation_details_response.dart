@@ -23,7 +23,7 @@ class ValidationDetailsResponse {
   /// [status] Validation status for migration.
   /// [validationEndTimeInUtc] End time (UTC) for validation.
   /// [validationStartTimeInUtc] Start time (UTC) for validation.
-  ValidationDetailsResponse({
+  const ValidationDetailsResponse({
     this.dbLevelValidationDetails,
     this.serverLevelValidationDetails,
     this.status,

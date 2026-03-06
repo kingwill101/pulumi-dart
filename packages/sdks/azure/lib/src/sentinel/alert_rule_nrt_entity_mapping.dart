@@ -12,7 +12,7 @@ class AlertRuleNrtEntityMapping {
   /// Creates a new [AlertRuleNrtEntityMapping].
   /// [entityType] The type of the entity. Possible values are `Account`, `AzureResource`, `CloudApplication`, `DNS`, `File`, `FileHash`, `Host`, `IP`, `Mailbox`, `MailCluster`, `MailMessage`, `Malware`, `Process`, `RegistryKey`, `RegistryValue`, `SecurityGroup`, `SubmissionMail`, `URL`.
   /// [fieldMappings] A list of `field_mapping` blocks as defined below.
-  AlertRuleNrtEntityMapping({
+  const AlertRuleNrtEntityMapping({
     required this.entityType,
     required this.fieldMappings,
   });

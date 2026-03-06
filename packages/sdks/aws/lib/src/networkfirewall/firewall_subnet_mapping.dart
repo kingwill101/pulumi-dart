@@ -11,7 +11,7 @@ class FirewallSubnetMapping {
   /// Creates a new [FirewallSubnetMapping].
   /// [ipAddressType] The subnet's IP address type. Valid values: `"DUALSTACK"`, `"IPV4"`.
   /// [subnetId] The unique identifier for the subnet.
-  FirewallSubnetMapping({
+  const FirewallSubnetMapping({
     this.ipAddressType,
     required this.subnetId,
   });

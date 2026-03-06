@@ -10,7 +10,7 @@ class FleetObservabilityRoutingConfig {
 
   /// Creates a new [FleetObservabilityRoutingConfig].
   /// [mode] mode configures the logs routing mode.
-  FleetObservabilityRoutingConfig({
+  const FleetObservabilityRoutingConfig({
     this.mode,
   });
 

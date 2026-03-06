@@ -9,7 +9,7 @@ class FileLocationResponse {
 
   /// Creates a new [FileLocationResponse].
   /// [filePath] For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
-  FileLocationResponse({
+  const FileLocationResponse({
     required this.filePath,
   });
 

@@ -21,7 +21,7 @@ class RepoSource {
   /// [project] ID of the project that owns the repo.
   /// [repoName] Name of the repo.
   /// [tagName] Name of the tag to build.
-  RepoSource({
+  const RepoSource({
     this.branchName,
     this.commitSha,
     this.project,

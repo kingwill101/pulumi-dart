@@ -15,7 +15,7 @@ class ContinuationSettingsReference {
   /// [continuationTtlInMinutes] Continuation TTL in minutes.
   /// [customizedCheckpointKey] Customized checkpoint key.
   /// [idleCondition] Idle condition.
-  ContinuationSettingsReference({
+  const ContinuationSettingsReference({
     this.continuationTtlInMinutes,
     this.customizedCheckpointKey,
     this.idleCondition,

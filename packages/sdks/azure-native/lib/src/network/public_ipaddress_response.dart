@@ -89,7 +89,7 @@ class PublicIPAddressResponse {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [zones] A list of availability zones denoting the IP allocated for the resource needs to come from.
-  PublicIPAddressResponse({
+  const PublicIPAddressResponse({
     this.ddosSettings,
     this.deleteOption,
     this.dnsSettings,

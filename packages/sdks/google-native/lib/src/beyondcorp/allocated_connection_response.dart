@@ -12,7 +12,7 @@ class AllocatedConnectionResponse {
   /// Creates a new [AllocatedConnectionResponse].
   /// [ingressPort] The ingress port of an allocated connection
   /// [pscUri] The PSC uri of an allocated connection
-  AllocatedConnectionResponse({
+  const AllocatedConnectionResponse({
     required this.ingressPort,
     required this.pscUri,
   });

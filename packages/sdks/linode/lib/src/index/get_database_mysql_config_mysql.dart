@@ -86,7 +86,7 @@ class GetDatabaseMysqlConfigMysql {
   /// [sqlRequirePrimaryKey] Required.
   /// [tmpTableSize] Required.
   /// [waitTimeout] Required.
-  GetDatabaseMysqlConfigMysql({
+  const GetDatabaseMysqlConfigMysql({
     required this.connectTimeout,
     required this.defaultTimeZone,
     required this.groupConcatMaxLen,

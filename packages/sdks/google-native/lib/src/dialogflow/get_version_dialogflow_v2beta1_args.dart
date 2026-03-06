@@ -15,7 +15,7 @@ class GetVersionDialogflowV2beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [versionId] Required.
-  GetVersionDialogflowV2beta1Args({
+  const GetVersionDialogflowV2beta1Args({
     required this.location,
     this.project,
     required this.versionId,

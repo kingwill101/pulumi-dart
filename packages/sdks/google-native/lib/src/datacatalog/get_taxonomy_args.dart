@@ -15,7 +15,7 @@ class GetTaxonomyArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [taxonomyId] Required.
-  GetTaxonomyArgs({
+  const GetTaxonomyArgs({
     required this.location,
     this.project,
     required this.taxonomyId,

@@ -30,7 +30,7 @@ class LoadBalancerZoneMapping {
   /// [loadBalancerAddresses] The instance address.
   /// [vswitchId] The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
   /// [zoneId] The ID of the zone to which the SLB instance belongs.
-  LoadBalancerZoneMapping({
+  const LoadBalancerZoneMapping({
     this.address,
     this.allocationId,
     this.eipType,

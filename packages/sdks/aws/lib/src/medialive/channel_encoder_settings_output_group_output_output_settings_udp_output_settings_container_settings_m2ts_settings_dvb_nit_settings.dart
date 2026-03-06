@@ -11,7 +11,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
   /// [networkId] Required.
   /// [networkName] Required.
   /// [repInterval] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbNitSettings({
     required this.networkId,
     required this.networkName,
     this.repInterval,

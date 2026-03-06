@@ -9,7 +9,7 @@ class PointInTimeRecoveryStatusEnumValue {
 
   /// Creates a new [PointInTimeRecoveryStatusEnumValue].
   /// [value] Property value
-  PointInTimeRecoveryStatusEnumValue({
+  const PointInTimeRecoveryStatusEnumValue({
     this.value,
   });
 

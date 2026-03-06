@@ -28,7 +28,7 @@ class DatabaseAccountGremlinGraphArgs {
   /// [options] A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
   /// [resource] The standard JSON format of a Gremlin graph
   /// [resourceGroupName] Name of an Azure resource group.
-  DatabaseAccountGremlinGraphArgs({
+  const DatabaseAccountGremlinGraphArgs({
     required this.accountName,
     required this.databaseName,
     this.graphName,

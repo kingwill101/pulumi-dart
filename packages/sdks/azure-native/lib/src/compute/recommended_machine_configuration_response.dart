@@ -13,7 +13,7 @@ class RecommendedMachineConfigurationResponse {
   /// Creates a new [RecommendedMachineConfigurationResponse].
   /// [memory] Describes the resource range.
   /// [vCPUs] Describes the resource range.
-  RecommendedMachineConfigurationResponse({
+  const RecommendedMachineConfigurationResponse({
     this.memory,
     this.vCPUs,
   });

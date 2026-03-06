@@ -8,7 +8,7 @@ class CollectorPolicyIpfxIngestion {
 
   /// Creates a new [CollectorPolicyIpfxIngestion].
   /// [sourceResourceIds] A list of ingestion source resource IDs. Changing this forces a new Network Function Collector Policy to be created.
-  CollectorPolicyIpfxIngestion({
+  const CollectorPolicyIpfxIngestion({
     required this.sourceResourceIds,
   });
 

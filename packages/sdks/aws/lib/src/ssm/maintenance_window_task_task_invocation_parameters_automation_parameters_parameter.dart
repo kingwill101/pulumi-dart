@@ -11,7 +11,7 @@ class MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter
   /// Creates a new [MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter].
   /// [name] The parameter name.
   /// [values] The array of strings.
-  MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter({
+  const MaintenanceWindowTaskTaskInvocationParametersAutomationParametersParameter({
     required this.name,
     required this.values,
   });

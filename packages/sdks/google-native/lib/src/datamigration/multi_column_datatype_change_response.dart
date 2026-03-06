@@ -35,7 +35,7 @@ class MultiColumnDatatypeChangeResponse {
   /// [sourceDataTypeFilter] Filter on source data type.
   /// [sourceNumericFilter] Optional. Filter for fixed point number data types such as NUMERIC/NUMBER.
   /// [sourceTextFilter] Optional. Filter for text-based data types like varchar.
-  MultiColumnDatatypeChangeResponse({
+  const MultiColumnDatatypeChangeResponse({
     required this.customFeatures,
     required this.newDataType,
     required this.overrideFractionalSecondsPrecision,

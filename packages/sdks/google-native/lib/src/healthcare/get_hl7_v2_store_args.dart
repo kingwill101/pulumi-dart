@@ -17,7 +17,7 @@ class GetHl7V2StoreArgs {
   /// [hl7V2StoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetHl7V2StoreArgs({
+  const GetHl7V2StoreArgs({
     required this.datasetId,
     required this.hl7V2StoreId,
     required this.location,

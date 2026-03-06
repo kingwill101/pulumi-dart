@@ -9,7 +9,7 @@ class CacheFrom {
 
   /// Creates a new [CacheFrom].
   /// [images] Specifies cached images
-  CacheFrom({
+  const CacheFrom({
     this.images,
   });
 

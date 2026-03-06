@@ -34,7 +34,7 @@ class GetInstructionResult {
   /// [name] Instruction resource name, format: projects/{project_id}/instructions/{instruction_id}
   /// [pdfInstruction] Instruction from a PDF document. The PDF should be in a Cloud Storage bucket.
   /// [updateTime] Last update time of instruction.
-  GetInstructionResult({
+  const GetInstructionResult({
     required this.blockingResources,
     required this.createTime,
     required this.csvInstruction,

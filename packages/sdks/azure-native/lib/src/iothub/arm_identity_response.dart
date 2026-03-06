@@ -17,7 +17,7 @@ class ArmIdentityResponse {
   /// [tenantId] Tenant Id
   /// [type] The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the service.
   /// [userAssignedIdentities] Optional.
-  ArmIdentityResponse({
+  const ArmIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

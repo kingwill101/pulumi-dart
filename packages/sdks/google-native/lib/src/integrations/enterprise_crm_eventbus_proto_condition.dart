@@ -17,7 +17,7 @@ class EnterpriseCrmEventbusProtoCondition {
   /// [eventPropertyKey] Key that's evaluated against the `value`. Please note the data type of the runtime value associated with the key should match the data type of `value`, else an IllegalArgumentException is thrown.
   /// [operator] Operator used to evaluate the condition. Please note that an operator with an inappropriate key/value operand will result in IllegalArgumentException, e.g. CONTAINS with boolean key/value pair.
   /// [value] Value that's checked for the key.
-  EnterpriseCrmEventbusProtoCondition({
+  const EnterpriseCrmEventbusProtoCondition({
     this.eventPropertyKey,
     this.operator,
     this.value,

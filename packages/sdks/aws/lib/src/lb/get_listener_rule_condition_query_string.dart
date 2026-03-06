@@ -9,7 +9,7 @@ class GetListenerRuleConditionQueryString {
 
   /// Creates a new [GetListenerRuleConditionQueryString].
   /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
-  GetListenerRuleConditionQueryString({
+  const GetListenerRuleConditionQueryString({
     this.values,
   });
 

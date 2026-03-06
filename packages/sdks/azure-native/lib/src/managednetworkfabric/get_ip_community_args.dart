@@ -15,7 +15,7 @@ class GetIpCommunityArgs {
   /// Creates a new [GetIpCommunityArgs].
   /// [ipCommunityName] Name of the IP Community.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIpCommunityArgs({
+  const GetIpCommunityArgs({
     required this.ipCommunityName,
     required this.resourceGroupName,
   });

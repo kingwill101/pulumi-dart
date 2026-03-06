@@ -32,7 +32,7 @@ class GetIntegrationAccountSessionResult {
   /// [name] Gets the resource name.
   /// [tags] The resource tags.
   /// [type] Gets the resource type.
-  GetIntegrationAccountSessionResult({
+  const GetIntegrationAccountSessionResult({
     required this.azureApiVersion,
     required this.changedTime,
     this.content,

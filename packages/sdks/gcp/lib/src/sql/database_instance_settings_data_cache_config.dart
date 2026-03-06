@@ -8,7 +8,7 @@ class DatabaseInstanceSettingsDataCacheConfig {
 
   /// Creates a new [DatabaseInstanceSettingsDataCacheConfig].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance. Defaults to `true` for MYSQL Enterprise Plus and PostgreSQL Enterprise Plus instances only. For SQL Server Enterprise Plus instances it defaults to `false`.
-  DatabaseInstanceSettingsDataCacheConfig({
+  const DatabaseInstanceSettingsDataCacheConfig({
     this.dataCacheEnabled,
   });
 

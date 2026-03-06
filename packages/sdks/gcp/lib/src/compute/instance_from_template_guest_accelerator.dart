@@ -11,7 +11,7 @@ class InstanceFromTemplateGuestAccelerator {
   /// Creates a new [InstanceFromTemplateGuestAccelerator].
   /// [count] The number of the guest accelerator cards exposed to this instance.
   /// [type] The accelerator type resource exposed to this instance. E.g. nvidia-tesla-k80.
-  InstanceFromTemplateGuestAccelerator({
+  const InstanceFromTemplateGuestAccelerator({
     required this.count,
     required this.type,
   });

@@ -8,7 +8,7 @@ class CustomDirectoryRolePermission {
 
   /// Creates a new [CustomDirectoryRolePermission].
   /// [allowedResourceActions] A set of tasks that can be performed on a resource. For more information, see the [Permissions Reference](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference) documentation.
-  CustomDirectoryRolePermission({
+  const CustomDirectoryRolePermission({
     required this.allowedResourceActions,
   });
 

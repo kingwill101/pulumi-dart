@@ -12,7 +12,7 @@ class DependencyOfRelationshipProperties {
   /// Creates a new [DependencyOfRelationshipProperties].
   /// [targetId] The relationship target resource id.
   /// [targetTenant] The relationship target tenant id.
-  DependencyOfRelationshipProperties({
+  const DependencyOfRelationshipProperties({
     required this.targetId,
     this.targetTenant,
   });

@@ -15,7 +15,7 @@ class RandomSamplingAlgorithm {
   /// [rule] The specific type of random algorithm
   /// [samplingAlgorithmType] Expected value is 'Random'.
   /// [seed] An optional integer to use as the seed for random number generation
-  RandomSamplingAlgorithm({
+  const RandomSamplingAlgorithm({
     this.rule,
     required this.samplingAlgorithmType,
     this.seed,

@@ -15,7 +15,7 @@ class GetCustomerRepricingConfigResult {
   /// [name] Resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}.
   /// [repricingConfig] The configuration for bill modifications made by a reseller before sending it to customers.
   /// [updateTime] Timestamp of an update to the repricing rule. If `update_time` is after RepricingConfig.effective_invoice_month then it indicates this was set mid-month.
-  GetCustomerRepricingConfigResult({
+  const GetCustomerRepricingConfigResult({
     required this.name,
     required this.repricingConfig,
     required this.updateTime,

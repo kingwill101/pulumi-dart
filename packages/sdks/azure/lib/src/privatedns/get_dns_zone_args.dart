@@ -20,7 +20,7 @@ class GetDnsZoneArgs {
   /// [name] The name of the Private DNS Zone.
   /// [resourceGroupName] The Name of the Resource Group where the Private DNS Zone exists.
   /// [tags] A mapping of tags for the zone.
-  GetDnsZoneArgs({
+  const GetDnsZoneArgs({
     required this.name,
     this.resourceGroupName,
     this.tags,

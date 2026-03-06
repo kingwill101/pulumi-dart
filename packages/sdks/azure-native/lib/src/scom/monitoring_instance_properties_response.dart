@@ -47,7 +47,7 @@ class MonitoringInstancePropertiesResponse {
   /// [productVersion] SCOM product version to be installed on instance
   /// [provisioningState] Gets or sets the provisioning state.
   /// [vNetSubnetId] Virtual Network subnet id on which Aquila instance will be provisioned
-  MonitoringInstancePropertiesResponse({
+  const MonitoringInstancePropertiesResponse({
     this.azureHybridBenefit,
     this.databaseInstance,
     this.domainController,

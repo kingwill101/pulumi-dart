@@ -45,7 +45,7 @@ class BgpSpeakerV2Args {
   /// [peers] A list of BGP peer IDs to associate with the BGP speaker.
   /// [region] The region in which to obtain the V2 Networking client.
   /// [tenantId] The tenant/project ID. Required if admin privileges
-  BgpSpeakerV2Args({
+  const BgpSpeakerV2Args({
     this.advertiseFloatingIpHostRoutes,
     this.advertiseTenantNetworks,
     this.ipVersion,

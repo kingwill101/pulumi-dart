@@ -11,7 +11,7 @@ class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
   /// Creates a new [AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork].
   /// [network] Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
   /// [vpcIpSubnetworks] CIDR block IP subnetwork specification. Must be IPv4.
-  AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork({
+  const AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork({
     required this.network,
     this.vpcIpSubnetworks,
   });

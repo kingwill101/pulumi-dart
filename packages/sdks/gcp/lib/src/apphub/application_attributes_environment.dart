@@ -9,7 +9,7 @@ class ApplicationAttributesEnvironment {
 
   /// Creates a new [ApplicationAttributesEnvironment].
   /// [type] Environment type.
-  ApplicationAttributesEnvironment({
+  const ApplicationAttributesEnvironment({
     required this.type,
   });
 

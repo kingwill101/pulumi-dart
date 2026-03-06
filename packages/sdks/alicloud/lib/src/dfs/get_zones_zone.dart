@@ -12,7 +12,7 @@ class GetZonesZone {
   /// Creates a new [GetZonesZone].
   /// [options] A list of available configurations of the Zone.
   /// [zoneId] The zone ID.
-  GetZonesZone({
+  const GetZonesZone({
     required this.options,
     required this.zoneId,
   });

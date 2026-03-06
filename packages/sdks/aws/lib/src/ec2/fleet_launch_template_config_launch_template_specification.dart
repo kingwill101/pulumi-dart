@@ -14,7 +14,7 @@ class FleetLaunchTemplateConfigLaunchTemplateSpecification {
   /// [launchTemplateId] The ID of the launch template.
   /// [launchTemplateName] The name of the launch template.
   /// [version] The launch template version number, `$Latest`, or `$Default.`
-  FleetLaunchTemplateConfigLaunchTemplateSpecification({
+  const FleetLaunchTemplateConfigLaunchTemplateSpecification({
     this.launchTemplateId,
     this.launchTemplateName,
     required this.version,

@@ -9,7 +9,7 @@ class GoogleCloudIdentitytoolkitAdminV2IdpCertificate {
 
   /// Creates a new [GoogleCloudIdentitytoolkitAdminV2IdpCertificate].
   /// [x509Certificate] The x509 certificate
-  GoogleCloudIdentitytoolkitAdminV2IdpCertificate({
+  const GoogleCloudIdentitytoolkitAdminV2IdpCertificate({
     this.x509Certificate,
   });
 

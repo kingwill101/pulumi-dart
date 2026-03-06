@@ -32,7 +32,7 @@ class GetRegistryResult {
   /// [mqttConfig] The MQTT configuration for this device registry.
   /// [name] The resource path name. For example, `projects/example-project/locations/us-central1/registries/my-registry`.
   /// [stateNotificationConfig] The configuration for notification of new states received from the device. State updates are guaranteed to be stored in the state history, but notifications to Cloud Pub/Sub are not guaranteed. For example, if permissions are misconfigured or the specified topic doesn't exist, no notification will be published but the state will still be stored in Cloud IoT Core.
-  GetRegistryResult({
+  const GetRegistryResult({
     required this.credentials,
     required this.eventNotificationConfigs,
     required this.httpConfig,

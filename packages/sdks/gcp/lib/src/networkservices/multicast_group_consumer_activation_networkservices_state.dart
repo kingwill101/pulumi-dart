@@ -83,7 +83,7 @@ class MulticastGroupConsumerActivationNetworkservicesState {
   /// [states] (Output)
   /// [uniqueId] The Google-generated UUID for the resource. This value is
   /// [updateTime] The timestamp when the multicast group consumer activation
-  MulticastGroupConsumerActivationNetworkservicesState({
+  const MulticastGroupConsumerActivationNetworkservicesState({
     this.createTime,
     this.description,
     this.effectiveLabels,

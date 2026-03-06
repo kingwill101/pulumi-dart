@@ -26,7 +26,7 @@ class GetAccessPolicyResult {
   /// [principalObjectId] The objectId of the principal in Azure Active Directory.
   /// [roles] The list of roles the principal is assigned on the environment.
   /// [type] Resource type
-  GetAccessPolicyResult({
+  const GetAccessPolicyResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

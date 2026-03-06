@@ -15,7 +15,7 @@ class StackEnsembleSettings {
   /// [stackMetaLearnerKWargs] Optional parameters to pass to the initializer of the meta-learner.
   /// [stackMetaLearnerTrainPercentage] Specifies the proportion of the training set (when choosing train and validation type of training) to be reserved for training the meta-learner. Default value is 0.2.
   /// [stackMetaLearnerType] The meta-learner is a model trained on the output of the individual heterogeneous models.
-  StackEnsembleSettings({
+  const StackEnsembleSettings({
     this.stackMetaLearnerKWargs,
     this.stackMetaLearnerTrainPercentage,
     this.stackMetaLearnerType,

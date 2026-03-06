@@ -9,7 +9,7 @@ class RedisProfileResponse {
 
   /// Creates a new [RedisProfileResponse].
   /// [id] Resource Id of Azure Redis Cache Resource
-  RedisProfileResponse({
+  const RedisProfileResponse({
     required this.id,
   });
 

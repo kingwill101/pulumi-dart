@@ -30,7 +30,7 @@ class NetworkRackArgs {
   /// [networkRackType] Network Rack SKU name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  NetworkRackArgs({
+  const NetworkRackArgs({
     this.annotation,
     this.location,
     required this.networkFabricId,

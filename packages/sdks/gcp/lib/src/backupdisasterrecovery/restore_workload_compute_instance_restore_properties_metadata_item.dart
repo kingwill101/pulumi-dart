@@ -11,7 +11,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem {
   /// Creates a new [RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem].
   /// [key] (Optional)
   /// [value] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem({
+  const RestoreWorkloadComputeInstanceRestorePropertiesMetadataItem({
     this.key,
     this.value,
   });

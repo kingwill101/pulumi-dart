@@ -29,7 +29,7 @@ class VocabularyFilterArgs {
   /// [vocabularyFilterFileUri] The Amazon S3 location (URI) of the text file that contains your custom VocabularyFilter. Conflicts with `words` argument.
   /// [vocabularyFilterName] The name of the VocabularyFilter.
   /// [words] A list of terms to include in the vocabulary. Conflicts with `vocabulary_filter_file_uri` argument.
-  VocabularyFilterArgs({
+  const VocabularyFilterArgs({
     required this.languageCode,
     this.region,
     this.tags,

@@ -24,7 +24,7 @@ class GetSiteMonitorsResult {
   /// [outputFile] Optional.
   /// [taskId] Task Id.
   /// [taskType] Task Type.
-  GetSiteMonitorsResult({
+  const GetSiteMonitorsResult({
     required this.id,
     required this.ids,
     required this.monitors,

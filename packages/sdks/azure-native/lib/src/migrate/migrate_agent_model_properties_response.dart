@@ -39,7 +39,7 @@ class MigrateAgentModelPropertiesResponse {
   /// [machineName] Gets or sets the machine name where MigrateAgent is running.
   /// [provisioningState] Gets or sets the provisioning state of the MigrateAgent.
   /// [versionNumber] Gets or sets the MigrateAgent version.
-  MigrateAgentModelPropertiesResponse({
+  const MigrateAgentModelPropertiesResponse({
     this.authenticationIdentity,
     required this.correlationId,
     this.customProperties,

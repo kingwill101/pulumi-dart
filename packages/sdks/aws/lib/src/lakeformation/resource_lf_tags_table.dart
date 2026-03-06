@@ -19,7 +19,7 @@ class ResourceLfTagsTable {
   /// [databaseName] Name of the database for the table. Unique to a Data Catalog.
   /// [name] Name of the table.
   /// [wildcard] Whether to use a wildcard representing every table under a database. Defaults to `false`.
-  ResourceLfTagsTable({
+  const ResourceLfTagsTable({
     this.catalogId,
     required this.databaseName,
     this.name,

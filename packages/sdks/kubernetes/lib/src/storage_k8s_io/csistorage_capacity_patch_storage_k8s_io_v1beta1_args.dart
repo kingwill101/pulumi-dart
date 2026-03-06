@@ -40,7 +40,7 @@ class CSIStorageCapacityPatchStorageK8sIoV1beta1Args {
   /// [metadata] Standard object's metadata. The name has no particular meaning. It must be be a DNS subdomain (dots allowed, 253 characters). To ensure that there are no conflicts with other CSI drivers on the cluster, the recommendation is to use csisc-&lt;uuid&gt;, a generated name, or a reverse-domain name which ends with the unique CSI driver name.
   /// [nodeTopology] NodeTopology defines which nodes have access to the storage for which capacity was reported. If not set, the storage is not accessible from any node in the cluster. If empty, the storage is accessible from all nodes. This field is immutable.
   /// [storageClassName] The name of the StorageClass that the reported capacity applies to. It must meet the same requirements as the name of a StorageClass object (non-empty, DNS subdomain). If that object no longer exists, the CSIStorageCapacity object is obsolete and should be removed by its creator. This field is immutable.
-  CSIStorageCapacityPatchStorageK8sIoV1beta1Args({
+  const CSIStorageCapacityPatchStorageK8sIoV1beta1Args({
     this.apiVersion,
     this.capacity,
     this.kind,

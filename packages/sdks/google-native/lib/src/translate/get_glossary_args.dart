@@ -15,7 +15,7 @@ class GetGlossaryArgs {
   /// [glossaryId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGlossaryArgs({
+  const GetGlossaryArgs({
     required this.glossaryId,
     required this.location,
     this.project,

@@ -13,7 +13,7 @@ class PluginInstanceAuthConfigUserPasswordConfig {
   /// Creates a new [PluginInstanceAuthConfigUserPasswordConfig].
   /// [password] Secret provides a reference to entries in Secret Manager.
   /// [username] Username.
-  PluginInstanceAuthConfigUserPasswordConfig({
+  const PluginInstanceAuthConfigUserPasswordConfig({
     required this.password,
     required this.username,
   });

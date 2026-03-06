@@ -9,7 +9,7 @@ class ClusterInfoResponse {
 
   /// Creates a new [ClusterInfoResponse].
   /// [id] The resource id of cluster.
-  ClusterInfoResponse({
+  const ClusterInfoResponse({
     this.id,
   });
 

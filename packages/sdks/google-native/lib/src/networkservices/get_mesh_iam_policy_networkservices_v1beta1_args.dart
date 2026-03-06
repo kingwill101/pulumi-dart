@@ -17,7 +17,7 @@ class GetMeshIamPolicyNetworkservicesV1beta1Args {
   /// [meshId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetMeshIamPolicyNetworkservicesV1beta1Args({
+  const GetMeshIamPolicyNetworkservicesV1beta1Args({
     required this.location,
     required this.meshId,
     this.optionsRequestedPolicyVersion,

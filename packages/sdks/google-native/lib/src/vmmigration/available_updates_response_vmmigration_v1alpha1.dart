@@ -13,7 +13,7 @@ class AvailableUpdatesResponseVmmigrationV1alpha1 {
   /// Creates a new [AvailableUpdatesResponseVmmigrationV1alpha1].
   /// [inPlaceUpdate] The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI.
   /// [newDeployableAppliance] The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
-  AvailableUpdatesResponseVmmigrationV1alpha1({
+  const AvailableUpdatesResponseVmmigrationV1alpha1({
     required this.inPlaceUpdate,
     required this.newDeployableAppliance,
   });

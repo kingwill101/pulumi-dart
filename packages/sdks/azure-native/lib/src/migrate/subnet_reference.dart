@@ -12,7 +12,7 @@ class SubnetReference {
   /// Creates a new [SubnetReference].
   /// [name] Gets the name of the proxy resource on the target side.
   /// [sourceArmResourceId] Gets the ARM resource ID of the tracked resource being referenced.
-  SubnetReference({
+  const SubnetReference({
     this.name,
     required this.sourceArmResourceId,
   });

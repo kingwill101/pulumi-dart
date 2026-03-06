@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2InspectionRule {
   /// Creates a new [GooglePrivacyDlpV2InspectionRule].
   /// [exclusionRule] Exclusion rule.
   /// [hotwordRule] Hotword-based detection rule.
-  GooglePrivacyDlpV2InspectionRule({
+  const GooglePrivacyDlpV2InspectionRule({
     this.exclusionRule,
     this.hotwordRule,
   });

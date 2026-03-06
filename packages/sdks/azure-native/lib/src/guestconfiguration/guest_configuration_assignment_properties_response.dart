@@ -45,7 +45,7 @@ class GuestConfigurationAssignmentPropertiesResponse {
   /// [resourceType] Type of the resource - VMSS / VM
   /// [targetResourceId] VM resource Id.
   /// [vmssVMList] The list of VM Compliance data for VMSS
-  GuestConfigurationAssignmentPropertiesResponse({
+  const GuestConfigurationAssignmentPropertiesResponse({
     required this.assignmentHash,
     required this.complianceStatus,
     this.context,

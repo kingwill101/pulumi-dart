@@ -32,7 +32,7 @@ class GroupState {
   /// [name] A unique identifier for this group. The format is
   /// [parentName] The name of the group's parent, if it has one. The format is
   /// [project] The ID of the project in which the resource belongs.
-  GroupState({
+  const GroupState({
     this.displayName,
     this.filter,
     this.isCluster,

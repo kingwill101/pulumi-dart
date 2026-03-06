@@ -18,7 +18,7 @@ class ExtensionsInstanceRuntimeData {
   /// [fatalError] The fatal error state for the extension instance
   /// [processingState] The processing state for the extension instance
   /// [stateUpdateTime] The time of the last state update.
-  ExtensionsInstanceRuntimeData({
+  const ExtensionsInstanceRuntimeData({
     this.fatalError,
     this.processingState,
     this.stateUpdateTime,

@@ -21,7 +21,7 @@ class DeploymentStacksWhatIfPropertyChangeResponse {
   /// [changeType] Type of change that will be made to the resource when the deployment is executed.
   /// [children] Nested property changes.
   /// [path] Type of change that will be made to the resource when the deployment is executed.
-  DeploymentStacksWhatIfPropertyChangeResponse({
+  const DeploymentStacksWhatIfPropertyChangeResponse({
     this.after,
     this.before,
     required this.changeType,

@@ -16,7 +16,7 @@ class GetProtectionContainerResult {
   /// [recoveryFabricName] Required.
   /// [recoveryVaultName] Required.
   /// [resourceGroupName] Required.
-  GetProtectionContainerResult({
+  const GetProtectionContainerResult({
     required this.id,
     required this.name,
     required this.recoveryFabricName,

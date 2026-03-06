@@ -30,7 +30,7 @@ class GooglePrivacyDlpV2Action {
   /// [publishSummaryToCscc] Publish summary to Cloud Security Command Center (Alpha).
   /// [publishToStackdriver] Enable Stackdriver metric dlp.googleapis.com/finding_count.
   /// [saveFindings] Save resulting findings in a provided location.
-  GooglePrivacyDlpV2Action({
+  const GooglePrivacyDlpV2Action({
     this.deidentify,
     this.jobNotificationEmails,
     this.pubSub,

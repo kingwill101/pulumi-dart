@@ -13,7 +13,7 @@ class AuditLogConfigCloudfunctionsV2alpha {
   /// Creates a new [AuditLogConfigCloudfunctionsV2alpha].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigCloudfunctionsV2alpha({
+  const AuditLogConfigCloudfunctionsV2alpha({
     this.exemptedMembers,
     this.logType,
   });

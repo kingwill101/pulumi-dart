@@ -13,7 +13,7 @@ class GetIngressRuleArgs {
   /// Creates a new [GetIngressRuleArgs].
   /// [appId] Required.
   /// [ingressRuleId] Required.
-  GetIngressRuleArgs({
+  const GetIngressRuleArgs({
     required this.appId,
     required this.ingressRuleId,
   });

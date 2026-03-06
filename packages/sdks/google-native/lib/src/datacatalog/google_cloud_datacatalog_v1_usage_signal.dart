@@ -15,7 +15,7 @@ class GoogleCloudDatacatalogV1UsageSignal {
   /// [commonUsageWithinTimeRange] Common usage statistics over each of the predefined time ranges. Supported time ranges are `{"24H", "7D", "30D", "Lifetime"}`.
   /// [favoriteCount] Favorite count in the source system.
   /// [updateTime] The end timestamp of the duration of usage statistics.
-  GoogleCloudDatacatalogV1UsageSignal({
+  const GoogleCloudDatacatalogV1UsageSignal({
     this.commonUsageWithinTimeRange,
     this.favoriteCount,
     this.updateTime,

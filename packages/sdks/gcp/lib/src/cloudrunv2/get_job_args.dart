@@ -21,7 +21,7 @@ class GetJobArgs {
   /// [location] The location of the instance. eg us-central1
   /// [name] The name of the Cloud Run v2 Job.
   /// [project] The project in which the resource belongs. If it
-  GetJobArgs({
+  const GetJobArgs({
     this.location,
     required this.name,
     this.project,

@@ -102,7 +102,7 @@ class TriggerBuildStep {
   /// [timing] Output only. Stores timing information for executing this
   /// [volumes] List of volumes to mount into the build step.
   /// [waitFors] The ID(s) of the step(s) that this build step depends on.
-  TriggerBuildStep({
+  const TriggerBuildStep({
     this.allowExitCodes,
     this.allowFailure,
     this.args,

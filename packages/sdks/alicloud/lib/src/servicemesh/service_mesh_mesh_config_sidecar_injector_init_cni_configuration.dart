@@ -11,7 +11,7 @@ class ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
   /// Creates a new [ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration].
   /// [enabled] Enable CNI
   /// [excludeNamespaces] The excluded namespace
-  ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration({
+  const ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration({
     this.enabled,
     this.excludeNamespaces,
   });

@@ -21,7 +21,7 @@ class PipeSourceParametersRabbitmqBrokerParameters {
   /// [maximumBatchingWindowInSeconds] The maximum length of a time to wait for events. Maximum value of 300.
   /// [queueName] The name of the destination queue to consume. Maximum length of 1000.
   /// [virtualHost] The name of the virtual host associated with the source broker. Maximum length of 200.
-  PipeSourceParametersRabbitmqBrokerParameters({
+  const PipeSourceParametersRabbitmqBrokerParameters({
     this.batchSize,
     required this.credentials,
     this.maximumBatchingWindowInSeconds,

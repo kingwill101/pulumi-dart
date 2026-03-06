@@ -7,7 +7,7 @@ class GetRouteSpecTcpRouteMatch {
 
   /// Creates a new [GetRouteSpecTcpRouteMatch].
   /// [port] Required.
-  GetRouteSpecTcpRouteMatch({
+  const GetRouteSpecTcpRouteMatch({
     required this.port,
   });
 

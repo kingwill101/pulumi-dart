@@ -12,7 +12,7 @@ class GetDatabaseMysqlV2Args {
 
   /// Creates a new [GetDatabaseMysqlV2Args].
   /// [id] The ID of the MySQL database.
-  GetDatabaseMysqlV2Args({
+  const GetDatabaseMysqlV2Args({
     required this.id,
   });
 

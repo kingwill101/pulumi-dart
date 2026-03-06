@@ -8,7 +8,7 @@ class GetCertificateCertificatePolicyIssuerParameter {
 
   /// Creates a new [GetCertificateCertificatePolicyIssuerParameter].
   /// [name] Specifies the name of the Key Vault Certificate.
-  GetCertificateCertificatePolicyIssuerParameter({
+  const GetCertificateCertificatePolicyIssuerParameter({
     required this.name,
   });
 

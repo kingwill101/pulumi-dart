@@ -17,7 +17,7 @@ class BuilderPropertiesResponse {
   /// [buildpackGroups] Builder buildpack groups.
   /// [provisioningState] Builder provision status.
   /// [stack] Builder cluster stack property.
-  BuilderPropertiesResponse({
+  const BuilderPropertiesResponse({
     this.buildpackGroups,
     required this.provisioningState,
     this.stack,

@@ -18,7 +18,7 @@ class WorkspaceArgs {
   /// [project] Optional.
   /// [repositoryId] Required.
   /// [workspaceId] Required. The ID to use for the workspace, which will become the final component of the workspace's resource name.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.location,
     this.project,
     required this.repositoryId,

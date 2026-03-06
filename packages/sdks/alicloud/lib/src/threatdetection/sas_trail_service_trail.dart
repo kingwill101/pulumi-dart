@@ -13,7 +13,7 @@ class SasTrailServiceTrail {
   /// Creates a new [SasTrailServiceTrail].
   /// [config] Service tracking on status. The value is:
   /// [updateTime] The timestamp of the last service update. Unit: milliseconds.
-  SasTrailServiceTrail({
+  const SasTrailServiceTrail({
     this.config,
     this.updateTime,
   });

@@ -15,7 +15,7 @@ class GetOverrideResult {
   /// [apiProxy] ID of the API proxy that will have its trace configuration overridden.
   /// [name] ID of the trace configuration override specified as a system-generated UUID.
   /// [samplingConfig] Trace configuration to override.
-  GetOverrideResult({
+  const GetOverrideResult({
     required this.apiProxy,
     required this.name,
     required this.samplingConfig,

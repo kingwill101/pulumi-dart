@@ -17,7 +17,7 @@ class CrawlerDeltaTarget {
   /// [createNativeDeltaTable] Specifies whether the crawler will create native tables, to allow integration with query engines that support querying of the Delta transaction log directly.
   /// [deltaTables] A list of the Amazon S3 paths to the Delta tables.
   /// [writeManifest] Specifies whether to write the manifest files to the Delta table path.
-  CrawlerDeltaTarget({
+  const CrawlerDeltaTarget({
     this.connectionName,
     this.createNativeDeltaTable,
     required this.deltaTables,

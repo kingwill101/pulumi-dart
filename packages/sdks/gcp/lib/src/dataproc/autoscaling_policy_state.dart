@@ -37,7 +37,7 @@ class AutoscalingPolicyState {
   /// [project] The ID of the project in which the resource belongs.
   /// [secondaryWorkerConfig] Describes how the autoscaler will operate for secondary workers.
   /// [workerConfig] Describes how the autoscaler will operate for primary workers.
-  AutoscalingPolicyState({
+  const AutoscalingPolicyState({
     this.basicAlgorithm,
     this.location,
     this.name,

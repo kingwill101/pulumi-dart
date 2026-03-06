@@ -33,7 +33,7 @@ class GetPolicyResult {
   /// [policy] Policy document of the policy.
   /// [policyId] Policy's ID.
   /// [tags] Key-value mapping of tags for the IAM Policy.
-  GetPolicyResult({
+  const GetPolicyResult({
     required this.arn,
     required this.attachmentCount,
     required this.description,

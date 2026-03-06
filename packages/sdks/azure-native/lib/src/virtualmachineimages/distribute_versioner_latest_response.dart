@@ -13,7 +13,7 @@ class DistributeVersionerLatestResponse {
   /// Creates a new [DistributeVersionerLatestResponse].
   /// [major] Major version for the generated version number. Determine what is "latest" based on versions with this value as the major version. -1 is equivalent to leaving it unset.
   /// [scheme] Version numbering scheme to be used.
-  DistributeVersionerLatestResponse({
+  const DistributeVersionerLatestResponse({
     this.major,
     required this.scheme,
   });

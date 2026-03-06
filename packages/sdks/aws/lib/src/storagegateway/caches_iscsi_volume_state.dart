@@ -60,7 +60,7 @@ class CachesIscsiVolumeState {
   /// [volumeArn] Volume Amazon Resource Name (ARN), e.g., `arn:aws:storagegateway:us-east-1:123456789012:gateway/sgw-12345678/volume/vol-12345678`.
   /// [volumeId] Volume ID, e.g., `vol-12345678`.
   /// [volumeSizeInBytes] The size of the volume in bytes.
-  CachesIscsiVolumeState({
+  const CachesIscsiVolumeState({
     this.arn,
     this.chapEnabled,
     this.gatewayArn,

@@ -11,7 +11,7 @@ class ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValue {
   /// Creates a new [ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValue].
   /// [key] The tag key.
   /// [value] The tag value.
-  ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValue({
+  const ClassificationJobS3JobDefinitionScopingExcludesAndTagScopeTermTagValue({
     this.key,
     this.value,
   });

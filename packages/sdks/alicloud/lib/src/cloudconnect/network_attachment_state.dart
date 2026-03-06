@@ -12,7 +12,7 @@ class NetworkAttachmentState {
   /// Creates a new [NetworkAttachmentState].
   /// [ccnId] The ID of the CCN instance.
   /// [sagId] The ID of the Smart Access Gateway instance.
-  NetworkAttachmentState({
+  const NetworkAttachmentState({
     this.ccnId,
     this.sagId,
   });

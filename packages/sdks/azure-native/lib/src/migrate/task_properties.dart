@@ -24,7 +24,7 @@ class TaskProperties {
   /// [scopeId] associated Wave Id
   /// [stage] Task Stage
   /// [status] Task Status
-  TaskProperties({
+  const TaskProperties({
     this.description,
     required this.displayName,
     required this.scope,

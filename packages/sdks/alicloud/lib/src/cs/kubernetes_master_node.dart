@@ -14,7 +14,7 @@ class KubernetesMasterNode {
   /// [id] ID of the node.
   /// [name] The kubernetes cluster's name. It is unique in one Alicloud account.
   /// [privateIp] The private IP address of node.
-  KubernetesMasterNode({
+  const KubernetesMasterNode({
     this.id,
     this.name,
     this.privateIp,

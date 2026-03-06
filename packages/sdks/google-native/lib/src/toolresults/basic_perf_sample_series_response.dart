@@ -12,7 +12,7 @@ class BasicPerfSampleSeriesResponse {
   /// [perfMetricType] Required.
   /// [perfUnit] Required.
   /// [sampleSeriesLabel] Required.
-  BasicPerfSampleSeriesResponse({
+  const BasicPerfSampleSeriesResponse({
     required this.perfMetricType,
     required this.perfUnit,
     required this.sampleSeriesLabel,

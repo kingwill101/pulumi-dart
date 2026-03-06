@@ -8,7 +8,7 @@ class DomainDevicesSerialTargetModel {
 
   /// Creates a new [DomainDevicesSerialTargetModel].
   /// [name] Specifies the name attribute for the model of the target serial device.
-  DomainDevicesSerialTargetModel({
+  const DomainDevicesSerialTargetModel({
     this.name,
   });
 

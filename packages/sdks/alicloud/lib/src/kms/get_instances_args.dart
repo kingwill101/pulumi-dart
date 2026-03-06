@@ -18,7 +18,7 @@ class GetInstancesArgs {
   /// [ids] A list of Instance IDs.
   /// [instanceName] The name of the resource.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.ids,
     this.instanceName,
     this.outputFile,

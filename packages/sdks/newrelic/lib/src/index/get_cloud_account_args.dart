@@ -18,7 +18,7 @@ class GetCloudAccountArgs {
   /// [accountId] The account ID in New Relic.
   /// [cloudProvider] The cloud provider of the account (aws, gcp, azure, etc)
   /// [name] The cloud account name in New Relic.
-  GetCloudAccountArgs({
+  const GetCloudAccountArgs({
     this.accountId,
     required this.cloudProvider,
     required this.name,

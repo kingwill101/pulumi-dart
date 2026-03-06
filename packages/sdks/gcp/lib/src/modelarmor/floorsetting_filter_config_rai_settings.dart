@@ -10,7 +10,7 @@ class FloorsettingFilterConfigRaiSettings {
 
   /// Creates a new [FloorsettingFilterConfigRaiSettings].
   /// [raiFilters] List of Responsible AI filters enabled for template.
-  FloorsettingFilterConfigRaiSettings({
+  const FloorsettingFilterConfigRaiSettings({
     required this.raiFilters,
   });
 

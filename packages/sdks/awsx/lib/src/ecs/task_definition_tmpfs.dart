@@ -11,7 +11,7 @@ class TaskDefinitionTmpfs {
   /// [containerPath] Optional.
   /// [mountOptions] Optional.
   /// [size] Required.
-  TaskDefinitionTmpfs({
+  const TaskDefinitionTmpfs({
     this.containerPath,
     this.mountOptions,
     required this.size,

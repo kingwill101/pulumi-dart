@@ -21,7 +21,7 @@ class URLMapPathMatcherPathRuleCustomErrorResponsePolicy {
   /// Creates a new [URLMapPathMatcherPathRuleCustomErrorResponsePolicy].
   /// [errorResponseRules] Specifies rules for returning error responses.
   /// [errorService] The full or partial URL to the BackendBucket resource that contains the custom error content. Examples are:
-  URLMapPathMatcherPathRuleCustomErrorResponsePolicy({
+  const URLMapPathMatcherPathRuleCustomErrorResponsePolicy({
     this.errorResponseRules,
     this.errorService,
   });

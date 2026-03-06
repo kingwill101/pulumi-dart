@@ -12,7 +12,7 @@ class DWCopyCommandDefaultValueResponse {
   /// Creates a new [DWCopyCommandDefaultValueResponse].
   /// [columnName] Column name. Type: object (or Expression with resultType string).
   /// [defaultValue] The default value of the column. Type: object (or Expression with resultType string).
-  DWCopyCommandDefaultValueResponse({
+  const DWCopyCommandDefaultValueResponse({
     this.columnName,
     this.defaultValue,
   });

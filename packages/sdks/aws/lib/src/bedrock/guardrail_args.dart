@@ -58,7 +58,7 @@ class GuardrailArgs {
   /// [timeouts] Optional.
   /// [topicPolicyConfig] Topic policy config for a guardrail. See Topic Policy Config for more information.
   /// [wordPolicyConfig] Word policy config for a guardrail. See Word Policy Config for more information.
-  GuardrailArgs({
+  const GuardrailArgs({
     required this.blockedInputMessaging,
     required this.blockedOutputsMessaging,
     this.contentPolicyConfig,

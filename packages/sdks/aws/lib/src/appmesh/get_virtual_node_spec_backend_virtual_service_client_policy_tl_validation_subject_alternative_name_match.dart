@@ -7,7 +7,7 @@ class GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlte
 
   /// Creates a new [GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch].
   /// [exacts] Required.
-  GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch({
+  const GetVirtualNodeSpecBackendVirtualServiceClientPolicyTlValidationSubjectAlternativeNameMatch({
     required this.exacts,
   });
 

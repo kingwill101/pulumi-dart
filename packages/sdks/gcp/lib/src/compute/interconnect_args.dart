@@ -106,7 +106,7 @@ class InterconnectArgs {
   /// [remoteLocation] Indicates that this is a Cross-Cloud Interconnect. This field specifies the location outside
   /// [requestedFeatures] List of features to request for this Interconnect connection. This field is only applicable during Interconnect creation and cannot be modified later.
   /// [requestedLinkCount] Target number of physical links in the link bundle, as requested by the customer.
-  InterconnectArgs({
+  const InterconnectArgs({
     this.aaiEnabled,
     this.adminEnabled,
     this.applicationAwareInterconnect,

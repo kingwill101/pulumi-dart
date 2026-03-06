@@ -35,7 +35,7 @@ class GetGroupResult {
   /// [subnetIds] The subnet resource IDs for a container group.
   /// [tags] A mapping of tags assigned to the Container Group instance.
   /// [zones] A list of Availability Zones in which this Container Group is located.
-  GetGroupResult({
+  const GetGroupResult({
     required this.fqdn,
     required this.id,
     required this.identities,

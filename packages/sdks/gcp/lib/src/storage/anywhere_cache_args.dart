@@ -23,7 +23,7 @@ class AnywhereCacheArgs {
   /// [bucket] A reference to Bucket resource
   /// [ttl] The TTL of all cache entries in whole seconds. e.g., "7200s". It defaults to `86400s`
   /// [zone] The zone in which the cache instance needs to be created. For example, `us-central1-a.`
-  AnywhereCacheArgs({
+  const AnywhereCacheArgs({
     this.admissionPolicy,
     required this.bucket,
     this.ttl,

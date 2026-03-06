@@ -20,7 +20,7 @@ class SecretAuthInfoResponse {
   /// [authType] The authentication type.
   /// [name] Username or account name for secret auth.
   /// [secretInfo] Password or key vault secret for secret auth.
-  SecretAuthInfoResponse({
+  const SecretAuthInfoResponse({
     this.authMode,
     required this.authType,
     this.name,

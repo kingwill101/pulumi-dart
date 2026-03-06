@@ -10,7 +10,7 @@ class InsightsDatasetConfigExcludeCloudStorageBuckets {
 
   /// Creates a new [InsightsDatasetConfigExcludeCloudStorageBuckets].
   /// [cloudStorageBuckets] The list of cloud storage buckets/bucket prefix regexes to exclude in the DatasetConfig.
-  InsightsDatasetConfigExcludeCloudStorageBuckets({
+  const InsightsDatasetConfigExcludeCloudStorageBuckets({
     required this.cloudStorageBuckets,
   });
 

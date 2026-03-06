@@ -30,7 +30,7 @@ class RuntimeClassPatchNodeK8sIoV1beta1Args {
   /// [metadata] More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [overhead] Overhead represents the resource overhead associated with running a pod for a given RuntimeClass. For more details, see https://git.k8s.io/enhancements/keps/sig-node/20190226-pod-overhead.md This field is alpha-level as of Kubernetes v1.15, and is only honored by servers that enable the PodOverhead feature.
   /// [scheduling] Scheduling holds the scheduling constraints to ensure that pods running with this RuntimeClass are scheduled to nodes that support it. If scheduling is nil, this RuntimeClass is assumed to be supported by all nodes.
-  RuntimeClassPatchNodeK8sIoV1beta1Args({
+  const RuntimeClassPatchNodeK8sIoV1beta1Args({
     this.apiVersion,
     this.handler,
     this.kind,

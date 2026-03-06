@@ -29,7 +29,7 @@ class RuleResponseComputeBeta {
   /// [logConfigs] This is deprecated and has no effect. Do not use.
   /// [notIns] This is deprecated and has no effect. Do not use.
   /// [permissions] This is deprecated and has no effect. Do not use.
-  RuleResponseComputeBeta({
+  const RuleResponseComputeBeta({
     required this.action,
     required this.conditions,
     required this.description,

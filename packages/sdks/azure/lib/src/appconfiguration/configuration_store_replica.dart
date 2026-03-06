@@ -17,7 +17,7 @@ class ConfigurationStoreReplica {
   /// [id] The ID of the Access Key.
   /// [location] Specifies the supported Azure location where the replica exists.
   /// [name] Specifies the name of the replica.
-  ConfigurationStoreReplica({
+  const ConfigurationStoreReplica({
     this.endpoint,
     this.id,
     required this.location,

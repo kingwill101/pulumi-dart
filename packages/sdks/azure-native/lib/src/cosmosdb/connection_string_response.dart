@@ -12,7 +12,7 @@ class ConnectionStringResponse {
   /// Creates a new [ConnectionStringResponse].
   /// [connectionString] Value of the connection string
   /// [description] Description of the connection string
-  ConnectionStringResponse({
+  const ConnectionStringResponse({
     required this.connectionString,
     required this.description,
   });

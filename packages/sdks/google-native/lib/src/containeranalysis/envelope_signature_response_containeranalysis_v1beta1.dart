@@ -9,7 +9,7 @@ class EnvelopeSignatureResponseContaineranalysisV1beta1 {
   /// Creates a new [EnvelopeSignatureResponseContaineranalysisV1beta1].
   /// [keyid] Required.
   /// [sig] Required.
-  EnvelopeSignatureResponseContaineranalysisV1beta1({
+  const EnvelopeSignatureResponseContaineranalysisV1beta1({
     required this.keyid,
     required this.sig,
   });

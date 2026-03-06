@@ -14,7 +14,7 @@ class ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimen
   /// [defaultDimensionValue] The default value of the dimension that is published to Amazon CloudWatch if you don't provide the value of the dimension when you send an email.
   /// [dimensionName] The name of an Amazon CloudWatch dimension associated with an email sending metric.
   /// [dimensionValueSource] The location where the Amazon SES API v2 finds the value of a dimension to publish to Amazon CloudWatch. Valid values: `MESSAGE_TAG`, `EMAIL_HEADER`, `LINK_TAG`.
-  ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration({
+  const ConfigurationSetEventDestinationEventDestinationCloudWatchDestinationDimensionConfiguration({
     required this.defaultDimensionValue,
     required this.dimensionName,
     required this.dimensionValueSource,

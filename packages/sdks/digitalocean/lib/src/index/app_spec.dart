@@ -71,7 +71,7 @@ class AppSpec {
   /// [staticSites] Optional.
   /// [vpcs] Specification for VPC.
   /// [workers] Optional.
-  AppSpec({
+  const AppSpec({
     this.alerts,
     this.databases,
     this.disableEdgeCache,

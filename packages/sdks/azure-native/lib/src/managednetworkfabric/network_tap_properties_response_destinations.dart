@@ -22,7 +22,7 @@ class NetworkTapPropertiesResponseDestinations {
   /// [destinationType] Type of destination. Input can be IsolationDomain or Direct.
   /// [isolationDomainProperties] Isolation Domain Properties.
   /// [name] Destination name.
-  NetworkTapPropertiesResponseDestinations({
+  const NetworkTapPropertiesResponseDestinations({
     required this.destinationId,
     this.destinationTapRuleId,
     required this.destinationType,

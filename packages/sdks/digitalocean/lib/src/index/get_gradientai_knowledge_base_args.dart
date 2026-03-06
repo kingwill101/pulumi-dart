@@ -32,7 +32,7 @@ class GetGradientaiKnowledgeBaseArgs {
   /// [tags] Optional.
   /// [userId] Optional.
   /// [uuid] Optional.
-  GetGradientaiKnowledgeBaseArgs({
+  const GetGradientaiKnowledgeBaseArgs({
     this.addedToAgentAt,
     this.databaseId,
     this.embeddingModelUuid,

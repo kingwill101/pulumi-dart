@@ -17,7 +17,7 @@ class RemediationContaineranalysisV1beta1 {
   /// [details] Contains a comprehensive human-readable discussion of the remediation.
   /// [remediationType] The type of remediation that can be applied.
   /// [remediationUri] Contains the URL where to obtain the remediation.
-  RemediationContaineranalysisV1beta1({
+  const RemediationContaineranalysisV1beta1({
     this.details,
     this.remediationType,
     this.remediationUri,

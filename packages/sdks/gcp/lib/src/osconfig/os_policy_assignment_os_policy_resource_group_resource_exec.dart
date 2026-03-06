@@ -20,7 +20,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourceExec].
   /// [enforce] What to run to bring this resource into the desired
   /// [validate] What to run to validate this resource is in the
-  OsPolicyAssignmentOsPolicyResourceGroupResourceExec({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourceExec({
     this.enforce,
     required this.validate,
   });

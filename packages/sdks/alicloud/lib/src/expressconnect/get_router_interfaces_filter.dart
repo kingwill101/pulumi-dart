@@ -9,7 +9,7 @@ class GetRouterInterfacesFilter {
   /// Creates a new [GetRouterInterfacesFilter].
   /// [key] Optional.
   /// [values] Optional.
-  GetRouterInterfacesFilter({
+  const GetRouterInterfacesFilter({
     this.key,
     this.values,
   });

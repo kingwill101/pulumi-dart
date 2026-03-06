@@ -11,7 +11,7 @@ class ClusterNodeGroupSpotBidPrice {
   /// Creates a new [ClusterNodeGroupSpotBidPrice].
   /// [bidPrice] The spot bid price of a PayAsYouGo instance.
   /// [instanceType] Host Ecs instance type.
-  ClusterNodeGroupSpotBidPrice({
+  const ClusterNodeGroupSpotBidPrice({
     required this.bidPrice,
     required this.instanceType,
   });

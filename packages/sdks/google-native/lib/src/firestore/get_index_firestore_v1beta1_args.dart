@@ -15,7 +15,7 @@ class GetIndexFirestoreV1beta1Args {
   /// [databaseId] Required.
   /// [indexId] Required.
   /// [project] Optional.
-  GetIndexFirestoreV1beta1Args({
+  const GetIndexFirestoreV1beta1Args({
     required this.databaseId,
     required this.indexId,
     this.project,

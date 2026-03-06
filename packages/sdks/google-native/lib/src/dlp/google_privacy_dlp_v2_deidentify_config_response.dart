@@ -22,7 +22,7 @@ class GooglePrivacyDlpV2DeidentifyConfigResponse {
   /// [infoTypeTransformations] Treat the dataset as free-form text and apply the same free text transformation everywhere.
   /// [recordTransformations] Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
   /// [transformationErrorHandling] Mode for handling transformation errors. If left unspecified, the default mode is `TransformationErrorHandling.ThrowError`.
-  GooglePrivacyDlpV2DeidentifyConfigResponse({
+  const GooglePrivacyDlpV2DeidentifyConfigResponse({
     required this.imageTransformations,
     required this.infoTypeTransformations,
     required this.recordTransformations,

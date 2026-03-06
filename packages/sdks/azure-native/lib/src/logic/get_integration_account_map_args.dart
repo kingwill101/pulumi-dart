@@ -18,7 +18,7 @@ class GetIntegrationAccountMapArgs {
   /// [integrationAccountName] The integration account name.
   /// [mapName] The integration account map name.
   /// [resourceGroupName] The resource group name.
-  GetIntegrationAccountMapArgs({
+  const GetIntegrationAccountMapArgs({
     required this.integrationAccountName,
     required this.mapName,
     required this.resourceGroupName,

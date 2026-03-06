@@ -9,7 +9,7 @@ class EncryptionResponseVmmigrationV1alpha1 {
 
   /// Creates a new [EncryptionResponseVmmigrationV1alpha1].
   /// [kmsKey] The name of the encryption key that is stored in Google Cloud KMS.
-  EncryptionResponseVmmigrationV1alpha1({
+  const EncryptionResponseVmmigrationV1alpha1({
     required this.kmsKey,
   });
 

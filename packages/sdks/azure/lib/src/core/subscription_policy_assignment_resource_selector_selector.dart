@@ -11,7 +11,7 @@ class SubscriptionPolicyAssignmentResourceSelectorSelector {
   /// [ins] Optional.
   /// [kind] Required.
   /// [notIns] Optional.
-  SubscriptionPolicyAssignmentResourceSelectorSelector({
+  const SubscriptionPolicyAssignmentResourceSelectorSelector({
     this.ins,
     required this.kind,
     this.notIns,

@@ -20,7 +20,7 @@ class UsageExportBucketArgs {
   /// [bucketName] The bucket to store reports in.
   /// [prefix] A prefix for the reports, for instance, the project name.
   /// [project] The project to set the export bucket on. If it is not provided, the provider project is used.
-  UsageExportBucketArgs({
+  const UsageExportBucketArgs({
     required this.bucketName,
     this.prefix,
     this.project,

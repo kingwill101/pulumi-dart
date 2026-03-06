@@ -24,7 +24,7 @@ class EnvironmentRotationScheduleArgs {
   /// [project] Project name.
   /// [scheduleCron] Cron expression for recurring scheduled rotations. If you are supplying this, do not supply timestamp.
   /// [timestamp] The time at which the rotation should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z. If you are supplying this, do not supply scheduleCron.
-  EnvironmentRotationScheduleArgs({
+  const EnvironmentRotationScheduleArgs({
     required this.environment,
     required this.organization,
     required this.project,

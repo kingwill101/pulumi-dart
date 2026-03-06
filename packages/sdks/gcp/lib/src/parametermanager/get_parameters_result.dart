@@ -18,7 +18,7 @@ class GetParametersResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [parameters] A list of parameters matching the filter. Structure is defined below.
   /// [project] The ID of the project in which the resource belongs.
-  GetParametersResult({
+  const GetParametersResult({
     this.filter,
     required this.id,
     required this.parameters,

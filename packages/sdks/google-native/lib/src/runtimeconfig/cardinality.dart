@@ -12,7 +12,7 @@ class Cardinality {
   /// Creates a new [Cardinality].
   /// [number] The number variables under the `path` that must exist to meet this condition. Defaults to 1 if not specified.
   /// [path] The root of the variable subtree to monitor. For example, `/foo`.
-  Cardinality({
+  const Cardinality({
     this.number,
     this.path,
   });

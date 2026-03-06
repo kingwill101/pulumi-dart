@@ -15,7 +15,7 @@ class ConditionResponse {
   /// [field] Field for a given condition.
   /// [operator] Operator for a given condition.
   /// [values] List of values to match for a given condition.
-  ConditionResponse({
+  const ConditionResponse({
     this.field,
     this.operator,
     this.values,

@@ -31,7 +31,7 @@ class SystemTopicArgs {
   /// [systemTopicName] Name of the system topic.
   /// [tags] Tags of the resource.
   /// [topicType] TopicType for the system topic.
-  SystemTopicArgs({
+  const SystemTopicArgs({
     this.identity,
     this.location,
     required this.resourceGroupName,

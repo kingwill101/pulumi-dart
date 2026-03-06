@@ -14,7 +14,7 @@ class AmlFilesystemResponseHsm {
   /// Creates a new [AmlFilesystemResponseHsm].
   /// [archiveStatus] Archive status
   /// [settings] Specifies HSM settings of the AML file system.
-  AmlFilesystemResponseHsm({
+  const AmlFilesystemResponseHsm({
     required this.archiveStatus,
     this.settings,
   });

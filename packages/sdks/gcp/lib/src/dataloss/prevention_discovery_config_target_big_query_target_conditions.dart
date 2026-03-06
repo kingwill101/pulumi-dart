@@ -22,7 +22,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetConditions {
   /// [orConditions] At least one of the conditions must be true for a table to be scanned.
   /// [typeCollection] Restrict discovery to categories of table types. Currently view, materialized view, snapshot and non-biglake external tables are supported.
   /// [types] Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES].
-  PreventionDiscoveryConfigTargetBigQueryTargetConditions({
+  const PreventionDiscoveryConfigTargetBigQueryTargetConditions({
     this.createdAfter,
     this.orConditions,
     this.typeCollection,

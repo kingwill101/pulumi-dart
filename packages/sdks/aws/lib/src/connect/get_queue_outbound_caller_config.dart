@@ -14,7 +14,7 @@ class GetQueueOutboundCallerConfig {
   /// [outboundCallerIdName] Specifies the caller ID name.
   /// [outboundCallerIdNumberId] Specifies the caller ID number.
   /// [outboundFlowId] Outbound whisper flow to be used during an outbound call.
-  GetQueueOutboundCallerConfig({
+  const GetQueueOutboundCallerConfig({
     required this.outboundCallerIdName,
     required this.outboundCallerIdNumberId,
     required this.outboundFlowId,

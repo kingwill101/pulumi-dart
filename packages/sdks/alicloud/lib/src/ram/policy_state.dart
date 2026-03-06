@@ -54,7 +54,7 @@ class PolicyState {
   /// [type] The type of the policy.
   /// [version] Field `version` has been deprecated from provider version 1.49.0. New field `document` instead.
   /// [versionId] The ID of the default policy version.
-  PolicyState({
+  const PolicyState({
     this.attachmentCount,
     this.createTime,
     this.defaultVersion,

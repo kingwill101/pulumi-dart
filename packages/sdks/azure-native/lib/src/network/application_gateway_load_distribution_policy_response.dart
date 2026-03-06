@@ -28,7 +28,7 @@ class ApplicationGatewayLoadDistributionPolicyResponse {
   /// [name] Name of the load distribution policy that is unique within an Application Gateway.
   /// [provisioningState] The provisioning state of the Load Distribution Policy resource.
   /// [type] Type of the resource.
-  ApplicationGatewayLoadDistributionPolicyResponse({
+  const ApplicationGatewayLoadDistributionPolicyResponse({
     required this.etag,
     this.id,
     this.loadDistributionAlgorithm,

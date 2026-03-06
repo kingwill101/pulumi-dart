@@ -13,7 +13,7 @@ class ReplicaResponse {
   /// Creates a new [ReplicaResponse].
   /// [customerManagedEncryption] Optional. The customer-managed encryption configuration of the User-Managed Replica. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
   /// [location] The canonical IDs of the location to replicate data. For example: `"us-east1"`.
-  ReplicaResponse({
+  const ReplicaResponse({
     required this.customerManagedEncryption,
     required this.location,
   });

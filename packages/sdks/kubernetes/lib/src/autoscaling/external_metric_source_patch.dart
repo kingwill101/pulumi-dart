@@ -14,7 +14,7 @@ class ExternalMetricSourcePatch {
   /// Creates a new [ExternalMetricSourcePatch].
   /// [metric] metric identifies the target metric by name and selector
   /// [target] target specifies the target value for the given metric
-  ExternalMetricSourcePatch({
+  const ExternalMetricSourcePatch({
     this.metric,
     this.target,
   });

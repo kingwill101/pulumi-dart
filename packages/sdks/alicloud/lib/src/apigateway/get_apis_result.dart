@@ -28,7 +28,7 @@ class GetApisResult {
   /// [nameRegex] Optional.
   /// [names] A list of API names.
   /// [outputFile] Optional.
-  GetApisResult({
+  const GetApisResult({
     this.apiId,
     required this.apis,
     this.groupId,

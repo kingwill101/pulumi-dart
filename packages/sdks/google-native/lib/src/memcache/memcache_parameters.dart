@@ -8,7 +8,7 @@ class MemcacheParameters {
 
   /// Creates a new [MemcacheParameters].
   /// [params] User defined set of parameters to use in the memcached process.
-  MemcacheParameters({
+  const MemcacheParameters({
     this.params,
   });
 

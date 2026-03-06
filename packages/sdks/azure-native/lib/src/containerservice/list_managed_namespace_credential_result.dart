@@ -10,7 +10,7 @@ class ListManagedNamespaceCredentialResult {
 
   /// Creates a new [ListManagedNamespaceCredentialResult].
   /// [kubeconfigs] Base64-encoded Kubernetes configuration file.
-  ListManagedNamespaceCredentialResult({
+  const ListManagedNamespaceCredentialResult({
     required this.kubeconfigs,
   });
 

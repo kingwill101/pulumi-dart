@@ -20,7 +20,7 @@ class GetTagOperationLinkResult {
   /// [name] The name of the resource
   /// [operationId] Full resource Id of an API operation.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetTagOperationLinkResult({
+  const GetTagOperationLinkResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -19,7 +19,7 @@ class GetKeyRingImportJobIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetKeyRingImportJobIamPolicyArgs({
+  const GetKeyRingImportJobIamPolicyArgs({
     required this.importJobId,
     required this.keyRingId,
     required this.location,

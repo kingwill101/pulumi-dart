@@ -14,7 +14,7 @@ class PlanWorkflowStepEksResourceScalingConfigEksCluster {
   /// [clusterArn] ARN of the EKS cluster.
   /// [crossAccountRole] ARN of the cross-account role to assume.
   /// [externalId] External ID for cross-account role assumption.
-  PlanWorkflowStepEksResourceScalingConfigEksCluster({
+  const PlanWorkflowStepEksResourceScalingConfigEksCluster({
     required this.clusterArn,
     this.crossAccountRole,
     this.externalId,

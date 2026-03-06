@@ -25,7 +25,7 @@ class GetRegistrationAssignmentResult {
   /// [properties] The properties of a registration assignment.
   /// [systemData] The metadata for the registration assignment resource.
   /// [type] The type of the Azure resource (Microsoft.ManagedServices/registrationAssignments).
-  GetRegistrationAssignmentResult({
+  const GetRegistrationAssignmentResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

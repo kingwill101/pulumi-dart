@@ -12,7 +12,7 @@ class ResourceId {
   /// Creates a new [ResourceId].
   /// [id] The type-specific id. This should correspond to the id used in the type-specific API's.
   /// [type] The resource type this id is for. At present, the valid types are: "organization", "folder", and "project".
-  ResourceId({
+  const ResourceId({
     this.id,
     this.type,
   });

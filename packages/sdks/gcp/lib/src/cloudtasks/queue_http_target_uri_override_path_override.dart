@@ -8,7 +8,7 @@ class QueueHttpTargetUriOverridePathOverride {
 
   /// Creates a new [QueueHttpTargetUriOverridePathOverride].
   /// [path] The URI path (e.g., /users/1234). Default is an empty string.
-  QueueHttpTargetUriOverridePathOverride({
+  const QueueHttpTargetUriOverridePathOverride({
     this.path,
   });
 

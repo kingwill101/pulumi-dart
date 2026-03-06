@@ -13,7 +13,7 @@ class GetHistoryArgs {
   /// Creates a new [GetHistoryArgs].
   /// [historyId] Required.
   /// [project] Optional.
-  GetHistoryArgs({
+  const GetHistoryArgs({
     required this.historyId,
     this.project,
   });

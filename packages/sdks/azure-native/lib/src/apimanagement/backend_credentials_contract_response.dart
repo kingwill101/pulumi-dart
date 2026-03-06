@@ -22,7 +22,7 @@ class BackendCredentialsContractResponse {
   /// [certificateIds] List of Client Certificate Ids.
   /// [header] Header Parameter description.
   /// [query] Query Parameter description.
-  BackendCredentialsContractResponse({
+  const BackendCredentialsContractResponse({
     this.authorization,
     this.certificate,
     this.certificateIds,

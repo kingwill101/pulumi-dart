@@ -58,7 +58,7 @@ class UptimeCheckConfigHttpCheck {
   /// [serviceAgentAuthentication] The authentication information using the Monitoring Service Agent. Optional when creating an HTTPS check; defaults to empty. Do not use with other authentication fields.
   /// [useSsl] If true, use HTTPS instead of HTTP to run the check.
   /// [validateSsl] Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where `monitored_resource` is set to `uptime_url`. If `use_ssl` is `false`, setting `validate_ssl` to `true` has no effect.
-  UptimeCheckConfigHttpCheck({
+  const UptimeCheckConfigHttpCheck({
     this.acceptedResponseStatusCodes,
     this.authInfo,
     this.body,

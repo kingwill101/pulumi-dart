@@ -85,7 +85,7 @@ class DeploymentGroupState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [terminationHookEnabled] Indicates whether the deployment group was configured to have CodeDeploy install a termination hook into an Auto Scaling group.
   /// [triggerConfigurations] Configuration block(s) of the triggers for the deployment group (documented below).
-  DeploymentGroupState({
+  const DeploymentGroupState({
     this.alarmConfiguration,
     this.appName,
     this.arn,

@@ -31,7 +31,7 @@ class JsonFormat {
   /// [nestingSeparator] The character used to separate nesting levels. Default value is '.' (dot). Type: string (or Expression with resultType string).
   /// [serializer] Serializer. Type: string (or Expression with resultType string).
   /// [type] Type of dataset storage format.
-  JsonFormat({
+  const JsonFormat({
     this.deserializer,
     this.encodingName,
     this.filePattern,

@@ -8,7 +8,7 @@ class GetResourcePolicyDiskConsistencyGroupPolicy {
 
   /// Creates a new [GetResourcePolicyDiskConsistencyGroupPolicy].
   /// [enabled] Enable disk consistency on the resource policy.
-  GetResourcePolicyDiskConsistencyGroupPolicy({
+  const GetResourcePolicyDiskConsistencyGroupPolicy({
     required this.enabled,
   });
 

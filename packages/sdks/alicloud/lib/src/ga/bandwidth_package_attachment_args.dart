@@ -15,7 +15,7 @@ class BandwidthPackageAttachmentArgs {
   /// Creates a new [BandwidthPackageAttachmentArgs].
   /// [acceleratorId] The ID of the Global Accelerator instance.
   /// [bandwidthPackageId] The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
-  BandwidthPackageAttachmentArgs({
+  const BandwidthPackageAttachmentArgs({
     required this.acceleratorId,
     required this.bandwidthPackageId,
   });

@@ -115,7 +115,7 @@ class AppState {
   /// [timeZoneSettings] TimeZone settings of the app.
   /// [updateTime] Timestamp when the app was last updated.
   /// [variableDeclarations] The declarations of the variables.
-  AppState({
+  const AppState({
     this.appId,
     this.audioProcessingConfig,
     this.clientCertificateSettings,

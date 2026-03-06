@@ -15,7 +15,7 @@ class GatewayState {
   /// [gatewayDesc] The description of Gateway.
   /// [gatewayName] The name of the Gateway.
   /// [status] The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
-  GatewayState({
+  const GatewayState({
     this.gatewayDesc,
     this.gatewayName,
     this.status,

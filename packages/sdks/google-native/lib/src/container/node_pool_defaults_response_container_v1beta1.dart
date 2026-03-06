@@ -10,7 +10,7 @@ class NodePoolDefaultsResponseContainerV1beta1 {
 
   /// Creates a new [NodePoolDefaultsResponseContainerV1beta1].
   /// [nodeConfigDefaults] Subset of NodeConfig message that has defaults.
-  NodePoolDefaultsResponseContainerV1beta1({
+  const NodePoolDefaultsResponseContainerV1beta1({
     required this.nodeConfigDefaults,
   });
 

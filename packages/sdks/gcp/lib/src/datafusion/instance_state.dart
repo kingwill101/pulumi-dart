@@ -139,7 +139,7 @@ class InstanceState {
   /// [updateTime] The time the instance was last updated in RFC3339 UTC "Zulu" format, accurate to nanoseconds.
   /// [version] Current version of the Data Fusion.
   /// [zone] Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
-  InstanceState({
+  const InstanceState({
     this.accelerators,
     this.apiEndpoint,
     this.createTime,

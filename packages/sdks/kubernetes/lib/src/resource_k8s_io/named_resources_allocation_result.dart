@@ -9,7 +9,7 @@ class NamedResourcesAllocationResult {
 
   /// Creates a new [NamedResourcesAllocationResult].
   /// [name] Name is the name of the selected resource instance.
-  NamedResourcesAllocationResult({
+  const NamedResourcesAllocationResult({
     required this.name,
   });
 

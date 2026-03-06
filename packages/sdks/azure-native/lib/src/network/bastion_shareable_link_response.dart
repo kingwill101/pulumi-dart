@@ -19,7 +19,7 @@ class BastionShareableLinkResponse {
   /// [createdAt] The time when the link was created.
   /// [message] Optional field indicating the warning or error message related to the vm in case of partial failure.
   /// [vm] Reference of the virtual machine resource.
-  BastionShareableLinkResponse({
+  const BastionShareableLinkResponse({
     required this.bsl,
     required this.createdAt,
     required this.message,

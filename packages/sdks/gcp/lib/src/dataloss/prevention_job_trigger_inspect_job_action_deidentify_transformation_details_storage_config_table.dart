@@ -16,7 +16,7 @@ class PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorage
   /// [datasetId] The ID of the dataset containing this table.
   /// [projectId] The ID of the project containing this table.
   /// [tableId] The ID of the table. The ID must contain only letters (a-z,
-  PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable({
+  const PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable({
     required this.datasetId,
     required this.projectId,
     this.tableId,

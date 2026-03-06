@@ -18,7 +18,7 @@ class CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment
   /// [allowPlaybackInterruption] (Output)
   /// [audio] Raw audio synthesized from the Dialogflow agent's response using the output config specified in the request.
   /// [uri] Client-specific URI that points to an audio clip accessible to the client. Dialogflow does not impose any validation on it.
-  CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment({
+  const CxFlowKnowledgeConnectorSettingsTriggerFulfillmentMessageMixedAudioSegment({
     this.allowPlaybackInterruption,
     this.audio,
     this.uri,

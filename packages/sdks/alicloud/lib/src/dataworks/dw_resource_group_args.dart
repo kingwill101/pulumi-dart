@@ -42,7 +42,7 @@ class DwResourceGroupArgs {
   /// [resourceGroupName] Resource group name
   /// [specification] Package year and package month resource group specifications, unit CU
   /// [tags] The tag of the resource
-  DwResourceGroupArgs({
+  const DwResourceGroupArgs({
     this.autoRenew,
     required this.defaultVpcId,
     required this.defaultVswitchId,

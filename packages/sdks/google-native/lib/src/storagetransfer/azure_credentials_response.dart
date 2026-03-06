@@ -9,7 +9,7 @@ class AzureCredentialsResponse {
 
   /// Creates a new [AzureCredentialsResponse].
   /// [sasToken] Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
-  AzureCredentialsResponse({
+  const AzureCredentialsResponse({
     required this.sasToken,
   });
 

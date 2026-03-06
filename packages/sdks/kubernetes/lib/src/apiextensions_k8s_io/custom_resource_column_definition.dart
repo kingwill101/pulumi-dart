@@ -24,7 +24,7 @@ class CustomResourceColumnDefinition {
   /// [name] name is a human readable name for the column.
   /// [priority] priority is an integer defining the relative importance of this column compared to others. Lower numbers are considered higher priority. Columns that may be omitted in limited space scenarios should be given a priority greater than 0.
   /// [type] type is an OpenAPI type definition for this column. See https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#data-types for details.
-  CustomResourceColumnDefinition({
+  const CustomResourceColumnDefinition({
     this.description,
     this.format,
     required this.jsonPath,

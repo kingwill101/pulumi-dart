@@ -52,7 +52,7 @@ class GetDevEnvironmentResult {
   /// [status] The current status of the Dev Environment. From: PENDING | RUNNING | STARTING | STOPPING | STOPPED | FAILED | DELETING | DELETED.
   /// [statusReason] The reason for the status.
   /// [tags] Required.
-  GetDevEnvironmentResult({
+  const GetDevEnvironmentResult({
     this.alias,
     this.creatorId,
     required this.envId,

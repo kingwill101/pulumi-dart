@@ -17,7 +17,7 @@ class CredentialResponseDeploymentmanagerV2beta {
   /// [basicAuth] Basic Auth Credential, only used by TypeProvider.
   /// [serviceAccount] Service Account Credential, only used by Deployment.
   /// [useProjectDefault] Specify to use the project default credential, only supported by Deployment.
-  CredentialResponseDeploymentmanagerV2beta({
+  const CredentialResponseDeploymentmanagerV2beta({
     required this.basicAuth,
     required this.serviceAccount,
     required this.useProjectDefault,

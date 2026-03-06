@@ -8,7 +8,7 @@ class DomainDevicesParallelSourceDbus {
 
   /// Creates a new [DomainDevicesParallelSourceDbus].
   /// [channel] Specifies the channel used for the DBus source in the EGD backend.
-  DomainDevicesParallelSourceDbus({
+  const DomainDevicesParallelSourceDbus({
     this.channel,
   });
 

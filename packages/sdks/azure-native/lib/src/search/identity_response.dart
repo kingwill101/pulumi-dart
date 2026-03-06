@@ -19,7 +19,7 @@ class IdentityResponse {
   /// [tenantId] The tenant ID of the system-assigned identity of the search service.
   /// [type] The type of identity used for the resource. The type 'SystemAssigned, UserAssigned' includes both an identity created by the system and a set of user assigned identities. The type 'None' will remove all identities from the service.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource IDs in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  IdentityResponse({
+  const IdentityResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

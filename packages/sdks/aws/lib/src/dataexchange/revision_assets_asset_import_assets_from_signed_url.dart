@@ -8,7 +8,7 @@ class RevisionAssetsAssetImportAssetsFromSignedUrl {
 
   /// Creates a new [RevisionAssetsAssetImportAssetsFromSignedUrl].
   /// [filename] The name of the file to import.
-  RevisionAssetsAssetImportAssetsFromSignedUrl({
+  const RevisionAssetsAssetImportAssetsFromSignedUrl({
     required this.filename,
   });
 

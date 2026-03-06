@@ -31,7 +31,7 @@ class EfsFileSystemProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  EfsFileSystemProperties({
+  const EfsFileSystemProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

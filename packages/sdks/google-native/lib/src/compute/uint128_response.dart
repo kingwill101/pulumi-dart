@@ -9,7 +9,7 @@ class Uint128Response {
   /// Creates a new [Uint128Response].
   /// [high] Required.
   /// [low] Required.
-  Uint128Response({
+  const Uint128Response({
     required this.high,
     required this.low,
   });

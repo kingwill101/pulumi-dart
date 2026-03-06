@@ -13,7 +13,7 @@ class GetBillingAccountIamPolicyArgs {
   /// Creates a new [GetBillingAccountIamPolicyArgs].
   /// [billingAccountId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
-  GetBillingAccountIamPolicyArgs({
+  const GetBillingAccountIamPolicyArgs({
     required this.billingAccountId,
     this.optionsRequestedPolicyVersion,
   });

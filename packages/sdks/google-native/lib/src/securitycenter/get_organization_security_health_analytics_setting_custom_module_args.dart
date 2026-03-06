@@ -13,7 +13,7 @@ class GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs {
   /// Creates a new [GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs].
   /// [customModuleId] Required.
   /// [organizationId] Required.
-  GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs({
+  const GetOrganizationSecurityHealthAnalyticsSettingCustomModuleArgs({
     required this.customModuleId,
     required this.organizationId,
   });

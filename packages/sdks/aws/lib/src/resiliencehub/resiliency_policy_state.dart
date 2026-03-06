@@ -46,7 +46,7 @@ class ResiliencyPolicyState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [tier] Resiliency Policy Tier.
   /// [timeouts] Optional.
-  ResiliencyPolicyState({
+  const ResiliencyPolicyState({
     this.arn,
     this.dataLocationConstraint,
     this.description,

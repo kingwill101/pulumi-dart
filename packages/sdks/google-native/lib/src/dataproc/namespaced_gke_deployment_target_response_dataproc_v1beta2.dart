@@ -12,7 +12,7 @@ class NamespacedGkeDeploymentTargetResponseDataprocV1beta2 {
   /// Creates a new [NamespacedGkeDeploymentTargetResponseDataprocV1beta2].
   /// [clusterNamespace] Optional. A namespace within the GKE cluster to deploy into.
   /// [targetGkeCluster] Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
-  NamespacedGkeDeploymentTargetResponseDataprocV1beta2({
+  const NamespacedGkeDeploymentTargetResponseDataprocV1beta2({
     required this.clusterNamespace,
     required this.targetGkeCluster,
   });

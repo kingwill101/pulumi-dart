@@ -41,7 +41,7 @@ class GetWebAppConfigResult {
   /// [project] Optional.
   /// [storageBucket] The default Cloud Storage for Firebase storage bucket name.
   /// [webAppId] Required.
-  GetWebAppConfigResult({
+  const GetWebAppConfigResult({
     required this.apiKey,
     required this.authDomain,
     required this.databaseUrl,

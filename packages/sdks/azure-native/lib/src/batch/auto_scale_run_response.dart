@@ -16,7 +16,7 @@ class AutoScaleRunResponse {
   /// [error] An error that occurred when autoscaling a pool.
   /// [evaluationTime] The time at which the autoscale formula was last evaluated.
   /// [results] Each variable value is returned in the form $variable=value, and variables are separated by semicolons.
-  AutoScaleRunResponse({
+  const AutoScaleRunResponse({
     this.error,
     required this.evaluationTime,
     this.results,

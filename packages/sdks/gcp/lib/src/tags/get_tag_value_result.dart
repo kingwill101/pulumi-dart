@@ -28,7 +28,7 @@ class GetTagValueResult {
   /// [parent] Required.
   /// [shortName] Required.
   /// [updateTime] Update time.
-  GetTagValueResult({
+  const GetTagValueResult({
     required this.createTime,
     required this.description,
     required this.id,

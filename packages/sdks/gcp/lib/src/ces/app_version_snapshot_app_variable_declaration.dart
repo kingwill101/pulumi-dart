@@ -20,7 +20,7 @@ class AppVersionSnapshotAppVariableDeclaration {
   /// [description] The description of the app version.
   /// [name] (Output)
   /// [schemas] (Output)
-  AppVersionSnapshotAppVariableDeclaration({
+  const AppVersionSnapshotAppVariableDeclaration({
     this.description,
     this.name,
     this.schemas,

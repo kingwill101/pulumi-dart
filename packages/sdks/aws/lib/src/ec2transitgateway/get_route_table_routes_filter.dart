@@ -12,7 +12,7 @@ class GetRouteTableRoutesFilter {
   /// Creates a new [GetRouteTableRoutesFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetRouteTableRoutesFilter({
+  const GetRouteTableRoutesFilter({
     required this.name,
     required this.values,
   });

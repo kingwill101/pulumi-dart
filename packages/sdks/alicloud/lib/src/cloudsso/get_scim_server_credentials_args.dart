@@ -21,7 +21,7 @@ class GetScimServerCredentialsArgs {
   /// [ids] A list of SCIM Server Credential IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The Status of the resource. Valid values: `Disabled`, `Enabled`.
-  GetScimServerCredentialsArgs({
+  const GetScimServerCredentialsArgs({
     required this.directoryId,
     this.ids,
     this.outputFile,

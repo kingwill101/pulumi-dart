@@ -30,7 +30,7 @@ class ProxyEndpointArgs {
   /// [targetRole] Indicates whether the DB proxy endpoint can be used for read/write or read-only operations. The default is `READ_WRITE`. Valid values are `READ_WRITE` and `READ_ONLY`.
   /// [vpcSecurityGroupIds] One or more VPC security group IDs to associate with the new proxy.
   /// [vpcSubnetIds] One or more VPC subnet IDs to associate with the new proxy.
-  ProxyEndpointArgs({
+  const ProxyEndpointArgs({
     required this.dbProxyEndpointName,
     required this.dbProxyName,
     this.region,

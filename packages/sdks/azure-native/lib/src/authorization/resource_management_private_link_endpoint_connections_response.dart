@@ -8,7 +8,7 @@ class ResourceManagementPrivateLinkEndpointConnectionsResponse {
 
   /// Creates a new [ResourceManagementPrivateLinkEndpointConnectionsResponse].
   /// [privateEndpointConnections] The private endpoint connections.
-  ResourceManagementPrivateLinkEndpointConnectionsResponse({
+  const ResourceManagementPrivateLinkEndpointConnectionsResponse({
     this.privateEndpointConnections,
   });
 

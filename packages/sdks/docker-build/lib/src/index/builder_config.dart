@@ -13,7 +13,7 @@ class BuilderConfig {
 
   /// Creates a new [BuilderConfig].
   /// [name] Name of an existing buildx builder to use.
-  BuilderConfig({
+  const BuilderConfig({
     this.name,
   });
 

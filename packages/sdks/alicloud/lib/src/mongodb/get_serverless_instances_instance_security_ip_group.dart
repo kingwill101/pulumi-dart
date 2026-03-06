@@ -14,7 +14,7 @@ class GetServerlessInstancesInstanceSecurityIpGroup {
   /// [securityIpGroupAttribute] The attribute of the IP whitelist. This parameter is empty by default.
   /// [securityIpGroupName] The name of the IP whitelist.
   /// [securityIpList] The IP addresses in the whitelist.
-  GetServerlessInstancesInstanceSecurityIpGroup({
+  const GetServerlessInstancesInstanceSecurityIpGroup({
     required this.securityIpGroupAttribute,
     required this.securityIpGroupName,
     required this.securityIpList,

@@ -35,7 +35,7 @@ class ProximityPlacementGroupArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [zones] The availability zones.
-  ProximityPlacementGroupArgs({
+  const ProximityPlacementGroupArgs({
     this.colocationStatus,
     this.intent,
     this.location,

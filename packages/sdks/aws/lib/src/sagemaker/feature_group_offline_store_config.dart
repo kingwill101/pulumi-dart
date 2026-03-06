@@ -19,7 +19,7 @@ class FeatureGroupOfflineStoreConfig {
   /// [disableGlueTableCreation] Set to `true` to turn Online Store On.
   /// [s3StorageConfig] The Amazon Simple Storage (Amazon S3) location of OfflineStore. See S3 Storage Config Below.
   /// [tableFormat] Format for the offline store table. Supported formats are `Glue` (Default) and Apache `Iceberg` (https://iceberg.apache.org/).
-  FeatureGroupOfflineStoreConfig({
+  const FeatureGroupOfflineStoreConfig({
     this.dataCatalogConfig,
     this.disableGlueTableCreation,
     required this.s3StorageConfig,

@@ -73,7 +73,7 @@ class GetGenaiAgentArgs {
   /// [topP] Optional.
   /// [url] Optional.
   /// [userId] Optional.
-  GetGenaiAgentArgs({
+  const GetGenaiAgentArgs({
     this.agentGuardrails,
     required this.agentId,
     this.anthropicApiKeys,

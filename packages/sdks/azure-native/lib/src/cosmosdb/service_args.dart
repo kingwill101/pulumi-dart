@@ -22,7 +22,7 @@ class ServiceArgs {
   /// [properties] Properties in ServiceResourceCreateUpdateParameters.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] Cosmos DB service name.
-  ServiceArgs({
+  const ServiceArgs({
     required this.accountName,
     this.properties,
     required this.resourceGroupName,

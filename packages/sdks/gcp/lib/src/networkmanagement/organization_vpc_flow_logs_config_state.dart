@@ -79,7 +79,7 @@ class OrganizationVpcFlowLogsConfigState {
   /// [state] Optional. The state of the VPC Flow Log configuration. Default value
   /// [updateTime] Output only. The time the config was updated.
   /// [vpcFlowLogsConfigId] Required. ID of the `VpcFlowLogsConfig`.
-  OrganizationVpcFlowLogsConfigState({
+  const OrganizationVpcFlowLogsConfigState({
     this.aggregationInterval,
     this.createTime,
     this.crossProjectMetadata,

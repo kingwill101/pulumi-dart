@@ -14,7 +14,7 @@ class RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind {
   /// Creates a new [RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind].
   /// [resourceGroup] API Group string of a Kubernetes resource, e.g.
   /// [resourceKind] Kind of a Kubernetes resource, e.g.
-  RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind({
+  const RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind({
     this.resourceGroup,
     this.resourceKind,
   });

@@ -47,7 +47,7 @@ class GetSnapshotsArgs {
   /// [tags] A map of tags assigned to the snapshot.
   /// [type] Optional.
   /// [usage] Whether the snapshots are used to create resources or not. Value range: `image`, `disk`, `image_disk` and `none`.
-  GetSnapshotsArgs({
+  const GetSnapshotsArgs({
     this.category,
     this.dryRun,
     this.encrypted,

@@ -12,7 +12,7 @@ class GetControlOrganizationIntelligenceConfigArgs {
 
   /// Creates a new [GetControlOrganizationIntelligenceConfigArgs].
   /// [name] The id of GCP organization.
-  GetControlOrganizationIntelligenceConfigArgs({
+  const GetControlOrganizationIntelligenceConfigArgs({
     required this.name,
   });
 

@@ -9,7 +9,7 @@ class RestorePointCollectionSourceProperties {
 
   /// Creates a new [RestorePointCollectionSourceProperties].
   /// [id] Resource Id of the source resource used to create this restore point collection
-  RestorePointCollectionSourceProperties({
+  const RestorePointCollectionSourceProperties({
     this.id,
   });
 

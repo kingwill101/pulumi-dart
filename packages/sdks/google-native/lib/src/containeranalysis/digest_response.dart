@@ -12,7 +12,7 @@ class DigestResponse {
   /// Creates a new [DigestResponse].
   /// [algo] `SHA1`, `SHA512` etc.
   /// [digestBytes] Value of the digest.
-  DigestResponse({
+  const DigestResponse({
     required this.algo,
     required this.digestBytes,
   });

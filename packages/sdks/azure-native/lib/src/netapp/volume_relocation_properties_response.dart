@@ -12,7 +12,7 @@ class VolumeRelocationPropertiesResponse {
   /// Creates a new [VolumeRelocationPropertiesResponse].
   /// [readyToBeFinalized] Has relocation finished and is ready to be cleaned up
   /// [relocationRequested] Has relocation been requested for this volume
-  VolumeRelocationPropertiesResponse({
+  const VolumeRelocationPropertiesResponse({
     required this.readyToBeFinalized,
     this.relocationRequested,
   });

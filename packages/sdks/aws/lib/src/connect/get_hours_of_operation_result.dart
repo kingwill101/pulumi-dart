@@ -36,7 +36,7 @@ class GetHoursOfOperationResult {
   /// [region] Required.
   /// [tags] Map of tags to assign to the Hours of Operation.
   /// [timeZone] Time zone of the Hours of Operation.
-  GetHoursOfOperationResult({
+  const GetHoursOfOperationResult({
     required this.arn,
     required this.configs,
     required this.description,

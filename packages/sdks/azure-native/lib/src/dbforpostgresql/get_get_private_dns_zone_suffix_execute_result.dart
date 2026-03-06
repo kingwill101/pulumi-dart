@@ -7,7 +7,7 @@ class GetGetPrivateDnsZoneSuffixExecuteResult {
 
   /// Creates a new [GetGetPrivateDnsZoneSuffixExecuteResult].
   /// [value] Optional.
-  GetGetPrivateDnsZoneSuffixExecuteResult({
+  const GetGetPrivateDnsZoneSuffixExecuteResult({
     this.value,
   });
 

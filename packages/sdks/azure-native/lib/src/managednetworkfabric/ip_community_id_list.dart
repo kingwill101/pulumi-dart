@@ -9,7 +9,7 @@ class IpCommunityIdList {
 
   /// Creates a new [IpCommunityIdList].
   /// [ipCommunityIds] List of IP Community resource IDs.
-  IpCommunityIdList({
+  const IpCommunityIdList({
     this.ipCommunityIds,
   });
 

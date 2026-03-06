@@ -21,7 +21,7 @@ class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService {
   /// [backendService] The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
   /// [headerAction] Specifies changes to request and response headers that need to take effect for the selected backendService.
   /// [weight] Specifies the fraction of traffic sent to a backend service, computed as weight / (sum of all weightedBackendService weights in routeAction) .
-  RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService({
+  const RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService({
     required this.backendService,
     this.headerAction,
     required this.weight,

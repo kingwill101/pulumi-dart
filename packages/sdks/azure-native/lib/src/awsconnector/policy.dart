@@ -12,7 +12,7 @@ class Policy {
   /// Creates a new [Policy].
   /// [policyDocument] The entire contents of the policy that defines permissions. For more information, see [Overview of JSON policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html#access_policies-json).
   /// [policyName] The friendly name (not ARN) identifying the policy.
-  Policy({
+  const Policy({
     this.policyDocument,
     this.policyName,
   });

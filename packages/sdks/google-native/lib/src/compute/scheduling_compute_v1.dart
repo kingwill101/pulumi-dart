@@ -38,7 +38,7 @@ class SchedulingComputeV1 {
   /// [onHostMaintenance] Defines the maintenance behavior for this instance. For standard instances, the default behavior is MIGRATE. For preemptible instances, the default and only possible behavior is TERMINATE. For more information, see Set VM host maintenance policy.
   /// [preemptible] Defines whether the instance is preemptible. This can only be set during instance creation or while the instance is stopped and therefore, in a `TERMINATED` state. See Instance Life Cycle for more information on the possible instance states.
   /// [provisioningModel] Specifies the provisioning model of the instance.
-  SchedulingComputeV1({
+  const SchedulingComputeV1({
     this.automaticRestart,
     this.instanceTerminationAction,
     this.localSsdRecoveryTimeout,

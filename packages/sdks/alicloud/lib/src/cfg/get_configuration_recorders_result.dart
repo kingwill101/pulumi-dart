@@ -15,7 +15,7 @@ class GetConfigurationRecordersResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [recorders] A list of Config Configuration Recorders. Each element contains the following attributes:
-  GetConfigurationRecordersResult({
+  const GetConfigurationRecordersResult({
     required this.id,
     this.outputFile,
     required this.recorders,

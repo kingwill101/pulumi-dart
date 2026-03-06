@@ -26,7 +26,7 @@ class FhirStoreConsentConfig {
   /// [consentHeaderHandling] Different options to configure the behaviour of the server when handling the X-Consent-Scope header.
   /// [enforcedAdminConsents] (Output)
   /// [version] Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either [fhirStores.create][] or [fhirStores.patch][]. After that, you must call [fhirStores.applyConsents][] to change the version.
-  FhirStoreConsentConfig({
+  const FhirStoreConsentConfig({
     this.accessDeterminationLogConfig,
     this.accessEnforced,
     this.consentHeaderHandling,

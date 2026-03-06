@@ -9,7 +9,7 @@ class AutomationRuleCriteriaVerificationState {
   /// Creates a new [AutomationRuleCriteriaVerificationState].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaVerificationState({
+  const AutomationRuleCriteriaVerificationState({
     required this.comparison,
     required this.value,
   });

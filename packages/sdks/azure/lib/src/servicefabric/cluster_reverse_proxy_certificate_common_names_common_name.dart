@@ -13,7 +13,7 @@ class ClusterReverseProxyCertificateCommonNamesCommonName {
   /// Creates a new [ClusterReverseProxyCertificateCommonNamesCommonName].
   /// [certificateCommonName] The common or subject name of the certificate.
   /// [certificateIssuerThumbprint] The Issuer Thumbprint of the Certificate.
-  ClusterReverseProxyCertificateCommonNamesCommonName({
+  const ClusterReverseProxyCertificateCommonNamesCommonName({
     required this.certificateCommonName,
     this.certificateIssuerThumbprint,
   });

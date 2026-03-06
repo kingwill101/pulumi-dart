@@ -17,7 +17,7 @@ class UDPHealthCheck {
   /// [portName] Not supported.
   /// [request] Raw data of request to send in payload of UDP packet. It is an error if this is empty. The request data can only be ASCII.
   /// [response] The bytes to match against the beginning of the response data. It is an error if this is empty. The response data can only be ASCII.
-  UDPHealthCheck({
+  const UDPHealthCheck({
     this.port,
     this.portName,
     this.request,

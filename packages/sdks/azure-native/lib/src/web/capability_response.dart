@@ -15,7 +15,7 @@ class CapabilityResponse {
   /// [name] Name of the SKU capability.
   /// [reason] Reason of the SKU capability.
   /// [value] Value of the SKU capability.
-  CapabilityResponse({
+  const CapabilityResponse({
     this.name,
     this.reason,
     this.value,

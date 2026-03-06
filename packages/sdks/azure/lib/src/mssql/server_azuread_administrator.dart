@@ -17,7 +17,7 @@ class ServerAzureadAdministrator {
   /// [loginUsername] The login username of the Azure AD Administrator of this SQL Server.
   /// [objectId] The object id of the Azure AD Administrator of this SQL Server.
   /// [tenantId] The tenant id of the Azure AD Administrator of this SQL Server.
-  ServerAzureadAdministrator({
+  const ServerAzureadAdministrator({
     this.azureadAuthenticationOnly,
     required this.loginUsername,
     required this.objectId,

@@ -11,7 +11,7 @@ class GetEdgeKubernetesClustersClusterConnections {
   /// Creates a new [GetEdgeKubernetesClustersClusterConnections].
   /// [apiServerInternet] API Server Internet endpoint.
   /// [apiServerIntranet] API Server Intranet endpoint.
-  GetEdgeKubernetesClustersClusterConnections({
+  const GetEdgeKubernetesClustersClusterConnections({
     required this.apiServerInternet,
     required this.apiServerIntranet,
   });

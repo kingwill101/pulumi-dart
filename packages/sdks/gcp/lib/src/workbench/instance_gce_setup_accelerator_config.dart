@@ -12,7 +12,7 @@ class InstanceGceSetupAcceleratorConfig {
   /// Creates a new [InstanceGceSetupAcceleratorConfig].
   /// [coreCount] Optional. Count of cores of this accelerator.
   /// [type] Optional. Type of this accelerator.
-  InstanceGceSetupAcceleratorConfig({
+  const InstanceGceSetupAcceleratorConfig({
     this.coreCount,
     this.type,
   });

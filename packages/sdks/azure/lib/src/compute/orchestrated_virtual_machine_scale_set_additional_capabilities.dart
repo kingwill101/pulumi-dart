@@ -8,7 +8,7 @@ class OrchestratedVirtualMachineScaleSetAdditionalCapabilities {
 
   /// Creates a new [OrchestratedVirtualMachineScaleSetAdditionalCapabilities].
   /// [ultraSsdEnabled] Should the capacity to enable Data Disks of the `UltraSSD_LRS` storage account type be supported on this Virtual Machine Scale Set? Defaults to `false`. Changing this forces a new resource to be created.
-  OrchestratedVirtualMachineScaleSetAdditionalCapabilities({
+  const OrchestratedVirtualMachineScaleSetAdditionalCapabilities({
     this.ultraSsdEnabled,
   });
 

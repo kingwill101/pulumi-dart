@@ -26,7 +26,7 @@ class GetSiteResult {
   /// [locations] Site location as documented below.
   /// [siteId] Required.
   /// [tags] Key-value tags for the Site.
-  GetSiteResult({
+  const GetSiteResult({
     required this.arn,
     required this.description,
     required this.globalNetworkId,

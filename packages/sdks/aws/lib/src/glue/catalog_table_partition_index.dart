@@ -13,7 +13,7 @@ class CatalogTablePartitionIndex {
   /// [indexName] Name of the partition index.
   /// [indexStatus] Optional.
   /// [keys] Keys for the partition index.
-  CatalogTablePartitionIndex({
+  const CatalogTablePartitionIndex({
     required this.indexName,
     this.indexStatus,
     required this.keys,

@@ -17,7 +17,7 @@ class ReportTemplateReportScope {
   /// [key] Key for reporting scope, currently supported:
   /// [matchType] The matching logic. Currently, only In is supported.
   /// [value] The value of the report range. Each k-v pair is an OR logic. For example, multiple rule IDs can be separated by commas (,).
-  ReportTemplateReportScope({
+  const ReportTemplateReportScope({
     this.key,
     this.matchType,
     this.value,

@@ -12,7 +12,7 @@ class TokenRequestStorageK8sIoV1beta1 {
   /// Creates a new [TokenRequestStorageK8sIoV1beta1].
   /// [audience] Audience is the intended audience of the token in "TokenRequestSpec". It will default to the audiences of kube apiserver.
   /// [expirationSeconds] ExpirationSeconds is the duration of validity of the token in "TokenRequestSpec". It has the same default value of "ExpirationSeconds" in "TokenRequestSpec"
-  TokenRequestStorageK8sIoV1beta1({
+  const TokenRequestStorageK8sIoV1beta1({
     required this.audience,
     this.expirationSeconds,
   });

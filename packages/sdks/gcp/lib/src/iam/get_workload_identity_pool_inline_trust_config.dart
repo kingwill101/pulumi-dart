@@ -16,7 +16,7 @@ class GetWorkloadIdentityPoolInlineTrustConfig {
 
   /// Creates a new [GetWorkloadIdentityPoolInlineTrustConfig].
   /// [additionalTrustBundles] Maps specific trust domains (e.g., "example.com") to their corresponding 'TrustStore'
-  GetWorkloadIdentityPoolInlineTrustConfig({
+  const GetWorkloadIdentityPoolInlineTrustConfig({
     required this.additionalTrustBundles,
   });
 

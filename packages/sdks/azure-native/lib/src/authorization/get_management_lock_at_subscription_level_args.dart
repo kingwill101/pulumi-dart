@@ -12,7 +12,7 @@ class GetManagementLockAtSubscriptionLevelArgs {
 
   /// Creates a new [GetManagementLockAtSubscriptionLevelArgs].
   /// [lockName] The name of the lock to get.
-  GetManagementLockAtSubscriptionLevelArgs({
+  const GetManagementLockAtSubscriptionLevelArgs({
     required this.lockName,
   });
 

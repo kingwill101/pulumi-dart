@@ -9,7 +9,7 @@ class ChannelHlsIngest {
 
   /// Creates a new [ChannelHlsIngest].
   /// [ingestEndpoints] A list of the ingest endpoints
-  ChannelHlsIngest({
+  const ChannelHlsIngest({
     this.ingestEndpoints,
   });
 

@@ -20,7 +20,7 @@ class GetKMSSecretArgs {
   /// [additionalAuthenticatedData] The [additional authenticated data](https://cloud.google.com/kms/docs/additional-authenticated-data) used for integrity checks during encryption and decryption.
   /// [ciphertext] The ciphertext to be decrypted, encoded in base64
   /// [cryptoKey] The id of the CryptoKey that will be used to
-  GetKMSSecretArgs({
+  const GetKMSSecretArgs({
     this.additionalAuthenticatedData,
     required this.ciphertext,
     required this.cryptoKey,

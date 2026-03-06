@@ -15,7 +15,7 @@ class Selector {
   /// [in_] The list of values to filter in.
   /// [kind] The selector kind.
   /// [notIn] The list of values to filter out.
-  Selector({
+  const Selector({
     this.in_,
     this.kind,
     this.notIn,

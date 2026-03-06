@@ -9,7 +9,7 @@ class AccelerateConfiguration {
 
   /// Creates a new [AccelerateConfiguration].
   /// [accelerationStatus] Specifies the transfer acceleration status of the bucket.
-  AccelerateConfiguration({
+  const AccelerateConfiguration({
     this.accelerationStatus,
   });
 

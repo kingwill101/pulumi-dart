@@ -26,7 +26,7 @@ class LbFlavorprofileV2State {
   /// [name] Name of the flavorprofile. Changing this updates the existing
   /// [providerName] The provider_name that the flavor_profile will use.
   /// [region] The region in which to obtain the V2 Networking client.
-  LbFlavorprofileV2State({
+  const LbFlavorprofileV2State({
     this.flavorData,
     this.name,
     this.providerName,

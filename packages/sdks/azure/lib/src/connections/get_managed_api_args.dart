@@ -15,7 +15,7 @@ class GetManagedApiArgs {
   /// Creates a new [GetManagedApiArgs].
   /// [location] The Azure location for this Managed API.
   /// [name] Specifies the name of the Managed API.
-  GetManagedApiArgs({
+  const GetManagedApiArgs({
     required this.location,
     required this.name,
   });

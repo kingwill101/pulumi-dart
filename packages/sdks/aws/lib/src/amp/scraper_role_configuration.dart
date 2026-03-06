@@ -11,7 +11,7 @@ class ScraperRoleConfiguration {
   /// Creates a new [ScraperRoleConfiguration].
   /// [sourceRoleArn] The Amazon Resource Name (ARN) of the source role configuration. Must be an IAM role ARN.
   /// [targetRoleArn] The Amazon Resource Name (ARN) of the target role configuration. Must be an IAM role ARN.
-  ScraperRoleConfiguration({
+  const ScraperRoleConfiguration({
     this.sourceRoleArn,
     this.targetRoleArn,
   });

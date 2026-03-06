@@ -34,7 +34,7 @@ class GetMaintenanceConfigurationResult {
   /// [systemData] The system metadata relating to this resource.
   /// [timeInWeek] Time slots during the week when planned maintenance is allowed to proceed. If two array entries specify the same day of the week, the applied configuration is the union of times in both entries.
   /// [type] Resource type
-  GetMaintenanceConfigurationResult({
+  const GetMaintenanceConfigurationResult({
     required this.azureApiVersion,
     required this.id,
     this.maintenanceWindow,

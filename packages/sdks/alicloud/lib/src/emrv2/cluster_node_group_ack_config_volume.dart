@@ -14,7 +14,7 @@ class ClusterNodeGroupAckConfigVolume {
   /// [name] The name of ack cluster job pod volume mounts.
   /// [path] The path of ack cluster job pod volume mounts.
   /// [type] The ack cluster job pod volumes type.
-  ClusterNodeGroupAckConfigVolume({
+  const ClusterNodeGroupAckConfigVolume({
     required this.name,
     required this.path,
     required this.type,

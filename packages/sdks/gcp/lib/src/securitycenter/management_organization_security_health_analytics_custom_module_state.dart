@@ -45,7 +45,7 @@ class ManagementOrganizationSecurityHealthAnalyticsCustomModuleState {
   /// [name] The resource name of the custom module. Its format is "organizations/{organization}/locations/{location}/securityHealthAnalyticsCustomModules/{securityHealthAnalyticsCustomModule}".
   /// [organization] Numerical ID of the parent organization.
   /// [updateTime] The time at which the custom module was last updated.
-  ManagementOrganizationSecurityHealthAnalyticsCustomModuleState({
+  const ManagementOrganizationSecurityHealthAnalyticsCustomModuleState({
     this.ancestorModule,
     this.customConfig,
     this.displayName,

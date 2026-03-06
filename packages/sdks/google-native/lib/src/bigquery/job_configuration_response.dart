@@ -33,7 +33,7 @@ class JobConfigurationResponse {
   /// [labels] The labels associated with this job. You can use these to organize and group your jobs. Label keys and values can be no longer than 63 characters, can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. Label values are optional. Label keys must start with a letter and each label in the list must have a different key.
   /// [load] [Pick one] Configures a load job.
   /// [query] [Pick one] Configures a query job.
-  JobConfigurationResponse({
+  const JobConfigurationResponse({
     required this.copy,
     required this.dryRun,
     required this.extract,

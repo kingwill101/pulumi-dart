@@ -18,7 +18,7 @@ class EventhubNamespaceDisasterRecoveryConfigState {
   /// [namespaceName] Specifies the name of the primary EventHub Namespace to replicate. Changing this forces a new resource to be created.
   /// [partnerNamespaceId] The ID of the EventHub Namespace to replicate to.
   /// [resourceGroupName] The name of the resource group in which the Disaster Recovery Config exists. Changing this forces a new resource to be created.
-  EventhubNamespaceDisasterRecoveryConfigState({
+  const EventhubNamespaceDisasterRecoveryConfigState({
     this.name,
     this.namespaceName,
     this.partnerNamespaceId,

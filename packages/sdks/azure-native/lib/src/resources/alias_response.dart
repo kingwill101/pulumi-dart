@@ -27,7 +27,7 @@ class AliasResponse {
   /// [name] The alias name.
   /// [paths] The paths for an alias.
   /// [type] The type of the alias.
-  AliasResponse({
+  const AliasResponse({
     required this.defaultMetadata,
     this.defaultPath,
     this.defaultPattern,

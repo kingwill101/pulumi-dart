@@ -17,7 +17,7 @@ class GetRuntimeIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [runtimeId] Required.
-  GetRuntimeIamPolicyArgs({
+  const GetRuntimeIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

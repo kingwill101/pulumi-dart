@@ -13,7 +13,7 @@ class FutureReservationTimeWindowResponseComputeBeta {
   /// [duration] Required.
   /// [endTime] Required.
   /// [startTime] Start time of the Future Reservation. The start_time is an RFC3339 string.
-  FutureReservationTimeWindowResponseComputeBeta({
+  const FutureReservationTimeWindowResponseComputeBeta({
     required this.duration,
     required this.endTime,
     required this.startTime,

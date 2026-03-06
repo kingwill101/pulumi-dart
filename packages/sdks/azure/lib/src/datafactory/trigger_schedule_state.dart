@@ -50,7 +50,7 @@ class TriggerScheduleState {
   /// [schedule] A `schedule` block as defined below, which further specifies the recurrence schedule for the trigger. A schedule is capable of limiting or increasing the number of trigger executions specified by the `frequency` and `interval` properties.
   /// [startTime] The time the Schedule Trigger will start. This defaults to the current time. The time will be represented in UTC.
   /// [timeZone] The timezone of the start/end time.
-  TriggerScheduleState({
+  const TriggerScheduleState({
     this.activated,
     this.annotations,
     this.dataFactoryId,

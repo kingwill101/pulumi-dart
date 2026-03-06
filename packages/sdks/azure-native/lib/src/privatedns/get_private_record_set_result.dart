@@ -69,7 +69,7 @@ class GetPrivateRecordSetResult {
   /// [ttl] The TTL (time-to-live) of the records in the record set.
   /// [txtRecords] The list of TXT records in the record set.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateRecordSetResult({
+  const GetPrivateRecordSetResult({
     this.aRecords,
     this.aaaaRecords,
     required this.azureApiVersion,

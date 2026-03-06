@@ -9,7 +9,7 @@ class PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityM
 
   /// Creates a new [PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification].
   /// [metricDataQueries] List of up to 10 structures that defines custom capacity metric in predictive scaling policy
-  PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification({
+  const PolicyPredictiveScalingConfigurationMetricSpecificationCustomizedCapacityMetricSpecification({
     required this.metricDataQueries,
   });
 

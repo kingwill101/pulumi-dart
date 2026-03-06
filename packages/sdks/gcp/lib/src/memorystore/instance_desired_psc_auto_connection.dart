@@ -14,7 +14,7 @@ class InstanceDesiredPscAutoConnection {
   /// Creates a new [InstanceDesiredPscAutoConnection].
   /// [network] (Output)
   /// [projectId] (Output)
-  InstanceDesiredPscAutoConnection({
+  const InstanceDesiredPscAutoConnection({
     required this.network,
     required this.projectId,
   });

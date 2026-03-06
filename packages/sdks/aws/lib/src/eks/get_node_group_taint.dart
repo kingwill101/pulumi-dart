@@ -14,7 +14,7 @@ class GetNodeGroupTaint {
   /// [effect] The effect of the taint.
   /// [key] The key of the taint.
   /// [value] The value of the taint.
-  GetNodeGroupTaint({
+  const GetNodeGroupTaint({
     required this.effect,
     required this.key,
     required this.value,

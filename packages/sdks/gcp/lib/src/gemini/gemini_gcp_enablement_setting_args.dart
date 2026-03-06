@@ -39,7 +39,7 @@ class GeminiGcpEnablementSettingArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [project] The ID of the project in which the resource belongs.
   /// [webGroundingType] Web grounding type.
-  GeminiGcpEnablementSettingArgs({
+  const GeminiGcpEnablementSettingArgs({
     this.disableWebGrounding,
     this.enableCustomerDataSharing,
     required this.geminiGcpEnablementSettingId,

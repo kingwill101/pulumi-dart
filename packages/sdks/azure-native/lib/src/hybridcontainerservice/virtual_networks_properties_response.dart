@@ -38,7 +38,7 @@ class VirtualNetworksPropertiesResponse {
   /// [vipPool] Virtual IP Pool for Kubernetes
   /// [vlanID] VLAN Id used by the network
   /// [vmipPool] IP Pool for Virtual Machines
-  VirtualNetworksPropertiesResponse({
+  const VirtualNetworksPropertiesResponse({
     required this.dhcpServers,
     this.dnsServers,
     this.gateway,

@@ -80,7 +80,7 @@ class AwsDynamoDBTableProperties {
   /// [tableName] A name for the table. If you don't specify a name, CFNlong generates a unique physical ID and uses that ID for the table name. For more information, see [Name Type](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-name.html).  If you specify a name, you cannot perform updates that require replacement of this resource. You can perform updates that require no or some interruption. If you must replace the resource, specify a new name.
   /// [tags] An array of key-value pairs to apply to this resource. For more information, see [Tag](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-resource-tags.html).
   /// [timeToLiveSpecification] Specifies the Time to Live (TTL) settings for the table.  For detailed information about the limits in DynamoDB, see [Limits in Amazon DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html) in the Amazon DynamoDB Developer Guide. Represents the settings used to enable or disable Time to Live (TTL) for the specified table.
-  AwsDynamoDBTableProperties({
+  const AwsDynamoDBTableProperties({
     this.arn,
     this.attributeDefinitions,
     this.billingMode,

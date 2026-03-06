@@ -35,7 +35,7 @@ class GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsResponse {
   /// [tokenEndpoint] The token endpoint is used by the client to obtain an access token by presenting its authorization grant or refresh token.
   /// [tokenParams] Token parameters for the auth request.
   /// [username] The user's username.
-  GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsResponse({
+  const GoogleCloudIntegrationsV1alphaOAuth2ResourceOwnerCredentialsResponse({
     required this.accessToken,
     required this.clientId,
     required this.clientSecret,

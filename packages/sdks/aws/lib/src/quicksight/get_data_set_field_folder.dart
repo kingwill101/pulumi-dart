@@ -11,7 +11,7 @@ class GetDataSetFieldFolder {
   /// [columns] Required.
   /// [description] Required.
   /// [fieldFoldersId] Required.
-  GetDataSetFieldFolder({
+  const GetDataSetFieldFolder({
     required this.columns,
     required this.description,
     required this.fieldFoldersId,

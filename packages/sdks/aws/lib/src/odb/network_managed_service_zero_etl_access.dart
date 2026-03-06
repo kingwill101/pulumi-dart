@@ -10,7 +10,7 @@ class NetworkManagedServiceZeroEtlAccess {
   /// Creates a new [NetworkManagedServiceZeroEtlAccess].
   /// [cidr] Required.
   /// [status] The status of the network resource.
-  NetworkManagedServiceZeroEtlAccess({
+  const NetworkManagedServiceZeroEtlAccess({
     required this.cidr,
     required this.status,
   });

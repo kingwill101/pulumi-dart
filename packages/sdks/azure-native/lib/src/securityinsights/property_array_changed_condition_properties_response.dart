@@ -12,7 +12,7 @@ class PropertyArrayChangedConditionPropertiesResponse {
   /// Creates a new [PropertyArrayChangedConditionPropertiesResponse].
   /// [conditionProperties] Optional.
   /// [conditionType] Expected value is 'PropertyArrayChanged'.
-  PropertyArrayChangedConditionPropertiesResponse({
+  const PropertyArrayChangedConditionPropertiesResponse({
     this.conditionProperties,
     required this.conditionType,
   });

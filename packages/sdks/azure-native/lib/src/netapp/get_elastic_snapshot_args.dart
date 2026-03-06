@@ -24,7 +24,7 @@ class GetElasticSnapshotArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [snapshotName] The name of the ElasticSnapshot
   /// [volumeName] The name of the ElasticVolume
-  GetElasticSnapshotArgs({
+  const GetElasticSnapshotArgs({
     required this.accountName,
     required this.poolName,
     required this.resourceGroupName,

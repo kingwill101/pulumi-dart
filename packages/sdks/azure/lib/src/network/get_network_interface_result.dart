@@ -54,7 +54,7 @@ class GetNetworkInterfaceResult {
   /// [resourceGroupName] Required.
   /// [tags] List the tags associated to the specified Network Interface.
   /// [virtualMachineId] The ID of the virtual machine that the specified Network Interface is attached to.
-  GetNetworkInterfaceResult({
+  const GetNetworkInterfaceResult({
     required this.acceleratedNetworkingEnabled,
     required this.appliedDnsServers,
     required this.dnsServers,

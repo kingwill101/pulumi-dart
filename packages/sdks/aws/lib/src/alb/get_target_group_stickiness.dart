@@ -13,7 +13,7 @@ class GetTargetGroupStickiness {
   /// [cookieName] Required.
   /// [enabled] Required.
   /// [type] Required.
-  GetTargetGroupStickiness({
+  const GetTargetGroupStickiness({
     required this.cookieDuration,
     required this.cookieName,
     required this.enabled,

@@ -13,7 +13,7 @@ class PartitionIndexPartitionIndex {
   /// [indexName] Name of the partition index.
   /// [indexStatus] Optional.
   /// [keys] Keys for the partition index.
-  PartitionIndexPartitionIndex({
+  const PartitionIndexPartitionIndex({
     this.indexName,
     this.indexStatus,
     this.keys,

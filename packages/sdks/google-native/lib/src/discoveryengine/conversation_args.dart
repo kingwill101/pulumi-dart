@@ -31,7 +31,7 @@ class ConversationArgs {
   /// [project] Optional.
   /// [state] The state of the Conversation.
   /// [userPseudoId] A unique identifier for tracking users.
-  ConversationArgs({
+  const ConversationArgs({
     required this.collectionId,
     required this.dataStoreId,
     this.location,

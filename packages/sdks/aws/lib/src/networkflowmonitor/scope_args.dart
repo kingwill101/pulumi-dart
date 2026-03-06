@@ -24,7 +24,7 @@ class ScopeArgs {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targets] The targets to define the scope to be monitored. A target is an array of target resources, which are currently Region-account pairs.
   /// [timeouts] Optional.
-  ScopeArgs({
+  const ScopeArgs({
     this.region,
     this.tags,
     required this.targets,

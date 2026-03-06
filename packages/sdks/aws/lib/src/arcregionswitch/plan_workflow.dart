@@ -18,7 +18,7 @@ class PlanWorkflow {
   /// [workflowDescription] Description of the workflow.
   /// [workflowTargetAction] Action to perform. Valid values: `activate`, `deactivate`.
   /// [workflowTargetRegion] Target region for the workflow.
-  PlanWorkflow({
+  const PlanWorkflow({
     this.steps,
     this.workflowDescription,
     required this.workflowTargetAction,

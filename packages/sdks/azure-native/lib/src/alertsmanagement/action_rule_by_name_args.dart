@@ -25,7 +25,7 @@ class ActionRuleByNameArgs {
   /// [properties] action rule properties
   /// [resourceGroupName] Resource group name where the resource is created.
   /// [tags] Resource tags
-  ActionRuleByNameArgs({
+  const ActionRuleByNameArgs({
     this.actionRuleName,
     this.location,
     this.properties,

@@ -21,7 +21,7 @@ class SqlServerLicenseProperties {
   /// [licenseCategory] This property represents the choice between SQL Server Core and ESU licenses.
   /// [physicalCores] The number of total cores of the license covers.
   /// [scopeType] The Azure scope to which the license will apply.
-  SqlServerLicenseProperties({
+  const SqlServerLicenseProperties({
     required this.activationState,
     required this.billingPlan,
     required this.licenseCategory,

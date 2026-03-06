@@ -28,7 +28,7 @@ class GetDataSourceReferencesDataSourceReference {
   /// [lastSuccessfulBackupTime] The last time a successful backup was made.
   /// [name] Required.
   /// [resourceType] The resource type to get the data source references for. Examples include, "sqladmin.googleapis.com/Instance" , "compute.googleapis.com/Instance". `resource_type` is deprecated and will be removed in a future major release.
-  GetDataSourceReferencesDataSourceReference({
+  const GetDataSourceReferencesDataSourceReference({
     required this.backupConfigState,
     required this.backupCount,
     required this.dataSource,

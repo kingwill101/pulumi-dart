@@ -12,7 +12,7 @@ class ProvenanceBuilderContaineranalysisV1alpha1 {
   /// [builderDependencies] Optional.
   /// [id] Optional.
   /// [version] Optional.
-  ProvenanceBuilderContaineranalysisV1alpha1({
+  const ProvenanceBuilderContaineranalysisV1alpha1({
     this.builderDependencies,
     this.id,
     this.version,

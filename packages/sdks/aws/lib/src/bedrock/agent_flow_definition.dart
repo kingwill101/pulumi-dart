@@ -13,7 +13,7 @@ class AgentFlowDefinition {
   /// Creates a new [AgentFlowDefinition].
   /// [connections] A list of connection definitions in the flow. See Connection for more information.
   /// [nodes] A list of node definitions in the flow. See Node for more information.
-  AgentFlowDefinition({
+  const AgentFlowDefinition({
     this.connections,
     this.nodes,
   });

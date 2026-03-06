@@ -35,7 +35,7 @@ class EventConnectionState {
   /// [name] The name for the connection. Maximum of 64 characters consisting of numbers, lower/upper case letters, .,-,_.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArn] The Amazon Resource Name (ARN) of the secret created from the authorization parameters specified for the connection.
-  EventConnectionState({
+  const EventConnectionState({
     this.arn,
     this.authParameters,
     this.authorizationType,

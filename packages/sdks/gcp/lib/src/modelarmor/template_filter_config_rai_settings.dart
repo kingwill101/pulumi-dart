@@ -10,7 +10,7 @@ class TemplateFilterConfigRaiSettings {
 
   /// Creates a new [TemplateFilterConfigRaiSettings].
   /// [raiFilters] List of Responsible AI filters enabled for template.
-  TemplateFilterConfigRaiSettings({
+  const TemplateFilterConfigRaiSettings({
     required this.raiFilters,
   });
 

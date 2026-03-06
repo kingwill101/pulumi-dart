@@ -8,7 +8,7 @@ class GetVirtualNodeSpecListenerTimeoutTcp {
 
   /// Creates a new [GetVirtualNodeSpecListenerTimeoutTcp].
   /// [idles] Required.
-  GetVirtualNodeSpecListenerTimeoutTcp({
+  const GetVirtualNodeSpecListenerTimeoutTcp({
     required this.idles,
   });
 

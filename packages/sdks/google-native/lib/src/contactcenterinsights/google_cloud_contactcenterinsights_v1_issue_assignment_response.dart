@@ -15,7 +15,7 @@ class GoogleCloudContactcenterinsightsV1IssueAssignmentResponse {
   /// [displayName] Immutable. Display name of the assigned issue. This field is set at time of analyis and immutable since then.
   /// [issue] Resource name of the assigned issue.
   /// [score] Score indicating the likelihood of the issue assignment. currently bounded on [0,1].
-  GoogleCloudContactcenterinsightsV1IssueAssignmentResponse({
+  const GoogleCloudContactcenterinsightsV1IssueAssignmentResponse({
     required this.displayName,
     required this.issue,
     required this.score,

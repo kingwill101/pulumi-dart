@@ -30,7 +30,7 @@ class AccessLogSubscriptionState {
   /// [serviceNetworkLogType] Type of log that monitors your Amazon VPC Lattice service networks. Valid values are: `SERVICE`, `RESOURCE`. Defaults to `SERVICE`.
   /// [tags] Optional.
   /// [tagsAll] Optional.
-  AccessLogSubscriptionState({
+  const AccessLogSubscriptionState({
     this.arn,
     this.destinationArn,
     this.region,

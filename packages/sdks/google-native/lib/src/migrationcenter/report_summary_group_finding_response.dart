@@ -23,7 +23,7 @@ class ReportSummaryGroupFindingResponse {
   /// [displayName] Display Name for the Group.
   /// [overlappingAssetCount] This field is deprecated, do not rely on it having a value.
   /// [preferenceSetFindings] Findings for each of the PreferenceSets for this group.
-  ReportSummaryGroupFindingResponse({
+  const ReportSummaryGroupFindingResponse({
     required this.assetAggregateStats,
     required this.description,
     required this.displayName,

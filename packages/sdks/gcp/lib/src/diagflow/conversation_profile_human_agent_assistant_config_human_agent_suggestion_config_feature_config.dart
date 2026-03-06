@@ -51,7 +51,7 @@ class ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeat
   /// [queryConfig] Configs of query.
   /// [suggestionFeature] The suggestion feature.
   /// [suggestionTriggerSettings] Settings of suggestion trigger.
-  ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig({
+  const ConversationProfileHumanAgentAssistantConfigHumanAgentSuggestionConfigFeatureConfig({
     this.conversationModelConfig,
     this.conversationProcessConfig,
     this.disableAgentQueryLogging,

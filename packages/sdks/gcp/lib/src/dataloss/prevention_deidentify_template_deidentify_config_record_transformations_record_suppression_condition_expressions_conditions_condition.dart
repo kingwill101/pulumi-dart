@@ -19,7 +19,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSup
   /// [field] Field within the record this condition is evaluated against.
   /// [operator] Operator used to compare the field or infoType to the value.
   /// [value] Value to compare against. [Mandatory, except for EXISTS tests.]
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditionsCondition({
     required this.field,
     required this.operator,
     this.value,

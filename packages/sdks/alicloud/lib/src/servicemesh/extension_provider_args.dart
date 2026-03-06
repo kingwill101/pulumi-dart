@@ -21,7 +21,7 @@ class ExtensionProviderArgs {
   /// [extensionProviderName] The name of the Service Mesh Extension Provider. It must be prefixed with `$type-`, for example `httpextauth-xxx`, `grpcextauth-xxx`.
   /// [serviceMeshId] The ID of the Service Mesh.
   /// [type] The type of the Service Mesh Extension Provider. Valid values: `httpextauth`, `grpcextauth`.
-  ExtensionProviderArgs({
+  const ExtensionProviderArgs({
     required this.config,
     required this.extensionProviderName,
     required this.serviceMeshId,

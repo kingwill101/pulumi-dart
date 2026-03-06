@@ -15,7 +15,7 @@ class LogAnalyticsQueryPackQueryPropertiesResponseRelated {
   /// [categories] The related categories for the function.
   /// [resourceTypes] The related resource types for the function.
   /// [solutions] The related Log Analytics solutions for the function.
-  LogAnalyticsQueryPackQueryPropertiesResponseRelated({
+  const LogAnalyticsQueryPackQueryPropertiesResponseRelated({
     this.categories,
     this.resourceTypes,
     this.solutions,

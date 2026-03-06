@@ -17,7 +17,7 @@ class GetEkmConnectionIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetEkmConnectionIamPolicyArgs({
+  const GetEkmConnectionIamPolicyArgs({
     required this.ekmConnectionId,
     required this.location,
     this.optionsRequestedPolicyVersion,

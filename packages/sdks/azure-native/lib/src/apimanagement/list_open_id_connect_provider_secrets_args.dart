@@ -18,7 +18,7 @@ class ListOpenIdConnectProviderSecretsArgs {
   /// [opid] Identifier of the OpenID Connect Provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  ListOpenIdConnectProviderSecretsArgs({
+  const ListOpenIdConnectProviderSecretsArgs({
     required this.opid,
     required this.resourceGroupName,
     required this.serviceName,

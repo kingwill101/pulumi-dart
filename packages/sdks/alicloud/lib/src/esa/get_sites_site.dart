@@ -38,7 +38,7 @@ class GetSitesSite {
   /// [siteId] Site ID
   /// [siteName] Site Name
   /// [status] The status of the resource
-  GetSitesSite({
+  const GetSitesSite({
     required this.accessType,
     required this.coverage,
     required this.createTime,

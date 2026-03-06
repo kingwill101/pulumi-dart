@@ -11,7 +11,7 @@ class GetClusterIpAllocationPolicyAdditionalIpRangesConfig {
   /// Creates a new [GetClusterIpAllocationPolicyAdditionalIpRangesConfig].
   /// [podIpv4RangeNames] List of secondary ranges names within this subnetwork that can be used for pod IPs.
   /// [subnetwork] Name of the subnetwork. This can be the full path of the subnetwork or just the name.
-  GetClusterIpAllocationPolicyAdditionalIpRangesConfig({
+  const GetClusterIpAllocationPolicyAdditionalIpRangesConfig({
     required this.podIpv4RangeNames,
     required this.subnetwork,
   });

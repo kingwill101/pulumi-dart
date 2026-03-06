@@ -10,7 +10,7 @@ class GetVirtualNodeSpecLoggingAccessLogFile {
   /// Creates a new [GetVirtualNodeSpecLoggingAccessLogFile].
   /// [formats] Required.
   /// [path] Required.
-  GetVirtualNodeSpecLoggingAccessLogFile({
+  const GetVirtualNodeSpecLoggingAccessLogFile({
     required this.formats,
     required this.path,
   });

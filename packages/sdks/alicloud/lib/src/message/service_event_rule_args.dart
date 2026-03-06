@@ -27,7 +27,7 @@ class ServiceEventRuleArgs {
   /// [eventTypes] Event Type List
   /// [matchRules] Matching rules, or relationships between multiple rules. See `match_rules` below.
   /// [ruleName] The event notification rule name.
-  ServiceEventRuleArgs({
+  const ServiceEventRuleArgs({
     this.deliveryMode,
     this.endpoint,
     required this.eventTypes,

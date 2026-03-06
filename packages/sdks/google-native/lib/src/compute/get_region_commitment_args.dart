@@ -15,7 +15,7 @@ class GetRegionCommitmentArgs {
   /// [commitment] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionCommitmentArgs({
+  const GetRegionCommitmentArgs({
     required this.commitment,
     this.project,
     required this.region,

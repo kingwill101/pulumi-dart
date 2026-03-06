@@ -8,7 +8,7 @@ class DomainAimlOptionsS3VectorsEngine {
 
   /// Creates a new [DomainAimlOptionsS3VectorsEngine].
   /// [enabled] Enables S3 vectors engine features.
-  DomainAimlOptionsS3VectorsEngine({
+  const DomainAimlOptionsS3VectorsEngine({
     this.enabled,
   });
 

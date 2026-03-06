@@ -27,7 +27,7 @@ class GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataRespon
   /// [issueModelResult] Overall conversation-level issue modeling result.
   /// [phraseMatchers] All the matched phrase matchers in the call.
   /// [sentiments] Overall conversation-level sentiment for each channel of the call.
-  GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse({
+  const GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadataResponse({
     required this.annotations,
     required this.entities,
     required this.intents,

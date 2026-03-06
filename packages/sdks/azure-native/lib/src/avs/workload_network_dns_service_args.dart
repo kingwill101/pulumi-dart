@@ -36,7 +36,7 @@ class WorkloadNetworkDnsServiceArgs {
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [revision] NSX revision number.
-  WorkloadNetworkDnsServiceArgs({
+  const WorkloadNetworkDnsServiceArgs({
     this.defaultDnsZone,
     this.displayName,
     this.dnsServiceId,

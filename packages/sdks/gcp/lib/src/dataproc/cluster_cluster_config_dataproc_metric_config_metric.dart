@@ -13,7 +13,7 @@ class ClusterClusterConfigDataprocMetricConfigMetric {
   /// Creates a new [ClusterClusterConfigDataprocMetricConfigMetric].
   /// [metricOverrides] One or more [available OSS metrics] (https://cloud.google.com/dataproc/docs/guides/monitoring#available_oss_metrics) to collect for the metric course.
   /// [metricSource] A source for the collection of Dataproc OSS metrics (see [available OSS metrics](https://cloud.google.com//dataproc/docs/guides/monitoring#available_oss_metrics)).
-  ClusterClusterConfigDataprocMetricConfigMetric({
+  const ClusterClusterConfigDataprocMetricConfigMetric({
     this.metricOverrides,
     required this.metricSource,
   });

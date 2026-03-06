@@ -24,7 +24,7 @@ class BqmlTrainingRunTrainingOptions {
   /// [maxIteration] Optional.
   /// [minRelProgress] Optional.
   /// [warmStart] Optional.
-  BqmlTrainingRunTrainingOptions({
+  const BqmlTrainingRunTrainingOptions({
     this.earlyStop,
     this.l1Reg,
     this.l2Reg,

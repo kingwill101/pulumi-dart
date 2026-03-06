@@ -12,7 +12,7 @@ class AzureFirewallAutoscaleConfiguration {
   /// Creates a new [AzureFirewallAutoscaleConfiguration].
   /// [maxCapacity] The maximum number of capacity units for this azure firewall. Use null to reset the value to the service default.
   /// [minCapacity] The minimum number of capacity units for this azure firewall. Use null to reset the value to the service default.
-  AzureFirewallAutoscaleConfiguration({
+  const AzureFirewallAutoscaleConfiguration({
     this.maxCapacity,
     this.minCapacity,
   });

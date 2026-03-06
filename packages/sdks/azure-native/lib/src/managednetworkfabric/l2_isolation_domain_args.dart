@@ -33,7 +33,7 @@ class L2IsolationDomainArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [vlanId] Vlan Identifier of the Network Fabric. Example: 501.
-  L2IsolationDomainArgs({
+  const L2IsolationDomainArgs({
     this.annotation,
     this.l2IsolationDomainName,
     this.location,

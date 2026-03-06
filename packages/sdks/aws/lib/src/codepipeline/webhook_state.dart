@@ -41,7 +41,7 @@ class WebhookState {
   /// [targetAction] The name of the action in a pipeline you want to connect to the webhook. The action must be from the source (first) stage of the pipeline.
   /// [targetPipeline] The name of the pipeline.
   /// [url] The CodePipeline webhook's URL. POST events to this endpoint to trigger the target.
-  WebhookState({
+  const WebhookState({
     this.arn,
     this.authentication,
     this.authenticationConfiguration,

@@ -9,7 +9,7 @@ class SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo {
 
   /// Creates a new [SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo].
   /// [outputType] The output type of the delegated group info.
-  SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo({
+  const SecurityGatewayProxyProtocolConfigContextualHeadersGroupInfo({
     this.outputType,
   });
 

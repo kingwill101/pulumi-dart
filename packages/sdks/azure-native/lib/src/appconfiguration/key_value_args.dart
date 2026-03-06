@@ -28,7 +28,7 @@ class KeyValueArgs {
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
   /// [tags] A dictionary of tags that can help identify what a key-value may be applicable for.
   /// [value] The value of the key-value.
-  KeyValueArgs({
+  const KeyValueArgs({
     required this.configStoreName,
     this.contentType,
     this.keyValueName,

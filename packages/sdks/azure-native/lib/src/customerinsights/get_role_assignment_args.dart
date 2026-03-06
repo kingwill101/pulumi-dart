@@ -18,7 +18,7 @@ class GetRoleAssignmentArgs {
   /// [assignmentName] The name of the role assignment.
   /// [hubName] The name of the hub.
   /// [resourceGroupName] The name of the resource group.
-  GetRoleAssignmentArgs({
+  const GetRoleAssignmentArgs({
     required this.assignmentName,
     required this.hubName,
     required this.resourceGroupName,

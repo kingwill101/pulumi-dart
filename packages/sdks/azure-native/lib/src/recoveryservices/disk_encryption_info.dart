@@ -14,7 +14,7 @@ class DiskEncryptionInfo {
   /// Creates a new [DiskEncryptionInfo].
   /// [diskEncryptionKeyInfo] The recovery KeyVault reference for secret.
   /// [keyEncryptionKeyInfo] The recovery KeyVault reference for key.
-  DiskEncryptionInfo({
+  const DiskEncryptionInfo({
     this.diskEncryptionKeyInfo,
     this.keyEncryptionKeyInfo,
   });

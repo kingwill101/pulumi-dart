@@ -29,7 +29,7 @@ class ServerlessEndpointResponse {
   /// [marketplaceSubscriptionId] The MarketplaceSubscription Azure ID associated to this ServerlessEndpoint.
   /// [modelSettings] The model settings (model id) for the model being serviced on the ServerlessEndpoint.
   /// [provisioningState] Provisioning state for the endpoint.
-  ServerlessEndpointResponse({
+  const ServerlessEndpointResponse({
     required this.authMode,
     this.contentSafety,
     required this.endpointState,

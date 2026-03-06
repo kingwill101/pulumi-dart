@@ -15,7 +15,7 @@ class GetLkeClusterControlPlane {
   /// [acls] The ACL configuration for an LKE cluster's control plane.
   /// [auditLogsEnabled] Enables audit logs on the cluster's control plane.
   /// [highAvailability] Whether High Availability is enabled for the cluster Control Plane.
-  GetLkeClusterControlPlane({
+  const GetLkeClusterControlPlane({
     required this.acls,
     required this.auditLogsEnabled,
     required this.highAvailability,

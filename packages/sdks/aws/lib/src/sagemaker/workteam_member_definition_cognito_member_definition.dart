@@ -14,7 +14,7 @@ class WorkteamMemberDefinitionCognitoMemberDefinition {
   /// [clientId] An identifier for an application client. You must create the app client ID using Amazon Cognito.
   /// [userGroup] An identifier for a user group.
   /// [userPool] An identifier for a user pool. The user pool must be in the same region as the service that you are calling.
-  WorkteamMemberDefinitionCognitoMemberDefinition({
+  const WorkteamMemberDefinitionCognitoMemberDefinition({
     required this.clientId,
     required this.userGroup,
     required this.userPool,

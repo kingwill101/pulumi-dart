@@ -44,7 +44,7 @@ class ScheduleTarget {
   /// [roleArn] ARN of the IAM role that EventBridge Scheduler will use for this target when the schedule is invoked. Read more in [Set up the execution role](https://docs.aws.amazon.com/scheduler/latest/UserGuide/setting-up.html#setting-up-execution-role).
   /// [sagemakerPipelineParameters] Templated target type for the Amazon SageMaker AI [`StartPipelineExecution`](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_StartPipelineExecution.html) API operation. Detailed below.
   /// [sqsParameters] The templated target type for the Amazon SQS [`SendMessage`](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/APIReference/API_SendMessage.html) API operation. Detailed below.
-  ScheduleTarget({
+  const ScheduleTarget({
     required this.arn,
     this.deadLetterConfig,
     this.ecsParameters,

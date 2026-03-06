@@ -17,7 +17,7 @@ class GetServiceBindingIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [serviceBindingId] Required.
-  GetServiceBindingIamPolicyArgs({
+  const GetServiceBindingIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

@@ -22,7 +22,7 @@ class GetListenersResult {
   /// [listeners] A list of Nlb Listeners. Each element contains the following attributes:
   /// [loadBalancerIds] Optional.
   /// [outputFile] Optional.
-  GetListenersResult({
+  const GetListenersResult({
     required this.id,
     required this.ids,
     this.listenerProtocol,

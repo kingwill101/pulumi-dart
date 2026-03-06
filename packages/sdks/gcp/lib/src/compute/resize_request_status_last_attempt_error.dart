@@ -11,7 +11,7 @@ class ResizeRequestStatusLastAttemptError {
 
   /// Creates a new [ResizeRequestStatusLastAttemptError].
   /// [errors] (Output)
-  ResizeRequestStatusLastAttemptError({
+  const ResizeRequestStatusLastAttemptError({
     this.errors,
   });
 

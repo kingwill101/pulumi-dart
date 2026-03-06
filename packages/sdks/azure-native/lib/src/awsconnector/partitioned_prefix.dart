@@ -9,7 +9,7 @@ class PartitionedPrefix {
 
   /// Creates a new [PartitionedPrefix].
   /// [partitionDateSource] Specifies the partition date source for the partitioned prefix. PartitionDateSource can be EventTime or DeliveryTime.
-  PartitionedPrefix({
+  const PartitionedPrefix({
     this.partitionDateSource,
   });
 

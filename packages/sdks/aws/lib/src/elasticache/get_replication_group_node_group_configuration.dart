@@ -26,7 +26,7 @@ class GetReplicationGroupNodeGroupConfiguration {
   /// [replicaCount] Number of replica nodes in this node group.
   /// [replicaOutpostArns] List of outpost ARNs for the replica nodes.
   /// [slots] Keyspace for this node group (shard).
-  GetReplicationGroupNodeGroupConfiguration({
+  const GetReplicationGroupNodeGroupConfiguration({
     required this.nodeGroupId,
     required this.primaryAvailabilityZone,
     required this.primaryOutpostArn,

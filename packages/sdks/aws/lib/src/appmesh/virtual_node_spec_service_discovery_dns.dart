@@ -14,7 +14,7 @@ class VirtualNodeSpecServiceDiscoveryDns {
   /// [hostname] DNS host name for your virtual node.
   /// [ipPreference] The preferred IP version that this virtual node uses. Valid values: `IPv6_PREFERRED`, `IPv4_PREFERRED`, `IPv4_ONLY`, `IPv6_ONLY`.
   /// [responseType] The DNS response type for the virtual node. Valid values: `LOADBALANCER`, `ENDPOINTS`.
-  VirtualNodeSpecServiceDiscoveryDns({
+  const VirtualNodeSpecServiceDiscoveryDns({
     required this.hostname,
     this.ipPreference,
     this.responseType,

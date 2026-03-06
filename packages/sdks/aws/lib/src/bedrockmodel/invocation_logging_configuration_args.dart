@@ -16,7 +16,7 @@ class InvocationLoggingConfigurationArgs {
   /// Creates a new [InvocationLoggingConfigurationArgs].
   /// [loggingConfig] The logging configuration values to set. See `logging_config` Block for details.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InvocationLoggingConfigurationArgs({
+  const InvocationLoggingConfigurationArgs({
     required this.loggingConfig,
     this.region,
   });

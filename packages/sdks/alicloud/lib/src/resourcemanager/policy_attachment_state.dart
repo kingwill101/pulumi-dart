@@ -21,7 +21,7 @@ class PolicyAttachmentState {
   /// [principalName] The name of the object to which you want to attach the policy.
   /// [principalType] The type of the object to which you want to attach the policy. Valid values: `IMSUser`: RAM user, `IMSGroup`: RAM user group, `ServiceRole`: RAM role.
   /// [resourceGroupId] The ID of the resource group or the ID of the Alibaba Cloud account to which the resource group belongs.
-  PolicyAttachmentState({
+  const PolicyAttachmentState({
     this.policyName,
     this.policyType,
     this.principalName,

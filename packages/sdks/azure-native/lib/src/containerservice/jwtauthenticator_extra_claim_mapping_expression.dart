@@ -12,7 +12,7 @@ class JWTAuthenticatorExtraClaimMappingExpression {
   /// Creates a new [JWTAuthenticatorExtraClaimMappingExpression].
   /// [key] The key of the extra attribute.
   /// [valueExpression] The CEL expression used to extract the value of the extra attribute.
-  JWTAuthenticatorExtraClaimMappingExpression({
+  const JWTAuthenticatorExtraClaimMappingExpression({
     required this.key,
     required this.valueExpression,
   });

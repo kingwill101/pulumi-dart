@@ -19,7 +19,7 @@ class AppFlexConsumptionAuthSettingsActiveDirectory {
   /// [clientId] The ID of the Client to use to authenticate with Azure Active Directory.
   /// [clientSecret] The Client Secret for the Client ID. Cannot be used with `client_secret_setting_name`.
   /// [clientSecretSettingName] The App Setting name that contains the client secret of the Client. Cannot be used with `client_secret`.
-  AppFlexConsumptionAuthSettingsActiveDirectory({
+  const AppFlexConsumptionAuthSettingsActiveDirectory({
     this.allowedAudiences,
     required this.clientId,
     this.clientSecret,

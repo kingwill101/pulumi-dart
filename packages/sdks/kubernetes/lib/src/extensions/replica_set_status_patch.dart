@@ -25,7 +25,7 @@ class ReplicaSetStatusPatch {
   /// [observedGeneration] ObservedGeneration reflects the generation of the most recently observed ReplicaSet.
   /// [readyReplicas] The number of ready replicas for this replica set.
   /// [replicas] Replicas is the most recently oberved number of replicas. More info: https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/#what-is-a-replicationcontroller
-  ReplicaSetStatusPatch({
+  const ReplicaSetStatusPatch({
     this.availableReplicas,
     this.conditions,
     this.fullyLabeledReplicas,

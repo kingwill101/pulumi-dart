@@ -41,7 +41,7 @@ class ResourceSliceSpecResourceK8sIoV1alpha3 {
   /// [nodeName] NodeName identifies the node which provides the resources in this pool. A field selector can be used to list only ResourceSlice objects belonging to a certain node.
   /// [nodeSelector] NodeSelector defines which nodes have access to the resources in the pool, when that pool is not limited to a single node.
   /// [pool] Pool describes the pool that this ResourceSlice belongs to.
-  ResourceSliceSpecResourceK8sIoV1alpha3({
+  const ResourceSliceSpecResourceK8sIoV1alpha3({
     this.allNodes,
     this.devices,
     required this.driver,

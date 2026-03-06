@@ -45,7 +45,7 @@ class RuleDeploymentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [rule] The Rule ID of the rule.
   /// [runFrequency] The run frequency of the rule deployment.
-  RuleDeploymentArgs({
+  const RuleDeploymentArgs({
     this.alerting,
     this.archived,
     this.enabled,

@@ -11,7 +11,7 @@ class V3CustomDomainAuthConfig {
   /// Creates a new [V3CustomDomainAuthConfig].
   /// [authInfo] Authentication Information
   /// [authType] Authentication type. anonymous, function, or jwt.
-  V3CustomDomainAuthConfig({
+  const V3CustomDomainAuthConfig({
     this.authInfo,
     this.authType,
   });

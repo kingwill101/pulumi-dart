@@ -20,7 +20,7 @@ class InternalNetworkPropertiesStaticRouteConfiguration {
   /// [extension] Extension. Example: NoExtension | NPB.
   /// [ipv4Routes] List of IPv4 Routes.
   /// [ipv6Routes] List of IPv6 Routes.
-  InternalNetworkPropertiesStaticRouteConfiguration({
+  const InternalNetworkPropertiesStaticRouteConfiguration({
     this.bfdConfiguration,
     this.extension,
     this.ipv4Routes,

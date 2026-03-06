@@ -24,7 +24,7 @@ class VersionState {
   /// [siteId] The site ID, which can be obtained by calling the ListSites API.
   /// [siteVersion] The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
   /// [status] Site version status:：`online`.：`configuring`._faild`：`configure_faild`.
-  VersionState({
+  const VersionState({
     this.createTime,
     this.description,
     this.originVersion,

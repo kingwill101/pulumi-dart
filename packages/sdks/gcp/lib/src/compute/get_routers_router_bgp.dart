@@ -16,7 +16,7 @@ class GetRoutersRouterBgp {
   /// [advertisedIpRanges] Required.
   /// [asn] Required.
   /// [keepaliveInterval] Required.
-  GetRoutersRouterBgp({
+  const GetRoutersRouterBgp({
     required this.advertiseMode,
     required this.advertisedGroups,
     required this.advertisedIpRanges,

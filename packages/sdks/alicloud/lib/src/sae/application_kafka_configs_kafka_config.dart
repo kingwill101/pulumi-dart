@@ -14,7 +14,7 @@ class ApplicationKafkaConfigsKafkaConfig {
   /// [kafkaTopic] The topic of the Kafka.
   /// [logDir] The path in which logs are stored.
   /// [logType] The type of the log.
-  ApplicationKafkaConfigsKafkaConfig({
+  const ApplicationKafkaConfigsKafkaConfig({
     this.kafkaTopic,
     this.logDir,
     this.logType,

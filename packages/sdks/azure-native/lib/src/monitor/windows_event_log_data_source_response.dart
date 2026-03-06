@@ -18,7 +18,7 @@ class WindowsEventLogDataSourceResponse {
   /// [name] A friendly name for the data source.
   /// [streams] List of streams that this data source will be sent to.
   /// [xPathQueries] A list of Windows Event Log queries in XPATH format.
-  WindowsEventLogDataSourceResponse({
+  const WindowsEventLogDataSourceResponse({
     this.name,
     this.streams,
     this.xPathQueries,

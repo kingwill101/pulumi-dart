@@ -33,7 +33,7 @@ class GetNamespaceGkehubV1betaResult {
   /// [state] State of the namespace resource.
   /// [uid] Google-generated UUID for this resource. This is unique across all namespace resources. If a namespace resource is deleted and another resource with the same name is created, it gets a different uid.
   /// [updateTime] When the namespace was last updated.
-  GetNamespaceGkehubV1betaResult({
+  const GetNamespaceGkehubV1betaResult({
     required this.createTime,
     required this.deleteTime,
     required this.labels,

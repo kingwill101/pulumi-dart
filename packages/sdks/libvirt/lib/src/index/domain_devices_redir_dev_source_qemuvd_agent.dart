@@ -13,7 +13,7 @@ class DomainDevicesRedirDevSourceQemuvdAgent {
   /// Creates a new [DomainDevicesRedirDevSourceQemuvdAgent].
   /// [clipBoard] Configures clipboard sharing settings for the QEMU guest agent.
   /// [mouse] Configures mouse settings for the QEMU guest agent in the random number generator setup.
-  DomainDevicesRedirDevSourceQemuvdAgent({
+  const DomainDevicesRedirDevSourceQemuvdAgent({
     this.clipBoard,
     this.mouse,
   });

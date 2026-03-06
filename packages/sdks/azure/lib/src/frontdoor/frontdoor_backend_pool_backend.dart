@@ -26,7 +26,7 @@ class FrontdoorBackendPoolBackend {
   /// [httpsPort] The HTTPS TCP port number. Possible values are between `1` - `65535`.
   /// [priority] Priority to use for load balancing. Higher priorities will not be used for load balancing if any lower priority backend is healthy. Defaults to `1`.
   /// [weight] Weight of this endpoint for load balancing purposes. Defaults to `50`.
-  FrontdoorBackendPoolBackend({
+  const FrontdoorBackendPoolBackend({
     required this.address,
     this.enabled,
     required this.hostHeader,

@@ -8,7 +8,7 @@ class GetInstanceNetworkConfigAuthorizedExternalNetwork {
 
   /// Creates a new [GetInstanceNetworkConfigAuthorizedExternalNetwork].
   /// [cidrRange] CIDR range for one authorized network of the instance.
-  GetInstanceNetworkConfigAuthorizedExternalNetwork({
+  const GetInstanceNetworkConfigAuthorizedExternalNetwork({
     required this.cidrRange,
   });
 

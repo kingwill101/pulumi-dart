@@ -48,7 +48,7 @@ class GetInterfaceEndpointResult {
   /// [subnet] The ID of the subnet from which the private IP will be allocated.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetInterfaceEndpointResult({
+  const GetInterfaceEndpointResult({
     required this.azureApiVersion,
     this.endpointService,
     this.etag,

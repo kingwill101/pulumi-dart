@@ -15,7 +15,7 @@ class PipelineDefinitionPipelineObject {
   /// [fields] Configuration block for Key-value pairs that define the properties of the object. See below
   /// [id] ID of the object.
   /// [name] ARN of the storage connector.
-  PipelineDefinitionPipelineObject({
+  const PipelineDefinitionPipelineObject({
     this.fields,
     required this.id,
     required this.name,

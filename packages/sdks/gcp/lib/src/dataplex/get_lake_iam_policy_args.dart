@@ -21,7 +21,7 @@ class GetLakeIamPolicyArgs {
   /// [lake] Used to find the parent resource to bind the IAM policy to
   /// [location] Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
-  GetLakeIamPolicyArgs({
+  const GetLakeIamPolicyArgs({
     required this.lake,
     this.location,
     this.project,

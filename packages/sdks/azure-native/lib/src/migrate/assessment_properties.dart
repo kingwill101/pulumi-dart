@@ -55,7 +55,7 @@ class AssessmentProperties {
   /// [stage] User configurable setting that describes the status of the assessment.
   /// [timeRange] Time range of performance data used to recommend a size.
   /// [vmUptime] Specify the duration for which the VMs are up in the on-premises environment.
-  AssessmentProperties({
+  const AssessmentProperties({
     required this.azureDiskType,
     required this.azureHybridUseBenefit,
     required this.azureLocation,

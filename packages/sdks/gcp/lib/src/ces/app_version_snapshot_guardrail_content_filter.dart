@@ -29,7 +29,7 @@ class AppVersionSnapshotGuardrailContentFilter {
   /// [bannedContentsInUserInputs] (Output)
   /// [disregardDiacritics] (Output)
   /// [matchType] (Output)
-  AppVersionSnapshotGuardrailContentFilter({
+  const AppVersionSnapshotGuardrailContentFilter({
     this.bannedContents,
     this.bannedContentsInAgentResponses,
     this.bannedContentsInUserInputs,

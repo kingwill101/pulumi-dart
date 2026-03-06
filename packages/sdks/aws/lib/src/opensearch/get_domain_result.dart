@@ -110,7 +110,7 @@ class GetDomainResult {
   /// [softwareUpdateOptions] Software update options for the domain
   /// [tags] Tags assigned to the domain.
   /// [vpcOptions] VPC Options for private OpenSearch domains.
-  GetDomainResult({
+  const GetDomainResult({
     required this.accessPolicies,
     required this.advancedOptions,
     required this.advancedSecurityOptions,

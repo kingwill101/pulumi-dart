@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1SynonymSetSynonym {
 
   /// Creates a new [GoogleCloudContentwarehouseV1SynonymSetSynonym].
   /// [words] For example: sale, invoice, bill, order
-  GoogleCloudContentwarehouseV1SynonymSetSynonym({
+  const GoogleCloudContentwarehouseV1SynonymSetSynonym({
     this.words,
   });
 

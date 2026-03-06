@@ -22,7 +22,7 @@ class FollowerDatabaseDefinitionResponse {
   /// [databaseName] The database name owned by this cluster that was followed. * in case following all databases.
   /// [databaseShareOrigin] The origin of the following setup.
   /// [tableLevelSharingProperties] Table level sharing specifications
-  FollowerDatabaseDefinitionResponse({
+  const FollowerDatabaseDefinitionResponse({
     required this.attachedDatabaseConfigurationName,
     required this.clusterResourceId,
     required this.databaseName,

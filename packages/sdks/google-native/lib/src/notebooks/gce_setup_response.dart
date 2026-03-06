@@ -57,7 +57,7 @@ class GceSetupResponse {
   /// [shieldedInstanceConfig] Optional. Shielded VM configuration. [Images using supported Shielded VM features](https://cloud.google.com/compute/docs/instances/modifying-shielded-vm).
   /// [tags] Optional. The Compute Engine tags to add to runtime (see [Tagging instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
   /// [vmImage] Optional. Use a Compute Engine VM image to start the notebook instance.
-  GceSetupResponse({
+  const GceSetupResponse({
     required this.acceleratorConfigs,
     required this.bootDisk,
     required this.containerImage,

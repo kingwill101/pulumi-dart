@@ -8,7 +8,7 @@ class CustomModelOutputDataConfig {
 
   /// Creates a new [CustomModelOutputDataConfig].
   /// [s3Uri] The S3 URI where the output data is stored.
-  CustomModelOutputDataConfig({
+  const CustomModelOutputDataConfig({
     required this.s3Uri,
   });
 

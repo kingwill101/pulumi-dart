@@ -18,7 +18,7 @@ class GetInstanceIamPolicyResult {
   /// [instance] Required.
   /// [policyData] (Computed) The policy data
   /// [project] Required.
-  GetInstanceIamPolicyResult({
+  const GetInstanceIamPolicyResult({
     required this.etag,
     required this.id,
     required this.instance,

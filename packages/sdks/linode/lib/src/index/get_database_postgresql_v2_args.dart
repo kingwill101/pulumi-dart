@@ -15,7 +15,7 @@ class GetDatabasePostgresqlV2Args {
   /// Creates a new [GetDatabasePostgresqlV2Args].
   /// [id] The ID of the PostgreSQL database.
   /// [updates] Optional.
-  GetDatabasePostgresqlV2Args({
+  const GetDatabasePostgresqlV2Args({
     required this.id,
     this.updates,
   });

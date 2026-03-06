@@ -29,7 +29,7 @@ class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
   /// [numRetries] Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
   /// [perTryTimeout] Specifies a non-zero timeout per retry attempt.
   /// [retryConditions] Specifies one or more conditions when this retry policy applies.
-  RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy({
+  const RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy({
     required this.numRetries,
     this.perTryTimeout,
     this.retryConditions,

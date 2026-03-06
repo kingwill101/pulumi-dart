@@ -16,7 +16,7 @@ class GetSupportedInstanceTypesResult {
   /// [region] Required.
   /// [releaseLabel] Required.
   /// [supportedInstanceTypes] List of supported instance types. See `supported_instance_types` below.
-  GetSupportedInstanceTypesResult({
+  const GetSupportedInstanceTypesResult({
     required this.id,
     required this.region,
     required this.releaseLabel,

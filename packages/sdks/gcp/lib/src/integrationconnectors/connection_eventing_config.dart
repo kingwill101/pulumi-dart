@@ -23,7 +23,7 @@ class ConnectionEventingConfig {
   /// [authConfig] authConfig for Eventing Configuration.
   /// [enrichmentEnabled] Enrichment Enabled.
   /// [registrationDestinationConfig] registrationDestinationConfig
-  ConnectionEventingConfig({
+  const ConnectionEventingConfig({
     this.additionalVariables,
     this.authConfig,
     this.enrichmentEnabled,

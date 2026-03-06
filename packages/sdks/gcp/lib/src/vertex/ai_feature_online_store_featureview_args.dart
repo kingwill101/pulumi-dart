@@ -48,7 +48,7 @@ class AiFeatureOnlineStoreFeatureviewArgs {
   /// [region] The region for the resource. It should be the same as the featureonlinestore region.
   /// [syncConfig] Configures when data is to be synced/updated for this FeatureView. At the end of the sync the latest featureValues for each entityId of this FeatureView are made ready for online serving.
   /// [vectorSearchConfig] Configuration for vector search. It contains the required configurations to create an index from source data, so that approximate nearest neighbor (a.k.a ANN) algorithms search can be performed during online serving.
-  AiFeatureOnlineStoreFeatureviewArgs({
+  const AiFeatureOnlineStoreFeatureviewArgs({
     this.bigQuerySource,
     required this.featureOnlineStore,
     this.featureRegistrySource,

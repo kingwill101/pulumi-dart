@@ -12,7 +12,7 @@ class PhysicalNodes {
   /// Creates a new [PhysicalNodes].
   /// [ipv4Address] The IPv4 address assigned to each physical server on your Azure Stack HCI cluster.
   /// [name] NETBIOS name of each physical server on your Azure Stack HCI cluster.
-  PhysicalNodes({
+  const PhysicalNodes({
     this.ipv4Address,
     this.name,
   });

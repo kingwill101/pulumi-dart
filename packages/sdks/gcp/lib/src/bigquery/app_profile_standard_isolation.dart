@@ -9,7 +9,7 @@ class AppProfileStandardIsolation {
 
   /// Creates a new [AppProfileStandardIsolation].
   /// [priority] The priority of requests sent using this app profile.
-  AppProfileStandardIsolation({
+  const AppProfileStandardIsolation({
     required this.priority,
   });
 

@@ -15,7 +15,7 @@ class GoogleCloudDialogflowCxV3VersionVariantsVariant {
   /// [isControlGroup] Whether the variant is for the control group.
   /// [trafficAllocation] Percentage of the traffic which should be routed to this version of flow. Traffic allocation for a single flow must sum up to 1.0.
   /// [version] The name of the flow version. Format: `projects//locations//agents//flows//versions/`.
-  GoogleCloudDialogflowCxV3VersionVariantsVariant({
+  const GoogleCloudDialogflowCxV3VersionVariantsVariant({
     this.isControlGroup,
     this.trafficAllocation,
     this.version,

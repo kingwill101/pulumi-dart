@@ -15,7 +15,7 @@ class V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartRespo
   /// [allowInterrupt] Whether the user can interrupt the start message while it is playing.
   /// [delayInSeconds] Delay between when the Lambda fulfillment function starts running and the start message is played. If the Lambda function returns before the delay is over, the start message isn't played.
   /// [messageGroups] Between 1-5 configuration block message groups that contain start messages. Amazon Lex chooses one of the messages to play to the user. See `message_group`.
-  V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse({
+  const V2modelsIntentFulfillmentCodeHookFulfillmentUpdatesSpecificationStartResponse({
     this.allowInterrupt,
     this.delayInSeconds,
     this.messageGroups,

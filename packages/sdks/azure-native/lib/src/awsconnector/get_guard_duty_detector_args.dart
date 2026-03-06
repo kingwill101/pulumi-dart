@@ -15,7 +15,7 @@ class GetGuardDutyDetectorArgs {
   /// Creates a new [GetGuardDutyDetectorArgs].
   /// [name] Name of GuardDutyDetector
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGuardDutyDetectorArgs({
+  const GetGuardDutyDetectorArgs({
     required this.name,
     required this.resourceGroupName,
   });

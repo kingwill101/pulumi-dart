@@ -12,7 +12,7 @@ class VendorArgs {
 
   /// Creates a new [VendorArgs].
   /// [vendorName] The name of the vendor.
-  VendorArgs({
+  const VendorArgs({
     this.vendorName,
   });
 

@@ -15,7 +15,7 @@ class GetSubnetworkComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [subnetwork] Required.
-  GetSubnetworkComputeBetaArgs({
+  const GetSubnetworkComputeBetaArgs({
     this.project,
     required this.region,
     required this.subnetwork,

@@ -7,7 +7,7 @@ class GetClusterAddonsConfigHorizontalPodAutoscaling {
 
   /// Creates a new [GetClusterAddonsConfigHorizontalPodAutoscaling].
   /// [disabled] Required.
-  GetClusterAddonsConfigHorizontalPodAutoscaling({
+  const GetClusterAddonsConfigHorizontalPodAutoscaling({
     required this.disabled,
   });
 

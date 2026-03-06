@@ -18,7 +18,7 @@ class GoogleCloudDocumentaiV1DocumentPageLine {
   /// [detectedLanguages] A list of detected languages together with confidence.
   /// [layout] Layout for Line.
   /// [provenance] The history of this annotation.
-  GoogleCloudDocumentaiV1DocumentPageLine({
+  const GoogleCloudDocumentaiV1DocumentPageLine({
     this.detectedLanguages,
     this.layout,
     this.provenance,

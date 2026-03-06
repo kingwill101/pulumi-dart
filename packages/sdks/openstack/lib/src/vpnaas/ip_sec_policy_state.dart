@@ -53,7 +53,7 @@ class IpSecPolicyState {
   /// [tenantId] The owner of the policy. Required if admin wants to
   /// [transformProtocol] The transform protocol. Valid values are esp, ah and ah-esp.
   /// [valueSpecs] Map of additional options.
-  IpSecPolicyState({
+  const IpSecPolicyState({
     this.authAlgorithm,
     this.description,
     this.encapsulationMode,

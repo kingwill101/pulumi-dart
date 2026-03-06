@@ -34,7 +34,7 @@ class GuardDutyDetectorPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  GuardDutyDetectorPropertiesResponse({
+  const GuardDutyDetectorPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

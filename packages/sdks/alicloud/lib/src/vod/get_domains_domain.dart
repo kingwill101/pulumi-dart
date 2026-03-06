@@ -36,7 +36,7 @@ class GetDomainsDomain {
   /// [sources] The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
   /// [sslProtocol] Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
   /// [status] The status of the resource.
-  GetDomainsDomain({
+  const GetDomainsDomain({
     required this.cname,
     required this.description,
     required this.domainName,

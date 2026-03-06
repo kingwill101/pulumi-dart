@@ -24,7 +24,7 @@ class AssociatedTenantPropertiesResponse {
   /// [provisioningManagementState] The state determines whether subscriptions and licenses can be provisioned in the associated tenant. It can be set to 'Pending' to initiate a billing request.
   /// [provisioningState] The provisioning state of the resource during a long-running operation.
   /// [tenantId] The ID that uniquely identifies a tenant.
-  AssociatedTenantPropertiesResponse({
+  const AssociatedTenantPropertiesResponse({
     this.billingManagementState,
     this.displayName,
     required this.provisioningBillingRequestId,

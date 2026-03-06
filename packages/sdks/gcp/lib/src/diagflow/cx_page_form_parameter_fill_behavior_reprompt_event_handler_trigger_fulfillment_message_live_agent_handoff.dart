@@ -8,7 +8,7 @@ class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessa
 
   /// Creates a new [CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff({
+  const CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessageLiveAgentHandoff({
     this.metadata,
   });
 

@@ -16,7 +16,7 @@ class ScheduledSourceSynchronizationSettingResponse {
   /// [kind] Kind of synchronization setting on share.
   /// [recurrenceInterval] Recurrence Interval
   /// [synchronizationTime] Synchronization time
-  ScheduledSourceSynchronizationSettingResponse({
+  const ScheduledSourceSynchronizationSettingResponse({
     required this.kind,
     this.recurrenceInterval,
     this.synchronizationTime,

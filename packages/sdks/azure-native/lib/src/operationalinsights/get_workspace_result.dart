@@ -78,7 +78,7 @@ class GetWorkspaceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workspaceCapping] The daily volume cap for ingestion.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.azureApiVersion,
     required this.createdDate,
     required this.customerId,

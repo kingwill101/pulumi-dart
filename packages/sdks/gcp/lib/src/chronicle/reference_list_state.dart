@@ -66,7 +66,7 @@ class ReferenceListState {
   /// [rules] Output only. The resource names for the associated self-authored Rules that use this
   /// [scopeInfos] ScopeInfo specifies the scope info of the reference list.
   /// [syntaxType] Possible values:
-  ReferenceListState({
+  const ReferenceListState({
     this.description,
     this.displayName,
     this.entries,

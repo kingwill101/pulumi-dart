@@ -44,7 +44,7 @@ class DefaultObjectAccessControlState {
   /// [object_] The name of the object, if applied to an object.
   /// [projectTeams] The project team associated with the entity
   /// [role] The access permission for the entity.
-  DefaultObjectAccessControlState({
+  const DefaultObjectAccessControlState({
     this.bucket,
     this.domain,
     this.email,

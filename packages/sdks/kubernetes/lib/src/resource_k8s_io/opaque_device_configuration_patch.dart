@@ -18,7 +18,7 @@ class OpaqueDeviceConfigurationPatch {
   /// Creates a new [OpaqueDeviceConfigurationPatch].
   /// [driver] Driver is used to determine which kubelet plugin needs to be passed these configuration parameters.
   /// [parameters] Parameters can contain arbitrary data. It is the responsibility of the driver developer to handle validation and versioning. Typically this includes self-identification and a version ("kind" + "apiVersion" for Kubernetes types), with conversion between different versions.
-  OpaqueDeviceConfigurationPatch({
+  const OpaqueDeviceConfigurationPatch({
     this.driver,
     this.parameters,
   });

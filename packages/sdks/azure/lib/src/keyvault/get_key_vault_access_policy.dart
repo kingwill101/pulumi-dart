@@ -26,7 +26,7 @@ class GetKeyVaultAccessPolicy {
   /// [secretPermissions] A list of secret permissions applicable to this Access Policy.
   /// [storagePermissions] A list of storage permissions applicable to this Access Policy.
   /// [tenantId] The Azure Active Directory Tenant ID used to authenticate requests for this Key Vault.
-  GetKeyVaultAccessPolicy({
+  const GetKeyVaultAccessPolicy({
     required this.applicationId,
     required this.certificatePermissions,
     required this.keyPermissions,

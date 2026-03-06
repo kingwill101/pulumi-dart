@@ -15,7 +15,7 @@ class GetElasticLoadBalancingV2ListenerArgs {
   /// Creates a new [GetElasticLoadBalancingV2ListenerArgs].
   /// [name] Name of ElasticLoadBalancingV2Listener
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetElasticLoadBalancingV2ListenerArgs({
+  const GetElasticLoadBalancingV2ListenerArgs({
     required this.name,
     required this.resourceGroupName,
   });

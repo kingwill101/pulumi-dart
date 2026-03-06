@@ -10,7 +10,7 @@ class DataConnectorProperties {
 
   /// Creates a new [DataConnectorProperties].
   /// [credentials] AuthCredentials abstract base class for Auth Purpose.
-  DataConnectorProperties({
+  const DataConnectorProperties({
     required this.credentials,
   });
 

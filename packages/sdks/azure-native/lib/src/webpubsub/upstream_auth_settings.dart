@@ -13,7 +13,7 @@ class UpstreamAuthSettings {
   /// Creates a new [UpstreamAuthSettings].
   /// [managedIdentity] Managed identity settings for upstream.
   /// [type] Upstream auth type enum.
-  UpstreamAuthSettings({
+  const UpstreamAuthSettings({
     this.managedIdentity,
     this.type,
   });

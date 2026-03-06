@@ -16,7 +16,7 @@ class SnapshotSettingsState {
   /// Creates a new [SnapshotSettingsState].
   /// [project] The ID of the project in which the resource belongs.
   /// [storageLocation] Policy of which storage location is going to be resolved, and additional data
-  SnapshotSettingsState({
+  const SnapshotSettingsState({
     this.project,
     this.storageLocation,
   });

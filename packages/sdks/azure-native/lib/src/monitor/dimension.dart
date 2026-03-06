@@ -15,7 +15,7 @@ class Dimension {
   /// [name] Name of the dimension
   /// [operator] Operator for dimension values
   /// [values] List of dimension values
-  Dimension({
+  const Dimension({
     required this.name,
     required this.operator,
     required this.values,

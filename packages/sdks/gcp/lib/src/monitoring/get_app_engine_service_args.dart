@@ -21,7 +21,7 @@ class GetAppEngineServiceArgs {
   /// Creates a new [GetAppEngineServiceArgs].
   /// [moduleId] The ID of the App Engine module underlying this
   /// [project] The ID of the project in which the resource belongs.
-  GetAppEngineServiceArgs({
+  const GetAppEngineServiceArgs({
     required this.moduleId,
     this.project,
   });

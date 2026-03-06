@@ -7,7 +7,7 @@ class DomainDestroy {
 
   /// Creates a new [DomainDestroy].
   /// [graceful] Optional.
-  DomainDestroy({
+  const DomainDestroy({
     this.graceful,
   });
 

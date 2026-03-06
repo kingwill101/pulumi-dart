@@ -14,7 +14,7 @@ class ChannelEncoderSettingsAvailBlankingAvailBlankingImage {
   /// [passwordParam] Key used to extract the password from EC2 Parameter store.
   /// [uri] Path to a file accessible to the live stream.
   /// [username] . Username to be used.
-  ChannelEncoderSettingsAvailBlankingAvailBlankingImage({
+  const ChannelEncoderSettingsAvailBlankingAvailBlankingImage({
     this.passwordParam,
     required this.uri,
     this.username,

@@ -12,7 +12,7 @@ class LabSupportPropertiesResponse {
   /// Creates a new [LabSupportPropertiesResponse].
   /// [enabled] Is the lab support banner active/enabled at this time?
   /// [markdown] The markdown text (if any) that this lab displays in the UI. If left empty/null, nothing will be shown.
-  LabSupportPropertiesResponse({
+  const LabSupportPropertiesResponse({
     this.enabled,
     this.markdown,
   });

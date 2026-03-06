@@ -12,7 +12,7 @@ class PythonPackageResponse {
   /// Creates a new [PythonPackageResponse].
   /// [paths] Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file.
   /// [repository] Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
-  PythonPackageResponse({
+  const PythonPackageResponse({
     required this.paths,
     required this.repository,
   });

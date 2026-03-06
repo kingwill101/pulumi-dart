@@ -53,7 +53,7 @@ class ProvisionedClusterState {
   /// [tags] A mapping of tags which should be assigned to the Arc Kubernetes Provisioned Cluster.
   /// [totalCoreCount] The number of CPU cores present in the cluster resource.
   /// [totalNodeCount] The number of nodes present in the cluster resource.
-  ProvisionedClusterState({
+  const ProvisionedClusterState({
     this.agentVersion,
     this.arcAgentAutoUpgradeEnabled,
     this.arcAgentDesiredVersion,

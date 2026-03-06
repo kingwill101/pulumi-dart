@@ -11,7 +11,7 @@ class GetFirewallPolicyArgs {
 
   /// Creates a new [GetFirewallPolicyArgs].
   /// [firewallPolicy] Required.
-  GetFirewallPolicyArgs({
+  const GetFirewallPolicyArgs({
     required this.firewallPolicy,
   });
 

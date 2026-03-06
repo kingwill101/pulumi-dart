@@ -22,7 +22,7 @@ class GetAccountLoginResult {
   /// [restricted] True if the User that was logged into was a restricted User, false otherwise.
   /// [status] Required.
   /// [username] The username of the User that was logged into.
-  GetAccountLoginResult({
+  const GetAccountLoginResult({
     required this.datetime,
     required this.id,
     required this.ip,

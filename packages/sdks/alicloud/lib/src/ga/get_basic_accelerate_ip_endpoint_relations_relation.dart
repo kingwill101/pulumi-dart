@@ -41,7 +41,7 @@ class GetBasicAccelerateIpEndpointRelationsRelation {
   /// [id] The id of the Global Accelerator Basic Accelerate Ip Endpoint Relation. It formats as `&lt;accelerator_id&gt;:&lt;accelerate_ip_id&gt;:&lt;endpoint_id&gt;`.
   /// [ipAddress] The address of the Basic Accelerate IP.
   /// [status] The status of the Global Accelerator Basic Accelerate Ip Endpoint Relation. Valid Value: `active`.
-  GetBasicAccelerateIpEndpointRelationsRelation({
+  const GetBasicAccelerateIpEndpointRelationsRelation({
     required this.accelerateIpId,
     required this.acceleratorId,
     required this.basicEndpointName,

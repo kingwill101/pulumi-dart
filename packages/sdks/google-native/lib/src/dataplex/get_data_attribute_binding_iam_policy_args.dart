@@ -17,7 +17,7 @@ class GetDataAttributeBindingIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDataAttributeBindingIamPolicyArgs({
+  const GetDataAttributeBindingIamPolicyArgs({
     required this.dataAttributeBindingId,
     required this.location,
     this.optionsRequestedPolicyVersion,

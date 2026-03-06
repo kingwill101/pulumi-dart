@@ -26,7 +26,7 @@ class WorkforcePoolKeyArgs {
   /// [use] The purpose of the key.
   /// [workforcePoolId] Required.
   /// [workforcePoolProviderKeyId] Required. The ID to use for the key, which becomes the final component of the resource name. This value must be 4-32 characters, and may contain the characters [a-z0-9-].
-  WorkforcePoolKeyArgs({
+  const WorkforcePoolKeyArgs({
     this.keyData,
     this.location,
     required this.providerId,

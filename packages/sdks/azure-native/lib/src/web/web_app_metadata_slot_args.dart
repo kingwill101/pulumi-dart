@@ -24,7 +24,7 @@ class WebAppMetadataSlotArgs {
   /// [properties] Settings.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will update the metadata for the production slot.
-  WebAppMetadataSlotArgs({
+  const WebAppMetadataSlotArgs({
     this.kind,
     required this.name,
     this.properties,

@@ -13,7 +13,7 @@ class StatefulSetUpdateStrategy {
   /// Creates a new [StatefulSetUpdateStrategy].
   /// [rollingUpdate] RollingUpdate is used to communicate parameters when Type is RollingUpdateStatefulSetStrategyType.
   /// [type] Type indicates the type of the StatefulSetUpdateStrategy. Default is RollingUpdate.
-  StatefulSetUpdateStrategy({
+  const StatefulSetUpdateStrategy({
     this.rollingUpdate,
     this.type,
   });

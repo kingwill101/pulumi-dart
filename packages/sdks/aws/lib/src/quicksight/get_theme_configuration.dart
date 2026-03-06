@@ -21,7 +21,7 @@ class GetThemeConfiguration {
   /// [sheets] Display options related to sheets. See sheet.
   /// [typographies] Determines the typography options. See typography.
   /// [uiColorPalettes] Color properties that apply to the UI and to charts, excluding the colors that apply to data. See ui_color_palette.
-  GetThemeConfiguration({
+  const GetThemeConfiguration({
     required this.dataColorPalettes,
     required this.sheets,
     required this.typographies,

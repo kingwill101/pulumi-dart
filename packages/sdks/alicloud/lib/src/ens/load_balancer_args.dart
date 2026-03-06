@@ -31,7 +31,7 @@ class LoadBalancerArgs {
   /// [networkId] The network ID of the created edge load balancing (ELB) instance.
   /// [paymentType] Server Load Balancer Instance Payment Type. Value:PayAsYouGo
   /// [vswitchId] The ID of the vSwitch to which the VPC instance belongs.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     this.backendServers,
     required this.ensRegionId,
     this.loadBalancerName,

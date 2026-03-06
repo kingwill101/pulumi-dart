@@ -15,7 +15,7 @@ class GetRegionDiskComputeBetaArgs {
   /// [disk] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionDiskComputeBetaArgs({
+  const GetRegionDiskComputeBetaArgs({
     required this.disk,
     this.project,
     required this.region,

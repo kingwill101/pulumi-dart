@@ -8,7 +8,7 @@ class AnalysisCompletedContaineranalysisV1beta1 {
 
   /// Creates a new [AnalysisCompletedContaineranalysisV1beta1].
   /// [analysisType] Optional.
-  AnalysisCompletedContaineranalysisV1beta1({
+  const AnalysisCompletedContaineranalysisV1beta1({
     this.analysisType,
   });
 

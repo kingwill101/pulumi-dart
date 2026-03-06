@@ -24,7 +24,7 @@ class PrometheusQueryLanguageConditionResponse {
   /// [labels] Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables). The only available variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be empty.
   /// [query] The PromQL expression to evaluate. Every evaluation cycle this expression is evaluated at the current time, and all resultant time series become pending/firing alerts. This field must not be empty.
   /// [ruleGroup] Optional. The rule group name of this alert in the corresponding Prometheus configuration file.Some external tools may require this field to be populated correctly in order to refer to the original Prometheus configuration file. The rule group name and the alert name are necessary to update the relevant AlertPolicies in case the definition of the rule group changes in the future.This field is optional. If this field is not empty, then it must contain a valid UTF-8 string. This field may not exceed 2048 Unicode characters in length.
-  PrometheusQueryLanguageConditionResponse({
+  const PrometheusQueryLanguageConditionResponse({
     required this.alertRule,
     required this.duration,
     required this.evaluationInterval,

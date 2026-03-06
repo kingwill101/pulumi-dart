@@ -18,7 +18,7 @@ class VirtualMachineStatusResponse {
   /// [errorMessage] Descriptive error message
   /// [powerState] The power state of the virtual machine
   /// [provisioningStatus] Optional.
-  VirtualMachineStatusResponse({
+  const VirtualMachineStatusResponse({
     this.errorCode,
     this.errorMessage,
     this.powerState,

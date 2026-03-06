@@ -18,7 +18,7 @@ class GetOrganizationRoot {
   /// [id] Identifier of the root.
   /// [name] Name of the policy type.
   /// [policyTypes] List of policy types enabled for this root. All elements have these attributes:
-  GetOrganizationRoot({
+  const GetOrganizationRoot({
     required this.arn,
     required this.id,
     required this.name,

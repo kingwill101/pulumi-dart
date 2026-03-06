@@ -39,7 +39,7 @@ class PlaceIndexState {
   /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [updateTime] The timestamp for when the place index resource was last update in ISO 8601.
-  PlaceIndexState({
+  const PlaceIndexState({
     this.createTime,
     this.dataSource,
     this.dataSourceConfiguration,

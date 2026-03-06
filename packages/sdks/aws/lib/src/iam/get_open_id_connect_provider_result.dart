@@ -21,7 +21,7 @@ class GetOpenIdConnectProviderResult {
   /// [tags] Map of resource tags for the IAM OIDC provider.
   /// [thumbprintLists] List of server certificate thumbprints for the OpenID Connect (OIDC) identity provider's server certificate(s).
   /// [url] Required.
-  GetOpenIdConnectProviderResult({
+  const GetOpenIdConnectProviderResult({
     required this.arn,
     required this.clientIdLists,
     required this.id,

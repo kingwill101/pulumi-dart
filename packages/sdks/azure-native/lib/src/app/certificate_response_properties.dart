@@ -43,7 +43,7 @@ class CertificateResponseProperties {
   /// [subjectName] Subject name of the certificate.
   /// [thumbprint] Certificate thumbprint.
   /// [valid] Is the certificate valid?.
-  CertificateResponseProperties({
+  const CertificateResponseProperties({
     this.certificateKeyVaultProperties,
     this.certificateType,
     required this.deploymentErrors,

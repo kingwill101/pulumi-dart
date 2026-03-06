@@ -17,7 +17,7 @@ class GetProviderArgs {
   /// [project] Optional.
   /// [providerId] Required.
   /// [workloadIdentityPoolId] Required.
-  GetProviderArgs({
+  const GetProviderArgs({
     required this.location,
     this.project,
     required this.providerId,

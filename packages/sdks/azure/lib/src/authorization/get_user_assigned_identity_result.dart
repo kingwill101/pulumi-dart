@@ -30,7 +30,7 @@ class GetUserAssignedIdentityResult {
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the User Assigned Identity.
   /// [tenantId] The Tenant ID of the User Assigned Identity.
-  GetUserAssignedIdentityResult({
+  const GetUserAssignedIdentityResult({
     required this.clientId,
     required this.id,
     required this.isolationScope,

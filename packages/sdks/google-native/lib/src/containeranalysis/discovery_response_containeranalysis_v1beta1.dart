@@ -9,7 +9,7 @@ class DiscoveryResponseContaineranalysisV1beta1 {
 
   /// Creates a new [DiscoveryResponseContaineranalysisV1beta1].
   /// [analysisKind] Immutable. The kind of analysis that is handled by this discovery.
-  DiscoveryResponseContaineranalysisV1beta1({
+  const DiscoveryResponseContaineranalysisV1beta1({
     required this.analysisKind,
   });
 

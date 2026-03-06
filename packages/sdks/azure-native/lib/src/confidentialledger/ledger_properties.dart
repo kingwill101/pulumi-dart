@@ -23,7 +23,7 @@ class LedgerProperties {
   /// [ledgerSku] SKU associated with the ledger
   /// [ledgerType] Type of Confidential Ledger
   /// [runningState] Object representing RunningState for Ledger.
-  LedgerProperties({
+  const LedgerProperties({
     this.aadBasedSecurityPrincipals,
     this.certBasedSecurityPrincipals,
     this.ledgerSku,

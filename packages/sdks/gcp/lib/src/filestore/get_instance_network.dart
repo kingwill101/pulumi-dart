@@ -30,7 +30,7 @@ class GetInstanceNetwork {
   /// [network] The name of the GCE VPC network to which the
   /// [pscConfigs] Private Service Connect configuration.
   /// [reservedIpRange] A /29 CIDR block that identifies the range of IP
-  GetInstanceNetwork({
+  const GetInstanceNetwork({
     required this.connectMode,
     required this.ipAddresses,
     required this.modes,

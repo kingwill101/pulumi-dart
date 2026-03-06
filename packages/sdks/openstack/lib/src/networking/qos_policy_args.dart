@@ -43,7 +43,7 @@ class QosPolicyArgs {
   /// [shared] Indicates whether this QoS policy is shared across
   /// [tags] A set of string tags for the QoS policy.
   /// [valueSpecs] Map of additional options.
-  QosPolicyArgs({
+  const QosPolicyArgs({
     this.description,
     this.isDefault,
     this.name,

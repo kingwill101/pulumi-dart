@@ -10,7 +10,7 @@ class Source {
 
   /// Creates a new [Source].
   /// [files] `File` set constituting the `Source` bundle.
-  Source({
+  const Source({
     required this.files,
   });
 

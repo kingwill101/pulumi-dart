@@ -10,7 +10,7 @@ class ScaleProfile {
 
   /// Creates a new [ScaleProfile].
   /// [manual] Specifications on how to scale the VirtualMachines agent pool to a fixed size.
-  ScaleProfile({
+  const ScaleProfile({
     this.manual,
   });
 

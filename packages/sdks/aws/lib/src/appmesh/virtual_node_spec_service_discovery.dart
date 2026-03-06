@@ -13,7 +13,7 @@ class VirtualNodeSpecServiceDiscovery {
   /// Creates a new [VirtualNodeSpecServiceDiscovery].
   /// [awsCloudMap] Any AWS Cloud Map information for the virtual node.
   /// [dns] DNS service name for the virtual node.
-  VirtualNodeSpecServiceDiscovery({
+  const VirtualNodeSpecServiceDiscovery({
     this.awsCloudMap,
     this.dns,
   });

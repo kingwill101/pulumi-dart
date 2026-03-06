@@ -9,7 +9,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCou
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount].
   /// [customRequestHandling] Custom handling for counted requests. See below.
-  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount({
+  const WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCount({
     this.customRequestHandling,
   });
 

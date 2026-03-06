@@ -19,7 +19,7 @@ class GetLakeZoneIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [zone] Required.
-  GetLakeZoneIamPolicyArgs({
+  const GetLakeZoneIamPolicyArgs({
     required this.lakeId,
     required this.location,
     this.optionsRequestedPolicyVersion,

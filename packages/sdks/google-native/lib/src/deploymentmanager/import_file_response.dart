@@ -11,7 +11,7 @@ class ImportFileResponse {
   /// Creates a new [ImportFileResponse].
   /// [content] The contents of the file.
   /// [name] The name of the file.
-  ImportFileResponse({
+  const ImportFileResponse({
     required this.content,
     required this.name,
   });

@@ -20,7 +20,7 @@ class ApiOperationRequest {
   /// [headers] One or more `header` blocks as defined above.
   /// [queryParameters] One or more `query_parameter` blocks as defined above.
   /// [representations] One or more `representation` blocks as defined below.
-  ApiOperationRequest({
+  const ApiOperationRequest({
     this.description,
     this.headers,
     this.queryParameters,

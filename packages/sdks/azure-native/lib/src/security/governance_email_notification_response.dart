@@ -12,7 +12,7 @@ class GovernanceEmailNotificationResponse {
   /// Creates a new [GovernanceEmailNotificationResponse].
   /// [disableManagerEmailNotification] Exclude manager from weekly email notification.
   /// [disableOwnerEmailNotification] Exclude  owner from weekly email notification.
-  GovernanceEmailNotificationResponse({
+  const GovernanceEmailNotificationResponse({
     this.disableManagerEmailNotification,
     this.disableOwnerEmailNotification,
   });

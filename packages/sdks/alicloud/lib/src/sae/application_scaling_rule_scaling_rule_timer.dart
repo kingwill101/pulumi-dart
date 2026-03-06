@@ -18,7 +18,7 @@ class ApplicationScalingRuleScalingRuleTimer {
   /// [endDate] The End Date. When the `begin_date` and `end_date` values are empty. it indicates long-term execution and is the default value.
   /// [period] The period in which a timed elastic scaling strategy is executed.
   /// [schedules] Resilient Scaling Strategy Trigger Timing. See `schedules` below.
-  ApplicationScalingRuleScalingRuleTimer({
+  const ApplicationScalingRuleScalingRuleTimer({
     this.beginDate,
     this.endDate,
     this.period,

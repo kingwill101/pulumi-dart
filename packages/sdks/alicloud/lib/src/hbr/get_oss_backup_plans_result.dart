@@ -24,7 +24,7 @@ class GetOssBackupPlansResult {
   /// [outputFile] Optional.
   /// [plans] Required.
   /// [vaultId] Optional.
-  GetOssBackupPlansResult({
+  const GetOssBackupPlansResult({
     this.bucket,
     required this.id,
     required this.ids,

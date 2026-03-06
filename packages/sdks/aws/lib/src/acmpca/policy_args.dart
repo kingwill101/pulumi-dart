@@ -18,7 +18,7 @@ class PolicyArgs {
   /// [policy] JSON-formatted IAM policy to attach to the specified private CA resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] ARN of the private CA to associate with the policy.
-  PolicyArgs({
+  const PolicyArgs({
     required this.policy,
     this.region,
     required this.resourceArn,

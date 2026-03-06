@@ -32,7 +32,7 @@ class GetIntegrationExportersIntegrationExporter {
   /// [param] Exporter configuration parameter json string.
   /// [target] Monitor the target address.
   /// [version] The version information.
-  GetIntegrationExportersIntegrationExporter({
+  const GetIntegrationExportersIntegrationExporter({
     required this.clusterId,
     required this.exporterType,
     required this.id,

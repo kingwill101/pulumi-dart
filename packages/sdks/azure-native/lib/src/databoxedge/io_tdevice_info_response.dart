@@ -19,7 +19,7 @@ class IoTDeviceInfoResponse {
   /// [deviceId] ID of the IoT device/edge device.
   /// [ioTHostHub] Host name for the IoT hub associated to the device.
   /// [ioTHostHubId] Id for the IoT hub associated to the device.
-  IoTDeviceInfoResponse({
+  const IoTDeviceInfoResponse({
     this.authentication,
     required this.deviceId,
     required this.ioTHostHub,

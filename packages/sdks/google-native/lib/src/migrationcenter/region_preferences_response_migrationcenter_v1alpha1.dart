@@ -9,7 +9,7 @@ class RegionPreferencesResponseMigrationcenterV1alpha1 {
 
   /// Creates a new [RegionPreferencesResponseMigrationcenterV1alpha1].
   /// [preferredRegions] A list of preferred regions, ordered by the most preferred region first. Set only valid Google Cloud region names. See https://cloud.google.com/compute/docs/regions-zones for available regions.
-  RegionPreferencesResponseMigrationcenterV1alpha1({
+  const RegionPreferencesResponseMigrationcenterV1alpha1({
     required this.preferredRegions,
   });
 

@@ -11,7 +11,7 @@ class AzureIntegrationsVirtualNetworks {
   /// Creates a new [AzureIntegrationsVirtualNetworks].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsVirtualNetworks({
+  const AzureIntegrationsVirtualNetworks({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

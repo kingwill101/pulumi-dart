@@ -10,7 +10,7 @@ class GetNamespaceTopicEventSubscriptionDeliveryAttributesResult {
 
   /// Creates a new [GetNamespaceTopicEventSubscriptionDeliveryAttributesResult].
   /// [value] A collection of DeliveryAttributeMapping
-  GetNamespaceTopicEventSubscriptionDeliveryAttributesResult({
+  const GetNamespaceTopicEventSubscriptionDeliveryAttributesResult({
     this.value,
   });
 

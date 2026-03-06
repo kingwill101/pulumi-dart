@@ -11,7 +11,7 @@ class AgentAgentGuardrailConfiguration {
   /// Creates a new [AgentAgentGuardrailConfiguration].
   /// [guardrailIdentifier] Unique identifier of the guardrail.
   /// [guardrailVersion] Version of the guardrail.
-  AgentAgentGuardrailConfiguration({
+  const AgentAgentGuardrailConfiguration({
     required this.guardrailIdentifier,
     required this.guardrailVersion,
   });

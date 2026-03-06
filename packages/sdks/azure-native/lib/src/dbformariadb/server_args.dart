@@ -29,7 +29,7 @@ class ServerArgs {
   /// [serverName] The name of the server.
   /// [sku] The SKU (pricing tier) of the server.
   /// [tags] Application-specific metadata in the form of key-value pairs.
-  ServerArgs({
+  const ServerArgs({
     this.location,
     required this.properties,
     required this.resourceGroupName,

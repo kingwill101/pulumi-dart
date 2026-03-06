@@ -15,7 +15,7 @@ class GetConfigTemplateArgs {
   /// Creates a new [GetConfigTemplateArgs].
   /// [configTemplateName] The name of the ConfigTemplate
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConfigTemplateArgs({
+  const GetConfigTemplateArgs({
     required this.configTemplateName,
     required this.resourceGroupName,
   });

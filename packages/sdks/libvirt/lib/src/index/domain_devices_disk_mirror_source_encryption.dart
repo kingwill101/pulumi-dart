@@ -15,7 +15,7 @@ class DomainDevicesDiskMirrorSourceEncryption {
   /// [engine] Specifies the encryption engine utilized for encrypting the disk.
   /// [format] Configures the format of the encrypted disk storage, determining how the data is stored and accessed.
   /// [secrets] Specifies the secrets used for encryption, which can include various elements needed for accessing encrypted data.
-  DomainDevicesDiskMirrorSourceEncryption({
+  const DomainDevicesDiskMirrorSourceEncryption({
     this.engine,
     this.format,
     this.secrets,

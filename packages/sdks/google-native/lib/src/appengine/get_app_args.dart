@@ -13,7 +13,7 @@ class GetAppArgs {
   /// Creates a new [GetAppArgs].
   /// [appId] Required.
   /// [includeExtraData] Optional.
-  GetAppArgs({
+  const GetAppArgs({
     required this.appId,
     this.includeExtraData,
   });

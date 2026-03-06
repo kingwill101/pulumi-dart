@@ -59,7 +59,7 @@ class AzureDataLakeStoreLinkedService {
   /// [tenant] The name or ID of the tenant to which the service principal belongs. Type: string (or Expression with resultType string).
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AzureDataLakeStoreLinkedService({
+  const AzureDataLakeStoreLinkedService({
     this.accountName,
     this.annotations,
     this.azureCloudType,

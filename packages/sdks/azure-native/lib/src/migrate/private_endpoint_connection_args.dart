@@ -25,7 +25,7 @@ class PrivateEndpointConnectionArgs {
   /// [projectName] Name of the Azure Migrate project.
   /// [properties] Properties of the private endpoint endpoint connection.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     this.eTag,
     this.privateEndpointConnectionName,
     required this.projectName,

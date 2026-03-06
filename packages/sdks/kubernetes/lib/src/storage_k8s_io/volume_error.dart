@@ -17,7 +17,7 @@ class VolumeError {
   /// [errorCode] errorCode is a numeric gRPC code representing the error encountered during Attach or Detach operations.
   /// [message] message represents the error encountered during Attach or Detach operation. This string may be logged, so it should not contain sensitive information.
   /// [time] time represents the time the error was encountered.
-  VolumeError({
+  const VolumeError({
     this.errorCode,
     this.message,
     this.time,

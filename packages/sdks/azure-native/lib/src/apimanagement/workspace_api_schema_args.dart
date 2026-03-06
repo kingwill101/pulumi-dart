@@ -36,7 +36,7 @@ class WorkspaceApiSchemaArgs {
   /// [serviceName] The name of the API Management service.
   /// [value] Json escaped string defining the document representing the Schema. Used for schemas other than Swagger/OpenAPI.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceApiSchemaArgs({
+  const WorkspaceApiSchemaArgs({
     required this.apiId,
     this.components,
     required this.contentType,

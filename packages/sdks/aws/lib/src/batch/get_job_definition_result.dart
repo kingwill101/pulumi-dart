@@ -49,7 +49,7 @@ class GetJobDefinitionResult {
   /// [tags] Required.
   /// [timeouts] The timeout configuration for jobs that are submitted with this job definition, after which AWS Batch terminates your jobs if they have not finished. If a job is terminated due to a timeout, it isn't retried. The minimum value for the timeout is 60 seconds.
   /// [type] The type of resource to assign to a container. The supported resources include `GPU`, `MEMORY`, and `VCPU`.
-  GetJobDefinitionResult({
+  const GetJobDefinitionResult({
     this.arn,
     required this.arnPrefix,
     required this.containerOrchestrationType,

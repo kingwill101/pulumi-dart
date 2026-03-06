@@ -25,7 +25,7 @@ class BackendServiceFabricClusterPropertiesResponse {
   /// [maxPartitionResolutionRetries] Maximum number of retries while attempting resolve the partition.
   /// [serverCertificateThumbprints] Thumbprints of certificates cluster management service uses for tls communication
   /// [serverX509Names] Server X509 Certificate Names Collection
-  BackendServiceFabricClusterPropertiesResponse({
+  const BackendServiceFabricClusterPropertiesResponse({
     this.clientCertificateId,
     this.clientCertificatethumbprint,
     required this.managementEndpoints,

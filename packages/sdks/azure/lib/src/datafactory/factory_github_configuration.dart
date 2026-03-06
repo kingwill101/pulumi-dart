@@ -25,7 +25,7 @@ class FactoryGithubConfiguration {
   /// [publishingEnabled] Is automated publishing enabled? Defaults to `true`.
   /// [repositoryName] Specifies the name of the git repository.
   /// [rootFolder] Specifies the root folder within the repository. Set to `/` for the top level.
-  FactoryGithubConfiguration({
+  const FactoryGithubConfiguration({
     required this.accountName,
     required this.branchName,
     this.gitUrl,

@@ -31,7 +31,7 @@ class DataAccessLabelArgs {
   /// [location] The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
   /// [project] The ID of the project in which the resource belongs.
   /// [udmQuery] A UDM query over event data.
-  DataAccessLabelArgs({
+  const DataAccessLabelArgs({
     required this.dataAccessLabelId,
     this.description,
     required this.instance,

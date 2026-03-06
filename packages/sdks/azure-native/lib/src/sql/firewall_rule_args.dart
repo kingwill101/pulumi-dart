@@ -27,7 +27,7 @@ class FirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
   /// [startIpAddress] The start IP address of the firewall rule. Must be IPv4 format. Use value '0.0.0.0' for all Azure-internal IP addresses.
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     this.endIpAddress,
     this.firewallRuleName,
     this.name,

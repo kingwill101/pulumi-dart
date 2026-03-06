@@ -15,7 +15,7 @@ class ProtectedItemDynamicMemoryConfigResponse {
   /// [maximumMemoryInMegaBytes] Gets or sets maximum memory in MB.
   /// [minimumMemoryInMegaBytes] Gets or sets minimum memory in MB.
   /// [targetMemoryBufferPercentage] Gets or sets target memory buffer in %.
-  ProtectedItemDynamicMemoryConfigResponse({
+  const ProtectedItemDynamicMemoryConfigResponse({
     required this.maximumMemoryInMegaBytes,
     required this.minimumMemoryInMegaBytes,
     required this.targetMemoryBufferPercentage,

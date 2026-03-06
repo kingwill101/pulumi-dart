@@ -15,7 +15,7 @@ class GetSqlVirtualMachineGroupArgs {
   /// Creates a new [GetSqlVirtualMachineGroupArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlVirtualMachineGroupName] Name of the SQL virtual machine group.
-  GetSqlVirtualMachineGroupArgs({
+  const GetSqlVirtualMachineGroupArgs({
     required this.resourceGroupName,
     required this.sqlVirtualMachineGroupName,
   });

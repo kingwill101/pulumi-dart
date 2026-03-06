@@ -15,7 +15,7 @@ class AlertRuleFusionSource {
   /// [enabled] Whether this source signal is enabled or disabled in Fusion detection? Defaults to `true`.
   /// [name] The name of the Fusion source signal. Refer to Fusion alert rule template for supported values.
   /// [subTypes] One or more `sub_type` blocks as defined below.
-  AlertRuleFusionSource({
+  const AlertRuleFusionSource({
     this.enabled,
     required this.name,
     this.subTypes,

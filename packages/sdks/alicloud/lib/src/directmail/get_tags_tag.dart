@@ -14,7 +14,7 @@ class GetTagsTag {
   /// [id] The ID of the tag.
   /// [tagId] The ID of the tag.
   /// [tagName] The name of the tag.
-  GetTagsTag({
+  const GetTagsTag({
     required this.id,
     required this.tagId,
     required this.tagName,

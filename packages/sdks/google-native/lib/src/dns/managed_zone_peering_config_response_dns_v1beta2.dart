@@ -11,7 +11,7 @@ class ManagedZonePeeringConfigResponseDnsV1beta2 {
   /// Creates a new [ManagedZonePeeringConfigResponseDnsV1beta2].
   /// [kind] Required.
   /// [targetNetwork] The network with which to peer.
-  ManagedZonePeeringConfigResponseDnsV1beta2({
+  const ManagedZonePeeringConfigResponseDnsV1beta2({
     required this.kind,
     required this.targetNetwork,
   });

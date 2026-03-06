@@ -17,7 +17,7 @@ class GetClientGatewayIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetClientGatewayIamPolicyArgs({
+  const GetClientGatewayIamPolicyArgs({
     required this.clientGatewayId,
     required this.location,
     this.optionsRequestedPolicyVersion,

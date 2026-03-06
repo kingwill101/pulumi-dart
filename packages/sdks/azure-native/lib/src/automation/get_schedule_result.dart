@@ -60,7 +60,7 @@ class GetScheduleResult {
   /// [startTimeOffsetMinutes] Gets the start time's offset in minutes.
   /// [timeZone] Gets or sets the time zone of the schedule.
   /// [type] The type of the resource.
-  GetScheduleResult({
+  const GetScheduleResult({
     this.advancedSchedule,
     required this.azureApiVersion,
     this.creationTime,

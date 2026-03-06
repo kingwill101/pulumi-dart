@@ -19,7 +19,7 @@ class InputMapping {
   /// [location] The location where this mapping applies.
   /// [methodMatch] Regex to evaluate on method to decide if input applies.
   /// [value] A jsonPath expression to select an element.
-  InputMapping({
+  const InputMapping({
     this.fieldName,
     this.location,
     this.methodMatch,

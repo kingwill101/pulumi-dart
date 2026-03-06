@@ -37,7 +37,7 @@ class AzureMariaDBLinkedService {
   /// [pwd] The Azure key vault secret reference of password in connection string.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AzureMariaDBLinkedService({
+  const AzureMariaDBLinkedService({
     this.annotations,
     this.connectVia,
     this.connectionString,

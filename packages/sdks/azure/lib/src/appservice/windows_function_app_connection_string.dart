@@ -14,7 +14,7 @@ class WindowsFunctionAppConnectionString {
   /// [name] The name which should be used for this Connection.
   /// [type] Type of database. Possible values include: `APIHub`, `Custom`, `DocDb`, `EventHub`, `MySQL`, `NotificationHub`, `PostgreSQL`, `RedisCache`, `ServiceBus`, `SQLAzure`, and `SQLServer`.
   /// [value] The connection string value.
-  WindowsFunctionAppConnectionString({
+  const WindowsFunctionAppConnectionString({
     required this.name,
     required this.type,
     required this.value,

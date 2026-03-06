@@ -9,7 +9,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort {
 
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort].
   /// [containerPort] The number of the port to expose on the pod's IP address.
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpecPort({
     this.containerPort,
   });
 

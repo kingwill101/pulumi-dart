@@ -90,7 +90,7 @@ class GetClusterResult {
   /// [subnetGroupName] The name of the subnet group used for the cluster.
   /// [tags] Map of tags assigned to the cluster.
   /// [tlsEnabled] When true, in-transit encryption is enabled for the cluster.
-  GetClusterResult({
+  const GetClusterResult({
     required this.aclName,
     required this.arn,
     required this.autoMinorVersionUpgrade,

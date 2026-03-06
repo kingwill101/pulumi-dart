@@ -10,7 +10,7 @@ class RestorePointSourceMetadata {
 
   /// Creates a new [RestorePointSourceMetadata].
   /// [storageProfile] Gets the storage profile.
-  RestorePointSourceMetadata({
+  const RestorePointSourceMetadata({
     this.storageProfile,
   });
 

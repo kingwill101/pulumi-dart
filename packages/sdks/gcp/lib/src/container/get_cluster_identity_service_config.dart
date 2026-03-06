@@ -8,7 +8,7 @@ class GetClusterIdentityServiceConfig {
 
   /// Creates a new [GetClusterIdentityServiceConfig].
   /// [enabled] Whether to enable the Identity Service component.
-  GetClusterIdentityServiceConfig({
+  const GetClusterIdentityServiceConfig({
     required this.enabled,
   });
 

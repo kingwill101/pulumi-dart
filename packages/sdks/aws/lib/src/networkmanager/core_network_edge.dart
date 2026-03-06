@@ -14,7 +14,7 @@ class CoreNetworkEdge {
   /// [asn] ASN of a core network edge.
   /// [edgeLocation] Region where a core network edge is located.
   /// [insideCidrBlocks] Inside IP addresses used for core network edges.
-  CoreNetworkEdge({
+  const CoreNetworkEdge({
     this.asn,
     this.edgeLocation,
     this.insideCidrBlocks,

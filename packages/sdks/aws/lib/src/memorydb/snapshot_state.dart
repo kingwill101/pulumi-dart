@@ -37,7 +37,7 @@ class SnapshotState {
   /// [source] Indicates whether the snapshot is from an automatic backup (`automated`) or was created manually (`manual`).
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  SnapshotState({
+  const SnapshotState({
     this.arn,
     this.clusterConfigurations,
     this.clusterName,

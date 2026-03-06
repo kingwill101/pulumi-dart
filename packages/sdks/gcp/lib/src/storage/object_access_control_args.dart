@@ -30,7 +30,7 @@ class ObjectAccessControlArgs {
   /// [entity] The entity holding the permission, in one of the following forms:
   /// [object_] The name of the object to apply the access control to.
   /// [role] The access permission for the entity.
-  ObjectAccessControlArgs({
+  const ObjectAccessControlArgs({
     required this.bucket,
     required this.entity,
     required this.object_,

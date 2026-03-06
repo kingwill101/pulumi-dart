@@ -7,7 +7,7 @@ class GetClusterServiceConnectDefault {
 
   /// Creates a new [GetClusterServiceConnectDefault].
   /// [namespace] Required.
-  GetClusterServiceConnectDefault({
+  const GetClusterServiceConnectDefault({
     required this.namespace,
   });
 

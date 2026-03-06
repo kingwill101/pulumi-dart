@@ -9,7 +9,7 @@ class ProposedMultiRegionAccessPointPolicy {
 
   /// Creates a new [ProposedMultiRegionAccessPointPolicy].
   /// [policy] &lt;p&gt;The details of the proposed policy.&lt;/p&gt;
-  ProposedMultiRegionAccessPointPolicy({
+  const ProposedMultiRegionAccessPointPolicy({
     this.policy,
   });
 

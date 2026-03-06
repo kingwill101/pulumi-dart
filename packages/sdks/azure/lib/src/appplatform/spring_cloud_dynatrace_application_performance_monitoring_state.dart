@@ -33,7 +33,7 @@ class SpringCloudDynatraceApplicationPerformanceMonitoringState {
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new resource to be created.
   /// [tenant] Specifies the Dynatrace tenant.
   /// [tenantToken] Specifies the internal token that is used for authentication when OneAgent connects to the Dynatrace cluster to send data.
-  SpringCloudDynatraceApplicationPerformanceMonitoringState({
+  const SpringCloudDynatraceApplicationPerformanceMonitoringState({
     this.apiToken,
     this.apiUrl,
     this.connectionPoint,

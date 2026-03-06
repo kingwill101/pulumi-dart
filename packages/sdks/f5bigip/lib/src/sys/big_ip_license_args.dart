@@ -15,7 +15,7 @@ class BigIpLicenseArgs {
   /// Creates a new [BigIpLicenseArgs].
   /// [command] Tmsh command to execute tmsh commands like install
   /// [registrationKey] A unique Key F5 provides for Licensing BIG-IP
-  BigIpLicenseArgs({
+  const BigIpLicenseArgs({
     required this.command,
     required this.registrationKey,
   });

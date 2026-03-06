@@ -12,7 +12,7 @@ class GetImagesSort {
   /// Creates a new [GetImagesSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
   /// [key] Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-  GetImagesSort({
+  const GetImagesSort({
     this.direction,
     required this.key,
   });

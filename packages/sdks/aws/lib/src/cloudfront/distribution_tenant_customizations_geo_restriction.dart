@@ -11,7 +11,7 @@ class DistributionTenantCustomizationsGeoRestriction {
   /// Creates a new [DistributionTenantCustomizationsGeoRestriction].
   /// [locations] Set of ISO 3166-1-alpha-2 country codes for the restriction. Required if `restriction_type` is `whitelist` or `blacklist`.
   /// [restrictionType] Method to restrict distribution by country: `none`, `whitelist`, or `blacklist`.
-  DistributionTenantCustomizationsGeoRestriction({
+  const DistributionTenantCustomizationsGeoRestriction({
     this.locations,
     this.restrictionType,
   });

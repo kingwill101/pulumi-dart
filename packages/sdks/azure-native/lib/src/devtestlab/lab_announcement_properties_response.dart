@@ -27,7 +27,7 @@ class LabAnnouncementPropertiesResponse {
   /// [provisioningState] The provisioning status of the resource.
   /// [title] The plain text title for the lab announcement
   /// [uniqueIdentifier] The unique immutable identifier of a resource (Guid).
-  LabAnnouncementPropertiesResponse({
+  const LabAnnouncementPropertiesResponse({
     this.enabled,
     this.expirationDate,
     this.expired,

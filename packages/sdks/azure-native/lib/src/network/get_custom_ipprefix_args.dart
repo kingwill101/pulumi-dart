@@ -18,7 +18,7 @@ class GetCustomIPPrefixArgs {
   /// [customIpPrefixName] The name of the custom IP prefix.
   /// [expand] Expands referenced resources.
   /// [resourceGroupName] The name of the resource group.
-  GetCustomIPPrefixArgs({
+  const GetCustomIPPrefixArgs({
     required this.customIpPrefixName,
     this.expand,
     required this.resourceGroupName,

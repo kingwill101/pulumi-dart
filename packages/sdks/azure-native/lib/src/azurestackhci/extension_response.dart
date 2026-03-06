@@ -25,7 +25,7 @@ class ExtensionResponse {
   /// [managedBy] Extension managed by user or Azure.
   /// [state] Arc extension state from arc machine extension.
   /// [typeHandlerVersion] Extension version installed.
-  ExtensionResponse({
+  const ExtensionResponse({
     required this.errorDetails,
     required this.extensionName,
     required this.extensionResourceId,

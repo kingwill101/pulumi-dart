@@ -32,7 +32,7 @@ class CertifiateCertificate {
   /// Creates a new [CertifiateCertificate].
   /// [contents] The base64-encoded certificate contents.
   /// [password] The password associated with the certificate.
-  CertifiateCertificate({
+  const CertifiateCertificate({
     required this.contents,
     this.password,
   });

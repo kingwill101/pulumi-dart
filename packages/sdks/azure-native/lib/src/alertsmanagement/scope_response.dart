@@ -12,7 +12,7 @@ class ScopeResponse {
   /// Creates a new [ScopeResponse].
   /// [scopeType] type of target scope
   /// [values] list of ARM IDs of the given scope type which will be the target of the given action rule.
-  ScopeResponse({
+  const ScopeResponse({
     this.scopeType,
     this.values,
   });

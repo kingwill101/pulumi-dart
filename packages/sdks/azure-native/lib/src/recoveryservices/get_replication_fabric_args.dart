@@ -21,7 +21,7 @@ class GetReplicationFabricArgs {
   /// [filter] OData filter options.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  GetReplicationFabricArgs({
+  const GetReplicationFabricArgs({
     required this.fabricName,
     this.filter,
     required this.resourceGroupName,

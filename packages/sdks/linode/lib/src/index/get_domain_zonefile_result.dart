@@ -13,7 +13,7 @@ class GetDomainZonefileResult {
   /// [domainId] The associated domain's unique ID.
   /// [id] Required.
   /// [zoneFiles] Array of strings representing the Domain Zonefile.
-  GetDomainZonefileResult({
+  const GetDomainZonefileResult({
     required this.domainId,
     required this.id,
     required this.zoneFiles,

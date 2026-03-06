@@ -62,7 +62,7 @@ class VirtualMachineScaleSetOSDiskResponse {
   /// [osType] This property allows you to specify the type of the OS that is included in the
   /// [vhdContainers] Specifies the container urls that are used to store operating system disks for
   /// [writeAcceleratorEnabled] Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  VirtualMachineScaleSetOSDiskResponse({
+  const VirtualMachineScaleSetOSDiskResponse({
     this.caching,
     required this.createOption,
     this.deleteOption,

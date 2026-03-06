@@ -20,7 +20,7 @@ class ConnectionAuthParameters {
   /// [authorizationType] The type of the authentication. Valid values: `API_KEY_AUTH`, `BASIC_AUTH`, `OAUTH_AUTH`.
   /// [basicAuthParameters] The parameters that are configured for basic authentication. See `basic_auth_parameters` below.
   /// [oauthParameters] The parameters that are configured for OAuth authentication. See `oauth_parameters` below.
-  ConnectionAuthParameters({
+  const ConnectionAuthParameters({
     this.apiKeyAuthParameters,
     this.authorizationType,
     this.basicAuthParameters,

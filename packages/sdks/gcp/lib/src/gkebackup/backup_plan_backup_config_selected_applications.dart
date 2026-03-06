@@ -10,7 +10,7 @@ class BackupPlanBackupConfigSelectedApplications {
 
   /// Creates a new [BackupPlanBackupConfigSelectedApplications].
   /// [namespacedNames] A list of namespaced Kubernetes resources.
-  BackupPlanBackupConfigSelectedApplications({
+  const BackupPlanBackupConfigSelectedApplications({
     required this.namespacedNames,
   });
 

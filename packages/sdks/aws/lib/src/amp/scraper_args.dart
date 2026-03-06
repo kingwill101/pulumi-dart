@@ -37,7 +37,7 @@ class ScraperArgs {
   /// [source] Configuration block to specify where the managed scraper will collect metrics from. See `source`.
   /// [tags] Optional.
   /// [timeouts] Optional.
-  ScraperArgs({
+  const ScraperArgs({
     this.alias,
     required this.destination,
     this.region,

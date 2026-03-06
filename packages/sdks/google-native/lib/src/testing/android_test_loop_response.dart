@@ -23,7 +23,7 @@ class AndroidTestLoopResponse {
   /// [appPackageId] The java package for the application under test. The default is determined by examining the application's manifest.
   /// [scenarioLabels] The list of scenario labels that should be run during the test. The scenario labels should map to labels defined in the application's manifest. For example, player_experience and com.google.test.loops.player_experience add all of the loops labeled in the manifest with the com.google.test.loops.player_experience name to the execution. Scenarios can also be specified in the scenarios field.
   /// [scenarios] The list of scenarios that should be run during the test. The default is all test loops, derived from the application's manifest.
-  AndroidTestLoopResponse({
+  const AndroidTestLoopResponse({
     required this.appApk,
     required this.appBundle,
     required this.appPackageId,

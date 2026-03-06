@@ -47,7 +47,7 @@ class SyntheticTaskState {
   /// [syntheticTaskName] The name of synthetic task.
   /// [tags] The list of tags.
   /// [taskType] The type of synthetic task.
-  SyntheticTaskState({
+  const SyntheticTaskState({
     this.availableAssertions,
     this.commonSetting,
     this.customPeriod,

@@ -22,7 +22,7 @@ class CircuitBreakerFailureConditionResponse {
   /// [interval] The interval during which the failures are counted.
   /// [percentage] The threshold for opening the circuit.
   /// [statusCodeRanges] The status code ranges which are considered as failure.
-  CircuitBreakerFailureConditionResponse({
+  const CircuitBreakerFailureConditionResponse({
     this.count,
     this.errorReasons,
     this.interval,

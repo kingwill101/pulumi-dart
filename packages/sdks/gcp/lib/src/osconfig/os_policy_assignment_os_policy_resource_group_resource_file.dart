@@ -31,7 +31,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
   /// [path] The absolute path of the file within the VM.
   /// [permissions] Consists of three octal digits which represent, in
   /// [state] Desired state of the file. Possible values are:
-  OsPolicyAssignmentOsPolicyResourceGroupResourceFile({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourceFile({
     this.content,
     this.file,
     required this.path,

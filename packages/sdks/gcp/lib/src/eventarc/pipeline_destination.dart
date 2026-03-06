@@ -43,7 +43,7 @@ class PipelineDestination {
   /// [outputPayloadFormat] Represents the format of message data.
   /// [topic] The resource name of the Pub/Sub topic to which events should be
   /// [workflow] The resource name of the Workflow whose Executions are triggered by
-  PipelineDestination({
+  const PipelineDestination({
     this.authenticationConfig,
     this.httpEndpoint,
     this.messageBus,

@@ -30,7 +30,7 @@ class GraphQLApiResolverArgs {
   /// [resolverId] Resolver identifier within a GraphQL API. Must be unique in the current API Management service instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GraphQLApiResolverArgs({
+  const GraphQLApiResolverArgs({
     required this.apiId,
     this.description,
     this.displayName,

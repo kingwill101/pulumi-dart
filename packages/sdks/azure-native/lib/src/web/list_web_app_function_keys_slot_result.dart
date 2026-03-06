@@ -20,7 +20,7 @@ class ListWebAppFunctionKeysSlotResult {
   /// [name] Resource Name.
   /// [properties] Settings.
   /// [type] Resource type.
-  ListWebAppFunctionKeysSlotResult({
+  const ListWebAppFunctionKeysSlotResult({
     required this.id,
     this.kind,
     required this.name,

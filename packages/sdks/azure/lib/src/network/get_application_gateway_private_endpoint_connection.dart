@@ -11,7 +11,7 @@ class GetApplicationGatewayPrivateEndpointConnection {
   /// Creates a new [GetApplicationGatewayPrivateEndpointConnection].
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of this Application Gateway.
-  GetApplicationGatewayPrivateEndpointConnection({
+  const GetApplicationGatewayPrivateEndpointConnection({
     required this.id,
     required this.name,
   });

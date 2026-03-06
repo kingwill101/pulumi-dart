@@ -19,7 +19,7 @@ class ManagedClusterPodIdentity {
   /// [identity] The user assigned identity details.
   /// [name] The name of the pod identity.
   /// [namespace] The namespace of the pod identity.
-  ManagedClusterPodIdentity({
+  const ManagedClusterPodIdentity({
     this.bindingSelector,
     required this.identity,
     required this.name,

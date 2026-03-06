@@ -51,7 +51,7 @@ class GetIndexEndpointResult {
   /// [publicEndpointDomainName] If public_endpoint_enabled is true, this field will be populated with the domain name to use for this index endpoint.
   /// [publicEndpointEnabled] Optional. If true, the deployed index will be accessible through public endpoint.
   /// [updateTime] Timestamp when this IndexEndpoint was last updated. This timestamp is not updated when the endpoint's DeployedIndexes are updated, e.g. due to updates of the original Indexes they are the deployments of.
-  GetIndexEndpointResult({
+  const GetIndexEndpointResult({
     required this.createTime,
     required this.deployedIndexes,
     required this.description,

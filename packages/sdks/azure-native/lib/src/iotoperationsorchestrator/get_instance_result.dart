@@ -51,7 +51,7 @@ class GetInstanceResult {
   /// [target] Defines the Target the Instance will deploy to.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Version of the particular resource.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.azureApiVersion,
     required this.extendedLocation,
     required this.id,

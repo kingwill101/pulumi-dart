@@ -32,7 +32,7 @@ class RouteTableArgs {
   /// [routeTableName] The name of the route table.
   /// [routes] Collection of routes contained within a route table.
   /// [tags] Resource tags.
-  RouteTableArgs({
+  const RouteTableArgs({
     this.disableBgpRoutePropagation,
     this.id,
     this.location,

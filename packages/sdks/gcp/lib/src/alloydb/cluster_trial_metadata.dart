@@ -17,7 +17,7 @@ class ClusterTrialMetadata {
   /// [graceEndTime] Grace end time of the trial cluster.
   /// [startTime] Start time of the trial cluster.
   /// [upgradeTime] Upgrade time of the trial cluster to standard cluster.
-  ClusterTrialMetadata({
+  const ClusterTrialMetadata({
     this.endTime,
     this.graceEndTime,
     this.startTime,

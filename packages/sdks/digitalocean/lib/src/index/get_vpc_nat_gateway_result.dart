@@ -36,7 +36,7 @@ class GetVpcNatGatewayResult {
   /// [udpTimeoutSeconds] Required.
   /// [updatedAt] Required.
   /// [vpcs] Required.
-  GetVpcNatGatewayResult({
+  const GetVpcNatGatewayResult({
     required this.createdAt,
     required this.egresses,
     required this.icmpTimeoutSeconds,

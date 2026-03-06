@@ -13,7 +13,7 @@ class InplaceUpgradeOSInfo {
   /// Creates a new [InplaceUpgradeOSInfo].
   /// [baselineOS] Specifies the baseline os for in-place upgrade tests.
   /// [targetOS] Specifies the target os for in-place upgrade tests.
-  InplaceUpgradeOSInfo({
+  const InplaceUpgradeOSInfo({
     this.baselineOS,
     this.targetOS,
   });

@@ -12,7 +12,7 @@ class CustomerDataStoragePropertiesResponse {
   /// Creates a new [CustomerDataStoragePropertiesResponse].
   /// [blobContainerName] Name of the Azure Blob Storage container to use or create.
   /// [storageAccountResourceId] ARM Resource ID of the Storage account to use for Customer Data storage.
-  CustomerDataStoragePropertiesResponse({
+  const CustomerDataStoragePropertiesResponse({
     this.blobContainerName,
     this.storageAccountResourceId,
   });

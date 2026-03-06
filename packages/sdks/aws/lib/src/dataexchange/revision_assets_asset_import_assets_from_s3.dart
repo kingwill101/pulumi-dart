@@ -9,7 +9,7 @@ class RevisionAssetsAssetImportAssetsFromS3 {
 
   /// Creates a new [RevisionAssetsAssetImportAssetsFromS3].
   /// [assetSource] A block specifying the source bucket and key for the asset. This block supports the following:
-  RevisionAssetsAssetImportAssetsFromS3({
+  const RevisionAssetsAssetImportAssetsFromS3({
     this.assetSource,
   });
 

@@ -19,7 +19,7 @@ class AgentcoreTokenVaultCmkArgs {
   /// [kmsConfiguration] KMS configuration for the token vault. See `kms_configuration` below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tokenVaultId] Token vault ID. Defaults to `default`.
-  AgentcoreTokenVaultCmkArgs({
+  const AgentcoreTokenVaultCmkArgs({
     required this.kmsConfiguration,
     this.region,
     this.tokenVaultId,

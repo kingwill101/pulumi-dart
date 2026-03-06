@@ -13,7 +13,7 @@ class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec {
   /// Creates a new [AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec].
   /// [metricName] (Output)
   /// [target] (Output)
-  AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec({
+  const AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec({
     this.metricName,
     this.target,
   });

@@ -28,7 +28,7 @@ class PolicyArgs {
   /// [policyName] The name of the Policy tracked resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  PolicyArgs({
+  const PolicyArgs({
     this.certificate,
     this.location,
     required this.namespaceName,

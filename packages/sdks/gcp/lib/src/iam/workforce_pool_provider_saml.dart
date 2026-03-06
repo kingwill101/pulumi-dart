@@ -20,7 +20,7 @@ class WorkforcePoolProviderSaml {
 
   /// Creates a new [WorkforcePoolProviderSaml].
   /// [idpMetadataXml] SAML Identity provider configuration metadata xml doc.
-  WorkforcePoolProviderSaml({
+  const WorkforcePoolProviderSaml({
     required this.idpMetadataXml,
   });
 

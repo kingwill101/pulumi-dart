@@ -24,7 +24,7 @@ class GetInstanceTypeOfferingsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [storageType] Broker's storage type.
-  GetInstanceTypeOfferingsResult({
+  const GetInstanceTypeOfferingsResult({
     required this.brokerInstanceOptions,
     this.engineType,
     this.hostInstanceType,

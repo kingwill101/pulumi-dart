@@ -25,7 +25,7 @@ class NfsMountEndpointPropertiesResponse {
   /// [host] The host name or IP address of the server exporting the file system.
   /// [nfsVersion] The NFS protocol version.
   /// [provisioningState] The provisioning state of this resource.
-  NfsMountEndpointPropertiesResponse({
+  const NfsMountEndpointPropertiesResponse({
     this.description,
     required this.endpointType,
     required this.export,

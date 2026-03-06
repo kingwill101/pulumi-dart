@@ -55,7 +55,7 @@ class CustomImageArgs {
   /// [tags] The tags of the resource.
   /// [vhd] The VHD from which the image is to be created.
   /// [vm] The virtual machine from which the image is to be created.
-  CustomImageArgs({
+  const CustomImageArgs({
     this.author,
     this.customImagePlan,
     this.dataDiskStorageInfo,

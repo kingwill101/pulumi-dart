@@ -18,7 +18,7 @@ class GetEndpointAclServiceResult {
   /// [instanceId] Required.
   /// [moduleName] Optional.
   /// [status] Required.
-  GetEndpointAclServiceResult({
+  const GetEndpointAclServiceResult({
     required this.enable,
     required this.endpointType,
     required this.id,

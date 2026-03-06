@@ -22,7 +22,7 @@ class SqlDatabaseResourceSettings {
   /// [targetResourceGroupName] Gets or sets the target resource group name.
   /// [targetResourceName] Gets or sets the target Resource name.
   /// [zoneRedundant] Defines the zone redundant resource setting.
-  SqlDatabaseResourceSettings({
+  const SqlDatabaseResourceSettings({
     required this.resourceType,
     this.tags,
     this.targetResourceGroupName,

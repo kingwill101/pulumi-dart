@@ -12,7 +12,7 @@ class ClusterIpAllocationPolicyNetworkTierConfig {
 
   /// Creates a new [ClusterIpAllocationPolicyNetworkTierConfig].
   /// [networkTier] Network tier configuration.
-  ClusterIpAllocationPolicyNetworkTierConfig({
+  const ClusterIpAllocationPolicyNetworkTierConfig({
     required this.networkTier,
   });
 

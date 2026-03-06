@@ -12,7 +12,7 @@ class SubjectResponseContaineranalysisV1alpha1 {
   /// Creates a new [SubjectResponseContaineranalysisV1alpha1].
   /// [digest] "": "" Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
   /// [name] name is the name of the Subject used here
-  SubjectResponseContaineranalysisV1alpha1({
+  const SubjectResponseContaineranalysisV1alpha1({
     required this.digest,
     required this.name,
   });

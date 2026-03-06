@@ -15,7 +15,7 @@ class DeployPolicySelector {
   /// Creates a new [DeployPolicySelector].
   /// [deliveryPipeline] Contains attributes about a delivery pipeline.
   /// [target] Contains attributes about a target.
-  DeployPolicySelector({
+  const DeployPolicySelector({
     this.deliveryPipeline,
     this.target,
   });

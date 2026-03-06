@@ -110,7 +110,7 @@ class ConnectionState {
   /// [reconciling] Output only. Set to true when the connection is being set up or updated in the
   /// [uid] Output only. A system-assigned unique identifier for a the GitRepositoryLink.
   /// [updateTime] Output only. [Output only] Update timestamp
-  ConnectionState({
+  const ConnectionState({
     this.annotations,
     this.bitbucketCloudConfig,
     this.bitbucketDataCenterConfig,

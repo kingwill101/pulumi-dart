@@ -8,7 +8,7 @@ class TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfi
 
   /// Creates a new [TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate].
   /// [resourceArn] ARN of the Certificate Manager SSL/TLS server certificate that's used for inbound SSL/TLS inspection.
-  TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate({
+  const TlsInspectionConfigurationTlsInspectionConfigurationServerCertificateConfigurationServerCertificate({
     this.resourceArn,
   });
 

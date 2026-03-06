@@ -55,7 +55,7 @@ class SQuotaPreferenceState {
   /// [reconciling] Is the quota preference pending Google Cloud approval and fulfillment.
   /// [service] The name of the service to which the quota preference is applied.
   /// [updateTime] Update time stamp.
-  SQuotaPreferenceState({
+  const SQuotaPreferenceState({
     this.contactEmail,
     this.createTime,
     this.dimensions,

@@ -15,7 +15,7 @@ class GetCustomRolloutArgs {
   /// Creates a new [GetCustomRolloutArgs].
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
   /// [rolloutName] The rollout name.
-  GetCustomRolloutArgs({
+  const GetCustomRolloutArgs({
     required this.providerNamespace,
     required this.rolloutName,
   });

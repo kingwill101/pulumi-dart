@@ -18,7 +18,7 @@ class SubscriptionFeatureRegistrationArgs {
   /// [featureName] The feature name.
   /// [properties] Optional.
   /// [providerNamespace] The provider namespace.
-  SubscriptionFeatureRegistrationArgs({
+  const SubscriptionFeatureRegistrationArgs({
     this.featureName,
     this.properties,
     required this.providerNamespace,

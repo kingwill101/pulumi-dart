@@ -12,7 +12,7 @@ class SkipErrorFileResponse {
   /// Creates a new [SkipErrorFileResponse].
   /// [dataInconsistency] Skip if source/sink file changed by other concurrent write. Default is false. Type: boolean (or Expression with resultType boolean).
   /// [fileMissing] Skip if file is deleted by other client during copy. Default is true. Type: boolean (or Expression with resultType boolean).
-  SkipErrorFileResponse({
+  const SkipErrorFileResponse({
     this.dataInconsistency,
     this.fileMissing,
   });

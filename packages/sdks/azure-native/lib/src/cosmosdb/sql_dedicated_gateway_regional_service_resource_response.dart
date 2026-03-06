@@ -18,7 +18,7 @@ class SqlDedicatedGatewayRegionalServiceResourceResponse {
   /// [name] The regional service name.
   /// [sqlDedicatedGatewayEndpoint] The regional endpoint for SqlDedicatedGateway.
   /// [status] Describes the status of a service.
-  SqlDedicatedGatewayRegionalServiceResourceResponse({
+  const SqlDedicatedGatewayRegionalServiceResourceResponse({
     required this.location,
     required this.name,
     required this.sqlDedicatedGatewayEndpoint,

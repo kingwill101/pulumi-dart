@@ -13,7 +13,7 @@ class PreventionDiscoveryConfigOrgConfig {
   /// Creates a new [PreventionDiscoveryConfigOrgConfig].
   /// [location] The data to scan folder org or project
   /// [projectId] The project that will run the scan. The DLP service account that exists within this project must have access to all resources that are profiled, and the cloud DLP API must be enabled.
-  PreventionDiscoveryConfigOrgConfig({
+  const PreventionDiscoveryConfigOrgConfig({
     this.location,
     this.projectId,
   });

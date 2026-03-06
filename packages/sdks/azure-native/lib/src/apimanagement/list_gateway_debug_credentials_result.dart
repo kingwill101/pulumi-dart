@@ -8,7 +8,7 @@ class ListGatewayDebugCredentialsResult {
 
   /// Creates a new [ListGatewayDebugCredentialsResult].
   /// [token] Gateway debug token.
-  ListGatewayDebugCredentialsResult({
+  const ListGatewayDebugCredentialsResult({
     this.token,
   });
 

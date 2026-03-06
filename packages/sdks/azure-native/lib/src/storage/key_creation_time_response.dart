@@ -10,7 +10,7 @@ class KeyCreationTimeResponse {
   /// Creates a new [KeyCreationTimeResponse].
   /// [key1] Optional.
   /// [key2] Optional.
-  KeyCreationTimeResponse({
+  const KeyCreationTimeResponse({
     this.key1,
     this.key2,
   });

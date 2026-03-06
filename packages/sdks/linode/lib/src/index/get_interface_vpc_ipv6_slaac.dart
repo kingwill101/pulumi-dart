@@ -11,7 +11,7 @@ class GetInterfaceVpcIpv6Slaac {
   /// Creates a new [GetInterfaceVpcIpv6Slaac].
   /// [address] The assigned IPv6 address within the range.
   /// [range] The IPv6 network range in CIDR notation.
-  GetInterfaceVpcIpv6Slaac({
+  const GetInterfaceVpcIpv6Slaac({
     required this.address,
     required this.range,
   });

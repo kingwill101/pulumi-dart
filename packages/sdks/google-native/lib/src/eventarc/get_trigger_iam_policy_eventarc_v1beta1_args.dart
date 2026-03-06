@@ -17,7 +17,7 @@ class GetTriggerIamPolicyEventarcV1beta1Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [triggerId] Required.
-  GetTriggerIamPolicyEventarcV1beta1Args({
+  const GetTriggerIamPolicyEventarcV1beta1Args({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

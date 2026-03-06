@@ -9,7 +9,7 @@ class AdditionalAuthorization {
   /// Creates a new [AdditionalAuthorization].
   /// [applicationId] Optional.
   /// [roleDefinitionId] Optional.
-  AdditionalAuthorization({
+  const AdditionalAuthorization({
     this.applicationId,
     this.roleDefinitionId,
   });

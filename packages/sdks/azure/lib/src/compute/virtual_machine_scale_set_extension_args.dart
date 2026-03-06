@@ -65,7 +65,7 @@ class VirtualMachineScaleSetExtensionArgs {
   /// [type] Specifies the Type of the Extension. Changing this forces a new resource to be created.
   /// [typeHandlerVersion] Specifies the version of the extension to use, available versions can be found using the Azure CLI.
   /// [virtualMachineScaleSetId] The ID of the Virtual Machine Scale Set. Changing this forces a new resource to be created.
-  VirtualMachineScaleSetExtensionArgs({
+  const VirtualMachineScaleSetExtensionArgs({
     this.autoUpgradeMinorVersion,
     this.automaticUpgradeEnabled,
     this.failureSuppressionEnabled,

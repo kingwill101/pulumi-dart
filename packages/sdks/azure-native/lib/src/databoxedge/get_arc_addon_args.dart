@@ -21,7 +21,7 @@ class GetArcAddonArgs {
   /// [deviceName] The device name.
   /// [resourceGroupName] The resource group name.
   /// [roleName] The role name.
-  GetArcAddonArgs({
+  const GetArcAddonArgs({
     required this.addonName,
     required this.deviceName,
     required this.resourceGroupName,

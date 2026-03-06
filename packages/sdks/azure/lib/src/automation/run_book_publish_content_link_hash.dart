@@ -11,7 +11,7 @@ class RunBookPublishContentLinkHash {
   /// Creates a new [RunBookPublishContentLinkHash].
   /// [algorithm] Specifies the hash algorithm used to hash the content.
   /// [value] Specifies the expected hash value of the content.
-  RunBookPublishContentLinkHash({
+  const RunBookPublishContentLinkHash({
     required this.algorithm,
     required this.value,
   });

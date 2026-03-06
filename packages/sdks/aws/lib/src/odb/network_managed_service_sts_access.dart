@@ -15,7 +15,7 @@ class NetworkManagedServiceStsAccess {
   /// [ipv4Addresses] Required.
   /// [status] The status of the network resource.
   /// [stsPolicyDocument] Specifies the endpoint policy for STS access from the ODB network.
-  NetworkManagedServiceStsAccess({
+  const NetworkManagedServiceStsAccess({
     required this.domainName,
     required this.ipv4Addresses,
     required this.status,

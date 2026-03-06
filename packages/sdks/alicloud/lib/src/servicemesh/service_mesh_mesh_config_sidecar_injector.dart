@@ -30,7 +30,7 @@ class ServiceMeshMeshConfigSidecarInjector {
   /// [requestCpu] Sidecar injector Pods on the requested resource
   /// [requestMemory] Sidecar injector Pods on the requested resource
   /// [sidecarInjectorWebhookAsYaml] Other automatic injection Sidecar configuration (in YAML format)
-  ServiceMeshMeshConfigSidecarInjector({
+  const ServiceMeshMeshConfigSidecarInjector({
     this.autoInjectionPolicyEnabled,
     this.enableNamespacesByDefault,
     this.initCniConfiguration,

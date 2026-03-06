@@ -9,7 +9,7 @@ class EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse].
   /// [moduleId] ID of the config module.
-  EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse({
+  const EnterpriseCrmEventbusProtoTaskUiModuleConfigResponse({
     required this.moduleId,
   });
 

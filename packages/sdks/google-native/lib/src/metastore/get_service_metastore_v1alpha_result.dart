@@ -79,7 +79,7 @@ class GetServiceMetastoreV1alphaResult {
   /// [tier] The tier of the service.
   /// [uid] The globally unique resource identifier of the metastore service.
   /// [updateTime] The time when the metastore service was last updated.
-  GetServiceMetastoreV1alphaResult({
+  const GetServiceMetastoreV1alphaResult({
     required this.artifactGcsUri,
     required this.createTime,
     required this.databaseType,

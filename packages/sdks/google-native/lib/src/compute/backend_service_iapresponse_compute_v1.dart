@@ -18,7 +18,7 @@ class BackendServiceIAPResponseComputeV1 {
   /// [oauth2ClientId] OAuth2 client ID to use for the authentication flow.
   /// [oauth2ClientSecret] OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field. @InputOnly
   /// [oauth2ClientSecretSha256] SHA256 hash value for the field oauth2_client_secret above.
-  BackendServiceIAPResponseComputeV1({
+  const BackendServiceIAPResponseComputeV1({
     required this.enabled,
     required this.oauth2ClientId,
     required this.oauth2ClientSecret,

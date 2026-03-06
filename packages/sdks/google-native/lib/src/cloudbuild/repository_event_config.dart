@@ -17,7 +17,7 @@ class RepositoryEventConfig {
   /// [pullRequest] Filter to match changes in pull requests.
   /// [push] Filter to match changes in refs like branches, tags.
   /// [repository] The resource name of the Repo API resource.
-  RepositoryEventConfig({
+  const RepositoryEventConfig({
     this.pullRequest,
     this.push,
     this.repository,

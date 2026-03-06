@@ -9,7 +9,7 @@ class PatchInstanceFilterGroupLabelOsconfigV1beta {
 
   /// Creates a new [PatchInstanceFilterGroupLabelOsconfigV1beta].
   /// [labels] Compute Engine instance labels that must be present for a VM instance to be targeted by this filter.
-  PatchInstanceFilterGroupLabelOsconfigV1beta({
+  const PatchInstanceFilterGroupLabelOsconfigV1beta({
     this.labels,
   });
 

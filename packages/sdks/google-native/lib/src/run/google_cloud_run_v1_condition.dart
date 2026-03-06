@@ -24,7 +24,7 @@ class GoogleCloudRunV1Condition {
   /// [severity] Optional. How to interpret this condition. One of Error, Warning, or Info. Conditions of severity Info do not contribute to resource readiness.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] type is used to communicate the status of the reconciliation process. Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
-  GoogleCloudRunV1Condition({
+  const GoogleCloudRunV1Condition({
     this.lastTransitionTime,
     this.message,
     this.reason,

@@ -17,7 +17,7 @@ class GetElasticPoolSkus {
   /// [family] The `family` of hardware.
   /// [name] The name of the elastic pool.
   /// [tier] The tier of the particular SKU.
-  GetElasticPoolSkus({
+  const GetElasticPoolSkus({
     required this.capacity,
     required this.family,
     required this.name,

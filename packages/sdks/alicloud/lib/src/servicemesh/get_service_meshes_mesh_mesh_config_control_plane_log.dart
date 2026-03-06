@@ -11,7 +11,7 @@ class GetServiceMeshesMeshMeshConfigControlPlaneLog {
   /// Creates a new [GetServiceMeshesMeshMeshConfigControlPlaneLog].
   /// [enabled] Whether to enable CNI.
   /// [project] The Service grid audit that to the project.
-  GetServiceMeshesMeshMeshConfigControlPlaneLog({
+  const GetServiceMeshesMeshMeshConfigControlPlaneLog({
     required this.enabled,
     required this.project,
   });

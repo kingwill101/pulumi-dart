@@ -50,7 +50,7 @@ class ResourceMetricSignalDefinitionPropertiesResponse {
   /// [signalKind] Supported signal kinds as discriminator
   /// [tags] Optional set of labels (key-value pairs)
   /// [timeGrain] Time range of signal. ISO duration format like PT10M.
-  ResourceMetricSignalDefinitionPropertiesResponse({
+  const ResourceMetricSignalDefinitionPropertiesResponse({
     required this.aggregationType,
     this.dataUnit,
     required this.deletionDate,

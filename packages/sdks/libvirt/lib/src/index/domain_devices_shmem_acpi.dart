@@ -8,7 +8,7 @@ class DomainDevicesShmemAcpi {
 
   /// Creates a new [DomainDevicesShmemAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  DomainDevicesShmemAcpi({
+  const DomainDevicesShmemAcpi({
     this.index,
   });
 

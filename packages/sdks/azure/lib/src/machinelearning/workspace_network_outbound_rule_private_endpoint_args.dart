@@ -33,7 +33,7 @@ class WorkspaceNetworkOutboundRulePrivateEndpointArgs {
   /// [sparkEnabled] Whether to enable an additional private endpoint to be used by jobs running on Spark. Changing this forces a new resource to be created.
   /// [subResourceTarget] Specifies the Sub Resource of the service resource to connect to. Possible values are `vault`,`amlworkspace`,`blob`,`table`,`queue`,`file`,`web`,`dfs`, `redisCache`. Changing this forces a new resource to be created.
   /// [workspaceId] Specifies the ID of the Machine Learning Workspace. Changing this forces a new resource to be created.
-  WorkspaceNetworkOutboundRulePrivateEndpointArgs({
+  const WorkspaceNetworkOutboundRulePrivateEndpointArgs({
     this.name,
     required this.serviceResourceId,
     this.sparkEnabled,

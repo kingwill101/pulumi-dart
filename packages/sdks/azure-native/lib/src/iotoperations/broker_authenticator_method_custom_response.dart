@@ -19,7 +19,7 @@ class BrokerAuthenticatorMethodCustomResponse {
   /// [caCertConfigMap] Optional CA certificate for validating the custom authentication server's certificate.
   /// [endpoint] Endpoint of the custom authentication server. Must be an HTTPS endpoint.
   /// [headers] Additional HTTP headers to pass to the custom authentication server.
-  BrokerAuthenticatorMethodCustomResponse({
+  const BrokerAuthenticatorMethodCustomResponse({
     this.auth,
     this.caCertConfigMap,
     required this.endpoint,

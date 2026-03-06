@@ -29,7 +29,7 @@ class GetTriggersTrigger {
   /// [name] FC trigger name.
   /// [sourceArn] Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
   /// [type] Type of the trigger. Valid values: `oss`, `log`, `timer`, `http`, `mns_topic`, `cdn_events` and `eventbridge`.
-  GetTriggersTrigger({
+  const GetTriggersTrigger({
     required this.config,
     required this.creationTime,
     required this.id,

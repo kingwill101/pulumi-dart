@@ -46,7 +46,7 @@ class LinkedServiceSqlManagedInstanceState {
   /// [servicePrincipalId] The service principal id in which to authenticate against the Azure SQL Managed Instance.
   /// [servicePrincipalKey] The service principal key in which to authenticate against the Azure SQL Managed Instance.
   /// [tenant] The tenant id or name in which to authenticate against the Azure SQL Managed Instance.
-  LinkedServiceSqlManagedInstanceState({
+  const LinkedServiceSqlManagedInstanceState({
     this.annotations,
     this.connectionString,
     this.dataFactoryId,

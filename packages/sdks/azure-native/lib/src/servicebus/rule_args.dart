@@ -40,7 +40,7 @@ class RuleArgs {
   /// [sqlFilter] Properties of sqlFilter
   /// [subscriptionName] The subscription name.
   /// [topicName] The topic name.
-  RuleArgs({
+  const RuleArgs({
     this.action,
     this.correlationFilter,
     this.filterType,

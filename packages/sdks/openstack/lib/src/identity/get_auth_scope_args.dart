@@ -26,7 +26,7 @@ class GetAuthScopeArgs {
   /// [name] The name of the scope. This is an arbitrary name which is
   /// [region] The region in which to obtain the V3 Identity client.
   /// [setTokenId] A boolean argument that determines whether to
-  GetAuthScopeArgs({
+  const GetAuthScopeArgs({
     required this.name,
     this.region,
     this.setTokenId,

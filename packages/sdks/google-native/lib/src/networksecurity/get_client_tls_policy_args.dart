@@ -15,7 +15,7 @@ class GetClientTlsPolicyArgs {
   /// [clientTlsPolicyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetClientTlsPolicyArgs({
+  const GetClientTlsPolicyArgs({
     required this.clientTlsPolicyId,
     required this.location,
     this.project,

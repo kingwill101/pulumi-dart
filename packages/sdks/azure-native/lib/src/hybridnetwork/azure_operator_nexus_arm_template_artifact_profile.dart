@@ -14,7 +14,7 @@ class AzureOperatorNexusArmTemplateArtifactProfile {
   /// Creates a new [AzureOperatorNexusArmTemplateArtifactProfile].
   /// [artifactStore] The reference to artifact store.
   /// [templateArtifactProfile] Template artifact profile.
-  AzureOperatorNexusArmTemplateArtifactProfile({
+  const AzureOperatorNexusArmTemplateArtifactProfile({
     this.artifactStore,
     this.templateArtifactProfile,
   });

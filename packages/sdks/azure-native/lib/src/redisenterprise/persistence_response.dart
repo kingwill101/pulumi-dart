@@ -18,7 +18,7 @@ class PersistenceResponse {
   /// [aofFrequency] Sets the frequency at which data is written to disk. Defaults to '1s', meaning 'every second'. Note that the 'always' setting is deprecated, because of its performance impact.
   /// [rdbEnabled] Sets whether RDB is enabled. Note that at most one of AOF or RDB persistence may be enabled.
   /// [rdbFrequency] Sets the frequency at which a snapshot of the database is created.
-  PersistenceResponse({
+  const PersistenceResponse({
     this.aofEnabled,
     this.aofFrequency,
     this.rdbEnabled,

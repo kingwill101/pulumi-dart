@@ -18,7 +18,7 @@ class UserSet {
   /// [id] The object id of the user.
   /// [isBackup] The value indicating whether the user is a backup fallback approver
   /// [userType] The type of user.
-  UserSet({
+  const UserSet({
     this.description,
     this.id,
     this.isBackup,

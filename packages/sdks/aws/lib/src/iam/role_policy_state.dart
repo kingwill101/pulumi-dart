@@ -22,7 +22,7 @@ class RolePolicyState {
   /// [namePrefix] Creates a unique name beginning with the specified prefix.
   /// [policy] The inline policy document.
   /// [role] The name of the IAM role to attach to the policy.
-  RolePolicyState({
+  const RolePolicyState({
     this.name,
     this.namePrefix,
     this.policy,

@@ -21,7 +21,7 @@ class WorkspaceAadAdminArgs {
   /// [objectId] The object id of the Azure AD Administrator of this Synapse Workspace.
   /// [synapseWorkspaceId] The ID of the Synapse Workspace where the Azure AD Administrator should be configured.
   /// [tenantId] The tenant id of the Azure AD Administrator of this Synapse Workspace.
-  WorkspaceAadAdminArgs({
+  const WorkspaceAadAdminArgs({
     required this.login,
     required this.objectId,
     required this.synapseWorkspaceId,

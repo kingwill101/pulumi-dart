@@ -25,7 +25,7 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern {
   /// [enforcedUrls] The enforced URL configuration for the inline redaction pattern.
   /// [exemptUrls] The exempt URL configuration for the inline redaction pattern.
   /// [redactionPlaceHolders] The redaction placeholder that will replace the redacted text in session. Detailed below.
-  DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern({
+  const DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPattern({
     this.builtInPatternId,
     this.confidenceLevel,
     this.customPattern,

@@ -8,7 +8,7 @@ class GetConfigurationSetVdmOptionDashboardOption {
 
   /// Creates a new [GetConfigurationSetVdmOptionDashboardOption].
   /// [engagementMetrics] Specifies the status of your VDM engagement metrics collection.
-  GetConfigurationSetVdmOptionDashboardOption({
+  const GetConfigurationSetVdmOptionDashboardOption({
     required this.engagementMetrics,
   });
 

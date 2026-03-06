@@ -33,7 +33,7 @@ class AuthorizationPolicyArgs {
   /// [name] Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`.
   /// [project] Optional.
   /// [rules] Optional. List of rules to match. Note that at least one of the rules must match in order for the action specified in the 'action' field to be taken. A rule is a match if there is a matching source and destination. If left blank, the action specified in the `action` field will be applied on every request.
-  AuthorizationPolicyArgs({
+  const AuthorizationPolicyArgs({
     required this.action,
     required this.authorizationPolicyId,
     this.description,

@@ -18,7 +18,7 @@ class GetShareArgs {
   /// [deviceName] The device name.
   /// [name] The share name.
   /// [resourceGroupName] The resource group name.
-  GetShareArgs({
+  const GetShareArgs({
     required this.deviceName,
     required this.name,
     required this.resourceGroupName,

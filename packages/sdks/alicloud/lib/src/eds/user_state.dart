@@ -21,7 +21,7 @@ class UserState {
   /// [password] The password of the user password.
   /// [phone] The phone of the mobile phone number.
   /// [status] The status of the resource. Valid values: `Unlocked`, `Locked`.
-  UserState({
+  const UserState({
     this.email,
     this.endUserId,
     this.password,

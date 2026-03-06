@@ -13,7 +13,7 @@ class BrokerAuthenticatorCustomAuthX509 {
   /// Creates a new [BrokerAuthenticatorCustomAuthX509].
   /// [keyVault] Keyvault X509 secret properties.
   /// [secretName] Secret where cert details are stored.
-  BrokerAuthenticatorCustomAuthX509({
+  const BrokerAuthenticatorCustomAuthX509({
     this.keyVault,
     this.secretName,
   });

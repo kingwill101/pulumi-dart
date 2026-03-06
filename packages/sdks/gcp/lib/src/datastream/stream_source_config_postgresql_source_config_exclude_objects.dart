@@ -10,7 +10,7 @@ class StreamSourceConfigPostgresqlSourceConfigExcludeObjects {
 
   /// Creates a new [StreamSourceConfigPostgresqlSourceConfigExcludeObjects].
   /// [postgresqlSchemas] PostgreSQL schemas on the server
-  StreamSourceConfigPostgresqlSourceConfigExcludeObjects({
+  const StreamSourceConfigPostgresqlSourceConfigExcludeObjects({
     required this.postgresqlSchemas,
   });
 

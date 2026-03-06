@@ -14,7 +14,7 @@ class GetVirtualHubConnectionRoutingStaticVnetRoute {
   /// [addressPrefixes] A list of CIDR Ranges which is used as Address Prefixes.
   /// [name] The name of the Connection which should be retrieved.
   /// [nextHopIpAddress] The IP Address which is used for the Next Hop.
-  GetVirtualHubConnectionRoutingStaticVnetRoute({
+  const GetVirtualHubConnectionRoutingStaticVnetRoute({
     required this.addressPrefixes,
     required this.name,
     required this.nextHopIpAddress,

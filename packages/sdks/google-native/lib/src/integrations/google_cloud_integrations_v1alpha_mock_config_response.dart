@@ -16,7 +16,7 @@ class GoogleCloudIntegrationsV1alphaMockConfigResponse {
   /// [failedExecutions] Optional. Number of times the given task should fail for failure mock strategy
   /// [mockStrategy] Mockstrategy defines how the particular task should be mocked during test execution
   /// [parameters] Optional. List of key-value pairs for specific mock strategy
-  GoogleCloudIntegrationsV1alphaMockConfigResponse({
+  const GoogleCloudIntegrationsV1alphaMockConfigResponse({
     required this.failedExecutions,
     required this.mockStrategy,
     required this.parameters,

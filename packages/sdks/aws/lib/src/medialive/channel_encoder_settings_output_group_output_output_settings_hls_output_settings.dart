@@ -15,7 +15,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings {
   /// [hlsSettings] Required.
   /// [nameModifier] String concatenated to the end of the destination filename. Required for multiple outputs of the same type.
   /// [segmentModifier] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettings({
     this.h265PackagingType,
     required this.hlsSettings,
     this.nameModifier,

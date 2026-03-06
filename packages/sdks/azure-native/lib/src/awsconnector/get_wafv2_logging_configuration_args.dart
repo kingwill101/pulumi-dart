@@ -15,7 +15,7 @@ class GetWafv2LoggingConfigurationArgs {
   /// Creates a new [GetWafv2LoggingConfigurationArgs].
   /// [name] Name of Wafv2LoggingConfiguration
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetWafv2LoggingConfigurationArgs({
+  const GetWafv2LoggingConfigurationArgs({
     required this.name,
     required this.resourceGroupName,
   });

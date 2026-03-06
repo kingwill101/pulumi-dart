@@ -14,7 +14,7 @@ class GetRulesRuleRuleActionFixedResponseConfig {
   /// [content] The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
   /// [contentType] The format of the fixed response.
   /// [httpCode] The redirect method.
-  GetRulesRuleRuleActionFixedResponseConfig({
+  const GetRulesRuleRuleActionFixedResponseConfig({
     required this.content,
     required this.contentType,
     required this.httpCode,

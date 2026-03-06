@@ -11,7 +11,7 @@ class DropletAutoscaleCurrentUtilization {
   /// Creates a new [DropletAutoscaleCurrentUtilization].
   /// [cpu] Average CPU utilization
   /// [memory] Average Memory utilization
-  DropletAutoscaleCurrentUtilization({
+  const DropletAutoscaleCurrentUtilization({
     this.cpu,
     this.memory,
   });

@@ -9,7 +9,7 @@ class IngressSettingsClientAuth {
 
   /// Creates a new [IngressSettingsClientAuth].
   /// [certificates] Collection of certificate resource id.
-  IngressSettingsClientAuth({
+  const IngressSettingsClientAuth({
     this.certificates,
   });
 

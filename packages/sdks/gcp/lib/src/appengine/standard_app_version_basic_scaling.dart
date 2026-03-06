@@ -12,7 +12,7 @@ class StandardAppVersionBasicScaling {
   /// Creates a new [StandardAppVersionBasicScaling].
   /// [idleTimeout] Duration of time after the last request that an instance must wait before the instance is shut down.
   /// [maxInstances] Maximum number of instances to create for this version. Must be in the range [1.0, 200.0].
-  StandardAppVersionBasicScaling({
+  const StandardAppVersionBasicScaling({
     this.idleTimeout,
     required this.maxInstances,
   });

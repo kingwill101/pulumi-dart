@@ -28,7 +28,7 @@ class URLMapPathMatcherRouteRuleRouteActionUrlRewrite {
   /// [hostRewrite] Prior to forwarding the request to the selected service, the request's host header is replaced
   /// [pathPrefixRewrite] Prior to forwarding the request to the selected backend service, the matching portion of the
   /// [pathTemplateRewrite] Prior to forwarding the request to the selected origin, if the
-  URLMapPathMatcherRouteRuleRouteActionUrlRewrite({
+  const URLMapPathMatcherRouteRuleRouteActionUrlRewrite({
     this.hostRewrite,
     this.pathPrefixRewrite,
     this.pathTemplateRewrite,

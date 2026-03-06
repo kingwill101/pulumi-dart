@@ -13,7 +13,7 @@ class CronJobStatusPatchBatchV1beta1 {
   /// Creates a new [CronJobStatusPatchBatchV1beta1].
   /// [active] A list of pointers to currently running jobs.
   /// [lastScheduleTime] Information when was the last time the job was successfully scheduled.
-  CronJobStatusPatchBatchV1beta1({
+  const CronJobStatusPatchBatchV1beta1({
     this.active,
     this.lastScheduleTime,
   });

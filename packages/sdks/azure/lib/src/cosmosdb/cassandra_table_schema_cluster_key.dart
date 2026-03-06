@@ -11,7 +11,7 @@ class CassandraTableSchemaClusterKey {
   /// Creates a new [CassandraTableSchemaClusterKey].
   /// [name] Name of the cluster key to be created.
   /// [orderBy] Order of the key. Currently supported values are `Asc` and `Desc`.
-  CassandraTableSchemaClusterKey({
+  const CassandraTableSchemaClusterKey({
     required this.name,
     required this.orderBy,
   });

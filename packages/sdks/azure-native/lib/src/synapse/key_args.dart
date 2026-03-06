@@ -24,7 +24,7 @@ class KeyArgs {
   /// [keyVaultUrl] The Key Vault Url of the workspace key.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  KeyArgs({
+  const KeyArgs({
     this.isActiveCMK,
     this.keyName,
     this.keyVaultUrl,

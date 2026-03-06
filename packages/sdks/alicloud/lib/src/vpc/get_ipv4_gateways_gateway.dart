@@ -32,7 +32,7 @@ class GetIpv4GatewaysGateway {
   /// [ipv4GatewayRouteTableId] ID of the route table associated with IPv4 Gateway.
   /// [status] The status of the resource.
   /// [vpcId] The ID of the VPC associated with the IPv4 Gateway.
-  GetIpv4GatewaysGateway({
+  const GetIpv4GatewaysGateway({
     required this.createTime,
     required this.enabled,
     required this.id,

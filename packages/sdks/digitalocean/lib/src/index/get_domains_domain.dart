@@ -14,7 +14,7 @@ class GetDomainsDomain {
   /// [name] (Required) The name of the domain.
   /// [ttl] The TTL of the domain.
   /// [urn] The uniform resource name of the domain
-  GetDomainsDomain({
+  const GetDomainsDomain({
     required this.name,
     required this.ttl,
     required this.urn,

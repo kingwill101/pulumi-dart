@@ -38,7 +38,7 @@ class GetTopicMessageTransformJavascriptUdf {
   /// Creates a new [GetTopicMessageTransformJavascriptUdf].
   /// [code] JavaScript code that contains a function 'function_name' with the
   /// [functionName] Name of the JavaScript function that should be applied to Pub/Sub messages.
-  GetTopicMessageTransformJavascriptUdf({
+  const GetTopicMessageTransformJavascriptUdf({
     required this.code,
     required this.functionName,
   });

@@ -15,7 +15,7 @@ class GetAzurePowerShellScriptArgs {
   /// Creates a new [GetAzurePowerShellScriptArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scriptName] Name of the deployment script.
-  GetAzurePowerShellScriptArgs({
+  const GetAzurePowerShellScriptArgs({
     required this.resourceGroupName,
     required this.scriptName,
   });

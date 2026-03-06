@@ -48,7 +48,7 @@ class InstanceConfig {
   /// [privateNetwork] Private network address, if any. Filled if InstanceConfig.multivlan_config is false.
   /// [sshKeyNames] Optional. List of names of ssh keys used to provision the instance.
   /// [userNote] User note field, it can be used by customers to add additional information for the BMS Ops team .
-  InstanceConfig({
+  const InstanceConfig({
     this.accountNetworksEnabled,
     this.clientNetwork,
     this.hyperthreading,

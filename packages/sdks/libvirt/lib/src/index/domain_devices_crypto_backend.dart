@@ -14,7 +14,7 @@ class DomainDevicesCryptoBackend {
   /// [builtIn] Configures the built-in backend type for the crypto device.
   /// [lkcf] Configures the LKCF backend option for the crypto device.
   /// [queues] Sets the number of queues available in the backend for the crypto device.
-  DomainDevicesCryptoBackend({
+  const DomainDevicesCryptoBackend({
     this.builtIn,
     this.lkcf,
     this.queues,

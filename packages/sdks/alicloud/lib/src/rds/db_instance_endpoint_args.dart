@@ -31,7 +31,7 @@ class DbInstanceEndpointArgs {
   /// [port] The port number of the internal endpoint. You can specify the port number for the internal endpoint.Valid values: 3000 to 5999.
   /// [vpcId] The virtual private cloud (VPC) ID of the internal endpoint.
   /// [vswitchId] The vSwitch ID of the internal endpoint.
-  DbInstanceEndpointArgs({
+  const DbInstanceEndpointArgs({
     required this.connectionStringPrefix,
     this.dbInstanceEndpointDescription,
     required this.dbInstanceId,

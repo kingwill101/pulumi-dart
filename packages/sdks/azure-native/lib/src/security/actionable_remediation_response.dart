@@ -26,7 +26,7 @@ class ActionableRemediationResponse {
   /// [categoryConfigurations] Gets or sets list of categories and severity levels.
   /// [inheritFromParentState] Update Settings.
   /// [state] ActionableRemediation Setting.
-  ActionableRemediationResponse({
+  const ActionableRemediationResponse({
     this.branchConfiguration,
     this.categoryConfigurations,
     this.inheritFromParentState,

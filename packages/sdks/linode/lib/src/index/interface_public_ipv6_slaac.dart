@@ -11,7 +11,7 @@ class InterfacePublicIpv6Slaac {
   /// Creates a new [InterfacePublicIpv6Slaac].
   /// [address] The assigned IPv4 address.
   /// [prefix] The subnet prefix length.
-  InterfacePublicIpv6Slaac({
+  const InterfacePublicIpv6Slaac({
     this.address,
     this.prefix,
   });

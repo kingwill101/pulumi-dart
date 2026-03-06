@@ -13,7 +13,7 @@ class ListMonitorApiKeysResult {
   /// Creates a new [ListMonitorApiKeysResult].
   /// [nextLink] Link to the next set of results, if any.
   /// [value] Results of a list operation.
-  ListMonitorApiKeysResult({
+  const ListMonitorApiKeysResult({
     this.nextLink,
     this.value,
   });

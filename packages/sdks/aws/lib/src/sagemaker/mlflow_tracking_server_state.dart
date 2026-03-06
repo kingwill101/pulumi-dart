@@ -42,7 +42,7 @@ class MlflowTrackingServerState {
   /// [trackingServerSize] The size of the tracking server you want to create. You can choose between "Small", "Medium", and "Large". The default MLflow Tracking Server configuration size is "Small". You can choose a size depending on the projected use of the tracking server such as the volume of data logged, number of users, and frequency of use.
   /// [trackingServerUrl] The URL to connect to the MLflow user interface for the described tracking server.
   /// [weeklyMaintenanceWindowStart] The day and time of the week in Coordinated Universal Time (UTC) 24-hour standard time that weekly maintenance updates are scheduled. For example: TUE:03:30.
-  MlflowTrackingServerState({
+  const MlflowTrackingServerState({
     this.arn,
     this.artifactStoreUri,
     this.automaticModelRegistration,

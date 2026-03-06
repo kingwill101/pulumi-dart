@@ -23,7 +23,7 @@ class GetJobPrivateEndpointResult {
   /// [privateEndpointId] Private endpoint id of the private endpoint.
   /// [targetServerAzureResourceId] ARM resource id of the server the private endpoint will target.
   /// [type] Resource type.
-  GetJobPrivateEndpointResult({
+  const GetJobPrivateEndpointResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

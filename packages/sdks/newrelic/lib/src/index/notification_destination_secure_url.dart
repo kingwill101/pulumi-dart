@@ -11,7 +11,7 @@ class NotificationDestinationSecureUrl {
   /// Creates a new [NotificationDestinationSecureUrl].
   /// [prefix] The prefix of the URL.
   /// [secureSuffix] The suffix of the URL, which contains sensitive data.
-  NotificationDestinationSecureUrl({
+  const NotificationDestinationSecureUrl({
     required this.prefix,
     required this.secureSuffix,
   });

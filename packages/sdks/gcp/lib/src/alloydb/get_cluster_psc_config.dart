@@ -12,7 +12,7 @@ class GetClusterPscConfig {
   /// Creates a new [GetClusterPscConfig].
   /// [pscEnabled] Create an instance that allows connections from Private Service Connect endpoints to the instance.
   /// [serviceOwnedProjectNumber] The project number that needs to be allowlisted on the network attachment to enable outbound connectivity, if the network attachment is configured to ACCEPT_MANUAL connections.
-  GetClusterPscConfig({
+  const GetClusterPscConfig({
     required this.pscEnabled,
     required this.serviceOwnedProjectNumber,
   });

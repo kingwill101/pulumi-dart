@@ -53,7 +53,7 @@ class BuildOptionsResponse {
   /// [substitutionOption] Option to specify behavior when there is an error in the substitution checks. NOTE: this is always set to ALLOW_LOOSE for triggered builds and cannot be overridden in the build configuration file.
   /// [volumes] Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration.
   /// [workerPool] This field deprecated; please use `pool.name` instead.
-  BuildOptionsResponse({
+  const BuildOptionsResponse({
     required this.automapSubstitutions,
     required this.defaultLogsBucketBehavior,
     required this.diskSizeGb,

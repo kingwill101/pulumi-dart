@@ -21,7 +21,7 @@ class BasicIpSetState {
   /// [bandwidth] The bandwidth of the acceleration region. Unit: Mbit/s.
   /// [ispType] The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
   /// [status] The status of the Basic Ip Set instance.
-  BasicIpSetState({
+  const BasicIpSetState({
     this.accelerateRegionId,
     this.acceleratorId,
     this.bandwidth,

@@ -11,7 +11,7 @@ class AuthzPolicyHttpRuleFromSourceIpBlock {
   /// Creates a new [AuthzPolicyHttpRuleFromSourceIpBlock].
   /// [length] The length of the address range.
   /// [prefix] The address prefix.
-  AuthzPolicyHttpRuleFromSourceIpBlock({
+  const AuthzPolicyHttpRuleFromSourceIpBlock({
     required this.length,
     required this.prefix,
   });

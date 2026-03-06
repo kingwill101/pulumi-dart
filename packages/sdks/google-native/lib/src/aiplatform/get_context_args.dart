@@ -17,7 +17,7 @@ class GetContextArgs {
   /// [location] Required.
   /// [metadataStoreId] Required.
   /// [project] Optional.
-  GetContextArgs({
+  const GetContextArgs({
     required this.contextId,
     required this.location,
     required this.metadataStoreId,

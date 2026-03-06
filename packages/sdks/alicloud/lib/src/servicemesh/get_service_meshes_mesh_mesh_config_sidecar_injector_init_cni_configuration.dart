@@ -11,7 +11,7 @@ class GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration {
   /// Creates a new [GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration].
   /// [enabled] Whether to enable CNI.
   /// [excludeNamespaces] The excluded namespace of the CNI.
-  GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration({
+  const GetServiceMeshesMeshMeshConfigSidecarInjectorInitCniConfiguration({
     required this.enabled,
     required this.excludeNamespaces,
   });

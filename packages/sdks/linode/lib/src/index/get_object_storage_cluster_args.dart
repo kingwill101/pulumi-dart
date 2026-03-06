@@ -12,7 +12,7 @@ class GetObjectStorageClusterArgs {
 
   /// Creates a new [GetObjectStorageClusterArgs].
   /// [id] The unique ID of this cluster.
-  GetObjectStorageClusterArgs({
+  const GetObjectStorageClusterArgs({
     required this.id,
   });
 

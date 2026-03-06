@@ -12,7 +12,7 @@ class KubernetesConfigurationPrivateLinkScopeProperties {
   /// Creates a new [KubernetesConfigurationPrivateLinkScopeProperties].
   /// [clusterResourceId] Managed Cluster ARM ID for the private link scope  (Required)
   /// [publicNetworkAccess] Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints.
-  KubernetesConfigurationPrivateLinkScopeProperties({
+  const KubernetesConfigurationPrivateLinkScopeProperties({
     required this.clusterResourceId,
     this.publicNetworkAccess,
   });

@@ -31,7 +31,7 @@ class ZoneArgs {
   /// [name] This is the name of the hosted zone.
   /// [tags] A mapping of tags to assign to the zone. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcs] Configuration block(s) specifying VPC(s) to associate with a private hosted zone. Conflicts with the `delegation_set_id` argument in this resource and any `aws.route53.ZoneAssociation` resource specifying the same zone ID. Detailed below.
-  ZoneArgs({
+  const ZoneArgs({
     this.comment,
     this.delegationSetId,
     this.enableAcceleratedRecovery,

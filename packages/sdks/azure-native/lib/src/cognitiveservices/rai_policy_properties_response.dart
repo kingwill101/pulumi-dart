@@ -31,7 +31,7 @@ class RaiPolicyPropertiesResponse {
   /// [mode] Rai policy mode. The enum value mapping is as below: Default = 0, Deferred=1, Blocking=2, Asynchronous_filter =3. Please use 'Asynchronous_filter' after 2025-06-01. It is the same as 'Deferred' in previous version.
   /// [safetyProviders] The list of Safety Providers.
   /// [type] Content Filters policy type.
-  RaiPolicyPropertiesResponse({
+  const RaiPolicyPropertiesResponse({
     this.basePolicyName,
     this.contentFilters,
     this.customBlocklists,

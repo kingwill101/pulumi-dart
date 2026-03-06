@@ -11,7 +11,7 @@ class ListingIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ListingIamBindingCondition({
+  const ListingIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -12,7 +12,7 @@ class A2AUnprotectedDiskDetails {
   /// Creates a new [A2AUnprotectedDiskDetails].
   /// [diskAutoProtectionStatus] A value indicating whether the disk auto protection is enabled.
   /// [diskLunId] The source lun Id for the data disk.
-  A2AUnprotectedDiskDetails({
+  const A2AUnprotectedDiskDetails({
     this.diskAutoProtectionStatus,
     this.diskLunId,
   });

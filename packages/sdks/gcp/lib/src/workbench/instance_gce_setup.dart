@@ -77,7 +77,7 @@ class InstanceGceSetup {
   /// [shieldedInstanceConfig] A set of Shielded Instance options. See [Images using supported Shielded
   /// [tags] Optional. The Compute Engine tags to add to instance (see [Tagging
   /// [vmImage] Definition of a custom Compute Engine virtual machine image for starting
-  InstanceGceSetup({
+  const InstanceGceSetup({
     this.acceleratorConfigs,
     this.bootDisk,
     this.confidentialInstanceConfig,

@@ -18,7 +18,7 @@ class IndustrialPidProjectArgs {
   /// [pidOrganizationId] The ID of Pid Organization.
   /// [pidProjectDesc] The description of Pid Project.
   /// [pidProjectName] The name of Pid Project.
-  IndustrialPidProjectArgs({
+  const IndustrialPidProjectArgs({
     required this.pidOrganizationId,
     this.pidProjectDesc,
     required this.pidProjectName,

@@ -14,7 +14,7 @@ class LoadBalancerStickySessions {
   /// [cookieName] The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
   /// [cookieTtlSeconds] The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
   /// [type] An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
-  LoadBalancerStickySessions({
+  const LoadBalancerStickySessions({
     this.cookieName,
     this.cookieTtlSeconds,
     this.type,

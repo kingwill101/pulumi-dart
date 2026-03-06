@@ -14,7 +14,7 @@ class DatasetBlobStorageStorageAccount {
   /// [name] The name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   /// [resourceGroupName] The resource group name of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
   /// [subscriptionId] The subscription id of the storage account to be shared with the receiver. Changing this forces a new Data Share Blob Storage Dataset to be created.
-  DatasetBlobStorageStorageAccount({
+  const DatasetBlobStorageStorageAccount({
     required this.name,
     required this.resourceGroupName,
     required this.subscriptionId,

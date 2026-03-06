@@ -9,7 +9,7 @@ class DomainCpuNumaCellDistances {
 
   /// Creates a new [DomainCpuNumaCellDistances].
   /// [siblings] Describes the sibling CPUs within the NUMA cell, defining distance metrics for optimized access.
-  DomainCpuNumaCellDistances({
+  const DomainCpuNumaCellDistances({
     this.siblings,
   });
 

@@ -43,7 +43,7 @@ class VolumeExportPolicyRule {
   /// [ruleIndex] The index number of the rule.
   /// [unixReadOnly] Is the file system on unix read only?
   /// [unixReadWrite] Is the file system on unix read and write?
-  VolumeExportPolicyRule({
+  const VolumeExportPolicyRule({
     required this.allowedClients,
     this.kerberos5ReadOnlyEnabled,
     this.kerberos5ReadWriteEnabled,

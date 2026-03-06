@@ -13,7 +13,7 @@ class DaemonSetUpdateStrategyAppsV1beta2 {
   /// Creates a new [DaemonSetUpdateStrategyAppsV1beta2].
   /// [rollingUpdate] Rolling update config params. Present only if type = "RollingUpdate".
   /// [type] Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is RollingUpdate.
-  DaemonSetUpdateStrategyAppsV1beta2({
+  const DaemonSetUpdateStrategyAppsV1beta2({
     this.rollingUpdate,
     this.type,
   });

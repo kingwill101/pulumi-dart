@@ -45,7 +45,7 @@ class GetPacketMirroringComputeBetaResult {
   /// [priority] The priority of applying this configuration. Priority is used to break ties in cases where there is more than one matching rule. In the case of two rules that apply for a given Instance, the one with the lowest-numbered priority value wins. Default value is 1000. Valid range is 0 through 65535.
   /// [region] URI of the region where the packetMirroring resides.
   /// [selfLink] Server-defined URL for the resource.
-  GetPacketMirroringComputeBetaResult({
+  const GetPacketMirroringComputeBetaResult({
     required this.collectorIlb,
     required this.creationTimestamp,
     required this.description,

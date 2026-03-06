@@ -37,7 +37,7 @@ class WorkspaceLoggerArgs {
   /// [resourceId] Azure Resource Id of a log target (either Azure Event Hub resource or Azure Application Insights resource).
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceLoggerArgs({
+  const WorkspaceLoggerArgs({
     this.credentials,
     this.description,
     this.isBuffered,

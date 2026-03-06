@@ -13,7 +13,7 @@ class TableConstraintsForeignKeysItemResponse {
   /// [columnReferences] Required.
   /// [name] Required.
   /// [referencedTable] Required.
-  TableConstraintsForeignKeysItemResponse({
+  const TableConstraintsForeignKeysItemResponse({
     required this.columnReferences,
     required this.name,
     required this.referencedTable,

@@ -11,7 +11,7 @@ class EnvironmentIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  EnvironmentIamBindingCondition({
+  const EnvironmentIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

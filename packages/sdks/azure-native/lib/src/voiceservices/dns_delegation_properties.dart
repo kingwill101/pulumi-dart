@@ -9,7 +9,7 @@ class DnsDelegationProperties {
 
   /// Creates a new [DnsDelegationProperties].
   /// [domain] Domain name to delegate
-  DnsDelegationProperties({
+  const DnsDelegationProperties({
     this.domain,
   });
 

@@ -12,7 +12,7 @@ class AdvancedDatapathObservabilityConfigResponseContainerV1beta1 {
   /// Creates a new [AdvancedDatapathObservabilityConfigResponseContainerV1beta1].
   /// [enableMetrics] Expose flow metrics on nodes
   /// [relayMode] Method used to make Relay available
-  AdvancedDatapathObservabilityConfigResponseContainerV1beta1({
+  const AdvancedDatapathObservabilityConfigResponseContainerV1beta1({
     required this.enableMetrics,
     required this.relayMode,
   });

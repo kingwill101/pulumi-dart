@@ -21,7 +21,7 @@ class BucketStyleArgs {
   /// [category] Style category, valid values: image, document, video.
   /// [content] The Image style content can contain single or multiple image processing parameters.
   /// [styleName] Image Style Name
-  BucketStyleArgs({
+  const BucketStyleArgs({
     required this.bucket,
     this.category,
     required this.content,

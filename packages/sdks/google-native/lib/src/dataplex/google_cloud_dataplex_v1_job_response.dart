@@ -43,7 +43,7 @@ class GoogleCloudDataplexV1JobResponse {
   /// [state] Execution state for the job.
   /// [trigger] Job execution trigger.
   /// [uid] System generated globally unique ID for the job.
-  GoogleCloudDataplexV1JobResponse({
+  const GoogleCloudDataplexV1JobResponse({
     required this.endTime,
     required this.executionSpec,
     required this.labels,

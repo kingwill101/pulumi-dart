@@ -19,7 +19,7 @@ class EndpointModelSkuRateLimitRulePropertiesResponse {
   /// [matchPatterns] Optional.
   /// [minCount] Optional.
   /// [renewalPeriod] Optional.
-  EndpointModelSkuRateLimitRulePropertiesResponse({
+  const EndpointModelSkuRateLimitRulePropertiesResponse({
     this.count,
     this.dynamicThrottlingEnabled,
     this.key,

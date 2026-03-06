@@ -11,7 +11,7 @@ class RepositoryGroupIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  RepositoryGroupIamBindingCondition({
+  const RepositoryGroupIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

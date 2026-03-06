@@ -15,7 +15,7 @@ class GetNetworkInterfaceArgs {
   /// Creates a new [GetNetworkInterfaceArgs].
   /// [name] Specifies the name of the Network Interface.
   /// [resourceGroupName] Specifies the name of the resource group the Network Interface is located in.
-  GetNetworkInterfaceArgs({
+  const GetNetworkInterfaceArgs({
     required this.name,
     required this.resourceGroupName,
   });

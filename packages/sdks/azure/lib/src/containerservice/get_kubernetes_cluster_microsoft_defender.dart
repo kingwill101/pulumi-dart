@@ -8,7 +8,7 @@ class GetKubernetesClusterMicrosoftDefender {
 
   /// Creates a new [GetKubernetesClusterMicrosoftDefender].
   /// [logAnalyticsWorkspaceId] The ID of the Log Analytics Workspace to which the OMS Agent should send data.
-  GetKubernetesClusterMicrosoftDefender({
+  const GetKubernetesClusterMicrosoftDefender({
     required this.logAnalyticsWorkspaceId,
   });
 

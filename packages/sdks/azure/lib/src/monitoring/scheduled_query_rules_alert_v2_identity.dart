@@ -19,7 +19,7 @@ class ScheduledQueryRulesAlertV2Identity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this App Service slot.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this App Service slot.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Scheduled Query Rule. Possible values are `SystemAssigned`, `UserAssigned`.
-  ScheduledQueryRulesAlertV2Identity({
+  const ScheduledQueryRulesAlertV2Identity({
     this.identityIds,
     this.principalId,
     this.tenantId,

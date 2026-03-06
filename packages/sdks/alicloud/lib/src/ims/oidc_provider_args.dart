@@ -28,7 +28,7 @@ class OidcProviderArgs {
   /// [issuanceLimitTime] The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.
   /// [issuerUrl] The issuer URL of the OIDC identity provider.
   /// [oidcProviderName] The name of the OIDC identity provider.
-  OidcProviderArgs({
+  const OidcProviderArgs({
     this.clientIds,
     this.description,
     this.fingerprints,

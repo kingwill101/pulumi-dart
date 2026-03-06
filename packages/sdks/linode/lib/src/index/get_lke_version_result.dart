@@ -11,7 +11,7 @@ class GetLkeVersionResult {
   /// Creates a new [GetLkeVersionResult].
   /// [id] The Kubernetes version numbers available for deployment to a Kubernetes cluster in the format of [major].[minor], and the latest supported patch version.
   /// [tier] The Kubernetes version tier. Only exported if `tier` was provided when using the datasource.
-  GetLkeVersionResult({
+  const GetLkeVersionResult({
     required this.id,
     required this.tier,
   });

@@ -12,7 +12,7 @@ class AcceleratorResponseDatafusionV1beta1 {
   /// Creates a new [AcceleratorResponseDatafusionV1beta1].
   /// [acceleratorType] The type of an accelator for a CDF instance.
   /// [state] The state of the accelerator.
-  AcceleratorResponseDatafusionV1beta1({
+  const AcceleratorResponseDatafusionV1beta1({
     required this.acceleratorType,
     required this.state,
   });

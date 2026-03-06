@@ -181,7 +181,7 @@ class ShardingInstanceState {
   /// [vswitchId] The virtual switch ID to launch DB instances in one VPC.
   /// [zoneId] The Zone to launch the DB instance. MongoDB Sharding Instance does not support multiple-zone.
   /// [zoneInfos] (Available since v1.271.0) The information of nodes in the zone.
-  ShardingInstanceState({
+  const ShardingInstanceState({
     this.accountPassword,
     this.autoRenew,
     this.autoRenewDuration,

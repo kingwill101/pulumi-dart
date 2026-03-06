@@ -19,7 +19,7 @@ class GetAndroidAppArgs {
   /// Creates a new [GetAndroidAppArgs].
   /// [appId] The app_id of name of the Firebase androidApp.
   /// [project] The ID of the project in which the resource belongs.
-  GetAndroidAppArgs({
+  const GetAndroidAppArgs({
     required this.appId,
     this.project,
   });

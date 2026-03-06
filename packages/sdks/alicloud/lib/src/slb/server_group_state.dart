@@ -23,7 +23,7 @@ class ServerGroupState {
   /// [name] The name of the vServer group. Default value: `tf-server-group`.
   /// [servers] The list of backend servers to be added. See `servers` below.
   /// [tags] A mapping of tags to assign to the resource.
-  ServerGroupState({
+  const ServerGroupState({
     this.deleteProtectionValidation,
     this.loadBalancerId,
     this.name,

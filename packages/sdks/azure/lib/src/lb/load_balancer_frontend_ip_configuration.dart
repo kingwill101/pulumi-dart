@@ -46,7 +46,7 @@ class LoadBalancerFrontendIpConfiguration {
   /// [publicIpPrefixId] The ID of a Public IP Prefix which should be associated with the Load Balancer. Public IP Prefix can only be used with outbound rules.
   /// [subnetId] The ID of the Subnet which should be associated with the IP Configuration.
   /// [zones] Specifies a list of Availability Zones in which the IP Address for this Load Balancer should be located.
-  LoadBalancerFrontendIpConfiguration({
+  const LoadBalancerFrontendIpConfiguration({
     this.gatewayLoadBalancerFrontendIpConfigurationId,
     this.id,
     this.inboundNatRules,

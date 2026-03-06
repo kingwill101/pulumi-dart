@@ -13,7 +13,7 @@ class GetDeviceSessionArgs {
   /// Creates a new [GetDeviceSessionArgs].
   /// [deviceSessionId] Required.
   /// [project] Optional.
-  GetDeviceSessionArgs({
+  const GetDeviceSessionArgs({
     required this.deviceSessionId,
     this.project,
   });

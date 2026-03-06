@@ -11,7 +11,7 @@ class ShardingInstanceParameter {
   /// Creates a new [ShardingInstanceParameter].
   /// [name] The name of the parameter.
   /// [value] The value of the parameter.
-  ShardingInstanceParameter({
+  const ShardingInstanceParameter({
     required this.name,
     required this.value,
   });

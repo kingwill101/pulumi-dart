@@ -11,7 +11,7 @@ class CurationEndpoint {
 
   /// Creates a new [CurationEndpoint].
   /// [applicationIntegrationEndpointDetails] The details of the Application Integration endpoint to be triggered for
-  CurationEndpoint({
+  const CurationEndpoint({
     required this.applicationIntegrationEndpointDetails,
   });
 

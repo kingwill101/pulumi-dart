@@ -65,7 +65,7 @@ class DeliveryPipelineState {
   /// [suspended] When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
   /// [uid] Output only. Unique identifier of the `DeliveryPipeline`.
   /// [updateTime] Output only. Most recent time at which the pipeline was updated.
-  DeliveryPipelineState({
+  const DeliveryPipelineState({
     this.annotations,
     this.conditions,
     this.createTime,

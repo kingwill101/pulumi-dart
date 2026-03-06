@@ -9,7 +9,7 @@ class GetBucketObjectLockConfigurationRule {
 
   /// Creates a new [GetBucketObjectLockConfigurationRule].
   /// [defaultRetentions] Default object lock retention settings for new objects placed in the bucket. See Default Retention below.
-  GetBucketObjectLockConfigurationRule({
+  const GetBucketObjectLockConfigurationRule({
     required this.defaultRetentions,
   });
 

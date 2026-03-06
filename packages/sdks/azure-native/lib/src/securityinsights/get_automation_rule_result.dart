@@ -52,7 +52,7 @@ class GetAutomationRuleResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [triggeringLogic] Describes automation rule triggering logic.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAutomationRuleResult({
+  const GetAutomationRuleResult({
     required this.actions,
     required this.azureApiVersion,
     required this.createdBy,

@@ -128,7 +128,7 @@ class InstanceArgs {
   /// [secondaryIpRange] Optional. Additional IP range for node placement. Required when enabling read replicas on
   /// [tier] The service tier of the instance. Must be one of these values:
   /// [transitEncryptionMode] The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.alternativeLocationId,
     this.authEnabled,
     this.authorizedNetwork,

@@ -11,7 +11,7 @@ class ScheduleTargetEventbridgeParameters {
   /// Creates a new [ScheduleTargetEventbridgeParameters].
   /// [detailType] Free-form string used to decide what fields to expect in the event detail. Up to 128 characters.
   /// [source] Source of the event.
-  ScheduleTargetEventbridgeParameters({
+  const ScheduleTargetEventbridgeParameters({
     required this.detailType,
     required this.source,
   });

@@ -40,7 +40,7 @@ class ClusterRedisV1beta1Args {
   /// [requestId] Idempotent request UUID.
   /// [shardCount] Number of shards for the Redis cluster.
   /// [transitEncryptionMode] Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-  ClusterRedisV1beta1Args({
+  const ClusterRedisV1beta1Args({
     this.authorizationMode,
     required this.clusterId,
     this.location,

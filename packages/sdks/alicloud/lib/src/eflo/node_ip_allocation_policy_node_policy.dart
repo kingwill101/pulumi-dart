@@ -15,7 +15,7 @@ class NodeIpAllocationPolicyNodePolicy {
   /// [bonds] Bond information See `bonds` below.
   /// [hostname] Host name
   /// [nodeId] Node ID
-  NodeIpAllocationPolicyNodePolicy({
+  const NodeIpAllocationPolicyNodePolicy({
     this.bonds,
     this.hostname,
     this.nodeId,

@@ -13,7 +13,7 @@ class TableConstraintsForeignKeysItem {
   /// [columnReferences] Optional.
   /// [name] Optional.
   /// [referencedTable] Optional.
-  TableConstraintsForeignKeysItem({
+  const TableConstraintsForeignKeysItem({
     this.columnReferences,
     this.name,
     this.referencedTable,

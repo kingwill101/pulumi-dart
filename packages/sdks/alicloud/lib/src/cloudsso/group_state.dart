@@ -18,7 +18,7 @@ class GroupState {
   /// [directoryId] The ID of the Directory.
   /// [groupId] The GroupId of the group.
   /// [groupName] The Name of the group. The name must be `1` to `128` characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
-  GroupState({
+  const GroupState({
     this.description,
     this.directoryId,
     this.groupId,

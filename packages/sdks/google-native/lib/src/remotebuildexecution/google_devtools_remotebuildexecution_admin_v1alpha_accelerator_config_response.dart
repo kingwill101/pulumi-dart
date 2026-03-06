@@ -12,7 +12,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse {
   /// Creates a new [GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse].
   /// [acceleratorCount] The number of guest accelerator cards exposed to each VM.
   /// [acceleratorType] The type of accelerator to attach to each VM, e.g. "nvidia-tesla-k80" for nVidia Tesla K80.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse({
+  const GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigResponse({
     required this.acceleratorCount,
     required this.acceleratorType,
   });

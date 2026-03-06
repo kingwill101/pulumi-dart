@@ -15,7 +15,7 @@ class GetInstanceMemcacheV1beta2Args {
   /// [instanceId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetInstanceMemcacheV1beta2Args({
+  const GetInstanceMemcacheV1beta2Args({
     required this.instanceId,
     required this.location,
     this.project,

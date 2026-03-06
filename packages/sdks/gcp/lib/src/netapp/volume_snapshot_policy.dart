@@ -29,7 +29,7 @@ class VolumeSnapshotPolicy {
   /// [hourlySchedule] Hourly schedule policy.
   /// [monthlySchedule] Monthly schedule policy.
   /// [weeklySchedule] Weekly schedule policy.
-  VolumeSnapshotPolicy({
+  const VolumeSnapshotPolicy({
     this.dailySchedule,
     this.enabled,
     this.hourlySchedule,

@@ -35,7 +35,7 @@ class GetServiceResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Tags of the service which is a list of key value pairs that describe the resource.
   /// [type] The type of the resource.
-  GetServiceResult({
+  const GetServiceResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

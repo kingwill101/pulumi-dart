@@ -17,7 +17,7 @@ class StandardResponse {
   /// [postdeploy] Optional. Configuration for the postdeploy job. If this is not configured, postdeploy job will not be present.
   /// [predeploy] Optional. Configuration for the predeploy job. If this is not configured, predeploy job will not be present.
   /// [verify] Whether to verify a deployment.
-  StandardResponse({
+  const StandardResponse({
     required this.postdeploy,
     required this.predeploy,
     required this.verify,

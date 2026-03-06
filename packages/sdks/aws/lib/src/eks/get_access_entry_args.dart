@@ -23,7 +23,7 @@ class GetAccessEntryArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
   /// [tagsAll] (Optional) Key-value map of resource tags, including those inherited from the provider `default_tags` configuration block.
-  GetAccessEntryArgs({
+  const GetAccessEntryArgs({
     required this.clusterName,
     required this.principalArn,
     this.region,

@@ -21,7 +21,7 @@ class GoogleResponse {
   /// [login] The configuration settings of the login flow.
   /// [registration] The configuration settings of the app registration for the Google provider.
   /// [validation] The configuration settings of the Azure Active Directory token validation flow.
-  GoogleResponse({
+  const GoogleResponse({
     this.enabled,
     this.login,
     this.registration,

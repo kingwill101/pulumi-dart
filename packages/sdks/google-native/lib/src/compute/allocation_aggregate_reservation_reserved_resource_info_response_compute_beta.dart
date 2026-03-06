@@ -9,7 +9,7 @@ class AllocationAggregateReservationReservedResourceInfoResponseComputeBeta {
 
   /// Creates a new [AllocationAggregateReservationReservedResourceInfoResponseComputeBeta].
   /// [accelerator] Properties of accelerator resources in this reservation.
-  AllocationAggregateReservationReservedResourceInfoResponseComputeBeta({
+  const AllocationAggregateReservationReservedResourceInfoResponseComputeBeta({
     required this.accelerator,
   });
 

@@ -24,7 +24,7 @@ class DataLakeFabricStorage {
   /// [fabricPath] Fabric path type to use.
   /// [guids] Fabric one lake Guids.
   /// [names] Fabric one lake Names.
-  DataLakeFabricStorage({
+  const DataLakeFabricStorage({
     required this.authentication,
     required this.endpoint,
     required this.fabricPath,

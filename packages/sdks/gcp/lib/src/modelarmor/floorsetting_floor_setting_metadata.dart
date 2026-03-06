@@ -10,7 +10,7 @@ class FloorsettingFloorSettingMetadata {
 
   /// Creates a new [FloorsettingFloorSettingMetadata].
   /// [multiLanguageDetection] Metadata for multi language detection.
-  FloorsettingFloorSettingMetadata({
+  const FloorsettingFloorSettingMetadata({
     this.multiLanguageDetection,
   });
 

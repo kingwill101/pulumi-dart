@@ -30,7 +30,7 @@ class TemplateSpecArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [templateSpecName] Name of the Template Spec.
-  TemplateSpecArgs({
+  const TemplateSpecArgs({
     this.description,
     this.displayName,
     this.location,

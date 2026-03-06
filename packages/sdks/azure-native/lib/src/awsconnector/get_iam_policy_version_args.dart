@@ -15,7 +15,7 @@ class GetIamPolicyVersionArgs {
   /// Creates a new [GetIamPolicyVersionArgs].
   /// [name] Name of IamPolicyVersion
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIamPolicyVersionArgs({
+  const GetIamPolicyVersionArgs({
     required this.name,
     required this.resourceGroupName,
   });

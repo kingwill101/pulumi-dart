@@ -39,7 +39,7 @@ class ConnectionGitlabEnterpriseConfig {
   /// [serviceDirectoryConfig] ServiceDirectoryConfig represents Service Directory configuration for a
   /// [sslCaCertificate] Optional. SSL Certificate Authority certificate to use for requests to GitLab
   /// [webhookSecretSecretVersion] Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
-  ConnectionGitlabEnterpriseConfig({
+  const ConnectionGitlabEnterpriseConfig({
     required this.authorizerCredential,
     required this.hostUri,
     required this.readAuthorizerCredential,

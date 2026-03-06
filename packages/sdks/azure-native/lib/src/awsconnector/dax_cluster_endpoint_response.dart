@@ -15,7 +15,7 @@ class DaxClusterEndpointResponse {
   /// [address] &lt;p&gt;The DNS hostname of the endpoint.&lt;/p&gt;
   /// [port] &lt;p&gt;The port number that applications should use to connect to the endpoint.&lt;/p&gt;
   /// [url] &lt;p&gt;The URL that applications should use to connect to the endpoint. The default ports are 8111 for the 'dax' protocol and 9111 for the 'daxs' protocol.&lt;/p&gt;
-  DaxClusterEndpointResponse({
+  const DaxClusterEndpointResponse({
     this.address,
     this.port,
     this.url,

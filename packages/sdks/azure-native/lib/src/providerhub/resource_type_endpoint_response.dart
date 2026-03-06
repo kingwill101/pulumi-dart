@@ -57,7 +57,7 @@ class ResourceTypeEndpointResponse {
   /// [timeout] The timeout.
   /// [tokenAuthConfiguration] The token auth configuration.
   /// [zones] List of zones.
-  ResourceTypeEndpointResponse({
+  const ResourceTypeEndpointResponse({
     this.apiVersion,
     this.apiVersions,
     this.dataBoundary,

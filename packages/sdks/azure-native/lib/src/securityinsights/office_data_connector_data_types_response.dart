@@ -18,7 +18,7 @@ class OfficeDataConnectorDataTypesResponse {
   /// [exchange] Exchange data type connection.
   /// [sharePoint] SharePoint data type connection.
   /// [teams] Teams data type connection.
-  OfficeDataConnectorDataTypesResponse({
+  const OfficeDataConnectorDataTypesResponse({
     required this.exchange,
     required this.sharePoint,
     required this.teams,

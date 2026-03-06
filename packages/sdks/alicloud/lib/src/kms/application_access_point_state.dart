@@ -15,7 +15,7 @@ class ApplicationAccessPointState {
   /// [applicationAccessPointName] Application Access Point Name.
   /// [description] Description .
   /// [policies] The policies that have bound to the Application Access Point (AAP).
-  ApplicationAccessPointState({
+  const ApplicationAccessPointState({
     this.applicationAccessPointName,
     this.description,
     this.policies,

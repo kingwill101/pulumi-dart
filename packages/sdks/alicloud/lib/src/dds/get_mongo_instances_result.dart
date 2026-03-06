@@ -32,7 +32,7 @@ class GetMongoInstancesResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [tags] Optional.
-  GetMongoInstancesResult({
+  const GetMongoInstancesResult({
     this.availabilityZone,
     this.enableDetails,
     required this.id,

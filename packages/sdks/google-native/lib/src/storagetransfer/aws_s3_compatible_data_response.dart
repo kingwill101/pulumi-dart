@@ -22,7 +22,7 @@ class AwsS3CompatibleDataResponse {
   /// [path] Specifies the root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
   /// [region] Specifies the region to sign requests with. This can be left blank if requests should be signed with an empty region.
   /// [s3Metadata] A S3 compatible metadata.
-  AwsS3CompatibleDataResponse({
+  const AwsS3CompatibleDataResponse({
     required this.bucketName,
     required this.endpoint,
     required this.path,

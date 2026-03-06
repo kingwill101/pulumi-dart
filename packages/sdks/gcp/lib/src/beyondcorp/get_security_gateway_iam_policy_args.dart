@@ -21,7 +21,7 @@ class GetSecurityGatewayIamPolicyArgs {
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. Must be omitted or set to `global`. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   /// [securityGatewayId] Used to find the parent resource to bind the IAM policy to
-  GetSecurityGatewayIamPolicyArgs({
+  const GetSecurityGatewayIamPolicyArgs({
     this.location,
     this.project,
     required this.securityGatewayId,

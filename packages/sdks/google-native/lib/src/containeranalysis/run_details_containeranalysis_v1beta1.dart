@@ -14,7 +14,7 @@ class RunDetailsContaineranalysisV1beta1 {
   /// [builder] Optional.
   /// [byproducts] Optional.
   /// [metadata] Optional.
-  RunDetailsContaineranalysisV1beta1({
+  const RunDetailsContaineranalysisV1beta1({
     this.builder,
     this.byproducts,
     this.metadata,

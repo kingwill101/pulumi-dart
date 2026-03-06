@@ -83,7 +83,7 @@ class ConnectionProfileArgs {
   /// [salesforceProfile] Salesforce profile.
   /// [spannerProfile] Spanner profile.
   /// [sqlServerProfile] SQL Server database profile.
-  ConnectionProfileArgs({
+  const ConnectionProfileArgs({
     this.bigqueryProfile,
     required this.connectionProfileId,
     this.createWithoutValidation,

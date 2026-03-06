@@ -35,7 +35,7 @@ class GetProfilingGroupResult {
   /// [region] Required.
   /// [tags] Mapping of Key-Value tags for the resource.
   /// [updatedAt] Timestamp when Profiling Group was updated.
-  GetProfilingGroupResult({
+  const GetProfilingGroupResult({
     required this.agentOrchestrationConfigs,
     required this.arn,
     required this.computePlatform,

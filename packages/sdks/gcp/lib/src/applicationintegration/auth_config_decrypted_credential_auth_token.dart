@@ -11,7 +11,7 @@ class AuthConfigDecryptedCredentialAuthToken {
   /// Creates a new [AuthConfigDecryptedCredentialAuthToken].
   /// [token] The token for the auth type.
   /// [type] Authentication type, e.g. "Basic", "Bearer", etc.
-  AuthConfigDecryptedCredentialAuthToken({
+  const AuthConfigDecryptedCredentialAuthToken({
     this.token,
     this.type,
   });

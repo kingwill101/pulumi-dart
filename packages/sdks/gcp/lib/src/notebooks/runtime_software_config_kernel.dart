@@ -12,7 +12,7 @@ class RuntimeSoftwareConfigKernel {
   /// Creates a new [RuntimeSoftwareConfigKernel].
   /// [repository] The path to the container image repository.
   /// [tag] The tag of the container image. If not specified, this defaults to the latest tag.
-  RuntimeSoftwareConfigKernel({
+  const RuntimeSoftwareConfigKernel({
     required this.repository,
     this.tag,
   });

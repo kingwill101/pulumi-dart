@@ -9,7 +9,7 @@ class WorkforcePoolAccessRestrictionsAllowedService {
 
   /// Creates a new [WorkforcePoolAccessRestrictionsAllowedService].
   /// [domain] Domain name of the service.
-  WorkforcePoolAccessRestrictionsAllowedService({
+  const WorkforcePoolAccessRestrictionsAllowedService({
     this.domain,
   });
 

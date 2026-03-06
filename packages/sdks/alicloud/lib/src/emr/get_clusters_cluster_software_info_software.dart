@@ -20,7 +20,7 @@ class GetClustersClusterSoftwareInfoSoftware {
   /// [onlyDisplay] Whether it shows.
   /// [startTpe] Startup type.
   /// [version] Service version.
-  GetClustersClusterSoftwareInfoSoftware({
+  const GetClustersClusterSoftwareInfoSoftware({
     required this.displayName,
     required this.name,
     required this.onlyDisplay,

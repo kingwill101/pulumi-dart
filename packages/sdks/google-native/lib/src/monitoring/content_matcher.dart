@@ -17,7 +17,7 @@ class ContentMatcher {
   /// [content] String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
   /// [jsonPathMatcher] Matcher information for MATCHES_JSON_PATH and NOT_MATCHES_JSON_PATH
   /// [matcher] The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
-  ContentMatcher({
+  const ContentMatcher({
     this.content,
     this.jsonPathMatcher,
     this.matcher,

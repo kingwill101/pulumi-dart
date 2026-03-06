@@ -55,7 +55,7 @@ class NotebookRuntimeTemplateArgs {
   /// [notebookRuntimeType] Optional. Immutable. The type of the notebook runtime template.
   /// [project] Optional.
   /// [serviceAccount] The service account that the runtime workload runs as. You can use any service account within the same project, but you must have the service account user permission to use the instance. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used.
-  NotebookRuntimeTemplateArgs({
+  const NotebookRuntimeTemplateArgs({
     this.dataPersistentDiskSpec,
     this.description,
     required this.displayName,

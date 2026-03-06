@@ -9,7 +9,7 @@ class DataFlowResponseFolder {
 
   /// Creates a new [DataFlowResponseFolder].
   /// [name] The name of the folder that this data flow is in.
-  DataFlowResponseFolder({
+  const DataFlowResponseFolder({
     this.name,
   });
 

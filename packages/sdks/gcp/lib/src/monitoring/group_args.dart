@@ -31,7 +31,7 @@ class GroupArgs {
   /// [isCluster] If true, the members of this group are considered to be a
   /// [parentName] The name of the group's parent, if it has one. The format is
   /// [project] The ID of the project in which the resource belongs.
-  GroupArgs({
+  const GroupArgs({
     required this.displayName,
     required this.filter,
     this.isCluster,

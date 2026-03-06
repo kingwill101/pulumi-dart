@@ -8,7 +8,7 @@ class DistributionPolicyZoneConfigurationResponse {
 
   /// Creates a new [DistributionPolicyZoneConfigurationResponse].
   /// [zone] The URL of the zone. The zone must exist in the region where the managed instance group is located.
-  DistributionPolicyZoneConfigurationResponse({
+  const DistributionPolicyZoneConfigurationResponse({
     required this.zone,
   });
 

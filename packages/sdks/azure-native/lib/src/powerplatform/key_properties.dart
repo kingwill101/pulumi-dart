@@ -12,7 +12,7 @@ class KeyProperties {
   /// Creates a new [KeyProperties].
   /// [name] The identifier of the key vault key used to encrypt data.
   /// [version] The version of the identity which will be used to access key vault.
-  KeyProperties({
+  const KeyProperties({
     this.name,
     this.version,
   });

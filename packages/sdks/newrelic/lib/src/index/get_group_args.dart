@@ -17,7 +17,7 @@ class GetGroupArgs {
   /// Creates a new [GetGroupArgs].
   /// [authenticationDomainId] The ID of the authentication domain the group to be searched for belongs to.
   /// [name] The name of the group to search for.
-  GetGroupArgs({
+  const GetGroupArgs({
     required this.authenticationDomainId,
     required this.name,
   });

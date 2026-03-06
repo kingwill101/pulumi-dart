@@ -19,7 +19,7 @@ class NetworkFirewallPolicyPacketMirroringRuleMatch {
   /// [destIpRanges] CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
   /// [layer4Configs] Pairs of IP protocols and ports that the rule should match.
   /// [srcIpRanges] CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
-  NetworkFirewallPolicyPacketMirroringRuleMatch({
+  const NetworkFirewallPolicyPacketMirroringRuleMatch({
     this.destIpRanges,
     required this.layer4Configs,
     this.srcIpRanges,

@@ -22,7 +22,7 @@ class GetSnapshotIdsArgs {
   /// [owners] Returns the snapshots owned by the specified owner id. Multiple owners can be specified.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restorableByUserIds] One or more AWS accounts IDs that can create volumes from the snapshot.
-  GetSnapshotIdsArgs({
+  const GetSnapshotIdsArgs({
     this.filters,
     this.owners,
     this.region,

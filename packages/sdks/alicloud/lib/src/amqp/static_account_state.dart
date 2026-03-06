@@ -27,7 +27,7 @@ class StaticAccountState {
   /// [password] The static password.
   /// [secretKey] Secret key.
   /// [userName] The static username.
-  StaticAccountState({
+  const StaticAccountState({
     this.accessKey,
     this.createTime,
     this.instanceId,

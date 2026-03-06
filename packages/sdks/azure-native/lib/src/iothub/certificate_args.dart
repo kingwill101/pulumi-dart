@@ -22,7 +22,7 @@ class CertificateArgs {
   /// [properties] The description of an X509 CA Certificate.
   /// [resourceGroupName] The name of the resource group that contains the IoT hub.
   /// [resourceName] The name of the IoT hub.
-  CertificateArgs({
+  const CertificateArgs({
     this.certificateName,
     this.properties,
     required this.resourceGroupName,

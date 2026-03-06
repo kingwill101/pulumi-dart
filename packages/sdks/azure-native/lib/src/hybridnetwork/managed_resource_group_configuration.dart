@@ -12,7 +12,7 @@ class ManagedResourceGroupConfiguration {
   /// Creates a new [ManagedResourceGroupConfiguration].
   /// [location] Managed resource group location.
   /// [name] Managed resource group name.
-  ManagedResourceGroupConfiguration({
+  const ManagedResourceGroupConfiguration({
     this.location,
     this.name,
   });

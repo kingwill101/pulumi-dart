@@ -11,7 +11,7 @@ class GetResourcesTagFilter {
   /// Creates a new [GetResourcesTagFilter].
   /// [key] One part of a key-value pair that makes up a tag.
   /// [values] Optional part of a key-value pair that make up a tag.
-  GetResourcesTagFilter({
+  const GetResourcesTagFilter({
     required this.key,
     this.values,
   });

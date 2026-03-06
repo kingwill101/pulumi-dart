@@ -18,7 +18,7 @@ class FrontendConfigurationResponse {
   /// [ipAddressType] The IP address type of this frontend configuration. If omitted the default value is IPv4.
   /// [loadBalancerBackendAddressPoolId] The resource Id of the Load Balancer backend address pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/loadBalancers/&lt;loadBalancerName&gt;/backendAddressPools/&lt;backendAddressPoolName&gt;'.
   /// [loadBalancerInboundNatPoolId] The resource Id of the Load Balancer inbound NAT pool that the VM instances of the node type are associated with. The format of the resource Id is '/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Network/loadBalancers/&lt;loadBalancerName&gt;/inboundNatPools/&lt;inboundNatPoolName&gt;'.
-  FrontendConfigurationResponse({
+  const FrontendConfigurationResponse({
     this.applicationGatewayBackendAddressPoolId,
     this.ipAddressType,
     this.loadBalancerBackendAddressPoolId,

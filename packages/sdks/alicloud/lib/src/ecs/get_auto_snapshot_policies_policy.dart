@@ -44,7 +44,7 @@ class GetAutoSnapshotPoliciesPolicy {
   /// [targetCopyRegions] The destination region to which the snapshot is copied.
   /// [timePoints] The automatic snapshot creation schedule, and the unit of measurement is hour.
   /// [volumeNums] The number of extended volumes on which this policy is enabled.
-  GetAutoSnapshotPoliciesPolicy({
+  const GetAutoSnapshotPoliciesPolicy({
     required this.autoSnapshotPolicyId,
     required this.copiedSnapshotsRetentionDays,
     required this.diskNums,

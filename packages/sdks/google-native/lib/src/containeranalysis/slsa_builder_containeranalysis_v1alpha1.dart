@@ -9,7 +9,7 @@ class SlsaBuilderContaineranalysisV1alpha1 {
 
   /// Creates a new [SlsaBuilderContaineranalysisV1alpha1].
   /// [id] id is the id of the slsa provenance builder
-  SlsaBuilderContaineranalysisV1alpha1({
+  const SlsaBuilderContaineranalysisV1alpha1({
     this.id,
   });
 

@@ -11,7 +11,7 @@ class FilterFilterCriteriaEcrImageInUseCount {
   /// Creates a new [FilterFilterCriteriaEcrImageInUseCount].
   /// [lowerInclusive] (Optional) Lower bound of the range, inclusive.
   /// [upperInclusive] (Optional) Upper bound of the range, inclusive.
-  FilterFilterCriteriaEcrImageInUseCount({
+  const FilterFilterCriteriaEcrImageInUseCount({
     required this.lowerInclusive,
     required this.upperInclusive,
   });

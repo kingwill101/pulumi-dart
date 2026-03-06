@@ -15,7 +15,7 @@ class InstanceSchedulingNodeAffinity {
   /// [key] The key for the node affinity label.
   /// [operator] The operator. Can be `IN` for node-affinities
   /// [values] The values for the node affinity label.
-  InstanceSchedulingNodeAffinity({
+  const InstanceSchedulingNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

@@ -38,7 +38,7 @@ class HttpRouteArgs {
   /// [name] Name of the HttpRoute resource. It matches pattern `projects/*/locations/global/httpRoutes/http_route_name&gt;`.
   /// [project] Optional.
   /// [rules] Rules that define how traffic is routed and handled. Rules will be matched sequentially based on the RouteMatch specified for the rule.
-  HttpRouteArgs({
+  const HttpRouteArgs({
     this.description,
     this.gateways,
     required this.hostnames,

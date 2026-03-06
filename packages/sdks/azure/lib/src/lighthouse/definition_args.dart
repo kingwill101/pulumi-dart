@@ -36,7 +36,7 @@ class DefinitionArgs {
   /// [name] The name of the Lighthouse Definition. Changing this forces a new resource to be created.
   /// [plan] A `plan` block as defined below.
   /// [scope] The ID of the managed subscription. Changing this forces a new resource to be created.
-  DefinitionArgs({
+  const DefinitionArgs({
     required this.authorizations,
     this.description,
     this.eligibleAuthorizations,

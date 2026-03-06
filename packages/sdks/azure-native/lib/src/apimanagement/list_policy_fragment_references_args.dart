@@ -24,7 +24,7 @@ class ListPolicyFragmentReferencesArgs {
   /// [serviceName] The name of the API Management service.
   /// [skip] Number of records to skip.
   /// [top] Number of records to return.
-  ListPolicyFragmentReferencesArgs({
+  const ListPolicyFragmentReferencesArgs({
     required this.id,
     required this.resourceGroupName,
     required this.serviceName,

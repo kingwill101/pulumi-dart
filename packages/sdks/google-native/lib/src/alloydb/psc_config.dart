@@ -9,7 +9,7 @@ class PscConfig {
 
   /// Creates a new [PscConfig].
   /// [pscEnabled] Optional. Create an instance that allows connections from Private Service Connect endpoints to the instance.
-  PscConfig({
+  const PscConfig({
     this.pscEnabled,
   });
 

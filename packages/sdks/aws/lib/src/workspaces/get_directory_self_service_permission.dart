@@ -20,7 +20,7 @@ class GetDirectorySelfServicePermission {
   /// [rebuildWorkspace] Whether WorkSpaces directory users can rebuild the operating system of a workspace to its original state.
   /// [restartWorkspace] Whether WorkSpaces directory users can restart their workspace.
   /// [switchRunningMode] Whether WorkSpaces directory users can switch the running mode of their workspace.
-  GetDirectorySelfServicePermission({
+  const GetDirectorySelfServicePermission({
     required this.changeComputeType,
     required this.increaseVolumeSize,
     required this.rebuildWorkspace,

@@ -25,7 +25,7 @@ class GoogleCloudDataplexV1AssetDiscoveryStatusResponse {
   /// [state] The current status of the discovery feature.
   /// [stats] Data Stats of the asset reported by discovery.
   /// [updateTime] Last update time of the status.
-  GoogleCloudDataplexV1AssetDiscoveryStatusResponse({
+  const GoogleCloudDataplexV1AssetDiscoveryStatusResponse({
     required this.lastRunDuration,
     required this.lastRunTime,
     required this.message,

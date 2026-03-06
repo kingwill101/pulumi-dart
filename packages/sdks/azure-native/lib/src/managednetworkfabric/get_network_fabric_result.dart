@@ -83,7 +83,7 @@ class GetNetworkFabricResult {
   /// [tags] Resource tags.
   /// [terminalServerConfiguration] Network and credentials configuration currently applied to terminal server.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetNetworkFabricResult({
+  const GetNetworkFabricResult({
     required this.administrativeState,
     this.annotation,
     required this.azureApiVersion,

@@ -31,7 +31,7 @@ class GetAscriptsResult {
   /// [nameRegex] Optional.
   /// [names] A list of name of AScripts.
   /// [outputFile] Optional.
-  GetAscriptsResult({
+  const GetAscriptsResult({
     this.ascriptName,
     required this.ascripts,
     this.enableDetails,

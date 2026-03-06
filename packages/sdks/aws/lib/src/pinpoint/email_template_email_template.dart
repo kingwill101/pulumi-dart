@@ -25,7 +25,7 @@ class EmailTemplateEmailTemplate {
   /// [recommenderId] The unique identifier for the recommender model to use for the message template. Amazon Pinpoint uses this value to determine how to retrieve and process data from a recommender model when it sends messages that use the template, if the template contains message variables for recommendation data.
   /// [subject] Subject line, or title, to use in email messages that are based on the message template.
   /// [textPart] Message body, in plain text format, to use in email messages that are based on the message template. We recommend using plain text format for email clients that don't render HTML content and clients that are connected to high-latency networks, such as mobile devices.
-  EmailTemplateEmailTemplate({
+  const EmailTemplateEmailTemplate({
     this.defaultSubstitutions,
     this.description,
     this.headers,

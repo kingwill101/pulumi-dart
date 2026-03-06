@@ -29,7 +29,7 @@ class ForwardingRuleArgs {
   /// [priority] Forwarding policy priority.
   /// [ruleActions] Forward action. See `rule_actions` below.
   /// [ruleConditions] Forwarding condition list. See `rule_conditions` below.
-  ForwardingRuleArgs({
+  const ForwardingRuleArgs({
     required this.acceleratorId,
     this.forwardingRuleName,
     required this.listenerId,

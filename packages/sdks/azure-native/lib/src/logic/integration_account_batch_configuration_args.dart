@@ -28,7 +28,7 @@ class IntegrationAccountBatchConfigurationArgs {
   /// [properties] The batch configuration properties.
   /// [resourceGroupName] The resource group name.
   /// [tags] The resource tags.
-  IntegrationAccountBatchConfigurationArgs({
+  const IntegrationAccountBatchConfigurationArgs({
     this.batchConfigurationName,
     required this.integrationAccountName,
     this.location,

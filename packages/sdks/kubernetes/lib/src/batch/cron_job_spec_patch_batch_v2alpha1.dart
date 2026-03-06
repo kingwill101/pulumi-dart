@@ -28,7 +28,7 @@ class CronJobSpecPatchBatchV2alpha1 {
   /// [startingDeadlineSeconds] Optional deadline in seconds for starting the job if it misses scheduled time for any reason.  Missed jobs executions will be counted as failed ones.
   /// [successfulJobsHistoryLimit] The number of successful finished jobs to retain. This is a pointer to distinguish between explicit zero and not specified.
   /// [suspend] This flag tells the controller to suspend subsequent executions, it does not apply to already started executions.  Defaults to false.
-  CronJobSpecPatchBatchV2alpha1({
+  const CronJobSpecPatchBatchV2alpha1({
     this.concurrencyPolicy,
     this.failedJobsHistoryLimit,
     this.jobTemplate,

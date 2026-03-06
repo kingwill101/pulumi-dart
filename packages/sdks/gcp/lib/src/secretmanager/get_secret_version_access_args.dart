@@ -24,7 +24,7 @@ class GetSecretVersionAccessArgs {
   /// [project] The project to get the secret version for. If it
   /// [secret] The secret to get the secret version for.
   /// [version] The version of the secret to get. If it
-  GetSecretVersionAccessArgs({
+  const GetSecretVersionAccessArgs({
     this.isSecretDataBase64,
     this.project,
     required this.secret,

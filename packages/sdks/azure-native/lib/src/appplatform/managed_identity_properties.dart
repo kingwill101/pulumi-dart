@@ -18,7 +18,7 @@ class ManagedIdentityProperties {
   /// [tenantId] Tenant Id of system-assigned managed identity.
   /// [type] Type of the managed identity
   /// [userAssignedIdentities] Properties of user-assigned managed identities
-  ManagedIdentityProperties({
+  const ManagedIdentityProperties({
     this.principalId,
     this.tenantId,
     this.type,

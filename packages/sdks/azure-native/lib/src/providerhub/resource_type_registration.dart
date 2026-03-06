@@ -12,7 +12,7 @@ class ResourceTypeRegistration {
   /// Creates a new [ResourceTypeRegistration].
   /// [kind] Resource type registration kind. This Metadata is also used by portal/tooling/etc to render different UX experiences for resources of the same type.
   /// [properties] Optional.
-  ResourceTypeRegistration({
+  const ResourceTypeRegistration({
     this.kind,
     this.properties,
   });

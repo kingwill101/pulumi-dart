@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesDatadog {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesDatadog].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesDatadog({
+  const FlowSourceFlowConfigSourceConnectorPropertiesDatadog({
     required this.object_,
   });
 

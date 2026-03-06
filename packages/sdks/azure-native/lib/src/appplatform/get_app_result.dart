@@ -32,7 +32,7 @@ class GetAppResult {
   /// [properties] Properties of the App resource
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetAppResult({
+  const GetAppResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

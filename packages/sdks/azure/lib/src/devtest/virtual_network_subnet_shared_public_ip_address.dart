@@ -9,7 +9,7 @@ class VirtualNetworkSubnetSharedPublicIpAddress {
 
   /// Creates a new [VirtualNetworkSubnetSharedPublicIpAddress].
   /// [allowedPorts] A list of `allowed_ports` blocks as defined below.
-  VirtualNetworkSubnetSharedPublicIpAddress({
+  const VirtualNetworkSubnetSharedPublicIpAddress({
     this.allowedPorts,
   });
 

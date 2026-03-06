@@ -17,7 +17,7 @@ class RowAccessPolicyReferenceResponse {
   /// [policyId] The ID of the row access policy. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
   /// [project] The ID of the project containing this row access policy.
   /// [tableId] The ID of the table containing this row access policy.
-  RowAccessPolicyReferenceResponse({
+  const RowAccessPolicyReferenceResponse({
     required this.datasetId,
     required this.policyId,
     required this.project,

@@ -13,7 +13,7 @@ class GetOrganizationNotificationConfigArgs {
   /// Creates a new [GetOrganizationNotificationConfigArgs].
   /// [notificationConfigId] Required.
   /// [organizationId] Required.
-  GetOrganizationNotificationConfigArgs({
+  const GetOrganizationNotificationConfigArgs({
     required this.notificationConfigId,
     required this.organizationId,
   });

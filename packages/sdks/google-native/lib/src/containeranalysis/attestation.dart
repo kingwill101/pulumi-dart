@@ -9,7 +9,7 @@ class Attestation {
 
   /// Creates a new [Attestation].
   /// [pgpSignedAttestation] Optional.
-  Attestation({
+  const Attestation({
     this.pgpSignedAttestation,
   });
 

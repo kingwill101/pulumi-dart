@@ -33,7 +33,7 @@ class AnalyticsItemState {
   /// [timeModified] A string containing the time the Analytics Item was last modified.
   /// [type] The type of Analytics Item to create. Can be one of `query`, `function`, `folder`, `recent`. Changing this forces a new resource to be created.
   /// [version] A string indicating the version of the query format
-  AnalyticsItemState({
+  const AnalyticsItemState({
     this.applicationInsightsId,
     this.content,
     this.functionAlias,

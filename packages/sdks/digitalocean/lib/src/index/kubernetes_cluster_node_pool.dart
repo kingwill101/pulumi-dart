@@ -43,7 +43,7 @@ class KubernetesClusterNodePool {
   /// [size] The slug identifier for the type of Droplet to be used as workers in the node pool.
   /// [tags] A list of tag names applied to the node pool.
   /// [taints] A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
-  KubernetesClusterNodePool({
+  const KubernetesClusterNodePool({
     this.actualNodeCount,
     this.autoScale,
     this.id,

@@ -15,7 +15,7 @@ class GoogleCloudChannelV1ProvisionedServiceResponse {
   /// [productId] The product pertaining to the provisioning resource as specified in the Offer.
   /// [provisioningId] Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount.
   /// [skuId] The SKU pertaining to the provisioning resource as specified in the Offer.
-  GoogleCloudChannelV1ProvisionedServiceResponse({
+  const GoogleCloudChannelV1ProvisionedServiceResponse({
     required this.productId,
     required this.provisioningId,
     required this.skuId,

@@ -54,7 +54,7 @@ class ConnectivityTestSource {
   /// [networkType] Type of the network where the endpoint is located.
   /// [port] The IP protocol port of the endpoint. Only applicable when protocol is
   /// [projectId] Project ID where the endpoint is located.
-  ConnectivityTestSource({
+  const ConnectivityTestSource({
     this.appEngineVersion,
     this.cloudFunction,
     this.cloudRunRevision,

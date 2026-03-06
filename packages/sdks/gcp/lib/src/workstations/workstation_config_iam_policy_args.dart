@@ -30,7 +30,7 @@ class WorkstationConfigIamPolicyArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] Used to find the parent resource to bind the IAM policy to
-  WorkstationConfigIamPolicyArgs({
+  const WorkstationConfigIamPolicyArgs({
     this.location,
     required this.policyData,
     this.project,

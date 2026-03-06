@@ -15,7 +15,7 @@ class GetAliasArgs {
   /// Creates a new [GetAliasArgs].
   /// [name] Display name of the alias. The name must start with the word "alias" followed by a forward slash (alias/)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetAliasArgs({
+  const GetAliasArgs({
     required this.name,
     this.region,
   });

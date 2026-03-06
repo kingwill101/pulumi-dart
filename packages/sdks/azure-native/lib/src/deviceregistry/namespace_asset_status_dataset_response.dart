@@ -17,7 +17,7 @@ class NamespaceAssetStatusDatasetResponse {
   /// [error] Object to transfer and persist errors that originate from the edge.
   /// [messageSchemaReference] The message schema reference object.
   /// [name] The name of the dataset. Must be unique within the status.datasets array. This name is used to correlate between the spec and status dataset information.
-  NamespaceAssetStatusDatasetResponse({
+  const NamespaceAssetStatusDatasetResponse({
     required this.error,
     required this.messageSchemaReference,
     required this.name,

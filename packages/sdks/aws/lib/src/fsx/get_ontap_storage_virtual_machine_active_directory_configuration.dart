@@ -11,7 +11,7 @@ class GetOntapStorageVirtualMachineActiveDirectoryConfiguration {
   /// Creates a new [GetOntapStorageVirtualMachineActiveDirectoryConfiguration].
   /// [netbiosName] The NetBIOS name of the AD computer object to which the SVM is joined.
   /// [selfManagedActiveDirectoryConfigurations] Required.
-  GetOntapStorageVirtualMachineActiveDirectoryConfiguration({
+  const GetOntapStorageVirtualMachineActiveDirectoryConfiguration({
     required this.netbiosName,
     required this.selfManagedActiveDirectoryConfigurations,
   });

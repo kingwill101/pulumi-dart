@@ -48,7 +48,7 @@ class DomainTechContact {
   /// [phoneNumber] The phone number of the contact. Phone number must be specified in the format "+[country dialing code].[number including any area code]".
   /// [state] The state or province of the contact's city.
   /// [zipCode] The zip or postal code of the contact's address.
-  DomainTechContact({
+  const DomainTechContact({
     this.addressLine1,
     this.addressLine2,
     this.city,

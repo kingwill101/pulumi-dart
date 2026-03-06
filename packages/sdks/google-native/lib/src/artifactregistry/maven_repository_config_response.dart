@@ -12,7 +12,7 @@ class MavenRepositoryConfigResponse {
   /// Creates a new [MavenRepositoryConfigResponse].
   /// [allowSnapshotOverwrites] The repository with this flag will allow publishing the same snapshot versions.
   /// [versionPolicy] Version policy defines the versions that the registry will accept.
-  MavenRepositoryConfigResponse({
+  const MavenRepositoryConfigResponse({
     required this.allowSnapshotOverwrites,
     required this.versionPolicy,
   });

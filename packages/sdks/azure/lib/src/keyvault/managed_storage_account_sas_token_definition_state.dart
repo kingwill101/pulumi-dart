@@ -27,7 +27,7 @@ class ManagedStorageAccountSasTokenDefinitionState {
   /// [secretId] The ID of the Secret that is created by Managed Storage Account SAS Definition.
   /// [tags] A mapping of tags which should be assigned to the SAS Definition. Changing this forces a new resource to be created.
   /// [validityPeriod] Validity period of SAS token. Value needs to be in [ISO 8601 duration format](https://en.wikipedia.org/wiki/ISO_8601#Durations).
-  ManagedStorageAccountSasTokenDefinitionState({
+  const ManagedStorageAccountSasTokenDefinitionState({
     this.managedStorageAccountId,
     this.name,
     this.sasTemplateUri,

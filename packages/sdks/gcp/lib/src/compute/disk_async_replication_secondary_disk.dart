@@ -13,7 +13,7 @@ class DiskAsyncReplicationSecondaryDisk {
   /// Creates a new [DiskAsyncReplicationSecondaryDisk].
   /// [disk] The secondary disk.
   /// [state] Output-only. Status of replication on the secondary disk.
-  DiskAsyncReplicationSecondaryDisk({
+  const DiskAsyncReplicationSecondaryDisk({
     required this.disk,
     this.state,
   });

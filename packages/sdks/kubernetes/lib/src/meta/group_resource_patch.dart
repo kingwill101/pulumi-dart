@@ -10,7 +10,7 @@ class GroupResourcePatch {
   /// Creates a new [GroupResourcePatch].
   /// [group] Optional.
   /// [resource] Optional.
-  GroupResourcePatch({
+  const GroupResourcePatch({
     this.group,
     this.resource,
   });

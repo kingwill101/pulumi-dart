@@ -27,7 +27,7 @@ class GetPolicyResult {
   /// [requires] Specifies the protocol.
   /// [rules] Rules defined in the policy.
   /// [strategy] Specifies the match strategy.
-  GetPolicyResult({
+  const GetPolicyResult({
     this.controls,
     required this.id,
     required this.name,

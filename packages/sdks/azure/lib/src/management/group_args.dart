@@ -23,7 +23,7 @@ class GroupArgs {
   /// [name] The name or UUID for this Management Group, which needs to be unique across your tenant. A new UUID will be generated if not provided. Changing this forces a new resource to be created.
   /// [parentManagementGroupId] The ID of the Parent Management Group.
   /// [subscriptionIds] A list of Subscription GUIDs which should be assigned to the Management Group.
-  GroupArgs({
+  const GroupArgs({
     this.displayName,
     this.name,
     this.parentManagementGroupId,

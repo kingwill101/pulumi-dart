@@ -9,7 +9,7 @@ class GoogleCloudDatalabelingV1beta1SentimentConfig {
 
   /// Creates a new [GoogleCloudDatalabelingV1beta1SentimentConfig].
   /// [enableLabelSentimentSelection] If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false.
-  GoogleCloudDatalabelingV1beta1SentimentConfig({
+  const GoogleCloudDatalabelingV1beta1SentimentConfig({
     this.enableLabelSentimentSelection,
   });
 

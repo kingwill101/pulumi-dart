@@ -22,7 +22,7 @@ class GetDataSourceBackupConfigInfo {
   /// [lastBackupError] If the last backup failed, this field has the error message.
   /// [lastBackupState] LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
   /// [lastSuccessfulBackupConsistencyTime] If the last backup were successful, this field has the consistency date.
-  GetDataSourceBackupConfigInfo({
+  const GetDataSourceBackupConfigInfo({
     required this.backupApplianceBackupConfigs,
     required this.gcpBackupConfigs,
     required this.lastBackupError,

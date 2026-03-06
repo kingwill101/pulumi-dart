@@ -18,7 +18,7 @@ class GetManagedNetworkPeeringPolicyArgs {
   /// [managedNetworkName] The name of the Managed Network.
   /// [managedNetworkPeeringPolicyName] The name of the Managed Network Peering Policy.
   /// [resourceGroupName] The name of the resource group.
-  GetManagedNetworkPeeringPolicyArgs({
+  const GetManagedNetworkPeeringPolicyArgs({
     required this.managedNetworkName,
     required this.managedNetworkPeeringPolicyName,
     required this.resourceGroupName,

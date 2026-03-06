@@ -15,7 +15,7 @@ class GetConversationModelArgs {
   /// [conversationModelId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetConversationModelArgs({
+  const GetConversationModelArgs({
     required this.conversationModelId,
     required this.location,
     this.project,

@@ -15,7 +15,7 @@ class ImageLimitSettingsResponse {
   /// [maxConcurrentTrials] Maximum number of concurrent AutoML iterations.
   /// [maxTrials] Maximum number of AutoML iterations.
   /// [timeout] AutoML job timeout.
-  ImageLimitSettingsResponse({
+  const ImageLimitSettingsResponse({
     this.maxConcurrentTrials,
     this.maxTrials,
     this.timeout,

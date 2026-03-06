@@ -9,7 +9,7 @@ class NodeInfoResponse {
 
   /// Creates a new [NodeInfoResponse].
   /// [zone] Location of the node.
-  NodeInfoResponse({
+  const NodeInfoResponse({
     required this.zone,
   });
 

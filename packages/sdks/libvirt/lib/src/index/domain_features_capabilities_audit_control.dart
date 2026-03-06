@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesAuditControl {
 
   /// Creates a new [DomainFeaturesCapabilitiesAuditControl].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesAuditControl({
+  const DomainFeaturesCapabilitiesAuditControl({
     this.state,
   });
 

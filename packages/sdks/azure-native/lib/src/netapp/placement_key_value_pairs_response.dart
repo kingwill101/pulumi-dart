@@ -12,7 +12,7 @@ class PlacementKeyValuePairsResponse {
   /// Creates a new [PlacementKeyValuePairsResponse].
   /// [key] Key for an application specific parameter for the placement of volumes in the volume group
   /// [value] Value for an application specific parameter for the placement of volumes in the volume group
-  PlacementKeyValuePairsResponse({
+  const PlacementKeyValuePairsResponse({
     required this.key,
     required this.value,
   });

@@ -50,7 +50,7 @@ class GetAggregateDeliveriesDelivery {
   /// [nonCompliantNotification] Open or close non-compliance events of delivery resources.
   /// [oversizedDataOssTargetArn] The oss ARN of the delivery channel when the value data oversized limit.
   /// [status] The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
-  GetAggregateDeliveriesDelivery({
+  const GetAggregateDeliveriesDelivery({
     required this.accountId,
     required this.aggregatorId,
     required this.configurationItemChangeNotification,

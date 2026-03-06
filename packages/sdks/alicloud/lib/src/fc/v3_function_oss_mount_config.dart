@@ -9,7 +9,7 @@ class V3FunctionOssMountConfig {
 
   /// Creates a new [V3FunctionOssMountConfig].
   /// [mountPoints] OSS mount point list See `mount_points` below.
-  V3FunctionOssMountConfig({
+  const V3FunctionOssMountConfig({
     this.mountPoints,
   });
 

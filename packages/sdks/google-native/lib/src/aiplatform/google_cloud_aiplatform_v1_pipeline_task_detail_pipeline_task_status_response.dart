@@ -16,7 +16,7 @@ class GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponse {
   /// [error] The error that occurred during the state. May be set when the state is any of the non-final state (PENDING/RUNNING/CANCELLING) or FAILED state. If the state is FAILED, the error here is final and not going to be retried. If the state is a non-final state, the error indicates a system-error being retried.
   /// [state] The state of the task.
   /// [updateTime] Update time of this status.
-  GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponse({
+  const GoogleCloudAiplatformV1PipelineTaskDetailPipelineTaskStatusResponse({
     required this.error,
     required this.state,
     required this.updateTime,

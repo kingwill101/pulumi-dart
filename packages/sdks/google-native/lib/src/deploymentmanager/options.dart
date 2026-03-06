@@ -21,7 +21,7 @@ class Options {
   /// [inputMappings] The mappings that apply for requests.
   /// [nameProperty] The json path to the field in the resource JSON body into which the resource name should be mapped. Leaving this empty indicates that there should be no mapping performed.
   /// [validationOptions] Options for how to validate and process properties on a resource.
-  Options({
+  const Options({
     this.asyncOptions,
     this.inputMappings,
     this.nameProperty,

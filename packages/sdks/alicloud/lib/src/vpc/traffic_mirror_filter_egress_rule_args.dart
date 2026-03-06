@@ -43,7 +43,7 @@ class TrafficMirrorFilterEgressRuleArgs {
   /// [sourceCidrBlock] The source CIDR block of the outbound traffic.
   /// [sourcePortRange] The source port range of the outbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
   /// [trafficMirrorFilterId] The ID of the filter.
-  TrafficMirrorFilterEgressRuleArgs({
+  const TrafficMirrorFilterEgressRuleArgs({
     this.action,
     required this.destinationCidrBlock,
     this.destinationPortRange,

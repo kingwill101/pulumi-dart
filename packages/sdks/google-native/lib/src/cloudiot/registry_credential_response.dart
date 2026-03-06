@@ -10,7 +10,7 @@ class RegistryCredentialResponse {
 
   /// Creates a new [RegistryCredentialResponse].
   /// [publicKeyCertificate] A public key certificate used to verify the device credentials.
-  RegistryCredentialResponse({
+  const RegistryCredentialResponse({
     required this.publicKeyCertificate,
   });
 

@@ -12,7 +12,7 @@ class DomainDevicesSerialSourcePty {
   /// Creates a new [DomainDevicesSerialSourcePty].
   /// [path] Sets the path for the PTY source in the EGD backend.
   /// [secLabels] This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  DomainDevicesSerialSourcePty({
+  const DomainDevicesSerialSourcePty({
     required this.path,
     this.secLabels,
   });

@@ -15,7 +15,7 @@ class NetworkEndpointGroupPscDataResponseComputeBeta {
   /// [consumerPscAddress] Address allocated from given subnetwork for PSC. This IP address acts as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
   /// [pscConnectionId] The PSC connection id of the PSC Network Endpoint Group Consumer.
   /// [pscConnectionStatus] The connection status of the PSC Forwarding Rule.
-  NetworkEndpointGroupPscDataResponseComputeBeta({
+  const NetworkEndpointGroupPscDataResponseComputeBeta({
     required this.consumerPscAddress,
     required this.pscConnectionId,
     required this.pscConnectionStatus,

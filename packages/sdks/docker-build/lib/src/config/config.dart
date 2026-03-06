@@ -35,5 +35,5 @@ class DockerBuildConfig {
 
 }
 
-final config = DockerBuildConfig();
+const config = DockerBuildConfig();
 

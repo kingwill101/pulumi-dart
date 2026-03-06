@@ -18,7 +18,7 @@ class HelmArtifactProfile {
   /// [helmPackageVersionRange] Helm package version range.
   /// [imagePullSecretsValuesPaths] The image pull secrets values path list.
   /// [registryValuesPaths] The registry values path list.
-  HelmArtifactProfile({
+  const HelmArtifactProfile({
     this.helmPackageName,
     this.helmPackageVersionRange,
     this.imagePullSecretsValuesPaths,

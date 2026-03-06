@@ -15,7 +15,7 @@ class GetCloudFormationStackSetArgs {
   /// Creates a new [GetCloudFormationStackSetArgs].
   /// [name] Name of CloudFormationStackSet
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCloudFormationStackSetArgs({
+  const GetCloudFormationStackSetArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -22,7 +22,7 @@ class CertificateTemplatePredefinedValuesCaOptions {
   /// [maxIssuerPathLength] Optional. Refers to the "path length constraint" in Basic Constraints extension. For a CA certificate, this value describes the depth of
   /// [nullCa] Optional. When true, the "CA" in Basic Constraints extension will be set to null and omitted from the CA certificate.
   /// [zeroMaxIssuerPathLength] Optional. When true, the "path length constraint" in Basic Constraints extension will be set to 0.
-  CertificateTemplatePredefinedValuesCaOptions({
+  const CertificateTemplatePredefinedValuesCaOptions({
     this.isCa,
     this.maxIssuerPathLength,
     this.nullCa,

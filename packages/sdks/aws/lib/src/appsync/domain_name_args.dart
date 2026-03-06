@@ -21,7 +21,7 @@ class DomainNameArgs {
   /// [description] A description of the Domain Name.
   /// [domainName] Domain name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DomainNameArgs({
+  const DomainNameArgs({
     required this.certificateArn,
     this.description,
     required this.domainName,

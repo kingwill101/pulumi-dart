@@ -9,7 +9,7 @@ class AvailabilityZoneResponse {
 
   /// Creates a new [AvailabilityZoneResponse].
   /// [name] &lt;p&gt;The name of the Availability Zone.&lt;/p&gt;
-  AvailabilityZoneResponse({
+  const AvailabilityZoneResponse({
     this.name,
   });
 

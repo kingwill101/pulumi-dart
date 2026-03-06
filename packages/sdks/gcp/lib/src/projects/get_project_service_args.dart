@@ -18,7 +18,7 @@ class GetProjectServiceArgs {
   /// Creates a new [GetProjectServiceArgs].
   /// [project] The project in which the resource belongs. If it
   /// [service] The name of the Google Platform project service.
-  GetProjectServiceArgs({
+  const GetProjectServiceArgs({
     this.project,
     required this.service,
   });

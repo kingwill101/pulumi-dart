@@ -38,7 +38,7 @@ class LedgerPropertiesResponse {
   /// [ledgerUri] Endpoint for calling Ledger Service.
   /// [provisioningState] Provisioning state of Ledger Resource
   /// [runningState] Object representing RunningState for Ledger.
-  LedgerPropertiesResponse({
+  const LedgerPropertiesResponse({
     this.aadBasedSecurityPrincipals,
     this.certBasedSecurityPrincipals,
     required this.identityServiceUri,

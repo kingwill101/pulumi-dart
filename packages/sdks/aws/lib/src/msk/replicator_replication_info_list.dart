@@ -26,7 +26,7 @@ class ReplicatorReplicationInfoList {
   /// [targetKafkaClusterAlias] Optional.
   /// [targetKafkaClusterArn] The ARN of the target Kafka cluster.
   /// [topicReplications] Configuration relating to topic replication.
-  ReplicatorReplicationInfoList({
+  const ReplicatorReplicationInfoList({
     required this.consumerGroupReplications,
     this.sourceKafkaClusterAlias,
     required this.sourceKafkaClusterArn,

@@ -11,7 +11,7 @@ class HBaseClusterExtension {
   /// Creates a new [HBaseClusterExtension].
   /// [logAnalyticsWorkspaceId] The workspace ID of the log analytics extension.
   /// [primaryKey] The workspace key of the log analytics extension.
-  HBaseClusterExtension({
+  const HBaseClusterExtension({
     required this.logAnalyticsWorkspaceId,
     required this.primaryKey,
   });

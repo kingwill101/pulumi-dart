@@ -7,7 +7,7 @@ class GetVirtualGatewaySpecListenerTlValidationTrustFile {
 
   /// Creates a new [GetVirtualGatewaySpecListenerTlValidationTrustFile].
   /// [certificateChain] Required.
-  GetVirtualGatewaySpecListenerTlValidationTrustFile({
+  const GetVirtualGatewaySpecListenerTlValidationTrustFile({
     required this.certificateChain,
   });
 

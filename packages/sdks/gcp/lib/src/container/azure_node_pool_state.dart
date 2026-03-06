@@ -69,7 +69,7 @@ class AzureNodePoolState {
   /// [uid] Output only. A globally unique identifier for the node pool.
   /// [updateTime] Output only. The time at which this node pool was last updated.
   /// [version] The Kubernetes version (e.g. `1.19.10-gke.1000`) running on this node pool.
-  AzureNodePoolState({
+  const AzureNodePoolState({
     this.annotations,
     this.autoscaling,
     this.azureAvailabilityZone,

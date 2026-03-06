@@ -20,7 +20,7 @@ class GetJobCredentialResult {
   /// [name] Resource name.
   /// [type] Resource type.
   /// [username] The credential user name.
-  GetJobCredentialResult({
+  const GetJobCredentialResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

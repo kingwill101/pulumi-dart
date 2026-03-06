@@ -24,7 +24,7 @@ class GetCertificatesArgs {
   /// [lang] Optional.
   /// [nameRegex] A regex string to filter results by the certificate name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetCertificatesArgs({
+  const GetCertificatesArgs({
     this.enableDetails,
     this.ids,
     this.keyword,

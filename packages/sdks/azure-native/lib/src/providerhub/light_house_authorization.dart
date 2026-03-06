@@ -11,7 +11,7 @@ class LightHouseAuthorization {
   /// Creates a new [LightHouseAuthorization].
   /// [principalId] The principal id.
   /// [roleDefinitionId] The role definition id.
-  LightHouseAuthorization({
+  const LightHouseAuthorization({
     required this.principalId,
     required this.roleDefinitionId,
   });

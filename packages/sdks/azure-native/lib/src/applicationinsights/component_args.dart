@@ -66,7 +66,7 @@ class ComponentArgs {
   /// [samplingPercentage] Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
   /// [tags] Resource tags
   /// [workspaceResourceId] Resource Id of the log analytics workspace which the data will be ingested to. This property is required to create an application with this API version. Applications from older versions will not have this property.
-  ComponentArgs({
+  const ComponentArgs({
     required this.applicationType,
     this.disableIpMasking,
     this.disableLocalAuth,

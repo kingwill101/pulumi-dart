@@ -10,7 +10,7 @@ class K8sSettings {
 
   /// Creates a new [K8sSettings].
   /// [network] The kubernetes network settings information.
-  K8sSettings({
+  const K8sSettings({
     this.network,
   });
 

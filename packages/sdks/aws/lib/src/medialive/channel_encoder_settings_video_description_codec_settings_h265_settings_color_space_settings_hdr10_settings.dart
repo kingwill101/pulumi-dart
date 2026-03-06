@@ -11,7 +11,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceS
   /// Creates a new [ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings].
   /// [maxCll] Sets the MaxCLL value for HDR10.
   /// [maxFall] Sets the MaxFALL value for HDR10.
-  ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings({
+  const ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettingsHdr10Settings({
     this.maxCll,
     this.maxFall,
   });

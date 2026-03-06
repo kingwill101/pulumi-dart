@@ -37,7 +37,7 @@ class GetProductsResult {
   /// [suggestedPrice] The suggested price of the product.
   /// [supplierId] The supplier id of the product.
   /// [supplierNameKeyword] Optional.
-  GetProductsResult({
+  const GetProductsResult({
     this.categoryId,
     required this.id,
     required this.ids,

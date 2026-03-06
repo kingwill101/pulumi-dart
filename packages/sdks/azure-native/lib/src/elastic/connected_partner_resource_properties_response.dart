@@ -18,7 +18,7 @@ class ConnectedPartnerResourcePropertiesResponse {
   /// [location] The location of the deployment.
   /// [partnerDeploymentName] Elastic deployment name
   /// [partnerDeploymentUri] Deployment URL of the elasticsearch in Elastic cloud deployment.
-  ConnectedPartnerResourcePropertiesResponse({
+  const ConnectedPartnerResourcePropertiesResponse({
     this.azureResourceId,
     this.location,
     this.partnerDeploymentName,

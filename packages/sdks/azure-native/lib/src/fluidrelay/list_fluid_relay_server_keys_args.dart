@@ -15,7 +15,7 @@ class ListFluidRelayServerKeysArgs {
   /// Creates a new [ListFluidRelayServerKeysArgs].
   /// [fluidRelayServerName] The Fluid Relay server resource name.
   /// [resourceGroup] The resource group containing the resource.
-  ListFluidRelayServerKeysArgs({
+  const ListFluidRelayServerKeysArgs({
     required this.fluidRelayServerName,
     required this.resourceGroup,
   });

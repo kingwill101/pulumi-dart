@@ -11,7 +11,7 @@ class GetServerGroupsSlbServerGroupServer {
   /// Creates a new [GetServerGroupsSlbServerGroupServer].
   /// [instanceId] ID of the attached ECS instance.
   /// [weight] Weight associated to the ECS instance.
-  GetServerGroupsSlbServerGroupServer({
+  const GetServerGroupsSlbServerGroupServer({
     required this.instanceId,
     required this.weight,
   });

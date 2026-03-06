@@ -13,7 +13,7 @@ class GetCustomConnectorArgs {
   /// Creates a new [GetCustomConnectorArgs].
   /// [customConnectorId] Required.
   /// [project] Optional.
-  GetCustomConnectorArgs({
+  const GetCustomConnectorArgs({
     required this.customConnectorId,
     this.project,
   });

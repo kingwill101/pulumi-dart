@@ -18,7 +18,7 @@ class GetConnectivityConfigurationArgs {
   /// [configurationName] The name of the network manager connectivity configuration.
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
-  GetConnectivityConfigurationArgs({
+  const GetConnectivityConfigurationArgs({
     required this.configurationName,
     required this.networkManagerName,
     required this.resourceGroupName,

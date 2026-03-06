@@ -19,7 +19,7 @@ class GetIAMPolicyResult {
   /// [bindings] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyData] The above bindings serialized in a format suitable for
-  GetIAMPolicyResult({
+  const GetIAMPolicyResult({
     this.auditConfigs,
     this.bindings,
     required this.id,

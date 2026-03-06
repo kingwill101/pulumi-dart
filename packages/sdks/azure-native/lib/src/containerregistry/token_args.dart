@@ -28,7 +28,7 @@ class TokenArgs {
   /// [scopeMapId] The resource ID of the scope map to which the token will be associated with.
   /// [status] The status of the token example enabled or disabled.
   /// [tokenName] The name of the token.
-  TokenArgs({
+  const TokenArgs({
     this.credentials,
     required this.registryName,
     required this.resourceGroupName,

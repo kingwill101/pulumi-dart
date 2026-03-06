@@ -29,7 +29,7 @@ class VolumeTypeV3Args {
   /// [isPublic] Whether the volume type is public. Changing
   /// [name] Name of the volume type.  Changing this
   /// [region] The region in which to create the volume. If
-  VolumeTypeV3Args({
+  const VolumeTypeV3Args({
     this.description,
     this.extraSpecs,
     this.isPublic,

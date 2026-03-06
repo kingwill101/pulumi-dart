@@ -37,7 +37,7 @@ class ShareArgs {
   /// [nfsExportOptions] Nfs Export Options. There is a limit of 10 export options per file share.
   /// [project] Optional.
   /// [shareId] Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-  ShareArgs({
+  const ShareArgs({
     this.backup,
     this.capacityGb,
     this.description,

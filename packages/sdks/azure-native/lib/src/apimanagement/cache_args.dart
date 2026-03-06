@@ -30,7 +30,7 @@ class CacheArgs {
   /// [resourceId] Original uri of entity in external system cache points to
   /// [serviceName] The name of the API Management service.
   /// [useFromLocation] Location identifier to use cache from (should be either 'default' or valid Azure region identifier)
-  CacheArgs({
+  const CacheArgs({
     this.cacheId,
     required this.connectionString,
     this.description,

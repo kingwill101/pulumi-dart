@@ -27,7 +27,7 @@ class GetPrincipalPolicySimulationResult {
   /// [matchedStatements] A nested set of objects describing which policies contained statements that were relevant to this simulation request. Each object has attributes `source_policy_id` and `source_policy_type` to identify one of the policies.
   /// [missingContextKeys] A set of context keys (or condition keys) that were needed by some of the policies contributing to this result but not specified using a `context` block in the configuration. Missing or incorrect context keys will typically cause a simulated request to be disallowed.
   /// [resourceArn] ARN of the resource that was used for this particular request. When you specify multiple actions and multiple resource ARNs, that causes a separate policy request for each combination of unique action and resource.
-  GetPrincipalPolicySimulationResult({
+  const GetPrincipalPolicySimulationResult({
     required this.actionName,
     required this.allowed,
     required this.decision,

@@ -20,7 +20,7 @@ class RolePolicyAttachmentArgs {
   /// [policyName] The name of the policy.
   /// [policyType] Policy type.
   /// [roleName] The RAM role name.
-  RolePolicyAttachmentArgs({
+  const RolePolicyAttachmentArgs({
     required this.policyName,
     required this.policyType,
     required this.roleName,

@@ -11,7 +11,7 @@ class DataFlowSinkDataset {
   /// Creates a new [DataFlowSinkDataset].
   /// [name] The name for the Data Factory Dataset.
   /// [parameters] A map of parameters to associate with the Data Factory dataset.
-  DataFlowSinkDataset({
+  const DataFlowSinkDataset({
     required this.name,
     this.parameters,
   });

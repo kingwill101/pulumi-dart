@@ -7,7 +7,7 @@ class ManagedZoneReverseLookupConfig {
 
   /// Creates a new [ManagedZoneReverseLookupConfig].
   /// [kind] Optional.
-  ManagedZoneReverseLookupConfig({
+  const ManagedZoneReverseLookupConfig({
     this.kind,
   });
 

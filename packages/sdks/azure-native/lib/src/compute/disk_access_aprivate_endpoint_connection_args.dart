@@ -22,7 +22,7 @@ class DiskAccessAPrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between DiskAccess and Virtual Network.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DiskAccessAPrivateEndpointConnectionArgs({
+  const DiskAccessAPrivateEndpointConnectionArgs({
     required this.diskAccessName,
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,

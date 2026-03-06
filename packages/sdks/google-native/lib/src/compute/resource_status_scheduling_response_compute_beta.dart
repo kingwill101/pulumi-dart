@@ -8,7 +8,7 @@ class ResourceStatusSchedulingResponseComputeBeta {
 
   /// Creates a new [ResourceStatusSchedulingResponseComputeBeta].
   /// [terminationTimestamp] Time in future when the instance will be terminated in RFC3339 text format.
-  ResourceStatusSchedulingResponseComputeBeta({
+  const ResourceStatusSchedulingResponseComputeBeta({
     required this.terminationTimestamp,
   });
 

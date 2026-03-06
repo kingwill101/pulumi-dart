@@ -10,7 +10,7 @@ class LoggingConfig {
 
   /// Creates a new [LoggingConfig].
   /// [componentConfig] Logging components configuration
-  LoggingConfig({
+  const LoggingConfig({
     this.componentConfig,
   });
 

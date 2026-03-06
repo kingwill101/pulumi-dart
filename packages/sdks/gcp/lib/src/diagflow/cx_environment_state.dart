@@ -27,7 +27,7 @@ class CxEnvironmentState {
   /// [parent] The Agent to create an Environment for.
   /// [updateTime] Update time of this environment. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
   /// [versionConfigs] A list of configurations for flow versions. You should include version configs for all flows that are reachable from [Start Flow][Agent.start_flow] in the agent. Otherwise, an error will be returned.
-  CxEnvironmentState({
+  const CxEnvironmentState({
     this.description,
     this.displayName,
     this.name,

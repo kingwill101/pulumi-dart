@@ -10,7 +10,7 @@ class VmmToVmmCreateNetworkMappingInput {
 
   /// Creates a new [VmmToVmmCreateNetworkMappingInput].
   /// [instanceType] The instance type.
-  VmmToVmmCreateNetworkMappingInput({
+  const VmmToVmmCreateNetworkMappingInput({
     required this.instanceType,
   });
 

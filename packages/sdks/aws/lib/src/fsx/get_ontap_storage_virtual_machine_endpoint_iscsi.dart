@@ -9,7 +9,7 @@ class GetOntapStorageVirtualMachineEndpointIscsi {
   /// Creates a new [GetOntapStorageVirtualMachineEndpointIscsi].
   /// [dnsName] Required.
   /// [ipAddresses] Required.
-  GetOntapStorageVirtualMachineEndpointIscsi({
+  const GetOntapStorageVirtualMachineEndpointIscsi({
     required this.dnsName,
     required this.ipAddresses,
   });

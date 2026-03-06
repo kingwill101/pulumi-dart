@@ -12,7 +12,7 @@ class ListAzureDataTransferFlowProfilesArgs {
 
   /// Creates a new [ListAzureDataTransferFlowProfilesArgs].
   /// [pipeline] The name of the pipeline for which to retrieve associated FlowProfiles.
-  ListAzureDataTransferFlowProfilesArgs({
+  const ListAzureDataTransferFlowProfilesArgs({
     this.pipeline,
   });
 

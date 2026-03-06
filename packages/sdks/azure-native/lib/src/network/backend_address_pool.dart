@@ -33,7 +33,7 @@ class BackendAddressPool {
   /// [syncMode] Backend address synchronous mode for the backend pool
   /// [tunnelInterfaces] An array of gateway load balancer tunnel interfaces.
   /// [virtualNetwork] A reference to a virtual network.
-  BackendAddressPool({
+  const BackendAddressPool({
     this.drainPeriodInSeconds,
     this.id,
     this.loadBalancerBackendAddresses,

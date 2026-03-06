@@ -16,7 +16,7 @@ class FirehoseDeliveryStreamOpensearchserverlessConfigurationVpcConfig {
   /// [securityGroupIds] A list of security group IDs to associate with Kinesis Firehose.
   /// [subnetIds] A list of subnet IDs to associate with Kinesis Firehose.
   /// [vpcId] Optional.
-  FirehoseDeliveryStreamOpensearchserverlessConfigurationVpcConfig({
+  const FirehoseDeliveryStreamOpensearchserverlessConfigurationVpcConfig({
     required this.roleArn,
     required this.securityGroupIds,
     required this.subnetIds,

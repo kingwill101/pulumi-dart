@@ -17,7 +17,7 @@ class MonitorUser {
   /// [firstName] Specifies the first name. Changing this forces a new Azure Native New Relic Monitor to be created.
   /// [lastName] Specifies the last name. Changing this forces a new Azure Native New Relic Monitor to be created.
   /// [phoneNumber] Specifies the contact phone number. Changing this forces a new Azure Native New Relic Monitor to be created.
-  MonitorUser({
+  const MonitorUser({
     required this.email,
     required this.firstName,
     required this.lastName,

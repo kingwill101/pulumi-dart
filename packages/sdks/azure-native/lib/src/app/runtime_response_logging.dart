@@ -10,7 +10,7 @@ class RuntimeResponseLogging {
 
   /// Creates a new [RuntimeResponseLogging].
   /// [loggerSettings] Settings of the logger for the java app.
-  RuntimeResponseLogging({
+  const RuntimeResponseLogging({
     this.loggerSettings,
   });
 

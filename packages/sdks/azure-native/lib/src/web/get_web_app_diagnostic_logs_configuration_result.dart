@@ -35,7 +35,7 @@ class GetWebAppDiagnosticLogsConfigurationResult {
   /// [kind] Kind of resource.
   /// [name] Resource Name.
   /// [type] Resource type.
-  GetWebAppDiagnosticLogsConfigurationResult({
+  const GetWebAppDiagnosticLogsConfigurationResult({
     this.applicationLogs,
     required this.azureApiVersion,
     this.detailedErrorMessages,

@@ -15,7 +15,7 @@ class GetExtensionAzureMonitorStatusArgs {
   /// Creates a new [GetExtensionAzureMonitorStatusArgs].
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group.
-  GetExtensionAzureMonitorStatusArgs({
+  const GetExtensionAzureMonitorStatusArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

@@ -24,7 +24,7 @@ class SpendingLimitDetailsResponse {
   /// [startDate] The date when this spending limit goes into effect.
   /// [status] The status of current spending limit.
   /// [type] The type of spending limit.
-  SpendingLimitDetailsResponse({
+  const SpendingLimitDetailsResponse({
     this.amount,
     this.currency,
     this.endDate,

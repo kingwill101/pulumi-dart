@@ -15,7 +15,7 @@ class InstanceServiceAccount {
   /// Creates a new [InstanceServiceAccount].
   /// [email] The service account e-mail address.
   /// [scopes] A list of service scopes. Both OAuth2 URLs and gcloud
-  InstanceServiceAccount({
+  const InstanceServiceAccount({
     this.email,
     required this.scopes,
   });

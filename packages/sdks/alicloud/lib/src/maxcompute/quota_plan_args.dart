@@ -23,7 +23,7 @@ class QuotaPlanArgs {
   /// [nickname] Quota Name
   /// [planName] The Quota plan name. Start with a letter, containing letters, numbers, and underscores (_). It is no more than 64 characters long.
   /// [quota] Quota property See `quota` below.
-  QuotaPlanArgs({
+  const QuotaPlanArgs({
     this.isEffective,
     required this.nickname,
     required this.planName,

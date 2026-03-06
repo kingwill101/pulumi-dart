@@ -15,7 +15,7 @@ class GetExecutionArgs {
   /// [executionId] Required.
   /// [historyId] Required.
   /// [project] Optional.
-  GetExecutionArgs({
+  const GetExecutionArgs({
     required this.executionId,
     required this.historyId,
     this.project,

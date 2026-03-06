@@ -43,7 +43,7 @@ class GetOriginGroupResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [trafficRestorationTimeToHealedOrNewEndpointsInMinutes] Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetOriginGroupResult({
+  const GetOriginGroupResult({
     required this.azureApiVersion,
     this.healthProbeSettings,
     required this.id,

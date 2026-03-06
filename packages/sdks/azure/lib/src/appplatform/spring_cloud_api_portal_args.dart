@@ -34,7 +34,7 @@ class SpringCloudApiPortalArgs {
   /// [publicNetworkAccessEnabled] Is the public network access enabled?
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud API Portal to be created.
   /// [sso] A `sso` block as defined below.
-  SpringCloudApiPortalArgs({
+  const SpringCloudApiPortalArgs({
     this.apiTryOutEnabled,
     this.gatewayIds,
     this.httpsOnlyEnabled,

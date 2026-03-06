@@ -17,7 +17,7 @@ class GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement {
   /// [name] Name of the agreement
   /// [url] URL of the agreement
   /// [uuid] UUID of the agreement
-  GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement({
+  const GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement({
     this.description,
     this.name,
     this.url,

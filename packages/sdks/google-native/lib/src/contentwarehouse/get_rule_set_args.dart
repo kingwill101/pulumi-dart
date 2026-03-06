@@ -15,7 +15,7 @@ class GetRuleSetArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [ruleSetId] Required.
-  GetRuleSetArgs({
+  const GetRuleSetArgs({
     required this.location,
     this.project,
     required this.ruleSetId,

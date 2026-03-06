@@ -15,7 +15,7 @@ class GetInstanceComputeBetaArgs {
   /// [instance] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetInstanceComputeBetaArgs({
+  const GetInstanceComputeBetaArgs({
     required this.instance,
     this.project,
     required this.zone,

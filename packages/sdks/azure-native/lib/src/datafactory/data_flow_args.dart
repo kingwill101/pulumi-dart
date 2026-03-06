@@ -22,7 +22,7 @@ class DataFlowArgs {
   /// [factoryName] The factory name.
   /// [properties] Data flow properties.
   /// [resourceGroupName] The resource group name.
-  DataFlowArgs({
+  const DataFlowArgs({
     this.dataFlowName,
     required this.factoryName,
     required this.properties,

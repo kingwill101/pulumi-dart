@@ -30,7 +30,7 @@ class AiFeatureOnlineStoreFeatureviewVectorSearchConfig {
   /// [embeddingDimension] The number of dimensions of the input embedding.
   /// [filterColumns] Columns of features that are used to filter vector search results.
   /// [treeAhConfig] Configuration options for the tree-AH algorithm (Shallow tree + Asymmetric Hashing). Please refer to this paper for more details: https://arxiv.org/abs/1908.10396
-  AiFeatureOnlineStoreFeatureviewVectorSearchConfig({
+  const AiFeatureOnlineStoreFeatureviewVectorSearchConfig({
     this.bruteForceConfig,
     this.crowdingColumn,
     this.distanceMeasureType,

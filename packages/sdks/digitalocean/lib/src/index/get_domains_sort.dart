@@ -11,7 +11,7 @@ class GetDomainsSort {
   /// Creates a new [GetDomainsSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
   /// [key] Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
-  GetDomainsSort({
+  const GetDomainsSort({
     this.direction,
     required this.key,
   });

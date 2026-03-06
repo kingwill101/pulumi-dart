@@ -14,7 +14,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariatio
   /// [imageUrl] Optional.
   /// [subtitle] Optional.
   /// [title] Required.
-  V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCard({
+  const V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupVariationImageResponseCard({
     this.buttons,
     this.imageUrl,
     this.subtitle,

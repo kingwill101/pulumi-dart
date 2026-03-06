@@ -28,7 +28,7 @@ class GetOpenApiPricingModulesArgs {
   /// [productCode] The product code.
   /// [productType] The product type.
   /// [subscriptionType] Subscription type. Value:
-  GetOpenApiPricingModulesArgs({
+  const GetOpenApiPricingModulesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -16,7 +16,7 @@ class Credentials {
   /// Creates a new [Credentials].
   /// [customRegistries] Describes the credential parameters for accessing other custom registries. The key
   /// [sourceRegistry] Describes the credential parameters for accessing the source registry.
-  Credentials({
+  const Credentials({
     this.customRegistries,
     this.sourceRegistry,
   });

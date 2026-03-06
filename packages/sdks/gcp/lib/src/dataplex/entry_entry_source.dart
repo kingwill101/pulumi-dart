@@ -42,7 +42,7 @@ class EntryEntrySource {
   /// [resource] The name of the resource in the source system. Maximum length is 4,000 characters.
   /// [system] The name of the source system. Maximum length is 64 characters.
   /// [updateTime] The time when the resource was last updated in the source system.
-  EntryEntrySource({
+  const EntryEntrySource({
     this.ancestors,
     this.createTime,
     this.description,

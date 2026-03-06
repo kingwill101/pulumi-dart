@@ -12,7 +12,7 @@ class ApiBridgeProperties {
   /// Creates a new [ApiBridgeProperties].
   /// [allowedAddressPrefixes] The allowed source IP addresses or CIDR ranges for accessing the API Bridge
   /// [configureApiBridge] The activation state of the API Bridge for this Communications Gateway
-  ApiBridgeProperties({
+  const ApiBridgeProperties({
     this.allowedAddressPrefixes,
     this.configureApiBridge,
   });

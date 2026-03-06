@@ -21,7 +21,7 @@ class Column {
   /// [displayName] Column display name.
   /// [name] Column name.
   /// [type] Column data type.
-  Column({
+  const Column({
     this.dataTypeHint,
     this.description,
     this.displayName,

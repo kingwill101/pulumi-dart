@@ -71,7 +71,7 @@ class FrontdoorFirewallPolicyArgs {
   /// [resourceGroupName] The name of the resource group. Changing this forces a new resource to be created.
   /// [skuName] The sku's pricing tier for this Front Door Firewall Policy. Possible values include `Standard_AzureFrontDoor` or `Premium_AzureFrontDoor`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Front Door Firewall Policy.
-  FrontdoorFirewallPolicyArgs({
+  const FrontdoorFirewallPolicyArgs({
     this.captchaCookieExpirationInMinutes,
     this.customBlockResponseBody,
     this.customBlockResponseStatusCode,

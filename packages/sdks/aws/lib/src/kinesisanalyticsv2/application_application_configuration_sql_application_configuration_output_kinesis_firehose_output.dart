@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesi
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput].
   /// [resourceArn] The ARN of the destination delivery stream to write to.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationOutputKinesisFirehoseOutput({
     required this.resourceArn,
   });
 

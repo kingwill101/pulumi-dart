@@ -14,7 +14,7 @@ class IntegrationRuntimeSsisProxy {
   /// [path] The path in the data store to be used when moving data between Self-Hosted and Azure-SSIS Integration Runtimes.
   /// [selfHostedIntegrationRuntimeName] Name of Self Hosted Integration Runtime as a proxy.
   /// [stagingStorageLinkedServiceName] Name of Azure Blob Storage linked service to reference the staging data store to be used when moving data between self-hosted and Azure-SSIS integration runtimes.
-  IntegrationRuntimeSsisProxy({
+  const IntegrationRuntimeSsisProxy({
     this.path,
     required this.selfHostedIntegrationRuntimeName,
     required this.stagingStorageLinkedServiceName,

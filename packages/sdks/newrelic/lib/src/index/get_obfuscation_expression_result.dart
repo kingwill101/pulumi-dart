@@ -12,7 +12,7 @@ class GetObfuscationExpressionResult {
   /// [accountId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  GetObfuscationExpressionResult({
+  const GetObfuscationExpressionResult({
     this.accountId,
     required this.id,
     required this.name,

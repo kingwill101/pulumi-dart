@@ -18,7 +18,7 @@ class ComputeDataDiskResponse {
   /// [diskUri] When backed by a blob, the URI of underlying blob.
   /// [managedDiskId] When backed by managed disk, this is the ID of the compute disk resource.
   /// [name] Gets data disk name.
-  ComputeDataDiskResponse({
+  const ComputeDataDiskResponse({
     this.diskSizeGiB,
     this.diskUri,
     this.managedDiskId,

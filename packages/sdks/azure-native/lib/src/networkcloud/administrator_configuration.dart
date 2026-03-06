@@ -12,7 +12,7 @@ class AdministratorConfiguration {
   /// Creates a new [AdministratorConfiguration].
   /// [adminUsername] The user name for the administrator that will be applied to the operating systems that run Kubernetes nodes. If not supplied, a user name will be chosen by the service.
   /// [sshPublicKeys] The SSH configuration for the operating systems that run the nodes in the Kubernetes cluster. In some cases, specification of public keys may be required to produce a working environment.
-  AdministratorConfiguration({
+  const AdministratorConfiguration({
     this.adminUsername,
     this.sshPublicKeys,
   });

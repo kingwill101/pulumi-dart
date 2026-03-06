@@ -9,7 +9,7 @@ class CustomProfileResponse {
 
   /// Creates a new [CustomProfileResponse].
   /// [metadataConfigurationPath] Path for metadata configuration.
-  CustomProfileResponse({
+  const CustomProfileResponse({
     this.metadataConfigurationPath,
   });
 

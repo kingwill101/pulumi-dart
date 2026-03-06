@@ -22,7 +22,7 @@ class ConnectionProfileAlloydbSettings {
   /// [labels] Labels for the AlloyDB cluster created by DMS.
   /// [primaryInstanceSettings] Settings for the cluster's primary instance
   /// [vpcNetwork] Required. The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster.
-  ConnectionProfileAlloydbSettings({
+  const ConnectionProfileAlloydbSettings({
     required this.initialUser,
     this.labels,
     this.primaryInstanceSettings,

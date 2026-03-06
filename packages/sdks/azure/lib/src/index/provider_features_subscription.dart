@@ -7,7 +7,7 @@ class ProviderFeaturesSubscription {
 
   /// Creates a new [ProviderFeaturesSubscription].
   /// [preventCancellationOnDestroy] Optional.
-  ProviderFeaturesSubscription({
+  const ProviderFeaturesSubscription({
     this.preventCancellationOnDestroy,
   });
 

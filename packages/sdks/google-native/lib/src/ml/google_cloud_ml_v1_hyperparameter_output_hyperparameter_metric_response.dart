@@ -12,7 +12,7 @@ class GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse {
   /// Creates a new [GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse].
   /// [objectiveValue] The objective value at this training step.
   /// [trainingStep] The global training step for this metric.
-  GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse({
+  const GoogleCloudMlV1HyperparameterOutputHyperparameterMetricResponse({
     required this.objectiveValue,
     required this.trainingStep,
   });

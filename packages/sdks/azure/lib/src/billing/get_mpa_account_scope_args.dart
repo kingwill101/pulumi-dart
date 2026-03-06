@@ -15,7 +15,7 @@ class GetMpaAccountScopeArgs {
   /// Creates a new [GetMpaAccountScopeArgs].
   /// [billingAccountName] The Billing Account Name of the MPA account.
   /// [customerName] The Customer Name in the above Billing Account.
-  GetMpaAccountScopeArgs({
+  const GetMpaAccountScopeArgs({
     required this.billingAccountName,
     required this.customerName,
   });

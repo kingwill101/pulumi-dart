@@ -14,7 +14,7 @@ class BucketLifecycleConfigurationRuleExpirationS3Control {
   /// [date] Date the object is to be deleted. Should be in `YYYY-MM-DD` date format, e.g., `2020-09-30`.
   /// [days] Number of days before the object is to be deleted.
   /// [expiredObjectDeleteMarker] Enable to remove a delete marker with no noncurrent versions. Cannot be specified with `date` or `days`.
-  BucketLifecycleConfigurationRuleExpirationS3Control({
+  const BucketLifecycleConfigurationRuleExpirationS3Control({
     this.date,
     this.days,
     this.expiredObjectDeleteMarker,

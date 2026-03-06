@@ -10,7 +10,7 @@ class ImageVersionSecurityProfileResponse {
 
   /// Creates a new [ImageVersionSecurityProfileResponse].
   /// [uefiSettings] Contains UEFI settings for the image version.
-  ImageVersionSecurityProfileResponse({
+  const ImageVersionSecurityProfileResponse({
     this.uefiSettings,
   });
 

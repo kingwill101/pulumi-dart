@@ -11,7 +11,7 @@ class PoolSourceHost {
   /// Creates a new [PoolSourceHost].
   /// [name] Sets the name of the host where the storage source is located.
   /// [port] Configures the port number to be used for connecting to the storage source on the host.
-  PoolSourceHost({
+  const PoolSourceHost({
     required this.name,
     this.port,
   });

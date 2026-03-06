@@ -32,7 +32,7 @@ class TestBaseAccountArgs {
   /// [sku] The SKU of the Test Base Account.
   /// [tags] Resource tags.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  TestBaseAccountArgs({
+  const TestBaseAccountArgs({
     this.identity,
     this.location,
     required this.resourceGroupName,

@@ -34,7 +34,7 @@ class CodeToolsSettingBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [settingBindingId] Id of the setting binding.
   /// [target] Target of the binding.
-  CodeToolsSettingBindingArgs({
+  const CodeToolsSettingBindingArgs({
     required this.codeToolsSettingId,
     this.labels,
     this.location,

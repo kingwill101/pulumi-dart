@@ -19,7 +19,7 @@ class SloWindowsBasedSliGoodTotalRatioThreshold {
   /// [basicSliPerformance] Basic SLI to evaluate to judge window quality.
   /// [performance] Request-based SLI to evaluate to judge window quality.
   /// [threshold] If window performance &gt;= threshold, the window is counted
-  SloWindowsBasedSliGoodTotalRatioThreshold({
+  const SloWindowsBasedSliGoodTotalRatioThreshold({
     this.basicSliPerformance,
     this.performance,
     this.threshold,

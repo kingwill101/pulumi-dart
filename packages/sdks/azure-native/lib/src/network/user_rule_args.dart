@@ -50,7 +50,7 @@ class UserRuleArgs {
   /// [ruleName] The name of the rule.
   /// [sourcePortRanges] The source port ranges.
   /// [sources] The CIDR or source IP ranges.
-  UserRuleArgs({
+  const UserRuleArgs({
     required this.configurationName,
     this.description,
     this.destinationPortRanges,

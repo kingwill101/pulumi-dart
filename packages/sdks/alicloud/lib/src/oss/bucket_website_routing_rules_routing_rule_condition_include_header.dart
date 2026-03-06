@@ -16,7 +16,7 @@ class BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader {
   /// [equals] This rule can only be matched if the request contains the Header specified by Key and the value is the specified value.
   /// [key] Optional.
   /// [startsWith] This rule can only be matched if the request contains the Header specified by Key and the value starts with this value.
-  BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader({
+  const BucketWebsiteRoutingRulesRoutingRuleConditionIncludeHeader({
     this.endsWith,
     this.equals,
     this.key,

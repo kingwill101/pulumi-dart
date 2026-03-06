@@ -15,7 +15,7 @@ class GetPersistentResourceArgs {
   /// [location] Required.
   /// [persistentResourceId] Required.
   /// [project] Optional.
-  GetPersistentResourceArgs({
+  const GetPersistentResourceArgs({
     required this.location,
     required this.persistentResourceId,
     this.project,

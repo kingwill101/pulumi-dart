@@ -18,7 +18,7 @@ class GetWebhookCallbackConfigArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [webhookName] The name of the webhook.
-  GetWebhookCallbackConfigArgs({
+  const GetWebhookCallbackConfigArgs({
     required this.registryName,
     required this.resourceGroupName,
     required this.webhookName,

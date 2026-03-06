@@ -20,7 +20,7 @@ class DatabaseDumpMetastoreV1beta {
   /// [gcsUri] A Cloud Storage object or folder URI that specifies the source from which to import metadata. It must begin with gs://.
   /// [sourceDatabase] The name of the source database.
   /// [type] Optional. The type of the database dump. If unspecified, defaults to MYSQL.
-  DatabaseDumpMetastoreV1beta({
+  const DatabaseDumpMetastoreV1beta({
     this.databaseType,
     this.gcsUri,
     this.sourceDatabase,

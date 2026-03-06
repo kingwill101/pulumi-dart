@@ -14,7 +14,7 @@ class GetAccessPointPosixUser {
   /// [gid] Group ID
   /// [secondaryGids] Secondary group IDs
   /// [uid] User Id
-  GetAccessPointPosixUser({
+  const GetAccessPointPosixUser({
     required this.gid,
     required this.secondaryGids,
     required this.uid,

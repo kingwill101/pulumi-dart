@@ -18,7 +18,7 @@ class GoogleCloudAiplatformV1SavedQuery {
   /// [etag] Used to perform a consistent read-modify-write update. If not set, a blind "overwrite" update happens.
   /// [metadata] Some additional information about the SavedQuery.
   /// [problemType] Problem type of the SavedQuery. Allowed values: * IMAGE_CLASSIFICATION_SINGLE_LABEL * IMAGE_CLASSIFICATION_MULTI_LABEL * IMAGE_BOUNDING_POLY * IMAGE_BOUNDING_BOX * TEXT_CLASSIFICATION_SINGLE_LABEL * TEXT_CLASSIFICATION_MULTI_LABEL * TEXT_EXTRACTION * TEXT_SENTIMENT * VIDEO_CLASSIFICATION * VIDEO_OBJECT_TRACKING
-  GoogleCloudAiplatformV1SavedQuery({
+  const GoogleCloudAiplatformV1SavedQuery({
     required this.displayName,
     this.etag,
     this.metadata,

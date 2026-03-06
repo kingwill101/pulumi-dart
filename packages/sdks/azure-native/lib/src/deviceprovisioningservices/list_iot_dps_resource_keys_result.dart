@@ -13,7 +13,7 @@ class ListIotDpsResourceKeysResult {
   /// Creates a new [ListIotDpsResourceKeysResult].
   /// [nextLink] The next link.
   /// [value] The list of shared access policies.
-  ListIotDpsResourceKeysResult({
+  const ListIotDpsResourceKeysResult({
     required this.nextLink,
     this.value,
   });

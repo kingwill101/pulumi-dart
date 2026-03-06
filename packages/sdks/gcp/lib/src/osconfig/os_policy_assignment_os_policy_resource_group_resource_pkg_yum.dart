@@ -8,7 +8,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum {
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum].
   /// [name] Package name.
-  OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum({
     required this.name,
   });
 

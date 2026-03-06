@@ -14,7 +14,7 @@ class GetGenaiIndexingJobDataSourcesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [indexedDataSources] Required.
   /// [indexingJobUuid] Required.
-  GetGenaiIndexingJobDataSourcesResult({
+  const GetGenaiIndexingJobDataSourcesResult({
     required this.id,
     required this.indexedDataSources,
     required this.indexingJobUuid,

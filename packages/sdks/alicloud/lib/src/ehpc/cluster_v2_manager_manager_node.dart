@@ -68,7 +68,7 @@ class ClusterV2ManagerManagerNode {
   /// [spotPriceLimit] Set the maximum price per hour for the instance. The maximum number of decimals is 3. It takes effect when the value of the SpotStrategy parameter is SpotWithPriceLimit.
   /// [spotStrategy] The bidding strategy for pay-as-you-go instances. This parameter takes effect when the value of the InstanceChargeType parameter is PostPaid. Value range:
   /// [systemDisk] System disk configuration of the management node. See `system_disk` below.
-  ClusterV2ManagerManagerNode({
+  const ClusterV2ManagerManagerNode({
     this.autoRenew,
     this.autoRenewPeriod,
     this.duration,

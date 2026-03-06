@@ -13,7 +13,7 @@ class AmlFilesystemArchiveResponse {
   /// Creates a new [AmlFilesystemArchiveResponse].
   /// [filesystemPath] Lustre file system path to archive relative to the file system root.  Specify '/' to archive all modified data.
   /// [status] The status of the archive
-  AmlFilesystemArchiveResponse({
+  const AmlFilesystemArchiveResponse({
     required this.filesystemPath,
     required this.status,
   });

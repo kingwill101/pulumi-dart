@@ -15,7 +15,7 @@ class GetOrganizationAddressGroupArgs {
   /// [addressGroupId] Required.
   /// [location] Required.
   /// [organizationId] Required.
-  GetOrganizationAddressGroupArgs({
+  const GetOrganizationAddressGroupArgs({
     required this.addressGroupId,
     required this.location,
     required this.organizationId,

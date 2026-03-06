@@ -15,7 +15,7 @@ class GetDatabaseArgs {
   /// [database] Required.
   /// [instance] Required.
   /// [project] Optional.
-  GetDatabaseArgs({
+  const GetDatabaseArgs({
     required this.database,
     required this.instance,
     this.project,

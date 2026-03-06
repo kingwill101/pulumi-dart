@@ -19,7 +19,7 @@ class GetConnectionArgs {
   /// [id] Concatenation of the catalog ID and connection name. For example, if your account ID is
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags assigned to the resource
-  GetConnectionArgs({
+  const GetConnectionArgs({
     required this.id,
     this.region,
     this.tags,

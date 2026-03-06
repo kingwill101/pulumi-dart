@@ -15,7 +15,7 @@ class FaceConfigArgs {
   /// Creates a new [FaceConfigArgs].
   /// [bizName] Scene name.
   /// [bizType] Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
-  FaceConfigArgs({
+  const FaceConfigArgs({
     required this.bizName,
     required this.bizType,
   });

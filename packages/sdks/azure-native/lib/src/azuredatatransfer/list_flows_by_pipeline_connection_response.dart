@@ -13,7 +13,7 @@ class ListFlowsByPipelineConnectionResponse {
   /// Creates a new [ListFlowsByPipelineConnectionResponse].
   /// [flows] List of flows associated with the connection.
   /// [id] ID of the connection.
-  ListFlowsByPipelineConnectionResponse({
+  const ListFlowsByPipelineConnectionResponse({
     this.flows,
     this.id,
   });

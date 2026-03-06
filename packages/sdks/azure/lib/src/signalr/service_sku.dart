@@ -13,7 +13,7 @@ class ServiceSku {
   /// Creates a new [ServiceSku].
   /// [capacity] Specifies the number of units associated with this SignalR service. Valid values are `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `10`, `20`, `30`, `40`, `50`, `60`, `70`, `80`, `90`, `100`, `200`, `300`, `400`, `500`, `600`, `700`, `800`, `900` and `1000`.
   /// [name] Specifies which tier to use. Valid values are `Free_F1`, `Standard_S1`, `Premium_P1` and `Premium_P2`.
-  ServiceSku({
+  const ServiceSku({
     required this.capacity,
     required this.name,
   });

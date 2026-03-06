@@ -61,7 +61,7 @@ class WatchlistState {
   /// [updateTime] Output only. Time the watchlist was last updated.
   /// [watchlistId] Optional. The ID to use for the watchlist,
   /// [watchlistUserPreferences] A collection of user preferences for watchlist UI configuration.
-  WatchlistState({
+  const WatchlistState({
     this.createTime,
     this.description,
     this.displayName,

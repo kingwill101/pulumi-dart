@@ -31,7 +31,7 @@ class NetworkEndpointState {
   /// [port] Port number of network endpoint.
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] Zone where the containing network endpoint group is located.
-  NetworkEndpointState({
+  const NetworkEndpointState({
     this.instance,
     this.ipAddress,
     this.networkEndpointGroup,

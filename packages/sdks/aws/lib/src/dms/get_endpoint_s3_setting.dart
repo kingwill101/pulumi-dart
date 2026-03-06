@@ -83,7 +83,7 @@ class GetEndpointS3Setting {
   /// [timestampColumnName] Required.
   /// [useCsvNoSupValue] Required.
   /// [useTaskStartTimeForFullLoadTimestamp] Required.
-  GetEndpointS3Setting({
+  const GetEndpointS3Setting({
     required this.addColumnName,
     required this.bucketFolder,
     required this.bucketName,

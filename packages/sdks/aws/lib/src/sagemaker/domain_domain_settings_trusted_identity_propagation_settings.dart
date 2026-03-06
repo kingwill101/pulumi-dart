@@ -8,7 +8,7 @@ class DomainDomainSettingsTrustedIdentityPropagationSettings {
 
   /// Creates a new [DomainDomainSettingsTrustedIdentityPropagationSettings].
   /// [status] Whether to enable Trusted Identity Propagation (TIP) for the domain. Valid values are `ENABLED` and `DISABLED`. When enabled, user identities from IAM Identity Center are propagated through the domain to TIP enabled AWS services. Can only be `ENABLED` when `auth_mode` is `SSO`.
-  DomainDomainSettingsTrustedIdentityPropagationSettings({
+  const DomainDomainSettingsTrustedIdentityPropagationSettings({
     required this.status,
   });
 

@@ -13,7 +13,7 @@ class ServiceTaskSpecContainerSpecPrivileges {
   /// Creates a new [ServiceTaskSpecContainerSpecPrivileges].
   /// [credentialSpec] CredentialSpec for managed service account (Windows only)
   /// [seLinuxContext] SELinux labels of the container
-  ServiceTaskSpecContainerSpecPrivileges({
+  const ServiceTaskSpecContainerSpecPrivileges({
     this.credentialSpec,
     this.seLinuxContext,
   });

@@ -12,7 +12,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse {
   /// Creates a new [GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse].
   /// [revisionId] Git commit hash.
   /// [url] Git repository URL.
-  GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse({
+  const GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextResponse({
     required this.revisionId,
     required this.url,
   });

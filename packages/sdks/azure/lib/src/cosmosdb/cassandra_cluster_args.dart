@@ -54,7 +54,7 @@ class CassandraClusterArgs {
   /// [resourceGroupName] The name of the Resource Group where the Cassandra Cluster should exist. Changing this forces a new Cassandra Cluster to be created.
   /// [tags] A mapping of tags assigned to the resource.
   /// [version] The version of Cassandra what the Cluster converges to run. Possible values are `3.11`, `4.0`, `4.1` and `5.0`. Defaults to `3.11`. Changing this forces a new Cassandra Cluster to be created.
-  CassandraClusterArgs({
+  const CassandraClusterArgs({
     this.authenticationMethod,
     this.clientCertificatePems,
     required this.defaultAdminPassword,

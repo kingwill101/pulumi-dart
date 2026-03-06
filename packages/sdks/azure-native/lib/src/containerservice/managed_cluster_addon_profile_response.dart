@@ -16,7 +16,7 @@ class ManagedClusterAddonProfileResponse {
   /// [config] Key-value pairs for configuring an add-on.
   /// [enabled] Whether the add-on is enabled or not.
   /// [identity] Information of user assigned identity used by this add-on.
-  ManagedClusterAddonProfileResponse({
+  const ManagedClusterAddonProfileResponse({
     this.config,
     required this.enabled,
     required this.identity,

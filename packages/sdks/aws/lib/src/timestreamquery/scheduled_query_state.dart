@@ -71,7 +71,7 @@ class ScheduledQueryState {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetConfiguration] Configuration block for writing the result of a query. See below.
   /// [timeouts] Optional.
-  ScheduledQueryState({
+  const ScheduledQueryState({
     this.arn,
     this.creationTime,
     this.errorReportConfiguration,

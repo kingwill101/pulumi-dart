@@ -33,7 +33,7 @@ class DelegatedSubnetServiceDetailsArgs {
   /// [resourceName] The name of the resource. It must be a minimum of 3 characters, and a maximum of 63.
   /// [subnetDetails] subnet details
   /// [tags] The resource tags.
-  DelegatedSubnetServiceDetailsArgs({
+  const DelegatedSubnetServiceDetailsArgs({
     this.allocationBlockPrefixSize,
     this.controllerDetails,
     this.location,

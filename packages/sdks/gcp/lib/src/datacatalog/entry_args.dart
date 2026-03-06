@@ -58,7 +58,7 @@ class EntryArgs {
   /// [type] The type of the entry. Only used for Entries with types in the EntryType enum.
   /// [userSpecifiedSystem] This field indicates the entry's source system that Data Catalog does not integrate with.
   /// [userSpecifiedType] Entry type if it does not fit any of the input-allowed values listed in EntryType enum above.
-  EntryArgs({
+  const EntryArgs({
     this.description,
     this.displayName,
     required this.entryGroup,

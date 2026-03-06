@@ -50,7 +50,7 @@ class LabPlanArgs {
   /// [sharedGalleryId] Resource ID of the Shared Image Gallery attached to this lab plan. When saving a lab template virtual machine image it will be persisted in this gallery. Shared images from the gallery can be made available to use when creating new labs.
   /// [supportInfo] Support contact information and instructions for users of the lab plan. This information is displayed to lab owners and virtual machine users for all labs in the lab plan.
   /// [tags] Resource tags.
-  LabPlanArgs({
+  const LabPlanArgs({
     this.allowedRegions,
     this.defaultAutoShutdownProfile,
     this.defaultConnectionProfile,

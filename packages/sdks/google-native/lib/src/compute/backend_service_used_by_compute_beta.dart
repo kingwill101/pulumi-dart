@@ -7,7 +7,7 @@ class BackendServiceUsedByComputeBeta {
 
   /// Creates a new [BackendServiceUsedByComputeBeta].
   /// [reference] Optional.
-  BackendServiceUsedByComputeBeta({
+  const BackendServiceUsedByComputeBeta({
     this.reference,
   });
 

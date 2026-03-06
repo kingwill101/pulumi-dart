@@ -21,7 +21,7 @@ class GetCassandraDataCenterResult {
   /// [name] The name of the database account.
   /// [properties] Properties of a managed Cassandra data center.
   /// [type] The type of Azure resource.
-  GetCassandraDataCenterResult({
+  const GetCassandraDataCenterResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

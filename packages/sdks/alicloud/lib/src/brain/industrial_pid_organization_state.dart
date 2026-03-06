@@ -12,7 +12,7 @@ class IndustrialPidOrganizationState {
   /// Creates a new [IndustrialPidOrganizationState].
   /// [parentPidOrganizationId] The ID of parent pid organization.
   /// [pidOrganizationName] The name of pid organization.
-  IndustrialPidOrganizationState({
+  const IndustrialPidOrganizationState({
     this.parentPidOrganizationId,
     this.pidOrganizationName,
   });

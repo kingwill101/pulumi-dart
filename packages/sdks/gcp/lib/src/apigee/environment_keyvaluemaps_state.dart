@@ -13,7 +13,7 @@ class EnvironmentKeyvaluemapsState {
   /// Creates a new [EnvironmentKeyvaluemapsState].
   /// [envId] The Apigee environment group associated with the Apigee environment,
   /// [name] Required. ID of the key value map.
-  EnvironmentKeyvaluemapsState({
+  const EnvironmentKeyvaluemapsState({
     this.envId,
     this.name,
   });

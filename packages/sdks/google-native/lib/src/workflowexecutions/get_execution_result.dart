@@ -47,7 +47,7 @@ class GetExecutionResult {
   /// [stateError] Error regarding the state of the Execution resource. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
   /// [status] Status tracks the current steps and progress data of this execution.
   /// [workflowRevisionId] Revision of the workflow this execution is using.
-  GetExecutionResult({
+  const GetExecutionResult({
     required this.argument,
     required this.callLogLevel,
     required this.duration,

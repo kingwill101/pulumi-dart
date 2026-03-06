@@ -32,7 +32,7 @@ class BlobStreamInputDataSource {
   /// [storageAccounts] A list of one or more Azure Storage accounts. Required on PUT (CreateOrReplace) requests.
   /// [timeFormat] The time format. Wherever {time} appears in pathPattern, the value of this property is used as the time format instead.
   /// [type] Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
-  BlobStreamInputDataSource({
+  const BlobStreamInputDataSource({
     this.authenticationMode,
     this.container,
     this.dateFormat,

@@ -29,7 +29,7 @@ class TenantState {
   /// [tenantArn] ARN of the Tenant.
   /// [tenantId] ID of the Tenant.
   /// [tenantName] Name of the SESV2 tenant.  The name must be unique within the AWS account and Region.  Changing the tenant name forces creation of a new tenant.
-  TenantState({
+  const TenantState({
     this.region,
     this.sendingStatus,
     this.tags,

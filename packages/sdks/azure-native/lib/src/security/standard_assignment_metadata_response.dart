@@ -18,7 +18,7 @@ class StandardAssignmentMetadataResponse {
   /// [createdOn] Standard assignment creation date
   /// [lastUpdatedBy] Standard assignment last updated by object id (GUID)
   /// [lastUpdatedOn] Standard assignment last update date
-  StandardAssignmentMetadataResponse({
+  const StandardAssignmentMetadataResponse({
     required this.createdBy,
     required this.createdOn,
     required this.lastUpdatedBy,

@@ -15,7 +15,7 @@ class InstanceReferenceSqladminV1beta4 {
   /// [name] The name of the Cloud SQL instance being referenced. This does not include the project ID.
   /// [project] The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
   /// [region] The region of the Cloud SQL instance being referenced.
-  InstanceReferenceSqladminV1beta4({
+  const InstanceReferenceSqladminV1beta4({
     this.name,
     this.project,
     this.region,

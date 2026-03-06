@@ -11,7 +11,7 @@ class InterfaceDefaultRoute {
   /// Creates a new [InterfaceDefaultRoute].
   /// [ipv4] If set to true, the interface is used for the IPv4 default route.
   /// [ipv6] If set to true, the interface is used for the IPv6 default route.
-  InterfaceDefaultRoute({
+  const InterfaceDefaultRoute({
     this.ipv4,
     this.ipv6,
   });

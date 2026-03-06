@@ -9,7 +9,7 @@ class DomainDevicesTpmBackendExternal {
 
   /// Creates a new [DomainDevicesTpmBackendExternal].
   /// [source] Specifies the source configuration for the external TPM backend.
-  DomainDevicesTpmBackendExternal({
+  const DomainDevicesTpmBackendExternal({
     this.source,
   });
 

@@ -17,7 +17,7 @@ class GetAmiBlockDeviceMapping {
   /// [ebs] Map containing EBS information, if the device is EBS based. Unlike most object attributes, these are accessed directly (e.g., `ebs.volume_size` or `ebs["volume_size"]`) rather than accessed through the first element of a list (e.g., `ebs[0].volume_size`).
   /// [noDevice] Suppresses the specified device included in the block device mapping of the AMI.
   /// [virtualName] Virtual device name (for instance stores).
-  GetAmiBlockDeviceMapping({
+  const GetAmiBlockDeviceMapping({
     required this.deviceName,
     required this.ebs,
     required this.noDevice,

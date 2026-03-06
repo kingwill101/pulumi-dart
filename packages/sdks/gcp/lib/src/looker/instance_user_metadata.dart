@@ -14,7 +14,7 @@ class InstanceUserMetadata {
   /// [additionalDeveloperUserCount] Number of additional Developer Users to allocate to the Looker Instance.
   /// [additionalStandardUserCount] Number of additional Standard Users to allocate to the Looker Instance.
   /// [additionalViewerUserCount] Number of additional Viewer Users to allocate to the Looker Instance.
-  InstanceUserMetadata({
+  const InstanceUserMetadata({
     this.additionalDeveloperUserCount,
     this.additionalStandardUserCount,
     this.additionalViewerUserCount,

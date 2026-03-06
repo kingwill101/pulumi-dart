@@ -55,7 +55,7 @@ class GetBackendServiceCdnPolicy {
   /// [requestCoalescing] If true then Cloud CDN will combine multiple concurrent cache fill requests into a small number of requests
   /// [serveWhileStale] Serve existing content from the cache (if available) when revalidating content with the origin, or when an error is encountered when refreshing the cache.
   /// [signedUrlCacheMaxAgeSec] Maximum number of seconds the response to a signed URL request
-  GetBackendServiceCdnPolicy({
+  const GetBackendServiceCdnPolicy({
     required this.bypassCacheOnRequestHeaders,
     required this.cacheKeyPolicies,
     required this.cacheMode,

@@ -38,7 +38,7 @@ class AssessmentArgs {
   /// [roles] List of roles for the assessment. See `roles` below.
   /// [scope] Amazon Web Services accounts and services that are in scope for the assessment. See `scope` below.
   /// [tags] A map of tags to assign to the assessment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  AssessmentArgs({
+  const AssessmentArgs({
     this.assessmentReportsDestination,
     this.description,
     required this.frameworkId,

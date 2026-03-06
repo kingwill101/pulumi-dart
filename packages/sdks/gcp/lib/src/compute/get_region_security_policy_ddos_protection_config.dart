@@ -11,7 +11,7 @@ class GetRegionSecurityPolicyDdosProtectionConfig {
 
   /// Creates a new [GetRegionSecurityPolicyDdosProtectionConfig].
   /// [ddosProtection] Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
-  GetRegionSecurityPolicyDdosProtectionConfig({
+  const GetRegionSecurityPolicyDdosProtectionConfig({
     required this.ddosProtection,
   });
 

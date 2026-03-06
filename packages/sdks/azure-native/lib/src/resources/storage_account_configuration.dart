@@ -12,7 +12,7 @@ class StorageAccountConfiguration {
   /// Creates a new [StorageAccountConfiguration].
   /// [storageAccountKey] The storage account access key.
   /// [storageAccountName] The storage account name.
-  StorageAccountConfiguration({
+  const StorageAccountConfiguration({
     this.storageAccountKey,
     this.storageAccountName,
   });

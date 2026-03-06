@@ -9,7 +9,7 @@ class CertificateTags {
 
   /// Creates a new [CertificateTags].
   /// [tags] Additional tags for Managed CCF Certificates
-  CertificateTags({
+  const CertificateTags({
     this.tags,
   });
 

@@ -9,7 +9,7 @@ class FrontdoorSecurityPolicySecurityPolicies {
 
   /// Creates a new [FrontdoorSecurityPolicySecurityPolicies].
   /// [firewall] An `firewall` block as defined below.
-  FrontdoorSecurityPolicySecurityPolicies({
+  const FrontdoorSecurityPolicySecurityPolicies({
     required this.firewall,
   });
 

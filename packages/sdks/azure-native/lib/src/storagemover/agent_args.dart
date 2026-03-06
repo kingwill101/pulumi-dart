@@ -31,7 +31,7 @@ class AgentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
   /// [uploadLimitSchedule] The WAN-link upload limit schedule that applies to any Job Run the agent executes. Data plane operations (migrating files) are affected. Control plane operations ensure seamless migration functionality and are not limited by this schedule. The schedule is interpreted with the agent's local time.
-  AgentArgs({
+  const AgentArgs({
     this.agentName,
     required this.arcResourceId,
     required this.arcVmUuid,

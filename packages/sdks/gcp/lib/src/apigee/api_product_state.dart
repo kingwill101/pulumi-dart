@@ -84,7 +84,7 @@ class ApiProductState {
   /// [quotaTimeUnit] Time unit defined for the quotaInterval. Valid values include second, minute, hour, day, month or year.
   /// [scopes] Comma-separated list of OAuth scopes that are validated at runtime. Apigee validates that the scopes in any access token presented match the scopes defined in the OAuth policy associated with the API product.
   /// [space] Optional. The resource ID of the parent Space. If not set, the parent resource will be the Organization.
-  ApiProductState({
+  const ApiProductState({
     this.apiResources,
     this.approvalType,
     this.attributes,

@@ -9,7 +9,7 @@ class AgentPromptVariantInferenceConfiguration {
 
   /// Creates a new [AgentPromptVariantInferenceConfiguration].
   /// [text] Contains inference configurations for the prompt variant. See Text Inference Configuration for more information.
-  AgentPromptVariantInferenceConfiguration({
+  const AgentPromptVariantInferenceConfiguration({
     this.text,
   });
 

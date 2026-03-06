@@ -15,7 +15,7 @@ class GetTrafficControllerInterfaceArgs {
   /// Creates a new [GetTrafficControllerInterfaceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [trafficControllerName] traffic controller name for path
-  GetTrafficControllerInterfaceArgs({
+  const GetTrafficControllerInterfaceArgs({
     required this.resourceGroupName,
     required this.trafficControllerName,
   });

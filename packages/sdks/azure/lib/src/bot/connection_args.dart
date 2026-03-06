@@ -36,7 +36,7 @@ class ConnectionArgs {
   /// [resourceGroupName] The name of the resource group in which to create the Bot Connection. Changing this forces a new resource to be created.
   /// [scopes] The Scopes at which the connection should be applied.
   /// [serviceProviderName] The name of the service provider that will be associated with this connection. Changing this forces a new resource to be created.
-  ConnectionArgs({
+  const ConnectionArgs({
     required this.botName,
     required this.clientId,
     required this.clientSecret,

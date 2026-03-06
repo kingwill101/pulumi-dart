@@ -28,7 +28,7 @@ class AwsEc2KeyPairProperties {
   /// [keyType] The type of key pair. Note that ED25519 keys are not supported for Windows instances. If the ``PublicKeyMaterial`` property is specified, the ``KeyType`` property is ignored, and the key type is inferred from the ``PublicKeyMaterial`` value. Default: ``rsa``
   /// [publicKeyMaterial] The public key material. The ``PublicKeyMaterial`` property is used to import a key pair. If this property is not specified, then a new key pair will be created.
   /// [tags] The tags to apply to the key pair.
-  AwsEc2KeyPairProperties({
+  const AwsEc2KeyPairProperties({
     this.keyFingerprint,
     this.keyFormat,
     this.keyName,

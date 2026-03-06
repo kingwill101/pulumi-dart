@@ -69,7 +69,7 @@ class GetFunctionAppSiteConfig {
   /// [use32BitWorkerProcess] Does the App Service run in 32 bit mode, rather than 64 bit mode?
   /// [vnetRouteAllEnabled] (Optional) Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied?
   /// [websocketsEnabled] Are WebSockets enabled for this App Service?
-  GetFunctionAppSiteConfig({
+  const GetFunctionAppSiteConfig({
     required this.alwaysOn,
     required this.appScaleLimit,
     required this.autoSwapSlotName,

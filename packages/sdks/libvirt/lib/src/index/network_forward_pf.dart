@@ -8,7 +8,7 @@ class NetworkForwardPf {
 
   /// Creates a new [NetworkForwardPf].
   /// [dev] Specifies the device to be used for per-packet forwarding service.
-  NetworkForwardPf({
+  const NetworkForwardPf({
     required this.dev,
   });
 

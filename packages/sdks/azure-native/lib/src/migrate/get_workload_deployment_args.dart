@@ -21,7 +21,7 @@ class GetWorkloadDeploymentArgs {
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [subscriptionId] Azure Subscription Id in which project was created.
   /// [workloadDeploymentName] Workload deployment name.
-  GetWorkloadDeploymentArgs({
+  const GetWorkloadDeploymentArgs({
     required this.modernizeProjectName,
     required this.resourceGroupName,
     this.subscriptionId,

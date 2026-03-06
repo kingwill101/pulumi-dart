@@ -8,7 +8,7 @@ class CacheFromRegistry {
 
   /// Creates a new [CacheFromRegistry].
   /// [ref] Fully qualified name of the cache image to import.
-  CacheFromRegistry({
+  const CacheFromRegistry({
     required this.ref,
   });
 

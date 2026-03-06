@@ -9,7 +9,7 @@ class ApiPortalCustomDomainProperties {
 
   /// Creates a new [ApiPortalCustomDomainProperties].
   /// [thumbprint] The thumbprint of bound certificate.
-  ApiPortalCustomDomainProperties({
+  const ApiPortalCustomDomainProperties({
     this.thumbprint,
   });
 

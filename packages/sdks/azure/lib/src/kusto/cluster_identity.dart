@@ -19,7 +19,7 @@ class ClusterIdentity {
   /// [principalId] The Principal ID associated with this System Assigned Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this System Assigned Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that is configured on this Kusto Cluster. Possible values are: `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-  ClusterIdentity({
+  const ClusterIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

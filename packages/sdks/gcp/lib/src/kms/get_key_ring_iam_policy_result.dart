@@ -16,7 +16,7 @@ class GetKeyRingIamPolicyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keyRingId] Required.
   /// [policyData] (Computed) The policy data
-  GetKeyRingIamPolicyResult({
+  const GetKeyRingIamPolicyResult({
     required this.etag,
     required this.id,
     required this.keyRingId,

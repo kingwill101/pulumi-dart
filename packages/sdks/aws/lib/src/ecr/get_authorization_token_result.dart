@@ -27,7 +27,7 @@ class GetAuthorizationTokenResult {
   /// [region] Required.
   /// [registryId] Optional.
   /// [userName] User name decoded from the authorization token.
-  GetAuthorizationTokenResult({
+  const GetAuthorizationTokenResult({
     required this.authorizationToken,
     required this.expiresAt,
     required this.id,

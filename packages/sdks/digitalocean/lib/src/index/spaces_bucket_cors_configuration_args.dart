@@ -19,7 +19,7 @@ class SpacesBucketCorsConfigurationArgs {
   /// [bucket] The name of the bucket to which to apply the CORS configuration.
   /// [corsRules] Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
   /// [region] The region where the bucket resides.
-  SpacesBucketCorsConfigurationArgs({
+  const SpacesBucketCorsConfigurationArgs({
     required this.bucket,
     required this.corsRules,
     required this.region,

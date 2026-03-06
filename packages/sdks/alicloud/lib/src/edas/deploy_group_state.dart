@@ -15,7 +15,7 @@ class DeployGroupState {
   /// [appId] The ID of the application that you want to deploy.
   /// [groupName] The name of the instance group that you want to create.
   /// [groupType] The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
-  DeployGroupState({
+  const DeployGroupState({
     this.appId,
     this.groupName,
     this.groupType,

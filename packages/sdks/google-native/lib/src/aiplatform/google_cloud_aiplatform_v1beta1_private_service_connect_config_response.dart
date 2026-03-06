@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse].
   /// [enablePrivateServiceConnect] If true, expose the IndexEndpoint via private service connect.
   /// [projectAllowlist] A list of Projects from which the forwarding rule will target the service attachment.
-  GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse({
+  const GoogleCloudAiplatformV1beta1PrivateServiceConnectConfigResponse({
     required this.enablePrivateServiceConnect,
     required this.projectAllowlist,
   });

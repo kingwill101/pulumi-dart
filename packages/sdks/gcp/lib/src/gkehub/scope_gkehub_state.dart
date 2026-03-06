@@ -53,7 +53,7 @@ class ScopeGkehubState {
   /// [states] State of the scope resource.
   /// [uid] Google-generated UUID for this resource.
   /// [updateTime] Time the Scope was updated in UTC.
-  ScopeGkehubState({
+  const ScopeGkehubState({
     this.createTime,
     this.deleteTime,
     this.effectiveLabels,

@@ -13,7 +13,7 @@ class GetSourceArgs {
   /// Creates a new [GetSourceArgs].
   /// [organizationId] Required.
   /// [sourceId] Required.
-  GetSourceArgs({
+  const GetSourceArgs({
     required this.organizationId,
     required this.sourceId,
   });

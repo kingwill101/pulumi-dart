@@ -61,7 +61,7 @@ class DomainDevicesInterfaceSourceVhostUserChardev {
   /// [udp] Configures UDP settings for the random number generator backend.
   /// [unix] Configures UNIX domain socket settings for the random number generator backend.
   /// [vc] Configures settings for the virtual console connection in the random number generator backend.
-  DomainDevicesInterfaceSourceVhostUserChardev({
+  const DomainDevicesInterfaceSourceVhostUserChardev({
     this.dbus,
     this.dev,
     this.file,

@@ -23,7 +23,7 @@ class GetWorkflowAccessKeyResult {
   /// [notAfter] Gets or sets the not-after time.
   /// [notBefore] Gets or sets the not-before time.
   /// [type] Gets the workflow access key type.
-  GetWorkflowAccessKeyResult({
+  const GetWorkflowAccessKeyResult({
     required this.azureApiVersion,
     this.id,
     required this.name,

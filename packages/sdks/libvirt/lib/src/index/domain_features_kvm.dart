@@ -25,7 +25,7 @@ class DomainFeaturesKvm {
   /// [hintDedicated] Enables or disables support for PS/2 devices in the virtual machine.
   /// [pollControl] Enables or disables support for PS/2 devices in the virtual machine.
   /// [pvipi] Enables or disables support for PS/2 devices in the virtual machine.
-  DomainFeaturesKvm({
+  const DomainFeaturesKvm({
     this.dirtyRing,
     this.hidden,
     this.hintDedicated,

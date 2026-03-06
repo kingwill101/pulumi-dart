@@ -12,7 +12,7 @@ class GoogleCloudDocumentaiV1DocumentProvenanceParentResponse {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentProvenanceParentResponse].
   /// [index] The index of the parent item in the corresponding item list (eg. list of entities, properties within entities, etc.) in the parent revision.
   /// [revision] The index of the index into current revision's parent_ids list.
-  GoogleCloudDocumentaiV1DocumentProvenanceParentResponse({
+  const GoogleCloudDocumentaiV1DocumentProvenanceParentResponse({
     required this.index,
     required this.revision,
   });

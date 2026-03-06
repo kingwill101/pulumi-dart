@@ -11,7 +11,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfi
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration].
   /// [securityGroups] The list of security group IDs to apply to Amazon ECS Managed Instances. These security groups control the network traffic allowed to and from the instances.
   /// [subnets] The list of subnet IDs where Amazon ECS can launch Amazon ECS Managed Instances. Instances are distributed across the specified subnets for high availability. All subnets must be in the same VPC.
-  CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration({
+  const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateNetworkConfiguration({
     this.securityGroups,
     required this.subnets,
   });

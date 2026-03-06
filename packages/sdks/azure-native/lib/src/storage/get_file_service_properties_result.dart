@@ -33,7 +33,7 @@ class GetFileServicePropertiesResult {
   /// [shareDeleteRetentionPolicy] The file service properties for share soft delete.
   /// [sku] Sku name and tier.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetFileServicePropertiesResult({
+  const GetFileServicePropertiesResult({
     required this.azureApiVersion,
     this.cors,
     required this.id,

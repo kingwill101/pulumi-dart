@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1Port {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1Port].
   /// [containerPort] The number of the port to expose on the pod's IP address. Must be a valid port number, between 1 and 65535 inclusive.
-  GoogleCloudAiplatformV1beta1Port({
+  const GoogleCloudAiplatformV1beta1Port({
     this.containerPort,
   });
 

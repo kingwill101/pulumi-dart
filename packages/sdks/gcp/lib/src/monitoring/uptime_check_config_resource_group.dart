@@ -12,7 +12,7 @@ class UptimeCheckConfigResourceGroup {
   /// Creates a new [UptimeCheckConfigResourceGroup].
   /// [groupId] The group of resources being monitored. Should be the `name` of a group
   /// [resourceType] The resource type of the group members.
-  UptimeCheckConfigResourceGroup({
+  const UptimeCheckConfigResourceGroup({
     this.groupId,
     this.resourceType,
   });

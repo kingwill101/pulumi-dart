@@ -19,7 +19,7 @@ class DatabaseProjectSummaryResponse {
   /// [instanceType] Gets the Instance type.
   /// [lastSummaryRefreshedTime] Gets or sets the time when summary was last refreshed.
   /// [refreshSummaryState] Gets or sets the state of refresh summary.
-  DatabaseProjectSummaryResponse({
+  const DatabaseProjectSummaryResponse({
     this.extendedSummary,
     required this.instanceType,
     this.lastSummaryRefreshedTime,

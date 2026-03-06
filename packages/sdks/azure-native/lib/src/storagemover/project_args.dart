@@ -21,7 +21,7 @@ class ProjectArgs {
   /// [projectName] The name of the Project resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
-  ProjectArgs({
+  const ProjectArgs({
     this.description,
     this.projectName,
     required this.resourceGroupName,

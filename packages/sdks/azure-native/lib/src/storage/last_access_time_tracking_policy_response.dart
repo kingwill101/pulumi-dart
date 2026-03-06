@@ -18,7 +18,7 @@ class LastAccessTimeTrackingPolicyResponse {
   /// [enable] When set to true last access time based tracking is enabled.
   /// [name] Name of the policy. The valid value is AccessTimeTracking. This field is currently read only
   /// [trackingGranularityInDays] The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked.This field is currently read only with value as 1
-  LastAccessTimeTrackingPolicyResponse({
+  const LastAccessTimeTrackingPolicyResponse({
     this.blobType,
     required this.enable,
     this.name,

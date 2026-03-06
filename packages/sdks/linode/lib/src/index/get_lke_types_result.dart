@@ -19,7 +19,7 @@ class GetLkeTypesResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [types] Required.
-  GetLkeTypesResult({
+  const GetLkeTypesResult({
     this.filters,
     required this.id,
     this.order,

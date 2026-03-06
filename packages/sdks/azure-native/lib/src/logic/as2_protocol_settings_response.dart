@@ -34,7 +34,7 @@ class AS2ProtocolSettingsResponse {
   /// [messageConnectionSettings] The message connection settings.
   /// [securitySettings] The security settings.
   /// [validationSettings] The validation settings.
-  AS2ProtocolSettingsResponse({
+  const AS2ProtocolSettingsResponse({
     required this.acknowledgementConnectionSettings,
     required this.envelopeSettings,
     required this.errorSettings,

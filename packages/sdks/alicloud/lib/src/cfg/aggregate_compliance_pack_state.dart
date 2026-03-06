@@ -35,7 +35,7 @@ class AggregateCompliancePackState {
   /// [description] The description of compliance package.
   /// [riskLevel] The Risk Level. Valid values:
   /// [status] The status of the Aggregate Compliance Pack.
-  AggregateCompliancePackState({
+  const AggregateCompliancePackState({
     this.aggregateCompliancePackName,
     this.aggregatorCompliancePackId,
     this.aggregatorId,

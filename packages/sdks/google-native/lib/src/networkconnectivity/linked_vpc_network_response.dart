@@ -12,7 +12,7 @@ class LinkedVpcNetworkResponse {
   /// Creates a new [LinkedVpcNetworkResponse].
   /// [excludeExportRanges] Optional. IP ranges encompassing the subnets to be excluded from peering.
   /// [uri] The URI of the VPC network resource.
-  LinkedVpcNetworkResponse({
+  const LinkedVpcNetworkResponse({
     required this.excludeExportRanges,
     required this.uri,
   });

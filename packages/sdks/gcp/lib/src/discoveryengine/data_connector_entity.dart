@@ -28,7 +28,7 @@ class DataConnectorEntity {
   /// [entityName] The name of the entity. Supported values by data source:
   /// [keyPropertyMappings] Attributes for indexing.
   /// [params] The parameters for the entity to facilitate data ingestion.
-  DataConnectorEntity({
+  const DataConnectorEntity({
     this.dataStore,
     this.entityName,
     this.keyPropertyMappings,

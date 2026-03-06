@@ -18,7 +18,7 @@ class GetTopicArgs {
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [topicName] The topic name.
-  GetTopicArgs({
+  const GetTopicArgs({
     required this.namespaceName,
     required this.resourceGroupName,
     required this.topicName,

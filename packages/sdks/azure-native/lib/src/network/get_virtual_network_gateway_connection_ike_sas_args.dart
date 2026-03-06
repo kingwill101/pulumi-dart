@@ -15,7 +15,7 @@ class GetVirtualNetworkGatewayConnectionIkeSasArgs {
   /// Creates a new [GetVirtualNetworkGatewayConnectionIkeSasArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayConnectionName] The name of the virtual network gateway Connection.
-  GetVirtualNetworkGatewayConnectionIkeSasArgs({
+  const GetVirtualNetworkGatewayConnectionIkeSasArgs({
     required this.resourceGroupName,
     required this.virtualNetworkGatewayConnectionName,
   });

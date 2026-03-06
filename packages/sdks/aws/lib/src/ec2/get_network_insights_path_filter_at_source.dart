@@ -15,7 +15,7 @@ class GetNetworkInsightsPathFilterAtSource {
   /// [destinationPortRanges] Required.
   /// [sourceAddress] Required.
   /// [sourcePortRanges] Required.
-  GetNetworkInsightsPathFilterAtSource({
+  const GetNetworkInsightsPathFilterAtSource({
     required this.destinationAddress,
     required this.destinationPortRanges,
     required this.sourceAddress,

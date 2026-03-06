@@ -13,7 +13,7 @@ class GetFolderNotificationConfigArgs {
   /// Creates a new [GetFolderNotificationConfigArgs].
   /// [folderId] Required.
   /// [notificationConfigId] Required.
-  GetFolderNotificationConfigArgs({
+  const GetFolderNotificationConfigArgs({
     required this.folderId,
     required this.notificationConfigId,
   });

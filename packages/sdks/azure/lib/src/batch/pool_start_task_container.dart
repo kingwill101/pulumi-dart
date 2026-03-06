@@ -18,7 +18,7 @@ class PoolStartTaskContainer {
   /// [registries] The `container_registries` block defined as below.
   /// [runOptions] Additional options to the container create command. These additional options are supplied as arguments to the "docker create" command, in addition to those controlled by the Batch Service.
   /// [workingDirectory] A flag to indicate where the container task working directory is. Possible values are `TaskWorkingDirectory` and `ContainerImageDefault`.
-  PoolStartTaskContainer({
+  const PoolStartTaskContainer({
     required this.imageName,
     this.registries,
     this.runOptions,

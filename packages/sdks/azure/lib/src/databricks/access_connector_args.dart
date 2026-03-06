@@ -25,7 +25,7 @@ class AccessConnectorArgs {
   /// [name] Specifies the name of the Databricks Access Connector resource. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group in which the Databricks Access Connector should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  AccessConnectorArgs({
+  const AccessConnectorArgs({
     this.identity,
     this.location,
     this.name,

@@ -15,7 +15,7 @@ class NamespaceCustomerManagedKeyState {
   /// [infrastructureEncryptionEnabled] Used to specify whether enable Infrastructure Encryption. Changing this forces a new resource to be created.
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to Encrypt the data in this Service Bus Namespace.
   /// [namespaceId] The ID of the Service Bus namespace. Changing this forces a new resource to be created.
-  NamespaceCustomerManagedKeyState({
+  const NamespaceCustomerManagedKeyState({
     this.infrastructureEncryptionEnabled,
     this.keyVaultKeyId,
     this.namespaceId,

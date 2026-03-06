@@ -22,7 +22,7 @@ class InputArgsType {
   /// [name] Resource name
   /// [properties] The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  InputArgsType({
+  const InputArgsType({
     this.inputName,
     required this.jobName,
     this.name,

@@ -9,7 +9,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse {
 
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse].
   /// [path] Optional. The address to redirect to. The target is a relative path in the current host. Example: "/blog/404.html".
-  GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse({
+  const GoogleCloudRecaptchaenterpriseV1FirewallActionSubstituteActionResponse({
     required this.path,
   });
 

@@ -10,7 +10,7 @@ class APIServiceStatusApiregistrationK8sIoV1beta1 {
 
   /// Creates a new [APIServiceStatusApiregistrationK8sIoV1beta1].
   /// [conditions] Current service state of apiService.
-  APIServiceStatusApiregistrationK8sIoV1beta1({
+  const APIServiceStatusApiregistrationK8sIoV1beta1({
     this.conditions,
   });
 

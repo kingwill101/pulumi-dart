@@ -12,7 +12,7 @@ class Policy {
   /// Creates a new [Policy].
   /// [level] The Level that all requests are recorded at. available options: None, Metadata, Request, RequestResponse required
   /// [stages] Stages is a list of stages for which events are created.
-  Policy({
+  const Policy({
     required this.level,
     this.stages,
   });

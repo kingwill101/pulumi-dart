@@ -15,7 +15,7 @@ class GetAddressArgs {
   /// Creates a new [GetAddressArgs].
   /// [addressName] The name of the address Resource within the specified resource group. address names must be between 3 and 24 characters in length and use any alphanumeric and underscore only.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAddressArgs({
+  const GetAddressArgs({
     required this.addressName,
     required this.resourceGroupName,
   });

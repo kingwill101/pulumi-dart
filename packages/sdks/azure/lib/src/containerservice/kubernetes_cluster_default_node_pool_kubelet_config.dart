@@ -35,7 +35,7 @@ class KubernetesClusterDefaultNodePoolKubeletConfig {
   /// [imageGcLowThreshold] Specifies the percent of disk usage lower than which image garbage collection is never run. Must be between `0` and `100`.
   /// [podMaxPid] Specifies the maximum number of processes per pod.
   /// [topologyManagerPolicy] Specifies the Topology Manager policy to use. Possible values are `none`, `best-effort`, `restricted` or `single-numa-node`.
-  KubernetesClusterDefaultNodePoolKubeletConfig({
+  const KubernetesClusterDefaultNodePoolKubeletConfig({
     this.allowedUnsafeSysctls,
     this.containerLogMaxLine,
     this.containerLogMaxSizeMb,

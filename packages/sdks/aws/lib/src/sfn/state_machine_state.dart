@@ -63,7 +63,7 @@ class StateMachineState {
   /// [tracingConfiguration] Selects whether AWS X-Ray tracing is enabled.
   /// [type] Determines whether a Standard or Express state machine is created. The default is `STANDARD`. You cannot update the type of a state machine once it has been created. Valid values: `STANDARD`, `EXPRESS`.
   /// [versionDescription] Optional.
-  StateMachineState({
+  const StateMachineState({
     this.arn,
     this.creationDate,
     this.definition,

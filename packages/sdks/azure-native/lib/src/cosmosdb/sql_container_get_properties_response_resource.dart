@@ -62,7 +62,7 @@ class SqlContainerGetPropertiesResponseResource {
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
   /// [uniqueKeyPolicy] The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
   /// [vectorEmbeddingPolicy] The vector embedding policy for the container.
-  SqlContainerGetPropertiesResponseResource({
+  const SqlContainerGetPropertiesResponseResource({
     this.analyticalStorageTtl,
     this.clientEncryptionPolicy,
     this.computedProperties,

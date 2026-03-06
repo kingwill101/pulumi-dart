@@ -26,7 +26,7 @@ class GetSecondaryIndexesIndex {
   /// [instanceName] The name of OTS instance.
   /// [primaryKeys] A list of primary keys for index, referenced from Table's primary keys or predefined columns.
   /// [tableName] The name of OTS table.
-  GetSecondaryIndexesIndex({
+  const GetSecondaryIndexesIndex({
     required this.definedColumns,
     required this.id,
     required this.indexName,

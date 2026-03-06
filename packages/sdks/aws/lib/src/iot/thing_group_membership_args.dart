@@ -21,7 +21,7 @@ class ThingGroupMembershipArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [thingGroupName] The name of the group to which you are adding a thing.
   /// [thingName] The name of the thing to add to a group.
-  ThingGroupMembershipArgs({
+  const ThingGroupMembershipArgs({
     this.overrideDynamicGroup,
     this.region,
     required this.thingGroupName,

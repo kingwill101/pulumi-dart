@@ -24,7 +24,7 @@ class GetInstancesArgs {
   /// [nameRegex] A regex string to filter results by Instance name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `DEPLOYING`, `SERVING`, `EXPIRED`, `RELEASED`.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

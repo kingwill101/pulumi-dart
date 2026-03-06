@@ -17,7 +17,7 @@ class GetAnnotationStoreArgs {
   /// [datasetId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAnnotationStoreArgs({
+  const GetAnnotationStoreArgs({
     required this.annotationStoreId,
     required this.datasetId,
     required this.location,

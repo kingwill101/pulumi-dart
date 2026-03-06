@@ -20,7 +20,7 @@ class AgentFlowDefinitionNodeConfigurationKnowledgeBase {
   /// [knowledgeBaseId] The unique identifier of the knowledge base to query.
   /// [modelId] Required.
   /// [numberOfResults] Optional.
-  AgentFlowDefinitionNodeConfigurationKnowledgeBase({
+  const AgentFlowDefinitionNodeConfigurationKnowledgeBase({
     this.guardrailConfiguration,
     this.inferenceConfiguration,
     required this.knowledgeBaseId,

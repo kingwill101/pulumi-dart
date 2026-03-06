@@ -59,7 +59,7 @@ class DeleteActivity {
   /// [storeSettings] Delete activity store settings.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  DeleteActivity({
+  const DeleteActivity({
     required this.dataset,
     this.dependsOn,
     this.description,

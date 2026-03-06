@@ -18,7 +18,7 @@ class ApplicationUrlDispatchRulesArgs {
   /// Creates a new [ApplicationUrlDispatchRulesArgs].
   /// [dispatchRules] Rules to match an HTTP request and dispatch that request to a service.
   /// [project] The ID of the project in which the resource belongs.
-  ApplicationUrlDispatchRulesArgs({
+  const ApplicationUrlDispatchRulesArgs({
     required this.dispatchRules,
     this.project,
   });

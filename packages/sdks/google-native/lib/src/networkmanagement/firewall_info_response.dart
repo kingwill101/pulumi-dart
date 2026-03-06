@@ -36,7 +36,7 @@ class FirewallInfoResponse {
   /// [targetServiceAccounts] The target service accounts specified by the firewall rule.
   /// [targetTags] The target tags defined by the VPC firewall rule. This field is not applicable to hierarchical firewall policy rules.
   /// [uri] The URI of the VPC firewall rule. This field is not applicable to implied firewall rules or hierarchical firewall policy rules.
-  FirewallInfoResponse({
+  const FirewallInfoResponse({
     required this.action,
     required this.direction,
     required this.displayName,

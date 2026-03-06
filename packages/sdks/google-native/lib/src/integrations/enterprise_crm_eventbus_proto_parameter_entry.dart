@@ -13,7 +13,7 @@ class EnterpriseCrmEventbusProtoParameterEntry {
   /// Creates a new [EnterpriseCrmEventbusProtoParameterEntry].
   /// [key] Key is used to retrieve the corresponding parameter value. This should be unique for a given fired event. These parameters must be predefined in the integration definition.
   /// [value] Values for the defined keys. Each value can either be string, int, double or any proto message.
-  EnterpriseCrmEventbusProtoParameterEntry({
+  const EnterpriseCrmEventbusProtoParameterEntry({
     this.key,
     this.value,
   });

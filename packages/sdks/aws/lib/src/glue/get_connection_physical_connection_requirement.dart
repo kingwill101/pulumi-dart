@@ -11,7 +11,7 @@ class GetConnectionPhysicalConnectionRequirement {
   /// [availabilityZone] Required.
   /// [securityGroupIdLists] Required.
   /// [subnetId] Required.
-  GetConnectionPhysicalConnectionRequirement({
+  const GetConnectionPhysicalConnectionRequirement({
     required this.availabilityZone,
     required this.securityGroupIdLists,
     required this.subnetId,

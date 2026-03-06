@@ -16,7 +16,7 @@ class Identity {
   /// [federatedClientId] The federated client id for the SQL Database. It is used for cross tenant CMK scenario.
   /// [identityType] Identity type of the main principal.
   /// [userAssignedIdentities] User identity ids
-  Identity({
+  const Identity({
     this.federatedClientId,
     this.identityType,
     this.userAssignedIdentities,

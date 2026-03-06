@@ -12,7 +12,7 @@ class LaunchTemplateNetworkInterfaceEnaSrdSpecification {
   /// Creates a new [LaunchTemplateNetworkInterfaceEnaSrdSpecification].
   /// [enaSrdEnabled] Whether to enable ENA Express. ENA Express uses AWS Scalable Reliable Datagram (SRD) technology to improve the performance of TCP traffic.
   /// [enaSrdUdpSpecification] Configuration for ENA Express UDP optimization. See details below.
-  LaunchTemplateNetworkInterfaceEnaSrdSpecification({
+  const LaunchTemplateNetworkInterfaceEnaSrdSpecification({
     this.enaSrdEnabled,
     this.enaSrdUdpSpecification,
   });

@@ -38,7 +38,7 @@ class InstanceV2EngineList {
   /// [latestVersion] Latest Version
   /// [nodeGroups] Node Group List See `node_group` below.
   /// [version] Engine Version
-  InstanceV2EngineList({
+  const InstanceV2EngineList({
     this.connectAddressLists,
     required this.engineType,
     this.isLastVersion,

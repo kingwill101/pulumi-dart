@@ -47,7 +47,7 @@ class GetInstancesArgs {
   /// [resolution] The selected resolution for the cloud mobile phone instance.
   /// [status] Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
   /// [zoneId] Optional.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.enableDetails,
     this.ids,
     this.imageId,

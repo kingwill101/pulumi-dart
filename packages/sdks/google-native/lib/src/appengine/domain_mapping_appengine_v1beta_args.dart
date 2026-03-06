@@ -21,7 +21,7 @@ class DomainMappingAppengineV1betaArgs {
   /// [id] Relative name of the domain serving the application. Example: example.com.
   /// [overrideStrategy] Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
   /// [sslSettings] SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
-  DomainMappingAppengineV1betaArgs({
+  const DomainMappingAppengineV1betaArgs({
     required this.appId,
     this.id,
     this.overrideStrategy,

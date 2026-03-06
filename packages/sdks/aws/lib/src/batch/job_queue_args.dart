@@ -39,7 +39,7 @@ class JobQueueArgs {
   /// [state] The state of the job queue. Must be one of: `ENABLED` or `DISABLED`
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  JobQueueArgs({
+  const JobQueueArgs({
     this.computeEnvironmentOrders,
     this.jobStateTimeLimitActions,
     this.name,

@@ -13,7 +13,7 @@ class PeripheralsConfigResponse {
   /// Creates a new [PeripheralsConfigResponse].
   /// [metastoreService] Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
   /// [sparkHistoryServerConfig] Optional. The Spark History Server configuration for the workload.
-  PeripheralsConfigResponse({
+  const PeripheralsConfigResponse({
     required this.metastoreService,
     required this.sparkHistoryServerConfig,
   });

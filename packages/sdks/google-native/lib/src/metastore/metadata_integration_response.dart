@@ -10,7 +10,7 @@ class MetadataIntegrationResponse {
 
   /// Creates a new [MetadataIntegrationResponse].
   /// [dataCatalogConfig] Optional. The integration config for the Data Catalog service.
-  MetadataIntegrationResponse({
+  const MetadataIntegrationResponse({
     required this.dataCatalogConfig,
   });
 

@@ -16,7 +16,7 @@ class VirtualNodeSpecListenerTls {
   /// [certificate] Listener's TLS certificate.
   /// [mode] Listener's TLS mode. Valid values: `DISABLED`, `PERMISSIVE`, `STRICT`.
   /// [validation] Listener's Transport Layer Security (TLS) validation context.
-  VirtualNodeSpecListenerTls({
+  const VirtualNodeSpecListenerTls({
     required this.certificate,
     required this.mode,
     this.validation,

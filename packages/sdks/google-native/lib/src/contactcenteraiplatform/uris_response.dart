@@ -18,7 +18,7 @@ class URIsResponse {
   /// [mediaUri] Media Uri of the ContactCenter.
   /// [rootUri] Root Uri of the ContactCenter.
   /// [virtualAgentStreamingServiceUri] Virtual Agent Streaming Service Uri of the ContactCenter.
-  URIsResponse({
+  const URIsResponse({
     required this.chatBotUri,
     required this.mediaUri,
     required this.rootUri,

@@ -11,7 +11,7 @@ class ResourceGroupCostManagementExportExportDataOptions {
   /// Creates a new [ResourceGroupCostManagementExportExportDataOptions].
   /// [timeFrame] The time frame for pulling data for the query. If custom, then a specific time period must be provided. Possible values include: `WeekToDate`, `MonthToDate`, `BillingMonthToDate`, `TheLast7Days`, `TheLastMonth`, `TheLastBillingMonth`, `Custom`.
   /// [type] The type of the query. Possible values are `ActualCost`, `AmortizedCost` and `Usage`.
-  ResourceGroupCostManagementExportExportDataOptions({
+  const ResourceGroupCostManagementExportExportDataOptions({
     required this.timeFrame,
     required this.type,
   });

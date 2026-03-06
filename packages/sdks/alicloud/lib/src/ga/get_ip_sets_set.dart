@@ -26,7 +26,7 @@ class GetIpSetsSet {
   /// [ipSetId] Accelerated area ID.
   /// [ipVersion] The IP protocol used by the GA instance.
   /// [status] The status of the acceleration region. Valid values: `active`, `deleting`, `init`, `updating`.
-  GetIpSetsSet({
+  const GetIpSetsSet({
     required this.accelerateRegionId,
     required this.bandwidth,
     required this.id,

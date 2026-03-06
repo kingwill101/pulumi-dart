@@ -11,7 +11,7 @@ class GetEndpointAssociationsAssociationPrivateDnsEntry {
   /// Creates a new [GetEndpointAssociationsAssociationPrivateDnsEntry].
   /// [dnsName] DNS name.
   /// [hostedZoneId] ID of the private hosted zone.
-  GetEndpointAssociationsAssociationPrivateDnsEntry({
+  const GetEndpointAssociationsAssociationPrivateDnsEntry({
     required this.dnsName,
     required this.hostedZoneId,
   });

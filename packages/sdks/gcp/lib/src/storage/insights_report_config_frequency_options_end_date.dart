@@ -14,7 +14,7 @@ class InsightsReportConfigFrequencyOptionsEndDate {
   /// [day] The day of the month to stop generating inventory reports.
   /// [month] The month to stop generating inventory reports.
   /// [year] The year to stop generating inventory reports
-  InsightsReportConfigFrequencyOptionsEndDate({
+  const InsightsReportConfigFrequencyOptionsEndDate({
     required this.day,
     required this.month,
     required this.year,

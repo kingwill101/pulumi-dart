@@ -30,7 +30,7 @@ class ManagedLoginBrandingArgs {
   /// [settings] JSON document with the the settings to apply to the style.
   /// [useCognitoProvidedValues] When `true`, applies the default branding style options.
   /// [userPoolId] User pool the client belongs to.
-  ManagedLoginBrandingArgs({
+  const ManagedLoginBrandingArgs({
     this.assets,
     required this.clientId,
     this.region,

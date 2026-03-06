@@ -21,7 +21,7 @@ class HealthCheck {
   /// [retries] The number of times to retry a failed health check before the container is considered unhealthy. You may specify between 1 and 10 retries. The default value is 3.
   /// [startPeriod] The optional grace period to provide containers time to bootstrap before failed health checks count towards the maximum number of retries. You can specify between 0 and 300 seconds. By default, the ``startPeriod`` is off.  If a health check succeeds within the ``startPeriod``, then the container is considered healthy and any subsequent failures count toward the maximum number of retries.
   /// [timeout] The time period in seconds to wait for a health check to succeed before it is considered a failure. You may specify between 2 and 60 seconds. The default value is 5.
-  HealthCheck({
+  const HealthCheck({
     this.command,
     this.interval,
     this.retries,

@@ -30,7 +30,7 @@ class IAMCustomRoleArgs {
   /// [roleId] The camel case role id to use for this role. Cannot contain `-` characters.
   /// [stage] The current launch stage of the role.
   /// [title] A human-readable title for the role.
-  IAMCustomRoleArgs({
+  const IAMCustomRoleArgs({
     this.description,
     required this.permissions,
     this.project,

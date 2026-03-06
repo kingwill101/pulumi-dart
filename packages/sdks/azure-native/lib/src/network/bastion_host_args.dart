@@ -72,7 +72,7 @@ class BastionHostArgs {
   /// [tags] Resource tags.
   /// [virtualNetwork] Reference to an existing virtual network required for Developer Bastion Host only.
   /// [zones] A list of availability zones denoting where the resource needs to come from.
-  BastionHostArgs({
+  const BastionHostArgs({
     this.bastionHostName,
     this.disableCopyPaste,
     this.dnsName,

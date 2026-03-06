@@ -16,7 +16,7 @@ class ValidationSummaryItemResponse {
   /// [messages] Validation messages.
   /// [state] Validation status for migration.
   /// [type] Validation type.
-  ValidationSummaryItemResponse({
+  const ValidationSummaryItemResponse({
     this.messages,
     this.state,
     this.type,

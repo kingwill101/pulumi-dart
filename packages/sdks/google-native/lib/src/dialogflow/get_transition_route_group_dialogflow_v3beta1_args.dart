@@ -21,7 +21,7 @@ class GetTransitionRouteGroupDialogflowV3beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [transitionRouteGroupId] Required.
-  GetTransitionRouteGroupDialogflowV3beta1Args({
+  const GetTransitionRouteGroupDialogflowV3beta1Args({
     required this.agentId,
     required this.flowId,
     this.languageCode,

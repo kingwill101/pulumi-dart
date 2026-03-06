@@ -46,7 +46,7 @@ class CassandraLinkedService {
   /// [type] Type of linked service.
   /// [username] Username for authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  CassandraLinkedService({
+  const CassandraLinkedService({
     this.annotations,
     this.authenticationType,
     this.connectVia,

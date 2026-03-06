@@ -9,7 +9,7 @@ class CassandraPartitionKey {
 
   /// Creates a new [CassandraPartitionKey].
   /// [name] Name of the Cosmos DB Cassandra table partition key
-  CassandraPartitionKey({
+  const CassandraPartitionKey({
     this.name,
   });
 

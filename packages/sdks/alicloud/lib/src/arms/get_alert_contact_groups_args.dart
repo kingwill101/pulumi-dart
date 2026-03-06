@@ -27,7 +27,7 @@ class GetAlertContactGroupsArgs {
   /// [ids] A list of Alert Contact Group IDs.
   /// [nameRegex] A regex string to filter results by Alert Contact Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAlertContactGroupsArgs({
+  const GetAlertContactGroupsArgs({
     this.alertContactGroupName,
     this.contactId,
     this.contactName,

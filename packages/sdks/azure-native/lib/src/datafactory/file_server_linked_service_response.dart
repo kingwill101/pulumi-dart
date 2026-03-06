@@ -40,7 +40,7 @@ class FileServerLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [userId] User ID to logon the server. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  FileServerLinkedServiceResponse({
+  const FileServerLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.description,

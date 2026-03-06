@@ -12,7 +12,7 @@ class LinkedDatabaseResponse {
   /// Creates a new [LinkedDatabaseResponse].
   /// [id] Resource ID of a database resource to link with this database.
   /// [state] State of the link between the database resources.
-  LinkedDatabaseResponse({
+  const LinkedDatabaseResponse({
     this.id,
     required this.state,
   });

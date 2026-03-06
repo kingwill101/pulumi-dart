@@ -25,7 +25,7 @@ class GetDatabaseSystemVersionsResult {
   /// [storageManagement] Optional.
   /// [upgradeSupported] Optional.
   /// [versions] A `versions` block as defined below.
-  GetDatabaseSystemVersionsResult({
+  const GetDatabaseSystemVersionsResult({
     this.databaseSoftwareImageSupported,
     this.databaseSystemShape,
     required this.id,

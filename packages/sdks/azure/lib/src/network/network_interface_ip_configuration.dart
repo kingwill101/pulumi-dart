@@ -33,7 +33,7 @@ class NetworkInterfaceIpConfiguration {
   /// [privateIpAddressVersion] The IP Version to use. Possible values are `IPv4` or `IPv6`. Defaults to `IPv4`.
   /// [publicIpAddressId] Reference to a Public IP Address to associate with this NIC
   /// [subnetId] The ID of the Subnet where this Network Interface should be located in.
-  NetworkInterfaceIpConfiguration({
+  const NetworkInterfaceIpConfiguration({
     this.gatewayLoadBalancerFrontendIpConfigurationId,
     required this.name,
     this.primary,

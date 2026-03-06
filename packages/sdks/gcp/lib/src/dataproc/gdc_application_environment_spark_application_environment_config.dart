@@ -11,7 +11,7 @@ class GdcApplicationEnvironmentSparkApplicationEnvironmentConfig {
   /// Creates a new [GdcApplicationEnvironmentSparkApplicationEnvironmentConfig].
   /// [defaultProperties] A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
   /// [defaultVersion] The default Dataproc version to use for applications submitted to this application environment
-  GdcApplicationEnvironmentSparkApplicationEnvironmentConfig({
+  const GdcApplicationEnvironmentSparkApplicationEnvironmentConfig({
     this.defaultProperties,
     this.defaultVersion,
   });

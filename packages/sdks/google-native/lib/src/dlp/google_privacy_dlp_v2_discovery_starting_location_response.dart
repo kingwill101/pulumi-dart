@@ -12,7 +12,7 @@ class GooglePrivacyDlpV2DiscoveryStartingLocationResponse {
   /// Creates a new [GooglePrivacyDlpV2DiscoveryStartingLocationResponse].
   /// [folderId] The ID of the Folder within an organization to scan.
   /// [organizationId] The ID of an organization to scan.
-  GooglePrivacyDlpV2DiscoveryStartingLocationResponse({
+  const GooglePrivacyDlpV2DiscoveryStartingLocationResponse({
     required this.folderId,
     required this.organizationId,
   });

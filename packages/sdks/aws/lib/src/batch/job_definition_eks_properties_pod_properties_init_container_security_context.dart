@@ -22,7 +22,7 @@ class JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext {
   /// [runAsGroup] When this parameter is specified, the container is run as the specified group ID (gid). If this parameter isn't specified, the default is the group that's specified in the image metadata.
   /// [runAsNonRoot] When this parameter is specified, the container is run as a user with a uid other than 0. If this parameter isn't specified, so such rule is enforced.
   /// [runAsUser] When this parameter is specified, the container is run as the specified user ID (uid). If this parameter isn't specified, the default is the user that's specified in the image metadata.
-  JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext({
+  const JobDefinitionEksPropertiesPodPropertiesInitContainerSecurityContext({
     this.allowPrivilegeEscalation,
     this.privileged,
     this.readOnlyRootFileSystem,

@@ -80,7 +80,7 @@ class GetKpiResult {
   /// [thresHolds] The KPI thresholds.
   /// [type] Resource type.
   /// [unit] The unit of measurement for the KPI.
-  GetKpiResult({
+  const GetKpiResult({
     this.aliases,
     required this.azureApiVersion,
     required this.calculationWindow,

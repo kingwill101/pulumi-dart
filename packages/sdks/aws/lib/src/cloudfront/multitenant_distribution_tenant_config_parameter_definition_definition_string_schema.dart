@@ -14,7 +14,7 @@ class MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSche
   /// [comment] Comment describing the parameter.
   /// [defaultValue] Default value for the parameter.
   /// [required] Whether the parameter is required.
-  MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema({
+  const MultitenantDistributionTenantConfigParameterDefinitionDefinitionStringSchema({
     this.comment,
     this.defaultValue,
     required this.required,

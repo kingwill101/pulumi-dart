@@ -55,7 +55,7 @@ class GetLoadBalancersResult {
   /// [vpcId] The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
   /// [vpcIds] Optional.
   /// [zoneId] The ID of the zone to which the ALB instance belongs.
-  GetLoadBalancersResult({
+  const GetLoadBalancersResult({
     this.addressType,
     required this.balancers,
     this.enableDetails,

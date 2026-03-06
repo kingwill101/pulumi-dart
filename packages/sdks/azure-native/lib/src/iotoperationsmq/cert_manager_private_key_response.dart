@@ -15,7 +15,7 @@ class CertManagerPrivateKeyResponse {
   /// [algorithm] algorithm for private key.
   /// [rotationPolicy] cert-manager rotationPolicy.
   /// [size] size of private key.
-  CertManagerPrivateKeyResponse({
+  const CertManagerPrivateKeyResponse({
     required this.algorithm,
     required this.rotationPolicy,
     required this.size,

@@ -8,7 +8,7 @@ class TransactionInfoResponse {
 
   /// Creates a new [TransactionInfoResponse].
   /// [transactionId] // [Alpha] Id of the transaction.
-  TransactionInfoResponse({
+  const TransactionInfoResponse({
     required this.transactionId,
   });
 

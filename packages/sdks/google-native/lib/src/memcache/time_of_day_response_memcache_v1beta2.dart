@@ -18,7 +18,7 @@ class TimeOfDayResponseMemcacheV1beta2 {
   /// [minutes] Minutes of hour of day. Must be from 0 to 59.
   /// [nanos] Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999.
   /// [seconds] Seconds of minutes of the time. Must normally be from 0 to 59. An API may allow the value 60 if it allows leap-seconds.
-  TimeOfDayResponseMemcacheV1beta2({
+  const TimeOfDayResponseMemcacheV1beta2({
     required this.hours,
     required this.minutes,
     required this.nanos,

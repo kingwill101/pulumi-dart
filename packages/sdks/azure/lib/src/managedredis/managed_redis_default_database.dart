@@ -46,7 +46,7 @@ class ManagedRedisDefaultDatabase {
   /// [port] TCP port of the database endpoint.
   /// [primaryAccessKey] The Primary Access Key for the Managed Redis Database Instance. Only exported if `access_keys_authentication_enabled` is set to `true`.
   /// [secondaryAccessKey] The Secondary Access Key for the Managed Redis Database Instance. Only exported if `access_keys_authentication_enabled` is set to `true`.
-  ManagedRedisDefaultDatabase({
+  const ManagedRedisDefaultDatabase({
     this.accessKeysAuthenticationEnabled,
     this.clientProtocol,
     this.clusteringPolicy,

@@ -11,7 +11,7 @@ class CryptoKeyVersionAttestationExternalProtectionLevelOptions {
   /// Creates a new [CryptoKeyVersionAttestationExternalProtectionLevelOptions].
   /// [ekmConnectionKeyPath] The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of externalKeyUri when using an EkmConnection.
   /// [externalKeyUri] The URI for an external resource that this CryptoKeyVersion represents.
-  CryptoKeyVersionAttestationExternalProtectionLevelOptions({
+  const CryptoKeyVersionAttestationExternalProtectionLevelOptions({
     this.ekmConnectionKeyPath,
     this.externalKeyUri,
   });

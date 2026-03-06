@@ -52,7 +52,7 @@ class GetExportResult {
   /// [runHistory] If requested, has the most recent run history for the export.
   /// [schedule] Has schedule information for the export.
   /// [type] Resource type.
-  GetExportResult({
+  const GetExportResult({
     required this.azureApiVersion,
     required this.definition,
     required this.deliveryInfo,

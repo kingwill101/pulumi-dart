@@ -16,7 +16,7 @@ class EventingRuntimeDataResponse {
   /// [eventsListenerEndpoint] Events listener endpoint. The value will populated after provisioning the events listener.
   /// [eventsListenerPscSa] Events listener PSC Service attachment. The value will be populated after provisioning the events listener with private connectivity enabled.
   /// [status] Current status of eventing.
-  EventingRuntimeDataResponse({
+  const EventingRuntimeDataResponse({
     required this.eventsListenerEndpoint,
     required this.eventsListenerPscSa,
     required this.status,

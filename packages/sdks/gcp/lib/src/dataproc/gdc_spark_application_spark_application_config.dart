@@ -23,7 +23,7 @@ class GdcSparkApplicationSparkApplicationConfig {
   /// [jarFileUris] HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
   /// [mainClass] The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
   /// [mainJarFileUri] The HCFS URI of the jar file that contains the main class.
-  GdcSparkApplicationSparkApplicationConfig({
+  const GdcSparkApplicationSparkApplicationConfig({
     this.archiveUris,
     this.args,
     this.fileUris,

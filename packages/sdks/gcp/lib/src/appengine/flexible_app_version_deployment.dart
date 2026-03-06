@@ -26,7 +26,7 @@ class FlexibleAppVersionDeployment {
   /// [container] The Docker image for the container that runs the version.
   /// [files] Manifest of the files stored in Google Cloud Storage that are included as part of this version.
   /// [zip] Zip File
-  FlexibleAppVersionDeployment({
+  const FlexibleAppVersionDeployment({
     this.cloudBuildOptions,
     this.container,
     this.files,

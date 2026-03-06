@@ -31,7 +31,7 @@ class GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl {
   /// [mongoDbUri] The URL of the MongoDB API for the Autonomous Database.
   /// [ordsUri] The Oracle REST Data Services (ORDS) URL of the Web Access for the
   /// [sqlDevWebUri] The URL of the Oracle SQL Developer Web for the Autonomous Database.
-  GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl({
+  const GetAutonomousDatabasesAutonomousDatabasePropertyConnectionUrl({
     required this.apexUri,
     required this.databaseTransformsUri,
     required this.graphStudioUri,

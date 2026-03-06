@@ -13,7 +13,7 @@ class AccountEncryption {
   /// [keySource] Optional.
   /// [keyVaultKeyId] The ID of the Key Vault Key which should be used to Encrypt the data in this Automation Account.
   /// [userAssignedIdentityId] The User Assigned Managed Identity ID to be used for accessing the Customer Managed Key for encryption.
-  AccountEncryption({
+  const AccountEncryption({
     this.keySource,
     required this.keyVaultKeyId,
     this.userAssignedIdentityId,

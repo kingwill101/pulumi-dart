@@ -27,7 +27,7 @@ class DefaultRouteTableArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routes] Set of objects. Detailed below
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  DefaultRouteTableArgs({
+  const DefaultRouteTableArgs({
     required this.defaultRouteTableId,
     this.propagatingVgws,
     this.region,

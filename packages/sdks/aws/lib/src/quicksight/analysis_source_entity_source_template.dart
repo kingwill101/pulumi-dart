@@ -12,7 +12,7 @@ class AnalysisSourceEntitySourceTemplate {
   /// Creates a new [AnalysisSourceEntitySourceTemplate].
   /// [arn] The Amazon Resource Name (ARN) of the resource.
   /// [dataSetReferences] List of dataset references. See data_set_references.
-  AnalysisSourceEntitySourceTemplate({
+  const AnalysisSourceEntitySourceTemplate({
     required this.arn,
     required this.dataSetReferences,
   });

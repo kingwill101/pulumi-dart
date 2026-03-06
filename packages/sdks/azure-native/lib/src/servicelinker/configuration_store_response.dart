@@ -9,7 +9,7 @@ class ConfigurationStoreResponse {
 
   /// Creates a new [ConfigurationStoreResponse].
   /// [appConfigurationId] The app configuration id to store configuration
-  ConfigurationStoreResponse({
+  const ConfigurationStoreResponse({
     this.appConfigurationId,
   });
 

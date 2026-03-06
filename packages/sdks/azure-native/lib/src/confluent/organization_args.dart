@@ -33,7 +33,7 @@ class OrganizationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [userDetail] Subscriber detail
-  OrganizationArgs({
+  const OrganizationArgs({
     this.linkOrganization,
     this.location,
     required this.offerDetail,

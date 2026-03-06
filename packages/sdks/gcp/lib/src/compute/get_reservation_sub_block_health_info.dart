@@ -20,7 +20,7 @@ class GetReservationSubBlockHealthInfo {
   /// [healthStatus] The health status of the reservation sub-block.
   /// [healthyHostCount] The number of healthy hosts in the reservation sub-block.
   /// [healthyInfraCount] The number of healthy infrastructure (e.g. NVLink domain) in the reservation sub-block.
-  GetReservationSubBlockHealthInfo({
+  const GetReservationSubBlockHealthInfo({
     required this.degradedHostCount,
     required this.degradedInfraCount,
     required this.healthStatus,

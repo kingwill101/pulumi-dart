@@ -42,7 +42,7 @@ class SecurityFeedbackState {
   /// [orgId] The Apigee Organization associated with the Apigee Security Feedback,
   /// [reason] The reason for the feedback.
   /// [updateTime] The time when this specific feedback id was updated.
-  SecurityFeedbackState({
+  const SecurityFeedbackState({
     this.comment,
     this.createTime,
     this.displayName,

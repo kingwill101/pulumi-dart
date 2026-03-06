@@ -14,7 +14,7 @@ class ForwardConfigResponse {
   /// Creates a new [ForwardConfigResponse].
   /// [targetGroupStickinessConfig] Information about the target group stickiness for a rule. Information about the target group stickiness for a rule.
   /// [targetGroups] Information about how traffic will be distributed between multiple target groups in a forward rule.
-  ForwardConfigResponse({
+  const ForwardConfigResponse({
     this.targetGroupStickinessConfig,
     this.targetGroups,
   });

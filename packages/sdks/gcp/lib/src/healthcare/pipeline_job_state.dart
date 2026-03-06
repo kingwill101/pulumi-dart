@@ -58,7 +58,7 @@ class PipelineJobState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [reconciliationPipelineJob] Specifies reconciliation configuration.
   /// [selfLink] The fully qualified name of this dataset
-  PipelineJobState({
+  const PipelineJobState({
     this.backfillPipelineJob,
     this.dataset,
     this.disableLineage,

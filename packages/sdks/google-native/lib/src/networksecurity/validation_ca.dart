@@ -14,7 +14,7 @@ class ValidationCA {
   /// Creates a new [ValidationCA].
   /// [certificateProviderInstance] The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
   /// [grpcEndpoint] gRPC specific configuration to access the gRPC server to obtain the CA certificate.
-  ValidationCA({
+  const ValidationCA({
     this.certificateProviderInstance,
     this.grpcEndpoint,
   });

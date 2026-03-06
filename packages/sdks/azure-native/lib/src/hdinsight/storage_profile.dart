@@ -10,7 +10,7 @@ class StorageProfile {
 
   /// Creates a new [StorageProfile].
   /// [storageaccounts] The list of storage accounts in the cluster.
-  StorageProfile({
+  const StorageProfile({
     this.storageaccounts,
   });
 

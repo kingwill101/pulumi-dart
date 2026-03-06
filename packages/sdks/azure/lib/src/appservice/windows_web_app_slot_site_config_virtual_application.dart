@@ -18,7 +18,7 @@ class WindowsWebAppSlotSiteConfigVirtualApplication {
   /// [preload] Should pre-loading be enabled.
   /// [virtualDirectories] One or more `virtual_directory` blocks as defined below.
   /// [virtualPath] The Virtual Path for the Virtual Application.
-  WindowsWebAppSlotSiteConfigVirtualApplication({
+  const WindowsWebAppSlotSiteConfigVirtualApplication({
     required this.physicalPath,
     required this.preload,
     this.virtualDirectories,

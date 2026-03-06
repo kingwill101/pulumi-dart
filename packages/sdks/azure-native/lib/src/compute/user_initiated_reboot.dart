@@ -9,7 +9,7 @@ class UserInitiatedReboot {
 
   /// Creates a new [UserInitiatedReboot].
   /// [automaticallyApprove] Specifies Reboot Scheduled Event related configurations.
-  UserInitiatedReboot({
+  const UserInitiatedReboot({
     this.automaticallyApprove,
   });
 

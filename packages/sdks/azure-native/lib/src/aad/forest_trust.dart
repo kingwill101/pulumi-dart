@@ -21,7 +21,7 @@ class ForestTrust {
   /// [trustDirection] Trust Direction
   /// [trustPassword] Trust Password
   /// [trustedDomainFqdn] Trusted Domain FQDN
-  ForestTrust({
+  const ForestTrust({
     this.friendlyName,
     this.remoteDnsIps,
     this.trustDirection,

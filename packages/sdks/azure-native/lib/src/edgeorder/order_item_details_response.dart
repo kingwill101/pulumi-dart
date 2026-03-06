@@ -65,7 +65,7 @@ class OrderItemDetailsResponse {
   /// [returnStatus] Describes whether the order item is returnable or not.
   /// [reverseShippingDetails] Reverse Package Shipping details.
   /// [siteDetails] Site Related Details.
-  OrderItemDetailsResponse({
+  const OrderItemDetailsResponse({
     required this.cancellationReason,
     required this.cancellationStatus,
     required this.currentStage,

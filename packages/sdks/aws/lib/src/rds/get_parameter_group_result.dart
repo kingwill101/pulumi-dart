@@ -21,7 +21,7 @@ class GetParameterGroupResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetParameterGroupResult({
+  const GetParameterGroupResult({
     required this.arn,
     required this.description,
     required this.family,

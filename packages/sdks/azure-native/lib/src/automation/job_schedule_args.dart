@@ -32,7 +32,7 @@ class JobScheduleArgs {
   /// [runOn] Gets or sets the hybrid worker group that the scheduled job should run on.
   /// [runbook] Gets or sets the runbook.
   /// [schedule] Gets or sets the schedule.
-  JobScheduleArgs({
+  const JobScheduleArgs({
     required this.automationAccountName,
     this.jobScheduleId,
     this.parameters,

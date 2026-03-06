@@ -12,7 +12,7 @@ class GetConnectorArgs {
 
   /// Creates a new [GetConnectorArgs].
   /// [connectorName] The name of the connector
-  GetConnectorArgs({
+  const GetConnectorArgs({
     required this.connectorName,
   });
 

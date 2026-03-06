@@ -9,7 +9,7 @@ class EdgeClusterResponseGkehubV1alpha {
 
   /// Creates a new [EdgeClusterResponseGkehubV1alpha].
   /// [resourceLink] Immutable. Self-link of the Google Cloud resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
-  EdgeClusterResponseGkehubV1alpha({
+  const EdgeClusterResponseGkehubV1alpha({
     required this.resourceLink,
   });
 

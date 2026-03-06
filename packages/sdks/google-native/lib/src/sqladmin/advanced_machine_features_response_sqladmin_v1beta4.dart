@@ -9,7 +9,7 @@ class AdvancedMachineFeaturesResponseSqladminV1beta4 {
 
   /// Creates a new [AdvancedMachineFeaturesResponseSqladminV1beta4].
   /// [threadsPerCore] The number of threads per physical core.
-  AdvancedMachineFeaturesResponseSqladminV1beta4({
+  const AdvancedMachineFeaturesResponseSqladminV1beta4({
     required this.threadsPerCore,
   });
 

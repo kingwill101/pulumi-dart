@@ -39,7 +39,7 @@ class GetOutpostResult {
   /// [siteId] The ID of the site.
   /// [supportedHardwareType] The hardware type.
   /// [tags] The Outpost tags.
-  GetOutpostResult({
+  const GetOutpostResult({
     required this.arn,
     required this.availabilityZone,
     required this.availabilityZoneId,

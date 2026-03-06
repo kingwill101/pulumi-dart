@@ -13,7 +13,7 @@ class GetDisksDiskMountInstance {
   /// [attachedTime] Disk attachment time.
   /// [device] Required.
   /// [instanceId] Filter the results by the specified ECS instance ID.
-  GetDisksDiskMountInstance({
+  const GetDisksDiskMountInstance({
     required this.attachedTime,
     required this.device,
     required this.instanceId,

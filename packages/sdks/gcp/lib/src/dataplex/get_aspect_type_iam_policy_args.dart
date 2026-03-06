@@ -22,7 +22,7 @@ class GetAspectTypeIamPolicyArgs {
   /// [aspectTypeId] Used to find the parent resource to bind the IAM policy to
   /// [location] The location where aspect type will be created in.
   /// [project] The ID of the project in which the resource belongs.
-  GetAspectTypeIamPolicyArgs({
+  const GetAspectTypeIamPolicyArgs({
     required this.aspectTypeId,
     this.location,
     this.project,

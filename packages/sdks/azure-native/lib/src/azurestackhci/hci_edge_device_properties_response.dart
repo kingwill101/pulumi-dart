@@ -17,7 +17,7 @@ class HciEdgeDevicePropertiesResponse {
   /// [deviceConfiguration] Device Configuration
   /// [provisioningState] Provisioning state of edgeDevice resource
   /// [reportedProperties] The instance view of all current configurations on HCI device.
-  HciEdgeDevicePropertiesResponse({
+  const HciEdgeDevicePropertiesResponse({
     this.deviceConfiguration,
     required this.provisioningState,
     required this.reportedProperties,

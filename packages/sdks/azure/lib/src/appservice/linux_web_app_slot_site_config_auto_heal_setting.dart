@@ -13,7 +13,7 @@ class LinuxWebAppSlotSiteConfigAutoHealSetting {
   /// Creates a new [LinuxWebAppSlotSiteConfigAutoHealSetting].
   /// [action] A `action` block as defined above.
   /// [trigger] A `trigger` block as defined below.
-  LinuxWebAppSlotSiteConfigAutoHealSetting({
+  const LinuxWebAppSlotSiteConfigAutoHealSetting({
     this.action,
     this.trigger,
   });

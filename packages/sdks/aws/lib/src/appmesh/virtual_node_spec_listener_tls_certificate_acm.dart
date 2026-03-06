@@ -8,7 +8,7 @@ class VirtualNodeSpecListenerTlsCertificateAcm {
 
   /// Creates a new [VirtualNodeSpecListenerTlsCertificateAcm].
   /// [certificateArn] ARN for the certificate.
-  VirtualNodeSpecListenerTlsCertificateAcm({
+  const VirtualNodeSpecListenerTlsCertificateAcm({
     required this.certificateArn,
   });
 

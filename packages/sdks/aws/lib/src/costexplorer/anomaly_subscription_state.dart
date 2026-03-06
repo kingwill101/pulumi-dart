@@ -35,7 +35,7 @@ class AnomalySubscriptionState {
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [thresholdExpression] An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
-  AnomalySubscriptionState({
+  const AnomalySubscriptionState({
     this.accountId,
     this.arn,
     this.frequency,

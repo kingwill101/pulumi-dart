@@ -15,7 +15,7 @@ class GetConfigurationReferenceArgs {
   /// Creates a new [GetConfigurationReferenceArgs].
   /// [configurationReferenceName] The name of the ConfigurationReference
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  GetConfigurationReferenceArgs({
+  const GetConfigurationReferenceArgs({
     required this.configurationReferenceName,
     required this.resourceUri,
   });

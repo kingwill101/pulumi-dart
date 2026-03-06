@@ -22,7 +22,7 @@ class TriggerArgs {
   /// [properties] Properties of the trigger.
   /// [resourceGroupName] The resource group name.
   /// [triggerName] The trigger name.
-  TriggerArgs({
+  const TriggerArgs({
     required this.factoryName,
     required this.properties,
     required this.resourceGroupName,

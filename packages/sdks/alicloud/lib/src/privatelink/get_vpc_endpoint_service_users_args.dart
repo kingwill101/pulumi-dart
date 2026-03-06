@@ -18,7 +18,7 @@ class GetVpcEndpointServiceUsersArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [serviceId] The Id of Vpc Endpoint Service.
   /// [userId] The Id of Ram User.
-  GetVpcEndpointServiceUsersArgs({
+  const GetVpcEndpointServiceUsersArgs({
     this.outputFile,
     required this.serviceId,
     this.userId,

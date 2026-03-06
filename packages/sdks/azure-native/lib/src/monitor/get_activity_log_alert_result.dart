@@ -40,7 +40,7 @@ class GetActivityLogAlertResult {
   /// [scopes] A list of resource IDs that will be used as prefixes. The alert will only apply to Activity Log events with resource IDs that fall under one of these prefixes. This list must include at least one item.
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
-  GetActivityLogAlertResult({
+  const GetActivityLogAlertResult({
     required this.actions,
     required this.azureApiVersion,
     required this.condition,

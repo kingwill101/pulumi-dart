@@ -8,7 +8,7 @@ class SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku {
 
   /// Creates a new [SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku].
   /// [category] Optional.
-  SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku({
+  const SkuRecommendationResultsAzureSqlDatabaseResponseTargetSku({
     this.category,
   });
 

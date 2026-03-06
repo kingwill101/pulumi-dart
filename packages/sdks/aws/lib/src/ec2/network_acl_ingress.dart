@@ -36,7 +36,7 @@ class NetworkAclIngress {
   /// [protocol] The protocol to match. If using the -1 'all'
   /// [ruleNo] The rule number. Used for ordering.
   /// [toPort] The to port to match.
-  NetworkAclIngress({
+  const NetworkAclIngress({
     required this.action,
     this.cidrBlock,
     required this.fromPort,

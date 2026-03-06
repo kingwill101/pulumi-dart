@@ -92,7 +92,7 @@ class GetAppServiceEnvironmentResult {
   /// [userWhitelistedIpRanges] User added ip ranges to whitelist on ASE db
   /// [virtualNetwork] Description of the Virtual Network.
   /// [zoneRedundant] Whether or not this App Service Environment is zone-redundant.
-  GetAppServiceEnvironmentResult({
+  const GetAppServiceEnvironmentResult({
     required this.azureApiVersion,
     this.clusterSettings,
     this.customDnsSuffixConfiguration,

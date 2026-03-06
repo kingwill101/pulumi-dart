@@ -25,7 +25,7 @@ class NfsStorageClassTypeProperties {
   /// [share] NFS share
   /// [subDir] Sub directory under share. If the sub directory doesn't exist, driver will create it
   /// [type] Type of a storage class
-  NfsStorageClassTypeProperties({
+  const NfsStorageClassTypeProperties({
     this.mountPermissions,
     this.onDelete,
     required this.server,

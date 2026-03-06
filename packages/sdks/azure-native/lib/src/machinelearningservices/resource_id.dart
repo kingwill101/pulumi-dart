@@ -9,7 +9,7 @@ class ResourceId {
 
   /// Creates a new [ResourceId].
   /// [id] The ID of the resource
-  ResourceId({
+  const ResourceId({
     required this.id,
   });
 

@@ -3,11 +3,11 @@
 import 'package:pulumi_digitalocean/index.dart' as module_index;
 import 'package:pulumi_digitalocean/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final Algorithm = module_index.Algorithm.values;
   final App = module_index.App.new;
   final AppArgs = module_index.AppArgs.new;
@@ -2081,7 +2081,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Digitalocean = module_providers.ProviderProvider.new;
   final DigitaloceanArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

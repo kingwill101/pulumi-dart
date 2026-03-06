@@ -12,7 +12,7 @@ class ConversationProfileTtsConfigVoice {
   /// Creates a new [ConversationProfileTtsConfigVoice].
   /// [name] The name of the voice.
   /// [ssmlGender] The preferred gender of the voice.
-  ConversationProfileTtsConfigVoice({
+  const ConversationProfileTtsConfigVoice({
     this.name,
     this.ssmlGender,
   });

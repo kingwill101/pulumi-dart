@@ -14,7 +14,7 @@ class ListApplianceClusterUserCredentialResult {
   /// Creates a new [ListApplianceClusterUserCredentialResult].
   /// [hybridConnectionConfig] Contains the REP (rendezvous endpoint) and “Listener” access token from notification service (NS).
   /// [kubeconfigs] The list of appliance kubeconfigs.
-  ListApplianceClusterUserCredentialResult({
+  const ListApplianceClusterUserCredentialResult({
     required this.hybridConnectionConfig,
     required this.kubeconfigs,
   });

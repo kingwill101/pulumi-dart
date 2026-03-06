@@ -15,7 +15,7 @@ class GetAttestationProviderArgs {
   /// Creates a new [GetAttestationProviderArgs].
   /// [providerName] Name of the attestation provider.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAttestationProviderArgs({
+  const GetAttestationProviderArgs({
     required this.providerName,
     required this.resourceGroupName,
   });

@@ -20,7 +20,7 @@ class JobStatistics3Response {
   /// [inputFiles] Number of source files in a load job.
   /// [outputBytes] Size of the loaded data in bytes. Note that while a load job is in the running state, this value may change.
   /// [outputRows] Number of rows imported in a load job. Note that while an import job is in the running state, this value may change.
-  JobStatistics3Response({
+  const JobStatistics3Response({
     required this.badRecords,
     required this.inputFileBytes,
     required this.inputFiles,

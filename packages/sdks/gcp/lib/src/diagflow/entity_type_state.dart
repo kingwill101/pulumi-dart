@@ -33,7 +33,7 @@ class EntityTypeState {
   /// [kind] Indicates the kind of entity type.
   /// [name] The unique identifier of the entity type.
   /// [project] The ID of the project in which the resource belongs.
-  EntityTypeState({
+  const EntityTypeState({
     this.displayName,
     this.enableFuzzyExtraction,
     this.entities,

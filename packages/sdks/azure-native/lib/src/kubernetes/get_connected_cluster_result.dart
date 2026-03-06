@@ -93,7 +93,7 @@ class GetConnectedClusterResult {
   /// [totalCoreCount] Number of CPU cores present in the connected cluster resource
   /// [totalNodeCount] Number of nodes present in the connected cluster resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetConnectedClusterResult({
+  const GetConnectedClusterResult({
     this.aadProfile,
     required this.agentPublicKeyCertificate,
     required this.agentVersion,

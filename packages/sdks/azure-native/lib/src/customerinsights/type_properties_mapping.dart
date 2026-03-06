@@ -16,7 +16,7 @@ class TypePropertiesMapping {
   /// [linkType] Link type.
   /// [sourcePropertyName] Property name on the source Entity Type.
   /// [targetPropertyName] Property name on the target Entity Type.
-  TypePropertiesMapping({
+  const TypePropertiesMapping({
     this.linkType,
     required this.sourcePropertyName,
     required this.targetPropertyName,

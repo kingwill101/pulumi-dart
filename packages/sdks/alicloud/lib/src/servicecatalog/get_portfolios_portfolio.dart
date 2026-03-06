@@ -26,7 +26,7 @@ class GetPortfoliosPortfolio {
   /// [portfolioId] The ID of the portfolio
   /// [portfolioName] The name of the portfolio
   /// [providerName] The provider name of the portfolio
-  GetPortfoliosPortfolio({
+  const GetPortfoliosPortfolio({
     required this.createTime,
     required this.description,
     required this.id,

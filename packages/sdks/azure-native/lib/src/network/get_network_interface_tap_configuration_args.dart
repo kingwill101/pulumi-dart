@@ -18,7 +18,7 @@ class GetNetworkInterfaceTapConfigurationArgs {
   /// [networkInterfaceName] The name of the network interface.
   /// [resourceGroupName] The name of the resource group.
   /// [tapConfigurationName] The name of the tap configuration.
-  GetNetworkInterfaceTapConfigurationArgs({
+  const GetNetworkInterfaceTapConfigurationArgs({
     required this.networkInterfaceName,
     required this.resourceGroupName,
     required this.tapConfigurationName,

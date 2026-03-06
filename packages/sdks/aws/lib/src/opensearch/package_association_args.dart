@@ -18,7 +18,7 @@ class PackageAssociationArgs {
   /// [domainName] Name of the domain to associate the package with.
   /// [packageId] Internal ID of the package to associate with a domain.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PackageAssociationArgs({
+  const PackageAssociationArgs({
     required this.domainName,
     required this.packageId,
     this.region,

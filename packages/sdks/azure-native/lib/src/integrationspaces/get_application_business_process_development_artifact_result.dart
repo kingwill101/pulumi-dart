@@ -16,7 +16,7 @@ class GetApplicationBusinessProcessDevelopmentArtifactResult {
   /// [name] The name of the business process development artifact.
   /// [properties] The properties of the business process development artifact.
   /// [systemData] The system data of the business process development artifact.
-  GetApplicationBusinessProcessDevelopmentArtifactResult({
+  const GetApplicationBusinessProcessDevelopmentArtifactResult({
     required this.name,
     required this.properties,
     required this.systemData,

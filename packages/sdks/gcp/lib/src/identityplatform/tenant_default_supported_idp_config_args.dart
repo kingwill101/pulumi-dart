@@ -38,7 +38,7 @@ class TenantDefaultSupportedIdpConfigArgs {
   /// [idpId] ID of the IDP. Possible values include:
   /// [project] The ID of the project in which the resource belongs.
   /// [tenant] The name of the tenant where this DefaultSupportedIdpConfig resource exists
-  TenantDefaultSupportedIdpConfigArgs({
+  const TenantDefaultSupportedIdpConfigArgs({
     required this.clientId,
     required this.clientSecret,
     this.enabled,

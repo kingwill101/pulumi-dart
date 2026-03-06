@@ -10,7 +10,7 @@ class AppHostingDomainServe {
 
   /// Creates a new [AppHostingDomainServe].
   /// [redirect] Specifies redirect behavior for a domain.
-  AppHostingDomainServe({
+  const AppHostingDomainServe({
     this.redirect,
   });
 

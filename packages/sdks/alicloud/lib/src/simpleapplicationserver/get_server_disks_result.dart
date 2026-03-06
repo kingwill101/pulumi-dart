@@ -26,7 +26,7 @@ class GetServerDisksResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetServerDisksResult({
+  const GetServerDisksResult({
     this.diskType,
     required this.disks,
     required this.id,

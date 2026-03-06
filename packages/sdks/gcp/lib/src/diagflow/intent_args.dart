@@ -62,7 +62,7 @@ class IntentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [resetContexts] Indicates whether to delete all contexts in the current session when this intent is matched.
   /// [webhookState] Indicates whether webhooks are enabled for the intent.
-  IntentArgs({
+  const IntentArgs({
     this.action,
     this.defaultResponsePlatforms,
     required this.displayName,

@@ -14,7 +14,7 @@ class GetTriggerBuildSecret {
   /// Creates a new [GetTriggerBuildSecret].
   /// [kmsKeyName] Cloud KMS key name to use to decrypt these envs.
   /// [secretEnv] Map of environment variable name to its encrypted value.
-  GetTriggerBuildSecret({
+  const GetTriggerBuildSecret({
     required this.kmsKeyName,
     required this.secretEnv,
   });

@@ -32,7 +32,7 @@ class GetNetworkEdgeSecurityServiceResult {
   /// [securityPolicy] The resource URL for the network edge security service associated with this network edge security service.
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
-  GetNetworkEdgeSecurityServiceResult({
+  const GetNetworkEdgeSecurityServiceResult({
     required this.creationTimestamp,
     required this.description,
     required this.fingerprint,

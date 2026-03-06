@@ -17,7 +17,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfig {
   /// [equalRules] Exact Match Rule List See `equal_rules` below.
   /// [regexRules] Regular match rule list See `regex_rules` below.
   /// [wildcardRules] List of wildcard matching rules See `wildcard_rules` below.
-  V3CustomDomainRouteConfigRouteRewriteConfig({
+  const V3CustomDomainRouteConfigRouteRewriteConfig({
     this.equalRules,
     this.regexRules,
     this.wildcardRules,

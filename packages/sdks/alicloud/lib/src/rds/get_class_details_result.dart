@@ -55,7 +55,7 @@ class GetClassDetailsResult {
   /// [maxIops] The maximum IOPS of the instance.
   /// [memoryClass] The memory capacity that is supported by the instance type. Unit: GB.
   /// [referencePrice] The fee that you must pay for the instance type. Unit: cent (RMB).
-  GetClassDetailsResult({
+  const GetClassDetailsResult({
     required this.category,
     required this.classCode,
     required this.classGroup,

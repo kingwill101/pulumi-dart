@@ -24,7 +24,7 @@ class GetRepositoryEndpointArgs {
   /// [format] Which endpoint of a repository to return. A repository has one endpoint for each package format: `npm`, `pypi`, `maven`, and `nuget`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repository] Name of the repository.
-  GetRepositoryEndpointArgs({
+  const GetRepositoryEndpointArgs({
     required this.domain,
     this.domainOwner,
     required this.format,

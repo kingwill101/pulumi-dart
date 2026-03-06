@@ -9,7 +9,7 @@ class ServiceLinkedRoleState {
 
   /// Creates a new [ServiceLinkedRoleState].
   /// [status] The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
-  ServiceLinkedRoleState({
+  const ServiceLinkedRoleState({
     this.status,
   });
 

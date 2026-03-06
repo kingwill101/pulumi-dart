@@ -18,7 +18,7 @@ class CompatibilityResponse {
   /// [isCompatible] Tells if product is compatible with current device
   /// [issues] List of all issues found
   /// [message] Short error message if any compatibility issues are found
-  CompatibilityResponse({
+  const CompatibilityResponse({
     this.description,
     this.isCompatible,
     this.issues,

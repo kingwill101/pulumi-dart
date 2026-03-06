@@ -23,7 +23,7 @@ class GetDomainMappingResult {
   /// [metadata] Metadata associated with this BuildTemplate.
   /// [spec] The spec for this DomainMapping.
   /// [status] The current status of the DomainMapping.
-  GetDomainMappingResult({
+  const GetDomainMappingResult({
     required this.apiVersion,
     required this.kind,
     required this.metadata,

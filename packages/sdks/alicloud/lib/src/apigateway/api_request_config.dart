@@ -20,7 +20,7 @@ class ApiRequestConfig {
   /// [mode] The mode of the parameters between request parameters and service parameters, which support the values of 'MAPPING' and 'PASSTHROUGH'.
   /// [path] The request path of the api.
   /// [protocol] The protocol of api which supports values of 'HTTP','HTTPS' or 'HTTP,HTTPS'.
-  ApiRequestConfig({
+  const ApiRequestConfig({
     this.bodyFormat,
     required this.method,
     required this.mode,

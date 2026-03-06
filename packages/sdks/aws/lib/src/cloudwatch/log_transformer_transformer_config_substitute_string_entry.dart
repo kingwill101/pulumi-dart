@@ -14,7 +14,7 @@ class LogTransformerTransformerConfigSubstituteStringEntry {
   /// [from] Specifies the regular expression string to be replaced.
   /// [source] Specifies the key to modify.
   /// [to] Specifies the string to be substituted for each match of `from`.
-  LogTransformerTransformerConfigSubstituteStringEntry({
+  const LogTransformerTransformerConfigSubstituteStringEntry({
     required this.from,
     required this.source,
     required this.to,

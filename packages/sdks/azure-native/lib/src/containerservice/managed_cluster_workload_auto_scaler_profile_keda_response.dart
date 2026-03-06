@@ -9,7 +9,7 @@ class ManagedClusterWorkloadAutoScalerProfileKedaResponse {
 
   /// Creates a new [ManagedClusterWorkloadAutoScalerProfileKedaResponse].
   /// [enabled] Whether to enable KEDA.
-  ManagedClusterWorkloadAutoScalerProfileKedaResponse({
+  const ManagedClusterWorkloadAutoScalerProfileKedaResponse({
     required this.enabled,
   });
 

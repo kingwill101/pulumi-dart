@@ -61,7 +61,7 @@ class GetKubernetesClusterAgentPoolProfile {
   /// [vmSize] The size of each VM in the Agent Pool (e.g. `Standard_F1`).
   /// [vnetSubnetId] The ID of the Subnet where the Agents in the Pool are provisioned.
   /// [zones] A list of Availability Zones in which this Kubernetes Cluster is located.
-  GetKubernetesClusterAgentPoolProfile({
+  const GetKubernetesClusterAgentPoolProfile({
     required this.autoScalingEnabled,
     required this.count,
     required this.maxCount,

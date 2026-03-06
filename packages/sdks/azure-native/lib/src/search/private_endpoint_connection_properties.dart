@@ -20,7 +20,7 @@ class PrivateEndpointConnectionProperties {
   /// [privateEndpoint] The private endpoint resource from Microsoft.Network provider.
   /// [privateLinkServiceConnectionState] Describes the current state of an existing Azure Private Link service connection to the private endpoint.
   /// [provisioningState] The provisioning state of the private link service connection. Valid values are Updating, Deleting, Failed, Succeeded, Incomplete, or Canceled.
-  PrivateEndpointConnectionProperties({
+  const PrivateEndpointConnectionProperties({
     this.groupId,
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,

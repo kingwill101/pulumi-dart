@@ -37,7 +37,7 @@ class BgpvpnPortAssociateV2Args {
   /// [projectId] The ID of the project that owns the port
   /// [region] The region in which to obtain the V2 Networking client.
   /// [routes] A list of dictionaries containing the following keys:
-  BgpvpnPortAssociateV2Args({
+  const BgpvpnPortAssociateV2Args({
     this.advertiseFixedIps,
     required this.bgpvpnId,
     required this.portId,

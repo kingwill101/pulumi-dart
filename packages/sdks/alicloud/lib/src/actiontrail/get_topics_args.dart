@@ -28,7 +28,7 @@ class GetTopicsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [topic] A topic to filter results by the topic name.
-  GetTopicsArgs({
+  const GetTopicsArgs({
     this.ids,
     required this.instanceId,
     this.nameRegex,

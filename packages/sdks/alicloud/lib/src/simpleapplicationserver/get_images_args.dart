@@ -19,7 +19,7 @@ class GetImagesArgs {
   /// [nameRegex] Optional.
   /// [outputFile] Optional.
   /// [platform] Optional.
-  GetImagesArgs({
+  const GetImagesArgs({
     this.ids,
     this.imageType,
     this.nameRegex,

@@ -25,7 +25,7 @@ class IspCustomerArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  IspCustomerArgs({
+  const IspCustomerArgs({
     this.customerResourceName,
     this.location,
     this.properties,

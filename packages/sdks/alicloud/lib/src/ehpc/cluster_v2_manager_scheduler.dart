@@ -16,7 +16,7 @@ class ClusterV2ManagerScheduler {
   /// Creates a new [ClusterV2ManagerScheduler].
   /// [type] The scheduler type. Valid values:
   /// [version] Optional.
-  ClusterV2ManagerScheduler({
+  const ClusterV2ManagerScheduler({
     this.type,
     this.version,
   });

@@ -50,7 +50,7 @@ class PipelineArgs {
   /// [resourceGroupName] The resource group name.
   /// [runDimensions] Dimensions emitted by Pipeline.
   /// [variables] List of variables for pipeline.
-  PipelineArgs({
+  const PipelineArgs({
     this.activities,
     this.annotations,
     this.concurrency,

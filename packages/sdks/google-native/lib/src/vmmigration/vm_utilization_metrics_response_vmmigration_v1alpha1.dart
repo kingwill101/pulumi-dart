@@ -54,7 +54,7 @@ class VmUtilizationMetricsResponseVmmigrationV1alpha1 {
   /// [networkThroughputAverageKbps] Average network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
   /// [networkThroughputMax] Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
   /// [networkThroughputMaxKbps] Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second.
-  VmUtilizationMetricsResponseVmmigrationV1alpha1({
+  const VmUtilizationMetricsResponseVmmigrationV1alpha1({
     required this.cpuAverage,
     required this.cpuAveragePercent,
     required this.cpuMax,

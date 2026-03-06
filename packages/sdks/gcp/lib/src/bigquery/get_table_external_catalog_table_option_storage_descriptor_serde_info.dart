@@ -14,7 +14,7 @@ class GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo {
   /// [name] Name of the SerDe. The maximum length is 256 characters.
   /// [parameters] Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
   /// [serializationLibrary] Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
-  GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo({
+  const GetTableExternalCatalogTableOptionStorageDescriptorSerdeInfo({
     required this.name,
     required this.parameters,
     required this.serializationLibrary,

@@ -13,7 +13,7 @@ class ZipDeflateReadSettingsResponse {
   /// Creates a new [ZipDeflateReadSettingsResponse].
   /// [preserveZipFileNameAsFolder] Preserve the zip file name as folder path. Type: boolean (or Expression with resultType boolean).
   /// [type] The Compression setting type.
-  ZipDeflateReadSettingsResponse({
+  const ZipDeflateReadSettingsResponse({
     this.preserveZipFileNameAsFolder,
     required this.type,
   });

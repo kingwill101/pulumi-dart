@@ -24,7 +24,7 @@ class GetOrganizationsResult {
   /// [organizations] A list of Rdc Organizations. Each element contains the following attributes:
   /// [outputFile] Optional.
   /// [realPk] Optional.
-  GetOrganizationsResult({
+  const GetOrganizationsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

@@ -45,7 +45,7 @@ class TrunkArgs {
   /// [subPorts] The set of ports that will be made subports of the trunk.
   /// [tags] A set of string tags for the port.
   /// [tenantId] The owner of the Trunk. Required if admin wants
-  TrunkArgs({
+  const TrunkArgs({
     this.adminStateUp,
     this.description,
     this.name,

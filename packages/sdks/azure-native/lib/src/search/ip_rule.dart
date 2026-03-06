@@ -9,7 +9,7 @@ class IpRule {
 
   /// Creates a new [IpRule].
   /// [value] Value corresponding to a single IPv4 address (eg., 123.1.2.3) or an IP range in CIDR format (eg., 123.1.2.3/24) to be allowed.
-  IpRule({
+  const IpRule({
     this.value,
   });
 

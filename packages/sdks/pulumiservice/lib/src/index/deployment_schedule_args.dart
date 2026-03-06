@@ -28,7 +28,7 @@ class DeploymentScheduleArgs {
   /// [scheduleCron] Cron expression for recurring scheduled runs. If you are supplying this, do not supply timestamp.
   /// [stack] Stack name.
   /// [timestamp] The time at which the schedule should run, in ISO 8601 format. Eg: 2020-01-01T00:00:00Z. If you are supplying this, do not supply scheduleCron.
-  DeploymentScheduleArgs({
+  const DeploymentScheduleArgs({
     required this.organization,
     required this.project,
     required this.pulumiOperation,

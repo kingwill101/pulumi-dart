@@ -24,7 +24,7 @@ class WorkspaceServiceAccountTokenArgs {
   /// [secondsToLive] Sets how long the token will be valid, in seconds. You can set the time up to 30 days in the future.
   /// [serviceAccountId] The ID of the service account for which to create a token.
   /// [workspaceId] The Grafana workspace with which the service account token is associated.
-  WorkspaceServiceAccountTokenArgs({
+  const WorkspaceServiceAccountTokenArgs({
     this.name,
     this.region,
     required this.secondsToLive,

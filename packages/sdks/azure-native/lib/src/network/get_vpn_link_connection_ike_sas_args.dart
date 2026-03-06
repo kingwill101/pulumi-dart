@@ -21,7 +21,7 @@ class GetVpnLinkConnectionIkeSasArgs {
   /// [gatewayName] The name of the gateway.
   /// [linkConnectionName] The name of the vpn link connection.
   /// [resourceGroupName] The name of the resource group.
-  GetVpnLinkConnectionIkeSasArgs({
+  const GetVpnLinkConnectionIkeSasArgs({
     required this.connectionName,
     required this.gatewayName,
     required this.linkConnectionName,

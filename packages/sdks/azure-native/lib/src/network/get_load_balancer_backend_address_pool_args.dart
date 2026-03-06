@@ -18,7 +18,7 @@ class GetLoadBalancerBackendAddressPoolArgs {
   /// [backendAddressPoolName] The name of the backend address pool.
   /// [loadBalancerName] The name of the load balancer.
   /// [resourceGroupName] The name of the resource group.
-  GetLoadBalancerBackendAddressPoolArgs({
+  const GetLoadBalancerBackendAddressPoolArgs({
     required this.backendAddressPoolName,
     required this.loadBalancerName,
     required this.resourceGroupName,

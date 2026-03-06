@@ -23,7 +23,7 @@ class PolicyVMWorkloadProtectionPolicyRetentionYearly {
   /// [months] The months of the year to retain backups of. Possible values are `January`, `February`, `March`, `April`, `May`, `June`, `July`, `August`, `September`, `October`, `November` and `December`.
   /// [weekdays] The weekday backups to retain. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` or `Saturday`.
   /// [weeks] The weeks of the month to retain backups of. Possible values are `First`, `Second`, `Third`, `Fourth`, `Last`.
-  PolicyVMWorkloadProtectionPolicyRetentionYearly({
+  const PolicyVMWorkloadProtectionPolicyRetentionYearly({
     required this.count,
     required this.formatType,
     this.monthdays,

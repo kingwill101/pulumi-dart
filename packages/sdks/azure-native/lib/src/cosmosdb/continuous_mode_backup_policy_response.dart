@@ -18,7 +18,7 @@ class ContinuousModeBackupPolicyResponse {
   /// [continuousModeProperties] Configuration values for continuous mode backup
   /// [migrationState] The object representing the state of the migration between the backup policies.
   /// [type] Describes the mode of backups.
-  ContinuousModeBackupPolicyResponse({
+  const ContinuousModeBackupPolicyResponse({
     this.continuousModeProperties,
     this.migrationState,
     required this.type,

@@ -30,7 +30,7 @@ class GetProductVersionsResult {
   /// [productId] Required.
   /// [productVersions] A list of Product Version Entries. Each element contains the following attributes:
   /// [versions] Required.
-  GetProductVersionsResult({
+  const GetProductVersionsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

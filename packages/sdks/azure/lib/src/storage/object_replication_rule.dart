@@ -19,7 +19,7 @@ class ObjectReplicationRule {
   /// [filterOutBlobsWithPrefixes] Specifies a list of filters prefixes, the blobs whose names begin with which will be replicated.
   /// [name] Optional.
   /// [sourceContainerName] The source storage container name.
-  ObjectReplicationRule({
+  const ObjectReplicationRule({
     this.copyBlobsCreatedAfter,
     required this.destinationContainerName,
     this.filterOutBlobsWithPrefixes,

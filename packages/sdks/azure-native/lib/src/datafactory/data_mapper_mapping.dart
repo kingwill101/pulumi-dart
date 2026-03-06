@@ -23,7 +23,7 @@ class DataMapperMapping {
   /// [sourceDenormalizeInfo] This holds the source denormalization information used while joining multiple sources.
   /// [sourceEntityName] Name of the source table
   /// [targetEntityName] Name of the target table
-  DataMapperMapping({
+  const DataMapperMapping({
     this.attributeMappingInfo,
     this.sourceConnectionReference,
     this.sourceDenormalizeInfo,

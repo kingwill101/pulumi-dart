@@ -15,7 +15,7 @@ class GetOrganizationDiscoveryConfigArgs {
   /// [discoveryConfigId] Required.
   /// [location] Required.
   /// [organizationId] Required.
-  GetOrganizationDiscoveryConfigArgs({
+  const GetOrganizationDiscoveryConfigArgs({
     required this.discoveryConfigId,
     required this.location,
     required this.organizationId,

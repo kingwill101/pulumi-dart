@@ -14,7 +14,7 @@ class TableAclAccessPolicy {
   /// [expiry] The ISO8061 UTC time at which this Access Policy should be valid until.
   /// [permissions] The permissions which should associated with this Shared Identifier.
   /// [start] The ISO8061 UTC time at which this Access Policy should be valid from.
-  TableAclAccessPolicy({
+  const TableAclAccessPolicy({
     required this.expiry,
     required this.permissions,
     required this.start,

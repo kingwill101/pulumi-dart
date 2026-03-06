@@ -44,7 +44,7 @@ class PlanRule {
   /// [startWindow] The amount of time in minutes before beginning a backup.
   /// [targetLogicallyAirGappedBackupVaultArn] The ARN of a logically air-gapped vault. ARN must be in the same account and region. If provided, supported fully managed resources back up directly to logically air-gapped vault, while other supported resources create a temporary (billable) snapshot in backup vault, then copy it to logically air-gapped vault. Unsupported resources only back up to the specified backup vault.
   /// [targetVaultName] The name of a logical container where backups are stored.
-  PlanRule({
+  const PlanRule({
     this.completionWindow,
     this.copyActions,
     this.enableContinuousBackup,

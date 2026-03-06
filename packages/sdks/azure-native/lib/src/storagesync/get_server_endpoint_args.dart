@@ -21,7 +21,7 @@ class GetServerEndpointArgs {
   /// [serverEndpointName] Name of Server Endpoint object.
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
   /// [syncGroupName] Name of Sync Group resource.
-  GetServerEndpointArgs({
+  const GetServerEndpointArgs({
     required this.resourceGroupName,
     required this.serverEndpointName,
     required this.storageSyncServiceName,

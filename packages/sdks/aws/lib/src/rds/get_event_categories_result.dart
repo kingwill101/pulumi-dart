@@ -15,7 +15,7 @@ class GetEventCategoriesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [sourceType] Optional.
-  GetEventCategoriesResult({
+  const GetEventCategoriesResult({
     required this.eventCategories,
     required this.id,
     required this.region,

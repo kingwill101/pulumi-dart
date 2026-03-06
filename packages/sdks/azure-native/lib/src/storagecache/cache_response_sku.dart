@@ -9,7 +9,7 @@ class CacheResponseSku {
 
   /// Creates a new [CacheResponseSku].
   /// [name] SKU name for this cache.
-  CacheResponseSku({
+  const CacheResponseSku({
     this.name,
   });
 

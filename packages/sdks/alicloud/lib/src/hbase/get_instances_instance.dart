@@ -71,7 +71,7 @@ class GetInstancesInstance {
   /// [vpcId] VPC ID the instance belongs to.
   /// [vswitchId] VSwitch ID the instance belongs to.
   /// [zoneId] Zone ID the instance belongs to.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.backupStatus,
     required this.coreDiskSize,
     required this.coreDiskType,

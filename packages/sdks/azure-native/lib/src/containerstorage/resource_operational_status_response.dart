@@ -12,7 +12,7 @@ class ResourceOperationalStatusResponse {
   /// Creates a new [ResourceOperationalStatusResponse].
   /// [message] Reason for state.
   /// [state] state of the resource
-  ResourceOperationalStatusResponse({
+  const ResourceOperationalStatusResponse({
     this.message,
     required this.state,
   });

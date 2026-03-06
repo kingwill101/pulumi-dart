@@ -17,7 +17,7 @@ class CustomContainerUserSourceInfoResponse {
   /// [customContainer] Custom container payload
   /// [type] Type of the source uploaded
   /// [version] Version of the source
-  CustomContainerUserSourceInfoResponse({
+  const CustomContainerUserSourceInfoResponse({
     this.customContainer,
     required this.type,
     this.version,

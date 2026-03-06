@@ -30,7 +30,7 @@ class RouteFilterRuleResponse {
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the route filter rule resource.
   /// [routeFilterRuleType] The rule type of the rule.
-  RouteFilterRuleResponse({
+  const RouteFilterRuleResponse({
     required this.access,
     required this.communities,
     required this.etag,

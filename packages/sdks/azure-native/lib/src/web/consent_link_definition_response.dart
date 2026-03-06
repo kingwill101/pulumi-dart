@@ -18,7 +18,7 @@ class ConsentLinkDefinitionResponse {
   /// [firstPartyLoginUri] URI for first party login
   /// [link] URI for the consent link
   /// [status] Status of the link
-  ConsentLinkDefinitionResponse({
+  const ConsentLinkDefinitionResponse({
     this.displayName,
     this.firstPartyLoginUri,
     this.link,

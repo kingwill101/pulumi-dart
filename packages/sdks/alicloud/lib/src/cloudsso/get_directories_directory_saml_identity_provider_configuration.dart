@@ -20,7 +20,7 @@ class GetDirectoriesDirectorySamlIdentityProviderConfiguration {
   /// [entityId] SAML IdPEntityID.
   /// [loginUrl] SAML IdP http-post Binding address.
   /// [ssoStatus] SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-  GetDirectoriesDirectorySamlIdentityProviderConfiguration({
+  const GetDirectoriesDirectorySamlIdentityProviderConfiguration({
     required this.createTime,
     required this.encodedMetadataDocument,
     required this.entityId,

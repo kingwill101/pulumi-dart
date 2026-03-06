@@ -21,7 +21,7 @@ class ClusterUpdateStrategyResponse {
   /// [thresholdType] Selection of how the threshold should be evaluated.
   /// [thresholdValue] The numeric threshold value.
   /// [waitTimeMinutes] The time to wait between the increments of update defined by the strategy.
-  ClusterUpdateStrategyResponse({
+  const ClusterUpdateStrategyResponse({
     this.maxUnavailable,
     required this.strategyType,
     required this.thresholdType,

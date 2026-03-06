@@ -88,7 +88,7 @@ class GetHybridMonitorSlsTasksTask {
   /// [taskType] Monitoring Task type.
   /// [uploadRegion] The region where the host resides.
   /// [yarmConfig] Required.
-  GetHybridMonitorSlsTasksTask({
+  const GetHybridMonitorSlsTasksTask({
     required this.attachLabels,
     required this.collectInterval,
     required this.collectTargetEndpoint,

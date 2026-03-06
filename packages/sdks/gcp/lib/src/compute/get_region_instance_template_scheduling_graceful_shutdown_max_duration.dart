@@ -15,7 +15,7 @@ class GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration {
   /// Creates a new [GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration({
+  const GetRegionInstanceTemplateSchedulingGracefulShutdownMaxDuration({
     required this.nanos,
     required this.seconds,
   });

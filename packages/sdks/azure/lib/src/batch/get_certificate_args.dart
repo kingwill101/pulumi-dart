@@ -18,7 +18,7 @@ class GetCertificateArgs {
   /// [accountName] The name of the Batch account.
   /// [name] The name of the Batch certificate.
   /// [resourceGroupName] The Name of the Resource Group where this Batch account exists.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.accountName,
     required this.name,
     required this.resourceGroupName,

@@ -10,7 +10,7 @@ class VirtualMachineScaleSetVMNetworkProfileConfigurationResponse {
 
   /// Creates a new [VirtualMachineScaleSetVMNetworkProfileConfigurationResponse].
   /// [networkInterfaceConfigurations] The list of network configurations.
-  VirtualMachineScaleSetVMNetworkProfileConfigurationResponse({
+  const VirtualMachineScaleSetVMNetworkProfileConfigurationResponse({
     this.networkInterfaceConfigurations,
   });
 

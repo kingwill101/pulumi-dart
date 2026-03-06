@@ -12,7 +12,7 @@ class MultiRegionSettingsResponse {
   /// Creates a new [MultiRegionSettingsResponse].
   /// [regions] Optional.
   /// [routingMethod] Multiregion routing methods.
-  MultiRegionSettingsResponse({
+  const MultiRegionSettingsResponse({
     this.regions,
     this.routingMethod,
   });

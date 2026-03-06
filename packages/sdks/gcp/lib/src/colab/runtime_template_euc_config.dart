@@ -8,7 +8,7 @@ class RuntimeTemplateEucConfig {
 
   /// Creates a new [RuntimeTemplateEucConfig].
   /// [eucDisabled] Disable end user credential access for the runtime.
-  RuntimeTemplateEucConfig({
+  const RuntimeTemplateEucConfig({
     this.eucDisabled,
   });
 

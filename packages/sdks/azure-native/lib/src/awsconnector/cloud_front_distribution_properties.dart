@@ -31,7 +31,7 @@ class CloudFrontDistributionProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CloudFrontDistributionProperties({
+  const CloudFrontDistributionProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

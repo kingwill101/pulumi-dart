@@ -52,7 +52,7 @@ class GetDiskReplicaGroupsGroup {
   /// [standbyRegion] The initial destination region of the replication group.
   /// [standbyZone] The initial destination zone of the replication group.
   /// [status] The status of the consistent replication group. Possible values:
-  GetDiskReplicaGroupsGroup({
+  const GetDiskReplicaGroupsGroup({
     required this.description,
     required this.destinationRegionId,
     required this.destinationZoneId,

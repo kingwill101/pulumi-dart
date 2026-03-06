@@ -84,7 +84,7 @@ class MulticastConsumerAssociationNetworkservicesState {
   /// [states] (Output)
   /// [uniqueId] [Output only] The Google-generated UUID for the resource. This value is
   /// [updateTime] [Output only] The timestamp when the Multicast Consumer Association was
-  MulticastConsumerAssociationNetworkservicesState({
+  const MulticastConsumerAssociationNetworkservicesState({
     this.createTime,
     this.description,
     this.effectiveLabels,

@@ -18,7 +18,7 @@ class EventStreamState {
   /// [destinationStreamArn] The Amazon Resource Name (ARN) of the Amazon Kinesis stream or Firehose delivery stream to which you want to publish events.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] The IAM role that authorizes Amazon Pinpoint to publish events to the stream in your account.
-  EventStreamState({
+  const EventStreamState({
     this.applicationId,
     this.destinationStreamArn,
     this.region,

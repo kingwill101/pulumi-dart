@@ -9,7 +9,7 @@ class GetGenaiKnowledgeBasesSort {
   /// Creates a new [GetGenaiKnowledgeBasesSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGenaiKnowledgeBasesSort({
+  const GetGenaiKnowledgeBasesSort({
     this.direction,
     required this.key,
   });

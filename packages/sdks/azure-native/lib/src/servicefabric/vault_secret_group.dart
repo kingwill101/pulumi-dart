@@ -14,7 +14,7 @@ class VaultSecretGroup {
   /// Creates a new [VaultSecretGroup].
   /// [sourceVault] The relative URL of the Key Vault containing all of the certificates in VaultCertificates.
   /// [vaultCertificates] The list of key vault references in SourceVault which contain certificates.
-  VaultSecretGroup({
+  const VaultSecretGroup({
     required this.sourceVault,
     required this.vaultCertificates,
   });

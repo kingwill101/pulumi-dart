@@ -17,7 +17,7 @@ class GetAccountAvailabilityResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] The region ID.
   /// [unavailables] A set of services which are unavailable to the account in a region.
-  GetAccountAvailabilityResult({
+  const GetAccountAvailabilityResult({
     required this.availables,
     required this.id,
     required this.region,

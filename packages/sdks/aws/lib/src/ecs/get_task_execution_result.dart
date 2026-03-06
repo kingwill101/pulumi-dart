@@ -55,7 +55,7 @@ class GetTaskExecutionResult {
   /// [tags] Optional.
   /// [taskArns] A list of the provisioned task ARNs.
   /// [taskDefinition] Required.
-  GetTaskExecutionResult({
+  const GetTaskExecutionResult({
     this.capacityProviderStrategies,
     this.clientToken,
     required this.cluster,

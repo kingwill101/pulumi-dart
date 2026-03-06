@@ -36,7 +36,7 @@ class ProxyConnection {
   /// [privateKey] The contents of an SSH key to use for the connection. This takes preference over the password if provided.
   /// [privateKeyPassword] The password to use in case the private key is encrypted.
   /// [user] The user that we should use for the connection to the bastion host.
-  ProxyConnection({
+  const ProxyConnection({
     this.agentSocketPath,
     this.dialErrorLimit,
     required this.host,

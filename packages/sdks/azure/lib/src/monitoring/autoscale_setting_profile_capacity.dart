@@ -16,7 +16,7 @@ class AutoscaleSettingProfileCapacity {
   /// [default_] The number of instances that are available for scaling if metrics are not available for evaluation. The default is only used if the current instance count is lower than the default. Valid values are between `0` and `1000`.
   /// [maximum] The maximum number of instances for this resource. Valid values are between `0` and `1000`.
   /// [minimum] The minimum number of instances for this resource. Valid values are between `0` and `1000`.
-  AutoscaleSettingProfileCapacity({
+  const AutoscaleSettingProfileCapacity({
     required this.default_,
     required this.maximum,
     required this.minimum,

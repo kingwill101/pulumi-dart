@@ -7,7 +7,7 @@ class ClusterGetKubeconfigResult {
 
   /// Creates a new [ClusterGetKubeconfigResult].
   /// [kubeconfig] Required.
-  ClusterGetKubeconfigResult({
+  const ClusterGetKubeconfigResult({
     required this.kubeconfig,
   });
 

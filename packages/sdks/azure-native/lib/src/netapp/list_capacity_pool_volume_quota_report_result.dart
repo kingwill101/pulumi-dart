@@ -13,7 +13,7 @@ class ListCapacityPoolVolumeQuotaReportResult {
   /// Creates a new [ListCapacityPoolVolumeQuotaReportResult].
   /// [nextLink] URL to get the next set of results.
   /// [value] List of volume quota report records
-  ListCapacityPoolVolumeQuotaReportResult({
+  const ListCapacityPoolVolumeQuotaReportResult({
     this.nextLink,
     this.value,
   });

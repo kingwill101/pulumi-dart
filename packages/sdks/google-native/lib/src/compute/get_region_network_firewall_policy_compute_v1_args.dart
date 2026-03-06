@@ -15,7 +15,7 @@ class GetRegionNetworkFirewallPolicyComputeV1Args {
   /// [firewallPolicy] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionNetworkFirewallPolicyComputeV1Args({
+  const GetRegionNetworkFirewallPolicyComputeV1Args({
     required this.firewallPolicy,
     this.project,
     required this.region,

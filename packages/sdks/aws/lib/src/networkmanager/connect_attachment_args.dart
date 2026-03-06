@@ -30,7 +30,7 @@ class ConnectAttachmentArgs {
   /// [routingPolicyLabel] The routing policy label to apply to the Connect attachment for traffic routing decisions. Maximum length of 256 characters. Changing this value will force recreation of the resource.
   /// [tags] Key-value tags for the attachment. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transportAttachmentId] ID of the attachment between the two connections.
-  ConnectAttachmentArgs({
+  const ConnectAttachmentArgs({
     required this.coreNetworkId,
     required this.edgeLocation,
     required this.options,

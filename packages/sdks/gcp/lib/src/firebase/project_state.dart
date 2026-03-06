@@ -16,7 +16,7 @@ class ProjectState {
   /// [displayName] The GCP project display name
   /// [project] The ID of the project in which the resource belongs.
   /// [projectNumber] The number of the Google Project that Firebase is enabled on.
-  ProjectState({
+  const ProjectState({
     this.displayName,
     this.project,
     this.projectNumber,

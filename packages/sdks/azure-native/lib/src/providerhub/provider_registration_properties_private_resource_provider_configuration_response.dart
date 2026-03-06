@@ -9,7 +9,7 @@ class ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse
 
   /// Creates a new [ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse].
   /// [allowedSubscriptions] The allowed subscriptions.
-  ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse({
+  const ProviderRegistrationPropertiesPrivateResourceProviderConfigurationResponse({
     this.allowedSubscriptions,
   });
 

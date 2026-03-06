@@ -15,7 +15,7 @@ class AccountResourceResponseProperties {
   /// [appId] Customer owned application ID
   /// [billingPlanId] Billing Plan Id
   /// [provisioningState] Provisioning state.
-  AccountResourceResponseProperties({
+  const AccountResourceResponseProperties({
     required this.appId,
     required this.billingPlanId,
     required this.provisioningState,

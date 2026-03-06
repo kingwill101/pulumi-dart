@@ -43,7 +43,7 @@ class AzureStorageLinkedService {
   /// [sasUri] SAS URI of the Azure Storage resource. It is mutually exclusive with connectionString property. Type: string, SecureString or AzureKeyVaultSecretReference.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  AzureStorageLinkedService({
+  const AzureStorageLinkedService({
     this.accountKey,
     this.annotations,
     this.connectVia,

@@ -17,7 +17,7 @@ class AzureWorkloadContainerExtendedInfoResponse {
   /// [hostServerName] Host Os Name in case of Stand Alone and Cluster Name in case of distributed container.
   /// [inquiryInfo] Inquiry Status for the container.
   /// [nodesList] List of the nodes in case of distributed container.
-  AzureWorkloadContainerExtendedInfoResponse({
+  const AzureWorkloadContainerExtendedInfoResponse({
     this.hostServerName,
     this.inquiryInfo,
     this.nodesList,

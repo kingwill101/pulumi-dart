@@ -13,7 +13,7 @@ class VirtualMachineScaleSetExtension {
   /// Creates a new [VirtualMachineScaleSetExtension].
   /// [name] The name of the extension.
   /// [properties] Describes the properties of a Virtual Machine Scale Set Extension.
-  VirtualMachineScaleSetExtension({
+  const VirtualMachineScaleSetExtension({
     this.name,
     this.properties,
   });

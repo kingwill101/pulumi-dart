@@ -14,7 +14,7 @@ class ActivityLogAlertCriteriaResourceHealth {
   /// [currents] The current resource health statuses that will log an alert. Possible values are `Available`, `Degraded`, `Unavailable` and `Unknown`.
   /// [previouses] The previous resource health statuses that will log an alert. Possible values are `Available`, `Degraded`, `Unavailable` and `Unknown`.
   /// [reasons] The reason that will log an alert. Possible values are `PlatformInitiated` (such as a problem with the resource in an affected region of an Azure incident), `UserInitiated` (such as a shutdown request of a VM) and `Unknown`.
-  ActivityLogAlertCriteriaResourceHealth({
+  const ActivityLogAlertCriteriaResourceHealth({
     this.currents,
     this.previouses,
     this.reasons,

@@ -44,7 +44,7 @@ class AppVersionSnapshotToolset {
   /// [name] (Output)
   /// [openApiToolsets] (Output)
   /// [updateTime] (Output)
-  AppVersionSnapshotToolset({
+  const AppVersionSnapshotToolset({
     this.createTime,
     this.description,
     this.displayName,

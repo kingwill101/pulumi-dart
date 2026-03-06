@@ -18,7 +18,7 @@ class TableTableReplicationInfo {
   /// [sourceDatasetId] The ID of the source dataset.
   /// [sourceProjectId] The ID of the source project.
   /// [sourceTableId] The ID of the source materialized view.
-  TableTableReplicationInfo({
+  const TableTableReplicationInfo({
     this.replicationIntervalMs,
     required this.sourceDatasetId,
     required this.sourceProjectId,

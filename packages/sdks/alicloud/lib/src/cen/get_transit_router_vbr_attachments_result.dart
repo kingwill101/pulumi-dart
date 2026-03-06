@@ -25,7 +25,7 @@ class GetTransitRouterVbrAttachmentsResult {
   /// [outputFile] Optional.
   /// [status] The status of the transit router attachment.
   /// [transitRouterId] Optional.
-  GetTransitRouterVbrAttachmentsResult({
+  const GetTransitRouterVbrAttachmentsResult({
     required this.attachments,
     required this.cenId,
     required this.id,

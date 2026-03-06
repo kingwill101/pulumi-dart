@@ -99,7 +99,7 @@ class GetInterconnectResult {
   /// [selfLink] Server-defined URL for the resource.
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [state] The current state of Interconnect functionality, which can take one of the following values: - ACTIVE: The Interconnect is valid, turned up and ready to use. Attachments may be provisioned on this Interconnect. - UNPROVISIONED: The Interconnect has not completed turnup. No attachments may be provisioned on this Interconnect. - UNDER_MAINTENANCE: The Interconnect is undergoing internal maintenance. No attachments may be provisioned or updated on this Interconnect.
-  GetInterconnectResult({
+  const GetInterconnectResult({
     required this.adminEnabled,
     required this.availableFeatures,
     required this.circuitInfos,

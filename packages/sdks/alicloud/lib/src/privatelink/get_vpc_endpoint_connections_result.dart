@@ -28,7 +28,7 @@ class GetVpcEndpointConnectionsResult {
   /// [outputFile] Optional.
   /// [serviceId] Required.
   /// [status] The status of Vpc Endpoint Connection.
-  GetVpcEndpointConnectionsResult({
+  const GetVpcEndpointConnectionsResult({
     required this.connections,
     this.endpointId,
     this.endpointOwnerId,

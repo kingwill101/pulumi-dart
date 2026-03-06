@@ -8,7 +8,7 @@ class AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload {
 
   /// Creates a new [AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload].
   /// [payload] The inline schema payload content.
-  AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload({
+  const AgentcoreGatewayTargetTargetConfigurationMcpSmithyModelInlinePayload({
     required this.payload,
   });
 

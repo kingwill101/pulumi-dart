@@ -15,7 +15,7 @@ class GetResourcePolicyComputeV1Args {
   /// [project] Optional.
   /// [region] Required.
   /// [resourcePolicy] Required.
-  GetResourcePolicyComputeV1Args({
+  const GetResourcePolicyComputeV1Args({
     this.project,
     required this.region,
     required this.resourcePolicy,

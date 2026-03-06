@@ -69,7 +69,7 @@ class RecoveryServicesProviderPropertiesResponse {
   /// [providerVersionState] DRA version status.
   /// [resourceAccessIdentityDetails] The resource access identity details.
   /// [serverVersion] The fabric provider.
-  RecoveryServicesProviderPropertiesResponse({
+  const RecoveryServicesProviderPropertiesResponse({
     this.allowedScenarios,
     this.authenticationIdentityDetails,
     this.biosId,

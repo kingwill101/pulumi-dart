@@ -8,7 +8,7 @@ class VirtualNetworkGatewayCustomRoute {
 
   /// Creates a new [VirtualNetworkGatewayCustomRoute].
   /// [addressPrefixes] A list of address blocks reserved for this virtual network in CIDR notation.
-  VirtualNetworkGatewayCustomRoute({
+  const VirtualNetworkGatewayCustomRoute({
     this.addressPrefixes,
   });
 

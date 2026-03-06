@@ -24,7 +24,7 @@ class GetPolicyVersionsResult {
   /// [policyName] Required.
   /// [policyType] Required.
   /// [versions] A list of policy versions. Each element contains the following attributes:
-  GetPolicyVersionsResult({
+  const GetPolicyVersionsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

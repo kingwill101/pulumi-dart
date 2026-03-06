@@ -28,7 +28,7 @@ class ResourceGroupState {
   /// [resourceGroupName] The unique identifier of the resource group. The identifier must be 3 to 50 characters in length and can contain letters, digits, and hyphens (-). The identifier must start with a letter.
   /// [status] The status of the resource group.
   /// [tags] A mapping of tags to assign to the resource.
-  ResourceGroupState({
+  const ResourceGroupState({
     this.accountId,
     this.displayName,
     this.name,

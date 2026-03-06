@@ -38,7 +38,7 @@ class EventSubscriptionArgs {
   /// [project] Optional.
   /// [subscriber] Optional. name of the Subscriber for the current EventSubscription.
   /// [subscriberLink] Optional. Link for Subscriber of the current EventSubscription.
-  EventSubscriptionArgs({
+  const EventSubscriptionArgs({
     required this.connectionId,
     this.destinations,
     required this.eventSubscriptionId,

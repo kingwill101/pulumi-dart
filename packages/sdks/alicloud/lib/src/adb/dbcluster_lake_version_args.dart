@@ -91,7 +91,7 @@ class DBClusterLakeVersionArgs {
   /// [vpcId] The vpc ID of the resource.
   /// [vswitchId] The ID of the vSwitch.
   /// [zoneId] The zone ID of the resource.
-  DBClusterLakeVersionArgs({
+  const DBClusterLakeVersionArgs({
     this.backupSetId,
     this.computeResource,
     this.dbClusterDescription,

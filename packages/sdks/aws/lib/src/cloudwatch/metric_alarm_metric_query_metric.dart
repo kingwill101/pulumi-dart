@@ -28,7 +28,7 @@ class MetricAlarmMetricQueryMetric {
   /// [period] Granularity in seconds of returned data points.
   /// [stat] The statistic to apply to this metric.
   /// [unit] The unit for this metric.
-  MetricAlarmMetricQueryMetric({
+  const MetricAlarmMetricQueryMetric({
     this.dimensions,
     required this.metricName,
     this.namespace,

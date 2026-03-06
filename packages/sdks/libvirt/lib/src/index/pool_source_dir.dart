@@ -8,7 +8,7 @@ class PoolSourceDir {
 
   /// Creates a new [PoolSourceDir].
   /// [path] Provides the path to the directory that serves as a source for the storage pool.
-  PoolSourceDir({
+  const PoolSourceDir({
     required this.path,
   });
 

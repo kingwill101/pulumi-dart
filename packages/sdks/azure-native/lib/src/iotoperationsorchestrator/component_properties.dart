@@ -18,7 +18,7 @@ class ComponentProperties {
   /// [name] Name of the component.
   /// [properties] Properties of the component.
   /// [type] Component type.
-  ComponentProperties({
+  const ComponentProperties({
     this.dependencies,
     required this.name,
     this.properties,

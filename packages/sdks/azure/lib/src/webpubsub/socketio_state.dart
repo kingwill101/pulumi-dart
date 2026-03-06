@@ -81,7 +81,7 @@ class SocketioState {
   /// [sku] One or more `sku` blocks as defined below.
   /// [tags] A mapping of tags which should be assigned to the Web PubSub Service.
   /// [tlsClientCertEnabled] Whether the service should request a client certificate during a TLS handshake. Defaults to `false`.
-  SocketioState({
+  const SocketioState({
     this.aadAuthEnabled,
     this.externalIp,
     this.hostname,

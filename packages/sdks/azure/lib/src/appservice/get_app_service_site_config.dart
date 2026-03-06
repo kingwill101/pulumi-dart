@@ -98,7 +98,7 @@ class GetAppServiceSiteConfig {
   /// [vnetRouteAllEnabled] (Optional) Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied?
   /// [websocketsEnabled] Are WebSockets enabled for this App Service?
   /// [windowsFxVersion] Windows Container Docker Image for the AppService.
-  GetAppServiceSiteConfig({
+  const GetAppServiceSiteConfig({
     required this.acrUseManagedIdentityCredentials,
     required this.acrUserManagedIdentityClientId,
     required this.alwaysOn,

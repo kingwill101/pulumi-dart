@@ -9,7 +9,7 @@ class RollbackConfig {
 
   /// Creates a new [RollbackConfig].
   /// [revision] The revision to rollback to. If set to 0, rollback to the last revision.
-  RollbackConfig({
+  const RollbackConfig({
     this.revision,
   });
 

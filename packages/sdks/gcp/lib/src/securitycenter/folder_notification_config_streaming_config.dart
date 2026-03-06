@@ -26,7 +26,7 @@ class FolderNotificationConfigStreamingConfig {
 
   /// Creates a new [FolderNotificationConfigStreamingConfig].
   /// [filter] Expression that defines the filter to apply across create/update
-  FolderNotificationConfigStreamingConfig({
+  const FolderNotificationConfigStreamingConfig({
     required this.filter,
   });
 

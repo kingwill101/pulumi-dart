@@ -20,7 +20,7 @@ class ClusterPscConnection {
   /// [network] The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
   /// [projectId] Output only. The consumer projectId where the forwarding rule is created from.
   /// [pscConnectionId] Output only. The PSC connection id of the forwarding rule connected to the service attachment.
-  ClusterPscConnection({
+  const ClusterPscConnection({
     this.address,
     this.forwardingRule,
     this.network,

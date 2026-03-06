@@ -34,7 +34,7 @@ class GetFirewallPolicyResult {
   /// [tags] A mapping of tags assigned to the Firewall Policy.
   /// [threatIntelligenceAllowlists] Required.
   /// [threatIntelligenceMode] Required.
-  GetFirewallPolicyResult({
+  const GetFirewallPolicyResult({
     required this.basePolicyId,
     required this.childPolicies,
     required this.dns,

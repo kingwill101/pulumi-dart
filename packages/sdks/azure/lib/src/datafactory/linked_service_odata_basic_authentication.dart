@@ -11,7 +11,7 @@ class LinkedServiceOdataBasicAuthentication {
   /// Creates a new [LinkedServiceOdataBasicAuthentication].
   /// [password] The password associated with the username, which can be used to authenticate to the OData endpoint.
   /// [username] The username which can be used to authenticate to the OData endpoint.
-  LinkedServiceOdataBasicAuthentication({
+  const LinkedServiceOdataBasicAuthentication({
     required this.password,
     required this.username,
   });

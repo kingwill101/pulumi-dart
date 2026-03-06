@@ -31,7 +31,7 @@ class AppSyncGraphqlApiProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  AppSyncGraphqlApiProperties({
+  const AppSyncGraphqlApiProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

@@ -11,7 +11,7 @@ class V2FunctionInstanceLifecycleConfigPreFreeze {
   /// Creates a new [V2FunctionInstanceLifecycleConfigPreFreeze].
   /// [handler] entry point of function.
   /// [timeout] max running time of function.
-  V2FunctionInstanceLifecycleConfigPreFreeze({
+  const V2FunctionInstanceLifecycleConfigPreFreeze({
     this.handler,
     this.timeout,
   });

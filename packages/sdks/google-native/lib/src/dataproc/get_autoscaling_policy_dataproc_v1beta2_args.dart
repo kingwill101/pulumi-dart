@@ -15,7 +15,7 @@ class GetAutoscalingPolicyDataprocV1beta2Args {
   /// [autoscalingPolicyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetAutoscalingPolicyDataprocV1beta2Args({
+  const GetAutoscalingPolicyDataprocV1beta2Args({
     required this.autoscalingPolicyId,
     required this.location,
     this.project,

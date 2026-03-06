@@ -17,7 +17,7 @@ class GetServiceServiceRegistry {
   /// [containerPort] Port on the container to associate with the load balancer.
   /// [port] Port value for service discovery
   /// [registryArn] ARN of the service registry
-  GetServiceServiceRegistry({
+  const GetServiceServiceRegistry({
     required this.containerName,
     required this.containerPort,
     required this.port,

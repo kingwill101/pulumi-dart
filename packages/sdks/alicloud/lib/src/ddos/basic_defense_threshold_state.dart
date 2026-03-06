@@ -33,7 +33,7 @@ class BasicDefenseThresholdState {
   /// [maxBps] The maximum traffic scrubbing threshold. Unit: Mbit/s.
   /// [maxPps] The maximum packet scrubbing threshold. Unit: pps.
   /// [pps] The current message number cleaning threshold. Unit: pps.
-  BasicDefenseThresholdState({
+  const BasicDefenseThresholdState({
     this.bps,
     this.ddosType,
     this.instanceId,

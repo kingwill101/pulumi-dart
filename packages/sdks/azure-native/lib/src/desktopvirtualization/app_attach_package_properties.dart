@@ -19,7 +19,7 @@ class AppAttachPackageProperties {
   /// [hostPoolReferences] List of Hostpool resource Ids.
   /// [image] Detailed properties for App Attach Package
   /// [keyVaultURL] URL path to certificate name located in keyVault
-  AppAttachPackageProperties({
+  const AppAttachPackageProperties({
     this.failHealthCheckOnStagingFailure,
     this.hostPoolReferences,
     this.image,

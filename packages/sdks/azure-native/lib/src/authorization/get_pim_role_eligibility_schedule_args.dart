@@ -15,7 +15,7 @@ class GetPimRoleEligibilityScheduleArgs {
   /// Creates a new [GetPimRoleEligibilityScheduleArgs].
   /// [roleEligibilityScheduleRequestName] The name (guid) of the role eligibility schedule request to get.
   /// [scope] The scope of the role eligibility schedule request.
-  GetPimRoleEligibilityScheduleArgs({
+  const GetPimRoleEligibilityScheduleArgs({
     required this.roleEligibilityScheduleRequestName,
     required this.scope,
   });

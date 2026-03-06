@@ -27,7 +27,7 @@ class VirtualHubRouteTableRouteArgs {
   /// [nextHop] The next hop's resource ID.
   /// [nextHopType] The type of next hop. Currently the only possible value is `ResourceId`. Defaults to `ResourceId`.
   /// [routeTableId] The ID of the Virtual Hub Route Table to link this route to. Changing this forces a new resource to be created.
-  VirtualHubRouteTableRouteArgs({
+  const VirtualHubRouteTableRouteArgs({
     required this.destinations,
     required this.destinationsType,
     this.name,

@@ -41,7 +41,7 @@ class DataScanArgs {
   /// [labels] Optional. User-defined labels for the scan.
   /// [location] Optional.
   /// [project] Optional.
-  DataScanArgs({
+  const DataScanArgs({
     required this.data,
     this.dataProfileSpec,
     this.dataQualitySpec,

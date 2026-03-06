@@ -17,7 +17,7 @@ class ServiceAttachmentConsumerAcceptList {
   /// [connectionLimit] The number of consumer forwarding rules the consumer project can
   /// [networkUrl] The network that is allowed to connect to this service attachment.
   /// [projectIdOrNum] A project that is allowed to connect to this service attachment.
-  ServiceAttachmentConsumerAcceptList({
+  const ServiceAttachmentConsumerAcceptList({
     required this.connectionLimit,
     this.networkUrl,
     this.projectIdOrNum,

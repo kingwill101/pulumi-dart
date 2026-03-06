@@ -56,7 +56,7 @@ class GetRelationshipResult {
   /// [relationshipName] The Relationship name.
   /// [tenantId] The hub name.
   /// [type] Resource type.
-  GetRelationshipResult({
+  const GetRelationshipResult({
     required this.azureApiVersion,
     this.cardinality,
     this.description,

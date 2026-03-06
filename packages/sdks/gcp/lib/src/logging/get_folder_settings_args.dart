@@ -12,7 +12,7 @@ class GetFolderSettingsArgs {
 
   /// Creates a new [GetFolderSettingsArgs].
   /// [folder] The ID of the folder for which to retrieve settings.
-  GetFolderSettingsArgs({
+  const GetFolderSettingsArgs({
     required this.folder,
   });
 

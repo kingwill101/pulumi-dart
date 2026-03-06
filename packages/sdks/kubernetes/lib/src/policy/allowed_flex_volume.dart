@@ -9,7 +9,7 @@ class AllowedFlexVolume {
 
   /// Creates a new [AllowedFlexVolume].
   /// [driver] driver is the name of the Flexvolume driver.
-  AllowedFlexVolume({
+  const AllowedFlexVolume({
     required this.driver,
   });
 

@@ -10,7 +10,7 @@ class KeyRingImportJobPublicKey {
 
   /// Creates a new [KeyRingImportJobPublicKey].
   /// [pem] (Output)
-  KeyRingImportJobPublicKey({
+  const KeyRingImportJobPublicKey({
     this.pem,
   });
 

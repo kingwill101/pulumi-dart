@@ -12,7 +12,7 @@ class ThirdPartyManagementSettingsResponse {
   /// Creates a new [ThirdPartyManagementSettingsResponse].
   /// [licenseCost] License Cost.
   /// [supportCost] Support Cost.
-  ThirdPartyManagementSettingsResponse({
+  const ThirdPartyManagementSettingsResponse({
     required this.licenseCost,
     required this.supportCost,
   });

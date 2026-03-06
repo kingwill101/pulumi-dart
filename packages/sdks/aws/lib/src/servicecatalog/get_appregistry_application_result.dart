@@ -24,7 +24,7 @@ class GetAppregistryApplicationResult {
   /// [name] Name of the application.
   /// [region] Required.
   /// [tags] A map of tags assigned to the Application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  GetAppregistryApplicationResult({
+  const GetAppregistryApplicationResult({
     required this.applicationTag,
     required this.arn,
     required this.description,

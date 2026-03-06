@@ -61,7 +61,7 @@ class ScalingScheduleResponse {
   /// [rampUpLoadBalancingAlgorithm] Load balancing algorithm for ramp up period.
   /// [rampUpMinimumHostsPct] Minimum host percentage for ramp up period.
   /// [rampUpStartTime] Starting time for ramp up period.
-  ScalingScheduleResponse({
+  const ScalingScheduleResponse({
     this.daysOfWeek,
     this.name,
     this.offPeakLoadBalancingAlgorithm,

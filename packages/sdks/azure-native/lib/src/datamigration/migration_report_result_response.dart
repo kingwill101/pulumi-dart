@@ -12,7 +12,7 @@ class MigrationReportResultResponse {
   /// Creates a new [MigrationReportResultResponse].
   /// [id] Migration validation result identifier
   /// [reportUrl] The url of the report.
-  MigrationReportResultResponse({
+  const MigrationReportResultResponse({
     this.id,
     this.reportUrl,
   });

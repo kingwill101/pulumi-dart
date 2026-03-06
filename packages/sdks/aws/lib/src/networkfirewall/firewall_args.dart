@@ -57,7 +57,7 @@ class FirewallArgs {
   /// [tags] Map of resource tags to associate with the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayId] . Required when creating a transit gateway-attached firewall. The unique identifier of the transit gateway to attach to this firewall. You can provide either a transit gateway from your account or one that has been shared with you through AWS Resource Access Manager
   /// [vpcId] Required when creating a VPC attached firewall. The unique identifier of the VPC where AWS Network Firewall should create the firewall.
-  FirewallArgs({
+  const FirewallArgs({
     this.availabilityZoneChangeProtection,
     this.availabilityZoneMappings,
     this.deleteProtection,

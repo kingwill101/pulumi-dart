@@ -51,7 +51,7 @@ class UserState {
   /// [tags] Tags to apply to the user. If configured with a provider
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [userId] The identifier for the user.
-  UserState({
+  const UserState({
     this.arn,
     this.directoryUserId,
     this.hierarchyGroupId,

@@ -19,7 +19,7 @@ class DiskPoolVolumeResponse {
   /// [mountOption] Mode that describes whether the LUN has to be mounted as a datastore or
   /// [path] Device path
   /// [targetId] Azure resource ID of the iSCSI target
-  DiskPoolVolumeResponse({
+  const DiskPoolVolumeResponse({
     required this.lunName,
     this.mountOption,
     required this.path,

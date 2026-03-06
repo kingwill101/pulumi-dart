@@ -20,7 +20,7 @@ class GetDataGroupResult {
   /// [partition] Required.
   /// [records] Specifies record of type (string/ip/integer)
   /// [type] The Data Group type (string, ip, integer)"
-  GetDataGroupResult({
+  const GetDataGroupResult({
     required this.id,
     required this.name,
     required this.partition,

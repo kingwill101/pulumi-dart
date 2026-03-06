@@ -92,7 +92,7 @@ class GetServerResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Server version.
-  GetServerResult({
+  const GetServerResult({
     this.administratorLogin,
     this.availabilityZone,
     required this.azureApiVersion,

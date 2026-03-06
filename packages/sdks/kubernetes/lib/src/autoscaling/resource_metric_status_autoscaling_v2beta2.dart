@@ -13,7 +13,7 @@ class ResourceMetricStatusAutoscalingV2beta2 {
   /// Creates a new [ResourceMetricStatusAutoscalingV2beta2].
   /// [current] current contains the current value for the given metric
   /// [name] Name is the name of the resource in question.
-  ResourceMetricStatusAutoscalingV2beta2({
+  const ResourceMetricStatusAutoscalingV2beta2({
     required this.current,
     required this.name,
   });

@@ -29,7 +29,7 @@ class DirectoryWorkspaceAccessProperties {
   /// [deviceTypeWeb] Indicates whether users can access their WorkSpaces through a web browser.
   /// [deviceTypeWindows] Indicates whether users can use Windows clients to access their WorkSpaces.
   /// [deviceTypeZeroclient] Indicates whether users can use zero client devices to access their WorkSpaces.
-  DirectoryWorkspaceAccessProperties({
+  const DirectoryWorkspaceAccessProperties({
     this.deviceTypeAndroid,
     this.deviceTypeChromeos,
     this.deviceTypeIos,

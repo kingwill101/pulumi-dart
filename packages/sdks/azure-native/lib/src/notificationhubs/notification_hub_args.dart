@@ -70,7 +70,7 @@ class NotificationHubArgs {
   /// [tags] Resource tags.
   /// [wnsCredential] Description of a NotificationHub WnsCredential.
   /// [xiaomiCredential] Description of a NotificationHub XiaomiCredential.
-  NotificationHubArgs({
+  const NotificationHubArgs({
     this.admCredential,
     this.apnsCredential,
     this.baiduCredential,

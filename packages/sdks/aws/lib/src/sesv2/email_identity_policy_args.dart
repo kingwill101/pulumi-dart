@@ -21,7 +21,7 @@ class EmailIdentityPolicyArgs {
   /// [policy] The text of the policy in JSON format.
   /// [policyName] The name of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EmailIdentityPolicyArgs({
+  const EmailIdentityPolicyArgs({
     required this.emailIdentity,
     required this.policy,
     required this.policyName,

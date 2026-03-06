@@ -23,7 +23,7 @@ class ApplicationAccessScopeArgs {
   /// [authorizedTargets] Specifies an array list of ARNs that represent the authorized targets for this access scope.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scope] Specifies the name of the access scope to be associated with the specified targets.
-  ApplicationAccessScopeArgs({
+  const ApplicationAccessScopeArgs({
     required this.applicationArn,
     this.authorizedTargets,
     this.region,

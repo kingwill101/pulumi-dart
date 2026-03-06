@@ -19,7 +19,7 @@ class GoogleCloudDialogflowCxV3ConversationTurnUserInput {
   /// [injectedParameters] Parameters that need to be injected into the conversation during intent detection.
   /// [input] Supports text input, event input, dtmf input in the test case.
   /// [isWebhookEnabled] If webhooks should be allowed to trigger in response to the user utterance. Often if parameters are injected, webhooks should not be enabled.
-  GoogleCloudDialogflowCxV3ConversationTurnUserInput({
+  const GoogleCloudDialogflowCxV3ConversationTurnUserInput({
     this.enableSentimentAnalysis,
     this.injectedParameters,
     this.input,

@@ -43,7 +43,7 @@ class AiFeatureGroupIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of feature group. eg us-central1 Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
-  AiFeatureGroupIamBindingArgs({
+  const AiFeatureGroupIamBindingArgs({
     this.condition,
     required this.featureGroup,
     required this.members,

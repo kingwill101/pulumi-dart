@@ -46,7 +46,7 @@ class ListenerRuleAction {
   /// [redirect] Information for creating a redirect action. Required if `type` is `redirect`.
   /// [targetGroupArn] ARN of the Target Group to which to route traffic.
   /// [type] The type of routing action. Valid values are `forward`, `redirect`, `fixed-response`, `authenticate-cognito`, `authenticate-oidc` and `jwt-validation`.
-  ListenerRuleAction({
+  const ListenerRuleAction({
     this.authenticateCognito,
     this.authenticateOidc,
     this.fixedResponse,

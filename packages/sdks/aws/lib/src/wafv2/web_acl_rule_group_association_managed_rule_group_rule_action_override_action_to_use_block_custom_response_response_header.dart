@@ -11,7 +11,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlo
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader].
   /// [name] Name of the response header.
   /// [value] Value of the response header.
-  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader({
+  const WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseBlockCustomResponseResponseHeader({
     required this.name,
     required this.value,
   });

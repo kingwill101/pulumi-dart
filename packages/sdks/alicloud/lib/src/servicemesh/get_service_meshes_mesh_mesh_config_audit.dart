@@ -11,7 +11,7 @@ class GetServiceMeshesMeshMeshConfigAudit {
   /// Creates a new [GetServiceMeshesMeshMeshConfigAudit].
   /// [enabled] Whether to enable CNI.
   /// [project] The Service grid audit that to the project.
-  GetServiceMeshesMeshMeshConfigAudit({
+  const GetServiceMeshesMeshMeshConfigAudit({
     required this.enabled,
     required this.project,
   });

@@ -27,7 +27,7 @@ class GetShareArgs {
   /// [name] The name of the share.
   /// [storageAccountId] The ID of the storage account in which the share exists.
   /// [storageAccountName] The name of the storage account in which the share exists. This property is deprecated in favour of `storage_account_id`.
-  GetShareArgs({
+  const GetShareArgs({
     this.acls,
     this.metadata,
     required this.name,

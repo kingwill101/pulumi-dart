@@ -12,7 +12,7 @@ class ManagedClusterSKUResponse {
   /// Creates a new [ManagedClusterSKUResponse].
   /// [name] The name of a managed cluster SKU.
   /// [tier] If not specified, the default is 'Free'. See [AKS Pricing Tier](https://learn.microsoft.com/azure/aks/free-standard-pricing-tiers) for more details.
-  ManagedClusterSKUResponse({
+  const ManagedClusterSKUResponse({
     this.name,
     this.tier,
   });

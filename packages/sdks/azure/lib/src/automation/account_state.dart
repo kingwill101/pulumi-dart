@@ -50,7 +50,7 @@ class AccountState {
   /// [resourceGroupName] The name of the resource group in which the Automation Account is created. Changing this forces a new resource to be created.
   /// [skuName] The SKU of the account. Possible values are `Basic` and `Free`.
   /// [tags] A mapping of tags to assign to the resource.
-  AccountState({
+  const AccountState({
     this.dscPrimaryAccessKey,
     this.dscSecondaryAccessKey,
     this.dscServerEndpoint,

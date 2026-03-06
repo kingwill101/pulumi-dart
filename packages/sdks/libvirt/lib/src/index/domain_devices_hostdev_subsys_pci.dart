@@ -23,7 +23,7 @@ class DomainDevicesHostdevSubsysPci {
   /// [ramFb] Configures the use of framebuffer memory for the PCI device.
   /// [source] Specifies the source configuration for the PCI device being passed through.
   /// [teaming] Configures the teaming settings for the PCI device.
-  DomainDevicesHostdevSubsysPci({
+  const DomainDevicesHostdevSubsysPci({
     this.display,
     this.driver,
     this.ramFb,

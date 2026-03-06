@@ -11,7 +11,7 @@ class RegionBackendServiceTlsSettingsSubjectAltName {
   /// Creates a new [RegionBackendServiceTlsSettingsSubjectAltName].
   /// [dnsName] The SAN specified as a DNS Name.
   /// [uniformResourceIdentifier] The SAN specified as a URI.
-  RegionBackendServiceTlsSettingsSubjectAltName({
+  const RegionBackendServiceTlsSettingsSubjectAltName({
     this.dnsName,
     this.uniformResourceIdentifier,
   });

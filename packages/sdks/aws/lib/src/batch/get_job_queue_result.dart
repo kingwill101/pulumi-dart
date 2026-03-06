@@ -51,7 +51,7 @@ class GetJobQueueResult {
   /// [status] Current status of the job queue (for example, `CREATING` or `VALID`).
   /// [statusReason] Short, human-readable string to provide additional details about the current status
   /// [tags] Key-value map of resource tags
-  GetJobQueueResult({
+  const GetJobQueueResult({
     required this.arn,
     required this.computeEnvironmentOrders,
     required this.id,

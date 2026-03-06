@@ -91,7 +91,7 @@ class EndpointDeliveryRule {
   /// [urlPathConditions] A `url_path_condition` block as defined below.
   /// [urlRedirectAction] A `url_redirect_action` block as defined below.
   /// [urlRewriteAction] A `url_rewrite_action` block as defined below.
-  EndpointDeliveryRule({
+  const EndpointDeliveryRule({
     this.cacheExpirationAction,
     this.cacheKeyQueryStringAction,
     this.cookiesConditions,

@@ -9,7 +9,7 @@ class AssignmentGroupLabelResponse {
 
   /// Creates a new [AssignmentGroupLabelResponse].
   /// [labels] Google Compute Engine instance labels that must be present for an instance to be included in this assignment group.
-  AssignmentGroupLabelResponse({
+  const AssignmentGroupLabelResponse({
     required this.labels,
   });
 

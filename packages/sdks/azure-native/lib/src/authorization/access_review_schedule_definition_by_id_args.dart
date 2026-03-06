@@ -87,7 +87,7 @@ class AccessReviewScheduleDefinitionByIdArgs {
   /// [reviewers] This is the collection of reviewers.
   /// [scheduleDefinitionId] The id of the access review schedule definition.
   /// [type] The recurrence type : weekly, monthly, etc.
-  AccessReviewScheduleDefinitionByIdArgs({
+  const AccessReviewScheduleDefinitionByIdArgs({
     this.autoApplyDecisionsEnabled,
     this.backupReviewers,
     this.defaultDecision,

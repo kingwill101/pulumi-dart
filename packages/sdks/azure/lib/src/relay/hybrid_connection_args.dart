@@ -24,7 +24,7 @@ class HybridConnectionArgs {
   /// [requiresClientAuthorization] Specify if client authorization is needed for this hybrid connection. Changing this forces a new resource to be created. Defaults to `true`.
   /// [resourceGroupName] The name of the resource group in which to create the Azure Relay Hybrid Connection. Changing this forces a new resource to be created.
   /// [userMetadata] The usermetadata is a placeholder to store user-defined string data for the hybrid connection endpoint. For example, it can be used to store descriptive data, such as a list of teams and their contact information. Also, user-defined configuration settings can be stored.
-  HybridConnectionArgs({
+  const HybridConnectionArgs({
     this.name,
     required this.relayNamespaceName,
     this.requiresClientAuthorization,

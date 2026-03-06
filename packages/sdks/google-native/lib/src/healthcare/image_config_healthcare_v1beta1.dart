@@ -16,7 +16,7 @@ class ImageConfigHealthcareV1beta1 {
   /// [additionalInfoTypes] Additional InfoTypes to redact in the images in addition to those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT`, `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS` or `TEXT_REDACTION_MODE_UNSPECIFIED`.
   /// [excludeInfoTypes] InfoTypes to skip redacting, overriding those used by `text_redaction_mode`. Can only be used when `text_redaction_mode` is set to `REDACT_SENSITIVE_TEXT` or `REDACT_SENSITIVE_TEXT_CLEAN_DESCRIPTORS`.
   /// [textRedactionMode] Determines how to redact text from image.
-  ImageConfigHealthcareV1beta1({
+  const ImageConfigHealthcareV1beta1({
     this.additionalInfoTypes,
     this.excludeInfoTypes,
     this.textRedactionMode,

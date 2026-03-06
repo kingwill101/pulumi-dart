@@ -33,7 +33,7 @@ class GetProjectPoolResult {
   /// [singleSignOnEnabled] Specifies whether Dev Boxes in the Pool will have SSO enabled or disabled.
   /// [stopOnDisconnectGracePeriodMinutes] The specified time in minutes to wait before stopping a Dev Center Dev Box once disconnect is detected.
   /// [tags] A mapping of tags assigned to the Dev Center Project Pool.
-  GetProjectPoolResult({
+  const GetProjectPoolResult({
     required this.devBoxDefinitionName,
     required this.devCenterAttachedNetworkName,
     required this.devCenterProjectId,

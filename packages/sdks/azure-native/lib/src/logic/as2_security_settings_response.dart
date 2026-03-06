@@ -36,7 +36,7 @@ class AS2SecuritySettingsResponse {
   /// [overrideGroupSigningCertificate] The value indicating whether to send or request a MDN.
   /// [sha2AlgorithmFormat] The Sha2 algorithm format. Valid values are Sha2, ShaHashSize, ShaHyphenHashSize, Sha2UnderscoreHashSize.
   /// [signingCertificateName] The name of the signing certificate.
-  AS2SecuritySettingsResponse({
+  const AS2SecuritySettingsResponse({
     required this.enableNRRForInboundDecodedMessages,
     required this.enableNRRForInboundEncodedMessages,
     required this.enableNRRForInboundMDN,

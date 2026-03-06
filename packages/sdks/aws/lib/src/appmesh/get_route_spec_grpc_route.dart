@@ -17,7 +17,7 @@ class GetRouteSpecGrpcRoute {
   /// [matches] Required.
   /// [retryPolicies] Required.
   /// [timeouts] Required.
-  GetRouteSpecGrpcRoute({
+  const GetRouteSpecGrpcRoute({
     required this.actions,
     required this.matches,
     required this.retryPolicies,

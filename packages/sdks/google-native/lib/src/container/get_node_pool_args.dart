@@ -21,7 +21,7 @@ class GetNodePoolArgs {
   /// [project] Optional.
   /// [projectId] Optional.
   /// [zone] Optional.
-  GetNodePoolArgs({
+  const GetNodePoolArgs({
     required this.clusterId,
     required this.location,
     required this.nodePoolId,

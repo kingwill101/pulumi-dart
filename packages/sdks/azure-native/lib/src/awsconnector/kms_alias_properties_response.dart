@@ -34,7 +34,7 @@ class KmsAliasPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  KmsAliasPropertiesResponse({
+  const KmsAliasPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

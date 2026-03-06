@@ -19,7 +19,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   /// [loginPath] The path of the login endpoint for your application.
   /// [requestInspection] The criteria for inspecting login requests, used by the ATP rule group to validate credentials usage. See `request_inspection` for more details.
   /// [responseInspection] The criteria for inspecting responses to login requests, used by the ATP rule group to track login failure rates. Note that Response Inspection is available only on web ACLs that protect CloudFront distributions. See `response_inspection` for more details.
-  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet({
+  const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSet({
     this.enableRegexInPath,
     required this.loginPath,
     this.requestInspection,

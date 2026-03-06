@@ -20,7 +20,7 @@ class GcpLinkAccountArgs {
   /// [accountId] Account ID of the New Relic account.
   /// [name] The name of the GCP account in New Relic.
   /// [projectId] Project ID of the GCP account.
-  GcpLinkAccountArgs({
+  const GcpLinkAccountArgs({
     this.accountId,
     this.name,
     required this.projectId,

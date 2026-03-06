@@ -24,7 +24,7 @@ class GetUserTenantsResult {
   /// [outputFile] Optional.
   /// [status] The status of the user tenant.
   /// [tenants] A list of DMS User Tenants. Each element contains the following attributes:
-  GetUserTenantsResult({
+  const GetUserTenantsResult({
     required this.id,
     required this.ids,
     required this.names,

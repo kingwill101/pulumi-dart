@@ -18,7 +18,7 @@ class GetNetworkPackagesArgs {
   /// [ids] A list of Network Package IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of network package. Valid values: `Creating`, `InUse`, `Releasing`,`Released`.
-  GetNetworkPackagesArgs({
+  const GetNetworkPackagesArgs({
     this.ids,
     this.outputFile,
     this.status,

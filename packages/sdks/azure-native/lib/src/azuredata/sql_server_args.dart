@@ -33,7 +33,7 @@ class SqlServerArgs {
   /// [sqlServerName] Name of the SQL Server.
   /// [sqlServerRegistrationName] Name of the SQL Server registration.
   /// [version] Version of the Sql Server.
-  SqlServerArgs({
+  const SqlServerArgs({
     this.cores,
     this.edition,
     this.propertyBag,

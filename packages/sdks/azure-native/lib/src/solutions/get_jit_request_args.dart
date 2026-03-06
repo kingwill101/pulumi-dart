@@ -15,7 +15,7 @@ class GetJitRequestArgs {
   /// Creates a new [GetJitRequestArgs].
   /// [jitRequestName] The name of the JIT request.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetJitRequestArgs({
+  const GetJitRequestArgs({
     required this.jitRequestName,
     required this.resourceGroupName,
   });

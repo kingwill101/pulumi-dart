@@ -32,7 +32,7 @@ class AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig {
   /// [gcsUri] (Output)
   /// [prebuiltAmbientSound] (Output)
   /// [volumeGainDb] (Output)
-  AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig({
+  const AppVersionSnapshotAppAudioProcessingConfigAmbientSoundConfig({
     this.gcsUri,
     this.prebuiltAmbientSound,
     this.volumeGainDb,

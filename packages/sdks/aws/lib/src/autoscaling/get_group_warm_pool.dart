@@ -17,7 +17,7 @@ class GetGroupWarmPool {
   /// [maxGroupPreparedCapacity] Required.
   /// [minSize] Minimum number of instances to maintain in the warm pool.
   /// [poolState] Instance state to transition to after the lifecycle actions are complete.
-  GetGroupWarmPool({
+  const GetGroupWarmPool({
     required this.instanceReusePolicies,
     required this.maxGroupPreparedCapacity,
     required this.minSize,

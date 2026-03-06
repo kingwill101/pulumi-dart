@@ -83,7 +83,7 @@ class GetGenaiAgentVersionsAgentVersion {
   /// [topP] Top P sampling parameter for the Agent Version
   /// [triggerAction] Trigger action for the Agent Version
   /// [versionHash] Hash of the Agent Version
-  GetGenaiAgentVersionsAgentVersion({
+  const GetGenaiAgentVersionsAgentVersion({
     required this.agentUuid,
     required this.attachedChildAgents,
     required this.attachedFunctions,

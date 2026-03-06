@@ -23,7 +23,7 @@ class AwsWafv2LoggingConfigurationPropertiesResponse {
   /// [managedByFirewallManager] Indicates whether the logging configuration was created by AWS Firewall Manager, as part of an AWS WAF policy configuration. If true, only Firewall Manager can modify or delete the configuration.
   /// [redactedFields] The parts of the request that you want to keep out of the logs. For example, if you redact the HEADER field, the HEADER field in the firehose will be xxx.
   /// [resourceArn] The Amazon Resource Name (ARN) of the web ACL that you want to associate with LogDestinationConfigs.
-  AwsWafv2LoggingConfigurationPropertiesResponse({
+  const AwsWafv2LoggingConfigurationPropertiesResponse({
     this.logDestinationConfigs,
     this.loggingFilter,
     this.managedByFirewallManager,

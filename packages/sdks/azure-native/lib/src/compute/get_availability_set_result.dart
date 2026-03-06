@@ -57,7 +57,7 @@ class GetAvailabilitySetResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachineScaleSetMigrationInfo] Describes the migration properties on the Availability Set.
   /// [virtualMachines] A list of references to all virtual machines in the availability set.
-  GetAvailabilitySetResult({
+  const GetAvailabilitySetResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

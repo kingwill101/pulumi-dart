@@ -25,7 +25,7 @@ class WebAclRuleAction {
   /// [captcha] Instructs AWS WAF to run a Captcha check against the web request. See `captcha` below for details.
   /// [challenge] Instructs AWS WAF to run a check against the request to verify that the request is coming from a legitimate client session. See `challenge` below for details.
   /// [count] Instructs AWS WAF to count the web request and allow it. See `count` below for details.
-  WebAclRuleAction({
+  const WebAclRuleAction({
     this.allow,
     this.block,
     this.captcha,

@@ -11,7 +11,7 @@ class ClusterAutomatedBackupConfigFixedFrequencySchedule {
 
   /// Creates a new [ClusterAutomatedBackupConfigFixedFrequencySchedule].
   /// [startTime] The start time of every automated backup in UTC.
-  ClusterAutomatedBackupConfigFixedFrequencySchedule({
+  const ClusterAutomatedBackupConfigFixedFrequencySchedule({
     required this.startTime,
   });
 

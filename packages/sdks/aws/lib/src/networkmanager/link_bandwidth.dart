@@ -11,7 +11,7 @@ class LinkBandwidth {
   /// Creates a new [LinkBandwidth].
   /// [downloadSpeed] Download speed in Mbps.
   /// [uploadSpeed] Upload speed in Mbps.
-  LinkBandwidth({
+  const LinkBandwidth({
     this.downloadSpeed,
     this.uploadSpeed,
   });

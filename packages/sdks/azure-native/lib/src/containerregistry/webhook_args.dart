@@ -39,7 +39,7 @@ class WebhookArgs {
   /// [status] The status of the webhook at the time the operation was called.
   /// [tags] The tags for the webhook.
   /// [webhookName] The name of the webhook.
-  WebhookArgs({
+  const WebhookArgs({
     required this.actions,
     this.customHeaders,
     this.location,

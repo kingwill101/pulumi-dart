@@ -32,7 +32,7 @@ class GetOrganizationAddressGroupNetworksecurityV1beta1Result {
   /// [selfLink] Server-defined fully-qualified URL for this resource.
   /// [type] The type of the Address Group. Possible values are "IPv4" or "IPV6".
   /// [updateTime] The timestamp when the resource was updated.
-  GetOrganizationAddressGroupNetworksecurityV1beta1Result({
+  const GetOrganizationAddressGroupNetworksecurityV1beta1Result({
     required this.capacity,
     required this.createTime,
     required this.description,

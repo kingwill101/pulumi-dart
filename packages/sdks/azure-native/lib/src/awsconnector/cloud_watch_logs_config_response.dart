@@ -16,7 +16,7 @@ class CloudWatchLogsConfigResponse {
   /// [groupName] &lt;p&gt; The group name of the logs in CloudWatch Logs. For more information, see &lt;a href='https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html'&gt;Working with Log Groups and Log Streams&lt;/a&gt;. &lt;/p&gt;
   /// [status] &lt;p&gt;The current status of the logs in CloudWatch Logs for a build project. Valid values are:&lt;/p&gt; &lt;ul&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;ENABLED&lt;/code&gt;: CloudWatch Logs are enabled for this build project.&lt;/p&gt; &lt;/li&gt; &lt;li&gt; &lt;p&gt; &lt;code&gt;DISABLED&lt;/code&gt;: CloudWatch Logs are not enabled for this build project.&lt;/p&gt; &lt;/li&gt; &lt;/ul&gt;
   /// [streamName] &lt;p&gt; The prefix of the stream name of the CloudWatch Logs. For more information, see &lt;a href='https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/Working-with-log-groups-and-streams.html'&gt;Working with Log Groups and Log Streams&lt;/a&gt;. &lt;/p&gt;
-  CloudWatchLogsConfigResponse({
+  const CloudWatchLogsConfigResponse({
     this.groupName,
     this.status,
     this.streamName,

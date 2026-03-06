@@ -21,7 +21,7 @@ class SecretSecretmanagerV1beta1Args {
   /// [project] Optional.
   /// [replication] Immutable. The replication policy of the secret data attached to the Secret. The replication policy cannot be changed after the Secret has been created.
   /// [secretId] Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters.
-  SecretSecretmanagerV1beta1Args({
+  const SecretSecretmanagerV1beta1Args({
     this.labels,
     this.project,
     required this.replication,

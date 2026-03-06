@@ -44,7 +44,7 @@ class DatabaseRedisConfigState {
   /// [pubsubClientOutputBufferLimit] The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
   /// [ssl] A boolean indicating whether to require SSL to access Redis.
   /// [timeout] The Redis idle connection timeout in seconds.
-  DatabaseRedisConfigState({
+  const DatabaseRedisConfigState({
     this.aclChannelsDefault,
     this.clusterId,
     this.ioThreads,

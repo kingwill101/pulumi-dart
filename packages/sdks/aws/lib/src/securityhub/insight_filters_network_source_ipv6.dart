@@ -8,7 +8,7 @@ class InsightFiltersNetworkSourceIpv6 {
 
   /// Creates a new [InsightFiltersNetworkSourceIpv6].
   /// [cidr] A finding's CIDR value.
-  InsightFiltersNetworkSourceIpv6({
+  const InsightFiltersNetworkSourceIpv6({
     required this.cidr,
   });
 

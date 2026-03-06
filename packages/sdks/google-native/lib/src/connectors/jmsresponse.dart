@@ -12,7 +12,7 @@ class JMSResponse {
   /// Creates a new [JMSResponse].
   /// [name] Optional. Name of the JMS source. i.e. queueName or topicName
   /// [type] Optional. Type of the JMS Source. i.e. Queue or Topic
-  JMSResponse({
+  const JMSResponse({
     required this.name,
     required this.type,
   });

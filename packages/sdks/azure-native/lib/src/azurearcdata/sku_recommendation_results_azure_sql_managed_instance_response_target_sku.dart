@@ -8,7 +8,7 @@ class SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku {
 
   /// Creates a new [SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku].
   /// [category] Optional.
-  SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku({
+  const SkuRecommendationResultsAzureSqlManagedInstanceResponseTargetSku({
     this.category,
   });
 

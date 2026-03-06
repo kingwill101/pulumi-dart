@@ -49,7 +49,7 @@ class KeyState {
   /// [serviceAccountId] The Service account id of the Key. This can be a string in the format
   /// [validAfter] The key can be used after this timestamp. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
   /// [validBefore] The key can be used before this timestamp.
-  KeyState({
+  const KeyState({
     this.keepers,
     this.keyAlgorithm,
     this.name,

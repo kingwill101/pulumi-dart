@@ -78,7 +78,7 @@ class AwsEc2NetworkInterfaceProperties {
   /// [subnetId] The ID of the subnet to associate with the network interface.
   /// [tags] An arbitrary set of tags (key-value pairs) for this network interface.
   /// [vpcId] The ID of the VPC
-  AwsEc2NetworkInterfaceProperties({
+  const AwsEc2NetworkInterfaceProperties({
     this.connectionTrackingSpecification,
     this.description,
     this.enablePrimaryIpv6,

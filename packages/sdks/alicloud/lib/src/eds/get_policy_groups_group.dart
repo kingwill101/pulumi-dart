@@ -76,7 +76,7 @@ class GetPolicyGroupsGroup {
   /// [watermark] The watermark policy.
   /// [watermarkTransparency] The watermark transparency.
   /// [watermarkType] The type of watemark.
-  GetPolicyGroupsGroup({
+  const GetPolicyGroupsGroup({
     required this.authorizeAccessPolicyRules,
     required this.authorizeSecurityPolicyRules,
     required this.cameraRedirect,

@@ -9,7 +9,7 @@ class GetRouteSpecGrpcRouteTimeoutIdle {
   /// Creates a new [GetRouteSpecGrpcRouteTimeoutIdle].
   /// [unit] Required.
   /// [value] Required.
-  GetRouteSpecGrpcRouteTimeoutIdle({
+  const GetRouteSpecGrpcRouteTimeoutIdle({
     required this.unit,
     required this.value,
   });

@@ -36,7 +36,7 @@ class ServerTlsPolicyArgs {
   /// [project] Optional.
   /// [serverCertificate] Optional if policy is to be used with Traffic Director. For external HTTPS load balancer must be empty. Defines a mechanism to provision server identity (public and private keys). Cannot be combined with `allow_open` as a permissive mode that allows both plain text and TLS is not supported.
   /// [serverTlsPolicyId] Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy".
-  ServerTlsPolicyArgs({
+  const ServerTlsPolicyArgs({
     this.allowOpen,
     this.description,
     this.labels,

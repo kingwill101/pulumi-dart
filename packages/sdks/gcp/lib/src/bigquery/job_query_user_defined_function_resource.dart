@@ -12,7 +12,7 @@ class JobQueryUserDefinedFunctionResource {
   /// Creates a new [JobQueryUserDefinedFunctionResource].
   /// [inlineCode] An inline resource that contains code for a user-defined function (UDF).
   /// [resourceUri] A code resource to load from a Google Cloud Storage URI (gs://bucket/path).
-  JobQueryUserDefinedFunctionResource({
+  const JobQueryUserDefinedFunctionResource({
     this.inlineCode,
     this.resourceUri,
   });

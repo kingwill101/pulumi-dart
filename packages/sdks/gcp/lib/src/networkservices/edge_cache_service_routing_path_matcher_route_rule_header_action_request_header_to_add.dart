@@ -14,7 +14,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd 
   /// [headerName] The name of the header to add.
   /// [headerValue] The value of the header to add.
   /// [replace] Whether to replace all existing headers with the same name.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd({
     required this.headerName,
     required this.headerValue,
     this.replace,

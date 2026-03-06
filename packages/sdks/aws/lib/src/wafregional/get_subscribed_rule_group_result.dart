@@ -14,7 +14,7 @@ class GetSubscribedRuleGroupResult {
   /// [metricName] Optional.
   /// [name] Optional.
   /// [region] Required.
-  GetSubscribedRuleGroupResult({
+  const GetSubscribedRuleGroupResult({
     required this.id,
     this.metricName,
     this.name,

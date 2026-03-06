@@ -31,7 +31,7 @@ class FilterResponse {
   /// [neq] Property neq
   /// [property] Property property
   /// [requirement] Logic to apply to the filtering conditions. You can specify that, in order to satisfy the filter, a log must match all conditions or must match at least one condition.
-  FilterResponse({
+  const FilterResponse({
     this.behavior,
     this.conditions,
     this.contains,

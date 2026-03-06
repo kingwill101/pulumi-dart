@@ -25,7 +25,7 @@ class SqlServerEsuLicenseArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlServerEsuLicenseName] Name of SQL Server ESU License
   /// [tags] Resource tags.
-  SqlServerEsuLicenseArgs({
+  const SqlServerEsuLicenseArgs({
     this.location,
     required this.properties,
     required this.resourceGroupName,

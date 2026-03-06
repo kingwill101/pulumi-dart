@@ -34,7 +34,7 @@ class InstancePersistenceConfig {
   /// [rdbNextSnapshotTime] (Output)
   /// [rdbSnapshotPeriod] Optional. Available snapshot periods for scheduling.
   /// [rdbSnapshotStartTime] Optional. Date and time that the first snapshot was/will be attempted,
-  InstancePersistenceConfig({
+  const InstancePersistenceConfig({
     this.persistenceMode,
     this.rdbNextSnapshotTime,
     this.rdbSnapshotPeriod,

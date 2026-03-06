@@ -45,7 +45,7 @@ class GetClusterResult {
   /// [sku] The SKU of the cluster. This determines the size/capacity of the cluster. Required on PUT (CreateOrUpdate) requests.
   /// [tags] Resource tags.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetClusterResult({
+  const GetClusterResult({
     required this.azureApiVersion,
     required this.capacityAllocated,
     required this.capacityAssigned,

@@ -49,7 +49,7 @@ class SecurityGroupRuleArgs {
   /// [sourceSecurityGroupId] Security group id to allow access to/from, depending on the `type`. Cannot be specified with `cidr_blocks`, `ipv6_cidr_blocks`, or `self`.
   /// [toPort] End port (or ICMP code if protocol is "icmp").
   /// [type] Type of rule being created. Valid options are `ingress` (inbound)
-  SecurityGroupRuleArgs({
+  const SecurityGroupRuleArgs({
     this.cidrBlocks,
     this.description,
     required this.fromPort,

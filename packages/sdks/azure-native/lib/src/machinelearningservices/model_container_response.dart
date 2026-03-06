@@ -26,7 +26,7 @@ class ModelContainerResponse {
   /// [properties] The asset property dictionary.
   /// [provisioningState] Provisioning state for the model container.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  ModelContainerResponse({
+  const ModelContainerResponse({
     this.description,
     this.isArchived,
     required this.latestVersion,

@@ -69,7 +69,7 @@ class GetEngineVersionResult {
   /// [version] Required.
   /// [versionActual] Actual engine version returned by the API.
   /// [versionDescription] Description of the database engine version.
-  GetEngineVersionResult({
+  const GetEngineVersionResult({
     required this.defaultCharacterSet,
     this.defaultOnly,
     this.engine,

@@ -34,7 +34,7 @@ class ElasticVolumeArgs {
   /// [tags] Resource tags.
   /// [volumeName] The name of the ElasticVolume
   /// [zones] The availability zones.
-  ElasticVolumeArgs({
+  const ElasticVolumeArgs({
     required this.accountName,
     this.location,
     required this.poolName,

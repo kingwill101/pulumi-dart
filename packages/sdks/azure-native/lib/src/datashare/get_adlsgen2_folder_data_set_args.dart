@@ -21,7 +21,7 @@ class GetADLSGen2FolderDataSetArgs {
   /// [dataSetName] The name of the dataSet.
   /// [resourceGroupName] The resource group name.
   /// [shareName] The name of the share.
-  GetADLSGen2FolderDataSetArgs({
+  const GetADLSGen2FolderDataSetArgs({
     required this.accountName,
     required this.dataSetName,
     required this.resourceGroupName,

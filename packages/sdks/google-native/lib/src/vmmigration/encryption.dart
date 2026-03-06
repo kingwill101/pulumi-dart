@@ -9,7 +9,7 @@ class Encryption {
 
   /// Creates a new [Encryption].
   /// [kmsKey] The name of the encryption key that is stored in Google Cloud KMS.
-  Encryption({
+  const Encryption({
     required this.kmsKey,
   });
 

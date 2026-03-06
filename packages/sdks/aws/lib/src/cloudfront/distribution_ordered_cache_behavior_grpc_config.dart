@@ -8,7 +8,7 @@ class DistributionOrderedCacheBehaviorGrpcConfig {
 
   /// Creates a new [DistributionOrderedCacheBehaviorGrpcConfig].
   /// [enabled] Whether the distribution is enabled to accept end user requests for content.
-  DistributionOrderedCacheBehaviorGrpcConfig({
+  const DistributionOrderedCacheBehaviorGrpcConfig({
     this.enabled,
   });
 

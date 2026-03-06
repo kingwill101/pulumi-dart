@@ -19,7 +19,7 @@ class TrafficSourceAttachmentArgs {
   /// [autoscalingGroupName] The name of the Auto Scaling group.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [trafficSource] The unique identifiers of a traffic sources.
-  TrafficSourceAttachmentArgs({
+  const TrafficSourceAttachmentArgs({
     required this.autoscalingGroupName,
     this.region,
     this.trafficSource,

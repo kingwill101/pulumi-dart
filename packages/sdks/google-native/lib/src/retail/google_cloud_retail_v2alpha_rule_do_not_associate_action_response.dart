@@ -15,7 +15,7 @@ class GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse {
   /// [doNotAssociateTerms] Cannot contain duplicates or the query term. Can specify up to 100 terms.
   /// [queryTerms] Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
   /// [terms] Will be [deprecated = true] post migration;
-  GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse({
+  const GoogleCloudRetailV2alphaRuleDoNotAssociateActionResponse({
     required this.doNotAssociateTerms,
     required this.queryTerms,
     required this.terms,

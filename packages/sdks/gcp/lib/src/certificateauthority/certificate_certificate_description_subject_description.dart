@@ -34,7 +34,7 @@ class CertificateCertificateDescriptionSubjectDescription {
   /// [notBeforeTime] (Output)
   /// [subjectAltNames] (Output)
   /// [subjects] (Output)
-  CertificateCertificateDescriptionSubjectDescription({
+  const CertificateCertificateDescriptionSubjectDescription({
     this.hexSerialNumber,
     this.lifetime,
     this.notAfterTime,

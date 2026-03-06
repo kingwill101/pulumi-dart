@@ -83,7 +83,7 @@ class GetPhysicalConnectionsConnection {
   /// [spec] The Physical Connection to Which the Specifications.
   /// [status] Resources on Behalf of a State of the Resource Attribute Field.
   /// [type] Physical Private Line of Type. Default Value: VPC.
-  GetPhysicalConnectionsConnection({
+  const GetPhysicalConnectionsConnection({
     required this.accessPointId,
     required this.adLocation,
     required this.bandwidth,

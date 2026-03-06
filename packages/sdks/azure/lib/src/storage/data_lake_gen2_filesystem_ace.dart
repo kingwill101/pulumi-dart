@@ -19,7 +19,7 @@ class DataLakeGen2FilesystemAce {
   /// [permissions] Specifies the permissions for the entry in `rwx` form. For example, `rwx` gives full permissions but `r--` only gives read permissions.
   /// [scope] Specifies whether the ACE represents an `access` entry or a `default` entry. Default value is `access`.
   /// [type] Specifies the type of entry. Can be `user`, `group`, `mask` or `other`.
-  DataLakeGen2FilesystemAce({
+  const DataLakeGen2FilesystemAce({
     this.id,
     required this.permissions,
     this.scope,

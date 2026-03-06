@@ -18,7 +18,7 @@ class GetGlobalParameterArgs {
   /// [factoryName] The factory name.
   /// [globalParameterName] The global parameter name.
   /// [resourceGroupName] The resource group name.
-  GetGlobalParameterArgs({
+  const GetGlobalParameterArgs({
     required this.factoryName,
     required this.globalParameterName,
     required this.resourceGroupName,

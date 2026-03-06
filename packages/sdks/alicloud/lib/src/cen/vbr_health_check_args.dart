@@ -35,7 +35,7 @@ class VbrHealthCheckArgs {
   /// [vbrInstanceId] The ID of the VBR.
   /// [vbrInstanceOwnerId] The ID of the account to which the VBR belongs.
   /// [vbrInstanceRegionId] The ID of the region to which the VBR belongs.
-  VbrHealthCheckArgs({
+  const VbrHealthCheckArgs({
     required this.cenId,
     this.healthCheckInterval,
     this.healthCheckSourceIp,

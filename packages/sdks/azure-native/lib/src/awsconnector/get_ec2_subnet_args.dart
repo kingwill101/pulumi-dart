@@ -15,7 +15,7 @@ class GetEc2SubnetArgs {
   /// Creates a new [GetEc2SubnetArgs].
   /// [name] Name of Ec2Subnet
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2SubnetArgs({
+  const GetEc2SubnetArgs({
     required this.name,
     required this.resourceGroupName,
   });

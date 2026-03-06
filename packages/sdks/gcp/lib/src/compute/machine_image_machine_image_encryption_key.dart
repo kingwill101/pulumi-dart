@@ -21,7 +21,7 @@ class MachineImageMachineImageEncryptionKey {
   /// [kmsKeyServiceAccount] The service account used for the encryption request for the given KMS key.
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [sha256] (Output)
-  MachineImageMachineImageEncryptionKey({
+  const MachineImageMachineImageEncryptionKey({
     this.kmsKeyName,
     this.kmsKeyServiceAccount,
     this.rawKey,

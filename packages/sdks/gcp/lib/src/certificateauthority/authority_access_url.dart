@@ -15,7 +15,7 @@ class AuthorityAccessUrl {
   /// Creates a new [AuthorityAccessUrl].
   /// [caCertificateAccessUrl] (Output)
   /// [crlAccessUrls] (Output)
-  AuthorityAccessUrl({
+  const AuthorityAccessUrl({
     this.caCertificateAccessUrl,
     this.crlAccessUrls,
   });

@@ -58,7 +58,7 @@ class ElasticPoolArgs {
   /// [sku] A `sku` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneRedundant] Whether or not this elastic pool is zone redundant. `tier` needs to be `Premium` for `DTU` based or `BusinessCritical` for `vCore` based `sku`.
-  ElasticPoolArgs({
+  const ElasticPoolArgs({
     this.enclaveType,
     this.licenseType,
     this.location,

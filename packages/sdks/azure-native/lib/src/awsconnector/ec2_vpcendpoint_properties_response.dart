@@ -34,7 +34,7 @@ class Ec2VPCEndpointPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2VPCEndpointPropertiesResponse({
+  const Ec2VPCEndpointPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

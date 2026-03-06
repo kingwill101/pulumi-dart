@@ -16,7 +16,7 @@ class CounterOptions {
   /// [customFields] Custom fields.
   /// [field] The field value to attribute.
   /// [metric] The metric to update.
-  CounterOptions({
+  const CounterOptions({
     this.customFields,
     this.field,
     this.metric,

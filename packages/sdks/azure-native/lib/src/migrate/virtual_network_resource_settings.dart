@@ -34,7 +34,7 @@ class VirtualNetworkResourceSettings {
   /// [tags] Gets or sets the Resource tags.
   /// [targetResourceGroupName] Gets or sets the target resource group name.
   /// [targetResourceName] Gets or sets the target Resource name.
-  VirtualNetworkResourceSettings({
+  const VirtualNetworkResourceSettings({
     this.addressSpace,
     this.dnsServers,
     this.enableDdosProtection,

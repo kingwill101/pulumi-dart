@@ -12,7 +12,7 @@ class LoadedCertificate {
   /// Creates a new [LoadedCertificate].
   /// [loadTrustStore] Indicate whether the certificate will be loaded into default trust store, only work for Java runtime.
   /// [resourceId] Resource Id of loaded certificate
-  LoadedCertificate({
+  const LoadedCertificate({
     this.loadTrustStore,
     required this.resourceId,
   });

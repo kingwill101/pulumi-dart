@@ -10,7 +10,7 @@ class PipelineLoggingConfig {
 
   /// Creates a new [PipelineLoggingConfig].
   /// [logSeverity] The minimum severity of logs that will be sent to Stackdriver/Platform
-  PipelineLoggingConfig({
+  const PipelineLoggingConfig({
     this.logSeverity,
   });
 

@@ -20,7 +20,7 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranch {
   /// [name] Name of the branch.
   /// [nextStep] Configuration block for the next step in the conversation. See `next_step`.
   /// [response] Configuration block for a list of message groups that Amazon Lex uses to respond to the user input. See `response`.
-  V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranch({
+  const V2modelsIntentConfirmationSettingDeclinationConditionalConditionalBranch({
     this.condition,
     required this.name,
     this.nextStep,

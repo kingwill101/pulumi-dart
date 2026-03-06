@@ -22,7 +22,7 @@ class ApplicationNetworkRuleSetArgs {
   /// [defaultAction] Specifies the default action for the IoT Central Application Network Rule Set. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
   /// [iotcentralApplicationId] The ID of the IoT Central Application. Changing this forces a new resource to be created.
   /// [ipRules] One or more `ip_rule` blocks as defined below.
-  ApplicationNetworkRuleSetArgs({
+  const ApplicationNetworkRuleSetArgs({
     this.applyToDevice,
     this.defaultAction,
     required this.iotcentralApplicationId,

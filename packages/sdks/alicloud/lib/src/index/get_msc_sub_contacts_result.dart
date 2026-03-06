@@ -22,7 +22,7 @@ class GetMscSubContactsResult {
   /// [nameRegex] Optional.
   /// [names] A list of Contact names.
   /// [outputFile] Optional.
-  GetMscSubContactsResult({
+  const GetMscSubContactsResult({
     required this.contacts,
     required this.id,
     required this.ids,

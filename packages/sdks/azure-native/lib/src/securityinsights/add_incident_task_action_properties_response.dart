@@ -12,7 +12,7 @@ class AddIncidentTaskActionPropertiesResponse {
   /// Creates a new [AddIncidentTaskActionPropertiesResponse].
   /// [description] The description of the task.
   /// [title] The title of the task.
-  AddIncidentTaskActionPropertiesResponse({
+  const AddIncidentTaskActionPropertiesResponse({
     this.description,
     required this.title,
   });

@@ -15,7 +15,7 @@ class GoogleCloudDataplexV1ResourceAccessSpecResponse {
   /// [owners] Optional. The set of principals to be granted owner role on the resource.
   /// [readers] Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on the resource.
   /// [writers] Optional. The set of principals to be granted writer role on the resource.
-  GoogleCloudDataplexV1ResourceAccessSpecResponse({
+  const GoogleCloudDataplexV1ResourceAccessSpecResponse({
     required this.owners,
     required this.readers,
     required this.writers,

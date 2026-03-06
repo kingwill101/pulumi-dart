@@ -12,7 +12,7 @@ class GetPolicyArgs {
 
   /// Creates a new [GetPolicyArgs].
   /// [storageAccountId] Specifies the id of the storage account to retrieve the management policy for.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     required this.storageAccountId,
   });
 

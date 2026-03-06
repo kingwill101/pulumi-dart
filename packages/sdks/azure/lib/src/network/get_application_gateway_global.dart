@@ -11,7 +11,7 @@ class GetApplicationGatewayGlobal {
   /// Creates a new [GetApplicationGatewayGlobal].
   /// [requestBufferingEnabled] Whether Application Gateway's Request buffer is enabled.
   /// [responseBufferingEnabled] Whether Application Gateway's Response buffer is enabled.
-  GetApplicationGatewayGlobal({
+  const GetApplicationGatewayGlobal({
     required this.requestBufferingEnabled,
     required this.responseBufferingEnabled,
   });

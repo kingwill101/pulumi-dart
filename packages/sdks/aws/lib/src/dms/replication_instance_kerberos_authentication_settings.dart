@@ -14,7 +14,7 @@ class ReplicationInstanceKerberosAuthenticationSettings {
   /// [keyCacheSecretIamArn] ARN of the IAM role that grants AWS DMS access to the secret containing key cache file for the Kerberos authentication.
   /// [keyCacheSecretId] Secret ID that stores the key cache file required for Kerberos authentication.
   /// [krb5FileContents] Contents of krb5 configuration file required for Kerberos authentication.
-  ReplicationInstanceKerberosAuthenticationSettings({
+  const ReplicationInstanceKerberosAuthenticationSettings({
     required this.keyCacheSecretIamArn,
     required this.keyCacheSecretId,
     required this.krb5FileContents,

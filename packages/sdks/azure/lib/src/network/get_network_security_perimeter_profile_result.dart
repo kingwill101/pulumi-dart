@@ -12,7 +12,7 @@ class GetNetworkSecurityPerimeterProfileResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [networkSecurityPerimeterId] Required.
-  GetNetworkSecurityPerimeterProfileResult({
+  const GetNetworkSecurityPerimeterProfileResult({
     required this.id,
     required this.name,
     required this.networkSecurityPerimeterId,

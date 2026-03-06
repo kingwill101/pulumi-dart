@@ -90,7 +90,7 @@ class ImageComputeV1Args {
   /// [sourceSnapshotEncryptionKey] The customer-supplied encryption key of the source snapshot. Required if the source snapshot is protected by a customer-supplied encryption key.
   /// [sourceType] The type of the image used to create this disk. The default and only valid value is RAW.
   /// [storageLocations] Cloud Storage bucket storage location of the image (regional or multi-regional).
-  ImageComputeV1Args({
+  const ImageComputeV1Args({
     this.architecture,
     this.archiveSizeBytes,
     this.deprecated,

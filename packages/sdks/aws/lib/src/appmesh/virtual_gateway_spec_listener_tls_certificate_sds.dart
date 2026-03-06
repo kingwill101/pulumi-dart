@@ -8,7 +8,7 @@ class VirtualGatewaySpecListenerTlsCertificateSds {
 
   /// Creates a new [VirtualGatewaySpecListenerTlsCertificateSds].
   /// [secretName] Name of the secret for a virtual gateway's Transport Layer Security (TLS) Secret Discovery Service validation context trust.
-  VirtualGatewaySpecListenerTlsCertificateSds({
+  const VirtualGatewaySpecListenerTlsCertificateSds({
     required this.secretName,
   });
 

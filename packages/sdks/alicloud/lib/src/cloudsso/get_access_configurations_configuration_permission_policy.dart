@@ -17,7 +17,7 @@ class GetAccessConfigurationsConfigurationPermissionPolicy {
   /// [permissionPolicyDocument] The Content of Policy.
   /// [permissionPolicyName] The Policy Name of policy.
   /// [permissionPolicyType] The Policy Type of policy. Valid values: `System`, `Inline`.
-  GetAccessConfigurationsConfigurationPermissionPolicy({
+  const GetAccessConfigurationsConfigurationPermissionPolicy({
     required this.addTime,
     required this.permissionPolicyDocument,
     required this.permissionPolicyName,

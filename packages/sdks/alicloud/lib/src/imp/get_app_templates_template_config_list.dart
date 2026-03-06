@@ -11,7 +11,7 @@ class GetAppTemplatesTemplateConfigList {
   /// Creates a new [GetAppTemplatesTemplateConfigList].
   /// [key] Config key.
   /// [value] Config Value.
-  GetAppTemplatesTemplateConfigList({
+  const GetAppTemplatesTemplateConfigList({
     required this.key,
     required this.value,
   });

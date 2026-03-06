@@ -29,7 +29,7 @@ class GroupState {
   /// [readEnable] This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
   /// [remark] This attribute is a concise description of group. The length cannot exceed 256.
   /// [tags] A mapping of tags to assign to the resource.
-  GroupState({
+  const GroupState({
     this.groupId,
     this.groupName,
     this.groupType,

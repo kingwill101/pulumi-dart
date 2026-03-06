@@ -39,7 +39,7 @@ class GetHuntRelationResult {
   /// [relationType] The type of the hunt relation
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetHuntRelationResult({
+  const GetHuntRelationResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

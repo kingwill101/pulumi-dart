@@ -18,7 +18,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout].
   /// [disruptionBudget] Message encapsulating a value that can be either absolute ("fixed") or
   /// [minWaitDuration] This determines the minimum duration of time to wait after the
-  V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout({
+  const V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1PayloadRollout({
     required this.disruptionBudget,
     required this.minWaitDuration,
   });

@@ -13,7 +13,7 @@ class RuntimeAcceleratorConfig {
   /// Creates a new [RuntimeAcceleratorConfig].
   /// [coreCount] Count of cores of this accelerator.
   /// [type] Accelerator model.
-  RuntimeAcceleratorConfig({
+  const RuntimeAcceleratorConfig({
     this.coreCount,
     this.type,
   });

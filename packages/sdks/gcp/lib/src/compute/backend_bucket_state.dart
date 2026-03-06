@@ -62,7 +62,7 @@ class BackendBucketState {
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
   /// [selfLink] The URI of the created resource.
-  BackendBucketState({
+  const BackendBucketState({
     this.bucketName,
     this.cdnPolicy,
     this.compressionMode,

@@ -18,7 +18,7 @@ class CriticalJobHistoryDetailsResponse {
   /// [jobName] The job name.
   /// [jobStatus] The job state.
   /// [startTime] The start time of the job.
-  CriticalJobHistoryDetailsResponse({
+  const CriticalJobHistoryDetailsResponse({
     required this.jobId,
     required this.jobName,
     required this.jobStatus,

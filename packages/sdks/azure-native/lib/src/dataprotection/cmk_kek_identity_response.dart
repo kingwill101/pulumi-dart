@@ -12,7 +12,7 @@ class CmkKekIdentityResponse {
   /// Creates a new [CmkKekIdentityResponse].
   /// [identityId] The managed identity to be used which has access permissions to the Key Vault. Provide a value here in case identity types: 'UserAssigned' only.
   /// [identityType] The identity type. 'SystemAssigned' and 'UserAssigned' are mutually exclusive. 'SystemAssigned' will use implicitly created managed identity.
-  CmkKekIdentityResponse({
+  const CmkKekIdentityResponse({
     this.identityId,
     this.identityType,
   });

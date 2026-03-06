@@ -11,7 +11,7 @@ class KxClusterDatabaseCacheConfiguration {
   /// Creates a new [KxClusterDatabaseCacheConfiguration].
   /// [cacheType] Type of disk cache.
   /// [dbPaths] Paths within the database to cache.
-  KxClusterDatabaseCacheConfiguration({
+  const KxClusterDatabaseCacheConfiguration({
     required this.cacheType,
     this.dbPaths,
   });

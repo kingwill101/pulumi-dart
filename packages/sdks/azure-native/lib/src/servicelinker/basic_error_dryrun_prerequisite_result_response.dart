@@ -16,7 +16,7 @@ class BasicErrorDryrunPrerequisiteResultResponse {
   /// [code] The error code.
   /// [message] The error message.
   /// [type] The type of dryrun result.
-  BasicErrorDryrunPrerequisiteResultResponse({
+  const BasicErrorDryrunPrerequisiteResultResponse({
     this.code,
     this.message,
     required this.type,

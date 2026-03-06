@@ -27,7 +27,7 @@ class ApplicationArgs {
   /// [name] Optional.
   /// [template] Required.
   /// [version] Optional.
-  ApplicationArgs({
+  const ApplicationArgs({
     this.blueGreen,
     this.blueGreenConfirm,
     required this.clusterName,

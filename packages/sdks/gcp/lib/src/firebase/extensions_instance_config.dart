@@ -43,7 +43,7 @@ class ExtensionsInstanceConfig {
   /// [params] Environment variables that may be configured for the Extension
   /// [populatedPostinstallContent] (Output)
   /// [systemParams] Params whose values are only available at deployment time.
-  ExtensionsInstanceConfig({
+  const ExtensionsInstanceConfig({
     this.allowedEventTypes,
     this.createTime,
     this.eventarcChannel,

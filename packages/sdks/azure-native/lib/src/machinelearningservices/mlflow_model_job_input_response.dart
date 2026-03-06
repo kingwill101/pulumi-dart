@@ -18,7 +18,7 @@ class MLFlowModelJobInputResponse {
   /// [jobInputType] Enum to determine the Job Input Type.
   /// [mode] Input Asset Delivery Mode.
   /// [uri] [Required] Input Asset URI.
-  MLFlowModelJobInputResponse({
+  const MLFlowModelJobInputResponse({
     this.description,
     required this.jobInputType,
     this.mode,

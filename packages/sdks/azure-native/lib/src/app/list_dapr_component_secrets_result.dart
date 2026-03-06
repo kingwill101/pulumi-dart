@@ -10,7 +10,7 @@ class ListDaprComponentSecretsResult {
 
   /// Creates a new [ListDaprComponentSecretsResult].
   /// [value] Collection of secrets used by a Dapr component
-  ListDaprComponentSecretsResult({
+  const ListDaprComponentSecretsResult({
     required this.value,
   });
 

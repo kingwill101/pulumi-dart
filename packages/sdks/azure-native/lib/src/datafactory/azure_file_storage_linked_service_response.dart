@@ -65,7 +65,7 @@ class AzureFileStorageLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [userId] User ID to logon the server. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  AzureFileStorageLinkedServiceResponse({
+  const AzureFileStorageLinkedServiceResponse({
     this.accountKey,
     this.annotations,
     this.connectVia,

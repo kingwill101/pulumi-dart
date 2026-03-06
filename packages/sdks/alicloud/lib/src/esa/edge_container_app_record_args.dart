@@ -18,7 +18,7 @@ class EdgeContainerAppRecordArgs {
   /// [appId] The application ID
   /// [recordName] The associated domain name.
   /// [siteId] The website ID.
-  EdgeContainerAppRecordArgs({
+  const EdgeContainerAppRecordArgs({
     required this.appId,
     required this.recordName,
     this.siteId,

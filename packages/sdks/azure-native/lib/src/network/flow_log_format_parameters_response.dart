@@ -12,7 +12,7 @@ class FlowLogFormatParametersResponse {
   /// Creates a new [FlowLogFormatParametersResponse].
   /// [type] The file type of flow log.
   /// [version] The version (revision) of the flow log.
-  FlowLogFormatParametersResponse({
+  const FlowLogFormatParametersResponse({
     this.type,
     this.version,
   });

@@ -29,7 +29,7 @@ class RevisionSpecResponse {
   /// [serviceAccountName] Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
   /// [timeoutSeconds] TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour).
   /// [volumes] Required.
-  RevisionSpecResponse({
+  const RevisionSpecResponse({
     required this.containerConcurrency,
     required this.containers,
     required this.enableServiceLinks,

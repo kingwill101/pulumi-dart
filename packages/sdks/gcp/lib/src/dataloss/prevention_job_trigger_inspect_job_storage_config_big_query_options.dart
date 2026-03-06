@@ -44,7 +44,7 @@ class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
   /// [rowsLimitPercent] Max percentage of rows to scan. The rest are omitted. The number of rows scanned is rounded down.
   /// [sampleMethod] How to sample rows if not all rows are scanned. Meaningful only when used in conjunction with either
   /// [tableReference] Set of files to scan.
-  PreventionJobTriggerInspectJobStorageConfigBigQueryOptions({
+  const PreventionJobTriggerInspectJobStorageConfigBigQueryOptions({
     this.excludedFields,
     this.identifyingFields,
     this.includedFields,

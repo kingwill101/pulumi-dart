@@ -9,7 +9,7 @@ class DaprComponentResiliencyPolicyTimeoutPolicyConfiguration {
 
   /// Creates a new [DaprComponentResiliencyPolicyTimeoutPolicyConfiguration].
   /// [responseTimeoutInSeconds] The optional response timeout in seconds
-  DaprComponentResiliencyPolicyTimeoutPolicyConfiguration({
+  const DaprComponentResiliencyPolicyTimeoutPolicyConfiguration({
     this.responseTimeoutInSeconds,
   });
 

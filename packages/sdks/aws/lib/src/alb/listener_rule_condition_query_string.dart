@@ -11,7 +11,7 @@ class ListenerRuleConditionQueryString {
   /// Creates a new [ListenerRuleConditionQueryString].
   /// [key] Query string key pattern to match.
   /// [value] Query string value pattern to match.
-  ListenerRuleConditionQueryString({
+  const ListenerRuleConditionQueryString({
     this.key,
     required this.value,
   });

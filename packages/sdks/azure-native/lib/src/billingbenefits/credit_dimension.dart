@@ -12,7 +12,7 @@ class CreditDimension {
   /// Creates a new [CreditDimension].
   /// [key] The dimension key (e.g., productFamily, description, creditType)
   /// [value] The dimension value
-  CreditDimension({
+  const CreditDimension({
     required this.key,
     required this.value,
   });

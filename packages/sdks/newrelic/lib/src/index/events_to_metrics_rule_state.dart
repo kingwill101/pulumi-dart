@@ -24,7 +24,7 @@ class EventsToMetricsRuleState {
   /// [name] The name of the rule. This must be unique within an account.
   /// [nrql] Explains how to create metrics from events.
   /// [ruleId] The id, uniquely identifying the rule.
-  EventsToMetricsRuleState({
+  const EventsToMetricsRuleState({
     this.accountId,
     this.description,
     this.enabled,

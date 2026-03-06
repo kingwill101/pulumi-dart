@@ -19,7 +19,7 @@ class TableTableConstraintsForeignKey {
   /// [columnReferences] The pair of the foreign key column and primary key column.
   /// [name] Set only if the foreign key constraint is named.
   /// [referencedTable] The table that holds the primary key
-  TableTableConstraintsForeignKey({
+  const TableTableConstraintsForeignKey({
     required this.columnReferences,
     this.name,
     required this.referencedTable,

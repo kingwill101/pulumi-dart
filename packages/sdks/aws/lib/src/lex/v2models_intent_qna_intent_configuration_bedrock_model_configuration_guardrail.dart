@@ -11,7 +11,7 @@ class V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail {
   /// Creates a new [V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail].
   /// [identifier] Identifier of the guardrail.
   /// [version] Version of the guardrail.
-  V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail({
+  const V2modelsIntentQnaIntentConfigurationBedrockModelConfigurationGuardrail({
     required this.identifier,
     required this.version,
   });

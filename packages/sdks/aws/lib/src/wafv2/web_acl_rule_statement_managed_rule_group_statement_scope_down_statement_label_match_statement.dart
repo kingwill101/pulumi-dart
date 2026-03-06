@@ -11,7 +11,7 @@ class WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchSt
   /// Creates a new [WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement].
   /// [key] String to match against.
   /// [scope] Specify whether you want to match using the label name or just the namespace. Valid values are `LABEL` or `NAMESPACE`.
-  WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement({
+  const WebAclRuleStatementManagedRuleGroupStatementScopeDownStatementLabelMatchStatement({
     required this.key,
     required this.scope,
   });

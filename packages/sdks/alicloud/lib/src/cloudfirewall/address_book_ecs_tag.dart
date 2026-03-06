@@ -11,7 +11,7 @@ class AddressBookEcsTag {
   /// Creates a new [AddressBookEcsTag].
   /// [tagKey] The key of ECS tag that to be matched.
   /// [tagValue] The value of ECS tag that to be matched.
-  AddressBookEcsTag({
+  const AddressBookEcsTag({
     this.tagKey,
     this.tagValue,
   });

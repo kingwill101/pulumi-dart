@@ -11,7 +11,7 @@ class ProvisionedClustersExtendedLocation {
   /// Creates a new [ProvisionedClustersExtendedLocation].
   /// [name] The extended location name.
   /// [type] The extended location type.
-  ProvisionedClustersExtendedLocation({
+  const ProvisionedClustersExtendedLocation({
     this.name,
     this.type,
   });

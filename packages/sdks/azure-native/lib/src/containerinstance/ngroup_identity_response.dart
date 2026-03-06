@@ -19,7 +19,7 @@ class NGroupIdentityResponse {
   /// [tenantId] The tenant id associated with the NGroup. This property will only be provided for a system assigned identity.
   /// [type] The type of identity used for the NGroup. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user assigned identities. The type 'None' will remove any identities from the NGroup.
   /// [userAssignedIdentities] The list of user identities associated with the NGroup.
-  NGroupIdentityResponse({
+  const NGroupIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

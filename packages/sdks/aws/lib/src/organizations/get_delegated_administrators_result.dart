@@ -15,7 +15,7 @@ class GetDelegatedAdministratorsResult {
   /// [delegatedAdministrators] The list of delegated administrators in your organization, which have the following attributes:
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [servicePrincipal] Optional.
-  GetDelegatedAdministratorsResult({
+  const GetDelegatedAdministratorsResult({
     required this.delegatedAdministrators,
     required this.id,
     this.servicePrincipal,

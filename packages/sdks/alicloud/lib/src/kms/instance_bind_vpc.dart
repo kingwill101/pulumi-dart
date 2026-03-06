@@ -17,7 +17,7 @@ class InstanceBindVpc {
   /// [vpcId] VPC ID
   /// [vpcOwnerId] VPC owner root user ID
   /// [vswitchId] vswitch id
-  InstanceBindVpc({
+  const InstanceBindVpc({
     this.regionId,
     this.vpcId,
     this.vpcOwnerId,

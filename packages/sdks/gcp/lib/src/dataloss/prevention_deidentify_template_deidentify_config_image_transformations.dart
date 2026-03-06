@@ -10,7 +10,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigImageTransformations {
 
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigImageTransformations].
   /// [transforms] For determination of how redaction of images should occur.
-  PreventionDeidentifyTemplateDeidentifyConfigImageTransformations({
+  const PreventionDeidentifyTemplateDeidentifyConfigImageTransformations({
     required this.transforms,
   });
 

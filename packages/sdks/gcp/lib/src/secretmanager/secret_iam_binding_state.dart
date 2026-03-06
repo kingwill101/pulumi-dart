@@ -40,7 +40,7 @@ class SecretIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [secretId] Used to find the parent resource to bind the IAM policy to
-  SecretIamBindingState({
+  const SecretIamBindingState({
     this.condition,
     this.etag,
     this.members,

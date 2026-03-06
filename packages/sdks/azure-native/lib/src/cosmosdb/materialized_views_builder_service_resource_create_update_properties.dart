@@ -16,7 +16,7 @@ class MaterializedViewsBuilderServiceResourceCreateUpdateProperties {
   /// [instanceCount] Instance count for the service.
   /// [instanceSize] Instance type for the service.
   /// [serviceType] ServiceType for the service.
-  MaterializedViewsBuilderServiceResourceCreateUpdateProperties({
+  const MaterializedViewsBuilderServiceResourceCreateUpdateProperties({
     this.instanceCount,
     this.instanceSize,
     required this.serviceType,

@@ -15,7 +15,7 @@ class AutomationRuleRunPlaybookAction {
   /// [actionConfiguration] Optional.
   /// [actionType] The type of the automation rule action.
   /// [order] Required.
-  AutomationRuleRunPlaybookAction({
+  const AutomationRuleRunPlaybookAction({
     this.actionConfiguration,
     required this.actionType,
     required this.order,

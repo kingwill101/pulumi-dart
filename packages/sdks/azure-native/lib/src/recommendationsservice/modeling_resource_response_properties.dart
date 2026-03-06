@@ -22,7 +22,7 @@ class ModelingResourceResponseProperties {
   /// [inputData] The configuration to raw CDM data to be used as Modeling resource input.
   /// [provisioningState] The resource provisioning state.
   /// [size] Modeling size controls the maximum supported input data size.
-  ModelingResourceResponseProperties({
+  const ModelingResourceResponseProperties({
     this.features,
     this.frequency,
     this.inputData,

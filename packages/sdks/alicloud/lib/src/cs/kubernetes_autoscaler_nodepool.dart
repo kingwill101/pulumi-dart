@@ -14,7 +14,7 @@ class KubernetesAutoscalerNodepool {
   /// [id] The scaling group id of the groups configured for cluster-autoscaler.
   /// [labels] The labels for the nodes in scaling group.
   /// [taints] The taints for the nodes in scaling group.
-  KubernetesAutoscalerNodepool({
+  const KubernetesAutoscalerNodepool({
     this.id,
     this.labels,
     this.taints,

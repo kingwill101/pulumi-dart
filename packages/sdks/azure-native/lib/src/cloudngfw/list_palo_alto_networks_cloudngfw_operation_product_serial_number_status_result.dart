@@ -11,7 +11,7 @@ class ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult {
   /// Creates a new [ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult].
   /// [serialNumber] product Serial associated with given resource
   /// [status] allocation status of the product serial number
-  ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult({
+  const ListPaloAltoNetworksCloudngfwOperationProductSerialNumberStatusResult({
     this.serialNumber,
     required this.status,
   });

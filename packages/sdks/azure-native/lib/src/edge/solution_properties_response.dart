@@ -16,7 +16,7 @@ class SolutionPropertiesResponse {
   /// [availableSolutionTemplateVersions] List of latest revisions for available solution template versions
   /// [provisioningState] Provisioning state of resource
   /// [solutionTemplateId] Solution template Id
-  SolutionPropertiesResponse({
+  const SolutionPropertiesResponse({
     required this.availableSolutionTemplateVersions,
     required this.provisioningState,
     required this.solutionTemplateId,

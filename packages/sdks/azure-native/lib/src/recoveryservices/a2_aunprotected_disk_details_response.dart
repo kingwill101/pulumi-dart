@@ -12,7 +12,7 @@ class A2AUnprotectedDiskDetailsResponse {
   /// Creates a new [A2AUnprotectedDiskDetailsResponse].
   /// [diskAutoProtectionStatus] A value indicating whether the disk auto protection is enabled.
   /// [diskLunId] The source lun Id for the data disk.
-  A2AUnprotectedDiskDetailsResponse({
+  const A2AUnprotectedDiskDetailsResponse({
     this.diskAutoProtectionStatus,
     this.diskLunId,
   });

@@ -12,7 +12,7 @@ class OrphanedUserInfoResponse {
   /// Creates a new [OrphanedUserInfoResponse].
   /// [databaseName] Parent database of the user
   /// [name] Name of the orphaned user
-  OrphanedUserInfoResponse({
+  const OrphanedUserInfoResponse({
     this.databaseName,
     this.name,
   });

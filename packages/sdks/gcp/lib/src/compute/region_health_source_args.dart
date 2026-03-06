@@ -52,7 +52,7 @@ class RegionHealthSourceArgs {
   /// [region] URL of the region where the health source resides.
   /// [sourceType] Specifies the type of the `HealthSource`. The only allowed value
   /// [sources] URLs to the source resources. Must be size 1. Must be a
-  RegionHealthSourceArgs({
+  const RegionHealthSourceArgs({
     this.description,
     this.healthAggregationPolicy,
     this.name,

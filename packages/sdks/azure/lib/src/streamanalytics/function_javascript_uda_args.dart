@@ -26,7 +26,7 @@ class FunctionJavascriptUdaArgs {
   /// [output] An `output` block as defined below.
   /// [script] The JavaScript of this UDA Function.
   /// [streamAnalyticsJobId] The resource ID of the Stream Analytics Job where this Function should be created. Changing this forces a new resource to be created.
-  FunctionJavascriptUdaArgs({
+  const FunctionJavascriptUdaArgs({
     required this.inputs,
     this.name,
     required this.output,

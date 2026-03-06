@@ -22,7 +22,7 @@ class DbSystemPropertiesDbHome {
   /// [dbVersion] A valid Oracle Database version. For a list of supported versions, use the
   /// [displayName] The display name for the Database Home. The name does not have to
   /// [isUnifiedAuditingEnabled] Whether unified auditing is enabled for the Database Home.
-  DbSystemPropertiesDbHome({
+  const DbSystemPropertiesDbHome({
     required this.database,
     required this.dbVersion,
     this.displayName,

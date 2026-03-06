@@ -9,7 +9,7 @@ class GetConnectorEgressConfig {
 
   /// Creates a new [GetConnectorEgressConfig].
   /// [vpcLattices] VPC Lattice configuration. Contains the following attributes:
-  GetConnectorEgressConfig({
+  const GetConnectorEgressConfig({
     required this.vpcLattices,
   });
 

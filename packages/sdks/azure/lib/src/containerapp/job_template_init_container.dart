@@ -40,7 +40,7 @@ class JobTemplateInitContainer {
   /// [memory] The amount of memory to allocate to the container.
   /// [name] The name of the container.
   /// [volumeMounts] A `volume_mounts` block as detailed below.
-  JobTemplateInitContainer({
+  const JobTemplateInitContainer({
     this.args,
     this.commands,
     this.cpu,

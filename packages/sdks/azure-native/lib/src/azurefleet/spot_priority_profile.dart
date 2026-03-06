@@ -27,7 +27,7 @@ class SpotPriorityProfile {
   /// [maintain] Flag to enable/disable continuous goal seeking for the desired capacity and restoration of evicted Spot VMs.
   /// [maxPricePerVM] Price per hour of each Spot VM will never exceed this.
   /// [minCapacity] Minimum capacity to achieve which cannot be updated. If we will not be able to "guarantee" minimum capacity, we will reject the request in the sync path itself.
-  SpotPriorityProfile({
+  const SpotPriorityProfile({
     this.allocationStrategy,
     this.capacity,
     this.evictionPolicy,

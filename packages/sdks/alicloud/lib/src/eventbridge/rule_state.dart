@@ -25,7 +25,7 @@ class RuleState {
   /// [ruleName] The name of the event rule.
   /// [status] The status of the event rule. Valid values: `ENABLE`, `DISABLE`.
   /// [targets] The targets of rule. See `targets` below.
-  RuleState({
+  const RuleState({
     this.description,
     this.eventBusName,
     this.filterPattern,

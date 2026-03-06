@@ -29,7 +29,7 @@ class GetDelegatedAdministratorsDelegatedAdministrator {
   /// [joinedTimestamp] The date when the delegated administrator's account became a part of the organization.
   /// [name] The friendly name of the delegated administrator's account.
   /// [status] The status of the delegated administrator's account in the organization.
-  GetDelegatedAdministratorsDelegatedAdministrator({
+  const GetDelegatedAdministratorsDelegatedAdministrator({
     required this.arn,
     required this.delegationEnabledDate,
     required this.email,

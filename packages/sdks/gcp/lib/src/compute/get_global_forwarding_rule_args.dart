@@ -18,7 +18,7 @@ class GetGlobalForwardingRuleArgs {
   /// Creates a new [GetGlobalForwardingRuleArgs].
   /// [name] The name of the global forwarding rule.
   /// [project] The project in which the resource belongs. If it
-  GetGlobalForwardingRuleArgs({
+  const GetGlobalForwardingRuleArgs({
     required this.name,
     this.project,
   });

@@ -12,7 +12,7 @@ class GetTenantConfigurationArgs {
 
   /// Creates a new [GetTenantConfigurationArgs].
   /// [configurationName] The name of the Configuration
-  GetTenantConfigurationArgs({
+  const GetTenantConfigurationArgs({
     required this.configurationName,
   });
 

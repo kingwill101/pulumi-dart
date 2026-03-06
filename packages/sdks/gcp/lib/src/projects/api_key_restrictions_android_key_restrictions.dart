@@ -9,7 +9,7 @@ class ApiKeyRestrictionsAndroidKeyRestrictions {
 
   /// Creates a new [ApiKeyRestrictionsAndroidKeyRestrictions].
   /// [allowedApplications] A list of Android applications that are allowed to make API calls with this key.
-  ApiKeyRestrictionsAndroidKeyRestrictions({
+  const ApiKeyRestrictionsAndroidKeyRestrictions({
     required this.allowedApplications,
   });
 

@@ -14,7 +14,7 @@ class DeploymentGroupTriggerConfiguration {
   /// [triggerEvents] The event type or types for which notifications are triggered. Some values that are supported: `DeploymentStart`, `DeploymentSuccess`, `DeploymentFailure`, `DeploymentStop`, `DeploymentRollback`, `InstanceStart`, `InstanceSuccess`, `InstanceFailure`.  See [the CodeDeploy documentation](http://docs.aws.amazon.com/codedeploy/latest/userguide/monitoring-sns-event-notifications-create-trigger.html) for all possible values.
   /// [triggerName] The name of the notification trigger.
   /// [triggerTargetArn] The ARN of the SNS topic through which notifications are sent.
-  DeploymentGroupTriggerConfiguration({
+  const DeploymentGroupTriggerConfiguration({
     required this.triggerEvents,
     required this.triggerName,
     required this.triggerTargetArn,

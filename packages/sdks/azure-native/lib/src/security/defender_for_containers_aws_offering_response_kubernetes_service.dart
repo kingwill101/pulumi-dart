@@ -9,7 +9,7 @@ class DefenderForContainersAwsOfferingResponseKubernetesService {
 
   /// Creates a new [DefenderForContainersAwsOfferingResponseKubernetesService].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature used for provisioning resources
-  DefenderForContainersAwsOfferingResponseKubernetesService({
+  const DefenderForContainersAwsOfferingResponseKubernetesService({
     this.cloudRoleArn,
   });
 

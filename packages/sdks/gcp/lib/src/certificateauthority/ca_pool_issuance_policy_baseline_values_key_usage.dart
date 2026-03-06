@@ -20,7 +20,7 @@ class CaPoolIssuancePolicyBaselineValuesKeyUsage {
   /// [baseKeyUsage] Describes high-level ways in which a key may be used.
   /// [extendedKeyUsage] Describes high-level ways in which a key may be used.
   /// [unknownExtendedKeyUsages] An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-  CaPoolIssuancePolicyBaselineValuesKeyUsage({
+  const CaPoolIssuancePolicyBaselineValuesKeyUsage({
     required this.baseKeyUsage,
     required this.extendedKeyUsage,
     this.unknownExtendedKeyUsages,

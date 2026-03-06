@@ -32,7 +32,7 @@ class InstancePropertiesResponse {
   /// [solutionVersionId] Solution version of instance
   /// [status] Status of instance
   /// [targetId] Target of instance
-  InstancePropertiesResponse({
+  const InstancePropertiesResponse({
     this.activeState,
     required this.deploymentTimestampEpoch,
     required this.provisioningState,

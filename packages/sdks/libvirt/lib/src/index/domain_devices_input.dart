@@ -33,7 +33,7 @@ class DomainDevicesInput {
   /// [model] Specifies the model type for the input device.
   /// [source] Defines the source configuration for the input device.
   /// [type] Indicates the type of input device being configured.
-  DomainDevicesInput({
+  const DomainDevicesInput({
     this.acpi,
     this.address,
     this.alias,

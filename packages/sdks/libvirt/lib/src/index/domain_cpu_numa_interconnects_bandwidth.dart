@@ -23,7 +23,7 @@ class DomainCpuNumaInterconnectsBandwidth {
   /// [type] Indicates the type of bandwidth established for interconnecting communication.
   /// [unit] Sets the unit of measurement for the specified bandwidth in the NUMA interconnection.
   /// [value] Establishes the actual bandwidth value for interconnects between NUMA nodes, defined by the unit.
-  DomainCpuNumaInterconnectsBandwidth({
+  const DomainCpuNumaInterconnectsBandwidth({
     this.cache,
     required this.initiator,
     required this.target,

@@ -13,7 +13,7 @@ class FirewallLogConfig {
   /// Creates a new [FirewallLogConfig].
   /// [enable] This field denotes whether to enable logging for a particular firewall rule.
   /// [metadata] This field can only be specified for a particular firewall rule if logging is enabled for that rule. This field denotes whether to include or exclude metadata for firewall logs.
-  FirewallLogConfig({
+  const FirewallLogConfig({
     this.enable,
     this.metadata,
   });

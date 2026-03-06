@@ -16,7 +16,7 @@ class GetPermissionsLfTag {
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
   /// [key] Key-name for the tag.
   /// [values] List of possible values an attribute can take.
-  GetPermissionsLfTag({
+  const GetPermissionsLfTag({
     required this.catalogId,
     required this.key,
     required this.values,

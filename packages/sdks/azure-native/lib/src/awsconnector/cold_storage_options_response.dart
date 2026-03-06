@@ -9,7 +9,7 @@ class ColdStorageOptionsResponse {
 
   /// Creates a new [ColdStorageOptionsResponse].
   /// [enabled] &lt;p&gt;Whether to enable or disable cold storage on the domain. You must enable UltraWarm storage to enable cold storage.&lt;/p&gt;
-  ColdStorageOptionsResponse({
+  const ColdStorageOptionsResponse({
     this.enabled,
   });
 

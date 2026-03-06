@@ -75,7 +75,7 @@ class ServerGroupState {
   /// [status] Server group status. Value:
   /// [tags] Label.
   /// [vpcId] The ID of the virtual private cloud (VPC) to which the server group belongs.
-  ServerGroupState({
+  const ServerGroupState({
     this.addressIpVersion,
     this.anyPortEnabled,
     this.connectionDrain,

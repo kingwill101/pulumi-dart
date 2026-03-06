@@ -10,7 +10,7 @@ class GetAppTemplateAzureQueueScaleRuleAuthentication {
   /// Creates a new [GetAppTemplateAzureQueueScaleRuleAuthentication].
   /// [secretName] The name of the secret that contains the value for this environment variable.
   /// [triggerParameter] Required.
-  GetAppTemplateAzureQueueScaleRuleAuthentication({
+  const GetAppTemplateAzureQueueScaleRuleAuthentication({
     required this.secretName,
     required this.triggerParameter,
   });

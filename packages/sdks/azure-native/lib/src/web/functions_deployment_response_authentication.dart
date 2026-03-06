@@ -15,7 +15,7 @@ class FunctionsDeploymentResponseAuthentication {
   /// [storageAccountConnectionStringName] Use this property for StorageAccountConnectionString. Set the name of the app setting that has the storage account connection string. Do not set a value for this property when using other authentication type.
   /// [type] Property to select authentication type to access the selected storage account. Available options: SystemAssignedIdentity, UserAssignedIdentity, StorageAccountConnectionString.
   /// [userAssignedIdentityResourceId] Use this property for UserAssignedIdentity. Set the resource ID of the identity. Do not set a value for this property when using other authentication type.
-  FunctionsDeploymentResponseAuthentication({
+  const FunctionsDeploymentResponseAuthentication({
     this.storageAccountConnectionStringName,
     this.type,
     this.userAssignedIdentityResourceId,

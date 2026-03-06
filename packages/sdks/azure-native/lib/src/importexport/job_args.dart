@@ -25,7 +25,7 @@ class JobArgs {
   /// [properties] Specifies the job properties
   /// [resourceGroupName] The resource group name uniquely identifies the resource group within the user subscription.
   /// [tags] Specifies the tags that will be assigned to the job.
-  JobArgs({
+  const JobArgs({
     this.jobName,
     this.location,
     this.properties,

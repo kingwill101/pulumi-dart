@@ -31,7 +31,7 @@ class EventHubOutputDataSource {
   /// [sharedAccessPolicyKey] The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
   /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
-  EventHubOutputDataSource({
+  const EventHubOutputDataSource({
     this.authenticationMode,
     this.eventHubName,
     this.partitionKey,

@@ -41,7 +41,7 @@ class GetRouteTableResult {
   /// [subnetId] Subnet ID. Only set when associated with a subnet.
   /// [tags] Required.
   /// [vpcId] Required.
-  GetRouteTableResult({
+  const GetRouteTableResult({
     required this.arn,
     required this.associations,
     this.filters,

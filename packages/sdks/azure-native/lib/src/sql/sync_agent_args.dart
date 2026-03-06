@@ -21,7 +21,7 @@ class SyncAgentArgs {
   /// [serverName] The name of the server on which the sync agent is hosted.
   /// [syncAgentName] The name of the sync agent.
   /// [syncDatabaseId] ARM resource id of the sync database in the sync agent.
-  SyncAgentArgs({
+  const SyncAgentArgs({
     required this.resourceGroupName,
     required this.serverName,
     this.syncAgentName,

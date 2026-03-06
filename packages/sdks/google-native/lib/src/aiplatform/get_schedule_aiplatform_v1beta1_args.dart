@@ -15,7 +15,7 @@ class GetScheduleAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [scheduleId] Required.
-  GetScheduleAiplatformV1beta1Args({
+  const GetScheduleAiplatformV1beta1Args({
     required this.location,
     this.project,
     required this.scheduleId,

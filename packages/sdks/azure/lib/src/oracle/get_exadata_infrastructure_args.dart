@@ -15,7 +15,7 @@ class GetExadataInfrastructureArgs {
   /// Creates a new [GetExadataInfrastructureArgs].
   /// [name] The name of this Cloud Exadata Infrastructure.
   /// [resourceGroupName] The name of the Resource Group where the Cloud Exadata Infrastructure exists.
-  GetExadataInfrastructureArgs({
+  const GetExadataInfrastructureArgs({
     required this.name,
     required this.resourceGroupName,
   });

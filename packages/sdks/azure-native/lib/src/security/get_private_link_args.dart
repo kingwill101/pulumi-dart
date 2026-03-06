@@ -15,7 +15,7 @@ class GetPrivateLinkArgs {
   /// Creates a new [GetPrivateLinkArgs].
   /// [privateLinkName] The name of the private link resource. Must be unique within the resource group and follow Azure naming conventions.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateLinkArgs({
+  const GetPrivateLinkArgs({
     required this.privateLinkName,
     required this.resourceGroupName,
   });

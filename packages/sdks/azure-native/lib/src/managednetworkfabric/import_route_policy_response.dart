@@ -12,7 +12,7 @@ class ImportRoutePolicyResponse {
   /// Creates a new [ImportRoutePolicyResponse].
   /// [importIpv4RoutePolicyId] ARM resource ID of RoutePolicy.
   /// [importIpv6RoutePolicyId] ARM resource ID of RoutePolicy.
-  ImportRoutePolicyResponse({
+  const ImportRoutePolicyResponse({
     this.importIpv4RoutePolicyId,
     this.importIpv6RoutePolicyId,
   });

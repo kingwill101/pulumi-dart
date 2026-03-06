@@ -51,7 +51,7 @@ class QuotaV2State {
   /// [securityGroupRule] Quota value for security group rules.
   /// [subnet] Quota value for subnets. Changing
   /// [subnetpool] Quota value for subnetpools.
-  QuotaV2State({
+  const QuotaV2State({
     this.floatingip,
     this.network,
     this.port,

@@ -9,7 +9,7 @@ class UserInitiatedRedeploy {
 
   /// Creates a new [UserInitiatedRedeploy].
   /// [automaticallyApprove] Specifies Redeploy Scheduled Event related configurations.
-  UserInitiatedRedeploy({
+  const UserInitiatedRedeploy({
     this.automaticallyApprove,
   });
 

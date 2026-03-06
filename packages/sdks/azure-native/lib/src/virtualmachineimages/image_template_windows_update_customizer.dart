@@ -22,7 +22,7 @@ class ImageTemplateWindowsUpdateCustomizer {
   /// [searchCriteria] Criteria to search updates. Omit or specify empty string to use the default (search all). Refer to above link for examples and detailed description of this field.
   /// [type] The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
   /// [updateLimit] Maximum number of updates to apply at a time. Omit or specify 0 to use the default (1000)
-  ImageTemplateWindowsUpdateCustomizer({
+  const ImageTemplateWindowsUpdateCustomizer({
     this.filters,
     this.name,
     this.searchCriteria,

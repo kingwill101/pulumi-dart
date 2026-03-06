@@ -30,7 +30,7 @@ class KubernetesAddon {
   /// [disabled] Disables the automatic installation of a component. Default is `false`.
   /// [name] Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
   /// [version] The version of the component.
-  KubernetesAddon({
+  const KubernetesAddon({
     this.config,
     this.disabled,
     this.name,

@@ -18,7 +18,7 @@ class BandwidthPackageAttachmentState {
   /// [accelerators] Accelerators bound with current Bandwidth Package.
   /// [bandwidthPackageId] The ID of the Bandwidth Package. **NOTE:** From version 1.192.0, `bandwidth_package_id` can be modified.
   /// [status] State of Bandwidth Package.
-  BandwidthPackageAttachmentState({
+  const BandwidthPackageAttachmentState({
     this.acceleratorId,
     this.accelerators,
     this.bandwidthPackageId,

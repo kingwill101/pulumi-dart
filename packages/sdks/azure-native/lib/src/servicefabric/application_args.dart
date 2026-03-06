@@ -43,7 +43,7 @@ class ApplicationArgs {
   /// [tags] Resource tags.
   /// [upgradePolicy] Describes the policy for a monitored application upgrade.
   /// [version] The version of the application type as defined in the application manifest.
-  ApplicationArgs({
+  const ApplicationArgs({
     this.applicationName,
     required this.clusterName,
     this.identity,

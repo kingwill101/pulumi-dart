@@ -9,7 +9,7 @@ class GoogleCloudContentwarehouseV1IntegerArray {
 
   /// Creates a new [GoogleCloudContentwarehouseV1IntegerArray].
   /// [values] List of integer values.
-  GoogleCloudContentwarehouseV1IntegerArray({
+  const GoogleCloudContentwarehouseV1IntegerArray({
     this.values,
   });
 

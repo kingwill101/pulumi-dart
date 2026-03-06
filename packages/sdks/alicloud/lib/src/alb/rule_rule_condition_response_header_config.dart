@@ -10,7 +10,7 @@ class RuleRuleConditionResponseHeaderConfig {
   /// Creates a new [RuleRuleConditionResponseHeaderConfig].
   /// [key] Optional.
   /// [values] Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-  RuleRuleConditionResponseHeaderConfig({
+  const RuleRuleConditionResponseHeaderConfig({
     this.key,
     this.values,
   });

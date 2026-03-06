@@ -16,7 +16,7 @@ class JobTargetGroupState {
   /// [jobAgentId] The ID of the Elastic Job Agent. Changing this forces a new Job Target Group to be created.
   /// [jobTargets] One or more `job_target` blocks as defined below.
   /// [name] The name which should be used for this Job Target Group. Changing this forces a new Job Target Group to be created.
-  JobTargetGroupState({
+  const JobTargetGroupState({
     this.jobAgentId,
     this.jobTargets,
     this.name,

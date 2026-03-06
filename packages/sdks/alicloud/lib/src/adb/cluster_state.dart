@@ -94,7 +94,7 @@ class ClusterState {
   /// [vpcId] Optional.
   /// [vswitchId] The virtual switch ID to launch DB instances in one VPC.
   /// [zoneId] The Zone to launch the DB cluster.
-  ClusterState({
+  const ClusterState({
     this.autoRenewPeriod,
     this.computeResource,
     this.connectionString,

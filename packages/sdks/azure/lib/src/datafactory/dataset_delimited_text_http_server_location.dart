@@ -20,7 +20,7 @@ class DatasetDelimitedTextHttpServerLocation {
   /// [filename] The filename of the file on the web server.
   /// [path] The folder path to the file on the web server.
   /// [relativeUrl] The base URL to the web server hosting the file.
-  DatasetDelimitedTextHttpServerLocation({
+  const DatasetDelimitedTextHttpServerLocation({
     this.dynamicFilenameEnabled,
     this.dynamicPathEnabled,
     required this.filename,

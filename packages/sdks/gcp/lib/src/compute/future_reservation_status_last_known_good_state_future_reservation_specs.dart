@@ -20,7 +20,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecs {
   /// [shareSettings] Settings for sharing the future reservation
   /// [specificSkuProperties] Future Reservation configuration to indicate instance properties and total count.
   /// [timeWindow] Time window for this Future Reservation.
-  FutureReservationStatusLastKnownGoodStateFutureReservationSpecs({
+  const FutureReservationStatusLastKnownGoodStateFutureReservationSpecs({
     this.shareSettings,
     this.specificSkuProperties,
     this.timeWindow,

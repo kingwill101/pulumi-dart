@@ -12,7 +12,7 @@ class JupyterConfigResponse {
   /// Creates a new [JupyterConfigResponse].
   /// [displayName] Optional. Display name, shown in the Jupyter kernelspec card.
   /// [kernel] Optional. Kernel
-  JupyterConfigResponse({
+  const JupyterConfigResponse({
     required this.displayName,
     required this.kernel,
   });

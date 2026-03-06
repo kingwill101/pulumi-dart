@@ -24,7 +24,7 @@ class GetSaasSubscriptionLevelResult {
   /// [properties] saas properties
   /// [tags] the resource tags.
   /// [type] Resource type.
-  GetSaasSubscriptionLevelResult({
+  const GetSaasSubscriptionLevelResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

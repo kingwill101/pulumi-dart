@@ -43,7 +43,7 @@ class GetSslPolicyComputeBetaResult {
   /// [region] URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
   /// [selfLink] Server-defined URL for the resource.
   /// [warnings] If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
-  GetSslPolicyComputeBetaResult({
+  const GetSslPolicyComputeBetaResult({
     required this.creationTimestamp,
     required this.customFeatures,
     required this.description,

@@ -32,7 +32,7 @@ class GetModelsModel {
   /// [modelRef] The reference of the model.
   /// [modifiedTime] The modified time of the model.
   /// [schema] The schema of the model.
-  GetModelsModel({
+  const GetModelsModel({
     required this.createTime,
     required this.description,
     required this.groupId,

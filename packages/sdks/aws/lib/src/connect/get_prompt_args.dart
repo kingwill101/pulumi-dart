@@ -18,7 +18,7 @@ class GetPromptArgs {
   /// [instanceId] Reference to the hosting Amazon Connect Instance
   /// [name] Returns information on a specific Prompt by name
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetPromptArgs({
+  const GetPromptArgs({
     required this.instanceId,
     required this.name,
     this.region,

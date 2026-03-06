@@ -16,7 +16,7 @@ class SecretState {
   /// [data] Base64-url-safe-encoded secret data
   /// [labels] User-defined key/value metadata
   /// [name] User-defined name of the secret
-  SecretState({
+  const SecretState({
     this.data,
     this.labels,
     this.name,

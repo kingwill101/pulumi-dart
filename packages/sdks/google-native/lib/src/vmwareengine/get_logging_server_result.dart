@@ -29,7 +29,7 @@ class GetLoggingServerResult {
   /// [sourceType] The type of component that produces logs that will be forwarded to this logging server.
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last update time of this resource.
-  GetLoggingServerResult({
+  const GetLoggingServerResult({
     required this.createTime,
     required this.hostname,
     required this.name,

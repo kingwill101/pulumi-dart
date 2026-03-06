@@ -15,7 +15,7 @@ class StandardRolloutPolicyResponseContainerV1beta1 {
   /// [batchNodeCount] Number of blue nodes to drain in a batch.
   /// [batchPercentage] Percentage of the blue pool nodes to drain in a batch. The range of this field should be (0.0, 1.0].
   /// [batchSoakDuration] Soak time after each batch gets drained. Default to zero.
-  StandardRolloutPolicyResponseContainerV1beta1({
+  const StandardRolloutPolicyResponseContainerV1beta1({
     required this.batchNodeCount,
     required this.batchPercentage,
     required this.batchSoakDuration,

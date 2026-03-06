@@ -31,7 +31,7 @@ class StandbyVirtualMachinePoolArgs {
   /// [standbyVirtualMachinePoolName] Name of the standby virtual machine pool
   /// [tags] Resource tags.
   /// [virtualMachineState] Specifies the desired state of virtual machines in the pool.
-  StandbyVirtualMachinePoolArgs({
+  const StandbyVirtualMachinePoolArgs({
     this.attachedVirtualMachineScaleSetId,
     this.elasticityProfile,
     this.location,

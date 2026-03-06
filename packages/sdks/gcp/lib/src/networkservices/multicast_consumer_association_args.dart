@@ -41,7 +41,7 @@ class MulticastConsumerAssociationArgs {
   /// [multicastDomainActivation] The resource name of the multicast domain activation that is in the
   /// [network] The resource name of the multicast consumer VPC network.
   /// [project] The ID of the project in which the resource belongs.
-  MulticastConsumerAssociationArgs({
+  const MulticastConsumerAssociationArgs({
     this.description,
     this.labels,
     required this.location,

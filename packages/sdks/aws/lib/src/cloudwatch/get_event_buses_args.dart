@@ -15,7 +15,7 @@ class GetEventBusesArgs {
   /// Creates a new [GetEventBusesArgs].
   /// [namePrefix] Specifying this limits the results to only those event buses with names that start with the specified prefix.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetEventBusesArgs({
+  const GetEventBusesArgs({
     this.namePrefix,
     this.region,
   });

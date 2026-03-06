@@ -15,7 +15,7 @@ class GetBotArgs {
   /// Creates a new [GetBotArgs].
   /// [botName] The name of the Bot resource.
   /// [resourceGroupName] The name of the Bot resource group in the user subscription.
-  GetBotArgs({
+  const GetBotArgs({
     required this.botName,
     required this.resourceGroupName,
   });

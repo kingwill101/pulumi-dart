@@ -28,7 +28,7 @@ class GetEcsDedicatedHostClustersResult {
   /// [outputFile] Optional.
   /// [tags] Optional.
   /// [zoneId] Optional.
-  GetEcsDedicatedHostClustersResult({
+  const GetEcsDedicatedHostClustersResult({
     required this.clusters,
     this.dedicatedHostClusterIds,
     this.dedicatedHostClusterName,

@@ -12,7 +12,7 @@ class GetKubernetesPermissionArgs {
 
   /// Creates a new [GetKubernetesPermissionArgs].
   /// [uid] The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
-  GetKubernetesPermissionArgs({
+  const GetKubernetesPermissionArgs({
     required this.uid,
   });
 

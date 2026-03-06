@@ -42,7 +42,7 @@ class GetPlaywrightWorkspaceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workspaceId] The workspace ID in GUID format.
-  GetPlaywrightWorkspaceResult({
+  const GetPlaywrightWorkspaceResult({
     required this.azureApiVersion,
     required this.dataplaneUri,
     required this.id,

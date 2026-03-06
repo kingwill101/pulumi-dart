@@ -23,7 +23,7 @@ class WindowsBasedSliResponse {
   /// [metricMeanInRange] A window is good if the metric's value is in a good range, averaged across returned streams.
   /// [metricSumInRange] A window is good if the metric's value is in a good range, summed across returned streams.
   /// [windowPeriod] Duration over which window quality is evaluated. Must be an integer fraction of a day and at least 60s.
-  WindowsBasedSliResponse({
+  const WindowsBasedSliResponse({
     required this.goodBadMetricFilter,
     required this.goodTotalRatioThreshold,
     required this.metricMeanInRange,

@@ -9,7 +9,7 @@ class ThingGroupMetadataRootToParentGroup {
   /// Creates a new [ThingGroupMetadataRootToParentGroup].
   /// [groupArn] Optional.
   /// [groupName] Optional.
-  ThingGroupMetadataRootToParentGroup({
+  const ThingGroupMetadataRootToParentGroup({
     this.groupArn,
     this.groupName,
   });

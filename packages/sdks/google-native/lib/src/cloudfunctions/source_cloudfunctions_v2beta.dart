@@ -17,7 +17,7 @@ class SourceCloudfunctionsV2beta {
   /// [gitUri] If provided, get the source from GitHub repository. This option is valid only for GCF 1st Gen function. Example: https://github.com///blob//
   /// [repoSource] If provided, get the source from this location in a Cloud Source Repository.
   /// [storageSource] If provided, get the source from this location in Google Cloud Storage.
-  SourceCloudfunctionsV2beta({
+  const SourceCloudfunctionsV2beta({
     this.gitUri,
     this.repoSource,
     this.storageSource,

@@ -8,7 +8,7 @@ class RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument {
 
   /// Creates a new [RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument].
   /// [name] The name of the query header to inspect. This setting must be provided as lower case characters.
-  RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument({
+  const RuleGroupRuleStatementXssMatchStatementFieldToMatchSingleQueryArgument({
     required this.name,
   });
 

@@ -45,7 +45,7 @@ class AutoImportJobResponseBlobSyncEvents {
   /// [totalBlobsImported] Total number of blobs imported during auto import.
   /// [totalConflicts] Total conflicts encountered during auto import.
   /// [totalErrors] Total errors encountered during auto import.
-  AutoImportJobResponseBlobSyncEvents({
+  const AutoImportJobResponseBlobSyncEvents({
     required this.deletions,
     required this.importedDirectories,
     required this.importedFiles,

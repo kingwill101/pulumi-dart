@@ -26,7 +26,7 @@ class JobTemplateArgs {
   /// [location] Optional.
   /// [name] The resource name of the job template. Format: `projects/{project_number}/locations/{location}/jobTemplates/{job_template}`
   /// [project] Optional.
-  JobTemplateArgs({
+  const JobTemplateArgs({
     this.config,
     required this.jobTemplateId,
     this.labels,

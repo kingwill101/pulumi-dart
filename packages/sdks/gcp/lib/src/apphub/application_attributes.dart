@@ -30,7 +30,7 @@ class ApplicationAttributes {
   /// [developerOwners] Optional. Developer team that owns development and coding.
   /// [environment] Environment of the Application, Service, or Workload
   /// [operatorOwners] Optional. Operator team that ensures runtime and operations.
-  ApplicationAttributes({
+  const ApplicationAttributes({
     this.businessOwners,
     this.criticality,
     this.developerOwners,

@@ -58,7 +58,7 @@ class MongoDbLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [username] Username for authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  MongoDbLinkedServiceResponse({
+  const MongoDbLinkedServiceResponse({
     this.allowSelfSignedServerCert,
     this.annotations,
     this.authSource,

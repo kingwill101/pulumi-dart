@@ -8,7 +8,7 @@ class WafRuleConfigSecurityLevel {
 
   /// Creates a new [WafRuleConfigSecurityLevel].
   /// [value] The value of the custom signature field used for validation.
-  WafRuleConfigSecurityLevel({
+  const WafRuleConfigSecurityLevel({
     this.value,
   });
 

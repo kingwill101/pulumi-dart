@@ -43,7 +43,7 @@ class ManagedClusterApplicationArgs {
   /// [tags] Azure resource tags.
   /// [upgradePolicy] Describes the policy for a monitored application upgrade.
   /// [version] The version of the application type as defined in the application manifest.
-  ManagedClusterApplicationArgs({
+  const ManagedClusterApplicationArgs({
     this.applicationName,
     required this.clusterName,
     this.identity,

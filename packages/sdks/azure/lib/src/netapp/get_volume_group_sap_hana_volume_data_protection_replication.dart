@@ -17,7 +17,7 @@ class GetVolumeGroupSapHanaVolumeDataProtectionReplication {
   /// [remoteVolumeLocation] Location of the primary volume.
   /// [remoteVolumeResourceId] Resource ID of the primary volume.
   /// [replicationFrequency] Replication frequency.
-  GetVolumeGroupSapHanaVolumeDataProtectionReplication({
+  const GetVolumeGroupSapHanaVolumeDataProtectionReplication({
     required this.endpointType,
     required this.remoteVolumeLocation,
     required this.remoteVolumeResourceId,

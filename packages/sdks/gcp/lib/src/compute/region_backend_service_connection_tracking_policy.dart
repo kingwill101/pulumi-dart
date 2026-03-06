@@ -40,7 +40,7 @@ class RegionBackendServiceConnectionTrackingPolicy {
   /// [enableStrongAffinity] Enable Strong Session Affinity for Network Load Balancing. This option is not available publicly.
   /// [idleTimeoutSec] Specifies how long to keep a Connection Tracking entry while there is
   /// [trackingMode] Specifies the key used for connection tracking. There are two options:
-  RegionBackendServiceConnectionTrackingPolicy({
+  const RegionBackendServiceConnectionTrackingPolicy({
     this.connectionPersistenceOnUnhealthyBackends,
     this.enableStrongAffinity,
     this.idleTimeoutSec,

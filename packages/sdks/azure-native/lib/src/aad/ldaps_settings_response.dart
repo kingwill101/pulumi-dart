@@ -27,7 +27,7 @@ class LdapsSettingsResponse {
   /// [pfxCertificate] The certificate required to configure Secure LDAP. The parameter passed here should be a base64encoded representation of the certificate pfx file.
   /// [pfxCertificatePassword] The password to decrypt the provided Secure LDAP certificate pfx file.
   /// [publicCertificate] Public certificate used to configure secure ldap.
-  LdapsSettingsResponse({
+  const LdapsSettingsResponse({
     required this.certificateNotAfter,
     required this.certificateThumbprint,
     this.externalAccess,

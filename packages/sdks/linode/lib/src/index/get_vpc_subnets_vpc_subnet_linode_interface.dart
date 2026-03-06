@@ -14,7 +14,7 @@ class GetVpcSubnetsVpcSubnetLinodeInterface {
   /// [active] Whether the Interface is actively in use.
   /// [configId] ID of Linode Config that the interface is associated with. `null` for a Linode Interface.
   /// [id] ID of the interface.
-  GetVpcSubnetsVpcSubnetLinodeInterface({
+  const GetVpcSubnetsVpcSubnetLinodeInterface({
     required this.active,
     required this.configId,
     required this.id,

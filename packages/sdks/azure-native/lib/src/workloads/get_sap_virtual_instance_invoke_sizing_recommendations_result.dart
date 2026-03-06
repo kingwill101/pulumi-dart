@@ -8,7 +8,7 @@ class GetSapVirtualInstanceInvokeSizingRecommendationsResult {
 
   /// Creates a new [GetSapVirtualInstanceInvokeSizingRecommendationsResult].
   /// [deploymentType] The deployment type. Eg: SingleServer/ThreeTier
-  GetSapVirtualInstanceInvokeSizingRecommendationsResult({
+  const GetSapVirtualInstanceInvokeSizingRecommendationsResult({
     required this.deploymentType,
   });
 

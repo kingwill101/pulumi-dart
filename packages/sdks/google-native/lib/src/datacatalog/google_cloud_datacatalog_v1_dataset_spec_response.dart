@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1DatasetSpecResponse {
 
   /// Creates a new [GoogleCloudDatacatalogV1DatasetSpecResponse].
   /// [vertexDatasetSpec] Vertex AI Dataset specific fields
-  GoogleCloudDatacatalogV1DatasetSpecResponse({
+  const GoogleCloudDatacatalogV1DatasetSpecResponse({
     required this.vertexDatasetSpec,
   });
 

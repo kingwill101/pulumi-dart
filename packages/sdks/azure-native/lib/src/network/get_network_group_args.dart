@@ -18,7 +18,7 @@ class GetNetworkGroupArgs {
   /// [networkGroupName] The name of the network group.
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
-  GetNetworkGroupArgs({
+  const GetNetworkGroupArgs({
     required this.networkGroupName,
     required this.networkManagerName,
     required this.resourceGroupName,

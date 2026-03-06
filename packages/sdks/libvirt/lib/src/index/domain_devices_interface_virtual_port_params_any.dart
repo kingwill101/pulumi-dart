@@ -23,7 +23,7 @@ class DomainDevicesInterfaceVirtualPortParamsAny {
   /// [profileId] Sets the profile ID for the virtual port parameter.
   /// [typeId] Specifies the type ID for the virtual port parameter.
   /// [typeIdVersion] Indicates the version of the type ID for the virtual port parameter.
-  DomainDevicesInterfaceVirtualPortParamsAny({
+  const DomainDevicesInterfaceVirtualPortParamsAny({
     this.instanceId,
     this.interfaceId,
     this.managerId,

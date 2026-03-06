@@ -21,7 +21,7 @@ class RoleArgs {
   /// [description] The description of the Resource Manager role.
   /// [maxSessionDuration] Role maximum session time. Valid values: [3600-43200]. Default to `3600`.
   /// [roleName] Role Name. The length is 1 ~ 64 characters, which can include English letters, numbers, dots "." and dashes "-".
-  RoleArgs({
+  const RoleArgs({
     required this.assumeRolePolicyDocument,
     this.description,
     this.maxSessionDuration,

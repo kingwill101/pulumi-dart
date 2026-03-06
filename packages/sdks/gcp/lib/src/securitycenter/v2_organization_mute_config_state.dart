@@ -49,7 +49,7 @@ class V2OrganizationMuteConfigState {
   /// [organization] The organization whose Cloud Security Command Center the Mute
   /// [type] The type of the mute config.
   /// [updateTime] Output only. The most recent time at which the mute config was
-  V2OrganizationMuteConfigState({
+  const V2OrganizationMuteConfigState({
     this.createTime,
     this.description,
     this.filter,

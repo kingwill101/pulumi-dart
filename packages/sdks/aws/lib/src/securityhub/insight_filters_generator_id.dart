@@ -9,7 +9,7 @@ class InsightFiltersGeneratorId {
   /// Creates a new [InsightFiltersGeneratorId].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersGeneratorId({
+  const InsightFiltersGeneratorId({
     required this.comparison,
     required this.value,
   });

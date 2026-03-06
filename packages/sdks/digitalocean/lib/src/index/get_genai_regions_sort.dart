@@ -9,7 +9,7 @@ class GetGenaiRegionsSort {
   /// Creates a new [GetGenaiRegionsSort].
   /// [direction] Optional.
   /// [key] Required.
-  GetGenaiRegionsSort({
+  const GetGenaiRegionsSort({
     this.direction,
     required this.key,
   });

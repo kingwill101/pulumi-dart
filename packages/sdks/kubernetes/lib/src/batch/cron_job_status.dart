@@ -16,7 +16,7 @@ class CronJobStatus {
   /// [active] A list of pointers to currently running jobs.
   /// [lastScheduleTime] Information when was the last time the job was successfully scheduled.
   /// [lastSuccessfulTime] Information when was the last time the job successfully completed.
-  CronJobStatus({
+  const CronJobStatus({
     this.active,
     this.lastScheduleTime,
     this.lastSuccessfulTime,

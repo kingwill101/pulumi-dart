@@ -20,7 +20,7 @@ class TransitGatewayPeeringArgs {
   /// [coreNetworkId] ID of a core network.
   /// [tags] Key-value tags for the peering. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayArn] ARN of the transit gateway for the peering request.
-  TransitGatewayPeeringArgs({
+  const TransitGatewayPeeringArgs({
     required this.coreNetworkId,
     this.tags,
     required this.transitGatewayArn,

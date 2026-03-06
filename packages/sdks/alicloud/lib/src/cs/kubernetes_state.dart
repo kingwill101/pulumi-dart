@@ -204,7 +204,7 @@ class KubernetesState {
   /// [version] Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
   /// [vpcId] The ID of VPC where the current cluster is located.
   /// [workerRamRoleName] The RamRole Name attached to worker node.
-  KubernetesState({
+  const KubernetesState({
     this.addons,
     this.apiAudiences,
     this.certificateAuthority,

@@ -15,7 +15,7 @@ class GetTagTemplateArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [tagTemplateId] Required.
-  GetTagTemplateArgs({
+  const GetTagTemplateArgs({
     required this.location,
     this.project,
     required this.tagTemplateId,

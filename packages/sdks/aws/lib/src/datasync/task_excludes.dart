@@ -11,7 +11,7 @@ class TaskExcludes {
   /// Creates a new [TaskExcludes].
   /// [filterType] The type of filter rule to apply. Valid values: `SIMPLE_PATTERN`.
   /// [value] A single filter string that consists of the patterns to exclude. The patterns are delimited by "|" (that is, a pipe), for example: `/folder1|/folder2`
-  TaskExcludes({
+  const TaskExcludes({
     this.filterType,
     this.value,
   });

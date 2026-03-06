@@ -29,7 +29,7 @@ class GetSubnetworksSubnetwork {
   /// [networkSelfLink] (Deprecated) The name of the parent network computed from `network` attribute. (deprecated and will be removed in a future major release. Use `network_name` instead.)
   /// [privateIpGoogleAccess] Whether the VMs in the subnet can access Google services without assigned external IP addresses.
   /// [selfLink] The self link of the subnetwork.
-  GetSubnetworksSubnetwork({
+  const GetSubnetworksSubnetwork({
     required this.description,
     required this.ipCidrRange,
     required this.name,

@@ -22,7 +22,7 @@ class GetSessionContextResult {
   /// [issuerId] Unique identifier of the IAM role that issues the STS assumed role.
   /// [issuerName] Name of the source role. Only available if `arn` corresponds to an STS assumed role.
   /// [sessionName] Name of the STS session. Only available if `arn` corresponds to an STS assumed role.
-  GetSessionContextResult({
+  const GetSessionContextResult({
     required this.arn,
     required this.id,
     required this.issuerArn,

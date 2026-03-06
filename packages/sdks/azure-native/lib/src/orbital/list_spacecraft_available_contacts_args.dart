@@ -28,7 +28,7 @@ class ListSpacecraftAvailableContactsArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spacecraftName] Spacecraft ID.
   /// [startTime] Start time of a contact (ISO 8601 UTC standard).
-  ListSpacecraftAvailableContactsArgs({
+  const ListSpacecraftAvailableContactsArgs({
     required this.contactProfile,
     required this.endTime,
     required this.groundStationName,

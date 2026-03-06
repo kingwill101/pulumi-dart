@@ -8,7 +8,7 @@ class UserPoolUserAttributeUpdateSettings {
 
   /// Creates a new [UserPoolUserAttributeUpdateSettings].
   /// [attributesRequireVerificationBeforeUpdates] A list of attributes requiring verification before update. If set, the provided value(s) must also be set in `auto_verified_attributes`. Valid values: `email`, `phone_number`.
-  UserPoolUserAttributeUpdateSettings({
+  const UserPoolUserAttributeUpdateSettings({
     required this.attributesRequireVerificationBeforeUpdates,
   });
 

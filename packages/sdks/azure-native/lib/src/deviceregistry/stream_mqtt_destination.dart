@@ -14,7 +14,7 @@ class StreamMqttDestination {
   /// Creates a new [StreamMqttDestination].
   /// [configuration] The MQTT destination configuration.
   /// [target] The set of supported stream destinations for an asset.
-  StreamMqttDestination({
+  const StreamMqttDestination({
     required this.configuration,
     required this.target,
   });

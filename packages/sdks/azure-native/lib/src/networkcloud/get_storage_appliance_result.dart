@@ -91,7 +91,7 @@ class GetStorageApplianceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] The version of the storage appliance.
-  GetStorageApplianceResult({
+  const GetStorageApplianceResult({
     required this.administratorCredentials,
     required this.azureApiVersion,
     required this.capacity,

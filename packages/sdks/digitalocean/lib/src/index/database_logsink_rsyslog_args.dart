@@ -42,7 +42,7 @@ class DatabaseLogsinkRsyslogArgs {
   /// [server] Hostname or IP address of the rsyslog server.
   /// [structuredData] Content of the structured data block for RFC5424 messages.
   /// [tls] Enable TLS encryption for the rsyslog connection. Defaults to `false`. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.
-  DatabaseLogsinkRsyslogArgs({
+  const DatabaseLogsinkRsyslogArgs({
     this.caCert,
     this.clientCert,
     this.clientKey,

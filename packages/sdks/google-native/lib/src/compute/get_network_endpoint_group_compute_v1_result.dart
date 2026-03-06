@@ -62,7 +62,7 @@ class GetNetworkEndpointGroupComputeV1Result {
   /// [size] [Output only] Number of network endpoints in the network endpoint group.
   /// [subnetwork] Optional URL of the subnetwork to which all network endpoints in the NEG belong.
   /// [zone] The URL of the zone where the network endpoint group is located.
-  GetNetworkEndpointGroupComputeV1Result({
+  const GetNetworkEndpointGroupComputeV1Result({
     required this.annotations,
     required this.appEngine,
     required this.cloudFunction,

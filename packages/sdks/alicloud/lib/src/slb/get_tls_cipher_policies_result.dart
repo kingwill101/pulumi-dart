@@ -26,7 +26,7 @@ class GetTlsCipherPoliciesResult {
   /// [policies] Required.
   /// [status] Optional.
   /// [tlsCipherPolicyName] Optional.
-  GetTlsCipherPoliciesResult({
+  const GetTlsCipherPoliciesResult({
     required this.id,
     required this.ids,
     this.includeListener,

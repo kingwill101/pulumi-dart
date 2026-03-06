@@ -30,7 +30,7 @@ class LoggingSettingArgs {
   /// [logPromptsAndResponses] Whether to log prompts and responses.
   /// [loggingSettingId] Id of the Logging Setting.
   /// [project] The ID of the project in which the resource belongs.
-  LoggingSettingArgs({
+  const LoggingSettingArgs({
     this.labels,
     required this.location,
     this.logMetadata,

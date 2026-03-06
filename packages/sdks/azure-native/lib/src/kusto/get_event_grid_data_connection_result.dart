@@ -63,7 +63,7 @@ class GetEventGridDataConnectionResult {
   /// [storageAccountResourceId] The resource ID of the storage account where the data resides.
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetEventGridDataConnectionResult({
+  const GetEventGridDataConnectionResult({
     required this.azureApiVersion,
     this.blobStorageEventType,
     required this.consumerGroup,

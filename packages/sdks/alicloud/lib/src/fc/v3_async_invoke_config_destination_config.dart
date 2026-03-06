@@ -13,7 +13,7 @@ class V3AsyncInvokeConfigDestinationConfig {
   /// Creates a new [V3AsyncInvokeConfigDestinationConfig].
   /// [onFailure] Failed callback target structure See `on_failure` below.
   /// [onSuccess] Successful callback target structure See `on_success` below.
-  V3AsyncInvokeConfigDestinationConfig({
+  const V3AsyncInvokeConfigDestinationConfig({
     this.onFailure,
     this.onSuccess,
   });

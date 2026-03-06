@@ -44,7 +44,7 @@ class GetClustersCluster {
   /// [regionId] The ID of the namespace the application belongs to.
   /// [updateTime] The time when the cluster was last updated.
   /// [vpcId] The ID of the Virtual Private Cloud (VPC) for the cluster.
-  GetClustersCluster({
+  const GetClustersCluster({
     required this.clusterId,
     required this.clusterName,
     required this.clusterType,

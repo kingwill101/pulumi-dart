@@ -38,7 +38,7 @@ class InsightPropertiesResponse {
   /// [insightUniqueId] unique id of the insight.
   /// [provisioningState] Resource provisioning state.
   /// [status] status of the insight. example resolved, repaired, other.
-  InsightPropertiesResponse({
+  const InsightPropertiesResponse({
     this.additionalDetails,
     required this.category,
     required this.content,

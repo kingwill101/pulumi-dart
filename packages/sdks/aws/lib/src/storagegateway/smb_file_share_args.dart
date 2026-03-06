@@ -90,7 +90,7 @@ class SmbFileShareArgs {
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [validUserLists] A list of users in the Active Directory that are allowed to access the file share. If you need to specify an Active directory group, add '@' before the name of the group. It will be set on Allowed group in AWS console. Only valid if `authentication` is set to `ActiveDirectory`.
   /// [vpcEndpointDnsName] The DNS name of the VPC endpoint for S3 private link.
-  SmbFileShareArgs({
+  const SmbFileShareArgs({
     this.accessBasedEnumeration,
     this.adminUserLists,
     this.auditDestinationArn,

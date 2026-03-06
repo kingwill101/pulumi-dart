@@ -21,7 +21,7 @@ class GetSubnetworkIamPolicyResult {
   /// [project] Required.
   /// [region] Required.
   /// [subnetwork] Required.
-  GetSubnetworkIamPolicyResult({
+  const GetSubnetworkIamPolicyResult({
     required this.etag,
     required this.id,
     required this.policyData,

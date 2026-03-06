@@ -12,7 +12,7 @@ class TableAcl {
   /// Creates a new [TableAcl].
   /// [accessPolicies] An `access_policy` block as defined below.
   /// [id] The ID which should be used for this Shared Identifier.
-  TableAcl({
+  const TableAcl({
     this.accessPolicies,
     required this.id,
   });

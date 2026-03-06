@@ -13,7 +13,7 @@ class ClusterControlPlaneEndpointsConfig {
   /// Creates a new [ClusterControlPlaneEndpointsConfig].
   /// [dnsEndpointConfig] DNS endpoint configuration.
   /// [ipEndpointsConfig] IP endpoint configuration.
-  ClusterControlPlaneEndpointsConfig({
+  const ClusterControlPlaneEndpointsConfig({
     this.dnsEndpointConfig,
     this.ipEndpointsConfig,
   });

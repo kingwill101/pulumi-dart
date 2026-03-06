@@ -24,7 +24,7 @@ class GetConnectionsArgs {
   /// [nameRegex] A regex string of VPN connection name.
   /// [outputFile] Save the result to the file.
   /// [vpnGatewayId] Use the VPN gateway ID as the search key.
-  GetConnectionsArgs({
+  const GetConnectionsArgs({
     this.customerGatewayId,
     this.ids,
     this.nameRegex,

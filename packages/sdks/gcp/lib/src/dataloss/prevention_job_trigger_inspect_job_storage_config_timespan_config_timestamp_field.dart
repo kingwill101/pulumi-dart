@@ -13,7 +13,7 @@ class PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField {
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField].
   /// [name] Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery.
-  PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField({
+  const PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField({
     required this.name,
   });
 

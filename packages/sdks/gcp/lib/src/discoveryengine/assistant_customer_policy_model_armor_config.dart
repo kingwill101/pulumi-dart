@@ -22,7 +22,7 @@ class AssistantCustomerPolicyModelArmorConfig {
   /// [failureMode] Defines the failure mode for Model Armor sanitization.
   /// [responseTemplate] The resource name of the Model Armor template for sanitizing assistant
   /// [userPromptTemplate] The resource name of the Model Armor template for sanitizing user
-  AssistantCustomerPolicyModelArmorConfig({
+  const AssistantCustomerPolicyModelArmorConfig({
     this.failureMode,
     required this.responseTemplate,
     required this.userPromptTemplate,

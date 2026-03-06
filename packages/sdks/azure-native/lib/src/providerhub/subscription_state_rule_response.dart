@@ -11,7 +11,7 @@ class SubscriptionStateRuleResponse {
   /// Creates a new [SubscriptionStateRuleResponse].
   /// [allowedActions] The allowed actions.
   /// [state] The subscription state.
-  SubscriptionStateRuleResponse({
+  const SubscriptionStateRuleResponse({
     this.allowedActions,
     this.state,
   });

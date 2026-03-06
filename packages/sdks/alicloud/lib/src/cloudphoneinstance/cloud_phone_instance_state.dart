@@ -12,7 +12,7 @@ class CloudPhoneInstanceState {
   /// Creates a new [CloudPhoneInstanceState].
   /// [androidInstanceGroupId] The ID of the instance group to which the instance belongs
   /// [androidInstanceName] The instance name
-  CloudPhoneInstanceState({
+  const CloudPhoneInstanceState({
     this.androidInstanceGroupId,
     this.androidInstanceName,
   });

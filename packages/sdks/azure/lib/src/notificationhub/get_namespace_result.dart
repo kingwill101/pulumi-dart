@@ -31,7 +31,7 @@ class GetNamespaceResult {
   /// [servicebusEndpoint] Required.
   /// [sku] A `sku` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  GetNamespaceResult({
+  const GetNamespaceResult({
     required this.enabled,
     required this.id,
     required this.location,

@@ -258,7 +258,7 @@ class RegionBackendServiceArgs {
   /// [subsetting] Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
   /// [timeoutSec] The backend service timeout has a different meaning depending on the type of load balancer.
   /// [tlsSettings] Configuration for Backend Authenticated TLS and mTLS. May only be specified when the backend protocol is SSL, HTTPS or HTTP2.
-  RegionBackendServiceArgs({
+  const RegionBackendServiceArgs({
     this.affinityCookieTtlSec,
     this.backends,
     this.cdnPolicy,

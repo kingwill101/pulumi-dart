@@ -15,7 +15,7 @@ class AppTemplateTcpScaleRule {
   /// [authentications] Zero or more `authentication` blocks as defined below.
   /// [concurrentRequests] The number of concurrent requests to trigger scaling.
   /// [name] The name of the Scaling Rule
-  AppTemplateTcpScaleRule({
+  const AppTemplateTcpScaleRule({
     this.authentications,
     required this.concurrentRequests,
     required this.name,

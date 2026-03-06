@@ -13,7 +13,7 @@ class ImmutableStorageAccountResponse {
   /// Creates a new [ImmutableStorageAccountResponse].
   /// [enabled] A boolean flag which enables account-level immutability. All the containers under such an account have object-level immutability enabled by default.
   /// [immutabilityPolicy] Specifies the default account-level immutability policy which is inherited and applied to objects that do not possess an explicit immutability policy at the object level. The object-level immutability policy has higher precedence than the container-level immutability policy, which has a higher precedence than the account-level immutability policy.
-  ImmutableStorageAccountResponse({
+  const ImmutableStorageAccountResponse({
     this.enabled,
     this.immutabilityPolicy,
   });

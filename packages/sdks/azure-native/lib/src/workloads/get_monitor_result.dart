@@ -67,7 +67,7 @@ class GetMonitorResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [zoneRedundancyPreference] Sets the preference for zone redundancy on resources created for the SAP monitor. By default resources will be created which do not support zone redundancy.
-  GetMonitorResult({
+  const GetMonitorResult({
     this.appLocation,
     this.appServicePlanConfiguration,
     required this.azureApiVersion,

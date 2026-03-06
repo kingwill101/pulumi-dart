@@ -15,7 +15,7 @@ class GetRackArgs {
   /// Creates a new [GetRackArgs].
   /// [rackName] The name of the rack.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRackArgs({
+  const GetRackArgs({
     required this.rackName,
     required this.resourceGroupName,
   });

@@ -23,7 +23,7 @@ class FabricAgentModelProperties {
   /// [machineId] Gets or sets the machine Id where fabric agent is running.
   /// [machineName] Gets or sets the machine name where fabric agent is running.
   /// [resourceAccessIdentity] Identity model.
-  FabricAgentModelProperties({
+  const FabricAgentModelProperties({
     required this.authenticationIdentity,
     required this.customProperties,
     required this.machineId,

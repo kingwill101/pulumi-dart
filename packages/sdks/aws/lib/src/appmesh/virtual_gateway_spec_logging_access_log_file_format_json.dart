@@ -11,7 +11,7 @@ class VirtualGatewaySpecLoggingAccessLogFileFormatJson {
   /// Creates a new [VirtualGatewaySpecLoggingAccessLogFileFormatJson].
   /// [key] The specified key for the JSON. Must be between 1 and 100 characters in length.
   /// [value] The specified value for the JSON. Must be between 1 and 100 characters in length.
-  VirtualGatewaySpecLoggingAccessLogFileFormatJson({
+  const VirtualGatewaySpecLoggingAccessLogFileFormatJson({
     required this.key,
     required this.value,
   });

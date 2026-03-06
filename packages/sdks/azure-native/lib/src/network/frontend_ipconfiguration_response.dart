@@ -60,7 +60,7 @@ class FrontendIPConfigurationResponse {
   /// [subnet] The reference to the subnet resource.
   /// [type] Type of the resource.
   /// [zones] A list of availability zones denoting the IP allocated for the resource needs to come from.
-  FrontendIPConfigurationResponse({
+  const FrontendIPConfigurationResponse({
     required this.etag,
     this.gatewayLoadBalancer,
     this.id,

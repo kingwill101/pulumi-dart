@@ -15,7 +15,7 @@ class GetAccountAzureFilesAuthentication {
   /// [activeDirectories] An `active_directory` block as documented below.
   /// [defaultShareLevelPermission] The default share level permissions applied to all users.
   /// [directoryType] The directory service used for this Storage Account.
-  GetAccountAzureFilesAuthentication({
+  const GetAccountAzureFilesAuthentication({
     required this.activeDirectories,
     required this.defaultShareLevelPermission,
     required this.directoryType,

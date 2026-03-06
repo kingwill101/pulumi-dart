@@ -15,7 +15,7 @@ class RegistrationDnsSettingsCustomDns {
   /// Creates a new [RegistrationDnsSettingsCustomDns].
   /// [dsRecords] The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide
   /// [nameServers] Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain
-  RegistrationDnsSettingsCustomDns({
+  const RegistrationDnsSettingsCustomDns({
     this.dsRecords,
     required this.nameServers,
   });

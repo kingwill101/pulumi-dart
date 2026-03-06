@@ -14,7 +14,7 @@ class AccountManagedResource {
   /// [eventHubNamespaceId] The ID of the managed event hub namespace.
   /// [resourceGroupId] The ID of the managed resource group.
   /// [storageAccountId] The ID of the managed storage account.
-  AccountManagedResource({
+  const AccountManagedResource({
     this.eventHubNamespaceId,
     this.resourceGroupId,
     this.storageAccountId,

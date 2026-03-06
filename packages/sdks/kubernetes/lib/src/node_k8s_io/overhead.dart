@@ -9,7 +9,7 @@ class Overhead {
 
   /// Creates a new [Overhead].
   /// [podFixed] podFixed represents the fixed resource overhead associated with running a pod.
-  Overhead({
+  const Overhead({
     this.podFixed,
   });
 

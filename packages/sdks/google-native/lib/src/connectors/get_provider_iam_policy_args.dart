@@ -17,7 +17,7 @@ class GetProviderIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [providerId] Required.
-  GetProviderIamPolicyArgs({
+  const GetProviderIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

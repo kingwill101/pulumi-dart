@@ -20,7 +20,7 @@ class ThreatIntelligenceIndicatorExternalReference {
   /// [id] The ID of the Sentinel Threat Intelligence Indicator.
   /// [sourceName] The source name of the external reference of the Threat Intelligence Indicator.
   /// [url] The url of the external reference of the Threat Intelligence Indicator.
-  ThreatIntelligenceIndicatorExternalReference({
+  const ThreatIntelligenceIndicatorExternalReference({
     this.description,
     this.hashes,
     this.id,

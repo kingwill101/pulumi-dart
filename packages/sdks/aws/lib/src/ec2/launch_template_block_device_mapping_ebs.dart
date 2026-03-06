@@ -37,7 +37,7 @@ class LaunchTemplateBlockDeviceMappingEbs {
   /// [volumeInitializationRate] The volume initialization rate in MiB/s (specified as an integer, e.g. 100), with a minimum of 100 MiB/s and maximum of 300 MiB/s.
   /// [volumeSize] The size of the volume in gigabytes.
   /// [volumeType] The volume type.
-  LaunchTemplateBlockDeviceMappingEbs({
+  const LaunchTemplateBlockDeviceMappingEbs({
     this.deleteOnTermination,
     this.encrypted,
     this.iops,

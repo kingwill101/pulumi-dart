@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2GcsSourcesResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2GcsSourcesResponse].
   /// [uris] Google Cloud Storage URIs for the inputs. A URI is of the form: `gs://bucket/object-prefix-or-name` Whether a prefix or name is used depends on the use case.
-  GoogleCloudDialogflowV2GcsSourcesResponse({
+  const GoogleCloudDialogflowV2GcsSourcesResponse({
     required this.uris,
   });
 

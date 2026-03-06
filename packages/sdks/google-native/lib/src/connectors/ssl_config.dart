@@ -42,7 +42,7 @@ class SslConfig {
   /// [trustModel] Trust Model of the SSL connection
   /// [type] Controls the ssl type for the given connector version.
   /// [useSsl] Bool for enabling SSL
-  SslConfig({
+  const SslConfig({
     this.additionalVariables,
     this.clientCertType,
     this.clientCertificate,

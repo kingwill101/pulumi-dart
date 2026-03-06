@@ -16,7 +16,7 @@ class NewRecoveryServicesVaultResponse {
   /// [name] The name of the recovery services vault has to be created.
   /// [resourceGroup] The name of the resource group where the recovery services vault has to be created.
   /// [vaultType] The vault type, whether it is existing or has to be created.
-  NewRecoveryServicesVaultResponse({
+  const NewRecoveryServicesVaultResponse({
     required this.name,
     required this.resourceGroup,
     required this.vaultType,

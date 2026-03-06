@@ -20,7 +20,7 @@ class ListGlobalRulestackAppIdsArgs {
   /// [globalRulestackName] GlobalRulestack resource name
   /// [skip] Optional.
   /// [top] Optional.
-  ListGlobalRulestackAppIdsArgs({
+  const ListGlobalRulestackAppIdsArgs({
     this.appIdVersion,
     this.appPrefix,
     required this.globalRulestackName,

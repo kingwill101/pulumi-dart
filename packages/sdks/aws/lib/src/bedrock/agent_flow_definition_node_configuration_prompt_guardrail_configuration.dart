@@ -11,7 +11,7 @@ class AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration {
   /// Creates a new [AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration].
   /// [guardrailIdentifier] The unique identifier of the guardrail.
   /// [guardrailVersion] The version of the guardrail.
-  AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration({
+  const AgentFlowDefinitionNodeConfigurationPromptGuardrailConfiguration({
     required this.guardrailIdentifier,
     required this.guardrailVersion,
   });

@@ -19,7 +19,7 @@ class GetCryptoKeyVersionArgs {
   /// [keyRingId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCryptoKeyVersionArgs({
+  const GetCryptoKeyVersionArgs({
     required this.cryptoKeyId,
     required this.cryptoKeyVersionId,
     required this.keyRingId,

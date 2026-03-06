@@ -12,7 +12,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse {
   /// [environment] Required.
   /// [materials] Required.
   /// [parameters] Required.
-  GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse({
+  const GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessResponse({
     required this.environment,
     required this.materials,
     required this.parameters,

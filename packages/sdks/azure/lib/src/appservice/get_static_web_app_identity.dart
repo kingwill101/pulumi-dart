@@ -15,7 +15,7 @@ class GetStaticWebAppIdentity {
   /// [principalId] Required.
   /// [tenantId] Required.
   /// [type] The Type of Managed Identity assigned to this Static Web App resource.
-  GetStaticWebAppIdentity({
+  const GetStaticWebAppIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

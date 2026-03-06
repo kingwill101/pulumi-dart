@@ -21,7 +21,7 @@ class HuntOwnerResponse {
   /// [objectId] The object id of the user the hunt is assigned to.
   /// [ownerType] The type of the owner the hunt is assigned to.
   /// [userPrincipalName] The user principal name of the user the hunt is assigned to.
-  HuntOwnerResponse({
+  const HuntOwnerResponse({
     this.assignedTo,
     this.email,
     this.objectId,

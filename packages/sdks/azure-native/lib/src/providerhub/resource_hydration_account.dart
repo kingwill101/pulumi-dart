@@ -17,7 +17,7 @@ class ResourceHydrationAccount {
   /// [encryptedKey] The encrypted key.
   /// [maxChildResourceConsistencyJobLimit] The max child resource consistency job limit.
   /// [subscriptionId] The subscription id.
-  ResourceHydrationAccount({
+  const ResourceHydrationAccount({
     this.accountName,
     this.encryptedKey,
     this.maxChildResourceConsistencyJobLimit,

@@ -46,7 +46,7 @@ class GetGradientaiOpenaiApiKeyModel {
   /// [url] URL of the Model
   /// [usecases] List of Usecases for the Model
   /// [versions] URL of the Model
-  GetGradientaiOpenaiApiKeyModel({
+  const GetGradientaiOpenaiApiKeyModel({
     this.agreements,
     required this.createdAt,
     this.inferenceName,

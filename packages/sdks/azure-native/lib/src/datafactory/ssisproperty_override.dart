@@ -12,7 +12,7 @@ class SSISPropertyOverride {
   /// Creates a new [SSISPropertyOverride].
   /// [isSensitive] Whether SSIS package property override value is sensitive data. Value will be encrypted in SSISDB if it is true
   /// [value] SSIS package property override value. Type: string (or Expression with resultType string).
-  SSISPropertyOverride({
+  const SSISPropertyOverride({
     this.isSensitive,
     required this.value,
   });

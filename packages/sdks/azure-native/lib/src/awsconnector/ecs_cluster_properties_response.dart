@@ -34,7 +34,7 @@ class EcsClusterPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  EcsClusterPropertiesResponse({
+  const EcsClusterPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

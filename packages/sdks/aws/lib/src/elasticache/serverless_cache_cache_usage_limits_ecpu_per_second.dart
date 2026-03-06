@@ -11,7 +11,7 @@ class ServerlessCacheCacheUsageLimitsEcpuPerSecond {
   /// Creates a new [ServerlessCacheCacheUsageLimitsEcpuPerSecond].
   /// [maximum] The maximum number of ECPUs the cache can consume per second. Must be between 1,000 and 15,000,000.
   /// [minimum] The minimum number of ECPUs the cache can consume per second. Must be between 1,000 and 15,000,000.
-  ServerlessCacheCacheUsageLimitsEcpuPerSecond({
+  const ServerlessCacheCacheUsageLimitsEcpuPerSecond({
     this.maximum,
     this.minimum,
   });

@@ -17,7 +17,7 @@ class GetBrandResult {
   /// [name] Identifier of the brand. NOTE: GCP project number achieves the same brand identification purpose as only one brand per project can be created.
   /// [orgInternalOnly] Whether the brand is only intended for usage inside the G Suite organization only.
   /// [supportEmail] Support email displayed on the OAuth consent screen.
-  GetBrandResult({
+  const GetBrandResult({
     required this.applicationTitle,
     required this.name,
     required this.orgInternalOnly,

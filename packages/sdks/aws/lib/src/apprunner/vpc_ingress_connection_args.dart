@@ -25,7 +25,7 @@ class VpcIngressConnectionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceArn] The Amazon Resource Name (ARN) for this App Runner service that is used to create the VPC Ingress Connection resource.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  VpcIngressConnectionArgs({
+  const VpcIngressConnectionArgs({
     required this.ingressVpcConfiguration,
     this.name,
     this.region,

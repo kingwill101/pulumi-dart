@@ -13,7 +13,7 @@ class ConnectionAuthConfigUserPassword {
   /// Creates a new [ConnectionAuthConfigUserPassword].
   /// [password] Password for Authentication.
   /// [username] Username for Authentication.
-  ConnectionAuthConfigUserPassword({
+  const ConnectionAuthConfigUserPassword({
     this.password,
     required this.username,
   });

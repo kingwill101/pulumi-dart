@@ -13,7 +13,7 @@ class ResourceLfTagDatabase {
   /// Creates a new [ResourceLfTagDatabase].
   /// [catalogId] Identifier for the Data Catalog. By default, it is the account ID of the caller.
   /// [name] Name of the database resource. Unique to the Data Catalog.
-  ResourceLfTagDatabase({
+  const ResourceLfTagDatabase({
     this.catalogId,
     required this.name,
   });

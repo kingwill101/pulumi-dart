@@ -20,7 +20,7 @@ class V2modelsSlotTypeValueSelectionSetting {
   /// [advancedRecognitionSettings] Provides settings that enable advanced recognition settings for slot values.
   /// [regexFilters] Used to validate the value of the slot.
   /// [resolutionStrategy] Determines the slot resolution strategy that Amazon Lex uses to return slot type values.
-  V2modelsSlotTypeValueSelectionSetting({
+  const V2modelsSlotTypeValueSelectionSetting({
     this.advancedRecognitionSettings,
     this.regexFilters,
     required this.resolutionStrategy,

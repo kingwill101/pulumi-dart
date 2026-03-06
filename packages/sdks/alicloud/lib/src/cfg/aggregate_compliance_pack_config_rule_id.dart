@@ -8,7 +8,7 @@ class AggregateCompliancePackConfigRuleId {
 
   /// Creates a new [AggregateCompliancePackConfigRuleId].
   /// [configRuleId] The rule ID of Aggregate Config Rule.
-  AggregateCompliancePackConfigRuleId({
+  const AggregateCompliancePackConfigRuleId({
     this.configRuleId,
   });
 

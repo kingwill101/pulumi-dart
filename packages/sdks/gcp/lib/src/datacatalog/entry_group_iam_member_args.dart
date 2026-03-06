@@ -44,7 +44,7 @@ class EntryGroupIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] EntryGroup location region.
   /// [role] The role that should be applied. Only one
-  EntryGroupIamMemberArgs({
+  const EntryGroupIamMemberArgs({
     this.condition,
     required this.entryGroup,
     required this.member,

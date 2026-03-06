@@ -15,7 +15,7 @@ class AccessControlRulesPrivilegeResponse {
   /// [name] The name of the privilege.
   /// [path] The HTTP path corresponding to the privilege.
   /// [queryParameters] The query parameters to match in the path.
-  AccessControlRulesPrivilegeResponse({
+  const AccessControlRulesPrivilegeResponse({
     required this.name,
     required this.path,
     this.queryParameters,

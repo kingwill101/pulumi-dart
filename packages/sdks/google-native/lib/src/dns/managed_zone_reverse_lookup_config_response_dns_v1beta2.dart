@@ -7,7 +7,7 @@ class ManagedZoneReverseLookupConfigResponseDnsV1beta2 {
 
   /// Creates a new [ManagedZoneReverseLookupConfigResponseDnsV1beta2].
   /// [kind] Required.
-  ManagedZoneReverseLookupConfigResponseDnsV1beta2({
+  const ManagedZoneReverseLookupConfigResponseDnsV1beta2({
     required this.kind,
   });
 

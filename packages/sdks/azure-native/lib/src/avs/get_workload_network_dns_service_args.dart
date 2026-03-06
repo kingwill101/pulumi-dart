@@ -18,7 +18,7 @@ class GetWorkloadNetworkDnsServiceArgs {
   /// [dnsServiceId] ID of the DNS service.
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetWorkloadNetworkDnsServiceArgs({
+  const GetWorkloadNetworkDnsServiceArgs({
     required this.dnsServiceId,
     required this.privateCloudName,
     required this.resourceGroupName,

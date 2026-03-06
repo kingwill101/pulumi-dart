@@ -16,7 +16,7 @@ class GetAccountIamPolicyResult {
   /// [etag] (Computed) The etag of the IAM policy.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyData] (Computed) The policy data
-  GetAccountIamPolicyResult({
+  const GetAccountIamPolicyResult({
     required this.billingAccountId,
     required this.etag,
     required this.id,

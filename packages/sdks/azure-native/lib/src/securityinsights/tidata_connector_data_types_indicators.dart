@@ -9,7 +9,7 @@ class TIDataConnectorDataTypesIndicators {
 
   /// Creates a new [TIDataConnectorDataTypesIndicators].
   /// [state] Describe whether this data type connection is enabled or not.
-  TIDataConnectorDataTypesIndicators({
+  const TIDataConnectorDataTypesIndicators({
     required this.state,
   });
 

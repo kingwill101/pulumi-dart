@@ -79,7 +79,7 @@ class GetBrokerResult {
   /// [subnetIds] List of subnet IDs in which to launch the broker.
   /// [tags] Map of tags assigned to the broker.
   /// [users] Configuration block for broker users. See User below.
-  GetBrokerResult({
+  const GetBrokerResult({
     required this.arn,
     required this.authenticationStrategy,
     required this.autoMinorVersionUpgrade,

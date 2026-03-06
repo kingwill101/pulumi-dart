@@ -11,7 +11,7 @@ class MLTransformSchema {
   /// Creates a new [MLTransformSchema].
   /// [dataType] The type of data in the column.
   /// [name] The name you assign to this ML Transform. It must be unique in your account.
-  MLTransformSchema({
+  const MLTransformSchema({
     this.dataType,
     this.name,
   });

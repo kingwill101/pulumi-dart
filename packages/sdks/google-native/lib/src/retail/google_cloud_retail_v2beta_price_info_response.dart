@@ -28,7 +28,7 @@ class GoogleCloudRetailV2betaPriceInfoResponse {
   /// [priceEffectiveTime] The timestamp when the price starts to be effective. This can be set as a future timestamp, and the price is only used for search after price_effective_time. If so, the original_price must be set and original_price is used before price_effective_time. Do not set if price is always effective because it will cause additional latency during search.
   /// [priceExpireTime] The timestamp when the price stops to be effective. The price is used for search before price_expire_time. If this field is set, the original_price must be set and original_price is used after price_expire_time. Do not set if price is always effective because it will cause additional latency during search.
   /// [priceRange] The price range of all the child Product.Type.VARIANT Products grouped together on the Product.Type.PRIMARY Product. Only populated for Product.Type.PRIMARY Products. Note: This field is OUTPUT_ONLY for ProductService.GetProduct. Do not set this field in API requests.
-  GoogleCloudRetailV2betaPriceInfoResponse({
+  const GoogleCloudRetailV2betaPriceInfoResponse({
     required this.cost,
     required this.currencyCode,
     required this.originalPrice,

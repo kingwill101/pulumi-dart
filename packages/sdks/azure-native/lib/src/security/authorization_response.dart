@@ -11,7 +11,7 @@ class AuthorizationResponse {
 
   /// Creates a new [AuthorizationResponse].
   /// [code] Gets or sets one-time OAuth code to exchange for refresh and access tokens.
-  AuthorizationResponse({
+  const AuthorizationResponse({
     this.code,
   });
 

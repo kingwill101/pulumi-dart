@@ -8,7 +8,7 @@ class FlowSourceFlowConfigIncrementalPullConfig {
 
   /// Creates a new [FlowSourceFlowConfigIncrementalPullConfig].
   /// [datetimeTypeFieldName] Field that specifies the date time or timestamp field as the criteria to use when importing incremental records from the source.
-  FlowSourceFlowConfigIncrementalPullConfig({
+  const FlowSourceFlowConfigIncrementalPullConfig({
     this.datetimeTypeFieldName,
   });
 

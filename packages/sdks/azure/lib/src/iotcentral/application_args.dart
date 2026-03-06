@@ -42,7 +42,7 @@ class ApplicationArgs {
   /// [subDomain] A `sub_domain` name. Subdomain for the IoT Central URL. Each application must have a unique subdomain.
   /// [tags] A mapping of tags to assign to the resource.
   /// [template] A `template` name. IoT Central application template name. Defaults to `iotc-pnp-preview@1.0.0`. Changing this forces a new resource to be created.
-  ApplicationArgs({
+  const ApplicationArgs({
     this.displayName,
     this.identity,
     this.location,

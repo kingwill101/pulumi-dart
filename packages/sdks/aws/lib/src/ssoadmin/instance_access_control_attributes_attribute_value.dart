@@ -8,7 +8,7 @@ class InstanceAccessControlAttributesAttributeValue {
 
   /// Creates a new [InstanceAccessControlAttributesAttributeValue].
   /// [sources] The identity source to use when mapping a specified attribute to AWS SSO.
-  InstanceAccessControlAttributesAttributeValue({
+  const InstanceAccessControlAttributesAttributeValue({
     required this.sources,
   });
 

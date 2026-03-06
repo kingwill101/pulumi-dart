@@ -15,7 +15,7 @@ class GetVersionArgs {
   /// [project] Optional.
   /// [siteId] Required.
   /// [versionId] Required.
-  GetVersionArgs({
+  const GetVersionArgs({
     this.project,
     required this.siteId,
     required this.versionId,

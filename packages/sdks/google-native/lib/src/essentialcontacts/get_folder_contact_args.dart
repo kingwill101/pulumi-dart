@@ -13,7 +13,7 @@ class GetFolderContactArgs {
   /// Creates a new [GetFolderContactArgs].
   /// [contactId] Required.
   /// [folderId] Required.
-  GetFolderContactArgs({
+  const GetFolderContactArgs({
     required this.contactId,
     required this.folderId,
   });

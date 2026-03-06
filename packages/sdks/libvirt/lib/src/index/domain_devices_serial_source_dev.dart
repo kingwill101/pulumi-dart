@@ -12,7 +12,7 @@ class DomainDevicesSerialSourceDev {
   /// Creates a new [DomainDevicesSerialSourceDev].
   /// [path] Specifies the path to the device file for the EGD backend.
   /// [secLabels] Configures the security label settings for the device source in the EGD backend.
-  DomainDevicesSerialSourceDev({
+  const DomainDevicesSerialSourceDev({
     required this.path,
     this.secLabels,
   });

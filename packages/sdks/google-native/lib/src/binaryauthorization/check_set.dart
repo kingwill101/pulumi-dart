@@ -21,7 +21,7 @@ class CheckSet {
   /// [displayName] Optional. A user-provided name for this `CheckSet`. This field has no effect on the policy evaluation behavior except to improve readability of messages in evaluation results.
   /// [imageAllowlist] Optional. Images exempted from this `CheckSet`. If any of the patterns match the image being evaluated, no checks in the `CheckSet` will be evaluated.
   /// [scope] Optional. The scope to which this `CheckSet` applies. If unset or an empty string (the default), applies to all namespaces and service accounts. See the `Scope` message documentation for details on scoping rules.
-  CheckSet({
+  const CheckSet({
     this.checks,
     this.displayName,
     this.imageAllowlist,

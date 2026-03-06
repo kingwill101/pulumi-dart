@@ -14,7 +14,7 @@ class PerimeterBasedAccessRuleResponse {
   /// [id] NSP id in the ARM id format.
   /// [location] Location of the NSP supplied.
   /// [perimeterGuid] Resource guid of the NSP supplied.
-  PerimeterBasedAccessRuleResponse({
+  const PerimeterBasedAccessRuleResponse({
     required this.id,
     required this.location,
     required this.perimeterGuid,

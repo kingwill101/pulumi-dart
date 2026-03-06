@@ -71,7 +71,7 @@ class GetLimitsV2Result {
   /// [totalRamUsed] The amount of used server RAM in the tenant.
   /// [totalSecurityGroupsUsed] The number of used security groups in the tenant. Available until version 2.35.
   /// [totalServerGroupsUsed] The number of used server groups in each tenant.
-  GetLimitsV2Result({
+  const GetLimitsV2Result({
     required this.id,
     required this.maxImageMeta,
     required this.maxPersonality,

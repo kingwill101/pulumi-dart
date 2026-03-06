@@ -15,7 +15,7 @@ class GetImageArgs {
   /// Creates a new [GetImageArgs].
   /// [imageId] ID of the image.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetImageArgs({
+  const GetImageArgs({
     required this.imageId,
     this.region,
   });

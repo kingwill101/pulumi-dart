@@ -29,7 +29,7 @@ class GetSecurityPoliciesArgs {
   /// [securityPolicyNames] The names of the TLS security policies.
   /// [status] The status of the resource. Valid values: `Available`, `Configuring`.
   /// [tags] Optional.
-  GetSecurityPoliciesArgs({
+  const GetSecurityPoliciesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

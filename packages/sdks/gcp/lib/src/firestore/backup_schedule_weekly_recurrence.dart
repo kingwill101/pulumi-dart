@@ -9,7 +9,7 @@ class BackupScheduleWeeklyRecurrence {
 
   /// Creates a new [BackupScheduleWeeklyRecurrence].
   /// [day] The day of week to run.
-  BackupScheduleWeeklyRecurrence({
+  const BackupScheduleWeeklyRecurrence({
     this.day,
   });
 

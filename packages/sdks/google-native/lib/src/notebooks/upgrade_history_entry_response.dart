@@ -36,7 +36,7 @@ class UpgradeHistoryEntryResponse {
   /// [targetVersion] Target VM Version, like m63.
   /// [version] The version of the notebook instance before this upgrade.
   /// [vmImage] The VM image before this instance upgrade.
-  UpgradeHistoryEntryResponse({
+  const UpgradeHistoryEntryResponse({
     required this.action,
     required this.containerImage,
     required this.createTime,

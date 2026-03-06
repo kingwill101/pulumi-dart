@@ -11,7 +11,7 @@ class HoursOfOperationConfigStartTime {
   /// Creates a new [HoursOfOperationConfigStartTime].
   /// [hours] Specifies the hour of opening.
   /// [minutes] Specifies the minute of opening.
-  HoursOfOperationConfigStartTime({
+  const HoursOfOperationConfigStartTime({
     required this.hours,
     required this.minutes,
   });

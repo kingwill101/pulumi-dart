@@ -18,7 +18,7 @@ class ExternalRefResponse {
   /// [comment] Human-readable information about the purpose and target of the reference
   /// [locator] The unique string with no spaces necessary to access the package-specific information, metadata, or content within the target location
   /// [type] Type of category (e.g. 'npm' for the PACKAGE_MANAGER category)
-  ExternalRefResponse({
+  const ExternalRefResponse({
     required this.category,
     required this.comment,
     required this.locator,

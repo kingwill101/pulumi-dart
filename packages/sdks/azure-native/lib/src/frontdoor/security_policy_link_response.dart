@@ -9,7 +9,7 @@ class SecurityPolicyLinkResponse {
 
   /// Creates a new [SecurityPolicyLinkResponse].
   /// [id] Resource ID.
-  SecurityPolicyLinkResponse({
+  const SecurityPolicyLinkResponse({
     this.id,
   });
 

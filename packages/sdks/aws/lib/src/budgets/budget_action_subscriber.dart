@@ -11,7 +11,7 @@ class BudgetActionSubscriber {
   /// Creates a new [BudgetActionSubscriber].
   /// [address] The address that AWS sends budget notifications to, either an SNS topic or an email.
   /// [subscriptionType] The type of notification that AWS sends to a subscriber. Valid values are `SNS` or `EMAIL`.
-  BudgetActionSubscriber({
+  const BudgetActionSubscriber({
     required this.address,
     required this.subscriptionType,
   });

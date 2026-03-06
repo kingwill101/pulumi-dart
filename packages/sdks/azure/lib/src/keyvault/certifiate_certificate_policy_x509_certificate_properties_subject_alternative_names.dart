@@ -14,7 +14,7 @@ class CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeName
   /// [dnsNames] A list of alternative DNS names (FQDNs) identified by the Certificate.
   /// [emails] A list of email addresses identified by this Certificate.
   /// [upns] A list of User Principal Names identified by the Certificate.
-  CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames({
+  const CertifiateCertificatePolicyX509CertificatePropertiesSubjectAlternativeNames({
     this.dnsNames,
     this.emails,
     this.upns,

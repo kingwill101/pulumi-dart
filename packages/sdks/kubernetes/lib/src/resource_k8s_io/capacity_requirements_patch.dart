@@ -19,7 +19,7 @@ class CapacityRequirementsPatch {
 
   /// Creates a new [CapacityRequirementsPatch].
   /// [requests] Requests represent individual device resource requests for distinct resources, all of which must be provided by the device.
-  CapacityRequirementsPatch({
+  const CapacityRequirementsPatch({
     this.requests,
   });
 

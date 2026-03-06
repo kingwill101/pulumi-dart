@@ -10,7 +10,7 @@ class OrganizationSharedBuiltInAuthorizationPolicy {
 
   /// Creates a new [OrganizationSharedBuiltInAuthorizationPolicy].
   /// [type] Authorization scheme type.
-  OrganizationSharedBuiltInAuthorizationPolicy({
+  const OrganizationSharedBuiltInAuthorizationPolicy({
     required this.type,
   });
 

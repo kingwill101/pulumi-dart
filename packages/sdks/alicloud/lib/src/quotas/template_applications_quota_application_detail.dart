@@ -57,7 +57,7 @@ class TemplateApplicationsQuotaApplicationDetail {
   /// [quotaUnit] Quota unit.
   /// [reason] Reason for quota application.
   /// [status] The approval status of the quota promotion application. Value:
-  TemplateApplicationsQuotaApplicationDetail({
+  const TemplateApplicationsQuotaApplicationDetail({
     this.aliyunUid,
     this.applicationId,
     this.approveValue,

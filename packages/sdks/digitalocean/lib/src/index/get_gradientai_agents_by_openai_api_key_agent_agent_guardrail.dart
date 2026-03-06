@@ -41,7 +41,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail {
   /// [type] Type of the Guardrail
   /// [updatedAt] Updated At timestamp for the Guardrail
   /// [uuid] Guardrail UUID
-  GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail({
+  const GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail({
     this.agentUuid,
     required this.createdAt,
     this.defaultResponse,

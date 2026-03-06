@@ -20,7 +20,7 @@ class ListServiceTestKeysResult {
   /// [primaryTestEndpoint] Primary test endpoint
   /// [secondaryKey] Secondary key
   /// [secondaryTestEndpoint] Secondary test endpoint
-  ListServiceTestKeysResult({
+  const ListServiceTestKeysResult({
     this.enabled,
     this.primaryKey,
     this.primaryTestEndpoint,

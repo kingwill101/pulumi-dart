@@ -35,7 +35,7 @@ class AppVersionSnapshotAppLoggingSetting {
   /// [cloudLoggingSettings] (Output)
   /// [conversationLoggingSettings] (Output)
   /// [redactionConfigs] (Output)
-  AppVersionSnapshotAppLoggingSetting({
+  const AppVersionSnapshotAppLoggingSetting({
     this.audioRecordingConfigs,
     this.bigqueryExportSettings,
     this.cloudLoggingSettings,

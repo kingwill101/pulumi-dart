@@ -16,7 +16,7 @@ class VersionDialogflowV2beta1Args {
   /// [description] Optional. The developer-provided description of this version.
   /// [location] Optional.
   /// [project] Optional.
-  VersionDialogflowV2beta1Args({
+  const VersionDialogflowV2beta1Args({
     this.description,
     this.location,
     this.project,

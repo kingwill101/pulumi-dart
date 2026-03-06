@@ -37,7 +37,7 @@ class PolicySetDefinitionArgs {
   /// [policyDefinitionGroups] One or more `policy_definition_group` blocks as defined below.
   /// [policyDefinitionReferences] One or more `policy_definition_reference` blocks as defined below.
   /// [policyType] The Policy Set Definition type. Possible values are `BuiltIn`, `Custom`, `NotSpecified`, and `Static`. Changing this forces a new Policy Set Definition to be created.
-  PolicySetDefinitionArgs({
+  const PolicySetDefinitionArgs({
     this.description,
     required this.displayName,
     this.managementGroupId,

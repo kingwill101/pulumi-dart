@@ -15,7 +15,7 @@ class RemotePathResponse {
   /// [externalHostName] The Path to a ONTAP Host
   /// [serverName] The name of a server on the ONTAP Host
   /// [volumeName] The name of a volume on the server
-  RemotePathResponse({
+  const RemotePathResponse({
     required this.externalHostName,
     required this.serverName,
     required this.volumeName,

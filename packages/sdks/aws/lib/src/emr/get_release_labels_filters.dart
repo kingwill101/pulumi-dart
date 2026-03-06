@@ -11,7 +11,7 @@ class GetReleaseLabelsFilters {
   /// Creates a new [GetReleaseLabelsFilters].
   /// [application] Optional release label application filter. For example, `Spark@2.1.0` or `Spark`.
   /// [prefix] Optional release label version prefix filter. For example, `emr-5`.
-  GetReleaseLabelsFilters({
+  const GetReleaseLabelsFilters({
     this.application,
     this.prefix,
   });

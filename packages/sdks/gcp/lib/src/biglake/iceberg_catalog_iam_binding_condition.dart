@@ -11,7 +11,7 @@ class IcebergCatalogIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  IcebergCatalogIamBindingCondition({
+  const IcebergCatalogIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

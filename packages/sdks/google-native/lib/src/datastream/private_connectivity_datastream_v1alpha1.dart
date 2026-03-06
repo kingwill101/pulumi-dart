@@ -8,7 +8,7 @@ class PrivateConnectivityDatastreamV1alpha1 {
 
   /// Creates a new [PrivateConnectivityDatastreamV1alpha1].
   /// [privateConnectionName] Optional.
-  PrivateConnectivityDatastreamV1alpha1({
+  const PrivateConnectivityDatastreamV1alpha1({
     this.privateConnectionName,
   });
 

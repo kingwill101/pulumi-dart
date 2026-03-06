@@ -25,7 +25,7 @@ class GetEnvCustomJobsResult {
   /// [nameRegex] Optional.
   /// [names] A list of ARMS Env Custom Job names.
   /// [outputFile] Optional.
-  GetEnvCustomJobsResult({
+  const GetEnvCustomJobsResult({
     required this.environmentId,
     required this.id,
     required this.ids,

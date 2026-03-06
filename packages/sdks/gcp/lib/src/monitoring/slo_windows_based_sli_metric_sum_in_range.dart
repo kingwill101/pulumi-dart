@@ -24,7 +24,7 @@ class SloWindowsBasedSliMetricSumInRange {
   /// Creates a new [SloWindowsBasedSliMetricSumInRange].
   /// [range] Range of numerical values. The computed good_service
   /// [timeSeries] A [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-  SloWindowsBasedSliMetricSumInRange({
+  const SloWindowsBasedSliMetricSumInRange({
     required this.range,
     required this.timeSeries,
   });

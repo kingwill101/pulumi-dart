@@ -38,7 +38,7 @@ class FeaturesetVersionResponse {
   /// [specification] Specifies the feature spec details
   /// [stage] Specifies the asset stage
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  FeaturesetVersionResponse({
+  const FeaturesetVersionResponse({
     this.description,
     this.entities,
     this.isAnonymous,

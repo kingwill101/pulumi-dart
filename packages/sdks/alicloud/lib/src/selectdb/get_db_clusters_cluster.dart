@@ -60,7 +60,7 @@ class GetDbClustersCluster {
   /// [status] The status of the DBCluster. Valid values: `ACTIVATION`,`CREATING`,`DELETING`,`RESTARTING`,`ORDER_PREPARING`.
   /// [vpcId] The ID of the VPC for the cluster.
   /// [zoneId] The ID of zone for the cluster.
-  GetDbClustersCluster({
+  const GetDbClustersCluster({
     required this.cacheSize,
     required this.cpu,
     required this.createTime,

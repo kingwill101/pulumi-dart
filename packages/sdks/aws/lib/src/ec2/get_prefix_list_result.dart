@@ -22,7 +22,7 @@ class GetPrefixListResult {
   /// [name] Name of the selected prefix list.
   /// [prefixListId] Optional.
   /// [region] Required.
-  GetPrefixListResult({
+  const GetPrefixListResult({
     required this.cidrBlocks,
     this.filters,
     required this.id,

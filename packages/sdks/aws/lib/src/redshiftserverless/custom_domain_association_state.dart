@@ -21,7 +21,7 @@ class CustomDomainAssociationState {
   /// [customDomainName] Custom domain to associate with the workgroup.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workgroupName] Name of the workgroup.
-  CustomDomainAssociationState({
+  const CustomDomainAssociationState({
     this.customDomainCertificateArn,
     this.customDomainCertificateExpiryTime,
     this.customDomainName,

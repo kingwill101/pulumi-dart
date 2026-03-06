@@ -30,7 +30,7 @@ class GetInstancesResult {
   /// [privateIps] Private IP addresses of instances found through the filter
   /// [publicIps] Public IP addresses of instances found through the filter
   /// [region] Required.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.filters,
     required this.id,
     required this.ids,

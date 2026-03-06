@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariationS
 
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariationSsmlMessage].
   /// [value] SSML text that defines the prompt.
-  V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariationSsmlMessage({
+  const V2modelsIntentConfirmationSettingDeclinationResponseMessageGroupVariationSsmlMessage({
     required this.value,
   });
 

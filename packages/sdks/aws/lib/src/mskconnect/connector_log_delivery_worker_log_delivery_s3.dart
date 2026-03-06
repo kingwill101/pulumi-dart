@@ -14,7 +14,7 @@ class ConnectorLogDeliveryWorkerLogDeliveryS3 {
   /// [bucket] The name of the S3 bucket that is the destination for log delivery.
   /// [enabled] Specifies whether connector logs get sent to the specified Amazon S3 destination.
   /// [prefix] The S3 prefix that is the destination for log delivery.
-  ConnectorLogDeliveryWorkerLogDeliveryS3({
+  const ConnectorLogDeliveryWorkerLogDeliveryS3({
     this.bucket,
     required this.enabled,
     this.prefix,

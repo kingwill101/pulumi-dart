@@ -17,7 +17,7 @@ class GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity {
   /// [includeSubdomains] Whether CloudFront includes the includeSubDomains directive in the Strict-Transport-Security HTTP response header.
   /// [override] Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
   /// [preload] Whether CloudFront includes the preload directive in the Strict-Transport-Security HTTP response header.
-  GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity({
+  const GetResponseHeadersPolicySecurityHeadersConfigStrictTransportSecurity({
     required this.accessControlMaxAgeSec,
     required this.includeSubdomains,
     required this.override,

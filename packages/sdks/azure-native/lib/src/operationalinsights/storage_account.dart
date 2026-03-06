@@ -12,7 +12,7 @@ class StorageAccount {
   /// Creates a new [StorageAccount].
   /// [id] The Azure Resource Manager ID of the storage account resource.
   /// [key] The storage account key.
-  StorageAccount({
+  const StorageAccount({
     required this.id,
     required this.key,
   });

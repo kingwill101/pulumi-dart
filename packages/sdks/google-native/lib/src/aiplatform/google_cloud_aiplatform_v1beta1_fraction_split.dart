@@ -15,7 +15,7 @@ class GoogleCloudAiplatformV1beta1FractionSplit {
   /// [testFraction] The fraction of the input data that is to be used to evaluate the Model.
   /// [trainingFraction] The fraction of the input data that is to be used to train the Model.
   /// [validationFraction] The fraction of the input data that is to be used to validate the Model.
-  GoogleCloudAiplatformV1beta1FractionSplit({
+  const GoogleCloudAiplatformV1beta1FractionSplit({
     this.testFraction,
     this.trainingFraction,
     this.validationFraction,

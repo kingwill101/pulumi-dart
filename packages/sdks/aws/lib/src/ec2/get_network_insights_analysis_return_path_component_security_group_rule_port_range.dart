@@ -9,7 +9,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange {
   /// Creates a new [GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange].
   /// [from] Required.
   /// [to] Required.
-  GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange({
+  const GetNetworkInsightsAnalysisReturnPathComponentSecurityGroupRulePortRange({
     required this.from,
     required this.to,
   });

@@ -16,7 +16,7 @@ class KeystoreArgs {
   /// [environmentId] Required.
   /// [name] Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
   /// [organizationId] Required.
-  KeystoreArgs({
+  const KeystoreArgs({
     required this.environmentId,
     this.name,
     required this.organizationId,

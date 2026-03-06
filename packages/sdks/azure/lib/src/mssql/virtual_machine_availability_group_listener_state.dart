@@ -32,7 +32,7 @@ class VirtualMachineAvailabilityGroupListenerState {
   /// [port] The port of the listener. Changing this forces a new resource to be created.
   /// [replicas] One or more `replica` blocks as defined below. Changing this forces a new resource to be created.
   /// [sqlVirtualMachineGroupId] The ID of the SQL Virtual Machine Group to create the listener. Changing this forces a new resource to be created.
-  VirtualMachineAvailabilityGroupListenerState({
+  const VirtualMachineAvailabilityGroupListenerState({
     this.availabilityGroupName,
     this.loadBalancerConfiguration,
     this.multiSubnetIpConfigurations,

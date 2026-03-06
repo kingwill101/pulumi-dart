@@ -11,7 +11,7 @@ class NodePoolManagement {
   /// Creates a new [NodePoolManagement].
   /// [autoRepair] Whether the nodes will be automatically repaired. Enabled by default.
   /// [autoUpgrade] Whether the nodes will be automatically upgraded. Enabled by default.
-  NodePoolManagement({
+  const NodePoolManagement({
     this.autoRepair,
     this.autoUpgrade,
   });

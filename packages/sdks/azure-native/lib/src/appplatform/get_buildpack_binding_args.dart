@@ -24,7 +24,7 @@ class GetBuildpackBindingArgs {
   /// [buildpackBindingName] The name of the Buildpack Binding Name
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  GetBuildpackBindingArgs({
+  const GetBuildpackBindingArgs({
     required this.buildServiceName,
     required this.builderName,
     required this.buildpackBindingName,

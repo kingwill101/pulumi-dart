@@ -44,7 +44,7 @@ class GetPeeringResult {
   /// [sku] The SKU that defines the tier and kind of the peering.
   /// [tags] The resource tags.
   /// [type] The type of the resource.
-  GetPeeringResult({
+  const GetPeeringResult({
     required this.azureApiVersion,
     this.direct,
     this.exchange,

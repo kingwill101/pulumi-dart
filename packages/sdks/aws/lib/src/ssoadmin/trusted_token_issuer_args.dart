@@ -33,7 +33,7 @@ class TrustedTokenIssuerArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [trustedTokenIssuerConfiguration] A block that specifies settings that apply to the trusted token issuer, these change depending on the type you specify in `trusted_token_issuer_type`. Documented below.
   /// [trustedTokenIssuerType] Specifies the type of the trusted token issuer. Valid values are `OIDC_JWT`
-  TrustedTokenIssuerArgs({
+  const TrustedTokenIssuerArgs({
     this.clientToken,
     required this.instanceArn,
     this.name,

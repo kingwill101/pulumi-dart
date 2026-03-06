@@ -12,7 +12,7 @@ class FullTextPath {
   /// Creates a new [FullTextPath].
   /// [language] The language of the full text field in the document.
   /// [path] The path to the full text field in the document.
-  FullTextPath({
+  const FullTextPath({
     this.language,
     required this.path,
   });

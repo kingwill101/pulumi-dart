@@ -15,7 +15,7 @@ class JobStorageAccount {
   /// [accountKey] The account key for the Azure Storage account. Required on PUT (CreateOrReplace) requests.
   /// [accountName] The name of the Azure Storage account. Required on PUT (CreateOrReplace) requests.
   /// [authenticationMode] Authentication Mode.
-  JobStorageAccount({
+  const JobStorageAccount({
     this.accountKey,
     this.accountName,
     this.authenticationMode,

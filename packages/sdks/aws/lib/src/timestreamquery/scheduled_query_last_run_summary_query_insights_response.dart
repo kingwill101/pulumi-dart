@@ -22,7 +22,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponse {
   /// [querySpatialCoverages] Insights into the spatial coverage of the query, including the table with sub-optimal (max) spatial pruning. This information can help you identify areas for improvement in your partitioning strategy to enhance spatial pruning.
   /// [queryTableCount] Number of tables in the query.
   /// [queryTemporalRanges] Insights into the temporal range of the query, including the table with the largest (max) time range. Following are some of the potential options for optimizing time-based pruning: add missing time-predicates, remove functions around the time predicates, add time predicates to all the sub-queries.
-  ScheduledQueryLastRunSummaryQueryInsightsResponse({
+  const ScheduledQueryLastRunSummaryQueryInsightsResponse({
     this.outputBytes,
     this.outputRows,
     this.querySpatialCoverages,

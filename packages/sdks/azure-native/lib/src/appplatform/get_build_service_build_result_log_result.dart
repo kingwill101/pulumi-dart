@@ -8,7 +8,7 @@ class GetBuildServiceBuildResultLogResult {
 
   /// Creates a new [GetBuildServiceBuildResultLogResult].
   /// [blobUrl] The public download URL of this build result log
-  GetBuildServiceBuildResultLogResult({
+  const GetBuildServiceBuildResultLogResult({
     this.blobUrl,
   });
 

@@ -53,7 +53,7 @@ class PlanWorkflowStepParallelConfigStep {
   /// [name] Name of the step.
   /// [regionSwitchPlanConfigs] Optional.
   /// [route53HealthCheckConfigs] Configuration for Route53 health check operations. See Route53 Health Check Config below.
-  PlanWorkflowStepParallelConfigStep({
+  const PlanWorkflowStepParallelConfigStep({
     this.arcRoutingControlConfigs,
     this.customActionLambdaConfigs,
     this.description,

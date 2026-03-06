@@ -15,7 +15,7 @@ class GetGradientaiModelsArgs {
   /// Creates a new [GetGradientaiModelsArgs].
   /// [filters] Optional.
   /// [sorts] Optional.
-  GetGradientaiModelsArgs({
+  const GetGradientaiModelsArgs({
     this.filters,
     this.sorts,
   });

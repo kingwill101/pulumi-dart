@@ -11,7 +11,7 @@ class PipeSourceParametersManagedStreamingKafkaParametersCredentials {
   /// Creates a new [PipeSourceParametersManagedStreamingKafkaParametersCredentials].
   /// [clientCertificateTlsAuth] The ARN of the Secrets Manager secret containing the credentials.
   /// [saslScram512Auth] The ARN of the Secrets Manager secret containing the credentials.
-  PipeSourceParametersManagedStreamingKafkaParametersCredentials({
+  const PipeSourceParametersManagedStreamingKafkaParametersCredentials({
     this.clientCertificateTlsAuth,
     this.saslScram512Auth,
   });

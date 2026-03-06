@@ -11,7 +11,7 @@ class FilterFilterCriteriaEcrImageRegistry {
   /// Creates a new [FilterFilterCriteriaEcrImageRegistry].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaEcrImageRegistry({
+  const FilterFilterCriteriaEcrImageRegistry({
     required this.comparison,
     required this.value,
   });

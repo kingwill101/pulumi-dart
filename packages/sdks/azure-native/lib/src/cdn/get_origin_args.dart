@@ -21,7 +21,7 @@ class GetOriginArgs {
   /// [originName] Name of the origin which is unique within the endpoint.
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetOriginArgs({
+  const GetOriginArgs({
     required this.endpointName,
     required this.originName,
     required this.profileName,

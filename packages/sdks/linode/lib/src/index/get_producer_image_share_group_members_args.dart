@@ -22,7 +22,7 @@ class GetProducerImageShareGroupMembersArgs {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [sharegroupId] The ID of the Image Share Group for which to list members.
-  GetProducerImageShareGroupMembersArgs({
+  const GetProducerImageShareGroupMembersArgs({
     this.filters,
     this.members,
     this.order,

@@ -16,7 +16,7 @@ class NetworkEndpointResponseTpuV2alpha1 {
   /// [accessConfig] The access config for the TPU worker.
   /// [ipAddress] The internal IP address of this network endpoint.
   /// [port] The port of this network endpoint.
-  NetworkEndpointResponseTpuV2alpha1({
+  const NetworkEndpointResponseTpuV2alpha1({
     required this.accessConfig,
     required this.ipAddress,
     required this.port,

@@ -28,7 +28,7 @@ class GetCustomRoutingPortMappingsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [status] The access policy of traffic for the backend instance. Valid Values: `allow`, `deny`.
-  GetCustomRoutingPortMappingsArgs({
+  const GetCustomRoutingPortMappingsArgs({
     required this.acceleratorId,
     this.endpointGroupId,
     this.listenerId,

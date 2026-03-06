@@ -33,7 +33,7 @@ class CloudFormationStackState {
   /// [semanticVersion] The version of the application to deploy. If not supplied, deploys the latest version.
   /// [tags] A list of tags to associate with this stack. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  CloudFormationStackState({
+  const CloudFormationStackState({
     this.applicationId,
     this.capabilities,
     this.name,

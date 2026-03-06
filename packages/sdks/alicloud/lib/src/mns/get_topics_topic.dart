@@ -17,7 +17,7 @@ class GetTopicsTopic {
   /// [loggingEnabled] Whether to enable logging.
   /// [maximumMessageSize] This indicates the maximum length, in bytes, of any message body sent to the topic.
   /// [name] The name of the topic.
-  GetTopicsTopic({
+  const GetTopicsTopic({
     required this.id,
     required this.loggingEnabled,
     required this.maximumMessageSize,

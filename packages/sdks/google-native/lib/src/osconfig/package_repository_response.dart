@@ -22,7 +22,7 @@ class PackageRepositoryResponse {
   /// [goo] A Goo Repository.
   /// [yum] A Yum Repository.
   /// [zypper] A Zypper Repository.
-  PackageRepositoryResponse({
+  const PackageRepositoryResponse({
     required this.apt,
     required this.goo,
     required this.yum,

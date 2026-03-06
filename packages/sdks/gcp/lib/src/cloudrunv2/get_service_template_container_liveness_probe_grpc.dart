@@ -14,7 +14,7 @@ class GetServiceTemplateContainerLivenessProbeGrpc {
   /// Creates a new [GetServiceTemplateContainerLivenessProbeGrpc].
   /// [port] Port number to access on the container. Number must be in the range 1 to 65535.
   /// [service] The name of the service to place in the gRPC HealthCheckRequest
-  GetServiceTemplateContainerLivenessProbeGrpc({
+  const GetServiceTemplateContainerLivenessProbeGrpc({
     required this.port,
     required this.service,
   });

@@ -45,7 +45,7 @@ class GraphArgs {
   /// [tags] Key-value tags for the graph. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [vectorSearchConfiguration] Vector Search Configuration (see below for nested schema of vector_search_configuration)
-  GraphArgs({
+  const GraphArgs({
     this.deletionProtection,
     this.graphName,
     this.graphNamePrefix,

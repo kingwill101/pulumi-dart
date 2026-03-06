@@ -23,7 +23,7 @@ class AnycastIpListArgs {
   /// [name] Name of the Anycast IP list.
   /// [tags] Key-value tags for the place index. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  AnycastIpListArgs({
+  const AnycastIpListArgs({
     required this.ipCount,
     this.name,
     this.tags,

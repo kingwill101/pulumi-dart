@@ -18,7 +18,7 @@ class YarnApplicationResponse {
   /// [progress] The numerical progress of the application, from 1 to 100.
   /// [state] The application state.
   /// [trackingUrl] Optional. The HTTP URL of the ApplicationMaster, HistoryServer, or TimelineServer that provides application-specific information. The URL uses the internal hostname, and requires a proxy server for resolution and, possibly, access.
-  YarnApplicationResponse({
+  const YarnApplicationResponse({
     required this.name,
     required this.progress,
     required this.state,

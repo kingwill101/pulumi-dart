@@ -26,7 +26,7 @@ class FieldLevelEncryptionConfigState {
   /// [contentTypeProfileConfig] Content Type Profile Config specifies when to forward content if a content type isn't recognized and profiles to use as by default in a request if a query argument doesn't specify a profile to use.
   /// [etag] The current version of the Field Level Encryption Config. For example: `E2QWRUHAPOMQZL`.
   /// [queryArgProfileConfig] Query Arg Profile Config that specifies when to forward content if a profile isn't found and the profile that can be provided as a query argument in a request.
-  FieldLevelEncryptionConfigState({
+  const FieldLevelEncryptionConfigState({
     this.arn,
     this.callerReference,
     this.comment,

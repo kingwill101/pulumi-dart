@@ -13,7 +13,7 @@ class AuditLogConfigNetworkservicesV1beta1 {
   /// Creates a new [AuditLogConfigNetworkservicesV1beta1].
   /// [exemptedMembers] Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members.
   /// [logType] The log type that this config enables.
-  AuditLogConfigNetworkservicesV1beta1({
+  const AuditLogConfigNetworkservicesV1beta1({
     this.exemptedMembers,
     this.logType,
   });

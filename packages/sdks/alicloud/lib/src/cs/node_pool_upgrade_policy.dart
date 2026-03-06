@@ -20,7 +20,7 @@ class NodePoolUpgradePolicy {
   /// [runtime] Node runtime type
   /// [runtimeVersion] Node Runtime Version
   /// [useReplace] Whether to use replacement disk upgrade. Valid values:
-  NodePoolUpgradePolicy({
+  const NodePoolUpgradePolicy({
     this.imageId,
     this.kubernetesVersion,
     this.runtime,

@@ -15,7 +15,7 @@ class EnvironmentIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] The type of managed identity to assign. Possible values are `SystemAssigned`, `UserAssigned`, and `SystemAssigned, UserAssigned` (to enable both).
-  EnvironmentIdentity({
+  const EnvironmentIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

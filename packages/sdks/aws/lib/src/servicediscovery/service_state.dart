@@ -44,7 +44,7 @@ class ServiceState {
   /// [tags] A map of tags to assign to the service. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [type] If present, specifies that the service instances are only discoverable using the `DiscoverInstances` API operation. No DNS records is registered for the service instances. The only valid value is `HTTP`.
-  ServiceState({
+  const ServiceState({
     this.arn,
     this.description,
     this.dnsConfig,

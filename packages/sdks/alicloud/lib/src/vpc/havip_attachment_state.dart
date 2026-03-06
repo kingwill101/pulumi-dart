@@ -24,7 +24,7 @@ class HAVipAttachmentState {
   /// [instanceId] The ID of the ECS instance bound to the HaVip instance.
   /// [instanceType] The type of the instance to be associated with the HAVIP. Valid values: * `EcsInstance`: an ECS instance * `NetworkInterface`: an ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
   /// [status] The status of the resource
-  HAVipAttachmentState({
+  const HAVipAttachmentState({
     this.force,
     this.haVipId,
     this.havipId,

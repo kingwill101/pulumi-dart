@@ -13,7 +13,7 @@ class GetUptimeCheckIPsResult {
   /// Creates a new [GetUptimeCheckIPsResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [uptimeCheckIps] A list of uptime check IPs used by Stackdriver Monitoring. Each `uptime_check_ip` contains:
-  GetUptimeCheckIPsResult({
+  const GetUptimeCheckIPsResult({
     required this.id,
     required this.uptimeCheckIps,
   });

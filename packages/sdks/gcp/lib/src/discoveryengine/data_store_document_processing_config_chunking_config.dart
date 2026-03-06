@@ -10,7 +10,7 @@ class DataStoreDocumentProcessingConfigChunkingConfig {
 
   /// Creates a new [DataStoreDocumentProcessingConfigChunkingConfig].
   /// [layoutBasedChunkingConfig] Configuration for the layout based chunking.
-  DataStoreDocumentProcessingConfigChunkingConfig({
+  const DataStoreDocumentProcessingConfigChunkingConfig({
     this.layoutBasedChunkingConfig,
   });
 

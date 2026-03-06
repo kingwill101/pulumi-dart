@@ -9,7 +9,7 @@ class WebAclRuleActionCaptcha {
 
   /// Creates a new [WebAclRuleActionCaptcha].
   /// [customRequestHandling] Defines custom handling for the web request. See `custom_request_handling` below for details.
-  WebAclRuleActionCaptcha({
+  const WebAclRuleActionCaptcha({
     this.customRequestHandling,
   });
 

@@ -13,7 +13,7 @@ class URLMapDefaultRouteActionFaultInjectionPolicyAbort {
   /// Creates a new [URLMapDefaultRouteActionFaultInjectionPolicyAbort].
   /// [httpStatus] The HTTP status code used to abort the request.
   /// [percentage] The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
-  URLMapDefaultRouteActionFaultInjectionPolicyAbort({
+  const URLMapDefaultRouteActionFaultInjectionPolicyAbort({
     this.httpStatus,
     this.percentage,
   });

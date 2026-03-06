@@ -21,7 +21,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceS
   /// [hdr10Settings] Set the colorspace to be HDR10. See H265 HDR10 Settings for more details.
   /// [rec601Settings] Set the colorspace to Rec. 601.
   /// [rec709Settings] Set the colorspace to Rec. 709.
-  ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings({
+  const ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsColorSpaceSettings({
     this.colorSpacePassthroughSettings,
     this.dolbyVision81Settings,
     this.hdr10Settings,

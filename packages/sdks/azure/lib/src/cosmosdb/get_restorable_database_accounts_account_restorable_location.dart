@@ -17,7 +17,7 @@ class GetRestorableDatabaseAccountsAccountRestorableLocation {
   /// [deletionTime] The deletion time of the regional Cosmos DB Restorable Database Account.
   /// [location] The location where the Cosmos DB Database Account.
   /// [regionalDatabaseAccountInstanceId] The instance ID of the regional Cosmos DB Restorable Database Account.
-  GetRestorableDatabaseAccountsAccountRestorableLocation({
+  const GetRestorableDatabaseAccountsAccountRestorableLocation({
     required this.creationTime,
     required this.deletionTime,
     required this.location,

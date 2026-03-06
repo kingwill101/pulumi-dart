@@ -8,7 +8,7 @@ class MetastoreServiceMetadataIntegrationDataCatalogConfig {
 
   /// Creates a new [MetastoreServiceMetadataIntegrationDataCatalogConfig].
   /// [enabled] Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
-  MetastoreServiceMetadataIntegrationDataCatalogConfig({
+  const MetastoreServiceMetadataIntegrationDataCatalogConfig({
     required this.enabled,
   });
 

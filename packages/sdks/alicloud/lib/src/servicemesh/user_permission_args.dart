@@ -16,7 +16,7 @@ class UserPermissionArgs {
   /// Creates a new [UserPermissionArgs].
   /// [permissions] List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
   /// [subAccountUserId] The configuration of the Load Balancer. See the following `Block load_balancer`.
-  UserPermissionArgs({
+  const UserPermissionArgs({
     this.permissions,
     required this.subAccountUserId,
   });

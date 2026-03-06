@@ -17,7 +17,7 @@ class ManagementPolicyRuleFilters {
   /// [blobTypes] An array of predefined values. Valid options are `blockBlob` and `appendBlob`.
   /// [matchBlobIndexTags] A `match_blob_index_tag` block as defined below. The block defines the blob index tag based filtering for blob objects.
   /// [prefixMatches] An array of strings for prefixes to be matched.
-  ManagementPolicyRuleFilters({
+  const ManagementPolicyRuleFilters({
     required this.blobTypes,
     this.matchBlobIndexTags,
     this.prefixMatches,

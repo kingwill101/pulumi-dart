@@ -82,7 +82,7 @@ class ProviderArgs {
   /// [signVersion] Optional.
   /// [skipRegionValidation] Skip static validation of region ID. Used by users of alternative AlibabaCloud-like APIs or users w/ access to regions that are not public (yet).
   /// [sourceIp] The source ip for the assume role invoking.
-  ProviderArgs({
+  const ProviderArgs({
     this.accessKey,
     this.accountId,
     this.accountType,

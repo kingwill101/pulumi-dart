@@ -28,7 +28,7 @@ class GetTaxonomyDatacatalogV1beta1Result {
   /// [policyTagCount] Number of policy tags contained in this taxonomy.
   /// [service] Identity of the service which owns the Taxonomy. This field is only populated when the taxonomy is created by a Google Cloud service. Currently only 'DATAPLEX' is supported.
   /// [taxonomyTimestamps] Timestamps about this taxonomy. Only create_time and update_time are used.
-  GetTaxonomyDatacatalogV1beta1Result({
+  const GetTaxonomyDatacatalogV1beta1Result({
     required this.activatedPolicyTypes,
     required this.description,
     required this.displayName,

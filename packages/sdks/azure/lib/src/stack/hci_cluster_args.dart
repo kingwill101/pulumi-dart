@@ -36,7 +36,7 @@ class HciClusterArgs {
   /// [resourceGroupName] The name of the Resource Group where the Azure Stack HCI Cluster should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Stack HCI Cluster.
   /// [tenantId] The Tenant ID of the Azure Active Directory which is used by the Azure Stack HCI Cluster. Changing this forces a new resource to be created.
-  HciClusterArgs({
+  const HciClusterArgs({
     this.automanageConfigurationId,
     this.clientId,
     this.identity,

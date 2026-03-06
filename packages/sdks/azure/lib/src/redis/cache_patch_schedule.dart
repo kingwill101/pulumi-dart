@@ -16,7 +16,7 @@ class CachePatchSchedule {
   /// [dayOfWeek] the Weekday name - possible values include `Monday`, `Tuesday`, `Wednesday` etc.
   /// [maintenanceWindow] The ISO 8601 timespan which specifies the amount of time the Redis Cache can be updated. Defaults to `PT5H`.
   /// [startHourUtc] the Start Hour for maintenance in UTC - possible values range from `0 - 23`.
-  CachePatchSchedule({
+  const CachePatchSchedule({
     required this.dayOfWeek,
     this.maintenanceWindow,
     this.startHourUtc,

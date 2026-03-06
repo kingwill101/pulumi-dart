@@ -8,7 +8,7 @@ class CompliancePackConfigRuleId {
 
   /// Creates a new [CompliancePackConfigRuleId].
   /// [configRuleId] The rule ID of Config Rule.
-  CompliancePackConfigRuleId({
+  const CompliancePackConfigRuleId({
     this.configRuleId,
   });
 

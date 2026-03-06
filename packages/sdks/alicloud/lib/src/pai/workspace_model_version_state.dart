@@ -75,7 +75,7 @@ class WorkspaceModelVersionState {
   /// [uri] The URI of the model version.
   /// [versionDescription] The version descriptions.
   /// [versionName] The Model version.
-  WorkspaceModelVersionState({
+  const WorkspaceModelVersionState({
     this.approvalStatus,
     this.extraInfo,
     this.formatType,

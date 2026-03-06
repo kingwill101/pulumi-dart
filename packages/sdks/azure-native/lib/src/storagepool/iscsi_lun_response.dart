@@ -15,7 +15,7 @@ class IscsiLunResponse {
   /// [lun] Specifies the Logical Unit Number of the iSCSI LUN.
   /// [managedDiskAzureResourceId] Azure Resource ID of the Managed Disk.
   /// [name] User defined name for iSCSI LUN; example: "lun0"
-  IscsiLunResponse({
+  const IscsiLunResponse({
     required this.lun,
     required this.managedDiskAzureResourceId,
     required this.name,

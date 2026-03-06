@@ -35,7 +35,7 @@ class DocumentState {
   /// [path] A relative path to the collection this document exists within
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Last update timestamp in RFC3339 format.
-  DocumentState({
+  const DocumentState({
     this.collection,
     this.createTime,
     this.database,

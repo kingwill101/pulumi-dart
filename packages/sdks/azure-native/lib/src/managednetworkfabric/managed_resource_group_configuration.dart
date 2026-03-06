@@ -12,7 +12,7 @@ class ManagedResourceGroupConfiguration {
   /// Creates a new [ManagedResourceGroupConfiguration].
   /// [location] Managed resource group location.
   /// [name] The NFC service will be hosted in a Managed resource group.
-  ManagedResourceGroupConfiguration({
+  const ManagedResourceGroupConfiguration({
     this.location,
     this.name,
   });

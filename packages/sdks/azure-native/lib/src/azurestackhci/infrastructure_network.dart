@@ -22,7 +22,7 @@ class InfrastructureNetwork {
   /// [ipPools] Range of IP addresses from which addresses are allocated for nodes within a subnet.
   /// [subnetMask] Subnet mask that matches the provided IP address space.
   /// [useDhcp] Allows customers to use DHCP for Hosts and Cluster IPs. If not declared, the deployment will default to static IPs. When true, GW and DNS servers are not required
-  InfrastructureNetwork({
+  const InfrastructureNetwork({
     this.dnsServers,
     this.gateway,
     this.ipPools,

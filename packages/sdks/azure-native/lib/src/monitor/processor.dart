@@ -16,7 +16,7 @@ class Processor {
   /// [batch] Batch processor configurations.
   /// [name] The name of processor.
   /// [type] The type of processor.
-  Processor({
+  const Processor({
     this.batch,
     required this.name,
     required this.type,

@@ -45,7 +45,7 @@ class SecurityGatewayIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [securityGatewayId] Used to find the parent resource to bind the IAM policy to
-  SecurityGatewayIamMemberState({
+  const SecurityGatewayIamMemberState({
     this.condition,
     this.etag,
     this.location,

@@ -9,7 +9,7 @@ class ConfiguredTableTableReference {
   /// Creates a new [ConfiguredTableTableReference].
   /// [databaseName] Required.
   /// [tableName] Required.
-  ConfiguredTableTableReference({
+  const ConfiguredTableTableReference({
     required this.databaseName,
     required this.tableName,
   });

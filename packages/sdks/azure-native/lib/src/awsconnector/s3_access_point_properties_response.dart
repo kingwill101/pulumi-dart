@@ -34,7 +34,7 @@ class S3AccessPointPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  S3AccessPointPropertiesResponse({
+  const S3AccessPointPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

@@ -10,7 +10,7 @@ class BareMetalNodePoolUpgradePolicyResponse {
 
   /// Creates a new [BareMetalNodePoolUpgradePolicyResponse].
   /// [parallelUpgradeConfig] The parallel upgrade settings for worker node pools.
-  BareMetalNodePoolUpgradePolicyResponse({
+  const BareMetalNodePoolUpgradePolicyResponse({
     required this.parallelUpgradeConfig,
   });
 

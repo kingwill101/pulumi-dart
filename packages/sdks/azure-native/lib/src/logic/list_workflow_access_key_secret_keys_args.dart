@@ -18,7 +18,7 @@ class ListWorkflowAccessKeySecretKeysArgs {
   /// [accessKeyName] The workflow access key name.
   /// [resourceGroupName] The resource group name.
   /// [workflowName] The workflow name.
-  ListWorkflowAccessKeySecretKeysArgs({
+  const ListWorkflowAccessKeySecretKeysArgs({
     required this.accessKeyName,
     required this.resourceGroupName,
     required this.workflowName,

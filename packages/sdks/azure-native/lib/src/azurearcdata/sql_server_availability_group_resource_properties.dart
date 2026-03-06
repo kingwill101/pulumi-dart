@@ -18,7 +18,7 @@ class SqlServerAvailabilityGroupResourceProperties {
   /// [databases] A list of Availability Group Database Replicas.
   /// [info] Availability Group Info
   /// [replicas] A list of Availability Group Replicas.
-  SqlServerAvailabilityGroupResourceProperties({
+  const SqlServerAvailabilityGroupResourceProperties({
     this.databases,
     this.info,
     this.replicas,

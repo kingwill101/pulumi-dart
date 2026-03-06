@@ -18,7 +18,7 @@ class Checkpoint {
   /// [description] Gets description of the checkpoint.
   /// [name] Gets name of the checkpoint.
   /// [parentCheckpointID] Gets ID of parent of the checkpoint.
-  Checkpoint({
+  const Checkpoint({
     this.checkpointID,
     this.description,
     this.name,

@@ -24,7 +24,7 @@ class GatewayVcoRouteArgs {
   /// [routeDest] The destination network segment of the destination route.
   /// [vpnConnectionId] The id of the vpn attachment.
   /// [weight] The weight value of the destination route. Valid values: `0`, `100`.
-  GatewayVcoRouteArgs({
+  const GatewayVcoRouteArgs({
     required this.nextHop,
     this.overlayMode,
     required this.routeDest,

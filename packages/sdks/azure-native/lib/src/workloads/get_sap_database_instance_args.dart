@@ -18,7 +18,7 @@ class GetSapDatabaseInstanceArgs {
   /// [databaseInstanceName] Database resource name string modeled as parameter for auto generation to work correctly.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapVirtualInstanceName] The name of the Virtual Instances for SAP solutions resource
-  GetSapDatabaseInstanceArgs({
+  const GetSapDatabaseInstanceArgs({
     required this.databaseInstanceName,
     required this.resourceGroupName,
     required this.sapVirtualInstanceName,

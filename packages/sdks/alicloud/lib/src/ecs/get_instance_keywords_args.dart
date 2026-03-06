@@ -15,7 +15,7 @@ class GetInstanceKeywordsArgs {
   /// Creates a new [GetInstanceKeywordsArgs].
   /// [key] The type of reserved keyword to query. Valid values: `account`, `database`.
   /// [outputFile] File name where to save data source results (after running `pulumi up`).
-  GetInstanceKeywordsArgs({
+  const GetInstanceKeywordsArgs({
     required this.key,
     this.outputFile,
   });

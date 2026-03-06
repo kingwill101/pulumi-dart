@@ -15,7 +15,7 @@ class GetNetworkTapArgs {
   /// Creates a new [GetNetworkTapArgs].
   /// [networkTapName] Name of the Network Tap.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkTapArgs({
+  const GetNetworkTapArgs({
     required this.networkTapName,
     required this.resourceGroupName,
   });

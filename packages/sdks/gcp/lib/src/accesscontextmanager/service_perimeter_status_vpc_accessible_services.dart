@@ -13,7 +13,7 @@ class ServicePerimeterStatusVpcAccessibleServices {
   /// Creates a new [ServicePerimeterStatusVpcAccessibleServices].
   /// [allowedServices] The list of APIs usable within the Service Perimeter.
   /// [enableRestriction] Whether to restrict API calls within the Service Perimeter to the
-  ServicePerimeterStatusVpcAccessibleServices({
+  const ServicePerimeterStatusVpcAccessibleServices({
     this.allowedServices,
     this.enableRestriction,
   });

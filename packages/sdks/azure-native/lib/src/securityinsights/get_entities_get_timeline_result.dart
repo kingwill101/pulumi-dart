@@ -14,7 +14,7 @@ class GetEntitiesGetTimelineResult {
   /// Creates a new [GetEntitiesGetTimelineResult].
   /// [metaData] The metadata from the timeline operation results.
   /// [value] The timeline result values.
-  GetEntitiesGetTimelineResult({
+  const GetEntitiesGetTimelineResult({
     this.metaData,
     this.value,
   });

@@ -30,7 +30,7 @@ class FileTaskStepResponse {
   /// [type] The type of the step.
   /// [values] The collection of overridable values that can be passed when running a task.
   /// [valuesFilePath] The task values/parameters file path relative to the source context.
-  FileTaskStepResponse({
+  const FileTaskStepResponse({
     required this.baseImageDependencies,
     this.contextAccessToken,
     this.contextPath,

@@ -59,7 +59,7 @@ class MatchResourcesAdmissionregistrationK8sIoV1alpha1 {
   /// [namespaceSelector] NamespaceSelector decides whether to run the admission control policy on an object based on whether the namespace for that object matches the selector. If the object itself is a namespace, the matching is performed on object.metadata.labels. If the object is another cluster scoped resource, it never skips the policy.
   /// [objectSelector] ObjectSelector decides whether to run the policy based on if the object has matching labels. objectSelector is evaluated against both the oldObject and newObject that would be sent to the policy's expression (CEL), and is considered to match if either object matches the selector. A null object (oldObject in the case of create, or newObject in the case of delete) or an object that cannot have labels (like a DeploymentRollback or a PodProxyOptions object) is not considered to match. Use the object selector only if the webhook is opt-in, because end users may skip the admission webhook by setting the labels. Default to the empty LabelSelector, which matches everything.
   /// [resourceRules] ResourceRules describes what operations on what resources/subresources the admission policy matches. The policy cares about an operation if it matches _any_ Rule.
-  MatchResourcesAdmissionregistrationK8sIoV1alpha1({
+  const MatchResourcesAdmissionregistrationK8sIoV1alpha1({
     this.excludeResourceRules,
     this.matchPolicy,
     this.namespaceSelector,

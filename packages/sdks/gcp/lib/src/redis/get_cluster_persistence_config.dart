@@ -20,7 +20,7 @@ class GetClusterPersistenceConfig {
   /// [aofConfigs] AOF configuration. This field will be ignored if mode is not AOF.
   /// [mode] Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
   /// [rdbConfigs] RDB configuration. This field will be ignored if mode is not RDB.
-  GetClusterPersistenceConfig({
+  const GetClusterPersistenceConfig({
     required this.aofConfigs,
     required this.mode,
     required this.rdbConfigs,

@@ -17,7 +17,7 @@ class HttpIncomingResponseHeaderModificationRuleResponseHeaderModification {
   /// [operation] Operation method. Possible values:
   /// [type] The value type. Value range:
   /// [value] The response header value.
-  HttpIncomingResponseHeaderModificationRuleResponseHeaderModification({
+  const HttpIncomingResponseHeaderModificationRuleResponseHeaderModification({
     required this.name,
     required this.operation,
     this.type,

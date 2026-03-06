@@ -8,7 +8,7 @@ class DomainDevicesGraphicSpiceFileTransfer {
 
   /// Creates a new [DomainDevicesGraphicSpiceFileTransfer].
   /// [enable] Enables or disables file transfer functionality for the Spice connection.
-  DomainDevicesGraphicSpiceFileTransfer({
+  const DomainDevicesGraphicSpiceFileTransfer({
     required this.enable,
   });
 

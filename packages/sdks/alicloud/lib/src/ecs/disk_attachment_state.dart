@@ -22,7 +22,7 @@ class DiskAttachmentState {
   /// [instanceId] ID of the Instance to attach to.
   /// [keyPairName] Optional.
   /// [password] Optional.
-  DiskAttachmentState({
+  const DiskAttachmentState({
     this.bootable,
     this.deleteWithInstance,
     this.device,

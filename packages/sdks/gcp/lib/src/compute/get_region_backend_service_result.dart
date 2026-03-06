@@ -102,7 +102,7 @@ class GetRegionBackendServiceResult {
   /// [subsettings] Required.
   /// [timeoutSec] Required.
   /// [tlsSettings] Required.
-  GetRegionBackendServiceResult({
+  const GetRegionBackendServiceResult({
     required this.affinityCookieTtlSec,
     required this.backends,
     required this.cdnPolicies,

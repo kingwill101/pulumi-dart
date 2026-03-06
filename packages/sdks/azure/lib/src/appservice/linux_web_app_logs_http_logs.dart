@@ -13,7 +13,7 @@ class LinuxWebAppLogsHttpLogs {
   /// Creates a new [LinuxWebAppLogsHttpLogs].
   /// [azureBlobStorage] A `azure_blob_storage_http` block as defined above.
   /// [fileSystem] A `file_system` block as defined above.
-  LinuxWebAppLogsHttpLogs({
+  const LinuxWebAppLogsHttpLogs({
     this.azureBlobStorage,
     this.fileSystem,
   });

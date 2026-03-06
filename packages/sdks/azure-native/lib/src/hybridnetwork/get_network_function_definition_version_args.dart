@@ -21,7 +21,7 @@ class GetNetworkFunctionDefinitionVersionArgs {
   /// [networkFunctionDefinitionVersionName] The name of the network function definition version. The name should conform to the SemVer 2.0.0 specification: https://semver.org/spec/v2.0.0.html.
   /// [publisherName] The name of the publisher.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkFunctionDefinitionVersionArgs({
+  const GetNetworkFunctionDefinitionVersionArgs({
     required this.networkFunctionDefinitionGroupName,
     required this.networkFunctionDefinitionVersionName,
     required this.publisherName,

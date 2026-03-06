@@ -38,7 +38,7 @@ class GetPolicyDefintionResult {
   /// [policyType] The Type of the Policy. Possible values are `BuiltIn`, `Custom` and `NotSpecified`.
   /// [roleDefinitionIds] A list of role definition id extracted from `policy_rule` required for remediation.
   /// [type] The Type of Policy.
-  GetPolicyDefintionResult({
+  const GetPolicyDefintionResult({
     required this.description,
     required this.displayName,
     required this.id,

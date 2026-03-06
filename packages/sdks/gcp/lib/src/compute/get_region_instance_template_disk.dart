@@ -108,7 +108,7 @@ class GetRegionInstanceTemplateDisk {
   /// [sourceSnapshot] The source snapshot to create this disk. When creating
   /// [sourceSnapshotEncryptionKeys] The customer-supplied encryption key of the source snapshot.
   /// [type] The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-  GetRegionInstanceTemplateDisk({
+  const GetRegionInstanceTemplateDisk({
     required this.architecture,
     required this.autoDelete,
     required this.boot,

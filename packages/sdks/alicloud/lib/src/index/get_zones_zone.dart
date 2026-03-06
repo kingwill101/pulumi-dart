@@ -30,7 +30,7 @@ class GetZonesZone {
   /// [localName] Name of the zone in the local language.
   /// [multiZoneIds] A list of zone ids in which the multi zone.
   /// [slbSlaveZoneIds] A list of slb slave zone ids in which the slb master zone.
-  GetZonesZone({
+  const GetZonesZone({
     required this.availableDiskCategories,
     required this.availableInstanceTypes,
     required this.availableResourceCreations,

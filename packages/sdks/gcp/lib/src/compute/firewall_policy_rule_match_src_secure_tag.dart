@@ -12,7 +12,7 @@ class FirewallPolicyRuleMatchSrcSecureTag {
   /// Creates a new [FirewallPolicyRuleMatchSrcSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
   /// [state] (Output)
-  FirewallPolicyRuleMatchSrcSecureTag({
+  const FirewallPolicyRuleMatchSrcSecureTag({
     this.name,
     this.state,
   });

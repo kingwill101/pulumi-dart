@@ -14,7 +14,7 @@ class ProjectBuildBatchConfigRestrictions {
   /// Creates a new [ProjectBuildBatchConfigRestrictions].
   /// [computeTypesAlloweds] An array of strings that specify the compute types that are allowed for the batch
   /// [maximumBuildsAllowed] Specifies the maximum number of builds allowed.
-  ProjectBuildBatchConfigRestrictions({
+  const ProjectBuildBatchConfigRestrictions({
     this.computeTypesAlloweds,
     this.maximumBuildsAllowed,
   });

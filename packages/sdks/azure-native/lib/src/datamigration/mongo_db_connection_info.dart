@@ -48,7 +48,7 @@ class MongoDbConnectionInfo {
   /// [trustServerCertificate] Whether to trust the server certificate
   /// [type] Type of connection info
   /// [userName] User name
-  MongoDbConnectionInfo({
+  const MongoDbConnectionInfo({
     this.additionalSettings,
     this.authentication,
     required this.connectionString,

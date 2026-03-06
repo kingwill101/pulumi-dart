@@ -17,7 +17,7 @@ class NpbStaticRouteConfiguration {
   /// [bfdConfiguration] BFD Configuration properties.
   /// [ipv4Routes] List of IPv4 Routes.
   /// [ipv6Routes] List of IPv6 Routes.
-  NpbStaticRouteConfiguration({
+  const NpbStaticRouteConfiguration({
     this.bfdConfiguration,
     this.ipv4Routes,
     this.ipv6Routes,

@@ -11,7 +11,7 @@ class GetDomainEncryptionAtRest {
   /// Creates a new [GetDomainEncryptionAtRest].
   /// [enabled] Whether node to node encryption is enabled.
   /// [kmsKeyId] The KMS key id used to encrypt data at rest.
-  GetDomainEncryptionAtRest({
+  const GetDomainEncryptionAtRest({
     required this.enabled,
     required this.kmsKeyId,
   });

@@ -24,7 +24,7 @@ class NodeGroupNodeRepairConfig {
   /// [maxUnhealthyNodeThresholdCount] Count threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `max_unhealthy_node_threshold_percentage`.
   /// [maxUnhealthyNodeThresholdPercentage] Percentage threshold of unhealthy nodes, above which node auto repair actions will stop. Conflicts with `max_unhealthy_node_threshold_count`.
   /// [nodeRepairConfigOverrides] Granular overrides for specific repair actions. See `node_repair_config_overrides` below for details.
-  NodeGroupNodeRepairConfig({
+  const NodeGroupNodeRepairConfig({
     this.enabled,
     this.maxParallelNodesRepairedCount,
     this.maxParallelNodesRepairedPercentage,

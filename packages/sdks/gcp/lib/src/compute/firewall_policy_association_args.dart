@@ -22,7 +22,7 @@ class FirewallPolicyAssociationArgs {
   /// [attachmentTarget] The target that the firewall policy is attached to.
   /// [firewallPolicy] The firewall policy of the resource.
   /// [name] The name for an association.
-  FirewallPolicyAssociationArgs({
+  const FirewallPolicyAssociationArgs({
     required this.attachmentTarget,
     required this.firewallPolicy,
     this.name,

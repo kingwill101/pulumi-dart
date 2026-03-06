@@ -18,7 +18,7 @@ class GetPrivateResolverVirtualNetworkLinkArgs {
   /// [dnsForwardingRulesetName] The name of the DNS forwarding ruleset.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [virtualNetworkLinkName] The name of the virtual network link.
-  GetPrivateResolverVirtualNetworkLinkArgs({
+  const GetPrivateResolverVirtualNetworkLinkArgs({
     required this.dnsForwardingRulesetName,
     required this.resourceGroupName,
     required this.virtualNetworkLinkName,

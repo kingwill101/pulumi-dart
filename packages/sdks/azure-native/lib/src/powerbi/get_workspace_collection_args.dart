@@ -15,7 +15,7 @@ class GetWorkspaceCollectionArgs {
   /// Creates a new [GetWorkspaceCollectionArgs].
   /// [resourceGroupName] Azure resource group
   /// [workspaceCollectionName] Power BI Embedded Workspace Collection name
-  GetWorkspaceCollectionArgs({
+  const GetWorkspaceCollectionArgs({
     required this.resourceGroupName,
     required this.workspaceCollectionName,
   });

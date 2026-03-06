@@ -17,7 +17,7 @@ class DatabaseInstanceDnsName {
   /// [connectionType] The connection type of the DNS name. Can be either `PUBLIC`, `PRIVATE_SERVICES_ACCESS`, or `PRIVATE_SERVICE_CONNECT`.
   /// [dnsScope] The scope that the DNS name applies to.
   /// [name] The name of the instance. If the name is left
-  DatabaseInstanceDnsName({
+  const DatabaseInstanceDnsName({
     this.connectionType,
     this.dnsScope,
     this.name,

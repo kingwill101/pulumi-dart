@@ -14,7 +14,7 @@ class DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate
   /// [launchTemplateId] The ID of the launch template to use for faster launching for a Windows AMI.
   /// [launchTemplateName] The name of the launch template to use for faster launching for a Windows AMI.
   /// [launchTemplateVersion] The version of the launch template to use for faster launching for a Windows AMI.
-  DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate({
+  const DistributionConfigurationDistributionFastLaunchConfigurationLaunchTemplate({
     this.launchTemplateId,
     this.launchTemplateName,
     this.launchTemplateVersion,

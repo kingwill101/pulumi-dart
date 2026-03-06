@@ -11,7 +11,7 @@ class PluginInstanceAuthConfigApiKeyConfigApiKey {
 
   /// Creates a new [PluginInstanceAuthConfigApiKeyConfigApiKey].
   /// [secretVersion] The resource name of the secret version in the format,
-  PluginInstanceAuthConfigApiKeyConfigApiKey({
+  const PluginInstanceAuthConfigApiKeyConfigApiKey({
     required this.secretVersion,
   });
 

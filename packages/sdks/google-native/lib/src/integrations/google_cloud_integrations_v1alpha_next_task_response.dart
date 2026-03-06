@@ -21,7 +21,7 @@ class GoogleCloudIntegrationsV1alphaNextTaskResponse {
   /// [displayName] User-provided label that is attached to this edge in the UI.
   /// [taskConfigId] ID of the next task.
   /// [taskId] Task number of the next task.
-  GoogleCloudIntegrationsV1alphaNextTaskResponse({
+  const GoogleCloudIntegrationsV1alphaNextTaskResponse({
     required this.condition,
     required this.description,
     required this.displayName,

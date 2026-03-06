@@ -16,7 +16,7 @@ class DataflowPropertiesResponse {
   /// [mode] Mode for Dataflow. Optional; defaults to Enabled.
   /// [operations] List of operations including source and destination references as well as transformation.
   /// [provisioningState] The status of the last operation.
-  DataflowPropertiesResponse({
+  const DataflowPropertiesResponse({
     this.mode,
     required this.operations,
     required this.provisioningState,

@@ -8,7 +8,7 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcm {
 
   /// Creates a new [VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcm].
   /// [certificateAuthorityArns] One or more ACM ARNs.
-  VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcm({
+  const VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationTrustAcm({
     required this.certificateAuthorityArns,
   });
 

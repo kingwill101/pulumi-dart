@@ -27,7 +27,7 @@ class MetricRuleTemplateAlertTemplate {
   /// [namespace] The namespace of the cloud service.
   /// [ruleName] The name of the alert rule.
   /// [webhook] The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
-  MetricRuleTemplateAlertTemplate({
+  const MetricRuleTemplateAlertTemplate({
     required this.category,
     this.escalations,
     required this.metricName,

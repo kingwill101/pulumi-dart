@@ -15,7 +15,7 @@ class GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine {
   /// [example] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine({
+  const GetDatabaseMysqlConfigMysqlInternalTmpMemStorageEngine({
     required this.description,
     required this.enums,
     required this.example,

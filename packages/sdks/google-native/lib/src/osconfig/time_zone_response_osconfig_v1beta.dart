@@ -9,7 +9,7 @@ class TimeZoneResponseOsconfigV1beta {
 
   /// Creates a new [TimeZoneResponseOsconfigV1beta].
   /// [version] Optional. IANA Time Zone Database version number, e.g. "2019a".
-  TimeZoneResponseOsconfigV1beta({
+  const TimeZoneResponseOsconfigV1beta({
     required this.version,
   });
 

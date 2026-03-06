@@ -38,7 +38,7 @@ class IcebergCatalogIamMemberState {
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  IcebergCatalogIamMemberState({
+  const IcebergCatalogIamMemberState({
     this.condition,
     this.etag,
     this.member,

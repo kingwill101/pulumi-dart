@@ -9,7 +9,7 @@ class ComplianceStatusEnumValueResponse {
 
   /// Creates a new [ComplianceStatusEnumValueResponse].
   /// [value] Property value
-  ComplianceStatusEnumValueResponse({
+  const ComplianceStatusEnumValueResponse({
     this.value,
   });
 

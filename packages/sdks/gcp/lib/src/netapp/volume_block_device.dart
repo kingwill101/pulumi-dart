@@ -37,7 +37,7 @@ class VolumeBlockDevice {
   /// [name] User-defined name for the block device, unique within the Volume. In case
   /// [osType] The OS type of the volume.
   /// [sizeGib] (Output)
-  VolumeBlockDevice({
+  const VolumeBlockDevice({
     this.hostGroups,
     this.identifier,
     this.name,

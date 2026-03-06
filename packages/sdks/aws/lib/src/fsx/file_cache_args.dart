@@ -47,7 +47,7 @@ class FileCacheArgs {
   /// [storageCapacity] The storage capacity of the cache in gibibytes (GiB). Valid values are `1200` GiB, `2400` GiB, and increments of `2400` GiB.
   /// [subnetIds] A list of subnet IDs that the cache will be accessible from. You can specify only one subnet ID.
   /// [tags] A map of tags to assign to the file cache. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  FileCacheArgs({
+  const FileCacheArgs({
     this.copyTagsToDataRepositoryAssociations,
     this.dataRepositoryAssociations,
     required this.fileCacheType,

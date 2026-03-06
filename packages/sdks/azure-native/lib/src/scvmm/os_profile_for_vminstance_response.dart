@@ -18,7 +18,7 @@ class OsProfileForVMInstanceResponse {
   /// [osSku] Gets or sets os sku.
   /// [osType] Gets or sets the type of the os.
   /// [osVersion] Gets os version.
-  OsProfileForVMInstanceResponse({
+  const OsProfileForVMInstanceResponse({
     this.computerName,
     required this.osSku,
     required this.osType,

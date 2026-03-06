@@ -12,7 +12,7 @@ class AclResponse {
   /// Creates a new [AclResponse].
   /// [initiatorIqn] iSCSI initiator IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:client".
   /// [mappedLuns] List of LUN names mapped to the ACL.
-  AclResponse({
+  const AclResponse({
     required this.initiatorIqn,
     required this.mappedLuns,
   });

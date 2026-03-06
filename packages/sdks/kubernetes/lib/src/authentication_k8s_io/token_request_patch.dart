@@ -24,7 +24,7 @@ class TokenRequestPatch {
   /// [metadata] Standard object's metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Spec holds information about the request being evaluated
   /// [status] Status is filled in by the server and indicates whether the token can be authenticated.
-  TokenRequestPatch({
+  const TokenRequestPatch({
     this.apiVersion,
     this.kind,
     this.metadata,

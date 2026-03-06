@@ -14,7 +14,7 @@ class AuxiliaryServicesConfigResponse {
   /// Creates a new [AuxiliaryServicesConfigResponse].
   /// [metastoreConfig] Optional. The Hive Metastore configuration for this workload.
   /// [sparkHistoryServerConfig] Optional. The Spark History Server configuration for the workload.
-  AuxiliaryServicesConfigResponse({
+  const AuxiliaryServicesConfigResponse({
     required this.metastoreConfig,
     required this.sparkHistoryServerConfig,
   });

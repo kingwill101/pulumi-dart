@@ -20,7 +20,7 @@ class AlertRuleAnomalyBuiltInThresholdObservation {
   /// [min] The min value of the threshold observation.
   /// [name] The Name of the built-in Anomaly Alert Rule.
   /// [value] The value of the threshold observation.
-  AlertRuleAnomalyBuiltInThresholdObservation({
+  const AlertRuleAnomalyBuiltInThresholdObservation({
     this.description,
     this.max,
     this.min,

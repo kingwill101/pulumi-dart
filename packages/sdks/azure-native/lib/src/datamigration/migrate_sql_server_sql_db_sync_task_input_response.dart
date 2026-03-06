@@ -21,7 +21,7 @@ class MigrateSqlServerSqlDbSyncTaskInputResponse {
   /// [sourceConnectionInfo] Information for connecting to source
   /// [targetConnectionInfo] Information for connecting to target
   /// [validationOptions] Validation options
-  MigrateSqlServerSqlDbSyncTaskInputResponse({
+  const MigrateSqlServerSqlDbSyncTaskInputResponse({
     required this.selectedDatabases,
     required this.sourceConnectionInfo,
     required this.targetConnectionInfo,

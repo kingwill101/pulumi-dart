@@ -15,7 +15,7 @@ class ResourceSpec {
   /// [instanceType] The instance type that the image version runs on.
   /// [sageMakerImageArn] The ARN of the SageMaker image that the image version belongs to.
   /// [sageMakerImageVersionArn] The ARN of the image version created on the instance.
-  ResourceSpec({
+  const ResourceSpec({
     this.instanceType,
     this.sageMakerImageArn,
     this.sageMakerImageVersionArn,

@@ -11,7 +11,7 @@ class GetClusterRbacBindingConfig {
   /// Creates a new [GetClusterRbacBindingConfig].
   /// [enableInsecureBindingSystemAuthenticated] Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated.
   /// [enableInsecureBindingSystemUnauthenticated] Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:anonymous or system:unauthenticated.
-  GetClusterRbacBindingConfig({
+  const GetClusterRbacBindingConfig({
     required this.enableInsecureBindingSystemAuthenticated,
     required this.enableInsecureBindingSystemUnauthenticated,
   });

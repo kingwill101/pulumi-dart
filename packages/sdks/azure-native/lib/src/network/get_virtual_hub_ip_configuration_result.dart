@@ -37,7 +37,7 @@ class GetVirtualHubIpConfigurationResult {
   /// [publicIPAddress] The reference to the public IP resource.
   /// [subnet] The reference to the subnet resource.
   /// [type] Ipconfiguration type.
-  GetVirtualHubIpConfigurationResult({
+  const GetVirtualHubIpConfigurationResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

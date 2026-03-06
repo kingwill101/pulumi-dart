@@ -9,7 +9,7 @@ class GoogleCloudApigeeV1AdvancedApiOpsConfig {
 
   /// Creates a new [GoogleCloudApigeeV1AdvancedApiOpsConfig].
   /// [enabled] Flag that specifies whether the Advanced API Ops add-on is enabled.
-  GoogleCloudApigeeV1AdvancedApiOpsConfig({
+  const GoogleCloudApigeeV1AdvancedApiOpsConfig({
     this.enabled,
   });
 

@@ -19,7 +19,7 @@ class GetVpcPeeringConnectionsResult {
   /// [ids] IDs of the VPC Peering Connections.
   /// [region] Required.
   /// [tags] Required.
-  GetVpcPeeringConnectionsResult({
+  const GetVpcPeeringConnectionsResult({
     this.filters,
     required this.id,
     required this.ids,

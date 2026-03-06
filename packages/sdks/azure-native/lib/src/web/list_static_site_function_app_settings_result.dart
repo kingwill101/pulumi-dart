@@ -20,7 +20,7 @@ class ListStaticSiteFunctionAppSettingsResult {
   /// [name] Resource Name.
   /// [properties] Settings.
   /// [type] Resource type.
-  ListStaticSiteFunctionAppSettingsResult({
+  const ListStaticSiteFunctionAppSettingsResult({
     required this.id,
     this.kind,
     required this.name,

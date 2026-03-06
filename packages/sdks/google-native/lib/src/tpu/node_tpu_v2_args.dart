@@ -65,7 +65,7 @@ class NodeTpuV2Args {
   /// [serviceAccount] The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
   /// [shieldedInstanceConfig] Shielded Instance options.
   /// [tags] Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
-  NodeTpuV2Args({
+  const NodeTpuV2Args({
     this.acceleratorConfig,
     this.acceleratorType,
     this.cidrBlock,

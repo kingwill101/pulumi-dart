@@ -11,7 +11,7 @@ class ManagedZoneCloudLoggingConfigDnsV1beta2 {
   /// Creates a new [ManagedZoneCloudLoggingConfigDnsV1beta2].
   /// [enableLogging] If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
   /// [kind] Optional.
-  ManagedZoneCloudLoggingConfigDnsV1beta2({
+  const ManagedZoneCloudLoggingConfigDnsV1beta2({
     this.enableLogging,
     this.kind,
   });

@@ -189,7 +189,7 @@ class TairInstanceState {
   /// [vpcId] The ID of the virtual private cloud (VPC).
   /// [vswitchId] The ID of the vSwitch to which the instance is connected.
   /// [zoneId] Zone ID
-  TairInstanceState({
+  const TairInstanceState({
     this.architectureType,
     this.autoRenew,
     this.autoRenewPeriod,

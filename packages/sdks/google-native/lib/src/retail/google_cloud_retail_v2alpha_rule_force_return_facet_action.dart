@@ -10,7 +10,7 @@ class GoogleCloudRetailV2alphaRuleForceReturnFacetAction {
 
   /// Creates a new [GoogleCloudRetailV2alphaRuleForceReturnFacetAction].
   /// [facetPositionAdjustments] Each instance corresponds to a force return attribute for the given condition. There can't be more 3 instances here.
-  GoogleCloudRetailV2alphaRuleForceReturnFacetAction({
+  const GoogleCloudRetailV2alphaRuleForceReturnFacetAction({
     this.facetPositionAdjustments,
   });
 

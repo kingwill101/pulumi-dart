@@ -30,7 +30,7 @@ class BlobContainerImmutabilityPolicyArgs {
   /// [immutabilityPeriodSinceCreationInDays] The immutability period for the blobs in the container since the policy creation, in days.
   /// [immutabilityPolicyName] The name of the blob container immutabilityPolicy within the specified storage account. ImmutabilityPolicy Name must be 'default'
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  BlobContainerImmutabilityPolicyArgs({
+  const BlobContainerImmutabilityPolicyArgs({
     required this.accountName,
     this.allowProtectedAppendWrites,
     this.allowProtectedAppendWritesAll,

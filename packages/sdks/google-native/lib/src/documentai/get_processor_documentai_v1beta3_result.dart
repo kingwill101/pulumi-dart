@@ -34,7 +34,7 @@ class GetProcessorDocumentaiV1beta3Result {
   /// [processorVersionAliases] The processor version aliases.
   /// [state] The state of the processor.
   /// [type] The processor type, such as: `OCR_PROCESSOR`, `INVOICE_PROCESSOR`. To get a list of processor types, see FetchProcessorTypes.
-  GetProcessorDocumentaiV1beta3Result({
+  const GetProcessorDocumentaiV1beta3Result({
     required this.createTime,
     required this.defaultProcessorVersion,
     required this.displayName,

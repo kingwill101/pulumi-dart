@@ -15,7 +15,7 @@ class StaticSiteDatabaseConnectionConfigurationFileOverviewResponse {
   /// [contents] The Base64 encoding of the file contents.
   /// [fileName] The name of the configuration file.
   /// [type] The type of configuration file.
-  StaticSiteDatabaseConnectionConfigurationFileOverviewResponse({
+  const StaticSiteDatabaseConnectionConfigurationFileOverviewResponse({
     required this.contents,
     required this.fileName,
     required this.type,

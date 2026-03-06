@@ -10,7 +10,7 @@ class GetTopicIngestionDataSourceSettingCloudStorageTextFormat {
 
   /// Creates a new [GetTopicIngestionDataSourceSettingCloudStorageTextFormat].
   /// [delimiter] The delimiter to use when using the 'text' format. Each line of text as
-  GetTopicIngestionDataSourceSettingCloudStorageTextFormat({
+  const GetTopicIngestionDataSourceSettingCloudStorageTextFormat({
     required this.delimiter,
   });
 

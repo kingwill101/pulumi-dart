@@ -21,7 +21,7 @@ class TypeArgs {
   /// [definition] The type definition.
   /// [format] The type format: `SDL` or `JSON`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  TypeArgs({
+  const TypeArgs({
     required this.apiId,
     required this.definition,
     required this.format,

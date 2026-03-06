@@ -18,7 +18,7 @@ class ListComputeKeysArgs {
   /// [computeName] Name of the Azure Machine Learning compute.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  ListComputeKeysArgs({
+  const ListComputeKeysArgs({
     required this.computeName,
     required this.resourceGroupName,
     required this.workspaceName,

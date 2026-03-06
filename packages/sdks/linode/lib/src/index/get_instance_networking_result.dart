@@ -17,7 +17,7 @@ class GetInstanceNetworkingResult {
   /// [ipv4s] Required.
   /// [ipv6s] Required.
   /// [linodeId] The ID of the Linode this address currently belongs to.
-  GetInstanceNetworkingResult({
+  const GetInstanceNetworkingResult({
     required this.id,
     required this.ipv4s,
     required this.ipv6s,

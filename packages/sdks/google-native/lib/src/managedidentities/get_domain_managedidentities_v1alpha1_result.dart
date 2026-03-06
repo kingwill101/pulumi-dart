@@ -46,7 +46,7 @@ class GetDomainManagedidentitiesV1alpha1Result {
   /// [statusMessage] Additional information about the current status of this domain, if available.
   /// [trusts] The current trusts associated with the domain.
   /// [updateTime] Last update time. Synthetic field is populated automatically by CCFE.
-  GetDomainManagedidentitiesV1alpha1Result({
+  const GetDomainManagedidentitiesV1alpha1Result({
     required this.auditLogsEnabled,
     required this.authorizedNetworks,
     required this.createTime,

@@ -45,7 +45,7 @@ class GetNatFirewallsArgs {
   /// [regionNo] Region
   /// [status] The status of the resource
   /// [vpcId] The ID of the VPC instance.
-  GetNatFirewallsArgs({
+  const GetNatFirewallsArgs({
     this.ids,
     this.lang,
     this.memberUid,

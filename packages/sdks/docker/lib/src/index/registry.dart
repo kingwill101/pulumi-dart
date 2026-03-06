@@ -15,7 +15,7 @@ class Registry {
   /// [password] The password to authenticate to the registry. Does not cause image rebuild when changed.
   /// [server] The URL of the Docker registry server
   /// [username] The username to authenticate to the registry. Does not cause image rebuild when changed.
-  Registry({
+  const Registry({
     this.password,
     this.server,
     this.username,

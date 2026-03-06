@@ -24,7 +24,7 @@ class IdentityCenterConfigurationState {
   /// [instanceArn] ARN of the IAM Identity Center Instance to associate.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceShare] ARN of the Resource Access Manager (RAM) resource share.
-  IdentityCenterConfigurationState({
+  const IdentityCenterConfigurationState({
     this.applicationArn,
     this.catalogId,
     this.instanceArn,

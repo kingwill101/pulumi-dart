@@ -18,7 +18,7 @@ class GetElasticPoolArgs {
   /// [elasticPoolName] The name of the elastic pool.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverName] The name of the server.
-  GetElasticPoolArgs({
+  const GetElasticPoolArgs({
     required this.elasticPoolName,
     required this.resourceGroupName,
     required this.serverName,

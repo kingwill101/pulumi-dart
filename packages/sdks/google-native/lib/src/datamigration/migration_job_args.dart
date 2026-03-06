@@ -81,7 +81,7 @@ class MigrationJobArgs {
   /// [staticIpConnectivity] static ip connectivity data (default, no additional details needed).
   /// [type] The migration job type.
   /// [vpcPeeringConnectivity] The details of the VPC network that the source database is located in.
-  MigrationJobArgs({
+  const MigrationJobArgs({
     this.cmekKeyName,
     this.conversionWorkspace,
     required this.destination,

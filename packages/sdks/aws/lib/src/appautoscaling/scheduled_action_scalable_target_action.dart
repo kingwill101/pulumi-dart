@@ -11,7 +11,7 @@ class ScheduledActionScalableTargetAction {
   /// Creates a new [ScheduledActionScalableTargetAction].
   /// [maxCapacity] Maximum capacity. At least one of `max_capacity` or `min_capacity` must be set.
   /// [minCapacity] Minimum capacity. At least one of `min_capacity` or `max_capacity` must be set.
-  ScheduledActionScalableTargetAction({
+  const ScheduledActionScalableTargetAction({
     this.maxCapacity,
     this.minCapacity,
   });

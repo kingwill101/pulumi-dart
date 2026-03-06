@@ -26,7 +26,7 @@ class EnvVarSourcePatch {
   /// [fileKeyRef] FileKeyRef selects a key of the env file. Requires the EnvFiles feature gate to be enabled.
   /// [resourceFieldRef] Selects a resource of the container: only resources limits and requests (limits.cpu, limits.memory, limits.ephemeral-storage, requests.cpu, requests.memory and requests.ephemeral-storage) are currently supported.
   /// [secretKeyRef] Selects a key of a secret in the pod's namespace
-  EnvVarSourcePatch({
+  const EnvVarSourcePatch({
     this.configMapKeyRef,
     this.fieldRef,
     this.fileKeyRef,

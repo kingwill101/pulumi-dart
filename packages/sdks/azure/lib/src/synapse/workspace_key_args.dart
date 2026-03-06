@@ -23,7 +23,7 @@ class WorkspaceKeyArgs {
   /// [customerManagedKeyName] Specifies the name of the workspace key. Should match the name of the key in the synapse workspace.
   /// [customerManagedKeyVersionlessId] The Azure Key Vault Key Versionless ID to be used as the Customer Managed Key (CMK) for double encryption
   /// [synapseWorkspaceId] The ID of the Synapse Workspace where the encryption key should be configured.
-  WorkspaceKeyArgs({
+  const WorkspaceKeyArgs({
     required this.active,
     required this.customerManagedKeyName,
     this.customerManagedKeyVersionlessId,

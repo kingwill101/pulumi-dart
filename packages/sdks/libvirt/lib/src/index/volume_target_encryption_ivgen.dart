@@ -11,7 +11,7 @@ class VolumeTargetEncryptionIvgen {
   /// Creates a new [VolumeTargetEncryptionIvgen].
   /// [hash] Specifies the hashing algorithm used for the initialization vector generation.
   /// [name] Sets the name of the initialization vector generator for the encryption.
-  VolumeTargetEncryptionIvgen({
+  const VolumeTargetEncryptionIvgen({
     required this.hash,
     required this.name,
   });

@@ -14,7 +14,7 @@ class GradientaiAgentTemplateModelVersion {
   /// [major] Major version of the model
   /// [minor] Minor version of the model
   /// [patch] Patch version of the model
-  GradientaiAgentTemplateModelVersion({
+  const GradientaiAgentTemplateModelVersion({
     this.major,
     this.minor,
     this.patch,

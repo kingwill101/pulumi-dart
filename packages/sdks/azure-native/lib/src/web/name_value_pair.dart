@@ -12,7 +12,7 @@ class NameValuePair {
   /// Creates a new [NameValuePair].
   /// [name] Pair name.
   /// [value] Pair value.
-  NameValuePair({
+  const NameValuePair({
     this.name,
     this.value,
   });

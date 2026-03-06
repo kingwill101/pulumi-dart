@@ -19,7 +19,7 @@ class PrimaryInstanceSettingsResponse {
   /// [labels] Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
   /// [machineConfig] Configuration for the machines that host the underlying database engine.
   /// [privateIp] The private IP address for the Instance. This is the connection endpoint for an end-user application.
-  PrimaryInstanceSettingsResponse({
+  const PrimaryInstanceSettingsResponse({
     required this.databaseFlags,
     required this.labels,
     required this.machineConfig,

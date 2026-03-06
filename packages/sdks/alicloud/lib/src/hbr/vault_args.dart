@@ -40,7 +40,7 @@ class VaultArgs {
   /// [vaultStorageClass] The storage class of Vault. Valid values: `STANDARD`.
   /// [vaultType] The type of Vault. Valid values:
   /// [wormEnabled] Indicates whether the immutable backup feature is enabled. Valid values: `true`, `false`.
-  VaultArgs({
+  const VaultArgs({
     this.description,
     this.encryptType,
     this.kmsKeyId,

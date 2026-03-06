@@ -25,7 +25,7 @@ class MetadataSchemaArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schema] The schema defining the type.
   /// [serviceName] The name of Azure API Center service.
-  MetadataSchemaArgs({
+  const MetadataSchemaArgs({
     this.assignedTo,
     this.metadataSchemaName,
     required this.resourceGroupName,

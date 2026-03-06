@@ -10,7 +10,7 @@ class GetGatewayRouteSpecHttp2RouteActionTarget {
   /// Creates a new [GetGatewayRouteSpecHttp2RouteActionTarget].
   /// [port] Required.
   /// [virtualServices] Required.
-  GetGatewayRouteSpecHttp2RouteActionTarget({
+  const GetGatewayRouteSpecHttp2RouteActionTarget({
     required this.port,
     required this.virtualServices,
   });

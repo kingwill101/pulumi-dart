@@ -19,7 +19,7 @@ class AccountIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] The type of identity used for this Automation Account. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-  AccountIdentity({
+  const AccountIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

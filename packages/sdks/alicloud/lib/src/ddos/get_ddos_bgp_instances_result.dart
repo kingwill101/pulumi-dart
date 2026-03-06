@@ -23,7 +23,7 @@ class GetDdosBgpInstancesResult {
   /// [nameRegex] Optional.
   /// [names] A list of instance names.
   /// [outputFile] Optional.
-  GetDdosBgpInstancesResult({
+  const GetDdosBgpInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

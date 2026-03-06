@@ -8,7 +8,7 @@ class DatascanDataQualitySpecPostScanActionsNotificationReportRecipients {
 
   /// Creates a new [DatascanDataQualitySpecPostScanActionsNotificationReportRecipients].
   /// [emails] The email recipients who will receive the DataQualityScan results report.
-  DatascanDataQualitySpecPostScanActionsNotificationReportRecipients({
+  const DatascanDataQualitySpecPostScanActionsNotificationReportRecipients({
     this.emails,
   });
 

@@ -10,7 +10,7 @@ class PluginHostingService {
 
   /// Creates a new [PluginHostingService].
   /// [serviceUri] The URI of the service implemented by the plugin developer, used to
-  PluginHostingService({
+  const PluginHostingService({
     this.serviceUri,
   });
 

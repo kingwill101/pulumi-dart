@@ -38,7 +38,7 @@ class GetServerDisksDisk {
   /// [paymentType] The payment type of the resource. Valid values: `PayAsYouGo`, `Subscription`.
   /// [size] The size of the disk. Unit: `GB`.
   /// [status] The status of the disk. Valid values: `ReIniting`, `Creating`, `In_Use`, `Available`, `Attaching`, `Detaching`.
-  GetServerDisksDisk({
+  const GetServerDisksDisk({
     required this.category,
     required this.createTime,
     required this.device,

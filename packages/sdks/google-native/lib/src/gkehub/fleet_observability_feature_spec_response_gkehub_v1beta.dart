@@ -10,7 +10,7 @@ class FleetObservabilityFeatureSpecResponseGkehubV1beta {
 
   /// Creates a new [FleetObservabilityFeatureSpecResponseGkehubV1beta].
   /// [loggingConfig] Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
-  FleetObservabilityFeatureSpecResponseGkehubV1beta({
+  const FleetObservabilityFeatureSpecResponseGkehubV1beta({
     required this.loggingConfig,
   });
 

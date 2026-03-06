@@ -9,7 +9,7 @@ class KeytabInformation {
 
   /// Creates a new [KeytabInformation].
   /// [keytab] A base64-encoded keytab.
-  KeytabInformation({
+  const KeytabInformation({
     this.keytab,
   });
 

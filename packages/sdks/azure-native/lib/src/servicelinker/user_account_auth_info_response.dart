@@ -25,7 +25,7 @@ class UserAccountAuthInfoResponse {
   /// [principalId] Principal Id for user account.
   /// [roles] Optional, this value specifies the Azure roles to be assigned. Automatically
   /// [userName] Username created in the database which is mapped to a user in AAD.
-  UserAccountAuthInfoResponse({
+  const UserAccountAuthInfoResponse({
     this.authMode,
     required this.authType,
     this.deleteOrUpdateBehavior,

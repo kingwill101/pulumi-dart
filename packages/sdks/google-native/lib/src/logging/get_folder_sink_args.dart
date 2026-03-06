@@ -13,7 +13,7 @@ class GetFolderSinkArgs {
   /// Creates a new [GetFolderSinkArgs].
   /// [folderId] Required.
   /// [sinkId] Required.
-  GetFolderSinkArgs({
+  const GetFolderSinkArgs({
     required this.folderId,
     required this.sinkId,
   });

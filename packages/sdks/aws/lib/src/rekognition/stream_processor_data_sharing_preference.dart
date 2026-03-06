@@ -8,7 +8,7 @@ class StreamProcessorDataSharingPreference {
 
   /// Creates a new [StreamProcessorDataSharingPreference].
   /// [optIn] Whether you are sharing data with Rekognition to improve model performance.
-  StreamProcessorDataSharingPreference({
+  const StreamProcessorDataSharingPreference({
     required this.optIn,
   });
 

@@ -21,7 +21,7 @@ class GetStorageTaskAssignmentResult {
   /// [name] The name of the resource
   /// [properties] Properties of the storage task assignment.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetStorageTaskAssignmentResult({
+  const GetStorageTaskAssignmentResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

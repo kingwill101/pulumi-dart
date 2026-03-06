@@ -18,7 +18,7 @@ class GetRepositoryPubsubConfig {
   /// [messageFormat] The format of the Cloud Pub/Sub messages.
   /// [serviceAccountEmail] Email address of the service account used for publishing Cloud Pub/Sub messages.
   /// [topic] Required.
-  GetRepositoryPubsubConfig({
+  const GetRepositoryPubsubConfig({
     required this.messageFormat,
     required this.serviceAccountEmail,
     required this.topic,

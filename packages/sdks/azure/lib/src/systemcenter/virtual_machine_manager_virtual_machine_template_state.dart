@@ -24,7 +24,7 @@ class VirtualMachineManagerVirtualMachineTemplateState {
   /// [resourceGroupName] The name of the Resource Group where the System Center Virtual Machine Manager Virtual Machine Template should exist. Changing this forces a new resource to be created.
   /// [systemCenterVirtualMachineManagerServerInventoryItemId] The ID of the System Center Virtual Machine Manager Server Inventory Item. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the System Center Virtual Machine Manager Virtual Machine Template.
-  VirtualMachineManagerVirtualMachineTemplateState({
+  const VirtualMachineManagerVirtualMachineTemplateState({
     this.customLocationId,
     this.location,
     this.name,

@@ -11,7 +11,7 @@ class DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect {
   /// Creates a new [DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect].
   /// [enabled] Enables or disables the automatic reconnection feature for the UNIX domain socket.
   /// [timeout] Sets the timeout duration for reconnections in the UNIX socket settings.
-  DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect({
+  const DomainDevicesInterfaceSourceVhostUserChardevTcpReconnect({
     required this.enabled,
     this.timeout,
   });

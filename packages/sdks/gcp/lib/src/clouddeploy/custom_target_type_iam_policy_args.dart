@@ -17,7 +17,7 @@ class CustomTargetTypeIamPolicyArgs {
   /// [name] Optional.
   /// [policyData] Required.
   /// [project] Optional.
-  CustomTargetTypeIamPolicyArgs({
+  const CustomTargetTypeIamPolicyArgs({
     this.location,
     this.name,
     required this.policyData,

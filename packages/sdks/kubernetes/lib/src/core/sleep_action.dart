@@ -9,7 +9,7 @@ class SleepAction {
 
   /// Creates a new [SleepAction].
   /// [seconds] Seconds is the number of seconds to sleep.
-  SleepAction({
+  const SleepAction({
     required this.seconds,
   });
 

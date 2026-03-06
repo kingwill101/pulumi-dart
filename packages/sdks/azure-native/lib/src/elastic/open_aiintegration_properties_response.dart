@@ -18,7 +18,7 @@ class OpenAIIntegrationPropertiesResponse {
   /// [lastRefreshAt] Last Update Timestamp for key updation
   /// [openAIResourceEndpoint] The API endpoint for Open AI resource
   /// [openAIResourceId] The resource name of Open AI resource
-  OpenAIIntegrationPropertiesResponse({
+  const OpenAIIntegrationPropertiesResponse({
     this.key,
     required this.lastRefreshAt,
     this.openAIResourceEndpoint,

@@ -15,7 +15,7 @@ class LoadbalancerCommonBandwidthPackageAttachmentArgs {
   /// Creates a new [LoadbalancerCommonBandwidthPackageAttachmentArgs].
   /// [bandwidthPackageId] Specifies whether only to precheck the request. Valid values:
   /// [loadBalancerId] The ID of the EIP bandwidth plan.
-  LoadbalancerCommonBandwidthPackageAttachmentArgs({
+  const LoadbalancerCommonBandwidthPackageAttachmentArgs({
     required this.bandwidthPackageId,
     required this.loadBalancerId,
   });

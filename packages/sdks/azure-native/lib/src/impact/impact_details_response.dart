@@ -18,7 +18,7 @@ class ImpactDetailsResponse {
   /// [impactId] Azure Id of the impact.
   /// [impactedResourceId] List of impacted Azure resources.
   /// [startTime] Time at which impact was started according to reported impact.
-  ImpactDetailsResponse({
+  const ImpactDetailsResponse({
     this.endTime,
     required this.impactId,
     required this.impactedResourceId,

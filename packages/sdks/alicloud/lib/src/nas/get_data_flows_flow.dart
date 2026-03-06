@@ -44,7 +44,7 @@ class GetDataFlowsFlow {
   /// [sourceStorage] The access path of the source store. Format: `&lt;storage type&gt;://&lt;path&gt;`.
   /// [status] The status of the Data flow.
   /// [throughput] The maximum transmission bandwidth of data flow, unit: `MB/s`.
-  GetDataFlowsFlow({
+  const GetDataFlowsFlow({
     required this.createTime,
     required this.dataFlowId,
     required this.description,

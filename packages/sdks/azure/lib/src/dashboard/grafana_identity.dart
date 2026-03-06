@@ -17,7 +17,7 @@ class GrafanaIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity. Possible values are `SystemAssigned`, `UserAssigned`. Changing this forces a new resource to be created.
-  GrafanaIdentity({
+  const GrafanaIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

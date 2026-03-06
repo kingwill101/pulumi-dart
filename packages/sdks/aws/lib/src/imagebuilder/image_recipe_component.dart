@@ -12,7 +12,7 @@ class ImageRecipeComponent {
   /// Creates a new [ImageRecipeComponent].
   /// [componentArn] Amazon Resource Name (ARN) of the Image Builder Component to associate.
   /// [parameters] Configuration block(s) for parameters to configure the component. Detailed below.
-  ImageRecipeComponent({
+  const ImageRecipeComponent({
     required this.componentArn,
     this.parameters,
   });

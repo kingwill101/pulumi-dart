@@ -53,7 +53,7 @@ class GetAlarmsAlarm {
   /// [state] The state of alarm task.
   /// [statistics] The statistic to apply to the alarm's associated metric.
   /// [threshold] The value against which the specified statistics is compared.
-  GetAlarmsAlarm({
+  const GetAlarmsAlarm({
     required this.alarmActions,
     required this.cloudMonitorGroupId,
     required this.comparisonOperator,

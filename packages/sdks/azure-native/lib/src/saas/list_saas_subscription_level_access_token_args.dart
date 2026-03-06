@@ -15,7 +15,7 @@ class ListSaasSubscriptionLevelAccessTokenArgs {
   /// Creates a new [ListSaasSubscriptionLevelAccessTokenArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [resourceName] The name of the resource.
-  ListSaasSubscriptionLevelAccessTokenArgs({
+  const ListSaasSubscriptionLevelAccessTokenArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

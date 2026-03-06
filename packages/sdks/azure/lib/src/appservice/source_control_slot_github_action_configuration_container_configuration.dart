@@ -17,7 +17,7 @@ class SourceControlSlotGithubActionConfigurationContainerConfiguration {
   /// [registryPassword] The password used to upload the image to the container registry. Changing this forces a new resource to be created.
   /// [registryUrl] The server URL for the container registry where the build will be hosted. Changing this forces a new resource to be created.
   /// [registryUsername] The username used to upload the image to the container registry. Changing this forces a new resource to be created.
-  SourceControlSlotGithubActionConfigurationContainerConfiguration({
+  const SourceControlSlotGithubActionConfigurationContainerConfiguration({
     required this.imageName,
     this.registryPassword,
     required this.registryUrl,

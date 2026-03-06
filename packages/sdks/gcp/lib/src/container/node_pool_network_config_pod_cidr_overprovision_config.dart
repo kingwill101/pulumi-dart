@@ -8,7 +8,7 @@ class NodePoolNetworkConfigPodCidrOverprovisionConfig {
 
   /// Creates a new [NodePoolNetworkConfigPodCidrOverprovisionConfig].
   /// [disabled] Whether pod cidr overprovision is disabled.
-  NodePoolNetworkConfigPodCidrOverprovisionConfig({
+  const NodePoolNetworkConfigPodCidrOverprovisionConfig({
     required this.disabled,
   });
 

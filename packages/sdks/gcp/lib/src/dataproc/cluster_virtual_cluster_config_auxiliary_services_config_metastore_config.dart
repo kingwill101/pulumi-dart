@@ -8,7 +8,7 @@ class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig {
 
   /// Creates a new [ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig].
   /// [dataprocMetastoreService] Resource name of an existing Dataproc Metastore service.
-  ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig({
+  const ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig({
     this.dataprocMetastoreService,
   });
 

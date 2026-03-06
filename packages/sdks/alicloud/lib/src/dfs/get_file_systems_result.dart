@@ -20,7 +20,7 @@ class GetFileSystemsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [systems] Required.
-  GetFileSystemsResult({
+  const GetFileSystemsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

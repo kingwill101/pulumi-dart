@@ -14,7 +14,7 @@ class MetricAlertCriteriaDimension {
   /// [name] One of the dimension names.
   /// [operator] The dimension operator. Possible values are `Include`, `Exclude` and `StartsWith`.
   /// [values] The list of dimension values.
-  MetricAlertCriteriaDimension({
+  const MetricAlertCriteriaDimension({
     required this.name,
     required this.operator,
     required this.values,

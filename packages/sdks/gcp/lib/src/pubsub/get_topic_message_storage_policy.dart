@@ -19,7 +19,7 @@ class GetTopicMessageStoragePolicy {
   /// Creates a new [GetTopicMessageStoragePolicy].
   /// [allowedPersistenceRegions] A list of IDs of GCP regions where messages that are published to
   /// [enforceInTransit] If true, 'allowedPersistenceRegions' is also used to enforce in-transit
-  GetTopicMessageStoragePolicy({
+  const GetTopicMessageStoragePolicy({
     required this.allowedPersistenceRegions,
     required this.enforceInTransit,
   });

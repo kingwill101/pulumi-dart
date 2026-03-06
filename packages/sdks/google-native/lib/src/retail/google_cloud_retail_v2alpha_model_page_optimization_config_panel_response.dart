@@ -16,7 +16,7 @@ class GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse {
   /// [candidates] The candidates to consider on the panel.
   /// [defaultCandidate] The default candidate. If the model fails at serving time, we fall back to the default.
   /// [displayName] Optional. The name to display for the panel.
-  GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse({
+  const GoogleCloudRetailV2alphaModelPageOptimizationConfigPanelResponse({
     required this.candidates,
     required this.defaultCandidate,
     required this.displayName,

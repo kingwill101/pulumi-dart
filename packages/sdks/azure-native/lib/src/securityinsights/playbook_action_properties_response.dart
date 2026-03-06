@@ -11,7 +11,7 @@ class PlaybookActionPropertiesResponse {
   /// Creates a new [PlaybookActionPropertiesResponse].
   /// [logicAppResourceId] The resource id of the playbook resource.
   /// [tenantId] The tenant id of the playbook resource.
-  PlaybookActionPropertiesResponse({
+  const PlaybookActionPropertiesResponse({
     required this.logicAppResourceId,
     this.tenantId,
   });

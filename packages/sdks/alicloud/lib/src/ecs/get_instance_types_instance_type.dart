@@ -62,7 +62,7 @@ class GetInstanceTypesInstanceType {
   /// [primaryEniQueueNumber] (Available since v1.239.0) The default number of queues per primary ENI.
   /// [secondaryEniQueueNumber] (Available since v1.239.0) The default number of queues per secondary ENI.
   /// [totalEniQueueQuantity] (Available since v1.239.0) The maximum number of queues on ENIs that the instance type supports.
-  GetInstanceTypesInstanceType({
+  const GetInstanceTypesInstanceType({
     required this.availabilityZones,
     required this.burstableInstance,
     required this.cpuCoreCount,

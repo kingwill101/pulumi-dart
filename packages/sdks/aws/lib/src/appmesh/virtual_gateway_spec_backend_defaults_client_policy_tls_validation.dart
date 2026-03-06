@@ -13,7 +13,7 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation {
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation].
   /// [subjectAlternativeNames] SANs for a virtual gateway's listener's Transport Layer Security (TLS) validation context.
   /// [trust] TLS validation context trust.
-  VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation({
+  const VirtualGatewaySpecBackendDefaultsClientPolicyTlsValidation({
     this.subjectAlternativeNames,
     required this.trust,
   });

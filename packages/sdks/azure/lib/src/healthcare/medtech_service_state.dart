@@ -34,7 +34,7 @@ class MedtechServiceState {
   /// [name] Specifies the name of the Healthcare Med Tech Service. Changing this forces a new Healthcare Med Tech Service to be created.
   /// [tags] A mapping of tags to assign to the Healthcare Med Tech Service.
   /// [workspaceId] Specifies the id of the Healthcare Workspace where the Healthcare Med Tech Service should exist. Changing this forces a new Healthcare Med Tech Service to be created.
-  MedtechServiceState({
+  const MedtechServiceState({
     this.deviceMappingJson,
     this.eventhubConsumerGroupName,
     this.eventhubName,

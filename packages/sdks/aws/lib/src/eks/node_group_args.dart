@@ -80,7 +80,7 @@ class NodeGroupArgs {
   /// [taints] The Kubernetes taints to be applied to the nodes in the node group. Maximum of 50 taints per node group. See taint below for details.
   /// [updateConfig] Configuration block with update settings. See `update_config` below for details.
   /// [version] Kubernetes version. Defaults to EKS Cluster Kubernetes version. The provider will only perform drift detection if a configuration value is provided.
-  NodeGroupArgs({
+  const NodeGroupArgs({
     this.amiType,
     this.capacityType,
     required this.clusterName,

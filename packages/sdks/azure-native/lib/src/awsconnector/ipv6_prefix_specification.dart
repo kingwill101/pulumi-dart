@@ -9,7 +9,7 @@ class Ipv6PrefixSpecification {
 
   /// Creates a new [Ipv6PrefixSpecification].
   /// [ipv6Prefix] Property ipv6Prefix
-  Ipv6PrefixSpecification({
+  const Ipv6PrefixSpecification({
     this.ipv6Prefix,
   });
 

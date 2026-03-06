@@ -8,7 +8,7 @@ class WebAclLoggingConfigurationRedactedFieldSingleHeader {
 
   /// Creates a new [WebAclLoggingConfigurationRedactedFieldSingleHeader].
   /// [name] Name of the query header to redact. This setting must be provided in lowercase characters.
-  WebAclLoggingConfigurationRedactedFieldSingleHeader({
+  const WebAclLoggingConfigurationRedactedFieldSingleHeader({
     required this.name,
   });
 

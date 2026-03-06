@@ -12,7 +12,7 @@ class InstanceCustomDomain {
   /// Creates a new [InstanceCustomDomain].
   /// [domain] Domain name
   /// [state] (Output)
-  InstanceCustomDomain({
+  const InstanceCustomDomain({
     this.domain,
     this.state,
   });

@@ -53,7 +53,7 @@ class ResourcePolicyState {
   /// [selfLink] The URI of the created resource.
   /// [snapshotSchedulePolicy] Policy for creating snapshots of persistent disks.
   /// [workloadPolicy] Represents the workload policy.
-  ResourcePolicyState({
+  const ResourcePolicyState({
     this.description,
     this.diskConsistencyGroupPolicy,
     this.groupPlacementPolicy,

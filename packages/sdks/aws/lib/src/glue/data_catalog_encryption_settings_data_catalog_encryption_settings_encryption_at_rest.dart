@@ -14,7 +14,7 @@ class DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest
   /// [catalogEncryptionMode] The encryption-at-rest mode for encrypting Data Catalog data. Valid values: `DISABLED`, `SSE-KMS`, `SSE-KMS-WITH-SERVICE-ROLE`.
   /// [catalogEncryptionServiceRole] The ARN of the AWS IAM role used for accessing encrypted Data Catalog data.
   /// [sseAwsKmsKeyId] The ARN of the AWS KMS key to use for encryption at rest.
-  DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest({
+  const DataCatalogEncryptionSettingsDataCatalogEncryptionSettingsEncryptionAtRest({
     required this.catalogEncryptionMode,
     this.catalogEncryptionServiceRole,
     this.sseAwsKmsKeyId,

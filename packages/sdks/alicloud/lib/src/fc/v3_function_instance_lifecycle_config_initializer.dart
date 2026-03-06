@@ -13,7 +13,7 @@ class V3FunctionInstanceLifecycleConfigInitializer {
   /// [commands] Optional.
   /// [handler] Function Handler: the call entry for the function compute system to run your function.
   /// [timeout] The maximum running time of the function, in seconds.
-  V3FunctionInstanceLifecycleConfigInitializer({
+  const V3FunctionInstanceLifecycleConfigInitializer({
     this.commands,
     this.handler,
     this.timeout,

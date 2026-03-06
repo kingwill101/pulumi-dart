@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigRes
   /// Creates a new [GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse].
   /// [baselineModelVersion] Version of current baseline model. It will be ignored if model is set. Valid versions are: Article Suggestion baseline model: - 0.9 - 1.0 (default) Summarization baseline model: - 1.0
   /// [model] Conversation model resource name. Format: `projects//conversationModels/`.
-  GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse({
+  const GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigResponse({
     required this.baselineModelVersion,
     required this.model,
   });

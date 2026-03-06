@@ -18,7 +18,7 @@ class FunctionAppConfig {
   /// [deployment] Function app deployment configuration.
   /// [runtime] Function app runtime settings.
   /// [scaleAndConcurrency] Function app scale and concurrency settings.
-  FunctionAppConfig({
+  const FunctionAppConfig({
     this.deployment,
     this.runtime,
     this.scaleAndConcurrency,

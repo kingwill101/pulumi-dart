@@ -64,7 +64,7 @@ class DomainArgs {
   /// [status] The status of the domain name. Valid values:
   /// [tags] The tag of the resource
   /// [topLevelDomain] The top-level domain.
-  DomainArgs({
+  const DomainArgs({
     this.certId,
     this.certName,
     this.certRegion,

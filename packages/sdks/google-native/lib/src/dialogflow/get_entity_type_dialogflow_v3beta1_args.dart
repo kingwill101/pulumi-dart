@@ -19,7 +19,7 @@ class GetEntityTypeDialogflowV3beta1Args {
   /// [languageCode] Optional.
   /// [location] Required.
   /// [project] Optional.
-  GetEntityTypeDialogflowV3beta1Args({
+  const GetEntityTypeDialogflowV3beta1Args({
     required this.agentId,
     required this.entityTypeId,
     this.languageCode,

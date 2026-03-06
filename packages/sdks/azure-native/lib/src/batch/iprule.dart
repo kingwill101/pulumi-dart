@@ -13,7 +13,7 @@ class IPRule {
   /// Creates a new [IPRule].
   /// [action] Action when client IP address is matched.
   /// [value] IPv4 address, or IPv4 address range in CIDR format.
-  IPRule({
+  const IPRule({
     required this.action,
     required this.value,
   });

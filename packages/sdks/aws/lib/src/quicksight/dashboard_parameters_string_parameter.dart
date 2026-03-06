@@ -10,7 +10,7 @@ class DashboardParametersStringParameter {
   /// Creates a new [DashboardParametersStringParameter].
   /// [name] Display name for the dashboard.
   /// [values] Required.
-  DashboardParametersStringParameter({
+  const DashboardParametersStringParameter({
     required this.name,
     required this.values,
   });

@@ -13,7 +13,7 @@ class GetWorkforcePoolIamPolicyArgs {
   /// Creates a new [GetWorkforcePoolIamPolicyArgs].
   /// [location] Required.
   /// [workforcePoolId] Required.
-  GetWorkforcePoolIamPolicyArgs({
+  const GetWorkforcePoolIamPolicyArgs({
     required this.location,
     required this.workforcePoolId,
   });

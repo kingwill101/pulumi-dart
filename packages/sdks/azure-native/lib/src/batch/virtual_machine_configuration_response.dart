@@ -55,7 +55,7 @@ class VirtualMachineConfigurationResponse {
   /// [securityProfile] Specifies the security profile settings for the virtual machine or virtual machine scale set.
   /// [serviceArtifactReference] The service artifact reference id in the form of /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Compute/galleries/{galleryName}/serviceArtifacts/{serviceArtifactName}/vmArtifactsProfiles/{vmArtifactsProfilesName}
   /// [windowsConfiguration] This property must not be specified if the imageReference specifies a Linux OS image.
-  VirtualMachineConfigurationResponse({
+  const VirtualMachineConfigurationResponse({
     this.containerConfiguration,
     this.dataDisks,
     this.diskEncryptionConfiguration,

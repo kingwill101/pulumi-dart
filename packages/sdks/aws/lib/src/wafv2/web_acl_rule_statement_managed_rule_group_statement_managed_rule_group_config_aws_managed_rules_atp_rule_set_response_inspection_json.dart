@@ -14,7 +14,7 @@ class WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManag
   /// [failureValues] Values in the response header with the specified name that indicate a failed login attempt.
   /// [identifier] The identifier for the value to match against in the JSON.
   /// [successValues] Values in the response header with the specified name that indicate a successful login attempt.
-  WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson({
+  const WebAclRuleStatementManagedRuleGroupStatementManagedRuleGroupConfigAwsManagedRulesAtpRuleSetResponseInspectionJson({
     required this.failureValues,
     required this.identifier,
     required this.successValues,

@@ -79,7 +79,7 @@ class V2modelsIntentArgs {
   /// [sampleUtterances] Configuration block for strings that a user might say to signal the intent. See `sample_utterance`.
   /// [slotPriorities] Configuration block for a new list of slots and their priorities that are contained by the intent. This is ignored on create and only valid for updates. See `slot_priority`.
   /// [timeouts] Optional.
-  V2modelsIntentArgs({
+  const V2modelsIntentArgs({
     required this.botId,
     required this.botVersion,
     this.closingSetting,

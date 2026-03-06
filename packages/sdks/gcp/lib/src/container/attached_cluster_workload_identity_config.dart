@@ -15,7 +15,7 @@ class AttachedClusterWorkloadIdentityConfig {
   /// [identityProvider] The ID of the OIDC Identity Provider (IdP) associated to
   /// [issuerUri] The OIDC issuer URL for this cluster.
   /// [workloadPool] The Workload Identity Pool associated to the cluster.
-  AttachedClusterWorkloadIdentityConfig({
+  const AttachedClusterWorkloadIdentityConfig({
     this.identityProvider,
     this.issuerUri,
     this.workloadPool,

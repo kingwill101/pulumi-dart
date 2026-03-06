@@ -12,7 +12,7 @@ class KeyPairState {
   /// Creates a new [KeyPairState].
   /// [keyPairName] The name of the key pair.
   /// [version] The version number.
-  KeyPairState({
+  const KeyPairState({
     this.keyPairName,
     this.version,
   });

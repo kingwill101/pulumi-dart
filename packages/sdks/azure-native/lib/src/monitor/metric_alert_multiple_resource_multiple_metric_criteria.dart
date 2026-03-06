@@ -14,7 +14,7 @@ class MetricAlertMultipleResourceMultipleMetricCriteria {
   /// Creates a new [MetricAlertMultipleResourceMultipleMetricCriteria].
   /// [allOf] the list of multiple metric criteria for this 'all of' operation.
   /// [odataType] specifies the type of the alert criteria.
-  MetricAlertMultipleResourceMultipleMetricCriteria({
+  const MetricAlertMultipleResourceMultipleMetricCriteria({
     this.allOf,
     required this.odataType,
   });

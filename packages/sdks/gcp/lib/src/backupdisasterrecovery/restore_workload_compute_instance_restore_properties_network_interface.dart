@@ -47,7 +47,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface {
   /// [queueCount] (Optional)
   /// [stackType] Possible values are: `STACK_TYPE_UNSPECIFIED`, `IPV4_ONLY`, `IPV4_IPV6`.
   /// [subnetwork] Optional. The URL of the Subnetwork resource for this instance.
-  RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface({
+  const RestoreWorkloadComputeInstanceRestorePropertiesNetworkInterface({
     this.accessConfigs,
     this.aliasIpRanges,
     this.internalIpv6PrefixLength,

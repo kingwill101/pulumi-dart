@@ -25,7 +25,7 @@ class OssExportSinkArgs {
   /// [displayName] The display name of the job.
   /// [jobName] The unique identifier of the OSS data shipping job.
   /// [project] The name of the project.
-  OssExportSinkArgs({
+  const OssExportSinkArgs({
     required this.configuration,
     this.description,
     required this.displayName,

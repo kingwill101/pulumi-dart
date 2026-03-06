@@ -12,7 +12,7 @@ class ContainerImageResponse {
   /// Creates a new [ContainerImageResponse].
   /// [repository] The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
   /// [tag] The tag of the container image. If not specified, this defaults to the latest tag.
-  ContainerImageResponse({
+  const ContainerImageResponse({
     required this.repository,
     required this.tag,
   });

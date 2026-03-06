@@ -42,7 +42,7 @@ class HookArgs {
   /// [repositoryId] The ID for the Repository.
   /// [sensitiveQueryString] The sensitive query string to be appended to the target URI.
   /// [targetUri] The target URI to which the payloads will be delivered.
-  HookArgs({
+  const HookArgs({
     this.disabled,
     this.events,
     required this.hookId,

@@ -11,7 +11,7 @@ class SubscriptionPolicyAssignmentOverrideSelector {
   /// [ins] Optional.
   /// [kind] Optional.
   /// [notIns] Optional.
-  SubscriptionPolicyAssignmentOverrideSelector({
+  const SubscriptionPolicyAssignmentOverrideSelector({
     this.ins,
     this.kind,
     this.notIns,

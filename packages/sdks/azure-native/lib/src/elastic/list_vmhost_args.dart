@@ -15,7 +15,7 @@ class ListVMHostArgs {
   /// Creates a new [ListVMHostArgs].
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListVMHostArgs({
+  const ListVMHostArgs({
     required this.monitorName,
     required this.resourceGroupName,
   });

@@ -26,7 +26,7 @@ class HDInsight {
   /// [disableLocalAuth] Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
   /// [properties] HDInsight compute properties
   /// [resourceId] ARM resource id of the underlying compute
-  HDInsight({
+  const HDInsight({
     this.computeLocation,
     required this.computeType,
     this.description,

@@ -20,7 +20,7 @@ class HadoopClusterRolesEdgeNodeHttpsEndpoint {
   /// [disableGatewayAuth] The value indicates whether the gateway authentication is enabled or not.
   /// [privateIpAddress] The private ip address of the endpoint.
   /// [subDomainSuffix] The application's subdomain suffix.
-  HadoopClusterRolesEdgeNodeHttpsEndpoint({
+  const HadoopClusterRolesEdgeNodeHttpsEndpoint({
     this.accessModes,
     this.destinationPort,
     this.disableGatewayAuth,

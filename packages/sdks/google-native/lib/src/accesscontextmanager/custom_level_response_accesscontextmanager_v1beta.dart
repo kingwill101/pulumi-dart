@@ -10,7 +10,7 @@ class CustomLevelResponseAccesscontextmanagerV1beta {
 
   /// Creates a new [CustomLevelResponseAccesscontextmanagerV1beta].
   /// [expr] A Cloud CEL expression evaluating to a boolean.
-  CustomLevelResponseAccesscontextmanagerV1beta({
+  const CustomLevelResponseAccesscontextmanagerV1beta({
     required this.expr,
   });
 

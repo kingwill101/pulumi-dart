@@ -25,7 +25,7 @@ class StorageLensConfigurationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [storageLensConfiguration] The S3 Storage Lens configuration. See Storage Lens Configuration below for more details.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  StorageLensConfigurationArgs({
+  const StorageLensConfigurationArgs({
     this.accountId,
     required this.configId,
     this.region,

@@ -12,7 +12,7 @@ class RuntimeUpdatableParams {
   /// Creates a new [RuntimeUpdatableParams].
   /// [maxNumWorkers] The maximum number of workers to cap autoscaling at. This field is currently only supported for Streaming Engine jobs.
   /// [minNumWorkers] The minimum number of workers to scale down to. This field is currently only supported for Streaming Engine jobs.
-  RuntimeUpdatableParams({
+  const RuntimeUpdatableParams({
     this.maxNumWorkers,
     this.minNumWorkers,
   });

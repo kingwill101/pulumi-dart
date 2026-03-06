@@ -13,7 +13,7 @@ class PostBuildDefinitionResponse {
   /// Creates a new [PostBuildDefinitionResponse].
   /// [substitute] Key/value pairs holding the variables to be substituted in this Kustomization.
   /// [substituteFrom] Array of ConfigMaps/Secrets from which the variables are substituted for this Kustomization.
-  PostBuildDefinitionResponse({
+  const PostBuildDefinitionResponse({
     this.substitute,
     this.substituteFrom,
   });

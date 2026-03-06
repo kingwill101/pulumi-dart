@@ -14,7 +14,7 @@ class GetDeploymentAutoScaleProfile {
   /// [maxCapacity] The maximum number of NGINX capacity units for this NGINX Deployment.
   /// [minCapacity] The minimum number of NGINX capacity units for this NGINX Deployment.
   /// [name] The name of this NGINX Deployment.
-  GetDeploymentAutoScaleProfile({
+  const GetDeploymentAutoScaleProfile({
     required this.maxCapacity,
     required this.minCapacity,
     required this.name,

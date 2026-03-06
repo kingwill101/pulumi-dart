@@ -9,7 +9,7 @@ class MembershipRbacRoleBindingState {
 
   /// Creates a new [MembershipRbacRoleBindingState].
   /// [code] (Output)
-  MembershipRbacRoleBindingState({
+  const MembershipRbacRoleBindingState({
     this.code,
   });
 

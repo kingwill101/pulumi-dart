@@ -34,7 +34,7 @@ class ProtectionIntentArgs {
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [tags] Resource tags.
   /// [vaultName] The name of the recovery services vault.
-  ProtectionIntentArgs({
+  const ProtectionIntentArgs({
     this.eTag,
     required this.fabricName,
     this.intentObjectName,

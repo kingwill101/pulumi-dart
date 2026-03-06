@@ -12,7 +12,7 @@ class MetadataItem {
   /// Creates a new [MetadataItem].
   /// [name] Metadata item key name. Type: string (or Expression with resultType string).
   /// [value] Metadata item value. Type: string (or Expression with resultType string).
-  MetadataItem({
+  const MetadataItem({
     this.name,
     this.value,
   });

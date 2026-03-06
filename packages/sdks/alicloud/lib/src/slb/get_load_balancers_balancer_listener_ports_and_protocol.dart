@@ -15,7 +15,7 @@ class GetLoadBalancersBalancerListenerPortsAndProtocol {
   /// [listenerForward] Required.
   /// [listenerPort] Required.
   /// [listenerProtocol] Required.
-  GetLoadBalancersBalancerListenerPortsAndProtocol({
+  const GetLoadBalancersBalancerListenerPortsAndProtocol({
     required this.description,
     required this.forwardPort,
     required this.listenerForward,

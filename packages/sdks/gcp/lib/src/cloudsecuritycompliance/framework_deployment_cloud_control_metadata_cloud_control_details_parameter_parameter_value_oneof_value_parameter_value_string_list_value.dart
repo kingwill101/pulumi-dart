@@ -8,7 +8,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParamet
 
   /// Creates a new [FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue].
   /// [values] The strings in the list.
-  FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue({
+  const FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameterParameterValueOneofValueParameterValueStringListValue({
     required this.values,
   });
 

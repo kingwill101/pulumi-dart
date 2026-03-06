@@ -10,7 +10,7 @@ class GoogleDomainsDnsDomainsV1alpha2 {
 
   /// Creates a new [GoogleDomainsDnsDomainsV1alpha2].
   /// [dsState] The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
-  GoogleDomainsDnsDomainsV1alpha2({
+  const GoogleDomainsDnsDomainsV1alpha2({
     required this.dsState,
   });
 

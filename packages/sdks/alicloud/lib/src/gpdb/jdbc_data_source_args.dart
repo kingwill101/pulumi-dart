@@ -30,7 +30,7 @@ class JdbcDataSourceArgs {
   /// [jdbcConnectionString] The JDBC connection string.
   /// [jdbcPassword] The password of the database account.
   /// [jdbcUserName] The name of the database account.
-  JdbcDataSourceArgs({
+  const JdbcDataSourceArgs({
     this.dataSourceDescription,
     this.dataSourceName,
     this.dataSourceType,

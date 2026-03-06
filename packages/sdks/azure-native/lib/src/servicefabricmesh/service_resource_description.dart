@@ -34,7 +34,7 @@ class ServiceResourceDescription {
   /// [networkRefs] The names of the private networks that this service needs to be part of.
   /// [osType] The operation system required by the code in service.
   /// [replicaCount] The number of replicas of the service to create. Defaults to 1 if not specified.
-  ServiceResourceDescription({
+  const ServiceResourceDescription({
     this.autoScalingPolicies,
     required this.codePackages,
     this.description,

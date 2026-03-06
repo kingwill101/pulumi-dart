@@ -13,7 +13,7 @@ class DataQualityJobDefinitionDataQualityJobInput {
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInput].
   /// [batchTransformInput] Input object for the batch transform job. Fields are documented below.
   /// [endpointInput] Input object for the endpoint. Fields are documented below.
-  DataQualityJobDefinitionDataQualityJobInput({
+  const DataQualityJobDefinitionDataQualityJobInput({
     this.batchTransformInput,
     this.endpointInput,
   });

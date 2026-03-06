@@ -16,7 +16,7 @@ class Test {
   /// [commands] The commands used in the test.
   /// [isActive] Indicates if this test is active.It doesn't schedule test for not active Test.
   /// [testType] The type of the test.
-  Test({
+  const Test({
     required this.commands,
     this.isActive,
     required this.testType,

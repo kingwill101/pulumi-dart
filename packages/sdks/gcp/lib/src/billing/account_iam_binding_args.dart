@@ -32,7 +32,7 @@ class AccountIamBindingArgs {
   /// [condition] Optional.
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  AccountIamBindingArgs({
+  const AccountIamBindingArgs({
     required this.billingAccountId,
     this.condition,
     required this.members,

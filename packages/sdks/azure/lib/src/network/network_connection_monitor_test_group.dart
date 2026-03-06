@@ -20,7 +20,7 @@ class NetworkConnectionMonitorTestGroup {
   /// [name] The name of the test group for the Network Connection Monitor.
   /// [sourceEndpoints] A list of source endpoint names.
   /// [testConfigurationNames] A list of test configuration names.
-  NetworkConnectionMonitorTestGroup({
+  const NetworkConnectionMonitorTestGroup({
     required this.destinationEndpoints,
     this.enabled,
     required this.name,

@@ -11,7 +11,7 @@ class ApplicationNetworkRuleSetIpRule {
   /// Creates a new [ApplicationNetworkRuleSetIpRule].
   /// [ipMask] The IP address range in CIDR notation for the IP Rule.
   /// [name] The name of the IP Rule
-  ApplicationNetworkRuleSetIpRule({
+  const ApplicationNetworkRuleSetIpRule({
     required this.ipMask,
     required this.name,
   });

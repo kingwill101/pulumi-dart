@@ -17,7 +17,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdju
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment].
   /// [fixedLikelihood] Set the likelihood of a finding to a fixed value. Either this or relative_likelihood can be set.
   /// [relativeLikelihood] Increase or decrease the likelihood by the specified number of levels. For example,
-  PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment({
+  const PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment({
     this.fixedLikelihood,
     this.relativeLikelihood,
   });

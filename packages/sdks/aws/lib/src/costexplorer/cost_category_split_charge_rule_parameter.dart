@@ -11,7 +11,7 @@ class CostCategorySplitChargeRuleParameter {
   /// Creates a new [CostCategorySplitChargeRuleParameter].
   /// [type] Parameter type.
   /// [values] Parameter values.
-  CostCategorySplitChargeRuleParameter({
+  const CostCategorySplitChargeRuleParameter({
     this.type,
     this.values,
   });

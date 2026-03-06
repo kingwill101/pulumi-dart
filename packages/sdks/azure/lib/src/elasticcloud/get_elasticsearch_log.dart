@@ -18,7 +18,7 @@ class GetElasticsearchLog {
   /// [sendActivityLogs] Should the Azure Activity Logs should be sent to the Elasticsearch cluster?
   /// [sendAzureadLogs] Should the AzureAD Logs should be sent to the Elasticsearch cluster?
   /// [sendSubscriptionLogs] Should the Azure Subscription Logs should be sent to the Elasticsearch cluster?
-  GetElasticsearchLog({
+  const GetElasticsearchLog({
     required this.filteringTags,
     required this.sendActivityLogs,
     required this.sendAzureadLogs,

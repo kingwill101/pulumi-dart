@@ -15,7 +15,7 @@ class GetEntryGroupIamPolicyArgs {
   /// [entryGroupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEntryGroupIamPolicyArgs({
+  const GetEntryGroupIamPolicyArgs({
     required this.entryGroupId,
     required this.location,
     this.project,

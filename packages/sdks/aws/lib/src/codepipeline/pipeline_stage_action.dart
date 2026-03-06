@@ -44,7 +44,7 @@ class PipelineStageAction {
   /// [runOrder] The order in which actions are run.
   /// [timeoutInMinutes] The action timeout for the rule.
   /// [version] A string that identifies the action type.
-  PipelineStageAction({
+  const PipelineStageAction({
     required this.category,
     this.configuration,
     this.inputArtifacts,

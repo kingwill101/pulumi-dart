@@ -9,7 +9,7 @@ class VirtualMachineResponse {
 
   /// Creates a new [VirtualMachineResponse].
   /// [tags] Optional. A list of VM instance tags the this policy-based route applies to. VM instances that have ANY of tags specified here will install this PBR.
-  VirtualMachineResponse({
+  const VirtualMachineResponse({
     required this.tags,
   });
 

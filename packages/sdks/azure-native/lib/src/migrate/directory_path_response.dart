@@ -15,7 +15,7 @@ class DirectoryPathResponse {
   /// [id] Gets the ID.
   /// [physical] Gets or sets the physical path of the directory on the web server.
   /// [virtual] Gets or sets the virtual path for the directory.
-  DirectoryPathResponse({
+  const DirectoryPathResponse({
     required this.id,
     this.physical,
     this.virtual,

@@ -14,7 +14,7 @@ class HoneypotPresetMeta {
   /// [burp] Burp counter.
   /// [portraitOption] Social traceability.
   /// [trojanGit] Git countered.
-  HoneypotPresetMeta({
+  const HoneypotPresetMeta({
     required this.burp,
     this.portraitOption,
     this.trojanGit,

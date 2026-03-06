@@ -7,7 +7,7 @@ class GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage {
 
   /// Creates a new [GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage].
   /// [sizeInGib] Required.
-  GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage({
+  const GetJobDefinitionNodePropertyNodeRangePropertyContainerEphemeralStorage({
     required this.sizeInGib,
   });
 

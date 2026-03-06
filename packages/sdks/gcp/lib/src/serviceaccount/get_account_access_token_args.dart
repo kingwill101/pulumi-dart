@@ -21,7 +21,7 @@ class GetAccountAccessTokenArgs {
   /// [lifetime] Lifetime of the impersonated token (defaults to its max: `3600s`).
   /// [scopes] The scopes the new credential should have (e.g. `["cloud-platform"]`)
   /// [targetServiceAccount] The service account _to_ impersonate (e.g. `service_B@your-project-id.iam.gserviceaccount.com`)
-  GetAccountAccessTokenArgs({
+  const GetAccountAccessTokenArgs({
     this.delegates,
     this.lifetime,
     required this.scopes,

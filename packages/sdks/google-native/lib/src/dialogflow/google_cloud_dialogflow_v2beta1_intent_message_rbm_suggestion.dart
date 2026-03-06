@@ -14,7 +14,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion].
   /// [action] Predefined client side actions that user can choose
   /// [reply] Predefined replies for user to select instead of typing
-  GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion({
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion({
     this.action,
     this.reply,
   });

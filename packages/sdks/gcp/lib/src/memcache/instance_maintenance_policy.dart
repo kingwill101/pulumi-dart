@@ -29,7 +29,7 @@ class InstanceMaintenancePolicy {
   /// [description] Optional. Description of what this policy is for.
   /// [updateTime] (Output)
   /// [weeklyMaintenanceWindows] Required. Maintenance window that is applied to resources covered by this policy.
-  InstanceMaintenancePolicy({
+  const InstanceMaintenancePolicy({
     this.createTime,
     this.description,
     this.updateTime,

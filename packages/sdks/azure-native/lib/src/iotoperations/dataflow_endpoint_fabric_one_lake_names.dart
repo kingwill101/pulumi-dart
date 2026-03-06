@@ -12,7 +12,7 @@ class DataflowEndpointFabricOneLakeNames {
   /// Creates a new [DataflowEndpointFabricOneLakeNames].
   /// [lakehouseName] Lakehouse name.
   /// [workspaceName] Workspace name.
-  DataflowEndpointFabricOneLakeNames({
+  const DataflowEndpointFabricOneLakeNames({
     required this.lakehouseName,
     required this.workspaceName,
   });

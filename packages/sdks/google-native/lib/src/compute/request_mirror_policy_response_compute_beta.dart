@@ -9,7 +9,7 @@ class RequestMirrorPolicyResponseComputeBeta {
 
   /// Creates a new [RequestMirrorPolicyResponseComputeBeta].
   /// [backendService] The full or partial URL to the BackendService resource being mirrored to. The backend service configured for a mirroring policy must reference backends that are of the same type as the original backend service matched in the URL map. Serverless NEG backends are not currently supported as a mirrored backend service.
-  RequestMirrorPolicyResponseComputeBeta({
+  const RequestMirrorPolicyResponseComputeBeta({
     required this.backendService,
   });
 

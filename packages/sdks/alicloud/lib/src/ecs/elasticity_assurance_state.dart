@@ -86,7 +86,7 @@ class ElasticityAssuranceState {
   /// [tags] The tag key-value pair information bound by the elastic guarantee service.
   /// [usedAssuranceTimes] This parameter is not yet available.
   /// [zoneIds] The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
-  ElasticityAssuranceState({
+  const ElasticityAssuranceState({
     this.assuranceTimes,
     this.autoRenew,
     this.autoRenewPeriod,

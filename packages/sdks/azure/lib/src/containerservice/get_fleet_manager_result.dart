@@ -18,7 +18,7 @@ class GetFleetManagerResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Kubernetes Fleet Manager.
-  GetFleetManagerResult({
+  const GetFleetManagerResult({
     required this.id,
     required this.location,
     required this.name,

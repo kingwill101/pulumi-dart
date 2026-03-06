@@ -49,7 +49,7 @@ class CosmosDbDataConnectionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [retrievalStartDate] Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date.
   /// [tableName] The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table.
-  CosmosDbDataConnectionArgs({
+  const CosmosDbDataConnectionArgs({
     required this.clusterName,
     required this.cosmosDbAccountResourceId,
     required this.cosmosDbContainer,

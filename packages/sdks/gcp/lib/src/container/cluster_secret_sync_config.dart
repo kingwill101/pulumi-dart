@@ -12,7 +12,7 @@ class ClusterSecretSyncConfig {
   /// Creates a new [ClusterSecretSyncConfig].
   /// [enabled] Enable the Sync as K8s secret feature for this cluster.
   /// [rotationConfig] config for secret sync auto rotation. Structure is docuemented below
-  ClusterSecretSyncConfig({
+  const ClusterSecretSyncConfig({
     required this.enabled,
     this.rotationConfig,
   });

@@ -81,7 +81,7 @@ class GetL3NetworkResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualMachinesAssociatedIds] Field Deprecated. These fields will be empty/omitted. The list of virtual machine resource IDs, excluding any Hybrid AKS virtual machines, that are currently using this L3 network.
   /// [vlan] The VLAN from the l3IsolationDomain that is used for this network.
-  GetL3NetworkResult({
+  const GetL3NetworkResult({
     required this.associatedResourceIds,
     required this.azureApiVersion,
     required this.clusterId,

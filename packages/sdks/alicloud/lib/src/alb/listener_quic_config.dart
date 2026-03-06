@@ -11,7 +11,7 @@ class ListenerQuicConfig {
   /// Creates a new [ListenerQuicConfig].
   /// [quicListenerId] There Is a Need to Correlate the QuIC Listener ID. The Https Listener, in Effect at the Time. quicupgradeenabled True When Required.
   /// [quicUpgradeEnabled] Indicates Whether to Enable the QuIC Upgrade
-  ListenerQuicConfig({
+  const ListenerQuicConfig({
     this.quicListenerId,
     this.quicUpgradeEnabled,
   });

@@ -19,7 +19,7 @@ class GetEnvironmentArgs {
   /// [name] Name of the environment.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The location or Compute Engine region of the environment.
-  GetEnvironmentArgs({
+  const GetEnvironmentArgs({
     required this.name,
     this.project,
     this.region,

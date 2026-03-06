@@ -11,7 +11,7 @@ class DomainCpuFeature {
   /// Creates a new [DomainCpuFeature].
   /// [name] Specifies the name of a CPU feature that is being configured or controlled.
   /// [policy] Sets the policy for how the specified CPU feature is utilized in the domain.
-  DomainCpuFeature({
+  const DomainCpuFeature({
     this.name,
     this.policy,
   });

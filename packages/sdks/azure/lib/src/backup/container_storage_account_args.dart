@@ -20,7 +20,7 @@ class ContainerStorageAccountArgs {
   /// [recoveryVaultName] The name of the vault where the storage account will be registered. Changing this forces a new resource to be created.
   /// [resourceGroupName] Name of the resource group where the vault is located. Changing this forces a new resource to be created.
   /// [storageAccountId] The ID of the Storage Account to be registered Changing this forces a new resource to be created.
-  ContainerStorageAccountArgs({
+  const ContainerStorageAccountArgs({
     required this.recoveryVaultName,
     required this.resourceGroupName,
     required this.storageAccountId,

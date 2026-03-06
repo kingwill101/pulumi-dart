@@ -10,7 +10,7 @@ class PrincipalInfoResponse {
 
   /// Creates a new [PrincipalInfoResponse].
   /// [serviceAccount] A GCP service account.
-  PrincipalInfoResponse({
+  const PrincipalInfoResponse({
     required this.serviceAccount,
   });
 

@@ -14,7 +14,7 @@ class ClusterNodeConfigEffectiveTaint {
   /// [effect] Effect for taint.
   /// [key] Key for taint.
   /// [value] Value for taint.
-  ClusterNodeConfigEffectiveTaint({
+  const ClusterNodeConfigEffectiveTaint({
     this.effect,
     this.key,
     this.value,

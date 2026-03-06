@@ -14,7 +14,7 @@ class PodSchedulingContextSpecResourceK8sIoV1alpha3 {
   /// Creates a new [PodSchedulingContextSpecResourceK8sIoV1alpha3].
   /// [potentialNodes] PotentialNodes lists nodes where the Pod might be able to run.
   /// [selectedNode] SelectedNode is the node for which allocation of ResourceClaims that are referenced by the Pod and that use "WaitForFirstConsumer" allocation is to be attempted.
-  PodSchedulingContextSpecResourceK8sIoV1alpha3({
+  const PodSchedulingContextSpecResourceK8sIoV1alpha3({
     this.potentialNodes,
     this.selectedNode,
   });

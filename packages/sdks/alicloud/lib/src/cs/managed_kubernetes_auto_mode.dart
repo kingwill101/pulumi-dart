@@ -8,7 +8,7 @@ class ManagedKubernetesAutoMode {
 
   /// Creates a new [ManagedKubernetesAutoMode].
   /// [enabled] Whether to enable auto mode. Valid values: `true`, `false`. Only ACK managed Pro clusters support Auto Mode.
-  ManagedKubernetesAutoMode({
+  const ManagedKubernetesAutoMode({
     this.enabled,
   });
 

@@ -25,7 +25,7 @@ class SecretRotationArgs {
   /// [rotationLambdaArn] Specifies the ARN of the Lambda function that can rotate the secret. Must be supplied if the secret is not managed by AWS.
   /// [rotationRules] A structure that defines the rotation configuration for this secret. Defined below.
   /// [secretId] Specifies the secret to which you want to add a new version. You can specify either the Amazon Resource Name (ARN) or the friendly name of the secret. The secret must already exist.
-  SecretRotationArgs({
+  const SecretRotationArgs({
     this.region,
     this.rotateImmediately,
     this.rotationLambdaArn,

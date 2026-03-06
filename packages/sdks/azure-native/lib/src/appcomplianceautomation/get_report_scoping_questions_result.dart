@@ -10,7 +10,7 @@ class GetReportScopingQuestionsResult {
 
   /// Creates a new [GetReportScopingQuestionsResult].
   /// [questions] List of scoping questions.
-  GetReportScopingQuestionsResult({
+  const GetReportScopingQuestionsResult({
     this.questions,
   });
 

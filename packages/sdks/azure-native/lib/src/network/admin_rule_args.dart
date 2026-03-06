@@ -56,7 +56,7 @@ class AdminRuleArgs {
   /// [ruleName] The name of the rule.
   /// [sourcePortRanges] The source port ranges.
   /// [sources] The CIDR or source IP ranges.
-  AdminRuleArgs({
+  const AdminRuleArgs({
     required this.access,
     required this.configurationName,
     this.description,

@@ -12,7 +12,7 @@ class ClientRegistrationResponse {
   /// Creates a new [ClientRegistrationResponse].
   /// [clientId] The Client ID of the app used for login.
   /// [clientSecretSettingName] The app setting name that contains the client secret.
-  ClientRegistrationResponse({
+  const ClientRegistrationResponse({
     this.clientId,
     this.clientSecretSettingName,
   });

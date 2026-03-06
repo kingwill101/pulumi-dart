@@ -12,7 +12,7 @@ class Encryption {
   /// Creates a new [Encryption].
   /// [keyVaultKeyUri] The URI of the key vault
   /// [userAssignedIdentity] The full resourceId of the user assigned identity to be used for key vault access. Identity has to be also assigned to the Account
-  Encryption({
+  const Encryption({
     this.keyVaultKeyUri,
     this.userAssignedIdentity,
   });

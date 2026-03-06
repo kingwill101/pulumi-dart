@@ -52,7 +52,7 @@ class FtpServerLinkedService {
   /// [type] Type of linked service.
   /// [userName] Username to logon the FTP server. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  FtpServerLinkedService({
+  const FtpServerLinkedService({
     this.annotations,
     this.authenticationType,
     this.connectVia,

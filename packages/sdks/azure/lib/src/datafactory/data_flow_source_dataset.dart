@@ -11,7 +11,7 @@ class DataFlowSourceDataset {
   /// Creates a new [DataFlowSourceDataset].
   /// [name] The name for the Data Factory Dataset.
   /// [parameters] A map of parameters to associate with the Data Factory dataset.
-  DataFlowSourceDataset({
+  const DataFlowSourceDataset({
     required this.name,
     this.parameters,
   });

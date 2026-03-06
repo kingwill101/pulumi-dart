@@ -22,7 +22,7 @@ class GetAuthorizationTokenResult {
   /// [expiration] Time in UTC RFC3339 format when the authorization token expires.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetAuthorizationTokenResult({
+  const GetAuthorizationTokenResult({
     required this.authorizationToken,
     required this.domain,
     required this.domainOwner,

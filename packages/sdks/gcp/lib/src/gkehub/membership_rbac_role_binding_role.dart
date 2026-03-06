@@ -9,7 +9,7 @@ class MembershipRbacRoleBindingRole {
 
   /// Creates a new [MembershipRbacRoleBindingRole].
   /// [predefinedRole] PredefinedRole is an ENUM representation of the default Kubernetes Roles
-  MembershipRbacRoleBindingRole({
+  const MembershipRbacRoleBindingRole({
     required this.predefinedRole,
   });
 

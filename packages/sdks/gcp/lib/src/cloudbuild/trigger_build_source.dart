@@ -15,7 +15,7 @@ class TriggerBuildSource {
   /// Creates a new [TriggerBuildSource].
   /// [repoSource] Location of the source in a Google Cloud Source Repository.
   /// [storageSource] Location of the source in an archive file in Google Cloud Storage.
-  TriggerBuildSource({
+  const TriggerBuildSource({
     this.repoSource,
     this.storageSource,
   });

@@ -16,7 +16,7 @@ class EnvironmentVariableSetupResponse {
   /// [type] The type of custom setup.
   /// [variableName] The name of the environment variable.
   /// [variableValue] The value of the environment variable.
-  EnvironmentVariableSetupResponse({
+  const EnvironmentVariableSetupResponse({
     required this.type,
     required this.variableName,
     required this.variableValue,

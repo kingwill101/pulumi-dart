@@ -13,7 +13,7 @@ class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus {
   /// Creates a new [RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus].
   /// [code] (Output)
   /// [message] (Output)
-  RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus({
+  const RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus({
     this.code,
     this.message,
   });

@@ -9,7 +9,7 @@ class VirtualNIC {
 
   /// Creates a new [VirtualNIC].
   /// [enabled] Whether gVNIC features are enabled in the node pool.
-  VirtualNIC({
+  const VirtualNIC({
     this.enabled,
   });
 

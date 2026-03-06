@@ -24,7 +24,7 @@ class OriginCaCertificateState {
   /// [originCaCertificateId] OriginCaCertificate Id
   /// [siteId] Site Id
   /// [status] Certificate status.
-  OriginCaCertificateState({
+  const OriginCaCertificateState({
     this.certificate,
     this.createTime,
     this.name,

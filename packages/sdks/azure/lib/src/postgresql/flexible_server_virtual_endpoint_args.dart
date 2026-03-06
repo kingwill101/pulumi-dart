@@ -23,7 +23,7 @@ class FlexibleServerVirtualEndpointArgs {
   /// [replicaServerId] The Resource ID of the *Replica* Postgres Flexible Server this should be associated with
   /// [sourceServerId] The Resource ID of the *Source* Postgres Flexible Server this should be associated with. Changing this forces a new resource to be created.
   /// [type] The type of Virtual Endpoint. Currently only `ReadWrite` is supported. Changing this forces a new resource to be created.
-  FlexibleServerVirtualEndpointArgs({
+  const FlexibleServerVirtualEndpointArgs({
     this.name,
     required this.replicaServerId,
     required this.sourceServerId,

@@ -11,7 +11,7 @@ class AiEndpointIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AiEndpointIamMemberCondition({
+  const AiEndpointIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

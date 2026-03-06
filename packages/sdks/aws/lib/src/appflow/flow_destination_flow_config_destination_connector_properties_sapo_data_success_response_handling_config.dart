@@ -11,7 +11,7 @@ class FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResp
   /// Creates a new [FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig].
   /// [bucketName] Name of the Amazon S3 bucket.
   /// [bucketPrefix] Amazon S3 bucket prefix.
-  FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig({
+  const FlowDestinationFlowConfigDestinationConnectorPropertiesSapoDataSuccessResponseHandlingConfig({
     this.bucketName,
     this.bucketPrefix,
   });

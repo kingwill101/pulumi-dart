@@ -21,7 +21,7 @@ class PoolImageResponse {
   /// [ephemeralType] The ephemeral type of the image.
   /// [resourceId] The resource id of the image.
   /// [wellKnownImageName] The image to use from a well-known set of images made available to customers.
-  PoolImageResponse({
+  const PoolImageResponse({
     this.aliases,
     this.buffer,
     this.ephemeralType,

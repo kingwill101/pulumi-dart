@@ -109,7 +109,7 @@ class VolumeReplicationState {
   /// [transferStats] Replication transfer statistics. All statistics are updated every 5 minutes.
   /// [volumeName] The name of the existing source volume.
   /// [waitForMirror] Optional.
-  VolumeReplicationState({
+  const VolumeReplicationState({
     this.createTime,
     this.deleteDestinationVolume,
     this.description,

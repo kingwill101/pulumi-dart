@@ -15,7 +15,7 @@ class RandomBytesArgs {
   /// Creates a new [RandomBytesArgs].
   /// [keepers] Arbitrary map of values that, when changed, will trigger recreation of resource. See the main provider documentation for more information.
   /// [length] The number of bytes requested. The minimum value for length is 1.
-  RandomBytesArgs({
+  const RandomBytesArgs({
     this.keepers,
     required this.length,
   });

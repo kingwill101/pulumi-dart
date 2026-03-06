@@ -33,7 +33,7 @@ class ClientFileProtectArgs {
   /// [ruleName] ruleName.
   /// [status] rule status 0 is disable 1 is enable.
   /// [switchId] switch id.
-  ClientFileProtectArgs({
+  const ClientFileProtectArgs({
     this.alertLevel,
     required this.fileOps,
     required this.filePaths,

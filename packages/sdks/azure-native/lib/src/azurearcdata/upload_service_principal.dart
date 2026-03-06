@@ -18,7 +18,7 @@ class UploadServicePrincipal {
   /// [clientId] Client ID of the service principal for uploading data.
   /// [clientSecret] Secret of the service principal
   /// [tenantId] Tenant ID of the service principal.
-  UploadServicePrincipal({
+  const UploadServicePrincipal({
     this.authority,
     this.clientId,
     this.clientSecret,

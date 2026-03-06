@@ -16,7 +16,7 @@ class LanguageModelInputDataConfig {
   /// [dataAccessRoleArn] IAM role with access to S3 bucket.
   /// [s3Uri] S3 URI where training data is located.
   /// [tuningDataS3Uri] S3 URI where tuning data is located.
-  LanguageModelInputDataConfig({
+  const LanguageModelInputDataConfig({
     required this.dataAccessRoleArn,
     required this.s3Uri,
     this.tuningDataS3Uri,

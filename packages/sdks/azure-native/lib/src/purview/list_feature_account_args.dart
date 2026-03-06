@@ -18,7 +18,7 @@ class ListFeatureAccountArgs {
   /// [accountName] The name of the account.
   /// [features] Set of features
   /// [resourceGroupName] The resource group name.
-  ListFeatureAccountArgs({
+  const ListFeatureAccountArgs({
     required this.accountName,
     this.features,
     required this.resourceGroupName,

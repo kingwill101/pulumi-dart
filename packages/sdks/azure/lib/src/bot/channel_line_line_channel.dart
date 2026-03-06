@@ -11,7 +11,7 @@ class ChannelLineLineChannel {
   /// Creates a new [ChannelLineLineChannel].
   /// [accessToken] The access token which is used to call the Line Channel API.
   /// [secret] The secret which is used to access the Line Channel.
-  ChannelLineLineChannel({
+  const ChannelLineLineChannel({
     required this.accessToken,
     required this.secret,
   });

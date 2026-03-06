@@ -30,7 +30,7 @@ class MigrateSqlServerSqlDbSyncDatabaseInput {
   /// [tableMap] Mapping of source to target tables
   /// [targetDatabaseName] Target database name
   /// [targetSetting] Target settings to tune target endpoint migration behavior
-  MigrateSqlServerSqlDbSyncDatabaseInput({
+  const MigrateSqlServerSqlDbSyncDatabaseInput({
     this.id,
     this.migrationSetting,
     this.name,

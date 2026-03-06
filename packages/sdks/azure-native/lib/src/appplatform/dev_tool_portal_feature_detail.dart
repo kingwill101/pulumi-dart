@@ -9,7 +9,7 @@ class DevToolPortalFeatureDetail {
 
   /// Creates a new [DevToolPortalFeatureDetail].
   /// [state] State of the plugin
-  DevToolPortalFeatureDetail({
+  const DevToolPortalFeatureDetail({
     this.state,
   });
 

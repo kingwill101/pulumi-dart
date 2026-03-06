@@ -12,7 +12,7 @@ class GoogleCloudChannelV1TrialSettingsResponse {
   /// Creates a new [GoogleCloudChannelV1TrialSettingsResponse].
   /// [endTime] Date when the trial ends. The value is in milliseconds using the UNIX Epoch format. See an example [Epoch converter](https://www.epochconverter.com).
   /// [trial] Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial.
-  GoogleCloudChannelV1TrialSettingsResponse({
+  const GoogleCloudChannelV1TrialSettingsResponse({
     required this.endTime,
     required this.trial,
   });

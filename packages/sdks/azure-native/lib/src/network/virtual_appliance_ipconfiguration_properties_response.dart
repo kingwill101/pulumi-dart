@@ -9,7 +9,7 @@ class VirtualApplianceIPConfigurationPropertiesResponse {
 
   /// Creates a new [VirtualApplianceIPConfigurationPropertiesResponse].
   /// [primary] Whether or not this is primary IP configuration of the NIC.
-  VirtualApplianceIPConfigurationPropertiesResponse({
+  const VirtualApplianceIPConfigurationPropertiesResponse({
     this.primary,
   });
 

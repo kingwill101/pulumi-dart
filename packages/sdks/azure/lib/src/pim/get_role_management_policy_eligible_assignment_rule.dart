@@ -11,7 +11,7 @@ class GetRoleManagementPolicyEligibleAssignmentRule {
   /// Creates a new [GetRoleManagementPolicyEligibleAssignmentRule].
   /// [expirationRequired] (Boolean) Must an assignment have an expiry date.
   /// [expireAfter] (String) The maximum length of time an assignment can be valid, as an ISO8601 duration.
-  GetRoleManagementPolicyEligibleAssignmentRule({
+  const GetRoleManagementPolicyEligibleAssignmentRule({
     required this.expirationRequired,
     required this.expireAfter,
   });

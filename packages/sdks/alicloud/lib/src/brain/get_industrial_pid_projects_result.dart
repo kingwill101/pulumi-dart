@@ -28,7 +28,7 @@ class GetIndustrialPidProjectsResult {
   /// [pidOrganizationId] The ID of Pid Organization.
   /// [pidProjectName] The name of Pid Project.
   /// [projects] A list of Brain Industrial Pid Projects. Each element contains the following attributes:
-  GetIndustrialPidProjectsResult({
+  const GetIndustrialPidProjectsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

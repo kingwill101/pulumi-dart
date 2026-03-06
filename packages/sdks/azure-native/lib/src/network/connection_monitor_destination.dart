@@ -15,7 +15,7 @@ class ConnectionMonitorDestination {
   /// [address] Address of the connection monitor destination (IP or domain name).
   /// [port] The destination port used by connection monitor.
   /// [resourceId] The ID of the resource used as the destination by connection monitor.
-  ConnectionMonitorDestination({
+  const ConnectionMonitorDestination({
     this.address,
     this.port,
     this.resourceId,

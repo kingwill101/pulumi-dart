@@ -11,7 +11,7 @@ class RuleAttachmentVpc {
   /// Creates a new [RuleAttachmentVpc].
   /// [regionId] The region of the vpc. If not set, the current region will instead of.
   /// [vpcId] The ID of the VPC.  **NOTE:** The VPC that can be associated with the forwarding rule must belong to the same region as the Endpoint.
-  RuleAttachmentVpc({
+  const RuleAttachmentVpc({
     required this.regionId,
     required this.vpcId,
   });

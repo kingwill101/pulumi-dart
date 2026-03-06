@@ -35,7 +35,7 @@ class ManagedGatewayPropertiesResponse {
   /// [resourceId] ArmId of the gateway to be monitored.
   /// [resourceLocation] Location of the gateway to be monitored.
   /// [version] The version of the gateway resource.
-  ManagedGatewayPropertiesResponse({
+  const ManagedGatewayPropertiesResponse({
     this.computerName,
     required this.connectionStatus,
     this.domainName,

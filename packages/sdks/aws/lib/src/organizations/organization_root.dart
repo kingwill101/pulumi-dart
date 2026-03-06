@@ -18,7 +18,7 @@ class OrganizationRoot {
   /// [id] Identifier of the root.
   /// [name] Name of the policy type.
   /// [policyTypes] List of policy types enabled for this root. All elements have these attributes:
-  OrganizationRoot({
+  const OrganizationRoot({
     this.arn,
     this.id,
     this.name,

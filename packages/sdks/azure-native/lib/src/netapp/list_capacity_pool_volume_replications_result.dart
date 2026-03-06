@@ -10,7 +10,7 @@ class ListCapacityPoolVolumeReplicationsResult {
 
   /// Creates a new [ListCapacityPoolVolumeReplicationsResult].
   /// [value] A list of replications
-  ListCapacityPoolVolumeReplicationsResult({
+  const ListCapacityPoolVolumeReplicationsResult({
     this.value,
   });
 

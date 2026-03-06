@@ -14,7 +14,7 @@ class ProjectsPolicyBindingTarget {
 
   /// Creates a new [ProjectsPolicyBindingTarget].
   /// [principalSet] Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
-  ProjectsPolicyBindingTarget({
+  const ProjectsPolicyBindingTarget({
     this.principalSet,
   });
 

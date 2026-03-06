@@ -19,7 +19,7 @@ class FlowProfileProperties {
   /// [replicationScenario] The data replication scenario handled by this FlowProfile. Please not, that this value cannot be updated after creation.
   /// [rulesets] A set of configurable rulesets applied to this FlowProfile.
   /// [status] The operational status of the FlowProfile.
-  FlowProfileProperties({
+  const FlowProfileProperties({
     required this.description,
     required this.replicationScenario,
     this.rulesets,

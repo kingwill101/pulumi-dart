@@ -12,7 +12,7 @@ class TagResponse {
   /// Creates a new [TagResponse].
   /// [key] Key of tag.
   /// [value] Value of tag.
-  TagResponse({
+  const TagResponse({
     required this.key,
     required this.value,
   });

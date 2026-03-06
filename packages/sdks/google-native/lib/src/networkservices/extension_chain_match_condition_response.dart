@@ -9,7 +9,7 @@ class ExtensionChainMatchConditionResponse {
 
   /// Creates a new [ExtensionChainMatchConditionResponse].
   /// [celExpression] A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed.
-  ExtensionChainMatchConditionResponse({
+  const ExtensionChainMatchConditionResponse({
     required this.celExpression,
   });
 

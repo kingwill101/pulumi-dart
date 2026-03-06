@@ -9,7 +9,7 @@ class RepositoryAssociationS3RepositoryDetailCodeArtifact {
   /// Creates a new [RepositoryAssociationS3RepositoryDetailCodeArtifact].
   /// [buildArtifactsObjectKey] Optional.
   /// [sourceCodeArtifactsObjectKey] Optional.
-  RepositoryAssociationS3RepositoryDetailCodeArtifact({
+  const RepositoryAssociationS3RepositoryDetailCodeArtifact({
     this.buildArtifactsObjectKey,
     this.sourceCodeArtifactsObjectKey,
   });

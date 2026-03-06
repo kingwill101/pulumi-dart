@@ -17,7 +17,7 @@ class BudgetActionDefinition {
   /// [iamActionDefinition] The AWS Identity and Access Management (IAM) action definition details. See IAM Action Definition.
   /// [scpActionDefinition] The service control policies (SCPs) action definition details. See SCP Action Definition.
   /// [ssmActionDefinition] The AWS Systems Manager (SSM) action definition details. See SSM Action Definition.
-  BudgetActionDefinition({
+  const BudgetActionDefinition({
     this.iamActionDefinition,
     this.scpActionDefinition,
     this.ssmActionDefinition,

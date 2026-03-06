@@ -24,7 +24,7 @@ class ResponseState {
   /// [responseType] Response type of the associated GatewayResponse. See the [AWS Documentation](https://docs.aws.amazon.com/apigateway/latest/developerguide/supported-gateway-response-types.html) for supported values.
   /// [restApiId] String identifier of the associated REST API.
   /// [statusCode] HTTP status code of the Gateway Response.
-  ResponseState({
+  const ResponseState({
     this.region,
     this.responseParameters,
     this.responseTemplates,

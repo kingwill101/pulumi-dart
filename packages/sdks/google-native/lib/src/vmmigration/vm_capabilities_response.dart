@@ -12,7 +12,7 @@ class VmCapabilitiesResponse {
   /// Creates a new [VmCapabilitiesResponse].
   /// [lastOsCapabilitiesUpdateTime] The last time OS capabilities list was updated.
   /// [osCapabilities] Unordered list. List of certain VM OS capabilities needed for some Compute Engine features.
-  VmCapabilitiesResponse({
+  const VmCapabilitiesResponse({
     required this.lastOsCapabilitiesUpdateTime,
     required this.osCapabilities,
   });

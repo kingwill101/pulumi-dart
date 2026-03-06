@@ -31,7 +31,7 @@ class CustomDnsSuffixConfigurationResponse {
   /// [provisioningDetails] Required.
   /// [provisioningState] Required.
   /// [type] Resource type.
-  CustomDnsSuffixConfigurationResponse({
+  const CustomDnsSuffixConfigurationResponse({
     this.certificateUrl,
     this.dnsSuffix,
     required this.id,

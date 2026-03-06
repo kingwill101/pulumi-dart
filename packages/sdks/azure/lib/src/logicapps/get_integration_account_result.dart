@@ -21,7 +21,7 @@ class GetIntegrationAccountResult {
   /// [resourceGroupName] Required.
   /// [skuName] The SKU name of the Logic App Integration Account.
   /// [tags] A mapping of tags assigned to the Logic App Integration Account.
-  GetIntegrationAccountResult({
+  const GetIntegrationAccountResult({
     required this.id,
     required this.location,
     required this.name,

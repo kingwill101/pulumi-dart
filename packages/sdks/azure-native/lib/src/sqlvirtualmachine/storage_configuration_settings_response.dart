@@ -26,7 +26,7 @@ class StorageConfigurationSettingsResponse {
   /// [sqlSystemDbOnDataDisk] SQL Server SystemDb Storage on DataPool if true.
   /// [sqlTempDbSettings] SQL Server TempDb Storage Settings.
   /// [storageWorkloadType] Storage workload type.
-  StorageConfigurationSettingsResponse({
+  const StorageConfigurationSettingsResponse({
     this.diskConfigurationType,
     this.sqlDataSettings,
     this.sqlLogSettings,

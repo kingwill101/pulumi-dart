@@ -15,7 +15,7 @@ class GetEnvironmentTypeResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [tags] A mapping of tags assigned to the Dev Center Environment Type.
-  GetEnvironmentTypeResult({
+  const GetEnvironmentTypeResult({
     required this.devCenterId,
     required this.id,
     required this.name,

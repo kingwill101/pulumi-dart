@@ -14,7 +14,7 @@ class LocationQuotaRuleResponse {
   /// [location] The location.
   /// [policy] The policy.
   /// [quotaId] The quota id.
-  LocationQuotaRuleResponse({
+  const LocationQuotaRuleResponse({
     this.location,
     this.policy,
     this.quotaId,

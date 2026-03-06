@@ -40,7 +40,7 @@ class GetDomainClusterConfig {
   /// [warmType] The instance type for the Elasticsearch cluster's warm nodes.
   /// [zoneAwarenessConfigs] Configuration block containing zone awareness settings.
   /// [zoneAwarenessEnabled] Indicates whether zone awareness is enabled.
-  GetDomainClusterConfig({
+  const GetDomainClusterConfig({
     required this.coldStorageOptions,
     required this.dedicatedMasterCount,
     required this.dedicatedMasterEnabled,

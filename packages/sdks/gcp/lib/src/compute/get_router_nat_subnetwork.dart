@@ -21,7 +21,7 @@ class GetRouterNatSubnetwork {
   /// [name] Name of the NAT service. The name must be 1-63 characters long and
   /// [secondaryIpRangeNames] List of the secondary ranges of the subnetwork that are allowed
   /// [sourceIpRangesToNats] List of options for which source IPs in the subnetwork
-  GetRouterNatSubnetwork({
+  const GetRouterNatSubnetwork({
     required this.name,
     required this.secondaryIpRangeNames,
     required this.sourceIpRangesToNats,

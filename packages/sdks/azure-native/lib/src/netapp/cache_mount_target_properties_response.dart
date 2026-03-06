@@ -15,7 +15,7 @@ class CacheMountTargetPropertiesResponse {
   /// [ipAddress] The mount target's IPv4 address, used to mount the cache.
   /// [mountTargetId] UUID v4 used to identify the MountTarget
   /// [smbServerFqdn] The SMB server's Fully Qualified Domain Name, FQDN
-  CacheMountTargetPropertiesResponse({
+  const CacheMountTargetPropertiesResponse({
     required this.ipAddress,
     required this.mountTargetId,
     required this.smbServerFqdn,

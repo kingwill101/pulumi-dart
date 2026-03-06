@@ -49,7 +49,7 @@ class EntityTypeAffiliateDiscountResponse {
   /// [startAt] Start date of the discount. Value is the date the discount started or will start in the future.
   /// [status] Represents the current status of the discount.
   /// [systemId] This is the globally unique identifier of the Discount which will not change for the lifetime of the Discount.
-  EntityTypeAffiliateDiscountResponse({
+  const EntityTypeAffiliateDiscountResponse({
     this.appliedScopeType,
     required this.benefitResourceId,
     required this.billingAccountResourceId,

@@ -28,7 +28,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn {
   /// [nullable] Whether or not the column can accept a null value.
   /// [ordinalPosition] The ordinal position of the column in the table.
   /// [primaryKey] Whether or not the column represents a primary key.
-  StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn({
+  const StreamBackfillAllMysqlExcludedObjectsMysqlDatabaseMysqlTableMysqlColumn({
     this.collation,
     this.column,
     this.dataType,

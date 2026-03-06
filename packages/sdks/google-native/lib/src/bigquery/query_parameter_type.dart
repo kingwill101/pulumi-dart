@@ -15,7 +15,7 @@ class QueryParameterType {
   /// [arrayType] [Optional] The type of the array's elements, if this is an array.
   /// [structTypes] [Optional] The types of the fields of this struct, in order, if this is a struct.
   /// [type] [Required] The top level type of this field.
-  QueryParameterType({
+  const QueryParameterType({
     this.arrayType,
     this.structTypes,
     this.type,

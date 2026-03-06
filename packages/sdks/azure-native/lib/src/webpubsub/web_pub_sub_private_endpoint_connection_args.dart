@@ -26,7 +26,7 @@ class WebPubSubPrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] Connection state of the private endpoint connection
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  WebPubSubPrivateEndpointConnectionArgs({
+  const WebPubSubPrivateEndpointConnectionArgs({
     this.privateEndpoint,
     this.privateEndpointConnectionName,
     this.privateLinkServiceConnectionState,

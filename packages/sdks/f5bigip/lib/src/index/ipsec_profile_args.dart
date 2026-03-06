@@ -21,7 +21,7 @@ class IpsecProfileArgs {
   /// [name] Displays the name of the IPsec interface tunnel profile,it should be "full path".The full path is the combination of the partition + name of the IPSec profile.(For example `/Common/test-profile`)
   /// [parentProfile] Specifies the profile from which this profile inherits settings. The default is the system-supplied `/Common/ipsec` profile
   /// [trafficSelector] Specifies the traffic selector for the IPsec interface tunnel to which the profile is applied
-  IpsecProfileArgs({
+  const IpsecProfileArgs({
     this.description,
     required this.name,
     this.parentProfile,

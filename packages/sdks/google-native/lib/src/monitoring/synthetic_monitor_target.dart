@@ -10,7 +10,7 @@ class SyntheticMonitorTarget {
 
   /// Creates a new [SyntheticMonitorTarget].
   /// [cloudFunctionV2] Target a Synthetic Monitor GCFv2 instance.
-  SyntheticMonitorTarget({
+  const SyntheticMonitorTarget({
     this.cloudFunctionV2,
   });
 

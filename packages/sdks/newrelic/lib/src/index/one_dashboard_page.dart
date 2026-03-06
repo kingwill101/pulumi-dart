@@ -70,7 +70,7 @@ class OneDashboardPage {
   /// [widgetPies] A pie widget.
   /// [widgetStackedBars] A stacked bar widget.
   /// [widgetTables] A table widget.
-  OneDashboardPage({
+  const OneDashboardPage({
     this.description,
     this.guid,
     required this.name,

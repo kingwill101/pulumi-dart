@@ -21,7 +21,7 @@ class LinkedIntegrationRuntimeResponse {
   /// [dataFactoryName] The name of the data factory for which the linked integration runtime belong to.
   /// [name] The name of the linked integration runtime.
   /// [subscriptionId] The subscription ID for which the linked integration runtime belong to.
-  LinkedIntegrationRuntimeResponse({
+  const LinkedIntegrationRuntimeResponse({
     required this.createTime,
     required this.dataFactoryLocation,
     required this.dataFactoryName,

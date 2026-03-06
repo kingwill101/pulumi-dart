@@ -20,7 +20,7 @@ class PeeringPropertiesDirectResponse {
   /// [directPeeringType] The type of direct peering.
   /// [peerAsn] The reference of the peer ASN.
   /// [useForPeeringService] The flag that indicates whether or not the peering is used for peering service.
-  PeeringPropertiesDirectResponse({
+  const PeeringPropertiesDirectResponse({
     this.connections,
     this.directPeeringType,
     this.peerAsn,

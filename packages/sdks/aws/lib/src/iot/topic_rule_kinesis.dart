@@ -14,7 +14,7 @@ class TopicRuleKinesis {
   /// [partitionKey] The partition key.
   /// [roleArn] The ARN of the IAM role that grants access to the Amazon Kinesis stream.
   /// [streamName] The name of the Amazon Kinesis stream.
-  TopicRuleKinesis({
+  const TopicRuleKinesis({
     this.partitionKey,
     required this.roleArn,
     required this.streamName,

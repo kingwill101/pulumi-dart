@@ -17,7 +17,7 @@ class PartnerResponse {
   /// [authorizationExpirationTimeInUtc] Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's
   /// [partnerName] The partner name.
   /// [partnerRegistrationImmutableId] The immutableId of the corresponding partner registration.
-  PartnerResponse({
+  const PartnerResponse({
     this.authorizationExpirationTimeInUtc,
     this.partnerName,
     this.partnerRegistrationImmutableId,

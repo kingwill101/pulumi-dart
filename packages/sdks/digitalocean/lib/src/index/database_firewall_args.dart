@@ -16,7 +16,7 @@ class DatabaseFirewallArgs {
   /// Creates a new [DatabaseFirewallArgs].
   /// [clusterId] The ID of the target database cluster.
   /// [rules] A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
-  DatabaseFirewallArgs({
+  const DatabaseFirewallArgs({
     required this.clusterId,
     required this.rules,
   });

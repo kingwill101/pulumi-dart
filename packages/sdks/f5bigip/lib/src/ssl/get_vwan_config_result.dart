@@ -29,7 +29,7 @@ class GetVWanConfigResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [presharedKey] (type `string`) provides pre-shared-key used for IPSec Tunnel creation.
   /// [vwanGwAddresses] (type `list`) Provides vWAN Gateway Address for IPSec End point
-  GetVWanConfigResult({
+  const GetVWanConfigResult({
     required this.azureVwanName,
     required this.azureVwanResourcegroup,
     required this.azureVwanVpnsite,

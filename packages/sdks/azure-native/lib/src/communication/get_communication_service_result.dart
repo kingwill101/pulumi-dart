@@ -52,7 +52,7 @@ class GetCommunicationServiceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Version of the CommunicationService resource. Probably you need the same or higher version of client SDKs.
-  GetCommunicationServiceResult({
+  const GetCommunicationServiceResult({
     required this.azureApiVersion,
     required this.dataLocation,
     required this.hostName,

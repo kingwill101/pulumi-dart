@@ -27,7 +27,7 @@ class GetActionRuleByNameResult {
   /// [properties] action rule properties
   /// [tags] Resource tags
   /// [type] Azure resource type
-  GetActionRuleByNameResult({
+  const GetActionRuleByNameResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

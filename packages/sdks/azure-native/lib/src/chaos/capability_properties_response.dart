@@ -21,7 +21,7 @@ class CapabilityPropertiesResponse {
   /// [publisher] String of the Publisher that this Capability extends.
   /// [targetType] String of the Target Type that this Capability extends.
   /// [urn] String of the URN for this Capability Type.
-  CapabilityPropertiesResponse({
+  const CapabilityPropertiesResponse({
     required this.description,
     required this.parametersSchema,
     required this.publisher,

@@ -17,7 +17,7 @@ class DomainDevicesHostdevSubsysScsiSourceHostAddress {
   /// [controller] Defines the SCSI controller number for the device's address.
   /// [target] Specifies the target ID for the SCSI device's address.
   /// [unit] Indicates the unit number in the SCSI address for the device.
-  DomainDevicesHostdevSubsysScsiSourceHostAddress({
+  const DomainDevicesHostdevSubsysScsiSourceHostAddress({
     this.bus,
     this.controller,
     this.target,

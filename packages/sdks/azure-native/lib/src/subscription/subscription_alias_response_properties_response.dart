@@ -45,7 +45,7 @@ class SubscriptionAliasResponsePropertiesResponse {
   /// [subscriptionOwnerId] Owner Id of the subscription
   /// [tags] Tags for the subscription
   /// [workload] The workload type of the subscription. It can be either Production or DevTest.
-  SubscriptionAliasResponsePropertiesResponse({
+  const SubscriptionAliasResponsePropertiesResponse({
     required this.acceptOwnershipState,
     required this.acceptOwnershipUrl,
     this.billingScope,

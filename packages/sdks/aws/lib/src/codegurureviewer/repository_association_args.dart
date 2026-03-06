@@ -24,7 +24,7 @@ class RepositoryAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repository] An object describing the repository to associate. Valid values: `bitbucket`, `codecommit`, `github_enterprise_server`, or `s3_bucket`. Block is documented below. Note: for repositories that leverage CodeStar connections (ex. `bitbucket`, `github_enterprise_server`) the connection must be in `Available` status prior to creating this resource.
   /// [tags] Optional.
-  RepositoryAssociationArgs({
+  const RepositoryAssociationArgs({
     this.kmsKeyDetails,
     this.region,
     required this.repository,

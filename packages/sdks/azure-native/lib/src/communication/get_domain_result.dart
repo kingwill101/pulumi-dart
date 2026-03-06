@@ -53,7 +53,7 @@ class GetDomainResult {
   /// [userEngagementTracking] Describes whether user engagement tracking is enabled or disabled.
   /// [verificationRecords] List of DnsRecord
   /// [verificationStates] List of VerificationStatusRecord
-  GetDomainResult({
+  const GetDomainResult({
     required this.azureApiVersion,
     required this.dataLocation,
     required this.domainManagement,

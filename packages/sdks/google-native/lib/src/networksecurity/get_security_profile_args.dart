@@ -15,7 +15,7 @@ class GetSecurityProfileArgs {
   /// [location] Required.
   /// [organizationId] Required.
   /// [securityProfileId] Required.
-  GetSecurityProfileArgs({
+  const GetSecurityProfileArgs({
     required this.location,
     required this.organizationId,
     required this.securityProfileId,

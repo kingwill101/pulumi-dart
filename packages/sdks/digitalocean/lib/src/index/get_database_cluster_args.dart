@@ -14,7 +14,7 @@ class GetDatabaseClusterArgs {
   /// Creates a new [GetDatabaseClusterArgs].
   /// [name] The name of the database cluster.
   /// [tags] Optional.
-  GetDatabaseClusterArgs({
+  const GetDatabaseClusterArgs({
     required this.name,
     this.tags,
   });

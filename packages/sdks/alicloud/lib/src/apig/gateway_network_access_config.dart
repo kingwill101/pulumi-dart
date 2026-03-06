@@ -8,7 +8,7 @@ class GatewayNetworkAccessConfig {
 
   /// Creates a new [GatewayNetworkAccessConfig].
   /// [type] Network Access Type
-  GatewayNetworkAccessConfig({
+  const GatewayNetworkAccessConfig({
     this.type,
   });
 

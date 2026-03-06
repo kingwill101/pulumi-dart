@@ -21,7 +21,7 @@ class ModelArgs {
   /// [groupId] The group of the model belongs to.
   /// [modelName] The name of the model.
   /// [schema] The schema of the model.
-  ModelArgs({
+  const ModelArgs({
     this.description,
     required this.groupId,
     required this.modelName,

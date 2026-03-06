@@ -27,7 +27,7 @@ class GetHostingChannelResult {
   /// [retainedReleaseCount] Required.
   /// [siteId] Required.
   /// [ttl] Required.
-  GetHostingChannelResult({
+  const GetHostingChannelResult({
     required this.channelId,
     required this.effectiveLabels,
     required this.expireTime,

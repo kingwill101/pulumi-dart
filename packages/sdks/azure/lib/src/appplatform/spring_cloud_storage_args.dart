@@ -21,7 +21,7 @@ class SpringCloudStorageArgs {
   /// [springCloudServiceId] The ID of the Spring Cloud Service where the Spring Cloud Storage should exist. Changing this forces a new Spring Cloud Storage to be created.
   /// [storageAccountKey] The access key of the Azure Storage Account.
   /// [storageAccountName] The account name of the Azure Storage Account.
-  SpringCloudStorageArgs({
+  const SpringCloudStorageArgs({
     this.name,
     required this.springCloudServiceId,
     required this.storageAccountKey,

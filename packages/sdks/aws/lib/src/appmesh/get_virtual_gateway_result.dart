@@ -36,7 +36,7 @@ class GetVirtualGatewayResult {
   /// [resourceOwner] Resource owner's AWS account ID.
   /// [specs] Virtual gateway specification. See the `aws.appmesh.VirtualGateway` resource for details.
   /// [tags] Map of tags.
-  GetVirtualGatewayResult({
+  const GetVirtualGatewayResult({
     required this.arn,
     required this.createdDate,
     required this.id,

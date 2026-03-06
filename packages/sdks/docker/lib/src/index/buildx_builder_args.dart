@@ -54,7 +54,7 @@ class BuildxBuilderArgs {
   /// [platforms] Fixed platforms for current node
   /// [remote] Configuration block for the Remote driver.
   /// [use] Set the current builder instance as the default for the current context.
-  BuildxBuilderArgs({
+  const BuildxBuilderArgs({
     this.append,
     this.bootstrap,
     this.buildkitConfig,

@@ -35,7 +35,7 @@ class InstanceIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] Optional.
   /// [role] The role that should be applied. Only one
-  InstanceIamBindingArgs({
+  const InstanceIamBindingArgs({
     this.condition,
     required this.instance,
     required this.members,

@@ -27,7 +27,7 @@ class ListingSubscriptionDestinationDataset {
   /// [labels] The labels associated with this dataset. You can use these to
   /// [location] The geographic location where the dataset should reside.
   /// [replicaLocations] List of regions where the subscriber wants dataset replicas.
-  ListingSubscriptionDestinationDataset({
+  const ListingSubscriptionDestinationDataset({
     required this.datasetReference,
     this.description,
     this.friendlyName,

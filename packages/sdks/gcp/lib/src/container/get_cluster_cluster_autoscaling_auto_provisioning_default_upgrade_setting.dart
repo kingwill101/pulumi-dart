@@ -18,7 +18,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting {
   /// [maxSurge] The maximum number of nodes that can be created beyond the current size of the node pool during the upgrade process.
   /// [maxUnavailable] The maximum number of nodes that can be simultaneously unavailable during the upgrade process.
   /// [strategy] Update strategy of the node pool.
-  GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting({
+  const GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting({
     required this.blueGreenSettings,
     required this.maxSurge,
     required this.maxUnavailable,

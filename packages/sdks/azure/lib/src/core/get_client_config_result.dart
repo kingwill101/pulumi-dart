@@ -20,7 +20,7 @@ class GetClientConfigResult {
   /// [objectId] is set to the Azure Object ID.
   /// [subscriptionId] is set to the Azure Subscription ID.
   /// [tenantId] is set to the Azure Tenant ID.
-  GetClientConfigResult({
+  const GetClientConfigResult({
     required this.clientId,
     required this.id,
     required this.objectId,

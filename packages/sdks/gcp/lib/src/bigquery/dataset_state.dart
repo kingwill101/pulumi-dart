@@ -147,7 +147,7 @@ class DatasetState {
   /// [resourceTags] The tags attached to this table. Tag keys are globally unique. Tag key is expected to be
   /// [selfLink] The URI of the created resource.
   /// [storageBillingModel] Specifies the storage billing model for the dataset.
-  DatasetState({
+  const DatasetState({
     this.accesses,
     this.creationTime,
     this.datasetId,

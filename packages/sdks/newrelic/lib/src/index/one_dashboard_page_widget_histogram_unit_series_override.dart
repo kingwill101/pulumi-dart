@@ -11,7 +11,7 @@ class OneDashboardPageWidgetHistogramUnitSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetHistogramUnitSeriesOverride].
   /// [seriesName] Series name
   /// [unit] (Optional) Choose a unit to customize the unit on your Y axis and in each of your series.
-  OneDashboardPageWidgetHistogramUnitSeriesOverride({
+  const OneDashboardPageWidgetHistogramUnitSeriesOverride({
     this.seriesName,
     this.unit,
   });

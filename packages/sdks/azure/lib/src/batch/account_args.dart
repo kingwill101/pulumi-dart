@@ -65,7 +65,7 @@ class AccountArgs {
   /// [storageAccountId] Specifies the storage account to use for the Batch account. If not specified, Azure Batch will manage the storage.
   /// [storageAccountNodeIdentity] Specifies the user assigned identity for the storage account.
   /// [tags] A mapping of tags to assign to the resource.
-  AccountArgs({
+  const AccountArgs({
     this.allowedAuthenticationModes,
     this.encryption,
     this.identity,

@@ -13,7 +13,7 @@ class GetJobArgs {
   /// Creates a new [GetJobArgs].
   /// [jobId] Required.
   /// [namespaceId] Required.
-  GetJobArgs({
+  const GetJobArgs({
     required this.jobId,
     required this.namespaceId,
   });

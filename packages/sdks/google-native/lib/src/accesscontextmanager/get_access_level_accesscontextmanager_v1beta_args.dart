@@ -15,7 +15,7 @@ class GetAccessLevelAccesscontextmanagerV1betaArgs {
   /// [accessLevelFormat] Optional.
   /// [accessLevelId] Required.
   /// [accessPolicyId] Required.
-  GetAccessLevelAccesscontextmanagerV1betaArgs({
+  const GetAccessLevelAccesscontextmanagerV1betaArgs({
     this.accessLevelFormat,
     required this.accessLevelId,
     required this.accessPolicyId,

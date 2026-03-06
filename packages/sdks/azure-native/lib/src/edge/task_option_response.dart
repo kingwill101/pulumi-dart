@@ -13,7 +13,7 @@ class TaskOptionResponse {
   /// Creates a new [TaskOptionResponse].
   /// [concurrency] Parallel worker numbers of the tasks
   /// [errorAction] Error action for the tasks
-  TaskOptionResponse({
+  const TaskOptionResponse({
     this.concurrency,
     this.errorAction,
   });

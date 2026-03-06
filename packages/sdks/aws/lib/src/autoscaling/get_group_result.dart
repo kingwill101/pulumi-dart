@@ -105,7 +105,7 @@ class GetGroupResult {
   /// [vpcZoneIdentifier] VPC ID for the group.
   /// [warmPoolSize] Current size of the warm pool.
   /// [warmPools] List of warm pool configuration objects.
-  GetGroupResult({
+  const GetGroupResult({
     required this.arn,
     required this.availabilityZones,
     required this.defaultCooldown,

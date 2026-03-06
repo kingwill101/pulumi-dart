@@ -26,7 +26,7 @@ class GetDdosBgpIpsResult {
   /// [pageSize] Optional.
   /// [productName] Optional.
   /// [status] Optional.
-  GetDdosBgpIpsResult({
+  const GetDdosBgpIpsResult({
     required this.id,
     required this.ids,
     required this.instanceId,

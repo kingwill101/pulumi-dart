@@ -18,7 +18,7 @@ class LogCollectionPropertiesResponse {
   /// [lastLogGenerated] Recent DateTimeStamp where logs are successfully generated
   /// [logCollectionSessionDetails] Required.
   /// [toDate] To DateTimeStamp till when logs need to be connected
-  LogCollectionPropertiesResponse({
+  const LogCollectionPropertiesResponse({
     required this.fromDate,
     required this.lastLogGenerated,
     required this.logCollectionSessionDetails,

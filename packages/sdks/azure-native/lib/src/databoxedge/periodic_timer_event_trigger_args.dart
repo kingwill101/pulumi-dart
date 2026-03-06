@@ -33,7 +33,7 @@ class PeriodicTimerEventTriggerArgs {
   /// [resourceGroupName] The resource group name.
   /// [sinkInfo] Role Sink information.
   /// [sourceInfo] Periodic timer details.
-  PeriodicTimerEventTriggerArgs({
+  const PeriodicTimerEventTriggerArgs({
     this.customContextTag,
     required this.deviceName,
     required this.kind,

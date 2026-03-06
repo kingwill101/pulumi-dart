@@ -121,7 +121,7 @@ class DomainFeatures {
   /// [vmCoreInfo] Enables or disables support for PS/2 devices in the virtual machine.
   /// [vmPort] Enables or disables support for PS/2 devices in the virtual machine.
   /// [xen] Enables or disables features specific to Xen virtualization, controlling various aspects of guest management.
-  DomainFeatures({
+  const DomainFeatures({
     this.acpi,
     this.aia,
     this.apic,

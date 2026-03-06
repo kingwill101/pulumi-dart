@@ -33,7 +33,7 @@ class ClientCertificateState {
   /// [siteId] Site Id
   /// [status] The certificate status. Valid values: `revoked`, `active`.
   /// [validityDays] Certificate validity period.
-  ClientCertificateState({
+  const ClientCertificateState({
     this.clientCertId,
     this.createTime,
     this.csr,

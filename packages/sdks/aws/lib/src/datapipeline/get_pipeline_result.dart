@@ -21,7 +21,7 @@ class GetPipelineResult {
   /// [pipelineId] Required.
   /// [region] Required.
   /// [tags] Map of tags assigned to the resource.
-  GetPipelineResult({
+  const GetPipelineResult({
     required this.description,
     required this.id,
     required this.name,

@@ -35,7 +35,7 @@ class MonitoredResourcePropertiesResponse {
   /// [provisioningState] Required.
   /// [resourceId] ArmId of the monitored resource.
   /// [resourceLocation] Location of the monitored resource.
-  MonitoredResourcePropertiesResponse({
+  const MonitoredResourcePropertiesResponse({
     required this.agentVersion,
     this.computerName,
     required this.connectionStatus,

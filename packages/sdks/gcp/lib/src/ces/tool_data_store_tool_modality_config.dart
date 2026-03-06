@@ -26,7 +26,7 @@ class ToolDataStoreToolModalityConfig {
   /// [modalityType] The modality type.
   /// [rewriterConfig] Rewriter configuration.
   /// [summarizationConfig] Summarization configuration.
-  ToolDataStoreToolModalityConfig({
+  const ToolDataStoreToolModalityConfig({
     this.groundingConfig,
     required this.modalityType,
     this.rewriterConfig,

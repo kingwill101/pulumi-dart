@@ -12,7 +12,7 @@ class DomainDevicesDiskBackingStoreSourceBlock {
   /// Creates a new [DomainDevicesDiskBackingStoreSourceBlock].
   /// [dev] Sets the device path for the block source of the backing store, defining the physical location of the data.
   /// [secLabels] Specifies security label settings for the block source in the backing store, managing access controls.
-  DomainDevicesDiskBackingStoreSourceBlock({
+  const DomainDevicesDiskBackingStoreSourceBlock({
     this.dev,
     this.secLabels,
   });

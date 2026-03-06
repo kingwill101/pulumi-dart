@@ -8,7 +8,7 @@ class GetAccountResult {
 
   /// Creates a new [GetAccountResult].
   /// [id] Account ID (e.g. "1239306421830812"). It can be used to construct an ARN.
-  GetAccountResult({
+  const GetAccountResult({
     required this.id,
   });
 

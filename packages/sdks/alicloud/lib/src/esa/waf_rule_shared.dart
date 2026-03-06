@@ -31,7 +31,7 @@ class WafRuleShared {
   /// [mode] The integration mode of the Web SDK:
   /// [name] The display name of the ruleset.
   /// [target] The target type protected by this rule: web or app.
-  WafRuleShared({
+  const WafRuleShared({
     this.action,
     this.actions,
     this.crossSiteId,

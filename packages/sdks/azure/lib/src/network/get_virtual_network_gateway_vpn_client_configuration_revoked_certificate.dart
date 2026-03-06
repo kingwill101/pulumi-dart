@@ -10,7 +10,7 @@ class GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate {
   /// Creates a new [GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate].
   /// [name] Specifies the name of the Virtual Network Gateway.
   /// [thumbprint] Required.
-  GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate({
+  const GetVirtualNetworkGatewayVpnClientConfigurationRevokedCertificate({
     required this.name,
     required this.thumbprint,
   });

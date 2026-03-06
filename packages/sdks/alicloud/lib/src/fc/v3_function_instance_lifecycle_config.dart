@@ -13,7 +13,7 @@ class V3FunctionInstanceLifecycleConfig {
   /// Creates a new [V3FunctionInstanceLifecycleConfig].
   /// [initializer] Initializer handler method configuration See `initializer` below.
   /// [preStop] PreStop handler method configuration See `pre_stop` below.
-  V3FunctionInstanceLifecycleConfig({
+  const V3FunctionInstanceLifecycleConfig({
     this.initializer,
     this.preStop,
   });

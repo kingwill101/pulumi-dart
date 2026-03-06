@@ -12,7 +12,7 @@ class Sku {
   /// Creates a new [Sku].
   /// [capacity] The capacity of the sku. For Gen1 environments, this value can be changed to support scale out of environments after they have been created.
   /// [name] The name of this SKU.
-  Sku({
+  const Sku({
     required this.capacity,
     required this.name,
   });

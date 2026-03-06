@@ -18,7 +18,7 @@ class IntegrationRuntimeSsisExpressCustomSetupCommandKey {
   /// [password] The password for the target device.
   /// [targetName] The target computer or domain name.
   /// [userName] The username for the target device.
-  IntegrationRuntimeSsisExpressCustomSetupCommandKey({
+  const IntegrationRuntimeSsisExpressCustomSetupCommandKey({
     this.keyVaultPassword,
     this.password,
     required this.targetName,

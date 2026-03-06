@@ -9,7 +9,7 @@ class GetInstanceEndpoint {
 
   /// Creates a new [GetInstanceEndpoint].
   /// [connections] A group of PSC connections. They are created in the same VPC network, one for each service attachment in the cluster.
-  GetInstanceEndpoint({
+  const GetInstanceEndpoint({
     required this.connections,
   });
 

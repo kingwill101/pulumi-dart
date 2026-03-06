@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1GcsSource {
 
   /// Creates a new [GoogleCloudAiplatformV1beta1GcsSource].
   /// [uris] Google Cloud Storage URI(-s) to the input file(s). May contain wildcards. For more information on wildcards, see https://cloud.google.com/storage/docs/gsutil/addlhelp/WildcardNames.
-  GoogleCloudAiplatformV1beta1GcsSource({
+  const GoogleCloudAiplatformV1beta1GcsSource({
     required this.uris,
   });
 

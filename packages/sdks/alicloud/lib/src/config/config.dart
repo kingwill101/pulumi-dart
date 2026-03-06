@@ -227,5 +227,5 @@ class AlicloudConfig {
 
 }
 
-final config = AlicloudConfig();
+const config = AlicloudConfig();
 

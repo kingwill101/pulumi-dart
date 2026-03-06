@@ -12,7 +12,7 @@ class SubResource {
 
   /// Creates a new [SubResource].
   /// [id] Sub-resource ID. Both absolute resource ID and a relative resource ID are accepted.
-  SubResource({
+  const SubResource({
     this.id,
   });
 

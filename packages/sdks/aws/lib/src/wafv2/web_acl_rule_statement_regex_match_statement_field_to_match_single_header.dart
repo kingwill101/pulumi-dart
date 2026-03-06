@@ -8,7 +8,7 @@ class WebAclRuleStatementRegexMatchStatementFieldToMatchSingleHeader {
 
   /// Creates a new [WebAclRuleStatementRegexMatchStatementFieldToMatchSingleHeader].
   /// [name] Name of the query header to inspect. This setting must be provided as lower case characters.
-  WebAclRuleStatementRegexMatchStatementFieldToMatchSingleHeader({
+  const WebAclRuleStatementRegexMatchStatementFieldToMatchSingleHeader({
     required this.name,
   });
 

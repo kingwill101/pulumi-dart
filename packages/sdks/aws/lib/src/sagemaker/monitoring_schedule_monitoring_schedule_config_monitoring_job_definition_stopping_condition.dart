@@ -8,7 +8,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingC
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition].
   /// [maxRuntimeInSeconds] Maximum runtime allowed in seconds.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionStoppingCondition({
     this.maxRuntimeInSeconds,
   });
 

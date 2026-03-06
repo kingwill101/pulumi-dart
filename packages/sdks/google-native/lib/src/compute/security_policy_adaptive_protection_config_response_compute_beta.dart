@@ -13,7 +13,7 @@ class SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta {
   /// Creates a new [SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta].
   /// [autoDeployConfig] Required.
   /// [layer7DdosDefenseConfig] If set to true, enables Cloud Armor Machine Learning.
-  SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta({
+  const SecurityPolicyAdaptiveProtectionConfigResponseComputeBeta({
     required this.autoDeployConfig,
     required this.layer7DdosDefenseConfig,
   });

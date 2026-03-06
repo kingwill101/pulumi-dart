@@ -24,7 +24,7 @@ class EventHandlerResponse {
   /// [systemEvents] Gets or sets the list of system events.
   /// [urlTemplate] Gets or sets the EventHandler URL template. You can use a predefined parameter {hub} and {event} inside the template, the value of the EventHandler URL is dynamically calculated when the client request comes in.
   /// [userEventPattern] Gets or sets the matching pattern for event names.
-  EventHandlerResponse({
+  const EventHandlerResponse({
     this.auth,
     this.systemEvents,
     required this.urlTemplate,

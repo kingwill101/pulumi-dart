@@ -15,7 +15,7 @@ class BandwidthPackageAttachmentArgs {
   /// Creates a new [BandwidthPackageAttachmentArgs].
   /// [bandwidthPackageId] The ID of the bandwidth package.
   /// [instanceId] The ID of the CEN.
-  BandwidthPackageAttachmentArgs({
+  const BandwidthPackageAttachmentArgs({
     required this.bandwidthPackageId,
     required this.instanceId,
   });

@@ -24,7 +24,7 @@ class TemplateState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subject] The subject line of the email.
   /// [text] The email body that will be visible to recipients whose email clients do not display HTML. Must be less than 500KB in size, including both the text and HTML parts.
-  TemplateState({
+  const TemplateState({
     this.arn,
     this.html,
     this.name,

@@ -47,7 +47,7 @@ class GetTestCaseResult {
   /// [triggerId] This defines the trigger ID in workflow which is considered to be executed as starting point of the test case
   /// [updateTime] Auto-generated.
   /// [workflowId] ID of the workflow with which this test case is associated
-  GetTestCaseResult({
+  const GetTestCaseResult({
     required this.createTime,
     required this.creatorEmail,
     required this.databasePersistencePolicy,

@@ -58,7 +58,7 @@ class VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse {
   /// [targetStorageContainerName] Gets or sets the target storage container name.
   /// [vmwareFabricArmId] Gets or sets the ARM Id of the source VMware fabric.
   /// [vmwareSiteId] Gets or sets the ARM Id of the VMware site.
-  VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse({
+  const VMwareToAzStackHCIReplicationExtensionModelCustomPropertiesResponse({
     required this.asrServiceUri,
     required this.azStackHciFabricArmId,
     required this.azStackHciSiteId,

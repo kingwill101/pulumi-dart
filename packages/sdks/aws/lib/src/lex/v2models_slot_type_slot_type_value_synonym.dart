@@ -8,7 +8,7 @@ class V2modelsSlotTypeSlotTypeValueSynonym {
 
   /// Creates a new [V2modelsSlotTypeSlotTypeValueSynonym].
   /// [value] Value that can be used for a slot type.
-  V2modelsSlotTypeSlotTypeValueSynonym({
+  const V2modelsSlotTypeSlotTypeValueSynonym({
     required this.value,
   });
 

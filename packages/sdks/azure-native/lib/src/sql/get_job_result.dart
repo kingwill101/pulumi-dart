@@ -27,7 +27,7 @@ class GetJobResult {
   /// [schedule] Schedule properties of the job.
   /// [type] Resource type.
   /// [version] The job version number.
-  GetJobResult({
+  const GetJobResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

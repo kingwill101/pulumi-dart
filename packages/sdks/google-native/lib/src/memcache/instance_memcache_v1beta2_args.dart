@@ -57,7 +57,7 @@ class InstanceMemcacheV1beta2Args {
   /// [project] Optional.
   /// [reservedIpRangeId] Optional. Contains the id of allocated IP address ranges associated with the private service access connection for example, "test-default" associated with IP range 10.0.0.0/29.
   /// [zones] Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
-  InstanceMemcacheV1beta2Args({
+  const InstanceMemcacheV1beta2Args({
     this.authorizedNetwork,
     this.displayName,
     required this.instanceId,

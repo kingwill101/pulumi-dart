@@ -11,7 +11,7 @@ class GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime {
   /// Creates a new [GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime].
   /// [hours] Starting hour of the 10-hour window for updates
   /// [minutes] Starting minute of the 10-hour window for updates
-  GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime({
+  const GetDomainOffPeakWindowOptionsOffPeakWindowWindowStartTime({
     required this.hours,
     required this.minutes,
   });

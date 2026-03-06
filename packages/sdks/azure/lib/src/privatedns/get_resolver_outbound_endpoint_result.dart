@@ -21,7 +21,7 @@ class GetResolverOutboundEndpointResult {
   /// [privateDnsResolverId] Required.
   /// [subnetId] The ID of the Subnet that is linked to the Private DNS Resolver Outbound Endpoint.
   /// [tags] The tags assigned to the Private DNS Resolver Outbound Endpoint.
-  GetResolverOutboundEndpointResult({
+  const GetResolverOutboundEndpointResult({
     required this.id,
     required this.location,
     required this.name,

@@ -68,7 +68,7 @@ class GetDBClusterLakeVersionsVersion {
   /// [vpcId] The vpc id.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID  of the resource.
-  GetDBClusterLakeVersionsVersion({
+  const GetDBClusterLakeVersionsVersion({
     required this.commodityCode,
     required this.computeResource,
     required this.connectionString,

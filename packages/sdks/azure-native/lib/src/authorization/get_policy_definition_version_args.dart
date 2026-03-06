@@ -15,7 +15,7 @@ class GetPolicyDefinitionVersionArgs {
   /// Creates a new [GetPolicyDefinitionVersionArgs].
   /// [policyDefinitionName] The name of the policy definition.
   /// [policyDefinitionVersion] The policy definition version.  The format is x.y.z where x is the major version number, y is the minor version number, and z is the patch number
-  GetPolicyDefinitionVersionArgs({
+  const GetPolicyDefinitionVersionArgs({
     required this.policyDefinitionName,
     required this.policyDefinitionVersion,
   });

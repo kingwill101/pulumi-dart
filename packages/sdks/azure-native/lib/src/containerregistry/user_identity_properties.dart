@@ -11,7 +11,7 @@ class UserIdentityProperties {
   /// Creates a new [UserIdentityProperties].
   /// [clientId] The client id of user assigned identity.
   /// [principalId] The principal id of user assigned identity.
-  UserIdentityProperties({
+  const UserIdentityProperties({
     this.clientId,
     this.principalId,
   });

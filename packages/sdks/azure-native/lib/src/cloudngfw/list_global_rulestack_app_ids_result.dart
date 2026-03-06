@@ -11,7 +11,7 @@ class ListGlobalRulestackAppIdsResult {
   /// Creates a new [ListGlobalRulestackAppIdsResult].
   /// [nextLink] next Link
   /// [value] List of AppIds
-  ListGlobalRulestackAppIdsResult({
+  const ListGlobalRulestackAppIdsResult({
     this.nextLink,
     required this.value,
   });

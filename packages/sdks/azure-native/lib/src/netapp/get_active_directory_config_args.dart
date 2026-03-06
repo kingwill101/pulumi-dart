@@ -15,7 +15,7 @@ class GetActiveDirectoryConfigArgs {
   /// Creates a new [GetActiveDirectoryConfigArgs].
   /// [activeDirectoryConfigName] The name of the ActiveDirectoryConfig
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetActiveDirectoryConfigArgs({
+  const GetActiveDirectoryConfigArgs({
     required this.activeDirectoryConfigName,
     required this.resourceGroupName,
   });

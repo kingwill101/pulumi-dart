@@ -39,7 +39,7 @@ class MonitorArgs {
   /// [skuName] The name which should be used for this sku.
   /// [tags] A mapping of tags which should be assigned to the Datadog Monitor.
   /// [user] A `user` block as defined below.
-  MonitorArgs({
+  const MonitorArgs({
     required this.datadogOrganization,
     this.identity,
     this.location,

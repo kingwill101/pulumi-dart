@@ -12,7 +12,7 @@ class GetAdbsNationalCharacterSetsArgs {
 
   /// Creates a new [GetAdbsNationalCharacterSetsArgs].
   /// [location] The Azure Region to query for the national character sets in.
-  GetAdbsNationalCharacterSetsArgs({
+  const GetAdbsNationalCharacterSetsArgs({
     required this.location,
   });
 

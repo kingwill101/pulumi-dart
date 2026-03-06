@@ -11,7 +11,7 @@ class ConfigSignInPhoneNumber {
   /// Creates a new [ConfigSignInPhoneNumber].
   /// [enabled] Whether phone number auth is enabled for the project or not.
   /// [testPhoneNumbers] A map of &lt;test phone number, fake code&gt; that can be used for phone auth testing.
-  ConfigSignInPhoneNumber({
+  const ConfigSignInPhoneNumber({
     required this.enabled,
     this.testPhoneNumbers,
   });

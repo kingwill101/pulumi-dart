@@ -25,7 +25,7 @@ class GetManagementServerResult {
   /// [oauth2ClientId] Required.
   /// [project] Required.
   /// [type] Required.
-  GetManagementServerResult({
+  const GetManagementServerResult({
     required this.id,
     required this.location,
     required this.managementUris,

@@ -28,7 +28,7 @@ class GetAccountSettingsResult {
   /// [managed] Enables monitoring for connectivity, response, and total request time.
   /// [networkHelper] Enables network helper across all users by default for new Linodes and Linode Configs.
   /// [objectStorage] A string describing the status of this account’s Object Storage service enrollment.
-  GetAccountSettingsResult({
+  const GetAccountSettingsResult({
     required this.backupsEnabled,
     required this.id,
     required this.interfacesForNewLinodes,

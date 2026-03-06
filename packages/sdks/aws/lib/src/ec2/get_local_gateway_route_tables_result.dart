@@ -19,7 +19,7 @@ class GetLocalGatewayRouteTablesResult {
   /// [ids] Set of Local Gateway Route Table identifiers
   /// [region] Required.
   /// [tags] Required.
-  GetLocalGatewayRouteTablesResult({
+  const GetLocalGatewayRouteTablesResult({
     this.filters,
     required this.id,
     required this.ids,

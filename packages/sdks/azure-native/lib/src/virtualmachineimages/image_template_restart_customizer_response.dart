@@ -22,7 +22,7 @@ class ImageTemplateRestartCustomizerResponse {
   /// [restartCommand] Command to execute the restart [Default: 'shutdown /r /f /t 0 /c "packer restart"']
   /// [restartTimeout] Restart timeout specified as a string of magnitude and unit, e.g. '5m' (5 minutes) or '2h' (2 hours) [Default: '5m']
   /// [type] The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
-  ImageTemplateRestartCustomizerResponse({
+  const ImageTemplateRestartCustomizerResponse({
     this.name,
     this.restartCheckCommand,
     this.restartCommand,

@@ -21,7 +21,7 @@ class RestorePointArgs {
   /// [excludedDisks] A list of disks that will be excluded from the Virtual Machine Restore Point. Changing this forces a new resource to be created.
   /// [name] Specifies the name of the Virtual Machine Restore Point. Changing this forces a new resource to be created.
   /// [virtualMachineRestorePointCollectionId] Specifies the ID of the Virtual Machine Restore Point Collection the Virtual Machine Restore Point will be associated with. Changing this forces a new resource to be created.
-  RestorePointArgs({
+  const RestorePointArgs({
     this.crashConsistencyModeEnabled,
     this.excludedDisks,
     this.name,

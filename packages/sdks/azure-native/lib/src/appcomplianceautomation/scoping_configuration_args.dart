@@ -19,7 +19,7 @@ class ScopingConfigurationArgs {
   /// [answers] List of scoping question answers.
   /// [reportName] Report Name.
   /// [scopingConfigurationName] The scoping configuration of the specific report.
-  ScopingConfigurationArgs({
+  const ScopingConfigurationArgs({
     this.answers,
     required this.reportName,
     this.scopingConfigurationName,

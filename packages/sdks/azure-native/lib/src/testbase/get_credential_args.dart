@@ -18,7 +18,7 @@ class GetCredentialArgs {
   /// [credentialName] The credential resource name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetCredentialArgs({
+  const GetCredentialArgs({
     required this.credentialName,
     required this.resourceGroupName,
     required this.testBaseAccountName,

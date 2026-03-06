@@ -31,7 +31,7 @@ class PostureArgs {
   /// [policySets] List of policy sets for the posture.
   /// [postureId] Id of the posture. It is an immutable field.
   /// [state] State of the posture. Update to state field should not be triggered along with
-  PostureArgs({
+  const PostureArgs({
     this.description,
     required this.location,
     required this.parent,

@@ -12,7 +12,7 @@ class DelegationPropertiesResponse {
   /// Creates a new [DelegationPropertiesResponse].
   /// [provisioningState] The current provisioning state.
   /// [serviceName] The service name to which the NVA is delegated.
-  DelegationPropertiesResponse({
+  const DelegationPropertiesResponse({
     required this.provisioningState,
     this.serviceName,
   });

@@ -61,7 +61,7 @@ class RegionUrlMapPathMatcherPathRuleRouteAction {
   /// [timeout] Specifies the timeout for the selected route. Timeout is computed from the time
   /// [urlRewrite] The spec to modify the URL of the request, prior to forwarding the request to
   /// [weightedBackendServices] A list of weighted backend services to send traffic to when a route match
-  RegionUrlMapPathMatcherPathRuleRouteAction({
+  const RegionUrlMapPathMatcherPathRuleRouteAction({
     this.corsPolicy,
     this.faultInjectionPolicy,
     this.requestMirrorPolicy,

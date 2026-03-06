@@ -14,7 +14,7 @@ class V3CustomDomainCertConfig {
   /// [certName] Certificate Name
   /// [certificate] PEM format certificate
   /// [privateKey] Private Key in PEM format
-  V3CustomDomainCertConfig({
+  const V3CustomDomainCertConfig({
     this.certName,
     this.certificate,
     this.privateKey,

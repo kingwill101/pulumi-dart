@@ -14,7 +14,7 @@ class SyntheticTaskCommonSettingCustomHost {
   /// Creates a new [SyntheticTaskCommonSettingCustomHost].
   /// [hosts] The host list. See `hosts` below.
   /// [selectType] Selection method:
-  SyntheticTaskCommonSettingCustomHost({
+  const SyntheticTaskCommonSettingCustomHost({
     required this.hosts,
     required this.selectType,
   });

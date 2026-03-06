@@ -16,7 +16,7 @@ class GetDatasetAccessView {
   /// [datasetId] The dataset ID.
   /// [projectId] The ID of the project containing this table.
   /// [tableId] The ID of the table. The ID must contain only letters (a-z,
-  GetDatasetAccessView({
+  const GetDatasetAccessView({
     required this.datasetId,
     required this.projectId,
     required this.tableId,

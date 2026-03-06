@@ -9,7 +9,7 @@ class SearchIndexSchemaIndexSort {
 
   /// Creates a new [SearchIndexSchemaIndexSort].
   /// [sorters] Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
-  SearchIndexSchemaIndexSort({
+  const SearchIndexSchemaIndexSort({
     required this.sorters,
   });
 

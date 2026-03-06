@@ -13,7 +13,7 @@ class ImageOutputResource {
   /// Creates a new [ImageOutputResource].
   /// [amis] Set of objects with each Amazon Machine Image (AMI) created.
   /// [containers] Set of objects with each container image created and stored in the output repository.
-  ImageOutputResource({
+  const ImageOutputResource({
     this.amis,
     this.containers,
   });

@@ -8,7 +8,7 @@ class InstanceFromTemplateSchedulingOnInstanceStopAction {
 
   /// Creates a new [InstanceFromTemplateSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] If true, the contents of any attached Local SSD disks will be discarded.
-  InstanceFromTemplateSchedulingOnInstanceStopAction({
+  const InstanceFromTemplateSchedulingOnInstanceStopAction({
     this.discardLocalSsd,
   });
 

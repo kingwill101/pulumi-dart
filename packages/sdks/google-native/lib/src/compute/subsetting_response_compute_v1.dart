@@ -8,7 +8,7 @@ class SubsettingResponseComputeV1 {
 
   /// Creates a new [SubsettingResponseComputeV1].
   /// [policy] Required.
-  SubsettingResponseComputeV1({
+  const SubsettingResponseComputeV1({
     required this.policy,
   });
 

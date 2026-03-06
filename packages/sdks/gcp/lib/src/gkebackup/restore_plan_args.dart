@@ -42,7 +42,7 @@ class RestorePlanArgs {
   /// [name] The full name of the BackupPlan Resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [restoreConfig] Defines the configuration of Restores created via this RestorePlan.
-  RestorePlanArgs({
+  const RestorePlanArgs({
     required this.backupPlan,
     required this.cluster,
     this.description,

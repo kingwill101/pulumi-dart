@@ -9,7 +9,7 @@ class GetClusterGkeAutoUpgradeConfig {
 
   /// Creates a new [GetClusterGkeAutoUpgradeConfig].
   /// [patchMode] The selected auto-upgrade patch type. Accepted values are:
-  GetClusterGkeAutoUpgradeConfig({
+  const GetClusterGkeAutoUpgradeConfig({
     required this.patchMode,
   });
 

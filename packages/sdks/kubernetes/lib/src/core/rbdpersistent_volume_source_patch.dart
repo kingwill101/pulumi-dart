@@ -31,7 +31,7 @@ class RBDPersistentVolumeSourcePatch {
   /// [readOnly] readOnly here will force the ReadOnly setting in VolumeMounts. Defaults to false. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
   /// [secretRef] secretRef is name of the authentication secret for RBDUser. If provided overrides keyring. Default is nil. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
   /// [user] user is the rados user name. Default is admin. More info: https://examples.k8s.io/volumes/rbd/README.md#how-to-use-it
-  RBDPersistentVolumeSourcePatch({
+  const RBDPersistentVolumeSourcePatch({
     this.fsType,
     this.image,
     this.keyring,

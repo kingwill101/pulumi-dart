@@ -26,7 +26,7 @@ class TopicAuthorizationRuleArgs {
   /// [name] Specifies the name of the ServiceBus Topic Authorization Rule resource. Changing this forces a new resource to be created.
   /// [send] Grants send access to this this Authorization Rule. Defaults to `false`.
   /// [topicId] Specifies the ID of the ServiceBus Topic. Changing this forces a new resource to be created.
-  TopicAuthorizationRuleArgs({
+  const TopicAuthorizationRuleArgs({
     this.listen,
     this.manage,
     this.name,

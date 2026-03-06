@@ -30,7 +30,7 @@ class BasicDefenseThresholdArgs {
   /// [internetIp] The Internet IP address.
   /// [isAuto] Whether it is the system default threshold. Value:
   /// [pps] The current message number cleaning threshold. Unit: pps.
-  BasicDefenseThresholdArgs({
+  const BasicDefenseThresholdArgs({
     this.bps,
     required this.ddosType,
     required this.instanceId,

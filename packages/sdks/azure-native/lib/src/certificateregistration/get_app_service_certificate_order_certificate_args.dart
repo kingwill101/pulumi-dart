@@ -18,7 +18,7 @@ class GetAppServiceCertificateOrderCertificateArgs {
   /// [certificateOrderName] Name of the certificate order.
   /// [name] Name of the certificate.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetAppServiceCertificateOrderCertificateArgs({
+  const GetAppServiceCertificateOrderCertificateArgs({
     required this.certificateOrderName,
     required this.name,
     required this.resourceGroupName,

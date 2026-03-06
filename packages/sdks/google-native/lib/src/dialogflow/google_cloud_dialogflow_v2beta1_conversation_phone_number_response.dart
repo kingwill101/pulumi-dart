@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse].
   /// [phoneNumber] The phone number to connect to this conversation.
-  GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse({
+  const GoogleCloudDialogflowV2beta1ConversationPhoneNumberResponse({
     required this.phoneNumber,
   });
 

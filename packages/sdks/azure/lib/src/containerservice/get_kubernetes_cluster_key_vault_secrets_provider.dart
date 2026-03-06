@@ -15,7 +15,7 @@ class GetKubernetesClusterKeyVaultSecretsProvider {
   /// [secretIdentities] A `secret_identity` block as documented below.
   /// [secretRotationEnabled] Is secret rotation enabled?
   /// [secretRotationInterval] The interval to poll for secret rotation.
-  GetKubernetesClusterKeyVaultSecretsProvider({
+  const GetKubernetesClusterKeyVaultSecretsProvider({
     required this.secretIdentities,
     required this.secretRotationEnabled,
     required this.secretRotationInterval,

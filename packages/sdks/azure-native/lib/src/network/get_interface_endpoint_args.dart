@@ -18,7 +18,7 @@ class GetInterfaceEndpointArgs {
   /// [expand] Expands referenced resources.
   /// [interfaceEndpointName] The name of the interface endpoint.
   /// [resourceGroupName] The name of the resource group.
-  GetInterfaceEndpointArgs({
+  const GetInterfaceEndpointArgs({
     this.expand,
     required this.interfaceEndpointName,
     required this.resourceGroupName,

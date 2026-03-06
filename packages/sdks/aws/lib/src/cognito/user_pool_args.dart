@@ -112,7 +112,7 @@ class UserPoolArgs {
   /// [usernameConfiguration] Configuration block for username configuration. Detailed below.
   /// [verificationMessageTemplate] Configuration block for verification message templates. Detailed below.
   /// [webAuthnConfiguration] Configuration block for web authn configuration. Detailed below.
-  UserPoolArgs({
+  const UserPoolArgs({
     this.accountRecoverySetting,
     this.adminCreateUserConfig,
     this.aliasAttributes,

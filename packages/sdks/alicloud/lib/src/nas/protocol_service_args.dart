@@ -42,7 +42,7 @@ class ProtocolServiceArgs {
   /// [protocolType] The protocol type supported by the protocol service.
   /// [vpcId] The VpcId of the protocol service, which must be consistent with the VPC of the file system.
   /// [vswitchId] The VSwitchId of the protocol service.
-  ProtocolServiceArgs({
+  const ProtocolServiceArgs({
     this.description,
     this.dryRun,
     required this.fileSystemId,

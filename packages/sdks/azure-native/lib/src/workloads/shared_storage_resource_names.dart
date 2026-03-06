@@ -12,7 +12,7 @@ class SharedStorageResourceNames {
   /// Creates a new [SharedStorageResourceNames].
   /// [sharedStorageAccountName] The full name of the shared storage account. If it is not provided, it will be defaulted to {SID}nfs{guid of 15 chars}.
   /// [sharedStorageAccountPrivateEndPointName] The full name of private end point for the shared storage account. If it is not provided, it will be defaulted to {storageAccountName}_pe
-  SharedStorageResourceNames({
+  const SharedStorageResourceNames({
     this.sharedStorageAccountName,
     this.sharedStorageAccountPrivateEndPointName,
   });

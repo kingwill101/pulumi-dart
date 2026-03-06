@@ -12,7 +12,7 @@ class TaskDefinitionLogConfiguration {
   /// [logDriver] Required.
   /// [options] Optional.
   /// [secretOptions] Optional.
-  TaskDefinitionLogConfiguration({
+  const TaskDefinitionLogConfiguration({
     required this.logDriver,
     this.options,
     this.secretOptions,

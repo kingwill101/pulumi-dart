@@ -31,7 +31,7 @@ class GetAFDTargetGroupResult {
   /// [systemData] Read only system data
   /// [targetEndpoints] TargetEndpoint list referenced by this target group.
   /// [type] Resource type.
-  GetAFDTargetGroupResult({
+  const GetAFDTargetGroupResult({
     required this.azureApiVersion,
     required this.deploymentStatus,
     required this.id,

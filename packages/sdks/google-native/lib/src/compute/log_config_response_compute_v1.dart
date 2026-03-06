@@ -18,7 +18,7 @@ class LogConfigResponseComputeV1 {
   /// [cloudAudit] This is deprecated and has no effect. Do not use.
   /// [counter] This is deprecated and has no effect. Do not use.
   /// [dataAccess] This is deprecated and has no effect. Do not use.
-  LogConfigResponseComputeV1({
+  const LogConfigResponseComputeV1({
     required this.cloudAudit,
     required this.counter,
     required this.dataAccess,

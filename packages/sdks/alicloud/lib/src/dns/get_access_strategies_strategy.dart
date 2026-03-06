@@ -80,7 +80,7 @@ class GetAccessStrategiesStrategy {
   /// [lines] List of source regions.
   /// [strategyMode] The type of the access policy.
   /// [strategyName] The name of the access policy.
-  GetAccessStrategiesStrategy({
+  const GetAccessStrategiesStrategy({
     required this.accessMode,
     required this.accessStrategyId,
     required this.createTime,

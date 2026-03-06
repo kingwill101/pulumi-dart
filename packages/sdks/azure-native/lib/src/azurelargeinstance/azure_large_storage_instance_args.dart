@@ -32,7 +32,7 @@ class AzureLargeStorageInstanceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageProperties] Specifies the storage properties for the AzureLargeStorage instance.
   /// [tags] Resource tags.
-  AzureLargeStorageInstanceArgs({
+  const AzureLargeStorageInstanceArgs({
     this.azureLargeStorageInstanceName,
     this.azureLargeStorageInstanceUniqueIdentifier,
     this.identity,

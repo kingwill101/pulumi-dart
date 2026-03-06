@@ -10,7 +10,7 @@ class DistributeVersionerSourceResponse {
 
   /// Creates a new [DistributeVersionerSourceResponse].
   /// [scheme] Version numbering scheme to be used.
-  DistributeVersionerSourceResponse({
+  const DistributeVersionerSourceResponse({
     required this.scheme,
   });
 

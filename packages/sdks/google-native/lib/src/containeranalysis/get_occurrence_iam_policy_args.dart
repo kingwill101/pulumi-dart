@@ -13,7 +13,7 @@ class GetOccurrenceIamPolicyArgs {
   /// Creates a new [GetOccurrenceIamPolicyArgs].
   /// [occurrenceId] Required.
   /// [project] Optional.
-  GetOccurrenceIamPolicyArgs({
+  const GetOccurrenceIamPolicyArgs({
     required this.occurrenceId,
     this.project,
   });

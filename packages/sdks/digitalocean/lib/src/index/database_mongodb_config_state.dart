@@ -24,7 +24,7 @@ class DatabaseMongodbConfigState {
   /// [slowOpThresholdMs] Operations that run for longer than this threshold are considered slow which are then recorded to the diagnostic logs. Higher log levels (verbosity) will record all operations regardless of this threshold on the primary node. &lt;em&gt;Changing this parameter will lead to a restart of the MongoDB service.&lt;/em&gt; Learn more [here](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-operationProfiling.slowOpThresholdMs).
   /// [transactionLifetimeLimitSeconds] Specifies the lifetime of multi-document transactions. Transactions that exceed this limit are considered expired and will be aborted by a periodic cleanup process. The cleanup process runs every `transactionLifetimeLimitSeconds/2 seconds` or at least once every 60 seconds. &lt;em&gt;Changing this parameter will lead to a restart of the MongoDB service.&lt;/em&gt; Learn more [here](https://www.mongodb.com/docs/manual/reference/parameters/#mongodb-parameter-param.transactionLifetimeLimitSeconds).
   /// [verbosity] The log message verbosity level. The verbosity level determines the amount of Informational and Debug messages MongoDB outputs. 0 includes informational messages while 1...5 increases the level to include debug messages. &lt;em&gt;Changing this parameter will lead to a restart of the MongoDB service.&lt;/em&gt; Learn more [here](https://www.mongodb.com/docs/manual/reference/configuration-options/#mongodb-setting-systemLog.verbosity).
-  DatabaseMongodbConfigState({
+  const DatabaseMongodbConfigState({
     this.clusterId,
     this.defaultReadConcern,
     this.defaultWriteConcern,

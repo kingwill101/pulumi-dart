@@ -24,7 +24,7 @@ class ListEndpointManagedProxyDetailsArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [service] The name of the service.
   /// [serviceName] The name of the service. It is an optional property, if not provided, service configuration tokens issue code would be by passed.
-  ListEndpointManagedProxyDetailsArgs({
+  const ListEndpointManagedProxyDetailsArgs({
     required this.endpointName,
     this.hostname,
     required this.resourceUri,

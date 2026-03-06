@@ -12,7 +12,7 @@ class InstanceFailoverReplicaSqladminV1beta4 {
   /// Creates a new [InstanceFailoverReplicaSqladminV1beta4].
   /// [available] The availability status of the failover replica. A false status indicates that the failover replica is out of sync. The primary instance can only failover to the failover replica when the status is true.
   /// [name] The name of the failover replica. If specified at instance creation, a failover replica is created for the instance. The name doesn't include the project ID.
-  InstanceFailoverReplicaSqladminV1beta4({
+  const InstanceFailoverReplicaSqladminV1beta4({
     this.available,
     this.name,
   });

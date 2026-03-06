@@ -23,7 +23,7 @@ class GetKMSKeyRingArgs {
   /// [location] The Google Cloud Platform location for the KeyRing.
   /// [name] The KeyRing's name.
   /// [project] The project in which the resource belongs. If it
-  GetKMSKeyRingArgs({
+  const GetKMSKeyRingArgs({
     required this.location,
     required this.name,
     this.project,

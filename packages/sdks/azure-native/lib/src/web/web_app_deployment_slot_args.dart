@@ -51,7 +51,7 @@ class WebAppDeploymentSlotArgs {
   /// [slot] Name of the deployment slot. If a slot is not specified, the API creates a deployment for the production slot.
   /// [startTime] Start time.
   /// [status] Deployment status.
-  WebAppDeploymentSlotArgs({
+  const WebAppDeploymentSlotArgs({
     this.active,
     this.author,
     this.authorEmail,

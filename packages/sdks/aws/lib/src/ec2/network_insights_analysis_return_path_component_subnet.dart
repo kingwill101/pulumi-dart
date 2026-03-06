@@ -13,7 +13,7 @@ class NetworkInsightsAnalysisReturnPathComponentSubnet {
   /// [arn] ARN of the Network Insights Analysis.
   /// [id] ID of the Network Insights Analysis.
   /// [name] Optional.
-  NetworkInsightsAnalysisReturnPathComponentSubnet({
+  const NetworkInsightsAnalysisReturnPathComponentSubnet({
     this.arn,
     this.id,
     this.name,

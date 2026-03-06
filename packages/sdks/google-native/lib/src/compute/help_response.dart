@@ -10,7 +10,7 @@ class HelpResponse {
 
   /// Creates a new [HelpResponse].
   /// [links] URL(s) pointing to additional information on handling the current error.
-  HelpResponse({
+  const HelpResponse({
     required this.links,
   });
 

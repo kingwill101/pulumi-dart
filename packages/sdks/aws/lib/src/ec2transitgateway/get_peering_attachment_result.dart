@@ -32,7 +32,7 @@ class GetPeeringAttachmentResult {
   /// [state] Required.
   /// [tags] Required.
   /// [transitGatewayId] Identifier of the local EC2 Transit Gateway.
-  GetPeeringAttachmentResult({
+  const GetPeeringAttachmentResult({
     required this.arn,
     this.filters,
     required this.id,

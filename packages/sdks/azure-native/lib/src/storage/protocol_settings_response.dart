@@ -10,7 +10,7 @@ class ProtocolSettingsResponse {
 
   /// Creates a new [ProtocolSettingsResponse].
   /// [smb] Setting for SMB protocol
-  ProtocolSettingsResponse({
+  const ProtocolSettingsResponse({
     this.smb,
   });
 

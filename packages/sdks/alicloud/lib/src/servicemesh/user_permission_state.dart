@@ -13,7 +13,7 @@ class UserPermissionState {
   /// Creates a new [UserPermissionState].
   /// [permissions] List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
   /// [subAccountUserId] The configuration of the Load Balancer. See the following `Block load_balancer`.
-  UserPermissionState({
+  const UserPermissionState({
     this.permissions,
     this.subAccountUserId,
   });

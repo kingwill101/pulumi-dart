@@ -16,7 +16,7 @@ class WorkspaceResponseProperties {
   /// [privateEndpointConnections] The list of private endpoint connections that are set up for this resource.
   /// [provisioningState] The provisioning state.
   /// [publicNetworkAccess] Control permission for data plane traffic coming from public networks while private endpoint is enabled.
-  WorkspaceResponseProperties({
+  const WorkspaceResponseProperties({
     required this.privateEndpointConnections,
     required this.provisioningState,
     required this.publicNetworkAccess,

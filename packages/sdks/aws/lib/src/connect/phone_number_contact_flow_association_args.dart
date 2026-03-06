@@ -21,7 +21,7 @@ class PhoneNumberContactFlowAssociationArgs {
   /// [instanceId] Amazon Connect instance ID.
   /// [phoneNumberId] Phone number ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PhoneNumberContactFlowAssociationArgs({
+  const PhoneNumberContactFlowAssociationArgs({
     required this.contactFlowId,
     required this.instanceId,
     required this.phoneNumberId,

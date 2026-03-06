@@ -9,7 +9,7 @@ class PeeringServiceSkuResponse {
 
   /// Creates a new [PeeringServiceSkuResponse].
   /// [name] The name of the peering service SKU.
-  PeeringServiceSkuResponse({
+  const PeeringServiceSkuResponse({
     this.name,
   });
 

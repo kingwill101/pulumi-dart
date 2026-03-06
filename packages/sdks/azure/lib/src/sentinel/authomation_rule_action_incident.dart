@@ -32,7 +32,7 @@ class AuthomationRuleActionIncident {
   /// [ownerId] The object ID of the entity this incident is assigned to.
   /// [severity] The severity to add to the incident. Possible values are `High`, `Informational`, `Low` and `Medium`.
   /// [status] The status to set to the incident. Possible values are: `Active`, `Closed`, `New`.
-  AuthomationRuleActionIncident({
+  const AuthomationRuleActionIncident({
     this.classification,
     this.classificationComment,
     this.labels,

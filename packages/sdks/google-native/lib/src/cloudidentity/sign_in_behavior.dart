@@ -10,7 +10,7 @@ class SignInBehavior {
 
   /// Creates a new [SignInBehavior].
   /// [redirectCondition] When to redirect sign-ins to the IdP.
-  SignInBehavior({
+  const SignInBehavior({
     this.redirectCondition,
   });
 

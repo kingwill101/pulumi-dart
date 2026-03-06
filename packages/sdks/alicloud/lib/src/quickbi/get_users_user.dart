@@ -35,7 +35,7 @@ class GetUsersUser {
   /// [phone] The phone number of the user.
   /// [userId] The ID of the User.
   /// [userType] The members of the organization of the type of role separately. Valid values: `Analyst`, `Developer` and `Visitor`.
-  GetUsersUser({
+  const GetUsersUser({
     required this.accountId,
     required this.accountName,
     required this.adminUser,

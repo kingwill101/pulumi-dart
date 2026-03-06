@@ -22,7 +22,7 @@ class AgentDetailsResponse {
   /// [disks] The disks.
   /// [fqdn] The machine FQDN.
   /// [machineId] The Id of the machine to which the agent is registered.
-  AgentDetailsResponse({
+  const AgentDetailsResponse({
     required this.agentId,
     required this.biosId,
     required this.disks,

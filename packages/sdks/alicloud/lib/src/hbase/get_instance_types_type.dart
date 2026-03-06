@@ -14,7 +14,7 @@ class GetInstanceTypesType {
   /// [cpuSize] Cpu size of the instance type.
   /// [memSize] Mem size of the instance type.
   /// [value] Name of the instance type.
-  GetInstanceTypesType({
+  const GetInstanceTypesType({
     required this.cpuSize,
     required this.memSize,
     required this.value,

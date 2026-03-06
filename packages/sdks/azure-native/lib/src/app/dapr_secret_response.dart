@@ -12,7 +12,7 @@ class DaprSecretResponse {
   /// Creates a new [DaprSecretResponse].
   /// [name] Secret Name.
   /// [value] Secret Value.
-  DaprSecretResponse({
+  const DaprSecretResponse({
     required this.name,
     required this.value,
   });

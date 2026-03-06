@@ -9,7 +9,7 @@ class AppAuthorizationConnectionTenant {
   /// Creates a new [AppAuthorizationConnectionTenant].
   /// [tenantDisplayName] Required.
   /// [tenantIdentifier] Required.
-  AppAuthorizationConnectionTenant({
+  const AppAuthorizationConnectionTenant({
     required this.tenantDisplayName,
     required this.tenantIdentifier,
   });

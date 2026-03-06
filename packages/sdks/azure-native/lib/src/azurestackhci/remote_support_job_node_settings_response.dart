@@ -21,7 +21,7 @@ class RemoteSupportJobNodeSettingsResponse {
   /// [createdAt] The timestamp when the node settings were created, in UTC.
   /// [state] The state of the remote support node.
   /// [updatedAt] The timestamp when the node settings were last updated, in UTC.
-  RemoteSupportJobNodeSettingsResponse({
+  const RemoteSupportJobNodeSettingsResponse({
     required this.connectionErrorMessage,
     required this.connectionStatus,
     required this.createdAt,

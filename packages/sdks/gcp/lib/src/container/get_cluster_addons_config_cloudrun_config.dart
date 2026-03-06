@@ -9,7 +9,7 @@ class GetClusterAddonsConfigCloudrunConfig {
   /// Creates a new [GetClusterAddonsConfigCloudrunConfig].
   /// [disabled] Required.
   /// [loadBalancerType] Required.
-  GetClusterAddonsConfigCloudrunConfig({
+  const GetClusterAddonsConfigCloudrunConfig({
     required this.disabled,
     required this.loadBalancerType,
   });

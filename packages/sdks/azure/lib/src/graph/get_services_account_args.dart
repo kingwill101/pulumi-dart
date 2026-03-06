@@ -15,7 +15,7 @@ class GetServicesAccountArgs {
   /// Creates a new [GetServicesAccountArgs].
   /// [name] The name of the Graph Services Account.
   /// [resourceGroupName] The name of the Resource Group where the Graph Services Account exists.
-  GetServicesAccountArgs({
+  const GetServicesAccountArgs({
     required this.name,
     required this.resourceGroupName,
   });

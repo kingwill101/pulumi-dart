@@ -11,7 +11,7 @@ class AgentPropertiesErrorDetailsResponse {
   /// Creates a new [AgentPropertiesErrorDetailsResponse].
   /// [code] Error code reported by Agent
   /// [message] Expanded description of reported error code
-  AgentPropertiesErrorDetailsResponse({
+  const AgentPropertiesErrorDetailsResponse({
     this.code,
     this.message,
   });

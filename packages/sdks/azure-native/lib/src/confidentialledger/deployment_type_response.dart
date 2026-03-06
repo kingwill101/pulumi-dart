@@ -12,7 +12,7 @@ class DeploymentTypeResponse {
   /// Creates a new [DeploymentTypeResponse].
   /// [appSourceUri] Source Uri containing ManagedCCF code
   /// [languageRuntime] Unique name for the Managed CCF.
-  DeploymentTypeResponse({
+  const DeploymentTypeResponse({
     this.appSourceUri,
     this.languageRuntime,
   });

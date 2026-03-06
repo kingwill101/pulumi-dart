@@ -11,7 +11,7 @@ class ProfileRewriteResponse {
   /// Creates a new [ProfileRewriteResponse].
   /// [rewriteContent] Enable to rewrite links in content in the response. Valid choices are: `enabled, disabled`
   /// [rewriteHeaders] Enable to rewrite headers in the response. Valid choices are: `enabled, disabled`
-  ProfileRewriteResponse({
+  const ProfileRewriteResponse({
     this.rewriteContent,
     this.rewriteHeaders,
   });

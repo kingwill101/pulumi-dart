@@ -35,7 +35,7 @@ class BlueprintArgs {
   /// [resourceScope] The scope of the resource. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}').
   /// [targetScope] The scope where this blueprint definition can be assigned.
   /// [versions] Published versions of this blueprint definition.
-  BlueprintArgs({
+  const BlueprintArgs({
     this.blueprintName,
     this.description,
     this.displayName,

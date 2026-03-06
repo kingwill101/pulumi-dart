@@ -11,7 +11,7 @@ class ManagedHardwareSecurityModuleNetworkAcls {
   /// Creates a new [ManagedHardwareSecurityModuleNetworkAcls].
   /// [bypass] Specifies which traffic can bypass the network rules. Possible values are `AzureServices` and `None`.
   /// [defaultAction] The Default Action to use. Possible values are `Allow` and `Deny`.
-  ManagedHardwareSecurityModuleNetworkAcls({
+  const ManagedHardwareSecurityModuleNetworkAcls({
     required this.bypass,
     required this.defaultAction,
   });

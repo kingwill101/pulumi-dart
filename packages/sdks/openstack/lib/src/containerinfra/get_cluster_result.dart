@@ -89,7 +89,7 @@ class GetClusterResult {
   /// [stackId] UUID of the Orchestration service stack.
   /// [updatedAt] The time at which cluster was updated.
   /// [userId] The user of the cluster.
-  GetClusterResult({
+  const GetClusterResult({
     required this.apiAddress,
     required this.clusterTemplateId,
     required this.coeVersion,

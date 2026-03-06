@@ -24,7 +24,7 @@ class InstanceGceSetupBootDisk {
   /// [diskSizeGb] Optional. The size of the boot disk in GB attached to this instance,
   /// [diskType] Optional. Indicates the type of the disk.
   /// [kmsKey] 'Optional. The KMS key used to encrypt the disks, only
-  InstanceGceSetupBootDisk({
+  const InstanceGceSetupBootDisk({
     this.diskEncryption,
     this.diskSizeGb,
     this.diskType,

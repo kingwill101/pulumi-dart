@@ -11,7 +11,7 @@ class ListenerRuleActionForward {
 
   /// Creates a new [ListenerRuleActionForward].
   /// [targetGroups] The target groups. Traffic matching the rule is forwarded to the specified target groups. With forward actions, you can assign a weight that controls the prioritization and selection of each target group. This means that requests are distributed to individual target groups based on their weights. For example, if two target groups have the same weight, each target group receives half of the traffic.
-  ListenerRuleActionForward({
+  const ListenerRuleActionForward({
     required this.targetGroups,
   });
 

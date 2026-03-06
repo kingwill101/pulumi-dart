@@ -11,7 +11,7 @@ class OntapStorageVirtualMachineActiveDirectoryConfiguration {
   /// Creates a new [OntapStorageVirtualMachineActiveDirectoryConfiguration].
   /// [netbiosName] The NetBIOS name of the Active Directory computer object that will be created for your SVM. This is often the same as the SVM name but can be different. AWS limits to 15 characters because of standard NetBIOS naming limits.
   /// [selfManagedActiveDirectoryConfiguration] Optional.
-  OntapStorageVirtualMachineActiveDirectoryConfiguration({
+  const OntapStorageVirtualMachineActiveDirectoryConfiguration({
     this.netbiosName,
     this.selfManagedActiveDirectoryConfiguration,
   });

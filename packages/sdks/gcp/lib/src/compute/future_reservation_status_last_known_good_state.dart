@@ -28,7 +28,7 @@ class FutureReservationStatusLastKnownGoodState {
   /// [lockTime] The lock time of the FutureReservation before an amendment was requested.
   /// [namePrefix] Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
   /// [procurementStatus] The status of the last known good state for the Future Reservation
-  FutureReservationStatusLastKnownGoodState({
+  const FutureReservationStatusLastKnownGoodState({
     this.description,
     this.existingMatchingUsageInfo,
     this.futureReservationSpecs,

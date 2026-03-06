@@ -9,7 +9,7 @@ class GetLogAnalyticExportThrottledRequestsResult {
 
   /// Creates a new [GetLogAnalyticExportThrottledRequestsResult].
   /// [properties] LogAnalyticsOutput
-  GetLogAnalyticExportThrottledRequestsResult({
+  const GetLogAnalyticExportThrottledRequestsResult({
     required this.properties,
   });
 

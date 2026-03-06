@@ -17,7 +17,7 @@ class GetWorkforcePoolIamPolicyArgs {
   /// Creates a new [GetWorkforcePoolIamPolicyArgs].
   /// [location] The location for the resource. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [workforcePoolId] Used to find the parent resource to bind the IAM policy to
-  GetWorkforcePoolIamPolicyArgs({
+  const GetWorkforcePoolIamPolicyArgs({
     this.location,
     required this.workforcePoolId,
   });

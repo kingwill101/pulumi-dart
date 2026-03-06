@@ -34,7 +34,7 @@ class SASAuthTypeConnectionProperties {
   /// [sharedUserList] Optional.
   /// [target] Optional.
   /// [useWorkspaceManagedIdentity] Optional.
-  SASAuthTypeConnectionProperties({
+  const SASAuthTypeConnectionProperties({
     required this.authType,
     this.category,
     this.credentials,

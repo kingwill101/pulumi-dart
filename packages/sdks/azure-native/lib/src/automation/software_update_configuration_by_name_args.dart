@@ -34,7 +34,7 @@ class SoftwareUpdateConfigurationByNameArgs {
   /// [softwareUpdateConfigurationName] The name of the software update configuration to be created.
   /// [tasks] Tasks information for the Software update configuration.
   /// [updateConfiguration] update specific properties for the Software update configuration
-  SoftwareUpdateConfigurationByNameArgs({
+  const SoftwareUpdateConfigurationByNameArgs({
     required this.automationAccountName,
     this.error,
     required this.resourceGroupName,

@@ -46,7 +46,7 @@ class ReprotectAgentDetailsResponse {
   /// [protectedItemCount] The protected item count.
   /// [vcenterId] The Vcenter Id.
   /// [version] The version.
-  ReprotectAgentDetailsResponse({
+  const ReprotectAgentDetailsResponse({
     required this.accessibleDatastores,
     required this.biosId,
     required this.fabricObjectId,

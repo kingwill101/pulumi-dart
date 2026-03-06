@@ -22,7 +22,7 @@ class PerNodeExtensionStateResponse {
   /// [name] Name of the node in HCI Cluster.
   /// [state] State of Arc Extension in this node.
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  PerNodeExtensionStateResponse({
+  const PerNodeExtensionStateResponse({
     required this.extension,
     required this.instanceView,
     required this.name,

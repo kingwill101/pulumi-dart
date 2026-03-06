@@ -36,7 +36,7 @@ class GetAnycastEipAddressesResult {
   /// [paymentType] Optional.
   /// [serviceLocation] Optional.
   /// [status] Optional.
-  GetAnycastEipAddressesResult({
+  const GetAnycastEipAddressesResult({
     required this.addresses,
     this.anycastEipAddressName,
     this.bindInstanceIds,

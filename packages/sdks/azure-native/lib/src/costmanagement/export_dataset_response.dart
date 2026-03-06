@@ -13,7 +13,7 @@ class ExportDatasetResponse {
   /// Creates a new [ExportDatasetResponse].
   /// [configuration] The export dataset configuration.
   /// [granularity] The granularity of rows in the export. Currently only 'Daily' is supported.
-  ExportDatasetResponse({
+  const ExportDatasetResponse({
     this.configuration,
     this.granularity,
   });

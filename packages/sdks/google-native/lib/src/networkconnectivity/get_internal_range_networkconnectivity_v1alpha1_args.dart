@@ -15,7 +15,7 @@ class GetInternalRangeNetworkconnectivityV1alpha1Args {
   /// [internalRangeId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetInternalRangeNetworkconnectivityV1alpha1Args({
+  const GetInternalRangeNetworkconnectivityV1alpha1Args({
     required this.internalRangeId,
     required this.location,
     this.project,

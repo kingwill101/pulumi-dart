@@ -39,7 +39,7 @@ class ClusterAutomatedBackupPolicy {
   /// [quantityBasedRetention] Quantity-based Backup retention policy to retain recent backups. Conflicts with 'time_based_retention', both can't be set together.
   /// [timeBasedRetention] Time-based Backup retention policy. Conflicts with 'quantity_based_retention', both can't be set together.
   /// [weeklySchedule] Weekly schedule for the Backup.
-  ClusterAutomatedBackupPolicy({
+  const ClusterAutomatedBackupPolicy({
     this.backupWindow,
     this.enabled,
     this.encryptionConfig,

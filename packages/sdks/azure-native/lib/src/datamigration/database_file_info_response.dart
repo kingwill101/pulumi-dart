@@ -27,7 +27,7 @@ class DatabaseFileInfoResponse {
   /// [physicalFullName] Operating-system full path of the file
   /// [restoreFullName] Suggested full path of the file for restoring
   /// [sizeMB] Size of the file in megabytes
-  DatabaseFileInfoResponse({
+  const DatabaseFileInfoResponse({
     this.databaseName,
     this.fileType,
     this.id,

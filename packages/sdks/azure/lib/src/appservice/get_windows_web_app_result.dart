@@ -122,7 +122,7 @@ class GetWindowsWebAppResult {
   /// [virtualNetworkBackupRestoreEnabled] Required.
   /// [virtualNetworkSubnetId] The subnet id which the Windows Web App is vNet Integrated with.
   /// [webdeployPublishBasicAuthenticationEnabled] Are the default WebDeploy Basic Authentication publishing credentials enabled.
-  GetWindowsWebAppResult({
+  const GetWindowsWebAppResult({
     required this.appSettings,
     required this.authSettings,
     required this.authSettingsV2s,

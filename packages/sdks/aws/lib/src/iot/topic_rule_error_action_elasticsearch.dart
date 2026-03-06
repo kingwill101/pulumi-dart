@@ -20,7 +20,7 @@ class TopicRuleErrorActionElasticsearch {
   /// [index] The Elasticsearch index where you want to store your data.
   /// [roleArn] The IAM role ARN that has access to Elasticsearch.
   /// [type] The type of document you are storing.
-  TopicRuleErrorActionElasticsearch({
+  const TopicRuleErrorActionElasticsearch({
     required this.endpoint,
     required this.id,
     required this.index,

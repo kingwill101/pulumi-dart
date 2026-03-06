@@ -9,7 +9,7 @@ class NameIdentifierResponse {
 
   /// Creates a new [NameIdentifierResponse].
   /// [name] Name of the object.
-  NameIdentifierResponse({
+  const NameIdentifierResponse({
     this.name,
   });
 

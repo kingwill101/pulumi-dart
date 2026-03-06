@@ -10,7 +10,7 @@ class EndpointPolicyEndpointMatcher {
 
   /// Creates a new [EndpointPolicyEndpointMatcher].
   /// [metadataLabelMatcher] The matcher is based on node metadata presented by xDS clients.
-  EndpointPolicyEndpointMatcher({
+  const EndpointPolicyEndpointMatcher({
     required this.metadataLabelMatcher,
   });
 

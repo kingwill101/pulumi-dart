@@ -24,7 +24,7 @@ class GetDeviceArgs {
   /// [deviceName] Device name
   /// [productName] Name of product.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDeviceArgs({
+  const GetDeviceArgs({
     required this.catalogName,
     required this.deviceGroupName,
     required this.deviceName,

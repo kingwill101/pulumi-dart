@@ -15,7 +15,7 @@ class SystemAssignedServiceIdentityResponse {
   /// [principalId] The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
   /// [tenantId] The tenant ID of the system assigned identity. This property will only be provided for a system assigned identity.
   /// [type] Type of managed service identity (either system assigned, or none).
-  SystemAssignedServiceIdentityResponse({
+  const SystemAssignedServiceIdentityResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

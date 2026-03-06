@@ -11,7 +11,7 @@ class ProfileContainerNetworkInterfaceIpConfiguration {
   /// Creates a new [ProfileContainerNetworkInterfaceIpConfiguration].
   /// [name] Specifies the name of the IP Configuration.
   /// [subnetId] Reference to the subnet associated with the IP Configuration.
-  ProfileContainerNetworkInterfaceIpConfiguration({
+  const ProfileContainerNetworkInterfaceIpConfiguration({
     required this.name,
     required this.subnetId,
   });

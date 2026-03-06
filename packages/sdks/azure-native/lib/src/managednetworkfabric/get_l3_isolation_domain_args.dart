@@ -15,7 +15,7 @@ class GetL3IsolationDomainArgs {
   /// Creates a new [GetL3IsolationDomainArgs].
   /// [l3IsolationDomainName] Name of the L3 Isolation Domain.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetL3IsolationDomainArgs({
+  const GetL3IsolationDomainArgs({
     required this.l3IsolationDomainName,
     required this.resourceGroupName,
   });

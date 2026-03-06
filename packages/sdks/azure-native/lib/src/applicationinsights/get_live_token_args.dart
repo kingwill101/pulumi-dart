@@ -12,7 +12,7 @@ class GetLiveTokenArgs {
 
   /// Creates a new [GetLiveTokenArgs].
   /// [resourceUri] The identifier of the resource.
-  GetLiveTokenArgs({
+  const GetLiveTokenArgs({
     required this.resourceUri,
   });
 

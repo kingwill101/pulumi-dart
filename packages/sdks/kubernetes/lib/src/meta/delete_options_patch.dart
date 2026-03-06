@@ -31,7 +31,7 @@ class DeleteOptionsPatch {
   /// [orphanDependents] Deprecated: please use the PropagationPolicy, this field will be deprecated in 1.7. Should the dependent objects be orphaned. If true/false, the "orphan" finalizer will be added to/removed from the object's finalizers list. Either this field or PropagationPolicy may be set, but not both.
   /// [preconditions] Must be fulfilled before a deletion is carried out. If not possible, a 409 Conflict status will be returned.
   /// [propagationPolicy] Whether and how garbage collection will be performed. Either this field or OrphanDependents may be set, but not both. The default policy is decided by the existing finalizer set in the metadata.finalizers and the resource-specific default policy. Acceptable values are: 'Orphan' - orphan the dependents; 'Background' - allow the garbage collector to delete the dependents in the background; 'Foreground' - a cascading policy that deletes all dependents in the foreground.
-  DeleteOptionsPatch({
+  const DeleteOptionsPatch({
     this.apiVersion,
     this.dryRun,
     this.gracePeriodSeconds,

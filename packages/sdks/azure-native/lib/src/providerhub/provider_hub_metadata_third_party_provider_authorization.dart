@@ -13,7 +13,7 @@ class ProviderHubMetadataThirdPartyProviderAuthorization {
   /// Creates a new [ProviderHubMetadataThirdPartyProviderAuthorization].
   /// [authorizations] The authorizations.
   /// [managedByTenantId] The managed by tenant id.
-  ProviderHubMetadataThirdPartyProviderAuthorization({
+  const ProviderHubMetadataThirdPartyProviderAuthorization({
     this.authorizations,
     this.managedByTenantId,
   });

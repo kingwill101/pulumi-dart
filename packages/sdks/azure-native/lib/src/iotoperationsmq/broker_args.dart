@@ -70,7 +70,7 @@ class BrokerArgs {
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  BrokerArgs({
+  const BrokerArgs({
     required this.authImage,
     required this.brokerImage,
     this.brokerName,

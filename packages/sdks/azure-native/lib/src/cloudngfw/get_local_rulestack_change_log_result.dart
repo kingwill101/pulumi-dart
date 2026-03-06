@@ -14,7 +14,7 @@ class GetLocalRulestackChangeLogResult {
   /// [changes] list of changes
   /// [lastCommitted] lastCommitted timestamp
   /// [lastModified] lastModified timestamp
-  GetLocalRulestackChangeLogResult({
+  const GetLocalRulestackChangeLogResult({
     required this.changes,
     this.lastCommitted,
     this.lastModified,

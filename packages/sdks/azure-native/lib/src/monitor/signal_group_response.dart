@@ -22,7 +22,7 @@ class SignalGroupResponse {
   /// [azureMonitorWorkspace] Azure Monitor Workspace Signal Group
   /// [azureResource] Azure Resource Signal Group
   /// [dependencies] Settings for dependency signals to control how the health state of child entities influences the health state of the parent entity.
-  SignalGroupResponse({
+  const SignalGroupResponse({
     this.azureLogAnalytics,
     this.azureMonitorWorkspace,
     this.azureResource,

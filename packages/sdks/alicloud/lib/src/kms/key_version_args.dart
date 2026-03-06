@@ -14,7 +14,7 @@ class KeyVersionArgs {
 
   /// Creates a new [KeyVersionArgs].
   /// [keyId] The id of the master key (CMK).
-  KeyVersionArgs({
+  const KeyVersionArgs({
     required this.keyId,
   });
 

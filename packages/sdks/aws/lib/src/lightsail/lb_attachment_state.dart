@@ -17,7 +17,7 @@ class LbAttachmentState {
   /// [instanceName] Name of the instance to attach to the load balancer.
   /// [lbName] Name of the Lightsail load balancer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LbAttachmentState({
+  const LbAttachmentState({
     this.instanceName,
     this.lbName,
     this.region,

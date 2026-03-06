@@ -18,7 +18,7 @@ class AmlFilesystemHsmSettingsResponse {
   /// [importPrefix] Only blobs in the non-logging container that start with this path/prefix get imported into the cluster namespace. This is only used during initial creation of the AML file system. It automatically creates an import job resource that can be deleted.
   /// [importPrefixesInitial] Only blobs in the non-logging container that start with one of the paths/prefixes in this array get imported into the cluster namespace. This is only used during initial creation of the AML file system and has '/' as the default value. It automatically creates an import job resource that can be deleted.
   /// [loggingContainer] Resource ID of storage container used for logging events and errors.  Must be a separate container in the same storage account as the hydration and archive container. The resource provider must have permission to create SAS tokens on the storage account.
-  AmlFilesystemHsmSettingsResponse({
+  const AmlFilesystemHsmSettingsResponse({
     required this.container,
     this.importPrefix,
     this.importPrefixesInitial,

@@ -18,7 +18,7 @@ class OriginClusterInformationResponse {
   /// [peerClusterName] ONTAP cluster name of external cluster hosting the origin volume
   /// [peerVolumeName] External origin volume name associated to this cache
   /// [peerVserverName] External Vserver (SVM) name  name of the SVM hosting the origin volume
-  OriginClusterInformationResponse({
+  const OriginClusterInformationResponse({
     required this.peerAddresses,
     required this.peerClusterName,
     required this.peerVolumeName,

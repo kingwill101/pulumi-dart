@@ -35,7 +35,7 @@ class SyncServerEndpointState {
   /// [storageSyncGroupId] The ID of the Storage Sync Group where the Storage Sync Server Endpoint should exist. Changing this forces a new Storage Sync Server Endpoint to be created.
   /// [tierFilesOlderThanDays] Files older than the specified age will be tiered to the cloud.
   /// [volumeFreeSpacePercent] What percentage of free space on the volume should be preserved? Defaults to `20`.
-  SyncServerEndpointState({
+  const SyncServerEndpointState({
     this.cloudTieringEnabled,
     this.initialDownloadPolicy,
     this.localCacheMode,

@@ -36,7 +36,7 @@ class GetApplicationResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] The tags of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApplicationResult({
+  const GetApplicationResult({
     this.allowUpdates,
     required this.azureApiVersion,
     this.defaultVersion,

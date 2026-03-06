@@ -11,7 +11,7 @@ class ReservedIpAssignmentVpcNat11 {
   /// [address] Required.
   /// [subnetId] Required.
   /// [vpcId] Required.
-  ReservedIpAssignmentVpcNat11({
+  const ReservedIpAssignmentVpcNat11({
     required this.address,
     required this.subnetId,
     required this.vpcId,

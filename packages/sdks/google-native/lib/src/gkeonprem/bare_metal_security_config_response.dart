@@ -10,7 +10,7 @@ class BareMetalSecurityConfigResponse {
 
   /// Creates a new [BareMetalSecurityConfigResponse].
   /// [authorization] Configures user access to the user cluster.
-  BareMetalSecurityConfigResponse({
+  const BareMetalSecurityConfigResponse({
     required this.authorization,
   });
 

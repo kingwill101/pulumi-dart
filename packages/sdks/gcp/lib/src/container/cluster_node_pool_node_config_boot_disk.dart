@@ -19,7 +19,7 @@ class ClusterNodePoolNodeConfigBootDisk {
   /// [provisionedIops] Configure disk IOPs. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
   /// [provisionedThroughput] Configure disk throughput. This is only valid if the `disk_type` is 'hyperdisk-balanced'. See [performance limit documention](https://cloud.google.com/compute/docs/disks/hyperdisk-perf-limits) for more information about valid values.
   /// [sizeGb] Size of the disk attached to each node, specified
-  ClusterNodePoolNodeConfigBootDisk({
+  const ClusterNodePoolNodeConfigBootDisk({
     this.diskType,
     this.provisionedIops,
     this.provisionedThroughput,

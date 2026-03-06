@@ -13,7 +13,7 @@ class ResourceMetricSource {
   /// Creates a new [ResourceMetricSource].
   /// [name] name is the name of the resource in question.
   /// [target] target specifies the target value for the given metric
-  ResourceMetricSource({
+  const ResourceMetricSource({
     required this.name,
     required this.target,
   });

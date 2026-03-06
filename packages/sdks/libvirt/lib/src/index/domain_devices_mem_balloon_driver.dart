@@ -17,7 +17,7 @@ class DomainDevicesMemBalloonDriver {
   /// [iommu] Configures the use of IOMMU support by the memory balloon device driver.
   /// [packed] Sets the packed setting for the memory balloon device driver, allowing for optimized memory usage.
   /// [pagePerVq] Configures the use of per-virtqueue pages for the memory balloon device driver, enhancing performance.
-  DomainDevicesMemBalloonDriver({
+  const DomainDevicesMemBalloonDriver({
     this.ats,
     this.iommu,
     this.packed,

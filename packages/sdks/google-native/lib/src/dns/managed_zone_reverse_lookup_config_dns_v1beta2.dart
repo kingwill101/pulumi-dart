@@ -7,7 +7,7 @@ class ManagedZoneReverseLookupConfigDnsV1beta2 {
 
   /// Creates a new [ManagedZoneReverseLookupConfigDnsV1beta2].
   /// [kind] Optional.
-  ManagedZoneReverseLookupConfigDnsV1beta2({
+  const ManagedZoneReverseLookupConfigDnsV1beta2({
     this.kind,
   });
 

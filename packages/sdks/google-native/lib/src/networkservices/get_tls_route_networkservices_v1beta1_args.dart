@@ -15,7 +15,7 @@ class GetTlsRouteNetworkservicesV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [tlsRouteId] Required.
-  GetTlsRouteNetworkservicesV1beta1Args({
+  const GetTlsRouteNetworkservicesV1beta1Args({
     required this.location,
     this.project,
     required this.tlsRouteId,

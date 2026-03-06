@@ -39,7 +39,7 @@ class DeveloperState {
   /// [organizatioName] Name of the Apigee organization in which the developer resides.
   /// [status] Status of the developer. Valid values are active and inactive.
   /// [userName] User name of the developer. Not used by Apigee hybrid.
-  DeveloperState({
+  const DeveloperState({
     this.attributes,
     this.createdAt,
     this.email,

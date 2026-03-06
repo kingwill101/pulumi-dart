@@ -18,7 +18,7 @@ class MaintenanceWindowResponse {
   /// [dayOfWeek] day of week for maintenance window
   /// [startHour] start hour for maintenance window
   /// [startMinute] start minute for maintenance window
-  MaintenanceWindowResponse({
+  const MaintenanceWindowResponse({
     this.customWindow,
     this.dayOfWeek,
     this.startHour,

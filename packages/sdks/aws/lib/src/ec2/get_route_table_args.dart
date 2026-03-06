@@ -31,7 +31,7 @@ class GetRouteTableArgs {
   /// [subnetId] ID of a Subnet which is connected to the Route Table (not exported if not passed as a parameter).
   /// [tags] Map of tags, each pair of which must exactly match a pair on the desired Route Table.
   /// [vpcId] ID of the VPC that the desired Route Table belongs to.
-  GetRouteTableArgs({
+  const GetRouteTableArgs({
     this.filters,
     this.gatewayId,
     this.region,

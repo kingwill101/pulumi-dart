@@ -28,7 +28,7 @@ class PackageArgs {
   /// [packageSource] Configuration block for the package source options.
   /// [packageType] The type of package. Valid values are `TXT-DICTIONARY`, `ZIP-PLUGIN`, `PACKAGE-LICENSE` and `PACKAGE-CONFIG`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PackageArgs({
+  const PackageArgs({
     this.engineVersion,
     this.packageDescription,
     required this.packageName,

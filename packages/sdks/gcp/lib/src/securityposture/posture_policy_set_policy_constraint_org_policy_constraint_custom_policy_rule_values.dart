@@ -11,7 +11,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues 
   /// Creates a new [PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues].
   /// [allowedValues] List of values allowed at this resource.
   /// [deniedValues] List of values denied at this resource.
-  PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues({
+  const PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomPolicyRuleValues({
     this.allowedValues,
     this.deniedValues,
   });

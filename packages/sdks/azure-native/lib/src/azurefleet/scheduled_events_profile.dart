@@ -14,7 +14,7 @@ class ScheduledEventsProfile {
   /// Creates a new [ScheduledEventsProfile].
   /// [osImageNotificationProfile] Specifies OS Image Scheduled Event related configurations.
   /// [terminateNotificationProfile] Specifies Terminate Scheduled Event related configurations.
-  ScheduledEventsProfile({
+  const ScheduledEventsProfile({
     this.osImageNotificationProfile,
     this.terminateNotificationProfile,
   });

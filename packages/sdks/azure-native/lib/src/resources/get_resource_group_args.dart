@@ -12,7 +12,7 @@ class GetResourceGroupArgs {
 
   /// Creates a new [GetResourceGroupArgs].
   /// [resourceGroupName] The name of the resource group to get. The name is case insensitive.
-  GetResourceGroupArgs({
+  const GetResourceGroupArgs({
     required this.resourceGroupName,
   });
 

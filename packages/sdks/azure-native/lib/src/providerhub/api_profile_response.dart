@@ -11,7 +11,7 @@ class ApiProfileResponse {
   /// Creates a new [ApiProfileResponse].
   /// [apiVersion] Api version.
   /// [profileVersion] Profile version.
-  ApiProfileResponse({
+  const ApiProfileResponse({
     this.apiVersion,
     this.profileVersion,
   });

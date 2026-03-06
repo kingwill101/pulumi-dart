@@ -8,7 +8,7 @@ class NodePoolManagementAutoRepairPolicy {
 
   /// Creates a new [NodePoolManagementAutoRepairPolicy].
   /// [restartNode] Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-  NodePoolManagementAutoRepairPolicy({
+  const NodePoolManagementAutoRepairPolicy({
     this.restartNode,
   });
 

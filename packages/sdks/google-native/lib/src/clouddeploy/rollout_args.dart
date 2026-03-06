@@ -44,7 +44,7 @@ class RolloutArgs {
   /// [rolloutId] Required. ID of the `Rollout`.
   /// [startingPhaseId] Optional. The starting phase ID for the `Rollout`. If empty the `Rollout` will start at the first phase.
   /// [targetId] The ID of Target to which this `Rollout` is deploying.
-  RolloutArgs({
+  const RolloutArgs({
     this.annotations,
     required this.deliveryPipelineId,
     this.description,

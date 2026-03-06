@@ -13,7 +13,7 @@ class StreamBackfillAllMysqlExcludedObjectsMysqlDatabase {
   /// Creates a new [StreamBackfillAllMysqlExcludedObjectsMysqlDatabase].
   /// [database] Database name.
   /// [mysqlTables] Tables in the database.
-  StreamBackfillAllMysqlExcludedObjectsMysqlDatabase({
+  const StreamBackfillAllMysqlExcludedObjectsMysqlDatabase({
     required this.database,
     this.mysqlTables,
   });

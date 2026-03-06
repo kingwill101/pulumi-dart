@@ -24,7 +24,7 @@ class WorkspaceExtendedAuditingPolicyState {
   /// [storageAccountAccessKeyIsSecondary] Is `storage_account_access_key` value the storage's secondary key?
   /// [storageEndpoint] The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
   /// [synapseWorkspaceId] The ID of the Synapse workspace to set the extended auditing policy. Changing this forces a new resource to be created.
-  WorkspaceExtendedAuditingPolicyState({
+  const WorkspaceExtendedAuditingPolicyState({
     this.logMonitoringEnabled,
     this.retentionInDays,
     this.storageAccountAccessKey,

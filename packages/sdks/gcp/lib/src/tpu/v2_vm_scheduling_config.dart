@@ -14,7 +14,7 @@ class V2VmSchedulingConfig {
   /// [preemptible] Defines whether the node is preemptible.
   /// [reserved] Whether the node is created under a reservation.
   /// [spot] Optional. Defines whether the node is Spot VM.
-  V2VmSchedulingConfig({
+  const V2VmSchedulingConfig({
     this.preemptible,
     this.reserved,
     this.spot,

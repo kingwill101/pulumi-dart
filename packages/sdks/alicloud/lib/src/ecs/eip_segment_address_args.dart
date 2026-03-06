@@ -51,7 +51,7 @@ class EipSegmentAddressArgs {
   /// [netmode] The network type. Set the value to `public`, which specifies the public network type.
   /// [resourceGroupId] The resource group ID.
   /// [zone] The zone of the contiguous EIP group.
-  EipSegmentAddressArgs({
+  const EipSegmentAddressArgs({
     this.bandwidth,
     required this.eipMask,
     this.internetChargeType,

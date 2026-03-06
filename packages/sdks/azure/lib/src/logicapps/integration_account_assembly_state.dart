@@ -30,7 +30,7 @@ class IntegrationAccountAssemblyState {
   /// [metadata] The metadata of the Logic App Integration Account Assembly.
   /// [name] The name which should be used for this Logic App Integration Account Assembly Artifact. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Logic App Integration Account Assembly Artifact should exist. Changing this forces a new resource to be created.
-  IntegrationAccountAssemblyState({
+  const IntegrationAccountAssemblyState({
     this.assemblyName,
     this.assemblyVersion,
     this.content,

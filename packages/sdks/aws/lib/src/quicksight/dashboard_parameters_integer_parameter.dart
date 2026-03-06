@@ -10,7 +10,7 @@ class DashboardParametersIntegerParameter {
   /// Creates a new [DashboardParametersIntegerParameter].
   /// [name] Display name for the dashboard.
   /// [values] Required.
-  DashboardParametersIntegerParameter({
+  const DashboardParametersIntegerParameter({
     required this.name,
     required this.values,
   });

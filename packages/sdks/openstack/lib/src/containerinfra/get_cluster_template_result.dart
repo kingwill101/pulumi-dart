@@ -119,7 +119,7 @@ class GetClusterTemplateResult {
   /// [updatedAt] The time at which cluster template was updated.
   /// [userId] The user of the cluster template.
   /// [volumeDriver] The name of the driver that is used for the volumes of the
-  GetClusterTemplateResult({
+  const GetClusterTemplateResult({
     required this.apiserverPort,
     required this.clusterDistro,
     required this.coe,

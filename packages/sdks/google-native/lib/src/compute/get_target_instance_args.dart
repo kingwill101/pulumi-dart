@@ -15,7 +15,7 @@ class GetTargetInstanceArgs {
   /// [project] Optional.
   /// [targetInstance] Required.
   /// [zone] Required.
-  GetTargetInstanceArgs({
+  const GetTargetInstanceArgs({
     this.project,
     required this.targetInstance,
     required this.zone,

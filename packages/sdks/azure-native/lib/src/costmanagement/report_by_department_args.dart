@@ -30,7 +30,7 @@ class ReportByDepartmentArgs {
   /// [format] The format of the report being delivered.
   /// [reportName] Report Name.
   /// [schedule] Has schedule information for the report.
-  ReportByDepartmentArgs({
+  const ReportByDepartmentArgs({
     required this.definition,
     required this.deliveryInfo,
     required this.departmentId,

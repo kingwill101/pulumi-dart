@@ -14,7 +14,7 @@ class ServiceBusAuthenticationResponse {
   /// [sasKey] Gets or sets the SAS key.
   /// [sasKeyName] Gets or sets the SAS key name.
   /// [type] Gets or sets the authentication type.
-  ServiceBusAuthenticationResponse({
+  const ServiceBusAuthenticationResponse({
     this.sasKey,
     this.sasKeyName,
     this.type,

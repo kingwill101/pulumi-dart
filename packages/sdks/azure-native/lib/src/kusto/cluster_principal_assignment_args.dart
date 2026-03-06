@@ -30,7 +30,7 @@ class ClusterPrincipalAssignmentArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [role] Cluster principal role.
   /// [tenantId] The tenant id of the principal
-  ClusterPrincipalAssignmentArgs({
+  const ClusterPrincipalAssignmentArgs({
     required this.clusterName,
     this.principalAssignmentName,
     required this.principalId,

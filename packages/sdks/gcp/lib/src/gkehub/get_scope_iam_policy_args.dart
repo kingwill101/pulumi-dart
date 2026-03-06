@@ -16,7 +16,7 @@ class GetScopeIamPolicyArgs {
   /// Creates a new [GetScopeIamPolicyArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [scopeId] Used to find the parent resource to bind the IAM policy to
-  GetScopeIamPolicyArgs({
+  const GetScopeIamPolicyArgs({
     this.project,
     required this.scopeId,
   });

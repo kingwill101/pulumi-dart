@@ -11,7 +11,7 @@ class GetResourceGroupsGroupRegionStatus {
   /// Creates a new [GetResourceGroupsGroupRegionStatus].
   /// [regionId] The region ID.
   /// [status] The status of the resource group. Valid values: `Creating`, `Deleted`, `Deleting`, `OK` and `PendingDelete`. **NOTE:** From version 1.114.0, `status` can be set to `Deleting`.
-  GetResourceGroupsGroupRegionStatus({
+  const GetResourceGroupsGroupRegionStatus({
     required this.regionId,
     required this.status,
   });

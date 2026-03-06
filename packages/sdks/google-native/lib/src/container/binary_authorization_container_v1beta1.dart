@@ -17,7 +17,7 @@ class BinaryAuthorizationContainerV1beta1 {
   /// [enabled] This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
   /// [evaluationMode] Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED.
   /// [policyBindings] Optional. Binauthz policies that apply to this cluster.
-  BinaryAuthorizationContainerV1beta1({
+  const BinaryAuthorizationContainerV1beta1({
     this.enabled,
     this.evaluationMode,
     this.policyBindings,

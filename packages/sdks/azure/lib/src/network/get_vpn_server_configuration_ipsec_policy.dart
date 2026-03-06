@@ -29,7 +29,7 @@ class GetVpnServerConfigurationIpsecPolicy {
   /// [pfsGroup] The Pfs Group, used in IKE Phase 2.
   /// [saDataSizeKilobytes] The IPSec Security Association payload size in KB for a Site-to-Site VPN tunnel.
   /// [saLifetimeSeconds] The IPSec Security Association lifetime in seconds for a Site-to-Site VPN tunnel.
-  GetVpnServerConfigurationIpsecPolicy({
+  const GetVpnServerConfigurationIpsecPolicy({
     required this.dhGroup,
     required this.ikeEncryption,
     required this.ikeIntegrity,

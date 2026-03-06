@@ -9,7 +9,7 @@ class GetInputDestinationVpc {
   /// Creates a new [GetInputDestinationVpc].
   /// [availabilityZone] Required.
   /// [networkInterfaceId] Required.
-  GetInputDestinationVpc({
+  const GetInputDestinationVpc({
     required this.availabilityZone,
     required this.networkInterfaceId,
   });

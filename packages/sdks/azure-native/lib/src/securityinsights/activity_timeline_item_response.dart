@@ -31,7 +31,7 @@ class ActivityTimelineItemResponse {
   /// [lastActivityTimeUTC] The time of the last activity in the grouping bucket.
   /// [queryId] The activity query id.
   /// [title] The activity timeline title.
-  ActivityTimelineItemResponse({
+  const ActivityTimelineItemResponse({
     required this.bucketEndTimeUTC,
     required this.bucketStartTimeUTC,
     required this.content,

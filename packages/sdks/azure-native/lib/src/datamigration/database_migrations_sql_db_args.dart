@@ -21,7 +21,7 @@ class DatabaseMigrationsSqlDbArgs {
   /// [resourceGroupName] Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [sqlDbInstanceName] Required.
   /// [targetDbName] The name of the target database.
-  DatabaseMigrationsSqlDbArgs({
+  const DatabaseMigrationsSqlDbArgs({
     this.properties,
     required this.resourceGroupName,
     required this.sqlDbInstanceName,

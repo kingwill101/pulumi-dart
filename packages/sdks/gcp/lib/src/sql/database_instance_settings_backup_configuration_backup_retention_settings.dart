@@ -12,7 +12,7 @@ class DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings {
   /// Creates a new [DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings].
   /// [retainedBackups] Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit
   /// [retentionUnit] The unit that 'retained_backups' represents. Defaults to `COUNT`.
-  DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings({
+  const DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings({
     required this.retainedBackups,
     this.retentionUnit,
   });

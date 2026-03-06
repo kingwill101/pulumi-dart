@@ -47,7 +47,7 @@ class GetVpcEndpointsEndpoint {
   /// [tags] Query the instance bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
   /// [vpcEndpointName] The name of Vpc Endpoint.
   /// [vpcId] The private network to which the terminal node belongs..
-  GetVpcEndpointsEndpoint({
+  const GetVpcEndpointsEndpoint({
     required this.bandwidth,
     required this.connectionStatus,
     required this.endpointBusinessStatus,

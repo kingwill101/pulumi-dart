@@ -18,7 +18,7 @@ class IpSecurityRestrictionRule {
   /// [description] Describe the IP restriction rule that is being sent to the container-app. This is an optional field.
   /// [ipAddressRange] CIDR notation to match incoming IP address
   /// [name] Name for the IP restriction rule.
-  IpSecurityRestrictionRule({
+  const IpSecurityRestrictionRule({
     required this.action,
     this.description,
     required this.ipAddressRange,

@@ -17,7 +17,7 @@ class GetWindowsWebAppAuthSettingGithub {
   /// [clientSecret] The OAuth 2.0 client secret used by the app for authentication.
   /// [clientSecretSettingName] The app setting name containing the OAuth 2.0 client secret used by the app for authentication.
   /// [oauthScopes] A list of OAuth 2.0 scopes requested as part of Microsoft Account authentication.
-  GetWindowsWebAppAuthSettingGithub({
+  const GetWindowsWebAppAuthSettingGithub({
     required this.clientId,
     required this.clientSecret,
     required this.clientSecretSettingName,

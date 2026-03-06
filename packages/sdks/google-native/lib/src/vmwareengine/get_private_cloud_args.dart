@@ -15,7 +15,7 @@ class GetPrivateCloudArgs {
   /// [location] Required.
   /// [privateCloudId] Required.
   /// [project] Optional.
-  GetPrivateCloudArgs({
+  const GetPrivateCloudArgs({
     required this.location,
     required this.privateCloudId,
     this.project,

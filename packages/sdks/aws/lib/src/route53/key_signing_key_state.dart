@@ -50,7 +50,7 @@ class KeySigningKeyState {
   /// [signingAlgorithmMnemonic] A string used to represent the signing algorithm. This value must follow the guidelines provided by [RFC-8624 Section 3.1](https://tools.ietf.org/html/rfc8624#section-3.1).
   /// [signingAlgorithmType] An integer used to represent the signing algorithm. This value must follow the guidelines provided by [RFC-8624 Section 3.1](https://tools.ietf.org/html/rfc8624#section-3.1).
   /// [status] Status of the key-signing key (KSK). Valid values: `ACTIVE`, `INACTIVE`. Defaults to `ACTIVE`.
-  KeySigningKeyState({
+  const KeySigningKeyState({
     this.digestAlgorithmMnemonic,
     this.digestAlgorithmType,
     this.digestValue,

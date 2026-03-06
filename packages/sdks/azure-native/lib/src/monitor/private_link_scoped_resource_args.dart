@@ -27,7 +27,7 @@ class PrivateLinkScopedResourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scopeName] The name of the Azure Monitor PrivateLinkScope resource.
   /// [subscriptionLocation] The location of a scoped subscription. Only needs to be specified for metric dataplane subscriptions.
-  PrivateLinkScopedResourceArgs({
+  const PrivateLinkScopedResourceArgs({
     this.kind,
     this.linkedResourceId,
     this.name,

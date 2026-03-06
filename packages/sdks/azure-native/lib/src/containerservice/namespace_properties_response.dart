@@ -32,7 +32,7 @@ class NamespacePropertiesResponse {
   /// [labels] The labels of managed namespace.
   /// [portalFqdn] The special FQDN used by the Azure Portal to access the Managed Cluster. This FQDN is for use only by the Azure Portal and should not be used by other clients. The Azure Portal requires certain Cross-Origin Resource Sharing (CORS) headers to be sent in some responses, which Kubernetes APIServer doesn't handle by default. This special FQDN supports CORS, allowing the Azure Portal to function properly.
   /// [provisioningState] The current provisioning state of the namespace.
-  NamespacePropertiesResponse({
+  const NamespacePropertiesResponse({
     this.adoptionPolicy,
     this.annotations,
     this.defaultNetworkPolicy,

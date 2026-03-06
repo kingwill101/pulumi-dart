@@ -48,7 +48,7 @@ class ArtifactSourceArgs {
   /// [status] Indicates if the artifact source is enabled (values: Enabled, Disabled).
   /// [tags] The tags of the resource.
   /// [uri] The artifact source's URI.
-  ArtifactSourceArgs({
+  const ArtifactSourceArgs({
     this.armTemplateFolderPath,
     this.branchRef,
     this.displayName,

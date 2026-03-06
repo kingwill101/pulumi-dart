@@ -13,7 +13,7 @@ class SettingsEmailNotificationSettings {
   /// Creates a new [SettingsEmailNotificationSettings].
   /// [customNotificationBehavior] CustomNotificationBehavior provides granular control over email notification delivery. Allows admins to selectively enable/disable notifications for specific events and specific personas.
   /// [disableAllNotifications] This option indicates that all email notifications are disabled.
-  SettingsEmailNotificationSettings({
+  const SettingsEmailNotificationSettings({
     this.customNotificationBehavior,
     this.disableAllNotifications,
   });

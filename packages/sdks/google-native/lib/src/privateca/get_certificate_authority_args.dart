@@ -17,7 +17,7 @@ class GetCertificateAuthorityArgs {
   /// [certificateAuthorityId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCertificateAuthorityArgs({
+  const GetCertificateAuthorityArgs({
     required this.caPoolId,
     required this.certificateAuthorityId,
     required this.location,

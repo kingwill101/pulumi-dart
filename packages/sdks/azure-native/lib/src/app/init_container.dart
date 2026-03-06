@@ -33,7 +33,7 @@ class InitContainer {
   /// [name] Custom container name.
   /// [resources] Container resource requirements.
   /// [volumeMounts] Container volume mounts.
-  InitContainer({
+  const InitContainer({
     this.args,
     this.command,
     this.env,

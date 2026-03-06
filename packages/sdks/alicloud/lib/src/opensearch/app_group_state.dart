@@ -41,7 +41,7 @@ class AppGroupState {
   /// [quota] Quota information.  The details see Block quota.
   /// [status] The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
   /// [type] Application type. Valid Values: `standard`, `enhanced`.
-  AppGroupState({
+  const AppGroupState({
     this.appGroupName,
     this.chargeWay,
     this.currentVersion,

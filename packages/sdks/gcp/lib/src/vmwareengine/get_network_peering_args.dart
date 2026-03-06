@@ -14,7 +14,7 @@ class GetNetworkPeeringArgs {
   /// Creates a new [GetNetworkPeeringArgs].
   /// [name] Name of the resource.
   /// [project] Optional.
-  GetNetworkPeeringArgs({
+  const GetNetworkPeeringArgs({
     required this.name,
     this.project,
   });

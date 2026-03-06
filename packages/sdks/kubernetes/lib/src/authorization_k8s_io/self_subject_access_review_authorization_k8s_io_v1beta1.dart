@@ -23,7 +23,7 @@ class SelfSubjectAccessReviewAuthorizationK8sIoV1beta1 {
   /// [metadata] Optional.
   /// [spec] Spec holds information about the request being evaluated.  user and groups must be empty
   /// [status] Status is filled in by the server and indicates whether the request is allowed or not
-  SelfSubjectAccessReviewAuthorizationK8sIoV1beta1({
+  const SelfSubjectAccessReviewAuthorizationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

@@ -33,7 +33,7 @@ class NicDetailResponse {
   /// [interfaceDescription] Interface Description of NIC
   /// [ip4Address] Subnet Mask of NIC
   /// [subnetMask] Subnet Mask of NIC
-  NicDetailResponse({
+  const NicDetailResponse({
     this.adapterName,
     this.componentId,
     this.defaultGateway,

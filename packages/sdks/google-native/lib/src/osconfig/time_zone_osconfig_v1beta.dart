@@ -12,7 +12,7 @@ class TimeZoneOsconfigV1beta {
   /// Creates a new [TimeZoneOsconfigV1beta].
   /// [id] IANA Time Zone Database time zone, e.g. "America/New_York".
   /// [version] Optional. IANA Time Zone Database version number, e.g. "2019a".
-  TimeZoneOsconfigV1beta({
+  const TimeZoneOsconfigV1beta({
     this.id,
     this.version,
   });

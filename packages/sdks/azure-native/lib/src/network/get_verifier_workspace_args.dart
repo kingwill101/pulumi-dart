@@ -18,7 +18,7 @@ class GetVerifierWorkspaceArgs {
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
   /// [workspaceName] Workspace name.
-  GetVerifierWorkspaceArgs({
+  const GetVerifierWorkspaceArgs({
     required this.networkManagerName,
     required this.resourceGroupName,
     required this.workspaceName,

@@ -15,7 +15,7 @@ class AccountManagementArgs {
   /// Creates a new [AccountManagementArgs].
   /// [name] The name of the Account.
   /// [region] The region code of the account.  One of: `us01`, `eu01`.
-  AccountManagementArgs({
+  const AccountManagementArgs({
     this.name,
     required this.region,
   });

@@ -13,7 +13,7 @@ class JFrogEnvironmentData {
   /// Creates a new [JFrogEnvironmentData].
   /// [environmentType] The type of the environment data.
   /// [scanInterval] Scan interval in hours (value should be between 1-hour to 24-hours)
-  JFrogEnvironmentData({
+  const JFrogEnvironmentData({
     required this.environmentType,
     this.scanInterval,
   });

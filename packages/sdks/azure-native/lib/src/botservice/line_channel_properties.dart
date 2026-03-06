@@ -10,7 +10,7 @@ class LineChannelProperties {
 
   /// Creates a new [LineChannelProperties].
   /// [lineRegistrations] The list of line channel registrations
-  LineChannelProperties({
+  const LineChannelProperties({
     required this.lineRegistrations,
   });
 

@@ -28,7 +28,7 @@ class ScaleSetStandbyPoolState {
   /// [resourceGroupName] Specifies the name of the Resource Group where the Standby Pool should exist. Changing this forces a new Standby Pool to be created.
   /// [tags] A mapping of tags which should be assigned to the Standby Pool.
   /// [virtualMachineState] Specifies the desired state of virtual machines in the pool. Possible values are `Deallocated`, `Hibernated` and `Running`.
-  ScaleSetStandbyPoolState({
+  const ScaleSetStandbyPoolState({
     this.attachedVirtualMachineScaleSetId,
     this.elasticityProfile,
     this.location,

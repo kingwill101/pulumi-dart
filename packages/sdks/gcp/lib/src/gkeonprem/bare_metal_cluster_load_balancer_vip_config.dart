@@ -11,7 +11,7 @@ class BareMetalClusterLoadBalancerVipConfig {
   /// Creates a new [BareMetalClusterLoadBalancerVipConfig].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this Bare Metal User Cluster.
   /// [ingressVip] The VIP which you previously set aside for ingress traffic into this Bare Metal User Cluster.
-  BareMetalClusterLoadBalancerVipConfig({
+  const BareMetalClusterLoadBalancerVipConfig({
     required this.controlPlaneVip,
     required this.ingressVip,
   });

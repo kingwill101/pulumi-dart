@@ -48,7 +48,7 @@ class GetWorkflowResult {
   /// [stateError] Error regarding the state of the workflow. For example, this field will have error details if the execution data is unavailable due to revoked KMS key permissions.
   /// [updateTime] The timestamp for when the workflow was last updated. This is a workflow-wide field and is not tied to a specific revision.
   /// [userEnvVars] Optional. User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
-  GetWorkflowResult({
+  const GetWorkflowResult({
     required this.callLogLevel,
     required this.createTime,
     required this.cryptoKeyName,

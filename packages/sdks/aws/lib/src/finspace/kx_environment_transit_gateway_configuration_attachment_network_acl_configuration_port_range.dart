@@ -11,7 +11,7 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationP
   /// Creates a new [KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange].
   /// [from] First port in the range.
   /// [to] Last port in the range.
-  KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange({
+  const KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationPortRange({
     required this.from,
     required this.to,
   });

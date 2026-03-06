@@ -65,7 +65,7 @@ class DataBoxCustomerDiskCopyProgressResponse {
   /// [totalBytesToProcess] Total amount of data to be processed by the job.
   /// [totalFilesToProcess] Total files to process
   /// [transferType] Transfer type of data
-  DataBoxCustomerDiskCopyProgressResponse({
+  const DataBoxCustomerDiskCopyProgressResponse({
     required this.accountId,
     required this.actions,
     required this.bytesProcessed,

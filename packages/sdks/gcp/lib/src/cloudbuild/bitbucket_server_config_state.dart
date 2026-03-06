@@ -52,7 +52,7 @@ class BitbucketServerConfigState {
   /// [sslCa] SSL certificate to use for requests to Bitbucket Server. The format should be PEM format but the extension can be one of .pem, .cer, or .crt.
   /// [username] Username of the account Cloud Build will use on Bitbucket Server.
   /// [webhookKey] Output only. UUID included in webhook requests. The UUID is used to look up the corresponding config.
-  BitbucketServerConfigState({
+  const BitbucketServerConfigState({
     this.apiKey,
     this.configId,
     this.connectedRepositories,

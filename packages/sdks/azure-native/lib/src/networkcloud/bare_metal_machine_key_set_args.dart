@@ -47,7 +47,7 @@ class BareMetalMachineKeySetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [userList] The unique list of permitted users.
-  BareMetalMachineKeySetArgs({
+  const BareMetalMachineKeySetArgs({
     required this.azureGroupId,
     this.bareMetalMachineKeySetName,
     required this.clusterName,

@@ -21,7 +21,7 @@ class ClusterState {
   /// [logicalRegionId] The ID of the namespace where you want to create the application. You can call the ListUserDefineRegion operation to query the namespace ID.
   /// [networkMode] The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
   /// [vpcId] The ID of the Virtual Private Cloud (VPC) for the cluster.
-  ClusterState({
+  const ClusterState({
     this.clusterName,
     this.clusterType,
     this.logicalRegionId,

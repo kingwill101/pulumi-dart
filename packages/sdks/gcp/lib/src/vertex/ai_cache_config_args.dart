@@ -16,7 +16,7 @@ class AiCacheConfigArgs {
   /// Creates a new [AiCacheConfigArgs].
   /// [disableCache] If set to true, disables GenAI caching. Otherwise caching is enabled.
   /// [project] The ID of the project in which the resource belongs.
-  AiCacheConfigArgs({
+  const AiCacheConfigArgs({
     required this.disableCache,
     this.project,
   });

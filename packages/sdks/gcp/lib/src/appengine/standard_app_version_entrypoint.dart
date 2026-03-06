@@ -8,7 +8,7 @@ class StandardAppVersionEntrypoint {
 
   /// Creates a new [StandardAppVersionEntrypoint].
   /// [shell] The format should be a shell command that can be fed to bash -c.
-  StandardAppVersionEntrypoint({
+  const StandardAppVersionEntrypoint({
     required this.shell,
   });
 

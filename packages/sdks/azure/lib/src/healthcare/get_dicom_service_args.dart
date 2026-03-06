@@ -15,7 +15,7 @@ class GetDicomServiceArgs {
   /// Creates a new [GetDicomServiceArgs].
   /// [name] The name of the Healthcare DICOM Service
   /// [workspaceId] The ID of the Healthcare Workspace in which the Healthcare DICOM Service exists.
-  GetDicomServiceArgs({
+  const GetDicomServiceArgs({
     required this.name,
     required this.workspaceId,
   });

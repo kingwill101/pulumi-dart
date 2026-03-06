@@ -21,7 +21,7 @@ class FrontdoorFirewallPolicyLogScrubbingScrubbingRule {
   /// [matchVariable] The variable to be scrubbed from the logs. Possible values include `QueryStringArgNames`, `RequestBodyJsonArgNames`, `RequestBodyPostArgNames`, `RequestCookieNames`, `RequestHeaderNames`, `RequestIPAddress`, or `RequestUri`.
   /// [operator] When the `match_variable` is a collection, operate on the `selector` to specify which elements in the collection this `scrubbing_rule` applies to. Possible values are `Equals` or `EqualsAny`. Defaults to `Equals`.
   /// [selector] When the `match_variable` is a collection, the `operator` is used to specify which elements in the collection this `scrubbing_rule` applies to.
-  FrontdoorFirewallPolicyLogScrubbingScrubbingRule({
+  const FrontdoorFirewallPolicyLogScrubbingScrubbingRule({
     this.enabled,
     required this.matchVariable,
     this.operator,

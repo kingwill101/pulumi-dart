@@ -18,7 +18,7 @@ class ContainerResourceMetricSourceAutoscalingV2beta1 {
   /// [name] name is the name of the resource in question.
   /// [targetAverageUtilization] targetAverageUtilization is the target value of the average of the resource metric across all relevant pods, represented as a percentage of the requested value of the resource for the pods.
   /// [targetAverageValue] targetAverageValue is the target value of the average of the resource metric across all relevant pods, as a raw value (instead of as a percentage of the request), similar to the "pods" metric source type.
-  ContainerResourceMetricSourceAutoscalingV2beta1({
+  const ContainerResourceMetricSourceAutoscalingV2beta1({
     required this.container,
     required this.name,
     this.targetAverageUtilization,

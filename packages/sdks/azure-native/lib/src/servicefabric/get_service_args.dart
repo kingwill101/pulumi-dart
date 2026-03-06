@@ -21,7 +21,7 @@ class GetServiceArgs {
   /// [clusterName] The name of the cluster resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the service resource in the format of {applicationName}~{serviceName}.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.applicationName,
     required this.clusterName,
     required this.resourceGroupName,

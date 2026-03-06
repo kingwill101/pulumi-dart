@@ -8,7 +8,7 @@ class GetFlowStreamConnectionStringResult {
 
   /// Creates a new [GetFlowStreamConnectionStringResult].
   /// [connectionString] The connection string for the specified streaming flow
-  GetFlowStreamConnectionStringResult({
+  const GetFlowStreamConnectionStringResult({
     this.connectionString,
   });
 

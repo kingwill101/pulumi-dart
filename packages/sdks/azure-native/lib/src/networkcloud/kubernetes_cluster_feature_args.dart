@@ -28,7 +28,7 @@ class KubernetesClusterFeatureArgs {
   /// [options] The configured options for the feature.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  KubernetesClusterFeatureArgs({
+  const KubernetesClusterFeatureArgs({
     this.featureName,
     required this.kubernetesClusterName,
     this.location,

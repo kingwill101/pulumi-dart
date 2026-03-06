@@ -14,7 +14,7 @@ class RocketMQInstanceNetworkInfoEndpoint {
   /// [endpointType] Access point type.
   /// [endpointUrl] Access point address.
   /// [ipWhiteLists] White list of access addresses.
-  RocketMQInstanceNetworkInfoEndpoint({
+  const RocketMQInstanceNetworkInfoEndpoint({
     this.endpointType,
     this.endpointUrl,
     this.ipWhiteLists,

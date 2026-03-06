@@ -9,7 +9,7 @@ class PredeployJobResponse {
 
   /// Creates a new [PredeployJobResponse].
   /// [actions] The custom actions that the predeploy Job executes.
-  PredeployJobResponse({
+  const PredeployJobResponse({
     required this.actions,
   });
 

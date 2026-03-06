@@ -39,7 +39,7 @@ class PrivateEndpointConnectionResponse {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] The tags of the resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  PrivateEndpointConnectionResponse({
+  const PrivateEndpointConnectionResponse({
     required this.etag,
     required this.groupIds,
     required this.id,

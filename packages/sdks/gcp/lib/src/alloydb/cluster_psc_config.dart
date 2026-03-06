@@ -13,7 +13,7 @@ class ClusterPscConfig {
   /// Creates a new [ClusterPscConfig].
   /// [pscEnabled] Create an instance that allows connections from Private Service Connect endpoints to the instance.
   /// [serviceOwnedProjectNumber] (Output)
-  ClusterPscConfig({
+  const ClusterPscConfig({
     this.pscEnabled,
     this.serviceOwnedProjectNumber,
   });

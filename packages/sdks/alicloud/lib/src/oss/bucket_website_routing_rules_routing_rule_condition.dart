@@ -18,7 +18,7 @@ class BucketWebsiteRoutingRulesRoutingRuleCondition {
   /// [includeHeaders] This rule can only be matched if the request contains the specified Header and the value is the specified value. You can specify up to 10 containers. See `include_headers` below.
   /// [keyPrefixEquals] Only objects that match this prefix can match this rule.
   /// [keySuffixEquals] Only objects that match this suffix can match this rule.
-  BucketWebsiteRoutingRulesRoutingRuleCondition({
+  const BucketWebsiteRoutingRulesRoutingRuleCondition({
     this.httpErrorCodeReturnedEquals,
     this.includeHeaders,
     this.keyPrefixEquals,

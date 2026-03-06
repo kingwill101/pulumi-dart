@@ -10,7 +10,7 @@ class GoogleCloudApigeeV1ProfileConfig {
 
   /// Creates a new [GoogleCloudApigeeV1ProfileConfig].
   /// [categories] List of categories of profile config.
-  GoogleCloudApigeeV1ProfileConfig({
+  const GoogleCloudApigeeV1ProfileConfig({
     this.categories,
   });
 

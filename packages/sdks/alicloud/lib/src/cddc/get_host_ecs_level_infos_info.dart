@@ -17,7 +17,7 @@ class GetHostEcsLevelInfosInfo {
   /// [ecsClass] The instance family of the host ecs level info.
   /// [ecsClassCode] The Elastic Compute Service (ECS) instance type.
   /// [resClassCode] The ApsaraDB RDS instance type of the host ecs level info.
-  GetHostEcsLevelInfosInfo({
+  const GetHostEcsLevelInfosInfo({
     required this.description,
     required this.ecsClass,
     required this.ecsClassCode,

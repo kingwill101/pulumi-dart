@@ -12,7 +12,7 @@ class DataflowGraphConnectionSchemaSettingsResponse {
   /// Creates a new [DataflowGraphConnectionSchemaSettingsResponse].
   /// [schemaRef] Reference to the schema that describes the output of the transformation.
   /// [serializationFormat] Output serialization format.
-  DataflowGraphConnectionSchemaSettingsResponse({
+  const DataflowGraphConnectionSchemaSettingsResponse({
     this.schemaRef,
     this.serializationFormat,
   });

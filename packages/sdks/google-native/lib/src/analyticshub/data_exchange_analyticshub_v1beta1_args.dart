@@ -31,7 +31,7 @@ class DataExchangeAnalyticshubV1beta1Args {
   /// [location] Optional.
   /// [primaryContact] Optional. Email or URL of the primary point of contact of the data exchange. Max Length: 1000 bytes.
   /// [project] Optional.
-  DataExchangeAnalyticshubV1beta1Args({
+  const DataExchangeAnalyticshubV1beta1Args({
     required this.dataExchangeId,
     this.description,
     required this.displayName,

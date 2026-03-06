@@ -11,7 +11,7 @@ class ApplicationProfileResponse {
 
   /// Creates a new [ApplicationProfileResponse].
   /// [galleryApplications] Specifies the gallery applications that should be made available to the VM/VMSS
-  ApplicationProfileResponse({
+  const ApplicationProfileResponse({
     this.galleryApplications,
   });
 

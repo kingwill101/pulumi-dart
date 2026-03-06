@@ -12,7 +12,7 @@ class Identity {
   /// Creates a new [Identity].
   /// [type] The identity type.
   /// [userAssignedIdentities] Gets or sets a list of key value pairs that describe the set of User Assigned identities that will be used with this volume group. The key is the ARM resource identifier of the identity.
-  Identity({
+  const Identity({
     required this.type,
     this.userAssignedIdentities,
   });

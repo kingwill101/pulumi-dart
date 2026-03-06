@@ -18,7 +18,7 @@ class GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentW
   /// [endOffset] Time offset of the end of this word relative to the beginning of the total conversation.
   /// [startOffset] Time offset of the start of this word relative to the beginning of the total conversation.
   /// [word] The word itself. Includes punctuation marks that surround the word.
-  GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse({
+  const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfoResponse({
     required this.confidence,
     required this.endOffset,
     required this.startOffset,

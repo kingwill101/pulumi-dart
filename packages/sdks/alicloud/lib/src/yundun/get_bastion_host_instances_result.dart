@@ -22,7 +22,7 @@ class GetBastionHostInstancesResult {
   /// [instances] Required.
   /// [outputFile] Optional.
   /// [tags] Optional.
-  GetBastionHostInstancesResult({
+  const GetBastionHostInstancesResult({
     this.descriptionRegex,
     required this.descriptions,
     required this.id,

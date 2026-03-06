@@ -22,7 +22,7 @@ class SharedflowArgs {
   /// [detectMd5hash] Optional.
   /// [name] The ID of the shared flow.
   /// [orgId] The Apigee Organization name associated with the Apigee instance.
-  SharedflowArgs({
+  const SharedflowArgs({
     required this.configBundle,
     this.detectMd5hash,
     this.name,

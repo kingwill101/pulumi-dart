@@ -33,7 +33,7 @@ class SystemGroupArgs {
   /// [outProtocol] The playback protocol used by the space, multiple values are separated by commas (,). Valid values: `flv`,`hls`, `rtmp`.
   /// [playDomain] The domain name of plan streaming used by the group.
   /// [pushDomain] The domain name of push streaming used by the group.
-  SystemGroupArgs({
+  const SystemGroupArgs({
     this.callback,
     this.description,
     this.enabled,

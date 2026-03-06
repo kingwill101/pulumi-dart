@@ -15,7 +15,7 @@ class GetRegistryImageArgs {
   /// Creates a new [GetRegistryImageArgs].
   /// [insecureSkipVerify] If `true`, the verification of TLS certificates of the server/registry is disabled. Defaults to `false`
   /// [name] The name of the Docker image, including any tags. e.g. `alpine:latest`. You can also specify a digest, e.g. `nginx:1.28.0@sha256:eaa7e36decc3421fc04478c586dfea0d931cebe47d5bc0b15d758a32ba51126f`.
-  GetRegistryImageArgs({
+  const GetRegistryImageArgs({
     this.insecureSkipVerify,
     required this.name,
   });

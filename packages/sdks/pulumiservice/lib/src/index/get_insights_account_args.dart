@@ -13,7 +13,7 @@ class GetInsightsAccountArgs {
   /// Creates a new [GetInsightsAccountArgs].
   /// [accountName] Required.
   /// [organizationName] Required.
-  GetInsightsAccountArgs({
+  const GetInsightsAccountArgs({
     required this.accountName,
     required this.organizationName,
   });

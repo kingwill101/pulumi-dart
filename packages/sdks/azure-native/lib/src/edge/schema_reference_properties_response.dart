@@ -12,7 +12,7 @@ class SchemaReferencePropertiesResponse {
   /// Creates a new [SchemaReferencePropertiesResponse].
   /// [provisioningState] Provisioning state of resource
   /// [schemaId] Schema Id of schema reference
-  SchemaReferencePropertiesResponse({
+  const SchemaReferencePropertiesResponse({
     required this.provisioningState,
     required this.schemaId,
   });

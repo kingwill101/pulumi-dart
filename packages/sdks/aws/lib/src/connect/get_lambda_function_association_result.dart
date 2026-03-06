@@ -14,7 +14,7 @@ class GetLambdaFunctionAssociationResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [instanceId] Required.
   /// [region] Required.
-  GetLambdaFunctionAssociationResult({
+  const GetLambdaFunctionAssociationResult({
     required this.functionArn,
     required this.id,
     required this.instanceId,

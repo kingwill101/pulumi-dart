@@ -9,7 +9,7 @@ class WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseCha
 
   /// Creates a new [WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallenge].
   /// [customRequestHandling] Custom handling for challenge requests. See below.
-  WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallenge({
+  const WebAclRuleGroupAssociationManagedRuleGroupRuleActionOverrideActionToUseChallenge({
     this.customRequestHandling,
   });
 

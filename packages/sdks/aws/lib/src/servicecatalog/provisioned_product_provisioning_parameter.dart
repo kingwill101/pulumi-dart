@@ -14,7 +14,7 @@ class ProvisionedProductProvisioningParameter {
   /// [key] Parameter key.
   /// [usePreviousValue] Whether to ignore `value` and keep the previous parameter value. Ignored when initially provisioning a product.
   /// [value] Parameter value.
-  ProvisionedProductProvisioningParameter({
+  const ProvisionedProductProvisioningParameter({
     required this.key,
     this.usePreviousValue,
     this.value,

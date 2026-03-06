@@ -30,7 +30,7 @@ class GetDataSourceReferenceResult {
   /// [name] Required.
   /// [project] Required.
   /// [resourceType] Required.
-  GetDataSourceReferenceResult({
+  const GetDataSourceReferenceResult({
     required this.backupConfigState,
     required this.backupCount,
     required this.dataSource,

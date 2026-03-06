@@ -21,7 +21,7 @@ class ProviderMonitorSettingArgs {
   /// [providerMonitorSettingName] The name of the provider monitor setting.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ProviderMonitorSettingArgs({
+  const ProviderMonitorSettingArgs({
     this.location,
     this.providerMonitorSettingName,
     required this.resourceGroupName,

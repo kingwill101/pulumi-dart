@@ -11,7 +11,7 @@ class AlertProcessingRuleSuppressionConditionSignalType {
   /// Creates a new [AlertProcessingRuleSuppressionConditionSignalType].
   /// [operator] The operator for a given condition. Possible values are `Equals` and `NotEquals`.
   /// [values] Specifies a list of values to match for a given condition. Possible values are `Metric`, `Log`, `Unknown`, and `Health`.
-  AlertProcessingRuleSuppressionConditionSignalType({
+  const AlertProcessingRuleSuppressionConditionSignalType({
     required this.operator,
     required this.values,
   });

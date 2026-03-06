@@ -19,7 +19,7 @@ class FirewallPolicyManagedRule {
   /// [overrides] One or more `override` blocks as defined below.
   /// [type] The name of the managed rule to use with this resource.
   /// [version] The version on the managed rule to use with this resource.
-  FirewallPolicyManagedRule({
+  const FirewallPolicyManagedRule({
     this.exclusions,
     this.overrides,
     required this.type,

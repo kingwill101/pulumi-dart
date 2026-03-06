@@ -18,7 +18,7 @@ class GetEnvironmentTypeArgs {
   /// [devCenterName] The name of the devcenter.
   /// [environmentTypeName] The name of the environment type.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEnvironmentTypeArgs({
+  const GetEnvironmentTypeArgs({
     required this.devCenterName,
     required this.environmentTypeName,
     required this.resourceGroupName,

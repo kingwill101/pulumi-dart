@@ -9,7 +9,7 @@ class ApplicationManagementPolicy {
 
   /// Creates a new [ApplicationManagementPolicy].
   /// [mode] The managed application management mode.
-  ApplicationManagementPolicy({
+  const ApplicationManagementPolicy({
     this.mode,
   });
 

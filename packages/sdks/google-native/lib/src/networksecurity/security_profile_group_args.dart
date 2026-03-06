@@ -28,7 +28,7 @@ class SecurityProfileGroupArgs {
   /// [organizationId] Required.
   /// [securityProfileGroupId] Required. Short name of the SecurityProfileGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile_group1".
   /// [threatPreventionProfile] Optional. Reference to a SecurityProfile with the threat prevention configuration for the SecurityProfileGroup.
-  SecurityProfileGroupArgs({
+  const SecurityProfileGroupArgs({
     this.description,
     this.labels,
     this.location,

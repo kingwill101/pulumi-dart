@@ -26,7 +26,7 @@ class GetMeshNetworkservicesV1beta1Result {
   /// [name] Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
   /// [selfLink] Server-defined URL of this resource
   /// [updateTime] The timestamp when the resource was updated.
-  GetMeshNetworkservicesV1beta1Result({
+  const GetMeshNetworkservicesV1beta1Result({
     required this.createTime,
     required this.description,
     required this.interceptionPort,

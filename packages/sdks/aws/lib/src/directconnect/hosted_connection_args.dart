@@ -24,7 +24,7 @@ class HostedConnectionArgs {
   /// [name] The name of the connection.
   /// [ownerAccountId] The ID of the AWS account of the customer for the connection.
   /// [vlan] The dedicated VLAN provisioned to the hosted connection.
-  HostedConnectionArgs({
+  const HostedConnectionArgs({
     required this.bandwidth,
     required this.connectionId,
     this.name,

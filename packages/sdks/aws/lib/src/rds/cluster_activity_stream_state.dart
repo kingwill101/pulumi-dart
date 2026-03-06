@@ -27,7 +27,7 @@ class ClusterActivityStreamState {
   /// [mode] Specifies the mode of the database activity stream. Database events such as a change or access generate an activity stream event. The database session can handle these events either synchronously or asynchronously. One of: `sync`, `async`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The Amazon Resource Name (ARN) of the DB cluster.
-  ClusterActivityStreamState({
+  const ClusterActivityStreamState({
     this.engineNativeAuditFieldsIncluded,
     this.kinesisStreamName,
     this.kmsKeyId,

@@ -14,7 +14,7 @@ class AwsNodePoolConfigTaint {
   /// [effect] The taint effect. Possible values: EFFECT_UNSPECIFIED, NO_SCHEDULE, PREFER_NO_SCHEDULE, NO_EXECUTE
   /// [key] Key for the taint.
   /// [value] Value for the taint.
-  AwsNodePoolConfigTaint({
+  const AwsNodePoolConfigTaint({
     required this.effect,
     required this.key,
     required this.value,

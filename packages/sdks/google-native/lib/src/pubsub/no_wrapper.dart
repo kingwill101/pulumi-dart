@@ -9,7 +9,7 @@ class NoWrapper {
 
   /// Creates a new [NoWrapper].
   /// [writeMetadata] Optional. When true, writes the Pub/Sub message metadata to `x-goog-pubsub-:` headers of the HTTP request. Writes the Pub/Sub message attributes to `:` headers of the HTTP request.
-  NoWrapper({
+  const NoWrapper({
     this.writeMetadata,
   });
 

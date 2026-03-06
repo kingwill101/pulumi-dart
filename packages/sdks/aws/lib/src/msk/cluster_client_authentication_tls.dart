@@ -8,7 +8,7 @@ class ClusterClientAuthenticationTls {
 
   /// Creates a new [ClusterClientAuthenticationTls].
   /// [certificateAuthorityArns] List of ACM Certificate Authority Amazon Resource Names (ARNs).
-  ClusterClientAuthenticationTls({
+  const ClusterClientAuthenticationTls({
     this.certificateAuthorityArns,
   });
 

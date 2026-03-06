@@ -17,7 +17,7 @@ class GoogleCloudDocumentaiV1DocumentPageVisualElement {
   /// [detectedLanguages] A list of detected languages together with confidence.
   /// [layout] Layout for VisualElement.
   /// [type] Type of the VisualElement.
-  GoogleCloudDocumentaiV1DocumentPageVisualElement({
+  const GoogleCloudDocumentaiV1DocumentPageVisualElement({
     this.detectedLanguages,
     this.layout,
     this.type,

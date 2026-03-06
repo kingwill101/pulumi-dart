@@ -80,7 +80,7 @@ class GetPortResult {
   /// [status] Optional.
   /// [tags] Optional.
   /// [tenantId] Optional.
-  GetPortResult({
+  const GetPortResult({
     this.adminStateUp,
     required this.allFixedIps,
     required this.allSecurityGroupIds,

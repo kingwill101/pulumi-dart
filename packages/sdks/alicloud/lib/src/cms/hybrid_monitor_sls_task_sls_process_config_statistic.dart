@@ -22,7 +22,7 @@ class HybridMonitorSlsTaskSlsProcessConfigStatistic {
   /// [parameterOne] The value of the function that is used to aggregate logs imported from Log Service.
   /// [parameterTwo] The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
   /// [slsKeyName] The name of the key that is used to filter logs imported from Log Service.
-  HybridMonitorSlsTaskSlsProcessConfigStatistic({
+  const HybridMonitorSlsTaskSlsProcessConfigStatistic({
     this.alias,
     this.function,
     this.parameterOne,

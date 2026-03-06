@@ -17,7 +17,7 @@ class EdgeCacheOriginOriginOverrideAction {
   /// Creates a new [EdgeCacheOriginOriginOverrideAction].
   /// [headerAction] The header actions, including adding and removing
   /// [urlRewrite] The URL rewrite configuration for request that are
-  EdgeCacheOriginOriginOverrideAction({
+  const EdgeCacheOriginOriginOverrideAction({
     this.headerAction,
     this.urlRewrite,
   });

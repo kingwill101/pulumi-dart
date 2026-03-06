@@ -9,7 +9,7 @@ class PolicyAdvancedConfigState {
 
   /// Creates a new [PolicyAdvancedConfigState].
   /// [internetSwitch] Access control policy strict mode of on-state. Valid values:
-  PolicyAdvancedConfigState({
+  const PolicyAdvancedConfigState({
     this.internetSwitch,
   });
 

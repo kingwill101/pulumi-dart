@@ -19,7 +19,7 @@ class GetGlobalNetworkResult {
   /// [globalNetworkId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [tags] Map of resource tags.
-  GetGlobalNetworkResult({
+  const GetGlobalNetworkResult({
     required this.arn,
     required this.description,
     required this.globalNetworkId,

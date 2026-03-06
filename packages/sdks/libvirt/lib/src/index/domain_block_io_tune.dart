@@ -12,7 +12,7 @@ class DomainBlockIoTune {
   /// Creates a new [DomainBlockIoTune].
   /// [devices] Defines specific device settings for block I/O tuning, enabling per-device performance modifications.
   /// [weight] Configures the overall weight for the block I/O tuning, affecting the global I/O scheduling policy.
-  DomainBlockIoTune({
+  const DomainBlockIoTune({
     this.devices,
     this.weight,
   });

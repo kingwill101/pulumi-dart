@@ -30,7 +30,7 @@ class AADAuthTypeWorkspaceConnectionProperties {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  AADAuthTypeWorkspaceConnectionProperties({
+  const AADAuthTypeWorkspaceConnectionProperties({
     required this.authType,
     this.category,
     this.expiryTime,

@@ -56,7 +56,7 @@ class GetScheduledQueryRulesAlertResult {
   /// [throttling] Time for which alerts should be throttled or suppressed.
   /// [timeWindow] Time window for which data needs to be fetched for query.
   /// [triggers] A `trigger` block as defined below.
-  GetScheduledQueryRulesAlertResult({
+  const GetScheduledQueryRulesAlertResult({
     required this.actions,
     required this.authorizedResourceIds,
     required this.dataSourceId,

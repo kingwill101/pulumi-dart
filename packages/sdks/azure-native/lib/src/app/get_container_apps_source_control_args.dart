@@ -18,7 +18,7 @@ class GetContainerAppsSourceControlArgs {
   /// [containerAppName] Name of the Container App.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceControlName] Name of the Container App SourceControl.
-  GetContainerAppsSourceControlArgs({
+  const GetContainerAppsSourceControlArgs({
     required this.containerAppName,
     required this.resourceGroupName,
     required this.sourceControlName,

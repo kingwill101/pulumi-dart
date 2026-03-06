@@ -15,7 +15,7 @@ class GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse {
   /// [bigqueryTablePath] The created BigQuery table to store logs. Customer could do their own query & analysis. Format: `bq://.model_deployment_monitoring_._`
   /// [logSource] The source of log.
   /// [logType] The type of log.
-  GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse({
+  const GoogleCloudAiplatformV1ModelDeploymentMonitoringBigQueryTableResponse({
     required this.bigqueryTablePath,
     required this.logSource,
     required this.logType,

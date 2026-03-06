@@ -11,7 +11,7 @@ class GetUserPoolLambdaConfigPreTokenGenerationConfig {
   /// Creates a new [GetUserPoolLambdaConfigPreTokenGenerationConfig].
   /// [lambdaArn] - ARN of the Lambda function.
   /// [lambdaVersion] - Version of the Lambda function.
-  GetUserPoolLambdaConfigPreTokenGenerationConfig({
+  const GetUserPoolLambdaConfigPreTokenGenerationConfig({
     required this.lambdaArn,
     required this.lambdaVersion,
   });

@@ -15,7 +15,7 @@ class GetConnectionsArgs {
   /// Creates a new [GetConnectionsArgs].
   /// [ids] A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids, only support one item.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetConnectionsArgs({
+  const GetConnectionsArgs({
     required this.ids,
     this.outputFile,
   });

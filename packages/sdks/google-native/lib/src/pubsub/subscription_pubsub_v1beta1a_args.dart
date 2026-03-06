@@ -22,7 +22,7 @@ class SubscriptionPubsubV1beta1aArgs {
   /// [name] Name of the subscription.
   /// [pushConfig] If push delivery is used with this subscription, this field is used to configure it.
   /// [topic] The name of the topic from which this subscription is receiving messages.
-  SubscriptionPubsubV1beta1aArgs({
+  const SubscriptionPubsubV1beta1aArgs({
     this.ackDeadlineSeconds,
     this.name,
     this.pushConfig,

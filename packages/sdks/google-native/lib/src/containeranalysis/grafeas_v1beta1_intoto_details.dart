@@ -12,7 +12,7 @@ class GrafeasV1beta1IntotoDetails {
   /// Creates a new [GrafeasV1beta1IntotoDetails].
   /// [signatures] Optional.
   /// [signed] Optional.
-  GrafeasV1beta1IntotoDetails({
+  const GrafeasV1beta1IntotoDetails({
     this.signatures,
     this.signed,
   });

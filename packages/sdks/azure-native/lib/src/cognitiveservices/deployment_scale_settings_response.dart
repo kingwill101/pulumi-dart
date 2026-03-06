@@ -15,7 +15,7 @@ class DeploymentScaleSettingsResponse {
   /// [activeCapacity] Deployment active capacity. This value might be different from `capacity` if customer recently updated `capacity`.
   /// [capacity] Deployment capacity.
   /// [scaleType] Deployment scale type.
-  DeploymentScaleSettingsResponse({
+  const DeploymentScaleSettingsResponse({
     required this.activeCapacity,
     this.capacity,
     this.scaleType,

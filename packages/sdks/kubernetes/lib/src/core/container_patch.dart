@@ -92,7 +92,7 @@ class ContainerPatch {
   /// [volumeDevices] volumeDevices is the list of block devices to be used by the container.
   /// [volumeMounts] Pod volumes to mount into the container's filesystem. Cannot be updated.
   /// [workingDir] Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
-  ContainerPatch({
+  const ContainerPatch({
     this.args,
     this.command,
     this.env,

@@ -47,7 +47,7 @@ class AccountState {
   /// [resetPermissionFlag] Optional.
   /// [status] Optional.
   /// [type] Privilege type of account. The SQLServer engine does not support create high privilege accounts.
-  AccountState({
+  const AccountState({
     this.accountDescription,
     this.accountName,
     this.accountPassword,

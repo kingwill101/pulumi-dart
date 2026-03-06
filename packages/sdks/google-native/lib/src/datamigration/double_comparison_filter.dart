@@ -13,7 +13,7 @@ class DoubleComparisonFilter {
   /// Creates a new [DoubleComparisonFilter].
   /// [value] Double compare value to be used
   /// [valueComparison] Relation between source value and compare value
-  DoubleComparisonFilter({
+  const DoubleComparisonFilter({
     required this.value,
     required this.valueComparison,
   });

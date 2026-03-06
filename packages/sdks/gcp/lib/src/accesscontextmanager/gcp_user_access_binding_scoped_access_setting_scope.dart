@@ -10,7 +10,7 @@ class GcpUserAccessBindingScopedAccessSettingScope {
 
   /// Creates a new [GcpUserAccessBindingScopedAccessSettingScope].
   /// [clientScope] Optional. Client scope for this access scope.
-  GcpUserAccessBindingScopedAccessSettingScope({
+  const GcpUserAccessBindingScopedAccessSettingScope({
     this.clientScope,
   });
 

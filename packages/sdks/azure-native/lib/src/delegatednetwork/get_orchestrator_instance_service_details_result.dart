@@ -55,7 +55,7 @@ class GetOrchestratorInstanceServiceDetailsResult {
   /// [resourceGuid] Resource guid.
   /// [tags] The resource tags.
   /// [type] The type of resource.
-  GetOrchestratorInstanceServiceDetailsResult({
+  const GetOrchestratorInstanceServiceDetailsResult({
     this.apiServerEndpoint,
     required this.azureApiVersion,
     this.clusterRootCA,

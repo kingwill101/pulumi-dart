@@ -12,7 +12,7 @@ class AlertPropertyMappingResponse {
   /// Creates a new [AlertPropertyMappingResponse].
   /// [alertProperty] The V3 alert property
   /// [value] the column name to use to override this property
-  AlertPropertyMappingResponse({
+  const AlertPropertyMappingResponse({
     this.alertProperty,
     this.value,
   });

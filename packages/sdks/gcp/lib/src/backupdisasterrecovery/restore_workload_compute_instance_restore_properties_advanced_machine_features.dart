@@ -17,7 +17,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures {
   /// [enableUefiNetworking] Optional. Whether to enable UEFI networking for instance creation.
   /// [threadsPerCore] Optional. The number of threads per physical core.
   /// [visibleCoreCount] Optional. The number of physical cores to expose to an instance.
-  RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures({
+  const RestoreWorkloadComputeInstanceRestorePropertiesAdvancedMachineFeatures({
     this.enableNestedVirtualization,
     this.enableUefiNetworking,
     this.threadsPerCore,

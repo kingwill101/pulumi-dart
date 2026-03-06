@@ -22,7 +22,7 @@ class LinkServiceNatIpConfiguration {
   /// [privateIpAddress] Specifies a Private Static IP Address for this IP Configuration.
   /// [privateIpAddressVersion] The version of the IP Protocol which should be used. At this time the only supported value is `IPv4`. Defaults to `IPv4`.
   /// [subnetId] Specifies the ID of the Subnet which should be used for the Private Link Service.
-  LinkServiceNatIpConfiguration({
+  const LinkServiceNatIpConfiguration({
     required this.name,
     required this.primary,
     this.privateIpAddress,

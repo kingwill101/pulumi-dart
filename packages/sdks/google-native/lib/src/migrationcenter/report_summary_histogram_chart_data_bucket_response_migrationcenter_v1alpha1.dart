@@ -15,7 +15,7 @@ class ReportSummaryHistogramChartDataBucketResponseMigrationcenterV1alpha1 {
   /// [count] Count of items in the bucket.
   /// [lowerBound] Lower bound - inclusive.
   /// [upperBound] Upper bound - exclusive.
-  ReportSummaryHistogramChartDataBucketResponseMigrationcenterV1alpha1({
+  const ReportSummaryHistogramChartDataBucketResponseMigrationcenterV1alpha1({
     required this.count,
     required this.lowerBound,
     required this.upperBound,

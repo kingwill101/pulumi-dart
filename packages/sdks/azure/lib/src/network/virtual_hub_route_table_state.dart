@@ -19,7 +19,7 @@ class VirtualHubRouteTableState {
   /// [name] The name which should be used for Virtual Hub Route Table. Changing this forces a new resource to be created.
   /// [routes] One or more `route` blocks as defined below.
   /// [virtualHubId] The ID of the Virtual Hub within which this route table should be created. Changing this forces a new resource to be created.
-  VirtualHubRouteTableState({
+  const VirtualHubRouteTableState({
     this.labels,
     this.name,
     this.routes,

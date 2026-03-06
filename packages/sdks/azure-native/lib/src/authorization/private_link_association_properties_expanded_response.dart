@@ -17,7 +17,7 @@ class PrivateLinkAssociationPropertiesExpandedResponse {
   /// [publicNetworkAccess] Optional.
   /// [scope] The scope of the private link association.
   /// [tenantID] The TenantID.
-  PrivateLinkAssociationPropertiesExpandedResponse({
+  const PrivateLinkAssociationPropertiesExpandedResponse({
     this.privateLink,
     this.publicNetworkAccess,
     this.scope,

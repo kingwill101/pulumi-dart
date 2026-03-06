@@ -18,7 +18,7 @@ class SavedQueryState {
   /// [description] Query Description.
   /// [expression] Query Expression.
   /// [savedQueryName] The name of the resource.
-  SavedQueryState({
+  const SavedQueryState({
     this.createTime,
     this.description,
     this.expression,

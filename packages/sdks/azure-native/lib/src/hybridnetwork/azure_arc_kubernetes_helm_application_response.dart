@@ -25,7 +25,7 @@ class AzureArcKubernetesHelmApplicationResponse {
   /// [dependsOnProfile] Depends on profile definition.
   /// [deployParametersMappingRuleProfile] Deploy mapping rule profile.
   /// [name] The name of the network function application.
-  AzureArcKubernetesHelmApplicationResponse({
+  const AzureArcKubernetesHelmApplicationResponse({
     this.artifactProfile,
     required this.artifactType,
     this.dependsOnProfile,

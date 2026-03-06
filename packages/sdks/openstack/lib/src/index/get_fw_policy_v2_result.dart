@@ -34,7 +34,7 @@ class GetFwPolicyV2Result {
   /// [rules] The array of one or more firewall rules that comprise the policy.
   /// [shared] The sharing status of the firewall policy.
   /// [tenantId] See Argument Reference above.
-  GetFwPolicyV2Result({
+  const GetFwPolicyV2Result({
     required this.audited,
     this.description,
     required this.id,

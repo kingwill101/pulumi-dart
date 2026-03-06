@@ -17,7 +17,7 @@ class GetLoggingServerArgs {
   /// [loggingServerId] Required.
   /// [privateCloudId] Required.
   /// [project] Optional.
-  GetLoggingServerArgs({
+  const GetLoggingServerArgs({
     required this.location,
     required this.loggingServerId,
     required this.privateCloudId,

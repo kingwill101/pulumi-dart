@@ -11,7 +11,7 @@ class TagKeyIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  TagKeyIamBindingCondition({
+  const TagKeyIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

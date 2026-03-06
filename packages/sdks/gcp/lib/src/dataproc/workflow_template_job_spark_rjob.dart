@@ -24,7 +24,7 @@ class WorkflowTemplateJobSparkRJob {
   /// [loggingConfig] The runtime log config for job execution.
   /// [mainRFileUri] Required. The HCFS URI of the main R file to use as the driver. Must be a .R file.
   /// [properties] A mapping of property names to values, used to configure SparkR. Properties that conflict with values set by the Dataproc API may be overwritten. Can include properties set in /etc/spark/conf/spark-defaults.conf and classes in user code.
-  WorkflowTemplateJobSparkRJob({
+  const WorkflowTemplateJobSparkRJob({
     this.archiveUris,
     this.args,
     this.fileUris,

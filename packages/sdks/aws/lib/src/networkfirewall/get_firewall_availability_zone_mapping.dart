@@ -8,7 +8,7 @@ class GetFirewallAvailabilityZoneMapping {
 
   /// Creates a new [GetFirewallAvailabilityZoneMapping].
   /// [availabilityZoneId] The ID of the Availability Zone where the firewall endpoint is located.
-  GetFirewallAvailabilityZoneMapping({
+  const GetFirewallAvailabilityZoneMapping({
     required this.availabilityZoneId,
   });
 

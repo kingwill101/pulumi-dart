@@ -21,7 +21,7 @@ class BlueGreenInfoResponse {
   /// [greenInstanceGroupUrls] The resource URLs of the [managed instance groups] (/compute/docs/instance-groups/creating-groups-of-managed-instances) associated with green pool.
   /// [greenPoolVersion] Version of green pool.
   /// [phase] Current blue-green upgrade phase.
-  BlueGreenInfoResponse({
+  const BlueGreenInfoResponse({
     required this.blueInstanceGroupUrls,
     required this.bluePoolDeletionStartTime,
     required this.greenInstanceGroupUrls,

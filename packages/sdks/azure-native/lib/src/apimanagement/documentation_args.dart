@@ -24,7 +24,7 @@ class DocumentationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [title] documentation title.
-  DocumentationArgs({
+  const DocumentationArgs({
     this.content,
     this.documentationId,
     required this.resourceGroupName,

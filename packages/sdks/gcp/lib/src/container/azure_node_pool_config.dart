@@ -29,7 +29,7 @@ class AzureNodePoolConfig {
   /// [sshConfig] SSH configuration for how to access the node pool machines.
   /// [tags] Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
   /// [vmSize] Optional. The Azure VM size name. Example: `Standard_DS2_v2`. See (/anthos/clusters/docs/azure/reference/supported-vms) for options. When unspecified, it defaults to `Standard_DS2_v2`.
-  AzureNodePoolConfig({
+  const AzureNodePoolConfig({
     this.imageType,
     this.labels,
     this.proxyConfig,

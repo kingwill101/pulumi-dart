@@ -55,7 +55,7 @@ class FileSystemArgs {
   /// [subnetId] The resource ID of the Subnet that is used for managing the Azure Managed Lustre file system and for client-facing operations. This subnet should have at least a /24 subnet mask within the Virtual Network's address space. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Managed Lustre File System.
   /// [zones] A list of availability zones for the Azure Managed Lustre File System. Changing this forces a new resource to be created.
-  FileSystemArgs({
+  const FileSystemArgs({
     this.encryptionKey,
     this.hsmSetting,
     this.identity,

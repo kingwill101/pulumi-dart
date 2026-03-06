@@ -21,7 +21,7 @@ class ListNotificationHubKeysResult {
   /// [primaryKey] Gets or sets primaryKey of the created AuthorizationRule.
   /// [secondaryConnectionString] Gets or sets secondaryConnectionString of the created
   /// [secondaryKey] Gets or sets secondaryKey of the created AuthorizationRule
-  ListNotificationHubKeysResult({
+  const ListNotificationHubKeysResult({
     required this.keyName,
     required this.primaryConnectionString,
     required this.primaryKey,

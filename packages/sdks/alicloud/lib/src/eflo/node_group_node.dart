@@ -20,7 +20,7 @@ class NodeGroupNode {
   /// [nodeId] Node ID
   /// [vpcId] VPC ID
   /// [vswitchId] Switch ID
-  NodeGroupNode({
+  const NodeGroupNode({
     this.hostname,
     this.loginPassword,
     this.nodeId,

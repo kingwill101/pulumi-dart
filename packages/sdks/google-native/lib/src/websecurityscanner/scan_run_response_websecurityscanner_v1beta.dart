@@ -41,7 +41,7 @@ class ScanRunResponseWebsecurityscannerV1beta {
   /// [urlsCrawledCount] The number of URLs crawled during this ScanRun. If the scan is in progress, the value represents the number of URLs crawled up to now.
   /// [urlsTestedCount] The number of URLs tested during this ScanRun. If the scan is in progress, the value represents the number of URLs tested up to now. The number of URLs tested is usually larger than the number URLS crawled because typically a crawled URL is tested with multiple test payloads.
   /// [warningTraces] A list of warnings, if such are encountered during this scan run.
-  ScanRunResponseWebsecurityscannerV1beta({
+  const ScanRunResponseWebsecurityscannerV1beta({
     required this.endTime,
     required this.errorTrace,
     required this.executionState,

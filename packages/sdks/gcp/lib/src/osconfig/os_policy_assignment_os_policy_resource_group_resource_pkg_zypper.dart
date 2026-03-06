@@ -8,7 +8,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper {
 
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper].
   /// [name] Package name.
-  OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper({
     required this.name,
   });
 

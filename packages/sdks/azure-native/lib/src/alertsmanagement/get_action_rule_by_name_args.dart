@@ -15,7 +15,7 @@ class GetActionRuleByNameArgs {
   /// Creates a new [GetActionRuleByNameArgs].
   /// [actionRuleName] The name of action rule that needs to be fetched
   /// [resourceGroupName] Resource group name where the resource is created.
-  GetActionRuleByNameArgs({
+  const GetActionRuleByNameArgs({
     required this.actionRuleName,
     required this.resourceGroupName,
   });

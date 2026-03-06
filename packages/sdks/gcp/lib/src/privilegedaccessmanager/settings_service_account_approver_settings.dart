@@ -8,7 +8,7 @@ class SettingsServiceAccountApproverSettings {
 
   /// Creates a new [SettingsServiceAccountApproverSettings].
   /// [enabled] Indicates whether service account is allowed to grant approvals.
-  SettingsServiceAccountApproverSettings({
+  const SettingsServiceAccountApproverSettings({
     this.enabled,
   });
 

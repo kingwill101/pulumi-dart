@@ -24,7 +24,7 @@ class WafPolicyGraphqlProfileDefenseAttribute {
   /// [maximumTotalLength] Specifies the longest length, in bytes, allowed by the security policy of the request payload, or parameter value, where the GraphQL data was found.
   /// [maximumValueLength] Specifies the longest length (in bytes) of the longest GraphQL element value in the document allowed by the security policy.
   /// [tolerateParsingWarnings] Specifies, when checked (enabled), that the system does not report when the security enforcer encounters warnings while parsing GraphQL content. Specifies when cleared (disabled), that the security policy reports when the security enforcer encounters warnings while parsing GraphQL content. The default setting is disabled.
-  WafPolicyGraphqlProfileDefenseAttribute({
+  const WafPolicyGraphqlProfileDefenseAttribute({
     this.allowIntrospectionQueries,
     this.maximumBatchedQueries,
     this.maximumStructureDepth,

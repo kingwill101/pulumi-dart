@@ -11,7 +11,7 @@ class ClusterAvailableVersionResponse {
   /// Creates a new [ClusterAvailableVersionResponse].
   /// [supportExpiryDate] The last date the version of the platform is supported.
   /// [targetClusterVersion] The version of the cluster to be deployed.
-  ClusterAvailableVersionResponse({
+  const ClusterAvailableVersionResponse({
     required this.supportExpiryDate,
     required this.targetClusterVersion,
   });

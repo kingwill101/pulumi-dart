@@ -12,7 +12,7 @@ class SourceTextFilter {
   /// Creates a new [SourceTextFilter].
   /// [sourceMaxLengthFilter] Optional. The filter will match columns with length smaller than or equal to this number.
   /// [sourceMinLengthFilter] Optional. The filter will match columns with length greater than or equal to this number.
-  SourceTextFilter({
+  const SourceTextFilter({
     this.sourceMaxLengthFilter,
     this.sourceMinLengthFilter,
   });

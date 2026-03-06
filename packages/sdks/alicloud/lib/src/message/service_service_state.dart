@@ -9,7 +9,7 @@ class ServiceServiceState {
 
   /// Creates a new [ServiceServiceState].
   /// [status] The status of the Service.
-  ServiceServiceState({
+  const ServiceServiceState({
     this.status,
   });
 

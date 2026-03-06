@@ -10,7 +10,7 @@ class EventActionAction {
 
   /// Creates a new [EventActionAction].
   /// [exportRevisionToS3] Configuration for an Export Revision to S3 action.
-  EventActionAction({
+  const EventActionAction({
     required this.exportRevisionToS3,
   });
 

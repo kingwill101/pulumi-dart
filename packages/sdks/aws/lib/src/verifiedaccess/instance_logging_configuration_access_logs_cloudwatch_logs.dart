@@ -11,7 +11,7 @@ class InstanceLoggingConfigurationAccessLogsCloudwatchLogs {
   /// Creates a new [InstanceLoggingConfigurationAccessLogsCloudwatchLogs].
   /// [enabled] Indicates whether logging is enabled.
   /// [logGroup] The name of the CloudWatch Logs Log Group.
-  InstanceLoggingConfigurationAccessLogsCloudwatchLogs({
+  const InstanceLoggingConfigurationAccessLogsCloudwatchLogs({
     required this.enabled,
     this.logGroup,
   });

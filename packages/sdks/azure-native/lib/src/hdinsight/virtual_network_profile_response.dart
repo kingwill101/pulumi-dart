@@ -12,7 +12,7 @@ class VirtualNetworkProfileResponse {
   /// Creates a new [VirtualNetworkProfileResponse].
   /// [id] The ID of the virtual network.
   /// [subnet] The name of the subnet.
-  VirtualNetworkProfileResponse({
+  const VirtualNetworkProfileResponse({
     this.id,
     this.subnet,
   });

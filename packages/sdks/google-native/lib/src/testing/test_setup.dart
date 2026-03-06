@@ -38,7 +38,7 @@ class TestSetup {
   /// [initialSetupApks] Optional. Initial setup APKs to install before the app under test is installed. Currently capped at 100.
   /// [networkProfile] The network traffic profile used for running the test. Available network profiles can be queried by using the NETWORK_CONFIGURATION environment type when calling TestEnvironmentDiscoveryService.GetTestEnvironmentCatalog.
   /// [systrace] Systrace configuration for the run. Deprecated: Systrace used Python 2 which was sunsetted on 2020-01-01. Systrace is no longer supported in the Cloud Testing API, and no Systrace file will be provided in the results.
-  TestSetup({
+  const TestSetup({
     this.account,
     this.additionalApks,
     this.directoriesToPull,

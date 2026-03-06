@@ -10,7 +10,7 @@ class CapacityProviderManagedInstancesProviderInfrastructureOptimization {
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInfrastructureOptimization].
   /// [scaleInAfter] This parameter defines the number of seconds Amazon ECS Managed Instances waits before optimizing EC2 instances that have become idle or underutilized. A longer delay increases the likelihood of placing new tasks on idle instances, reducing startup time. A shorter delay helps reduce infrastructure costs by optimizing idle instances more quickly. Valid values are:
-  CapacityProviderManagedInstancesProviderInfrastructureOptimization({
+  const CapacityProviderManagedInstancesProviderInfrastructureOptimization({
     this.scaleInAfter,
   });
 

@@ -18,7 +18,7 @@ class HciNetworkProfileResponse {
   /// [hostNetwork] HostNetwork config to deploy AzureStackHCI Cluster.
   /// [nicDetails] List of NIC Details of device.
   /// [switchDetails] List of switch details for edge device.
-  HciNetworkProfileResponse({
+  const HciNetworkProfileResponse({
     required this.hostNetwork,
     required this.nicDetails,
     required this.switchDetails,

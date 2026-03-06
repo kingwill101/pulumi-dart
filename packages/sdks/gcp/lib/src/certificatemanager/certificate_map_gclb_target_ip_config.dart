@@ -11,7 +11,7 @@ class CertificateMapGclbTargetIpConfig {
   /// Creates a new [CertificateMapGclbTargetIpConfig].
   /// [ipAddress] An external IP address
   /// [ports] A list of ports
-  CertificateMapGclbTargetIpConfig({
+  const CertificateMapGclbTargetIpConfig({
     this.ipAddress,
     this.ports,
   });

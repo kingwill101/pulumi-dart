@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlSortBufferSize {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlSortBufferSize({
+  const GetDatabaseMysqlConfigMysqlSortBufferSize({
     required this.description,
     required this.example,
     required this.maximum,

@@ -22,7 +22,7 @@ class AutomationActionEventHubResponse {
   /// [eventHubResourceId] The target Event Hub Azure Resource ID.
   /// [isTrustedServiceEnabled] Indicates whether the trusted service is enabled or not.
   /// [sasPolicyName] The target Event Hub SAS policy name.
-  AutomationActionEventHubResponse({
+  const AutomationActionEventHubResponse({
     required this.actionType,
     this.connectionString,
     this.eventHubResourceId,

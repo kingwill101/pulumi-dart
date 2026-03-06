@@ -10,7 +10,7 @@ class WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret {
 
   /// Creates a new [WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret].
   /// [value] The value of the client secret.
-  WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret({
+  const WorkforcePoolProviderExtraAttributesOauth2ClientClientSecret({
     this.value,
   });
 

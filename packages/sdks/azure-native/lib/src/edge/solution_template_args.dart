@@ -25,7 +25,7 @@ class SolutionTemplateArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [solutionTemplateName] The name of the SolutionTemplate
   /// [tags] Resource tags.
-  SolutionTemplateArgs({
+  const SolutionTemplateArgs({
     this.location,
     this.properties,
     required this.resourceGroupName,

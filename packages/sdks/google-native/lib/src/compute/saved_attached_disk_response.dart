@@ -56,7 +56,7 @@ class SavedAttachedDiskResponse {
   /// [storageBytes] A size of the storage used by the disk's snapshot by this machine image.
   /// [storageBytesStatus] An indicator whether storageBytes is in a stable state or it is being adjusted as a result of shared storage reallocation. This status can either be UPDATING, meaning the size of the snapshot is being updated, or UP_TO_DATE, meaning the size of the snapshot is up-to-date.
   /// [type] Specifies the type of the attached disk, either SCRATCH or PERSISTENT.
-  SavedAttachedDiskResponse({
+  const SavedAttachedDiskResponse({
     required this.autoDelete,
     required this.boot,
     required this.deviceName,

@@ -32,7 +32,7 @@ class AiFeatureGroupArgs {
   /// [name] The resource name of the Feature Group.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of feature group. eg us-central1
-  AiFeatureGroupArgs({
+  const AiFeatureGroupArgs({
     this.bigQuery,
     this.description,
     this.labels,

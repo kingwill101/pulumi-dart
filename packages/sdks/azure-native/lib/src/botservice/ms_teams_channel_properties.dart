@@ -24,7 +24,7 @@ class MsTeamsChannelProperties {
   /// [enableCalling] Enable calling for Microsoft Teams channel
   /// [incomingCallRoute] Webhook for Microsoft Teams channel calls
   /// [isEnabled] Whether this channel is enabled for the bot
-  MsTeamsChannelProperties({
+  const MsTeamsChannelProperties({
     this.acceptedTerms,
     this.callingWebhook,
     this.deploymentEnvironment,

@@ -18,7 +18,7 @@ class GetHybridIdentityMetadatumArgs {
   /// [hybridIdentityMetadataResourceName] Parameter for the name of the hybrid identity metadata resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Parameter for the name of the provisioned cluster
-  GetHybridIdentityMetadatumArgs({
+  const GetHybridIdentityMetadatumArgs({
     required this.hybridIdentityMetadataResourceName,
     required this.resourceGroupName,
     required this.resourceName,

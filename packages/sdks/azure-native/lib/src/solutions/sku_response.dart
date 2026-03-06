@@ -24,7 +24,7 @@ class SkuResponse {
   /// [name] The SKU name.
   /// [size] The SKU size.
   /// [tier] The SKU tier.
-  SkuResponse({
+  const SkuResponse({
     this.capacity,
     this.family,
     this.model,

@@ -28,7 +28,7 @@ class ReplicationStorageClassificationMappingArgs {
   /// [resourceName] The name of the recovery services vault.
   /// [storageClassificationMappingName] Storage classification mapping name.
   /// [storageClassificationName] Storage classification name.
-  ReplicationStorageClassificationMappingArgs({
+  const ReplicationStorageClassificationMappingArgs({
     required this.fabricName,
     this.properties,
     required this.resourceGroupName,

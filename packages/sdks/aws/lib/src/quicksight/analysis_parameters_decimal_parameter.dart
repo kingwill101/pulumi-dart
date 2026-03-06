@@ -12,7 +12,7 @@ class AnalysisParametersDecimalParameter {
   /// Creates a new [AnalysisParametersDecimalParameter].
   /// [name] Display name for the analysis.
   /// [values] Required.
-  AnalysisParametersDecimalParameter({
+  const AnalysisParametersDecimalParameter({
     required this.name,
     required this.values,
   });

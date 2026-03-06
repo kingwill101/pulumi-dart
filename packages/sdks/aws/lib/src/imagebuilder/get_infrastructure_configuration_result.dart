@@ -63,7 +63,7 @@ class GetInfrastructureConfigurationResult {
   /// [subnetId] Identifier of the EC2 Subnet associated with the configuration.
   /// [tags] Key-value map of resource tags for the infrastructure configuration.
   /// [terminateInstanceOnFailure] Whether instances are terminated on failure.
-  GetInfrastructureConfigurationResult({
+  const GetInfrastructureConfigurationResult({
     required this.arn,
     required this.dateCreated,
     required this.dateUpdated,

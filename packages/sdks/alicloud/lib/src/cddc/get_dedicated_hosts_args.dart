@@ -40,7 +40,7 @@ class GetDedicatedHostsArgs {
   /// [status] The state of the host. Valid values:
   /// [tags] A mapping of tags to assign to the resource.
   /// [zoneId] The ID of the zone.
-  GetDedicatedHostsArgs({
+  const GetDedicatedHostsArgs({
     this.allocationStatus,
     required this.dedicatedHostGroupId,
     this.enableDetails,

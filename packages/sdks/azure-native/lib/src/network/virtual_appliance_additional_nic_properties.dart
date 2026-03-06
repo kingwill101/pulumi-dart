@@ -12,7 +12,7 @@ class VirtualApplianceAdditionalNicProperties {
   /// Creates a new [VirtualApplianceAdditionalNicProperties].
   /// [hasPublicIp] Flag (true or false) for Intent for Public Ip on additional nic
   /// [name] Name of additional nic
-  VirtualApplianceAdditionalNicProperties({
+  const VirtualApplianceAdditionalNicProperties({
     this.hasPublicIp,
     this.name,
   });

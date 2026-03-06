@@ -12,7 +12,7 @@ class CatalogDatabaseCreateTableDefaultPermission {
   /// Creates a new [CatalogDatabaseCreateTableDefaultPermission].
   /// [permissions] The permissions that are granted to the principal.
   /// [principal] The principal who is granted permissions.. See `principal` below.
-  CatalogDatabaseCreateTableDefaultPermission({
+  const CatalogDatabaseCreateTableDefaultPermission({
     this.permissions,
     this.principal,
   });

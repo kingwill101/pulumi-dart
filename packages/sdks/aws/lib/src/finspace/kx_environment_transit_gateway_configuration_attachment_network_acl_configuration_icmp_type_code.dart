@@ -11,7 +11,7 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationI
   /// Creates a new [KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCode].
   /// [code] ICMP code. A value of `-1` means all codes for the specified ICMP type.
   /// [type] ICMP type. A value of `-1` means all types.
-  KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCode({
+  const KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfigurationIcmpTypeCode({
     required this.code,
     required this.type,
   });

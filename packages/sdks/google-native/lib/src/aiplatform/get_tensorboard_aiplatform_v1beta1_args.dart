@@ -15,7 +15,7 @@ class GetTensorboardAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [tensorboardId] Required.
-  GetTensorboardAiplatformV1beta1Args({
+  const GetTensorboardAiplatformV1beta1Args({
     required this.location,
     this.project,
     required this.tensorboardId,

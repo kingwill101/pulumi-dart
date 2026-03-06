@@ -37,7 +37,7 @@ class GlossaryTermArgs {
   /// [parent] The immediate parent of the GlossaryTerm in the resource-hierarchy. It can either be a Glossary or a Term. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/terms/{termId}
   /// [project] The ID of the project in which the resource belongs.
   /// [termId] The term id for creation.
-  GlossaryTermArgs({
+  const GlossaryTermArgs({
     this.description,
     this.displayName,
     this.glossaryId,

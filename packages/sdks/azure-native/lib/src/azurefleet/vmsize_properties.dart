@@ -21,7 +21,7 @@ class VMSizeProperties {
   /// Creates a new [VMSizeProperties].
   /// [vCPUsAvailable] Specifies the number of vCPUs available for the VM. When this property is not
   /// [vCPUsPerCore] Specifies the vCPU to physical core ratio. When this property is not specified
-  VMSizeProperties({
+  const VMSizeProperties({
     this.vCPUsAvailable,
     this.vCPUsPerCore,
   });

@@ -45,7 +45,7 @@ class MachineExtensionArgs {
   /// [tags] The Resource tags.
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  MachineExtensionArgs({
+  const MachineExtensionArgs({
     this.autoUpgradeMinorVersion,
     this.extensionName,
     this.forceUpdateTag,

@@ -28,7 +28,7 @@ class LogDeliveryDestinationArgs {
   /// [outputFormat] The format of the logs that are sent to this delivery destination. Valid values: `json`, `plain`, `w3c`, `raw`, `parquet`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LogDeliveryDestinationArgs({
+  const LogDeliveryDestinationArgs({
     this.deliveryDestinationConfiguration,
     this.deliveryDestinationType,
     this.name,

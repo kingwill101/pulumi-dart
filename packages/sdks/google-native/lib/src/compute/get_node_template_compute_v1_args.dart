@@ -15,7 +15,7 @@ class GetNodeTemplateComputeV1Args {
   /// [nodeTemplate] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetNodeTemplateComputeV1Args({
+  const GetNodeTemplateComputeV1Args({
     required this.nodeTemplate,
     this.project,
     required this.region,

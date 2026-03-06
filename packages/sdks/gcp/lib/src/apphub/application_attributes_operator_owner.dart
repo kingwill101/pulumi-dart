@@ -11,7 +11,7 @@ class ApplicationAttributesOperatorOwner {
   /// Creates a new [ApplicationAttributesOperatorOwner].
   /// [displayName] Optional. Contact's name.
   /// [email] Required. Email address of the contacts.
-  ApplicationAttributesOperatorOwner({
+  const ApplicationAttributesOperatorOwner({
     this.displayName,
     required this.email,
   });

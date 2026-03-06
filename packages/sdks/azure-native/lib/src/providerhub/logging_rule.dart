@@ -18,7 +18,7 @@ class LoggingRule {
   /// [detailLevel] The detail level.
   /// [direction] The direction.
   /// [hiddenPropertyPaths] The hidden property paths.
-  LoggingRule({
+  const LoggingRule({
     required this.action,
     required this.detailLevel,
     required this.direction,

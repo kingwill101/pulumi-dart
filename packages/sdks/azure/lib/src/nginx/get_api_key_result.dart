@@ -18,7 +18,7 @@ class GetApiKeyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [nginxDeploymentId] Required.
-  GetApiKeyResult({
+  const GetApiKeyResult({
     required this.endDateTime,
     required this.hint,
     required this.id,

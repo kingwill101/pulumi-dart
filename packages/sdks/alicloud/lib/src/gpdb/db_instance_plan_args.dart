@@ -37,7 +37,7 @@ class DbInstancePlanArgs {
   /// [planStartDate] The start time of the Plan.
   /// [planType] The type of the Plan. Valid values: `PauseResume`, `Resize`.
   /// [status] The Status of the Plan. Valid values: `active`, `cancel`.
-  DbInstancePlanArgs({
+  const DbInstancePlanArgs({
     required this.dbInstanceId,
     required this.dbInstancePlanName,
     required this.planConfigs,

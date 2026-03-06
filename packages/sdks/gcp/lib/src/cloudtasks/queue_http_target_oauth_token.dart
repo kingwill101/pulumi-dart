@@ -14,7 +14,7 @@ class QueueHttpTargetOauthToken {
   /// Creates a new [QueueHttpTargetOauthToken].
   /// [scope] OAuth scope to be used for generating OAuth access token.
   /// [serviceAccountEmail] Service account email to be used for generating OAuth token.
-  QueueHttpTargetOauthToken({
+  const QueueHttpTargetOauthToken({
     this.scope,
     required this.serviceAccountEmail,
   });

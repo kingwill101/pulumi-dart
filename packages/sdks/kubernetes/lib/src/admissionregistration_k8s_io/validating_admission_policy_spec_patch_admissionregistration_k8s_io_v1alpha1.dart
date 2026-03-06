@@ -44,7 +44,7 @@ class ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1 {
   /// [paramKind] ParamKind specifies the kind of resources used to parameterize this policy. If absent, there are no parameters for this policy and the param CEL variable will not be provided to validation expressions. If ParamKind refers to a non-existent kind, this policy definition is mis-configured and the FailurePolicy is applied. If paramKind is specified but paramRef is unset in ValidatingAdmissionPolicyBinding, the params variable will be null.
   /// [validations] Validations contain CEL expressions which is used to apply the validation. A minimum of one validation is required for a policy definition. Required.
   /// [variables] Variables contain definitions of variables that can be used in composition of other expressions. Each variable is defined as a named CEL expression. The variables defined here will be available under `variables` in other expressions of the policy except MatchConditions because MatchConditions are evaluated before the rest of the policy.
-  ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1({
+  const ValidatingAdmissionPolicySpecPatchAdmissionregistrationK8sIoV1alpha1({
     this.auditAnnotations,
     this.failurePolicy,
     this.matchConditions,

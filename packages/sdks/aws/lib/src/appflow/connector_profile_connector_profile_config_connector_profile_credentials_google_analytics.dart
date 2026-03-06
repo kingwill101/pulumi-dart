@@ -16,7 +16,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAna
   /// [clientSecret] Required.
   /// [oauthRequest] Optional.
   /// [refreshToken] Optional.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsGoogleAnalytics({
     this.accessToken,
     required this.clientId,
     required this.clientSecret,

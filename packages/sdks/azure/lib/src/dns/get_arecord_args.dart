@@ -18,7 +18,7 @@ class GetARecordArgs {
   /// [name] The name of the DNS A Record.
   /// [resourceGroupName] Specifies the resource group where the DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the DNS Zone where the resource exists.
-  GetARecordArgs({
+  const GetARecordArgs({
     required this.name,
     required this.resourceGroupName,
     required this.zoneName,

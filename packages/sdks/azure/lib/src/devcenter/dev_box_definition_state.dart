@@ -29,7 +29,7 @@ class DevBoxDefinitionState {
   /// [name] Specifies the name of this Dev Center Dev Box Definition. Changing this forces a new resource to be created.
   /// [skuName] The name of the SKU for the Dev Center Dev Box Definition.
   /// [tags] A mapping of tags which should be assigned to the Dev Center Dev Box Definition.
-  DevBoxDefinitionState({
+  const DevBoxDefinitionState({
     this.devCenterId,
     this.hibernateSupportEnabled,
     this.imageReferenceId,

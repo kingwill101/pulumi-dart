@@ -19,7 +19,7 @@ class StaticWebAppFunctionAppRegistrationArgs {
   /// Creates a new [StaticWebAppFunctionAppRegistrationArgs].
   /// [functionAppId] The ID of a Linux or Windows Function App to connect to the Static Web App as a Backend. Changing this forces a new resource to be created.
   /// [staticWebAppId] The ID of the Static Web App to register the Function App to as a backend. Changing this forces a new resource to be created.
-  StaticWebAppFunctionAppRegistrationArgs({
+  const StaticWebAppFunctionAppRegistrationArgs({
     required this.functionAppId,
     required this.staticWebAppId,
   });

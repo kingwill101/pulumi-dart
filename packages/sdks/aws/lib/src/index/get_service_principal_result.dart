@@ -18,7 +18,7 @@ class GetServicePrincipalResult {
   /// [region] Required.
   /// [serviceName] Required.
   /// [suffix] Suffix of the SPN (e.g., `amazonaws.com` in AWS Commercial, `amazonaws.com.cn` in AWS China).
-  GetServicePrincipalResult({
+  const GetServicePrincipalResult({
     required this.id,
     required this.name,
     required this.region,

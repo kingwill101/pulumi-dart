@@ -18,7 +18,7 @@ class ServicePerimetersArgs {
   /// Creates a new [ServicePerimetersArgs].
   /// [parent] The AccessPolicy this ServicePerimeter lives in.
   /// [servicePerimeters] The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy.
-  ServicePerimetersArgs({
+  const ServicePerimetersArgs({
     required this.parent,
     this.servicePerimeters,
   });

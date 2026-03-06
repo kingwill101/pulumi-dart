@@ -18,7 +18,7 @@ class RepositoryPolicyArgs {
   /// [policy] The policy document. This is a JSON formatted string.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repository] Name of the repository to apply the policy.
-  RepositoryPolicyArgs({
+  const RepositoryPolicyArgs({
     required this.policy,
     this.region,
     required this.repository,

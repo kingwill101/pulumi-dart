@@ -32,7 +32,7 @@ class GetAvailabilityZoneArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [state] Specific availability zone state to require. May be any of `"available"`, `"information"` or `"impaired"`.
   /// [zoneId] Zone ID of the availability zone to select.
-  GetAvailabilityZoneArgs({
+  const GetAvailabilityZoneArgs({
     this.allAvailabilityZones,
     this.filters,
     this.name,

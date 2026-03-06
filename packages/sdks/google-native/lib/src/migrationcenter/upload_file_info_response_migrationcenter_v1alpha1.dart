@@ -15,7 +15,7 @@ class UploadFileInfoResponseMigrationcenterV1alpha1 {
   /// [headers] The headers that were used to sign the URL.
   /// [signedUri] Upload URI for the file.
   /// [uriExpirationTime] Expiration time of the upload URI.
-  UploadFileInfoResponseMigrationcenterV1alpha1({
+  const UploadFileInfoResponseMigrationcenterV1alpha1({
     required this.headers,
     required this.signedUri,
     required this.uriExpirationTime,

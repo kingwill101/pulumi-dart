@@ -74,7 +74,7 @@ class GetProfileResult {
   /// [timestampFieldName] The timestamp property name. Represents the time when the interaction or profile update happened.
   /// [type] Resource type.
   /// [typeName] The name of the entity.
-  GetProfileResult({
+  const GetProfileResult({
     this.apiEntitySetName,
     this.attributes,
     required this.azureApiVersion,

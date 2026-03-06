@@ -10,7 +10,7 @@ class DockerRepository {
 
   /// Creates a new [DockerRepository].
   /// [publicRepository] One of the publicly available Docker repositories supported by Artifact Registry.
-  DockerRepository({
+  const DockerRepository({
     this.publicRepository,
   });
 

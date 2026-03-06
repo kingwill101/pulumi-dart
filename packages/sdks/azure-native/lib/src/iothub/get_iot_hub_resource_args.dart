@@ -15,7 +15,7 @@ class GetIotHubResourceArgs {
   /// Creates a new [GetIotHubResourceArgs].
   /// [resourceGroupName] The name of the resource group that contains the IoT hub.
   /// [resourceName] The name of the IoT hub.
-  GetIotHubResourceArgs({
+  const GetIotHubResourceArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

@@ -21,7 +21,7 @@ class QosDscpMarkingRuleArgs {
   /// [dscpMark] The value of DSCP mark. Changing this updates the DSCP mark value existing
   /// [qosPolicyId] The QoS policy reference. Changing this creates a new QoS DSCP marking rule.
   /// [region] The region in which to obtain the V2 Networking client.
-  QosDscpMarkingRuleArgs({
+  const QosDscpMarkingRuleArgs({
     required this.dscpMark,
     required this.qosPolicyId,
     this.region,

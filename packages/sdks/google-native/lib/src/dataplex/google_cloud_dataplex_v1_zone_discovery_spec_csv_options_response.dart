@@ -18,7 +18,7 @@ class GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse {
   /// [disableTypeInference] Optional. Whether to disable the inference of data type for CSV data. If true, all columns will be registered as strings.
   /// [encoding] Optional. The character encoding of the data. The default is UTF-8.
   /// [headerRows] Optional. The number of rows to interpret as header rows that should be skipped when reading data rows.
-  GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse({
+  const GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsResponse({
     required this.delimiter,
     required this.disableTypeInference,
     required this.encoding,

@@ -11,7 +11,7 @@ class GetInstanceTypesTypePrice {
   /// Creates a new [GetInstanceTypesTypePrice].
   /// [hourly] Cost (in US dollars) per hour.
   /// [monthly] Cost (in US dollars) per month.
-  GetInstanceTypesTypePrice({
+  const GetInstanceTypesTypePrice({
     required this.hourly,
     required this.monthly,
   });

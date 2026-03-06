@@ -29,7 +29,7 @@ class GetDomainsResult {
   /// [names] A list of Domain names.
   /// [outputFile] Optional.
   /// [status] The status of the domain name.
-  GetDomainsResult({
+  const GetDomainsResult({
     required this.domains,
     this.enableDetails,
     required this.id,

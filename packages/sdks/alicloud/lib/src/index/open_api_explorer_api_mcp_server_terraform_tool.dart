@@ -20,7 +20,7 @@ class OpenApiExplorerApiMcpServerTerraformTool {
   /// [description] Optional.
   /// [destroyPolicy] The cleanup policy applied to temporary resources after task completion, based on the task execution status:
   /// [name] Optional.
-  OpenApiExplorerApiMcpServerTerraformTool({
+  const OpenApiExplorerApiMcpServerTerraformTool({
     this.async,
     this.code,
     this.description,

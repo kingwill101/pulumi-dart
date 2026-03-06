@@ -18,7 +18,7 @@ class GetMxRecordArgs {
   /// [name] The name of the DNS MX Record.
   /// [resourceGroupName] Specifies the resource group where the DNS Zone (parent resource) exists.
   /// [zoneName] Specifies the DNS Zone where the resource exists.
-  GetMxRecordArgs({
+  const GetMxRecordArgs({
     this.name,
     required this.resourceGroupName,
     required this.zoneName,

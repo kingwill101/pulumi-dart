@@ -8,7 +8,7 @@ class GetGiVersionsGiVersion {
 
   /// Creates a new [GetGiVersionsGiVersion].
   /// [version] The GI software version.
-  GetGiVersionsGiVersion({
+  const GetGiVersionsGiVersion({
     required this.version,
   });
 

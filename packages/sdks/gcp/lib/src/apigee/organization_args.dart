@@ -72,7 +72,7 @@ class OrganizationArgs {
   /// [retention] Optional. This setting is applicable only for organizations that are soft-deleted (i.e., BillingType
   /// [runtimeDatabaseEncryptionKeyName] Cloud KMS key name used for encrypting the data that is stored and replicated across runtime instances.
   /// [runtimeType_] Runtime type of the Apigee organization based on the Apigee subscription purchased.
-  OrganizationArgs({
+  const OrganizationArgs({
     this.analyticsRegion,
     this.apiConsumerDataEncryptionKeyName,
     this.apiConsumerDataLocation,

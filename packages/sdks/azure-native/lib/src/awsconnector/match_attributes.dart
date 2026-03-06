@@ -27,7 +27,7 @@ class MatchAttributes {
   /// [sourcePorts] Property sourcePorts
   /// [sources] Property sources
   /// [tcpFlags] Property tcpFlags
-  MatchAttributes({
+  const MatchAttributes({
     this.destinationPorts,
     this.destinations,
     this.protocols,

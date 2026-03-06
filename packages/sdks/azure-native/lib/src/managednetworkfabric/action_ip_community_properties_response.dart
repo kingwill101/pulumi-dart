@@ -16,7 +16,7 @@ class ActionIpCommunityPropertiesResponse {
   /// [add] List of IP Community IDs.
   /// [delete] List of IP Community IDs.
   /// [set] List of IP Community IDs.
-  ActionIpCommunityPropertiesResponse({
+  const ActionIpCommunityPropertiesResponse({
     this.add,
     this.delete,
     this.set,

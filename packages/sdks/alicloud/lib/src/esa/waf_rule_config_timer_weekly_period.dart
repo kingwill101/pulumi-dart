@@ -12,7 +12,7 @@ class WafRuleConfigTimerWeeklyPeriod {
   /// Creates a new [WafRuleConfigTimerWeeklyPeriod].
   /// [dailyPeriods] Daily effective time periods within a weekly schedule. See `daily_periods` below.
   /// [days] Cycle, multiple use comma separated, 1-7 respectively represent Monday-Sunday.  Example: Monday, Wednesday value is "1,3"
-  WafRuleConfigTimerWeeklyPeriod({
+  const WafRuleConfigTimerWeeklyPeriod({
     this.dailyPeriods,
     this.days,
   });

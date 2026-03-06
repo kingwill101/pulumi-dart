@@ -54,7 +54,7 @@ class DeploymentStackAtSubscriptionArgs {
   /// [tags] Resource tags.
   /// [template] The template content. You use this element when you want to pass the template syntax directly in the request rather than link to an existing template. It can be a JObject or well-formed JSON string. Use either the templateLink property or the template property, but not both.
   /// [templateLink] The URI of the template. Use either the templateLink property or the template property, but not both.
-  DeploymentStackAtSubscriptionArgs({
+  const DeploymentStackAtSubscriptionArgs({
     required this.actionOnUnmanage,
     this.bypassStackOutOfSyncError,
     this.debugSetting,

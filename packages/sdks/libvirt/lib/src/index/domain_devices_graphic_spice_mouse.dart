@@ -8,7 +8,7 @@ class DomainDevicesGraphicSpiceMouse {
 
   /// Creates a new [DomainDevicesGraphicSpiceMouse].
   /// [mode] Sets the mode for mouse input handling within the Spice graphical environment.
-  DomainDevicesGraphicSpiceMouse({
+  const DomainDevicesGraphicSpiceMouse({
     required this.mode,
   });
 

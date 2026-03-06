@@ -9,7 +9,7 @@ class DomainVcpus {
 
   /// Creates a new [DomainVcpus].
   /// [vcpus] Represents a single virtual CPU configuration within the domain, allowing for detailed settings per vCPU.
-  DomainVcpus({
+  const DomainVcpus({
     this.vcpus,
   });
 

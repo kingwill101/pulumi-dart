@@ -9,7 +9,7 @@ class AutoTuneStateEnumValueResponse {
 
   /// Creates a new [AutoTuneStateEnumValueResponse].
   /// [value] Property value
-  AutoTuneStateEnumValueResponse({
+  const AutoTuneStateEnumValueResponse({
     this.value,
   });
 

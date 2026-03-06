@@ -15,7 +15,7 @@ class EnrichmentPropertiesResponse {
   /// [endpointNames] The list of endpoints for which the enrichment is applied to the message.
   /// [key] The key or name for the enrichment property.
   /// [value] The value for the enrichment property.
-  EnrichmentPropertiesResponse({
+  const EnrichmentPropertiesResponse({
     required this.endpointNames,
     required this.key,
     required this.value,

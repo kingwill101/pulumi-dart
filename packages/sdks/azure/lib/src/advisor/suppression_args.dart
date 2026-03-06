@@ -21,7 +21,7 @@ class SuppressionArgs {
   /// [recommendationId] The ID of the Advisor recommendation to suppress. Changing this forces a new Advisor suppression to be created.
   /// [resourceId] The ID of the Resource to suppress the Advisor recommendation for. Changing this forces a new Advisor suppression to be created.
   /// [ttl] A optional time to live value. If omitted, the suppression will not expire. Changing this forces a new Advisor suppression to be created.
-  SuppressionArgs({
+  const SuppressionArgs({
     this.name,
     required this.recommendationId,
     required this.resourceId,

@@ -17,7 +17,7 @@ class ObjectMetricStatusAutoscalingV2beta2 {
   /// [current] current contains the current value for the given metric
   /// [describedObject] Required.
   /// [metric] metric identifies the target metric by name and selector
-  ObjectMetricStatusAutoscalingV2beta2({
+  const ObjectMetricStatusAutoscalingV2beta2({
     required this.current,
     required this.describedObject,
     required this.metric,

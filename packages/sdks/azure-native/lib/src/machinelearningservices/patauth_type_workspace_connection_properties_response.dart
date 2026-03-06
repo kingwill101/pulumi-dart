@@ -37,7 +37,7 @@ class PATAuthTypeWorkspaceConnectionPropertiesResponse {
   /// [target] Optional.
   /// [value] Value details of the workspace connection.
   /// [valueFormat] format for the workspace connection value
-  PATAuthTypeWorkspaceConnectionPropertiesResponse({
+  const PATAuthTypeWorkspaceConnectionPropertiesResponse({
     required this.authType,
     this.category,
     required this.createdByWorkspaceArmId,

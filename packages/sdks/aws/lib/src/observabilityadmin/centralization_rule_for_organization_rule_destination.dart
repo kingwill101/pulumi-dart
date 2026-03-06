@@ -15,7 +15,7 @@ class CentralizationRuleForOrganizationRuleDestination {
   /// [account] AWS account ID where logs will be centralized.
   /// [destinationLogsConfiguration] Configuration block for destination logs settings. See `destination_logs_configuration` below.
   /// [region] AWS region where logs will be centralized.
-  CentralizationRuleForOrganizationRuleDestination({
+  const CentralizationRuleForOrganizationRuleDestination({
     required this.account,
     this.destinationLogsConfiguration,
     required this.region,

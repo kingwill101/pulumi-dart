@@ -12,7 +12,7 @@ class SharingProfileGroupResponse {
   /// Creates a new [SharingProfileGroupResponse].
   /// [ids] A list of subscription/tenant ids the gallery is aimed to be shared to.
   /// [type] This property allows you to specify the type of sharing group. Possible values are: **Subscriptions,** **AADTenants.**
-  SharingProfileGroupResponse({
+  const SharingProfileGroupResponse({
     this.ids,
     this.type,
   });

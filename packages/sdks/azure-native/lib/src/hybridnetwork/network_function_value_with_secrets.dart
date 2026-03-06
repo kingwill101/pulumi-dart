@@ -44,7 +44,7 @@ class NetworkFunctionValueWithSecrets {
   /// [publisherScope] The scope of the publisher.
   /// [roleOverrideValues] The role configuration override values from the user.
   /// [secretDeploymentValues] The JSON-serialized secret deployment values from the user. This contains secrets like passwords,keys etc
-  NetworkFunctionValueWithSecrets({
+  const NetworkFunctionValueWithSecrets({
     this.allowSoftwareUpdate,
     required this.configurationType,
     this.networkFunctionDefinitionGroupName,

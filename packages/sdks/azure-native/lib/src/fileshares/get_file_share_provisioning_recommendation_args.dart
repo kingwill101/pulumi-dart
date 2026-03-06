@@ -16,7 +16,7 @@ class GetFileShareProvisioningRecommendationArgs {
   /// Creates a new [GetFileShareProvisioningRecommendationArgs].
   /// [location] The name of the Azure region.
   /// [properties] The properties of the file share provisioning recommendation input.
-  GetFileShareProvisioningRecommendationArgs({
+  const GetFileShareProvisioningRecommendationArgs({
     required this.location,
     required this.properties,
   });

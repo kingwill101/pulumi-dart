@@ -10,7 +10,7 @@ class GetVirtualNetworkGatewayVpnclientConnectionHealthResult {
 
   /// Creates a new [GetVirtualNetworkGatewayVpnclientConnectionHealthResult].
   /// [value] List of vpn client connection health.
-  GetVirtualNetworkGatewayVpnclientConnectionHealthResult({
+  const GetVirtualNetworkGatewayVpnclientConnectionHealthResult({
     this.value,
   });
 

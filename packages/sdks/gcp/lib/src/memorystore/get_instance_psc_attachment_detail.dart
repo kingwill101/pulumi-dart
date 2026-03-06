@@ -11,7 +11,7 @@ class GetInstancePscAttachmentDetail {
   /// Creates a new [GetInstancePscAttachmentDetail].
   /// [connectionType] Service attachment URI which your self-created PscConnection should use as target.
   /// [serviceAttachment] Service attachment URI which your self-created PscConnection should use as target.
-  GetInstancePscAttachmentDetail({
+  const GetInstancePscAttachmentDetail({
     required this.connectionType,
     required this.serviceAttachment,
   });

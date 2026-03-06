@@ -8,7 +8,7 @@ class ApiKeyRestrictionsBrowserKeyRestrictions {
 
   /// Creates a new [ApiKeyRestrictionsBrowserKeyRestrictions].
   /// [allowedReferrers] A list of regular expressions for the referrer URLs that are allowed to make API calls with this key.
-  ApiKeyRestrictionsBrowserKeyRestrictions({
+  const ApiKeyRestrictionsBrowserKeyRestrictions({
     required this.allowedReferrers,
   });
 

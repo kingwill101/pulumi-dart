@@ -38,7 +38,7 @@ class ExportTaskArgs {
   /// [s3Prefix] Amazon S3 bucket prefix to use as the file name and path of the exported snapshot.
   /// [sourceArn] Amazon Resource Name (ARN) of the snapshot to export.
   /// [timeouts] Optional.
-  ExportTaskArgs({
+  const ExportTaskArgs({
     this.exportOnlies,
     required this.exportTaskIdentifier,
     required this.iamRoleArn,

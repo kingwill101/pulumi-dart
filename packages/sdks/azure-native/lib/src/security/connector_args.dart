@@ -20,7 +20,7 @@ class ConnectorArgs {
   /// [authenticationDetails] Settings for authentication management, these settings are relevant only for the cloud connector.
   /// [connectorName] Name of the cloud account connector
   /// [hybridComputeSettings] Settings for hybrid compute management. These settings are relevant only for Arc autoProvision (Hybrid Compute).
-  ConnectorArgs({
+  const ConnectorArgs({
     this.authenticationDetails,
     this.connectorName,
     this.hybridComputeSettings,

@@ -57,7 +57,7 @@ class GetIscsiTargetResult {
   /// [systemData] Resource metadata required by ARM RPC
   /// [targetIqn] iSCSI Target IQN (iSCSI Qualified Name); example: "iqn.2005-03.org.iscsi:server".
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetIscsiTargetResult({
+  const GetIscsiTargetResult({
     required this.aclMode,
     required this.azureApiVersion,
     this.endpoints,

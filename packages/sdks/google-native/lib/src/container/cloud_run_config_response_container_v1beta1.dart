@@ -12,7 +12,7 @@ class CloudRunConfigResponseContainerV1beta1 {
   /// Creates a new [CloudRunConfigResponseContainerV1beta1].
   /// [disabled] Whether Cloud Run addon is enabled for this cluster.
   /// [loadBalancerType] Which load balancer type is installed for Cloud Run.
-  CloudRunConfigResponseContainerV1beta1({
+  const CloudRunConfigResponseContainerV1beta1({
     required this.disabled,
     required this.loadBalancerType,
   });

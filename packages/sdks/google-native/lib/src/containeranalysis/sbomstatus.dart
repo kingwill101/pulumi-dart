@@ -13,7 +13,7 @@ class SBOMStatus {
   /// Creates a new [SBOMStatus].
   /// [error] If there was an error generating an SBOM, this will indicate what that error was.
   /// [sbomState] The progress of the SBOM generation.
-  SBOMStatus({
+  const SBOMStatus({
     this.error,
     this.sbomState,
   });

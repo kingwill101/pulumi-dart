@@ -9,7 +9,7 @@ class ListenerDefaultActionForwardGroupConfig {
 
   /// Creates a new [ListenerDefaultActionForwardGroupConfig].
   /// [serverGroupTuples] The Forwarding Destination Server Group See `server_group_tuples` below.
-  ListenerDefaultActionForwardGroupConfig({
+  const ListenerDefaultActionForwardGroupConfig({
     required this.serverGroupTuples,
   });
 

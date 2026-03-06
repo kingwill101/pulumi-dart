@@ -30,7 +30,7 @@ class ClusterAutoscalingSettingsAutoscalingPolicy {
   /// [nodeTypeId] The canonical identifier of the node type to add or remove.
   /// [scaleOutSize] Number of nodes to add to a cluster during a scale-out operation.
   /// [storageThresholds] Utilization thresholds pertaining to amount of consumed storage.
-  ClusterAutoscalingSettingsAutoscalingPolicy({
+  const ClusterAutoscalingSettingsAutoscalingPolicy({
     required this.autoscalePolicyId,
     this.consumedMemoryThresholds,
     this.cpuThresholds,

@@ -13,7 +13,7 @@ class CxWebhookServiceDirectory {
   /// Creates a new [CxWebhookServiceDirectory].
   /// [genericWebService] Represents configuration for a generic web service.
   /// [service] The name of Service Directory service.
-  CxWebhookServiceDirectory({
+  const CxWebhookServiceDirectory({
     this.genericWebService,
     required this.service,
   });

@@ -18,7 +18,7 @@ class GatewayRouteTableAttachmentArgs {
   /// [dryRun] Specifies whether to only precheck this request. Default value: `false`.
   /// [ipv4GatewayId] The ID of the IPv4 Gateway instance.
   /// [routeTableId] The ID of the Gateway route table to be bound.
-  GatewayRouteTableAttachmentArgs({
+  const GatewayRouteTableAttachmentArgs({
     this.dryRun,
     required this.ipv4GatewayId,
     required this.routeTableId,

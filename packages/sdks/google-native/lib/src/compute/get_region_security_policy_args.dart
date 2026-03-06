@@ -15,7 +15,7 @@ class GetRegionSecurityPolicyArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [securityPolicy] Required.
-  GetRegionSecurityPolicyArgs({
+  const GetRegionSecurityPolicyArgs({
     this.project,
     required this.region,
     required this.securityPolicy,

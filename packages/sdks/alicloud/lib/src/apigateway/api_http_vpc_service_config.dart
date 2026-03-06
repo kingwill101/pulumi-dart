@@ -29,7 +29,7 @@ class ApiHttpVpcServiceConfig {
   /// [path] The path of backend service.
   /// [timeout] Backend service time-out time. Unit: millisecond.
   /// [vpcScheme] The vpc scheme of backend service which supports values of `HTTP` and `HTTPS`.
-  ApiHttpVpcServiceConfig({
+  const ApiHttpVpcServiceConfig({
     this.aoneName,
     this.contentTypeCategory,
     this.contentTypeValue,

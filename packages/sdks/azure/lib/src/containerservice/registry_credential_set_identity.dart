@@ -14,7 +14,7 @@ class RegistryCredentialSetIdentity {
   /// [principalId] The principal ID of the Identity.
   /// [tenantId] The tenant ID of the Identity.
   /// [type] The type of Managed Service Identity that is configured on for the Container Registry Credential Set. Currently the only possible value is `SystemAssigned`.
-  RegistryCredentialSetIdentity({
+  const RegistryCredentialSetIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

@@ -93,7 +93,7 @@ class AppVersionSnapshotToolClientFunctionParameter {
   /// [requireds] (Output)
   /// [type] (Output)
   /// [uniqueItems] (Output)
-  AppVersionSnapshotToolClientFunctionParameter({
+  const AppVersionSnapshotToolClientFunctionParameter({
     this.additionalProperties,
     this.anyOf,
     this.default_,

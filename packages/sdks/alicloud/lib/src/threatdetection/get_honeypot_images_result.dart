@@ -25,7 +25,7 @@ class GetHoneypotImagesResult {
   /// [names] A list of name of Honeypot Images.
   /// [nodeId] Optional.
   /// [outputFile] Optional.
-  GetHoneypotImagesResult({
+  const GetHoneypotImagesResult({
     required this.id,
     required this.ids,
     required this.images,

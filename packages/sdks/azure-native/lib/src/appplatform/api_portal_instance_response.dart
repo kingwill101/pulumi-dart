@@ -12,7 +12,7 @@ class ApiPortalInstanceResponse {
   /// Creates a new [ApiPortalInstanceResponse].
   /// [name] Name of the API portal instance
   /// [status] Status of the API portal instance
-  ApiPortalInstanceResponse({
+  const ApiPortalInstanceResponse({
     required this.name,
     required this.status,
   });

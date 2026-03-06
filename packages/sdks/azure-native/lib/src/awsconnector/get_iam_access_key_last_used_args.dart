@@ -15,7 +15,7 @@ class GetIamAccessKeyLastUsedArgs {
   /// Creates a new [GetIamAccessKeyLastUsedArgs].
   /// [name] Name of IamAccessKeyLastUsed
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIamAccessKeyLastUsedArgs({
+  const GetIamAccessKeyLastUsedArgs({
     required this.name,
     required this.resourceGroupName,
   });

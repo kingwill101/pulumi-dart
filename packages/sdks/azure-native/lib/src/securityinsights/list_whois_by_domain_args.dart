@@ -21,7 +21,7 @@ class ListWhoisByDomainArgs {
   /// [enrichmentType] Enrichment type
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  ListWhoisByDomainArgs({
+  const ListWhoisByDomainArgs({
     this.domain,
     required this.enrichmentType,
     required this.resourceGroupName,

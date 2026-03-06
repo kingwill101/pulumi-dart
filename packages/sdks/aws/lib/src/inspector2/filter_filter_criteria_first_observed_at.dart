@@ -11,7 +11,7 @@ class FilterFilterCriteriaFirstObservedAt {
   /// Creates a new [FilterFilterCriteriaFirstObservedAt].
   /// [endInclusive] (Required) The end of the port range, inclusive.
   /// [startInclusive] (Optional) Start of the date range in RFC 3339 format, inclusive. Set the timezone to UTC.
-  FilterFilterCriteriaFirstObservedAt({
+  const FilterFilterCriteriaFirstObservedAt({
     this.endInclusive,
     this.startInclusive,
   });

@@ -19,7 +19,7 @@ class NamespaceStreamResponse {
   /// [name] Name of the stream definition.
   /// [streamConfiguration] Stringified JSON that contains connector-specific configuration for the specific stream.
   /// [typeRef] URI or type definition ID.
-  NamespaceStreamResponse({
+  const NamespaceStreamResponse({
     this.destinations,
     required this.name,
     this.streamConfiguration,

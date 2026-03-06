@@ -10,7 +10,7 @@ class TemplateScratchSourceTag {
   /// Creates a new [TemplateScratchSourceTag].
   /// [resourceTags] Source label. **NOTE:** A maximum of 10 source labels can be configured.
   /// [resourceTypeFilters] Optional.
-  TemplateScratchSourceTag({
+  const TemplateScratchSourceTag({
     required this.resourceTags,
     this.resourceTypeFilters,
   });

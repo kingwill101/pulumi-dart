@@ -16,7 +16,7 @@ class ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer {
   /// [availabilitySetName] The full name for the availability set. Changing this forces a new resource to be created.
   /// [loadBalancer] A `load_balancer` block as defined below. Changing this forces a new resource to be created.
   /// [virtualMachines] One or more `virtual_machine` blocks as defined below. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer({
+  const ThreeTierVirtualInstanceThreeTierConfigurationResourceNamesCentralServer({
     this.availabilitySetName,
     this.loadBalancer,
     this.virtualMachines,

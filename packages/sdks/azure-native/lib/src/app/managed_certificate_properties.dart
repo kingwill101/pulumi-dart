@@ -12,7 +12,7 @@ class ManagedCertificateProperties {
   /// Creates a new [ManagedCertificateProperties].
   /// [domainControlValidation] Selected type of domain control validation for managed certificates.
   /// [subjectName] Subject name of the certificate.
-  ManagedCertificateProperties({
+  const ManagedCertificateProperties({
     this.domainControlValidation,
     this.subjectName,
   });

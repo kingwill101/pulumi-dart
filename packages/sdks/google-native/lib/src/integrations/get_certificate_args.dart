@@ -17,7 +17,7 @@ class GetCertificateArgs {
   /// [location] Required.
   /// [productId] Required.
   /// [project] Optional.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.certificateId,
     required this.location,
     required this.productId,

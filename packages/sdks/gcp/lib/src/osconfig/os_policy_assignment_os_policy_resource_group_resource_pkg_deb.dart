@@ -15,7 +15,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb {
   /// Creates a new [OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb].
   /// [pullDeps] Whether dependencies should also be installed. -
   /// [source] A deb package. Structure is
-  OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb({
     this.pullDeps,
     required this.source,
   });

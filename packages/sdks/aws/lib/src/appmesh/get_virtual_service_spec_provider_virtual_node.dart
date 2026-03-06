@@ -7,7 +7,7 @@ class GetVirtualServiceSpecProviderVirtualNode {
 
   /// Creates a new [GetVirtualServiceSpecProviderVirtualNode].
   /// [virtualNodeName] Required.
-  GetVirtualServiceSpecProviderVirtualNode({
+  const GetVirtualServiceSpecProviderVirtualNode({
     required this.virtualNodeName,
   });
 

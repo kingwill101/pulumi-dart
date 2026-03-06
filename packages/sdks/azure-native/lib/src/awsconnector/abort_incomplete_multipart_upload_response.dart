@@ -9,7 +9,7 @@ class AbortIncompleteMultipartUploadResponse {
 
   /// Creates a new [AbortIncompleteMultipartUploadResponse].
   /// [daysAfterInitiation] Specifies the number of days after which Amazon S3 stops an incomplete multipart upload.
-  AbortIncompleteMultipartUploadResponse({
+  const AbortIncompleteMultipartUploadResponse({
     this.daysAfterInitiation,
   });
 

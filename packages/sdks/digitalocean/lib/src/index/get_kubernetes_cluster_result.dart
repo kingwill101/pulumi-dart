@@ -90,7 +90,7 @@ class GetKubernetesClusterResult {
   /// [urn] The uniform resource name (URN) for the Kubernetes cluster.
   /// [version] The slug identifier for the version of Kubernetes used for the cluster.
   /// [vpcUuid] The ID of the VPC where the Kubernetes cluster is located.
-  GetKubernetesClusterResult({
+  const GetKubernetesClusterResult({
     required this.amdGpuDeviceMetricsExporterPlugin,
     required this.amdGpuDevicePlugin,
     required this.autoUpgrade,

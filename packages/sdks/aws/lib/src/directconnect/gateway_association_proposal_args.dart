@@ -24,7 +24,7 @@ class GatewayAssociationProposalArgs {
   /// [dxGatewayId] Direct Connect Gateway identifier.
   /// [dxGatewayOwnerAccountId] AWS Account identifier of the Direct Connect Gateway's owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GatewayAssociationProposalArgs({
+  const GatewayAssociationProposalArgs({
     this.allowedPrefixes,
     required this.associatedGatewayId,
     required this.dxGatewayId,

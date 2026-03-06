@@ -12,7 +12,7 @@ class PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfigurati
   /// [assignPublicIp] Specifies whether the task's elastic network interface receives a public IP address. You can specify ENABLED only when LaunchType in EcsParameters is set to FARGATE. Valid Values: ENABLED, DISABLED.
   /// [securityGroups] Optional.
   /// [subnets] Optional.
-  PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration({
+  const PipeTargetParametersEcsTaskParametersNetworkConfigurationAwsVpcConfiguration({
     this.assignPublicIp,
     this.securityGroups,
     this.subnets,

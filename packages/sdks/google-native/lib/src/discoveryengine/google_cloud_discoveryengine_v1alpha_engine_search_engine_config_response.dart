@@ -12,7 +12,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse {
   /// Creates a new [GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse].
   /// [searchAddOns] The add-on that this search engine enables.
   /// [searchTier] The search feature tier of this engine. Different tiers might have different pricing. To learn more, please check the pricing documentation. Defaults to SearchTier.SEARCH_TIER_STANDARD if not specified.
-  GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse({
+  const GoogleCloudDiscoveryengineV1alphaEngineSearchEngineConfigResponse({
     required this.searchAddOns,
     required this.searchTier,
   });

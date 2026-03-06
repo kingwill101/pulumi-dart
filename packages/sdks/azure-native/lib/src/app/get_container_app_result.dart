@@ -89,7 +89,7 @@ class GetContainerAppResult {
   /// [template] Container App versioned application definition.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workloadProfileName] Workload profile name to pin for container app execution.
-  GetContainerAppResult({
+  const GetContainerAppResult({
     required this.azureApiVersion,
     this.configuration,
     required this.customDomainVerificationId,

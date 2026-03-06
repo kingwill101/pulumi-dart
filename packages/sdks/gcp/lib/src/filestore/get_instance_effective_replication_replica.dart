@@ -19,7 +19,7 @@ class GetInstanceEffectiveReplicationReplica {
   /// [peerInstance] The peer instance.
   /// [state] Output only. The replica state
   /// [stateReasons] Output only. Additional information about the replication state, if available.
-  GetInstanceEffectiveReplicationReplica({
+  const GetInstanceEffectiveReplicationReplica({
     required this.lastActiveSyncTime,
     required this.peerInstance,
     required this.state,

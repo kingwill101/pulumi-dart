@@ -8,7 +8,7 @@ class FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride {
 
   /// Creates a new [FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride].
   /// [action] The action that changes the rule group from DROP to ALERT . This only applies to managed rule groups.
-  FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride({
+  const FirewallPolicyFirewallPolicyStatefulRuleGroupReferenceOverride({
     this.action,
   });
 

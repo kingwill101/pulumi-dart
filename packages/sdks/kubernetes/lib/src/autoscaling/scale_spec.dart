@@ -9,7 +9,7 @@ class ScaleSpec {
 
   /// Creates a new [ScaleSpec].
   /// [replicas] replicas is the desired number of instances for the scaled object.
-  ScaleSpec({
+  const ScaleSpec({
     this.replicas,
   });
 

@@ -7,7 +7,7 @@ class ProviderFeaturesResourceGroup {
 
   /// Creates a new [ProviderFeaturesResourceGroup].
   /// [preventDeletionIfContainsResources] Optional.
-  ProviderFeaturesResourceGroup({
+  const ProviderFeaturesResourceGroup({
     this.preventDeletionIfContainsResources,
   });
 

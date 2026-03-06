@@ -13,7 +13,7 @@ class TableConstraints {
   /// Creates a new [TableConstraints].
   /// [foreignKeys] [Optional] The foreign keys of the tables.
   /// [primaryKey] [Optional] The primary key of the table.
-  TableConstraints({
+  const TableConstraints({
     this.foreignKeys,
     this.primaryKey,
   });

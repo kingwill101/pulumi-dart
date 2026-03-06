@@ -17,7 +17,7 @@ class AlertPolicyConditionConditionMatchedLog {
   /// Creates a new [AlertPolicyConditionConditionMatchedLog].
   /// [filter] A logs-based filter.
   /// [labelExtractors] A map from a label key to an extractor expression, which is used to
-  AlertPolicyConditionConditionMatchedLog({
+  const AlertPolicyConditionConditionMatchedLog({
     required this.filter,
     this.labelExtractors,
   });

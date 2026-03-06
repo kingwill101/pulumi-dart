@@ -11,7 +11,7 @@ class GetDynamicTagGroupsGroupMatchExpress {
   /// Creates a new [GetDynamicTagGroupsGroupMatchExpress].
   /// [tagValue] The tag value. The Tag value must be used in conjunction with the tag value matching method TagValueMatchFunction.
   /// [tagValueMatchFunction] Matching method of tag value. Valid values: `all`, `startWith`,`endWith`,`contains`,`notContains`,`equals`.
-  GetDynamicTagGroupsGroupMatchExpress({
+  const GetDynamicTagGroupsGroupMatchExpress({
     required this.tagValue,
     required this.tagValueMatchFunction,
   });

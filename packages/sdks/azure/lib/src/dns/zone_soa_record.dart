@@ -35,7 +35,7 @@ class ZoneSoaRecord {
   /// [serialNumber] The serial number for the SOA record. Defaults to `1`.
   /// [tags] A mapping of tags to assign to the Record Set.
   /// [ttl] The Time To Live of the SOA Record in seconds. Defaults to `3600`.
-  ZoneSoaRecord({
+  const ZoneSoaRecord({
     required this.email,
     this.expireTime,
     this.fqdn,

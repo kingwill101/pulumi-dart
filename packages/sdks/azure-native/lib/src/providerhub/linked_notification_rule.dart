@@ -20,7 +20,7 @@ class LinkedNotificationRule {
   /// [fastPathActions] The fast path actions.
   /// [fastPathActionsOnFailedOperation] The fast path action on failed operation.
   /// [linkedNotificationTimeout] This is a TimeSpan property.
-  LinkedNotificationRule({
+  const LinkedNotificationRule({
     this.actions,
     this.actionsOnFailedOperation,
     this.fastPathActions,

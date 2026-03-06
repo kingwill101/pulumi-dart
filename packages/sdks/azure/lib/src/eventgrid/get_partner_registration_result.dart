@@ -18,7 +18,7 @@ class GetPartnerRegistrationResult {
   /// [partnerRegistrationId] The immutable id of the corresponding partner registration.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags which are assigned to the EventGrid Partner Registration.
-  GetPartnerRegistrationResult({
+  const GetPartnerRegistrationResult({
     required this.id,
     required this.name,
     required this.partnerRegistrationId,

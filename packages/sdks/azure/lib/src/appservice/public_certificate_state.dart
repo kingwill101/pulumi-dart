@@ -24,7 +24,7 @@ class PublicCertificateState {
   /// [certificateName] The name of the public certificate. Changing this forces a new App Service Public Certificate to be created.
   /// [resourceGroupName] The name of the Resource Group where the App Service Public Certificate should exist. Changing this forces a new App Service Public Certificate to be created.
   /// [thumbprint] The thumbprint of the public certificate.
-  PublicCertificateState({
+  const PublicCertificateState({
     this.appServiceName,
     this.blob,
     this.certificateLocation,

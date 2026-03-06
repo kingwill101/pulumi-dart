@@ -8,7 +8,7 @@ class SubscriptionCostManagementViewKpi {
 
   /// Creates a new [SubscriptionCostManagementViewKpi].
   /// [type] KPI type. Possible values are `Budget` and `Forecast`.
-  SubscriptionCostManagementViewKpi({
+  const SubscriptionCostManagementViewKpi({
     required this.type,
   });
 

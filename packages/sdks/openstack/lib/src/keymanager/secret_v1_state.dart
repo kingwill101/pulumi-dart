@@ -71,7 +71,7 @@ class SecretV1State {
   /// [secretType] Used to indicate the type of secret being stored. For more information see [Secret types](https://docs.openstack.org/barbican/latest/api/reference/secret_types.html).
   /// [status] The status of the secret.
   /// [updatedAt] The date the secret was last updated.
-  SecretV1State({
+  const SecretV1State({
     this.acl,
     this.algorithm,
     this.allMetadata,

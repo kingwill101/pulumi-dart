@@ -21,7 +21,7 @@ class VirtualMachinePropertiesResponseStorageProfile {
   /// [imageReference] Which Image to use for the virtual machine
   /// [osDisk] VHD to attach as OS disk
   /// [vmConfigStoragePathId] Id of the storage container that hosts the VM configuration file
-  VirtualMachinePropertiesResponseStorageProfile({
+  const VirtualMachinePropertiesResponseStorageProfile({
     this.dataDisks,
     this.imageReference,
     this.osDisk,

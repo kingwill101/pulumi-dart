@@ -18,7 +18,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// Creates a new [V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRollout].
   /// [disruptionBudget] Message encapsulating a value that can be either absolute ("fixed") or
   /// [minWaitDuration] Required. This determines the minimum duration of time to wait after the
-  V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRollout({
+  const V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadRollout({
     required this.disruptionBudget,
     required this.minWaitDuration,
   });

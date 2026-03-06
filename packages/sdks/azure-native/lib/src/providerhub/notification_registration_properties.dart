@@ -18,7 +18,7 @@ class NotificationRegistrationProperties {
   /// [messageScope] The message scope.
   /// [notificationEndpoints] The notification endpoints.
   /// [notificationMode] The notification mode.
-  NotificationRegistrationProperties({
+  const NotificationRegistrationProperties({
     this.includedEvents,
     this.messageScope,
     this.notificationEndpoints,

@@ -14,7 +14,7 @@ class LocationProfileResponse {
   /// Creates a new [LocationProfileResponse].
   /// [location] The ARM location name of the additional region. If LocationProfile is specified, then location is required.
   /// [virtualMachineProfileOverride] An override for computeProfile.baseVirtualMachineProfile specific to this region.
-  LocationProfileResponse({
+  const LocationProfileResponse({
     required this.location,
     this.virtualMachineProfileOverride,
   });

@@ -14,7 +14,7 @@ class GetRegionsResult {
   /// [filters] Optional.
   /// [id] Required.
   /// [regions] Required.
-  GetRegionsResult({
+  const GetRegionsResult({
     this.filters,
     required this.id,
     required this.regions,

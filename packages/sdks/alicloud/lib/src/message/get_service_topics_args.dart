@@ -25,7 +25,7 @@ class GetServiceTopicsArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [topicName] The name of the topic.
-  GetServiceTopicsArgs({
+  const GetServiceTopicsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

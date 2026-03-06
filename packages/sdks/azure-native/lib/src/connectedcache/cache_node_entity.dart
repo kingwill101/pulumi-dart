@@ -60,7 +60,7 @@ class CacheNodeEntity {
   /// [isEnterpriseManaged] Cache node resource flag for determining if managed by enterprise as boolean.
   /// [maxAllowableEgressInMbps] Cache node resource maximum allowed egress in Mbps.
   /// [shouldMigrate] Cache node resource flag for determining if customer will be migrated.
-  CacheNodeEntity({
+  const CacheNodeEntity({
     this.autoUpdateRequestedDay,
     this.autoUpdateRequestedTime,
     this.autoUpdateRequestedWeek,

@@ -12,7 +12,7 @@ class LabelClassResponse {
   /// Creates a new [LabelClassResponse].
   /// [displayName] Display name of the label class.
   /// [subclasses] Dictionary of subclasses of the label class.
-  LabelClassResponse({
+  const LabelClassResponse({
     this.displayName,
     this.subclasses,
   });

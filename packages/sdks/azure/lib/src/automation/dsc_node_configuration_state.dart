@@ -20,7 +20,7 @@ class DscNodeConfigurationState {
   /// [contentEmbedded] The PowerShell DSC Node Configuration (mof content).
   /// [name] Specifies the name of the DSC Node Configuration. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the DSC Node Configuration is created. Changing this forces a new resource to be created.
-  DscNodeConfigurationState({
+  const DscNodeConfigurationState({
     this.automationAccountName,
     this.configurationName,
     this.contentEmbedded,

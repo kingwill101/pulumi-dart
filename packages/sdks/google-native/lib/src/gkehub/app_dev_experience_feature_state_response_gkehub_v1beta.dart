@@ -10,7 +10,7 @@ class AppDevExperienceFeatureStateResponseGkehubV1beta {
 
   /// Creates a new [AppDevExperienceFeatureStateResponseGkehubV1beta].
   /// [networkingInstallSucceeded] Status of subcomponent that detects configured Service Mesh resources.
-  AppDevExperienceFeatureStateResponseGkehubV1beta({
+  const AppDevExperienceFeatureStateResponseGkehubV1beta({
     required this.networkingInstallSucceeded,
   });
 

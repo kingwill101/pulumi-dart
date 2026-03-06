@@ -43,7 +43,7 @@ class MongoCollectionArgs {
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB Mongo Collection is created. Changing this forces a new resource to be created.
   /// [shardKey] The name of the key to partition on for sharding. There must not be any other unique index keys. Changing this forces a new resource to be created.
   /// [throughput] The throughput of the MongoDB collection (RU/s). Must be set in increments of `100`. The minimum value is `400`. This must be set upon database creation otherwise it cannot be updated without a manual terraform destroy-apply.
-  MongoCollectionArgs({
+  const MongoCollectionArgs({
     required this.accountName,
     this.analyticalStorageTtl,
     this.autoscaleSettings,

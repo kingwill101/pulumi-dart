@@ -190,7 +190,7 @@ class AwsRdsDBClusterPropertiesResponse {
   /// [tags] An array of key-value pairs to apply to this resource.
   /// [useLatestRestorableTime] A value that indicates whether to restore the DB cluster to the latest restorable backup time. By default, the DB cluster is not restored to the latest restorable backup time.
   /// [vpcSecurityGroupIds] A list of EC2 VPC security groups to associate with this DB cluster.
-  AwsRdsDBClusterPropertiesResponse({
+  const AwsRdsDBClusterPropertiesResponse({
     this.allocatedStorage,
     this.associatedRoles,
     this.autoMinorVersionUpgrade,

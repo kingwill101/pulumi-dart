@@ -20,7 +20,7 @@ class GetInstanceMetadataOption {
   /// [httpPutResponseHopLimit] Desired HTTP PUT response hop limit for instance metadata requests.
   /// [httpTokens] If session tokens are required: `optional`, `required`.
   /// [instanceMetadataTags] If access to instance tags is allowed from the metadata service: `enabled`, `disabled`.
-  GetInstanceMetadataOption({
+  const GetInstanceMetadataOption({
     required this.httpEndpoint,
     required this.httpProtocolIpv6,
     required this.httpPutResponseHopLimit,

@@ -8,7 +8,7 @@ class PolicyBasedRouteInterconnectAttachment {
 
   /// Creates a new [PolicyBasedRouteInterconnectAttachment].
   /// [region] Cloud region to install this policy-based route on for Interconnect attachments. Use `all` to install it on all Interconnect attachments.
-  PolicyBasedRouteInterconnectAttachment({
+  const PolicyBasedRouteInterconnectAttachment({
     required this.region,
   });
 

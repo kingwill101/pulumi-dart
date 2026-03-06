@@ -14,7 +14,7 @@ class CloudVmClusterIormConfigCache {
   /// [lifecycleDetails] Required.
   /// [lifecycleState] Required.
   /// [objective] Required.
-  CloudVmClusterIormConfigCache({
+  const CloudVmClusterIormConfigCache({
     required this.dbPlans,
     required this.lifecycleDetails,
     required this.lifecycleState,

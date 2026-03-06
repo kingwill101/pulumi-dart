@@ -13,7 +13,7 @@ class VirtualNodeSpecListenerTimeoutHttp {
   /// Creates a new [VirtualNodeSpecListenerTimeoutHttp].
   /// [idle] Idle timeout. An idle timeout bounds the amount of time that a connection may be idle.
   /// [perRequest] Per request timeout.
-  VirtualNodeSpecListenerTimeoutHttp({
+  const VirtualNodeSpecListenerTimeoutHttp({
     this.idle,
     this.perRequest,
   });

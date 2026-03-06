@@ -12,7 +12,7 @@ class RegionInstanceGroupManagerAutoHealingPolicies {
   /// Creates a new [RegionInstanceGroupManagerAutoHealingPolicies].
   /// [healthCheck] The health check resource that signals autohealing.
   /// [initialDelaySec] The number of seconds that the managed instance group waits before
-  RegionInstanceGroupManagerAutoHealingPolicies({
+  const RegionInstanceGroupManagerAutoHealingPolicies({
     required this.healthCheck,
     required this.initialDelaySec,
   });

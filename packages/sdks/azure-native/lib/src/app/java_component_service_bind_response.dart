@@ -12,7 +12,7 @@ class JavaComponentServiceBindResponse {
   /// Creates a new [JavaComponentServiceBindResponse].
   /// [name] Name of the service bind
   /// [serviceId] Resource id of the target service
-  JavaComponentServiceBindResponse({
+  const JavaComponentServiceBindResponse({
     this.name,
     this.serviceId,
   });

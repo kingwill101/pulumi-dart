@@ -29,7 +29,7 @@ class RouterExpressConnectRouterArgs {
   /// [regions] List of regions representing leased line gateways. See `regions` below.
   /// [resourceGroupId] The ID of the resource group to which the ECR instance belongs.
   /// [tags] The tag of the resource.
-  RouterExpressConnectRouterArgs({
+  const RouterExpressConnectRouterArgs({
     required this.alibabaSideAsn,
     this.description,
     this.ecrName,

@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1ScheduleRunResponseResponse {
   /// Creates a new [GoogleCloudAiplatformV1ScheduleRunResponseResponse].
   /// [runResponse] The response of the scheduled run.
   /// [scheduledRunTime] The scheduled run time based on the user-specified schedule.
-  GoogleCloudAiplatformV1ScheduleRunResponseResponse({
+  const GoogleCloudAiplatformV1ScheduleRunResponseResponse({
     required this.runResponse,
     required this.scheduledRunTime,
   });

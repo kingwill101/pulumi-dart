@@ -24,7 +24,7 @@ class NaptrRecordResponse {
   /// [regexp] The regular expression that the DDDS application uses to convert an input value into an output value. For example: an IP phone system might use a regular expression to convert a phone number that is entered by a user into a SIP URI. Enclose the regular expression in quotation marks. Specify either a value for 'regexp' or a value for 'replacement'.
   /// [replacement] The replacement is a fully qualified domain name (FQDN) of the next domain name that you want the DDDS application to submit a DNS query for. The DDDS application replaces the input value with the value specified for replacement. Specify either a value for 'regexp' or a value for 'replacement'. If you specify a value for 'regexp', specify a dot (.) for 'replacement'.
   /// [services] The services specific to DDDS applications. Enclose Services in quotation marks.
-  NaptrRecordResponse({
+  const NaptrRecordResponse({
     this.flags,
     this.order,
     this.preference,

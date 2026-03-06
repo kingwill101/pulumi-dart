@@ -38,7 +38,7 @@ class GetStartStopManagedInstanceScheduleResult {
   /// [systemData] System data of the scheduled resource.
   /// [timeZoneId] The time zone of the schedule.
   /// [type] Resource type.
-  GetStartStopManagedInstanceScheduleResult({
+  const GetStartStopManagedInstanceScheduleResult({
     required this.azureApiVersion,
     this.description,
     required this.id,

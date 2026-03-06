@@ -16,7 +16,7 @@ class GoogleCloudRunV2VpcAccessResponse {
   /// [connector] VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}, where {project} can be project id or number. For more information on sending traffic to a VPC network via a connector, visit https://cloud.google.com/run/docs/configuring/vpc-connectors.
   /// [egress] Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY.
   /// [networkInterfaces] Direct VPC egress settings. Currently only single network interface is supported.
-  GoogleCloudRunV2VpcAccessResponse({
+  const GoogleCloudRunV2VpcAccessResponse({
     required this.connector,
     required this.egress,
     required this.networkInterfaces,

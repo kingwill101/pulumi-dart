@@ -99,7 +99,7 @@ class EphemeralContainer {
   /// [volumeDevices] volumeDevices is the list of block devices to be used by the container.
   /// [volumeMounts] Pod volumes to mount into the container's filesystem. Subpath mounts are not allowed for ephemeral containers. Cannot be updated.
   /// [workingDir] Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image. Cannot be updated.
-  EphemeralContainer({
+  const EphemeralContainer({
     this.args,
     this.command,
     this.env,

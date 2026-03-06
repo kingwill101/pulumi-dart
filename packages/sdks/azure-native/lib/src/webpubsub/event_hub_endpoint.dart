@@ -16,7 +16,7 @@ class EventHubEndpoint {
   /// [eventHubName] The name of the Event Hub.
   /// [fullyQualifiedNamespace] The fully qualified namespace name of the Event Hub resource. For example, "example.servicebus.windows.net".
   /// [type] Expected value is 'EventHub'.
-  EventHubEndpoint({
+  const EventHubEndpoint({
     required this.eventHubName,
     required this.fullyQualifiedNamespace,
     required this.type,

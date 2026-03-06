@@ -13,7 +13,7 @@ class GetTaskExecutionPlacementStrategy {
   /// Creates a new [GetTaskExecutionPlacementStrategy].
   /// [field] The field to apply the placement strategy against.
   /// [type] The type of placement strategy. Valid values are `random`, `spread`, and `binpack`.
-  GetTaskExecutionPlacementStrategy({
+  const GetTaskExecutionPlacementStrategy({
     this.field,
     required this.type,
   });

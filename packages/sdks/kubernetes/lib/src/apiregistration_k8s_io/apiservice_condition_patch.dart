@@ -21,7 +21,7 @@ class APIServiceConditionPatch {
   /// [reason] Unique, one-word, CamelCase reason for the condition's last transition.
   /// [status] Status is the status of the condition. Can be True, False, Unknown.
   /// [type] Type is the type of the condition.
-  APIServiceConditionPatch({
+  const APIServiceConditionPatch({
     this.lastTransitionTime,
     this.message,
     this.reason,

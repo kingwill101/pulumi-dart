@@ -21,7 +21,7 @@ class ClusterIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Log Analytics Cluster. Possible values are `SystemAssigned` and `UserAssigned`. Changing this forces a new resource to be created.
-  ClusterIdentity({
+  const ClusterIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

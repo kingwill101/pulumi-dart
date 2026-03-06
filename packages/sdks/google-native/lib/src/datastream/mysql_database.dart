@@ -13,7 +13,7 @@ class MysqlDatabase {
   /// Creates a new [MysqlDatabase].
   /// [database] Database name.
   /// [mysqlTables] Tables in the database.
-  MysqlDatabase({
+  const MysqlDatabase({
     this.database,
     this.mysqlTables,
   });

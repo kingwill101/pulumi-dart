@@ -33,7 +33,7 @@ class LineageEventArgs {
   /// [requestId] A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided.
   /// [runId] Required.
   /// [startTime] The beginning of the transformation which resulted in this lineage event. For streaming scenarios, it should be the beginning of the period from which the lineage is being reported.
-  LineageEventArgs({
+  const LineageEventArgs({
     this.endTime,
     this.links,
     this.location,

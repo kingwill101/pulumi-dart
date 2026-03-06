@@ -11,7 +11,7 @@ class EligibleRoleAssignmentTicket {
   /// Creates a new [EligibleRoleAssignmentTicket].
   /// [number] User-supplied ticket number to be included with the request. Changing this forces a new resource to be created.
   /// [system] User-supplied ticket system name to be included with the request. Changing this forces a new resource to be created.
-  EligibleRoleAssignmentTicket({
+  const EligibleRoleAssignmentTicket({
     this.number,
     this.system,
   });

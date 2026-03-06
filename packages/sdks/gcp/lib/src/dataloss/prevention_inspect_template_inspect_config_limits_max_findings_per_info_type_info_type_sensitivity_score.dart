@@ -9,7 +9,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType
 
   /// Creates a new [PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore].
   /// [score] The sensitivity score applied to the resource.
-  PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore({
+  const PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore({
     required this.score,
   });
 

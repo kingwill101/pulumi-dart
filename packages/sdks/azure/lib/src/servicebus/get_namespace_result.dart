@@ -44,7 +44,7 @@ class GetNamespaceResult {
   /// [resourceGroupName] Required.
   /// [sku] The Tier used for the ServiceBus Namespace.
   /// [tags] A mapping of tags assigned to the resource.
-  GetNamespaceResult({
+  const GetNamespaceResult({
     required this.capacity,
     required this.defaultPrimaryConnectionString,
     required this.defaultPrimaryKey,

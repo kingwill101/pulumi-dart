@@ -19,7 +19,7 @@ class GetTableIamPolicyArgs {
   /// [datasetId] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [tableId] Used to find the parent resource to bind the IAM policy to
-  GetTableIamPolicyArgs({
+  const GetTableIamPolicyArgs({
     required this.datasetId,
     this.project,
     required this.tableId,

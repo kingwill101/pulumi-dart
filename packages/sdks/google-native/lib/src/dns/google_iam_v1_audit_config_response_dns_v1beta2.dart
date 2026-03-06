@@ -13,7 +13,7 @@ class GoogleIamV1AuditConfigResponseDnsV1beta2 {
   /// Creates a new [GoogleIamV1AuditConfigResponseDnsV1beta2].
   /// [auditLogConfigs] The configuration for logging of each type of permission.
   /// [service] Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services.
-  GoogleIamV1AuditConfigResponseDnsV1beta2({
+  const GoogleIamV1AuditConfigResponseDnsV1beta2({
     required this.auditLogConfigs,
     required this.service,
   });

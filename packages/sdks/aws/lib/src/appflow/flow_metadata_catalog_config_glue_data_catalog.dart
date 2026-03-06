@@ -14,7 +14,7 @@ class FlowMetadataCatalogConfigGlueDataCatalog {
   /// [databaseName] The name of an existing Glue database to store the metadata tables that Amazon AppFlow creates.
   /// [roleArn] The ARN of an IAM role that grants AppFlow the permissions it needs to create Data Catalog tables, databases, and partitions.
   /// [tablePrefix] A naming prefix for each Data Catalog table that Amazon AppFlow creates
-  FlowMetadataCatalogConfigGlueDataCatalog({
+  const FlowMetadataCatalogConfigGlueDataCatalog({
     required this.databaseName,
     required this.roleArn,
     required this.tablePrefix,

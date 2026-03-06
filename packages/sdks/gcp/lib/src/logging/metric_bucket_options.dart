@@ -22,7 +22,7 @@ class MetricBucketOptions {
   /// [explicitBuckets] Specifies a set of buckets with arbitrary widths.
   /// [exponentialBuckets] Specifies an exponential sequence of buckets that have a width that is proportional to the value of
   /// [linearBuckets] Specifies a linear sequence of buckets that all have the same width (except overflow and underflow).
-  MetricBucketOptions({
+  const MetricBucketOptions({
     this.explicitBuckets,
     this.exponentialBuckets,
     this.linearBuckets,

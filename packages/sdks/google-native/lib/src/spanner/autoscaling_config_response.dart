@@ -14,7 +14,7 @@ class AutoscalingConfigResponse {
   /// Creates a new [AutoscalingConfigResponse].
   /// [autoscalingLimits] Autoscaling limits for an instance.
   /// [autoscalingTargets] The autoscaling targets for an instance.
-  AutoscalingConfigResponse({
+  const AutoscalingConfigResponse({
     required this.autoscalingLimits,
     required this.autoscalingTargets,
   });

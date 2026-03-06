@@ -22,7 +22,7 @@ class AzureFileShareHydrationProfileResponse {
   /// [azureFileShareResourceGroup] Gets or sets the name of the azure file share resource group.
   /// [azureFileShareStorageAccount] Gets or sets the name of the azure file share storage account.
   /// [azureFileShareSubscriptionId] Gets or sets the subscription id of the azure file share.
-  AzureFileShareHydrationProfileResponse({
+  const AzureFileShareHydrationProfileResponse({
     this.azureFileShareDirPath,
     this.azureFileShareName,
     this.azureFileShareResourceGroup,

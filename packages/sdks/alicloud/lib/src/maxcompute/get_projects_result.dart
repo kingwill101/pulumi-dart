@@ -23,7 +23,7 @@ class GetProjectsResult {
   /// [names] A list of name of Projects.
   /// [outputFile] Optional.
   /// [projects] A list of Project Entries. Each element contains the following attributes:
-  GetProjectsResult({
+  const GetProjectsResult({
     required this.id,
     required this.ids,
     this.nameRegex,

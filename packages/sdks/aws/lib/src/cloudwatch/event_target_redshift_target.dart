@@ -23,7 +23,7 @@ class EventTargetRedshiftTarget {
   /// [sql] The SQL statement text to run.
   /// [statementName] The name of the SQL statement.
   /// [withEvent] Indicates whether to send an event back to EventBridge after the SQL statement runs.
-  EventTargetRedshiftTarget({
+  const EventTargetRedshiftTarget({
     required this.database,
     this.dbUser,
     this.secretsManagerArn,

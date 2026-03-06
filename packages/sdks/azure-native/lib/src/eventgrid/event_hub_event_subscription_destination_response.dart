@@ -17,7 +17,7 @@ class EventHubEventSubscriptionDestinationResponse {
   /// [deliveryAttributeMappings] Delivery attribute details.
   /// [endpointType] Type of the endpoint for the event subscription destination.
   /// [resourceId] The Azure Resource Id that represents the endpoint of an Event Hub destination of an event subscription.
-  EventHubEventSubscriptionDestinationResponse({
+  const EventHubEventSubscriptionDestinationResponse({
     this.deliveryAttributeMappings,
     required this.endpointType,
     this.resourceId,

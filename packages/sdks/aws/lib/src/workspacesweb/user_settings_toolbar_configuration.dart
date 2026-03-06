@@ -17,7 +17,7 @@ class UserSettingsToolbarConfiguration {
   /// [maxDisplayResolution] Maximum display resolution that is allowed for the session.
   /// [toolbarType] Type of toolbar displayed during the session.
   /// [visualMode] Visual mode of the toolbar.
-  UserSettingsToolbarConfiguration({
+  const UserSettingsToolbarConfiguration({
     this.hiddenToolbarItems,
     this.maxDisplayResolution,
     this.toolbarType,

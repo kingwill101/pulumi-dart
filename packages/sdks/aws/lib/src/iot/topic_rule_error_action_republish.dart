@@ -14,7 +14,7 @@ class TopicRuleErrorActionRepublish {
   /// [qos] The Quality of Service (QoS) level to use when republishing messages. Valid values are 0 or 1. The default value is 0.
   /// [roleArn] The ARN of the IAM role that grants access.
   /// [topic] The name of the MQTT topic the message should be republished to.
-  TopicRuleErrorActionRepublish({
+  const TopicRuleErrorActionRepublish({
     this.qos,
     required this.roleArn,
     required this.topic,

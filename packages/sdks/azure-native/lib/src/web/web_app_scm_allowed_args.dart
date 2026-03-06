@@ -21,7 +21,7 @@ class WebAppScmAllowedArgs {
   /// [kind] Kind of resource.
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppScmAllowedArgs({
+  const WebAppScmAllowedArgs({
     required this.allow,
     this.kind,
     required this.name,

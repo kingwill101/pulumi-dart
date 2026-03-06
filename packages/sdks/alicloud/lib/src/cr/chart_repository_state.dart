@@ -21,7 +21,7 @@ class ChartRepositoryState {
   /// [repoNamespaceName] The namespace to which the repository belongs.
   /// [repoType] The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
   /// [summary] The summary about the repository.
-  ChartRepositoryState({
+  const ChartRepositoryState({
     this.instanceId,
     this.repoName,
     this.repoNamespaceName,

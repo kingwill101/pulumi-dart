@@ -44,7 +44,7 @@ class GetTopicAuthorizationRuleResult {
   /// [send] Required.
   /// [topicId] Optional.
   /// [topicName] Optional.
-  GetTopicAuthorizationRuleResult({
+  const GetTopicAuthorizationRuleResult({
     required this.id,
     required this.listen,
     required this.manage,

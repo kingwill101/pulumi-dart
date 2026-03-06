@@ -14,7 +14,7 @@ class DatadogHostMetadataResponse {
   /// [agentVersion] The agent version.
   /// [installMethod] Optional.
   /// [logsAgent] Optional.
-  DatadogHostMetadataResponse({
+  const DatadogHostMetadataResponse({
     this.agentVersion,
     this.installMethod,
     this.logsAgent,

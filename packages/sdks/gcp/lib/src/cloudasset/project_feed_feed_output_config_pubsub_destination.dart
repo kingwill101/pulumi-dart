@@ -8,7 +8,7 @@ class ProjectFeedFeedOutputConfigPubsubDestination {
 
   /// Creates a new [ProjectFeedFeedOutputConfigPubsubDestination].
   /// [topic] Destination on Cloud Pubsub topic.
-  ProjectFeedFeedOutputConfigPubsubDestination({
+  const ProjectFeedFeedOutputConfigPubsubDestination({
     required this.topic,
   });
 

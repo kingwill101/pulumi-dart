@@ -11,7 +11,7 @@ class EndpointDeliveryRuleCacheExpirationAction {
   /// Creates a new [EndpointDeliveryRuleCacheExpirationAction].
   /// [behavior] The behavior of the cache. Valid values are `BypassCache`, `Override` and `SetIfMissing`.
   /// [duration] Duration of the cache. Only allowed when `behavior` is set to `Override` or `SetIfMissing`. Format: `[d.]hh:mm:ss`
-  EndpointDeliveryRuleCacheExpirationAction({
+  const EndpointDeliveryRuleCacheExpirationAction({
     required this.behavior,
     this.duration,
   });

@@ -23,7 +23,7 @@ class SelfSubjectRulesReviewPatchAuthorizationK8sIoV1beta1 {
   /// [metadata] Optional.
   /// [spec] Spec holds information about the request being evaluated.
   /// [status] Status is filled in by the server and indicates the set of actions a user can perform.
-  SelfSubjectRulesReviewPatchAuthorizationK8sIoV1beta1({
+  const SelfSubjectRulesReviewPatchAuthorizationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

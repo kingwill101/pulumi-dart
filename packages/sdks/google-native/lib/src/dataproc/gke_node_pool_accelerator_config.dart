@@ -15,7 +15,7 @@ class GkeNodePoolAcceleratorConfig {
   /// [acceleratorCount] The number of accelerator cards exposed to an instance.
   /// [acceleratorType] The accelerator type resource namename (see GPUs on Compute Engine).
   /// [gpuPartitionSize] Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig user guide (https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
-  GkeNodePoolAcceleratorConfig({
+  const GkeNodePoolAcceleratorConfig({
     this.acceleratorCount,
     this.acceleratorType,
     this.gpuPartitionSize,

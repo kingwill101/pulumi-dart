@@ -21,7 +21,7 @@ class GetApiOperationArgs {
   /// [operationId] Operation identifier within an API. Must be unique in the current API Management service instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetApiOperationArgs({
+  const GetApiOperationArgs({
     required this.apiId,
     required this.operationId,
     required this.resourceGroupName,

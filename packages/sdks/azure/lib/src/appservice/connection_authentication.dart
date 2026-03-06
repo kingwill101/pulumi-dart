@@ -26,7 +26,7 @@ class ConnectionAuthentication {
   /// [secret] Password or account key for secret auth. `secret` and `name` should be either both specified or both not specified when `type` is set to `secret`.
   /// [subscriptionId] Subscription ID for `userAssignedIdentity`. `subscription_id` and `client_id` should be either both specified or both not specified.
   /// [type] The authentication type. Possible values are `systemAssignedIdentity`, `userAssignedIdentity`, `servicePrincipalSecret`, `servicePrincipalCertificate`, `secret`. Changing this forces a new resource to be created.
-  ConnectionAuthentication({
+  const ConnectionAuthentication({
     this.certificate,
     this.clientId,
     this.name,

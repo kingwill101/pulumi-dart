@@ -18,7 +18,7 @@ class ServiceSettingArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [settingId] ID of the service setting. Valid values are shown in the [AWS documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_GetServiceSetting.html#API_GetServiceSetting_RequestSyntax).
   /// [settingValue] Value of the service setting.
-  ServiceSettingArgs({
+  const ServiceSettingArgs({
     this.region,
     required this.settingId,
     required this.settingValue,

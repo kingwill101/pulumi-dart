@@ -17,7 +17,7 @@ class GetArtifactArgs {
   /// [location] Required.
   /// [metadataStoreId] Required.
   /// [project] Optional.
-  GetArtifactArgs({
+  const GetArtifactArgs({
     required this.artifactId,
     required this.location,
     required this.metadataStoreId,

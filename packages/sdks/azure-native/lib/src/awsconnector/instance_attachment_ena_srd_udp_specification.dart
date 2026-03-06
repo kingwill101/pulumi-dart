@@ -9,7 +9,7 @@ class InstanceAttachmentEnaSrdUdpSpecification {
 
   /// Creates a new [InstanceAttachmentEnaSrdUdpSpecification].
   /// [enaSrdUdpEnabled] &lt;p&gt;Indicates whether UDP traffic to and from the instance uses ENA Express. To specify this setting, you must first enable ENA Express.&lt;/p&gt;
-  InstanceAttachmentEnaSrdUdpSpecification({
+  const InstanceAttachmentEnaSrdUdpSpecification({
     this.enaSrdUdpEnabled,
   });
 

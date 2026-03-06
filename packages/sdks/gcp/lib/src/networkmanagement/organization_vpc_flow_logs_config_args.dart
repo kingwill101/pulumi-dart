@@ -66,7 +66,7 @@ class OrganizationVpcFlowLogsConfigArgs {
   /// [organization] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [state] Optional. The state of the VPC Flow Log configuration. Default value
   /// [vpcFlowLogsConfigId] Required. ID of the `VpcFlowLogsConfig`.
-  OrganizationVpcFlowLogsConfigArgs({
+  const OrganizationVpcFlowLogsConfigArgs({
     this.aggregationInterval,
     this.crossProjectMetadata,
     this.description,

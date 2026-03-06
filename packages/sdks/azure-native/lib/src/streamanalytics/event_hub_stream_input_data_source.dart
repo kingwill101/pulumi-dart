@@ -28,7 +28,7 @@ class EventHubStreamInputDataSource {
   /// [sharedAccessPolicyKey] The shared access policy key for the specified shared access policy. Required on PUT (CreateOrReplace) requests.
   /// [sharedAccessPolicyName] The shared access policy name for the Event Hub, Service Bus Queue, Service Bus Topic, etc. Required on PUT (CreateOrReplace) requests.
   /// [type] Indicates the type of input data source containing stream data. Required on PUT (CreateOrReplace) requests.
-  EventHubStreamInputDataSource({
+  const EventHubStreamInputDataSource({
     this.authenticationMode,
     this.consumerGroupName,
     this.eventHubName,

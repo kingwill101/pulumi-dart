@@ -9,7 +9,7 @@ class EncryptionConfig {
 
   /// Creates a new [EncryptionConfig].
   /// [kmsKeyName] Name of the CMEK key in KMS (input parameter).
-  EncryptionConfig({
+  const EncryptionConfig({
     this.kmsKeyName,
   });
 

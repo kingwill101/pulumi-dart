@@ -18,7 +18,7 @@ class GetSinkArgs {
 
   /// Creates a new [GetSinkArgs].
   /// [id] The identifier for the resource.
-  GetSinkArgs({
+  const GetSinkArgs({
     required this.id,
   });
 

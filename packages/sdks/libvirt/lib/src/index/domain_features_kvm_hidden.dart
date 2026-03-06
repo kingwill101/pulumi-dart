@@ -8,7 +8,7 @@ class DomainFeaturesKvmHidden {
 
   /// Creates a new [DomainFeaturesKvmHidden].
   /// [state] Configures the state of the PS/2 feature, indicating if it is enabled or not.
-  DomainFeaturesKvmHidden({
+  const DomainFeaturesKvmHidden({
     this.state,
   });
 

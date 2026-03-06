@@ -24,7 +24,7 @@ class GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse {
   /// [queryRecord] The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record}
   /// [question] The corresponding FAQ question.
   /// [source] The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document}.
-  GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse({
+  const GoogleCloudContactcenterinsightsV1FaqAnswerDataResponse({
     required this.answer,
     required this.confidenceScore,
     required this.metadata,

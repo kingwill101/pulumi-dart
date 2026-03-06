@@ -16,7 +16,7 @@ class AnalyticsConnectorFhirServiceDataSourceResponse {
   /// [kind] The kind of FHIR Service.
   /// [type] Type of data source.
   /// [url] The URL of FHIR service.
-  AnalyticsConnectorFhirServiceDataSourceResponse({
+  const AnalyticsConnectorFhirServiceDataSourceResponse({
     required this.kind,
     required this.type,
     required this.url,

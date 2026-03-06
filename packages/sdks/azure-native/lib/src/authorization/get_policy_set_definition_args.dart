@@ -15,7 +15,7 @@ class GetPolicySetDefinitionArgs {
   /// Creates a new [GetPolicySetDefinitionArgs].
   /// [expand] Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
   /// [policySetDefinitionName] The name of the policy set definition to get.
-  GetPolicySetDefinitionArgs({
+  const GetPolicySetDefinitionArgs({
     this.expand,
     required this.policySetDefinitionName,
   });

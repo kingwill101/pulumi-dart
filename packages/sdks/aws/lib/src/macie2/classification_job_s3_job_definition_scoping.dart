@@ -13,7 +13,7 @@ class ClassificationJobS3JobDefinitionScoping {
   /// Creates a new [ClassificationJobS3JobDefinitionScoping].
   /// [excludes] The property- or tag-based conditions that determine which objects to exclude from the analysis. (documented below)
   /// [includes] The property- or tag-based conditions that determine which objects to include in the analysis. (documented below)
-  ClassificationJobS3JobDefinitionScoping({
+  const ClassificationJobS3JobDefinitionScoping({
     this.excludes,
     this.includes,
   });

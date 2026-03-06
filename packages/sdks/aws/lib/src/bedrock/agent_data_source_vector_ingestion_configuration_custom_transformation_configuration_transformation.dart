@@ -12,7 +12,7 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation].
   /// [stepToApply] When the service applies the transformation. Currently only `POST_CHUNKING` is supported.
   /// [transformationFunction] The lambda function that processes documents.
-  AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation({
+  const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformation({
     required this.stepToApply,
     this.transformationFunction,
   });

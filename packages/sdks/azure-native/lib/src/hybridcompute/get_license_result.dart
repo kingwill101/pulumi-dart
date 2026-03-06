@@ -40,7 +40,7 @@ class GetLicenseResult {
   /// [tags] Resource tags.
   /// [tenantId] Describes the tenant id.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLicenseResult({
+  const GetLicenseResult({
     required this.azureApiVersion,
     required this.id,
     this.licenseDetails,

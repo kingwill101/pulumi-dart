@@ -14,7 +14,7 @@ class ClusterExtensionIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity. The only possible value is `SystemAssigned`. Changing this forces a new resource to be created.
-  ClusterExtensionIdentity({
+  const ClusterExtensionIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

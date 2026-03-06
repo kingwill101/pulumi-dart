@@ -18,7 +18,7 @@ class SolutionPropertiesResponse {
   /// [provisioningState] The provisioning state for the solution.
   /// [referencedResources] The resources that will be referenced from this solution. Deleting any of those solution out of band will break the solution.
   /// [workspaceResourceId] The azure resourceId for the workspace where the solution will be deployed/enabled.
-  SolutionPropertiesResponse({
+  const SolutionPropertiesResponse({
     this.containedResources,
     required this.provisioningState,
     this.referencedResources,

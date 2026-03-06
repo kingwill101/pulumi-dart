@@ -19,7 +19,7 @@ class DomainDevicesConsoleSourceUnix {
   /// [path] Specifies the path to the UNIX domain socket for connection.
   /// [reconnect] Configures reconnect settings for the UNIX domain socket in the backend.
   /// [secLabels] Configures the security label for the UNIX domain socket.
-  DomainDevicesConsoleSourceUnix({
+  const DomainDevicesConsoleSourceUnix({
     this.mode,
     this.path,
     this.reconnect,

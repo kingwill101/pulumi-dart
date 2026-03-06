@@ -11,7 +11,7 @@ class RuleGroupRuleStatementRateBasedStatementCustomKeyCookieTextTransformation 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementCustomKeyCookieTextTransformation].
   /// [priority] The relative processing order for multiple transformations that are defined for a rule statement. AWS WAF processes all transformations, from lowest priority to highest, before inspecting the transformed content.
   /// [type] The transformation to apply, please refer to the Text Transformation [documentation](https://docs.aws.amazon.com/waf/latest/APIReference/API_TextTransformation.html) for more details.
-  RuleGroupRuleStatementRateBasedStatementCustomKeyCookieTextTransformation({
+  const RuleGroupRuleStatementRateBasedStatementCustomKeyCookieTextTransformation({
     required this.priority,
     required this.type,
   });

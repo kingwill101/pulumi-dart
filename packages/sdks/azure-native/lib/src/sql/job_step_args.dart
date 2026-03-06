@@ -45,7 +45,7 @@ class JobStepArgs {
   /// [stepId] The job step's index within the job. If not specified when creating the job step, it will be created as the last step. If not specified when updating the job step, the step id is not modified.
   /// [stepName] The name of the job step.
   /// [targetGroup] The resource ID of the target group that the job step will be executed on.
-  JobStepArgs({
+  const JobStepArgs({
     required this.action,
     this.credential,
     this.executionOptions,

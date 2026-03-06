@@ -17,7 +17,7 @@ class OneDashboardPageWidgetPyDataFormat {
   /// [name] The title of the dashboard.
   /// [precision] (Optional) This attribute is utilized when the `type` attribute is set to `decimal`, stipulating the precise number of digits after the decimal point for your data.
   /// [type] (Required) Specifies the data type of the variable and where its possible values may come from. One of `enum`, `nrql` or `string`
-  OneDashboardPageWidgetPyDataFormat({
+  const OneDashboardPageWidgetPyDataFormat({
     this.format,
     required this.name,
     this.precision,

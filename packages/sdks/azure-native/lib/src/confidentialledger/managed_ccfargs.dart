@@ -25,7 +25,7 @@ class ManagedCCFArgs {
   /// [properties] Properties of Managed CCF Resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ManagedCCFArgs({
+  const ManagedCCFArgs({
     this.appName,
     this.location,
     this.properties,

@@ -9,7 +9,7 @@ class CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitution
 
   /// Creates a new [CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule].
   /// [attribute] Fully qualified proto attribute path (in dot notation).
-  CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule({
+  const CloudControlParameterSpecSubParameterSubstitutionRuleAttributeSubstitutionRule({
     this.attribute,
   });
 

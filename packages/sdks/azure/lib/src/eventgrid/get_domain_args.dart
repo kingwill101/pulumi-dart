@@ -15,7 +15,7 @@ class GetDomainArgs {
   /// Creates a new [GetDomainArgs].
   /// [name] The name of the EventGrid Domain resource.
   /// [resourceGroupName] The name of the resource group in which the EventGrid Domain exists.
-  GetDomainArgs({
+  const GetDomainArgs({
     required this.name,
     required this.resourceGroupName,
   });

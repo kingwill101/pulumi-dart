@@ -22,7 +22,7 @@ class ManagementPolicyArgs {
   /// [managementPolicyName] The name of the Storage Account Management Policy. It should always be 'default'
   /// [policy] The Storage Account ManagementPolicy, in JSON format. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  ManagementPolicyArgs({
+  const ManagementPolicyArgs({
     required this.accountName,
     this.managementPolicyName,
     required this.policy,

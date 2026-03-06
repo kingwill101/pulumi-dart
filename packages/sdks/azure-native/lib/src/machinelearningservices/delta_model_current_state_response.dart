@@ -15,7 +15,7 @@ class DeltaModelCurrentStateResponse {
   /// [count] Gets or sets Count of instances with model.
   /// [sampleInstanceID] Gets or sets sample of instances with model.
   /// [status] Gets or sets status.
-  DeltaModelCurrentStateResponse({
+  const DeltaModelCurrentStateResponse({
     this.count,
     this.sampleInstanceID,
     this.status,

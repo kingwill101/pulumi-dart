@@ -58,7 +58,7 @@ class ProfileArgs {
   /// [trafficRoutingMethod] The traffic routing method of the Traffic Manager profile.
   /// [trafficViewEnrollmentStatus] Indicates whether Traffic View is 'Enabled' or 'Disabled' for the Traffic Manager profile. Null, indicates 'Disabled'. Enabling this feature will increase the cost of the Traffic Manage profile.
   /// [type] The type of the resource. Ex- Microsoft.Network/trafficManagerProfiles.
-  ProfileArgs({
+  const ProfileArgs({
     this.allowedEndpointRecordTypes,
     this.dnsConfig,
     this.endpoints,

@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesMarketo {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesMarketo].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesMarketo({
+  const FlowSourceFlowConfigSourceConnectorPropertiesMarketo({
     required this.object_,
   });
 

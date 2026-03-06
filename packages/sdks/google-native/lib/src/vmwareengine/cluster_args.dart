@@ -28,7 +28,7 @@ class ClusterArgs {
   /// [project] Optional.
   /// [requestId] Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
   /// [stretchedClusterConfig] Optional. Configuration of a stretched cluster. Required for clusters that belong to a STRETCHED private cloud.
-  ClusterArgs({
+  const ClusterArgs({
     required this.clusterId,
     this.location,
     required this.nodeTypeConfigs,

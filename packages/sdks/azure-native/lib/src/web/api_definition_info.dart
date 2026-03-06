@@ -9,7 +9,7 @@ class ApiDefinitionInfo {
 
   /// Creates a new [ApiDefinitionInfo].
   /// [url] The URL of the API definition.
-  ApiDefinitionInfo({
+  const ApiDefinitionInfo({
     this.url,
   });
 

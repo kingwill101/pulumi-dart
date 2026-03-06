@@ -8,7 +8,7 @@ class DomainDevicesFilesystemSourceFile {
 
   /// Creates a new [DomainDevicesFilesystemSourceFile].
   /// [file] Specifies the file path for the filesystem source.
-  DomainDevicesFilesystemSourceFile({
+  const DomainDevicesFilesystemSourceFile({
     required this.file,
   });
 

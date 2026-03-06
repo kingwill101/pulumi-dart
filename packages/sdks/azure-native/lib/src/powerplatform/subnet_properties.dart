@@ -9,7 +9,7 @@ class SubnetProperties {
 
   /// Creates a new [SubnetProperties].
   /// [name] Subnet name.
-  SubnetProperties({
+  const SubnetProperties({
     this.name,
   });
 

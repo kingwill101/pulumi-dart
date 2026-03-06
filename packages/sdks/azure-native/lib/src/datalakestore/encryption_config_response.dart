@@ -13,7 +13,7 @@ class EncryptionConfigResponse {
   /// Creates a new [EncryptionConfigResponse].
   /// [keyVaultMetaInfo] The Key Vault information for connecting to user managed encryption keys.
   /// [type] The type of encryption configuration being used. Currently the only supported types are 'UserManaged' and 'ServiceManaged'.
-  EncryptionConfigResponse({
+  const EncryptionConfigResponse({
     this.keyVaultMetaInfo,
     required this.type,
   });

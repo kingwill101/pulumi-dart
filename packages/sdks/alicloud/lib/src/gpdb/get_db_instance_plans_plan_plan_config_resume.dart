@@ -14,7 +14,7 @@ class GetDbInstancePlansPlanPlanConfigResume {
   /// [executeTime] The executed time of the Plan.
   /// [planCronTime] The Cron Time of the plan.
   /// [planTaskStatus] The Status of the plan Task.
-  GetDbInstancePlansPlanPlanConfigResume({
+  const GetDbInstancePlansPlanPlanConfigResume({
     required this.executeTime,
     required this.planCronTime,
     required this.planTaskStatus,

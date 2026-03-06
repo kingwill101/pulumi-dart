@@ -15,7 +15,7 @@ class GetLoadBalancerTypeArgs {
   /// Creates a new [GetLoadBalancerTypeArgs].
   /// [id] ID of the Load Balancer Type.
   /// [name] Name of the Load Balancer Type.
-  GetLoadBalancerTypeArgs({
+  const GetLoadBalancerTypeArgs({
     this.id,
     this.name,
   });

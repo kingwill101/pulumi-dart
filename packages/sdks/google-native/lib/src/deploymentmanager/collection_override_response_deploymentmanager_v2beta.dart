@@ -13,7 +13,7 @@ class CollectionOverrideResponseDeploymentmanagerV2beta {
   /// Creates a new [CollectionOverrideResponseDeploymentmanagerV2beta].
   /// [collection] The collection that identifies this resource within its service.
   /// [options] The options to apply to this resource-level override
-  CollectionOverrideResponseDeploymentmanagerV2beta({
+  const CollectionOverrideResponseDeploymentmanagerV2beta({
     required this.collection,
     required this.options,
   });

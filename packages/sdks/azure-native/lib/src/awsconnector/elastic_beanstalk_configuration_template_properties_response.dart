@@ -34,7 +34,7 @@ class ElasticBeanstalkConfigurationTemplatePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  ElasticBeanstalkConfigurationTemplatePropertiesResponse({
+  const ElasticBeanstalkConfigurationTemplatePropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

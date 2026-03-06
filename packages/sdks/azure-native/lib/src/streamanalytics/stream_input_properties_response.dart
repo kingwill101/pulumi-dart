@@ -32,7 +32,7 @@ class StreamInputPropertiesResponse {
   /// [partitionKey] partitionKey Describes a key in the input data which is used for partitioning the input data
   /// [serialization] Describes how data from an input is serialized or how data is serialized when written to an output. Required on PUT (CreateOrReplace) requests.
   /// [type] Indicates whether the input is a source of reference data or stream data. Required on PUT (CreateOrReplace) requests.
-  StreamInputPropertiesResponse({
+  const StreamInputPropertiesResponse({
     this.compression,
     this.datasource,
     required this.diagnostics,

@@ -12,7 +12,7 @@ class ApiProductGraphqlOperationGroupOperationConfigOperation {
   /// Creates a new [ApiProductGraphqlOperationGroupOperationConfigOperation].
   /// [operation] GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
   /// [operationTypes] Required. GraphQL operation types. Valid values include query or mutation.
-  ApiProductGraphqlOperationGroupOperationConfigOperation({
+  const ApiProductGraphqlOperationGroupOperationConfigOperation({
     this.operation,
     this.operationTypes,
   });

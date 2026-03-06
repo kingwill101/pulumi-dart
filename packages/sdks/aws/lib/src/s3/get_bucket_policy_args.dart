@@ -15,7 +15,7 @@ class GetBucketPolicyArgs {
   /// Creates a new [GetBucketPolicyArgs].
   /// [bucket] Bucket name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetBucketPolicyArgs({
+  const GetBucketPolicyArgs({
     required this.bucket,
     this.region,
   });

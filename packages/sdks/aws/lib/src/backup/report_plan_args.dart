@@ -29,7 +29,7 @@ class ReportPlanArgs {
   /// [reportDeliveryChannel] An object that contains information about where and how to deliver your reports, specifically your Amazon S3 bucket name, S3 key prefix, and the formats of your reports. Detailed below.
   /// [reportSetting] An object that identifies the report template for the report. Reports are built using a report template. Detailed below.
   /// [tags] Metadata that you can assign to help organize the report plans you create. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ReportPlanArgs({
+  const ReportPlanArgs({
     this.description,
     this.name,
     this.region,

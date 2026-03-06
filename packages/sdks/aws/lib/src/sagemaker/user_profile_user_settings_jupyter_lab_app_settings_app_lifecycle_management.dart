@@ -9,7 +9,7 @@ class UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement {
 
   /// Creates a new [UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. see `idle_settings` Block below.
-  UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement({
+  const UserProfileUserSettingsJupyterLabAppSettingsAppLifecycleManagement({
     this.idleSettings,
   });
 

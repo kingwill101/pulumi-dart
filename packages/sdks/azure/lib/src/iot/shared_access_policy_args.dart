@@ -34,7 +34,7 @@ class SharedAccessPolicyArgs {
   /// [registryWrite] Adds `RegistryWrite` permission to this Shared Access Account. It allows write access to the identity registry.
   /// [resourceGroupName] The name of the resource group under which the IotHub Shared Access Policy resource has to be created. Changing this forces a new resource to be created.
   /// [serviceConnect] Adds `ServiceConnect` permission to this Shared Access Account. It allows sending and receiving on the cloud-side endpoints.
-  SharedAccessPolicyArgs({
+  const SharedAccessPolicyArgs({
     this.deviceConnect,
     required this.iothubName,
     this.name,

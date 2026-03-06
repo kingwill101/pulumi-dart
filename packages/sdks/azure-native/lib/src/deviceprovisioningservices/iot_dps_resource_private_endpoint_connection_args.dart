@@ -22,7 +22,7 @@ class IotDpsResourcePrivateEndpointConnectionArgs {
   /// [properties] The properties of a private endpoint connection
   /// [resourceGroupName] The name of the resource group that contains the provisioning service.
   /// [resourceName] The name of the provisioning service.
-  IotDpsResourcePrivateEndpointConnectionArgs({
+  const IotDpsResourcePrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
     required this.properties,
     required this.resourceGroupName,

@@ -14,7 +14,7 @@ class DomainFeaturesHpt {
   /// [maxPageSize] Configures the maximum page size supported by the hypervisor for the HPT feature.
   /// [maxPageSizeUnit] Sets the unit for the maximum page size configured for the HPT feature.
   /// [resizing] Controls whether the resizing of physical pages for the HPT feature is allowed.
-  DomainFeaturesHpt({
+  const DomainFeaturesHpt({
     this.maxPageSize,
     this.maxPageSizeUnit,
     this.resizing,

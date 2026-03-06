@@ -37,7 +37,7 @@ class ApiVersionSetArgs {
   /// [versionHeaderName] The name of the Header which should be read from Inbound Requests which defines the API Version.
   /// [versionQueryName] The name of the Query String which should be read from Inbound Requests which defines the API Version.
   /// [versioningScheme] Specifies where in an Inbound HTTP Request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
-  ApiVersionSetArgs({
+  const ApiVersionSetArgs({
     required this.apiManagementName,
     this.description,
     required this.displayName,

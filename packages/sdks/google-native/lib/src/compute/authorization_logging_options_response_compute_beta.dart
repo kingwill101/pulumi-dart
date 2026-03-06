@@ -9,7 +9,7 @@ class AuthorizationLoggingOptionsResponseComputeBeta {
 
   /// Creates a new [AuthorizationLoggingOptionsResponseComputeBeta].
   /// [permissionType] This is deprecated and has no effect. Do not use.
-  AuthorizationLoggingOptionsResponseComputeBeta({
+  const AuthorizationLoggingOptionsResponseComputeBeta({
     required this.permissionType,
   });
 

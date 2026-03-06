@@ -20,7 +20,7 @@ class ListTenantAccessSecretsResult {
   /// [primaryKey] Primary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
   /// [principalId] Principal (User) Identifier.
   /// [secondaryKey] Secondary access key. This property will not be filled on 'GET' operations! Use '/listSecrets' POST request to get the value.
-  ListTenantAccessSecretsResult({
+  const ListTenantAccessSecretsResult({
     this.enabled,
     this.id,
     this.primaryKey,

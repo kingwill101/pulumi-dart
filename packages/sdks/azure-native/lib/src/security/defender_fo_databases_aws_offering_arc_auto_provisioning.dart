@@ -16,7 +16,7 @@ class DefenderFoDatabasesAwsOfferingArcAutoProvisioning {
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
   /// [configuration] Configuration for servers Arc auto provisioning for a given environment
   /// [enabled] Is arc auto provisioning enabled
-  DefenderFoDatabasesAwsOfferingArcAutoProvisioning({
+  const DefenderFoDatabasesAwsOfferingArcAutoProvisioning({
     this.cloudRoleArn,
     this.configuration,
     this.enabled,

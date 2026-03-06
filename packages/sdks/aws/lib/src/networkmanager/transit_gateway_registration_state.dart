@@ -12,7 +12,7 @@ class TransitGatewayRegistrationState {
   /// Creates a new [TransitGatewayRegistrationState].
   /// [globalNetworkId] ID of the Global Network to register to.
   /// [transitGatewayArn] ARN of the Transit Gateway to register.
-  TransitGatewayRegistrationState({
+  const TransitGatewayRegistrationState({
     this.globalNetworkId,
     this.transitGatewayArn,
   });

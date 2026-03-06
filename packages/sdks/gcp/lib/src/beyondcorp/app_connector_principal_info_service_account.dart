@@ -8,7 +8,7 @@ class AppConnectorPrincipalInfoServiceAccount {
 
   /// Creates a new [AppConnectorPrincipalInfoServiceAccount].
   /// [email] Email address of the service account.
-  AppConnectorPrincipalInfoServiceAccount({
+  const AppConnectorPrincipalInfoServiceAccount({
     required this.email,
   });
 

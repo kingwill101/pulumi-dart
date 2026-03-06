@@ -12,7 +12,7 @@ class VirtualNetworkRule {
   /// Creates a new [VirtualNetworkRule].
   /// [id] Resource ID of a subnet, for example: /subscriptions/{subscriptionId}/resourceGroups/{groupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets/{subnetName}.
   /// [ignoreMissingVNetServiceEndpoint] Create firewall rule before the virtual network has vnet service endpoint enabled.
-  VirtualNetworkRule({
+  const VirtualNetworkRule({
     this.id,
     this.ignoreMissingVNetServiceEndpoint,
   });

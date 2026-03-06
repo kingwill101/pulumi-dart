@@ -11,7 +11,7 @@ class ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds {
   /// Creates a new [ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds].
   /// [scaleIn] The utilization triggering the scale-in operation in percent.
   /// [scaleOut] The utilization triggering the scale-out operation in percent.
-  ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds({
+  const ClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds({
     required this.scaleIn,
     required this.scaleOut,
   });

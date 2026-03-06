@@ -23,7 +23,7 @@ class PrivateLinkAssociationArgs {
   /// [name] Specifies the name of this Private Link Association, which should be a UUID. If `name` is not provided, a UUID will be generated, you should use the `ignore_changes` attribute to ignore changes to this field. Changing this forces a new Private Link Association to be created.
   /// [publicNetworkAccessEnabled] Whether public network access is allowed. Changing this forces a new Private Link Association to be created.
   /// [resourceManagementPrivateLinkId] The Resource ID of Resource Management Private Link. Changing this forces a new Private Link Association to be created.
-  PrivateLinkAssociationArgs({
+  const PrivateLinkAssociationArgs({
     required this.managementGroupId,
     this.name,
     required this.publicNetworkAccessEnabled,

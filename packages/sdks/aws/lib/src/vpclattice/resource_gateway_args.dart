@@ -38,7 +38,7 @@ class ResourceGatewayArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [vpcId] ID of the VPC for the resource gateway.
-  ResourceGatewayArgs({
+  const ResourceGatewayArgs({
     this.ipAddressType,
     this.ipv4AddressesPerEni,
     this.name,

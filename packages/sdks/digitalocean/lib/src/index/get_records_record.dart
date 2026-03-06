@@ -38,7 +38,7 @@ class GetRecordsRecord {
   /// [type] The type of the DNS record.
   /// [value] Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
   /// [weight] The weight for SRV records.
-  GetRecordsRecord({
+  const GetRecordsRecord({
     required this.domain,
     required this.flags,
     required this.id,

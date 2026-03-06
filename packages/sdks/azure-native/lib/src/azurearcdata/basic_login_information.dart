@@ -12,7 +12,7 @@ class BasicLoginInformation {
   /// Creates a new [BasicLoginInformation].
   /// [password] Login password.
   /// [username] Login username.
-  BasicLoginInformation({
+  const BasicLoginInformation({
     this.password,
     this.username,
   });

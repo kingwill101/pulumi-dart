@@ -7,7 +7,7 @@ class GetClusterAddonsConfigStatefulHaConfig {
 
   /// Creates a new [GetClusterAddonsConfigStatefulHaConfig].
   /// [enabled] Required.
-  GetClusterAddonsConfigStatefulHaConfig({
+  const GetClusterAddonsConfigStatefulHaConfig({
     required this.enabled,
   });
 

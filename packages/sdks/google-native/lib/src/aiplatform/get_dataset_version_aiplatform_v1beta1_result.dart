@@ -20,7 +20,7 @@ class GetDatasetVersionAiplatformV1beta1Result {
   /// [etag] Used to perform consistent read-modify-write updates. If not set, a blind "overwrite" update happens.
   /// [name] The resource name of the DatasetVersion.
   /// [updateTime] Timestamp when this DatasetVersion was last updated.
-  GetDatasetVersionAiplatformV1beta1Result({
+  const GetDatasetVersionAiplatformV1beta1Result({
     required this.bigQueryDatasetName,
     required this.createTime,
     required this.etag,

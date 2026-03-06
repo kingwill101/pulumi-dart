@@ -17,7 +17,7 @@ class HttpSettingsResponse {
   /// [forwardProxy] The configuration settings of a forward proxy used to make the requests.
   /// [requireHttps] &lt;code&gt;false&lt;/code&gt; if the authentication/authorization responses not having the HTTPS scheme are permissible; otherwise, &lt;code&gt;true&lt;/code&gt;.
   /// [routes] The configuration settings of the paths HTTP requests.
-  HttpSettingsResponse({
+  const HttpSettingsResponse({
     this.forwardProxy,
     this.requireHttps,
     this.routes,

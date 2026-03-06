@@ -46,7 +46,7 @@ class PreventionInspectTemplateInspectConfigCustomInfoType {
   /// [sensitivityScore] Optional custom sensitivity for this InfoType. This only applies to data profiling.
   /// [storedType] A reference to a StoredInfoType to use with scanning.
   /// [surrogateType] Message for detecting output from deidentification transformations that support reversing.
-  PreventionInspectTemplateInspectConfigCustomInfoType({
+  const PreventionInspectTemplateInspectConfigCustomInfoType({
     this.dictionary,
     this.exclusionType,
     required this.infoType,

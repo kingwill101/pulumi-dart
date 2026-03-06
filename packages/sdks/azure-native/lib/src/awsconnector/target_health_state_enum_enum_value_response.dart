@@ -9,7 +9,7 @@ class TargetHealthStateEnumEnumValueResponse {
 
   /// Creates a new [TargetHealthStateEnumEnumValueResponse].
   /// [value] Property value
-  TargetHealthStateEnumEnumValueResponse({
+  const TargetHealthStateEnumEnumValueResponse({
     this.value,
   });
 

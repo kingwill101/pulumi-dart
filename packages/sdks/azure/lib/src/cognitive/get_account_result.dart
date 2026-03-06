@@ -93,7 +93,7 @@ class GetAccountResult {
   /// [skuName] The SKU name of the Cognitive Services Account.
   /// [storages] A `storage` block as defined below.
   /// [tags] A mapping of tags to assigned to the resource.
-  GetAccountResult({
+  const GetAccountResult({
     required this.customQuestionAnsweringSearchServiceId,
     required this.customSubdomainName,
     required this.customerManagedKeys,

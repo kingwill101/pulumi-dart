@@ -19,7 +19,7 @@ class ContainerHttpGetResponse {
   /// [path] The path to probe.
   /// [port] The port number to probe.
   /// [scheme] The scheme.
-  ContainerHttpGetResponse({
+  const ContainerHttpGetResponse({
     this.httpHeaders,
     this.path,
     required this.port,

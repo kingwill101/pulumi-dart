@@ -9,7 +9,7 @@ class PipelineStageOnSuccess {
 
   /// Creates a new [PipelineStageOnSuccess].
   /// [condition] The conditions that are success conditions. Defined as a `condition` block below.
-  PipelineStageOnSuccess({
+  const PipelineStageOnSuccess({
     required this.condition,
   });
 

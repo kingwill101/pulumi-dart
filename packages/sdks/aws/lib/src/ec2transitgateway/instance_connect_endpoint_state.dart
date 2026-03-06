@@ -51,7 +51,7 @@ class InstanceConnectEndpointState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
   /// [vpcId] The ID of the VPC in which the EC2 Instance Connect Endpoint was created.
-  InstanceConnectEndpointState({
+  const InstanceConnectEndpointState({
     this.arn,
     this.availabilityZone,
     this.dnsName,

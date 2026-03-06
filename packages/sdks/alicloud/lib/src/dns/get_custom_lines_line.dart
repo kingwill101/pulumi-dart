@@ -24,7 +24,7 @@ class GetCustomLinesLine {
   /// [domainName] The Domain name.
   /// [id] The ID of the Custom Line.
   /// [ipSegmentLists] The IP segment list.
-  GetCustomLinesLine({
+  const GetCustomLinesLine({
     required this.code,
     required this.customLineId,
     required this.customLineName,

@@ -14,7 +14,7 @@ class ContextProperties {
   /// Creates a new [ContextProperties].
   /// [capabilities] List of Capabilities
   /// [hierarchies] List of Hierarchies
-  ContextProperties({
+  const ContextProperties({
     required this.capabilities,
     required this.hierarchies,
   });

@@ -148,7 +148,7 @@ class GetKubernetesClusterResult {
   /// [storageProfiles] A `storage_profile` block as documented below.
   /// [tags] A mapping of tags to assign to the resource.
   /// [windowsProfiles] A `windows_profile` block as documented below.
-  GetKubernetesClusterResult({
+  const GetKubernetesClusterResult({
     required this.aciConnectorLinuxes,
     required this.agentPoolProfiles,
     required this.apiServerAuthorizedIpRanges,

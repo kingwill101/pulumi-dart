@@ -11,7 +11,7 @@ class BotAssociationLexBot {
   /// Creates a new [BotAssociationLexBot].
   /// [lexRegion] The Region that the Amazon Lex (V1) bot was created in. Defaults to current region.
   /// [name] The name of the Amazon Lex (V1) bot.
-  BotAssociationLexBot({
+  const BotAssociationLexBot({
     this.lexRegion,
     required this.name,
   });

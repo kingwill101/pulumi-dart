@@ -11,7 +11,7 @@ class NodePoolNodeConfigConfidentialNodes {
   /// Creates a new [NodePoolNodeConfigConfidentialNodes].
   /// [confidentialInstanceType] Defines the type of technology used by the confidential node.
   /// [enabled] Whether Confidential Nodes feature is enabled for all nodes in this pool.
-  NodePoolNodeConfigConfidentialNodes({
+  const NodePoolNodeConfigConfidentialNodes({
     this.confidentialInstanceType,
     required this.enabled,
   });

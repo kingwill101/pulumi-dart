@@ -18,7 +18,7 @@ class StreamSourceConfigSalesforceSourceConfig {
   /// [excludeObjects] Salesforce objects to exclude from the stream.
   /// [includeObjects] Salesforce objects to retrieve from the source.
   /// [pollingInterval] Salesforce objects polling interval. The interval at which new changes will be polled for each object. The duration must be between 5 minutes and 24 hours.
-  StreamSourceConfigSalesforceSourceConfig({
+  const StreamSourceConfigSalesforceSourceConfig({
     this.excludeObjects,
     this.includeObjects,
     required this.pollingInterval,

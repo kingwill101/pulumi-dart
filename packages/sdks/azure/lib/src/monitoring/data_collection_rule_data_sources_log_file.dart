@@ -21,7 +21,7 @@ class DataCollectionRuleDataSourcesLogFile {
   /// [name] The name which should be used for this data source. This name should be unique across all data sources regardless of type within the Data Collection Rule.
   /// [settings] A `settings` block as defined below.
   /// [streams] Specifies a list of streams that this data source will be sent to. A stream indicates what schema will be used for this data and usually what table in Log Analytics the data will be sent to. Possible value should be custom stream names.
-  DataCollectionRuleDataSourcesLogFile({
+  const DataCollectionRuleDataSourcesLogFile({
     required this.filePatterns,
     required this.format,
     required this.name,

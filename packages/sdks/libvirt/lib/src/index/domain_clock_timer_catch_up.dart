@@ -14,7 +14,7 @@ class DomainClockTimerCatchUp {
   /// [limit] Specifies the limit for how much time the guest clock can catch up in one adjustment.
   /// [slew] Sets the rate at which the clock can be adjusted to catch up lost time.
   /// [threshold] Defines the time difference threshold at which catch-up adjustments are triggered.
-  DomainClockTimerCatchUp({
+  const DomainClockTimerCatchUp({
     this.limit,
     this.slew,
     this.threshold,

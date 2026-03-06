@@ -7,7 +7,7 @@ class GetKubernetesClusterAmdGpuDevicePlugin {
 
   /// Creates a new [GetKubernetesClusterAmdGpuDevicePlugin].
   /// [enabled] Required.
-  GetKubernetesClusterAmdGpuDevicePlugin({
+  const GetKubernetesClusterAmdGpuDevicePlugin({
     required this.enabled,
   });
 

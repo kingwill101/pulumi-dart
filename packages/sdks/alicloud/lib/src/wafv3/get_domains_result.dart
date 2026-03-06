@@ -30,7 +30,7 @@ class GetDomainsResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetDomainsResult({
+  const GetDomainsResult({
     this.backend,
     this.domain,
     required this.domains,

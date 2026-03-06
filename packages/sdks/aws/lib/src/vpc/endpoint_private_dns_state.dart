@@ -15,7 +15,7 @@ class EndpointPrivateDnsState {
   /// [privateDnsEnabled] Indicates whether a private hosted zone is associated with the VPC. Only applicable for `Interface` endpoints.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointId] VPC endpoint identifier.
-  EndpointPrivateDnsState({
+  const EndpointPrivateDnsState({
     this.privateDnsEnabled,
     this.region,
     this.vpcEndpointId,

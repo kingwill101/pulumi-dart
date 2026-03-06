@@ -13,7 +13,7 @@ class DataConnectorError {
   /// Creates a new [DataConnectorError].
   /// [code] (Output)
   /// [message] (Output)
-  DataConnectorError({
+  const DataConnectorError({
     this.code,
     this.message,
   });

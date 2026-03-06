@@ -16,7 +16,7 @@ class GetConfigIamPolicyArgs {
   /// Creates a new [GetConfigIamPolicyArgs].
   /// [config] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
-  GetConfigIamPolicyArgs({
+  const GetConfigIamPolicyArgs({
     required this.config,
     this.project,
   });

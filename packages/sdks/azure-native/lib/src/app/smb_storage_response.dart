@@ -24,7 +24,7 @@ class SmbStorageResponse {
   /// [password] The password for the user.
   /// [shareName] The path to the SMB shared folder.
   /// [username] The user to log on to the SMB server.
-  SmbStorageResponse({
+  const SmbStorageResponse({
     this.accessMode,
     this.domain,
     this.host,

@@ -110,7 +110,7 @@ class ServiceArgs {
   /// [virtualNetworkConfiguration] A `virtual_network_configuration` block as defined below. Required when `virtual_network_type` is `External` or `Internal`.
   /// [virtualNetworkType] The type of virtual network you want to use, valid values include: `None`, `External`, `Internal`. Defaults to `None`.
   /// [zones] Specifies a list of Availability Zones in which this API Management service should be located.
-  ServiceArgs({
+  const ServiceArgs({
     this.additionalLocations,
     this.certificates,
     this.clientCertificateEnabled,

@@ -26,7 +26,7 @@ class DefaultRolloutPropertiesStatus {
   /// [nextTrafficRegion] The next traffic region.
   /// [nextTrafficRegionScheduledTime] The next traffic region scheduled time.
   /// [subscriptionReregistrationResult] The subscription reregistration result.
-  DefaultRolloutPropertiesStatus({
+  const DefaultRolloutPropertiesStatus({
     this.completedRegions,
     this.failedOrSkippedRegions,
     this.manifestCheckinStatus,

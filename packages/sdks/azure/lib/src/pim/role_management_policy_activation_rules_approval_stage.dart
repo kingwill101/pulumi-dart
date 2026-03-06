@@ -9,7 +9,7 @@ class RoleManagementPolicyActivationRulesApprovalStage {
 
   /// Creates a new [RoleManagementPolicyActivationRulesApprovalStage].
   /// [primaryApprovers] One or more `primary_approver` blocks as defined below.
-  RoleManagementPolicyActivationRulesApprovalStage({
+  const RoleManagementPolicyActivationRulesApprovalStage({
     required this.primaryApprovers,
   });
 

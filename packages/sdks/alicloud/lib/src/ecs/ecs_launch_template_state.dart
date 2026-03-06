@@ -187,7 +187,7 @@ class EcsLaunchTemplateState {
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] When creating a VPC-Connected instance, you must specify its VSwitch ID.
   /// [zoneId] The zone ID of the instance.
-  EcsLaunchTemplateState({
+  const EcsLaunchTemplateState({
     this.autoReleaseTime,
     this.autoRenew,
     this.autoRenewPeriod,

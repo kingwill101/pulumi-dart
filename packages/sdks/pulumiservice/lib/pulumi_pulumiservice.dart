@@ -3,11 +3,11 @@
 import 'package:pulumi_pulumiservice/index.dart' as module_index;
 import 'package:pulumi_pulumiservice/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final AWSOIDCConfiguration = module_index.AWSOIDCConfiguration.new;
   final AWSOIDCConfigurationArgs = module_index.AWSOIDCConfiguration.new;
   final AccessToken = module_index.AccessToken.new;
@@ -128,7 +128,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final ProviderArgs = module_providers.ProviderArgs.new;
   final Pulumiservice = module_providers.ProviderProvider.new;
   final PulumiserviceArgs = module_providers.ProviderArgs.new;

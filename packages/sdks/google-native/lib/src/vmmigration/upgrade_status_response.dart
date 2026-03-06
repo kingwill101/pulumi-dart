@@ -22,7 +22,7 @@ class UpgradeStatusResponse {
   /// [startTime] The time the operation was started.
   /// [state] The state of the upgradeAppliance operation.
   /// [version] The version to upgrade to.
-  UpgradeStatusResponse({
+  const UpgradeStatusResponse({
     required this.error,
     required this.previousVersion,
     required this.startTime,

@@ -18,7 +18,7 @@ class GetRedisLinkedServerArgs {
   /// [linkedServerName] The name of the linked server.
   /// [name] The name of the redis cache.
   /// [resourceGroupName] The name of the resource group.
-  GetRedisLinkedServerArgs({
+  const GetRedisLinkedServerArgs({
     required this.linkedServerName,
     required this.name,
     required this.resourceGroupName,

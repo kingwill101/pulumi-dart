@@ -27,7 +27,7 @@ class DataPolicyArgs {
   /// [location] Optional.
   /// [policyTag] Policy tag resource name, in the format of `projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{policyTag_id}`.
   /// [project] Optional.
-  DataPolicyArgs({
+  const DataPolicyArgs({
     this.dataMaskingPolicy,
     this.dataPolicyId,
     this.dataPolicyType,

@@ -16,7 +16,7 @@ class JustInTimeAccessPolicyResponse {
   /// [managedByTenantApprovers] The list of managedByTenant approvers for the eligible authorization.
   /// [maximumActivationDuration] The maximum access duration in ISO 8601 format for just-in-time access requests.
   /// [multiFactorAuthProvider] The multi-factor authorization provider to be used for just-in-time access requests.
-  JustInTimeAccessPolicyResponse({
+  const JustInTimeAccessPolicyResponse({
     this.managedByTenantApprovers,
     this.maximumActivationDuration,
     required this.multiFactorAuthProvider,

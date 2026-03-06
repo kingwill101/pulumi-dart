@@ -49,7 +49,7 @@ class EipArgs {
   /// [publicIpv4Pool] EC2 IPv4 address pool identifier or `amazon`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags to assign to the resource. Tags can only be applied to EIPs in a VPC. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  EipArgs({
+  const EipArgs({
     this.address,
     this.associateWithPrivateIp,
     this.customerOwnedIpv4Pool,

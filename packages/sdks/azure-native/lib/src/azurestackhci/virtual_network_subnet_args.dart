@@ -26,7 +26,7 @@ class VirtualNetworkSubnetArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subnetName] Name of the virtual network subnet
   /// [virtualNetworkName] Name of the virtual network
-  VirtualNetworkSubnetArgs({
+  const VirtualNetworkSubnetArgs({
     this.extendedLocation,
     this.properties,
     required this.resourceGroupName,

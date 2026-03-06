@@ -34,7 +34,7 @@ class InterceptEndpointGroupArgs {
   /// [labels] Labels are key/value pairs that help to organize and filter resources.
   /// [location] The cloud location of the endpoint group, currently restricted to `global`.
   /// [project] The ID of the project in which the resource belongs.
-  InterceptEndpointGroupArgs({
+  const InterceptEndpointGroupArgs({
     this.description,
     required this.interceptDeploymentGroup,
     required this.interceptEndpointGroupId,

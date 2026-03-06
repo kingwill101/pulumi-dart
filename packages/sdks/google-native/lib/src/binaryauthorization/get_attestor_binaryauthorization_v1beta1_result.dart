@@ -21,7 +21,7 @@ class GetAttestorBinaryauthorizationV1beta1Result {
   /// [name] The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
   /// [updateTime] Time when the attestor was last updated.
   /// [userOwnedDrydockNote] A Drydock ATTESTATION_AUTHORITY Note, created by the user.
-  GetAttestorBinaryauthorizationV1beta1Result({
+  const GetAttestorBinaryauthorizationV1beta1Result({
     required this.description,
     required this.etag,
     required this.name,

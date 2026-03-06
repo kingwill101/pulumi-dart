@@ -11,7 +11,7 @@ class TrunkedNetworkAttachmentConfigurationResponse {
   /// Creates a new [TrunkedNetworkAttachmentConfigurationResponse].
   /// [networkId] The resource ID of the network that is being configured for attachment.
   /// [pluginType] The indicator of how this network will be utilized by the Kubernetes cluster.
-  TrunkedNetworkAttachmentConfigurationResponse({
+  const TrunkedNetworkAttachmentConfigurationResponse({
     required this.networkId,
     this.pluginType,
   });

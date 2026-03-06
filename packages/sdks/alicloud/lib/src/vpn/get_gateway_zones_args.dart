@@ -26,7 +26,7 @@ class GetGatewayZonesArgs {
   /// [ids] A list of Zone IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [spec] Bandwidth specification.-If an IPsec connection is bound to a VPN gateway instance, this parameter indicates the Bandwidth specification of the VPN gateway instance.-If an IPsec connection is bound to a forwarding router, this parameter indicates the bandwidth that you expect the IPsec connection to support.Different bandwidth specifications may affect the zone information that is found. Value:
-  GetGatewayZonesArgs({
+  const GetGatewayZonesArgs({
     this.ids,
     this.outputFile,
     required this.spec,

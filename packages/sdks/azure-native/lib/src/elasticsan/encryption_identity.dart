@@ -9,7 +9,7 @@ class EncryptionIdentity {
 
   /// Creates a new [EncryptionIdentity].
   /// [encryptionUserAssignedIdentity] Resource identifier of the UserAssigned identity to be associated with server-side encryption on the volume group.
-  EncryptionIdentity({
+  const EncryptionIdentity({
     this.encryptionUserAssignedIdentity,
   });
 

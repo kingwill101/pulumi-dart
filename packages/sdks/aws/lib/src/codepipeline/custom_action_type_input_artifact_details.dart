@@ -11,7 +11,7 @@ class CustomActionTypeInputArtifactDetails {
   /// Creates a new [CustomActionTypeInputArtifactDetails].
   /// [maximumCount] The maximum number of artifacts allowed for the action type. Min: 0, Max: 5
   /// [minimumCount] The minimum number of artifacts allowed for the action type. Min: 0, Max: 5
-  CustomActionTypeInputArtifactDetails({
+  const CustomActionTypeInputArtifactDetails({
     required this.maximumCount,
     required this.minimumCount,
   });

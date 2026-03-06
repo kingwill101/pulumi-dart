@@ -15,7 +15,7 @@ class GetServicesServiceNasConfig {
   /// [groupId] The group id of the NAS file system.
   /// [mountPoints] The mount points configuration, including following attributes:
   /// [userId] The user id of the NAS file system.
-  GetServicesServiceNasConfig({
+  const GetServicesServiceNasConfig({
     required this.groupId,
     required this.mountPoints,
     required this.userId,

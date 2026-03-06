@@ -15,7 +15,7 @@ class GetServiceAttachmentComputeV1Args {
   /// [project] Optional.
   /// [region] Required.
   /// [serviceAttachment] Required.
-  GetServiceAttachmentComputeV1Args({
+  const GetServiceAttachmentComputeV1Args({
     this.project,
     required this.region,
     required this.serviceAttachment,

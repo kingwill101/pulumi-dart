@@ -8,7 +8,7 @@ class GetDatabaseInstancesInstanceSettingDataCacheConfig {
 
   /// Creates a new [GetDatabaseInstancesInstanceSettingDataCacheConfig].
   /// [dataCacheEnabled] Whether data cache is enabled for the instance.
-  GetDatabaseInstancesInstanceSettingDataCacheConfig({
+  const GetDatabaseInstancesInstanceSettingDataCacheConfig({
     required this.dataCacheEnabled,
   });
 

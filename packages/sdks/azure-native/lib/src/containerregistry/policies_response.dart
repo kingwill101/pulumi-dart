@@ -30,7 +30,7 @@ class PoliciesResponse {
   /// [retentionPolicy] The retention policy for a container registry.
   /// [softDeletePolicy] The soft delete policy for a container registry.
   /// [trustPolicy] The content trust policy for a container registry.
-  PoliciesResponse({
+  const PoliciesResponse({
     this.azureADAuthenticationAsArmPolicy,
     this.exportPolicy,
     this.quarantinePolicy,

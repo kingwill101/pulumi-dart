@@ -8,7 +8,7 @@ class JobExecutionProperty {
 
   /// Creates a new [JobExecutionProperty].
   /// [maxConcurrentRuns] The maximum number of concurrent runs allowed for a job. The default is 1.
-  JobExecutionProperty({
+  const JobExecutionProperty({
     this.maxConcurrentRuns,
   });
 

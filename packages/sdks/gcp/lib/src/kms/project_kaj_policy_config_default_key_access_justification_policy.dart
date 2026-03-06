@@ -11,7 +11,7 @@ class ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy {
 
   /// Creates a new [ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy].
   /// [allowedAccessReasons] A KeyAccessJustificationsPolicy specifies zero or more allowed
-  ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy({
+  const ProjectKajPolicyConfigDefaultKeyAccessJustificationPolicy({
     this.allowedAccessReasons,
   });
 

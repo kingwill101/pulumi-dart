@@ -32,7 +32,7 @@ class PermissionBindingArgs {
   /// [permissionBindingName] The permission binding name.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicSpaceName] The name of the Topic Space resource that the permission is bound to.
-  PermissionBindingArgs({
+  const PermissionBindingArgs({
     this.clientGroupName,
     this.description,
     required this.namespaceName,

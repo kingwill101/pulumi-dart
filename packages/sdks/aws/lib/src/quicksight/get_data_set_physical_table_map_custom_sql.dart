@@ -14,7 +14,7 @@ class GetDataSetPhysicalTableMapCustomSql {
   /// [dataSourceArn] Required.
   /// [name] Required.
   /// [sqlQuery] Required.
-  GetDataSetPhysicalTableMapCustomSql({
+  const GetDataSetPhysicalTableMapCustomSql({
     required this.columns,
     required this.dataSourceArn,
     required this.name,

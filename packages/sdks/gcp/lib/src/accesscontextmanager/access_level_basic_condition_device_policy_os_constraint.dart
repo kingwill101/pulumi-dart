@@ -17,7 +17,7 @@ class AccessLevelBasicConditionDevicePolicyOsConstraint {
   /// [minimumVersion] The minimum allowed OS version. If not set, any version
   /// [osType] The operating system type of the device.
   /// [requireVerifiedChromeOs] If you specify DESKTOP_CHROME_OS for osType, you can optionally include requireVerifiedChromeOs to require Chrome Verified Access.
-  AccessLevelBasicConditionDevicePolicyOsConstraint({
+  const AccessLevelBasicConditionDevicePolicyOsConstraint({
     this.minimumVersion,
     required this.osType,
     this.requireVerifiedChromeOs,

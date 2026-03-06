@@ -13,7 +13,7 @@ class ScanConfigError {
   /// Creates a new [ScanConfigError].
   /// [code] Indicates the reason code for a configuration failure.
   /// [fieldName] Indicates the full name of the ScanConfig field that triggers this error, for example "scan_config.max_qps". This field is provided for troubleshooting purposes only and its actual value can change in the future.
-  ScanConfigError({
+  const ScanConfigError({
     this.code,
     this.fieldName,
   });

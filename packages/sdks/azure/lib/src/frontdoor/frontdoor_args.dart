@@ -50,7 +50,7 @@ class FrontdoorArgs {
   /// [resourceGroupName] Specifies the name of the Resource Group in which the Front Door service should exist. Changing this forces a new resource to be created.
   /// [routingRules] A `routing_rule` block as defined below.
   /// [tags] A mapping of tags to assign to the resource.
-  FrontdoorArgs({
+  const FrontdoorArgs({
     required this.backendPoolHealthProbes,
     required this.backendPoolLoadBalancings,
     this.backendPoolSettings,

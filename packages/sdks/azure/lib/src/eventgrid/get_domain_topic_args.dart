@@ -18,7 +18,7 @@ class GetDomainTopicArgs {
   /// [domainName] The name of the EventGrid Domain Topic domain.
   /// [name] The name of the EventGrid Domain Topic resource.
   /// [resourceGroupName] The name of the resource group in which the EventGrid Domain Topic exists.
-  GetDomainTopicArgs({
+  const GetDomainTopicArgs({
     required this.domainName,
     required this.name,
     required this.resourceGroupName,

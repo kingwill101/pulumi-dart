@@ -12,7 +12,7 @@ class GetTagValueIamPolicyArgs {
 
   /// Creates a new [GetTagValueIamPolicyArgs].
   /// [tagValue] Used to find the parent resource to bind the IAM policy to
-  GetTagValueIamPolicyArgs({
+  const GetTagValueIamPolicyArgs({
     required this.tagValue,
   });
 

@@ -13,7 +13,7 @@ class ListGitLabGroupAvailableResult {
   /// Creates a new [ListGitLabGroupAvailableResult].
   /// [nextLink] Gets or sets next link to scroll over the results.
   /// [value] Gets or sets list of resources.
-  ListGitLabGroupAvailableResult({
+  const ListGitLabGroupAvailableResult({
     this.nextLink,
     this.value,
   });

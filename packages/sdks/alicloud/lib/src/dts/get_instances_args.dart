@@ -25,7 +25,7 @@ class GetInstancesArgs {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [resourceGroupId] Resource Group ID
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

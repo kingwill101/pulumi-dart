@@ -15,7 +15,7 @@ class GetRoleArgs {
   /// Creates a new [GetRoleArgs].
   /// [name] Friendly IAM role name to match.
   /// [tags] Tags attached to the role.
-  GetRoleArgs({
+  const GetRoleArgs({
     required this.name,
     this.tags,
   });

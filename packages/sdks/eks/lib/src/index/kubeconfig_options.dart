@@ -31,7 +31,7 @@ class KubeconfigOptions {
   /// Creates a new [KubeconfigOptions].
   /// [profileName] AWS credential profile name to always use instead of the default AWS credential provider chain.
   /// [roleArn] Role ARN to assume instead of the default AWS credential provider chain.
-  KubeconfigOptions({
+  const KubeconfigOptions({
     this.profileName,
     this.roleArn,
   });

@@ -15,7 +15,7 @@ class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange {
   /// Creates a new [SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange].
   /// [max] max value for the range (inclusive). If not given,
   /// [min] Min value for the range (inclusive). If not given,
-  SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange({
+  const SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange({
     this.max,
     this.min,
   });

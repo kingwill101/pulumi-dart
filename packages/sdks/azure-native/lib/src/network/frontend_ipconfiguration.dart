@@ -39,7 +39,7 @@ class FrontendIPConfiguration {
   /// [publicIPPrefix] The reference to the Public IP Prefix resource.
   /// [subnet] The reference to the subnet resource.
   /// [zones] A list of availability zones denoting the IP allocated for the resource needs to come from.
-  FrontendIPConfiguration({
+  const FrontendIPConfiguration({
     this.gatewayLoadBalancer,
     this.id,
     this.name,

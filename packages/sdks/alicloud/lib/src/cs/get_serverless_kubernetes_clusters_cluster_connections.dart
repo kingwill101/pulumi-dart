@@ -14,7 +14,7 @@ class GetServerlessKubernetesClustersClusterConnections {
   /// [apiServerInternet] API Server Internet endpoint.
   /// [apiServerIntranet] API Server Intranet endpoint.
   /// [masterPublicIp] Master node SSH IP address.
-  GetServerlessKubernetesClustersClusterConnections({
+  const GetServerlessKubernetesClustersClusterConnections({
     required this.apiServerInternet,
     required this.apiServerIntranet,
     required this.masterPublicIp,

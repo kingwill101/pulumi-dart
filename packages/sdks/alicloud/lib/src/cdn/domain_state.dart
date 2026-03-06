@@ -49,7 +49,7 @@ class DomainState {
   /// [sourceType] Optional.
   /// [sources] Optional.
   /// [videoSeekEnable] Optional.
-  DomainState({
+  const DomainState({
     this.authConfig,
     this.blockIps,
     this.cacheConfigs,

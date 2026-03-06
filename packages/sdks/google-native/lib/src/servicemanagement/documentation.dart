@@ -29,7 +29,7 @@ class Documentation {
   /// [sectionOverrides] Specifies section and content to override boilerplate content provided by go/api-docgen. Currently overrides following sections: 1. rest.service.client_libraries
   /// [serviceRootUrl] Specifies the service root url if the default one (the service name from the yaml file) is not suitable. This can be seen in any fully specified service urls as well as sections that show a base that other urls are relative to.
   /// [summary] A short description of what the service does. The summary must be plain text. It becomes the overview of the service displayed in Google Cloud Console. NOTE: This field is equivalent to the standard field `description`.
-  Documentation({
+  const Documentation({
     this.documentationRootUrl,
     this.overview,
     this.pages,

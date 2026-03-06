@@ -11,7 +11,7 @@ class RouteSpecHttp2RouteTimeoutPerRequest {
   /// Creates a new [RouteSpecHttp2RouteTimeoutPerRequest].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
   /// [value] Number of time units. Minimum value of `0`.
-  RouteSpecHttp2RouteTimeoutPerRequest({
+  const RouteSpecHttp2RouteTimeoutPerRequest({
     required this.unit,
     required this.value,
   });

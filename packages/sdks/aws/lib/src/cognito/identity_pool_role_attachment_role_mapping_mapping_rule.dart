@@ -17,7 +17,7 @@ class IdentityPoolRoleAttachmentRoleMappingMappingRule {
   /// [matchType] The match condition that specifies how closely the claim value in the IdP token must match Value.
   /// [roleArn] The role ARN.
   /// [value] A brief string that the claim must match, for example, "paid" or "yes".
-  IdentityPoolRoleAttachmentRoleMappingMappingRule({
+  const IdentityPoolRoleAttachmentRoleMappingMappingRule({
     required this.claim,
     required this.matchType,
     required this.roleArn,

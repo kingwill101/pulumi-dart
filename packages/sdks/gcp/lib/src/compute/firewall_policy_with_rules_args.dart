@@ -24,7 +24,7 @@ class FirewallPolicyWithRulesArgs {
   /// [parent] The parent of this FirewallPolicy in the Cloud Resource Hierarchy.
   /// [rules] A list of firewall policy rules.
   /// [shortName] A textual name of the security policy.
-  FirewallPolicyWithRulesArgs({
+  const FirewallPolicyWithRulesArgs({
     this.description,
     required this.parent,
     required this.rules,

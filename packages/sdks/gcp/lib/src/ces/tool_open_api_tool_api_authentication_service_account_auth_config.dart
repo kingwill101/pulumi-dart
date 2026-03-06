@@ -15,7 +15,7 @@ class ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig {
 
   /// Creates a new [ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig].
   /// [serviceAccount] (Output)
-  ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig({
+  const ToolOpenApiToolApiAuthenticationServiceAccountAuthConfig({
     this.serviceAccount,
   });
 

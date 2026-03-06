@@ -34,7 +34,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule {
   /// [pathTemplateMatch] For satisfying the matchRule condition, the path of the request
   /// [prefixMatch] For satisfying the matchRule condition, the request's path must begin with the specified prefixMatch. prefixMatch must begin with a /.
   /// [queryParameterMatches] Specifies a list of query parameter match criteria, all of which must match corresponding query parameters in the request.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule({
     this.fullPathMatch,
     this.headerMatches,
     this.ignoreCase,

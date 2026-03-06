@@ -25,7 +25,7 @@ class LogicalViewState {
   /// [name] The unique name of the requested logical view. Values are of the form `projects/&lt;project&gt;/instances/&lt;instance&gt;/logicalViews/&lt;logicalViewId&gt;`.
   /// [project] The ID of the project in which the resource belongs.
   /// [query] The logical view's select query.
-  LogicalViewState({
+  const LogicalViewState({
     this.deletionProtection,
     this.instance,
     this.logicalViewId,

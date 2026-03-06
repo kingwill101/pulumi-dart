@@ -73,7 +73,7 @@ class GraphQLApiArgs {
   /// [userPoolConfig] Amazon Cognito User Pool configuration. See `user_pool_config` Block for details.
   /// [visibility] Sets the value of the GraphQL API to public (`GLOBAL`) or private (`PRIVATE`). If no value is provided, the visibility will be set to `GLOBAL` by default. This value cannot be changed once the API has been created.
   /// [xrayEnabled] Whether tracing with X-ray is enabled. Defaults to false.
-  GraphQLApiArgs({
+  const GraphQLApiArgs({
     this.additionalAuthenticationProviders,
     this.apiType,
     required this.authenticationType,

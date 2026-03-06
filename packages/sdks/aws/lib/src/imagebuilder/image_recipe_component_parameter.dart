@@ -11,7 +11,7 @@ class ImageRecipeComponentParameter {
   /// Creates a new [ImageRecipeComponentParameter].
   /// [name] The name of the component parameter.
   /// [value] The value for the named component parameter.
-  ImageRecipeComponentParameter({
+  const ImageRecipeComponentParameter({
     required this.name,
     required this.value,
   });

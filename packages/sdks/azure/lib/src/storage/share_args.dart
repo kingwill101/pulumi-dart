@@ -46,7 +46,7 @@ class ShareArgs {
   /// [quota] The maximum size of the share, in gigabytes.
   /// [storageAccountId] Specifies the storage account in which to create the share.
   /// [storageAccountName] Specifies the storage account in which to create the share. This property is deprecated in favour of `storage_account_id`.
-  ShareArgs({
+  const ShareArgs({
     this.accessTier,
     this.acls,
     this.enabledProtocol,

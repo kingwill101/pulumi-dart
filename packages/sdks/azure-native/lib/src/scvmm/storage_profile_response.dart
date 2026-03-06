@@ -10,7 +10,7 @@ class StorageProfileResponse {
 
   /// Creates a new [StorageProfileResponse].
   /// [disks] Gets or sets the list of virtual disks associated with the virtual machine.
-  StorageProfileResponse({
+  const StorageProfileResponse({
     this.disks,
   });
 

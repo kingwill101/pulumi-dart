@@ -15,7 +15,7 @@ class GetRegionBackendServiceArgs {
   /// [backendService] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionBackendServiceArgs({
+  const GetRegionBackendServiceArgs({
     required this.backendService,
     this.project,
     required this.region,

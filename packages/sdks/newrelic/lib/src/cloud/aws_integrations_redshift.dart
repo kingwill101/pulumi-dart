@@ -17,7 +17,7 @@ class AwsIntegrationsRedshift {
   /// [metricsPollingInterval] The data polling interval in seconds.
   /// [tagKey] Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
   /// [tagValue] Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
-  AwsIntegrationsRedshift({
+  const AwsIntegrationsRedshift({
     this.awsRegions,
     this.metricsPollingInterval,
     this.tagKey,

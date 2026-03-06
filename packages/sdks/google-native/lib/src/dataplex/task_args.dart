@@ -43,7 +43,7 @@ class TaskArgs {
   /// [spark] Config related to running custom Spark tasks.
   /// [taskId] Required. Task identifier.
   /// [triggerSpec] Spec related to how often and when a task should be triggered.
-  TaskArgs({
+  const TaskArgs({
     this.description,
     this.displayName,
     required this.executionSpec,

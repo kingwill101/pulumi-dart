@@ -26,7 +26,7 @@ class LogTransformerTransformerConfigDateTimeConverter {
   /// [target] Specifies the JSON field to store the result in.
   /// [targetFormat] Specifies the datetime format to use for the converted data in the target field. Defaults to `yyyy-MM-dd'T'HH:mm:ss.SSS'Z`.
   /// [targetTimezone] Specifies the time zone of the target field. Defaults to `UTC`.
-  LogTransformerTransformerConfigDateTimeConverter({
+  const LogTransformerTransformerConfigDateTimeConverter({
     this.locale,
     required this.matchPatterns,
     required this.source,

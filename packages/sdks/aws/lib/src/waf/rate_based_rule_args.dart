@@ -28,7 +28,7 @@ class RateBasedRuleArgs {
   /// [rateKey] Valid value is IP.
   /// [rateLimit] The maximum number of requests, which have an identical value in the field specified by the RateKey, allowed in a five-minute period. Minimum value is 100.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  RateBasedRuleArgs({
+  const RateBasedRuleArgs({
     required this.metricName,
     this.name,
     this.predicates,

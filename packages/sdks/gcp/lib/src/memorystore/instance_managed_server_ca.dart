@@ -11,7 +11,7 @@ class InstanceManagedServerCa {
 
   /// Creates a new [InstanceManagedServerCa].
   /// [caCerts] (Output)
-  InstanceManagedServerCa({
+  const InstanceManagedServerCa({
     this.caCerts,
   });
 

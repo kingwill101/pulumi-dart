@@ -14,7 +14,7 @@ class CostAllocationRuleDetails {
   /// Creates a new [CostAllocationRuleDetails].
   /// [sourceResources] Source resources for cost allocation. At this time, this list can contain no more than one element.
   /// [targetResources] Target resources for cost allocation. At this time, this list can contain no more than one element.
-  CostAllocationRuleDetails({
+  const CostAllocationRuleDetails({
     this.sourceResources,
     this.targetResources,
   });

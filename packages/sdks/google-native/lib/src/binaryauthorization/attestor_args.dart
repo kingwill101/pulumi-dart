@@ -27,7 +27,7 @@ class AttestorArgs {
   /// [name] The resource name, in the format: `projects/*/attestors/*`. This field may not be updated.
   /// [project] Optional.
   /// [userOwnedGrafeasNote] This specifies how an attestation will be read, and how it will be used during policy enforcement.
-  AttestorArgs({
+  const AttestorArgs({
     required this.attestorId,
     this.description,
     this.etag,

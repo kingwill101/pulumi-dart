@@ -13,7 +13,7 @@ class GetWorkerPoolCloudbuildV1alpha1Args {
   /// Creates a new [GetWorkerPoolCloudbuildV1alpha1Args].
   /// [project] Optional.
   /// [workerPoolId] Required.
-  GetWorkerPoolCloudbuildV1alpha1Args({
+  const GetWorkerPoolCloudbuildV1alpha1Args({
     this.project,
     required this.workerPoolId,
   });

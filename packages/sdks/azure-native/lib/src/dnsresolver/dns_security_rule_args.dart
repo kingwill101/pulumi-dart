@@ -38,7 +38,7 @@ class DnsSecurityRuleArgs {
   /// [priority] The priority of the DNS security rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  DnsSecurityRuleArgs({
+  const DnsSecurityRuleArgs({
     required this.action,
     required this.dnsResolverDomainLists,
     required this.dnsResolverPolicyName,

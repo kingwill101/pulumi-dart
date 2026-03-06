@@ -13,7 +13,7 @@ class AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpS
   /// Creates a new [AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket].
   /// [host] Optional: Host name to connect to, defaults to the model serving
   /// [port] Number of the port to access on the container.
-  AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket({
+  const AiEndpointWithModelGardenDeploymentModelConfigContainerSpecHealthProbeTcpSocket({
     this.host,
     this.port,
   });

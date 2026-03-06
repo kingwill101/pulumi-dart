@@ -53,7 +53,7 @@ class CaPoolState {
   /// [publishingOptions] The PublishingOptions to follow when issuing Certificates from any CertificateAuthority in this CaPool.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [tier] The Tier of this CaPool.
-  CaPoolState({
+  const CaPoolState({
     this.effectiveLabels,
     this.encryptionSpec,
     this.issuancePolicy,

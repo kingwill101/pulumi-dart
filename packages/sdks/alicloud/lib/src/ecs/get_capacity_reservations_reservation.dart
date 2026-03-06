@@ -59,7 +59,7 @@ class GetCapacityReservationsReservation {
   /// [tags] The tag of the resource.
   /// [timeSlot] This parameter is under test and is not yet open for use.
   /// [zoneIds] The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
-  GetCapacityReservationsReservation({
+  const GetCapacityReservationsReservation({
     required this.capacityReservationId,
     required this.capacityReservationName,
     required this.description,

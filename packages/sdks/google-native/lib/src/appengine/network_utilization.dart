@@ -18,7 +18,7 @@ class NetworkUtilization {
   /// [targetReceivedPacketsPerSecond] Target packets received per second.
   /// [targetSentBytesPerSecond] Target bytes sent per second.
   /// [targetSentPacketsPerSecond] Target packets sent per second.
-  NetworkUtilization({
+  const NetworkUtilization({
     this.targetReceivedBytesPerSecond,
     this.targetReceivedPacketsPerSecond,
     this.targetSentBytesPerSecond,

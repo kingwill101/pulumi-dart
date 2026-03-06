@@ -12,7 +12,7 @@ class IpAddressRange {
   /// Creates a new [IpAddressRange].
   /// [endIp] End IP address.
   /// [startIp] Start IP address.
-  IpAddressRange({
+  const IpAddressRange({
     required this.endIp,
     required this.startIp,
   });

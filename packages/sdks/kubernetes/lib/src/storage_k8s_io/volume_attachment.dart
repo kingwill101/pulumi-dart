@@ -26,7 +26,7 @@ class VolumeAttachment {
   /// [metadata] Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] spec represents specification of the desired attach/detach volume behavior. Populated by the Kubernetes system.
   /// [status] status represents status of the VolumeAttachment request. Populated by the entity completing the attach or detach operation, i.e. the external-attacher.
-  VolumeAttachment({
+  const VolumeAttachment({
     this.apiVersion,
     this.kind,
     this.metadata,

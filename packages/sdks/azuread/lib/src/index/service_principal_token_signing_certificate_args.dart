@@ -20,7 +20,7 @@ class ServicePrincipalTokenSigningCertificateArgs {
   /// [displayName] Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
   /// [endDate] The end date until which the token signing certificate is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). Changing this field forces a new resource to be created.
   /// [servicePrincipalId] The ID of the service principal for which this certificate should be created. Changing this field forces a new resource to be created.
-  ServicePrincipalTokenSigningCertificateArgs({
+  const ServicePrincipalTokenSigningCertificateArgs({
     this.displayName,
     this.endDate,
     required this.servicePrincipalId,

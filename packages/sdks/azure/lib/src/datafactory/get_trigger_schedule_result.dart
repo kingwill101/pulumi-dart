@@ -44,7 +44,7 @@ class GetTriggerScheduleResult {
   /// [schedules] A `schedule` block as described below, which further specifies the recurrence schedule for the trigger.
   /// [startTime] The time the Schedule Trigger will start. The time will be represented in UTC.
   /// [timeZone] The timezone of the start/end time.
-  GetTriggerScheduleResult({
+  const GetTriggerScheduleResult({
     required this.activated,
     required this.annotations,
     required this.dataFactoryId,

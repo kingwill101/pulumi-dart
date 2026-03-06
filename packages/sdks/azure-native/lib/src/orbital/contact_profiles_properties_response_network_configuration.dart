@@ -9,7 +9,7 @@ class ContactProfilesPropertiesResponseNetworkConfiguration {
 
   /// Creates a new [ContactProfilesPropertiesResponseNetworkConfiguration].
   /// [subnetId] ARM resource identifier of the subnet delegated to the Microsoft.Orbital/orbitalGateways. Needs to be at least a class C subnet, and should not have any IP created in it.
-  ContactProfilesPropertiesResponseNetworkConfiguration({
+  const ContactProfilesPropertiesResponseNetworkConfiguration({
     required this.subnetId,
   });
 

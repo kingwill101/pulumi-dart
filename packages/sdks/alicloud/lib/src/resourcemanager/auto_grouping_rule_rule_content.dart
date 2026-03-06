@@ -11,7 +11,7 @@ class AutoGroupingRuleRuleContent {
   /// Creates a new [AutoGroupingRuleRuleContent].
   /// [autoGroupingScopeCondition] The condition for the range of resources to be automatically transferred.
   /// [targetResourceGroupCondition] The condition for the destination resource group.
-  AutoGroupingRuleRuleContent({
+  const AutoGroupingRuleRuleContent({
     this.autoGroupingScopeCondition,
     required this.targetResourceGroupCondition,
   });

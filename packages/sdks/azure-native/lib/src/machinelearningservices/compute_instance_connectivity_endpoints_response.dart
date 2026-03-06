@@ -12,7 +12,7 @@ class ComputeInstanceConnectivityEndpointsResponse {
   /// Creates a new [ComputeInstanceConnectivityEndpointsResponse].
   /// [privateIpAddress] Private IP Address of this ComputeInstance (local to the VNET in which the compute instance is deployed).
   /// [publicIpAddress] Public IP Address of this ComputeInstance.
-  ComputeInstanceConnectivityEndpointsResponse({
+  const ComputeInstanceConnectivityEndpointsResponse({
     required this.privateIpAddress,
     required this.publicIpAddress,
   });

@@ -21,7 +21,7 @@ class FunctionEventTriggerEventFilter {
   /// [attribute] 'Required. The name of a CloudEvents attribute.
   /// [operator] Optional. The operator used for matching the events with the value of
   /// [value] Required. The value for the attribute.
-  FunctionEventTriggerEventFilter({
+  const FunctionEventTriggerEventFilter({
     required this.attribute,
     this.operator,
     required this.value,

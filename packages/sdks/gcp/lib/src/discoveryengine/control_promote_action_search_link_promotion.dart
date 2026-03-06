@@ -23,7 +23,7 @@ class ControlPromoteActionSearchLinkPromotion {
   /// [imageUri] The image URI of the promoted link.
   /// [title] The title of the promoted link.
   /// [uri] The URI to promote.
-  ControlPromoteActionSearchLinkPromotion({
+  const ControlPromoteActionSearchLinkPromotion({
     this.description,
     this.document,
     this.enabled,

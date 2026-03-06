@@ -32,7 +32,7 @@ class DomainDevicesFilesystemDriver {
   /// [queue] Configures the queue settings for the filesystem driver.
   /// [type] Specifies the type of the filesystem driver being used.
   /// [wrPolicy] Sets the write policy for the filesystem driver.
-  DomainDevicesFilesystemDriver({
+  const DomainDevicesFilesystemDriver({
     this.ats,
     this.format,
     this.iommu,

@@ -18,7 +18,7 @@ class EnvironmentTypeArgs {
   /// [devCenterId] The ID of the associated Dev Center. Changing this forces a new resource to be created.
   /// [name] Specifies the name of this Dev Center Environment Type. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Dev Center Environment Type.
-  EnvironmentTypeArgs({
+  const EnvironmentTypeArgs({
     required this.devCenterId,
     this.name,
     this.tags,

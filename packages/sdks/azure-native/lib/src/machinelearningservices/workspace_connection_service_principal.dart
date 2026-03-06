@@ -11,7 +11,7 @@ class WorkspaceConnectionServicePrincipal {
   /// [clientId] Optional.
   /// [clientSecret] Optional.
   /// [tenantId] Optional.
-  WorkspaceConnectionServicePrincipal({
+  const WorkspaceConnectionServicePrincipal({
     this.clientId,
     this.clientSecret,
     this.tenantId,

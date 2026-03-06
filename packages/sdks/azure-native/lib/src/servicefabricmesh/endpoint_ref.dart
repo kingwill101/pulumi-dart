@@ -9,7 +9,7 @@ class EndpointRef {
 
   /// Creates a new [EndpointRef].
   /// [name] Name of the endpoint.
-  EndpointRef({
+  const EndpointRef({
     this.name,
   });
 

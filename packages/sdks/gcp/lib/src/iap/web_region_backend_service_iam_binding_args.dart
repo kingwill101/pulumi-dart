@@ -45,7 +45,7 @@ class WebRegionBackendServiceIamBindingArgs {
   /// [region] Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
   /// [webRegionBackendService] Used to find the parent resource to bind the IAM policy to
-  WebRegionBackendServiceIamBindingArgs({
+  const WebRegionBackendServiceIamBindingArgs({
     this.condition,
     required this.members,
     this.project,

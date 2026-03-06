@@ -12,7 +12,7 @@ class ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1 {
   /// Creates a new [ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1].
   /// [maxRetentionDays] Maximum age of the snapshot that is allowed to be kept.
   /// [onSourceDiskDelete] Specifies the behavior to apply to scheduled snapshots when the source disk is deleted.
-  ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1({
+  const ResourcePolicySnapshotSchedulePolicyRetentionPolicyResponseComputeV1({
     required this.maxRetentionDays,
     required this.onSourceDiskDelete,
   });

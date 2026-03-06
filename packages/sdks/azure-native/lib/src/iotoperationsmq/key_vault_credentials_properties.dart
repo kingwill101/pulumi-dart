@@ -9,7 +9,7 @@ class KeyVaultCredentialsProperties {
 
   /// Creates a new [KeyVaultCredentialsProperties].
   /// [servicePrincipalLocalSecretName] KeyVault service principal local secret name.
-  KeyVaultCredentialsProperties({
+  const KeyVaultCredentialsProperties({
     required this.servicePrincipalLocalSecretName,
   });
 

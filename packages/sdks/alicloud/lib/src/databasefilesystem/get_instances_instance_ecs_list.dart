@@ -8,7 +8,7 @@ class GetInstancesInstanceEcsList {
 
   /// Creates a new [GetInstancesInstanceEcsList].
   /// [ecsId] The ID of the ECS instance.
-  GetInstancesInstanceEcsList({
+  const GetInstancesInstanceEcsList({
     required this.ecsId,
   });
 

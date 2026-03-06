@@ -8,7 +8,7 @@ class DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetForma
 
   /// Creates a new [DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson].
   /// [line] Indicates if the file should be read as a json object per line.
-  DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson({
+  const DataQualityJobDefinitionDataQualityJobInputBatchTransformInputDatasetFormatJson({
     this.line,
   });
 

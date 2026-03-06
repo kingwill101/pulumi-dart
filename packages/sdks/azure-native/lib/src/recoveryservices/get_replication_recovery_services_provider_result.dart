@@ -24,7 +24,7 @@ class GetReplicationRecoveryServicesProviderResult {
   /// [name] Resource Name
   /// [properties] Provider properties.
   /// [type] Resource Type
-  GetReplicationRecoveryServicesProviderResult({
+  const GetReplicationRecoveryServicesProviderResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

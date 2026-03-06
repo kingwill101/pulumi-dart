@@ -15,7 +15,7 @@ class GetSourceControlTokenResult {
   /// [token] The GitHub Token value.
   /// [tokenSecret] Required.
   /// [type] Required.
-  GetSourceControlTokenResult({
+  const GetSourceControlTokenResult({
     required this.id,
     required this.token,
     required this.tokenSecret,

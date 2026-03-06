@@ -12,7 +12,7 @@ class GitSourceContext {
   /// Creates a new [GitSourceContext].
   /// [revisionId] Git commit hash.
   /// [url] Git repository URL.
-  GitSourceContext({
+  const GitSourceContext({
     this.revisionId,
     this.url,
   });

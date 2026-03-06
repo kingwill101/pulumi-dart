@@ -88,7 +88,7 @@ class SnapshotArgs {
   /// [supportedCapabilities] List of supported capabilities for the image from which the source disk from the snapshot was originally created.
   /// [supportsHibernation] Indicates the OS on a snapshot supports hibernation.
   /// [tags] Resource tags.
-  SnapshotArgs({
+  const SnapshotArgs({
     this.completionPercent,
     this.copyCompletionError,
     required this.creationData,

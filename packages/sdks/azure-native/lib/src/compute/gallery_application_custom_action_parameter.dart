@@ -22,7 +22,7 @@ class GalleryApplicationCustomActionParameter {
   /// [name] The name of the custom action.  Must be unique within the Gallery Application Version.
   /// [required] Indicates whether this parameter must be passed when running the custom action.
   /// [type] Specifies the type of the custom action parameter. Possible values are: String, ConfigurationDataBlob or LogOutputBlob
-  GalleryApplicationCustomActionParameter({
+  const GalleryApplicationCustomActionParameter({
     this.defaultValue,
     this.description,
     required this.name,

@@ -39,7 +39,7 @@ class Publishing {
   /// [newIssueUri] Link to a *public* URI where users can report issues. Example: https://issuetracker.google.com/issues/new?component=190865&template=1161103
   /// [organization] For whom the client library is being published.
   /// [protoReferenceDocumentationUri] Optional link to proto reference documentation. Example: https://cloud.google.com/pubsub/lite/docs/reference/rpc
-  Publishing({
+  const Publishing({
     this.apiShortName,
     this.codeownerGithubTeams,
     this.docTagPrefix,

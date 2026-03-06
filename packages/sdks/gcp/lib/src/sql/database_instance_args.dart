@@ -118,7 +118,7 @@ class DatabaseInstanceArgs {
   /// [rootPasswordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [rootPasswordWoVersion] Triggers update of `root_password_wo` write-only. Increment this value when an update to `root_password_wo` is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
   /// [settings] The settings to use for the database. The
-  DatabaseInstanceArgs({
+  const DatabaseInstanceArgs({
     this.backupdrBackup,
     this.clone,
     required this.databaseVersion,

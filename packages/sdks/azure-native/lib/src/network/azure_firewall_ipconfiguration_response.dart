@@ -31,7 +31,7 @@ class AzureFirewallIPConfigurationResponse {
   /// [publicIPAddress] Reference to the PublicIP resource. This field is a mandatory input if subnet is not null.
   /// [subnet] Reference to the subnet resource. This resource must be named 'AzureFirewallSubnet' or 'AzureFirewallManagementSubnet'.
   /// [type] Type of the resource.
-  AzureFirewallIPConfigurationResponse({
+  const AzureFirewallIPConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

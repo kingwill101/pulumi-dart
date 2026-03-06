@@ -18,7 +18,7 @@ class ClusterDefinition {
   /// [componentVersion] The versions of different services in the cluster.
   /// [configurations] The cluster configurations.
   /// [kind] The type of cluster.
-  ClusterDefinition({
+  const ClusterDefinition({
     this.blueprint,
     this.componentVersion,
     this.configurations,

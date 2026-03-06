@@ -17,7 +17,7 @@ class GetDatabaseArgs {
   /// [databaseId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDatabaseArgs({
+  const GetDatabaseArgs({
     required this.catalogId,
     required this.databaseId,
     required this.location,

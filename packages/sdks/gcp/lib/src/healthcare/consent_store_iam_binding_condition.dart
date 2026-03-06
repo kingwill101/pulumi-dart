@@ -11,7 +11,7 @@ class ConsentStoreIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ConsentStoreIamBindingCondition({
+  const ConsentStoreIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

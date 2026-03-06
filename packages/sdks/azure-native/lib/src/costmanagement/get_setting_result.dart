@@ -31,7 +31,7 @@ class GetSettingResult {
   /// [scope] Sets the default scope the current user will see when they sign into Azure Cost Management in the Azure portal.
   /// [startOn] Indicates what scope Cost Management in the Azure portal should default to. Allowed values: LastUsed.
   /// [type] Resource type.
-  GetSettingResult({
+  const GetSettingResult({
     required this.azureApiVersion,
     this.cache,
     required this.id,

@@ -9,7 +9,7 @@ class GetFileShareUsageDataResult {
 
   /// Creates a new [GetFileShareUsageDataResult].
   /// [properties] The properties of the file share usage data.
-  GetFileShareUsageDataResult({
+  const GetFileShareUsageDataResult({
     required this.properties,
   });
 

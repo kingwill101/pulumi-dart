@@ -23,7 +23,7 @@ class GetRegionsFilter {
   /// [key] Filter the regions by this key. This may be one of `slug`,
   /// [matchBy] One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
   /// [values] A list of values to match against the `key` field. Only retrieves regions
-  GetRegionsFilter({
+  const GetRegionsFilter({
     this.all,
     required this.key,
     this.matchBy,

@@ -23,7 +23,7 @@ class AzureFirewallNetworkRuleCollection {
   /// [name] The name of the resource that is unique within the Azure firewall. This name can be used to access the resource.
   /// [priority] Priority of the network rule collection resource.
   /// [rules] Collection of rules used by a network rule collection.
-  AzureFirewallNetworkRuleCollection({
+  const AzureFirewallNetworkRuleCollection({
     this.action,
     this.id,
     this.name,

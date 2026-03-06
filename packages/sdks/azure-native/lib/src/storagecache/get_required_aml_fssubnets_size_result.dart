@@ -8,7 +8,7 @@ class GetRequiredAmlFSSubnetsSizeResult {
 
   /// Creates a new [GetRequiredAmlFSSubnetsSizeResult].
   /// [filesystemSubnetSize] The number of available IP addresses that are required for the AML file system.
-  GetRequiredAmlFSSubnetsSizeResult({
+  const GetRequiredAmlFSSubnetsSizeResult({
     this.filesystemSubnetSize,
   });
 

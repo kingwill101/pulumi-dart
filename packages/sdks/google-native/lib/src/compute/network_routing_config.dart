@@ -21,7 +21,7 @@ class NetworkRoutingConfig {
   /// [bgpBestPathSelectionMode] The BGP best path selection algorithm to be employed within this network for dynamic routes learned by Cloud Routers. Can be LEGACY (default) or STANDARD.
   /// [bgpInterRegionCost] Allows to define a preferred approach for handling inter-region cost in the selection process when using the STANDARD BGP best path selection algorithm. Can be DEFAULT or ADD_COST_TO_MED.
   /// [routingMode] The network-wide routing mode to use. If set to REGIONAL, this network's Cloud Routers will only advertise routes with subnets of this network in the same region as the router. If set to GLOBAL, this network's Cloud Routers will advertise routes with all subnets of this network, across regions.
-  NetworkRoutingConfig({
+  const NetworkRoutingConfig({
     this.bgpAlwaysCompareMed,
     this.bgpBestPathSelectionMode,
     this.bgpInterRegionCost,

@@ -12,7 +12,7 @@ class FrontdoorSecurityPolicySecurityPoliciesFirewall {
   /// Creates a new [FrontdoorSecurityPolicySecurityPoliciesFirewall].
   /// [association] An `association` block as defined below.
   /// [cdnFrontdoorFirewallPolicyId] The Resource Id of the Front Door Firewall Policy that should be linked to this Front Door Security Policy. Changing this forces a new Front Door Security Policy to be created.
-  FrontdoorSecurityPolicySecurityPoliciesFirewall({
+  const FrontdoorSecurityPolicySecurityPoliciesFirewall({
     required this.association,
     required this.cdnFrontdoorFirewallPolicyId,
   });

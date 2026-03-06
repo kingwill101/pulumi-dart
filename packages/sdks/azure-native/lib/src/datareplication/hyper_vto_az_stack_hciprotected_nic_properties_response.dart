@@ -24,7 +24,7 @@ class HyperVToAzStackHCIProtectedNicPropertiesResponse {
   /// [selectionTypeForFailover] Gets or sets the selection type of the NIC.
   /// [targetNetworkId] Gets or sets the target network Id within AzStackHCI Cluster.
   /// [testNetworkId] Gets or sets the target test network Id within AzStackHCI Cluster.
-  HyperVToAzStackHCIProtectedNicPropertiesResponse({
+  const HyperVToAzStackHCIProtectedNicPropertiesResponse({
     required this.macAddress,
     required this.networkName,
     required this.nicId,

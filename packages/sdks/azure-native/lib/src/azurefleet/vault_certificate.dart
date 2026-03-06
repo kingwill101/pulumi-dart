@@ -31,7 +31,7 @@ class VaultCertificate {
   /// Creates a new [VaultCertificate].
   /// [certificateStore] For Windows VMs, specifies the certificate store on the Virtual Machine to
   /// [certificateUrl] This is the URL of a certificate that has been uploaded to Key Vault as a
-  VaultCertificate({
+  const VaultCertificate({
     this.certificateStore,
     this.certificateUrl,
   });

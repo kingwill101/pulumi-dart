@@ -42,7 +42,7 @@ class HyperVReplicaBluePolicyInput {
   /// [replicaDeletion] A value indicating whether the VM has to be auto deleted.
   /// [replicationFrequencyInSeconds] A value indicating the replication interval.
   /// [replicationPort] A value indicating the recovery HTTPS port.
-  HyperVReplicaBluePolicyInput({
+  const HyperVReplicaBluePolicyInput({
     this.allowedAuthenticationType,
     this.applicationConsistentSnapshotFrequencyInHours,
     this.compression,

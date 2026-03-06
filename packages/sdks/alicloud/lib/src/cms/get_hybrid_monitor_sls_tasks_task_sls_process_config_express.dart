@@ -9,7 +9,7 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
   /// Creates a new [GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress].
   /// [alias] Required.
   /// [express] Required.
-  GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress({
+  const GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress({
     required this.alias,
     required this.express,
   });

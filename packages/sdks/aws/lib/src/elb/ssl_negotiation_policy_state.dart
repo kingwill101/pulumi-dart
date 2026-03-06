@@ -32,7 +32,7 @@ class SslNegotiationPolicyState {
   /// [name] The name of the SSL negotiation policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a redeployment.
-  SslNegotiationPolicyState({
+  const SslNegotiationPolicyState({
     this.attributes,
     this.lbPort,
     this.loadBalancer,

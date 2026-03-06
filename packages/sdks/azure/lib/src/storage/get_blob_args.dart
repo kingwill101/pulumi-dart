@@ -21,7 +21,7 @@ class GetBlobArgs {
   /// [name] The name of the Blob.
   /// [storageAccountName] The name of the Storage Account where the Container exists.
   /// [storageContainerName] The name of the Storage Container where the Blob exists.
-  GetBlobArgs({
+  const GetBlobArgs({
     this.metadata,
     required this.name,
     required this.storageAccountName,

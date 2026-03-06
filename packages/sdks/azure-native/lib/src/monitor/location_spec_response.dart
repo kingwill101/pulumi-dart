@@ -11,7 +11,7 @@ class LocationSpecResponse {
   /// Creates a new [LocationSpecResponse].
   /// [location] Name of location.
   /// [provisioningStatus] The resource provisioning state in this location.
-  LocationSpecResponse({
+  const LocationSpecResponse({
     this.location,
     this.provisioningStatus,
   });

@@ -28,7 +28,7 @@ class HealthCheckGrpcTlsHealthCheck {
   /// [grpcServiceName] The gRPC service name for the health check.
   /// [port] The port number for the health check request.
   /// [portSpecification] Specifies how port is selected for health checking, can be one of the
-  HealthCheckGrpcTlsHealthCheck({
+  const HealthCheckGrpcTlsHealthCheck({
     this.grpcServiceName,
     this.port,
     this.portSpecification,

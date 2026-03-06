@@ -20,7 +20,7 @@ class GetGreyTagRoutesRouteDubboRuleItem {
   /// [index] The parameter number.
   /// [operator] The operator.
   /// [value] The value of the parameter.
-  GetGreyTagRoutesRouteDubboRuleItem({
+  const GetGreyTagRoutesRouteDubboRuleItem({
     required this.cond,
     required this.expr,
     required this.index,

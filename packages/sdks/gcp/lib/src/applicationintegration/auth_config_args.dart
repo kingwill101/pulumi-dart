@@ -44,7 +44,7 @@ class AuthConfigArgs {
   /// [overrideValidTime] User provided expiry time to override. For the example of Salesforce, username/password credentials can be valid for 6 months depending on the instance settings.
   /// [project] The ID of the project in which the resource belongs.
   /// [visibility] The visibility of the auth config.
-  AuthConfigArgs({
+  const AuthConfigArgs({
     this.clientCertificate,
     this.decryptedCredential,
     this.description,

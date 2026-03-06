@@ -12,7 +12,7 @@ class Image {
   /// Creates a new [Image].
   /// [reference] Image reference
   /// [type] Type of the image. Possible values are: docker - For docker images. azureml - For AzureML images
-  Image({
+  const Image({
     this.reference,
     this.type,
   });

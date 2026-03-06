@@ -11,7 +11,7 @@ class ListWorkflowAccessKeySecretKeysResult {
   /// Creates a new [ListWorkflowAccessKeySecretKeysResult].
   /// [primarySecretKey] Gets the primary secret key.
   /// [secondarySecretKey] Gets the secondary secret key.
-  ListWorkflowAccessKeySecretKeysResult({
+  const ListWorkflowAccessKeySecretKeysResult({
     required this.primarySecretKey,
     required this.secondarySecretKey,
   });

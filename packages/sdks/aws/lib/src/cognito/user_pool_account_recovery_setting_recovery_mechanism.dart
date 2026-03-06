@@ -11,7 +11,7 @@ class UserPoolAccountRecoverySettingRecoveryMechanism {
   /// Creates a new [UserPoolAccountRecoverySettingRecoveryMechanism].
   /// [name] Recovery method for a user. Can be of the following: `verified_email`, `verified_phone_number`, and `admin_only`.
   /// [priority] Positive integer specifying priority of a method with 1 being the highest priority.
-  UserPoolAccountRecoverySettingRecoveryMechanism({
+  const UserPoolAccountRecoverySettingRecoveryMechanism({
     required this.name,
     required this.priority,
   });

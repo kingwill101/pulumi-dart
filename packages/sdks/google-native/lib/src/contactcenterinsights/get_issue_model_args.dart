@@ -15,7 +15,7 @@ class GetIssueModelArgs {
   /// [issueModelId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetIssueModelArgs({
+  const GetIssueModelArgs({
     required this.issueModelId,
     required this.location,
     this.project,

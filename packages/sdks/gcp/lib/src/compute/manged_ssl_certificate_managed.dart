@@ -9,7 +9,7 @@ class MangedSslCertificateManaged {
 
   /// Creates a new [MangedSslCertificateManaged].
   /// [domains] Domains for which a managed SSL certificate will be valid.  Currently,
-  MangedSslCertificateManaged({
+  const MangedSslCertificateManaged({
     required this.domains,
   });
 

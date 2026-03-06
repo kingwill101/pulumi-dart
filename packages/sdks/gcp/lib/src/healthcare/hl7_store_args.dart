@@ -53,7 +53,7 @@ class Hl7StoreArgs {
   /// [notificationConfigs] A list of notification configs. Each configuration uses a filter to determine whether to publish a
   /// [parserConfig] A nested object resource.
   /// [rejectDuplicateMessage] Determines whether duplicate messages are allowed.
-  Hl7StoreArgs({
+  const Hl7StoreArgs({
     required this.dataset,
     this.labels,
     this.name,

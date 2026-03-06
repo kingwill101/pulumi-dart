@@ -23,7 +23,7 @@ class RouteTableAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routeTableId] The ID of the routing table to associate with.
   /// [subnetId] The subnet ID to create an association. Conflicts with `gateway_id`.
-  RouteTableAssociationArgs({
+  const RouteTableAssociationArgs({
     this.gatewayId,
     this.region,
     required this.routeTableId,

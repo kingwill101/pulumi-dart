@@ -10,7 +10,7 @@ class ListDiagnosticSettingsCategoryResult {
 
   /// Creates a new [ListDiagnosticSettingsCategoryResult].
   /// [value] The collection of diagnostic settings category resources.
-  ListDiagnosticSettingsCategoryResult({
+  const ListDiagnosticSettingsCategoryResult({
     this.value,
   });
 

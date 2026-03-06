@@ -9,7 +9,7 @@ class EncryptionResponseCustomerManagedKeyEncryption {
 
   /// Creates a new [EncryptionResponseCustomerManagedKeyEncryption].
   /// [keyEncryptionKeyUrl] The URL of the key to use for encryption
-  EncryptionResponseCustomerManagedKeyEncryption({
+  const EncryptionResponseCustomerManagedKeyEncryption({
     this.keyEncryptionKeyUrl,
   });
 

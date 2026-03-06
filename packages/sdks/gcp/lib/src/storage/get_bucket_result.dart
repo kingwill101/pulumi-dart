@@ -83,7 +83,7 @@ class GetBucketResult {
   /// [url] Required.
   /// [versionings] Required.
   /// [websites] Required.
-  GetBucketResult({
+  const GetBucketResult({
     required this.autoclasses,
     required this.cors,
     required this.customPlacementConfigs,

@@ -7,7 +7,7 @@ class GetBackupJobsJobOtsDetail {
 
   /// Creates a new [GetBackupJobsJobOtsDetail].
   /// [tableNames] Required.
-  GetBackupJobsJobOtsDetail({
+  const GetBackupJobsJobOtsDetail({
     required this.tableNames,
   });
 

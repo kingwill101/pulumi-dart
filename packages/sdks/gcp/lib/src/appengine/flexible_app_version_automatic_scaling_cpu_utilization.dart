@@ -11,7 +11,7 @@ class FlexibleAppVersionAutomaticScalingCpuUtilization {
   /// Creates a new [FlexibleAppVersionAutomaticScalingCpuUtilization].
   /// [aggregationWindowLength] Period of time over which CPU utilization is calculated.
   /// [targetUtilization] Target CPU utilization ratio to maintain when scaling. Must be between 0 and 1.
-  FlexibleAppVersionAutomaticScalingCpuUtilization({
+  const FlexibleAppVersionAutomaticScalingCpuUtilization({
     this.aggregationWindowLength,
     required this.targetUtilization,
   });

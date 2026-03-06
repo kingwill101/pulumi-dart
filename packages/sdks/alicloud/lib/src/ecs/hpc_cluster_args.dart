@@ -15,7 +15,7 @@ class HpcClusterArgs {
   /// Creates a new [HpcClusterArgs].
   /// [description] The description of ECS Hpc Cluster.
   /// [name] The name of ECS Hpc Cluster.
-  HpcClusterArgs({
+  const HpcClusterArgs({
     this.description,
     this.name,
   });

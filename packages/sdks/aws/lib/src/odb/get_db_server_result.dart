@@ -70,7 +70,7 @@ class GetDbServerResult {
   /// [status] The status of the database server.
   /// [statusReason] Additional information about the current status of the database server.
   /// [vmClusterIds] The OCID of the VM clusters that are associated with the database server.
-  GetDbServerResult({
+  const GetDbServerResult({
     required this.autonomousVirtualMachineIds,
     required this.autonomousVmClusterIds,
     required this.cloudExadataInfrastructureId,

@@ -8,7 +8,7 @@ class PerInstanceConfigPreservedStateInternalIpIpAddress {
 
   /// Creates a new [PerInstanceConfigPreservedStateInternalIpIpAddress].
   /// [address] The URL of the reservation for this IP address.
-  PerInstanceConfigPreservedStateInternalIpIpAddress({
+  const PerInstanceConfigPreservedStateInternalIpIpAddress({
     this.address,
   });
 

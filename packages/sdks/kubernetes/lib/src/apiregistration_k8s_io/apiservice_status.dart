@@ -10,7 +10,7 @@ class APIServiceStatus {
 
   /// Creates a new [APIServiceStatus].
   /// [conditions] Current service state of apiService.
-  APIServiceStatus({
+  const APIServiceStatus({
     this.conditions,
   });
 

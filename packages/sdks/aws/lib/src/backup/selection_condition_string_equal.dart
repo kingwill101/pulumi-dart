@@ -11,7 +11,7 @@ class SelectionConditionStringEqual {
   /// Creates a new [SelectionConditionStringEqual].
   /// [key] Key for the filter.
   /// [value] Value for the filter.
-  SelectionConditionStringEqual({
+  const SelectionConditionStringEqual({
     required this.key,
     required this.value,
   });

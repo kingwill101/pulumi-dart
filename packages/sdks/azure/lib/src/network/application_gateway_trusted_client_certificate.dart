@@ -14,7 +14,7 @@ class ApplicationGatewayTrustedClientCertificate {
   /// [data] The base-64 encoded certificate.
   /// [id] The ID of the Rewrite Rule Set
   /// [name] The name of the Trusted Client Certificate that is unique within this Application Gateway.
-  ApplicationGatewayTrustedClientCertificate({
+  const ApplicationGatewayTrustedClientCertificate({
     required this.data,
     this.id,
     required this.name,

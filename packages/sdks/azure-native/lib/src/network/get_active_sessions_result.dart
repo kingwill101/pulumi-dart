@@ -13,7 +13,7 @@ class GetActiveSessionsResult {
   /// Creates a new [GetActiveSessionsResult].
   /// [nextLink] The URL to get the next set of results.
   /// [value] List of active sessions on the bastion.
-  GetActiveSessionsResult({
+  const GetActiveSessionsResult({
     this.nextLink,
     this.value,
   });

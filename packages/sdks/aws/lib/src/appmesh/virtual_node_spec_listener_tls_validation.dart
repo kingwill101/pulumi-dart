@@ -13,7 +13,7 @@ class VirtualNodeSpecListenerTlsValidation {
   /// Creates a new [VirtualNodeSpecListenerTlsValidation].
   /// [subjectAlternativeNames] SANs for a TLS validation context.
   /// [trust] TLS validation context trust.
-  VirtualNodeSpecListenerTlsValidation({
+  const VirtualNodeSpecListenerTlsValidation({
     this.subjectAlternativeNames,
     required this.trust,
   });

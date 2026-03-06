@@ -14,7 +14,7 @@ class GetLBIPRangesResult {
   /// [httpSslTcpInternals] The IP ranges used for health checks when **HTTP(S), SSL proxy, TCP proxy, and Internal load balancing** is used
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [networks] The IP ranges used for health checks when **Network load balancing** is used
-  GetLBIPRangesResult({
+  const GetLBIPRangesResult({
     required this.httpSslTcpInternals,
     required this.id,
     required this.networks,

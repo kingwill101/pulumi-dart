@@ -32,7 +32,7 @@ class NamedResourcesAttributePatch {
   /// [string_] StringValue is a string.
   /// [stringSlice] StringSliceValue is an array of strings.
   /// [version] VersionValue is a semantic version according to semver.org spec 2.0.0.
-  NamedResourcesAttributePatch({
+  const NamedResourcesAttributePatch({
     this.bool_,
     this.int_,
     this.intSlice,

@@ -21,7 +21,7 @@ class ProjectPropertiesResponse {
   /// [endpoints] The list of endpoint for this Cognitive Services Project.
   /// [isDefault] Indicates whether the project is the default project for the account.
   /// [provisioningState] Gets the status of the cognitive services project at the time the operation was called.
-  ProjectPropertiesResponse({
+  const ProjectPropertiesResponse({
     this.description,
     this.displayName,
     required this.endpoints,

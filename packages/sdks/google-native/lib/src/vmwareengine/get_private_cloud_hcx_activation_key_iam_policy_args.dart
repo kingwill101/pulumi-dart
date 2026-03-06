@@ -19,7 +19,7 @@ class GetPrivateCloudHcxActivationKeyIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [privateCloudId] Required.
   /// [project] Optional.
-  GetPrivateCloudHcxActivationKeyIamPolicyArgs({
+  const GetPrivateCloudHcxActivationKeyIamPolicyArgs({
     required this.hcxActivationKeyId,
     required this.location,
     this.optionsRequestedPolicyVersion,

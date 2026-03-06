@@ -9,7 +9,7 @@ class NetworkManagedServiceServiceNetworkEndpoint {
   /// Creates a new [NetworkManagedServiceServiceNetworkEndpoint].
   /// [vpcEndpointId] Required.
   /// [vpcEndpointType] Required.
-  NetworkManagedServiceServiceNetworkEndpoint({
+  const NetworkManagedServiceServiceNetworkEndpoint({
     required this.vpcEndpointId,
     required this.vpcEndpointType,
   });

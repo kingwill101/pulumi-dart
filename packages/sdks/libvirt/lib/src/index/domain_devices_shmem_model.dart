@@ -8,7 +8,7 @@ class DomainDevicesShmemModel {
 
   /// Creates a new [DomainDevicesShmemModel].
   /// [type] Sets the type attribute for the model of the shared memory device.
-  DomainDevicesShmemModel({
+  const DomainDevicesShmemModel({
     required this.type,
   });
 

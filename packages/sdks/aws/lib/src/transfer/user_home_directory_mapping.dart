@@ -20,7 +20,7 @@ class UserHomeDirectoryMapping {
   /// Creates a new [UserHomeDirectoryMapping].
   /// [entry] Represents an entry and a target.
   /// [target] Represents the map target.
-  UserHomeDirectoryMapping({
+  const UserHomeDirectoryMapping({
     required this.entry,
     required this.target,
   });

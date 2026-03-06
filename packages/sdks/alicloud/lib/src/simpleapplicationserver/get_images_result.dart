@@ -24,7 +24,7 @@ class GetImagesResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [platform] Optional.
-  GetImagesResult({
+  const GetImagesResult({
     required this.id,
     required this.ids,
     this.imageType,

@@ -10,7 +10,7 @@ class UniqueKeyPolicyResponse {
 
   /// Creates a new [UniqueKeyPolicyResponse].
   /// [uniqueKeys] List of unique keys on that enforces uniqueness constraint on documents in the collection in the Azure Cosmos DB service.
-  UniqueKeyPolicyResponse({
+  const UniqueKeyPolicyResponse({
     this.uniqueKeys,
   });
 

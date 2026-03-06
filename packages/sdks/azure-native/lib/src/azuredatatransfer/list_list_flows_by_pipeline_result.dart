@@ -10,7 +10,7 @@ class ListListFlowsByPipelineResult {
 
   /// Creates a new [ListListFlowsByPipelineResult].
   /// [value] List flows by pipeline result by connection
-  ListListFlowsByPipelineResult({
+  const ListListFlowsByPipelineResult({
     this.value,
   });
 

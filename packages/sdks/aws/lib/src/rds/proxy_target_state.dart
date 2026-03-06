@@ -41,7 +41,7 @@ class ProxyTargetState {
   /// [targetGroupName] The name of the target group.
   /// [trackedClusterId] DB Cluster identifier for the DB Instance target. Not returned unless manually importing an `RDS_INSTANCE` target that is part of a DB Cluster.
   /// [type] Type of targetE.g., `RDS_INSTANCE` or `TRACKED_CLUSTER`
-  ProxyTargetState({
+  const ProxyTargetState({
     this.dbClusterIdentifier,
     this.dbInstanceIdentifier,
     this.dbProxyName,

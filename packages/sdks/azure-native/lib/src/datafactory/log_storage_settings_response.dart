@@ -19,7 +19,7 @@ class LogStorageSettingsResponse {
   /// [linkedServiceName] Log storage linked service reference.
   /// [logLevel] Gets or sets the log level, support: Info, Warning. Type: string (or Expression with resultType string).
   /// [path] The path to storage for storing detailed logs of activity execution. Type: string (or Expression with resultType string).
-  LogStorageSettingsResponse({
+  const LogStorageSettingsResponse({
     this.enableReliableLogging,
     required this.linkedServiceName,
     this.logLevel,

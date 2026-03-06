@@ -9,7 +9,7 @@ class SourceTypeEnumValueResponse {
 
   /// Creates a new [SourceTypeEnumValueResponse].
   /// [value] Property value
-  SourceTypeEnumValueResponse({
+  const SourceTypeEnumValueResponse({
     this.value,
   });
 

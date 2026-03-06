@@ -19,7 +19,7 @@ class CustomHttpsConfigurationArgs {
   /// [customHttpsConfiguration] A `custom_https_configuration` block as defined above.
   /// [customHttpsProvisioningEnabled] Should the HTTPS protocol be enabled for this custom domain associated with the Front Door?
   /// [frontendEndpointId] The ID of the Front Door Frontend Endpoint which this configuration refers to. Changing this forces a new resource to be created.
-  CustomHttpsConfigurationArgs({
+  const CustomHttpsConfigurationArgs({
     this.customHttpsConfiguration,
     required this.customHttpsProvisioningEnabled,
     required this.frontendEndpointId,

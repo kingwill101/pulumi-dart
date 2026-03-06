@@ -10,7 +10,7 @@ class NativeStorageClassTypeProperties {
 
   /// Creates a new [NativeStorageClassTypeProperties].
   /// [type] Type of a storage class
-  NativeStorageClassTypeProperties({
+  const NativeStorageClassTypeProperties({
     required this.type,
   });
 

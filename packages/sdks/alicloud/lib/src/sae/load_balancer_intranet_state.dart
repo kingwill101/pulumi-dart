@@ -19,7 +19,7 @@ class LoadBalancerIntranetState {
   /// [intranetIp] Use designated private network SLBs that have been purchased to support non-shared instances.
   /// [intranetSlbId] The intranet SLB ID.
   /// [intranets] The bound private network SLB. See `intranet` below.
-  LoadBalancerIntranetState({
+  const LoadBalancerIntranetState({
     this.appId,
     this.intranetIp,
     this.intranetSlbId,

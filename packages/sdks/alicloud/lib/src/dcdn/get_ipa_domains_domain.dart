@@ -42,7 +42,7 @@ class GetIpaDomainsDomain {
   /// [sslProtocol] Indicates whether the Security Socket Layer (SSL) certificate is enabled.
   /// [sslPub] Indicates the public key of the certificate if the HTTPS protocol is enabled.
   /// [status] The status of the accelerated domain name. Valid values: `check_failed`, `checking`, `configure_failed`, `configuring`, `offline`, `online`.
-  GetIpaDomainsDomain({
+  const GetIpaDomainsDomain({
     required this.certName,
     required this.cname,
     required this.createTime,

@@ -14,7 +14,7 @@ class BudgetManagementGroupFilterDimension {
   /// [name] The name of the column to use for the filter. The allowed values are `ChargeType`, `Frequency`, `InvoiceId`, `Meter`, `MeterCategory`, `MeterSubCategory`, `PartNumber`, `PricingModel`, `Product`, `ProductOrderId`, `ProductOrderName`, `PublisherType`, `ReservationId`, `ReservationName`, `ResourceGroupName`, `ResourceGuid`, `ResourceId`, `ResourceLocation`, `ResourceType`, `ServiceFamily`, `ServiceName`, `SubscriptionID`, `SubscriptionName`, `UnitOfMeasure`.
   /// [operator] The operator to use for comparison. The allowed values are `In`. Defaults to `In`.
   /// [values] Specifies a list of values for the column.
-  BudgetManagementGroupFilterDimension({
+  const BudgetManagementGroupFilterDimension({
     required this.name,
     this.operator,
     required this.values,

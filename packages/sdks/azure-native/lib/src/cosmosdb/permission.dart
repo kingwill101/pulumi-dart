@@ -15,7 +15,7 @@ class Permission {
   /// [dataActions] An array of data actions that are allowed.
   /// [id] The id for the permission.
   /// [notDataActions] An array of data actions that are denied.
-  Permission({
+  const Permission({
     this.dataActions,
     this.id,
     this.notDataActions,

@@ -15,7 +15,7 @@ class OperationErrorSqladminV1beta4 {
   /// [code] Identifies the specific error that occurred.
   /// [kind] This is always `sql#operationError`.
   /// [message] Additional information about the error encountered.
-  OperationErrorSqladminV1beta4({
+  const OperationErrorSqladminV1beta4({
     this.code,
     this.kind,
     this.message,

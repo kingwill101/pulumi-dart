@@ -9,7 +9,7 @@ class SingleHeaderModelProperties {
 
   /// Creates a new [SingleHeaderModelProperties].
   /// [name] The name of the query header to inspect.
-  SingleHeaderModelProperties({
+  const SingleHeaderModelProperties({
     this.name,
   });
 

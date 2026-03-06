@@ -19,7 +19,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig {
   /// [disabled] (Output)
   /// [modelSettings] (Output)
   /// [prompt] (Output)
-  AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig({
+  const AppVersionSnapshotToolDataStoreToolModalityConfigRewriterConfig({
     this.disabled,
     this.modelSettings,
     this.prompt,

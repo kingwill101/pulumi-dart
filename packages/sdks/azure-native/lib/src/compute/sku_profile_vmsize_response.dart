@@ -12,7 +12,7 @@ class SkuProfileVMSizeResponse {
   /// Creates a new [SkuProfileVMSizeResponse].
   /// [name] Specifies the name of the VM Size.
   /// [rank] Specifies the rank (a.k.a priority) associated with the VM Size.
-  SkuProfileVMSizeResponse({
+  const SkuProfileVMSizeResponse({
     this.name,
     this.rank,
   });

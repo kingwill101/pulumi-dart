@@ -14,7 +14,7 @@ class DataSetColumnGroupGeoSpatialColumnGroup {
   /// [columns] Columns in this hierarchy.
   /// [countryCode] Country code. Valid values are `US`.
   /// [name] A display name for the hierarchy.
-  DataSetColumnGroupGeoSpatialColumnGroup({
+  const DataSetColumnGroupGeoSpatialColumnGroup({
     required this.columns,
     required this.countryCode,
     required this.name,

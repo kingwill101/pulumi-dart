@@ -18,7 +18,7 @@ class GetCloudExadataInfrastructuresArgs {
   /// Creates a new [GetCloudExadataInfrastructuresArgs].
   /// [location] The location of the resource.
   /// [project] The project to which the resource belongs. If it
-  GetCloudExadataInfrastructuresArgs({
+  const GetCloudExadataInfrastructuresArgs({
     required this.location,
     this.project,
   });

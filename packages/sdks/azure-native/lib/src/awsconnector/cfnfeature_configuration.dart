@@ -16,7 +16,7 @@ class CFNFeatureConfiguration {
   /// [additionalConfiguration] Property additionalConfiguration
   /// [name] Property name
   /// [status] Property status
-  CFNFeatureConfiguration({
+  const CFNFeatureConfiguration({
     this.additionalConfiguration,
     this.name,
     this.status,

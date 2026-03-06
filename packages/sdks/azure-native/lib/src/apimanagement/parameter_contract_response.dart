@@ -34,7 +34,7 @@ class ParameterContractResponse {
   /// [type] Parameter type.
   /// [typeName] Type name defined by the schema.
   /// [values] Parameter values.
-  ParameterContractResponse({
+  const ParameterContractResponse({
     this.defaultValue,
     this.description,
     this.examples,

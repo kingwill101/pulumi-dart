@@ -13,7 +13,7 @@ class ContainerGroupContainerSecurityContext {
   /// [capabilities] Optional.
   /// [privileged] Specifies whether to give extended privileges to this container. Default value: `false`. Valid values: `true` and `false`.
   /// [runAsUser] Optional.
-  ContainerGroupContainerSecurityContext({
+  const ContainerGroupContainerSecurityContext({
     this.capabilities,
     this.privileged,
     this.runAsUser,

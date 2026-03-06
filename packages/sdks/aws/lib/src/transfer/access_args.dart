@@ -38,7 +38,7 @@ class AccessArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [role] Amazon Resource Name (ARN) of an IAM role that allows the service to controls your user’s access to your Amazon S3 bucket.
   /// [serverId] The Server ID of the Transfer Server (e.g., `s-12345678`)
-  AccessArgs({
+  const AccessArgs({
     required this.externalId,
     this.homeDirectory,
     this.homeDirectoryMappings,

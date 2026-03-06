@@ -21,7 +21,7 @@ class GetClustersArgs {
   /// [logicalRegionId] ID of the namespace in EDAS.
   /// [nameRegex] A regex string to filter results by the cluster name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetClustersArgs({
+  const GetClustersArgs({
     this.ids,
     required this.logicalRegionId,
     this.nameRegex,

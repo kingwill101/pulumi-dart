@@ -27,7 +27,7 @@ class CertificateState {
   /// [name] Specifies the name of the Certificate. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Certificate is created. Changing this forces a new resource to be created.
   /// [thumbprint] The thumbprint for the certificate.
-  CertificateState({
+  const CertificateState({
     this.automationAccountName,
     this.base64,
     this.description,

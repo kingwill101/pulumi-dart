@@ -75,7 +75,7 @@ class GetMetastoreServiceResult {
   /// [tier] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetMetastoreServiceResult({
+  const GetMetastoreServiceResult({
     required this.artifactGcsUri,
     required this.createTime,
     required this.databaseType,

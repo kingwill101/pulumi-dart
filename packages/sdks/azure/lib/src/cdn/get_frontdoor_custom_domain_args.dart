@@ -18,7 +18,7 @@ class GetFrontdoorCustomDomainArgs {
   /// [name] The name of the Front Door Custom Domain.
   /// [profileName] The name of the Front Door Profile which the Front Door Custom Domain is bound to.
   /// [resourceGroupName] The name of the Resource Group where the Front Door Profile exists.
-  GetFrontdoorCustomDomainArgs({
+  const GetFrontdoorCustomDomainArgs({
     required this.name,
     required this.profileName,
     required this.resourceGroupName,

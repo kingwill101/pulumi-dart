@@ -9,7 +9,7 @@ class DomainSysInfoFwCfg {
 
   /// Creates a new [DomainSysInfoFwCfg].
   /// [entries] Sets individual entries for the firmware configuration.
-  DomainSysInfoFwCfg({
+  const DomainSysInfoFwCfg({
     this.entries,
   });
 

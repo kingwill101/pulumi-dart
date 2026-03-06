@@ -23,7 +23,7 @@ class ServiceTaskSpecContainerSpecConfig {
   /// [fileMode] Represents represents the FileMode of the file. Defaults to `0o444`.
   /// [fileName] Represents the final filename in the filesystem
   /// [fileUid] Represents the file UID. Defaults to `0`.
-  ServiceTaskSpecContainerSpecConfig({
+  const ServiceTaskSpecContainerSpecConfig({
     required this.configId,
     this.configName,
     this.fileGid,

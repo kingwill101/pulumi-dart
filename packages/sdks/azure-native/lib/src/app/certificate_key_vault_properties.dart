@@ -12,7 +12,7 @@ class CertificateKeyVaultProperties {
   /// Creates a new [CertificateKeyVaultProperties].
   /// [identity] Resource ID of a managed identity to authenticate with Azure Key Vault, or System to use a system-assigned identity.
   /// [keyVaultUrl] URL pointing to the Azure Key Vault secret that holds the certificate.
-  CertificateKeyVaultProperties({
+  const CertificateKeyVaultProperties({
     this.identity,
     this.keyVaultUrl,
   });

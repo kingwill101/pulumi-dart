@@ -17,7 +17,7 @@ class CrawlerHudiTarget {
   /// [exclusions] A list of glob patterns used to exclude from the crawl.
   /// [maximumTraversalDepth] The maximum depth of Amazon S3 paths that the crawler can traverse to discover the Hudi metadata folder in your Amazon S3 path. Used to limit the crawler run time. Valid values are between `1` and `20`.
   /// [paths] One or more Amazon S3 paths that contains Hudi metadata folders as s3://bucket/prefix.
-  CrawlerHudiTarget({
+  const CrawlerHudiTarget({
     this.connectionName,
     this.exclusions,
     required this.maximumTraversalDepth,

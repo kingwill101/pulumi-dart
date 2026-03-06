@@ -39,7 +39,7 @@ class CertificateIssuanceConfigArgs {
   /// [name] A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique globally and match pattern `projects/*/locations/*/certificateIssuanceConfigs/*`.
   /// [project] Optional.
   /// [rotationWindowPercentage] Specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate. Must be a number between 1-99, inclusive.
-  CertificateIssuanceConfigArgs({
+  const CertificateIssuanceConfigArgs({
     required this.certificateAuthorityConfig,
     required this.certificateIssuanceConfigId,
     this.description,

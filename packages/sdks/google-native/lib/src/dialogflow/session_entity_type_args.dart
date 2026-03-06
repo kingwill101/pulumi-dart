@@ -30,7 +30,7 @@ class SessionEntityTypeArgs {
   /// [project] Optional.
   /// [sessionId] Required.
   /// [userId] Required.
-  SessionEntityTypeArgs({
+  const SessionEntityTypeArgs({
     required this.entities,
     required this.entityOverrideMode,
     required this.environmentId,

@@ -19,7 +19,7 @@ class ManifestResponse {
   /// [fileName] The name of the generated file. The default is `manifest` with the extension suffix corresponding to the Manifest.type.
   /// [muxStreams] List of user supplied MuxStream.key values that should appear in this manifest. When Manifest.type is `HLS`, a media manifest with name MuxStream.key and `.m3u8` extension is generated for each element in this list.
   /// [type] Type of the manifest.
-  ManifestResponse({
+  const ManifestResponse({
     required this.dash,
     required this.fileName,
     required this.muxStreams,

@@ -8,7 +8,7 @@ class GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption {
 
   /// Creates a new [GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption].
   /// [override] Whether CloudFront overrides the X-XSS-Protection HTTP response header received from the origin with the one specified in this response headers policy.
-  GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption({
+  const GetResponseHeadersPolicySecurityHeadersConfigContentTypeOption({
     required this.override,
   });
 

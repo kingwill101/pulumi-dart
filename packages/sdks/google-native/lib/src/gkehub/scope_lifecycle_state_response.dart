@@ -9,7 +9,7 @@ class ScopeLifecycleStateResponse {
 
   /// Creates a new [ScopeLifecycleStateResponse].
   /// [code] The current state of the scope resource.
-  ScopeLifecycleStateResponse({
+  const ScopeLifecycleStateResponse({
     required this.code,
   });
 

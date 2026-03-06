@@ -36,7 +36,7 @@ class DatabaseSqladminV1beta4Args {
   /// [project] The project ID of the project containing the Cloud SQL database. The Google apps domain is prefixed if applicable.
   /// [selfLink] The URI of this resource.
   /// [sqlserverDatabaseDetails] Optional.
-  DatabaseSqladminV1beta4Args({
+  const DatabaseSqladminV1beta4Args({
     this.charset,
     this.collation,
     this.etag,

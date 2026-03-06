@@ -25,7 +25,7 @@ class MetricTransformation {
   /// [metricNamespace] A custom namespace to contain your metric in CloudWatch. Use namespaces to group together metrics that are similar. For more information, see [Namespaces](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html#Namespace).
   /// [metricValue] The value that is published to the CloudWatch metric. For example, if you're counting the occurrences of a particular term like ``Error``, specify 1 for the metric value. If you're counting the number of bytes transferred, reference the value that is in the log event by using $. followed by the name of the field that you specified in the filter pattern, such as ``$.size``.
   /// [unit] The unit to assign to the metric. If you omit this, the unit is set as ``None``.
-  MetricTransformation({
+  const MetricTransformation({
     this.defaultValue,
     this.dimensions,
     this.metricName,

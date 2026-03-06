@@ -23,7 +23,7 @@ class ReceiptRuleBounceAction {
   /// [smtpReplyCode] The RFC 5321 SMTP reply code
   /// [statusCode] The RFC 3463 SMTP enhanced status code
   /// [topicArn] The ARN of an SNS topic to notify
-  ReceiptRuleBounceAction({
+  const ReceiptRuleBounceAction({
     required this.message,
     required this.position,
     required this.sender,

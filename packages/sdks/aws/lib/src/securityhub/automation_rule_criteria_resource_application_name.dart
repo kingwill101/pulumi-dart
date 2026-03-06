@@ -9,7 +9,7 @@ class AutomationRuleCriteriaResourceApplicationName {
   /// Creates a new [AutomationRuleCriteriaResourceApplicationName].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaResourceApplicationName({
+  const AutomationRuleCriteriaResourceApplicationName({
     required this.comparison,
     required this.value,
   });

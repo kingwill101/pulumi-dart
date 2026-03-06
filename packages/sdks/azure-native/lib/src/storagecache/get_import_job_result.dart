@@ -69,7 +69,7 @@ class GetImportJobResult {
   /// [totalConflicts] Number of conflicts in the import job.
   /// [totalErrors] Number of errors in the import job.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetImportJobResult({
+  const GetImportJobResult({
     required this.azureApiVersion,
     required this.blobsImportedPerSecond,
     required this.blobsWalkedPerSecond,

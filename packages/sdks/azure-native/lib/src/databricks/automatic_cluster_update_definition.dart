@@ -8,7 +8,7 @@ class AutomaticClusterUpdateDefinition {
 
   /// Creates a new [AutomaticClusterUpdateDefinition].
   /// [value] Optional.
-  AutomaticClusterUpdateDefinition({
+  const AutomaticClusterUpdateDefinition({
     this.value,
   });
 

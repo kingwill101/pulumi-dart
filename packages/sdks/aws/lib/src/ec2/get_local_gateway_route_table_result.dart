@@ -24,7 +24,7 @@ class GetLocalGatewayRouteTableResult {
   /// [region] Required.
   /// [state] Required.
   /// [tags] Required.
-  GetLocalGatewayRouteTableResult({
+  const GetLocalGatewayRouteTableResult({
     this.filters,
     required this.id,
     required this.localGatewayId,

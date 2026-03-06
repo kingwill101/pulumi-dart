@@ -15,7 +15,7 @@ class GetVpcNatGatewayArgs {
   /// Creates a new [GetVpcNatGatewayArgs].
   /// [id] The ID of VPC NAT Gateway.
   /// [name] The name of VPC NAT Gateway.
-  GetVpcNatGatewayArgs({
+  const GetVpcNatGatewayArgs({
     this.id,
     this.name,
   });

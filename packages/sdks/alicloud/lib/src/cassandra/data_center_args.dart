@@ -52,7 +52,7 @@ class DataCenterArgs {
   /// [periodUnit] Optional.
   /// [vswitchId] The vswitch_id of dataCenter-2, mast different of vswitch_id(dc-1), can not empty.
   /// [zoneId] The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be "" or consistent.
-  DataCenterArgs({
+  const DataCenterArgs({
     this.autoRenew,
     this.autoRenewPeriod,
     required this.clusterId,

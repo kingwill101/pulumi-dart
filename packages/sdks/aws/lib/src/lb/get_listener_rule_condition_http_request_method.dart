@@ -8,7 +8,7 @@ class GetListenerRuleConditionHttpRequestMethod {
 
   /// Creates a new [GetListenerRuleConditionHttpRequestMethod].
   /// [values] Set of `key`-`value` pairs indicating the query string parameters to match.
-  GetListenerRuleConditionHttpRequestMethod({
+  const GetListenerRuleConditionHttpRequestMethod({
     required this.values,
   });
 

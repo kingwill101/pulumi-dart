@@ -12,7 +12,7 @@ class AlertRuleScheduledEntityMapping {
   /// Creates a new [AlertRuleScheduledEntityMapping].
   /// [entityType] The type of the entity. Possible values are `Account`, `AzureResource`, `CloudApplication`, `DNS`, `File`, `FileHash`, `Host`, `IP`, `Mailbox`, `MailCluster`, `MailMessage`, `Malware`, `Process`, `RegistryKey`, `RegistryValue`, `SecurityGroup`, `SubmissionMail`, `URL`.
   /// [fieldMappings] A list of `field_mapping` blocks as defined below.
-  AlertRuleScheduledEntityMapping({
+  const AlertRuleScheduledEntityMapping({
     required this.entityType,
     required this.fieldMappings,
   });

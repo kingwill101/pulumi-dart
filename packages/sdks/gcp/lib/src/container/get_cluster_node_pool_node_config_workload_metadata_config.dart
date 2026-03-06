@@ -8,7 +8,7 @@ class GetClusterNodePoolNodeConfigWorkloadMetadataConfig {
 
   /// Creates a new [GetClusterNodePoolNodeConfigWorkloadMetadataConfig].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node.
-  GetClusterNodePoolNodeConfigWorkloadMetadataConfig({
+  const GetClusterNodePoolNodeConfigWorkloadMetadataConfig({
     required this.mode,
   });
 

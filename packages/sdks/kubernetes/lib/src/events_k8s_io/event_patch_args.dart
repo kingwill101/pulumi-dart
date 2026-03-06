@@ -64,7 +64,7 @@ class EventPatchArgs {
   /// [reportingInstance] reportingInstance is the ID of the controller instance, e.g. `kubelet-xyzf`. This field cannot be empty for new Events and it can have at most 128 characters.
   /// [series] series is data about the Event series this event represents or nil if it's a singleton Event.
   /// [type] type is the type of this event (Normal, Warning), new types could be added in the future. It is machine-readable. This field cannot be empty for new Events.
-  EventPatchArgs({
+  const EventPatchArgs({
     this.action,
     this.apiVersion,
     this.deprecatedCount,

@@ -27,7 +27,7 @@ class HealthCheck {
   /// [restartThreshold] Number of consecutive failed health checks required before an instance is restarted.
   /// [timeout] Time before the health check is considered failed.
   /// [unhealthyThreshold] Number of consecutive failed health checks required before removing traffic.
-  HealthCheck({
+  const HealthCheck({
     this.checkInterval,
     this.disableHealthCheck,
     this.healthyThreshold,

@@ -21,7 +21,7 @@ class GetFunctionsArgs {
   /// [nameRegex] A regex string to filter results by function name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [serviceName] Name of the service that contains the functions to find.
-  GetFunctionsArgs({
+  const GetFunctionsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

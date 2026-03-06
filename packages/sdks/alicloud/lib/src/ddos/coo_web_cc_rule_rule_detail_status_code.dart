@@ -20,7 +20,7 @@ class CooWebCcRuleRuleDetailStatusCode {
   /// [enabled] Whether the rule is enabled. Valid values:
   /// [ratioThreshold] When the ratio is used, the enforcement action is triggered only when the corresponding status code reaches `RatioThreshold`. The value range is `1` to `100`.
   /// [useRatio] Whether to use a ratio:
-  CooWebCcRuleRuleDetailStatusCode({
+  const CooWebCcRuleRuleDetailStatusCode({
     required this.code,
     this.countThreshold,
     required this.enabled,

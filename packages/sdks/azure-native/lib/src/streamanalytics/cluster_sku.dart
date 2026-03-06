@@ -12,7 +12,7 @@ class ClusterSku {
   /// Creates a new [ClusterSku].
   /// [capacity] Denotes the number of streaming units the cluster can support. Valid values for this property are multiples of 36 with a minimum value of 36 and maximum value of 216. Required on PUT (CreateOrUpdate) requests.
   /// [name] Specifies the SKU name of the cluster. Required on PUT (CreateOrUpdate) requests.
-  ClusterSku({
+  const ClusterSku({
     this.capacity,
     this.name,
   });

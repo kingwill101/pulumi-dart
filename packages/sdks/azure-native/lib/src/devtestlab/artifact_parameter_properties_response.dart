@@ -12,7 +12,7 @@ class ArtifactParameterPropertiesResponse {
   /// Creates a new [ArtifactParameterPropertiesResponse].
   /// [name] The name of the artifact parameter.
   /// [value] The value of the artifact parameter.
-  ArtifactParameterPropertiesResponse({
+  const ArtifactParameterPropertiesResponse({
     this.name,
     this.value,
   });

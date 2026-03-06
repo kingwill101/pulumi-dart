@@ -9,7 +9,7 @@ class ConnectionAuthConfigOauth2AuthCodeFlowClientSecret {
 
   /// Creates a new [ConnectionAuthConfigOauth2AuthCodeFlowClientSecret].
   /// [secretVersion] The resource name of the secret version in the format,
-  ConnectionAuthConfigOauth2AuthCodeFlowClientSecret({
+  const ConnectionAuthConfigOauth2AuthCodeFlowClientSecret({
     required this.secretVersion,
   });
 

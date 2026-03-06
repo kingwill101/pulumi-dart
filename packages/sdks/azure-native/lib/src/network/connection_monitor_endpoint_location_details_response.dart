@@ -9,7 +9,7 @@ class ConnectionMonitorEndpointLocationDetailsResponse {
 
   /// Creates a new [ConnectionMonitorEndpointLocationDetailsResponse].
   /// [region] Region for connection monitor endpoint.
-  ConnectionMonitorEndpointLocationDetailsResponse({
+  const ConnectionMonitorEndpointLocationDetailsResponse({
     this.region,
   });
 

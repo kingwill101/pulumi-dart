@@ -27,7 +27,7 @@ class ConnectionDeploymentArgs {
   /// [proxyApiVersion] Api version used by proxy call
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
-  ConnectionDeploymentArgs({
+  const ConnectionDeploymentArgs({
     required this.connectionName,
     this.deploymentName,
     required this.properties,

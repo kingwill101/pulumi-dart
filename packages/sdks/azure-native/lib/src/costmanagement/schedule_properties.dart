@@ -27,7 +27,7 @@ class ScheduleProperties {
   /// [hourOfDay] UTC time at which cost analysis data will be emailed.
   /// [startDate] The start date and time of the scheduled action (UTC).
   /// [weeksOfMonth] Weeks in which cost analysis data will be emailed. This property is applicable when frequency is Monthly and used in combination with daysOfWeek.
-  ScheduleProperties({
+  const ScheduleProperties({
     this.dayOfMonth,
     this.daysOfWeek,
     required this.endDate,

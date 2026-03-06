@@ -11,7 +11,7 @@ class TemplateScratchPreferenceParameter {
   /// Creates a new [TemplateScratchPreferenceParameter].
   /// [parameterKey] Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
   /// [parameterValue] Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-  TemplateScratchPreferenceParameter({
+  const TemplateScratchPreferenceParameter({
     required this.parameterKey,
     required this.parameterValue,
   });

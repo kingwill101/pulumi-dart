@@ -15,7 +15,7 @@ class GetPolicyArgs {
   /// [clientOperationId] Optional.
   /// [policy] Required.
   /// [project] Optional.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     this.clientOperationId,
     required this.policy,
     this.project,

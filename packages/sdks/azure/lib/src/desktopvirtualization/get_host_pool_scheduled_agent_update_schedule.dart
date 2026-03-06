@@ -11,7 +11,7 @@ class GetHostPoolScheduledAgentUpdateSchedule {
   /// Creates a new [GetHostPoolScheduledAgentUpdateSchedule].
   /// [dayOfWeek] The day of the week on which agent updates should be performed.
   /// [hourOfDay] The hour of day the update window should start.
-  GetHostPoolScheduledAgentUpdateSchedule({
+  const GetHostPoolScheduledAgentUpdateSchedule({
     required this.dayOfWeek,
     required this.hourOfDay,
   });

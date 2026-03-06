@@ -13,7 +13,7 @@ class DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1 {
   /// Creates a new [DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1].
   /// [envelope] If doing something security critical, make sure to verify the signatures in this metadata.
   /// [statement] Required.
-  DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1({
+  const DSSEAttestationOccurrenceResponseContaineranalysisV1alpha1({
     required this.envelope,
     required this.statement,
   });

@@ -32,7 +32,7 @@ class GetRepositoryArtifactregistryV1beta1Result {
   /// [satisfiesPzs] If set, the repository satisfies physical zone separation.
   /// [sizeBytes] The size, in bytes, of all artifact storage in this repository. Repositories that are generally available or in public preview use this to calculate storage costs.
   /// [updateTime] The time when the repository was last updated.
-  GetRepositoryArtifactregistryV1beta1Result({
+  const GetRepositoryArtifactregistryV1beta1Result({
     required this.createTime,
     required this.description,
     required this.format,

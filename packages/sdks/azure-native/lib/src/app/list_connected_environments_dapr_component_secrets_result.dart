@@ -10,7 +10,7 @@ class ListConnectedEnvironmentsDaprComponentSecretsResult {
 
   /// Creates a new [ListConnectedEnvironmentsDaprComponentSecretsResult].
   /// [value] Collection of secrets used by a Dapr component
-  ListConnectedEnvironmentsDaprComponentSecretsResult({
+  const ListConnectedEnvironmentsDaprComponentSecretsResult({
     required this.value,
   });
 

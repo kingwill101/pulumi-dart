@@ -25,7 +25,7 @@ class AzureWorkloadContainerAutoProtectionIntent {
   /// [protectionIntentItemType] backup protectionIntent type.
   /// [protectionState] Backup state of this backup item.
   /// [sourceResourceId] ARM ID of the resource to be backed up.
-  AzureWorkloadContainerAutoProtectionIntent({
+  const AzureWorkloadContainerAutoProtectionIntent({
     this.backupManagementType,
     this.itemId,
     this.policyId,

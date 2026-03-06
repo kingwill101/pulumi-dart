@@ -10,7 +10,7 @@ class EnterpriseCrmEventbusProtoCoordinate {
   /// Creates a new [EnterpriseCrmEventbusProtoCoordinate].
   /// [x] Optional.
   /// [y] Optional.
-  EnterpriseCrmEventbusProtoCoordinate({
+  const EnterpriseCrmEventbusProtoCoordinate({
     this.x,
     this.y,
   });

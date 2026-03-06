@@ -11,7 +11,7 @@ class GatewayRouteSpecHttp2RouteMatchPath {
   /// Creates a new [GatewayRouteSpecHttp2RouteMatchPath].
   /// [exact] The exact path to match on.
   /// [regex] The regex used to match the path.
-  GatewayRouteSpecHttp2RouteMatchPath({
+  const GatewayRouteSpecHttp2RouteMatchPath({
     this.exact,
     this.regex,
   });

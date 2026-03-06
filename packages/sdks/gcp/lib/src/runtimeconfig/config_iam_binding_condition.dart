@@ -11,7 +11,7 @@ class ConfigIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ConfigIamBindingCondition({
+  const ConfigIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

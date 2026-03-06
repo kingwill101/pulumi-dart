@@ -24,7 +24,7 @@ class UserAssignedIdentityArgs {
   /// [name] Specifies the name of this User Assigned Identity. Changing this forces a new User Assigned Identity to be created.
   /// [resourceGroupName] Specifies the name of the Resource Group within which this User Assigned Identity should exist. Changing this forces a new User Assigned Identity to be created.
   /// [tags] A mapping of tags which should be assigned to the User Assigned Identity.
-  UserAssignedIdentityArgs({
+  const UserAssignedIdentityArgs({
     this.isolationScope,
     this.location,
     this.name,

@@ -85,7 +85,7 @@ class GetApiResult {
   /// [subscriptionRequired] Specifies whether an API or Product subscription is required for accessing the API.
   /// [termsOfServiceUrl] A URL to the Terms of Service for the API. MUST be in the format of a URL.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApiResult({
+  const GetApiResult({
     this.apiRevision,
     this.apiRevisionDescription,
     this.apiType,

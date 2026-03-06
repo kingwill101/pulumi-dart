@@ -9,7 +9,7 @@ class BigQueryDestinationContainerV1beta1 {
 
   /// Creates a new [BigQueryDestinationContainerV1beta1].
   /// [datasetId] The ID of a BigQuery Dataset.
-  BigQueryDestinationContainerV1beta1({
+  const BigQueryDestinationContainerV1beta1({
     this.datasetId,
   });
 

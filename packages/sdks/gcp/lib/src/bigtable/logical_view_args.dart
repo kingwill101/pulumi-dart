@@ -25,7 +25,7 @@ class LogicalViewArgs {
   /// [logicalViewId] The unique name of the logical view in the form `[_a-zA-Z0-9][-_.a-zA-Z0-9]*`.
   /// [project] The ID of the project in which the resource belongs.
   /// [query] The logical view's select query.
-  LogicalViewArgs({
+  const LogicalViewArgs({
     this.deletionProtection,
     this.instance,
     required this.logicalViewId,

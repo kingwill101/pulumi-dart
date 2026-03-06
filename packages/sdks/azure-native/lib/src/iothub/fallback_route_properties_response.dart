@@ -21,7 +21,7 @@ class FallbackRoutePropertiesResponse {
   /// [isEnabled] Used to specify whether the fallback route is enabled.
   /// [name] The name of the route. The name can only include alphanumeric characters, periods, underscores, hyphens, has a maximum length of 64 characters, and must be unique.
   /// [source] The source to which the routing rule is to be applied to. For example, DeviceMessages
-  FallbackRoutePropertiesResponse({
+  const FallbackRoutePropertiesResponse({
     this.condition,
     required this.endpointNames,
     required this.isEnabled,

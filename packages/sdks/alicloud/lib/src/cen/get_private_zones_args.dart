@@ -26,7 +26,7 @@ class GetPrivateZonesArgs {
   /// [ids] A list of CEN private zone IDs. Each element format as `&lt;cen_id&gt;:&lt;access_region_id&gt;`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the PrivateZone service, including `Creating`, `Active` and `Deleting`.
-  GetPrivateZonesArgs({
+  const GetPrivateZonesArgs({
     required this.cenId,
     this.hostRegionId,
     this.ids,

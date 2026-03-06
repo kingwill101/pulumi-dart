@@ -9,7 +9,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkInterfaceCount].
   /// [max] Optional.
   /// [min] Optional.
-  CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkInterfaceCount({
+  const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsNetworkInterfaceCount({
     this.max,
     this.min,
   });

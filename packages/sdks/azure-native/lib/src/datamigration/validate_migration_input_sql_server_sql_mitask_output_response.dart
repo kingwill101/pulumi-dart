@@ -32,7 +32,7 @@ class ValidateMigrationInputSqlServerSqlMITaskOutputResponse {
   /// [id] Result identifier
   /// [name] Name of database
   /// [restoreDatabaseNameErrors] Errors associated with the RestoreDatabaseName
-  ValidateMigrationInputSqlServerSqlMITaskOutputResponse({
+  const ValidateMigrationInputSqlServerSqlMITaskOutputResponse({
     required this.backupFolderErrors,
     required this.backupShareCredentialsErrors,
     required this.backupStorageAccountErrors,

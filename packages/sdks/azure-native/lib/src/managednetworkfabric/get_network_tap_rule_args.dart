@@ -15,7 +15,7 @@ class GetNetworkTapRuleArgs {
   /// Creates a new [GetNetworkTapRuleArgs].
   /// [networkTapRuleName] Name of the Network Tap Rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNetworkTapRuleArgs({
+  const GetNetworkTapRuleArgs({
     required this.networkTapRuleName,
     required this.resourceGroupName,
   });

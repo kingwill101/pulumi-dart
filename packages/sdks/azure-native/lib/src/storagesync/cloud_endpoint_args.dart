@@ -33,7 +33,7 @@ class CloudEndpointArgs {
   /// [storageAccountTenantId] Storage Account Tenant Id
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
   /// [syncGroupName] Name of Sync Group resource.
-  CloudEndpointArgs({
+  const CloudEndpointArgs({
     this.azureFileShareName,
     this.cloudEndpointName,
     this.friendlyName,

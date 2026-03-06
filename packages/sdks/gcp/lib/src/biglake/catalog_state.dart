@@ -38,7 +38,7 @@ class CatalogState {
   /// [name] The name of the Catalog. Format:
   /// [project] The ID of the project in which the resource belongs.
   /// [updateTime] Output only. The last modification time of the catalog. A timestamp in
-  CatalogState({
+  const CatalogState({
     this.createTime,
     this.deleteTime,
     this.expireTime,

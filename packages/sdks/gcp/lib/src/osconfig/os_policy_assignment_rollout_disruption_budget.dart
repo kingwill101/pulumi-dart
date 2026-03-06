@@ -14,7 +14,7 @@ class OsPolicyAssignmentRolloutDisruptionBudget {
   /// Creates a new [OsPolicyAssignmentRolloutDisruptionBudget].
   /// [fixed] Specifies a fixed value.
   /// [percent] Specifies the relative value defined as a percentage,
-  OsPolicyAssignmentRolloutDisruptionBudget({
+  const OsPolicyAssignmentRolloutDisruptionBudget({
     this.fixed,
     this.percent,
   });

@@ -13,7 +13,7 @@ class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPost
   /// Creates a new [StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable].
   /// [postgresqlColumns] PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable({
+  const StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaPostgresqlTable({
     this.postgresqlColumns,
     required this.table,
   });

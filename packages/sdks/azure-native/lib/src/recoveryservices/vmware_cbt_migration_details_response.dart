@@ -162,7 +162,7 @@ class VMwareCbtMigrationDetailsResponse {
   /// [testNetworkId] The test network Id.
   /// [vmNics] The network details.
   /// [vmwareMachineId] The ARM Id of the VM discovered in VMware.
-  VMwareCbtMigrationDetailsResponse({
+  const VMwareCbtMigrationDetailsResponse({
     required this.applianceMonitoringDetails,
     this.confidentialVmKeyVaultId,
     required this.dataMoverRunAsAccountId,

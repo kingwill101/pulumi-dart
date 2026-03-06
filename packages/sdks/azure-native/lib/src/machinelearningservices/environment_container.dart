@@ -18,7 +18,7 @@ class EnvironmentContainer {
   /// [isArchived] Is the asset archived?
   /// [properties] The asset property dictionary.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  EnvironmentContainer({
+  const EnvironmentContainer({
     this.description,
     this.isArchived,
     this.properties,

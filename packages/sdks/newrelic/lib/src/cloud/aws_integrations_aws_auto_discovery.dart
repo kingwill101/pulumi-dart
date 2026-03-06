@@ -11,7 +11,7 @@ class AwsIntegrationsAwsAutoDiscovery {
   /// Creates a new [AwsIntegrationsAwsAutoDiscovery].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsAwsAutoDiscovery({
+  const AwsIntegrationsAwsAutoDiscovery({
     this.awsRegions,
     this.metricsPollingInterval,
   });

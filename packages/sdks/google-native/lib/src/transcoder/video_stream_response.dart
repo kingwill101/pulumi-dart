@@ -18,7 +18,7 @@ class VideoStreamResponse {
   /// [h264] H264 codec settings.
   /// [h265] H265 codec settings.
   /// [vp9] VP9 codec settings.
-  VideoStreamResponse({
+  const VideoStreamResponse({
     required this.h264,
     required this.h265,
     required this.vp9,

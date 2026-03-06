@@ -37,7 +37,7 @@ class TargetPropertiesResponse {
   /// [state] State of resource
   /// [status] Status of target
   /// [targetSpecification] target spec
-  TargetPropertiesResponse({
+  const TargetPropertiesResponse({
     required this.capabilities,
     required this.contextId,
     required this.description,

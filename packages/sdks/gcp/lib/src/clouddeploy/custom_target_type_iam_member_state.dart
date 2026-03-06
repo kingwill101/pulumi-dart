@@ -21,7 +21,7 @@ class CustomTargetTypeIamMemberState {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Optional.
-  CustomTargetTypeIamMemberState({
+  const CustomTargetTypeIamMemberState({
     this.condition,
     this.etag,
     this.location,

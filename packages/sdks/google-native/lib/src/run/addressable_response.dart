@@ -8,7 +8,7 @@ class AddressableResponse {
 
   /// Creates a new [AddressableResponse].
   /// [url] Required.
-  AddressableResponse({
+  const AddressableResponse({
     required this.url,
   });
 

@@ -33,7 +33,7 @@ class IntegrationServiceEnvironmentArgs {
   /// [resourceGroup] The resource group.
   /// [sku] The sku.
   /// [tags] The resource tags.
-  IntegrationServiceEnvironmentArgs({
+  const IntegrationServiceEnvironmentArgs({
     this.identity,
     this.integrationServiceEnvironmentName,
     this.location,

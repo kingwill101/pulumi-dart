@@ -12,7 +12,7 @@ class PipelineLogPublishingOptions {
   /// Creates a new [PipelineLogPublishingOptions].
   /// [cloudwatchLogDestination] The destination for OpenSearch Ingestion logs sent to Amazon CloudWatch Logs. This parameter is required if IsLoggingEnabled is set to true. See `cloudwatch_log_destination` below.
   /// [isLoggingEnabled] Whether logs should be published.
-  PipelineLogPublishingOptions({
+  const PipelineLogPublishingOptions({
     this.cloudwatchLogDestination,
     this.isLoggingEnabled,
   });

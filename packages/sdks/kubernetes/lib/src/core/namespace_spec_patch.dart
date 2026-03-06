@@ -9,7 +9,7 @@ class NamespaceSpecPatch {
 
   /// Creates a new [NamespaceSpecPatch].
   /// [finalizers] Finalizers is an opaque list of values that must be empty to permanently remove object from storage. More info: https://kubernetes.io/docs/tasks/administer-cluster/namespaces/
-  NamespaceSpecPatch({
+  const NamespaceSpecPatch({
     this.finalizers,
   });
 

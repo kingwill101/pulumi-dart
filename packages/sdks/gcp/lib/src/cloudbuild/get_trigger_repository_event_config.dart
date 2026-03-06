@@ -16,7 +16,7 @@ class GetTriggerRepositoryEventConfig {
   /// [pullRequests] Contains filter properties for matching Pull Requests.
   /// [pushes] Contains filter properties for matching git pushes.
   /// [repository] The resource name of the Repo API resource.
-  GetTriggerRepositoryEventConfig({
+  const GetTriggerRepositoryEventConfig({
     required this.pullRequests,
     required this.pushes,
     required this.repository,

@@ -10,7 +10,7 @@ class RegistryCredential {
 
   /// Creates a new [RegistryCredential].
   /// [publicKeyCertificate] A public key certificate used to verify the device credentials.
-  RegistryCredential({
+  const RegistryCredential({
     this.publicKeyCertificate,
   });
 

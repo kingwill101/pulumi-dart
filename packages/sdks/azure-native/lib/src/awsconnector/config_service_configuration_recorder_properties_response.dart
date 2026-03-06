@@ -34,7 +34,7 @@ class ConfigServiceConfigurationRecorderPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  ConfigServiceConfigurationRecorderPropertiesResponse({
+  const ConfigServiceConfigurationRecorderPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

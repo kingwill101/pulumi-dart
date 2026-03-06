@@ -18,7 +18,7 @@ class GetGalleryArgs {
   /// [devCenterName] The name of the devcenter.
   /// [galleryName] The name of the gallery.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGalleryArgs({
+  const GetGalleryArgs({
     required this.devCenterName,
     required this.galleryName,
     required this.resourceGroupName,

@@ -47,7 +47,7 @@ class ThreeTierVirtualInstanceArgs {
   /// [sapProduct] The SAP Product type for the SAP Three Tier Virtual Instance. Possible values are `ECC`, `Other` and `S4HANA`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the SAP Three Tier Virtual Instance.
   /// [threeTierConfiguration] A `three_tier_configuration` block as defined below. Changing this forces a new resource to be created.
-  ThreeTierVirtualInstanceArgs({
+  const ThreeTierVirtualInstanceArgs({
     required this.appLocation,
     required this.environment,
     this.identity,

@@ -33,7 +33,7 @@ class FirewallEndpointArgs {
   /// [location] The location (zone) of the firewall endpoint.
   /// [name] The name of the firewall endpoint resource.
   /// [parent] The name of the parent this firewall endpoint belongs to.
-  FirewallEndpointArgs({
+  const FirewallEndpointArgs({
     required this.billingProjectId,
     this.endpointSettings,
     this.labels,

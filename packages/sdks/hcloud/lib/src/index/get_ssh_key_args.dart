@@ -24,7 +24,7 @@ class GetSshKeyArgs {
   /// [name] Name of the SSH Key.
   /// [selector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
   /// [withSelector] Filter results using a [Label Selector](https://docs.hetzner.cloud/reference/cloud#label-selector).
-  GetSshKeyArgs({
+  const GetSshKeyArgs({
     this.fingerprint,
     this.id,
     this.name,

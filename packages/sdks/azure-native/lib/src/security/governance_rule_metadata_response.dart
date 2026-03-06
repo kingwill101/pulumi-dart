@@ -18,7 +18,7 @@ class GovernanceRuleMetadataResponse {
   /// [createdOn] Governance rule creation date
   /// [updatedBy] Governance rule last updated by object id (GUID)
   /// [updatedOn] Governance rule last update date
-  GovernanceRuleMetadataResponse({
+  const GovernanceRuleMetadataResponse({
     required this.createdBy,
     required this.createdOn,
     required this.updatedBy,

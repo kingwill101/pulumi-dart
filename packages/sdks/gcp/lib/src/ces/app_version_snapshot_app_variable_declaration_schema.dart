@@ -93,7 +93,7 @@ class AppVersionSnapshotAppVariableDeclarationSchema {
   /// [requireds] (Output)
   /// [type] (Output)
   /// [uniqueItems] (Output)
-  AppVersionSnapshotAppVariableDeclarationSchema({
+  const AppVersionSnapshotAppVariableDeclarationSchema({
     this.additionalProperties,
     this.anyOf,
     this.default_,

@@ -21,7 +21,7 @@ class GetRuntimeTemplateIamPolicyArgs {
   /// [location] The location for the resource: https://cloud.google.com/colab/docs/locations Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   /// [runtimeTemplate] Used to find the parent resource to bind the IAM policy to
-  GetRuntimeTemplateIamPolicyArgs({
+  const GetRuntimeTemplateIamPolicyArgs({
     this.location,
     this.project,
     required this.runtimeTemplate,

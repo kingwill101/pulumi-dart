@@ -15,7 +15,7 @@ class FeatureStateResponseGkehubV1alpha {
   /// [code] The high-level, machine-readable status of this Feature.
   /// [description] A human-readable description of the current status.
   /// [updateTime] The time this status and any related Feature-specific details were updated.
-  FeatureStateResponseGkehubV1alpha({
+  const FeatureStateResponseGkehubV1alpha({
     required this.code,
     required this.description,
     required this.updateTime,

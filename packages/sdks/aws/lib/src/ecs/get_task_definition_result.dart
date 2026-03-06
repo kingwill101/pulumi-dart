@@ -79,7 +79,7 @@ class GetTaskDefinitionResult {
   /// [taskDefinition] Required.
   /// [taskRoleArn] ARN of IAM role that allows your Amazon ECS container task to make calls to other AWS services.
   /// [volumes] Configuration block for volumes that containers in your task may use. Detailed below.
-  GetTaskDefinitionResult({
+  const GetTaskDefinitionResult({
     required this.arn,
     required this.arnWithoutRevision,
     required this.containerDefinitions,

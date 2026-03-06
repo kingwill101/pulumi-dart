@@ -14,7 +14,7 @@ class DataSetFieldFolder {
   /// [columns] An array of column names to add to the folder. A column can only be in one folder.
   /// [description] Field folder description.
   /// [fieldFoldersId] Key of the field folder map.
-  DataSetFieldFolder({
+  const DataSetFieldFolder({
     this.columns,
     this.description,
     required this.fieldFoldersId,

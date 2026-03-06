@@ -22,7 +22,7 @@ class GetAddressArgs {
   /// [name] A unique name for the resource, required by GCE.
   /// [project] The project in which the resource belongs. If it
   /// [region] The Region in which the created address reside.
-  GetAddressArgs({
+  const GetAddressArgs({
     required this.name,
     this.project,
     this.region,

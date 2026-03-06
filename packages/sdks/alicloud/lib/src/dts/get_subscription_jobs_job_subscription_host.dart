@@ -14,7 +14,7 @@ class GetSubscriptionJobsJobSubscriptionHost {
   /// [privateHost] Classic network address.
   /// [publicHost] Public network address.
   /// [vpcHost] VPC network address.
-  GetSubscriptionJobsJobSubscriptionHost({
+  const GetSubscriptionJobsJobSubscriptionHost({
     required this.privateHost,
     required this.publicHost,
     required this.vpcHost,

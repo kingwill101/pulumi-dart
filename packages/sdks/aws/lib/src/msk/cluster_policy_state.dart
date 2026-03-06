@@ -17,7 +17,7 @@ class ClusterPolicyState {
   /// [currentVersion] Optional.
   /// [policy] Resource policy for cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  ClusterPolicyState({
+  const ClusterPolicyState({
     this.clusterArn,
     this.currentVersion,
     this.policy,

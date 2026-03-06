@@ -29,7 +29,7 @@ class GetOrganizationalUnitDescendantAccountsAccount {
   /// [name] Friendly name of the account.
   /// [state] State of the account in the organization.
   /// [status] (**Deprecated** use `state` instead) Status of the account in the organization.
-  GetOrganizationalUnitDescendantAccountsAccount({
+  const GetOrganizationalUnitDescendantAccountsAccount({
     required this.arn,
     required this.email,
     required this.id,

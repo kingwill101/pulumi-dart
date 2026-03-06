@@ -30,7 +30,7 @@ class AppCheckRecaptchaV3ConfigState {
   /// [siteSecret] The site secret used to identify your service for reCAPTCHA v3 verification.
   /// [siteSecretSet] Whether the siteSecret was previously set. Since we will never return the siteSecret field, this field is the only way to find out whether it was previously set.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from reCAPTCHA V3 artifacts will be valid.
-  AppCheckRecaptchaV3ConfigState({
+  const AppCheckRecaptchaV3ConfigState({
     this.appId,
     this.name,
     this.project,

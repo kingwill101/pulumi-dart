@@ -12,7 +12,7 @@ class ElasticEncryptionIdentityResponse {
   /// Creates a new [ElasticEncryptionIdentityResponse].
   /// [principalId] The principal ID (object ID) of the identity used to authenticate with key vault. Read-only.
   /// [userAssignedIdentity] The ARM resource identifier of the user assigned identity used to authenticate with key vault. Applicable if identity.type has 'UserAssigned'. It should match key of identity.userAssignedIdentities.
-  ElasticEncryptionIdentityResponse({
+  const ElasticEncryptionIdentityResponse({
     required this.principalId,
     this.userAssignedIdentity,
   });

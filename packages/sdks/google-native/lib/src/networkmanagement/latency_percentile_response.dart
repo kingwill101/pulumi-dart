@@ -12,7 +12,7 @@ class LatencyPercentileResponse {
   /// Creates a new [LatencyPercentileResponse].
   /// [latencyMicros] percent-th percentile of latency observed, in microseconds. Fraction of percent/100 of samples have latency lower or equal to the value of this field.
   /// [percent] Percentage of samples this data point applies to.
-  LatencyPercentileResponse({
+  const LatencyPercentileResponse({
     required this.latencyMicros,
     required this.percent,
   });

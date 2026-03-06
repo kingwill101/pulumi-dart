@@ -12,7 +12,7 @@ class VirtualNetworkBgpCommunitiesResponse {
   /// Creates a new [VirtualNetworkBgpCommunitiesResponse].
   /// [regionalCommunity] The BGP community associated with the region of the virtual network.
   /// [virtualNetworkCommunity] The BGP community associated with the virtual network.
-  VirtualNetworkBgpCommunitiesResponse({
+  const VirtualNetworkBgpCommunitiesResponse({
     required this.regionalCommunity,
     required this.virtualNetworkCommunity,
   });

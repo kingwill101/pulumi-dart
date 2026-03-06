@@ -18,7 +18,7 @@ class GetKubernetesRoleArgs {
   /// [deviceName] The device name.
   /// [name] The role name.
   /// [resourceGroupName] The resource group name.
-  GetKubernetesRoleArgs({
+  const GetKubernetesRoleArgs({
     required this.deviceName,
     required this.name,
     required this.resourceGroupName,

@@ -21,7 +21,7 @@ class ListWorkspaceSubscriptionSecretsArgs {
   /// [serviceName] The name of the API Management service.
   /// [sid] Subscription entity Identifier. The entity represents the association between a user and a product in API Management.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  ListWorkspaceSubscriptionSecretsArgs({
+  const ListWorkspaceSubscriptionSecretsArgs({
     required this.resourceGroupName,
     required this.serviceName,
     required this.sid,

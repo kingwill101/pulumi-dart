@@ -17,7 +17,7 @@ class GetPolicyVersionsVersion {
   /// [isDefaultVersion] Indicates whether the policy version is the default version.
   /// [policyDocument] (Available in v1.114.0+) The policy document of the policy version.
   /// [versionId] The ID of the policy version.
-  GetPolicyVersionsVersion({
+  const GetPolicyVersionsVersion({
     required this.id,
     required this.isDefaultVersion,
     required this.policyDocument,

@@ -8,7 +8,7 @@ class FeatureGroupOnlineStoreConfigSecurityConfig {
 
   /// Creates a new [FeatureGroupOnlineStoreConfigSecurityConfig].
   /// [kmsKeyId] The ID of the AWS Key Management Service (AWS KMS) key that SageMaker AI Feature Store uses to encrypt the Amazon S3 objects at rest using Amazon S3 server-side encryption.
-  FeatureGroupOnlineStoreConfigSecurityConfig({
+  const FeatureGroupOnlineStoreConfigSecurityConfig({
     this.kmsKeyId,
   });
 

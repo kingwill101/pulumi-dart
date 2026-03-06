@@ -19,7 +19,7 @@ class DataBoxDiskCopyLogDetailsResponse {
   /// [diskSerialNumber] Disk Serial Number.
   /// [errorLogLink] Link for copy error logs.
   /// [verboseLogLink] Link for copy verbose logs.
-  DataBoxDiskCopyLogDetailsResponse({
+  const DataBoxDiskCopyLogDetailsResponse({
     required this.copyLogDetailsType,
     required this.diskSerialNumber,
     required this.errorLogLink,

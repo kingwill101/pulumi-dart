@@ -16,7 +16,7 @@ class GetPeeringAttachmentsArgs {
   /// Creates a new [GetPeeringAttachmentsArgs].
   /// [filters] One or more configuration blocks containing name-values filters. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetPeeringAttachmentsArgs({
+  const GetPeeringAttachmentsArgs({
     this.filters,
     this.region,
   });

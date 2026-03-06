@@ -32,7 +32,7 @@ class GetApiVersionSetResult {
   /// [versionHeaderName] Name of HTTP header parameter that indicates the API Version if versioningScheme is set to `header`.
   /// [versionQueryName] Name of query parameter that indicates the API Version if versioningScheme is set to `query`.
   /// [versioningScheme] An value that determines where the API Version identifier will be located in a HTTP request.
-  GetApiVersionSetResult({
+  const GetApiVersionSetResult({
     required this.azureApiVersion,
     this.description,
     required this.displayName,

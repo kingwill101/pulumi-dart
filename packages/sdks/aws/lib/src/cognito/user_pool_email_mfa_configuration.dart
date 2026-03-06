@@ -11,7 +11,7 @@ class UserPoolEmailMfaConfiguration {
   /// Creates a new [UserPoolEmailMfaConfiguration].
   /// [message] The template for the email messages that your user pool sends to users with codes for MFA and sign-in with email OTPs. The message must contain the {####} placeholder. In the message, Amazon Cognito replaces this placeholder with the code. If you don't provide this parameter, Amazon Cognito sends messages in the default format.
   /// [subject] The subject of the email messages that your user pool sends to users with codes for MFA and email OTP sign-in.
-  UserPoolEmailMfaConfiguration({
+  const UserPoolEmailMfaConfiguration({
     this.message,
     this.subject,
   });

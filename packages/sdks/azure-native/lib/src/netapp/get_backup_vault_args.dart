@@ -18,7 +18,7 @@ class GetBackupVaultArgs {
   /// [accountName] The name of the NetApp account
   /// [backupVaultName] The name of the Backup Vault
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBackupVaultArgs({
+  const GetBackupVaultArgs({
     required this.accountName,
     required this.backupVaultName,
     required this.resourceGroupName,

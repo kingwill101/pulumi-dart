@@ -13,7 +13,7 @@ class GetManagedZoneIamPolicyDnsV1beta2Args {
   /// Creates a new [GetManagedZoneIamPolicyDnsV1beta2Args].
   /// [managedZone] Required.
   /// [project] Optional.
-  GetManagedZoneIamPolicyDnsV1beta2Args({
+  const GetManagedZoneIamPolicyDnsV1beta2Args({
     required this.managedZone,
     this.project,
   });

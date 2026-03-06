@@ -38,7 +38,7 @@ class DataLakeConnectorTopicMapArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [topicMapName] Name of MQ dataLakeConnector/topicMap resource
-  DataLakeConnectorTopicMapArgs({
+  const DataLakeConnectorTopicMapArgs({
     required this.dataLakeConnectorName,
     required this.dataLakeConnectorRef,
     required this.extendedLocation,

@@ -15,7 +15,7 @@ class GetNamespacePnsCredentialsArgs {
   /// Creates a new [GetNamespacePnsCredentialsArgs].
   /// [namespaceName] Namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNamespacePnsCredentialsArgs({
+  const GetNamespacePnsCredentialsArgs({
     required this.namespaceName,
     required this.resourceGroupName,
   });

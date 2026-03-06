@@ -12,7 +12,7 @@ class ServiceVNetAddons {
   /// Creates a new [ServiceVNetAddons].
   /// [dataPlanePublicEndpoint] Indicates whether the data plane components(log stream, app connect, remote debugging) in vnet injection instance could be accessed from internet.
   /// [logStreamPublicEndpoint] Indicates whether the log stream in vnet injection instance could be accessed from internet.
-  ServiceVNetAddons({
+  const ServiceVNetAddons({
     this.dataPlanePublicEndpoint,
     this.logStreamPublicEndpoint,
   });

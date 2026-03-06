@@ -105,7 +105,7 @@ class ListenerArgs {
   /// [sslPolicy] Name of the SSL Policy for the listener. Required if `protocol` is `HTTPS` or `TLS`. Default is `ELBSecurityPolicy-2016-08`.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tcpIdleTimeoutSeconds] TCP idle timeout value in seconds. Can only be set if protocol is `TCP` on Network Load Balancer, or with a Gateway Load Balancer. Not supported for Application Load Balancers. Valid values are between `60` and `6000` inclusive. Default: `350`.
-  ListenerArgs({
+  const ListenerArgs({
     this.alpnPolicy,
     this.certificateArn,
     required this.defaultActions,

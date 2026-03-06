@@ -43,7 +43,7 @@ class AuthConfigDecryptedCredential {
   /// [oidcToken] Google OIDC ID Token.
   /// [serviceAccountCredentials] Service account credential.
   /// [usernameAndPassword] Username and password credential.
-  AuthConfigDecryptedCredential({
+  const AuthConfigDecryptedCredential({
     this.authToken,
     required this.credentialType,
     this.jwt,

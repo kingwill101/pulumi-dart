@@ -44,7 +44,7 @@ class FunctionCloudfunctionsV2Args {
   /// [name] A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*`
   /// [project] Optional.
   /// [serviceConfig] Describes the Service being deployed. Currently deploys services to Cloud Run (fully managed).
-  FunctionCloudfunctionsV2Args({
+  const FunctionCloudfunctionsV2Args({
     this.buildConfig,
     this.description,
     this.environment,

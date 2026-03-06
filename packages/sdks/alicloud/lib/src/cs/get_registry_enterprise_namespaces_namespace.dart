@@ -26,7 +26,7 @@ class GetRegistryEnterpriseNamespacesNamespace {
   /// [name] Name of Container Registry Enterprise Edition namespace.
   /// [namespaceId] Container Registry Enterprise Edition namespace id. It is a uuid.
   /// [namespaceName] Name of Container Registry Enterprise Edition namespace.
-  GetRegistryEnterpriseNamespacesNamespace({
+  const GetRegistryEnterpriseNamespacesNamespace({
     required this.autoCreate,
     required this.defaultVisibility,
     required this.id,

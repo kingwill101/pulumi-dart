@@ -16,7 +16,7 @@ class DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfigurat
   /// [longValue] A long integer value.
   /// [stringListValues] A list of strings.
   /// [stringValue] Optional.
-  DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfigurationInvocationConditionConditionOnValue({
+  const DataSourceCustomDocumentEnrichmentConfigurationPreExtractionHookConfigurationInvocationConditionConditionOnValue({
     this.dateValue,
     this.longValue,
     this.stringListValues,

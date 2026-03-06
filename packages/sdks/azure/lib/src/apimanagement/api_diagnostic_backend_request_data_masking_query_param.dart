@@ -11,7 +11,7 @@ class ApiDiagnosticBackendRequestDataMaskingQueryParam {
   /// Creates a new [ApiDiagnosticBackendRequestDataMaskingQueryParam].
   /// [mode] The data masking mode. Possible values are `Mask` and `Hide` for `query_params`. The only possible value is `Mask` for `headers`.
   /// [value] The name of the header or the query parameter to mask.
-  ApiDiagnosticBackendRequestDataMaskingQueryParam({
+  const ApiDiagnosticBackendRequestDataMaskingQueryParam({
     required this.mode,
     required this.value,
   });

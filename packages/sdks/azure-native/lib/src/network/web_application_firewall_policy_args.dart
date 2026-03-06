@@ -36,7 +36,7 @@ class WebApplicationFirewallPolicyArgs {
   /// [policySettings] The PolicySettings for policy.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  WebApplicationFirewallPolicyArgs({
+  const WebApplicationFirewallPolicyArgs({
     this.customRules,
     this.id,
     this.location,

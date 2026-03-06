@@ -12,7 +12,7 @@ class DomainDevicesInterfaceSourceVhostUser {
   /// Creates a new [DomainDevicesInterfaceSourceVhostUser].
   /// [chardev] Defines the source settings for the EGD backend.
   /// [dev] Indicates the device name for the VHostUser interface.
-  DomainDevicesInterfaceSourceVhostUser({
+  const DomainDevicesInterfaceSourceVhostUser({
     this.chardev,
     required this.dev,
   });

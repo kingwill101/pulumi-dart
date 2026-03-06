@@ -24,7 +24,7 @@ class ZonalAccountArgs {
   /// [accountPassword] Operation password. It may consist of letters, digits, or underlines, with a length of 6 to 32 characters.
   /// [accountType] Account type, Valid values are `Normal`, `Super`, Default to `Normal`.
   /// [dbClusterId] The Id of cluster in which account belongs.
-  ZonalAccountArgs({
+  const ZonalAccountArgs({
     this.accountDescription,
     required this.accountName,
     this.accountPassword,

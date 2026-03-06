@@ -31,7 +31,7 @@ class LogsLogGroupProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  LogsLogGroupProperties({
+  const LogsLogGroupProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

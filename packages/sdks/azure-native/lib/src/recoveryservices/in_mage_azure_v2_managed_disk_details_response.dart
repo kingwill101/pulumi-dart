@@ -21,7 +21,7 @@ class InMageAzureV2ManagedDiskDetailsResponse {
   /// [replicaDiskType] The replica disk type.
   /// [seedManagedDiskId] Seed managed disk Id.
   /// [targetDiskName] The target disk name.
-  InMageAzureV2ManagedDiskDetailsResponse({
+  const InMageAzureV2ManagedDiskDetailsResponse({
     this.diskEncryptionSetId,
     this.diskId,
     this.replicaDiskType,

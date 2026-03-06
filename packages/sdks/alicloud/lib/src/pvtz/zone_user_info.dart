@@ -11,7 +11,7 @@ class ZoneUserInfo {
   /// Creates a new [ZoneUserInfo].
   /// [regionIds] The list of the region IDs.
   /// [userId] The user ID belonging to the region is used for cross-account synchronization scenarios.
-  ZoneUserInfo({
+  const ZoneUserInfo({
     this.regionIds,
     this.userId,
   });

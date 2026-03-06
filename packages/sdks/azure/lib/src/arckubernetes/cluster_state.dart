@@ -46,7 +46,7 @@ class ClusterState {
   /// [tags] A mapping of tags which should be assigned to the Arc Kubernetes Cluster.
   /// [totalCoreCount] Number of CPU cores present in the cluster resource.
   /// [totalNodeCount] Number of nodes present in the cluster resource.
-  ClusterState({
+  const ClusterState({
     this.agentPublicKeyCertificate,
     this.agentVersion,
     this.distribution,

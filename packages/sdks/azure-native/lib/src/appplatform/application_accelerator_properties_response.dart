@@ -13,7 +13,7 @@ class ApplicationAcceleratorPropertiesResponse {
   /// Creates a new [ApplicationAcceleratorPropertiesResponse].
   /// [components] Collection of components belong to application accelerator.
   /// [provisioningState] State of the application accelerator.
-  ApplicationAcceleratorPropertiesResponse({
+  const ApplicationAcceleratorPropertiesResponse({
     required this.components,
     required this.provisioningState,
   });

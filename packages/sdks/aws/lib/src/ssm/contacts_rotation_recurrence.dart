@@ -26,7 +26,7 @@ class ContactsRotationRecurrence {
   /// [recurrenceMultiplier] (Required) The number of days, weeks, or months a single rotation lasts.
   /// [shiftCoverages] (Optional) Information about the days of the week that the on-call rotation coverage includes. See Shift Coverages for more details.
   /// [weeklySettings] (Optional) Information about on-call rotations that recur weekly. See Weekly Settings for more details.
-  ContactsRotationRecurrence({
+  const ContactsRotationRecurrence({
     this.dailySettings,
     this.monthlySettings,
     required this.numberOfOnCalls,

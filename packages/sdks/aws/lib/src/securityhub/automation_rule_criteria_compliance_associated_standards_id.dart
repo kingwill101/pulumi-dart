@@ -9,7 +9,7 @@ class AutomationRuleCriteriaComplianceAssociatedStandardsId {
   /// Creates a new [AutomationRuleCriteriaComplianceAssociatedStandardsId].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaComplianceAssociatedStandardsId({
+  const AutomationRuleCriteriaComplianceAssociatedStandardsId({
     required this.comparison,
     required this.value,
   });

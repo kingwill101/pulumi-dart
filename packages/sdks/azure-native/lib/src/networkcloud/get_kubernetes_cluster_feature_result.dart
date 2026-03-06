@@ -53,7 +53,7 @@ class GetKubernetesClusterFeatureResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] The version of the feature.
-  GetKubernetesClusterFeatureResult({
+  const GetKubernetesClusterFeatureResult({
     required this.availabilityLifecycle,
     required this.azureApiVersion,
     required this.detailedStatus,

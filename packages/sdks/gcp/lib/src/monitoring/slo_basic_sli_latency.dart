@@ -10,7 +10,7 @@ class SloBasicSliLatency {
 
   /// Creates a new [SloBasicSliLatency].
   /// [threshold] A duration string, e.g. 10s.
-  SloBasicSliLatency({
+  const SloBasicSliLatency({
     required this.threshold,
   });
 

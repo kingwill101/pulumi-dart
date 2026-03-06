@@ -18,7 +18,7 @@ class InstanceAttachmentArgs {
   /// [instanceName] The name of the OTS instance.
   /// [vpcName] The name of attaching VPC to instance. It can only contain letters and numbers, must start with a letter, and is limited to 3-16 characters in length.
   /// [vswitchId] The ID of attaching VSwitch to instance.
-  InstanceAttachmentArgs({
+  const InstanceAttachmentArgs({
     required this.instanceName,
     required this.vpcName,
     required this.vswitchId,

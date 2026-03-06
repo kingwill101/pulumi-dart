@@ -8,7 +8,7 @@ class BackupPlanBackupConfigSelectedNamespaces {
 
   /// Creates a new [BackupPlanBackupConfigSelectedNamespaces].
   /// [namespaces] A list of Kubernetes Namespaces.
-  BackupPlanBackupConfigSelectedNamespaces({
+  const BackupPlanBackupConfigSelectedNamespaces({
     required this.namespaces,
   });
 

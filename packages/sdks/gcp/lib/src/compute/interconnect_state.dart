@@ -186,7 +186,7 @@ class InterconnectState {
   /// [satisfiesPzs] Reserved for future use.
   /// [state] (Output)
   /// [wireGroups] A list of the URLs of all CrossSiteNetwork WireGroups configured to use this Interconnect. The Interconnect cannot be deleted if this list is non-empty.
-  InterconnectState({
+  const InterconnectState({
     this.aaiEnabled,
     this.adminEnabled,
     this.applicationAwareInterconnect,

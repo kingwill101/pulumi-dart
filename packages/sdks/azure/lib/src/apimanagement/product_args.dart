@@ -43,7 +43,7 @@ class ProductArgs {
   /// [subscriptionRequired] Is a Subscription required to access API's included in this Product? Defaults to `true`.
   /// [subscriptionsLimit] The number of subscriptions a user can have to this Product at the same time.
   /// [terms] The Terms and Conditions for this Product, which must be accepted by Developers before they can begin the Subscription process.
-  ProductArgs({
+  const ProductArgs({
     required this.apiManagementName,
     this.approvalRequired,
     this.description,

@@ -34,7 +34,7 @@ class RouterPeerBfd {
   /// [minTransmitInterval] The minimum interval, in milliseconds, between BFD control packets
   /// [multiplier] The number of consecutive BFD packets that must be missed before
   /// [sessionInitializationMode] The BFD session initialization mode for this BGP peer.
-  RouterPeerBfd({
+  const RouterPeerBfd({
     this.minReceiveInterval,
     this.minTransmitInterval,
     this.multiplier,

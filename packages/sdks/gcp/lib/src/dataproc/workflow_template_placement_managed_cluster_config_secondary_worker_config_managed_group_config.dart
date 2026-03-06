@@ -11,7 +11,7 @@ class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedG
   /// Creates a new [WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig].
   /// [instanceGroupManagerName] Output only. The name of the Instance Group Manager for this group.
   /// [instanceTemplateName] Output only. The name of the Instance Template used for the Managed Instance Group.
-  WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig({
+  const WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig({
     this.instanceGroupManagerName,
     this.instanceTemplateName,
   });

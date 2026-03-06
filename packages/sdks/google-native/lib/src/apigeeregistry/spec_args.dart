@@ -44,7 +44,7 @@ class SpecArgs {
   /// [project] Optional.
   /// [sourceUri] The original source URI of the spec (if one exists). This is an external location that can be used for reference purposes but which may not be authoritative since this external resource may change after the spec is retrieved.
   /// [versionId] Required.
-  SpecArgs({
+  const SpecArgs({
     this.annotations,
     required this.apiId,
     required this.apiSpecId,

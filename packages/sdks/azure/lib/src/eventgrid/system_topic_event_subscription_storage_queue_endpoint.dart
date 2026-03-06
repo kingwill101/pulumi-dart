@@ -14,7 +14,7 @@ class SystemTopicEventSubscriptionStorageQueueEndpoint {
   /// [queueMessageTimeToLiveInSeconds] Storage queue message time to live in seconds.
   /// [queueName] Specifies the name of the storage queue where the Event Subscription will receive events.
   /// [storageAccountId] Specifies the id of the storage account id where the storage queue is located.
-  SystemTopicEventSubscriptionStorageQueueEndpoint({
+  const SystemTopicEventSubscriptionStorageQueueEndpoint({
     this.queueMessageTimeToLiveInSeconds,
     required this.queueName,
     required this.storageAccountId,

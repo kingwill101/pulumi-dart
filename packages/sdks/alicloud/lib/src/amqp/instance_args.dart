@@ -81,7 +81,7 @@ class InstanceArgs {
   /// [supportEip] Whether to support public network.
   /// [supportTracing] Whether to activate the message trace function. The values are as follows:  true: Enable message trace function false: message trace function is not enabled Description The Platinum Edition instance provides the 15-day message trace function free of charge. The trace function can only be enabled and the trace storage duration can only be set to 15 days. For instances of other specifications, you can enable or disable the trace function.
   /// [tracingStorageTime] Configure the storage duration of message traces. Unit: Days. The value is as follows:  3:3 days 7:7 days 15:15 days This parameter is valid when SupportTracing is true.
-  InstanceArgs({
+  const InstanceArgs({
     this.autoRenew,
     this.edition,
     this.instanceName,

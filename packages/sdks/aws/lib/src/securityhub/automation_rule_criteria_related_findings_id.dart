@@ -9,7 +9,7 @@ class AutomationRuleCriteriaRelatedFindingsId {
   /// Creates a new [AutomationRuleCriteriaRelatedFindingsId].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaRelatedFindingsId({
+  const AutomationRuleCriteriaRelatedFindingsId({
     required this.comparison,
     required this.value,
   });

@@ -17,7 +17,7 @@ class EdifactOneWayAgreementResponse {
   /// [protocolSettings] The EDIFACT protocol settings.
   /// [receiverBusinessIdentity] The receiver business identity
   /// [senderBusinessIdentity] The sender business identity
-  EdifactOneWayAgreementResponse({
+  const EdifactOneWayAgreementResponse({
     required this.protocolSettings,
     required this.receiverBusinessIdentity,
     required this.senderBusinessIdentity,

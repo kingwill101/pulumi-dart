@@ -11,7 +11,7 @@ class PacketMirroringMirroredResourceInfoSubnetInfoResponse {
   /// Creates a new [PacketMirroringMirroredResourceInfoSubnetInfoResponse].
   /// [canonicalUrl] Unique identifier for the subnetwork; defined by the server.
   /// [url] Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
-  PacketMirroringMirroredResourceInfoSubnetInfoResponse({
+  const PacketMirroringMirroredResourceInfoSubnetInfoResponse({
     required this.canonicalUrl,
     required this.url,
   });

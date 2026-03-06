@@ -39,7 +39,7 @@ class GetInstanceNetworkingIpv6LinkLocal {
   /// [subnetMask] The subnet mask.
   /// [type] The type of address this is.
   /// [vpcNat11] IPv4 address configured as a 1:1 NAT for this Interface.
-  GetInstanceNetworkingIpv6LinkLocal({
+  const GetInstanceNetworkingIpv6LinkLocal({
     required this.address,
     required this.gateway,
     required this.interfaceId,

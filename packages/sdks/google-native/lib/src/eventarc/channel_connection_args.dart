@@ -25,7 +25,7 @@ class ChannelConnectionArgs {
   /// [location] Optional.
   /// [name] The name of the connection.
   /// [project] Optional.
-  ChannelConnectionArgs({
+  const ChannelConnectionArgs({
     this.activationToken,
     required this.channel,
     required this.channelConnectionId,

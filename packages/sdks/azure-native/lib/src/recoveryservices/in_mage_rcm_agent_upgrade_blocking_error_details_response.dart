@@ -24,7 +24,7 @@ class InMageRcmAgentUpgradeBlockingErrorDetailsResponse {
   /// [errorTags] The error tags.
   /// [possibleCauses] The possible causes.
   /// [recommendedAction] The recommended action.
-  InMageRcmAgentUpgradeBlockingErrorDetailsResponse({
+  const InMageRcmAgentUpgradeBlockingErrorDetailsResponse({
     required this.errorCode,
     required this.errorMessage,
     required this.errorMessageParameters,

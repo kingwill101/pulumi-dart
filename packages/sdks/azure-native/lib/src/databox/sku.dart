@@ -15,7 +15,7 @@ class Sku {
   /// [displayName] The display name of the sku.
   /// [family] The sku family.
   /// [name] The sku name.
-  Sku({
+  const Sku({
     this.displayName,
     this.family,
     required this.name,

@@ -30,7 +30,7 @@ class NextGenerationFirewallVirtualHubPanoramaNetworkProfile {
   /// [trustedSubnetId] Optional.
   /// [untrustedSubnetId] Optional.
   /// [virtualHubId] The ID of the Virtual Hub this Next generation Fireall will be deployed in. Changing this forces a new Palo Alto Next Generation Firewall VHub Local Rulestack to be created.
-  NextGenerationFirewallVirtualHubPanoramaNetworkProfile({
+  const NextGenerationFirewallVirtualHubPanoramaNetworkProfile({
     this.egressNatIpAddressIds,
     this.egressNatIpAddresses,
     this.ipOfTrustForUserDefinedRoutes,

@@ -9,7 +9,7 @@ class FleetObservabilityRoutingConfigResponseGkehubV1alpha {
 
   /// Creates a new [FleetObservabilityRoutingConfigResponseGkehubV1alpha].
   /// [mode] mode configures the logs routing mode.
-  FleetObservabilityRoutingConfigResponseGkehubV1alpha({
+  const FleetObservabilityRoutingConfigResponseGkehubV1alpha({
     required this.mode,
   });
 

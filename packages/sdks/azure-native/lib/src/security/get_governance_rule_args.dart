@@ -15,7 +15,7 @@ class GetGovernanceRuleArgs {
   /// Creates a new [GetGovernanceRuleArgs].
   /// [ruleId] The governance rule key - unique key for the standard governance rule (GUID)
   /// [scope] The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
-  GetGovernanceRuleArgs({
+  const GetGovernanceRuleArgs({
     required this.ruleId,
     required this.scope,
   });

@@ -9,7 +9,7 @@ class SavedDisk {
 
   /// Creates a new [SavedDisk].
   /// [sourceDisk] Specifies a URL of the disk attached to the source instance.
-  SavedDisk({
+  const SavedDisk({
     this.sourceDisk,
   });
 

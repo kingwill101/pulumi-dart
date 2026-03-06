@@ -26,7 +26,7 @@ class KeyTransactionArgs {
   /// [browserApdexTarget] A decimal value representing the response time threshold for satisfactory experience (e.g., 0.5 seconds).
   /// [metricName] The name of the underlying metric monitored by the key transaction to be created.
   /// [name] The name of the key transaction.
-  KeyTransactionArgs({
+  const KeyTransactionArgs({
     required this.apdexIndex,
     required this.applicationGuid,
     required this.browserApdexTarget,

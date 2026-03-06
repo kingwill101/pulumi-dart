@@ -48,7 +48,7 @@ class StorageTaskReportPropertiesResponse {
   /// [taskAssignmentId] Represents the Storage Task Assignment Id associated with the storage task that provided an execution context.
   /// [taskId] Storage Task Arm Id.
   /// [taskVersion] Storage Task Version
-  StorageTaskReportPropertiesResponse({
+  const StorageTaskReportPropertiesResponse({
     required this.finishTime,
     required this.objectFailedCount,
     required this.objectsOperatedOnCount,

@@ -46,7 +46,7 @@ class InformixLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [userName] User name for Basic authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  InformixLinkedServiceResponse({
+  const InformixLinkedServiceResponse({
     this.annotations,
     this.authenticationType,
     this.connectVia,

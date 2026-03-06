@@ -20,7 +20,7 @@ class GetFolderResult {
   /// [lifecycleState] The lifecycle state of the folder. Updates to the lifecycle_state must be performed via DeleteFolder and UndeleteFolder.
   /// [name] The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234".
   /// [parent] The Folder's parent's resource name. Updates to the folder's parent must be performed via MoveFolder.
-  GetFolderResult({
+  const GetFolderResult({
     required this.createTime,
     required this.displayName,
     required this.lifecycleState,

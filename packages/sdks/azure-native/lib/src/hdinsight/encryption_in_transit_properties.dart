@@ -9,7 +9,7 @@ class EncryptionInTransitProperties {
 
   /// Creates a new [EncryptionInTransitProperties].
   /// [isEncryptionInTransitEnabled] Indicates whether or not inter cluster node communication is encrypted in transit.
-  EncryptionInTransitProperties({
+  const EncryptionInTransitProperties({
     this.isEncryptionInTransitEnabled,
   });
 

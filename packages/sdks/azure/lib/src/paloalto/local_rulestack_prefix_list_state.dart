@@ -21,7 +21,7 @@ class LocalRulestackPrefixListState {
   /// [name] The name which should be used for this Palo Alto Local Rulestack Prefix List.
   /// [prefixLists] Specifies a list of Prefixes.
   /// [rulestackId] The ID of the Local Rulestack on which to create this Prefix List. Changing this forces a new Palo Alto Local Rulestack Prefix List to be created.
-  LocalRulestackPrefixListState({
+  const LocalRulestackPrefixListState({
     this.auditComment,
     this.description,
     this.name,

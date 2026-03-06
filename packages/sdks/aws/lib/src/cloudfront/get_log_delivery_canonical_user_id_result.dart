@@ -10,7 +10,7 @@ class GetLogDeliveryCanonicalUserIdResult {
   /// Creates a new [GetLogDeliveryCanonicalUserIdResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Optional.
-  GetLogDeliveryCanonicalUserIdResult({
+  const GetLogDeliveryCanonicalUserIdResult({
     required this.id,
     this.region,
   });

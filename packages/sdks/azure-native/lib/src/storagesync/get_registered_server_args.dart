@@ -18,7 +18,7 @@ class GetRegisteredServerArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serverId] GUID identifying the on-premises server.
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
-  GetRegisteredServerArgs({
+  const GetRegisteredServerArgs({
     required this.resourceGroupName,
     required this.serverId,
     required this.storageSyncServiceName,

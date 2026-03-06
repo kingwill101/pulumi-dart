@@ -37,7 +37,7 @@ class MachineImageState {
   /// [selfLink] The URI of the created resource.
   /// [sourceInstance] The source instance used to create the machine image. You can provide this as a partial or full URL to the resource.
   /// [storageLocations] The regional or multi-regional Cloud Storage bucket location where the machine image is stored.
-  MachineImageState({
+  const MachineImageState({
     this.description,
     this.guestFlush,
     this.machineImageEncryptionKey,

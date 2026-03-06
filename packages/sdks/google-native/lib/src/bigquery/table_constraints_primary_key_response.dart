@@ -8,7 +8,7 @@ class TableConstraintsPrimaryKeyResponse {
 
   /// Creates a new [TableConstraintsPrimaryKeyResponse].
   /// [columns] Required.
-  TableConstraintsPrimaryKeyResponse({
+  const TableConstraintsPrimaryKeyResponse({
     required this.columns,
   });
 

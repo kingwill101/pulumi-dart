@@ -17,7 +17,7 @@ class GetQosDscpMarkingRuleResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [qosPolicyId] See Argument Reference above.
   /// [region] See Argument Reference above.
-  GetQosDscpMarkingRuleResult({
+  const GetQosDscpMarkingRuleResult({
     required this.dscpMark,
     required this.id,
     required this.qosPolicyId,

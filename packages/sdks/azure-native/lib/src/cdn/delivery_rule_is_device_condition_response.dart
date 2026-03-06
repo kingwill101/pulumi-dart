@@ -14,7 +14,7 @@ class DeliveryRuleIsDeviceConditionResponse {
   /// Creates a new [DeliveryRuleIsDeviceConditionResponse].
   /// [name] Request variable to compare with.
   /// [parameters] Defines the parameters for the condition.
-  DeliveryRuleIsDeviceConditionResponse({
+  const DeliveryRuleIsDeviceConditionResponse({
     required this.name,
     required this.parameters,
   });

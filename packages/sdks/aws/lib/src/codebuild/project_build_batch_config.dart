@@ -20,7 +20,7 @@ class ProjectBuildBatchConfig {
   /// [restrictions] Configuration block specifying the restrictions for the batch build. Detailed below.
   /// [serviceRole] Specifies the service role ARN for the batch build project.
   /// [timeoutInMins] Specifies the maximum amount of time, in minutes, that the batch build must be
-  ProjectBuildBatchConfig({
+  const ProjectBuildBatchConfig({
     this.combineArtifacts,
     this.restrictions,
     required this.serviceRole,

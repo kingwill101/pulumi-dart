@@ -15,7 +15,7 @@ class GetProjectPoolArgs {
   /// Creates a new [GetProjectPoolArgs].
   /// [devCenterProjectId] The ID of the associated Dev Center Project.
   /// [name] The name of this Dev Center Project Pool.
-  GetProjectPoolArgs({
+  const GetProjectPoolArgs({
     required this.devCenterProjectId,
     required this.name,
   });

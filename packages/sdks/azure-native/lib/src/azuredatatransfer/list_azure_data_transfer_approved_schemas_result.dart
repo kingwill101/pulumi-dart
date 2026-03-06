@@ -10,7 +10,7 @@ class ListAzureDataTransferApprovedSchemasResult {
 
   /// Creates a new [ListAzureDataTransferApprovedSchemasResult].
   /// [value] Schemas array.
-  ListAzureDataTransferApprovedSchemasResult({
+  const ListAzureDataTransferApprovedSchemasResult({
     this.value,
   });
 

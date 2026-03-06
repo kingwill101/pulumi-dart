@@ -120,7 +120,7 @@ class GetAccountResult {
   /// [tags] The resource tags.
   /// [type] The resource type.
   /// [virtualNetworkRules] The list of virtualNetwork rules associated with this account.
-  GetAccountResult({
+  const GetAccountResult({
     required this.accountId,
     required this.azureApiVersion,
     required this.computePolicies,

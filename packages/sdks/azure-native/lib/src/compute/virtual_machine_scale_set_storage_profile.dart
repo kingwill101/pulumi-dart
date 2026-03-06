@@ -21,7 +21,7 @@ class VirtualMachineScaleSetStorageProfile {
   /// [diskControllerType] Specifies the disk controller type configured for the virtual machines in the scale set. Minimum api-version: 2022-08-01
   /// [imageReference] Specifies information about the image to use. You can specify information about platform images, marketplace images, or virtual machine images. This element is required when you want to use a platform image, marketplace image, or virtual machine image, but is not used in other creation operations.
   /// [osDisk] Specifies information about the operating system disk used by the virtual machines in the scale set. For more information about disks, see [About disks and VHDs for Azure virtual machines](https://docs.microsoft.com/azure/virtual-machines/managed-disks-overview).
-  VirtualMachineScaleSetStorageProfile({
+  const VirtualMachineScaleSetStorageProfile({
     this.dataDisks,
     this.diskControllerType,
     this.imageReference,

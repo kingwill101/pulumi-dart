@@ -12,7 +12,7 @@ class K8stransparentDataEncryptionResponse {
   /// Creates a new [K8stransparentDataEncryptionResponse].
   /// [mode] Transparent data encryption mode. Can be Service Managed, Customer managed or disabled
   /// [protectorSecret] Protector secret for customer managed Transparent data encryption mode
-  K8stransparentDataEncryptionResponse({
+  const K8stransparentDataEncryptionResponse({
     this.mode,
     this.protectorSecret,
   });

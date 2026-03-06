@@ -54,7 +54,7 @@ class GetBastionHostResult {
   /// [tags] A mapping of tags assigned to the Bastion Host.
   /// [tunnelingEnabled] Is Tunneling feature enabled for the Bastion Host.
   /// [zones] A list of Availability Zones in which this Bastion Host is located.
-  GetBastionHostResult({
+  const GetBastionHostResult({
     required this.copyPasteEnabled,
     required this.dnsName,
     required this.fileCopyEnabled,

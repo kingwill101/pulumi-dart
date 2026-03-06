@@ -25,7 +25,7 @@ class GetAccountsResult {
   /// [outputFile] Optional.
   /// [status] The status of the member.
   /// [tags] (Available since v1.259.0) The tags that are added to the member.
-  GetAccountsResult({
+  const GetAccountsResult({
     required this.accounts,
     this.enableDetails,
     required this.id,

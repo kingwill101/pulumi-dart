@@ -10,7 +10,7 @@ class TextMatchingRuleset {
 
   /// Creates a new [TextMatchingRuleset].
   /// [deny] A list of text patterns to block, each with matching rules and case sensitivity options.
-  TextMatchingRuleset({
+  const TextMatchingRuleset({
     this.deny,
   });
 

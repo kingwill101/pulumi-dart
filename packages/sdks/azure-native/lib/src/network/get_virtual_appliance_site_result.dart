@@ -30,7 +30,7 @@ class GetVirtualApplianceSiteResult {
   /// [o365Policy] Office 365 Policy.
   /// [provisioningState] The provisioning state of the resource.
   /// [type] Site type.
-  GetVirtualApplianceSiteResult({
+  const GetVirtualApplianceSiteResult({
     this.addressPrefix,
     required this.azureApiVersion,
     required this.etag,

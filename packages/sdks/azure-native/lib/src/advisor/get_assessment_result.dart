@@ -48,7 +48,7 @@ class GetAssessmentResult {
   /// [typeVersion] Assessment Type Version.
   /// [workloadId] Workload Id.
   /// [workloadName] Workload Name.
-  GetAssessmentResult({
+  const GetAssessmentResult({
     required this.assessmentId,
     required this.azureApiVersion,
     required this.description,

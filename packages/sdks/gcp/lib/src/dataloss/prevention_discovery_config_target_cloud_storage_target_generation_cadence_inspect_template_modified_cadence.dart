@@ -9,7 +9,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectT
 
   /// Creates a new [PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence].
   /// [frequency] How frequently data profiles can be updated when the template is modified. Defaults to never.
-  PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence({
+  const PreventionDiscoveryConfigTargetCloudStorageTargetGenerationCadenceInspectTemplateModifiedCadence({
     this.frequency,
   });
 

@@ -27,7 +27,7 @@ class InspectTemplateArgs {
   /// [location] Deprecated. This field has no effect.
   /// [project] Optional.
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  InspectTemplateArgs({
+  const InspectTemplateArgs({
     this.description,
     this.displayName,
     this.inspectConfig,

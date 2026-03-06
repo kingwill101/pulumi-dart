@@ -18,7 +18,7 @@ class GetTopicSubscriptionsArgs {
   /// [namePrefix] A string to filter resulting subscriptions of the topic by their name prefixs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [topicName] Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
-  GetTopicSubscriptionsArgs({
+  const GetTopicSubscriptionsArgs({
     this.namePrefix,
     this.outputFile,
     required this.topicName,

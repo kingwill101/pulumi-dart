@@ -15,7 +15,7 @@ class DatasetReference {
   /// [parameters] Arguments for dataset.
   /// [referenceName] Reference dataset name.
   /// [type] Dataset reference type.
-  DatasetReference({
+  const DatasetReference({
     this.parameters,
     required this.referenceName,
     required this.type,

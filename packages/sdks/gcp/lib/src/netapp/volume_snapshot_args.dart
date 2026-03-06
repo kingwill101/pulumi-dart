@@ -31,7 +31,7 @@ class VolumeSnapshotArgs {
   /// [name] The name of the snapshot.
   /// [project] The ID of the project in which the resource belongs.
   /// [volumeName] The name of the volume to create the snapshot in.
-  VolumeSnapshotArgs({
+  const VolumeSnapshotArgs({
     this.description,
     this.labels,
     required this.location,

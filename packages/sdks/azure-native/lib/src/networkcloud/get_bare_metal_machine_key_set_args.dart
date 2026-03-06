@@ -18,7 +18,7 @@ class GetBareMetalMachineKeySetArgs {
   /// [bareMetalMachineKeySetName] The name of the bare metal machine key set.
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBareMetalMachineKeySetArgs({
+  const GetBareMetalMachineKeySetArgs({
     required this.bareMetalMachineKeySetName,
     required this.clusterName,
     required this.resourceGroupName,

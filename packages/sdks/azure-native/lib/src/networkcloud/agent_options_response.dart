@@ -11,7 +11,7 @@ class AgentOptionsResponse {
   /// Creates a new [AgentOptionsResponse].
   /// [hugepagesCount] The number of hugepages to allocate.
   /// [hugepagesSize] The size of the hugepages to allocate.
-  AgentOptionsResponse({
+  const AgentOptionsResponse({
     required this.hugepagesCount,
     this.hugepagesSize,
   });

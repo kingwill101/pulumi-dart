@@ -46,7 +46,7 @@ class TrafficManagerProfileState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [trafficRoutingMethod] Specifies the algorithm used to route traffic. Possible values are `Geographic`, `Weighted`, `Performance`, `Priority`, `Subnet` and `MultiValue`.
   /// [trafficViewEnabled] Indicates whether Traffic View is enabled for the Traffic Manager profile.
-  TrafficManagerProfileState({
+  const TrafficManagerProfileState({
     this.dnsConfig,
     this.fqdn,
     this.maxReturn,

@@ -12,7 +12,7 @@ class GetGlobalRulestackArgs {
 
   /// Creates a new [GetGlobalRulestackArgs].
   /// [globalRulestackName] GlobalRulestack resource name
-  GetGlobalRulestackArgs({
+  const GetGlobalRulestackArgs({
     required this.globalRulestackName,
   });
 

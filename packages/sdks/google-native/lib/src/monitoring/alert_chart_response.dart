@@ -9,7 +9,7 @@ class AlertChartResponse {
 
   /// Creates a new [AlertChartResponse].
   /// [name] The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID]
-  AlertChartResponse({
+  const AlertChartResponse({
     required this.name,
   });
 

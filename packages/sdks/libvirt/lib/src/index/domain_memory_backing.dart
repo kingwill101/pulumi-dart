@@ -30,7 +30,7 @@ class DomainMemoryBacking {
   /// [memoryLocked] Controls whether the memory backing is locked, preventing it from being swapped or moved.
   /// [memoryNosharepages] Configures whether shared pages are forbidden for the domain, affecting memory sharing behaviors.
   /// [memorySource] Specifies the source from which the memory backing is allocated, influencing its origin.
-  DomainMemoryBacking({
+  const DomainMemoryBacking({
     this.memoryAccess,
     this.memoryAllocation,
     this.memoryDiscard,

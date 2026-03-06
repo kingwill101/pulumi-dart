@@ -16,7 +16,7 @@ class EventTargetEcsTargetNetworkConfiguration {
   /// [assignPublicIp] Assign a public IP address to the ENI (Fargate launch type only). Valid values are `true` or `false`. Defaults to `false`.
   /// [securityGroups] The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used.
   /// [subnets] The subnets associated with the task or service.
-  EventTargetEcsTargetNetworkConfiguration({
+  const EventTargetEcsTargetNetworkConfiguration({
     this.assignPublicIp,
     this.securityGroups,
     required this.subnets,

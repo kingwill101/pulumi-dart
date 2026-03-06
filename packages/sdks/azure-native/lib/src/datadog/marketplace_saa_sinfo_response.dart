@@ -21,7 +21,7 @@ class MarketplaceSaaSInfoResponse {
   /// [marketplaceStatus] Marketplace Subscription Details: SaaS Subscription Status
   /// [marketplaceSubscriptionId] Marketplace Subscription Id. This is a GUID-formatted string.
   /// [subscribed] Flag specifying if the Marketplace status is subscribed or not.
-  MarketplaceSaaSInfoResponse({
+  const MarketplaceSaaSInfoResponse({
     this.billedAzureSubscriptionId,
     this.marketplaceName,
     this.marketplaceStatus,

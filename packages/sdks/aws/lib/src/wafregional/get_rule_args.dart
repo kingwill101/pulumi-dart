@@ -15,7 +15,7 @@ class GetRuleArgs {
   /// Creates a new [GetRuleArgs].
   /// [name] Name of the WAF Regional rule.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetRuleArgs({
+  const GetRuleArgs({
     required this.name,
     this.region,
   });

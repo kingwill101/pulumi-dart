@@ -30,7 +30,7 @@ class GetSubnetGroupResult {
   /// [subnetIds] Contains a list of subnet identifiers.
   /// [supportedNetworkTypes] The network type of the DB subnet group.
   /// [vpcId] Provides the VPC ID of the DB subnet group.
-  GetSubnetGroupResult({
+  const GetSubnetGroupResult({
     required this.arn,
     required this.description,
     required this.id,

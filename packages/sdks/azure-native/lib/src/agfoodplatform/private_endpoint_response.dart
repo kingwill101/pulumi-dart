@@ -9,7 +9,7 @@ class PrivateEndpointResponse {
 
   /// Creates a new [PrivateEndpointResponse].
   /// [id] The ARM identifier for private endpoint.
-  PrivateEndpointResponse({
+  const PrivateEndpointResponse({
     required this.id,
   });
 

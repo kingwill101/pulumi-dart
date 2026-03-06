@@ -31,7 +31,7 @@ class ConfigurationGroupResponse {
   /// [memberType] The type of the group member.
   /// [provisioningState] The provisioning state of the scope assignment resource.
   /// [resourceGuid] Unique identifier for this resource.
-  ConfigurationGroupResponse({
+  const ConfigurationGroupResponse({
     this.conditionalMembership,
     this.description,
     this.displayName,

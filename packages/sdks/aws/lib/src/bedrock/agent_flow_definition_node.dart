@@ -23,7 +23,7 @@ class AgentFlowDefinitionNode {
   /// [name] A name for the node.
   /// [outputs] A list of objects containing information about an output from the node. See Node Output for more information.
   /// [type] The type of node. This value must match the name of the key that you provide in the configuration. Valid values: `Agent`, `Collector`, `Condition`, `Input`, `Iterator`, `KnowledgeBase`, `LambdaFunction`, `Lex`, `Output`, `Prompt`, `Retrieval`, `Storage`
-  AgentFlowDefinitionNode({
+  const AgentFlowDefinitionNode({
     this.configuration,
     this.inputs,
     required this.name,

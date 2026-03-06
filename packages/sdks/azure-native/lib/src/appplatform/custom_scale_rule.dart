@@ -17,7 +17,7 @@ class CustomScaleRule {
   /// [auth] Authentication secrets for the custom scale rule.
   /// [metadata] Metadata properties to describe custom scale rule.
   /// [type] Type of the custom scale rule
-  CustomScaleRule({
+  const CustomScaleRule({
     this.auth,
     this.metadata,
     this.type,

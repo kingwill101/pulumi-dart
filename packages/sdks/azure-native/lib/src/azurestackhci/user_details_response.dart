@@ -18,7 +18,7 @@ class UserDetailsResponse {
   /// [secretType] Type of the secret used for authentication.
   /// [sshPubKey] SSH Public Key for the user.
   /// [userName] Name of the user.
-  UserDetailsResponse({
+  const UserDetailsResponse({
     this.secretLocation,
     required this.secretType,
     this.sshPubKey,

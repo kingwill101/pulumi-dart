@@ -23,7 +23,7 @@ class GoogleCloudDialogflowV2Fulfillment {
   /// [features] Optional. The field defines whether the fulfillment is enabled for certain features.
   /// [genericWebService] Configuration for a generic web service.
   /// [name] The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment.
-  GoogleCloudDialogflowV2Fulfillment({
+  const GoogleCloudDialogflowV2Fulfillment({
     this.displayName,
     this.enabled,
     this.features,

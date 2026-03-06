@@ -34,7 +34,7 @@ class IndexArgs {
   /// [logstoreName] Logstore name
   /// [maxTextLen] Maximum length of statistical field
   /// [projectName] Project name
-  IndexArgs({
+  const IndexArgs({
     this.keys,
     this.line,
     this.logReduce,

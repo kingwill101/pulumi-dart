@@ -15,7 +15,7 @@ class GetNotificationArgs {
   /// [bucket] Required.
   /// [notification] Required.
   /// [userProject] Optional.
-  GetNotificationArgs({
+  const GetNotificationArgs({
     required this.bucket,
     required this.notification,
     this.userProject,

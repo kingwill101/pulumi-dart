@@ -9,7 +9,7 @@ class GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse {
 
   /// Creates a new [GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse].
   /// [type] Detected break type.
-  GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse({
+  const GoogleCloudDocumentaiV1DocumentPageTokenDetectedBreakResponse({
     required this.type,
   });
 

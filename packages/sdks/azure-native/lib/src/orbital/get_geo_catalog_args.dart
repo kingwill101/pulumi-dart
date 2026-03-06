@@ -15,7 +15,7 @@ class GetGeoCatalogArgs {
   /// Creates a new [GetGeoCatalogArgs].
   /// [catalogName] The name of the catalog
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGeoCatalogArgs({
+  const GetGeoCatalogArgs({
     required this.catalogName,
     required this.resourceGroupName,
   });

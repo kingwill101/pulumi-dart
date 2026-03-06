@@ -61,7 +61,7 @@ class ExternalAccessRuleState {
   /// [state] State of the Cluster.
   /// [uid] System-generated unique identifier for the resource.
   /// [updateTime] Last updated time of this resource.
-  ExternalAccessRuleState({
+  const ExternalAccessRuleState({
     this.action,
     this.createTime,
     this.description,

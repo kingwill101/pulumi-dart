@@ -18,7 +18,7 @@ class GetConnectionMonitorArgs {
   /// [connectionMonitorName] The name of the connection monitor.
   /// [networkWatcherName] The name of the Network Watcher resource.
   /// [resourceGroupName] The name of the resource group containing Network Watcher.
-  GetConnectionMonitorArgs({
+  const GetConnectionMonitorArgs({
     required this.connectionMonitorName,
     required this.networkWatcherName,
     required this.resourceGroupName,

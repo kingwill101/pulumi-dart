@@ -12,7 +12,7 @@ class SecurityFeedbackFeedbackContext {
   /// Creates a new [SecurityFeedbackFeedbackContext].
   /// [attribute] The attribute the user is providing feedback about.
   /// [values] The values of the attribute the user is providing feedback about, separated by commas.
-  SecurityFeedbackFeedbackContext({
+  const SecurityFeedbackFeedbackContext({
     required this.attribute,
     required this.values,
   });

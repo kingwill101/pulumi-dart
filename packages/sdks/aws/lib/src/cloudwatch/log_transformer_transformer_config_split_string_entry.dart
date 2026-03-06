@@ -11,7 +11,7 @@ class LogTransformerTransformerConfigSplitStringEntry {
   /// Creates a new [LogTransformerTransformerConfigSplitStringEntry].
   /// [delimiter] Specifies the separator characters to split the string entry on.
   /// [source] Specifies the key to modify.
-  LogTransformerTransformerConfigSplitStringEntry({
+  const LogTransformerTransformerConfigSplitStringEntry({
     required this.delimiter,
     required this.source,
   });

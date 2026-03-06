@@ -11,7 +11,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfiguration
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits].
   /// [maxPages] Max number of web pages crawled from your source URLs, up to 25,000 pages.
   /// [rateLimit] Max rate at which pages are crawled, up to 300 per minute per host.
-  AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits({
+  const AgentDataSourceDataSourceConfigurationWebConfigurationCrawlerConfigurationCrawlerLimits({
     this.maxPages,
     this.rateLimit,
   });

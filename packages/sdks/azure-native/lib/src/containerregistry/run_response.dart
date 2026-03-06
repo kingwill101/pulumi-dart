@@ -91,7 +91,7 @@ class RunResponse {
   /// [timerTrigger] The timer trigger that caused the run.
   /// [type] The type of the resource.
   /// [updateTriggerToken] The update trigger token passed for the Run.
-  RunResponse({
+  const RunResponse({
     this.agentConfiguration,
     this.agentPoolName,
     this.createTime,

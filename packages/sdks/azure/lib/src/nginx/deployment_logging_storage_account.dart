@@ -10,7 +10,7 @@ class DeploymentLoggingStorageAccount {
   /// Creates a new [DeploymentLoggingStorageAccount].
   /// [containerName] Optional.
   /// [name] The name which should be used for this NGINX Deployment. Changing this forces a new NGINX Deployment to be created.
-  DeploymentLoggingStorageAccount({
+  const DeploymentLoggingStorageAccount({
     this.containerName,
     this.name,
   });

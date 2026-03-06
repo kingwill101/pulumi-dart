@@ -11,7 +11,7 @@ class AzureIntegrationsAppGateway {
   /// Creates a new [AzureIntegrationsAppGateway].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsAppGateway({
+  const AzureIntegrationsAppGateway({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

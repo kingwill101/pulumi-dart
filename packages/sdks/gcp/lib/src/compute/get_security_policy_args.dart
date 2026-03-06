@@ -18,7 +18,7 @@ class GetSecurityPolicyArgs {
   /// [name] The name of the security policy. Provide either this or a `self_link`.
   /// [project] The project in which the resource belongs. If it is not provided, the provider project is used.
   /// [selfLink] The self_link of the security policy. Provide either this or a `name`
-  GetSecurityPolicyArgs({
+  const GetSecurityPolicyArgs({
     this.name,
     this.project,
     this.selfLink,

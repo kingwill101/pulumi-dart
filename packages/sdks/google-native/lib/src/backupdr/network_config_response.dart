@@ -12,7 +12,7 @@ class NetworkConfigResponse {
   /// Creates a new [NetworkConfigResponse].
   /// [network] Optional. The resource name of the Google Compute Engine VPC network to which the ManagementServer instance is connected.
   /// [peeringMode] Optional. The network connect mode of the ManagementServer instance. For this version, only PRIVATE_SERVICE_ACCESS is supported.
-  NetworkConfigResponse({
+  const NetworkConfigResponse({
     required this.network,
     required this.peeringMode,
   });

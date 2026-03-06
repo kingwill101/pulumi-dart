@@ -40,7 +40,7 @@ class AzureMySqlTableDatasetResponse {
   /// [table] The name of Azure MySQL database table. Type: string (or Expression with resultType string).
   /// [tableName] The Azure MySQL database table name. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  AzureMySqlTableDatasetResponse({
+  const AzureMySqlTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

@@ -13,7 +13,7 @@ class DomainDefaultUserSettingsRSessionAppSettings {
   /// Creates a new [DomainDefaultUserSettingsRSessionAppSettings].
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a RSession app. see `custom_image` Block below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see `default_resource_spec` Block above.
-  DomainDefaultUserSettingsRSessionAppSettings({
+  const DomainDefaultUserSettingsRSessionAppSettings({
     this.customImages,
     this.defaultResourceSpec,
   });

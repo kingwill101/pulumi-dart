@@ -14,7 +14,7 @@ class SharedImageIdentifier {
   /// [offer] The Offer Name for this Shared Image. Changing this forces a new resource to be created.
   /// [publisher] The Publisher Name for this Gallery Image. Changing this forces a new resource to be created.
   /// [sku] The Name of the SKU for this Gallery Image. Changing this forces a new resource to be created.
-  SharedImageIdentifier({
+  const SharedImageIdentifier({
     required this.offer,
     required this.publisher,
     required this.sku,

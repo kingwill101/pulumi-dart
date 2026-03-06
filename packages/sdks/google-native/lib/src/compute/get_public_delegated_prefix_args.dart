@@ -15,7 +15,7 @@ class GetPublicDelegatedPrefixArgs {
   /// [project] Optional.
   /// [publicDelegatedPrefix] Required.
   /// [region] Required.
-  GetPublicDelegatedPrefixArgs({
+  const GetPublicDelegatedPrefixArgs({
     this.project,
     required this.publicDelegatedPrefix,
     required this.region,

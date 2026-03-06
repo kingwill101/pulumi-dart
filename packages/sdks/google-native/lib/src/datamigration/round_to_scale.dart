@@ -9,7 +9,7 @@ class RoundToScale {
 
   /// Creates a new [RoundToScale].
   /// [scale] Scale value to be used
-  RoundToScale({
+  const RoundToScale({
     required this.scale,
   });
 

@@ -22,7 +22,7 @@ class ApprovalSettingsResponse {
   /// [isApprovalRequired] Determines whether approval is required or not.
   /// [isApprovalRequiredForExtension] Determines whether approval is required for assignment extension.
   /// [isRequestorJustificationRequired] Determine whether requestor justification is required.
-  ApprovalSettingsResponse({
+  const ApprovalSettingsResponse({
     this.approvalMode,
     this.approvalStages,
     this.isApprovalRequired,

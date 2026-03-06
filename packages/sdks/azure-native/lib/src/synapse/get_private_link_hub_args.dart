@@ -15,7 +15,7 @@ class GetPrivateLinkHubArgs {
   /// Creates a new [GetPrivateLinkHubArgs].
   /// [privateLinkHubName] Name of the privateLinkHub
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateLinkHubArgs({
+  const GetPrivateLinkHubArgs({
     required this.privateLinkHubName,
     required this.resourceGroupName,
   });

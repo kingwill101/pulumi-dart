@@ -14,7 +14,7 @@ class IdentityPropertiesResponse {
   /// [principalId] The identity ID.
   /// [tenantId] The tenant ID of resource.
   /// [type] Specifies the identity type of the Datadog Monitor. At this time the only allowed value is 'SystemAssigned'.
-  IdentityPropertiesResponse({
+  const IdentityPropertiesResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

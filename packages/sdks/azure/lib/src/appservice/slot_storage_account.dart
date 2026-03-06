@@ -23,7 +23,7 @@ class SlotStorageAccount {
   /// [name] The name of the storage account identifier.
   /// [shareName] The name of the file share (container name, for Blob storage).
   /// [type] The type of storage. Possible values are `AzureBlob` and `AzureFiles`.
-  SlotStorageAccount({
+  const SlotStorageAccount({
     required this.accessKey,
     required this.accountName,
     this.mountPath,

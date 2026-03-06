@@ -42,7 +42,7 @@ class GetSnapshotPolicyResult {
   /// [resourceGroupName] The name of the resource group where the NetApp Snapshot Policy should be created.
   /// [tags] Required.
   /// [weeklySchedules] Weekly snapshot schedule.
-  GetSnapshotPolicyResult({
+  const GetSnapshotPolicyResult({
     required this.accountName,
     required this.dailySchedules,
     required this.enabled,

@@ -23,7 +23,7 @@ class MsTeamsChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Microsoft Teams channel resource
   /// [provisioningState] Provisioning state of the resource
-  MsTeamsChannelResponse({
+  const MsTeamsChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

@@ -12,7 +12,7 @@ class URI {
   /// Creates a new [URI].
   /// [label] A label for the URI.
   /// [uri] The unique resource identifier.
-  URI({
+  const URI({
     this.label,
     this.uri,
   });

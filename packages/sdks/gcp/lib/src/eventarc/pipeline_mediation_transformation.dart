@@ -83,7 +83,7 @@ class PipelineMediationTransformation {
 
   /// Creates a new [PipelineMediationTransformation].
   /// [transformationTemplate] The CEL expression template to apply to transform messages.
-  PipelineMediationTransformation({
+  const PipelineMediationTransformation({
     this.transformationTemplate,
   });
 

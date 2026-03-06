@@ -15,7 +15,7 @@ class SecretStoreResource {
   /// [secretStoreType] Gets or sets the type of secret store
   /// [uri] Uri to get to the resource
   /// [value] Gets or sets value stored in secret store resource
-  SecretStoreResource({
+  const SecretStoreResource({
     required this.secretStoreType,
     this.uri,
     this.value,

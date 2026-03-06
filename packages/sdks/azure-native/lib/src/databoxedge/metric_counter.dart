@@ -19,7 +19,7 @@ class MetricCounter {
   /// [dimensionFilter] The dimension filter.
   /// [instance] The instance from which counter should be collected.
   /// [name] The counter name.
-  MetricCounter({
+  const MetricCounter({
     this.additionalDimensions,
     this.dimensionFilter,
     this.instance,

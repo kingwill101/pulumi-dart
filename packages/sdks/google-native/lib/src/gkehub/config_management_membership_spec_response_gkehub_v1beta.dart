@@ -28,7 +28,7 @@ class ConfigManagementMembershipSpecResponseGkehubV1beta {
   /// [hierarchyController] Hierarchy Controller configuration for the cluster.
   /// [policyController] Policy Controller configuration for the cluster.
   /// [version] Version of ACM installed.
-  ConfigManagementMembershipSpecResponseGkehubV1beta({
+  const ConfigManagementMembershipSpecResponseGkehubV1beta({
     required this.binauthz,
     required this.cluster,
     required this.configSync,

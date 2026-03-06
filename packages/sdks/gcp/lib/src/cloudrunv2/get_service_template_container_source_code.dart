@@ -9,7 +9,7 @@ class GetServiceTemplateContainerSourceCode {
 
   /// Creates a new [GetServiceTemplateContainerSourceCode].
   /// [cloudStorageSources] Cloud Storage source.
-  GetServiceTemplateContainerSourceCode({
+  const GetServiceTemplateContainerSourceCode({
     required this.cloudStorageSources,
   });
 

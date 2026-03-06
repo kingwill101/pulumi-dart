@@ -15,7 +15,7 @@ class FastApplicationArgs {
   /// Creates a new [FastApplicationArgs].
   /// [fastJson] Path/Filename of Declarative FAST JSON which is a json file used with builtin ```file``` function
   /// [template] Name of installed FAST template used to create FAST application. This parameter is required when creating new resource.
-  FastApplicationArgs({
+  const FastApplicationArgs({
     required this.fastJson,
     this.template,
   });

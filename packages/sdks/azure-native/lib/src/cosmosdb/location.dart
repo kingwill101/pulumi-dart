@@ -15,7 +15,7 @@ class Location {
   /// [failoverPriority] The failover priority of the region. A failover priority of 0 indicates a write region. The maximum value for a failover priority = (total number of regions - 1). Failover priority values must be unique for each of the regions in which the database account exists.
   /// [isZoneRedundant] Flag to indicate whether or not this region is an AvailabilityZone region
   /// [locationName] The name of the region.
-  Location({
+  const Location({
     this.failoverPriority,
     this.isZoneRedundant,
     this.locationName,

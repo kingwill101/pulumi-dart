@@ -95,7 +95,7 @@ class GetRouteMapsMap {
   /// [sourceRouteTableIds] A match statement that indicates the list of IDs of the source route tables.
   /// [status] The status of the route map, including `Creating`, `Active` and `Deleting`.
   /// [transmitDirection] The direction in which the route map is applied, including `RegionIn` and `RegionOut`.
-  GetRouteMapsMap({
+  const GetRouteMapsMap({
     required this.asPathMatchMode,
     required this.cenId,
     required this.cenRegionId,

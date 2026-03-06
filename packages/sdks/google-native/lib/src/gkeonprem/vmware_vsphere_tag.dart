@@ -12,7 +12,7 @@ class VmwareVsphereTag {
   /// Creates a new [VmwareVsphereTag].
   /// [category] The Vsphere tag category.
   /// [tag] The Vsphere tag name.
-  VmwareVsphereTag({
+  const VmwareVsphereTag({
     this.category,
     this.tag,
   });

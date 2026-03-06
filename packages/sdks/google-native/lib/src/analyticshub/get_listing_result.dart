@@ -48,7 +48,7 @@ class GetListingResult {
   /// [requestAccess] Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
   /// [restrictedExportConfig] Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
   /// [state] Current state of the listing.
-  GetListingResult({
+  const GetListingResult({
     required this.bigqueryDataset,
     required this.categories,
     required this.dataProvider,

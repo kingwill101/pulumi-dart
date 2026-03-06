@@ -27,7 +27,7 @@ class HciStoragePathArgs {
   /// [path] The file path on the disk to create the Storage Path. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group where the Azure Stack HCI Storage Path should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Stack HCI Storage Path.
-  HciStoragePathArgs({
+  const HciStoragePathArgs({
     required this.customLocationId,
     this.location,
     this.name,

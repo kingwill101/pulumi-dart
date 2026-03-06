@@ -15,7 +15,7 @@ class GoogleCloudDocumentaiV1DocumentEntityRelationResponse {
   /// [objectId] Object entity id.
   /// [relation] Relationship description.
   /// [subjectId] Subject entity id.
-  GoogleCloudDocumentaiV1DocumentEntityRelationResponse({
+  const GoogleCloudDocumentaiV1DocumentEntityRelationResponse({
     required this.objectId,
     required this.relation,
     required this.subjectId,

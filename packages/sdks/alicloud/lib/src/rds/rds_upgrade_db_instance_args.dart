@@ -236,7 +236,7 @@ class RdsUpgradeDbInstanceArgs {
   /// [vswitchId] The ID of the vSwitch associated with the specified VPC.
   /// [zoneId] The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
   /// [zoneIdSlave1] The ID of the zone to which the secondary instance of the new instance belongs. You can specify this parameter only when the original instance runs RDS High-availability Edition. You can select a zone that belongs to the region where the original instance resides. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query zone IDs.
-  RdsUpgradeDbInstanceArgs({
+  const RdsUpgradeDbInstanceArgs({
     this.acl,
     this.autoUpgradeMinorVersion,
     this.caType,

@@ -29,7 +29,7 @@ class GetTemplatesTemplate {
   /// [serviceName] Service name.
   /// [unit] Unit of measurement.
   /// [value] The new, increased value for the quota.
-  GetTemplatesTemplate({
+  const GetTemplatesTemplate({
     required this.globalQuota,
     required this.quotaCode,
     required this.quotaName,

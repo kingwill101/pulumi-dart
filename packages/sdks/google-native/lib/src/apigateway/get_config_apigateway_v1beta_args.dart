@@ -19,7 +19,7 @@ class GetConfigApigatewayV1betaArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetConfigApigatewayV1betaArgs({
+  const GetConfigApigatewayV1betaArgs({
     required this.apiId,
     required this.configId,
     required this.location,

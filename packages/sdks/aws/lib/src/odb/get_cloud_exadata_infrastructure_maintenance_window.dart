@@ -25,7 +25,7 @@ class GetCloudExadataInfrastructureMaintenanceWindow {
   /// [patchingMode] Required.
   /// [preference] Required.
   /// [weeksOfMonths] Required.
-  GetCloudExadataInfrastructureMaintenanceWindow({
+  const GetCloudExadataInfrastructureMaintenanceWindow({
     required this.customActionTimeoutInMins,
     required this.daysOfWeeks,
     required this.hoursOfDays,

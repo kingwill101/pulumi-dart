@@ -20,7 +20,7 @@ class GetUserGroupsGroup {
   /// [instanceId] Specify the New Group of the Bastion Host of Instance Id.
   /// [userGroupId] The User Group ID.
   /// [userGroupName] Specify the New Group Name. Supports up to 128 Characters.
-  GetUserGroupsGroup({
+  const GetUserGroupsGroup({
     required this.comment,
     required this.id,
     required this.instanceId,

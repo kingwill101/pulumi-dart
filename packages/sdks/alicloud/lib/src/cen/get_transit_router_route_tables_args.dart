@@ -36,7 +36,7 @@ class GetTransitRouterRouteTablesArgs {
   /// [transitRouterRouteTableNames] A list of name of the CEN Transit Router Route Table.
   /// [transitRouterRouteTableStatus] The status of the route table. Valid values: `Creating`, `Active`, `Deleting`.
   /// [transitRouterRouteTableType] The type of the route table. Valid values: `System`, `Custom`.
-  GetTransitRouterRouteTablesArgs({
+  const GetTransitRouterRouteTablesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

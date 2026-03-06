@@ -32,7 +32,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy {
   /// [disabled] If true, specifies the CORS policy is disabled. The default value is false, which indicates that the CORS policy is in effect.
   /// [exposeHeaders] Specifies the content for the Access-Control-Allow-Headers response header.
   /// [maxAge] Specifies how long results of a preflight request can be cached by a client in seconds. Note that many browser clients enforce a maximum TTL of 600s (10 minutes).
-  EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy({
     this.allowCredentials,
     this.allowHeaders,
     this.allowMethods,

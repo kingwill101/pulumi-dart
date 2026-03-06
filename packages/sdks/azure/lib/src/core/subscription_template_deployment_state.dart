@@ -30,7 +30,7 @@ class SubscriptionTemplateDeploymentState {
   /// [tags] A mapping of tags which should be assigned to the Subscription Template Deployment.
   /// [templateContent] The contents of the ARM Template which should be deployed into this Subscription.
   /// [templateSpecVersionId] The ID of the Template Spec Version to deploy into the Subscription. Cannot be specified with `template_content`.
-  SubscriptionTemplateDeploymentState({
+  const SubscriptionTemplateDeploymentState({
     this.debugLevel,
     this.location,
     this.name,

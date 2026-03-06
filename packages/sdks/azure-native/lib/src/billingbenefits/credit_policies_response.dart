@@ -12,7 +12,7 @@ class CreditPoliciesResponse {
   /// Creates a new [CreditPoliciesResponse].
   /// [expiration] Expiration policy of the Credit
   /// [redemption] Redemption policy of the Credit
-  CreditPoliciesResponse({
+  const CreditPoliciesResponse({
     this.expiration,
     this.redemption,
   });

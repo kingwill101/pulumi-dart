@@ -29,7 +29,7 @@ class FeatureMembershipConfigmanagement {
   /// [management] Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades.
   /// [policyController] Policy Controller configuration for the cluster. Structure is documented below.
   /// [version] Version of Config Sync installed.
-  FeatureMembershipConfigmanagement({
+  const FeatureMembershipConfigmanagement({
     this.configSync,
     this.hierarchyController,
     this.management,

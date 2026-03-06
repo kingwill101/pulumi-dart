@@ -31,7 +31,7 @@ class ServiceBusTopicOutputDataSource {
   /// [systemPropertyColumns] The system properties associated with the Service Bus Topic Output. The following system properties are supported: ReplyToSessionId, ContentType, To, Subject, CorrelationId, TimeToLive, PartitionKey, SessionId, ScheduledEnqueueTime, MessageId, ReplyTo, Label, ScheduledEnqueueTimeUtc.
   /// [topicName] The name of the Service Bus Topic. Required on PUT (CreateOrReplace) requests.
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
-  ServiceBusTopicOutputDataSource({
+  const ServiceBusTopicOutputDataSource({
     this.authenticationMode,
     this.propertyColumns,
     this.serviceBusNamespace,

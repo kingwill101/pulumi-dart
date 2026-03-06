@@ -13,7 +13,7 @@ class HBaseClusterGateway {
   /// Creates a new [HBaseClusterGateway].
   /// [password] The password used for the Ambari Portal.
   /// [username] The username used for the Ambari Portal. Changing this forces a new resource to be created.
-  HBaseClusterGateway({
+  const HBaseClusterGateway({
     required this.password,
     required this.username,
   });

@@ -26,7 +26,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered {
   /// [checkErrors] (Output)
   /// [domainName] (Output)
   /// [records] (Output)
-  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered({
+  const AppHostingDomainCustomDomainStatusRequiredDnsUpdateDiscovered({
     this.checkErrors,
     this.domainName,
     this.records,

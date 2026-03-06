@@ -48,7 +48,7 @@ class PresetArgs {
   /// [video] Video parameters object (documented below)
   /// [videoCodecOptions] Codec options for the video parameters
   /// [videoWatermarks] Watermark parameters for the video parameters (documented below)
-  PresetArgs({
+  const PresetArgs({
     this.audio,
     this.audioCodecOptions,
     required this.container,

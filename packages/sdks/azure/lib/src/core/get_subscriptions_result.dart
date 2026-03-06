@@ -17,7 +17,7 @@ class GetSubscriptionsResult {
   /// [displayNamePrefix] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [subscriptions] One or more `subscription` blocks as defined below.
-  GetSubscriptionsResult({
+  const GetSubscriptionsResult({
     this.displayNameContains,
     this.displayNamePrefix,
     required this.id,

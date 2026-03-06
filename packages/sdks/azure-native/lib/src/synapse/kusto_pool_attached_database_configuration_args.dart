@@ -37,7 +37,7 @@ class KustoPoolAttachedDatabaseConfigurationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tableLevelSharingProperties] Table level sharing specifications
   /// [workspaceName] The name of the workspace.
-  KustoPoolAttachedDatabaseConfigurationArgs({
+  const KustoPoolAttachedDatabaseConfigurationArgs({
     this.attachedDatabaseConfigurationName,
     required this.databaseName,
     required this.defaultPrincipalsModificationKind,

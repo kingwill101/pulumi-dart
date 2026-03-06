@@ -25,7 +25,7 @@ class DataTransferConfigScheduleOptions {
   /// [disableAutoScheduling] If true, automatic scheduling of data transfer runs for this
   /// [endTime] Defines time to stop scheduling transfer runs. A transfer run cannot be
   /// [startTime] Specifies time to start scheduling transfer runs. The first run will be
-  DataTransferConfigScheduleOptions({
+  const DataTransferConfigScheduleOptions({
     this.disableAutoScheduling,
     this.endTime,
     this.startTime,

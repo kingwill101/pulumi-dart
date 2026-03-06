@@ -18,7 +18,7 @@ class GetInstanceFailoverGroupArgs {
   /// [failoverGroupName] The name of the failover group.
   /// [locationName] The name of the region where the resource is located.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  GetInstanceFailoverGroupArgs({
+  const GetInstanceFailoverGroupArgs({
     required this.failoverGroupName,
     required this.locationName,
     required this.resourceGroupName,

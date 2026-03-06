@@ -13,7 +13,7 @@ class OracleTableDatastreamV1alpha1 {
   /// Creates a new [OracleTableDatastreamV1alpha1].
   /// [oracleColumns] Oracle columns in the schema. When unspecified as part of inclue/exclude lists, includes/excludes everything.
   /// [tableName] Table name.
-  OracleTableDatastreamV1alpha1({
+  const OracleTableDatastreamV1alpha1({
     this.oracleColumns,
     this.tableName,
   });

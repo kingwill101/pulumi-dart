@@ -12,7 +12,7 @@ class HttpHeaderResponse {
   /// Creates a new [HttpHeaderResponse].
   /// [name] The header name.
   /// [value] The header value.
-  HttpHeaderResponse({
+  const HttpHeaderResponse({
     this.name,
     this.value,
   });

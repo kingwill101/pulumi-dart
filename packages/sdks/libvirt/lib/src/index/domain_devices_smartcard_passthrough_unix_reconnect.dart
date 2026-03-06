@@ -11,7 +11,7 @@ class DomainDevicesSmartcardPassthroughUnixReconnect {
   /// Creates a new [DomainDevicesSmartcardPassthroughUnixReconnect].
   /// [enabled] Enables or disables the automatic reconnection feature for the UNIX domain socket.
   /// [timeout] Sets the timeout duration for reconnections in the UNIX socket settings.
-  DomainDevicesSmartcardPassthroughUnixReconnect({
+  const DomainDevicesSmartcardPassthroughUnixReconnect({
     required this.enabled,
     this.timeout,
   });

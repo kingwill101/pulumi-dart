@@ -22,7 +22,7 @@ class AiIndexMetadata {
   /// [config] The configuration of the Matching Engine Index.
   /// [contentsDeltaUri] Allows inserting, updating  or deleting the contents of the Matching Engine Index.
   /// [isCompleteOverwrite] If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
-  AiIndexMetadata({
+  const AiIndexMetadata({
     required this.config,
     this.contentsDeltaUri,
     this.isCompleteOverwrite,

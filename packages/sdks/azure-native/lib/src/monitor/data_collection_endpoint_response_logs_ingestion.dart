@@ -9,7 +9,7 @@ class DataCollectionEndpointResponseLogsIngestion {
 
   /// Creates a new [DataCollectionEndpointResponseLogsIngestion].
   /// [endpoint] The endpoint. This property is READ-ONLY.
-  DataCollectionEndpointResponseLogsIngestion({
+  const DataCollectionEndpointResponseLogsIngestion({
     required this.endpoint,
   });
 

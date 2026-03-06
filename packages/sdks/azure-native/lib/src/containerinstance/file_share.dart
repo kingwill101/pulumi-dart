@@ -15,7 +15,7 @@ class FileShare {
   /// [properties] Optional.
   /// [resourceGroupName] Optional.
   /// [storageAccountName] Optional.
-  FileShare({
+  const FileShare({
     this.name,
     this.properties,
     this.resourceGroupName,

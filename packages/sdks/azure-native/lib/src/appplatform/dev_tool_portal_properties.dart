@@ -17,7 +17,7 @@ class DevToolPortalProperties {
   /// [features] Settings for Dev Tool Portal
   /// [public] Indicates whether the resource exposes public endpoint
   /// [ssoProperties] Single sign-on related configuration
-  DevToolPortalProperties({
+  const DevToolPortalProperties({
     this.features,
     this.public,
     this.ssoProperties,

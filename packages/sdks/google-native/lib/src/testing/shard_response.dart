@@ -19,7 +19,7 @@ class ShardResponse {
   /// [numShards] The total number of shards.
   /// [shardIndex] The index of the shard among all the shards.
   /// [testTargetsForShard] Test targets for each shard. Only set for manual sharding.
-  ShardResponse({
+  const ShardResponse({
     required this.estimatedShardDuration,
     required this.numShards,
     required this.shardIndex,

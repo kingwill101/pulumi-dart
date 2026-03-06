@@ -22,7 +22,7 @@ class ConnectionProfileSalesforceProfileUserCredentials {
   /// [secretManagerStoredSecurityToken] A reference to a Secret Manager resource name storing the user's security token.
   /// [securityToken] Security token of the user.
   /// [username] Username to use for authentication.
-  ConnectionProfileSalesforceProfileUserCredentials({
+  const ConnectionProfileSalesforceProfileUserCredentials({
     this.password,
     this.secretManagerStoredPassword,
     this.secretManagerStoredSecurityToken,

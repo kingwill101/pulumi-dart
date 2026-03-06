@@ -27,7 +27,7 @@ class ThingState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [thingTypeName] The thing type name.
   /// [version] The current version of the thing record in the registry.
-  ThingState({
+  const ThingState({
     this.arn,
     this.attributes,
     this.defaultClientId,

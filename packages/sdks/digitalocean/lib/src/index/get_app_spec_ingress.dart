@@ -12,7 +12,7 @@ class GetAppSpecIngress {
   /// Creates a new [GetAppSpecIngress].
   /// [rules] The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
   /// [secureHeader] Required.
-  GetAppSpecIngress({
+  const GetAppSpecIngress({
     this.rules,
     required this.secureHeader,
   });

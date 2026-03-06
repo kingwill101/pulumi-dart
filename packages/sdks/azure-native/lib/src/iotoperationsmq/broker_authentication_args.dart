@@ -38,7 +38,7 @@ class BrokerAuthenticationArgs {
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  BrokerAuthenticationArgs({
+  const BrokerAuthenticationArgs({
     required this.authenticationMethods,
     this.authenticationName,
     required this.brokerName,

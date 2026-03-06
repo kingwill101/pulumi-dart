@@ -15,7 +15,7 @@ class GetKubernetesClusterArgs {
   /// Creates a new [GetKubernetesClusterArgs].
   /// [name] The name of the managed Kubernetes Cluster.
   /// [resourceGroupName] The name of the Resource Group in which the managed Kubernetes Cluster exists.
-  GetKubernetesClusterArgs({
+  const GetKubernetesClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

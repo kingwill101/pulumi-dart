@@ -17,7 +17,7 @@ class WindowsFunctionAppSlotAuthSettingsGithub {
   /// [clientSecret] The Client Secret of the GitHub app used for GitHub login. Cannot be specified with `client_secret_setting_name`.
   /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for GitHub login. Cannot be specified with `client_secret`.
   /// [oauthScopes] an `oauth_scopes`.
-  WindowsFunctionAppSlotAuthSettingsGithub({
+  const WindowsFunctionAppSlotAuthSettingsGithub({
     required this.clientId,
     this.clientSecret,
     this.clientSecretSettingName,

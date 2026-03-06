@@ -18,7 +18,7 @@ class AzureFilePersistentVolumeSourcePatch {
   /// [secretName] secretName is the name of secret that contains Azure Storage Account Name and Key
   /// [secretNamespace] secretNamespace is the namespace of the secret that contains Azure Storage Account Name and Key default is the same as the Pod
   /// [shareName] shareName is the azure Share Name
-  AzureFilePersistentVolumeSourcePatch({
+  const AzureFilePersistentVolumeSourcePatch({
     this.readOnly,
     this.secretName,
     this.secretNamespace,

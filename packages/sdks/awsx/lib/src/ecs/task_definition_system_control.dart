@@ -9,7 +9,7 @@ class TaskDefinitionSystemControl {
   /// Creates a new [TaskDefinitionSystemControl].
   /// [namespace] Optional.
   /// [value] Optional.
-  TaskDefinitionSystemControl({
+  const TaskDefinitionSystemControl({
     this.namespace,
     this.value,
   });

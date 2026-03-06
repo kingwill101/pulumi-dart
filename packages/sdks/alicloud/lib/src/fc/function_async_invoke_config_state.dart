@@ -34,7 +34,7 @@ class FunctionAsyncInvokeConfigState {
   /// [qualifier] Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
   /// [serviceName] Name of the Function Compute Function, omitting any version or alias qualifier.
   /// [statefulInvocation] Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
-  FunctionAsyncInvokeConfigState({
+  const FunctionAsyncInvokeConfigState({
     this.createdTime,
     this.destinationConfig,
     this.functionName,

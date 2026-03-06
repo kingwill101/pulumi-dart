@@ -37,7 +37,7 @@ class GetRulesResult {
   /// [ruleName] The name of the Config Rule.
   /// [rules] A list of Config Rules. Each element contains the following attributes:
   /// [status] (Available since v1.124.1) The status of config rule.
-  GetRulesResult({
+  const GetRulesResult({
     this.configRuleState,
     this.enableDetails,
     required this.id,

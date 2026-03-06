@@ -23,7 +23,7 @@ class ClusterClusterProfile {
   /// [pullSecret] The Red Hat pull secret for the cluster. For more info, see [Get a Red Hat pull secret](https://learn.microsoft.com/azure/openshift/tutorial-create-cluster#get-a-red-hat-pull-secret-optional). Changing this forces a new resource to be created.
   /// [resourceGroupId] The resource group that the cluster profile is attached to.
   /// [version] The version of the OpenShift cluster. Available versions can be found with the Azure CLI command `az aro get-versions --location &lt;region&gt;`. Changing this forces a new resource to be created.
-  ClusterClusterProfile({
+  const ClusterClusterProfile({
     required this.domain,
     this.fipsEnabled,
     this.managedResourceGroupName,

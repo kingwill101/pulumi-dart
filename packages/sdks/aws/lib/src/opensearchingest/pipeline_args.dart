@@ -51,7 +51,7 @@ class PipelineArgs {
   /// [tags] A map of tags to assign to the pipeline. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [vpcOptions] Container for the values required to configure VPC access for the pipeline. If you don't specify these values, OpenSearch Ingestion creates the pipeline with a public endpoint. See `vpc_options` below.
-  PipelineArgs({
+  const PipelineArgs({
     this.bufferOptions,
     this.encryptionAtRestOptions,
     this.logPublishingOptions,

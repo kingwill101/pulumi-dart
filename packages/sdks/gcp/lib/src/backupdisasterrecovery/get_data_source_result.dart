@@ -44,7 +44,7 @@ class GetDataSourceResult {
   /// [state] Required.
   /// [totalStoredBytes] Required.
   /// [updateTime] Required.
-  GetDataSourceResult({
+  const GetDataSourceResult({
     required this.backupConfigInfos,
     required this.backupCount,
     required this.backupVaultId,

@@ -19,7 +19,7 @@ class GetAuthScopeServiceCatalog {
   /// [id] The ID of the endpoint.
   /// [name] The name of the scope. This is an arbitrary name which is
   /// [type] The type of the service.
-  GetAuthScopeServiceCatalog({
+  const GetAuthScopeServiceCatalog({
     required this.endpoints,
     required this.id,
     required this.name,

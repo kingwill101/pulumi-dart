@@ -23,7 +23,7 @@ class AppDefaultChannelProfileWebWidgetConfig {
   /// [modality] The modality of the web widget.
   /// [theme] The theme of the web widget.
   /// [webWidgetTitle] The title of the web widget.
-  AppDefaultChannelProfileWebWidgetConfig({
+  const AppDefaultChannelProfileWebWidgetConfig({
     this.modality,
     this.theme,
     this.webWidgetTitle,

@@ -49,7 +49,7 @@ class GetUserResult {
   /// [systemData] Metadata pertaining to creation and last modification of the user resource.
   /// [totalUsage] How long the user has used their virtual machines in this lab.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetUserResult({
+  const GetUserResult({
     this.additionalUsageQuota,
     required this.azureApiVersion,
     required this.displayName,

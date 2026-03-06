@@ -10,7 +10,7 @@ class StreamSourceConfigSalesforceSourceConfigIncludeObjects {
 
   /// Creates a new [StreamSourceConfigSalesforceSourceConfigIncludeObjects].
   /// [objects] Salesforce objects in Salesforce Org.
-  StreamSourceConfigSalesforceSourceConfigIncludeObjects({
+  const StreamSourceConfigSalesforceSourceConfigIncludeObjects({
     required this.objects,
   });
 

@@ -41,7 +41,7 @@ class InstanceConfig {
   /// [rootDevice] The root device to boot. The corresponding disk must be attached.
   /// [runLevel] Defines the state of your Linode after booting. Defaults to default.
   /// [virtMode] Controls the virtualization mode. Defaults to paravirt.
-  InstanceConfig({
+  const InstanceConfig({
     this.comments,
     this.devices,
     this.helpers,

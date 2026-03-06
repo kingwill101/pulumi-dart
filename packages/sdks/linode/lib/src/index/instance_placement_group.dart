@@ -19,7 +19,7 @@ class InstancePlacementGroup {
   /// [label] The Linode's label is for display purposes only. If no label is provided for a Linode, a default will be assigned.
   /// [placementGroupPolicy] Whether the Placement Group enforces strict compliance.
   /// [placementGroupType] The placement group type enforced by the Placement Group.
-  InstancePlacementGroup({
+  const InstancePlacementGroup({
     this.compliantOnly,
     required this.id,
     this.label,

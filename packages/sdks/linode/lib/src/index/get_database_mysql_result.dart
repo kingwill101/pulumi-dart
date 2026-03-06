@@ -70,7 +70,7 @@ class GetDatabaseMysqlResult {
   /// [updated] When this Managed Database was last updated.
   /// [updates] Required.
   /// [version] The Managed Database engine version. (e.g. `v8.0.26`)
-  GetDatabaseMysqlResult({
+  const GetDatabaseMysqlResult({
     required this.allowLists,
     required this.caCert,
     required this.clusterSize,

@@ -12,7 +12,7 @@ class GetAlertRuleResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [logAnalyticsWorkspaceId] Required.
   /// [name] Required.
-  GetAlertRuleResult({
+  const GetAlertRuleResult({
     required this.id,
     required this.logAnalyticsWorkspaceId,
     required this.name,

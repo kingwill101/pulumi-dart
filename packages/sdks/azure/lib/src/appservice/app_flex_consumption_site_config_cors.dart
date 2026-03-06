@@ -11,7 +11,7 @@ class AppFlexConsumptionSiteConfigCors {
   /// Creates a new [AppFlexConsumptionSiteConfigCors].
   /// [allowedOrigins] Specifies a list of origins that should be allowed to make cross-origin calls.
   /// [supportCredentials] Are credentials allowed in CORS requests? Defaults to `false`.
-  AppFlexConsumptionSiteConfigCors({
+  const AppFlexConsumptionSiteConfigCors({
     this.allowedOrigins,
     this.supportCredentials,
   });

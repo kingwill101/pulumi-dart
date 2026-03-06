@@ -31,7 +31,7 @@ class GetFirewallPolicyRuleGroupResult {
   /// [provisioningState] The provisioning state of the firewall policy rule group resource.
   /// [rules] Group of Firewall Policy rules.
   /// [type] Rule Group type.
-  GetFirewallPolicyRuleGroupResult({
+  const GetFirewallPolicyRuleGroupResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

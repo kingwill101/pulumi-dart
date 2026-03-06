@@ -12,7 +12,7 @@ class GetRealtimeLogConfigArgs {
 
   /// Creates a new [GetRealtimeLogConfigArgs].
   /// [name] Unique name to identify this real-time log configuration.
-  GetRealtimeLogConfigArgs({
+  const GetRealtimeLogConfigArgs({
     required this.name,
   });
 

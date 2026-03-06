@@ -32,7 +32,7 @@ class ZoneArgs {
   /// [tags] Resource tags.
   /// [zoneName] The name of the DNS zone (without a terminating dot).
   /// [zoneType] The type of this DNS zone (Public or Private).
-  ZoneArgs({
+  const ZoneArgs({
     this.location,
     this.registrationVirtualNetworks,
     this.resolutionVirtualNetworks,

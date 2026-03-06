@@ -3,11 +3,11 @@
 import 'package:pulumi_libvirt/index.dart' as module_index;
 import 'package:pulumi_libvirt/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final CloudinitDisk = module_index.CloudinitDisk.new;
   final CloudinitDiskArgs = module_index.CloudinitDiskArgs.new;
   final CloudinitDiskState = module_index.CloudinitDiskState.new;
@@ -2508,7 +2508,7 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Libvirt = module_providers.ProviderProvider.new;
   final LibvirtArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;

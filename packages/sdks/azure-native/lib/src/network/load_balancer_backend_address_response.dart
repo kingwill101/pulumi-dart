@@ -32,7 +32,7 @@ class LoadBalancerBackendAddressResponse {
   /// [networkInterfaceIPConfiguration] Reference to IP address defined in network interfaces.
   /// [subnet] Reference to an existing subnet.
   /// [virtualNetwork] Reference to an existing virtual network.
-  LoadBalancerBackendAddressResponse({
+  const LoadBalancerBackendAddressResponse({
     this.adminState,
     required this.inboundNatRulesPortMapping,
     this.ipAddress,

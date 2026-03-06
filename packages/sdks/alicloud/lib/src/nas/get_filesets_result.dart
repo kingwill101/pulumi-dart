@@ -20,7 +20,7 @@ class GetFilesetsResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetFilesetsResult({
+  const GetFilesetsResult({
     required this.fileSystemId,
     required this.filesets,
     required this.id,

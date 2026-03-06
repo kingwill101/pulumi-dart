@@ -18,7 +18,7 @@ class WindowsWebAppAuthSettingsV2AppleV2 {
   /// [clientId] The OpenID Connect Client ID for the Apple web application.
   /// [clientSecretSettingName] The app setting name that contains the `client_secret` value used for Apple Login.
   /// [loginScopes] A list of Login Scopes provided by this Authentication Provider.
-  WindowsWebAppAuthSettingsV2AppleV2({
+  const WindowsWebAppAuthSettingsV2AppleV2({
     required this.clientId,
     required this.clientSecretSettingName,
     this.loginScopes,

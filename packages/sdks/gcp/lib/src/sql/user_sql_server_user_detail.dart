@@ -11,7 +11,7 @@ class UserSqlServerUserDetail {
   /// Creates a new [UserSqlServerUserDetail].
   /// [disabled] If the user has been disabled.
   /// [serverRoles] The server roles for this user in the database.
-  UserSqlServerUserDetail({
+  const UserSqlServerUserDetail({
     this.disabled,
     this.serverRoles,
   });

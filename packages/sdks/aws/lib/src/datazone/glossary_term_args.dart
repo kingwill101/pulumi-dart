@@ -39,7 +39,7 @@ class GlossaryTermArgs {
   /// [status] If glossary term is ENABLED or DISABLED.
   /// [termRelations] Object classifying the term relations through the following attributes:
   /// [timeouts] Optional.
-  GlossaryTermArgs({
+  const GlossaryTermArgs({
     this.domainIdentifier,
     required this.glossaryIdentifier,
     this.longDescription,

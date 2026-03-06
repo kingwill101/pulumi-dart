@@ -90,7 +90,7 @@ class NodeGroupState {
   /// [status] Node group status, including the following values:_FAILED: Creation failed._CONFIG: Modifying configuration._TIMEZONE: Modifying timezone._SCALING_OUT: Elastic scaling out._SCALING_IN: Elastic scaling in._OUT: Scaling out._IN: Scaling in._UP: Scaling up (upgrading configuration)._DOWN: Scaling down (downgrading configuration)._PUBLIC_NETWORK: Enabling public network._PUBLIC_NETWORK: Disabling public network._AZ: Switching availability zones.
   /// [storagePerformanceLevel] Performance levels of the cloud disk. Includes the following values:
   /// [storageSize] Storage size, measured in GiB.
-  NodeGroupState({
+  const NodeGroupState({
     this.autoRenew,
     this.createTime,
     this.cu,

@@ -28,7 +28,7 @@ class TagTemplateArgs {
   /// [name] The resource name of the tag template in URL format. Note: The tag template itself and its child resources might not be stored in the location specified in its name.
   /// [project] Optional.
   /// [tagTemplateId] Required. The ID of the tag template to create. The ID must contain only lowercase letters (a-z), numbers (0-9), or underscores (_), and must start with a letter or underscore. The maximum size is 64 bytes when encoded in UTF-8.
-  TagTemplateArgs({
+  const TagTemplateArgs({
     this.displayName,
     required this.fields,
     this.isPubliclyReadable,

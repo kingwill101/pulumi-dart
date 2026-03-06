@@ -140,7 +140,7 @@ class ExtendedServerBlobAuditingPolicyArgs {
   /// [storageAccountAccessKey] Specifies the identifier key of the auditing storage account.
   /// [storageAccountSubscriptionId] Specifies the blob storage subscription Id.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. https://MyAccount.blob.core.windows.net). If state is Enabled, storageEndpoint or isAzureMonitorTargetEnabled is required.
-  ExtendedServerBlobAuditingPolicyArgs({
+  const ExtendedServerBlobAuditingPolicyArgs({
     this.auditActionsAndGroups,
     this.blobAuditingPolicyName,
     this.isAzureMonitorTargetEnabled,

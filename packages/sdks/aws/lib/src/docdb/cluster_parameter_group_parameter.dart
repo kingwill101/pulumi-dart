@@ -14,7 +14,7 @@ class ClusterParameterGroupParameter {
   /// [applyMethod] Valid values are `immediate` and `pending-reboot`. Defaults to `pending-reboot`.
   /// [name] The name of the DocumentDB parameter.
   /// [value] The value of the DocumentDB parameter.
-  ClusterParameterGroupParameter({
+  const ClusterParameterGroupParameter({
     this.applyMethod,
     required this.name,
     required this.value,

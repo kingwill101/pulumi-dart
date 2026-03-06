@@ -22,7 +22,7 @@ class ConnectionGitlabConfig {
   /// [authorizerCredential] Represents a personal access token that authorized the Connection,
   /// [readAuthorizerCredential] Represents a personal access token that authorized the Connection,
   /// [webhookSecretSecretVersion] Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
-  ConnectionGitlabConfig({
+  const ConnectionGitlabConfig({
     required this.authorizerCredential,
     required this.readAuthorizerCredential,
     required this.webhookSecretSecretVersion,

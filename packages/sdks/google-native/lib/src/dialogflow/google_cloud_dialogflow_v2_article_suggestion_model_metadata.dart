@@ -10,7 +10,7 @@ class GoogleCloudDialogflowV2ArticleSuggestionModelMetadata {
 
   /// Creates a new [GoogleCloudDialogflowV2ArticleSuggestionModelMetadata].
   /// [trainingModelType] Optional. Type of the article suggestion model. If not provided, model_type is used.
-  GoogleCloudDialogflowV2ArticleSuggestionModelMetadata({
+  const GoogleCloudDialogflowV2ArticleSuggestionModelMetadata({
     this.trainingModelType,
   });
 

@@ -11,7 +11,7 @@ class GetDatabaseInstancesInstanceDnsName {
   /// [connectionType] Required.
   /// [dnsScope] Required.
   /// [name] Required.
-  GetDatabaseInstancesInstanceDnsName({
+  const GetDatabaseInstancesInstanceDnsName({
     required this.connectionType,
     required this.dnsScope,
     required this.name,

@@ -12,7 +12,7 @@ class NetworkSecurityPerimeterProfileState {
   /// Creates a new [NetworkSecurityPerimeterProfileState].
   /// [name] The name which should be used for this Network Security Perimeter Profile. Changing this forces a new Network Security Perimeter Profile to be created.
   /// [networkSecurityPerimeterId] The ID of the Network Security Perimeter within this Profile is created. Changing this forces a new Network Security Perimeter Profile to be created.
-  NetworkSecurityPerimeterProfileState({
+  const NetworkSecurityPerimeterProfileState({
     this.name,
     this.networkSecurityPerimeterId,
   });

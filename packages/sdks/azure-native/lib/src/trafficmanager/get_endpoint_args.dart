@@ -21,7 +21,7 @@ class GetEndpointArgs {
   /// [endpointType] The type of the Traffic Manager endpoint.
   /// [profileName] The name of the Traffic Manager profile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEndpointArgs({
+  const GetEndpointArgs({
     required this.endpointName,
     required this.endpointType,
     required this.profileName,

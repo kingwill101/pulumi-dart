@@ -44,7 +44,7 @@ class DataSharingWithGoogleSettingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Update time stamp.
-  DataSharingWithGoogleSettingState({
+  const DataSharingWithGoogleSettingState({
     this.createTime,
     this.dataSharingWithGoogleSettingId,
     this.effectiveLabels,

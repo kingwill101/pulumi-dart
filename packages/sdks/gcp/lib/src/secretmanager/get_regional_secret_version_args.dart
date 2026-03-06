@@ -29,7 +29,7 @@ class GetRegionalSecretVersionArgs {
   /// [project] The project to get the secret version for. If it
   /// [secret] The regional secret to get the secret version for.
   /// [version] The version of the regional secret to get. If it
-  GetRegionalSecretVersionArgs({
+  const GetRegionalSecretVersionArgs({
     this.isSecretDataBase64,
     this.location,
     this.project,

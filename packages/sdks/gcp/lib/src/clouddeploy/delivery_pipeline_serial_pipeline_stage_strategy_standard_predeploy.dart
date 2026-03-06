@@ -8,7 +8,7 @@ class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy {
 
   /// Creates a new [DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy].
   /// [actions] Optional. A sequence of skaffold custom actions to invoke during execution of the predeploy job.
-  DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy({
+  const DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy({
     this.actions,
   });
 

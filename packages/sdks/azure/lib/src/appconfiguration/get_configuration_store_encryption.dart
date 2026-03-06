@@ -9,7 +9,7 @@ class GetConfigurationStoreEncryption {
   /// Creates a new [GetConfigurationStoreEncryption].
   /// [identityClientId] Required.
   /// [keyVaultKeyIdentifier] Required.
-  GetConfigurationStoreEncryption({
+  const GetConfigurationStoreEncryption({
     required this.identityClientId,
     required this.keyVaultKeyIdentifier,
   });

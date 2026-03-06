@@ -68,7 +68,7 @@ class CloudSqlSettingsResponse {
   /// [tier] The tier (or machine type) for this instance, for example: `db-n1-standard-1` (MySQL instances) or `db-custom-1-3840` (PostgreSQL instances). For more information, see [Cloud SQL Instance Settings](https://cloud.google.com/sql/docs/mysql/instance-settings).
   /// [userLabels] The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "18kg", "count": "3" }`.
   /// [zone] The Google Cloud Platform zone where your Cloud SQL database instance is located.
-  CloudSqlSettingsResponse({
+  const CloudSqlSettingsResponse({
     required this.activationPolicy,
     required this.autoStorageIncrease,
     required this.availabilityType,

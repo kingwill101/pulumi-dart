@@ -22,7 +22,7 @@ class KubernetesClusterExtensionPlan {
   /// [promotionCode] Specifies the promotion code to use with the plan. Changing this forces a new Kubernetes Cluster Extension to be created.
   /// [publisher] Specifies the publisher of the plan. Changing this forces a new Kubernetes Cluster Extension to be created.
   /// [version] Specifies the version of the plan from the marketplace. Changing this forces a new Kubernetes Cluster Extension to be created.
-  KubernetesClusterExtensionPlan({
+  const KubernetesClusterExtensionPlan({
     required this.name,
     required this.product,
     this.promotionCode,

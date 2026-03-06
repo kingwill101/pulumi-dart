@@ -82,7 +82,7 @@ class SqlAssessmentSettings {
   /// [scalingFactor] Percentage of buffer that user wants on performance metrics when recommending
   /// [sizingCriterion] Assessment sizing criterion.
   /// [sqlServerLicense] SQL server license.
-  SqlAssessmentSettings({
+  const SqlAssessmentSettings({
     this.asyncCommitModeIntent,
     this.azureLocation,
     this.azureSecurityOfferingType,

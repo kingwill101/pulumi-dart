@@ -28,7 +28,7 @@ class DevCenterArgs {
   /// [projectCatalogItemSyncEnabled] Whether the project catalogs associated with projects in this Dev Center are allowed to sync catalog items. Defaults to `false`.
   /// [resourceGroupName] Specifies the name of the Resource Group within which this Dev Center should exist. Changing this forces a new Dev Center to be created.
   /// [tags] A mapping of tags which should be assigned to the Dev Center.
-  DevCenterArgs({
+  const DevCenterArgs({
     this.identity,
     this.location,
     this.name,

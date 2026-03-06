@@ -9,7 +9,7 @@ class PolicyVMTieringPolicy {
 
   /// Creates a new [PolicyVMTieringPolicy].
   /// [archivedRestorePoint] An `archived_restore_point` block as defined below.
-  PolicyVMTieringPolicy({
+  const PolicyVMTieringPolicy({
     required this.archivedRestorePoint,
   });
 

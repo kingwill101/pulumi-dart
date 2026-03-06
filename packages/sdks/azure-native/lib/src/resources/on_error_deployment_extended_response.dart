@@ -15,7 +15,7 @@ class OnErrorDeploymentExtendedResponse {
   /// [deploymentName] The deployment to be used on error case.
   /// [provisioningState] The state of the provisioning for the on error deployment.
   /// [type] The deployment on error behavior type. Possible values are LastSuccessful and SpecificDeployment.
-  OnErrorDeploymentExtendedResponse({
+  const OnErrorDeploymentExtendedResponse({
     this.deploymentName,
     required this.provisioningState,
     this.type,

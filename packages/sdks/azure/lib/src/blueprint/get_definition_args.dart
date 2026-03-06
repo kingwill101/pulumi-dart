@@ -15,7 +15,7 @@ class GetDefinitionArgs {
   /// Creates a new [GetDefinitionArgs].
   /// [name] The name of the Blueprint.
   /// [scopeId] The ID of the Subscription or Management Group, as the scope at which the blueprint definition is stored.
-  GetDefinitionArgs({
+  const GetDefinitionArgs({
     required this.name,
     required this.scopeId,
   });

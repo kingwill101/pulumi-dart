@@ -31,7 +31,7 @@ class MLTableDataResponse {
   /// [properties] The asset property dictionary.
   /// [referencedUris] Uris referenced in the MLTable definition (required for lineage)
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  MLTableDataResponse({
+  const MLTableDataResponse({
     required this.dataType,
     required this.dataUri,
     this.description,

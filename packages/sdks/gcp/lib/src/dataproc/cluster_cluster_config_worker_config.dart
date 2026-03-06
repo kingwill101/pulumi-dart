@@ -44,7 +44,7 @@ class ClusterClusterConfigWorkerConfig {
   /// [minCpuPlatform] The name of a minimum generation of CPU family
   /// [minNumInstances] The minimum number of primary worker instances to create.  If `min_num_instances` is set, cluster creation will succeed if the number of primary workers created is at least equal to the `min_num_instances` number.
   /// [numInstances] Specifies the number of worker nodes to create.
-  ClusterClusterConfigWorkerConfig({
+  const ClusterClusterConfigWorkerConfig({
     this.accelerators,
     this.diskConfig,
     this.imageUri,

@@ -23,7 +23,7 @@ class PreventionDiscoveryConfigAction {
   /// [pubSubNotification] Publish a message into the Pub/Sub topic.
   /// [publishToDataplexCatalog] Publish a portion of each profile to Dataplex Universal Catalog with the aspect type Sensitive Data Protection Profile.
   /// [tagResources] Tag the profiled resources with the specified tag values.
-  PreventionDiscoveryConfigAction({
+  const PreventionDiscoveryConfigAction({
     this.exportData,
     this.pubSubNotification,
     this.publishToDataplexCatalog,

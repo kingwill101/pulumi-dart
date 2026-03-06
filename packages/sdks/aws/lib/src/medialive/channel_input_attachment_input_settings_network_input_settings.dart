@@ -12,7 +12,7 @@ class ChannelInputAttachmentInputSettingsNetworkInputSettings {
   /// Creates a new [ChannelInputAttachmentInputSettingsNetworkInputSettings].
   /// [hlsInputSettings] Specifies HLS input settings when the uri is for a HLS manifest. See HLS Input Settings for more details.
   /// [serverValidation] Check HTTPS server certificates.
-  ChannelInputAttachmentInputSettingsNetworkInputSettings({
+  const ChannelInputAttachmentInputSettingsNetworkInputSettings({
     this.hlsInputSettings,
     this.serverValidation,
   });

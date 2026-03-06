@@ -26,7 +26,7 @@ class VirtualNodeSpecListenerHealthCheck {
   /// [protocol] Protocol for the health check request. Valid values are `http`, `http2`, `tcp` and `grpc`.
   /// [timeoutMillis] Amount of time to wait when receiving a response from the health check, in milliseconds.
   /// [unhealthyThreshold] Number of consecutive failed health checks that must occur before declaring a virtual node unhealthy.
-  VirtualNodeSpecListenerHealthCheck({
+  const VirtualNodeSpecListenerHealthCheck({
     required this.healthyThreshold,
     required this.intervalMillis,
     this.path,

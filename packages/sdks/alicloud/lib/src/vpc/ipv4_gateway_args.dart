@@ -33,7 +33,7 @@ class Ipv4GatewayArgs {
   /// [resourceGroupId] The ID of the resource group to which the instance belongs.
   /// [tags] The tags of the current resource.
   /// [vpcId] The ID of the virtual private cloud (VPC) where you want to create the IPv4 gateway. You can create only one IPv4 gateway in a VPC.
-  Ipv4GatewayArgs({
+  const Ipv4GatewayArgs({
     this.dryRun,
     this.enabled,
     this.internetMode,

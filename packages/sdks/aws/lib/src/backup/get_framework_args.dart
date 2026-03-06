@@ -18,7 +18,7 @@ class GetFrameworkArgs {
   /// [name] Backup framework name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tag key-value pair applied to those AWS resources that you want to trigger an evaluation for a rule. A maximum of one key-value pair can be provided.
-  GetFrameworkArgs({
+  const GetFrameworkArgs({
     required this.name,
     this.region,
     this.tags,

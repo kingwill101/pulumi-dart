@@ -26,7 +26,7 @@ class RoleArgs {
   /// [projectName] Project name
   /// [roleName] Role Name
   /// [type] Role type Valid values: admin/resource
-  RoleArgs({
+  const RoleArgs({
     this.policy,
     required this.projectName,
     required this.roleName,

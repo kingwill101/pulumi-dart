@@ -15,7 +15,7 @@ class ListListPendingFlowArgs {
   /// Creates a new [ListListPendingFlowArgs].
   /// [connectionName] The name for the connection that is to be requested.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListListPendingFlowArgs({
+  const ListListPendingFlowArgs({
     required this.connectionName,
     required this.resourceGroupName,
   });

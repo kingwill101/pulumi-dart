@@ -12,7 +12,7 @@ class EventSourceMappingSelfManagedKafkaEventSourceConfig {
   /// Creates a new [EventSourceMappingSelfManagedKafkaEventSourceConfig].
   /// [consumerGroupId] Kafka consumer group ID between 1 and 200 characters for use when creating this event source mapping. If one is not specified, this value will be automatically generated. See [SelfManagedKafkaEventSourceConfig Syntax](https://docs.aws.amazon.com/lambda/latest/dg/API_SelfManagedKafkaEventSourceConfig.html).
   /// [schemaRegistryConfig] Block for a Kafka schema registry setting. See below.
-  EventSourceMappingSelfManagedKafkaEventSourceConfig({
+  const EventSourceMappingSelfManagedKafkaEventSourceConfig({
     this.consumerGroupId,
     this.schemaRegistryConfig,
   });

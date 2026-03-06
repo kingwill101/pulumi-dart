@@ -10,7 +10,7 @@ class OrganizationConfigurationDatasourcesKubernetes {
 
   /// Creates a new [OrganizationConfigurationDatasourcesKubernetes].
   /// [auditLogs] Enable Kubernetes Audit Logs Monitoring automatically for new member accounts. [Kubernetes protection](https://docs.aws.amazon.com/guardduty/latest/ug/kubernetes-protection.html).
-  OrganizationConfigurationDatasourcesKubernetes({
+  const OrganizationConfigurationDatasourcesKubernetes({
     required this.auditLogs,
   });
 

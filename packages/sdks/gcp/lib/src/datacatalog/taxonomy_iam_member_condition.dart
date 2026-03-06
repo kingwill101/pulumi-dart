@@ -11,7 +11,7 @@ class TaxonomyIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  TaxonomyIamMemberCondition({
+  const TaxonomyIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

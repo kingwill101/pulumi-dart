@@ -38,7 +38,7 @@ class ScopeIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [scopeId] Used to find the parent resource to bind the IAM policy to
-  ScopeIamMemberState({
+  const ScopeIamMemberState({
     this.condition,
     this.etag,
     this.member,

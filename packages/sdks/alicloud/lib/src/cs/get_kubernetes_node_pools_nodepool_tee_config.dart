@@ -8,7 +8,7 @@ class GetKubernetesNodePoolsNodepoolTeeConfig {
 
   /// Creates a new [GetKubernetesNodePoolsNodepoolTeeConfig].
   /// [teeEnable] Specifies whether to enable confidential computing for the cluster.
-  GetKubernetesNodePoolsNodepoolTeeConfig({
+  const GetKubernetesNodePoolsNodepoolTeeConfig({
     required this.teeEnable,
   });
 

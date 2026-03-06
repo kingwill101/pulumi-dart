@@ -24,7 +24,7 @@ class GetManagementConfigurationResult {
   /// [name] Resource name.
   /// [properties] Properties for ManagementConfiguration object supported by the OperationsManagement resource provider.
   /// [type] Resource type.
-  GetManagementConfigurationResult({
+  const GetManagementConfigurationResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

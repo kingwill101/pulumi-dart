@@ -16,7 +16,7 @@ class NetworkSecurityGroupStatusResponse {
   /// [errorCode] NetworkSecurityGroup provisioning error code
   /// [errorMessage] Descriptive error message
   /// [provisioningStatus] network security group provisioning status
-  NetworkSecurityGroupStatusResponse({
+  const NetworkSecurityGroupStatusResponse({
     this.errorCode,
     this.errorMessage,
     this.provisioningStatus,

@@ -24,7 +24,7 @@ class GroupArgs {
   /// [groupName] A name for the group.
   /// [namespace] The namespace. Currently, you should set this to `default`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GroupArgs({
+  const GroupArgs({
     this.awsAccountId,
     this.description,
     required this.groupName,

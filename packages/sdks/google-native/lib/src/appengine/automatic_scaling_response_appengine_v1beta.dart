@@ -54,7 +54,7 @@ class AutomaticScalingResponseAppengineV1beta {
   /// [networkUtilization] Target scaling by network usage.
   /// [requestUtilization] Target scaling by request utilization.
   /// [standardSchedulerSettings] Scheduler settings for standard environment.
-  AutomaticScalingResponseAppengineV1beta({
+  const AutomaticScalingResponseAppengineV1beta({
     required this.coolDownPeriod,
     required this.cpuUtilization,
     required this.customMetrics,

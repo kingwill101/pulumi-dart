@@ -17,7 +17,7 @@ class GetIpamIpamPoolCidrsCidr {
   /// [id] The ID of the resource supplied above.
   /// [ipamPoolId] The ID of the IPAM pool instance.
   /// [status] The status of the resource
-  GetIpamIpamPoolCidrsCidr({
+  const GetIpamIpamPoolCidrsCidr({
     required this.cidr,
     required this.id,
     required this.ipamPoolId,

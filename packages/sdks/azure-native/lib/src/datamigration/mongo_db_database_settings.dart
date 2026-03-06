@@ -13,7 +13,7 @@ class MongoDbDatabaseSettings {
   /// Creates a new [MongoDbDatabaseSettings].
   /// [collections] The collections on the source database to migrate to the target. The keys are the unqualified names of the collections.
   /// [targetRUs] The RUs that should be configured on a CosmosDB target, or null to use the default, or 0 if throughput should not be provisioned for the database. This has no effect on non-CosmosDB targets.
-  MongoDbDatabaseSettings({
+  const MongoDbDatabaseSettings({
     required this.collections,
     this.targetRUs,
   });

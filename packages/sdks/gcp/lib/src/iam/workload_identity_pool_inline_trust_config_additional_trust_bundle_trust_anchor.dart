@@ -9,7 +9,7 @@ class WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor {
 
   /// Creates a new [WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor].
   /// [pemCertificate] PEM certificate of the PKI used for validation. Must only contain one ca
-  WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor({
+  const WorkloadIdentityPoolInlineTrustConfigAdditionalTrustBundleTrustAnchor({
     required this.pemCertificate,
   });
 

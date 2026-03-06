@@ -18,7 +18,7 @@ class SpacesBucketPolicyArgs {
   /// [bucket] The name of the bucket to which to apply the policy.
   /// [policy] The text of the policy.
   /// [region] The region where the bucket resides.
-  SpacesBucketPolicyArgs({
+  const SpacesBucketPolicyArgs({
     required this.bucket,
     required this.policy,
     required this.region,

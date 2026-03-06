@@ -47,7 +47,7 @@ class CommunityTrainingArgs {
   /// [sku] The SKU (Stock Keeping Unit) assigned to this resource.
   /// [tags] Resource tags.
   /// [zoneRedundancyEnabled] To indicate whether the Community Training instance has Zone Redundancy enabled
-  CommunityTrainingArgs({
+  const CommunityTrainingArgs({
     this.communityTrainingName,
     required this.disasterRecoveryEnabled,
     required this.identityConfiguration,

@@ -32,7 +32,7 @@ class GetFirewallEndpointAssociationResult {
   /// [state] Current state of the association.
   /// [tlsInspectionPolicy] Optional. The URL of the TlsInspectionPolicy that is being associated.
   /// [updateTime] Update time stamp
-  GetFirewallEndpointAssociationResult({
+  const GetFirewallEndpointAssociationResult({
     required this.createTime,
     required this.firewallEndpoint,
     required this.labels,

@@ -30,7 +30,7 @@ class GetPrometheusResult {
   /// [prometheis] A list of Prometheus. Each element contains the following attributes:
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the Prometheus.
-  GetPrometheusResult({
+  const GetPrometheusResult({
     this.enableDetails,
     required this.id,
     required this.ids,

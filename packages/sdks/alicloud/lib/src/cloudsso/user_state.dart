@@ -45,7 +45,7 @@ class UserState {
   /// [tags] The tag of the resource.
   /// [userId] The ID of the user.
   /// [userName] The username of the user. The username can contain digits, letters, and the following special characters: @_-. The username can be up to 64 characters in length.
-  UserState({
+  const UserState({
     this.createTime,
     this.description,
     this.directoryId,

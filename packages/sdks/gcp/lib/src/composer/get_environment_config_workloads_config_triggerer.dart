@@ -14,7 +14,7 @@ class GetEnvironmentConfigWorkloadsConfigTriggerer {
   /// [count] The number of triggerers.
   /// [cpu] CPU request and limit for a single Airflow triggerer replica.
   /// [memoryGb] Memory (GB) request and limit for a single Airflow triggerer replica.
-  GetEnvironmentConfigWorkloadsConfigTriggerer({
+  const GetEnvironmentConfigWorkloadsConfigTriggerer({
     required this.count,
     required this.cpu,
     required this.memoryGb,

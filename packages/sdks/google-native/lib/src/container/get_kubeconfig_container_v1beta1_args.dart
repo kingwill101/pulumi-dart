@@ -12,7 +12,7 @@ class GetKubeconfigContainerV1beta1Args {
 
   /// Creates a new [GetKubeconfigContainerV1beta1Args].
   /// [self] Required.
-  GetKubeconfigContainerV1beta1Args({
+  const GetKubeconfigContainerV1beta1Args({
     required this.self,
   });
 

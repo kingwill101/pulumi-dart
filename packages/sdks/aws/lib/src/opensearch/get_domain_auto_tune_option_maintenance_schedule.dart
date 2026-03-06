@@ -15,7 +15,7 @@ class GetDomainAutoTuneOptionMaintenanceSchedule {
   /// [cronExpressionForRecurrence] Cron expression for an Auto-Tune maintenance schedule.
   /// [durations] Configuration block for the duration of the Auto-Tune maintenance window.
   /// [startAt] Date and time at which the Auto-Tune maintenance schedule starts in [RFC3339 format](https://tools.ietf.org/html/rfc3339#section-5.8).
-  GetDomainAutoTuneOptionMaintenanceSchedule({
+  const GetDomainAutoTuneOptionMaintenanceSchedule({
     required this.cronExpressionForRecurrence,
     required this.durations,
     required this.startAt,

@@ -11,7 +11,7 @@ class GetLinuxFunctionAppSiteCredential {
   /// Creates a new [GetLinuxFunctionAppSiteCredential].
   /// [name] The name which should be used for this Linux Function App.
   /// [password] The Site Credentials Password used for publishing.
-  GetLinuxFunctionAppSiteCredential({
+  const GetLinuxFunctionAppSiteCredential({
     required this.name,
     required this.password,
   });

@@ -8,7 +8,7 @@ class DistributionTenantCustomizationsCertificate {
 
   /// Creates a new [DistributionTenantCustomizationsCertificate].
   /// [arn] ARN of the distribution tenant.
-  DistributionTenantCustomizationsCertificate({
+  const DistributionTenantCustomizationsCertificate({
     this.arn,
   });
 

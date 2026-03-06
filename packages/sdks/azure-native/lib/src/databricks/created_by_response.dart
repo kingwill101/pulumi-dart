@@ -15,7 +15,7 @@ class CreatedByResponse {
   /// [applicationId] The application ID of the application that initiated the creation of the workspace. For example, Azure Portal.
   /// [oid] The Object ID that created the workspace.
   /// [puid] The Personal Object ID corresponding to the object ID above
-  CreatedByResponse({
+  const CreatedByResponse({
     required this.applicationId,
     required this.oid,
     required this.puid,

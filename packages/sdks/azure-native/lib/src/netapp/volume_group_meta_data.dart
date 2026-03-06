@@ -19,7 +19,7 @@ class VolumeGroupMetaData {
   /// [applicationType] Application Type
   /// [globalPlacementRules] Application specific placement rules for the volume group
   /// [groupDescription] Group Description
-  VolumeGroupMetaData({
+  const VolumeGroupMetaData({
     this.applicationIdentifier,
     this.applicationType,
     this.globalPlacementRules,

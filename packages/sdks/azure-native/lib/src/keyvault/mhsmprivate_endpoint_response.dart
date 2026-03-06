@@ -9,7 +9,7 @@ class MHSMPrivateEndpointResponse {
 
   /// Creates a new [MHSMPrivateEndpointResponse].
   /// [id] Full identifier of the private endpoint resource.
-  MHSMPrivateEndpointResponse({
+  const MHSMPrivateEndpointResponse({
     required this.id,
   });
 

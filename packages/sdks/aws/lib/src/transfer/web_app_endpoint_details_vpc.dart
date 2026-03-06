@@ -17,7 +17,7 @@ class WebAppEndpointDetailsVpc {
   /// [subnetIds] List of subnet IDs within the VPC where the web app endpoint will be deployed. These subnets must be in the same VPC specified in the `vpc_id` parameter.
   /// [vpcEndpointId] ID of the VPC endpoint created for the web app.
   /// [vpcId] ID of the VPC where the web app endpoint will be hosted. The VPC must be dual-stack, meaning it supports both IPv4 and IPv6 addressing.
-  WebAppEndpointDetailsVpc({
+  const WebAppEndpointDetailsVpc({
     this.securityGroupIds,
     required this.subnetIds,
     this.vpcEndpointId,

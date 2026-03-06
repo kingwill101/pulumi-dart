@@ -8,7 +8,7 @@ class MonitorEnvironmentPropertyEnvironmentInfo {
 
   /// Creates a new [MonitorEnvironmentPropertyEnvironmentInfo].
   /// [environmentId] The ID of the Dynatrace environment to be created.
-  MonitorEnvironmentPropertyEnvironmentInfo({
+  const MonitorEnvironmentPropertyEnvironmentInfo({
     required this.environmentId,
   });
 

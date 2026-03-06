@@ -18,7 +18,7 @@ class GetPolicyArgs {
   /// [policyName] The policy name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The vault name.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     required this.policyName,
     required this.resourceGroupName,
     required this.vaultName,

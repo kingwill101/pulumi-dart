@@ -19,7 +19,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig {
   /// Creates a new [AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig].
   /// [disabled] (Output)
   /// [groundingLevel] (Output)
-  AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig({
+  const AppVersionSnapshotToolDataStoreToolModalityConfigGroundingConfig({
     this.disabled,
     this.groundingLevel,
   });

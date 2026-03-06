@@ -20,7 +20,7 @@ class GetParameterVersionArgs {
   /// [parameter] The parameter for obtaining the Parameter Version.
   /// [parameterVersionId] The version of the parameter to get.
   /// [project] The project for retrieving the Parameter Version. If it's not specified,
-  GetParameterVersionArgs({
+  const GetParameterVersionArgs({
     required this.parameter,
     required this.parameterVersionId,
     this.project,

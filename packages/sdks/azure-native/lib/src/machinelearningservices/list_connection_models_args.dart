@@ -15,7 +15,7 @@ class ListConnectionModelsArgs {
   /// Creates a new [ListConnectionModelsArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
-  ListConnectionModelsArgs({
+  const ListConnectionModelsArgs({
     required this.resourceGroupName,
     required this.workspaceName,
   });

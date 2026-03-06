@@ -14,7 +14,7 @@ class V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource {
   /// [kmsKeyArn] KMS key required to decrypt the contents of the grammar, if any.
   /// [s3BucketName] Name of the Amazon S3 bucket that contains the grammar source.
   /// [s3ObjectKey] Path to the grammar in the Amazon S3 bucket.
-  V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource({
+  const V2modelsSlotTypeExternalSourceSettingGrammarSlotTypeSettingSource({
     required this.kmsKeyArn,
     required this.s3BucketName,
     required this.s3ObjectKey,

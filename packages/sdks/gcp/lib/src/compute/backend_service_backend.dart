@@ -123,7 +123,7 @@ class BackendServiceBackend {
   /// [maxUtilization] Used when balancingMode is UTILIZATION. This ratio defines the
   /// [preference] This field indicates whether this backend should be fully utilized before sending traffic to backends
   /// [trafficDuration] This field specifies how long a connection should be kept alive for:
-  BackendServiceBackend({
+  const BackendServiceBackend({
     this.balancingMode,
     this.capacityScaler,
     this.customMetrics,

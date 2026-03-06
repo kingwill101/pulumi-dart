@@ -14,7 +14,7 @@ class GalleryScriptVersionProperties {
   /// Creates a new [GalleryScriptVersionProperties].
   /// [publishingProfile] The publishing profile of a gallery image version.
   /// [safetyProfile] The safety profile of the Gallery Script Version.
-  GalleryScriptVersionProperties({
+  const GalleryScriptVersionProperties({
     required this.publishingProfile,
     this.safetyProfile,
   });

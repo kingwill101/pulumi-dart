@@ -15,7 +15,7 @@ class ConsoleCreateProperties {
   /// [osType] The operating system type of the cloud shell.
   /// [provisioningState] Provisioning state of the console.
   /// [uri] Uri of the console.
-  ConsoleCreateProperties({
+  const ConsoleCreateProperties({
     required this.osType,
     this.provisioningState,
     this.uri,

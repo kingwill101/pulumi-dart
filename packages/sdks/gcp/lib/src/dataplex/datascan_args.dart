@@ -59,7 +59,7 @@ class DatascanArgs {
   /// [labels] User-defined labels for the scan. A list of key-&gt;value pairs.
   /// [location] The location where the data scan should reside.
   /// [project] The ID of the project in which the resource belongs.
-  DatascanArgs({
+  const DatascanArgs({
     required this.data,
     this.dataDiscoverySpec,
     this.dataDocumentationSpec,

@@ -14,7 +14,7 @@ class HttpLogsConfigResponse {
   /// Creates a new [HttpLogsConfigResponse].
   /// [azureBlobStorage] Http logs to azure blob storage configuration.
   /// [fileSystem] Http logs to file system configuration.
-  HttpLogsConfigResponse({
+  const HttpLogsConfigResponse({
     this.azureBlobStorage,
     this.fileSystem,
   });

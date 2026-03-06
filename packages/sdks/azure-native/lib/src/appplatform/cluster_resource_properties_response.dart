@@ -45,7 +45,7 @@ class ClusterResourcePropertiesResponse {
   /// [version] Version of the Service
   /// [vnetAddons] Additional Service settings in vnet injection instance
   /// [zoneRedundant] Optional.
-  ClusterResourcePropertiesResponse({
+  const ClusterResourcePropertiesResponse({
     required this.fqdn,
     this.infraResourceGroup,
     this.maintenanceScheduleConfiguration,

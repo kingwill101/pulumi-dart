@@ -19,7 +19,7 @@ class FrontendSetting {
   /// [frontendConfiguration] Frontend configurations
   /// [name] Settings name
   /// [protocol] Protocol Type
-  FrontendSetting({
+  const FrontendSetting({
     required this.backendConfiguration,
     required this.frontendConfiguration,
     required this.name,

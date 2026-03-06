@@ -14,7 +14,7 @@ class TableReferenceResponse {
   /// [datasetId] [Required] The ID of the dataset containing this table.
   /// [project] [Required] The ID of the project containing this table.
   /// [tableId] [Required] The ID of the table. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
-  TableReferenceResponse({
+  const TableReferenceResponse({
     required this.datasetId,
     required this.project,
     required this.tableId,

@@ -54,7 +54,7 @@ class ProfileFtpState {
   /// [port] Specifies a service for the data channel port used for this FTP profile. The default port is ftp-data.
   /// [security] Enables secure FTP traffic for the BIG-IP Application Security Manager. You can set the security option only if the system is licensed for the BIG-IP Application Security Manager. The default value is disabled.
   /// [translateExtended] This setting is enabled by default, and thus, automatically translates RFC 2428 extended requests EPSV and EPRT to PASV and PORT when communicating with IPv4 servers.
-  ProfileFtpState({
+  const ProfileFtpState({
     this.allowActiveMode,
     this.allowFtps,
     this.appService,

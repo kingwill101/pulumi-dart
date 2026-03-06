@@ -23,7 +23,7 @@ class RuntimeInfoResponse {
   /// [diagnosticOutputUri] A URI pointing to the location of the diagnostics tarball.
   /// [endpoints] Map of remote access endpoints (such as web interfaces and APIs) to their URIs.
   /// [outputUri] A URI pointing to the location of the stdout and stderr of the workload.
-  RuntimeInfoResponse({
+  const RuntimeInfoResponse({
     required this.approximateUsage,
     required this.currentUsage,
     required this.diagnosticOutputUri,

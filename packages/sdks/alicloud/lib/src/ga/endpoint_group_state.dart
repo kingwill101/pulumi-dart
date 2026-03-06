@@ -76,7 +76,7 @@ class EndpointGroupState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [thresholdCount] The number of consecutive failed heath checks that must occur before the endpoint is deemed unhealthy. Default value: `3`.
   /// [trafficPercentage] The weight of the endpoint group when the corresponding listener is associated with multiple endpoint groups.
-  EndpointGroupState({
+  const EndpointGroupState({
     this.acceleratorId,
     this.description,
     this.endpointConfigurations,

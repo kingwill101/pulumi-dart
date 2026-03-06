@@ -18,7 +18,7 @@ class GroupUserState {
   /// [groupName] The Name of the API Management Group within the API Management Service. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   /// [userId] The ID of the API Management User which should be assigned to this API Management Group. Changing this forces a new resource to be created.
-  GroupUserState({
+  const GroupUserState({
     this.apiManagementName,
     this.groupName,
     this.resourceGroupName,

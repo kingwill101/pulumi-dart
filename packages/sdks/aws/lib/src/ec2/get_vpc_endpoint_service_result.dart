@@ -62,7 +62,7 @@ class GetVpcEndpointServiceResult {
   /// [supportedIpAddressTypes] The supported IP address types.
   /// [tags] Map of tags assigned to the resource.
   /// [vpcEndpointPolicySupported] Whether or not the service supports endpoint policies - `true` or `false`.
-  GetVpcEndpointServiceResult({
+  const GetVpcEndpointServiceResult({
     required this.acceptanceRequired,
     required this.arn,
     required this.availabilityZones,

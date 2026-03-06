@@ -15,7 +15,7 @@ class HostingEnvironmentProfileResponse {
   /// [id] Resource ID of the App Service Environment.
   /// [name] Name of the App Service Environment.
   /// [type] Resource type of the App Service Environment.
-  HostingEnvironmentProfileResponse({
+  const HostingEnvironmentProfileResponse({
     this.id,
     required this.name,
     required this.type,

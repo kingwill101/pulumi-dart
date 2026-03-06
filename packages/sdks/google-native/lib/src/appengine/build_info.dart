@@ -9,7 +9,7 @@ class BuildInfo {
 
   /// Creates a new [BuildInfo].
   /// [cloudBuildId] The Google Cloud Build id. Example: "f966068f-08b2-42c8-bdfe-74137dff2bf9"
-  BuildInfo({
+  const BuildInfo({
     this.cloudBuildId,
   });
 

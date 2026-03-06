@@ -18,7 +18,7 @@ class GetSignalRCustomCertificateArgs {
   /// [certificateName] Custom certificate name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  GetSignalRCustomCertificateArgs({
+  const GetSignalRCustomCertificateArgs({
     required this.certificateName,
     required this.resourceGroupName,
     required this.resourceName,

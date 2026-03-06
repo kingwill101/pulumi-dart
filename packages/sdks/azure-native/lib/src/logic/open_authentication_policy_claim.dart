@@ -12,7 +12,7 @@ class OpenAuthenticationPolicyClaim {
   /// Creates a new [OpenAuthenticationPolicyClaim].
   /// [name] The name of the claim.
   /// [value] The value of the claim.
-  OpenAuthenticationPolicyClaim({
+  const OpenAuthenticationPolicyClaim({
     this.name,
     this.value,
   });

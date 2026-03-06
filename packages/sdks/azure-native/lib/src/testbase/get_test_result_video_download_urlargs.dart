@@ -21,7 +21,7 @@ class GetTestResultVideoDownloadURLArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
   /// [testResultName] The Test Result Name. It equals to TestResult-{TestResultId} string.
-  GetTestResultVideoDownloadURLArgs({
+  const GetTestResultVideoDownloadURLArgs({
     required this.packageName,
     required this.resourceGroupName,
     required this.testBaseAccountName,

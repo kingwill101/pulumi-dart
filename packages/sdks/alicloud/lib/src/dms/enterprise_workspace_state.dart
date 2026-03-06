@@ -18,7 +18,7 @@ class EnterpriseWorkspaceState {
   /// [regionId] The region ID of the resource.
   /// [vpcId] The ID of the VPC.
   /// [workspaceName] The name of the Workspace.
-  EnterpriseWorkspaceState({
+  const EnterpriseWorkspaceState({
     this.description,
     this.regionId,
     this.vpcId,

@@ -11,7 +11,7 @@ class InstanceFromTemplateSchedulingNodeAffinity {
   /// [key] Required.
   /// [operator] Required.
   /// [values] Required.
-  InstanceFromTemplateSchedulingNodeAffinity({
+  const InstanceFromTemplateSchedulingNodeAffinity({
     required this.key,
     required this.operator,
     required this.values,

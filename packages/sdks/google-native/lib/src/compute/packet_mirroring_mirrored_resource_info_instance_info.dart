@@ -8,7 +8,7 @@ class PacketMirroringMirroredResourceInfoInstanceInfo {
 
   /// Creates a new [PacketMirroringMirroredResourceInfoInstanceInfo].
   /// [url] Resource URL to the virtual machine instance which is being mirrored.
-  PacketMirroringMirroredResourceInfoInstanceInfo({
+  const PacketMirroringMirroredResourceInfoInstanceInfo({
     this.url,
   });
 

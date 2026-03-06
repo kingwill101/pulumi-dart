@@ -17,7 +17,7 @@ class DeploymentGroupLoadBalancerInfo {
   /// [elbInfos] The Classic Elastic Load Balancer to use in a deployment. Conflicts with `target_group_info` and `target_group_pair_info`.
   /// [targetGroupInfos] The (Application/Network Load Balancer) target group to use in a deployment. Conflicts with `elb_info` and `target_group_pair_info`.
   /// [targetGroupPairInfo] The (Application/Network Load Balancer) target group pair to use in a deployment. Conflicts with `elb_info` and `target_group_info`.
-  DeploymentGroupLoadBalancerInfo({
+  const DeploymentGroupLoadBalancerInfo({
     this.elbInfos,
     this.targetGroupInfos,
     this.targetGroupPairInfo,

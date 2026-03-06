@@ -13,7 +13,7 @@ class GetGradientaiRegionsFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGradientaiRegionsFilter({
+  const GetGradientaiRegionsFilter({
     this.all,
     required this.key,
     this.matchBy,

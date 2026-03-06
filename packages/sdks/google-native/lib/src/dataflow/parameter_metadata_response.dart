@@ -43,7 +43,7 @@ class ParameterMetadataResponse {
   /// [parentName] Optional. Specifies the name of the parent parameter. Used in conjunction with 'parent_trigger_values' to make this parameter conditional (will only be rendered conditionally). Should be mappable to a ParameterMetadata.name field.
   /// [parentTriggerValues] Optional. The value(s) of the 'parent_name' parameter which will trigger this parameter to be shown. If left empty, ANY non-empty value in parent_name will trigger this parameter to be shown. Only considered when this parameter is conditional (when 'parent_name' has been provided).
   /// [regexes] Optional. Regexes that the parameter must match.
-  ParameterMetadataResponse({
+  const ParameterMetadataResponse({
     required this.customMetadata,
     required this.defaultValue,
     required this.enumOptions,

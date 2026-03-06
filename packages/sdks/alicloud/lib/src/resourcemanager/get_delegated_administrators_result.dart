@@ -22,7 +22,7 @@ class GetDelegatedAdministratorsResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [servicePrincipal] Optional.
-  GetDelegatedAdministratorsResult({
+  const GetDelegatedAdministratorsResult({
     required this.administrators,
     required this.id,
     required this.ids,

@@ -32,7 +32,7 @@ class DataShareConsumerAssociationState {
   /// [managedBy] Identifier of a datashare to show its managing entity.
   /// [producerArn] Amazon Resource Name (ARN) of the producer.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DataShareConsumerAssociationState({
+  const DataShareConsumerAssociationState({
     this.allowWrites,
     this.associateEntireAccount,
     this.consumerArn,

@@ -17,7 +17,7 @@ class WorkgroupConfigurationMonitoringConfiguration {
   /// [cloudWatchLoggingConfiguration] Configuration block for delivering logs to Amazon CloudWatch log groups. See CloudWatch Logging Configuration below.
   /// [managedLoggingConfiguration] Configuration block for managed log persistence. See Managed Logging Configuration below.
   /// [s3LoggingConfiguration] Configuration block for delivering logs to Amazon S3 buckets. See S3 Logging Configuration below.
-  WorkgroupConfigurationMonitoringConfiguration({
+  const WorkgroupConfigurationMonitoringConfiguration({
     this.cloudWatchLoggingConfiguration,
     this.managedLoggingConfiguration,
     this.s3LoggingConfiguration,

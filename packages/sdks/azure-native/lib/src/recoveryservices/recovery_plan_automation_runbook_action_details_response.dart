@@ -19,7 +19,7 @@ class RecoveryPlanAutomationRunbookActionDetailsResponse {
   /// [instanceType] Gets the type of action details (see RecoveryPlanActionDetailsTypes enum for possible values).
   /// [runbookId] The runbook ARM Id.
   /// [timeout] The runbook timeout.
-  RecoveryPlanAutomationRunbookActionDetailsResponse({
+  const RecoveryPlanAutomationRunbookActionDetailsResponse({
     required this.fabricLocation,
     required this.instanceType,
     this.runbookId,

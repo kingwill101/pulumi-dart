@@ -18,7 +18,7 @@ class GetIpFirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] The IP firewall rule name
   /// [workspaceName] The name of the workspace.
-  GetIpFirewallRuleArgs({
+  const GetIpFirewallRuleArgs({
     required this.resourceGroupName,
     required this.ruleName,
     required this.workspaceName,

@@ -15,7 +15,7 @@ class GroupSubscriptionAssociationArgs {
   /// Creates a new [GroupSubscriptionAssociationArgs].
   /// [managementGroupId] The ID of the Management Group to associate the Subscription with. Changing this forces a new Management to be created.
   /// [subscriptionId] The ID of the Subscription to be associated with the Management Group. Changing this forces a new Management to be created.
-  GroupSubscriptionAssociationArgs({
+  const GroupSubscriptionAssociationArgs({
     required this.managementGroupId,
     required this.subscriptionId,
   });

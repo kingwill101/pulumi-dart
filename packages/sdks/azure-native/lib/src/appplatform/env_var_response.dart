@@ -15,7 +15,7 @@ class EnvVarResponse {
   /// [name] Environment variable name.
   /// [secretValue] secret environment variable value.
   /// [value] Non-secret environment variable value.
-  EnvVarResponse({
+  const EnvVarResponse({
     this.name,
     this.secretValue,
     this.value,

@@ -28,7 +28,7 @@ class AvailabilitySetArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags
   /// [vmmServerId] ARM Id of the vmmServer resource in which this resource resides.
-  AvailabilitySetArgs({
+  const AvailabilitySetArgs({
     this.availabilitySetName,
     this.extendedLocation,
     this.location,

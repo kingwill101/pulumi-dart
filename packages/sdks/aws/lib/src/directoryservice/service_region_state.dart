@@ -28,7 +28,7 @@ class ServiceRegionState {
   /// [tags] Map of tags to assign to this resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vpcSettings] VPC information in the replicated Region. Detailed below.
-  ServiceRegionState({
+  const ServiceRegionState({
     this.desiredNumberOfDomainControllers,
     this.directoryId,
     this.region,

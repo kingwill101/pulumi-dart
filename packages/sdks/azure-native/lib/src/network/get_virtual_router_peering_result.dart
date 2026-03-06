@@ -29,7 +29,7 @@ class GetVirtualRouterPeeringResult {
   /// [peerIp] Peer IP.
   /// [provisioningState] The provisioning state of the resource.
   /// [type] Peering type.
-  GetVirtualRouterPeeringResult({
+  const GetVirtualRouterPeeringResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

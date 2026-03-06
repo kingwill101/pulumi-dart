@@ -21,7 +21,7 @@ class GetOutboundRuleArgs {
   /// [managedNetworkName] Name of the managedNetwork associated with the cognitive services account. Only 'default' is supported.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] Name of the cognitive services account managed network outbound rule
-  GetOutboundRuleArgs({
+  const GetOutboundRuleArgs({
     required this.accountName,
     required this.managedNetworkName,
     required this.resourceGroupName,

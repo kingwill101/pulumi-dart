@@ -30,7 +30,7 @@ class VirtualRouterPeeringArgs {
   /// [peeringName] The name of the Virtual Router Peering.
   /// [resourceGroupName] The name of the resource group.
   /// [virtualRouterName] The name of the Virtual Router.
-  VirtualRouterPeeringArgs({
+  const VirtualRouterPeeringArgs({
     this.id,
     this.name,
     this.peerAsn,

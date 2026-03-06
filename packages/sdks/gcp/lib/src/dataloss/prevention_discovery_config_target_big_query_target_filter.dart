@@ -18,7 +18,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilter {
   /// [otherTables] Catch-all. This should always be the last filter in the list because anything above it will apply first.
   /// [tableReference] The table to scan. Discovery configurations including this can only include one DiscoveryTarget (the DiscoveryTarget with this TableReference).
   /// [tables] A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config.
-  PreventionDiscoveryConfigTargetBigQueryTargetFilter({
+  const PreventionDiscoveryConfigTargetBigQueryTargetFilter({
     this.otherTables,
     this.tableReference,
     this.tables,

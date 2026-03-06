@@ -10,7 +10,7 @@ class NodeSettingsResponse {
 
   /// Creates a new [NodeSettingsResponse].
   /// [common] Some settings.
-  NodeSettingsResponse({
+  const NodeSettingsResponse({
     required this.common,
   });
 

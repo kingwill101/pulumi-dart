@@ -12,7 +12,7 @@ class CassandraClusterIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Cassandra Cluster. The only possible value is `SystemAssigned`.
-  CassandraClusterIdentity({
+  const CassandraClusterIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

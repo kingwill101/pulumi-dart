@@ -15,7 +15,7 @@ class ListClusterStreamingJobsArgs {
   /// Creates a new [ListClusterStreamingJobsArgs].
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListClusterStreamingJobsArgs({
+  const ListClusterStreamingJobsArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

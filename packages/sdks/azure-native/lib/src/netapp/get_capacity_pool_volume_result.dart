@@ -208,7 +208,7 @@ class GetCapacityPoolVolumeResult {
   /// [volumeSpecName] Volume spec name is the application specific designation or identifier for the particular volume in a volume group for e.g. data, log
   /// [volumeType] What type of volume is this. For destination volumes in Cross Region Replication, set type to DataProtection
   /// [zones] Availability Zone
-  GetCapacityPoolVolumeResult({
+  const GetCapacityPoolVolumeResult({
     required this.actualThroughputMibps,
     this.avsDataStore,
     required this.azureApiVersion,

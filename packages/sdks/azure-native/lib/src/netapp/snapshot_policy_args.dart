@@ -43,7 +43,7 @@ class SnapshotPolicyArgs {
   /// [snapshotPolicyName] The name of the snapshot policy
   /// [tags] Resource tags.
   /// [weeklySchedule] Schedule for weekly snapshots
-  SnapshotPolicyArgs({
+  const SnapshotPolicyArgs({
     required this.accountName,
     this.dailySchedule,
     this.enabled,

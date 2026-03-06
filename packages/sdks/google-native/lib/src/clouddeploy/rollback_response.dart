@@ -9,7 +9,7 @@ class RollbackResponse {
 
   /// Creates a new [RollbackResponse].
   /// [destinationPhase] Optional. The starting phase ID for the `Rollout`. If unspecified, the `Rollout` will start in the stable phase.
-  RollbackResponse({
+  const RollbackResponse({
     required this.destinationPhase,
   });
 

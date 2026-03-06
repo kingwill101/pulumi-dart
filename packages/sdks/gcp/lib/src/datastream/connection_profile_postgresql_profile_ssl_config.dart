@@ -17,7 +17,7 @@ class ConnectionProfilePostgresqlProfileSslConfig {
   /// Creates a new [ConnectionProfilePostgresqlProfileSslConfig].
   /// [serverAndClientVerification] If this field is set, the communication will be encrypted with TLS encryption
   /// [serverVerification] If this field is set, the communication will be encrypted with TLS encryption
-  ConnectionProfilePostgresqlProfileSslConfig({
+  const ConnectionProfilePostgresqlProfileSslConfig({
     this.serverAndClientVerification,
     this.serverVerification,
   });

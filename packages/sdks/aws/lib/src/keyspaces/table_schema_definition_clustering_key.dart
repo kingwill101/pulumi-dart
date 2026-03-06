@@ -11,7 +11,7 @@ class TableSchemaDefinitionClusteringKey {
   /// Creates a new [TableSchemaDefinitionClusteringKey].
   /// [name] The name of the clustering key column.
   /// [orderBy] The order modifier. Valid values: `ASC`, `DESC`.
-  TableSchemaDefinitionClusteringKey({
+  const TableSchemaDefinitionClusteringKey({
     required this.name,
     required this.orderBy,
   });

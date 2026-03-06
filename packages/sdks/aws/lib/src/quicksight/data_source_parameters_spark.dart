@@ -11,7 +11,7 @@ class DataSourceParametersSpark {
   /// Creates a new [DataSourceParametersSpark].
   /// [host] The host to which to connect.
   /// [port] The warehouse to which to connect.
-  DataSourceParametersSpark({
+  const DataSourceParametersSpark({
     required this.host,
     required this.port,
   });

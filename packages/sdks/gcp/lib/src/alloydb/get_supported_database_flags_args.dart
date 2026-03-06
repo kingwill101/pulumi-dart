@@ -15,7 +15,7 @@ class GetSupportedDatabaseFlagsArgs {
   /// Creates a new [GetSupportedDatabaseFlagsArgs].
   /// [location] The canonical id of the location. For example: `us-east1`.
   /// [project] The ID of the project.
-  GetSupportedDatabaseFlagsArgs({
+  const GetSupportedDatabaseFlagsArgs({
     required this.location,
     this.project,
   });

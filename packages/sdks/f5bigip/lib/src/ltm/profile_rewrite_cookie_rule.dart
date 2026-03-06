@@ -16,7 +16,7 @@ class ProfileRewriteCookieRule {
   /// [ruleName] Name of the cookie rewrite rule.
   /// [serverDomain] Required.
   /// [serverPath] Required.
-  ProfileRewriteCookieRule({
+  const ProfileRewriteCookieRule({
     required this.clientDomain,
     required this.clientPath,
     required this.ruleName,

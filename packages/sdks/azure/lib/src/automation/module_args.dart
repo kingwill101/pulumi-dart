@@ -22,7 +22,7 @@ class ModuleArgs {
   /// [moduleLink] A `module_link` block as defined below.
   /// [name] Specifies the name of the Module. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the Module is created. Changing this forces a new resource to be created.
-  ModuleArgs({
+  const ModuleArgs({
     required this.automationAccountName,
     required this.moduleLink,
     this.name,

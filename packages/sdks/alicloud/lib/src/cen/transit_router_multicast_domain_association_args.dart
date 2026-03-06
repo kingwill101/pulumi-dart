@@ -18,7 +18,7 @@ class TransitRouterMulticastDomainAssociationArgs {
   /// [transitRouterAttachmentId] The ID of the VPC connection.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain.
   /// [vswitchId] The ID of the vSwitch.
-  TransitRouterMulticastDomainAssociationArgs({
+  const TransitRouterMulticastDomainAssociationArgs({
     required this.transitRouterAttachmentId,
     required this.transitRouterMulticastDomainId,
     required this.vswitchId,

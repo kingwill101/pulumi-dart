@@ -14,7 +14,7 @@ class AwsGovcloudIntegrationsSns {
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor
   /// [fetchExtendedInventory] Determine if extra inventory data be collected or not. May affect total data collection time and contribute to the Cloud provider API rate limit.
   /// [metricsPollingInterval] The data polling interval in seconds
-  AwsGovcloudIntegrationsSns({
+  const AwsGovcloudIntegrationsSns({
     this.awsRegions,
     this.fetchExtendedInventory,
     this.metricsPollingInterval,

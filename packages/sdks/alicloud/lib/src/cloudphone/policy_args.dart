@@ -31,7 +31,7 @@ class PolicyArgs {
   /// [policyGroupName] The policy name.
   /// [resolutionHeight] The height of the resolution. Unit: Pixels.
   /// [resolutionWidth] The width of the resolution. Unit: Pixels.
-  PolicyArgs({
+  const PolicyArgs({
     this.cameraRedirect,
     this.clipboard,
     this.lockResolution,

@@ -38,7 +38,7 @@ class ServiceTerminalCondition {
   /// [severity] (Output)
   /// [state] (Output)
   /// [type] (Output)
-  ServiceTerminalCondition({
+  const ServiceTerminalCondition({
     this.executionReason,
     this.lastTransitionTime,
     this.message,

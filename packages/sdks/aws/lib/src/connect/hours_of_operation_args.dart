@@ -31,7 +31,7 @@ class HoursOfOperationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the Hours of Operation. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeZone] Specifies the time zone of the Hours of Operation.
-  HoursOfOperationArgs({
+  const HoursOfOperationArgs({
     required this.configs,
     this.description,
     required this.instanceId,

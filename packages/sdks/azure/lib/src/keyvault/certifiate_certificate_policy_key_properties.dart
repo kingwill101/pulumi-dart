@@ -20,7 +20,7 @@ class CertifiateCertificatePolicyKeyProperties {
   /// [keySize] The size of the key used in the certificate. Possible values include `2048`, `3072`, and `4096` for `RSA` keys, or `256`, `384`, and `521` for `EC` keys. This property is required when using RSA keys.
   /// [keyType] Specifies the type of key. Possible values are `EC`, `EC-HSM`, `RSA`, `RSA-HSM` and `oct`.
   /// [reuseKey] Is the key reusable?
-  CertifiateCertificatePolicyKeyProperties({
+  const CertifiateCertificatePolicyKeyProperties({
     this.curve,
     required this.exportable,
     this.keySize,

@@ -14,7 +14,7 @@ class CloudControlRuleCelExpression {
   /// Creates a new [CloudControlRuleCelExpression].
   /// [expression] Logic expression in CEL language.
   /// [resourceTypesValues] A list of strings.
-  CloudControlRuleCelExpression({
+  const CloudControlRuleCelExpression({
     required this.expression,
     this.resourceTypesValues,
   });

@@ -12,7 +12,7 @@ class DatasetAccessEntry {
   /// Creates a new [DatasetAccessEntry].
   /// [dataset] [Required] The dataset this entry applies to.
   /// [targetTypes] Optional.
-  DatasetAccessEntry({
+  const DatasetAccessEntry({
     this.dataset,
     this.targetTypes,
   });

@@ -30,7 +30,7 @@ class InstanceInfoResponseNetworkmanagementV1beta1 {
   /// [networkUri] URI of a Compute Engine network.
   /// [serviceAccount] Service account authorized for the instance.
   /// [uri] URI of a Compute Engine instance.
-  InstanceInfoResponseNetworkmanagementV1beta1({
+  const InstanceInfoResponseNetworkmanagementV1beta1({
     required this.displayName,
     required this.externalIp,
     required this.interface,

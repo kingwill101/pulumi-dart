@@ -62,7 +62,7 @@ class JSONPatchPatch {
 
   /// Creates a new [JSONPatchPatch].
   /// [expression] expression will be evaluated by CEL to create a [JSON patch](https://jsonpatch.com/). ref: https://github.com/google/cel-spec
-  JSONPatchPatch({
+  const JSONPatchPatch({
     this.expression,
   });
 

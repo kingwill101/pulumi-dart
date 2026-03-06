@@ -25,7 +25,7 @@ class GetInstancesResult {
   /// [instances] A list of DRDS instances.
   /// [nameRegex] Optional.
   /// [outputFile] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.descriptionRegex,
     required this.descriptions,
     required this.id,

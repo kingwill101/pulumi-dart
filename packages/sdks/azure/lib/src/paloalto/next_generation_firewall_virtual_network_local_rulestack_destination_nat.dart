@@ -19,7 +19,7 @@ class NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNat {
   /// [frontendConfig] A `frontend_config` block as defined below.
   /// [name] The name which should be used for this Destination NAT.
   /// [protocol] The Protocol for this Destination NAT configuration. Possible values include `TCP` and `UDP`.
-  NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNat({
+  const NextGenerationFirewallVirtualNetworkLocalRulestackDestinationNat({
     this.backendConfig,
     this.frontendConfig,
     required this.name,

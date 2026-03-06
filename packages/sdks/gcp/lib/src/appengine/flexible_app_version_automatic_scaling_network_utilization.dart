@@ -17,7 +17,7 @@ class FlexibleAppVersionAutomaticScalingNetworkUtilization {
   /// [targetReceivedPacketsPerSecond] Target packets received per second.
   /// [targetSentBytesPerSecond] Target bytes sent per second.
   /// [targetSentPacketsPerSecond] Target packets sent per second.
-  FlexibleAppVersionAutomaticScalingNetworkUtilization({
+  const FlexibleAppVersionAutomaticScalingNetworkUtilization({
     this.targetReceivedBytesPerSecond,
     this.targetReceivedPacketsPerSecond,
     this.targetSentBytesPerSecond,

@@ -14,7 +14,7 @@ class Replication {
   /// Creates a new [Replication].
   /// [automatic] The Secret will automatically be replicated without any restrictions.
   /// [userManaged] The Secret will only be replicated into the locations specified.
-  Replication({
+  const Replication({
     this.automatic,
     this.userManaged,
   });

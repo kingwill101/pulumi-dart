@@ -12,7 +12,7 @@ class TargetLocation {
   /// Creates a new [TargetLocation].
   /// [accountKey] Storage Account Key.
   /// [storageAccountResourceId] Resource Id of the storage account copying backups.
-  TargetLocation({
+  const TargetLocation({
     this.accountKey,
     this.storageAccountResourceId,
   });

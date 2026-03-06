@@ -16,7 +16,7 @@ class GetInstanceTypesArgs {
   /// Creates a new [GetInstanceTypesArgs].
   /// [filters] One or more configuration blocks containing name-values filters. See the [EC2 API Reference](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeInstanceTypes.html) for supported filters. Detailed below.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetInstanceTypesArgs({
+  const GetInstanceTypesArgs({
     this.filters,
     this.region,
   });

@@ -12,7 +12,7 @@ class CustomErrorRule {
   /// Creates a new [CustomErrorRule].
   /// [isErrorType] Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload.
   /// [selector] Selects messages to which this rule applies. Refer to selector for syntax details.
-  CustomErrorRule({
+  const CustomErrorRule({
     this.isErrorType,
     this.selector,
   });

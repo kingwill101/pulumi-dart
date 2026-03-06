@@ -8,7 +8,7 @@ class FeatureMembershipConfigmanagementPolicyControllerMonitoring {
 
   /// Creates a new [FeatureMembershipConfigmanagementPolicyControllerMonitoring].
   /// [backends] Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
-  FeatureMembershipConfigmanagementPolicyControllerMonitoring({
+  const FeatureMembershipConfigmanagementPolicyControllerMonitoring({
     this.backends,
   });
 

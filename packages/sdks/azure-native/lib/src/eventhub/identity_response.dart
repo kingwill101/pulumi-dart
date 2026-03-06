@@ -19,7 +19,7 @@ class IdentityResponse {
   /// [tenantId] TenantId from the KeyVault
   /// [type] Type of managed service identity.
   /// [userAssignedIdentities] Properties for User Assigned Identities
-  IdentityResponse({
+  const IdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

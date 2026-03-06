@@ -39,7 +39,7 @@ class GetRuntimeEnvironmentResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Version of Language
-  GetRuntimeEnvironmentResult({
+  const GetRuntimeEnvironmentResult({
     required this.azureApiVersion,
     this.defaultPackages,
     this.description,

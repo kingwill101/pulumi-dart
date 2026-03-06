@@ -39,7 +39,7 @@ class GetResponsePlanResult {
   /// [name] The name of the PagerDuty configuration.
   /// [region] Required.
   /// [tags] The tags applied to the response plan.
-  GetResponsePlanResult({
+  const GetResponsePlanResult({
     required this.actions,
     required this.arn,
     required this.chatChannels,

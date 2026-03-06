@@ -15,7 +15,7 @@ class ServicePrincipalClaimsMappingPolicyAssignmentArgs {
   /// Creates a new [ServicePrincipalClaimsMappingPolicyAssignmentArgs].
   /// [claimsMappingPolicyId] The ID of the claims mapping policy to assign.
   /// [servicePrincipalId] The ID of the service principal for the policy assignment.
-  ServicePrincipalClaimsMappingPolicyAssignmentArgs({
+  const ServicePrincipalClaimsMappingPolicyAssignmentArgs({
     required this.claimsMappingPolicyId,
     required this.servicePrincipalId,
   });

@@ -26,7 +26,7 @@ class MacsecKeyAssociationArgs {
   /// [connectionId] The ID of the dedicated Direct Connect connection. The connection must be a dedicated connection in the `AVAILABLE` state.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [secretArn] The Amazon Resource Name (ARN) of the MAC Security (MACsec) secret key to associate with the dedicated connection.
-  MacsecKeyAssociationArgs({
+  const MacsecKeyAssociationArgs({
     this.cak,
     this.ckn,
     required this.connectionId,

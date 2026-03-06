@@ -48,7 +48,7 @@ class GetL2IsolationDomainResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vlanId] Vlan Identifier of the Network Fabric. Example: 501.
-  GetL2IsolationDomainResult({
+  const GetL2IsolationDomainResult({
     required this.administrativeState,
     this.annotation,
     required this.azureApiVersion,

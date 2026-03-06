@@ -26,7 +26,7 @@ class AggregateV2State {
   /// [name] The name of the Host Aggregate
   /// [region] The region in which to create the Host Aggregate. If
   /// [zone] The name of the Availability Zone to use. If ommited, it will take the default
-  AggregateV2State({
+  const AggregateV2State({
     this.hosts,
     this.metadata,
     this.name,

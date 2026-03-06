@@ -31,7 +31,7 @@ class GetWorkloadIdentityPoolResult {
   /// [project] Optional.
   /// [state] Required.
   /// [workloadIdentityPoolId] Required.
-  GetWorkloadIdentityPoolResult({
+  const GetWorkloadIdentityPoolResult({
     required this.description,
     required this.disabled,
     required this.displayName,

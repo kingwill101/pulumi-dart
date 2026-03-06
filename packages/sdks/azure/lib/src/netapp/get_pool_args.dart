@@ -18,7 +18,7 @@ class GetPoolArgs {
   /// [accountName] The name of the NetApp account where the NetApp pool exists.
   /// [name] The name of the NetApp Pool.
   /// [resourceGroupName] The Name of the Resource Group where the NetApp Pool exists.
-  GetPoolArgs({
+  const GetPoolArgs({
     required this.accountName,
     required this.name,
     required this.resourceGroupName,

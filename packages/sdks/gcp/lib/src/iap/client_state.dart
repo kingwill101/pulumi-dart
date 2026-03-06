@@ -21,7 +21,7 @@ class ClientState {
   /// [clientId] Output only. Unique identifier of the OAuth client.
   /// [displayName] Human-friendly name given to the OAuth client.
   /// [secret] Output only. Client secret of the OAuth client.
-  ClientState({
+  const ClientState({
     this.brand,
     this.clientId,
     this.displayName,

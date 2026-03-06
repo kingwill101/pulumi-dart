@@ -32,7 +32,7 @@ class NetworkConfiguration {
   /// [l2ServiceLoadBalancerConfiguration] The configuration of the Layer 2 service load balancer for this Kubernetes cluster. A maximum of one service load balancer may be specified, either Layer 2 or BGP.
   /// [podCidrs] The CIDR notation IP ranges from which to assign pod IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
   /// [serviceCidrs] The CIDR notation IP ranges from which to assign service IPs. One IPv4 CIDR is expected for single-stack networking. Two CIDRs, one for each IP family (IPv4/IPv6), is expected for dual-stack networking.
-  NetworkConfiguration({
+  const NetworkConfiguration({
     this.attachedNetworkConfiguration,
     this.bgpServiceLoadBalancerConfiguration,
     required this.cloudServicesNetworkId,

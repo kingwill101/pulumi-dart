@@ -25,7 +25,7 @@ class ScheduleTriggerRecurrenceResponse {
   /// [schedule] The recurrence schedule.
   /// [startTime] The start time.
   /// [timeZone] The time zone.
-  ScheduleTriggerRecurrenceResponse({
+  const ScheduleTriggerRecurrenceResponse({
     this.endTime,
     this.frequency,
     this.interval,

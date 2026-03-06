@@ -17,7 +17,7 @@ class GetFederationIamPolicyMetastoreV1betaArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetFederationIamPolicyMetastoreV1betaArgs({
+  const GetFederationIamPolicyMetastoreV1betaArgs({
     required this.federationId,
     required this.location,
     this.optionsRequestedPolicyVersion,

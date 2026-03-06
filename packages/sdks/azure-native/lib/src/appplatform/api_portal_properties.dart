@@ -25,7 +25,7 @@ class ApiPortalProperties {
   /// [public] Indicates whether the API portal exposes endpoint.
   /// [sourceUrls] Collection of OpenAPI source URL locations.
   /// [ssoProperties] Single sign-on related configuration
-  ApiPortalProperties({
+  const ApiPortalProperties({
     this.apiTryOutEnabledState,
     this.gatewayIds,
     this.httpsOnly,

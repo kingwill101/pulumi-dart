@@ -26,7 +26,7 @@ class IndexArgs {
   /// [registry] Authentication for the registry where the tagged index will be pushed.
   /// [sources] Existing images to include in the index.
   /// [tag] The tag to apply to the index.
-  IndexArgs({
+  const IndexArgs({
     this.push,
     this.registry,
     required this.sources,

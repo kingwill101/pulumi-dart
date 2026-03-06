@@ -8,7 +8,7 @@ class ListenerCertificate {
 
   /// Creates a new [ListenerCertificate].
   /// [id] The id of the certificate.
-  ListenerCertificate({
+  const ListenerCertificate({
     this.id,
   });
 

@@ -11,7 +11,7 @@ class RRSetRoutingPolicyWrrPolicyDnsV1beta2 {
   /// Creates a new [RRSetRoutingPolicyWrrPolicyDnsV1beta2].
   /// [items] Optional.
   /// [kind] Optional.
-  RRSetRoutingPolicyWrrPolicyDnsV1beta2({
+  const RRSetRoutingPolicyWrrPolicyDnsV1beta2({
     this.items,
     this.kind,
   });

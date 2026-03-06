@@ -13,7 +13,7 @@ class GetPoliciesResult {
   /// [filter] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] List of all the policy ids found.
-  GetPoliciesResult({
+  const GetPoliciesResult({
     required this.filter,
     required this.id,
     required this.ids,

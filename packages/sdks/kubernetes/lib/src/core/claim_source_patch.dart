@@ -20,7 +20,7 @@ class ClaimSourcePatch {
   /// Creates a new [ClaimSourcePatch].
   /// [resourceClaimName] ResourceClaimName is the name of a ResourceClaim object in the same namespace as this pod.
   /// [resourceClaimTemplateName] ResourceClaimTemplateName is the name of a ResourceClaimTemplate object in the same namespace as this pod.
-  ClaimSourcePatch({
+  const ClaimSourcePatch({
     this.resourceClaimName,
     this.resourceClaimTemplateName,
   });

@@ -8,7 +8,7 @@ class GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2 {
 
   /// Creates a new [GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2].
   /// [clientId] The OAuth 2.0 client ID that was created for the app used for authentication.
-  GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2({
+  const GetLinuxFunctionAppAuthSettingsV2AzureStaticWebAppV2({
     required this.clientId,
   });
 

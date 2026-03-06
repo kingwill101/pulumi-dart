@@ -15,7 +15,7 @@ class VirtualNetworkRule {
   /// [id] Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
   /// [ignoreMissingVnetServiceEndpoint] Ignore missing vnet service endpoint or not.
   /// [state] Gets the state of virtual network rule.
-  VirtualNetworkRule({
+  const VirtualNetworkRule({
     required this.id,
     this.ignoreMissingVnetServiceEndpoint,
     this.state,

@@ -11,7 +11,7 @@ class CacheIdentityResponseUserAssignedIdentities {
   /// Creates a new [CacheIdentityResponseUserAssignedIdentities].
   /// [clientId] The client ID of the user-assigned identity.
   /// [principalId] The principal ID of the user-assigned identity.
-  CacheIdentityResponseUserAssignedIdentities({
+  const CacheIdentityResponseUserAssignedIdentities({
     required this.clientId,
     required this.principalId,
   });

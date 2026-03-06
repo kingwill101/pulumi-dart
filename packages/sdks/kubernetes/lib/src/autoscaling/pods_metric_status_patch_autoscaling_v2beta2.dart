@@ -14,7 +14,7 @@ class PodsMetricStatusPatchAutoscalingV2beta2 {
   /// Creates a new [PodsMetricStatusPatchAutoscalingV2beta2].
   /// [current] current contains the current value for the given metric
   /// [metric] metric identifies the target metric by name and selector
-  PodsMetricStatusPatchAutoscalingV2beta2({
+  const PodsMetricStatusPatchAutoscalingV2beta2({
     this.current,
     this.metric,
   });

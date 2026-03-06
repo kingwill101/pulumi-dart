@@ -28,7 +28,7 @@ class RosettaNetPipRoleSettingsResponse {
   /// [roleType] The RosettaNet ProcessConfiguration role type.
   /// [service] The service name.
   /// [serviceClassification] The service classification name.
-  RosettaNetPipRoleSettingsResponse({
+  const RosettaNetPipRoleSettingsResponse({
     required this.action,
     required this.businessDocument,
     this.description,

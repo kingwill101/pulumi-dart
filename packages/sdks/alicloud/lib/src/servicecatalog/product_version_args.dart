@@ -30,7 +30,7 @@ class ProductVersionArgs {
   /// [productVersionName] The name of the resource
   /// [templateType] Template Type
   /// [templateUrl] Template URL
-  ProductVersionArgs({
+  const ProductVersionArgs({
     this.active,
     this.description,
     this.guidance,

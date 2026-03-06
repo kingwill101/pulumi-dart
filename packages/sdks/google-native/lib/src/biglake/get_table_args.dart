@@ -19,7 +19,7 @@ class GetTableArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [tableId] Required.
-  GetTableArgs({
+  const GetTableArgs({
     required this.catalogId,
     required this.databaseId,
     required this.location,

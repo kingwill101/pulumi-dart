@@ -8,7 +8,7 @@ class TopicRuleErrorActionLambda {
 
   /// Creates a new [TopicRuleErrorActionLambda].
   /// [functionArn] The ARN of the Lambda function.
-  TopicRuleErrorActionLambda({
+  const TopicRuleErrorActionLambda({
     required this.functionArn,
   });
 

@@ -10,7 +10,7 @@ class PartnerContentResponse {
 
   /// Creates a new [PartnerContentResponse].
   /// [b2b] The B2B partner content.
-  PartnerContentResponse({
+  const PartnerContentResponse({
     this.b2b,
   });
 

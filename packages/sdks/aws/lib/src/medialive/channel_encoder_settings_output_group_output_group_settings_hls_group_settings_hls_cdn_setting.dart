@@ -20,7 +20,7 @@ class ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdn
   /// [hlsMediaStoreSettings] Optional.
   /// [hlsS3Settings] Optional.
   /// [hlsWebdavSettings] Optional.
-  ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting({
+  const ChannelEncoderSettingsOutputGroupOutputGroupSettingsHlsGroupSettingsHlsCdnSetting({
     this.hlsAkamaiSettings,
     this.hlsBasicPutSettings,
     this.hlsMediaStoreSettings,

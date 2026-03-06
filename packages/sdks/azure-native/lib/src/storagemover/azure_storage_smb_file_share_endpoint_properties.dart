@@ -19,7 +19,7 @@ class AzureStorageSmbFileShareEndpointProperties {
   /// [endpointType] The Endpoint resource type.
   /// [fileShareName] The name of the Azure Storage file share.
   /// [storageAccountResourceId] The Azure Resource ID of the storage account.
-  AzureStorageSmbFileShareEndpointProperties({
+  const AzureStorageSmbFileShareEndpointProperties({
     this.description,
     required this.endpointType,
     required this.fileShareName,

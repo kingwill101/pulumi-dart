@@ -27,7 +27,7 @@ class ClientState {
   /// [location] Location in which client needs to be provisioned.
   /// [project] The ID of the project in which the resource belongs.
   /// [runAsServiceAccount] (Optional, Deprecated)
-  ClientState({
+  const ClientState({
     this.cloudKmsConfig,
     this.createSampleIntegrations,
     this.location,

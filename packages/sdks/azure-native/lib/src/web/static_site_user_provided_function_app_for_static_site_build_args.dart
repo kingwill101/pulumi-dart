@@ -33,7 +33,7 @@ class StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs {
   /// [kind] Kind of resource.
   /// [name] Name of the static site.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs({
+  const StaticSiteUserProvidedFunctionAppForStaticSiteBuildArgs({
     required this.environmentName,
     this.functionAppName,
     this.functionAppRegion,

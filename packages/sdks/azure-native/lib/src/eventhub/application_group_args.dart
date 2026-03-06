@@ -28,7 +28,7 @@ class ApplicationGroupArgs {
   /// [namespaceName] The Namespace name
   /// [policies] List of group policies that define the behavior of application group. The policies can support resource governance scenarios such as limiting ingress or egress traffic.
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  ApplicationGroupArgs({
+  const ApplicationGroupArgs({
     this.applicationGroupName,
     required this.clientAppGroupIdentifier,
     this.isEnabled,

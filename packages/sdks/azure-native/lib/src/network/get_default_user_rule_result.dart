@@ -57,7 +57,7 @@ class GetDefaultUserRuleResult {
   /// [sources] The CIDR or source IP ranges.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetDefaultUserRuleResult({
+  const GetDefaultUserRuleResult({
     required this.azureApiVersion,
     required this.description,
     required this.destinationPortRanges,

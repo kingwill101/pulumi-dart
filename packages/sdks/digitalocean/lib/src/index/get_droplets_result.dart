@@ -21,7 +21,7 @@ class GetDropletsResult {
   /// [gpus] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sorts] Optional.
-  GetDropletsResult({
+  const GetDropletsResult({
     required this.droplets,
     this.filters,
     this.gpus,

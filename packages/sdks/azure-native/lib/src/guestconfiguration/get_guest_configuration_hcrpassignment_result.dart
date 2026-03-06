@@ -28,7 +28,7 @@ class GetGuestConfigurationHCRPAssignmentResult {
   /// [properties] Properties of the Guest configuration assignment.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource.
-  GetGuestConfigurationHCRPAssignmentResult({
+  const GetGuestConfigurationHCRPAssignmentResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

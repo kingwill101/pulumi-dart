@@ -89,7 +89,7 @@ class GetFirewallPolicyResult {
   /// [threatIntelWhitelist] ThreatIntel Whitelist for Firewall Policy.
   /// [transportSecurity] TLS Configuration definition.
   /// [type] Resource type.
-  GetFirewallPolicyResult({
+  const GetFirewallPolicyResult({
     required this.azureApiVersion,
     this.basePolicy,
     required this.childPolicies,

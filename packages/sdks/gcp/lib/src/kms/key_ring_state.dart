@@ -17,7 +17,7 @@ class KeyRingState {
   /// [location] The location for the KeyRing.
   /// [name] The resource name for the KeyRing.
   /// [project] The ID of the project in which the resource belongs.
-  KeyRingState({
+  const KeyRingState({
     this.location,
     this.name,
     this.project,

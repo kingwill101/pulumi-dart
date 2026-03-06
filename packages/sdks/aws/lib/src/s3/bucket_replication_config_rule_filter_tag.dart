@@ -11,7 +11,7 @@ class BucketReplicationConfigRuleFilterTag {
   /// Creates a new [BucketReplicationConfigRuleFilterTag].
   /// [key] Name of the object key.
   /// [value] Value of the tag.
-  BucketReplicationConfigRuleFilterTag({
+  const BucketReplicationConfigRuleFilterTag({
     required this.key,
     required this.value,
   });

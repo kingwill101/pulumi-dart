@@ -42,7 +42,7 @@ class QosPolicyArgs {
   /// [sourceCidr] The source CIDR block.
   /// [sourcePortRange] The source port range of the transport layer.
   /// [startTime] The time when the quintuple rule takes effect.
-  QosPolicyArgs({
+  const QosPolicyArgs({
     this.description,
     required this.destCidr,
     required this.destPortRange,

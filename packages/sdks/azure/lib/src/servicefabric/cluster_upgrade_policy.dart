@@ -34,7 +34,7 @@ class ClusterUpgradePolicy {
   /// [upgradeDomainTimeout] Specifies the duration, in "hh:mm:ss" string format, that Service Fabric takes to upgrade a single upgrade domain. After this period, the upgrade fails. Defaults to `02:00:00`.
   /// [upgradeReplicaSetCheckTimeout] Specifies the duration, in "hh:mm:ss" string format, that Service Fabric waits for a replica set to reconfigure into a safe state, if it is not already in a safe state, before Service Fabric proceeds with the upgrade. Defaults to `10675199.02:48:05.4775807`.
   /// [upgradeTimeout] Specifies the duration, in "hh:mm:ss" string format, that Service Fabric takes for the entire upgrade. After this period, the upgrade fails. Defaults to `12:00:00`.
-  ClusterUpgradePolicy({
+  const ClusterUpgradePolicy({
     this.deltaHealthPolicy,
     this.forceRestartEnabled,
     this.healthCheckRetryTimeout,

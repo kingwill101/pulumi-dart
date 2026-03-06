@@ -19,7 +19,7 @@ class GetSpecArgs {
   /// [project] Optional.
   /// [specId] Required.
   /// [versionId] Required.
-  GetSpecArgs({
+  const GetSpecArgs({
     required this.apiId,
     required this.location,
     this.project,

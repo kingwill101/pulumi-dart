@@ -13,7 +13,7 @@ class SuppressionConfig {
   /// Creates a new [SuppressionConfig].
   /// [recurrenceType] Specifies when the suppression should be applied
   /// [schedule] suppression schedule configuration
-  SuppressionConfig({
+  const SuppressionConfig({
     required this.recurrenceType,
     this.schedule,
   });

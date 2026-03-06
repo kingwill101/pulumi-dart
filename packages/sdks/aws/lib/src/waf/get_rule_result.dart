@@ -10,7 +10,7 @@ class GetRuleResult {
   /// Creates a new [GetRuleResult].
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  GetRuleResult({
+  const GetRuleResult({
     required this.id,
     required this.name,
   });

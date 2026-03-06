@@ -16,7 +16,7 @@ class ExecutionReportResponse {
   /// [executionErrors] Validation errors encountered during the execution of the import job.
   /// [framesReported] Total number of asset frames reported for the import job.
   /// [totalRowsCount] Total number of rows in the import job.
-  ExecutionReportResponse({
+  const ExecutionReportResponse({
     required this.executionErrors,
     required this.framesReported,
     required this.totalRowsCount,

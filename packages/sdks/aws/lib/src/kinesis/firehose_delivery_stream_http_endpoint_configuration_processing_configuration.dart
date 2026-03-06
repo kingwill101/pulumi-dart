@@ -12,7 +12,7 @@ class FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration {
   /// Creates a new [FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
   /// [processors] Specifies the data processors as multiple blocks. See `processors` block below for details.
-  FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration({
+  const FirehoseDeliveryStreamHttpEndpointConfigurationProcessingConfiguration({
     this.enabled,
     this.processors,
   });

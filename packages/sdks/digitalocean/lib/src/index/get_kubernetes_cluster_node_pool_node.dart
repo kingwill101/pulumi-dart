@@ -22,7 +22,7 @@ class GetKubernetesClusterNodePoolNode {
   /// [name] The name of Kubernetes cluster.
   /// [status] A string indicating the current status of the individual node.
   /// [updatedAt] The date and time when the node was last updated.
-  GetKubernetesClusterNodePoolNode({
+  const GetKubernetesClusterNodePoolNode({
     required this.createdAt,
     required this.dropletId,
     required this.id,

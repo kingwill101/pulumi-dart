@@ -11,7 +11,7 @@ class DistributionLocation {
   /// Creates a new [DistributionLocation].
   /// [availabilityZone] Availability Zone. Follows the format us-east-2a (case-sensitive).
   /// [regionName] AWS Region name.
-  DistributionLocation({
+  const DistributionLocation({
     required this.availabilityZone,
     required this.regionName,
   });

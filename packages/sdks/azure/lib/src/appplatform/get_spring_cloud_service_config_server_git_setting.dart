@@ -26,7 +26,7 @@ class GetSpringCloudServiceConfigServerGitSetting {
   /// [searchPaths] An array of strings used to search subdirectories of the Git repository.
   /// [sshAuths] A `ssh_auth` block as defined below.
   /// [uri] The URI of the Git repository
-  GetSpringCloudServiceConfigServerGitSetting({
+  const GetSpringCloudServiceConfigServerGitSetting({
     required this.httpBasicAuths,
     required this.label,
     required this.repositories,

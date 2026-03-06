@@ -53,7 +53,7 @@ class GetAlidnsDomainsResult {
   /// [starmark] Optional.
   /// [tags] Tags of the domain.
   /// [versionCode] Cloud resolution version ID.
-  GetAlidnsDomainsResult({
+  const GetAlidnsDomainsResult({
     this.aliDomain,
     this.domainNameRegex,
     required this.domains,

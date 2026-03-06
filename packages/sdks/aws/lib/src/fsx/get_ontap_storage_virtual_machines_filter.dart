@@ -11,7 +11,7 @@ class GetOntapStorageVirtualMachinesFilter {
   /// Creates a new [GetOntapStorageVirtualMachinesFilter].
   /// [name] Name of the field to filter by, as defined by [the underlying AWS API](https://docs.aws.amazon.com/fsx/latest/APIReference/API_StorageVirtualMachineFilter.html).
   /// [values] Set of values that are accepted for the given field. An SVM will be selected if any one of the given values matches.
-  GetOntapStorageVirtualMachinesFilter({
+  const GetOntapStorageVirtualMachinesFilter({
     required this.name,
     required this.values,
   });

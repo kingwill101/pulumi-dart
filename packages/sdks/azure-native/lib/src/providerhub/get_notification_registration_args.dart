@@ -15,7 +15,7 @@ class GetNotificationRegistrationArgs {
   /// Creates a new [GetNotificationRegistrationArgs].
   /// [notificationRegistrationName] The notification registration.
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
-  GetNotificationRegistrationArgs({
+  const GetNotificationRegistrationArgs({
     required this.notificationRegistrationName,
     required this.providerNamespace,
   });

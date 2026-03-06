@@ -18,7 +18,7 @@ class GetRegionsResult {
   /// [outputFile] Optional.
   /// [regionId] Optional.
   /// [regions] Required.
-  GetRegionsResult({
+  const GetRegionsResult({
     this.current,
     required this.id,
     this.outputFile,

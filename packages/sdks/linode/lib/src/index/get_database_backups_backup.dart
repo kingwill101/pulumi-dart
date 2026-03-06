@@ -17,7 +17,7 @@ class GetDatabaseBackupsBackup {
   /// [id] The ID of the database backup object.
   /// [label] The database backup’s label, for display purposes only.
   /// [type] The type of database backup, determined by how the backup was created.
-  GetDatabaseBackupsBackup({
+  const GetDatabaseBackupsBackup({
     required this.created,
     required this.id,
     required this.label,

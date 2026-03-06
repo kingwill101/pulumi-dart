@@ -11,7 +11,7 @@ class EdgeCacheOriginOriginRedirect {
 
   /// Creates a new [EdgeCacheOriginOriginRedirect].
   /// [redirectConditions] The set of redirect response codes that the CDN
-  EdgeCacheOriginOriginRedirect({
+  const EdgeCacheOriginOriginRedirect({
     this.redirectConditions,
   });
 

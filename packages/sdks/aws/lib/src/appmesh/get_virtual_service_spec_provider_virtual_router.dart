@@ -7,7 +7,7 @@ class GetVirtualServiceSpecProviderVirtualRouter {
 
   /// Creates a new [GetVirtualServiceSpecProviderVirtualRouter].
   /// [virtualRouterName] Required.
-  GetVirtualServiceSpecProviderVirtualRouter({
+  const GetVirtualServiceSpecProviderVirtualRouter({
     required this.virtualRouterName,
   });
 

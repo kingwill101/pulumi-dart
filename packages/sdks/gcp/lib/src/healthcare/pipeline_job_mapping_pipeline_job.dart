@@ -32,7 +32,7 @@ class PipelineJobMappingPipelineJob {
   /// [fhirStreamingSource] A streaming FHIR data source.
   /// [mappingConfig] The location of the mapping configuration.
   /// [reconciliationDestination] If set to true, a mapping pipeline will send output snapshots
-  PipelineJobMappingPipelineJob({
+  const PipelineJobMappingPipelineJob({
     this.fhirStoreDestination,
     this.fhirStreamingSource,
     required this.mappingConfig,

@@ -87,7 +87,7 @@ class GetVirtualMachineImageTemplateResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [validate] Configuration options and list of validations to be performed on the resulting image.
   /// [vmProfile] Describes how virtual machine is set up to build images
-  GetVirtualMachineImageTemplateResult({
+  const GetVirtualMachineImageTemplateResult({
     this.autoRun,
     required this.azureApiVersion,
     this.buildTimeoutInMinutes,

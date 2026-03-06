@@ -17,7 +17,7 @@ class CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText {
   /// [allowPlaybackInterruption] (Output)
   /// [ssml] The SSML text to be synthesized. For more information, see SSML.
   /// [text] The raw text to be synthesized.
-  CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText({
+  const CxPageEventHandlerTriggerFulfillmentMessageOutputAudioText({
     this.allowPlaybackInterruption,
     this.ssml,
     this.text,

@@ -8,7 +8,7 @@ class DomainDevicesTpmBackendEmulatorEncryption {
 
   /// Creates a new [DomainDevicesTpmBackendEmulatorEncryption].
   /// [secret] Sets the secret used for the encryption configuration for the emulator TPM backend.
-  DomainDevicesTpmBackendEmulatorEncryption({
+  const DomainDevicesTpmBackendEmulatorEncryption({
     required this.secret,
   });
 

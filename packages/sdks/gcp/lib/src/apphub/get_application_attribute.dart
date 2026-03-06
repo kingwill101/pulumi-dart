@@ -25,7 +25,7 @@ class GetApplicationAttribute {
   /// [developerOwners] Optional. Developer team that owns development and coding.
   /// [environments] Environment of the Application, Service, or Workload
   /// [operatorOwners] Optional. Operator team that ensures runtime and operations.
-  GetApplicationAttribute({
+  const GetApplicationAttribute({
     required this.businessOwners,
     required this.criticalities,
     required this.developerOwners,

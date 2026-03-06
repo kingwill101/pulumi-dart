@@ -13,7 +13,7 @@ class NetworkRef {
   /// Creates a new [NetworkRef].
   /// [endpointRefs] A list of endpoints that are exposed on this network.
   /// [name] Name of the network
-  NetworkRef({
+  const NetworkRef({
     this.endpointRefs,
     this.name,
   });

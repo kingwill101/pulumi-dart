@@ -12,7 +12,7 @@ class StorageConfigurationResponse {
   /// Creates a new [StorageConfigurationResponse].
   /// [fileSystemName] The filesystem name of connected storage account.
   /// [storageResourceId] The resource id of connected storage account.
-  StorageConfigurationResponse({
+  const StorageConfigurationResponse({
     this.fileSystemName,
     this.storageResourceId,
   });

@@ -30,7 +30,7 @@ class WorkspaceArgs {
   /// [publicNetworkAccessEnabled] Whether public network access is allowed for this Virtual Desktop Workspace. Defaults to `true`.
   /// [resourceGroupName] The name of the resource group in which to create the Virtual Desktop Workspace. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.description,
     this.friendlyName,
     this.location,

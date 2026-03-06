@@ -15,7 +15,7 @@ class GetClusterGatewaySettingsArgs {
   /// Creates a new [GetClusterGatewaySettingsArgs].
   /// [clusterName] The name of the cluster.
   /// [resourceGroupName] The name of the resource group.
-  GetClusterGatewaySettingsArgs({
+  const GetClusterGatewaySettingsArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

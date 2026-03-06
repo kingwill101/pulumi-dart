@@ -11,7 +11,7 @@ class SecurityPolicyRuleHeaderActionRequestHeadersToAdd {
   /// Creates a new [SecurityPolicyRuleHeaderActionRequestHeadersToAdd].
   /// [headerName] The name of the header to set.
   /// [headerValue] The value to set the named header to.
-  SecurityPolicyRuleHeaderActionRequestHeadersToAdd({
+  const SecurityPolicyRuleHeaderActionRequestHeadersToAdd({
     this.headerName,
     this.headerValue,
   });

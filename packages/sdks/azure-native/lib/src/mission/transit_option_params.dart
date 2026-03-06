@@ -12,7 +12,7 @@ class TransitOptionParams {
   /// Creates a new [TransitOptionParams].
   /// [remoteVirtualNetworkId] Transit Option Params remoteVirtualNetworkId.
   /// [scaleUnits] Transit Option Params scaleUnits.
-  TransitOptionParams({
+  const TransitOptionParams({
     this.remoteVirtualNetworkId,
     this.scaleUnits,
   });

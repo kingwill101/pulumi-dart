@@ -15,7 +15,7 @@ class FixedResponseConfigResponse {
   /// [contentType] The content type. Valid Values: text/plain | text/css | text/html | application/javascript | application/json
   /// [messageBody] The message.
   /// [statusCode] The HTTP response code (2XX, 4XX, or 5XX).
-  FixedResponseConfigResponse({
+  const FixedResponseConfigResponse({
     this.contentType,
     this.messageBody,
     this.statusCode,

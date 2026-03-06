@@ -19,7 +19,7 @@ class GetVirtualNetworkSubnetOverride {
   /// [useInVmCreationPermission] Indicates if the subnet can be used for VM creation.  Possible values are `Allow`, `Default` and `Deny`.
   /// [usePublicIpAddressPermission] Required.
   /// [virtualNetworkPoolName] The virtual network pool associated with this subnet.
-  GetVirtualNetworkSubnetOverride({
+  const GetVirtualNetworkSubnetOverride({
     required this.labSubnetName,
     required this.resourceId,
     required this.useInVmCreationPermission,

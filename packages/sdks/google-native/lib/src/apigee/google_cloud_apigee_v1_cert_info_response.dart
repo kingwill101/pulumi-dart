@@ -39,7 +39,7 @@ class GoogleCloudApigeeV1CertInfoResponse {
   /// [subjectAlternativeNames] X.509 subject alternative names (SANs) extension.
   /// [validFrom] X.509 `notBefore` validity period in milliseconds since epoch.
   /// [version] X.509 version.
-  GoogleCloudApigeeV1CertInfoResponse({
+  const GoogleCloudApigeeV1CertInfoResponse({
     required this.basicConstraints,
     required this.expiryDate,
     required this.isValid,

@@ -11,7 +11,7 @@ class V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchRespon
   /// Creates a new [V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton].
   /// [text] Text that appears on the button. Use this to tell the user what value is returned when they choose this button.
   /// [value] Value returned to Amazon Lex when the user chooses this button. This must be one of the slot values configured for the slot.
-  V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton({
+  const V2modelsIntentConfirmationSettingDeclinationConditionalDefaultBranchResponseMessageGroupVariationImageResponseCardButton({
     required this.text,
     required this.value,
   });

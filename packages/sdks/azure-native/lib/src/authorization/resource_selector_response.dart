@@ -13,7 +13,7 @@ class ResourceSelectorResponse {
   /// Creates a new [ResourceSelectorResponse].
   /// [name] The name of the resource selector.
   /// [selectors] The list of the selector expressions.
-  ResourceSelectorResponse({
+  const ResourceSelectorResponse({
     this.name,
     this.selectors,
   });

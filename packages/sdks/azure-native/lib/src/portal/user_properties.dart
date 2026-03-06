@@ -23,7 +23,7 @@ class UserProperties {
   /// [preferredShellType] The shell type of the cloud shell.
   /// [storageProfile] The storage profile of the user settings.
   /// [terminalSettings] Settings for terminal appearance.
-  UserProperties({
+  const UserProperties({
     required this.preferredLocation,
     required this.preferredOsType,
     required this.preferredShellType,

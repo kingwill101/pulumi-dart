@@ -20,7 +20,7 @@ class GetServiceTrafficStatus {
   /// [tag] Indicates the string used in the URI to exclusively reference this target.
   /// [type] The allocation type for this traffic target.
   /// [uri] Displays the target URI.
-  GetServiceTrafficStatus({
+  const GetServiceTrafficStatus({
     required this.percent,
     required this.revision,
     required this.tag,

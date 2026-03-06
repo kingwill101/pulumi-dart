@@ -18,7 +18,7 @@ class EncryptionPropertiesResponse {
   /// [keyName] The encryption key name.
   /// [keyVersion] The encryption key version.
   /// [vaultBaseUrl] The keyvault base url.
-  EncryptionPropertiesResponse({
+  const EncryptionPropertiesResponse({
     this.identity,
     required this.keyName,
     required this.keyVersion,

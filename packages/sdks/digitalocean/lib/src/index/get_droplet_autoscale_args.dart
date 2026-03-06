@@ -15,7 +15,7 @@ class GetDropletAutoscaleArgs {
   /// Creates a new [GetDropletAutoscaleArgs].
   /// [id] The ID of Droplet Autoscale pool.
   /// [name] The name of Droplet Autoscale pool.
-  GetDropletAutoscaleArgs({
+  const GetDropletAutoscaleArgs({
     this.id,
     this.name,
   });

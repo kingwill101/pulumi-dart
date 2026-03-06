@@ -39,7 +39,7 @@ class AutoscalingPolicyResponse {
   /// [scaleDownControl] Required.
   /// [scaleInControl] Required.
   /// [scalingSchedules] Scaling schedules defined for an autoscaler. Multiple schedules can be set on an autoscaler, and they can overlap. During overlapping periods the greatest min_required_replicas of all scaling schedules is applied. Up to 128 scaling schedules are allowed.
-  AutoscalingPolicyResponse({
+  const AutoscalingPolicyResponse({
     required this.coolDownPeriodSec,
     required this.cpuUtilization,
     required this.customMetricUtilizations,

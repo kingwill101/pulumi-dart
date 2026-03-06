@@ -12,7 +12,7 @@ class EncryptionInfoResponse {
   /// Creates a new [EncryptionInfoResponse].
   /// [encryptionType] Type of encryption.
   /// [kmsKeyVersions] Cloud KMS key versions that are being used to protect the database or the backup.
-  EncryptionInfoResponse({
+  const EncryptionInfoResponse({
     required this.encryptionType,
     required this.kmsKeyVersions,
   });

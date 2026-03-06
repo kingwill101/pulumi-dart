@@ -11,7 +11,7 @@ class ListBuildAuthTokenResult {
   /// Creates a new [ListBuildAuthTokenResult].
   /// [expires] Token expiration date.
   /// [token] Authentication token.
-  ListBuildAuthTokenResult({
+  const ListBuildAuthTokenResult({
     required this.expires,
     required this.token,
   });

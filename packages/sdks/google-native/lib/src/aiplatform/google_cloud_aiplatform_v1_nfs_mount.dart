@@ -15,7 +15,7 @@ class GoogleCloudAiplatformV1NfsMount {
   /// [mountPoint] Destination mount path. The NFS will be mounted for the user under /mnt/nfs/
   /// [path] Source path exported from NFS server. Has to start with '/', and combined with the ip address, it indicates the source mount path in the form of `server:path`
   /// [server] IP address of the NFS server.
-  GoogleCloudAiplatformV1NfsMount({
+  const GoogleCloudAiplatformV1NfsMount({
     required this.mountPoint,
     required this.path,
     required this.server,

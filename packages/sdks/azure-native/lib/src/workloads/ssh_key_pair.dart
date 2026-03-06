@@ -12,7 +12,7 @@ class SshKeyPair {
   /// Creates a new [SshKeyPair].
   /// [privateKey] SSH private key.
   /// [publicKey] SSH public key
-  SshKeyPair({
+  const SshKeyPair({
     this.privateKey,
     this.publicKey,
   });

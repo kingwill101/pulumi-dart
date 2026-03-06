@@ -16,7 +16,7 @@ class ConnectToTargetAzureDbForMySqlTaskInputResponse {
   /// [isOfflineMigration] Flag for whether or not the migration is offline
   /// [sourceConnectionInfo] Connection information for source MySQL server
   /// [targetConnectionInfo] Connection information for target Azure Database for MySQL server
-  ConnectToTargetAzureDbForMySqlTaskInputResponse({
+  const ConnectToTargetAzureDbForMySqlTaskInputResponse({
     this.isOfflineMigration,
     required this.sourceConnectionInfo,
     required this.targetConnectionInfo,

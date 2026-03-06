@@ -11,7 +11,7 @@ class GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyP
   /// Creates a new [GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange].
   /// [fromPort] The first port of the port range.
   /// [toPort] The last port of the port range.
-  GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange({
+  const GetCustomRoutingEndpointTrafficPoliciesCustomRoutingEndpointTrafficPolicyPortRange({
     required this.fromPort,
     required this.toPort,
   });

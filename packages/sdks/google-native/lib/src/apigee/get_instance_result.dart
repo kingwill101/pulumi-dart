@@ -50,7 +50,7 @@ class GetInstanceResult {
   /// [runtimeVersion] Version of the runtime system running in the instance. The runtime system is the set of components that serve the API Proxy traffic in your Environments.
   /// [serviceAttachment] Resource name of the service attachment created for the instance in the format: `projects/*/regions/*/serviceAttachments/*` Apigee customers can privately forward traffic to this service attachment using the PSC endpoints.
   /// [state] State of the instance. Values other than `ACTIVE` means the resource is not ready to use.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.consumerAcceptList,
     required this.createdAt,
     required this.description,

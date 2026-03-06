@@ -28,7 +28,7 @@ class IncidentPropertiesActionResponse {
   /// [owner] Information on the user an incident is assigned to
   /// [severity] The severity of the incident
   /// [status] The status of the incident
-  IncidentPropertiesActionResponse({
+  const IncidentPropertiesActionResponse({
     this.classification,
     this.classificationComment,
     this.classificationReason,

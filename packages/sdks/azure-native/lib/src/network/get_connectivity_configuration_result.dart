@@ -51,7 +51,7 @@ class GetConnectivityConfigurationResult {
   /// [resourceGuid] Unique identifier for this resource.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetConnectivityConfigurationResult({
+  const GetConnectivityConfigurationResult({
     required this.appliesToGroups,
     required this.azureApiVersion,
     required this.connectivityTopology,

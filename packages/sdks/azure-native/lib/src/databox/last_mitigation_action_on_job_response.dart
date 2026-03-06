@@ -16,7 +16,7 @@ class LastMitigationActionOnJobResponse {
   /// [actionDateTimeInUtc] Action performed date time
   /// [customerResolution] Resolution code provided by customer
   /// [isPerformedByCustomer] Action performed by customer,
-  LastMitigationActionOnJobResponse({
+  const LastMitigationActionOnJobResponse({
     this.actionDateTimeInUtc,
     this.customerResolution,
     this.isPerformedByCustomer,

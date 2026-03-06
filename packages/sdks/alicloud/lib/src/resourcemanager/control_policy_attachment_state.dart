@@ -16,7 +16,7 @@ class ControlPolicyAttachmentState {
   /// Creates a new [ControlPolicyAttachmentState].
   /// [policyId] The ID of the access control policy.
   /// [targetId] The ID of the object from which you want to detach the access control policy. Access control policies can be attached to the following objects:
-  ControlPolicyAttachmentState({
+  const ControlPolicyAttachmentState({
     this.policyId,
     this.targetId,
   });

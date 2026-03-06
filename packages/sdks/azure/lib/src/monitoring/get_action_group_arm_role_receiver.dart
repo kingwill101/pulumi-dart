@@ -14,7 +14,7 @@ class GetActionGroupArmRoleReceiver {
   /// [name] Specifies the name of the Action Group.
   /// [roleId] The arm role id.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  GetActionGroupArmRoleReceiver({
+  const GetActionGroupArmRoleReceiver({
     required this.name,
     required this.roleId,
     required this.useCommonAlertSchema,

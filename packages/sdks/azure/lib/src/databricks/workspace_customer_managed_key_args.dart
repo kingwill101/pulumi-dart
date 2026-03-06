@@ -14,7 +14,7 @@ class WorkspaceCustomerManagedKeyArgs {
   /// Creates a new [WorkspaceCustomerManagedKeyArgs].
   /// [keyVaultKeyId] Required.
   /// [workspaceId] The unique identifier of the databricks workspace in Databricks control plane.
-  WorkspaceCustomerManagedKeyArgs({
+  const WorkspaceCustomerManagedKeyArgs({
     required this.keyVaultKeyId,
     required this.workspaceId,
   });

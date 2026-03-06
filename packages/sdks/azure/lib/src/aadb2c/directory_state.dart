@@ -36,7 +36,7 @@ class DirectoryState {
   /// [skuName] Billing SKU for the B2C tenant. Must be one of: `PremiumP1` or `PremiumP2` (`Standard` is not supported). See [official docs](https://aka.ms/b2cBilling) for more information.
   /// [tags] A mapping of tags which should be assigned to the AAD B2C Directory.
   /// [tenantId] The Tenant ID for the AAD B2C tenant.
-  DirectoryState({
+  const DirectoryState({
     this.billingType,
     this.countryCode,
     this.dataResidencyLocation,

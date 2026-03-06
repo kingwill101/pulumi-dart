@@ -12,7 +12,7 @@ class VirtualNodeSpecLoggingAccessLogFile {
   /// Creates a new [VirtualNodeSpecLoggingAccessLogFile].
   /// [format] The specified format for the logs.
   /// [path] File path to write access logs to. You can use `/dev/stdout` to send access logs to standard out. Must be between 1 and 255 characters in length.
-  VirtualNodeSpecLoggingAccessLogFile({
+  const VirtualNodeSpecLoggingAccessLogFile({
     this.format,
     required this.path,
   });

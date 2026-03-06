@@ -14,7 +14,7 @@ class BiReservationPreferredTable {
   /// [datasetId] The ID of the dataset in the above project.
   /// [projectId] The assigned project ID of the project.
   /// [tableId] The ID of the table in the above dataset.
-  BiReservationPreferredTable({
+  const BiReservationPreferredTable({
     this.datasetId,
     this.projectId,
     this.tableId,

@@ -9,7 +9,7 @@ class TaskDefinitionKeyValuePair {
   /// Creates a new [TaskDefinitionKeyValuePair].
   /// [name] Optional.
   /// [value] Optional.
-  TaskDefinitionKeyValuePair({
+  const TaskDefinitionKeyValuePair({
     this.name,
     this.value,
   });

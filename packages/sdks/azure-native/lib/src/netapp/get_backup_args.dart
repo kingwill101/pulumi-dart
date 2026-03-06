@@ -21,7 +21,7 @@ class GetBackupArgs {
   /// [backupName] The name of the backup
   /// [backupVaultName] The name of the Backup Vault
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBackupArgs({
+  const GetBackupArgs({
     required this.accountName,
     required this.backupName,
     required this.backupVaultName,

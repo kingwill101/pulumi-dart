@@ -18,7 +18,7 @@ class GetConnectedRegistryArgs {
   /// [connectedRegistryName] The name of the connected registry.
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConnectedRegistryArgs({
+  const GetConnectedRegistryArgs({
     required this.connectedRegistryName,
     required this.registryName,
     required this.resourceGroupName,

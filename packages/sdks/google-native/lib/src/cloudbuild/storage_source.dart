@@ -19,7 +19,7 @@ class StorageSource {
   /// [generation] Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
   /// [object_] Cloud Storage object containing the source. This object must be a zipped (`.zip`) or gzipped archive file (`.tar.gz`) containing source to build.
   /// [sourceFetcher] Optional. Option to specify the tool to fetch the source file for the build.
-  StorageSource({
+  const StorageSource({
     this.bucket,
     this.generation,
     this.object_,

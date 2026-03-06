@@ -12,7 +12,7 @@ class GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse {
   /// Creates a new [GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse].
   /// [size] Font size for the text.
   /// [unit] Unit for the font size. Follows CSS naming (such as `in`, `px`, and `pt`).
-  GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse({
+  const GoogleCloudDocumentaiV1DocumentStyleFontSizeResponse({
     required this.size,
     required this.unit,
   });

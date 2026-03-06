@@ -47,7 +47,7 @@ class GetGradientaiIndexingJobDataSourcesIndexedDataSource {
   /// [totalBytes] Total size of files in data source in bytes
   /// [totalBytesIndexed] Total size of indexed files in bytes
   /// [totalFileCount] Total file count in the data source
-  GetGradientaiIndexingJobDataSourcesIndexedDataSource({
+  const GetGradientaiIndexingJobDataSourcesIndexedDataSource({
     required this.completedAt,
     required this.dataSourceUuid,
     required this.errorDetails,

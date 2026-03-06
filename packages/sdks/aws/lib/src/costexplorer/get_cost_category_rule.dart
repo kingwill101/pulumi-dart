@@ -19,7 +19,7 @@ class GetCostCategoryRule {
   /// [rules] Configuration block for the `Expression` object used to categorize costs. See below.
   /// [type] Parameter type.
   /// [value] Default value for the cost category.
-  GetCostCategoryRule({
+  const GetCostCategoryRule({
     required this.inheritedValues,
     required this.rules,
     required this.type,

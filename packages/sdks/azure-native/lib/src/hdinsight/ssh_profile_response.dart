@@ -10,7 +10,7 @@ class SshProfileResponse {
 
   /// Creates a new [SshProfileResponse].
   /// [publicKeys] The list of SSH public keys.
-  SshProfileResponse({
+  const SshProfileResponse({
     this.publicKeys,
   });
 

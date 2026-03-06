@@ -20,7 +20,7 @@ class KubernetesResourceResponseGkehubV1alpha2 {
   /// [membershipCrManifest] Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during Create or Update, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
   /// [membershipResources] Additional Kubernetes resources that need to be applied to the cluster after Membership creation, and after every update. This field is only populated in the Membership returned from a successful long-running operation from CreateMembership or UpdateMembership. It is not populated during normal GetMembership or ListMemberships requests. To get the resource manifest after the initial registration, the caller should make a UpdateMembership call with an empty field mask.
   /// [resourceOptions] Optional. Options for Kubernetes resource generation.
-  KubernetesResourceResponseGkehubV1alpha2({
+  const KubernetesResourceResponseGkehubV1alpha2({
     required this.connectResources,
     required this.membershipCrManifest,
     required this.membershipResources,

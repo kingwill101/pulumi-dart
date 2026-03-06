@@ -29,7 +29,7 @@ class BillingAccountBucketConfigCmekSettings {
   /// [kmsKeyVersionName] The CryptoKeyVersion resource name for the configured Cloud KMS key.
   /// [name] The resource name of the bucket. For example: "projects/my-project-id/locations/my-location/buckets/my-bucket-id"
   /// [serviceAccountId] The service account associated with a project for which CMEK will apply.
-  BillingAccountBucketConfigCmekSettings({
+  const BillingAccountBucketConfigCmekSettings({
     required this.kmsKeyName,
     this.kmsKeyVersionName,
     this.name,

@@ -57,7 +57,7 @@ class DatasetArgs {
   /// [project] Optional.
   /// [storageBillingModel] [Optional] Storage billing model to be used for all tables in the dataset. Can be set to PHYSICAL. Default is LOGICAL.
   /// [tags] [Optional]The tags associated with this dataset. Tag keys are globally unique.
-  DatasetArgs({
+  const DatasetArgs({
     this.access,
     this.datasetReference,
     this.defaultEncryptionConfiguration,

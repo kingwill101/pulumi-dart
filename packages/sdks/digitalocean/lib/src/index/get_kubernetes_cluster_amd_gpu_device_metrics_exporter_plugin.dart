@@ -7,7 +7,7 @@ class GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
 
   /// Creates a new [GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin].
   /// [enabled] Required.
-  GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin({
+  const GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin({
     required this.enabled,
   });
 

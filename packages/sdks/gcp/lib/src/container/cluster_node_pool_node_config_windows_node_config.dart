@@ -8,7 +8,7 @@ class ClusterNodePoolNodeConfigWindowsNodeConfig {
 
   /// Creates a new [ClusterNodePoolNodeConfigWindowsNodeConfig].
   /// [osversion] The OS Version of the windows nodepool.Values are OS_VERSION_UNSPECIFIED,OS_VERSION_LTSC2019 and OS_VERSION_LTSC2022
-  ClusterNodePoolNodeConfigWindowsNodeConfig({
+  const ClusterNodePoolNodeConfigWindowsNodeConfig({
     this.osversion,
   });
 

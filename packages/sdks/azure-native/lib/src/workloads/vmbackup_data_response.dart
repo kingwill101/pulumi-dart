@@ -22,7 +22,7 @@ class VMBackupDataResponse {
   /// [backupType] The type of backup, VM, SQL or HANA.
   /// [diskExclusionProperties] Defines the disk exclusion properties for virtual machine backup.
   /// [recoveryServicesVault] The properties of the recovery services vault used for backup.
-  VMBackupDataResponse({
+  const VMBackupDataResponse({
     required this.backupPolicy,
     required this.backupType,
     this.diskExclusionProperties,

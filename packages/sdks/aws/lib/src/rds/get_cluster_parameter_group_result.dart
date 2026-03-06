@@ -21,7 +21,7 @@ class GetClusterParameterGroupResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [region] Required.
-  GetClusterParameterGroupResult({
+  const GetClusterParameterGroupResult({
     required this.arn,
     required this.description,
     required this.family,

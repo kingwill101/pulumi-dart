@@ -11,7 +11,7 @@ class ResiliencyPolicyPolicyHardware {
   /// Creates a new [ResiliencyPolicyPolicyHardware].
   /// [rpo] Recovery Point Objective (RPO) as a Go duration.
   /// [rto] Recovery Time Objective (RTO) as a Go duration.
-  ResiliencyPolicyPolicyHardware({
+  const ResiliencyPolicyPolicyHardware({
     required this.rpo,
     required this.rto,
   });

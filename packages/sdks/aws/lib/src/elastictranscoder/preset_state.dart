@@ -48,7 +48,7 @@ class PresetState {
   /// [video] Video parameters object (documented below)
   /// [videoCodecOptions] Codec options for the video parameters
   /// [videoWatermarks] Watermark parameters for the video parameters (documented below)
-  PresetState({
+  const PresetState({
     this.arn,
     this.audio,
     this.audioCodecOptions,

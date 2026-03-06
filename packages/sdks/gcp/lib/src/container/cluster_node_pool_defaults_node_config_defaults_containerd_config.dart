@@ -17,7 +17,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig {
   /// [privateRegistryAccessConfig] Configuration for private container registries. There are two fields in this config:
   /// [registryHosts] Defines containerd registry host configuration. Each `registry_hosts` entry represents a `hosts.toml` file. See [customize containerd configuration in GKE nodes](https://docs.cloud.google.com/kubernetes-engine/docs/how-to/customize-containerd-configuration#registryHosts) for more detail. Example:
   /// [writableCgroups] Configuration for writable cgroups. This allows containers to have a writable `/sys/fs/cgroup` directory, which is required for some workloads to create their own sub-cgroups. The `writable_cgroups` block supports:
-  ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig({
+  const ClusterNodePoolDefaultsNodeConfigDefaultsContainerdConfig({
     this.privateRegistryAccessConfig,
     this.registryHosts,
     this.writableCgroups,

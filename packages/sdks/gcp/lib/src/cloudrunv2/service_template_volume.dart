@@ -33,7 +33,7 @@ class ServiceTemplateVolume {
   /// [name] Volume's name.
   /// [nfs] Represents an NFS mount.
   /// [secret] Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
-  ServiceTemplateVolume({
+  const ServiceTemplateVolume({
     this.cloudSqlInstance,
     this.emptyDir,
     this.gcs,

@@ -25,7 +25,7 @@ class ActionStatusResponse {
   /// [startTime] String that represents the start time of the action.
   /// [status] The status of the action.
   /// [targets] The array of targets.
-  ActionStatusResponse({
+  const ActionStatusResponse({
     required this.actionId,
     required this.actionName,
     required this.endTime,

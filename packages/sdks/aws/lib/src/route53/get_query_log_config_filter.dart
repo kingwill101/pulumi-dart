@@ -10,7 +10,7 @@ class GetQueryLogConfigFilter {
   /// Creates a new [GetQueryLogConfigFilter].
   /// [name] The name of the query logging configuration.
   /// [values] Required.
-  GetQueryLogConfigFilter({
+  const GetQueryLogConfigFilter({
     required this.name,
     required this.values,
   });

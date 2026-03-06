@@ -90,7 +90,7 @@ class GetAppServiceCertificateOrderResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [validityInYears] Duration in years (must be 1).
-  GetAppServiceCertificateOrderResult({
+  const GetAppServiceCertificateOrderResult({
     required this.appServiceCertificateNotRenewableReasons,
     this.autoRenew,
     required this.azureApiVersion,

@@ -18,7 +18,7 @@ class AzureIaaSVMHealthDetailsResponse {
   /// [message] Health Message
   /// [recommendations] Health Recommended Actions
   /// [title] Health Title
-  AzureIaaSVMHealthDetailsResponse({
+  const AzureIaaSVMHealthDetailsResponse({
     required this.code,
     required this.message,
     required this.recommendations,

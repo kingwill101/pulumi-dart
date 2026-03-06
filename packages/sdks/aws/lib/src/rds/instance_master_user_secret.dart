@@ -15,7 +15,7 @@ class InstanceMasterUserSecret {
   /// [kmsKeyId] The ARN for the KMS encryption key. If creating an
   /// [secretArn] The Amazon Resource Name (ARN) of the secret.
   /// [secretStatus] The status of the secret. Valid Values: `creating` | `active` | `rotating` | `impaired`.
-  InstanceMasterUserSecret({
+  const InstanceMasterUserSecret({
     this.kmsKeyId,
     this.secretArn,
     this.secretStatus,

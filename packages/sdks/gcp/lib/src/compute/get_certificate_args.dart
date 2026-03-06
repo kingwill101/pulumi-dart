@@ -18,7 +18,7 @@ class GetCertificateArgs {
   /// Creates a new [GetCertificateArgs].
   /// [name] The name of the certificate.
   /// [project] The project in which the resource belongs. If it
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.name,
     this.project,
   });

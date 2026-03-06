@@ -13,7 +13,7 @@ class FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter {
   /// Creates a new [FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter].
   /// [name] The name of the parameter.
   /// [parameterValue] Possible parameter value types.
-  FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter({
+  const FrameworkDeploymentCloudControlMetadataCloudControlDetailsParameter({
     required this.name,
     required this.parameterValue,
   });

@@ -22,7 +22,7 @@ class KnowledgeBaseArgs {
   /// [location] Optional.
   /// [name] The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
   /// [project] Optional.
-  KnowledgeBaseArgs({
+  const KnowledgeBaseArgs({
     required this.displayName,
     this.languageCode,
     this.location,

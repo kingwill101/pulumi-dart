@@ -16,7 +16,7 @@ class GetKubernetesPermissionResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [permissions] A list of user permission. See `permissions` below.
   /// [uid] The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
-  GetKubernetesPermissionResult({
+  const GetKubernetesPermissionResult({
     required this.id,
     required this.permissions,
     required this.uid,

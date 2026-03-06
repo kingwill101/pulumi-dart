@@ -27,7 +27,7 @@ class GetSqlMigrationServiceResult {
   /// [systemData] Required.
   /// [tags] Optional.
   /// [type] Required.
-  GetSqlMigrationServiceResult({
+  const GetSqlMigrationServiceResult({
     required this.azureApiVersion,
     required this.id,
     required this.integrationRuntimeState,

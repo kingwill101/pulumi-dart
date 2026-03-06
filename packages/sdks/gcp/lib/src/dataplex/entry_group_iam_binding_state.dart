@@ -44,7 +44,7 @@ class EntryGroupIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  EntryGroupIamBindingState({
+  const EntryGroupIamBindingState({
     this.condition,
     this.entryGroupId,
     this.etag,

@@ -18,7 +18,7 @@ class GetTableEntitiesArgs {
   /// [filter] The filter used to retrieve the entities.
   /// [selects] A list of properties to select from the returned Storage Table Entities.
   /// [storageTableId] The Storage Table ID where the entities exist.
-  GetTableEntitiesArgs({
+  const GetTableEntitiesArgs({
     required this.filter,
     this.selects,
     required this.storageTableId,

@@ -72,7 +72,7 @@ class ConnectionArgs {
   /// [tunnelOptionsSpecifications] The tunnel options of IPsec. See `tunnel_options_specification` below.
   /// [vpnConnectionName] The name of the IPsec-VPN connection.
   /// [vpnGatewayId] The ID of the VPN gateway.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.autoConfigRoute,
     this.bgpConfig,
     this.customerGatewayId,

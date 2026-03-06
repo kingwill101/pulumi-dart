@@ -17,7 +17,7 @@ class GetBareMetalAdminClusterIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetBareMetalAdminClusterIamPolicyArgs({
+  const GetBareMetalAdminClusterIamPolicyArgs({
     required this.bareMetalAdminClusterId,
     required this.location,
     this.optionsRequestedPolicyVersion,

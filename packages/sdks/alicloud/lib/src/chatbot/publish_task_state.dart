@@ -24,7 +24,7 @@ class PublishTaskState {
   /// [dataIdLists] Additional release information. Currently supported: If the BizType is faq, enter the category Id in this field to indicate that only the knowledge under these categories is published.
   /// [modifyTime] UTC time for task modification
   /// [status] The status of the task.
-  PublishTaskState({
+  const PublishTaskState({
     this.agentKey,
     this.bizType,
     this.createTime,

@@ -22,7 +22,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [privateLinkServiceConnectionState] Connection State of the Private Endpoint Connection.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     required this.clusterName,
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,

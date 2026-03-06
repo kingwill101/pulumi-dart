@@ -29,7 +29,7 @@ class AppCheckDeviceCheckConfigArgs {
   /// [privateKey] The contents of the private key (.p8) file associated with the key specified by keyId.
   /// [project] The ID of the project in which the resource belongs.
   /// [tokenTtl] Specifies the duration for which App Check tokens exchanged from DeviceCheck artifacts will be valid.
-  AppCheckDeviceCheckConfigArgs({
+  const AppCheckDeviceCheckConfigArgs({
     required this.appId,
     required this.keyId,
     required this.privateKey,

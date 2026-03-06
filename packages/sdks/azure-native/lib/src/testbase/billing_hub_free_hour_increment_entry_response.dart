@@ -17,7 +17,7 @@ class BillingHubFreeHourIncrementEntryResponse {
   /// [freeHourType] Optional.
   /// [incrementalFreeHours] Optional.
   /// [remainingFreeHours] Optional.
-  BillingHubFreeHourIncrementEntryResponse({
+  const BillingHubFreeHourIncrementEntryResponse({
     this.createTimeStamp,
     this.expirationTimeStamp,
     this.freeHourStatus,

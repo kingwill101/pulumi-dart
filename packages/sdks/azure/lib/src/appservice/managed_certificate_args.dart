@@ -15,7 +15,7 @@ class ManagedCertificateArgs {
   /// Creates a new [ManagedCertificateArgs].
   /// [customHostnameBindingId] The ID of the App Service Custom Hostname Binding for the Certificate. Changing this forces a new App Service Managed Certificate to be created.
   /// [tags] A mapping of tags which should be assigned to the App Service Managed Certificate.
-  ManagedCertificateArgs({
+  const ManagedCertificateArgs({
     required this.customHostnameBindingId,
     this.tags,
   });

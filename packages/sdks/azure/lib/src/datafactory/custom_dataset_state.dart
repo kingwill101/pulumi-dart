@@ -41,7 +41,7 @@ class CustomDatasetState {
   /// [schemaJson] A JSON object that contains the schema of the Data Factory Dataset.
   /// [type] The type of dataset that will be associated with Data Factory. Changing this forces a new resource to be created.
   /// [typePropertiesJson] A JSON object that contains the properties of the Data Factory Dataset. Refer to
-  CustomDatasetState({
+  const CustomDatasetState({
     this.additionalProperties,
     this.annotations,
     this.dataFactoryId,

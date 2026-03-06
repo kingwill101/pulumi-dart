@@ -21,7 +21,7 @@ class EmailTemplateArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Optional.
   /// [templateName] name of the message template. A template name must start with an alphanumeric character and can contain a maximum of 128 characters. The characters can be alphanumeric characters, underscores (_), or hyphens (-). Template names are case sensitive.
-  EmailTemplateArgs({
+  const EmailTemplateArgs({
     this.emailTemplates,
     this.region,
     this.tags,

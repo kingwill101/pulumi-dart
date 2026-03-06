@@ -19,7 +19,7 @@ class GetServerlessSecurityConfigArgs {
   /// [id] The unique identifier of the security configuration.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [samlOptions] SAML options for the security configuration.
-  GetServerlessSecurityConfigArgs({
+  const GetServerlessSecurityConfigArgs({
     required this.id,
     this.region,
     this.samlOptions,

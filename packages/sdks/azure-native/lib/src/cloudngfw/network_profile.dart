@@ -33,7 +33,7 @@ class NetworkProfile {
   /// [trustedRanges] Non-RFC 1918 address
   /// [vnetConfiguration] Vnet configurations
   /// [vwanConfiguration] Vwan configurations
-  NetworkProfile({
+  const NetworkProfile({
     this.egressNatIp,
     required this.enableEgressNat,
     required this.networkType,

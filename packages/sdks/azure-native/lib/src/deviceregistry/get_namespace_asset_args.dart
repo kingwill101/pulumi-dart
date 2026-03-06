@@ -18,7 +18,7 @@ class GetNamespaceAssetArgs {
   /// [assetName] The name of the asset.
   /// [namespaceName] The name of the namespace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetNamespaceAssetArgs({
+  const GetNamespaceAssetArgs({
     required this.assetName,
     required this.namespaceName,
     required this.resourceGroupName,

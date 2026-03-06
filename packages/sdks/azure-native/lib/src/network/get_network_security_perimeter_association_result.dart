@@ -39,7 +39,7 @@ class GetNetworkSecurityPerimeterAssociationResult {
   /// [provisioningState] The provisioning state of the resource  association resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNetworkSecurityPerimeterAssociationResult({
+  const GetNetworkSecurityPerimeterAssociationResult({
     this.accessMode,
     required this.azureApiVersion,
     required this.hasProvisioningIssues,

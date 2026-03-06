@@ -8,7 +8,7 @@ class KubernetesClusterConfidentialComputing {
 
   /// Creates a new [KubernetesClusterConfidentialComputing].
   /// [sgxQuoteHelperEnabled] Should the SGX quote helper be enabled?
-  KubernetesClusterConfidentialComputing({
+  const KubernetesClusterConfidentialComputing({
     required this.sgxQuoteHelperEnabled,
   });
 

@@ -32,7 +32,7 @@ class CustomEventsTrigger {
   /// [subjectBeginsWith] The event subject must begin with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
   /// [subjectEndsWith] The event subject must end with the pattern provided for trigger to fire. At least one of these must be provided: subjectBeginsWith, subjectEndsWith.
   /// [type] Trigger type.
-  CustomEventsTrigger({
+  const CustomEventsTrigger({
     this.annotations,
     this.description,
     required this.events,

@@ -18,7 +18,7 @@ class GetVirtualHubIpConfigurationArgs {
   /// [ipConfigName] The name of the ipconfig.
   /// [resourceGroupName] The resource group name of the VirtualHub.
   /// [virtualHubName] The name of the VirtualHub.
-  GetVirtualHubIpConfigurationArgs({
+  const GetVirtualHubIpConfigurationArgs({
     required this.ipConfigName,
     required this.resourceGroupName,
     required this.virtualHubName,

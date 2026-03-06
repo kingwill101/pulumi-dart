@@ -13,7 +13,7 @@ class WindowsFunctionAppSlotSiteConfigAppServiceLogs {
   /// Creates a new [WindowsFunctionAppSlotSiteConfigAppServiceLogs].
   /// [diskQuotaMb] The amount of disk space to use for logs. Valid values are between `25` and `100`. Defaults to `35`.
   /// [retentionPeriodDays] The retention period for logs in days. Valid values are between `0` and `99999`.(never delete).
-  WindowsFunctionAppSlotSiteConfigAppServiceLogs({
+  const WindowsFunctionAppSlotSiteConfigAppServiceLogs({
     this.diskQuotaMb,
     this.retentionPeriodDays,
   });

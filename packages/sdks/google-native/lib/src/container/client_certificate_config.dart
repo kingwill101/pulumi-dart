@@ -9,7 +9,7 @@ class ClientCertificateConfig {
 
   /// Creates a new [ClientCertificateConfig].
   /// [issueClientCertificate] Issue a client certificate.
-  ClientCertificateConfig({
+  const ClientCertificateConfig({
     this.issueClientCertificate,
   });
 

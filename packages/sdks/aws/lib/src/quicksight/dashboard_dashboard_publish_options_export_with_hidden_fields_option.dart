@@ -8,7 +8,7 @@ class DashboardDashboardPublishOptionsExportWithHiddenFieldsOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsExportWithHiddenFieldsOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
-  DashboardDashboardPublishOptionsExportWithHiddenFieldsOption({
+  const DashboardDashboardPublishOptionsExportWithHiddenFieldsOption({
     this.availabilityStatus,
   });
 

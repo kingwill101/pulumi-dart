@@ -19,7 +19,7 @@ class GetUserDataMappingHealthcareV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [userDataMappingId] Required.
-  GetUserDataMappingHealthcareV1beta1Args({
+  const GetUserDataMappingHealthcareV1beta1Args({
     required this.consentStoreId,
     required this.datasetId,
     required this.location,

@@ -13,7 +13,7 @@ class GoogleCloudDataplexV1TaskExecutionStatusResponse {
   /// Creates a new [GoogleCloudDataplexV1TaskExecutionStatusResponse].
   /// [latestJob] latest job execution
   /// [updateTime] Last update time of the status.
-  GoogleCloudDataplexV1TaskExecutionStatusResponse({
+  const GoogleCloudDataplexV1TaskExecutionStatusResponse({
     required this.latestJob,
     required this.updateTime,
   });

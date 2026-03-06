@@ -192,7 +192,7 @@ class InstanceState {
   /// [vswitchId] The virtual switch ID to launch DB instances in one VPC.
   /// [zoneId] The Zone to launch the DB instance. it supports multiple zone.
   /// [zoneInfos] (Available since v1.271.0) The information of nodes in the zone.
-  InstanceState({
+  const InstanceState({
     this.accountPassword,
     this.autoRenew,
     this.autoRenewDuration,

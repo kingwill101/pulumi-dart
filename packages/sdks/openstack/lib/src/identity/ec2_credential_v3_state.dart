@@ -31,7 +31,7 @@ class Ec2CredentialV3State {
   /// [secret] contains an EC2 credential secret UUID
   /// [trustId] contains an EC2 credential trust ID scope
   /// [userId] The ID of the user the EC2 credential is created for.
-  Ec2CredentialV3State({
+  const Ec2CredentialV3State({
     this.access,
     this.projectId,
     this.region,

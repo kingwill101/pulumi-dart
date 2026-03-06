@@ -43,7 +43,7 @@ class TextFormatResponse {
   /// [skipLineCount] The number of lines/rows to be skipped when parsing text files. The default value is 0. Type: integer (or Expression with resultType integer).
   /// [treatEmptyAsNull] Treat empty column values in the text file as null. The default value is true. Type: boolean (or Expression with resultType boolean).
   /// [type] Type of dataset storage format.
-  TextFormatResponse({
+  const TextFormatResponse({
     this.columnDelimiter,
     this.deserializer,
     this.encodingName,

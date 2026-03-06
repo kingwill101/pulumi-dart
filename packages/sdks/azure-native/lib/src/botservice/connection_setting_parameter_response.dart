@@ -12,7 +12,7 @@ class ConnectionSettingParameterResponse {
   /// Creates a new [ConnectionSettingParameterResponse].
   /// [key] Key for the Connection Setting Parameter.
   /// [value] Value associated with the Connection Setting Parameter.
-  ConnectionSettingParameterResponse({
+  const ConnectionSettingParameterResponse({
     this.key,
     this.value,
   });

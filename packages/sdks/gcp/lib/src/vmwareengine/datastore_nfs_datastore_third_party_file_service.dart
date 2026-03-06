@@ -20,7 +20,7 @@ class DatastoreNfsDatastoreThirdPartyFileService {
   /// [fileShare] Required
   /// [network] Required to identify vpc peering used for NFS access
   /// [servers] Server IP addresses of the NFS file service.
-  DatastoreNfsDatastoreThirdPartyFileService({
+  const DatastoreNfsDatastoreThirdPartyFileService({
     required this.fileShare,
     required this.network,
     required this.servers,

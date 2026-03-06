@@ -65,7 +65,7 @@ class StaticSiteArgs {
   /// [stagingEnvironmentPolicy] State indicating whether staging environments are allowed or not allowed for a static web app.
   /// [tags] Resource tags.
   /// [templateProperties] Template options for generating a new repository.
-  StaticSiteArgs({
+  const StaticSiteArgs({
     this.allowConfigFileUpdates,
     this.branch,
     this.buildProperties,

@@ -126,7 +126,7 @@ class AzureSqlDatabaseLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [userName] The user name to be used when connecting to server. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  AzureSqlDatabaseLinkedServiceResponse({
+  const AzureSqlDatabaseLinkedServiceResponse({
     this.alwaysEncryptedSettings,
     this.annotations,
     this.applicationIntent,

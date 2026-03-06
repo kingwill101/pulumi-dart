@@ -10,7 +10,7 @@ class GetIstioCanonicalServiceTelemetry {
 
   /// Creates a new [GetIstioCanonicalServiceTelemetry].
   /// [resourceName] The full name of the resource that defines this service.
-  GetIstioCanonicalServiceTelemetry({
+  const GetIstioCanonicalServiceTelemetry({
     required this.resourceName,
   });
 

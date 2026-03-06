@@ -23,7 +23,7 @@ class TemplateContents {
   /// [mainTemplate] The filename of the mainTemplate
   /// [schema] The contents of the template schema.
   /// [template] The contents of the main template file.
-  TemplateContents({
+  const TemplateContents({
     this.imports,
     this.interpreter,
     this.mainTemplate,

@@ -20,7 +20,7 @@ class AppVersionSnapshotToolGoogleSearchTool {
   /// [description] The description of the app version.
   /// [excludeDomains] (Output)
   /// [name] (Output)
-  AppVersionSnapshotToolGoogleSearchTool({
+  const AppVersionSnapshotToolGoogleSearchTool({
     this.description,
     this.excludeDomains,
     this.name,

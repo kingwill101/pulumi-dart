@@ -17,7 +17,7 @@ class GetDataExchangeListingIamPolicyAnalyticshubV1beta1Args {
   /// [listingId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetDataExchangeListingIamPolicyAnalyticshubV1beta1Args({
+  const GetDataExchangeListingIamPolicyAnalyticshubV1beta1Args({
     required this.dataExchangeId,
     required this.listingId,
     required this.location,

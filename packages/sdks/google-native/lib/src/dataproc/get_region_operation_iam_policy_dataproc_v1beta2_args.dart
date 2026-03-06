@@ -17,7 +17,7 @@ class GetRegionOperationIamPolicyDataprocV1beta2Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [regionId] Required.
-  GetRegionOperationIamPolicyDataprocV1beta2Args({
+  const GetRegionOperationIamPolicyDataprocV1beta2Args({
     required this.operationId,
     this.optionsRequestedPolicyVersion,
     this.project,

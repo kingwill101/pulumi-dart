@@ -9,7 +9,7 @@ class ApplicationPreStopV2 {
 
   /// Creates a new [ApplicationPreStopV2].
   /// [exec] Execute. See `exec` below.
-  ApplicationPreStopV2({
+  const ApplicationPreStopV2({
     this.exec,
   });
 

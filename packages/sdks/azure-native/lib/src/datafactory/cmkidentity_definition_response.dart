@@ -9,7 +9,7 @@ class CMKIdentityDefinitionResponse {
 
   /// Creates a new [CMKIdentityDefinitionResponse].
   /// [userAssignedIdentity] The resource id of the user assigned identity to authenticate to customer's key vault.
-  CMKIdentityDefinitionResponse({
+  const CMKIdentityDefinitionResponse({
     this.userAssignedIdentity,
   });
 

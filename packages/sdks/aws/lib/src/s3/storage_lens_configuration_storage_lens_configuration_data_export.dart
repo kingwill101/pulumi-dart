@@ -13,7 +13,7 @@ class StorageLensConfigurationStorageLensConfigurationDataExport {
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationDataExport].
   /// [cloudWatchMetrics] Amazon CloudWatch publishing for S3 Storage Lens metrics. See Cloud Watch Metrics below for more details.
   /// [s3BucketDestination] The bucket where the S3 Storage Lens metrics export will be located. See S3 Bucket Destination below for more details.
-  StorageLensConfigurationStorageLensConfigurationDataExport({
+  const StorageLensConfigurationStorageLensConfigurationDataExport({
     this.cloudWatchMetrics,
     this.s3BucketDestination,
   });

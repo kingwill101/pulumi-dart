@@ -14,7 +14,7 @@ class GetTopicSchemaSetting {
   /// Creates a new [GetTopicSchemaSetting].
   /// [encoding] The encoding of messages validated against schema. Default value: "ENCODING_UNSPECIFIED" Possible values: ["ENCODING_UNSPECIFIED", "JSON", "BINARY"]
   /// [schema] The name of the schema that messages published should be
-  GetTopicSchemaSetting({
+  const GetTopicSchemaSetting({
     required this.encoding,
     required this.schema,
   });

@@ -25,7 +25,7 @@ class KeyValueStoreState {
   /// [lastModifiedTime] Optional.
   /// [name] Unique name for your CloudFront KeyValueStore.
   /// [timeouts] Optional.
-  KeyValueStoreState({
+  const KeyValueStoreState({
     this.arn,
     this.comment,
     this.etag,

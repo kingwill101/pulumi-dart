@@ -8,7 +8,7 @@ class GetInstancesInstance {
 
   /// Creates a new [GetInstancesInstance].
   /// [instanceId] The first ID of the resource
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.instanceId,
   });
 

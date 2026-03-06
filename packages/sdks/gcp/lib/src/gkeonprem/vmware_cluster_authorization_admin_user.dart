@@ -8,7 +8,7 @@ class VMwareClusterAuthorizationAdminUser {
 
   /// Creates a new [VMwareClusterAuthorizationAdminUser].
   /// [username] The name of the user, e.g. `my-gcp-id@gmail.com`.
-  VMwareClusterAuthorizationAdminUser({
+  const VMwareClusterAuthorizationAdminUser({
     required this.username,
   });
 

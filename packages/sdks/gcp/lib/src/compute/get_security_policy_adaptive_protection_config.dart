@@ -13,7 +13,7 @@ class GetSecurityPolicyAdaptiveProtectionConfig {
   /// Creates a new [GetSecurityPolicyAdaptiveProtectionConfig].
   /// [autoDeployConfigs] Auto Deploy Config of this security policy
   /// [layer7DdosDefenseConfigs] Layer 7 DDoS Defense Config of this security policy
-  GetSecurityPolicyAdaptiveProtectionConfig({
+  const GetSecurityPolicyAdaptiveProtectionConfig({
     required this.autoDeployConfigs,
     required this.layer7DdosDefenseConfigs,
   });

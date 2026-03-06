@@ -22,7 +22,7 @@ class PlanWorkflowStepEc2AsgCapacityIncreaseConfig {
   /// [targetPercent] Target capacity percentage.
   /// [timeoutMinutes] Timeout in minutes.
   /// [ungraceful] Ungraceful behavior configuration. See Ungraceful below.
-  PlanWorkflowStepEc2AsgCapacityIncreaseConfig({
+  const PlanWorkflowStepEc2AsgCapacityIncreaseConfig({
     this.asgs,
     required this.capacityMonitoringApproach,
     this.targetPercent,

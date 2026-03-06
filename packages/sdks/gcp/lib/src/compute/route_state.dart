@@ -134,7 +134,7 @@ class RouteState {
   /// [selfLink] The URI of the created resource.
   /// [tags] A list of instance tags to which this route applies.
   /// [warnings] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-  RouteState({
+  const RouteState({
     this.asPaths,
     this.creationTimestamp,
     this.description,

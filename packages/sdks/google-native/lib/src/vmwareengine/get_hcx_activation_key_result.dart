@@ -20,7 +20,7 @@ class GetHcxActivationKeyResult {
   /// [name] The resource name of this HcxActivationKey. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1/privateClouds/my-cloud/hcxActivationKeys/my-key`
   /// [state] State of HCX activation key.
   /// [uid] System-generated unique identifier for the resource.
-  GetHcxActivationKeyResult({
+  const GetHcxActivationKeyResult({
     required this.activationKey,
     required this.createTime,
     required this.name,

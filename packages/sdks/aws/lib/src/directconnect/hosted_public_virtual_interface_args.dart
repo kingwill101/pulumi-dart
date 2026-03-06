@@ -42,7 +42,7 @@ class HostedPublicVirtualInterfaceArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routeFilterPrefixes] A list of routes to be advertised to the AWS network in this region.
   /// [vlan] The VLAN ID.
-  HostedPublicVirtualInterfaceArgs({
+  const HostedPublicVirtualInterfaceArgs({
     required this.addressFamily,
     this.amazonAddress,
     required this.bgpAsn,

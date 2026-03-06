@@ -12,7 +12,7 @@ class DataPlaneProxyProperties {
   /// Creates a new [DataPlaneProxyProperties].
   /// [authenticationMode] The data plane proxy authentication mode. This property manages the authentication mode of request to the data plane resources.
   /// [privateLinkDelegation] The data plane proxy private link delegation. This property manages if a request from delegated Azure Resource Manager (ARM) private link is allowed when the data plane resource requires private link.
-  DataPlaneProxyProperties({
+  const DataPlaneProxyProperties({
     this.authenticationMode,
     this.privateLinkDelegation,
   });

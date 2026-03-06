@@ -33,7 +33,7 @@ class EnclaveConnectionArgs {
   /// [sourceCidr] Source CIDR.
   /// [sourceResourceId] Source Resource Id.
   /// [tags] Resource tags.
-  EnclaveConnectionArgs({
+  const EnclaveConnectionArgs({
     required this.communityResourceId,
     required this.destinationEndpointId,
     this.enclaveConnectionName,

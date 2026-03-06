@@ -29,7 +29,7 @@ class EventSubscriptionFilterResponse {
   /// [isSubjectCaseSensitive] Specifies if the SubjectBeginsWith and SubjectEndsWith properties of the filter
   /// [subjectBeginsWith] An optional string to filter events for an event subscription based on a resource path prefix.
   /// [subjectEndsWith] An optional string to filter events for an event subscription based on a resource path suffix.
-  EventSubscriptionFilterResponse({
+  const EventSubscriptionFilterResponse({
     this.advancedFilters,
     this.enableAdvancedFilteringOnArrays,
     this.includedEventTypes,

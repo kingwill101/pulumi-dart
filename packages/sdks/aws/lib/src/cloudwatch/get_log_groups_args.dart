@@ -15,7 +15,7 @@ class GetLogGroupsArgs {
   /// Creates a new [GetLogGroupsArgs].
   /// [logGroupNamePrefix] Group prefix of the Cloudwatch log groups to list
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetLogGroupsArgs({
+  const GetLogGroupsArgs({
     this.logGroupNamePrefix,
     this.region,
   });

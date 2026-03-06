@@ -56,7 +56,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage {
   /// [playAudio] Specifies an audio clip to be played by the client as part of the response.
   /// [telephonyTransferCall] Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
   /// [text] The text response message.
-  CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage({
+  const CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessage({
     this.channel,
     this.conversationSuccess,
     this.liveAgentHandoff,

@@ -155,7 +155,7 @@ class InstanceArgs {
   /// [tags] The Compute Engine tags to add to instance.
   /// [updateTime] Instance update time.
   /// [vmImage] Use a Compute Engine VM image to start the notebook instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.acceleratorConfig,
     this.bootDiskSizeGb,
     this.bootDiskType,

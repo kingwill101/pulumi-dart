@@ -80,7 +80,7 @@ class URLMapPathMatcherRouteRule {
   /// [routeAction] In response to a matching matchRule, the load balancer performs advanced routing
   /// [service] The backend service resource to which traffic is
   /// [urlRedirect] When this rule is matched, the request is redirected to a URL specified by
-  URLMapPathMatcherRouteRule({
+  const URLMapPathMatcherRouteRule({
     this.customErrorResponsePolicy,
     this.headerAction,
     this.httpFilterConfigs,

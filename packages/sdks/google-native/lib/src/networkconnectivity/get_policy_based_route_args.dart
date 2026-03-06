@@ -13,7 +13,7 @@ class GetPolicyBasedRouteArgs {
   /// Creates a new [GetPolicyBasedRouteArgs].
   /// [policyBasedRouteId] Required.
   /// [project] Optional.
-  GetPolicyBasedRouteArgs({
+  const GetPolicyBasedRouteArgs({
     required this.policyBasedRouteId,
     this.project,
   });

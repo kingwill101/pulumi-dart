@@ -9,7 +9,7 @@ class ReplicationConfigurationReplicationConfiguration {
 
   /// Creates a new [ReplicationConfigurationReplicationConfiguration].
   /// [rules] The replication rules for a replication configuration. A maximum of 10 are allowed per `replication_configuration`. See Rule
-  ReplicationConfigurationReplicationConfiguration({
+  const ReplicationConfigurationReplicationConfiguration({
     required this.rules,
   });
 

@@ -29,7 +29,7 @@ class GetAccessRulesResult {
   /// [rwAccess] RWAccess of the AccessRule.
   /// [sourceCidrIp] SourceCidrIp of the AccessRule.
   /// [userAccess] UserAccess of the AccessRule
-  GetAccessRulesResult({
+  const GetAccessRulesResult({
     required this.accessGroupName,
     required this.id,
     required this.ids,

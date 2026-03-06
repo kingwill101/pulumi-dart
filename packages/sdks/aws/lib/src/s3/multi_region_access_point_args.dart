@@ -19,7 +19,7 @@ class MultiRegionAccessPointArgs {
   /// [accountId] The AWS account ID for the owner of the buckets for which you want to create a Multi-Region Access Point. Defaults to automatically determined account ID of the AWS provider.
   /// [details] A configuration block containing details about the Multi-Region Access Point. See Details Configuration Block below for more details
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  MultiRegionAccessPointArgs({
+  const MultiRegionAccessPointArgs({
     this.accountId,
     required this.details,
     this.region,

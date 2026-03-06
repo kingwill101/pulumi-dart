@@ -12,7 +12,7 @@ class InitialReplicationDetailsResponse {
   /// Creates a new [InitialReplicationDetailsResponse].
   /// [initialReplicationProgressPercentage] The initial replication progress percentage.
   /// [initialReplicationType] Initial replication type.
-  InitialReplicationDetailsResponse({
+  const InitialReplicationDetailsResponse({
     this.initialReplicationProgressPercentage,
     this.initialReplicationType,
   });

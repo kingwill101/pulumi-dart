@@ -9,7 +9,7 @@ class GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor {
 
   /// Creates a new [GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor].
   /// [pemCertificate] PEM certificate of the PKI used for validation. Must only contain one
-  GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor({
+  const GetWorkloadIdentityPoolProviderX509TrustStoreTrustAnchor({
     required this.pemCertificate,
   });
 

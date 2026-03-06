@@ -14,7 +14,7 @@ class GoogleCloudDatapipelinesV1WorkloadResponse {
   /// Creates a new [GoogleCloudDatapipelinesV1WorkloadResponse].
   /// [dataflowFlexTemplateRequest] Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
   /// [dataflowLaunchTemplateRequest] Template information and additional parameters needed to launch a Dataflow job using the standard launch API.
-  GoogleCloudDatapipelinesV1WorkloadResponse({
+  const GoogleCloudDatapipelinesV1WorkloadResponse({
     required this.dataflowFlexTemplateRequest,
     required this.dataflowLaunchTemplateRequest,
   });

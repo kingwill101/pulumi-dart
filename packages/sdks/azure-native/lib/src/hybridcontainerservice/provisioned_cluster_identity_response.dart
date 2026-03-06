@@ -15,7 +15,7 @@ class ProvisionedClusterIdentityResponse {
   /// [principalId] The principal id of provisioned cluster identity. This property will only be provided for a system assigned identity.
   /// [tenantId] The tenant id associated with the provisioned cluster. This property will only be provided for a system assigned identity.
   /// [type] The type of identity used for the provisioned cluster. The type SystemAssigned, includes a system created identity. The type None means no identity is assigned to the provisioned cluster.
-  ProvisionedClusterIdentityResponse({
+  const ProvisionedClusterIdentityResponse({
     required this.principalId,
     required this.tenantId,
     required this.type,

@@ -25,7 +25,7 @@ class GetIndexResult {
   /// [project] Project ID.
   /// [properties] An ordered sequence of property names and their index attributes. Requires: * A maximum of 100 properties.
   /// [state] The state of the index.
-  GetIndexResult({
+  const GetIndexResult({
     required this.ancestor,
     required this.indexId,
     required this.kind,

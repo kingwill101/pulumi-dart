@@ -36,7 +36,7 @@ class DomainDevicesMemorydev {
   /// [source] Defines the source configuration for the memory device, indicating the memory backing.
   /// [target] Configures the target settings for the memory device, defining how it connects to the guest.
   /// [uuid] Sets the universally unique identifier for the memory device.
-  DomainDevicesMemorydev({
+  const DomainDevicesMemorydev({
     this.access,
     this.acpi,
     this.address,

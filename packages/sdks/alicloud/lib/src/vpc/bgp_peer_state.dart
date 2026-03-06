@@ -27,7 +27,7 @@ class BgpPeerState {
   /// [ipVersion] The IP version.
   /// [peerIpAddress] The IP address of the BGP peer.
   /// [status] Status of BGP neighbors.
-  BgpPeerState({
+  const BgpPeerState({
     this.bfdMultiHop,
     this.bgpGroupId,
     this.bgpPeerName,

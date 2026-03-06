@@ -19,7 +19,7 @@ class ManagementConfigurationProperties {
   /// [parameters] Parameters to run the ARM template
   /// [parentResourceType] The type of the parent resource.
   /// [template] The Json object containing the ARM template to deploy
-  ManagementConfigurationProperties({
+  const ManagementConfigurationProperties({
     this.applicationId,
     required this.parameters,
     required this.parentResourceType,

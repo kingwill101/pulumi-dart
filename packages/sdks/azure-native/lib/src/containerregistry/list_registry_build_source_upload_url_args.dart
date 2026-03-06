@@ -15,7 +15,7 @@ class ListRegistryBuildSourceUploadUrlArgs {
   /// Creates a new [ListRegistryBuildSourceUploadUrlArgs].
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group to which the container registry belongs.
-  ListRegistryBuildSourceUploadUrlArgs({
+  const ListRegistryBuildSourceUploadUrlArgs({
     required this.registryName,
     required this.resourceGroupName,
   });

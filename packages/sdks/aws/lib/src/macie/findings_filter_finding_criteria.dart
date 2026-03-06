@@ -9,7 +9,7 @@ class FindingsFilterFindingCriteria {
 
   /// Creates a new [FindingsFilterFindingCriteria].
   /// [criterions] A condition that specifies the property, operator, and one or more values to use to filter the results.  (documented below)
-  FindingsFilterFindingCriteria({
+  const FindingsFilterFindingCriteria({
     this.criterions,
   });
 

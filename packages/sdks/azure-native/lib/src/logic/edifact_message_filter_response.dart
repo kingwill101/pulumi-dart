@@ -9,7 +9,7 @@ class EdifactMessageFilterResponse {
 
   /// Creates a new [EdifactMessageFilterResponse].
   /// [messageFilterType] The message filter type.
-  EdifactMessageFilterResponse({
+  const EdifactMessageFilterResponse({
     required this.messageFilterType,
   });
 

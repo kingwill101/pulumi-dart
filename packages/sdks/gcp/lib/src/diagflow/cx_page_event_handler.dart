@@ -25,7 +25,7 @@ class CxPageEventHandler {
   /// [targetFlow] The target flow to transition to.
   /// [targetPage] The target page to transition to.
   /// [triggerFulfillment] The fulfillment to call when the event occurs. Handling webhook errors with a fulfillment enabled with webhook could cause infinite loop. It is invalid to specify such fulfillment for a handler handling webhooks.
-  CxPageEventHandler({
+  const CxPageEventHandler({
     this.event,
     this.name,
     this.targetFlow,

@@ -69,7 +69,7 @@ class ProviderArgs {
   /// [token] The token that allows you access to your Linode account
   /// [uaPrefix] An HTTP User-Agent Prefix to prepend in API requests.
   /// [url] The HTTP(S) API address of the Linode API to use.
-  ProviderArgs({
+  const ProviderArgs({
     this.apiCaPath,
     this.apiVersion,
     this.configPath,

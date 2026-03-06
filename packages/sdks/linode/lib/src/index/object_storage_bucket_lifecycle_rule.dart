@@ -29,7 +29,7 @@ class ObjectStorageBucketLifecycleRule {
   /// [id] The unique identifier for the rule.
   /// [noncurrentVersionExpiration] Specifies when non-current object versions expire.
   /// [prefix] The object key prefix identifying one or more objects to which the rule applies.
-  ObjectStorageBucketLifecycleRule({
+  const ObjectStorageBucketLifecycleRule({
     this.abortIncompleteMultipartUploadDays,
     required this.enabled,
     this.expiration,

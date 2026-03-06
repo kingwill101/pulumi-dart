@@ -38,7 +38,7 @@ class GetDatabaseAccountSqlDatabaseResult {
   /// [ts] A system generated property that denotes the last updated timestamp of the resource.
   /// [type] The type of Azure resource.
   /// [users] A system generated property that specifies the addressable path of the users resource.
-  GetDatabaseAccountSqlDatabaseResult({
+  const GetDatabaseAccountSqlDatabaseResult({
     required this.azureApiVersion,
     this.colls,
     this.etag,

@@ -18,7 +18,7 @@ class AzureMonitorWorkspaceLogsExporterResponse {
   /// [api] API configurations for Azure Monitor workspace exporter.
   /// [cache] Cache configurations.
   /// [concurrency] Concurrency configuration for the exporter.
-  AzureMonitorWorkspaceLogsExporterResponse({
+  const AzureMonitorWorkspaceLogsExporterResponse({
     required this.api,
     this.cache,
     this.concurrency,

@@ -8,7 +8,7 @@ class GetApplicationAttributeEnvironment {
 
   /// Creates a new [GetApplicationAttributeEnvironment].
   /// [type] Environment type. Possible values: ["PRODUCTION", "STAGING", "TEST", "DEVELOPMENT"]
-  GetApplicationAttributeEnvironment({
+  const GetApplicationAttributeEnvironment({
     required this.type,
   });
 

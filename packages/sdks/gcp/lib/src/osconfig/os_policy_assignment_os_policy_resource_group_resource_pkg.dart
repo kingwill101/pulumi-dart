@@ -45,7 +45,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
   /// [rpm] An rpm package file. Structure is
   /// [yum] A package managed by YUM. Structure is
   /// [zypper] A package managed by Zypper. Structure is
-  OsPolicyAssignmentOsPolicyResourceGroupResourcePkg({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourcePkg({
     this.apt,
     this.deb,
     required this.desiredState,

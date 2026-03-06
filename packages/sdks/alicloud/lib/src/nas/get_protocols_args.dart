@@ -18,7 +18,7 @@ class GetProtocolsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [type] The file system type. Valid Values: `Performance` and `Capacity`.
   /// [zoneId] String to filter results by zone id.
-  GetProtocolsArgs({
+  const GetProtocolsArgs({
     this.outputFile,
     required this.type,
     this.zoneId,

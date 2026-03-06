@@ -14,7 +14,7 @@ class AzureArcKubernetesArtifactProfileResponse {
   /// Creates a new [AzureArcKubernetesArtifactProfileResponse].
   /// [artifactStore] The reference to artifact store.
   /// [helmArtifactProfile] Helm artifact profile.
-  AzureArcKubernetesArtifactProfileResponse({
+  const AzureArcKubernetesArtifactProfileResponse({
     this.artifactStore,
     this.helmArtifactProfile,
   });

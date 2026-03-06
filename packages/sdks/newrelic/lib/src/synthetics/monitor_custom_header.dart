@@ -11,7 +11,7 @@ class MonitorCustomHeader {
   /// Creates a new [MonitorCustomHeader].
   /// [name] Header name.
   /// [value] Header Value.
-  MonitorCustomHeader({
+  const MonitorCustomHeader({
     this.name,
     this.value,
   });

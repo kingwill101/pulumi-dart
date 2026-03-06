@@ -9,7 +9,7 @@ class SkuResponse {
 
   /// Creates a new [SkuResponse].
   /// [name] Name of the SKU to be applied
-  SkuResponse({
+  const SkuResponse({
     this.name,
   });
 

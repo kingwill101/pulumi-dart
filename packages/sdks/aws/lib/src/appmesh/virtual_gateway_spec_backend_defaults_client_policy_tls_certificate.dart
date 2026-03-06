@@ -13,7 +13,7 @@ class VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate {
   /// Creates a new [VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate].
   /// [file] Local file certificate.
   /// [sds] A [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate({
+  const VirtualGatewaySpecBackendDefaultsClientPolicyTlsCertificate({
     this.file,
     this.sds,
   });

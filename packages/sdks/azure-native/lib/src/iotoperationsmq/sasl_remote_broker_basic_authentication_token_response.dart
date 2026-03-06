@@ -13,7 +13,7 @@ class SaslRemoteBrokerBasicAuthenticationTokenResponse {
   /// Creates a new [SaslRemoteBrokerBasicAuthenticationTokenResponse].
   /// [keyVault] Keyvault token keyvault secret properties.
   /// [secretName] Secret where cert details are stored.
-  SaslRemoteBrokerBasicAuthenticationTokenResponse({
+  const SaslRemoteBrokerBasicAuthenticationTokenResponse({
     this.keyVault,
     this.secretName,
   });

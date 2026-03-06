@@ -28,7 +28,7 @@ class EnclaveEndpointArgs {
   /// [ruleCollection] Enclave Endpoint Rule Collection.
   /// [tags] Resource tags.
   /// [virtualEnclaveName] The name of the enclaveResource Resource
-  EnclaveEndpointArgs({
+  const EnclaveEndpointArgs({
     this.enclaveEndpointName,
     this.location,
     required this.resourceGroupName,

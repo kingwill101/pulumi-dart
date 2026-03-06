@@ -11,7 +11,7 @@ class ListenerAclConfigAclRelation {
   /// Creates a new [ListenerAclConfigAclRelation].
   /// [aclId] Snooping Binding of the Access Policy Group ID List.
   /// [status] The Current IP Address of the Listened State
-  ListenerAclConfigAclRelation({
+  const ListenerAclConfigAclRelation({
     this.aclId,
     this.status,
   });

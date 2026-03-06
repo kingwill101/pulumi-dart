@@ -21,7 +21,7 @@ class ServiceArgs {
   /// [name] The name of the Communication Service resource. Changing this forces a new Communication Service to be created.
   /// [resourceGroupName] The name of the Resource Group where the Communication Service should exist. Changing this forces a new Communication Service to be created.
   /// [tags] A mapping of tags which should be assigned to the Communication Service.
-  ServiceArgs({
+  const ServiceArgs({
     this.dataLocation,
     this.name,
     required this.resourceGroupName,

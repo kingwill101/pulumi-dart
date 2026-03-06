@@ -18,7 +18,7 @@ class TrackingInfoResponse {
   /// [serialNumber] Serial number of the device being tracked.
   /// [trackingId] Tracking ID of the shipment.
   /// [trackingUrl] Tracking URL of the shipment.
-  TrackingInfoResponse({
+  const TrackingInfoResponse({
     this.carrierName,
     this.serialNumber,
     this.trackingId,

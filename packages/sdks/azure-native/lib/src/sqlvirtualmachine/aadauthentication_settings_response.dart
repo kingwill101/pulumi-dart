@@ -9,7 +9,7 @@ class AADAuthenticationSettingsResponse {
 
   /// Creates a new [AADAuthenticationSettingsResponse].
   /// [clientId] The client Id of the Managed Identity to query Microsoft Graph API. An empty string must be used for the system assigned Managed Identity
-  AADAuthenticationSettingsResponse({
+  const AADAuthenticationSettingsResponse({
     this.clientId,
   });
 

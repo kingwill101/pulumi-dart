@@ -18,7 +18,7 @@ class InterconnectAttachmentL2ForwardingApplianceMapping {
   /// [innerVlanToApplianceMappings] Structure is documented below.
   /// [name] The name of this appliance mapping rule.
   /// [vlanId] The VLAN tag.
-  InterconnectAttachmentL2ForwardingApplianceMapping({
+  const InterconnectAttachmentL2ForwardingApplianceMapping({
     this.applianceIpAddress,
     this.innerVlanToApplianceMappings,
     this.name,

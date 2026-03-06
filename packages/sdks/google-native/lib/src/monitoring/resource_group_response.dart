@@ -12,7 +12,7 @@ class ResourceGroupResponse {
   /// Creates a new [ResourceGroupResponse].
   /// [groupId] The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
   /// [resourceType] The resource type of the group members.
-  ResourceGroupResponse({
+  const ResourceGroupResponse({
     required this.groupId,
     required this.resourceType,
   });

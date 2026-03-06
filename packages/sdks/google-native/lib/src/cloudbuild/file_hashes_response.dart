@@ -10,7 +10,7 @@ class FileHashesResponse {
 
   /// Creates a new [FileHashesResponse].
   /// [fileHash] Collection of file hashes.
-  FileHashesResponse({
+  const FileHashesResponse({
     required this.fileHash,
   });
 

@@ -12,7 +12,7 @@ class MetricsConfigurationResponse {
   /// Creates a new [MetricsConfigurationResponse].
   /// [destinations] Open telemetry metrics destinations
   /// [includeKeda] Boolean indicating if including keda metrics
-  MetricsConfigurationResponse({
+  const MetricsConfigurationResponse({
     this.destinations,
     this.includeKeda,
   });

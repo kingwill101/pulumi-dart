@@ -48,7 +48,7 @@ class GetTrafficControllerInterfaceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetTrafficControllerInterfaceResult({
+  const GetTrafficControllerInterfaceResult({
     required this.associations,
     required this.azureApiVersion,
     required this.configurationEndpoints,

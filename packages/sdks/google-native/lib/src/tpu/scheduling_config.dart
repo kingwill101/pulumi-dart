@@ -12,7 +12,7 @@ class SchedulingConfig {
   /// Creates a new [SchedulingConfig].
   /// [preemptible] Defines whether the node is preemptible.
   /// [reserved] Whether the node is created under a reservation.
-  SchedulingConfig({
+  const SchedulingConfig({
     this.preemptible,
     this.reserved,
   });

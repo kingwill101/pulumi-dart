@@ -15,7 +15,7 @@ class CombustionArgs {
   /// Creates a new [CombustionArgs].
   /// [content] Combustion script content (shell script)
   /// [name] Name for this combustion resource
-  CombustionArgs({
+  const CombustionArgs({
     required this.content,
     this.name,
   });

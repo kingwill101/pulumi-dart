@@ -17,7 +17,7 @@ class SourceControlTokenState {
   /// [token] The Access Token.
   /// [tokenSecret] The Access Token Secret.
   /// [type] The Token type. Possible values include `Bitbucket`, `Dropbox`, `Github`, and `OneDrive`.
-  SourceControlTokenState({
+  const SourceControlTokenState({
     this.token,
     this.tokenSecret,
     this.type,

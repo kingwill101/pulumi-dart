@@ -21,7 +21,7 @@ class GetWorkflowVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [versionName] The name of the workflowVersion.
   /// [workflowName] Name of the workflow
-  GetWorkflowVersionArgs({
+  const GetWorkflowVersionArgs({
     required this.contextName,
     required this.resourceGroupName,
     required this.versionName,

@@ -9,7 +9,7 @@ class PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore {
 
   /// Creates a new [PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore].
   /// [score] The sensitivity score applied to the resource.
-  PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore({
+  const PreventionInspectTemplateInspectConfigInfoTypeSensitivityScore({
     required this.score,
   });
 

@@ -24,7 +24,7 @@ class MemberState {
   /// [masterId] The ID of the master Security Hub AWS account.
   /// [memberStatus] The status of the member account relationship.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  MemberState({
+  const MemberState({
     this.accountId,
     this.email,
     this.invite,

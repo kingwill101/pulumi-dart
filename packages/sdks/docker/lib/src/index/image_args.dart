@@ -27,7 +27,7 @@ class ImageArgs {
   /// [imageName] The image name, of the format repository[:tag], e.g. `docker.io/username/demo-image:v1`.
   /// [registry] The registry to push the image to
   /// [skipPush] A flag to skip a registry push.
-  ImageArgs({
+  const ImageArgs({
     this.build,
     this.buildOnPreview,
     required this.imageName,

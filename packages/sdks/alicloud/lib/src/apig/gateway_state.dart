@@ -56,7 +56,7 @@ class GatewayState {
   /// [vswitch] The virtual switch associated with the Gateway. See `vswitch` below.
   /// [zoneConfig] Availability Zone Configuration See `zone_config` below.
   /// [zones] The List of zones associated with the Gateway. See `zones` below.
-  GatewayState({
+  const GatewayState({
     this.createTime,
     this.gatewayName,
     this.gatewayType,

@@ -24,7 +24,7 @@ class StorageVersionMigrationPatchStoragemigrationK8sIoV1beta1 {
   /// [metadata] Standard object metadata. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata
   /// [spec] Specification of the migration.
   /// [status] Status of the migration.
-  StorageVersionMigrationPatchStoragemigrationK8sIoV1beta1({
+  const StorageVersionMigrationPatchStoragemigrationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

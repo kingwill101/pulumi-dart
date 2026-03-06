@@ -14,7 +14,7 @@ class GetDedicatedHostAccountsAccount {
   /// [accountName] The name of the Dedicated host account.
   /// [dedicatedHostId] The ID of the Dedicated host.
   /// [id] The ID of the Dedicated Host Account. The value formats as `&lt;dedicated_host_id&gt;:&lt;account_name&gt;`.
-  GetDedicatedHostAccountsAccount({
+  const GetDedicatedHostAccountsAccount({
     required this.accountName,
     required this.dedicatedHostId,
     required this.id,

@@ -24,7 +24,7 @@ class ConfigGroupArgs {
   /// [resourcePrefix] A prefix for the auto-generated resource names. Defaults to the name of the ConfigGroup. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   /// [skipAwait] Indicates that child resources should skip the await logic.
   /// [yaml] A Kubernetes YAML manifest containing Kubernetes resource configuration(s).
-  ConfigGroupArgs({
+  const ConfigGroupArgs({
     this.files,
     this.objs,
     this.resourcePrefix,

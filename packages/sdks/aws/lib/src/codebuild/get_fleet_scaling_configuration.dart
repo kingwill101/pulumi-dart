@@ -18,7 +18,7 @@ class GetFleetScalingConfiguration {
   /// [maxCapacity] The maximum number of instances in the ﬂeet when auto-scaling.
   /// [scalingType] The scaling type for a compute fleet.
   /// [targetTrackingScalingConfigs] Nested attribute containing information about thresholds when new instance is auto-scaled into the compute fleet.
-  GetFleetScalingConfiguration({
+  const GetFleetScalingConfiguration({
     required this.desiredCapacity,
     required this.maxCapacity,
     required this.scalingType,

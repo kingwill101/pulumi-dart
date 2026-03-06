@@ -16,7 +16,7 @@ class DocumentClassifierOutputDataConfig {
   /// [kmsKeyId] KMS Key used to encrypt the output documents.
   /// [outputS3Uri] Full path for the output documents.
   /// [s3Uri] Destination path for the output documents.
-  DocumentClassifierOutputDataConfig({
+  const DocumentClassifierOutputDataConfig({
     this.kmsKeyId,
     this.outputS3Uri,
     required this.s3Uri,

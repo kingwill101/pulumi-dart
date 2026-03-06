@@ -30,7 +30,7 @@ class PipeSourceParametersDynamodbStreamParameters {
   /// [onPartialBatchItemFailure] Define how to handle item process failures. AUTOMATIC_BISECT halves each batch and retry each half until all the records are processed or there is one failed message left in the batch. Valid values: AUTOMATIC_BISECT.
   /// [parallelizationFactor] The number of batches to process concurrently from each shard. The default value is 1. Maximum value of 10.
   /// [startingPosition] The position in a stream from which to start reading. Valid values: TRIM_HORIZON, LATEST.
-  PipeSourceParametersDynamodbStreamParameters({
+  const PipeSourceParametersDynamodbStreamParameters({
     this.batchSize,
     this.deadLetterConfig,
     this.maximumBatchingWindowInSeconds,

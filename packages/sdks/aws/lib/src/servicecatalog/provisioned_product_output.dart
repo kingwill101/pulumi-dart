@@ -14,7 +14,7 @@ class ProvisionedProductOutput {
   /// [description] The description of the output.
   /// [key] The output key.
   /// [value] The output value.
-  ProvisionedProductOutput({
+  const ProvisionedProductOutput({
     this.description,
     this.key,
     this.value,

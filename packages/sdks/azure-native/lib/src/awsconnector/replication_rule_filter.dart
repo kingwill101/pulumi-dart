@@ -17,7 +17,7 @@ class ReplicationRuleFilter {
   /// [and] A container for specifying rule filters. The filters determine the subset of objects to which the rule applies. This element is required only if you specify more than one filter. For example:   +  If you specify both a ``Prefix`` and a ``TagFilter``, wrap these filters in an ``And`` tag.  +  If you specify a filter based on multiple tags, wrap the ``TagFilter`` elements in an ``And`` tag. A container for specifying rule filters. The filters determine the subset of objects to which the rule applies. This element is required only if you specify more than one filter.  For example:  +  If you specify both a ``Prefix`` and a ``TagFilter``, wrap these filters in an ``And`` tag.   +  If you specify a filter based on multiple tags, wrap the ``TagFilter`` elements in an ``And`` tag
   /// [prefix] An object key name prefix that identifies the subset of objects to which the rule applies.  Replacement must be made for object keys containing special characters (such as carriage returns) when using XML requests. For more information, see [XML related object key constraints](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html#object-key-xml-related-constraints).
   /// [tagFilter] A container for specifying a tag key and value.  The rule applies only to objects that have the tag in their tag set. Specifies tags to use to identify a subset of objects for an Amazon S3 bucket.
-  ReplicationRuleFilter({
+  const ReplicationRuleFilter({
     this.and,
     this.prefix,
     this.tagFilter,

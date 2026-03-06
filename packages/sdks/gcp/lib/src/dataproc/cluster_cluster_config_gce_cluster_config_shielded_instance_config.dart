@@ -16,7 +16,7 @@ class ClusterClusterConfigGceClusterConfigShieldedInstanceConfig {
   /// [enableIntegrityMonitoring] Defines whether instances have integrity monitoring enabled.
   /// [enableSecureBoot] Defines whether instances have Secure Boot enabled.
   /// [enableVtpm] Defines whether instances have the [vTPM](https://cloud.google.com/security/shielded-cloud/shielded-vm#vtpm) enabled.
-  ClusterClusterConfigGceClusterConfigShieldedInstanceConfig({
+  const ClusterClusterConfigGceClusterConfigShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
     this.enableVtpm,

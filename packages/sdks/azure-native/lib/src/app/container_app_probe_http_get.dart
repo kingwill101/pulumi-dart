@@ -22,7 +22,7 @@ class ContainerAppProbeHttpGet {
   /// [path] Path to access on the HTTP server.
   /// [port] Name or number of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME.
   /// [scheme] Scheme to use for connecting to the host. Defaults to HTTP.
-  ContainerAppProbeHttpGet({
+  const ContainerAppProbeHttpGet({
     this.host,
     this.httpHeaders,
     this.path,

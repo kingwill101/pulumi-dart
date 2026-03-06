@@ -16,7 +16,7 @@ class JobStorageAccountState {
   /// [storageAccountKey] Optional.
   /// [storageAccountName] Optional.
   /// [streamAnalyticsJobId] The ID of the Stream Analytics Job. Changing this forces a new resource to be created.
-  JobStorageAccountState({
+  const JobStorageAccountState({
     this.authenticationMode,
     this.storageAccountKey,
     this.storageAccountName,

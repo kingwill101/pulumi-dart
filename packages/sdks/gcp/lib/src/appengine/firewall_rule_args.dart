@@ -30,7 +30,7 @@ class FirewallRuleArgs {
   /// [priority] A positive integer that defines the order of rule evaluation.
   /// [project] The ID of the project in which the resource belongs.
   /// [sourceRange] IP address or range, defined using CIDR notation, of requests that this rule applies to.
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     required this.action,
     this.description,
     this.priority,

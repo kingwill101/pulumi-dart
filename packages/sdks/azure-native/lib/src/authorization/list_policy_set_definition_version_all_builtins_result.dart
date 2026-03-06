@@ -13,7 +13,7 @@ class ListPolicySetDefinitionVersionAllBuiltinsResult {
   /// Creates a new [ListPolicySetDefinitionVersionAllBuiltinsResult].
   /// [nextLink] The URL to use for getting the next set of results.
   /// [value] An array of policy set definition versions.
-  ListPolicySetDefinitionVersionAllBuiltinsResult({
+  const ListPolicySetDefinitionVersionAllBuiltinsResult({
     this.nextLink,
     this.value,
   });

@@ -15,7 +15,7 @@ class GetManagedHardwareSecurityModuleRoleDefinitionArgs {
   /// Creates a new [GetManagedHardwareSecurityModuleRoleDefinitionArgs].
   /// [managedHsmId] The ID of the Key Vault Managed Hardware Security Module.
   /// [name] The name in UUID notation of this Key Vault Managed Hardware Security Module Role Definition.
-  GetManagedHardwareSecurityModuleRoleDefinitionArgs({
+  const GetManagedHardwareSecurityModuleRoleDefinitionArgs({
     required this.managedHsmId,
     required this.name,
   });

@@ -25,7 +25,7 @@ class GetAppsResult {
   /// [names] A list of app names.
   /// [outputFile] Optional.
   /// [tags] Optional.
-  GetAppsResult({
+  const GetAppsResult({
     required this.apps,
     required this.id,
     required this.ids,

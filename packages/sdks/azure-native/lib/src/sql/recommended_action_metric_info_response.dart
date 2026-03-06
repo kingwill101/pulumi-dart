@@ -21,7 +21,7 @@ class RecommendedActionMetricInfoResponse {
   /// [timeGrain] Gets the duration of time interval for the value given by this MetricInfo. e.g., PT1H (1 hour)
   /// [unit] Gets the unit in which metric is measured. e.g., DTU, Frequency
   /// [value] Gets the value of the metric in the time interval given by this MetricInfo.
-  RecommendedActionMetricInfoResponse({
+  const RecommendedActionMetricInfoResponse({
     required this.metricName,
     required this.startTime,
     required this.timeGrain,

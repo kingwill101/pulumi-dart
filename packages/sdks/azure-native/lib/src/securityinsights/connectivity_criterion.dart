@@ -13,7 +13,7 @@ class ConnectivityCriterion {
   /// Creates a new [ConnectivityCriterion].
   /// [type] Gets or sets the type of connectivity.
   /// [value] Gets or sets the queries for checking connectivity.
-  ConnectivityCriterion({
+  const ConnectivityCriterion({
     required this.type,
     this.value,
   });

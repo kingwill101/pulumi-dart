@@ -26,7 +26,7 @@ class GetDeviceGroupsResult {
   /// [nameRegex] Optional.
   /// [outputFile] Optional.
   /// [superGroupId] Optional.
-  GetDeviceGroupsResult({
+  const GetDeviceGroupsResult({
     this.enableDetails,
     this.groupName,
     required this.groups,

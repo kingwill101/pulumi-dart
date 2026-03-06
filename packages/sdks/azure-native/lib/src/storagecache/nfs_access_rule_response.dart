@@ -30,7 +30,7 @@ class NfsAccessRuleResponse {
   /// [scope] Scope for this rule. The scope and filter determine which clients match the rule.
   /// [submountAccess] For the default policy, allow access to subdirectories under the root export. If this is set to no, clients can only mount the path '/'. If set to yes, clients can mount a deeper path, like '/a/b'.
   /// [suid] Allow SUID semantics.
-  NfsAccessRuleResponse({
+  const NfsAccessRuleResponse({
     required this.access,
     this.anonymousGID,
     this.anonymousUID,

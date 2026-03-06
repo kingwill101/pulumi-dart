@@ -12,7 +12,7 @@ class GetMscSubSubscriptionsArgs {
 
   /// Creates a new [GetMscSubSubscriptionsArgs].
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetMscSubSubscriptionsArgs({
+  const GetMscSubSubscriptionsArgs({
     this.outputFile,
   });
 

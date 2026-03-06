@@ -12,7 +12,7 @@ class GetNetworkingIpArgs {
 
   /// Creates a new [GetNetworkingIpArgs].
   /// [address] The IP Address to access.  The address must be associated with the account and a resource that the user has access to view.
-  GetNetworkingIpArgs({
+  const GetNetworkingIpArgs({
     required this.address,
   });
 

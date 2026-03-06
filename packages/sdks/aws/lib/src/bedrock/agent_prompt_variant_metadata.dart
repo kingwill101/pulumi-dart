@@ -11,7 +11,7 @@ class AgentPromptVariantMetadata {
   /// Creates a new [AgentPromptVariantMetadata].
   /// [key] Key of a metadata tag for a prompt variant.
   /// [value] Value of a metadata tag for a prompt variant.
-  AgentPromptVariantMetadata({
+  const AgentPromptVariantMetadata({
     required this.key,
     required this.value,
   });

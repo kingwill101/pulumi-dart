@@ -33,7 +33,7 @@ class GetDevEnvironmentArgs {
   /// [repositories] The source repository that contains the branch to clone into the Dev Environment.
   /// [spaceName] The name of the space.
   /// [tags] Optional.
-  GetDevEnvironmentArgs({
+  const GetDevEnvironmentArgs({
     this.alias,
     this.creatorId,
     required this.envId,

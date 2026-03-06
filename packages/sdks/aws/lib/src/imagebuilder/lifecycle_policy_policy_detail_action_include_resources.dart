@@ -14,7 +14,7 @@ class LifecyclePolicyPolicyDetailActionIncludeResources {
   /// [amis] Specifies whether the lifecycle action should apply to distributed AMIs.
   /// [containers] Specifies whether the lifecycle action should apply to distributed containers.
   /// [snapshots] Specifies whether the lifecycle action should apply to snapshots associated with distributed AMIs.
-  LifecyclePolicyPolicyDetailActionIncludeResources({
+  const LifecyclePolicyPolicyDetailActionIncludeResources({
     this.amis,
     this.containers,
     this.snapshots,

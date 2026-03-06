@@ -27,7 +27,7 @@ class UsageLimitArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The Amazon Resource Name (ARN) of the Amazon Redshift Serverless resource to create the usage limit for.
   /// [usageType] The type of Amazon Redshift Serverless usage to create a usage limit for. Valid values are `serverless-compute` or `cross-region-datasharing`.
-  UsageLimitArgs({
+  const UsageLimitArgs({
     required this.amount,
     this.breachAction,
     this.period,

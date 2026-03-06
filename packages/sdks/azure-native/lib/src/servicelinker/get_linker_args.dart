@@ -15,7 +15,7 @@ class GetLinkerArgs {
   /// Creates a new [GetLinkerArgs].
   /// [linkerName] The name Linker resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource to be connected.
-  GetLinkerArgs({
+  const GetLinkerArgs({
     required this.linkerName,
     required this.resourceUri,
   });

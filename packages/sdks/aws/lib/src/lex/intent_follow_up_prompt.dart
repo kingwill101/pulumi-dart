@@ -15,7 +15,7 @@ class IntentFollowUpPrompt {
   /// Creates a new [IntentFollowUpPrompt].
   /// [prompt] Prompts for information from the user. Attributes are documented under prompt.
   /// [rejectionStatement] If the user answers "no" to the question defined in the prompt field,
-  IntentFollowUpPrompt({
+  const IntentFollowUpPrompt({
     required this.prompt,
     required this.rejectionStatement,
   });

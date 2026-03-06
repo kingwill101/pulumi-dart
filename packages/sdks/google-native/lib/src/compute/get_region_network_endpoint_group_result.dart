@@ -79,7 +79,7 @@ class GetRegionNetworkEndpointGroupResult {
   /// [subnetwork] Optional URL of the subnetwork to which all network endpoints in the NEG belong.
   /// [type] Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
   /// [zone] The URL of the zone where the network endpoint group is located.
-  GetRegionNetworkEndpointGroupResult({
+  const GetRegionNetworkEndpointGroupResult({
     required this.annotations,
     required this.appEngine,
     required this.clientPortMappingMode,

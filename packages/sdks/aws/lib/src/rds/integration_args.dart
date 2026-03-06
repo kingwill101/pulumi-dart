@@ -48,7 +48,7 @@ class IntegrationArgs {
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [targetArn] ARN of the Redshift data warehouse to use as the target for replication.
   /// [timeouts] Optional.
-  IntegrationArgs({
+  const IntegrationArgs({
     this.additionalEncryptionContext,
     this.dataFilter,
     required this.integrationName,

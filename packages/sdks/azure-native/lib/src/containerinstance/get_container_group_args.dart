@@ -15,7 +15,7 @@ class GetContainerGroupArgs {
   /// Creates a new [GetContainerGroupArgs].
   /// [containerGroupName] The name of the container group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetContainerGroupArgs({
+  const GetContainerGroupArgs({
     required this.containerGroupName,
     required this.resourceGroupName,
   });

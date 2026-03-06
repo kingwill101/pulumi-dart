@@ -7,7 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack {
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack].
   /// [instanceUrl] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSlack({
     required this.instanceUrl,
   });
 

@@ -11,7 +11,7 @@ class FleetScalingConfigurationTargetTrackingScalingConfig {
   /// Creates a new [FleetScalingConfigurationTargetTrackingScalingConfig].
   /// [metricType] Metric type to determine auto-scaling. Valid value: `FLEET_UTILIZATION_RATE`.
   /// [targetValue] Value of metricType when to start scaling.
-  FleetScalingConfigurationTargetTrackingScalingConfig({
+  const FleetScalingConfigurationTargetTrackingScalingConfig({
     this.metricType,
     this.targetValue,
   });

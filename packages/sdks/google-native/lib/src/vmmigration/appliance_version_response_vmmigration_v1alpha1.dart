@@ -18,7 +18,7 @@ class ApplianceVersionResponseVmmigrationV1alpha1 {
   /// [releaseNotesUri] Link to a page that contains the version release notes.
   /// [uri] A link for downloading the version.
   /// [version] The appliance version.
-  ApplianceVersionResponseVmmigrationV1alpha1({
+  const ApplianceVersionResponseVmmigrationV1alpha1({
     required this.critical,
     required this.releaseNotesUri,
     required this.uri,

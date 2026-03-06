@@ -23,7 +23,7 @@ class GetServicePrincipalAppRole {
   /// [enabled] Determines if the permission scope is enabled.
   /// [id] The unique identifier of the delegated permission. Must be a valid UUID.
   /// [value] The value that is used for the `scp` claim in OAuth 2.0 access tokens.
-  GetServicePrincipalAppRole({
+  const GetServicePrincipalAppRole({
     required this.allowedMemberTypes,
     required this.description,
     required this.displayName,

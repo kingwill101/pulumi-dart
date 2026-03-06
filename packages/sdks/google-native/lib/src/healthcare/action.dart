@@ -34,7 +34,7 @@ class Action {
   /// [regenUidTag] Replace UID with a new generated UID. Supported [Value Representation] (http://dicom.nema.org/medical/dicom/2018e/output/chtml/part05/sect_6.2.html#table_6.2-1): UI
   /// [removeTag] Replace with empty tag.
   /// [resetTag] Reset tag to a placeholder value.
-  Action({
+  const Action({
     this.cleanImageTag,
     this.cleanTextTag,
     this.deleteTag,

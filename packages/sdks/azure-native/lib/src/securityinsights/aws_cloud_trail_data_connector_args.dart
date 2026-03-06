@@ -29,7 +29,7 @@ class AwsCloudTrailDataConnectorArgs {
   /// [kind] The kind of the data connector
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  AwsCloudTrailDataConnectorArgs({
+  const AwsCloudTrailDataConnectorArgs({
     this.awsRoleArn,
     this.dataConnectorId,
     required this.dataTypes,

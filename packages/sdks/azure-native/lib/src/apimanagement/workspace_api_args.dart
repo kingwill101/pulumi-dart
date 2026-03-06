@@ -106,7 +106,7 @@ class WorkspaceApiArgs {
   /// [value] Content value when Importing an API.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
   /// [wsdlSelector] Criteria to limit import of WSDL to a subset of the document.
-  WorkspaceApiArgs({
+  const WorkspaceApiArgs({
     this.apiId,
     this.apiRevision,
     this.apiRevisionDescription,

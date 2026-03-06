@@ -13,7 +13,7 @@ class MysqlDatabaseDatastreamV1alpha1 {
   /// Creates a new [MysqlDatabaseDatastreamV1alpha1].
   /// [databaseName] Database name.
   /// [mysqlTables] Tables in the database.
-  MysqlDatabaseDatastreamV1alpha1({
+  const MysqlDatabaseDatastreamV1alpha1({
     this.databaseName,
     this.mysqlTables,
   });

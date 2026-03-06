@@ -23,7 +23,7 @@ class AttachedDatabaseConfigurationSharing {
   /// [materializedViewsToIncludes] List of materialized views to include in the follower database.
   /// [tablesToExcludes] List of tables to exclude from the follower database.
   /// [tablesToIncludes] List of tables to include in the follower database.
-  AttachedDatabaseConfigurationSharing({
+  const AttachedDatabaseConfigurationSharing({
     this.externalTablesToExcludes,
     this.externalTablesToIncludes,
     this.materializedViewsToExcludes,

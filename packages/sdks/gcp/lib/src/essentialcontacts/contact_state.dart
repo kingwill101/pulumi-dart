@@ -21,7 +21,7 @@ class ContactState {
   /// [name] The identifier for the contact. Format: {resourceType}/{resource_id}/contacts/{contact_id}
   /// [notificationCategorySubscriptions] The categories of notifications that the contact will receive communications for.
   /// [parent] The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id}
-  ContactState({
+  const ContactState({
     this.email,
     this.languageTag,
     this.name,

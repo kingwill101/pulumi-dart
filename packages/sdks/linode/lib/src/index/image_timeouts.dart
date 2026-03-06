@@ -8,7 +8,7 @@ class ImageTimeouts {
 
   /// Creates a new [ImageTimeouts].
   /// [create] Used when creating the instance image (until the instance is available)
-  ImageTimeouts({
+  const ImageTimeouts({
     this.create,
   });
 

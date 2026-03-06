@@ -17,7 +17,7 @@ class GetPrivateConnectionIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [privateConnectionId] Required.
   /// [project] Optional.
-  GetPrivateConnectionIamPolicyArgs({
+  const GetPrivateConnectionIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     required this.privateConnectionId,

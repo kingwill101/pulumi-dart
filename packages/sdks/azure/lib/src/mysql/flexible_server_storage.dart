@@ -22,7 +22,7 @@ class FlexibleServerStorage {
   /// [iops] The storage IOPS for the MySQL Flexible Server. Possible values are between `360` and `20000`.
   /// [logOnDiskEnabled] Should Storage Log On Disk be enabled? Defaults to `false`.
   /// [sizeGb] The max storage allowed for the MySQL Flexible Server. Possible values are between `20` and `16384`.
-  FlexibleServerStorage({
+  const FlexibleServerStorage({
     this.autoGrowEnabled,
     this.ioScalingEnabled,
     this.iops,

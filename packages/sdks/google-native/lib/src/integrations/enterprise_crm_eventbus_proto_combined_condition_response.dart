@@ -10,7 +10,7 @@ class EnterpriseCrmEventbusProtoCombinedConditionResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoCombinedConditionResponse].
   /// [conditions] A set of individual constituent conditions.
-  EnterpriseCrmEventbusProtoCombinedConditionResponse({
+  const EnterpriseCrmEventbusProtoCombinedConditionResponse({
     required this.conditions,
   });
 

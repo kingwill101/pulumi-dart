@@ -63,7 +63,7 @@ class GetInsightsDatasetConfigResult {
   /// [sourceProjects] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetInsightsDatasetConfigResult({
+  const GetInsightsDatasetConfigResult({
     required this.activityDataRetentionPeriodDays,
     required this.createTime,
     required this.datasetConfigId,

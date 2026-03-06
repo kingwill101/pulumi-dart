@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse].
   /// [allowedIssuers] A list of allowed JWT issuers. Each entry must be a valid Google service account, in the following format: `service-account-name@project-id.iam.gserviceaccount.com`
   /// [audiences] The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted.
-  GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse({
+  const GoogleCloudAiplatformV1beta1DeployedIndexAuthConfigAuthProviderResponse({
     required this.allowedIssuers,
     required this.audiences,
   });

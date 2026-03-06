@@ -42,7 +42,7 @@ class SacAttachmentArgs {
   /// [sacRealm] SAC Realm which owns the attachment. This can be input as an ID or a full resource name.
   /// [symantecOptions] Configuration required for Symantec attachments.
   /// [timeZone] Case-sensitive tzinfo identifier used for localization. Only valid for Symantec attachments.
-  SacAttachmentArgs({
+  const SacAttachmentArgs({
     this.country,
     this.labels,
     required this.location,

@@ -8,7 +8,7 @@ class SpokeGatewayIpRangeReservation {
 
   /// Creates a new [SpokeGatewayIpRangeReservation].
   /// [ipRange] A block of IP address ranges used to allocate supporting infrastructure for this gateway—for example, 10.1.2.0/23. The IP address block must be a /23 range. This IP address block must not overlap with subnets in any spoke or peer network that the gateway can communicate with.
-  SpokeGatewayIpRangeReservation({
+  const SpokeGatewayIpRangeReservation({
     required this.ipRange,
   });
 

@@ -24,7 +24,7 @@ class AuditLogConfigArgs {
   /// [dbAudit] Indicates Whether to Enable the Audit Log.  Valid value:
   /// [instanceId] Instance ID, Call the Describeinstances Get.
   /// [retention] Audit Log Retention Period Value: 1~365.
-  AuditLogConfigArgs({
+  const AuditLogConfigArgs({
     this.dbAudit,
     required this.instanceId,
     this.retention,

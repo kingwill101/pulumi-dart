@@ -26,7 +26,7 @@ class AiReasoningEngineSpecSourceCodeSpecPythonSpec {
   /// [entrypointObject] Optional. The name of the callable object within the
   /// [requirementsFile] Optional. The path to the requirements file, relative to the
   /// [version] Optional. The version of Python to use. Support version
-  AiReasoningEngineSpecSourceCodeSpecPythonSpec({
+  const AiReasoningEngineSpecSourceCodeSpecPythonSpec({
     this.entrypointModule,
     this.entrypointObject,
     this.requirementsFile,

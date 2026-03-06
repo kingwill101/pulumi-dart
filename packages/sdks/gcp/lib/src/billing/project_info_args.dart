@@ -18,7 +18,7 @@ class ProjectInfoArgs {
   /// Creates a new [ProjectInfoArgs].
   /// [billingAccount] The ID of the billing account associated with the project, if
   /// [project] The ID of the project in which the resource belongs.
-  ProjectInfoArgs({
+  const ProjectInfoArgs({
     required this.billingAccount,
     this.project,
   });

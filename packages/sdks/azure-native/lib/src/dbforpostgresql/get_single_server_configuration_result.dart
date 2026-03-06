@@ -35,7 +35,7 @@ class GetSingleServerConfigurationResult {
   /// [source] Source of the configuration.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Value of the configuration.
-  GetSingleServerConfigurationResult({
+  const GetSingleServerConfigurationResult({
     required this.allowedValues,
     required this.azureApiVersion,
     required this.dataType,

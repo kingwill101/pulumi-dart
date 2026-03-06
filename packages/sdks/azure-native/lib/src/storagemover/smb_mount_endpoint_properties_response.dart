@@ -26,7 +26,7 @@ class SmbMountEndpointPropertiesResponse {
   /// [host] The host name or IP address of the server exporting the file system.
   /// [provisioningState] The provisioning state of this resource.
   /// [shareName] The name of the SMB share being exported from the server.
-  SmbMountEndpointPropertiesResponse({
+  const SmbMountEndpointPropertiesResponse({
     this.credentials,
     this.description,
     required this.endpointType,

@@ -20,7 +20,7 @@ class ApiOperationTemplateParameterExample {
   /// [name] The name of this example.
   /// [summary] A short description for this example.
   /// [value] The example of the representation.
-  ApiOperationTemplateParameterExample({
+  const ApiOperationTemplateParameterExample({
     this.description,
     this.externalValue,
     required this.name,

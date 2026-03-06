@@ -18,7 +18,7 @@ class GetDatabaseAccountMongoDBDatabaseArgs {
   /// [accountName] Cosmos DB database account name.
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] Name of an Azure resource group.
-  GetDatabaseAccountMongoDBDatabaseArgs({
+  const GetDatabaseAccountMongoDBDatabaseArgs({
     required this.accountName,
     required this.databaseName,
     required this.resourceGroupName,

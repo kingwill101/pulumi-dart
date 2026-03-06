@@ -15,7 +15,7 @@ class GetDataCollectionRuleArgs {
   /// Creates a new [GetDataCollectionRuleArgs].
   /// [dataCollectionRuleName] The name of the data collection rule. The name is case insensitive.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDataCollectionRuleArgs({
+  const GetDataCollectionRuleArgs({
     required this.dataCollectionRuleName,
     required this.resourceGroupName,
   });

@@ -12,7 +12,7 @@ class GaugeView {
   /// Creates a new [GaugeView].
   /// [lowerBound] The lower bound for this gauge chart. The value of the chart should always be greater than or equal to this.
   /// [upperBound] The upper bound for this gauge chart. The value of the chart should always be less than or equal to this.
-  GaugeView({
+  const GaugeView({
     this.lowerBound,
     this.upperBound,
   });

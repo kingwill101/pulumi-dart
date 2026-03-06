@@ -9,7 +9,7 @@ class GetQuotaApplicationsDimension {
   /// Creates a new [GetQuotaApplicationsDimension].
   /// [key] Optional.
   /// [value] Optional.
-  GetQuotaApplicationsDimension({
+  const GetQuotaApplicationsDimension({
     this.key,
     this.value,
   });

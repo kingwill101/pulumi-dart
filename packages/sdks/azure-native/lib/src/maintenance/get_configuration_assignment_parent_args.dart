@@ -30,7 +30,7 @@ class GetConfigurationAssignmentParentArgs {
   /// [resourceParentName] Resource parent name
   /// [resourceParentType] Resource parent type
   /// [resourceType] Resource type
-  GetConfigurationAssignmentParentArgs({
+  const GetConfigurationAssignmentParentArgs({
     required this.configurationAssignmentName,
     required this.providerName,
     required this.resourceGroupName,

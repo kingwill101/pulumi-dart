@@ -15,7 +15,7 @@ class GetResponseHeadersPolicyArgs {
   /// Creates a new [GetResponseHeadersPolicyArgs].
   /// [id] Identifier for the response headers policy.
   /// [name] Unique name to identify the response headers policy.
-  GetResponseHeadersPolicyArgs({
+  const GetResponseHeadersPolicyArgs({
     this.id,
     this.name,
   });

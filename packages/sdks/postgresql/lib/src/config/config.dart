@@ -193,5 +193,5 @@ class PostgresqlConfig {
 
 }
 
-final config = PostgresqlConfig();
+const config = PostgresqlConfig();
 

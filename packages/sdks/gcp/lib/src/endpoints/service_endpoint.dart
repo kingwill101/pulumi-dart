@@ -11,7 +11,7 @@ class ServiceEndpoint {
   /// Creates a new [ServiceEndpoint].
   /// [address] The FQDN of the endpoint as described in the config.
   /// [name] The simple name of the endpoint as described in the config.
-  ServiceEndpoint({
+  const ServiceEndpoint({
     this.address,
     this.name,
   });

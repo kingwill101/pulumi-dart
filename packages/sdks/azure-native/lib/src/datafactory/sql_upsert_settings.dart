@@ -15,7 +15,7 @@ class SqlUpsertSettings {
   /// [interimSchemaName] Schema name for interim table. Type: string (or Expression with resultType string).
   /// [keys] Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
   /// [useTempDB] Specifies whether to use temp db for upsert interim table. Type: boolean (or Expression with resultType boolean).
-  SqlUpsertSettings({
+  const SqlUpsertSettings({
     this.interimSchemaName,
     this.keys,
     this.useTempDB,

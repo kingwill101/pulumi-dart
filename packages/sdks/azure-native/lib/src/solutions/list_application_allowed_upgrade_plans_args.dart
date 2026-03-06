@@ -15,7 +15,7 @@ class ListApplicationAllowedUpgradePlansArgs {
   /// Creates a new [ListApplicationAllowedUpgradePlansArgs].
   /// [applicationName] The name of the managed application.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListApplicationAllowedUpgradePlansArgs({
+  const ListApplicationAllowedUpgradePlansArgs({
     required this.applicationName,
     required this.resourceGroupName,
   });

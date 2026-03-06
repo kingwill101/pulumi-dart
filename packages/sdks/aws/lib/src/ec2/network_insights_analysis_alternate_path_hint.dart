@@ -11,7 +11,7 @@ class NetworkInsightsAnalysisAlternatePathHint {
   /// Creates a new [NetworkInsightsAnalysisAlternatePathHint].
   /// [componentArn] The Amazon Resource Name (ARN) of the component.
   /// [componentId] The ID of the component.
-  NetworkInsightsAnalysisAlternatePathHint({
+  const NetworkInsightsAnalysisAlternatePathHint({
     this.componentArn,
     this.componentId,
   });

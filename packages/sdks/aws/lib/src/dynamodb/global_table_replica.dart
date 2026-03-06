@@ -8,7 +8,7 @@ class GlobalTableReplica {
 
   /// Creates a new [GlobalTableReplica].
   /// [regionName] AWS region name of replica DynamoDB TableE.g., `us-east-1`
-  GlobalTableReplica({
+  const GlobalTableReplica({
     required this.regionName,
   });
 

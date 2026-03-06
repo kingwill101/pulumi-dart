@@ -11,7 +11,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDat
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters].
   /// [recordColumnDelimiter] The column delimiter. For example, in a CSV format, a comma (`,`) is the typical column delimiter.
   /// [recordRowDelimiter] The row delimiter. For example, in a CSV format, `\n` is the typical row delimiter.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationReferenceDataSourceReferenceSchemaRecordFormatMappingParametersCsvMappingParameters({
     required this.recordColumnDelimiter,
     required this.recordRowDelimiter,
   });

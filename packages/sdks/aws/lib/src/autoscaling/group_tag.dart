@@ -19,7 +19,7 @@ class GroupTag {
   /// [key] Key
   /// [propagateAtLaunch] Enables propagation of the tag to
   /// [value] Value
-  GroupTag({
+  const GroupTag({
     required this.key,
     required this.propagateAtLaunch,
     required this.value,

@@ -21,7 +21,7 @@ class AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert {
   /// Creates a new [AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert].
   /// [cert] (Output)
   /// [displayName] The display name of the app version.
-  AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert({
+  const AppVersionSnapshotToolsetOpenApiToolsetTlsConfigCaCert({
     this.cert,
     this.displayName,
   });

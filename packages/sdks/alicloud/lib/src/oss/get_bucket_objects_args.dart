@@ -21,7 +21,7 @@ class GetBucketObjectsArgs {
   /// [keyPrefix] Filter results by the given key prefix (such as "path/to/folder/logs-").
   /// [keyRegex] A regex string to filter results by key.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetBucketObjectsArgs({
+  const GetBucketObjectsArgs({
     required this.bucketName,
     this.keyPrefix,
     this.keyRegex,

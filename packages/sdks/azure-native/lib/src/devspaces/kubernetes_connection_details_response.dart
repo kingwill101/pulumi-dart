@@ -13,7 +13,7 @@ class KubernetesConnectionDetailsResponse {
   /// Creates a new [KubernetesConnectionDetailsResponse].
   /// [instanceType] Gets the Instance type.
   /// [kubeConfig] Gets the kubeconfig for the cluster.
-  KubernetesConnectionDetailsResponse({
+  const KubernetesConnectionDetailsResponse({
     required this.instanceType,
     this.kubeConfig,
   });

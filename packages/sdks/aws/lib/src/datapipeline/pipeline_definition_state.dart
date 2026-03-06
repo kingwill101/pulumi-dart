@@ -26,7 +26,7 @@ class PipelineDefinitionState {
   /// [pipelineId] ID of the pipeline.
   /// [pipelineObjects] Configuration block for the objects that define the pipeline. See below
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PipelineDefinitionState({
+  const PipelineDefinitionState({
     this.parameterObjects,
     this.parameterValues,
     this.pipelineId,

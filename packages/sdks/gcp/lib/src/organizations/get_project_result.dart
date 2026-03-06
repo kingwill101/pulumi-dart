@@ -33,7 +33,7 @@ class GetProjectResult {
   /// [projectId] Optional.
   /// [pulumiLabels] Required.
   /// [tags] Required.
-  GetProjectResult({
+  const GetProjectResult({
     required this.autoCreateNetwork,
     required this.billingAccount,
     required this.deletionPolicy,

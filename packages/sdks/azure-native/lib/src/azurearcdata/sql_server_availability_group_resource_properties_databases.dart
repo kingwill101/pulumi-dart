@@ -10,7 +10,7 @@ class SqlServerAvailabilityGroupResourcePropertiesDatabases {
 
   /// Creates a new [SqlServerAvailabilityGroupResourcePropertiesDatabases].
   /// [value] Array of Availability Group Database Replicas.
-  SqlServerAvailabilityGroupResourcePropertiesDatabases({
+  const SqlServerAvailabilityGroupResourcePropertiesDatabases({
     this.value,
   });
 

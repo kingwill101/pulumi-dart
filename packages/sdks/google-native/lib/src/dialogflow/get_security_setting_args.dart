@@ -15,7 +15,7 @@ class GetSecuritySettingArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [securitySettingId] Required.
-  GetSecuritySettingArgs({
+  const GetSecuritySettingArgs({
     required this.location,
     this.project,
     required this.securitySettingId,

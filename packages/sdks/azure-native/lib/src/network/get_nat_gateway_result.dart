@@ -53,7 +53,7 @@ class GetNatGatewayResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [zones] A list of availability zones denoting the zone in which Nat Gateway should be deployed.
-  GetNatGatewayResult({
+  const GetNatGatewayResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

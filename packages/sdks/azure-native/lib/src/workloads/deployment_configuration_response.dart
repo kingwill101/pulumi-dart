@@ -21,7 +21,7 @@ class DeploymentConfigurationResponse {
   /// [configurationType] The configuration Type.
   /// [infrastructureConfiguration] The infrastructure configuration.
   /// [softwareConfiguration] The software configuration.
-  DeploymentConfigurationResponse({
+  const DeploymentConfigurationResponse({
     this.appLocation,
     required this.configurationType,
     this.infrastructureConfiguration,

@@ -13,7 +13,7 @@ class GetVpcEndpointFilter {
   /// Creates a new [GetVpcEndpointFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetVpcEndpointFilter({
+  const GetVpcEndpointFilter({
     required this.name,
     required this.values,
   });

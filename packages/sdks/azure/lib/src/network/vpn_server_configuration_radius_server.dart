@@ -14,7 +14,7 @@ class VpnServerConfigurationRadiusServer {
   /// [address] The Address of the Radius Server.
   /// [score] The Score of the Radius Server determines the priority of the server. Ranges from 1 to 30.
   /// [secret] The Secret used to communicate with the Radius Server.
-  VpnServerConfigurationRadiusServer({
+  const VpnServerConfigurationRadiusServer({
     required this.address,
     required this.score,
     required this.secret,

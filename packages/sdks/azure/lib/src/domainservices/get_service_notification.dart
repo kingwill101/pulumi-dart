@@ -14,7 +14,7 @@ class GetServiceNotification {
   /// [additionalRecipients] A list of additional email addresses to notify when there are alerts in the managed domain.
   /// [notifyDcAdmins] Whethermembers of the _AAD DC Administrators_ group are notified when there are alerts in the managed domain.
   /// [notifyGlobalAdmins] Whether all Global Administrators are notified when there are alerts in the managed domain.
-  GetServiceNotification({
+  const GetServiceNotification({
     required this.additionalRecipients,
     required this.notifyDcAdmins,
     required this.notifyGlobalAdmins,

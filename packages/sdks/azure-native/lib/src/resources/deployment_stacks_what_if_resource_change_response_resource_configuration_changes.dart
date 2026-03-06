@@ -16,7 +16,7 @@ class DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges {
   /// [after] The predicted value after the deployment is executed.
   /// [before] The predicted value before the deployment is executed.
   /// [delta] The predicted changes to the properties."
-  DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges({
+  const DeploymentStacksWhatIfResourceChangeResponseResourceConfigurationChanges({
     this.after,
     this.before,
     this.delta,

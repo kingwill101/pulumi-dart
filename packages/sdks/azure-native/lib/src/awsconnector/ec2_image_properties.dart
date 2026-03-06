@@ -31,7 +31,7 @@ class Ec2ImageProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2ImageProperties({
+  const Ec2ImageProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

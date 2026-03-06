@@ -18,7 +18,7 @@ class PadResponse {
   /// [leftPixels] The number of pixels to add to the left. The default is 0.
   /// [rightPixels] The number of pixels to add to the right. The default is 0.
   /// [topPixels] The number of pixels to add to the top. The default is 0.
-  PadResponse({
+  const PadResponse({
     required this.bottomPixels,
     required this.leftPixels,
     required this.rightPixels,

@@ -27,7 +27,7 @@ class PodFailurePolicyRulePatch {
   /// [action] Specifies the action taken on a pod failure when the requirements are satisfied. Possible values are:
   /// [onExitCodes] Represents the requirement on the container exit codes.
   /// [onPodConditions] Represents the requirement on the pod conditions. The requirement is represented as a list of pod condition patterns. The requirement is satisfied if at least one pattern matches an actual pod condition. At most 20 elements are allowed.
-  PodFailurePolicyRulePatch({
+  const PodFailurePolicyRulePatch({
     this.action,
     this.onExitCodes,
     this.onPodConditions,

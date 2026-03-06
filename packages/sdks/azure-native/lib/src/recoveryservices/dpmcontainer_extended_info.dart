@@ -9,7 +9,7 @@ class DPMContainerExtendedInfo {
 
   /// Creates a new [DPMContainerExtendedInfo].
   /// [lastRefreshedAt] Last refresh time of the DPMContainer.
-  DPMContainerExtendedInfo({
+  const DPMContainerExtendedInfo({
     this.lastRefreshedAt,
   });
 

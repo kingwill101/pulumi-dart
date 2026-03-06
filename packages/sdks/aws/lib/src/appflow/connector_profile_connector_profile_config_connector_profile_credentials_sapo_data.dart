@@ -13,7 +13,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData].
   /// [basicAuthCredentials] The SAPOData basic authentication credentials.
   /// [oauthCredentials] The SAPOData OAuth type authentication credentials.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsSapoData({
     this.basicAuthCredentials,
     this.oauthCredentials,
   });

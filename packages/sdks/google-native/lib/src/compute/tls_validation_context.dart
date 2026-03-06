@@ -17,7 +17,7 @@ class TlsValidationContext {
   /// [certificatePath] The path to the file holding the CA certificate to validate the client or server certificate.
   /// [sdsConfig] Specifies the config to retrieve certificates through SDS. This field is applicable only if tlsCertificateSource is set to USE_SDS.
   /// [validationSource] Defines how TLS certificates are obtained.
-  TlsValidationContext({
+  const TlsValidationContext({
     this.certificatePath,
     this.sdsConfig,
     this.validationSource,

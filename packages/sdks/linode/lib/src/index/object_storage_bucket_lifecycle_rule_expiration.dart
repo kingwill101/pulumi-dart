@@ -14,7 +14,7 @@ class ObjectStorageBucketLifecycleRuleExpiration {
   /// [date] Specifies the date after which you want the corresponding action to take effect.
   /// [days] Specifies the number of days after object creation when the specific rule action takes effect.
   /// [expiredObjectDeleteMarker] On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct Linode Object Storage to delete expired object delete markers. This cannot be specified with Days or Date in a Lifecycle Expiration Policy.
-  ObjectStorageBucketLifecycleRuleExpiration({
+  const ObjectStorageBucketLifecycleRuleExpiration({
     this.date,
     this.days,
     this.expiredObjectDeleteMarker,

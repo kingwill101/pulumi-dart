@@ -34,7 +34,7 @@ class CertificateSigningRequestStatus {
   /// Creates a new [CertificateSigningRequestStatus].
   /// [certificate] certificate is populated with an issued certificate by the signer after an Approved condition is present. This field is set via the /status subresource. Once populated, this field is immutable.
   /// [conditions] conditions applied to the request. Known conditions are "Approved", "Denied", and "Failed".
-  CertificateSigningRequestStatus({
+  const CertificateSigningRequestStatus({
     this.certificate,
     this.conditions,
   });

@@ -51,7 +51,7 @@ class GetContactCenterResult {
   /// [updateTime] [Output only] Update time stamp
   /// [uris] URIs to access the deployed ContactCenters.
   /// [userEmail] Optional. Email address of the first admin user.
-  GetContactCenterResult({
+  const GetContactCenterResult({
     required this.adminUser,
     required this.ccaipManagedUsers,
     required this.createTime,

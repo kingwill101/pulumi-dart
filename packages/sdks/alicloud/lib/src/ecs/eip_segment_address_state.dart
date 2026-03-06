@@ -57,7 +57,7 @@ class EipSegmentAddressState {
   /// [segmentAddressName] The name of the contiguous Elastic IP address group.
   /// [status] The status of the resource
   /// [zone] The zone of the contiguous EIP group.
-  EipSegmentAddressState({
+  const EipSegmentAddressState({
     this.bandwidth,
     this.createTime,
     this.eipMask,

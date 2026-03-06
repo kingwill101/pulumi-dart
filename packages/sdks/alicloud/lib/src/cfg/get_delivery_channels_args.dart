@@ -21,7 +21,7 @@ class GetDeliveryChannelsArgs {
   /// [nameRegex] A regex string to filter results by delivery channel name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the config delivery channel. Valid values `0`: Disable delivery channel, `1`: Enable delivery channel.
-  GetDeliveryChannelsArgs({
+  const GetDeliveryChannelsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -40,7 +40,7 @@ class BackupPlanArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [retentionPolicy] Optional. RetentionPolicy governs lifecycle of Backups created under this plan.
-  BackupPlanArgs({
+  const BackupPlanArgs({
     this.backupConfig,
     required this.backupPlanId,
     this.backupSchedule,

@@ -13,7 +13,7 @@ class UserProfileUserSettingsRSessionAppSettings {
   /// Creates a new [UserProfileUserSettingsRSessionAppSettings].
   /// [customImages] A list of custom SageMaker AI images that are configured to run as a KernelGateway app. see Custom Image below.
   /// [defaultResourceSpec] The default instance type and the Amazon Resource Name (ARN) of the SageMaker AI image created on the instance. see Default Resource Spec below.
-  UserProfileUserSettingsRSessionAppSettings({
+  const UserProfileUserSettingsRSessionAppSettings({
     this.customImages,
     this.defaultResourceSpec,
   });

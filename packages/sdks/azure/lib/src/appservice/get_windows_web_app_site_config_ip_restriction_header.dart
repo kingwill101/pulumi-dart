@@ -17,7 +17,7 @@ class GetWindowsWebAppSiteConfigIpRestrictionHeader {
   /// [xFdHealthProbes] Specifies if a Front Door Health Probe is expected.
   /// [xForwardedFors] The list of addresses for which matching is applied.
   /// [xForwardedHosts] The list of Hosts for which matching will be applied.
-  GetWindowsWebAppSiteConfigIpRestrictionHeader({
+  const GetWindowsWebAppSiteConfigIpRestrictionHeader({
     required this.xAzureFdids,
     required this.xFdHealthProbes,
     required this.xForwardedFors,

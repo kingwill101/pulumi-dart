@@ -28,7 +28,7 @@ class StaticSitePrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] Name of the private endpoint connection.
   /// [privateLinkServiceConnectionState] The state of a private link connection
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  StaticSitePrivateEndpointConnectionArgs({
+  const StaticSitePrivateEndpointConnectionArgs({
     this.ipAddresses,
     this.kind,
     required this.name,

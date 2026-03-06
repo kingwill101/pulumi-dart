@@ -28,7 +28,7 @@ class FlinkJobResponse {
   /// [mainJarFileUri] The HCFS URI of the jar file that contains the main class.
   /// [properties] Optional. A mapping of property names to values, used to configure Flink. Properties that conflict with values set by the Dataproc API might beoverwritten. Can include properties set in/etc/flink/conf/flink-defaults.conf and classes in user code.
   /// [savepointUri] Optional. HCFS URI of the savepoint, which contains the last saved progress for starting the current job.
-  FlinkJobResponse({
+  const FlinkJobResponse({
     required this.args,
     required this.jarFileUris,
     required this.loggingConfig,

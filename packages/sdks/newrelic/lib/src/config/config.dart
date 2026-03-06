@@ -126,5 +126,5 @@ class NewrelicConfig {
 
 }
 
-final config = NewrelicConfig();
+const config = NewrelicConfig();
 

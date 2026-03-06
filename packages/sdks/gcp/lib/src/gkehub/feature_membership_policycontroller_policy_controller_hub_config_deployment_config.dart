@@ -22,7 +22,7 @@ class FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig
   /// [podAffinity] Pod affinity configuration. Possible values: AFFINITY_UNSPECIFIED, NO_AFFINITY, ANTI_AFFINITY
   /// [podTolerations] Pod tolerations of node taints.
   /// [replicaCount] Pod replica count.
-  FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig({
+  const FeatureMembershipPolicycontrollerPolicyControllerHubConfigDeploymentConfig({
     required this.componentName,
     this.containerResources,
     this.podAffinity,

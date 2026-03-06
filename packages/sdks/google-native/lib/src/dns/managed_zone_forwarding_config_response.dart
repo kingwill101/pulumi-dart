@@ -11,7 +11,7 @@ class ManagedZoneForwardingConfigResponse {
   /// Creates a new [ManagedZoneForwardingConfigResponse].
   /// [kind] Required.
   /// [targetNameServers] List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given.
-  ManagedZoneForwardingConfigResponse({
+  const ManagedZoneForwardingConfigResponse({
     required this.kind,
     required this.targetNameServers,
   });

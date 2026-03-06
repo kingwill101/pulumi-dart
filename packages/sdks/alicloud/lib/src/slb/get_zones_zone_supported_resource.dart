@@ -11,7 +11,7 @@ class GetZonesZoneSupportedResource {
   /// Creates a new [GetZonesZoneSupportedResource].
   /// [addressIpVersion] The type of IP address.
   /// [addressType] The type of network.
-  GetZonesZoneSupportedResource({
+  const GetZonesZoneSupportedResource({
     required this.addressIpVersion,
     required this.addressType,
   });

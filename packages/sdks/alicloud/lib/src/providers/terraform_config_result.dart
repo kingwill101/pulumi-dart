@@ -7,7 +7,7 @@ class TerraformConfigResult {
 
   /// Creates a new [TerraformConfigResult].
   /// [result] Required.
-  TerraformConfigResult({
+  const TerraformConfigResult({
     required this.result,
   });
 

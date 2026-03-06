@@ -14,7 +14,7 @@ class ApiKeyAuthCredentialsResponse {
   /// Creates a new [ApiKeyAuthCredentialsResponse].
   /// [apiKey] Properties of the key vault.
   /// [kind] Enum for different types of AuthCredentials supported.
-  ApiKeyAuthCredentialsResponse({
+  const ApiKeyAuthCredentialsResponse({
     required this.apiKey,
     required this.kind,
   });

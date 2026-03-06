@@ -18,7 +18,7 @@ class GetACSSBackupConnectionArgs {
   /// [backupName] The name of the backup connection resource of virtual instance for SAP.
   /// [connectorName] The name of the connector resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetACSSBackupConnectionArgs({
+  const GetACSSBackupConnectionArgs({
     required this.backupName,
     required this.connectorName,
     required this.resourceGroupName,

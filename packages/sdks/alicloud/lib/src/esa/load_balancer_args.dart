@@ -58,7 +58,7 @@ class LoadBalancerArgs {
   /// [steeringPolicy] Load balancing policy.
   /// [subRegionPools] Address pools corresponding to secondary regions. When multiple secondary regions share a set of address pools, the keys can be concatenated with commas.
   /// [ttl] TTL value, the time-to-live for DNS records. The default value is 30. The value range is 10-600.
-  LoadBalancerArgs({
+  const LoadBalancerArgs({
     this.adaptiveRouting,
     required this.defaultPools,
     this.description,

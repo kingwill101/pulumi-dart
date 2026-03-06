@@ -12,7 +12,7 @@ class GetDeploymentStackAtSubscriptionArgs {
 
   /// Creates a new [GetDeploymentStackAtSubscriptionArgs].
   /// [deploymentStackName] Name of the deployment stack.
-  GetDeploymentStackAtSubscriptionArgs({
+  const GetDeploymentStackAtSubscriptionArgs({
     required this.deploymentStackName,
   });
 

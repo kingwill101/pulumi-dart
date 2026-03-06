@@ -30,7 +30,7 @@ class GetGlobalDatabaseNetworksNetwork {
   /// [gdnId] The ID of the Global Database Network.
   /// [id] The ID of the Global Database Network.
   /// [status] The status of the Global Database Network. Valid values:
-  GetGlobalDatabaseNetworksNetwork({
+  const GetGlobalDatabaseNetworksNetwork({
     required this.createTime,
     required this.dbClusters,
     required this.dbType,

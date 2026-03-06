@@ -66,7 +66,7 @@ class GetRegionCommitmentComputeV1Result {
   /// [status] Status of the commitment with regards to eventual expiration (each commitment has an end date defined). One of the following values: NOT_YET_ACTIVE, ACTIVE, EXPIRED.
   /// [statusMessage] An optional, human-readable explanation of the status.
   /// [type] The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
-  GetRegionCommitmentComputeV1Result({
+  const GetRegionCommitmentComputeV1Result({
     required this.autoRenew,
     required this.category,
     required this.creationTimestamp,

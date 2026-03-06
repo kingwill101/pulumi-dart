@@ -8,7 +8,7 @@ class SecretReplicationUserManagedReplicaCustomerManagedEncryption {
 
   /// Creates a new [SecretReplicationUserManagedReplicaCustomerManagedEncryption].
   /// [kmsKeyName] Describes the Cloud KMS encryption key that will be used to protect destination secret.
-  SecretReplicationUserManagedReplicaCustomerManagedEncryption({
+  const SecretReplicationUserManagedReplicaCustomerManagedEncryption({
     required this.kmsKeyName,
   });
 

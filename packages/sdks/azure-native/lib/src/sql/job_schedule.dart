@@ -22,7 +22,7 @@ class JobSchedule {
   /// [interval] Value of the schedule's recurring interval, if the ScheduleType is recurring. ISO8601 duration format.
   /// [startTime] Schedule start time.
   /// [type] Schedule interval type
-  JobSchedule({
+  const JobSchedule({
     this.enabled,
     this.endTime,
     this.interval,

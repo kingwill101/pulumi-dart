@@ -15,7 +15,7 @@ class InstanceClusterAttachmentArgs {
   /// Creates a new [InstanceClusterAttachmentArgs].
   /// [clusterId] The ID of the cluster that you want to create the application.
   /// [instanceIds] The ID of instance. Type: list.
-  InstanceClusterAttachmentArgs({
+  const InstanceClusterAttachmentArgs({
     required this.clusterId,
     required this.instanceIds,
   });

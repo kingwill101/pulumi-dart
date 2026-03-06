@@ -43,7 +43,7 @@ class AppHostingBuildArgs {
   /// [location] The location of the Backend that this Build applies to
   /// [project] The ID of the project in which the resource belongs.
   /// [source] The source for the build.
-  AppHostingBuildArgs({
+  const AppHostingBuildArgs({
     this.annotations,
     required this.backend,
     required this.buildId,

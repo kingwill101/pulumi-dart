@@ -14,7 +14,7 @@ class GetAcceleratorsAcceleratorBasicBandwidthPackage {
   /// [bandwidth] Bandwidth value of cross-domain acceleration package.
   /// [bandwidthType] The bandwidth type of the basic bandwidth package.
   /// [instanceId] Instance ID of the cross-domain acceleration package.
-  GetAcceleratorsAcceleratorBasicBandwidthPackage({
+  const GetAcceleratorsAcceleratorBasicBandwidthPackage({
     required this.bandwidth,
     required this.bandwidthType,
     required this.instanceId,

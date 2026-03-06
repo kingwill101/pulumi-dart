@@ -12,7 +12,7 @@ class WebAclRuleStatementRateBasedStatementScopeDownStatementIpSetReferenceState
   /// Creates a new [WebAclRuleStatementRateBasedStatementScopeDownStatementIpSetReferenceStatement].
   /// [arn] The Amazon Resource Name (ARN) of the IP Set that this statement references.
   /// [ipSetForwardedIpConfig] Configuration for inspecting IP addresses in an HTTP header that you specify, instead of using the IP address that's reported by the web request origin. See `ip_set_forwarded_ip_config` below for more details.
-  WebAclRuleStatementRateBasedStatementScopeDownStatementIpSetReferenceStatement({
+  const WebAclRuleStatementRateBasedStatementScopeDownStatementIpSetReferenceStatement({
     required this.arn,
     this.ipSetForwardedIpConfig,
   });

@@ -21,7 +21,7 @@ class GetClusterArgs {
   /// [clusterId] The ID of the alloydb cluster that the instance belongs to.
   /// [location] (optional)
   /// [project] (optional)
-  GetClusterArgs({
+  const GetClusterArgs({
     required this.clusterId,
     this.location,
     this.project,

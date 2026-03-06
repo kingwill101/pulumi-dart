@@ -29,7 +29,7 @@ class GetOrganizationEventThreatDetectionSettingCustomModuleResult {
   /// [name] Immutable. The resource name of the Event Threat Detection custom module. Its format is: * "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". * "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
   /// [type] Type for the module. e.g. CONFIGURABLE_BAD_IP.
   /// [updateTime] The time the module was last updated.
-  GetOrganizationEventThreatDetectionSettingCustomModuleResult({
+  const GetOrganizationEventThreatDetectionSettingCustomModuleResult({
     required this.config,
     required this.description,
     required this.displayName,

@@ -46,7 +46,7 @@ class ClusterNodeType {
   /// [name] The name of the Node Type.
   /// [placementProperties] The placement tags applied to nodes in the node type, which can be used to indicate where certain services (workload) should run.
   /// [reverseProxyEndpointPort] The Port used for the Reverse Proxy Endpoint for this Node Type. Changing this will upgrade the cluster.
-  ClusterNodeType({
+  const ClusterNodeType({
     this.applicationPorts,
     this.capacities,
     required this.clientEndpointPort,

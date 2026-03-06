@@ -37,7 +37,7 @@ class GetStaticSiteDatabaseConnectionResult {
   /// [region] The region of the database resource.
   /// [resourceId] The resource id of the database.
   /// [type] Resource type.
-  GetStaticSiteDatabaseConnectionResult({
+  const GetStaticSiteDatabaseConnectionResult({
     required this.azureApiVersion,
     required this.configurationFiles,
     this.connectionIdentity,

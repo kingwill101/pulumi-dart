@@ -24,7 +24,7 @@ class GetCommandsResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetCommandsResult({
+  const GetCommandsResult({
     this.commandType,
     required this.commands,
     this.contentEncoding,

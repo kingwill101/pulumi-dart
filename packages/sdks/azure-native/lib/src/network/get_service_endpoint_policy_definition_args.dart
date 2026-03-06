@@ -18,7 +18,7 @@ class GetServiceEndpointPolicyDefinitionArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [serviceEndpointPolicyDefinitionName] The name of the service endpoint policy definition name.
   /// [serviceEndpointPolicyName] The name of the service endpoint policy name.
-  GetServiceEndpointPolicyDefinitionArgs({
+  const GetServiceEndpointPolicyDefinitionArgs({
     required this.resourceGroupName,
     required this.serviceEndpointPolicyDefinitionName,
     required this.serviceEndpointPolicyName,

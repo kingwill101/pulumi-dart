@@ -20,7 +20,7 @@ class PipelineDestinationAuthenticationConfigOauthToken {
   /// Creates a new [PipelineDestinationAuthenticationConfigOauthToken].
   /// [scope] OAuth scope to be used for generating OAuth access token. If not
   /// [serviceAccount] Service account email used to generate the [OAuth
-  PipelineDestinationAuthenticationConfigOauthToken({
+  const PipelineDestinationAuthenticationConfigOauthToken({
     this.scope,
     required this.serviceAccount,
   });

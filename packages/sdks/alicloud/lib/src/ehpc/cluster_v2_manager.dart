@@ -21,7 +21,7 @@ class ClusterV2Manager {
   /// [dns] The configurations of the domain name resolution service. See `dns` below.
   /// [managerNode] The hardware configurations of the management node. See `manager_node` below.
   /// [scheduler] The configurations of the scheduler service. See `scheduler` below.
-  ClusterV2Manager({
+  const ClusterV2Manager({
     this.directoryService,
     this.dns,
     this.managerNode,

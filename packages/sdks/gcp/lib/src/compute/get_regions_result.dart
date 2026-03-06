@@ -15,7 +15,7 @@ class GetRegionsResult {
   /// [names] A list of regions available in the given project
   /// [project] Required.
   /// [status] Optional.
-  GetRegionsResult({
+  const GetRegionsResult({
     required this.id,
     required this.names,
     required this.project,

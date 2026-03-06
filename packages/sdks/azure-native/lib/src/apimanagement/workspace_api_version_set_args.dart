@@ -36,7 +36,7 @@ class WorkspaceApiVersionSetArgs {
   /// [versionSetId] Api Version Set identifier. Must be unique in the current API Management service instance.
   /// [versioningScheme] An value that determines where the API Version identifier will be located in a HTTP request.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceApiVersionSetArgs({
+  const WorkspaceApiVersionSetArgs({
     this.description,
     required this.displayName,
     required this.resourceGroupName,

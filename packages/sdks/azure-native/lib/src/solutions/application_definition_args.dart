@@ -81,7 +81,7 @@ class ApplicationDefinitionArgs {
   /// [sku] The SKU of the resource.
   /// [storageAccountId] The storage account id for bring your own storage scenario.
   /// [tags] Resource tags
-  ApplicationDefinitionArgs({
+  const ApplicationDefinitionArgs({
     this.applicationDefinitionName,
     this.artifacts,
     this.authorizations,

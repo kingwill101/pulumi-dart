@@ -11,7 +11,7 @@ class GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple {
   /// Creates a new [GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple].
   /// [serverGroupId] The ID of the destination server group to which requests are forwarded.
   /// [weight] The Weight of server group.
-  GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple({
+  const GetRulesRuleRuleActionForwardGroupConfigServerGroupTuple({
     required this.serverGroupId,
     required this.weight,
   });

@@ -12,7 +12,7 @@ class TagCriterionPairForJobResponse {
   /// Creates a new [TagCriterionPairForJobResponse].
   /// [key] &lt;p&gt;The value for the tag key to use in the condition.&lt;/p&gt;
   /// [value] &lt;p&gt;The tag value to use in the condition.&lt;/p&gt;
-  TagCriterionPairForJobResponse({
+  const TagCriterionPairForJobResponse({
     this.key,
     this.value,
   });

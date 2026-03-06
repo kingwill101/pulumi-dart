@@ -29,7 +29,7 @@ class Method {
   /// [responseStreaming] If true, the response is streamed.
   /// [responseTypeUrl] The URL of the output message type.
   /// [syntax] The source syntax of this method.
-  Method({
+  const Method({
     this.name,
     this.options,
     this.requestStreaming,

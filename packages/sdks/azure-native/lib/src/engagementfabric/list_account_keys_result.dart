@@ -10,7 +10,7 @@ class ListAccountKeysResult {
 
   /// Creates a new [ListAccountKeysResult].
   /// [value] Account keys
-  ListAccountKeysResult({
+  const ListAccountKeysResult({
     required this.value,
   });
 

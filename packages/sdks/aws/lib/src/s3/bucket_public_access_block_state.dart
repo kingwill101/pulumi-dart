@@ -32,7 +32,7 @@ class BucketPublicAccessBlockState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restrictPublicBuckets] Whether Amazon S3 should restrict public bucket policies for this bucket. Defaults to `false`. Enabling this setting does not affect the previously stored bucket policy, except that public and cross-account access within the public bucket policy, including non-public delegation to specific accounts, is blocked. When set to `true`:
   /// [skipDestroy] Whether to retain the public access block upon destruction. If set to `true`, the resource is simply removed from state instead. This may be desirable in certain scenarios to prevent the removal of a public access block before deletion of the associated bucket.
-  BucketPublicAccessBlockState({
+  const BucketPublicAccessBlockState({
     this.blockPublicAcls,
     this.blockPublicPolicy,
     this.bucket,

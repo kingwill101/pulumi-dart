@@ -25,7 +25,7 @@ class PreviewFeatureArgs {
   /// [name] The name of the preview feature.
   /// [project] The ID of the project in which the resource belongs.
   /// [rolloutOperation] The rollout operation of the feature.
-  PreviewFeatureArgs({
+  const PreviewFeatureArgs({
     required this.activationStatus,
     this.name,
     this.project,

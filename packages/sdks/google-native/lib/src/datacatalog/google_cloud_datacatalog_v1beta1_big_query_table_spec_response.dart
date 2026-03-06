@@ -17,7 +17,7 @@ class GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse {
   /// [tableSourceType] The table source type.
   /// [tableSpec] Spec of a BigQuery table. This field should only be populated if `table_source_type` is `BIGQUERY_TABLE`.
   /// [viewSpec] Table view specification. This field should only be populated if `table_source_type` is `BIGQUERY_VIEW`.
-  GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse({
+  const GoogleCloudDatacatalogV1beta1BigQueryTableSpecResponse({
     required this.tableSourceType,
     required this.tableSpec,
     required this.viewSpec,

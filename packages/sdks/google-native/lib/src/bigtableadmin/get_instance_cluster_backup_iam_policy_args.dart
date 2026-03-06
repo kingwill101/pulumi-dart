@@ -17,7 +17,7 @@ class GetInstanceClusterBackupIamPolicyArgs {
   /// [clusterId] Required.
   /// [instanceId] Required.
   /// [project] Optional.
-  GetInstanceClusterBackupIamPolicyArgs({
+  const GetInstanceClusterBackupIamPolicyArgs({
     required this.backupId,
     required this.clusterId,
     required this.instanceId,

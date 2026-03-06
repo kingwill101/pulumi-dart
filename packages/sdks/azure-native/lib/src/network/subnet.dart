@@ -85,7 +85,7 @@ class Subnet {
   /// [serviceGateway] Reference to an existing service gateway.
   /// [sharingScope] Set this property to Tenant to allow sharing subnet with other subscriptions in your AAD tenant. This property can only be set if defaultOutboundAccess is set to false, both properties can only be set if subnet is empty.
   /// [type] Resource type.
-  Subnet({
+  const Subnet({
     this.addressPrefix,
     this.addressPrefixes,
     this.applicationGatewayIPConfigurations,

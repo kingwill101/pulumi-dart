@@ -15,7 +15,7 @@ class GetDevOpsConfigurationArgs {
   /// Creates a new [GetDevOpsConfigurationArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
-  GetDevOpsConfigurationArgs({
+  const GetDevOpsConfigurationArgs({
     required this.resourceGroupName,
     required this.securityConnectorName,
   });

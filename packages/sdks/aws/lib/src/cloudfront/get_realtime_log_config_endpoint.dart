@@ -12,7 +12,7 @@ class GetRealtimeLogConfigEndpoint {
   /// Creates a new [GetRealtimeLogConfigEndpoint].
   /// [kinesisStreamConfigs] (Required) Amazon Kinesis data stream configuration.
   /// [streamType] (Required) Type of data stream where real-time log data is sent. The only valid value is `Kinesis`.
-  GetRealtimeLogConfigEndpoint({
+  const GetRealtimeLogConfigEndpoint({
     required this.kinesisStreamConfigs,
     required this.streamType,
   });

@@ -8,7 +8,7 @@ class ClusterMasterAuthClientCertificateConfig {
 
   /// Creates a new [ClusterMasterAuthClientCertificateConfig].
   /// [issueClientCertificate] Whether client certificate authorization is enabled for this cluster.
-  ClusterMasterAuthClientCertificateConfig({
+  const ClusterMasterAuthClientCertificateConfig({
     required this.issueClientCertificate,
   });
 

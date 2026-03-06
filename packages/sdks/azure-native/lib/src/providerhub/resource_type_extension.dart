@@ -14,7 +14,7 @@ class ResourceTypeExtension {
   /// [endpointUri] The endpoint uri.
   /// [extensionCategories] The extension categories.
   /// [timeout] The timeout.
-  ResourceTypeExtension({
+  const ResourceTypeExtension({
     this.endpointUri,
     this.extensionCategories,
     this.timeout,

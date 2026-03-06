@@ -103,7 +103,7 @@ class AmiState {
   /// [uefiData] Base64 representation of the non-volatile UEFI variable store.
   /// [usageOperation] Operation of the Amazon EC2 instance and the billing code that is associated with the AMI.
   /// [virtualizationType] Keyword to choose what virtualization mode created instances
-  AmiState({
+  const AmiState({
     this.architecture,
     this.arn,
     this.bootMode,

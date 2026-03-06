@@ -21,7 +21,7 @@ class EdifactProcessingSettings {
   /// [preserveInterchange] The value indicating whether to preserve interchange.
   /// [suspendInterchangeOnError] The value indicating whether to suspend interchange on error.
   /// [useDotAsDecimalSeparator] The value indicating whether to use dot as decimal separator.
-  EdifactProcessingSettings({
+  const EdifactProcessingSettings({
     required this.createEmptyXmlTagsForTrailingSeparators,
     required this.maskSecurityInfo,
     required this.preserveInterchange,

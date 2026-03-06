@@ -53,7 +53,7 @@ class TargetPoolArgs {
   /// [region] Where the target pool resides. Defaults to project
   /// [securityPolicy] The resource URL for the security policy associated with this target pool.
   /// [sessionAffinity] How to distribute load. Options are "NONE" (no
-  TargetPoolArgs({
+  const TargetPoolArgs({
     this.backupPool,
     this.description,
     this.failoverRatio,

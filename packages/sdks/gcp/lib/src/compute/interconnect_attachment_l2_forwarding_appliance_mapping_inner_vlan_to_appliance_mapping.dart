@@ -11,7 +11,7 @@ class InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapp
   /// Creates a new [InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping].
   /// [innerApplianceIpAddress] The inner appliance IP address.
   /// [innerVlanTags] List of inner VLAN tags.
-  InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping({
+  const InterconnectAttachmentL2ForwardingApplianceMappingInnerVlanToApplianceMapping({
     this.innerApplianceIpAddress,
     this.innerVlanTags,
   });

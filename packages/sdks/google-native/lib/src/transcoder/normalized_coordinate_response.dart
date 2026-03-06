@@ -12,7 +12,7 @@ class NormalizedCoordinateResponse {
   /// Creates a new [NormalizedCoordinateResponse].
   /// [x] Normalized x coordinate.
   /// [y] Normalized y coordinate.
-  NormalizedCoordinateResponse({
+  const NormalizedCoordinateResponse({
     required this.x,
     required this.y,
   });

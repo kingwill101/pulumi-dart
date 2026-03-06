@@ -33,7 +33,7 @@ class MetricAlarmMetricQuery {
   /// [metric] The metric to be returned, along with statistics, period, and units. Use this parameter only if this object is retrieving a metric and not performing a math expression on returned data.
   /// [period] Granularity in seconds of returned data points.
   /// [returnData] Specify exactly one `metric_query` to be `true` to use that `metric_query` result as the alarm.
-  MetricAlarmMetricQuery({
+  const MetricAlarmMetricQuery({
     this.accountId,
     this.expression,
     required this.id,

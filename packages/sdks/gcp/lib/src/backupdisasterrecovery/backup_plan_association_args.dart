@@ -32,7 +32,7 @@ class BackupPlanAssociationArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [resource] The resource for which BPA needs to be created
   /// [resourceType] The resource type of workload on which backupplan is applied.
-  BackupPlanAssociationArgs({
+  const BackupPlanAssociationArgs({
     required this.backupPlan,
     required this.backupPlanAssociationId,
     required this.location,

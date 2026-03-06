@@ -13,7 +13,7 @@ class GetProductsResult {
   /// Creates a new [GetProductsResult].
   /// [nextLink] URI to the next page.
   /// [value] List of products.
-  GetProductsResult({
+  const GetProductsResult({
     this.nextLink,
     this.value,
   });

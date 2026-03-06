@@ -41,7 +41,7 @@ class AccessControlListArgs {
   /// [matchConfigurations] List of match configurations.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  AccessControlListArgs({
+  const AccessControlListArgs({
     this.accessControlListName,
     this.aclsUrl,
     this.annotation,

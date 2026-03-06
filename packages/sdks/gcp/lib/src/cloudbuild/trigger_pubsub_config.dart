@@ -20,7 +20,7 @@ class TriggerPubsubConfig {
   /// [state] (Output)
   /// [subscription] (Output)
   /// [topic] The name of the topic from which this subscription is receiving messages.
-  TriggerPubsubConfig({
+  const TriggerPubsubConfig({
     this.serviceAccountEmail,
     this.state,
     this.subscription,

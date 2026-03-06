@@ -27,7 +27,7 @@ class ExperimentPlanTemplateState {
   /// [templateId] The ID of the template.
   /// [templateName] Help users identify and select specific templates.
   /// [templatePipelines] Representative Template Pipeline. See `template_pipeline` below.
-  ExperimentPlanTemplateState({
+  const ExperimentPlanTemplateState({
     this.createTime,
     this.privacyLevel,
     this.templateDescription,

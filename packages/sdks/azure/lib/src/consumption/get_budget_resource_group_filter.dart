@@ -17,7 +17,7 @@ class GetBudgetResourceGroupFilter {
   /// [dimensions] A `dimension` block as defined below.
   /// [nots] A `not` block as defined below.
   /// [tags] A `tag` block as defined below.
-  GetBudgetResourceGroupFilter({
+  const GetBudgetResourceGroupFilter({
     required this.dimensions,
     required this.nots,
     required this.tags,

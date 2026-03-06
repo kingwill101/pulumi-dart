@@ -42,7 +42,7 @@ class PrivateCloudArgs {
   /// [skuName] The Name of the SKU used for this Azure VMware Solution Private Cloud. Possible values are `av20`, `av36`, `av36t`, `av36p`, `av36pt`, `av48`, `av48t`, `av52`, `av52t`, and `av64`. Changing this forces a new Azure VMware Solution Private Cloud to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure VMware Solution Private Cloud.
   /// [vcenterPassword] The password of the VMware vCenter Server cloudadmin. Changing this forces a new Azure VMware Solution Private Cloud to be created.
-  PrivateCloudArgs({
+  const PrivateCloudArgs({
     this.internetConnectionEnabled,
     this.location,
     required this.managementCluster,

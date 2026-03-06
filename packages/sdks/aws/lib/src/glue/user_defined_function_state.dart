@@ -37,7 +37,7 @@ class UserDefinedFunctionState {
   /// [ownerType] The owner type. can be one of `USER`, `ROLE`, and `GROUP`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceUris] The configuration block for Resource URIs. See resource uris below for more details.
-  UserDefinedFunctionState({
+  const UserDefinedFunctionState({
     this.arn,
     this.catalogId,
     this.className,

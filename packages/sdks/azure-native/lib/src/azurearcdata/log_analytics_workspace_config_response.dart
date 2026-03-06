@@ -9,7 +9,7 @@ class LogAnalyticsWorkspaceConfigResponse {
 
   /// Creates a new [LogAnalyticsWorkspaceConfigResponse].
   /// [workspaceId] Azure Log Analytics workspace ID
-  LogAnalyticsWorkspaceConfigResponse({
+  const LogAnalyticsWorkspaceConfigResponse({
     this.workspaceId,
   });
 

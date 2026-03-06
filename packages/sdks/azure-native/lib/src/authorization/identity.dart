@@ -13,7 +13,7 @@ class Identity {
   /// Creates a new [Identity].
   /// [type] The identity type. This is the only required field when adding a system or user assigned identity to a resource.
   /// [userAssignedIdentities] The user identity associated with the policy. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-  Identity({
+  const Identity({
     this.type,
     this.userAssignedIdentities,
   });

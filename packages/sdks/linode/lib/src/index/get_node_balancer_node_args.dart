@@ -18,7 +18,7 @@ class GetNodeBalancerNodeArgs {
   /// [configId] The ID of the config that contains the Node.
   /// [id] The node's ID.
   /// [nodebalancerId] The ID of the NodeBalancer that contains the node.
-  GetNodeBalancerNodeArgs({
+  const GetNodeBalancerNodeArgs({
     required this.configId,
     required this.id,
     required this.nodebalancerId,

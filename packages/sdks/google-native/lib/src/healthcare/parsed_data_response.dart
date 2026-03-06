@@ -9,7 +9,7 @@ class ParsedDataResponse {
 
   /// Creates a new [ParsedDataResponse].
   /// [segments] Required.
-  ParsedDataResponse({
+  const ParsedDataResponse({
     required this.segments,
   });
 

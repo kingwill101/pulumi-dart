@@ -24,7 +24,7 @@ class PureStoragePolicyArgs {
   /// [storagePolicyDefinition] Definition of a Pure Storage Policy Based Management policy
   /// [storagePolicyName] Name of the storage policy.
   /// [storagePoolId] Azure resource ID of the Pure Storage Pool associated with the storage policy
-  PureStoragePolicyArgs({
+  const PureStoragePolicyArgs({
     required this.privateCloudName,
     required this.resourceGroupName,
     required this.storagePolicyDefinition,

@@ -16,7 +16,7 @@ class DashboardLensResponse {
   /// [metadata] The dashboard len's metadata.
   /// [order] The lens order.
   /// [parts] The dashboard parts.
-  DashboardLensResponse({
+  const DashboardLensResponse({
     this.metadata,
     required this.order,
     required this.parts,

@@ -18,7 +18,7 @@ class GetKpiArgs {
   /// [hubName] The name of the hub.
   /// [kpiName] The name of the KPI.
   /// [resourceGroupName] The name of the resource group.
-  GetKpiArgs({
+  const GetKpiArgs({
     required this.hubName,
     required this.kpiName,
     required this.resourceGroupName,

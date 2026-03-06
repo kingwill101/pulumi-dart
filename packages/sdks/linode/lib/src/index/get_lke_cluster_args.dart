@@ -12,7 +12,7 @@ class GetLkeClusterArgs {
 
   /// Creates a new [GetLkeClusterArgs].
   /// [id] The LKE Cluster's ID.
-  GetLkeClusterArgs({
+  const GetLkeClusterArgs({
     required this.id,
   });
 

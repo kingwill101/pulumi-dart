@@ -47,7 +47,7 @@ class MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse {
   /// [resultType] Result type
   /// [sourceDatabaseName] Name of the database
   /// [startedOn] Database migration start time
-  MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse({
+  const MigrateSqlServerSqlMISyncTaskOutputDatabaseLevelResponse({
     required this.activeBackupSets,
     required this.containerName,
     required this.endedOn,

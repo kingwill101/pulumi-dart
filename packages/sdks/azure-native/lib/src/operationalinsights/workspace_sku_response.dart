@@ -15,7 +15,7 @@ class WorkspaceSkuResponse {
   /// [capacityReservationLevel] The capacity reservation level in GB for this workspace, when CapacityReservation sku is selected.
   /// [lastSkuUpdate] The last time when the sku was updated.
   /// [name] The name of the SKU.
-  WorkspaceSkuResponse({
+  const WorkspaceSkuResponse({
     this.capacityReservationLevel,
     required this.lastSkuUpdate,
     required this.name,

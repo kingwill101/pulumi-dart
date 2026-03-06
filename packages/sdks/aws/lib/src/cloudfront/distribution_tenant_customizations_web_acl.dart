@@ -11,7 +11,7 @@ class DistributionTenantCustomizationsWebAcl {
   /// Creates a new [DistributionTenantCustomizationsWebAcl].
   /// [action] Action to take for the web ACL. Valid values: `allow`, `block`.
   /// [arn] ARN of the distribution tenant.
-  DistributionTenantCustomizationsWebAcl({
+  const DistributionTenantCustomizationsWebAcl({
     this.action,
     this.arn,
   });

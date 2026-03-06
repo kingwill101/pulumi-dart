@@ -12,7 +12,7 @@ class GetLkeVersionsArgs {
 
   /// Creates a new [GetLkeVersionsArgs].
   /// [tier] The tier (`standard` or `enterprise`) of Linode LKE Versions to fetch.
-  GetLkeVersionsArgs({
+  const GetLkeVersionsArgs({
     this.tier,
   });
 

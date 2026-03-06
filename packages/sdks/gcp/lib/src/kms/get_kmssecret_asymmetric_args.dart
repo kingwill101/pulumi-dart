@@ -20,7 +20,7 @@ class GetKMSSecretAsymmetricArgs {
   /// [ciphertext] The ciphertext to be decrypted, encoded in base64
   /// [crc32] The crc32 checksum of the `ciphertext` in hexadecimal notation. If not specified, it will be computed.
   /// [cryptoKeyVersion] The id of the CryptoKey version that will be used to
-  GetKMSSecretAsymmetricArgs({
+  const GetKMSSecretAsymmetricArgs({
     required this.ciphertext,
     this.crc32,
     required this.cryptoKeyVersion,

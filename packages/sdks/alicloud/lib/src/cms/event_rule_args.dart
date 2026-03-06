@@ -52,7 +52,7 @@ class EventRuleArgs {
   /// [slsParameters] The information about the recipients in Simple Log Service. See `sls_parameters` below.
   /// [status] The status of the resource. Valid values: `ENABLED`, `DISABLED`.
   /// [webhookParameters] The information about the callback URLs that are used to receive alert notifications. See `webhook_parameters` below.
-  EventRuleArgs({
+  const EventRuleArgs({
     this.contactParameters,
     this.description,
     required this.eventPattern,

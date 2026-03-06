@@ -12,7 +12,7 @@ class GroupConfiguration {
   /// Creates a new [GroupConfiguration].
   /// [parameters] A collection of parameters for this group configuration item. See below for details.
   /// [type] Specifies the type of group configuration item.
-  GroupConfiguration({
+  const GroupConfiguration({
     this.parameters,
     required this.type,
   });

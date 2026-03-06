@@ -11,7 +11,7 @@ class GetGatewayRouteSpecHttpRouteAction {
   /// Creates a new [GetGatewayRouteSpecHttpRouteAction].
   /// [rewrites] Required.
   /// [targets] Required.
-  GetGatewayRouteSpecHttpRouteAction({
+  const GetGatewayRouteSpecHttpRouteAction({
     required this.rewrites,
     required this.targets,
   });

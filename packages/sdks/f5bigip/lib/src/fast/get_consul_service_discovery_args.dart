@@ -44,7 +44,7 @@ class GetConsulServiceDiscoveryArgs {
   /// [undetectableAction] Action to take when node cannot be detected,default `remove`.
   /// [updateInterval] Update interval for service discovery.
   /// [uri] The location of the node data.
-  GetConsulServiceDiscoveryArgs({
+  const GetConsulServiceDiscoveryArgs({
     this.addressRealm,
     this.credentialUpdate,
     this.encodedToken,

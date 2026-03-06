@@ -25,7 +25,7 @@ class ChannelArgs {
   /// [name] The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
   /// [project] Optional.
   /// [provider] The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
-  ChannelArgs({
+  const ChannelArgs({
     required this.channelId,
     this.cryptoKeyName,
     this.location,

@@ -11,7 +11,7 @@ class GetAggregateConfigRulesRuleCompliance {
   /// Creates a new [GetAggregateConfigRulesRuleCompliance].
   /// [complianceType] The Compliance Type.
   /// [count] The Count.
-  GetAggregateConfigRulesRuleCompliance({
+  const GetAggregateConfigRulesRuleCompliance({
     required this.complianceType,
     required this.count,
   });

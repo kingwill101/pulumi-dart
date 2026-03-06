@@ -21,7 +21,7 @@ class GetKeyPairsArgs {
   /// [keyPairFingerPrint] The Private Key of the Fingerprint.
   /// [nameRegex] A regex string to filter results by Key Pair name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetKeyPairsArgs({
+  const GetKeyPairsArgs({
     this.ids,
     this.keyPairFingerPrint,
     this.nameRegex,

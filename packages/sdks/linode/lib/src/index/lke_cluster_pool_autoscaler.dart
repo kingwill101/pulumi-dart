@@ -11,7 +11,7 @@ class LkeClusterPoolAutoscaler {
   /// Creates a new [LkeClusterPoolAutoscaler].
   /// [max] The maximum number of nodes to autoscale to.
   /// [min] The minimum number of nodes to autoscale to.
-  LkeClusterPoolAutoscaler({
+  const LkeClusterPoolAutoscaler({
     required this.max,
     required this.min,
   });

@@ -10,7 +10,7 @@ class ListEnergyServicePartitionsResult {
 
   /// Creates a new [ListEnergyServicePartitionsResult].
   /// [dataPartitionInfo] List of data partitions along with their properties in a given OEP resource.
-  ListEnergyServicePartitionsResult({
+  const ListEnergyServicePartitionsResult({
     this.dataPartitionInfo,
   });
 

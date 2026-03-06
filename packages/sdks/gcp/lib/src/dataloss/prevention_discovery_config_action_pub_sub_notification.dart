@@ -21,7 +21,7 @@ class PreventionDiscoveryConfigActionPubSubNotification {
   /// [event] The type of event that triggers a Pub/Sub. At most one PubSubNotification per EventType is permitted.
   /// [pubsubCondition] Conditions for triggering pubsub
   /// [topic] Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}.
-  PreventionDiscoveryConfigActionPubSubNotification({
+  const PreventionDiscoveryConfigActionPubSubNotification({
     this.detailOfMessage,
     this.event,
     this.pubsubCondition,

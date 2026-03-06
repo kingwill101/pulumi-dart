@@ -21,7 +21,7 @@ class GetBrokerListenerArgs {
   /// [listenerName] Name of MQ broker/listener resource
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBrokerListenerArgs({
+  const GetBrokerListenerArgs({
     required this.brokerName,
     required this.listenerName,
     required this.mqName,

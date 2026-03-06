@@ -7,7 +7,7 @@ class GetDevEnvironmentPersistentStorage {
 
   /// Creates a new [GetDevEnvironmentPersistentStorage].
   /// [size] Required.
-  GetDevEnvironmentPersistentStorage({
+  const GetDevEnvironmentPersistentStorage({
     required this.size,
   });
 

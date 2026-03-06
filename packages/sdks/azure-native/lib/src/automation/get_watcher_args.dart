@@ -18,7 +18,7 @@ class GetWatcherArgs {
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [watcherName] The watcher name.
-  GetWatcherArgs({
+  const GetWatcherArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
     required this.watcherName,

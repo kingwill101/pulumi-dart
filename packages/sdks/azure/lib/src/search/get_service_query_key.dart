@@ -11,7 +11,7 @@ class GetServiceQueryKey {
   /// Creates a new [GetServiceQueryKey].
   /// [key] The value of this Query Key.
   /// [name] The Name of the Search Service.
-  GetServiceQueryKey({
+  const GetServiceQueryKey({
     required this.key,
     required this.name,
   });

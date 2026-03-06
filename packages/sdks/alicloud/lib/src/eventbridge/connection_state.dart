@@ -23,7 +23,7 @@ class ConnectionState {
   /// [createTime] The creation time of the Connection.
   /// [description] The description of the connection.
   /// [networkParameters] The parameters that are configured for the network. See `network_parameters` below.
-  ConnectionState({
+  const ConnectionState({
     this.authParameters,
     this.connectionName,
     this.createTime,

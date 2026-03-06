@@ -14,7 +14,7 @@ class ScaleRule {
   /// Creates a new [ScaleRule].
   /// [metricTrigger] the trigger that results in a scaling action.
   /// [scaleAction] the parameters for the scaling action.
-  ScaleRule({
+  const ScaleRule({
     required this.metricTrigger,
     required this.scaleAction,
   });

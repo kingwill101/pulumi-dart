@@ -17,7 +17,7 @@ class JobExecutionTemplate {
   /// [args] Arguments for the Job execution.
   /// [environmentVariables] Environment variables of Job execution
   /// [resourceRequests] The requested resource quantity for required CPU and Memory.
-  JobExecutionTemplate({
+  const JobExecutionTemplate({
     this.args,
     this.environmentVariables,
     this.resourceRequests,

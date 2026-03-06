@@ -15,7 +15,7 @@ class GetCacheArgs {
   /// Creates a new [GetCacheArgs].
   /// [cacheName] Name of cache. Length of name must not be greater than 80 and chars must be from the [-0-9a-zA-Z_] char class.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCacheArgs({
+  const GetCacheArgs({
     required this.cacheName,
     required this.resourceGroupName,
   });

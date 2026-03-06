@@ -11,7 +11,7 @@ class GetInstanceServiceAccount {
   /// Creates a new [GetInstanceServiceAccount].
   /// [email] The service account e-mail address.
   /// [scopes] A list of service scopes.
-  GetInstanceServiceAccount({
+  const GetInstanceServiceAccount({
     required this.email,
     required this.scopes,
   });

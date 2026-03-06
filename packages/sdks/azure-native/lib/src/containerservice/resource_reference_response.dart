@@ -9,7 +9,7 @@ class ResourceReferenceResponse {
 
   /// Creates a new [ResourceReferenceResponse].
   /// [id] The fully qualified Azure resource id.
-  ResourceReferenceResponse({
+  const ResourceReferenceResponse({
     this.id,
   });
 

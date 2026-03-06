@@ -44,7 +44,7 @@ class PreventionInspectTemplateInspectConfig {
   /// [limits] Configuration to control the number of findings returned.
   /// [minLikelihood] Only returns findings equal or above this threshold. See https://cloud.google.com/dlp/docs/likelihood for more info
   /// [ruleSets] Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end,
-  PreventionInspectTemplateInspectConfig({
+  const PreventionInspectTemplateInspectConfig({
     this.contentOptions,
     this.customInfoTypes,
     this.excludeInfoTypes,

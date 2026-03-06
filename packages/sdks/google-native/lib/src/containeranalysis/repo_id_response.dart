@@ -13,7 +13,7 @@ class RepoIdResponse {
   /// Creates a new [RepoIdResponse].
   /// [projectRepoId] A combination of a project ID and a repo name.
   /// [uid] A server-assigned, globally unique identifier.
-  RepoIdResponse({
+  const RepoIdResponse({
     required this.projectRepoId,
     required this.uid,
   });

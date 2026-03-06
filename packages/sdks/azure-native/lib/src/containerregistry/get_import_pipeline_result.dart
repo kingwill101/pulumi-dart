@@ -42,7 +42,7 @@ class GetImportPipelineResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [trigger] The properties that describe the trigger of the import pipeline.
   /// [type] The type of the resource.
-  GetImportPipelineResult({
+  const GetImportPipelineResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

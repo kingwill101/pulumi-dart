@@ -81,7 +81,7 @@ class GatewayVpnAttachmentArgs {
   /// [tags] Tags
   /// [tunnelOptionsSpecifications] Configure the tunnel.
   /// [vpnAttachmentName] vpn attachment name
-  GatewayVpnAttachmentArgs({
+  const GatewayVpnAttachmentArgs({
     this.bgpConfig,
     this.customerGatewayId,
     this.effectImmediately,

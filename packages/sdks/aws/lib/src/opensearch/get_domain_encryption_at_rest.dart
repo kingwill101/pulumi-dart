@@ -11,7 +11,7 @@ class GetDomainEncryptionAtRest {
   /// Creates a new [GetDomainEncryptionAtRest].
   /// [enabled] Enabled disabled toggle for off-peak update window
   /// [kmsKeyId] KMS key id used to encrypt data at rest.
-  GetDomainEncryptionAtRest({
+  const GetDomainEncryptionAtRest({
     required this.enabled,
     required this.kmsKeyId,
   });

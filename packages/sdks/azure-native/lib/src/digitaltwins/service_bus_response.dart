@@ -41,7 +41,7 @@ class ServiceBusResponse {
   /// [primaryConnectionString] PrimaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
   /// [provisioningState] The provisioning state.
   /// [secondaryConnectionString] SecondaryConnectionString of the endpoint for key-based authentication. Will be obfuscated during read.
-  ServiceBusResponse({
+  const ServiceBusResponse({
     this.authenticationType,
     required this.createdTime,
     this.deadLetterSecret,

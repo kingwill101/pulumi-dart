@@ -16,7 +16,7 @@ class DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfigura
   /// [longValue] A long integer value.
   /// [stringListValues] A list of strings.
   /// [stringValue] Optional.
-  DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfigurationInvocationConditionConditionOnValue({
+  const DataSourceCustomDocumentEnrichmentConfigurationPostExtractionHookConfigurationInvocationConditionConditionOnValue({
     this.dateValue,
     this.longValue,
     this.stringListValues,

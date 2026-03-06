@@ -12,7 +12,7 @@ class OpenIdConnectLogin {
   /// Creates a new [OpenIdConnectLogin].
   /// [nameClaimType] The name of the claim that contains the users name.
   /// [scopes] A list of the scopes that should be requested while authenticating.
-  OpenIdConnectLogin({
+  const OpenIdConnectLogin({
     this.nameClaimType,
     this.scopes,
   });

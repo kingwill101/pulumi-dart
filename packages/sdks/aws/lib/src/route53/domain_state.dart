@@ -91,7 +91,7 @@ class DomainState {
   /// [transferLock] Whether the domain is locked for transfer. Default: `true`.
   /// [updatedDate] The last updated date of the domain as found in the response to a WHOIS query.
   /// [whoisServer] The fully qualified name of the WHOIS server that can answer the WHOIS query for the domain.
-  DomainState({
+  const DomainState({
     this.abuseContactEmail,
     this.abuseContactPhone,
     this.adminContact,

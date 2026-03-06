@@ -62,7 +62,7 @@ class AgentAgentArgs {
   /// [skipResourceInUseCheck] Whether the in-use check is skipped when deleting the agent.
   /// [tags] Map of tags assigned to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  AgentAgentArgs({
+  const AgentAgentArgs({
     this.agentCollaboration,
     required this.agentName,
     required this.agentResourceRoleArn,

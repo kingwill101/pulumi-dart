@@ -19,7 +19,7 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration 
   /// [recordExpiration] Journal table record expiration settings. See `record_expiration` Block for details.
   /// [tableArn] Journal table ARN.
   /// [tableName] Journal table name.
-  BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration({
+  const BucketMetadataConfigurationMetadataConfigurationJournalTableConfiguration({
     this.encryptionConfiguration,
     required this.recordExpiration,
     this.tableArn,

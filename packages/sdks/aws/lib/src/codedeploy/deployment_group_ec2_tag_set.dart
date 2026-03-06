@@ -9,7 +9,7 @@ class DeploymentGroupEc2TagSet {
 
   /// Creates a new [DeploymentGroupEc2TagSet].
   /// [ec2TagFilters] Tag filters associated with the deployment group. See the AWS docs for details.
-  DeploymentGroupEc2TagSet({
+  const DeploymentGroupEc2TagSet({
     this.ec2TagFilters,
   });
 

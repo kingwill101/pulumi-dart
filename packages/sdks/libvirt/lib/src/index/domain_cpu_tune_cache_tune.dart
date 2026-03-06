@@ -19,7 +19,7 @@ class DomainCpuTuneCacheTune {
   /// [id] Sets the identifier for the overall cache tuning configuration related to the CPUs.
   /// [monitors] Specifies monitoring options for observing the effectiveness of cache tuning.
   /// [vcpus] Configures the virtual CPUs associated with cache tuning, determining which CPUs are affected by the cache settings.
-  DomainCpuTuneCacheTune({
+  const DomainCpuTuneCacheTune({
     this.caches,
     this.id,
     this.monitors,

@@ -10,7 +10,7 @@ class OsProfileResponse {
 
   /// Creates a new [OsProfileResponse].
   /// [linuxOperatingSystemProfile] The Linux OS profile.
-  OsProfileResponse({
+  const OsProfileResponse({
     this.linuxOperatingSystemProfile,
   });
 

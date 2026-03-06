@@ -18,7 +18,7 @@ class ListAccessRoleBindingsArgs {
   /// [organizationName] Organization resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [searchFilters] Search filters for the request
-  ListAccessRoleBindingsArgs({
+  const ListAccessRoleBindingsArgs({
     required this.organizationName,
     required this.resourceGroupName,
     this.searchFilters,

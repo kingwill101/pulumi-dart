@@ -21,7 +21,7 @@ class DocumentationVersionArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] ID of the associated Rest API
   /// [version] Version identifier of the API documentation snapshot.
-  DocumentationVersionArgs({
+  const DocumentationVersionArgs({
     this.description,
     this.region,
     required this.restApiId,

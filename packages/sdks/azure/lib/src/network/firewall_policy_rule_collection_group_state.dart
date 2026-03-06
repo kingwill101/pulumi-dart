@@ -27,7 +27,7 @@ class FirewallPolicyRuleCollectionGroupState {
   /// [natRuleCollections] One or more `nat_rule_collection` blocks as defined below.
   /// [networkRuleCollections] One or more `network_rule_collection` blocks as defined below.
   /// [priority] The priority of the Firewall Policy Rule Collection Group. The range is 100-65000.
-  FirewallPolicyRuleCollectionGroupState({
+  const FirewallPolicyRuleCollectionGroupState({
     this.applicationRuleCollections,
     this.firewallPolicyId,
     this.name,

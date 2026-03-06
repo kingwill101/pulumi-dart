@@ -125,7 +125,7 @@ class GetCloudExadataInfrastructureResult {
   /// [storageServerVersion] The software version of the storage servers on the Exadata infrastructure.
   /// [tags] (Optional) A map of tags to assign to the exadata infrastructure. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [totalStorageSizeInGbs] The total amount of storage, in gigabytes (GB), on the Exadata infrastructure.
-  GetCloudExadataInfrastructureResult({
+  const GetCloudExadataInfrastructureResult({
     required this.activatedStorageCount,
     required this.additionalStorageCount,
     required this.arn,

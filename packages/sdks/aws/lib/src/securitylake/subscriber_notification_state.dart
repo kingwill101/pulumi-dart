@@ -22,7 +22,7 @@ class SubscriberNotificationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subscriberEndpoint] The subscriber endpoint to which exception messages are posted.
   /// [subscriberId] The subscriber ID for the notification subscription.
-  SubscriberNotificationState({
+  const SubscriberNotificationState({
     this.configuration,
     this.endpointId,
     this.region,

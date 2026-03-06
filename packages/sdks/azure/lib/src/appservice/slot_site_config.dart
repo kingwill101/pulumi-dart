@@ -121,7 +121,7 @@ class SlotSiteConfig {
   /// [vnetRouteAllEnabled] Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied? Defaults to `false`.
   /// [websocketsEnabled] Should WebSockets be enabled?
   /// [windowsFxVersion] The Windows Docker container image (`DOCKER|&lt;user/image:tag&gt;`)
-  SlotSiteConfig({
+  const SlotSiteConfig({
     this.acrUseManagedIdentityCredentials,
     this.acrUserManagedIdentityClientId,
     this.alwaysOn,

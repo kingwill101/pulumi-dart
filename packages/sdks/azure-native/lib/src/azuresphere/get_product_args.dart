@@ -18,7 +18,7 @@ class GetProductArgs {
   /// [catalogName] Name of catalog
   /// [productName] Name of product.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProductArgs({
+  const GetProductArgs({
     required this.catalogName,
     required this.productName,
     required this.resourceGroupName,

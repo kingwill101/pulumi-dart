@@ -12,7 +12,7 @@ class ColumnResponse {
   /// Creates a new [ColumnResponse].
   /// [name] Name of the Cosmos DB Cassandra table column
   /// [type] Type of the Cosmos DB Cassandra table column
-  ColumnResponse({
+  const ColumnResponse({
     this.name,
     this.type,
   });

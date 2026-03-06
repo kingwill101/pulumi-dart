@@ -12,7 +12,7 @@ class ArtifactObjects {
   /// Creates a new [ArtifactObjects].
   /// [location] Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
   /// [paths] Path globs used to match files in the build's workspace.
-  ArtifactObjects({
+  const ArtifactObjects({
     this.location,
     this.paths,
   });

@@ -13,7 +13,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRe
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex].
   /// [groupIndexes] The index of the submatch to extract as findings. When not specified,
   /// [pattern] Pattern defining the regular expression. Its syntax
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex({
     this.groupIndexes,
     this.pattern,
   });

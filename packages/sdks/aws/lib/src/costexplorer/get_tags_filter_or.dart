@@ -17,7 +17,7 @@ class GetTagsFilterOr {
   /// [costCategory] Configuration block for the filter that's based on `CostCategory` values. See `cost_category` block below for details.
   /// [dimension] Configuration block for the specific `Dimension` to use for `Expression`. See `dimension` block below for details.
   /// [tags] Tags that match your request.
-  GetTagsFilterOr({
+  const GetTagsFilterOr({
     this.costCategory,
     this.dimension,
     this.tags,

@@ -9,7 +9,7 @@ class UserAssignedIdentity {
 
   /// Creates a new [UserAssignedIdentity].
   /// [tenantId] The tenant id of user assigned identity.
-  UserAssignedIdentity({
+  const UserAssignedIdentity({
     this.tenantId,
   });
 

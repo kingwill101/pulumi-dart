@@ -28,7 +28,7 @@ class ContextArgs {
   /// [project] Optional.
   /// [sessionId] Required.
   /// [userId] Required.
-  ContextArgs({
+  const ContextArgs({
     required this.environmentId,
     this.lifespanCount,
     this.location,

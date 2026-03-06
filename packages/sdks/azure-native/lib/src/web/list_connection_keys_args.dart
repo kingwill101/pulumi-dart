@@ -36,7 +36,7 @@ class ListConnectionKeysArgs {
   /// [tags] Resource tags
   /// [type] Resource type
   /// [validityTimeSpan] time span for how long the keys will be valid
-  ListConnectionKeysArgs({
+  const ListConnectionKeysArgs({
     required this.connectionName,
     this.id,
     this.kind,

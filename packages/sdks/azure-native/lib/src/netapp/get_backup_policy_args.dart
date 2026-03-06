@@ -18,7 +18,7 @@ class GetBackupPolicyArgs {
   /// [accountName] The name of the NetApp account
   /// [backupPolicyName] Backup policy Name which uniquely identify backup policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBackupPolicyArgs({
+  const GetBackupPolicyArgs({
     required this.accountName,
     required this.backupPolicyName,
     required this.resourceGroupName,

@@ -18,7 +18,7 @@ class GetRolePolicyAttachmentsArgs {
   /// [ids] A list of Role Policy Attachment IDs. The value is formulated as `role:&lt;policy_name&gt;:&lt;policy_type&gt;:&lt;role_name&gt;`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [roleName] The RAM role name.
-  GetRolePolicyAttachmentsArgs({
+  const GetRolePolicyAttachmentsArgs({
     this.ids,
     this.outputFile,
     required this.roleName,

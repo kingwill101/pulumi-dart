@@ -18,7 +18,7 @@ class ObjectMetricSourcePatch {
   /// [describedObject] describedObject specifies the descriptions of a object,such as kind,name apiVersion
   /// [metric] metric identifies the target metric by name and selector
   /// [target] target specifies the target value for the given metric
-  ObjectMetricSourcePatch({
+  const ObjectMetricSourcePatch({
     this.describedObject,
     this.metric,
     this.target,

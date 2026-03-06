@@ -31,7 +31,7 @@ class InitContainerDefinitionResponse {
   /// [name] The name for the init container.
   /// [securityContext] The container security properties.
   /// [volumeMounts] The volume mounts available to the init container.
-  InitContainerDefinitionResponse({
+  const InitContainerDefinitionResponse({
     this.command,
     this.environmentVariables,
     this.image,

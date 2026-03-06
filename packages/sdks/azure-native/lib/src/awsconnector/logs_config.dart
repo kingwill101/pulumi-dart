@@ -14,7 +14,7 @@ class LogsConfig {
   /// Creates a new [LogsConfig].
   /// [cloudWatchLogs] &lt;p&gt; Information about CloudWatch Logs for a build project. CloudWatch Logs are enabled by default. &lt;/p&gt;
   /// [s3Logs] &lt;p&gt; Information about logs built to an S3 bucket for a build project. S3 logs are not enabled by default. &lt;/p&gt;
-  LogsConfig({
+  const LogsConfig({
     this.cloudWatchLogs,
     this.s3Logs,
   });

@@ -8,7 +8,7 @@ class NetworkMtu {
 
   /// Creates a new [NetworkMtu].
   /// [size] Defines the specific size of the MTU for network communication.
-  NetworkMtu({
+  const NetworkMtu({
     required this.size,
   });
 

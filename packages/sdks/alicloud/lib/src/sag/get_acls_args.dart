@@ -17,7 +17,7 @@ class GetAclsArgs {
   /// [ids] A list of Sag Acl IDs.
   /// [nameRegex] A regex string to filter Sag Acl instances by name.
   /// [outputFile] Optional.
-  GetAclsArgs({
+  const GetAclsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

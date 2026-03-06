@@ -32,7 +32,7 @@ class AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec {
   /// [boost] (Output)
   /// [boostControlSpecs] (Output)
   /// [condition] (Output)
-  AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec({
+  const AppVersionSnapshotToolDataStoreToolBoostSpecSpecConditionBoostSpec({
     this.boost,
     this.boostControlSpecs,
     this.condition,

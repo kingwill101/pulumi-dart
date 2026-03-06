@@ -196,7 +196,7 @@ class GetAutonomousDatabaseCloneFromBackupResult {
   /// [usedDataStorageSizeInGb] The storage space consumed by Autonomous Database in gigabytes.
   /// [usedDataStorageSizeInTb] The amount of storage that has been used, in terabytes.
   /// [virtualNetworkId] The ID to an Azure Resource Manager virtual network resource.
-  GetAutonomousDatabaseCloneFromBackupResult({
+  const GetAutonomousDatabaseCloneFromBackupResult({
     required this.actualUsedDataStorageSizeInTb,
     required this.allocatedStorageSizeInTb,
     required this.allowedIpAddresses,

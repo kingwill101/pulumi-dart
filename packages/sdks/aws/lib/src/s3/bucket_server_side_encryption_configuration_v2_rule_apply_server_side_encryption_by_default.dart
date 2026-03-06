@@ -11,7 +11,7 @@ class BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDe
   /// Creates a new [BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefault].
   /// [kmsMasterKeyId] AWS KMS master key ID used for the SSE-KMS encryption. This can only be used when you set the value of `sse_algorithm` as `aws:kms`. The default `aws/s3` AWS KMS master key is used if this element is absent while the `sse_algorithm` is `aws:kms`.
   /// [sseAlgorithm] Server-side encryption algorithm to use. Valid values are `AES256`, `aws:kms`, and `aws:kms:dsse`
-  BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefault({
+  const BucketServerSideEncryptionConfigurationV2RuleApplyServerSideEncryptionByDefault({
     this.kmsMasterKeyId,
     required this.sseAlgorithm,
   });

@@ -26,7 +26,7 @@ class V2ProjectNotificationConfigStreamingConfig {
 
   /// Creates a new [V2ProjectNotificationConfigStreamingConfig].
   /// [filter] Expression that defines the filter to apply across create/update
-  V2ProjectNotificationConfigStreamingConfig({
+  const V2ProjectNotificationConfigStreamingConfig({
     required this.filter,
   });
 

@@ -15,7 +15,7 @@ class GetManagedEnvironmentAuthTokenArgs {
   /// Creates a new [GetManagedEnvironmentAuthTokenArgs].
   /// [environmentName] Name of the Managed Environment.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetManagedEnvironmentAuthTokenArgs({
+  const GetManagedEnvironmentAuthTokenArgs({
     required this.environmentName,
     required this.resourceGroupName,
   });

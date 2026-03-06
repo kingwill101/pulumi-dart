@@ -31,7 +31,7 @@ class S3LocationArgs {
   /// [s3StorageClass] Amazon S3 storage class that you want to store your files in when this location is used as a task destination. [Valid values](https://docs.aws.amazon.com/datasync/latest/userguide/create-s3-location.html#using-storage-classes)
   /// [subdirectory] Prefix to perform actions as source or destination.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  S3LocationArgs({
+  const S3LocationArgs({
     this.agentArns,
     this.region,
     required this.s3BucketArn,

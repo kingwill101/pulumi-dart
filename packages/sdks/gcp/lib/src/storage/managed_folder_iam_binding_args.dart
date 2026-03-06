@@ -38,7 +38,7 @@ class ManagedFolderIamBindingArgs {
   /// [managedFolder] Used to find the parent resource to bind the IAM policy to
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  ManagedFolderIamBindingArgs({
+  const ManagedFolderIamBindingArgs({
     required this.bucket,
     this.condition,
     required this.managedFolder,

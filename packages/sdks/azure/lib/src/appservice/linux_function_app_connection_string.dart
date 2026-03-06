@@ -14,7 +14,7 @@ class LinuxFunctionAppConnectionString {
   /// [name] The name which should be used for this Connection.
   /// [type] Type of database. Possible values include: `MySQL`, `SQLServer`, `SQLAzure`, `Custom`, `NotificationHub`, `ServiceBus`, `EventHub`, `APIHub`, `DocDb`, `RedisCache`, and `PostgreSQL`.
   /// [value] The connection string value.
-  LinuxFunctionAppConnectionString({
+  const LinuxFunctionAppConnectionString({
     required this.name,
     required this.type,
     required this.value,

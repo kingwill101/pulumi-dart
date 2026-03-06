@@ -17,7 +17,7 @@ class GetIpv6RangesRange {
   /// [range] The IPv6 address of this range.
   /// [region] The region for this range of IPv6 addresses.
   /// [routeTarget] The IPv6 SLAAC address.
-  GetIpv6RangesRange({
+  const GetIpv6RangesRange({
     required this.prefix,
     required this.range,
     required this.region,

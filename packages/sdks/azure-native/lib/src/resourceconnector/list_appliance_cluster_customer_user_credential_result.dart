@@ -14,7 +14,7 @@ class ListApplianceClusterCustomerUserCredentialResult {
   /// Creates a new [ListApplianceClusterCustomerUserCredentialResult].
   /// [kubeconfigs] The list of appliance kubeconfigs.
   /// [sshKeys] Map of Customer User Public and Private SSH Keys
-  ListApplianceClusterCustomerUserCredentialResult({
+  const ListApplianceClusterCustomerUserCredentialResult({
     required this.kubeconfigs,
     required this.sshKeys,
   });

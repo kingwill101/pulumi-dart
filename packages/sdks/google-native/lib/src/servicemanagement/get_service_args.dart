@@ -11,7 +11,7 @@ class GetServiceArgs {
 
   /// Creates a new [GetServiceArgs].
   /// [serviceName] Required.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.serviceName,
   });
 

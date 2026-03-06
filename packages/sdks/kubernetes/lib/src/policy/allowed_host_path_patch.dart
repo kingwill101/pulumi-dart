@@ -14,7 +14,7 @@ class AllowedHostPathPatch {
   /// Creates a new [AllowedHostPathPatch].
   /// [pathPrefix] pathPrefix is the path prefix that the host volume must match. It does not support `*`. Trailing slashes are trimmed when validating the path prefix with a host path.
   /// [readOnly] when set to true, will allow host volumes matching the pathPrefix only if all volume mounts are readOnly.
-  AllowedHostPathPatch({
+  const AllowedHostPathPatch({
     this.pathPrefix,
     this.readOnly,
   });

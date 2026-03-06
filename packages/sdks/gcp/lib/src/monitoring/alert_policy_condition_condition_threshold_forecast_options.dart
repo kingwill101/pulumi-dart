@@ -13,7 +13,7 @@ class AlertPolicyConditionConditionThresholdForecastOptions {
 
   /// Creates a new [AlertPolicyConditionConditionThresholdForecastOptions].
   /// [forecastHorizon] The length of time into the future to forecast
-  AlertPolicyConditionConditionThresholdForecastOptions({
+  const AlertPolicyConditionConditionThresholdForecastOptions({
     required this.forecastHorizon,
   });
 

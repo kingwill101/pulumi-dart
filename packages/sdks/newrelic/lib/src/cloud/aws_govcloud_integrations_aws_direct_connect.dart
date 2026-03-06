@@ -11,7 +11,7 @@ class AwsGovcloudIntegrationsAwsDirectConnect {
   /// Creates a new [AwsGovcloudIntegrationsAwsDirectConnect].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor
   /// [metricsPollingInterval] The data polling interval in seconds
-  AwsGovcloudIntegrationsAwsDirectConnect({
+  const AwsGovcloudIntegrationsAwsDirectConnect({
     this.awsRegions,
     this.metricsPollingInterval,
   });

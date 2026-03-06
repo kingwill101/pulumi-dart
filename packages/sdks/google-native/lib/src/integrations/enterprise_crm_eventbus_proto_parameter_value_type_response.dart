@@ -34,7 +34,7 @@ class EnterpriseCrmEventbusProtoParameterValueTypeResponse {
   /// [serializedObjectValue] Required.
   /// [stringArray] Required.
   /// [stringValue] Required.
-  EnterpriseCrmEventbusProtoParameterValueTypeResponse({
+  const EnterpriseCrmEventbusProtoParameterValueTypeResponse({
     required this.booleanArray,
     required this.booleanValue,
     required this.doubleArray,

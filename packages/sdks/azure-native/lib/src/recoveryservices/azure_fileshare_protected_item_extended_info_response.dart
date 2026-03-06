@@ -21,7 +21,7 @@ class AzureFileshareProtectedItemExtendedInfoResponse {
   /// [recoveryPointCount] Number of available backup copies associated with this backup item.
   /// [resourceState] Indicates the state of this resource. Possible values are from enum ResourceState {Invalid, Active, SoftDeleted, Deleted}
   /// [resourceStateSyncTime] The resource state sync time for this backup item.
-  AzureFileshareProtectedItemExtendedInfoResponse({
+  const AzureFileshareProtectedItemExtendedInfoResponse({
     this.oldestRecoveryPoint,
     this.policyState,
     this.recoveryPointCount,

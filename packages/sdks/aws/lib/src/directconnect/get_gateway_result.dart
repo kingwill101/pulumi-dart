@@ -22,7 +22,7 @@ class GetGatewayResult {
   /// [name] Required.
   /// [ownerAccountId] AWS Account ID of the gateway.
   /// [tags] A map of tags assigned to the gateway.
-  GetGatewayResult({
+  const GetGatewayResult({
     required this.amazonSideAsn,
     required this.arn,
     required this.id,

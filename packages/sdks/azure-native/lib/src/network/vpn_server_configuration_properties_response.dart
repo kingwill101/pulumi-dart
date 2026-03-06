@@ -63,7 +63,7 @@ class VpnServerConfigurationPropertiesResponse {
   /// [vpnClientRevokedCertificates] VPN client revoked certificate of VpnServerConfiguration.
   /// [vpnClientRootCertificates] VPN client root certificate of VpnServerConfiguration.
   /// [vpnProtocols] VPN protocols for the VpnServerConfiguration.
-  VpnServerConfigurationPropertiesResponse({
+  const VpnServerConfigurationPropertiesResponse({
     this.aadAuthenticationParameters,
     this.configurationPolicyGroups,
     required this.etag,

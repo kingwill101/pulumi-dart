@@ -11,7 +11,7 @@ class GetImagePipelineImageScanningConfigurationEcrConfiguration {
   /// Creates a new [GetImagePipelineImageScanningConfigurationEcrConfiguration].
   /// [containerTags] Tags that are added to the output containers that are scanned
   /// [repositoryName] The name of the container repository that Amazon Inspector scans
-  GetImagePipelineImageScanningConfigurationEcrConfiguration({
+  const GetImagePipelineImageScanningConfigurationEcrConfiguration({
     required this.containerTags,
     required this.repositoryName,
   });

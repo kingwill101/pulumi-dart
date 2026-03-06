@@ -17,7 +17,7 @@ class GetProductResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [productCode] Required.
   /// [products] A product. It contains the following attributes:
-  GetProductResult({
+  const GetProductResult({
     this.availableRegion,
     required this.id,
     required this.productCode,

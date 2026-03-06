@@ -22,7 +22,7 @@ class PolicyState {
   /// [policyName] Policy Name
   /// [policyType] The policy type. The UDM_ECS_ONLY and STANDARD types are supported. The policy with PolicyType = UDM_ECS_ONLY can only be used for ECS instances. The policy with PolicyType = STANDARD can only be used for data sources other than ECS instances.
   /// [rules] A list of policy rules See `rules` below.
-  PolicyState({
+  const PolicyState({
     this.createTime,
     this.policyDescription,
     this.policyName,

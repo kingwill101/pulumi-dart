@@ -22,7 +22,7 @@ class NetCoreZipUploadedUserSourceInfo {
   /// [runtimeVersion] Runtime version of the .Net file
   /// [type] Type of the source uploaded
   /// [version] Version of the source
-  NetCoreZipUploadedUserSourceInfo({
+  const NetCoreZipUploadedUserSourceInfo({
     this.netCoreMainEntryPath,
     this.relativePath,
     this.runtimeVersion,

@@ -27,7 +27,7 @@ class GetClusterResult {
   /// [resourceGroupName] Required.
   /// [tags] Required.
   /// [uri] The FQDN of the Azure Kusto Cluster.
-  GetClusterResult({
+  const GetClusterResult({
     required this.dataIngestionUri,
     required this.id,
     required this.identities,

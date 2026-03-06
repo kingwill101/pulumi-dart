@@ -18,7 +18,7 @@ class ListNamespaceKeysArgs {
   /// [authorizationRuleName] The authorization rule name.
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListNamespaceKeysArgs({
+  const ListNamespaceKeysArgs({
     required this.authorizationRuleName,
     required this.namespaceName,
     required this.resourceGroupName,

@@ -16,7 +16,7 @@ class RemotePrivateEndpointConnectionResponse {
   /// [privateEndpoint] PrivateEndpoint of a remote private endpoint connection
   /// [privateLinkServiceConnectionState] The state of a private link connection
   /// [provisioningState] Required.
-  RemotePrivateEndpointConnectionResponse({
+  const RemotePrivateEndpointConnectionResponse({
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,
     required this.provisioningState,

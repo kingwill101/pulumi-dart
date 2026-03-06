@@ -62,7 +62,7 @@ class ExtensionArgs {
   /// [scope] Scope at which the extension is installed.
   /// [statuses] Status from this extension.
   /// [version] User-specified version of the extension for this extension to 'pin'. To use 'version', autoUpgradeMinorVersion must be 'false'.
-  ExtensionArgs({
+  const ExtensionArgs({
     this.aksAssignedIdentity,
     this.autoUpgradeMinorVersion,
     required this.clusterName,

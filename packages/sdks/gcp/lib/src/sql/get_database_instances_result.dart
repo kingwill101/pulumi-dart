@@ -24,7 +24,7 @@ class GetDatabaseInstancesResult {
   /// [state] Optional.
   /// [tier] Optional.
   /// [zone] Optional.
-  GetDatabaseInstancesResult({
+  const GetDatabaseInstancesResult({
     this.databaseVersion,
     required this.id,
     required this.instances,

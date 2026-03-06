@@ -25,7 +25,7 @@ class DynamicTagGroupState {
   /// [status] The status of the Dynamic Tag Group.
   /// [tagKey] The tag keys of the cloud resources.
   /// [templateIdLists] The IDs of the alert templates.
-  DynamicTagGroupState({
+  const DynamicTagGroupState({
     this.contactGroupLists,
     this.matchExpressFilterRelation,
     this.matchExpresses,

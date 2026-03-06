@@ -27,7 +27,7 @@ class MultiplexProgramArgs {
   /// [programName] Unique program name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  MultiplexProgramArgs({
+  const MultiplexProgramArgs({
     required this.multiplexId,
     this.multiplexProgramSettings,
     required this.programName,

@@ -17,7 +17,7 @@ class GuestPoliciesRecipeArtifactGcs {
   /// [bucket] Bucket of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
   /// [generation] Must be provided if allowInsecure is false. Generation number of the Google Cloud Storage object.
   /// [object_] Name of the Google Cloud Storage object. Given an example URL: https://storage.googleapis.com/my-bucket/foo/bar#1234567
-  GuestPoliciesRecipeArtifactGcs({
+  const GuestPoliciesRecipeArtifactGcs({
     this.bucket,
     this.generation,
     this.object_,

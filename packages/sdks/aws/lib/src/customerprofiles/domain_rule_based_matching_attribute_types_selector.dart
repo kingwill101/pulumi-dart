@@ -17,7 +17,7 @@ class DomainRuleBasedMatchingAttributeTypesSelector {
   /// [attributeMatchingModel] Configures the `AttributeMatchingModel`, you can either choose `ONE_TO_ONE` or `MANY_TO_MANY`.
   /// [emailAddresses] The `Email` type. You can choose from `EmailAddress`, `BusinessEmailAddress` and `PersonalEmailAddress`.
   /// [phoneNumbers] The `PhoneNumber` type. You can choose from `PhoneNumber`, `HomePhoneNumber`, and `MobilePhoneNumber`.
-  DomainRuleBasedMatchingAttributeTypesSelector({
+  const DomainRuleBasedMatchingAttributeTypesSelector({
     this.addresses,
     required this.attributeMatchingModel,
     this.emailAddresses,

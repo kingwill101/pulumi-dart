@@ -22,7 +22,7 @@ class SchemaPolicy {
   /// [role] The ROLE who is receiving the policy.  If this value is empty or not specified it implies the policy is referring to the [`PUBLIC` role](https://www.postgresql.org/docs/current/static/sql-grant.html).
   /// [usage] Should the specified ROLE have USAGE privileges to the specified SCHEMA.
   /// [usageWithGrant] Should the specified ROLE have USAGE privileges to the specified SCHEMA and the ability to GRANT the USAGE privilege to other ROLEs.
-  SchemaPolicy({
+  const SchemaPolicy({
     this.create,
     this.createWithGrant,
     this.role,

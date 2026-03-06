@@ -12,7 +12,7 @@ class CloudTieringDatePolicyStatusResponse {
   /// Creates a new [CloudTieringDatePolicyStatusResponse].
   /// [lastUpdatedTimestamp] Last updated timestamp
   /// [tieredFilesMostRecentAccessTimestamp] Most recent access time of tiered files
-  CloudTieringDatePolicyStatusResponse({
+  const CloudTieringDatePolicyStatusResponse({
     required this.lastUpdatedTimestamp,
     required this.tieredFilesMostRecentAccessTimestamp,
   });

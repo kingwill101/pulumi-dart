@@ -22,7 +22,7 @@ class ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig {
   /// [apiKeySecretVersion] The name of the SecretManager secret version resource storing the API key.
   /// [keyName] The parameter name or the header name of the API key.
   /// [requestLocation] Key location in the request.
-  ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig({
+  const ToolsetOpenApiToolsetApiAuthenticationApiKeyConfig({
     required this.apiKeySecretVersion,
     required this.keyName,
     required this.requestLocation,

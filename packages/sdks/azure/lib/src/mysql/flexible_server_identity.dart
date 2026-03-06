@@ -11,7 +11,7 @@ class FlexibleServerIdentity {
   /// Creates a new [FlexibleServerIdentity].
   /// [identityIds] A list of User Assigned Managed Identity IDs to be assigned to this MySQL Flexible Server.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this MySQL Flexible Server. The only possible value is `UserAssigned`.
-  FlexibleServerIdentity({
+  const FlexibleServerIdentity({
     required this.identityIds,
     required this.type,
   });

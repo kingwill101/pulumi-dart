@@ -21,7 +21,7 @@ class NetworkManagerSecurityAdminConfigurationArgs {
   /// [description] A description of the Security Admin Configuration.
   /// [name] Specifies the name which should be used for this Network Manager Security Admin Configuration. Changing this forces a new Network Manager Security Admin Configuration to be created.
   /// [networkManagerId] Specifies the ID of the Network Manager Security Admin Configuration. Changing this forces a new Network Manager Security Admin Configuration to be created.
-  NetworkManagerSecurityAdminConfigurationArgs({
+  const NetworkManagerSecurityAdminConfigurationArgs({
     this.applyOnNetworkIntentPolicyBasedServices,
     this.description,
     this.name,

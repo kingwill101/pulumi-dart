@@ -113,7 +113,7 @@ class FirewallVpcFirewallControlPolicyState {
   /// [sourceType] The type of the source address in the access control policy. Valid values: `net`, `group`.
   /// [startTime] The start time of the policy validity period.
   /// [vpcFirewallId] The ID of the VPC firewall instance. Valid values:
-  FirewallVpcFirewallControlPolicyState({
+  const FirewallVpcFirewallControlPolicyState({
     this.aclAction,
     this.aclUuid,
     this.applicationId,

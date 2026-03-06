@@ -11,7 +11,7 @@ class PipelineTriggerAllGitConfigurationPushBranch {
   /// Creates a new [PipelineTriggerAllGitConfigurationPushBranch].
   /// [excludes] A list of patterns of Git branches that, when a commit is pushed, are to be excluded from starting the pipeline.
   /// [includes] A list of patterns of Git branches that, when a commit is pushed, are to be included as criteria that starts the pipeline.
-  PipelineTriggerAllGitConfigurationPushBranch({
+  const PipelineTriggerAllGitConfigurationPushBranch({
     this.excludes,
     this.includes,
   });

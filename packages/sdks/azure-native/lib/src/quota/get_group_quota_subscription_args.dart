@@ -15,7 +15,7 @@ class GetGroupQuotaSubscriptionArgs {
   /// Creates a new [GetGroupQuotaSubscriptionArgs].
   /// [groupQuotaName] The GroupQuota name. The name should be unique for the provided context tenantId/MgId.
   /// [managementGroupId] Management Group Id.
-  GetGroupQuotaSubscriptionArgs({
+  const GetGroupQuotaSubscriptionArgs({
     required this.groupQuotaName,
     required this.managementGroupId,
   });

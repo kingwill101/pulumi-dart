@@ -19,7 +19,7 @@ class AddRemoveIncrementalNamedPartitionScalingMechanismResponse {
   /// [maxPartitionCount] Maximum number of named partitions of the service.
   /// [minPartitionCount] Minimum number of named partitions of the service.
   /// [scaleIncrement] The number of instances to add or remove during a scaling operation.
-  AddRemoveIncrementalNamedPartitionScalingMechanismResponse({
+  const AddRemoveIncrementalNamedPartitionScalingMechanismResponse({
     required this.kind,
     required this.maxPartitionCount,
     required this.minPartitionCount,

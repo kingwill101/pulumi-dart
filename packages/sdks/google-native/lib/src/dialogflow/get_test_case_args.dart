@@ -17,7 +17,7 @@ class GetTestCaseArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [testCaseId] Required.
-  GetTestCaseArgs({
+  const GetTestCaseArgs({
     required this.agentId,
     required this.location,
     this.project,

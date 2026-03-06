@@ -12,7 +12,7 @@ class LinuxWebAppLogsApplicationLogs {
   /// Creates a new [LinuxWebAppLogsApplicationLogs].
   /// [azureBlobStorage] An `azure_blob_storage` block as defined below.
   /// [fileSystemLevel] Log level. Possible values include: `Off`, `Verbose`, `Information`, `Warning`, and `Error`.
-  LinuxWebAppLogsApplicationLogs({
+  const LinuxWebAppLogsApplicationLogs({
     this.azureBlobStorage,
     required this.fileSystemLevel,
   });

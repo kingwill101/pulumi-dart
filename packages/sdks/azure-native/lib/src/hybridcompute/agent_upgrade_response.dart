@@ -27,7 +27,7 @@ class AgentUpgradeResponse {
   /// [lastAttemptMessage] Failure message of last upgrade attempt if any.
   /// [lastAttemptStatus] Specifies the status of Agent Upgrade.
   /// [lastAttemptTimestamp] Timestamp of last upgrade attempt
-  AgentUpgradeResponse({
+  const AgentUpgradeResponse({
     this.correlationId,
     this.desiredVersion,
     this.enableAutomaticUpgrade,

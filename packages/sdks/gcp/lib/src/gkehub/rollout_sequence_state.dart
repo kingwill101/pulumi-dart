@@ -52,7 +52,7 @@ class RolloutSequenceState {
   /// [stages] Ordered list of stages that constitute this Rollout Sequence.
   /// [uid] Google-generated UUID for this resource.
   /// [updateTime] The timestamp at which the Rollout Sequence was last updated.
-  RolloutSequenceState({
+  const RolloutSequenceState({
     this.createTime,
     this.deleteTime,
     this.displayName,

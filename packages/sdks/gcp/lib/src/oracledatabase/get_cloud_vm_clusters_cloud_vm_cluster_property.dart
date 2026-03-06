@@ -125,7 +125,7 @@ class GetCloudVmClustersCloudVmClusterProperty {
   /// [storageSizeGb] The storage allocation for the disk group, in gigabytes (GB).
   /// [systemVersion] Operating system version of the image.
   /// [timeZones] Represents a time zone from the
-  GetCloudVmClustersCloudVmClusterProperty({
+  const GetCloudVmClustersCloudVmClusterProperty({
     required this.clusterName,
     required this.compartmentId,
     required this.cpuCoreCount,

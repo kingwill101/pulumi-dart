@@ -22,7 +22,7 @@ class KeyvaluestoreKeysExclusiveArgs {
   /// [keyValueStoreArn] Amazon Resource Name (ARN) of the Key Value Store.
   /// [maxBatchSize] Maximum resource key values pairs that will update in a single API request. AWS has a default quota of 50 keys or a 3 MB payload, whichever is reached first. Defaults to `50`.
   /// [resourceKeyValuePairs] A list of all resource key value pairs associated with the KeyValueStore.
-  KeyvaluestoreKeysExclusiveArgs({
+  const KeyvaluestoreKeysExclusiveArgs({
     required this.keyValueStoreArn,
     this.maxBatchSize,
     this.resourceKeyValuePairs,

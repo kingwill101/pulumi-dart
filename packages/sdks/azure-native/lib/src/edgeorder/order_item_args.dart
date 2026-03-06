@@ -36,7 +36,7 @@ class OrderItemArgs {
   /// [orderItemName] The name of the order item.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  OrderItemArgs({
+  const OrderItemArgs({
     this.addressDetails,
     this.identity,
     this.location,

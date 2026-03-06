@@ -13,7 +13,7 @@ class ListIssueAlertsResult {
   /// Creates a new [ListIssueAlertsResult].
   /// [nextLink] The link to the next page of items
   /// [value] The RelatedAlert items on this page
-  ListIssueAlertsResult({
+  const ListIssueAlertsResult({
     this.nextLink,
     required this.value,
   });

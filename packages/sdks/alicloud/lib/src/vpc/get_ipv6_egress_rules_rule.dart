@@ -29,7 +29,7 @@ class GetIpv6EgressRulesRule {
   /// [ipv6EgressRuleName] The name of the resource.
   /// [ipv6GatewayId] The ID of the IPv6 gateway.
   /// [status] The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
-  GetIpv6EgressRulesRule({
+  const GetIpv6EgressRulesRule({
     required this.description,
     required this.id,
     required this.instanceId,

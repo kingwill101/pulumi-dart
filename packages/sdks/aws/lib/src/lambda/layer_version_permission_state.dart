@@ -38,7 +38,7 @@ class LayerVersionPermissionState {
   /// [skipDestroy] Whether to retain the permission when the resource is destroyed. Default is `false`.
   /// [statementId] Unique identifier for the permission statement.
   /// [versionNumber] Version of Lambda Layer to grant access to. Note: permissions only apply to a single version of a layer.
-  LayerVersionPermissionState({
+  const LayerVersionPermissionState({
     this.action,
     this.layerName,
     this.organizationId,

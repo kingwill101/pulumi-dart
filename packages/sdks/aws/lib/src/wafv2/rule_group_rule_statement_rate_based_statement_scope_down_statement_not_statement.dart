@@ -9,7 +9,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementNotStatement {
 
   /// Creates a new [RuleGroupRuleStatementRateBasedStatementScopeDownStatementNotStatement].
   /// [statements] The statements to combine.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementNotStatement({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementNotStatement({
     required this.statements,
   });
 

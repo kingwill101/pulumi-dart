@@ -36,7 +36,7 @@ class V2OrganizationSourceIamMemberArgs {
   /// [organization] Required.
   /// [role] The role that should be applied. Only one
   /// [source] Used to find the parent resource to bind the IAM policy to
-  V2OrganizationSourceIamMemberArgs({
+  const V2OrganizationSourceIamMemberArgs({
     this.condition,
     required this.member,
     required this.organization,

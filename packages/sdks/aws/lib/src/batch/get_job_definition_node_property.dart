@@ -15,7 +15,7 @@ class GetJobDefinitionNodeProperty {
   /// [mainNode] Specifies the node index for the main node of a multi-node parallel job. This node index value must be fewer than the number of nodes.
   /// [nodeRangeProperties] A list of node ranges and their properties that are associated with a multi-node parallel job.
   /// [numNodes] The number of nodes that are associated with a multi-node parallel job.
-  GetJobDefinitionNodeProperty({
+  const GetJobDefinitionNodeProperty({
     required this.mainNode,
     required this.nodeRangeProperties,
     required this.numNodes,

@@ -11,7 +11,7 @@ class DomainMemoryBackingMemoryAllocation {
   /// Creates a new [DomainMemoryBackingMemoryAllocation].
   /// [mode] Sets the mode of memory allocation, determining if it is static, dynamic, or configured otherwise.
   /// [threads] Specifies the number of threads allocated for managing memory allocation tasks in the domain.
-  DomainMemoryBackingMemoryAllocation({
+  const DomainMemoryBackingMemoryAllocation({
     this.mode,
     this.threads,
   });

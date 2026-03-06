@@ -11,7 +11,7 @@ class InstanceParameter {
   /// Creates a new [InstanceParameter].
   /// [name] Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
   /// [value] Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
-  InstanceParameter({
+  const InstanceParameter({
     this.name,
     this.value,
   });

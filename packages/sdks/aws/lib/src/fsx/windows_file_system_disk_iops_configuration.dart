@@ -11,7 +11,7 @@ class WindowsFileSystemDiskIopsConfiguration {
   /// Creates a new [WindowsFileSystemDiskIopsConfiguration].
   /// [iops] The total number of SSD IOPS provisioned for the file system.
   /// [mode] Specifies whether the number of IOPS for the file system is using the system. Valid values are `AUTOMATIC` and `USER_PROVISIONED`. Default value is `AUTOMATIC`.
-  WindowsFileSystemDiskIopsConfiguration({
+  const WindowsFileSystemDiskIopsConfiguration({
     this.iops,
     this.mode,
   });

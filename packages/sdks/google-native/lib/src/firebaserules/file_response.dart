@@ -15,7 +15,7 @@ class FileResponse {
   /// [content] Textual Content.
   /// [fingerprint] Fingerprint (e.g. github sha) associated with the `File`.
   /// [name] File name.
-  FileResponse({
+  const FileResponse({
     required this.content,
     required this.fingerprint,
     required this.name,

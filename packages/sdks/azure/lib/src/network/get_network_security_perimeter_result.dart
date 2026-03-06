@@ -18,7 +18,7 @@ class GetNetworkSecurityPerimeterResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Network Security Perimeter.
-  GetNetworkSecurityPerimeterResult({
+  const GetNetworkSecurityPerimeterResult({
     required this.id,
     required this.location,
     required this.name,

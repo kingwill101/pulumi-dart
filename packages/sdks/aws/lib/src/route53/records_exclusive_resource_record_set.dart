@@ -70,7 +70,7 @@ class RecordsExclusiveResourceRecordSet {
   /// [ttl] Resource record cache time to live (TTL), in seconds.
   /// [type] Record type.
   /// [weight] Among resource record sets that have the same combination of DNS name and type, a value that determines the proportion of DNS queries that Amazon Route 53 responds to using the current resource record set.
-  RecordsExclusiveResourceRecordSet({
+  const RecordsExclusiveResourceRecordSet({
     this.aliasTarget,
     this.cidrRoutingConfig,
     this.failover,

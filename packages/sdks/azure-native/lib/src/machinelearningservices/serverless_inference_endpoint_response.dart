@@ -11,7 +11,7 @@ class ServerlessInferenceEndpointResponse {
   /// Creates a new [ServerlessInferenceEndpointResponse].
   /// [headers] Specifies any required headers to target this serverless endpoint.
   /// [uri] [Required] The inference uri to target when making requests against the Serverless Endpoint.
-  ServerlessInferenceEndpointResponse({
+  const ServerlessInferenceEndpointResponse({
     required this.headers,
     required this.uri,
   });

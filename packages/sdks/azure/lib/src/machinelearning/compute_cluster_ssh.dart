@@ -16,7 +16,7 @@ class ComputeClusterSsh {
   /// [adminPassword] Password of the administrator user account. Changing this forces a new Machine Learning Compute Cluster to be created.
   /// [adminUsername] Name of the administrator user account which can be used to SSH to nodes. Changing this forces a new Machine Learning Compute Cluster to be created.
   /// [keyValue] SSH public key of the administrator user account. Changing this forces a new Machine Learning Compute Cluster to be created.
-  ComputeClusterSsh({
+  const ComputeClusterSsh({
     this.adminPassword,
     required this.adminUsername,
     this.keyValue,

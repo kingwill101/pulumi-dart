@@ -15,7 +15,7 @@ class ListLocalRulestackFirewallsArgs {
   /// Creates a new [ListLocalRulestackFirewallsArgs].
   /// [localRulestackName] LocalRulestack resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListLocalRulestackFirewallsArgs({
+  const ListLocalRulestackFirewallsArgs({
     required this.localRulestackName,
     required this.resourceGroupName,
   });

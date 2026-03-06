@@ -40,7 +40,7 @@ class ConfigurationProfileArgs {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] Type of configurations contained in the profile. Valid values: `AWS.AppConfig.FeatureFlags` and `AWS.Freeform`.  Default: `AWS.Freeform`.
   /// [validators] Set of methods for validating the configuration. Maximum of 2. See Validator below for more details.
-  ConfigurationProfileArgs({
+  const ConfigurationProfileArgs({
     required this.applicationId,
     this.description,
     this.kmsKeyIdentifier,

@@ -15,7 +15,7 @@ class KpiProperties {
   /// [enabled] show the KPI in the UI?
   /// [id] ID of resource related to metric (budget).
   /// [type] KPI type (Forecast, Budget).
-  KpiProperties({
+  const KpiProperties({
     this.enabled,
     this.id,
     this.type,

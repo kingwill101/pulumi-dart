@@ -11,7 +11,7 @@ class SqlServerDatabaseResourcePropertiesBackupInformation {
   /// Creates a new [SqlServerDatabaseResourcePropertiesBackupInformation].
   /// [lastFullBackup] Date time of last full backup.
   /// [lastLogBackup] Date time of last log backup.
-  SqlServerDatabaseResourcePropertiesBackupInformation({
+  const SqlServerDatabaseResourcePropertiesBackupInformation({
     this.lastFullBackup,
     this.lastLogBackup,
   });

@@ -30,7 +30,7 @@ class MultiplexArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [startMultiplex] Whether to start the Multiplex. Defaults to `false`.
   /// [tags] A map of tags to assign to the Multiplex. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  MultiplexArgs({
+  const MultiplexArgs({
     required this.availabilityZones,
     this.multiplexSettings,
     this.name,

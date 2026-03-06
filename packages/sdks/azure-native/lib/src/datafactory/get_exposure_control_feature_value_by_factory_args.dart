@@ -21,7 +21,7 @@ class GetExposureControlFeatureValueByFactoryArgs {
   /// [featureName] The feature name.
   /// [featureType] The feature type.
   /// [resourceGroupName] The resource group name.
-  GetExposureControlFeatureValueByFactoryArgs({
+  const GetExposureControlFeatureValueByFactoryArgs({
     required this.factoryName,
     this.featureName,
     this.featureType,

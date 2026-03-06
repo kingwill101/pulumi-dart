@@ -22,7 +22,7 @@ class OpenAIArgs {
   /// [monitorName] Monitor resource name
   /// [properties] Open AI Integration details.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  OpenAIArgs({
+  const OpenAIArgs({
     this.integrationName,
     required this.monitorName,
     this.properties,

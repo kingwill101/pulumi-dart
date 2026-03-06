@@ -12,7 +12,7 @@ class GetFeatureFleetDefaultMemberConfigPolicycontroller {
   /// Creates a new [GetFeatureFleetDefaultMemberConfigPolicycontroller].
   /// [policyControllerHubConfigs] Configuration of Policy Controller
   /// [version] Configures the version of Policy Controller
-  GetFeatureFleetDefaultMemberConfigPolicycontroller({
+  const GetFeatureFleetDefaultMemberConfigPolicycontroller({
     required this.policyControllerHubConfigs,
     required this.version,
   });

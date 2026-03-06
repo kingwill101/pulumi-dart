@@ -18,7 +18,7 @@ class PartitionArgs {
   /// [description] Description of the partition.
   /// [name] Name of the partition.
   /// [routeDomainId] Route domain id of the partition.
-  PartitionArgs({
+  const PartitionArgs({
     this.description,
     required this.name,
     this.routeDomainId,

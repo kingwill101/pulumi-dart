@@ -21,7 +21,7 @@ class GetAFDOriginArgs {
   /// [originName] Name of the origin which is unique within the profile.
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAFDOriginArgs({
+  const GetAFDOriginArgs({
     required this.originGroupName,
     required this.originName,
     required this.profileName,

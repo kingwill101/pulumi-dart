@@ -8,7 +8,7 @@ class ExpressGatewayServicePrimaryContainerRepositoryCredentials {
 
   /// Creates a new [ExpressGatewayServicePrimaryContainerRepositoryCredentials].
   /// [credentialsParameter] ARN of the AWS Systems Manager parameter containing the repository credentials.
-  ExpressGatewayServicePrimaryContainerRepositoryCredentials({
+  const ExpressGatewayServicePrimaryContainerRepositoryCredentials({
     required this.credentialsParameter,
   });
 

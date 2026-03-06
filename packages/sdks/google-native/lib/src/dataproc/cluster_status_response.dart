@@ -18,7 +18,7 @@ class ClusterStatusResponse {
   /// [state] The cluster's state.
   /// [stateStartTime] Time when this state was entered (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
   /// [substate] Additional state information that includes status reported by the agent.
-  ClusterStatusResponse({
+  const ClusterStatusResponse({
     required this.detail,
     required this.state,
     required this.stateStartTime,

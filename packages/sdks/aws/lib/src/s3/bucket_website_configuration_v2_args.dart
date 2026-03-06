@@ -38,7 +38,7 @@ class BucketWebsiteConfigurationV2Args {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routingRuleDetails] JSON array containing [routing rules](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-websiteconfiguration-routingrules.html)
   /// [routingRules] List of rules that define when a redirect is applied and the redirect behavior. See below.
-  BucketWebsiteConfigurationV2Args({
+  const BucketWebsiteConfigurationV2Args({
     required this.bucket,
     this.errorDocument,
     this.expectedBucketOwner,

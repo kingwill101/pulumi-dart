@@ -22,7 +22,7 @@ class ConnectionProfileForwardSshConnectivity {
   /// [port] Port for the SSH tunnel.
   /// [privateKey] SSH private key.
   /// [username] Username for the SSH tunnel.
-  ConnectionProfileForwardSshConnectivity({
+  const ConnectionProfileForwardSshConnectivity({
     required this.hostname,
     this.password,
     this.port,

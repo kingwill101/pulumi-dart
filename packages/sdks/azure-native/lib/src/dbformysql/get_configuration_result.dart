@@ -54,7 +54,7 @@ class GetConfigurationResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [value] Value of the configuration.
-  GetConfigurationResult({
+  const GetConfigurationResult({
     required this.allowedValues,
     required this.azureApiVersion,
     this.currentValue,

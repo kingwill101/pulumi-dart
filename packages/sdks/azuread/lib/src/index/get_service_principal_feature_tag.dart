@@ -17,7 +17,7 @@ class GetServicePrincipalFeatureTag {
   /// [enterprise] Whether this service principal represents an Enterprise Application
   /// [gallery] Whether this service principal represents a gallery application
   /// [hide] Whether this app is invisible to users in My Apps and Office 365 Launcher
-  GetServicePrincipalFeatureTag({
+  const GetServicePrincipalFeatureTag({
     required this.customSingleSignOn,
     required this.enterprise,
     required this.gallery,

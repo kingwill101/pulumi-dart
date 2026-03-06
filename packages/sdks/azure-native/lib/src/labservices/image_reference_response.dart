@@ -24,7 +24,7 @@ class ImageReferenceResponse {
   /// [publisher] The image publisher
   /// [sku] The image SKU
   /// [version] The image version specified on creation.
-  ImageReferenceResponse({
+  const ImageReferenceResponse({
     required this.exactVersion,
     this.id,
     this.offer,

@@ -17,7 +17,7 @@ class FrontdoorCustomDomainAssociationArgs {
   /// Creates a new [FrontdoorCustomDomainAssociationArgs].
   /// [cdnFrontdoorCustomDomainId] The ID of the Front Door Custom Domain that should be managed by the association resource. Changing this forces a new association resource to be created.
   /// [cdnFrontdoorRouteIds] One or more IDs of the Front Door Route to which the Front Door Custom Domain is associated with.
-  FrontdoorCustomDomainAssociationArgs({
+  const FrontdoorCustomDomainAssociationArgs({
     required this.cdnFrontdoorCustomDomainId,
     required this.cdnFrontdoorRouteIds,
   });

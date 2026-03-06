@@ -12,7 +12,7 @@ class MigrationProgressResponse {
   /// Creates a new [MigrationProgressResponse].
   /// [completionPercentage] Completion Percentage
   /// [progressMessage] Progress Message
-  MigrationProgressResponse({
+  const MigrationProgressResponse({
     this.completionPercentage,
     this.progressMessage,
   });

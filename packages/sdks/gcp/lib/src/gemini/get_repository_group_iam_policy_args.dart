@@ -24,7 +24,7 @@ class GetRepositoryGroupIamPolicyArgs {
   /// [location] The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [project] The ID of the project in which the resource belongs.
   /// [repositoryGroupId] Used to find the parent resource to bind the IAM policy to
-  GetRepositoryGroupIamPolicyArgs({
+  const GetRepositoryGroupIamPolicyArgs({
     required this.codeRepositoryIndex,
     this.location,
     this.project,

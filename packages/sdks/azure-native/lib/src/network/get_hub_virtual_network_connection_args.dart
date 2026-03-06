@@ -18,7 +18,7 @@ class GetHubVirtualNetworkConnectionArgs {
   /// [connectionName] The name of the vpn connection.
   /// [resourceGroupName] The resource group name of the VirtualHub.
   /// [virtualHubName] The name of the VirtualHub.
-  GetHubVirtualNetworkConnectionArgs({
+  const GetHubVirtualNetworkConnectionArgs({
     required this.connectionName,
     required this.resourceGroupName,
     required this.virtualHubName,

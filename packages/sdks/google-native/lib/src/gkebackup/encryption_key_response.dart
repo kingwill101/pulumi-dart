@@ -9,7 +9,7 @@ class EncryptionKeyResponse {
 
   /// Creates a new [EncryptionKeyResponse].
   /// [gcpKmsEncryptionKey] Optional. Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
-  EncryptionKeyResponse({
+  const EncryptionKeyResponse({
     required this.gcpKmsEncryptionKey,
   });
 

@@ -92,7 +92,7 @@ class InMageRcmEnableProtectionInput {
   /// [testNetworkId] The selected test network ARM Id.
   /// [testSubnetName] The selected test subnet name.
   /// [userSelectedOSName] The OS name selected by user.
-  InMageRcmEnableProtectionInput({
+  const InMageRcmEnableProtectionInput({
     this.disksDefault,
     this.disksToInclude,
     required this.fabricDiscoveryMachineId,

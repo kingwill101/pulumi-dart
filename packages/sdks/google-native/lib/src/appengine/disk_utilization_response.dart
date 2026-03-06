@@ -18,7 +18,7 @@ class DiskUtilizationResponse {
   /// [targetReadOpsPerSecond] Target ops read per seconds.
   /// [targetWriteBytesPerSecond] Target bytes written per second.
   /// [targetWriteOpsPerSecond] Target ops written per second.
-  DiskUtilizationResponse({
+  const DiskUtilizationResponse({
     required this.targetReadBytesPerSecond,
     required this.targetReadOpsPerSecond,
     required this.targetWriteBytesPerSecond,

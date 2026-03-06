@@ -32,7 +32,7 @@ class HostState {
   /// [tagsAll] Optional.
   /// [timeouts] Optional.
   /// [vpcConfiguration] The VPC configuration to be provisioned for the host. A VPC must be configured, and the infrastructure to be represented by the host must already be connected to the VPC.
-  HostState({
+  const HostState({
     this.arn,
     this.name,
     this.providerEndpoint,

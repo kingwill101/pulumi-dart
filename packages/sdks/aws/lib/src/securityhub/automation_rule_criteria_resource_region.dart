@@ -9,7 +9,7 @@ class AutomationRuleCriteriaResourceRegion {
   /// Creates a new [AutomationRuleCriteriaResourceRegion].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaResourceRegion({
+  const AutomationRuleCriteriaResourceRegion({
     required this.comparison,
     required this.value,
   });

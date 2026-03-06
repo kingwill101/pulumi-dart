@@ -35,7 +35,7 @@ class GetImageResult {
   /// [sortDescending] Optional.
   /// [tags] a mapping of tags to assigned to the resource.
   /// [zoneResilient] is zone resiliency enabled?
-  GetImageResult({
+  const GetImageResult({
     required this.dataDisks,
     required this.id,
     required this.location,

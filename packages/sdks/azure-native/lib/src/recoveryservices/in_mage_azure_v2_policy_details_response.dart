@@ -25,7 +25,7 @@ class InMageAzureV2PolicyDetailsResponse {
   /// [multiVmSyncStatus] A value indicating whether multi-VM sync has to be enabled.
   /// [recoveryPointHistory] The duration in minutes until which the recovery points need to be stored.
   /// [recoveryPointThresholdInMinutes] The recovery point threshold in minutes.
-  InMageAzureV2PolicyDetailsResponse({
+  const InMageAzureV2PolicyDetailsResponse({
     this.appConsistentFrequencyInMinutes,
     this.crashConsistentFrequencyInMinutes,
     required this.instanceType,

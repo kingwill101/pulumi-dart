@@ -9,7 +9,7 @@ class WorkloadConfigResponse {
 
   /// Creates a new [WorkloadConfigResponse].
   /// [auditMode] Sets which mode of auditing should be used for the cluster's workloads.
-  WorkloadConfigResponse({
+  const WorkloadConfigResponse({
     required this.auditMode,
   });
 

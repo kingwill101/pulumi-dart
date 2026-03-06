@@ -20,7 +20,7 @@ class VirtualMachineManagerVirtualMachineInstanceNetworkInterface {
   /// [macAddressType] The MAC address type. Possible values are `Dynamic` and `Static`.
   /// [name] The name of the Virtual Network in System Center Virtual Machine Manager Server that the Network Interface is connected to.
   /// [virtualNetworkId] The ID of the System Center Virtual Machine Manager Virtual Network to connect the Network Interface.
-  VirtualMachineManagerVirtualMachineInstanceNetworkInterface({
+  const VirtualMachineManagerVirtualMachineInstanceNetworkInterface({
     this.ipv4AddressType,
     this.ipv6AddressType,
     this.macAddressType,

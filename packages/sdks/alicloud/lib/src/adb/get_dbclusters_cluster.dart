@@ -141,7 +141,7 @@ class GetDBClustersCluster {
   /// [vpcId] The vpc id.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID  of the resource.
-  GetDBClustersCluster({
+  const GetDBClustersCluster({
     required this.autoRenewPeriod,
     required this.availableKernelVersions,
     required this.chargeType,

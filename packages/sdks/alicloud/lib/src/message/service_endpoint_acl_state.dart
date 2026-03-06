@@ -16,7 +16,7 @@ class ServiceEndpointAclState {
   /// [aclStrategy] The ACL policy. Valid value:
   /// [cidr] Optional.
   /// [endpointType] Access point type. Value:
-  ServiceEndpointAclState({
+  const ServiceEndpointAclState({
     this.aclStrategy,
     this.cidr,
     this.endpointType,

@@ -42,7 +42,7 @@ class PluginConfigTemplateAdditionalConfigTemplate {
   /// [required] Flag represents that this `ConfigVariable` must be provided for a
   /// [validationRegex] Regular expression in RE2 syntax used for validating the `value` of a
   /// [valueType] Type of the parameter: string, int, bool etc.
-  PluginConfigTemplateAdditionalConfigTemplate({
+  const PluginConfigTemplateAdditionalConfigTemplate({
     this.description,
     this.enumOptions,
     required this.id,

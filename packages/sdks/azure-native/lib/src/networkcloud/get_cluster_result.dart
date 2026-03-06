@@ -143,7 +143,7 @@ class GetClusterResult {
   /// [updateStrategy] The strategy for updating the cluster.
   /// [vulnerabilityScanningSettings] The settings for how security vulnerability scanning is applied to the cluster.
   /// [workloadResourceIds] The list of workload resource IDs that are hosted within this cluster.
-  GetClusterResult({
+  const GetClusterResult({
     required this.aggregatorOrSingleRackDefinition,
     this.analyticsOutputSettings,
     this.analyticsWorkspaceId,

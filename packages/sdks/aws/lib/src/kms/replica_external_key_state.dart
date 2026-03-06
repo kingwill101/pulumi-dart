@@ -58,7 +58,7 @@ class ReplicaExternalKeyState {
   /// [tags] A map of tags to assign to the replica key. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [validTo] Time at which the imported key material expires. When the key material expires, AWS KMS deletes the key material and the key becomes unusable. If not specified, key material does not expire. Valid values: [RFC3339 time string](https://tools.ietf.org/html/rfc3339#section-5.8) (`YYYY-MM-DDTHH:MM:SSZ`)
-  ReplicaExternalKeyState({
+  const ReplicaExternalKeyState({
     this.arn,
     this.bypassPolicyLockoutSafetyCheck,
     this.deletionWindowInDays,

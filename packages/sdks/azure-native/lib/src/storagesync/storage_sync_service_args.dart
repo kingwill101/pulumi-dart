@@ -31,7 +31,7 @@ class StorageSyncServiceArgs {
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
   /// [tags] Resource tags.
   /// [useIdentity] Use Identity authorization when customer have finished setup RBAC permissions.
-  StorageSyncServiceArgs({
+  const StorageSyncServiceArgs({
     this.identity,
     this.incomingTrafficPolicy,
     this.location,

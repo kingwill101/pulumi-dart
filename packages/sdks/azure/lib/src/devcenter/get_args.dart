@@ -15,7 +15,7 @@ class GetArgs {
   /// Creates a new [GetArgs].
   /// [name] The name of this Dev Center.
   /// [resourceGroupName] The name of the Resource Group where the Dev Center exists.
-  GetArgs({
+  const GetArgs({
     required this.name,
     required this.resourceGroupName,
   });

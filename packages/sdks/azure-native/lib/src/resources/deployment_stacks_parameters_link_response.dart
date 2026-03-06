@@ -12,7 +12,7 @@ class DeploymentStacksParametersLinkResponse {
   /// Creates a new [DeploymentStacksParametersLinkResponse].
   /// [contentVersion] If included, must match the ContentVersion in the template.
   /// [uri] The URI of the parameters file.
-  DeploymentStacksParametersLinkResponse({
+  const DeploymentStacksParametersLinkResponse({
     this.contentVersion,
     required this.uri,
   });

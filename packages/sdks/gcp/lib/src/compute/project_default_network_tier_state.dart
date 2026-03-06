@@ -16,7 +16,7 @@ class ProjectDefaultNetworkTierState {
   /// Creates a new [ProjectDefaultNetworkTierState].
   /// [networkTier] The default network tier to be configured for the project.
   /// [project] The ID of the project in which the resource belongs. If it
-  ProjectDefaultNetworkTierState({
+  const ProjectDefaultNetworkTierState({
     this.networkTier,
     this.project,
   });

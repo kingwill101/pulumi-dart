@@ -14,7 +14,7 @@ class ProvisioningDetails {
   /// Creates a new [ProvisioningDetails].
   /// [osProfile] Operating system profile.
   /// [userDetails] User configuration.
-  ProvisioningDetails({
+  const ProvisioningDetails({
     required this.osProfile,
     this.userDetails,
   });

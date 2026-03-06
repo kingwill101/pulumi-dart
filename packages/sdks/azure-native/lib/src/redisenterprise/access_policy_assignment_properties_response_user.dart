@@ -9,7 +9,7 @@ class AccessPolicyAssignmentPropertiesResponseUser {
 
   /// Creates a new [AccessPolicyAssignmentPropertiesResponseUser].
   /// [objectId] The object ID of the user.
-  AccessPolicyAssignmentPropertiesResponseUser({
+  const AccessPolicyAssignmentPropertiesResponseUser({
     this.objectId,
   });
 

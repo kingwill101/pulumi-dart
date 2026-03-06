@@ -11,7 +11,7 @@ class WorkspaceVpcConfiguration {
   /// Creates a new [WorkspaceVpcConfiguration].
   /// [securityGroupIds] The list of Amazon EC2 security group IDs attached to the Amazon VPC for your Grafana workspace to connect.
   /// [subnetIds] The list of Amazon EC2 subnet IDs created in the Amazon VPC for your Grafana workspace to connect.
-  WorkspaceVpcConfiguration({
+  const WorkspaceVpcConfiguration({
     required this.securityGroupIds,
     required this.subnetIds,
   });

@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse {
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse].
   /// [quickReplies] Optional. The collection of quick replies.
   /// [title] Optional. The title of the collection of quick replies.
-  GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse({
+  const GoogleCloudDialogflowV2IntentMessageQuickRepliesResponse({
     required this.quickReplies,
     required this.title,
   });

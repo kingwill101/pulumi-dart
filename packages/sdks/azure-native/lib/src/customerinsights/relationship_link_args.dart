@@ -41,7 +41,7 @@ class RelationshipLinkArgs {
   /// [relationshipLinkName] The name of the relationship link.
   /// [relationshipName] The Relationship associated with the Link.
   /// [resourceGroupName] The name of the resource group.
-  RelationshipLinkArgs({
+  const RelationshipLinkArgs({
     this.description,
     this.displayName,
     required this.hubName,

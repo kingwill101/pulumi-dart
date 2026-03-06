@@ -26,7 +26,7 @@ class GcsDestinationConfigDatastreamV1alpha1 {
   /// [gcsFileFormat] File format that data should be written in. Deprecated field (b/169501737) - use file_format instead.
   /// [jsonFileFormat] JSON file format configuration.
   /// [path] Path inside the Cloud Storage bucket to write data to.
-  GcsDestinationConfigDatastreamV1alpha1({
+  const GcsDestinationConfigDatastreamV1alpha1({
     this.avroFileFormat,
     this.fileRotationInterval,
     this.fileRotationMb,

@@ -10,7 +10,7 @@ class VirtualNetworkGatewayAutoScaleConfiguration {
 
   /// Creates a new [VirtualNetworkGatewayAutoScaleConfiguration].
   /// [bounds] The bounds of the autoscale configuration
-  VirtualNetworkGatewayAutoScaleConfiguration({
+  const VirtualNetworkGatewayAutoScaleConfiguration({
     this.bounds,
   });
 

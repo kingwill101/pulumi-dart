@@ -43,7 +43,7 @@ class LoadBalancerState {
   /// [networkIp] (string) IP of the Load Balancer in the first private network that it is connected to.
   /// [networkZone] The Network Zone of the Load Balancer. Require when no location is set.
   /// [targets] Optional.
-  LoadBalancerState({
+  const LoadBalancerState({
     this.algorithm,
     this.deleteProtection,
     this.ipv4,

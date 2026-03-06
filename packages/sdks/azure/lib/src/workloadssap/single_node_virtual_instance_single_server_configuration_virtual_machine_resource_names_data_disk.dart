@@ -11,7 +11,7 @@ class SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNa
   /// Creates a new [SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk].
   /// [names] A list of full names of Data Disks per Volume. Changing this forces a new resource to be created.
   /// [volumeName] The name of the Volume. The only possible value is `default`. Changing this forces a new resource to be created.
-  SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk({
+  const SingleNodeVirtualInstanceSingleServerConfigurationVirtualMachineResourceNamesDataDisk({
     required this.names,
     required this.volumeName,
   });

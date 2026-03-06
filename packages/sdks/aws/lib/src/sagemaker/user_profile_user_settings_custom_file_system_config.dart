@@ -9,7 +9,7 @@ class UserProfileUserSettingsCustomFileSystemConfig {
 
   /// Creates a new [UserProfileUserSettingsCustomFileSystemConfig].
   /// [efsFileSystemConfigs] The default EBS storage settings for a private space. See EFS File System Config below.
-  UserProfileUserSettingsCustomFileSystemConfig({
+  const UserProfileUserSettingsCustomFileSystemConfig({
     this.efsFileSystemConfigs,
   });
 

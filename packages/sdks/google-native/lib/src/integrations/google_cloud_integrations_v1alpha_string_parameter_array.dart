@@ -9,7 +9,7 @@ class GoogleCloudIntegrationsV1alphaStringParameterArray {
 
   /// Creates a new [GoogleCloudIntegrationsV1alphaStringParameterArray].
   /// [stringValues] String array.
-  GoogleCloudIntegrationsV1alphaStringParameterArray({
+  const GoogleCloudIntegrationsV1alphaStringParameterArray({
     this.stringValues,
   });
 

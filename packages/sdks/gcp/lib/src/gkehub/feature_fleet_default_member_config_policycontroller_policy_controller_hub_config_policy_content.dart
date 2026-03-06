@@ -15,7 +15,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
   /// Creates a new [FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent].
   /// [bundles] Configures which bundles to install and their corresponding install specs.
   /// [templateLibrary] Configures the installation of the Template Library.
-  FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent({
+  const FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent({
     this.bundles,
     this.templateLibrary,
   });

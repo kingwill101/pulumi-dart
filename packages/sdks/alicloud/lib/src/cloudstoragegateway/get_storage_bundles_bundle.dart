@@ -17,7 +17,7 @@ class GetStorageBundlesBundle {
   /// [location] Required.
   /// [storageBundleId] Required.
   /// [storageBundleName] Required.
-  GetStorageBundlesBundle({
+  const GetStorageBundlesBundle({
     required this.createTime,
     required this.description,
     required this.id,

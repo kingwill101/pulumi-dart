@@ -8,7 +8,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS
 
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount].
   /// [accountId] AWS account ID.
-  PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetFilterSingleResourceAmazonS3BucketAwsAccount({
     this.accountId,
   });
 

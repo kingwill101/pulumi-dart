@@ -18,7 +18,7 @@ class PolybaseSettingsResponse {
   /// [rejectType] Reject type.
   /// [rejectValue] Specifies the value or the percentage of rows that can be rejected before the query fails. Type: number (or Expression with resultType number), minimum: 0.
   /// [useTypeDefault] Specifies how to handle missing values in delimited text files when PolyBase retrieves data from the text file. Type: boolean (or Expression with resultType boolean).
-  PolybaseSettingsResponse({
+  const PolybaseSettingsResponse({
     this.rejectSampleValue,
     this.rejectType,
     this.rejectValue,

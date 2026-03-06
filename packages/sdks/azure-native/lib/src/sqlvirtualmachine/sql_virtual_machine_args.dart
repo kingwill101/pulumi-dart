@@ -84,7 +84,7 @@ class SqlVirtualMachineArgs {
   /// [virtualMachineResourceId] ARM Resource id of underlying virtual machine created from SQL marketplace image.
   /// [wsfcDomainCredentials] Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
   /// [wsfcStaticIp] Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
-  SqlVirtualMachineArgs({
+  const SqlVirtualMachineArgs({
     this.assessmentSettings,
     this.autoBackupSettings,
     this.autoPatchingSettings,

@@ -15,7 +15,7 @@ class GoogleCloudApigeeV1EntityMetadataResponse {
   /// [createdAt] Time at which the API proxy was created, in milliseconds since epoch.
   /// [lastModifiedAt] Time at which the API proxy was most recently modified, in milliseconds since epoch.
   /// [subType] The type of entity described
-  GoogleCloudApigeeV1EntityMetadataResponse({
+  const GoogleCloudApigeeV1EntityMetadataResponse({
     required this.createdAt,
     required this.lastModifiedAt,
     required this.subType,

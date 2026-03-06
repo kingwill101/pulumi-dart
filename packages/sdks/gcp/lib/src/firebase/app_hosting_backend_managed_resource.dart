@@ -12,7 +12,7 @@ class AppHostingBackendManagedResource {
 
   /// Creates a new [AppHostingBackendManagedResource].
   /// [runServices] (Output)
-  AppHostingBackendManagedResource({
+  const AppHostingBackendManagedResource({
     this.runServices,
   });
 

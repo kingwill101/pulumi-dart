@@ -15,7 +15,7 @@ class GetSnapshotArgs {
   /// Creates a new [GetSnapshotArgs].
   /// [name] Specifies the name of the Snapshot.
   /// [resourceGroupName] Specifies the name of the resource group the Snapshot is located in.
-  GetSnapshotArgs({
+  const GetSnapshotArgs({
     required this.name,
     required this.resourceGroupName,
   });

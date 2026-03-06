@@ -15,7 +15,7 @@ class RadiusServerResponse {
   /// [radiusServerAddress] The address of this radius server.
   /// [radiusServerScore] The initial score assigned to this radius server.
   /// [radiusServerSecret] The secret used for this radius server.
-  RadiusServerResponse({
+  const RadiusServerResponse({
     required this.radiusServerAddress,
     this.radiusServerScore,
     this.radiusServerSecret,

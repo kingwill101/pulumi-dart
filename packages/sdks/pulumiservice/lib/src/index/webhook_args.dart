@@ -45,7 +45,7 @@ class WebhookArgs {
   /// [projectName] Name of the project. Only specified if this is a stack or environment webhook.
   /// [secret] Optional. secret used as the HMAC key. See [webhook docs](https://www.pulumi.com/docs/intro/pulumi-service/webhooks/#headers) for more information.
   /// [stackName] Name of the stack. Only needed if this is a stack webhook.
-  WebhookArgs({
+  const WebhookArgs({
     required this.active,
     required this.displayName,
     this.environmentName,

@@ -12,7 +12,7 @@ class GetBillingServiceAccountArgs {
 
   /// Creates a new [GetBillingServiceAccountArgs].
   /// [id] ID of the AWS billing service account.
-  GetBillingServiceAccountArgs({
+  const GetBillingServiceAccountArgs({
     this.id,
   });
 

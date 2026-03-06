@@ -29,7 +29,7 @@ class GetBackupPlansPlan {
   /// [dataCenterId] The ID of the data center for the backup in the cluster.
   /// [id] The ID of the Backup Plan.
   /// [retentionPeriod] The duration for which you want to retain the backup. Valid values: 1 to 30. Unit: days.
-  GetBackupPlansPlan({
+  const GetBackupPlansPlan({
     required this.active,
     required this.backupPeriod,
     required this.backupTime,

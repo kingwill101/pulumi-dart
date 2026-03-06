@@ -33,7 +33,7 @@ class GetCapacityCommitmentBigqueryreservationV1beta1Result {
   /// [renewalPlan] The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL commitments.
   /// [slotCount] Number of slots in this commitment.
   /// [state] State of the commitment.
-  GetCapacityCommitmentBigqueryreservationV1beta1Result({
+  const GetCapacityCommitmentBigqueryreservationV1beta1Result({
     required this.commitmentEndTime,
     required this.commitmentStartTime,
     required this.failureStatus,

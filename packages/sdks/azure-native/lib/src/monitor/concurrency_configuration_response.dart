@@ -12,7 +12,7 @@ class ConcurrencyConfigurationResponse {
   /// Creates a new [ConcurrencyConfigurationResponse].
   /// [batchQueueSize] Size of the queue for log batches.
   /// [workerCount] Number of parallel workers processing the log queues.
-  ConcurrencyConfigurationResponse({
+  const ConcurrencyConfigurationResponse({
     this.batchQueueSize,
     this.workerCount,
   });

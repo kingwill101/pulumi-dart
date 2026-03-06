@@ -46,7 +46,7 @@ class ClickHouseEnterpriseDbClusterArgs {
   /// [vpcId] The VPC ID.
   /// [vswitchId] vSwitch ID.
   /// [zoneId] The zone ID.
-  ClickHouseEnterpriseDbClusterArgs({
+  const ClickHouseEnterpriseDbClusterArgs({
     this.description,
     this.multiZones,
     this.nodeCount,

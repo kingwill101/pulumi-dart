@@ -12,7 +12,7 @@ class AiFeatureOnlineStoreFeatureviewSyncConfig {
   /// Creates a new [AiFeatureOnlineStoreFeatureviewSyncConfig].
   /// [continuous] If true, syncs the FeatureView in a continuous manner to Online Store.
   /// [cron] Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
-  AiFeatureOnlineStoreFeatureviewSyncConfig({
+  const AiFeatureOnlineStoreFeatureviewSyncConfig({
     this.continuous,
     this.cron,
   });

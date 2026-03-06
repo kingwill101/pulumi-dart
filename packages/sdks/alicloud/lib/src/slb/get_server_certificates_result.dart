@@ -29,7 +29,7 @@ class GetServerCertificatesResult {
   /// [outputFile] Optional.
   /// [resourceGroupId] The Id of resource group which the slb server certificates belongs.
   /// [tags] (Available in v1.66.0+) A mapping of tags to assign to the resource.
-  GetServerCertificatesResult({
+  const GetServerCertificatesResult({
     required this.certificates,
     required this.id,
     required this.ids,

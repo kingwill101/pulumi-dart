@@ -52,7 +52,7 @@ class ExportRegistry {
   /// [pushByDigest] Push image without name.
   /// [store] Store resulting images to the worker's image store and ensure all of
   /// [unpack] Unpack image after creation (for use with containerd). Defaults to
-  ExportRegistry({
+  const ExportRegistry({
     this.annotations,
     this.compression,
     this.compressionLevel,

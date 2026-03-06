@@ -48,7 +48,7 @@ class PolicyArgs {
   /// [description] A descriptive comment.
   /// [globalPolicyEvaluationMode] Controls the evaluation of a Google-maintained global admission policy
   /// [project] The ID of the project in which the resource belongs.
-  PolicyArgs({
+  const PolicyArgs({
     this.admissionWhitelistPatterns,
     this.clusterAdmissionRules,
     required this.defaultAdmissionRule,

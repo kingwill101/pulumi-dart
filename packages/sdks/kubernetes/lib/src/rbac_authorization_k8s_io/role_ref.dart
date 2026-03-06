@@ -15,7 +15,7 @@ class RoleRef {
   /// [apiGroup] APIGroup is the group for the resource being referenced
   /// [kind] Kind is the type of resource being referenced
   /// [name] Name is the name of resource being referenced
-  RoleRef({
+  const RoleRef({
     required this.apiGroup,
     required this.kind,
     required this.name,

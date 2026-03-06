@@ -39,7 +39,7 @@ class ApiPortalPropertiesResponse {
   /// [sourceUrls] Collection of OpenAPI source URL locations.
   /// [ssoProperties] Single sign-on related configuration
   /// [url] URL of the API portal, exposed when 'public' is true.
-  ApiPortalPropertiesResponse({
+  const ApiPortalPropertiesResponse({
     this.apiTryOutEnabledState,
     this.gatewayIds,
     this.httpsOnly,

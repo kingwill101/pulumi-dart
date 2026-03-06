@@ -18,7 +18,7 @@ class RegionNetworkEndpointGroupCloudFunction {
   /// Creates a new [RegionNetworkEndpointGroupCloudFunction].
   /// [function] A user-defined name of the Cloud Function.
   /// [urlMask] A template to parse function field from a request URL. URL mask allows
-  RegionNetworkEndpointGroupCloudFunction({
+  const RegionNetworkEndpointGroupCloudFunction({
     this.function,
     this.urlMask,
   });

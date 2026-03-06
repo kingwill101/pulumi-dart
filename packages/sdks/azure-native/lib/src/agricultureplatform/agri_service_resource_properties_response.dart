@@ -25,7 +25,7 @@ class AgriServiceResourcePropertiesResponse {
   /// [installedSolutions] AgriService installed solutions.
   /// [managedOnBehalfOfConfiguration] Managed On Behalf Of Configuration.
   /// [provisioningState] The status of the last operation.
-  AgriServiceResourcePropertiesResponse({
+  const AgriServiceResourcePropertiesResponse({
     this.config,
     this.dataConnectorCredentials,
     this.installedSolutions,

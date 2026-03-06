@@ -54,7 +54,7 @@ class RestApiPollerDataConnectorArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [response] The response configuration.
   /// [workspaceName] The name of the workspace.
-  RestApiPollerDataConnectorArgs({
+  const RestApiPollerDataConnectorArgs({
     this.addOnAttributes,
     required this.auth,
     required this.connectorDefinitionName,

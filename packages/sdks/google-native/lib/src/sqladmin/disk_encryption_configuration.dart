@@ -12,7 +12,7 @@ class DiskEncryptionConfiguration {
   /// Creates a new [DiskEncryptionConfiguration].
   /// [kind] This is always `sql#diskEncryptionConfiguration`.
   /// [kmsKeyName] Resource name of KMS key for disk encryption
-  DiskEncryptionConfiguration({
+  const DiskEncryptionConfiguration({
     this.kind,
     this.kmsKeyName,
   });

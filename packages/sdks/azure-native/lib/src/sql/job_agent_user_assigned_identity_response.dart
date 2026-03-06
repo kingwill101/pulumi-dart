@@ -12,7 +12,7 @@ class JobAgentUserAssignedIdentityResponse {
   /// Creates a new [JobAgentUserAssignedIdentityResponse].
   /// [clientId] The Azure Active Directory client id.
   /// [principalId] The Azure Active Directory principal id.
-  JobAgentUserAssignedIdentityResponse({
+  const JobAgentUserAssignedIdentityResponse({
     required this.clientId,
     required this.principalId,
   });

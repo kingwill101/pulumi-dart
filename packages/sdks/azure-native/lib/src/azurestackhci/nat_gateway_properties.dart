@@ -14,7 +14,7 @@ class NatGatewayProperties {
   /// Creates a new [NatGatewayProperties].
   /// [inboundNATRules] List of inbound NAT rules. InboundNATRules can only be set after the NAT Gateway has been associated with a vnet
   /// [publicIPAddresses] List of public ip addresses that the gateway can use for NAT.
-  NatGatewayProperties({
+  const NatGatewayProperties({
     this.inboundNATRules,
     this.publicIPAddresses,
   });

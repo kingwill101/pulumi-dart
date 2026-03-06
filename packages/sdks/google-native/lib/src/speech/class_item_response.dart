@@ -9,7 +9,7 @@ class ClassItemResponse {
 
   /// Creates a new [ClassItemResponse].
   /// [value] The class item's value.
-  ClassItemResponse({
+  const ClassItemResponse({
     required this.value,
   });
 

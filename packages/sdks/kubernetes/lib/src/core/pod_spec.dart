@@ -164,7 +164,7 @@ class PodSpec {
   /// [topologySpreadConstraints] TopologySpreadConstraints describes how a group of pods ought to spread across topology domains. Scheduler will schedule pods in a way which abides by the constraints. All topologySpreadConstraints are ANDed.
   /// [volumes] List of volumes that can be mounted by containers belonging to the pod. More info: https://kubernetes.io/docs/concepts/storage/volumes
   /// [workloadRef] WorkloadRef provides a reference to the Workload object that this Pod belongs to. This field is used by the scheduler to identify the PodGroup and apply the correct group scheduling policies. The Workload object referenced by this field may not exist at the time the Pod is created. This field is immutable, but a Workload object with the same name may be recreated with different policies. Doing this during pod scheduling may result in the placement not conforming to the expected policies.
-  PodSpec({
+  const PodSpec({
     this.activeDeadlineSeconds,
     this.affinity,
     this.automountServiceAccountToken,

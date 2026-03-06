@@ -17,7 +17,7 @@ class ToolDataStoreToolModalityConfigGroundingConfig {
   /// Creates a new [ToolDataStoreToolModalityConfigGroundingConfig].
   /// [disabled] Whether grounding is disabled.
   /// [groundingLevel] The groundedness threshold of the answer based on the retrieved sources.
-  ToolDataStoreToolModalityConfigGroundingConfig({
+  const ToolDataStoreToolModalityConfigGroundingConfig({
     this.disabled,
     this.groundingLevel,
   });

@@ -21,7 +21,7 @@ class GetRepositoryEndpointResult {
   /// [region] Required.
   /// [repository] Required.
   /// [repositoryEndpoint] URL of the returned endpoint.
-  GetRepositoryEndpointResult({
+  const GetRepositoryEndpointResult({
     required this.domain,
     required this.domainOwner,
     required this.format,

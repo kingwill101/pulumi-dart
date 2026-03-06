@@ -8,7 +8,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig].
   /// [maxPageSize] he maximum number of records that Amazon AppFlow receives in each page of the response from your SAP application.
-  FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig({
+  const FlowSourceFlowConfigSourceConnectorPropertiesSapoDataPaginationConfig({
     required this.maxPageSize,
   });
 

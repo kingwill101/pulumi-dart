@@ -9,7 +9,7 @@ class AccountAliasState {
 
   /// Creates a new [AccountAliasState].
   /// [accountAlias] The account alias
-  AccountAliasState({
+  const AccountAliasState({
     this.accountAlias,
   });
 

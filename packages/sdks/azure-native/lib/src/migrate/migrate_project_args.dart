@@ -29,7 +29,7 @@ class MigrateProjectArgs {
   /// [properties] Gets or sets the nested properties.
   /// [resourceGroupName] Name of the Azure Resource Group that migrate project is part of.
   /// [tags] Gets or sets the tags.
-  MigrateProjectArgs({
+  const MigrateProjectArgs({
     this.eTag,
     this.location,
     this.migrateProjectName,

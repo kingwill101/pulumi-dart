@@ -178,5 +178,5 @@ class LinodeConfig {
 
 }
 
-final config = LinodeConfig();
+const config = LinodeConfig();
 

@@ -7,7 +7,7 @@ class GetOriginRequestPolicyQueryStringsConfigQueryString {
 
   /// Creates a new [GetOriginRequestPolicyQueryStringsConfigQueryString].
   /// [items] Required.
-  GetOriginRequestPolicyQueryStringsConfigQueryString({
+  const GetOriginRequestPolicyQueryStringsConfigQueryString({
     required this.items,
   });
 

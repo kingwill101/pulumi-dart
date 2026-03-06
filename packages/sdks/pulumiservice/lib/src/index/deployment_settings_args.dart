@@ -41,7 +41,7 @@ class DeploymentSettingsArgs {
   /// [project] Project name.
   /// [sourceContext] Settings related to the source of the deployment.
   /// [stack] Stack name.
-  DeploymentSettingsArgs({
+  const DeploymentSettingsArgs({
     this.agentPoolId,
     this.cacheOptions,
     this.executorContext,

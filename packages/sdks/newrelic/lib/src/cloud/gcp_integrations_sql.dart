@@ -8,7 +8,7 @@ class GcpIntegrationsSql {
 
   /// Creates a new [GcpIntegrationsSql].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsSql({
+  const GcpIntegrationsSql({
     this.metricsPollingInterval,
   });
 

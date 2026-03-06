@@ -23,7 +23,7 @@ class QueueRateLimits {
   /// [maxBurstSize] (Output)
   /// [maxConcurrentDispatches] The maximum number of concurrent tasks that Cloud Tasks allows to
   /// [maxDispatchesPerSecond] The maximum rate at which tasks are dispatched from this queue.
-  QueueRateLimits({
+  const QueueRateLimits({
     this.maxBurstSize,
     this.maxConcurrentDispatches,
     this.maxDispatchesPerSecond,

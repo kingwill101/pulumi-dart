@@ -77,7 +77,7 @@ class DatasetAccessArgs {
   /// [specialGroup] A special group to grant access to. Possible values include:
   /// [userByEmail] An email address of a user to grant access to. For example:
   /// [view] A view from a different dataset to grant access to. Queries
-  DatasetAccessArgs({
+  const DatasetAccessArgs({
     this.authorizedDataset,
     this.condition,
     required this.datasetId,

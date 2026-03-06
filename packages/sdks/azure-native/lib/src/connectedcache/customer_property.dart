@@ -14,7 +14,7 @@ class CustomerProperty {
   /// Creates a new [CustomerProperty].
   /// [additionalCustomerProperties] Mcc customer resource additional properties.
   /// [customer] Mcc customer resource (customer entity).
-  CustomerProperty({
+  const CustomerProperty({
     this.additionalCustomerProperties,
     this.customer,
   });

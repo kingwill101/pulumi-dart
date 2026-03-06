@@ -33,7 +33,7 @@ class DatascanDataProfileSpec {
   /// [postScanActions] Actions to take upon job completion.
   /// [rowFilter] A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in BigQuery standard SQL syntax. Example: col1 &gt;= 0 AND col2 &lt; 10
   /// [samplingPercent] The percentage of the records to be selected from the dataset for DataScan.
-  DatascanDataProfileSpec({
+  const DatascanDataProfileSpec({
     this.catalogPublishingEnabled,
     this.excludeFields,
     this.includeFields,

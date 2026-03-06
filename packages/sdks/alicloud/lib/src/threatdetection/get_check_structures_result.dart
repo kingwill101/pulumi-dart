@@ -24,7 +24,7 @@ class GetCheckStructuresResult {
   /// [outputFile] Optional.
   /// [structures] A list of Check Structure Entries. Each element contains the following attributes:
   /// [taskSources] Optional.
-  GetCheckStructuresResult({
+  const GetCheckStructuresResult({
     this.currentPage,
     required this.id,
     required this.ids,

@@ -13,7 +13,7 @@ class LinuxWebAppLogsHttpLogsAzureBlobStorage {
   /// Creates a new [LinuxWebAppLogsHttpLogsAzureBlobStorage].
   /// [retentionInDays] The time in days after which to remove blobs. A value of `0` means no retention.
   /// [sasUrl] SAS url to an Azure blob container with read/write/list/delete permissions.
-  LinuxWebAppLogsHttpLogsAzureBlobStorage({
+  const LinuxWebAppLogsHttpLogsAzureBlobStorage({
     this.retentionInDays,
     required this.sasUrl,
   });

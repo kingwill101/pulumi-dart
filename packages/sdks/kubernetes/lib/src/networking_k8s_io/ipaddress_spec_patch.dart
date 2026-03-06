@@ -10,7 +10,7 @@ class IPAddressSpecPatch {
 
   /// Creates a new [IPAddressSpecPatch].
   /// [parentRef] ParentRef references the resource that an IPAddress is attached to. An IPAddress must reference a parent object.
-  IPAddressSpecPatch({
+  const IPAddressSpecPatch({
     this.parentRef,
   });
 

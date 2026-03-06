@@ -82,7 +82,7 @@ class VolumeState {
   /// [sourceVolId] The volume ID from which to create the volume.
   /// [volumeRetypePolicy] Migration policy when changing `volume_type`.
   /// [volumeType] The type of volume to create or update.
-  VolumeState({
+  const VolumeState({
     this.attachments,
     this.availabilityZone,
     this.backupId,

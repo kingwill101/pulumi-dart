@@ -42,7 +42,7 @@ class SafetyRuleState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetControls] Routing controls that can only be set or unset if the specified `rule_config` evaluates to true for the specified `gating_controls`.
   /// [waitPeriodMs] Evaluation period, in milliseconds (ms), during which any request against the target routing controls will fail.
-  SafetyRuleState({
+  const SafetyRuleState({
     this.arn,
     this.assertedControls,
     this.controlPanelArn,

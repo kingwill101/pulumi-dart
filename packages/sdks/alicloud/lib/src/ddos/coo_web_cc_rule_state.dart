@@ -18,7 +18,7 @@ class CooWebCcRuleState {
   /// [domain] The domain name of the website service.
   /// [name] Rule name.
   /// [ruleDetail] Rule details.   See `rule_detail` below.
-  CooWebCcRuleState({
+  const CooWebCcRuleState({
     this.domain,
     this.name,
     this.ruleDetail,

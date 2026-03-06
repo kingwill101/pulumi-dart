@@ -30,7 +30,7 @@ class GetEndpointGroupsArgs {
   /// [nameRegex] A regex string to filter results by Endpoint Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the endpoint group. Valid values: `active`, `configuring`, `creating`, `init`.
-  GetEndpointGroupsArgs({
+  const GetEndpointGroupsArgs({
     required this.acceleratorId,
     this.endpointGroupType,
     this.ids,

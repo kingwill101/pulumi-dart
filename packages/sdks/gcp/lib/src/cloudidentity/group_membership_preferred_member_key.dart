@@ -21,7 +21,7 @@ class GroupMembershipPreferredMemberKey {
   /// Creates a new [GroupMembershipPreferredMemberKey].
   /// [id] The ID of the entity.
   /// [namespace] The namespace in which the entity exists.
-  GroupMembershipPreferredMemberKey({
+  const GroupMembershipPreferredMemberKey({
     required this.id,
     this.namespace,
   });

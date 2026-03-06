@@ -15,7 +15,7 @@ class IoTHubCloudToDevice {
   /// [defaultTtl] The default time to live for cloud-to-device messages, specified as an [ISO 8601 timespan duration](https://en.wikipedia.org/wiki/ISO_8601#Durations). This value must be between 1 minute and 48 hours. Defaults to `PT1H`.
   /// [feedbacks] A `feedback` block as defined below.
   /// [maxDeliveryCount] The maximum delivery count for cloud-to-device per-device queues. This value must be between `1` and `100`. Defaults to `10`.
-  IoTHubCloudToDevice({
+  const IoTHubCloudToDevice({
     this.defaultTtl,
     this.feedbacks,
     this.maxDeliveryCount,

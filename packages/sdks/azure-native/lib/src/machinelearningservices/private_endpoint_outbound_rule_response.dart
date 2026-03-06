@@ -27,7 +27,7 @@ class PrivateEndpointOutboundRuleResponse {
   /// [parentRuleNames] Required.
   /// [status] Type of a managed network Outbound Rule of a machine learning workspace.
   /// [type] Type of a managed network Outbound Rule of a machine learning workspace.
-  PrivateEndpointOutboundRuleResponse({
+  const PrivateEndpointOutboundRuleResponse({
     this.category,
     this.destination,
     required this.errorInformation,

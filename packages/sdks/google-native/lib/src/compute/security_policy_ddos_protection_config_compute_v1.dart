@@ -8,7 +8,7 @@ class SecurityPolicyDdosProtectionConfigComputeV1 {
 
   /// Creates a new [SecurityPolicyDdosProtectionConfigComputeV1].
   /// [ddosProtection] Optional.
-  SecurityPolicyDdosProtectionConfigComputeV1({
+  const SecurityPolicyDdosProtectionConfigComputeV1({
     this.ddosProtection,
   });
 

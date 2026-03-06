@@ -18,7 +18,7 @@ class GetRunbookArgs {
   /// [automationAccountName] The name of the automation account.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [runbookName] The runbook name.
-  GetRunbookArgs({
+  const GetRunbookArgs({
     required this.automationAccountName,
     required this.resourceGroupName,
     required this.runbookName,

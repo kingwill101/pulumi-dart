@@ -18,7 +18,7 @@ class GetDatabaseArgs {
   /// [clusterName] The name of the Kusto Cluster this database is added to.
   /// [name] The name of the Kusto Database.
   /// [resourceGroupName] The Resource Group where the Kusto Database exists.
-  GetDatabaseArgs({
+  const GetDatabaseArgs({
     required this.clusterName,
     required this.name,
     required this.resourceGroupName,

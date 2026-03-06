@@ -22,7 +22,7 @@ class ActiveDirectoryConnectorArgs {
   /// [dataControllerName] The name of the data controller
   /// [properties] null
   /// [resourceGroupName] The name of the Azure resource group
-  ActiveDirectoryConnectorArgs({
+  const ActiveDirectoryConnectorArgs({
     this.activeDirectoryConnectorName,
     required this.dataControllerName,
     required this.properties,

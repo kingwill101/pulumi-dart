@@ -15,7 +15,7 @@ class NamespaceMessageSchemaReferenceResponse {
   /// [schemaName] The message schema name.
   /// [schemaRegistryNamespace] The message schema registry namespace.
   /// [schemaVersion] The message schema version.
-  NamespaceMessageSchemaReferenceResponse({
+  const NamespaceMessageSchemaReferenceResponse({
     required this.schemaName,
     required this.schemaRegistryNamespace,
     required this.schemaVersion,

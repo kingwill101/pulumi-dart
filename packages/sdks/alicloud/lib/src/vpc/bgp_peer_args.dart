@@ -24,7 +24,7 @@ class BgpPeerArgs {
   /// [enableBfd] Specifies whether to enable the Bidirectional Forwarding Detection (BFD) feature.
   /// [ipVersion] The IP version.
   /// [peerIpAddress] The IP address of the BGP peer.
-  BgpPeerArgs({
+  const BgpPeerArgs({
     this.bfdMultiHop,
     required this.bgpGroupId,
     this.enableBfd,

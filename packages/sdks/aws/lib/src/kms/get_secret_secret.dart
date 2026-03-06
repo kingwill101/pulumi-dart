@@ -13,7 +13,7 @@ class GetSecretSecret {
   /// [grantTokens] Optional.
   /// [name] Required.
   /// [payload] Required.
-  GetSecretSecret({
+  const GetSecretSecret({
     this.context,
     this.grantTokens,
     required this.name,

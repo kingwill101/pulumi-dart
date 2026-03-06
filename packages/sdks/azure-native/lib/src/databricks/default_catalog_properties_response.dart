@@ -12,7 +12,7 @@ class DefaultCatalogPropertiesResponse {
   /// Creates a new [DefaultCatalogPropertiesResponse].
   /// [initialName] Specifies the initial Name of default catalog. If not specified, the name of the workspace will be used.
   /// [initialType] Defines the initial type of the default catalog. Possible values (case-insensitive):  HiveMetastore, UnityCatalog
-  DefaultCatalogPropertiesResponse({
+  const DefaultCatalogPropertiesResponse({
     this.initialName,
     this.initialType,
   });

@@ -12,7 +12,7 @@ class ServiceConfigState {
   /// Creates a new [ServiceConfigState].
   /// [data] Base64-url-safe-encoded config data
   /// [name] User-defined name of the config
-  ServiceConfigState({
+  const ServiceConfigState({
     this.data,
     this.name,
   });

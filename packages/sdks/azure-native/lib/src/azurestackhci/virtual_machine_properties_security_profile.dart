@@ -11,7 +11,7 @@ class VirtualMachinePropertiesSecurityProfile {
   /// Creates a new [VirtualMachinePropertiesSecurityProfile].
   /// [enableTPM] Optional.
   /// [uefiSettings] Optional.
-  VirtualMachinePropertiesSecurityProfile({
+  const VirtualMachinePropertiesSecurityProfile({
     this.enableTPM,
     this.uefiSettings,
   });

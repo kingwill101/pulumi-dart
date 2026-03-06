@@ -15,7 +15,7 @@ class JobLoadDestinationTable {
   /// [datasetId] The ID of the dataset containing this table.
   /// [projectId] The ID of the project containing this table.
   /// [tableId] The table. Can be specified `{{table_id}}` if `project_id` and `dataset_id` are also set,
-  JobLoadDestinationTable({
+  const JobLoadDestinationTable({
     this.datasetId,
     this.projectId,
     required this.tableId,

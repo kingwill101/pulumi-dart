@@ -23,7 +23,7 @@ class GetResourceManagementPrivateLinkResult {
   /// [name] The rmpl Name.
   /// [properties] Required.
   /// [type] The operation type.
-  GetResourceManagementPrivateLinkResult({
+  const GetResourceManagementPrivateLinkResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

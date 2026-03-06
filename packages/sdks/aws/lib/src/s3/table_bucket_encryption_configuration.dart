@@ -11,7 +11,7 @@ class TableBucketEncryptionConfiguration {
   /// Creates a new [TableBucketEncryptionConfiguration].
   /// [kmsKeyArn] The ARN of a KMS Key to be used with `aws:kms` `sse_algorithm`
   /// [sseAlgorithm] One of `aws:kms` or `AES256`
-  TableBucketEncryptionConfiguration({
+  const TableBucketEncryptionConfiguration({
     required this.kmsKeyArn,
     required this.sseAlgorithm,
   });

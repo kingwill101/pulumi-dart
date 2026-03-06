@@ -35,7 +35,7 @@ class FieldArgs {
   /// [indexConfig] The single field index configuration for this field.
   /// [project] The ID of the project in which the resource belongs.
   /// [ttlConfig] The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
-  FieldArgs({
+  const FieldArgs({
     required this.collection,
     this.database,
     required this.field,

@@ -12,7 +12,7 @@ class GoogleServiceInfoResponse {
   /// Creates a new [GoogleServiceInfoResponse].
   /// [googleServiceType] Recognized type of a Google Service.
   /// [sourceIp] Source IP address.
-  GoogleServiceInfoResponse({
+  const GoogleServiceInfoResponse({
     required this.googleServiceType,
     required this.sourceIp,
   });

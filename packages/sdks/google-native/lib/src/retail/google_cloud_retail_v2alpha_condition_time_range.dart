@@ -12,7 +12,7 @@ class GoogleCloudRetailV2alphaConditionTimeRange {
   /// Creates a new [GoogleCloudRetailV2alphaConditionTimeRange].
   /// [endTime] End of time range. Range is inclusive.
   /// [startTime] Start of time range. Range is inclusive.
-  GoogleCloudRetailV2alphaConditionTimeRange({
+  const GoogleCloudRetailV2alphaConditionTimeRange({
     this.endTime,
     this.startTime,
   });

@@ -12,7 +12,7 @@ class JobPlacementDataprocV1beta2 {
   /// Creates a new [JobPlacementDataprocV1beta2].
   /// [clusterLabels] Optional. Cluster labels to identify a cluster where the job will be submitted.
   /// [clusterName] The name of the cluster where the job will be submitted.
-  JobPlacementDataprocV1beta2({
+  const JobPlacementDataprocV1beta2({
     this.clusterLabels,
     required this.clusterName,
   });

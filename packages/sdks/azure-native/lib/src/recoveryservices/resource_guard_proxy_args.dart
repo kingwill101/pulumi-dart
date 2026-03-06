@@ -30,7 +30,7 @@ class ResourceGuardProxyArgs {
   /// [resourceGuardProxyName] Optional.
   /// [tags] Resource tags.
   /// [vaultName] The name of the recovery services vault.
-  ResourceGuardProxyArgs({
+  const ResourceGuardProxyArgs({
     this.eTag,
     this.location,
     this.properties,

@@ -31,7 +31,7 @@ class EventTriggerResponseCloudfunctionsV2alpha {
   /// [serviceAccountEmail] Optional. The email of the trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`.
   /// [trigger] The resource name of the Eventarc trigger. The format of this field is `projects/{project}/locations/{region}/triggers/{trigger}`.
   /// [triggerRegion] The region that the trigger will be in. The trigger will only receive events originating in this region. It can be the same region as the function, a different region or multi-region, or the global region. If not provided, defaults to the same region as the function.
-  EventTriggerResponseCloudfunctionsV2alpha({
+  const EventTriggerResponseCloudfunctionsV2alpha({
     required this.channel,
     required this.eventFilters,
     required this.eventType,

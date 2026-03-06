@@ -63,7 +63,7 @@ class SqlPoolArgs {
   /// [storageAccountType] The storage account type used to store backups for this sql pool.
   /// [tags] Resource tags.
   /// [workspaceName] The name of the workspace.
-  SqlPoolArgs({
+  const SqlPoolArgs({
     this.collation,
     this.createMode,
     this.location,

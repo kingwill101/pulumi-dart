@@ -15,7 +15,7 @@ class NlpVerticalLimitSettings {
   /// [maxConcurrentTrials] Maximum Concurrent AutoML iterations.
   /// [maxTrials] Number of AutoML iterations.
   /// [timeout] AutoML job timeout.
-  NlpVerticalLimitSettings({
+  const NlpVerticalLimitSettings({
     this.maxConcurrentTrials,
     this.maxTrials,
     this.timeout,

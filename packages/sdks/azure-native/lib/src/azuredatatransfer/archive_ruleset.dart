@@ -18,7 +18,7 @@ class ArchiveRuleset {
   /// [maximumDepthLimit] Optional. The maximum depth of nested archives that can be expanded. Limits how many layers of embedded archives will be processed. Archives exceeding the max limit will be denied for replication.
   /// [maximumExpansionSizeLimit] Optional. The combined maximum size (in bytes) of all extracted files that an expanded archive is allowed to reach. Archives exceeding the max limit will be denied for replication.
   /// [minimumSizeForExpansion] Optional. Default is 0. The minimum archive file size (in bytes) required to trigger expansion during replication. Any archive file size below the configured threshold will skip the rest of the configured rulesets for archives.
-  ArchiveRuleset({
+  const ArchiveRuleset({
     this.maximumCompressionRatioLimit,
     this.maximumDepthLimit,
     this.maximumExpansionSizeLimit,

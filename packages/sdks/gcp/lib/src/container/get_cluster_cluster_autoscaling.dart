@@ -25,7 +25,7 @@ class GetClusterClusterAutoscaling {
   /// [defaultComputeClassEnabled] Specifies whether default compute class behaviour is enabled. If enabled, cluster autoscaler will use Compute Class with name default for all the workloads, if not overriden.
   /// [enabled] Whether node auto-provisioning is enabled. Resource limits for cpu and memory must be defined to enable node auto-provisioning.
   /// [resourceLimits] Global constraints for machine resources in the cluster. Configuring the cpu and memory types is required if node auto-provisioning is enabled. These limits will apply to node pool autoscaling in addition to node auto-provisioning.
-  GetClusterClusterAutoscaling({
+  const GetClusterClusterAutoscaling({
     required this.autoProvisioningDefaults,
     required this.autoProvisioningLocations,
     required this.autoscalingProfile,

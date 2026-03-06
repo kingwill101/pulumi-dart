@@ -19,7 +19,7 @@ class ResourceIdentityResponse {
   /// [tenantId] Home Tenant Id
   /// [type] Identity type
   /// [userAssignedIdentities] User Assigned Identities
-  ResourceIdentityResponse({
+  const ResourceIdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

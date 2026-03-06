@@ -12,7 +12,7 @@ class LoadBalancerTarget {
   /// [serverId] Optional.
   /// [type] (string) Type of the Load Balancer Algorithm. `round_robin` or `least_connections`
   /// [usePrivateIp] Optional.
-  LoadBalancerTarget({
+  const LoadBalancerTarget({
     this.serverId,
     required this.type,
     this.usePrivateIp,

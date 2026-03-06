@@ -20,7 +20,7 @@ class GetSpacesBucketsBucket {
   /// [name] The name of the Spaces bucket
   /// [region] The slug of the region where the bucket is stored.
   /// [urn] The uniform resource name of the bucket
-  GetSpacesBucketsBucket({
+  const GetSpacesBucketsBucket({
     required this.bucketDomainName,
     required this.endpoint,
     required this.name,

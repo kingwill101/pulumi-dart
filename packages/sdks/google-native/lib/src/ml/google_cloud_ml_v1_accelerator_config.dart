@@ -13,7 +13,7 @@ class GoogleCloudMlV1AcceleratorConfig {
   /// Creates a new [GoogleCloudMlV1AcceleratorConfig].
   /// [count] The number of accelerators to attach to each machine running the job.
   /// [type] The type of accelerator to use.
-  GoogleCloudMlV1AcceleratorConfig({
+  const GoogleCloudMlV1AcceleratorConfig({
     this.count,
     this.type,
   });

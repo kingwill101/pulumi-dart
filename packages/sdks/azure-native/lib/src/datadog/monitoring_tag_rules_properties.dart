@@ -20,7 +20,7 @@ class MonitoringTagRulesProperties {
   /// [customMetrics] Configuration to enable/disable custom metrics. If enabled, custom metrics from app insights will be sent.
   /// [logRules] Set of rules for sending logs for the Monitor resource.
   /// [metricRules] Set of rules for sending metrics for the Monitor resource.
-  MonitoringTagRulesProperties({
+  const MonitoringTagRulesProperties({
     this.automuting,
     this.customMetrics,
     this.logRules,

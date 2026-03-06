@@ -38,7 +38,7 @@ class GetCrossRegionBackupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The ID of the resource group.
   /// [startTime] The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-  GetCrossRegionBackupsArgs({
+  const GetCrossRegionBackupsArgs({
     this.backupId,
     this.crossBackupId,
     this.crossBackupRegion,

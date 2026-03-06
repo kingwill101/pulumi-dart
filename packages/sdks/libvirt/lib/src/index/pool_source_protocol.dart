@@ -8,7 +8,7 @@ class PoolSourceProtocol {
 
   /// Creates a new [PoolSourceProtocol].
   /// [version] Indicates the version of the protocol being used for the connection.
-  PoolSourceProtocol({
+  const PoolSourceProtocol({
     required this.version,
   });
 

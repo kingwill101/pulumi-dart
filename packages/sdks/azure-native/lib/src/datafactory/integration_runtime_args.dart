@@ -22,7 +22,7 @@ class IntegrationRuntimeArgs {
   /// [integrationRuntimeName] The integration runtime name.
   /// [properties] Integration runtime properties.
   /// [resourceGroupName] The resource group name.
-  IntegrationRuntimeArgs({
+  const IntegrationRuntimeArgs({
     required this.factoryName,
     this.integrationRuntimeName,
     required this.properties,

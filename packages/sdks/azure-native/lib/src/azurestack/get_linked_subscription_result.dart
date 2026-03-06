@@ -54,7 +54,7 @@ class GetLinkedSubscriptionResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Custom tags for the resource.
   /// [type] Type of Resource.
-  GetLinkedSubscriptionResult({
+  const GetLinkedSubscriptionResult({
     required this.azureApiVersion,
     required this.deviceConnectionStatus,
     required this.deviceId,

@@ -27,7 +27,7 @@ class SecurityPolicyArgs {
   /// [securityPolicyName] The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
   /// [tags] A mapping of tags to assign to the resource.
   /// [tlsVersions] The TLS protocol versions that are supported. Valid values: TLSv1.0, TLSv1.1, TLSv1.2 and TLSv1.3.
-  SecurityPolicyArgs({
+  const SecurityPolicyArgs({
     required this.ciphers,
     this.dryRun,
     this.resourceGroupId,

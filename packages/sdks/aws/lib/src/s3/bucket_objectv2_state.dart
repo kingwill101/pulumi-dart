@@ -120,7 +120,7 @@ class BucketObjectv2State {
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [versionId] Unique version ID value for the object, if bucket versioning is enabled.
   /// [websiteRedirect] Target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
-  BucketObjectv2State({
+  const BucketObjectv2State({
     this.acl,
     this.arn,
     this.bucket,

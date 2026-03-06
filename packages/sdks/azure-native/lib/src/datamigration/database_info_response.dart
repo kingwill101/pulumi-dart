@@ -9,7 +9,7 @@ class DatabaseInfoResponse {
 
   /// Creates a new [DatabaseInfoResponse].
   /// [sourceDatabaseName] Name of the database
-  DatabaseInfoResponse({
+  const DatabaseInfoResponse({
     required this.sourceDatabaseName,
   });
 

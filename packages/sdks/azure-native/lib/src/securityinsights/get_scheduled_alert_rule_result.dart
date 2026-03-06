@@ -96,7 +96,7 @@ class GetScheduledAlertRuleResult {
   /// [triggerOperator] The operation against the threshold that triggers alert rule.
   /// [triggerThreshold] The threshold triggers this alert rule.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetScheduledAlertRuleResult({
+  const GetScheduledAlertRuleResult({
     this.alertDetailsOverride,
     this.alertRuleTemplateName,
     required this.azureApiVersion,

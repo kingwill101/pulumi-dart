@@ -24,7 +24,7 @@ class DomainClock {
   /// [start] Determines when the clock starts, affecting how time is counted in the guest.
   /// [timeZone] Sets the time zone for the guest clock, influencing the display of local time.
   /// [timers] Configures timer settings that manage clock updates and adjustments.
-  DomainClock({
+  const DomainClock({
     this.adjustment,
     this.basis,
     this.offset,

@@ -21,7 +21,7 @@ class SparkClusterStorageAccount {
   /// [storageAccountKey] The Access Key which should be used to connect to the Storage Account. Changing this forces a new resource to be created.
   /// [storageContainerId] The ID of the Storage Container. Changing this forces a new resource to be created.
   /// [storageResourceId] The ID of the Storage Account. Changing this forces a new resource to be created.
-  SparkClusterStorageAccount({
+  const SparkClusterStorageAccount({
     required this.isDefault,
     required this.storageAccountKey,
     required this.storageContainerId,

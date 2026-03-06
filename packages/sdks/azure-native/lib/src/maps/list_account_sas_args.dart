@@ -33,7 +33,7 @@ class ListAccountSasArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [signingKey] The Maps account key to use for signing. Picking `primaryKey` or `secondaryKey` will use the Maps account Shared Keys, and using `managedIdentity` will use the auto-renewed private key to sign the SAS.
   /// [start] The date time offset of when the token validity begins. For example "2017-05-24T10:42:03.1567373Z". Maximum duration allowed is 24 hours between `start` and `expiry`.
-  ListAccountSasArgs({
+  const ListAccountSasArgs({
     required this.accountName,
     required this.expiry,
     required this.maxRatePerSecond,

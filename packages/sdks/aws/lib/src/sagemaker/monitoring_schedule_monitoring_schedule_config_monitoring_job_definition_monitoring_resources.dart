@@ -9,7 +9,7 @@ class MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitorin
 
   /// Creates a new [MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources].
   /// [clusterConfig] Configuration for the cluster resources used to run the processing job. Fields are documented below.
-  MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources({
+  const MonitoringScheduleMonitoringScheduleConfigMonitoringJobDefinitionMonitoringResources({
     required this.clusterConfig,
   });
 

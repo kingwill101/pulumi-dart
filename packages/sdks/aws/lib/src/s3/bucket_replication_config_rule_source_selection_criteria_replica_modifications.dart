@@ -8,7 +8,7 @@ class BucketReplicationConfigRuleSourceSelectionCriteriaReplicaModifications {
 
   /// Creates a new [BucketReplicationConfigRuleSourceSelectionCriteriaReplicaModifications].
   /// [status] Whether the existing objects should be replicated. Either `"Enabled"` or `"Disabled"`.
-  BucketReplicationConfigRuleSourceSelectionCriteriaReplicaModifications({
+  const BucketReplicationConfigRuleSourceSelectionCriteriaReplicaModifications({
     required this.status,
   });
 

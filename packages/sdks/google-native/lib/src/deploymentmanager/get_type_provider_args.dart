@@ -13,7 +13,7 @@ class GetTypeProviderArgs {
   /// Creates a new [GetTypeProviderArgs].
   /// [project] Optional.
   /// [typeProvider] Required.
-  GetTypeProviderArgs({
+  const GetTypeProviderArgs({
     this.project,
     required this.typeProvider,
   });

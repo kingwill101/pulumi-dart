@@ -9,7 +9,7 @@ class EdgeSitesPropertiesGlobalCommunicationsSite {
 
   /// Creates a new [EdgeSitesPropertiesGlobalCommunicationsSite].
   /// [id] Resource ID.
-  EdgeSitesPropertiesGlobalCommunicationsSite({
+  const EdgeSitesPropertiesGlobalCommunicationsSite({
     required this.id,
   });
 

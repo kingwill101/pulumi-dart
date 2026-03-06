@@ -28,7 +28,7 @@ class ApplicationGatewayRoutingRule {
   /// [name] Name of the routing rule that is unique within an Application Gateway.
   /// [priority] Priority of the routing rule.
   /// [ruleType] Rule type.
-  ApplicationGatewayRoutingRule({
+  const ApplicationGatewayRoutingRule({
     this.backendAddressPool,
     this.backendSettings,
     this.id,

@@ -26,7 +26,7 @@ class GetSnapshotV3Args {
   /// [region] The region in which to obtain the V3 Block Storage
   /// [status] The status of the snapshot.
   /// [volumeId] The ID of the snapshot's volume.
-  GetSnapshotV3Args({
+  const GetSnapshotV3Args({
     this.mostRecent,
     this.name,
     this.region,

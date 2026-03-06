@@ -18,7 +18,7 @@ class ElasticsearchLogs {
   /// [sendActivityLogs] Specifies if the Azure Activity Logs should be sent to the Elasticsearch cluster. Defaults to `false`.
   /// [sendAzureadLogs] Specifies if the AzureAD Logs should be sent to the Elasticsearch cluster. Defaults to `false`.
   /// [sendSubscriptionLogs] Specifies if the Azure Subscription Logs should be sent to the Elasticsearch cluster. Defaults to `false`.
-  ElasticsearchLogs({
+  const ElasticsearchLogs({
     this.filteringTags,
     this.sendActivityLogs,
     this.sendAzureadLogs,

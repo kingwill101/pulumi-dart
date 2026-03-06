@@ -15,7 +15,7 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseType {
   /// [code] If true, authorization code is returned from IdP's authorization endpoint.
   /// [idToken] If true, ID token is returned from IdP's authorization endpoint.
   /// [token] Do not use. The `token` response type is not supported at the moment.
-  GoogleCloudIdentitytoolkitAdminV2OAuthResponseType({
+  const GoogleCloudIdentitytoolkitAdminV2OAuthResponseType({
     this.code,
     this.idToken,
     this.token,

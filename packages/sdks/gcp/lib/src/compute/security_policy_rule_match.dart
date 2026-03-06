@@ -26,7 +26,7 @@ class SecurityPolicyRuleMatch {
   /// [expr] User defined CEVAL expression. A CEVAL expression is used to specify match criteria such as origin.ip, source.region_code and contents in the request header.
   /// [exprOptions] The configuration options available when specifying a user defined CEVAL expression (i.e., 'expr').
   /// [versionedExpr] Preconfigured versioned expression. If this field is specified, config must also be specified.
-  SecurityPolicyRuleMatch({
+  const SecurityPolicyRuleMatch({
     this.config,
     this.expr,
     this.exprOptions,

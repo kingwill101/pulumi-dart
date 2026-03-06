@@ -11,7 +11,7 @@ class ClusterMultiRegionProperties {
   /// Creates a new [ClusterMultiRegionProperties].
   /// [clusters] List of DSQL Cluster ARNs peered to this cluster.
   /// [witnessRegion] Witness region for the multi-region clusters. Setting this makes this cluster a multi-region cluster. Changing it recreates the resource.
-  ClusterMultiRegionProperties({
+  const ClusterMultiRegionProperties({
     this.clusters,
     this.witnessRegion,
   });

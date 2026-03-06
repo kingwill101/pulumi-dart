@@ -14,7 +14,7 @@ class GetInstanceTemplateConfidentialInstanceConfig {
   /// Creates a new [GetInstanceTemplateConfidentialInstanceConfig].
   /// [confidentialInstanceType] The confidential computing technology the instance uses.
   /// [enableConfidentialCompute] Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
-  GetInstanceTemplateConfidentialInstanceConfig({
+  const GetInstanceTemplateConfidentialInstanceConfig({
     required this.confidentialInstanceType,
     required this.enableConfidentialCompute,
   });

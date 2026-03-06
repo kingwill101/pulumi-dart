@@ -46,7 +46,7 @@ class AiIndexEndpointArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [publicEndpointEnabled] If true, the deployed index will be accessible through public endpoint.
   /// [region] The region of the index endpoint. eg us-central1
-  AiIndexEndpointArgs({
+  const AiIndexEndpointArgs({
     this.description,
     required this.displayName,
     this.encryptionSpec,

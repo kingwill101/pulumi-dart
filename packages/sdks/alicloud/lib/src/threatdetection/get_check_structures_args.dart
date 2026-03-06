@@ -24,7 +24,7 @@ class GetCheckStructuresArgs {
   /// [lang] The language of the content within the request and response. Default value: zh. Valid values:- **zh**: Chinese- **en**: English
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [taskSources] List of task sources.
-  GetCheckStructuresArgs({
+  const GetCheckStructuresArgs({
     this.currentPage,
     this.ids,
     this.lang,

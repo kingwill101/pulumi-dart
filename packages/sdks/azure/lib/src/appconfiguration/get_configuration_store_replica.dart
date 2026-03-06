@@ -17,7 +17,7 @@ class GetConfigurationStoreReplica {
   /// [id] The ID of the Access Key.
   /// [location] The supported Azure location where the App Configuration Replica exists.
   /// [name] The Name of this App Configuration.
-  GetConfigurationStoreReplica({
+  const GetConfigurationStoreReplica({
     required this.endpoint,
     required this.id,
     required this.location,

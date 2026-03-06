@@ -26,7 +26,7 @@ class FlexibleServerFirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group in which the MySQL Flexible Server exists. Changing this forces a new resource to be created.
   /// [serverName] Specifies the name of the MySQL Flexible Server. Changing this forces a new resource to be created.
   /// [startIpAddress] Specifies the Start IP Address associated with this Firewall Rule.
-  FlexibleServerFirewallRuleArgs({
+  const FlexibleServerFirewallRuleArgs({
     required this.endIpAddress,
     this.name,
     required this.resourceGroupName,

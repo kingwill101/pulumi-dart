@@ -8,7 +8,7 @@ class UserAssignedIdentityPropertiesResponse {
 
   /// Creates a new [UserAssignedIdentityPropertiesResponse].
   /// [userAssignedIdentity] ARM ID of user Identity selected for encryption
-  UserAssignedIdentityPropertiesResponse({
+  const UserAssignedIdentityPropertiesResponse({
     this.userAssignedIdentity,
   });
 

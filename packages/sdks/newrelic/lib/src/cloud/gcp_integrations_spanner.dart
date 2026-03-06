@@ -11,7 +11,7 @@ class GcpIntegrationsSpanner {
   /// Creates a new [GcpIntegrationsSpanner].
   /// [fetchTags] to fetch tags of the resource
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsSpanner({
+  const GcpIntegrationsSpanner({
     this.fetchTags,
     this.metricsPollingInterval,
   });

@@ -12,7 +12,7 @@ class EnterpriseSnapshotPolicyCrossRegionCopyInfo {
   /// Creates a new [EnterpriseSnapshotPolicyCrossRegionCopyInfo].
   /// [enabled] Enable Snapshot replication.
   /// [regions] Destination region for Snapshot replication. See `regions` below.
-  EnterpriseSnapshotPolicyCrossRegionCopyInfo({
+  const EnterpriseSnapshotPolicyCrossRegionCopyInfo({
     this.enabled,
     this.regions,
   });

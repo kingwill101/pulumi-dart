@@ -49,7 +49,7 @@ class GetNetworkInterfacesArgs {
   /// [type] Optional.
   /// [vpcId] ID of the VPC that the ENI belongs to.
   /// [vswitchId] ID of the vSwitch that the ENI is linked to.
-  GetNetworkInterfacesArgs({
+  const GetNetworkInterfacesArgs({
     this.ids,
     this.instanceId,
     this.name,

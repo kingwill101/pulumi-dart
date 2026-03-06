@@ -16,7 +16,7 @@ class NetworkInterfaceAttachment {
   /// [deviceIndex] Integer to define the devices index.
   /// [instance] ID of the instance to attach to.
   /// [networkCardIndex] Index of the network card. Specify a value greater than 0 when using multiple network cards, which are supported by [some instance types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#network-cards). The default is 0.
-  NetworkInterfaceAttachment({
+  const NetworkInterfaceAttachment({
     this.attachmentId,
     required this.deviceIndex,
     required this.instance,

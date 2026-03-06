@@ -17,7 +17,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexu
   /// [datakey] Encryption keys used to encrypt data.
   /// [secretAccessKey] The secret key used to sign requests.
   /// [userId] Identifier for the user.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsInforNexus({
     required this.accessKeyId,
     required this.datakey,
     required this.secretAccessKey,

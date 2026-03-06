@@ -19,7 +19,7 @@ class SoleTenancyPreferencesResponse {
   /// [cpuOvercommitRatio] CPU overcommit ratio. Acceptable values are between 1.0 and 2.0 inclusive.
   /// [hostMaintenancePolicy] Sole Tenancy nodes maintenance policy.
   /// [nodeTypes] A list of sole tenant node types. An empty list means that all possible node types will be considered.
-  SoleTenancyPreferencesResponse({
+  const SoleTenancyPreferencesResponse({
     required this.commitmentPlan,
     required this.cpuOvercommitRatio,
     required this.hostMaintenancePolicy,

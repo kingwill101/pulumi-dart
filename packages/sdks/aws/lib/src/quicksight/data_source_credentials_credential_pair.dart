@@ -11,7 +11,7 @@ class DataSourceCredentialsCredentialPair {
   /// Creates a new [DataSourceCredentialsCredentialPair].
   /// [password] Password, maximum length of 1024 characters.
   /// [username] User name, maximum length of 64 characters.
-  DataSourceCredentialsCredentialPair({
+  const DataSourceCredentialsCredentialPair({
     required this.password,
     required this.username,
   });

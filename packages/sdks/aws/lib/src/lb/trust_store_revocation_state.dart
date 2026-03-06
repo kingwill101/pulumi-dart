@@ -24,7 +24,7 @@ class TrustStoreRevocationState {
   /// [revocationsS3Key] S3 object key holding the client certificate CA bundle.
   /// [revocationsS3ObjectVersion] Version Id of CA bundle S3 bucket object, if versioned, defaults to latest if omitted.
   /// [trustStoreArn] Trust Store ARN.
-  TrustStoreRevocationState({
+  const TrustStoreRevocationState({
     this.region,
     this.revocationId,
     this.revocationsS3Bucket,

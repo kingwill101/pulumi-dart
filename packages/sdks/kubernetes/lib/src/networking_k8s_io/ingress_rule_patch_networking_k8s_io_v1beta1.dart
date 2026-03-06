@@ -17,7 +17,7 @@ class IngressRulePatchNetworkingK8sIoV1beta1 {
   /// Creates a new [IngressRulePatchNetworkingK8sIoV1beta1].
   /// [host] Host is the fully qualified domain name of a network host, as defined by RFC 3986. Note the following deviations from the "host" part of the URI as defined in the RFC: 1. IPs are not allowed. Currently an IngressRuleValue can only apply to the
   /// [http] Optional.
-  IngressRulePatchNetworkingK8sIoV1beta1({
+  const IngressRulePatchNetworkingK8sIoV1beta1({
     this.host,
     this.http,
   });

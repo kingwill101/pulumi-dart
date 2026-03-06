@@ -13,7 +13,7 @@ class MeasureResponse {
   /// Creates a new [MeasureResponse].
   /// [aggregationFunction] The aggregation function applied to the input column. This must not be set to "none" unless binning is disabled on the dimension. The aggregation function is used to group points on the dimension bins.
   /// [column] The column name within in the dataset used for the measure.
-  MeasureResponse({
+  const MeasureResponse({
     required this.aggregationFunction,
     required this.column,
   });

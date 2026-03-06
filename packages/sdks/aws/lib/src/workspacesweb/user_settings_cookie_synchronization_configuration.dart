@@ -13,7 +13,7 @@ class UserSettingsCookieSynchronizationConfiguration {
   /// Creates a new [UserSettingsCookieSynchronizationConfiguration].
   /// [allowlists] List of cookie specifications that are allowed to be synchronized to the remote browser.
   /// [blocklists] List of cookie specifications that are blocked from being synchronized to the remote browser.
-  UserSettingsCookieSynchronizationConfiguration({
+  const UserSettingsCookieSynchronizationConfiguration({
     this.allowlists,
     this.blocklists,
   });

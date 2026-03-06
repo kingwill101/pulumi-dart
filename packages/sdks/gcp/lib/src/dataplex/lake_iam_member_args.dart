@@ -43,7 +43,7 @@ class LakeIamMemberArgs {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  LakeIamMemberArgs({
+  const LakeIamMemberArgs({
     this.condition,
     required this.lake,
     this.location,

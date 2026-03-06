@@ -21,7 +21,7 @@ class GetMigrationJobsArgs {
   /// [ids] A list of Synchronization Job IDs.
   /// [nameRegex] A regex string to filter results by Migration Job name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetMigrationJobsArgs({
+  const GetMigrationJobsArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

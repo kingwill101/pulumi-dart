@@ -27,7 +27,7 @@ class DatabaseInstanceSettingsReadPoolAutoScaleConfig {
   /// [scaleInCooldownSeconds] The cooldown period for scale in operations.
   /// [scaleOutCooldownSeconds] The cooldown period for scale out operations.
   /// [targetMetrics] Target metrics for Read Pool Auto Scale. Must specify `target_metrics.metric` and `target_metrics.target_value` in subblock.
-  DatabaseInstanceSettingsReadPoolAutoScaleConfig({
+  const DatabaseInstanceSettingsReadPoolAutoScaleConfig({
     this.disableScaleIn,
     this.enabled,
     this.maxNodeCount,

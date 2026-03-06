@@ -12,7 +12,7 @@ class GetDeploymentWebApplicationFirewall {
   /// Creates a new [GetDeploymentWebApplicationFirewall].
   /// [activationStateEnabled] Whether WAF is enabled/disabled for this NGINX Deployment.
   /// [statuses] A `status` block as defined below.
-  GetDeploymentWebApplicationFirewall({
+  const GetDeploymentWebApplicationFirewall({
     required this.activationStateEnabled,
     required this.statuses,
   });

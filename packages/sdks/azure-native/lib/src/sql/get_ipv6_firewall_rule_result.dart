@@ -23,7 +23,7 @@ class GetIPv6FirewallRuleResult {
   /// [name] Resource name.
   /// [startIPv6Address] The start IP address of the firewall rule. Must be IPv6 format.
   /// [type] Resource type.
-  GetIPv6FirewallRuleResult({
+  const GetIPv6FirewallRuleResult({
     required this.azureApiVersion,
     this.endIPv6Address,
     required this.id,

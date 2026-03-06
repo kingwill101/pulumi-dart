@@ -26,7 +26,7 @@ class ServiceGroupMemberRelationshipPropertiesResponse {
   /// [sourceId] The relationship source resource id.
   /// [targetId] The relationship target resource id.
   /// [targetTenant] The relationship target tenant id.
-  ServiceGroupMemberRelationshipPropertiesResponse({
+  const ServiceGroupMemberRelationshipPropertiesResponse({
     required this.metadata,
     required this.originInformation,
     required this.provisioningState,

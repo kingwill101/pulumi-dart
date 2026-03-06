@@ -26,7 +26,7 @@ class SchemaArgs {
   /// [location] The geographic location where the data store should reside. The value can
   /// [project] The ID of the project in which the resource belongs.
   /// [schemaId] The unique id of the schema.
-  SchemaArgs({
+  const SchemaArgs({
     required this.dataStoreId,
     this.jsonSchema,
     required this.location,

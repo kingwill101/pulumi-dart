@@ -13,7 +13,7 @@ class GetInstanceTemplateComputeBetaArgs {
   /// Creates a new [GetInstanceTemplateComputeBetaArgs].
   /// [instanceTemplate] Required.
   /// [project] Optional.
-  GetInstanceTemplateComputeBetaArgs({
+  const GetInstanceTemplateComputeBetaArgs({
     required this.instanceTemplate,
     this.project,
   });

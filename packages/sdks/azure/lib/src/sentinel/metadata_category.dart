@@ -11,7 +11,7 @@ class MetadataCategory {
   /// Creates a new [MetadataCategory].
   /// [domains] Specifies a list of domains for the solution content item.
   /// [verticals] Specifies a list of industry verticals for the solution content item.
-  MetadataCategory({
+  const MetadataCategory({
     this.domains,
     this.verticals,
   });

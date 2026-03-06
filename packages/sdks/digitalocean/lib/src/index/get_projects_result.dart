@@ -20,7 +20,7 @@ class GetProjectsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [projects] A set of projects satisfying any `filter` and `sort` criteria. Each project has
   /// [sorts] Optional.
-  GetProjectsResult({
+  const GetProjectsResult({
     this.filters,
     required this.id,
     required this.projects,

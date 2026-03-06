@@ -25,7 +25,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDe
   /// [podAffinity] Pod affinity configuration.
   /// [podTolerations] Pod tolerations of node taints.
   /// [replicaCount] Pod replica count.
-  FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig({
+  const FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig({
     required this.component,
     this.containerResources,
     this.podAffinity,

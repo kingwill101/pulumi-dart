@@ -42,7 +42,7 @@ class FolderCustomModuleState {
   /// [lastEditor] The editor that last updated the custom module.
   /// [name] The resource name of the custom module. Its format is "folders/{folder_id}/securityHealthAnalyticsSettings/customModules/{customModule}".
   /// [updateTime] The time at which the custom module was last updated.
-  FolderCustomModuleState({
+  const FolderCustomModuleState({
     this.ancestorModule,
     this.customConfig,
     this.displayName,

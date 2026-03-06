@@ -29,7 +29,7 @@ class ConditionalAccessPolicyArgs {
   /// [grantControls] A `grant_controls` block as documented below, which specifies the grant controls that must be fulfilled to pass the policy.
   /// [sessionControls] A `session_controls` block as documented below, which specifies the session controls that are enforced after sign-in.
   /// [state] Specifies the state of the policy object. Possible values are: `enabled`, `disabled` and `enabledForReportingButNotEnforced`
-  ConditionalAccessPolicyArgs({
+  const ConditionalAccessPolicyArgs({
     required this.conditions,
     required this.displayName,
     this.grantControls,

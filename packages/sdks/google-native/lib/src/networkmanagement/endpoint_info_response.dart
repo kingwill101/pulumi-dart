@@ -30,7 +30,7 @@ class EndpointInfoResponse {
   /// [sourceIp] Source IP address.
   /// [sourceNetworkUri] URI of the network where this packet originates from.
   /// [sourcePort] Source port. Only valid when protocol is TCP or UDP.
-  EndpointInfoResponse({
+  const EndpointInfoResponse({
     required this.destinationIp,
     required this.destinationNetworkUri,
     required this.destinationPort,

@@ -9,7 +9,7 @@ class ServiceDirectoryConfig {
 
   /// Creates a new [ServiceDirectoryConfig].
   /// [service] The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
-  ServiceDirectoryConfig({
+  const ServiceDirectoryConfig({
     this.service,
   });
 

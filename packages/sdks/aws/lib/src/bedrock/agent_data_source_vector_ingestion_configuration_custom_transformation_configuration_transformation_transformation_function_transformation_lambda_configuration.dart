@@ -8,7 +8,7 @@ class AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurati
 
   /// Creates a new [AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration].
   /// [lambdaArn] The ARN of the lambda to use for custom transformation.
-  AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration({
+  const AgentDataSourceVectorIngestionConfigurationCustomTransformationConfigurationTransformationTransformationFunctionTransformationLambdaConfiguration({
     required this.lambdaArn,
   });
 

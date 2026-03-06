@@ -11,7 +11,7 @@ class WindowsVirtualMachineWinrmListener {
   /// Creates a new [WindowsVirtualMachineWinrmListener].
   /// [certificateUrl] The Secret URL of a Key Vault Certificate, which must be specified when `protocol` is set to `Https`. Changing this forces a new resource to be created.
   /// [protocol] Specifies the protocol of listener. Possible values are `Http` or `Https`. Changing this forces a new resource to be created.
-  WindowsVirtualMachineWinrmListener({
+  const WindowsVirtualMachineWinrmListener({
     this.certificateUrl,
     required this.protocol,
   });

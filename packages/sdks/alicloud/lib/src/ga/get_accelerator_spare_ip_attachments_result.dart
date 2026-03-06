@@ -23,7 +23,7 @@ class GetAcceleratorSpareIpAttachmentsResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [status] The status of the standby CNAME IP address. Valid values: `active`, `inuse`.
-  GetAcceleratorSpareIpAttachmentsResult({
+  const GetAcceleratorSpareIpAttachmentsResult({
     required this.acceleratorId,
     required this.attachments,
     required this.id,

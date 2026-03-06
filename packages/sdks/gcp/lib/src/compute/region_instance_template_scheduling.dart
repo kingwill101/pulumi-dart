@@ -73,7 +73,7 @@ class RegionInstanceTemplateScheduling {
   /// [provisioningModel] Describe the type of preemptible VM. This field accepts the value `STANDARD` or `SPOT`. If the value is `STANDARD`, there will be no discount. If this   is set to `SPOT`,
   /// [skipGuestOsShutdown] Default is false and there will be 120 seconds between GCE ACPI G2 Soft Off and ACPI G3 Mechanical Off for Standard VMs and 30 seconds for Spot VMs.
   /// [terminationTime] Specifies the timestamp, when the instance will be terminated, in RFC3339 text format. If specified, the instance termination action will be performed at the termination time.
-  RegionInstanceTemplateScheduling({
+  const RegionInstanceTemplateScheduling({
     this.automaticRestart,
     this.availabilityDomain,
     this.gracefulShutdown,

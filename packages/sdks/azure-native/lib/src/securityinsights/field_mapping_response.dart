@@ -12,7 +12,7 @@ class FieldMappingResponse {
   /// Creates a new [FieldMappingResponse].
   /// [columnName] the column name to be mapped to the identifier
   /// [identifier] the V3 identifier of the entity
-  FieldMappingResponse({
+  const FieldMappingResponse({
     this.columnName,
     this.identifier,
   });

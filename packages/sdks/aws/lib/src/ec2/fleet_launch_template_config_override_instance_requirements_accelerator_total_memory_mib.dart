@@ -11,7 +11,7 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorTotalMemor
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorTotalMemoryMib].
   /// [max] The maximum amount of accelerator memory, in MiB. To specify no maximum limit, omit this parameter.
   /// [min] The minimum amount of accelerator memory, in MiB. To specify no minimum limit, omit this parameter.
-  FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorTotalMemoryMib({
+  const FleetLaunchTemplateConfigOverrideInstanceRequirementsAcceleratorTotalMemoryMib({
     this.max,
     this.min,
   });

@@ -9,7 +9,7 @@ class ClusterEndpointEncryptionTypeEnumValueResponse {
 
   /// Creates a new [ClusterEndpointEncryptionTypeEnumValueResponse].
   /// [value] Property value
-  ClusterEndpointEncryptionTypeEnumValueResponse({
+  const ClusterEndpointEncryptionTypeEnumValueResponse({
     this.value,
   });
 

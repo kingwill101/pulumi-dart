@@ -25,7 +25,7 @@ class MulticastDomainActivationTrafficSpec {
   /// [avgPacketSize] Average packet size (Default to 512 bytes).
   /// [maxPerGroupIngressPps] Maximum ingress Packet-Per-Second for a single multicast group in this
   /// [maxPerGroupSubscribers] Maximum number of subscribers for a single multicast group in this zone.
-  MulticastDomainActivationTrafficSpec({
+  const MulticastDomainActivationTrafficSpec({
     this.aggrEgressPps,
     this.aggrIngressPps,
     this.avgPacketSize,

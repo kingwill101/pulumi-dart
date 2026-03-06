@@ -16,7 +16,7 @@ class InstanceAttachmentState {
   /// [environment] The resource ID of the environment.
   /// [instanceId] The Apigee instance associated with the Apigee environment,
   /// [name] The name of the newly created  attachment (output parameter).
-  InstanceAttachmentState({
+  const InstanceAttachmentState({
     this.environment,
     this.instanceId,
     this.name,

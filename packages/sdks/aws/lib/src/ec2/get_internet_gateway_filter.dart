@@ -13,7 +13,7 @@ class GetInternetGatewayFilter {
   /// Creates a new [GetInternetGatewayFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetInternetGatewayFilter({
+  const GetInternetGatewayFilter({
     required this.name,
     required this.values,
   });

@@ -13,7 +13,7 @@ class ClusterZoneDistributionConfig {
   /// Creates a new [ClusterZoneDistributionConfig].
   /// [mode] Immutable. The mode for zone distribution for Memorystore Redis cluster.
   /// [zone] Immutable. The zone for single zone Memorystore Redis cluster.
-  ClusterZoneDistributionConfig({
+  const ClusterZoneDistributionConfig({
     this.mode,
     this.zone,
   });

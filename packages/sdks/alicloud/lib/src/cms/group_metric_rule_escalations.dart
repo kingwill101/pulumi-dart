@@ -17,7 +17,7 @@ class GroupMetricRuleEscalations {
   /// [critical] The critical level. See `critical` below.
   /// [info] The info level. See `info` below.
   /// [warn] The warn level. See `warn` below.
-  GroupMetricRuleEscalations({
+  const GroupMetricRuleEscalations({
     this.critical,
     this.info,
     this.warn,

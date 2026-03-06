@@ -9,7 +9,7 @@ class WeeklyScheduleResponse {
 
   /// Creates a new [WeeklyScheduleResponse].
   /// [dayOfWeek] Day of the week.
-  WeeklyScheduleResponse({
+  const WeeklyScheduleResponse({
     required this.dayOfWeek,
   });
 

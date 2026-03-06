@@ -37,7 +37,7 @@ class DatasetSqlServerTableState {
   /// [parameters] A map of parameters to associate with the Data Factory Dataset SQL Server Table.
   /// [schemaColumns] A `schema_column` block as defined below.
   /// [tableName] The table name of the Data Factory Dataset SQL Server Table.
-  DatasetSqlServerTableState({
+  const DatasetSqlServerTableState({
     this.additionalProperties,
     this.annotations,
     this.dataFactoryId,

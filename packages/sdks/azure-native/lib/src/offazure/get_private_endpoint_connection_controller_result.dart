@@ -35,7 +35,7 @@ class GetPrivateEndpointConnectionControllerResult {
   /// [provisioningState] provisioning state enum
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetPrivateEndpointConnectionControllerResult({
+  const GetPrivateEndpointConnectionControllerResult({
     required this.azureApiVersion,
     required this.groupIds,
     required this.id,

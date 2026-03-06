@@ -53,7 +53,7 @@ class GetBackupPlanResult {
   /// [stateReason] Human-readable description of why BackupPlan is in the current `state`
   /// [uid] Server generated global unique identifier of [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier) format.
   /// [updateTime] The timestamp when this BackupPlan resource was last updated.
-  GetBackupPlanResult({
+  const GetBackupPlanResult({
     required this.backupConfig,
     required this.backupSchedule,
     required this.cluster,

@@ -44,7 +44,7 @@ class GetHealthCheckSslHealthCheck {
   /// [proxyHeader] Specifies the type of proxy header to append before sending data to the
   /// [request] The application data to send once the SSL connection has been
   /// [response] The bytes to match against the beginning of the response data. If left empty
-  GetHealthCheckSslHealthCheck({
+  const GetHealthCheckSslHealthCheck({
     required this.port,
     required this.portName,
     required this.portSpecification,

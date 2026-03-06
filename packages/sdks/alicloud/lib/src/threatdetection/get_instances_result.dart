@@ -27,7 +27,7 @@ class GetInstancesResult {
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
   /// [renewStatus] Optional.
-  GetInstancesResult({
+  const GetInstancesResult({
     required this.id,
     required this.ids,
     this.instanceId,

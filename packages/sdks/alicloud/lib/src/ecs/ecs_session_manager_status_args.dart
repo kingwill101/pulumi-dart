@@ -15,7 +15,7 @@ class EcsSessionManagerStatusArgs {
   /// Creates a new [EcsSessionManagerStatusArgs].
   /// [sessionManagerStatusName] The name of the Session Manager Status. Valid values: `sessionManagerStatus`.
   /// [status] The status of the Session Manager Status. Valid values: `Enabled`, `Disabled`.
-  EcsSessionManagerStatusArgs({
+  const EcsSessionManagerStatusArgs({
     required this.sessionManagerStatusName,
     required this.status,
   });

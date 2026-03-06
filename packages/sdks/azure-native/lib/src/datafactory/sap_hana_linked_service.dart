@@ -46,7 +46,7 @@ class SapHanaLinkedService {
   /// [type] Type of linked service.
   /// [userName] Username to access the SAP HANA server. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  SapHanaLinkedService({
+  const SapHanaLinkedService({
     this.annotations,
     this.authenticationType,
     this.connectVia,

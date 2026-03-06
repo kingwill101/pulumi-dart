@@ -29,7 +29,7 @@ class CacheBlobTargetArgs {
   /// [namespacePath] The client-facing file path of the HPC Cache Blob Target.
   /// [resourceGroupName] The name of the Resource Group in which to create the HPC Cache Blob Target. Changing this forces a new resource to be created.
   /// [storageContainerId] The Resource Manager ID of the Storage Container used as the HPC Cache Blob Target. Changing this forces a new resource to be created.
-  CacheBlobTargetArgs({
+  const CacheBlobTargetArgs({
     this.accessPolicyName,
     required this.cacheName,
     this.name,

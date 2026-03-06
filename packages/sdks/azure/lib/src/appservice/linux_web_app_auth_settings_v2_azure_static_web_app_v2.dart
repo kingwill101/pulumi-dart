@@ -8,7 +8,7 @@ class LinuxWebAppAuthSettingsV2AzureStaticWebAppV2 {
 
   /// Creates a new [LinuxWebAppAuthSettingsV2AzureStaticWebAppV2].
   /// [clientId] The ID of the Client to use to authenticate with Azure Static Web App Authentication.
-  LinuxWebAppAuthSettingsV2AzureStaticWebAppV2({
+  const LinuxWebAppAuthSettingsV2AzureStaticWebAppV2({
     required this.clientId,
   });
 

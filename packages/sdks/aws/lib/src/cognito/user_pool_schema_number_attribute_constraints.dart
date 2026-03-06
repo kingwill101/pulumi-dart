@@ -11,7 +11,7 @@ class UserPoolSchemaNumberAttributeConstraints {
   /// Creates a new [UserPoolSchemaNumberAttributeConstraints].
   /// [maxValue] Maximum value of an attribute that is of the number data type.
   /// [minValue] Minimum value of an attribute that is of the number data type.
-  UserPoolSchemaNumberAttributeConstraints({
+  const UserPoolSchemaNumberAttributeConstraints({
     this.maxValue,
     this.minValue,
   });

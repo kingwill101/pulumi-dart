@@ -21,7 +21,7 @@ class GetDomainExtensionsResult {
   /// [ids] Required.
   /// [loadBalancerId] Required.
   /// [outputFile] Optional.
-  GetDomainExtensionsResult({
+  const GetDomainExtensionsResult({
     required this.extensions,
     required this.frontendPort,
     required this.id,

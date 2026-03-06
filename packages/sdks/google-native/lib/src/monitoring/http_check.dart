@@ -50,7 +50,7 @@ class HttpCheck {
   /// [requestMethod] The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
   /// [useSsl] If true, use HTTPS instead of HTTP to run the check.
   /// [validateSsl] Boolean specifying whether to include SSL certificate validation as a part of the Uptime check. Only applies to checks where monitored_resource is set to uptime_url. If use_ssl is false, setting validate_ssl to true has no effect.
-  HttpCheck({
+  const HttpCheck({
     this.acceptedResponseStatusCodes,
     this.authInfo,
     this.body,

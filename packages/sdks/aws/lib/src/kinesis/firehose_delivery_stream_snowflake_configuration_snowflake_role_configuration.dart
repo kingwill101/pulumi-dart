@@ -11,7 +11,7 @@ class FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration {
   /// Creates a new [FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration].
   /// [enabled] Whether the Snowflake role is enabled.
   /// [snowflakeRole] The Snowflake role.
-  FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration({
+  const FirehoseDeliveryStreamSnowflakeConfigurationSnowflakeRoleConfiguration({
     this.enabled,
     this.snowflakeRole,
   });

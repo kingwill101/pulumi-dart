@@ -10,7 +10,7 @@ class VectorEmbeddingPolicy {
 
   /// Creates a new [VectorEmbeddingPolicy].
   /// [vectorEmbeddings] List of vector embeddings
-  VectorEmbeddingPolicy({
+  const VectorEmbeddingPolicy({
     this.vectorEmbeddings,
   });
 

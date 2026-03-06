@@ -18,7 +18,7 @@ class AclEntryAttachmentState {
   /// [entry] The entry (IP address or CIDR block) that you want to add.
   /// [entryDescription] The description of the entry. The description must be `1` to `256` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
   /// [status] The status of the Acl Entry Attachment.
-  AclEntryAttachmentState({
+  const AclEntryAttachmentState({
     this.aclId,
     this.entry,
     this.entryDescription,

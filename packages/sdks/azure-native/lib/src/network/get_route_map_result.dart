@@ -34,7 +34,7 @@ class GetRouteMapResult {
   /// [provisioningState] The provisioning state of the RouteMap resource.
   /// [rules] List of RouteMap rules to be applied.
   /// [type] Resource type.
-  GetRouteMapResult({
+  const GetRouteMapResult({
     this.associatedInboundConnections,
     this.associatedOutboundConnections,
     required this.azureApiVersion,

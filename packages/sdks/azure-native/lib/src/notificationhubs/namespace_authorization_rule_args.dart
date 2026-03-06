@@ -33,7 +33,7 @@ class NamespaceAuthorizationRuleArgs {
   /// [rights] Gets or sets the rights associated with the rule.
   /// [secondaryKey] Gets a base64-encoded 256-bit primary key for signing and
   /// [tags] Optional.
-  NamespaceAuthorizationRuleArgs({
+  const NamespaceAuthorizationRuleArgs({
     this.authorizationRuleName,
     this.location,
     required this.namespaceName,

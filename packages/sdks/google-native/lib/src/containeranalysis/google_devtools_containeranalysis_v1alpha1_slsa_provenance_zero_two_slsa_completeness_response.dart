@@ -15,7 +15,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletene
   /// [environment] If true, the builder claims that invocation.environment is complete.
   /// [materials] If true, the builder claims that materials is complete.
   /// [parameters] If true, the builder claims that invocation.parameters is complete.
-  GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse({
+  const GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaCompletenessResponse({
     required this.environment,
     required this.materials,
     required this.parameters,

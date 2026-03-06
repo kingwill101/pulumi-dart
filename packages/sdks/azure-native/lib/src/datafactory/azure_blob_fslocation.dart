@@ -19,7 +19,7 @@ class AzureBlobFSLocation {
   /// [fileSystem] Specify the fileSystem of azure blobFS. Type: string (or Expression with resultType string).
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
-  AzureBlobFSLocation({
+  const AzureBlobFSLocation({
     this.fileName,
     this.fileSystem,
     this.folderPath,

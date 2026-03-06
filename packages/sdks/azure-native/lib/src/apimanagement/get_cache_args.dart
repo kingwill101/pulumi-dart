@@ -18,7 +18,7 @@ class GetCacheArgs {
   /// [cacheId] Identifier of the Cache entity. Cache identifier (should be either 'default' or valid Azure region identifier).
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetCacheArgs({
+  const GetCacheArgs({
     required this.cacheId,
     required this.resourceGroupName,
     required this.serviceName,

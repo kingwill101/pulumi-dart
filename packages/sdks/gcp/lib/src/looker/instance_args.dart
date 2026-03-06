@@ -129,7 +129,7 @@ class InstanceArgs {
   /// [region] The name of the Looker region of the instance.
   /// [reservedRange] Name of a reserved IP address range within the consumer network, to be used for
   /// [userMetadata] Metadata about users for a Looker instance.
-  InstanceArgs({
+  const InstanceArgs({
     this.adminSettings,
     this.consumerNetwork,
     this.controlledEgressConfig,

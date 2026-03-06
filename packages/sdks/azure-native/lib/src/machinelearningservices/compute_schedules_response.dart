@@ -10,7 +10,7 @@ class ComputeSchedulesResponse {
 
   /// Creates a new [ComputeSchedulesResponse].
   /// [computeStartStop] The list of compute start stop schedules to be applied.
-  ComputeSchedulesResponse({
+  const ComputeSchedulesResponse({
     this.computeStartStop,
   });
 

@@ -41,7 +41,7 @@ class NetworkInterfaceResponse {
   /// [networkMoRefId] Gets or sets the vCenter MoRef (Managed Object Reference) ID of the virtual network
   /// [nicType] NIC type
   /// [powerOnBoot] Gets or sets the power on boot.
-  NetworkInterfaceResponse({
+  const NetworkInterfaceResponse({
     this.deviceKey,
     required this.ipAddresses,
     this.ipSettings,

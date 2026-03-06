@@ -13,7 +13,7 @@ class IPConfigurationProperties {
   /// Creates a new [IPConfigurationProperties].
   /// [privateIPAddress] PrivateIPAddress - Private IP address of the IP configuration.
   /// [subnet] Subnet - Name of Subnet bound to the IP configuration.
-  IPConfigurationProperties({
+  const IPConfigurationProperties({
     this.privateIPAddress,
     this.subnet,
   });

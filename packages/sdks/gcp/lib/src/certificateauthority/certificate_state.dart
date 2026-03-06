@@ -87,7 +87,7 @@ class CertificateState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [revocationDetails] Output only. Details regarding the revocation of this Certificate. This Certificate is
   /// [updateTime] Output only. The time at which this CertificateAuthority was updated.
-  CertificateState({
+  const CertificateState({
     this.certificateAuthority,
     this.certificateDescriptions,
     this.certificateTemplate,

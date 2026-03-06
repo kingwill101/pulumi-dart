@@ -24,7 +24,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite {
   /// [hostRewrite] Prior to forwarding the request to the selected origin, the request's host header is replaced with contents of hostRewrite.
   /// [pathPrefixRewrite] Prior to forwarding the request to the selected origin, the matching portion of the request's path is replaced by pathPrefixRewrite.
   /// [pathTemplateRewrite] Prior to forwarding the request to the selected origin, if the
-  EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite({
     this.hostRewrite,
     this.pathPrefixRewrite,
     this.pathTemplateRewrite,

@@ -18,7 +18,7 @@ class GetApplicationScalingRulesArgs {
   /// [appId] The ID of the Application.
   /// [ids] A list of Application Scaling Rule IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetApplicationScalingRulesArgs({
+  const GetApplicationScalingRulesArgs({
     required this.appId,
     this.ids,
     this.outputFile,

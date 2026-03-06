@@ -21,7 +21,7 @@ class WorkspaceArgs {
   /// [description] The description of the API Management Workspace.
   /// [displayName] The display name of the API Management Workspace.
   /// [name] Specifies the name which should be used for this API Management Workspace. Changing this forces a new resource to be created.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     required this.apiManagementId,
     this.description,
     required this.displayName,

@@ -24,7 +24,7 @@ class ListenerPolicyArgs {
   /// [policyNames] List of Policy Names to apply to the backend server.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger an update.
-  ListenerPolicyArgs({
+  const ListenerPolicyArgs({
     required this.loadBalancerName,
     required this.loadBalancerPort,
     this.policyNames,

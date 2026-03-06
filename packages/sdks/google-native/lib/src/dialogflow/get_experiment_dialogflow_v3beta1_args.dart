@@ -19,7 +19,7 @@ class GetExperimentDialogflowV3beta1Args {
   /// [experimentId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetExperimentDialogflowV3beta1Args({
+  const GetExperimentDialogflowV3beta1Args({
     required this.agentId,
     required this.environmentId,
     required this.experimentId,

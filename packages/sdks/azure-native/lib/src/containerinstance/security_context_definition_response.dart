@@ -25,7 +25,7 @@ class SecurityContextDefinitionResponse {
   /// [runAsGroup] Sets the User GID for the container.
   /// [runAsUser] Sets the User UID for the container.
   /// [seccompProfile] a base64 encoded string containing the contents of the JSON in the seccomp profile
-  SecurityContextDefinitionResponse({
+  const SecurityContextDefinitionResponse({
     this.allowPrivilegeEscalation,
     this.capabilities,
     this.privileged,

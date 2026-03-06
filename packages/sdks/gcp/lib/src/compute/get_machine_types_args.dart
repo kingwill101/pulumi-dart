@@ -18,7 +18,7 @@ class GetMachineTypesArgs {
   /// [filter] A filter expression that filters machine types listed in the response.
   /// [project] Project from which to list available zones. Defaults to project declared in the provider.
   /// [zone] Zone from which to list machine types.
-  GetMachineTypesArgs({
+  const GetMachineTypesArgs({
     this.filter,
     this.project,
     this.zone,

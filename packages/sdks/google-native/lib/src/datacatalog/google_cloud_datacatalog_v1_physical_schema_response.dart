@@ -27,7 +27,7 @@ class GoogleCloudDatacatalogV1PhysicalSchemaResponse {
   /// [parquet] Marks a Parquet-encoded data source.
   /// [protobuf] Schema in protocol buffer format.
   /// [thrift] Schema in Thrift format.
-  GoogleCloudDatacatalogV1PhysicalSchemaResponse({
+  const GoogleCloudDatacatalogV1PhysicalSchemaResponse({
     required this.avro,
     required this.csv,
     required this.orc,

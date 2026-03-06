@@ -9,7 +9,7 @@ class Counter {
 
   /// Creates a new [Counter].
   /// [value] Value defines how much of a certain device counter is available.
-  Counter({
+  const Counter({
     required this.value,
   });
 

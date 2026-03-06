@@ -14,7 +14,7 @@ class GuardrailContentPolicyConfig {
   /// Creates a new [GuardrailContentPolicyConfig].
   /// [filtersConfigs] Set of content filter configs in content policy.
   /// [tierConfigs] Configuration block for the content policy tier. See Tier Config for more information.
-  GuardrailContentPolicyConfig({
+  const GuardrailContentPolicyConfig({
     this.filtersConfigs,
     this.tierConfigs,
   });

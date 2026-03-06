@@ -76,7 +76,7 @@ class SapTableLinkedServiceResponse {
   /// [type] Type of linked service.
   /// [userName] Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  SapTableLinkedServiceResponse({
+  const SapTableLinkedServiceResponse({
     this.annotations,
     this.clientId,
     this.connectVia,

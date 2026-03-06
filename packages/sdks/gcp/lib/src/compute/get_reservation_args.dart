@@ -18,7 +18,7 @@ class GetReservationArgs {
   /// [name] The name of the Compute Reservation.
   /// [project] Project from which to list the Compute Reservation. Defaults to project declared in the provider.
   /// [zone] Zone where the Compute Reservation resides.
-  GetReservationArgs({
+  const GetReservationArgs({
     required this.name,
     this.project,
     required this.zone,

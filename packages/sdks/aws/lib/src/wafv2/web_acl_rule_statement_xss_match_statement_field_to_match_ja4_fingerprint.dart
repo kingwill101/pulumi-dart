@@ -8,7 +8,7 @@ class WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint {
 
   /// Creates a new [WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint].
   /// [fallbackBehavior] Match status to assign to the web request if there is insufficient TSL Client Hello information to compute the JA4 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
-  WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint({
+  const WebAclRuleStatementXssMatchStatementFieldToMatchJa4Fingerprint({
     required this.fallbackBehavior,
   });
 

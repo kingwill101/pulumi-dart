@@ -12,7 +12,7 @@ class AddDataLakeStoreWithAccountParameters {
   /// Creates a new [AddDataLakeStoreWithAccountParameters].
   /// [name] The unique name of the Data Lake Store account to add.
   /// [suffix] The optional suffix for the Data Lake Store account.
-  AddDataLakeStoreWithAccountParameters({
+  const AddDataLakeStoreWithAccountParameters({
     required this.name,
     this.suffix,
   });

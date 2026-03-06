@@ -34,7 +34,7 @@ class GetShareResult {
   /// [name] The resource name of the share, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/shares/{share_id}`.
   /// [nfsExportOptions] Nfs Export Options. There is a limit of 10 export options per file share.
   /// [state] The share state.
-  GetShareResult({
+  const GetShareResult({
     required this.backup,
     required this.capacityGb,
     required this.createTime,

@@ -14,7 +14,7 @@ class ProvisionedClusterIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] The type of the Managed Identity. The only possible value is `SystemAssigned`. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
-  ProvisionedClusterIdentity({
+  const ProvisionedClusterIdentity({
     this.principalId,
     this.tenantId,
     required this.type,

@@ -8,7 +8,7 @@ class FilterFindingCriteria {
 
   /// Creates a new [FilterFindingCriteria].
   /// [criterions] Required.
-  FilterFindingCriteria({
+  const FilterFindingCriteria({
     required this.criterions,
   });
 

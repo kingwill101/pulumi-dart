@@ -8,7 +8,7 @@ class ProviderDefaultTags {
 
   /// Creates a new [ProviderDefaultTags].
   /// [tags] Resource tags to default across all resources. Can also be configured with environment variables like `TF_AWS_DEFAULT_TAGS_&lt;tag_name&gt;`.
-  ProviderDefaultTags({
+  const ProviderDefaultTags({
     this.tags,
   });
 

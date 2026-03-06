@@ -11,7 +11,7 @@ class FirewallApplicationRuleCollectionRuleProtocol {
   /// Creates a new [FirewallApplicationRuleCollectionRuleProtocol].
   /// [port] Specify a port for the connection.
   /// [type] Specifies the type of connection. Possible values are `Http`, `Https` and `Mssql`.
-  FirewallApplicationRuleCollectionRuleProtocol({
+  const FirewallApplicationRuleCollectionRuleProtocol({
     required this.port,
     required this.type,
   });

@@ -11,7 +11,7 @@ class ClusterShardNodeEndpoint {
   /// Creates a new [ClusterShardNodeEndpoint].
   /// [address] DNS hostname of the node.
   /// [port] The port number on which each of the nodes accepts connections. Defaults to `6379`.
-  ClusterShardNodeEndpoint({
+  const ClusterShardNodeEndpoint({
     this.address,
     this.port,
   });

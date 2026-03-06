@@ -12,7 +12,7 @@ class UserPolicyAttachmentsExclusiveState {
   /// Creates a new [UserPolicyAttachmentsExclusiveState].
   /// [policyArns] A list of managed IAM policy ARNs to be attached to the user. Policies attached to this user but not configured in this argument will be removed.
   /// [userName] IAM user name.
-  UserPolicyAttachmentsExclusiveState({
+  const UserPolicyAttachmentsExclusiveState({
     this.policyArns,
     this.userName,
   });

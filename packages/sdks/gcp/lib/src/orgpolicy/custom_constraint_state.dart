@@ -34,7 +34,7 @@ class CustomConstraintState {
   /// [parent] The parent of the resource, an organization. Format should be `organizations/{organization_id}`.
   /// [resourceTypes] Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
   /// [updateTime] Output only. The timestamp representing when the constraint was last updated.
-  CustomConstraintState({
+  const CustomConstraintState({
     this.actionType,
     this.condition,
     this.description,

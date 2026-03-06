@@ -19,7 +19,7 @@ class ProjectIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Identity of this Dev Center Project.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Identity of this Dev Center Project.
   /// [type] The type of identity used for this Dev Center Project. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned`.
-  ProjectIdentity({
+  const ProjectIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

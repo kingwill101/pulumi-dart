@@ -21,7 +21,7 @@ class GetADLSGen2FileSystemDataSetMappingArgs {
   /// [dataSetMappingName] The name of the dataSetMapping.
   /// [resourceGroupName] The resource group name.
   /// [shareSubscriptionName] The name of the shareSubscription.
-  GetADLSGen2FileSystemDataSetMappingArgs({
+  const GetADLSGen2FileSystemDataSetMappingArgs({
     required this.accountName,
     required this.dataSetMappingName,
     required this.resourceGroupName,

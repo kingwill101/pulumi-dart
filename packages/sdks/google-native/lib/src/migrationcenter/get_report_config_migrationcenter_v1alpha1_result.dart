@@ -25,7 +25,7 @@ class GetReportConfigMigrationcenterV1alpha1Result {
   /// [groupPreferencesetAssignments] Collection of combinations of groups and preference sets.
   /// [name] Name of resource.
   /// [updateTime] The timestamp when the resource was last updated.
-  GetReportConfigMigrationcenterV1alpha1Result({
+  const GetReportConfigMigrationcenterV1alpha1Result({
     required this.createTime,
     required this.description,
     required this.displayName,

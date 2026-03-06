@@ -15,7 +15,7 @@ class EntryAspect {
   /// Creates a new [EntryAspect].
   /// [aspect] A nested object resource.
   /// [aspectKey] Depending on how the aspect is attached to the entry, the format of the aspect key can be one of the following:
-  EntryAspect({
+  const EntryAspect({
     required this.aspect,
     required this.aspectKey,
   });

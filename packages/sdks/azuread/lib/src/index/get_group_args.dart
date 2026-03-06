@@ -29,7 +29,7 @@ class GetGroupArgs {
   /// [mailNickname] The mail alias for the group, unique in the organisation.
   /// [objectId] Specifies the object ID of the group.
   /// [securityEnabled] Whether the group is a security group.
-  GetGroupArgs({
+  const GetGroupArgs({
     this.displayName,
     this.includeTransitiveMembers,
     this.mailEnabled,

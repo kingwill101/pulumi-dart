@@ -14,7 +14,7 @@ class GetServiceMeshesMeshNetwork {
   /// [securityGroupId] The ID of the Security group
   /// [vpcId] The ID of the VPC.
   /// [vswitcheLists] The list of Virtual Switch.
-  GetServiceMeshesMeshNetwork({
+  const GetServiceMeshesMeshNetwork({
     required this.securityGroupId,
     required this.vpcId,
     required this.vswitcheLists,

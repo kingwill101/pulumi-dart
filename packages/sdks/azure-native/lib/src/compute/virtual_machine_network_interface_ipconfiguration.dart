@@ -32,7 +32,7 @@ class VirtualMachineNetworkInterfaceIPConfiguration {
   /// [privateIPAddressVersion] Available from Api-Version 2017-03-30 onwards, it represents whether the specific ipconfiguration is IPv4 or IPv6. Default is taken as IPv4.  Possible values are: 'IPv4' and 'IPv6'.
   /// [publicIPAddressConfiguration] The publicIPAddressConfiguration.
   /// [subnet] Specifies the identifier of the subnet.
-  VirtualMachineNetworkInterfaceIPConfiguration({
+  const VirtualMachineNetworkInterfaceIPConfiguration({
     this.applicationGatewayBackendAddressPools,
     this.applicationSecurityGroups,
     this.loadBalancerBackendAddressPools,

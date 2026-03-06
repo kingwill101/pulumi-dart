@@ -19,7 +19,7 @@ class SubscriberSourceCustomLogSourceResource {
   /// [providers] The details of the log provider for the third-party custom source. See `provider` Block below.
   /// [sourceName] The name for a third-party custom source. This must be a Regionally unique value.
   /// [sourceVersion] The version for a third-party custom source. This must be a Regionally unique value.
-  SubscriberSourceCustomLogSourceResource({
+  const SubscriberSourceCustomLogSourceResource({
     this.attributes,
     this.providers,
     required this.sourceName,

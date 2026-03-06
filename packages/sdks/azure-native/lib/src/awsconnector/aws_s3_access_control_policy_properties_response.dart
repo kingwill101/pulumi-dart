@@ -14,7 +14,7 @@ class AwsS3AccessControlPolicyPropertiesResponse {
   /// Creates a new [AwsS3AccessControlPolicyPropertiesResponse].
   /// [grants] &lt;p&gt;A list of grants.&lt;/p&gt;
   /// [owner] &lt;p&gt;Container for the bucket owner's display name and ID.&lt;/p&gt;
-  AwsS3AccessControlPolicyPropertiesResponse({
+  const AwsS3AccessControlPolicyPropertiesResponse({
     this.grants,
     this.owner,
   });

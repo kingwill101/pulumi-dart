@@ -15,7 +15,7 @@ class GetRegionSslPolicyComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [sslPolicy] Required.
-  GetRegionSslPolicyComputeBetaArgs({
+  const GetRegionSslPolicyComputeBetaArgs({
     this.project,
     required this.region,
     required this.sslPolicy,

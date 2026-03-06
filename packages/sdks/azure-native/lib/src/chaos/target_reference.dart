@@ -12,7 +12,7 @@ class TargetReference {
   /// Creates a new [TargetReference].
   /// [id] String of the resource ID of a Target resource.
   /// [type] Enum of the Target reference type.
-  TargetReference({
+  const TargetReference({
     required this.id,
     required this.type,
   });

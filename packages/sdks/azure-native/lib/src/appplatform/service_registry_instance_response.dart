@@ -12,7 +12,7 @@ class ServiceRegistryInstanceResponse {
   /// Creates a new [ServiceRegistryInstanceResponse].
   /// [name] Name of the Service Registry instance
   /// [status] Status of the Service Registry instance
-  ServiceRegistryInstanceResponse({
+  const ServiceRegistryInstanceResponse({
     required this.name,
     required this.status,
   });

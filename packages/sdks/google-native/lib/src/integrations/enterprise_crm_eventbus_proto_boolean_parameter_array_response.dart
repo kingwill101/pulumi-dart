@@ -7,7 +7,7 @@ class EnterpriseCrmEventbusProtoBooleanParameterArrayResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoBooleanParameterArrayResponse].
   /// [booleanValues] Required.
-  EnterpriseCrmEventbusProtoBooleanParameterArrayResponse({
+  const EnterpriseCrmEventbusProtoBooleanParameterArrayResponse({
     required this.booleanValues,
   });
 

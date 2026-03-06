@@ -18,7 +18,7 @@ class BackendCircuitBreakerRule {
   /// [failureCondition] A `failure_condition` block as defined below.
   /// [name] The name of the circuit breaker rule.
   /// [tripDuration] Specifies the duration for which the circuit remains open before retrying, in ISO 8601 format.
-  BackendCircuitBreakerRule({
+  const BackendCircuitBreakerRule({
     this.acceptRetryAfterEnabled,
     required this.failureCondition,
     required this.name,

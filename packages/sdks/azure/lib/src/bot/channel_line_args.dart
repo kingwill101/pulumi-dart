@@ -22,7 +22,7 @@ class ChannelLineArgs {
   /// [lineChannels] One or more `line_channel` blocks as defined below.
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the Line Channel should be created. Changing this forces a new resource to be created.
-  ChannelLineArgs({
+  const ChannelLineArgs({
     required this.botName,
     required this.lineChannels,
     this.location,

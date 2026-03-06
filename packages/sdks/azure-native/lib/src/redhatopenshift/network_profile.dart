@@ -22,7 +22,7 @@ class NetworkProfile {
   /// [podCidr] The CIDR used for OpenShift/Kubernetes Pods.
   /// [preconfiguredNSG] Specifies whether subnets are pre-attached with an NSG
   /// [serviceCidr] The CIDR used for OpenShift/Kubernetes Services.
-  NetworkProfile({
+  const NetworkProfile({
     this.loadBalancerProfile,
     this.outboundType,
     this.podCidr,

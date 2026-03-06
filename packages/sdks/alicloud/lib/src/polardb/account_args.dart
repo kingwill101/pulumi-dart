@@ -45,7 +45,7 @@ class AccountArgs {
   /// [dbClusterId] The cluster ID.
   /// [kmsEncryptedPassword] An KMS encrypts password used to a db account. If the `account_password` is filled in, this field will be ignored.
   /// [kmsEncryptionContext] An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a db account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
-  AccountArgs({
+  const AccountArgs({
     this.accountDescription,
     this.accountLockState,
     required this.accountName,

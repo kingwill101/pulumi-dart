@@ -13,7 +13,7 @@ class DistributionPolicyComputeV1 {
   /// Creates a new [DistributionPolicyComputeV1].
   /// [targetShape] The distribution shape to which the group converges either proactively or on resize events (depending on the value set in updatePolicy.instanceRedistributionType).
   /// [zones] Zones where the regional managed instance group will create and manage its instances.
-  DistributionPolicyComputeV1({
+  const DistributionPolicyComputeV1({
     this.targetShape,
     this.zones,
   });

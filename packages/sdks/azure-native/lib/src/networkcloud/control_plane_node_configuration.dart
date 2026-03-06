@@ -18,7 +18,7 @@ class ControlPlaneNodeConfiguration {
   /// [availabilityZones] The list of availability zones of the Network Cloud cluster to be used for the provisioning of nodes in the control plane. If not specified, all availability zones will be used.
   /// [count] The number of virtual machines that use this configuration.
   /// [vmSkuName] The name of the VM SKU supplied during creation.
-  ControlPlaneNodeConfiguration({
+  const ControlPlaneNodeConfiguration({
     this.administratorConfiguration,
     this.availabilityZones,
     required this.count,

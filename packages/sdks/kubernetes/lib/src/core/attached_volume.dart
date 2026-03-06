@@ -12,7 +12,7 @@ class AttachedVolume {
   /// Creates a new [AttachedVolume].
   /// [devicePath] DevicePath represents the device path where the volume should be available
   /// [name] Name of the attached volume
-  AttachedVolume({
+  const AttachedVolume({
     required this.devicePath,
     required this.name,
   });

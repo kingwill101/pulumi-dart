@@ -11,7 +11,7 @@ class GetBrokerConfiguration {
   /// Creates a new [GetBrokerConfiguration].
   /// [id] Configuration ID.
   /// [revision] Revision of the Configuration.
-  GetBrokerConfiguration({
+  const GetBrokerConfiguration({
     required this.id,
     required this.revision,
   });

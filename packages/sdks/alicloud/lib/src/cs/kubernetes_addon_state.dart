@@ -30,7 +30,7 @@ class KubernetesAddonState {
   /// [nextVersion] The version which addon can be upgraded to.
   /// [required] Is it a mandatory addon to be installed.
   /// [version] The current version of addon.
-  KubernetesAddonState({
+  const KubernetesAddonState({
     this.canUpgrade,
     this.cleanupCloudResources,
     this.clusterId,

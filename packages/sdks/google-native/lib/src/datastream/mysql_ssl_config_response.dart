@@ -24,7 +24,7 @@ class MysqlSslConfigResponse {
   /// [clientCertificateSet] Indicates whether the client_certificate field is set.
   /// [clientKey] Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory.
   /// [clientKeySet] Indicates whether the client_key field is set.
-  MysqlSslConfigResponse({
+  const MysqlSslConfigResponse({
     required this.caCertificate,
     required this.caCertificateSet,
     required this.clientCertificate,

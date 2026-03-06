@@ -8,7 +8,7 @@ class AwsIntegrationsTrustedAdvisor {
 
   /// Creates a new [AwsIntegrationsTrustedAdvisor].
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsTrustedAdvisor({
+  const AwsIntegrationsTrustedAdvisor({
     this.metricsPollingInterval,
   });
 

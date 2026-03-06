@@ -10,7 +10,7 @@ class GoogleCloudContentwarehouseV1TimestampArrayResponse {
 
   /// Creates a new [GoogleCloudContentwarehouseV1TimestampArrayResponse].
   /// [values] List of timestamp values.
-  GoogleCloudContentwarehouseV1TimestampArrayResponse({
+  const GoogleCloudContentwarehouseV1TimestampArrayResponse({
     required this.values,
   });
 

@@ -10,7 +10,7 @@ class PodSchedulingContextStatusResourceK8sIoV1alpha3 {
 
   /// Creates a new [PodSchedulingContextStatusResourceK8sIoV1alpha3].
   /// [resourceClaims] ResourceClaims describes resource availability for each pod.spec.resourceClaim entry where the corresponding ResourceClaim uses "WaitForFirstConsumer" allocation mode.
-  PodSchedulingContextStatusResourceK8sIoV1alpha3({
+  const PodSchedulingContextStatusResourceK8sIoV1alpha3({
     this.resourceClaims,
   });
 

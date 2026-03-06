@@ -9,7 +9,7 @@ class LoginRoutes {
 
   /// Creates a new [LoginRoutes].
   /// [logoutEndpoint] The endpoint at which a logout request should be made.
-  LoginRoutes({
+  const LoginRoutes({
     this.logoutEndpoint,
   });
 

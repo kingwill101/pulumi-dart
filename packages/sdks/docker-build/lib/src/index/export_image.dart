@@ -52,7 +52,7 @@ class ExportImage {
   /// [pushByDigest] Push image without name.
   /// [store] Store resulting images to the worker's image store and ensure all of
   /// [unpack] Unpack image after creation (for use with containerd). Defaults to
-  ExportImage({
+  const ExportImage({
     this.annotations,
     this.compression,
     this.compressionLevel,

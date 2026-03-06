@@ -18,7 +18,7 @@ class GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse {
   /// [entityType] Optional. The entity type name prefixed with `@`. This field is required for annotated parts of the training phrase.
   /// [text] The text for this part.
   /// [userDefined] Optional. Indicates whether the text was manually annotated. This field is set to true when the Dialogflow Console is used to manually annotate the part. When creating an annotated part with the API, you must set this to true.
-  GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse({
+  const GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartResponse({
     required this.alias,
     required this.entityType,
     required this.text,

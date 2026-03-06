@@ -64,7 +64,7 @@ class StoreState {
   /// [shardCount] The number of shards in this log store. Default to 2. You can modify it by "Split" or "Merge" operations. [Refer to details](https://www.alibabacloud.com/help/zh/sls/product-overview/shard).
   /// [shards] The shard attribute.
   /// [telemetryType] Determines whether store type is metric. `Metrics` means metric store, empty means log store.
-  StoreState({
+  const StoreState({
     this.appendMeta,
     this.autoSplit,
     this.createTime,

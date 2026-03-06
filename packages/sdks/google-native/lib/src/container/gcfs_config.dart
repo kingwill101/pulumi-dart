@@ -9,7 +9,7 @@ class GcfsConfig {
 
   /// Creates a new [GcfsConfig].
   /// [enabled] Whether to use GCFS.
-  GcfsConfig({
+  const GcfsConfig({
     this.enabled,
   });
 

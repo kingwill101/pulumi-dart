@@ -15,7 +15,7 @@ class GoogleCloudApigeeV1SecurityProfileScoringConfigResponse {
   /// [description] Description of the config.
   /// [scorePath] Path of the component config used for scoring.
   /// [title] Title of the config.
-  GoogleCloudApigeeV1SecurityProfileScoringConfigResponse({
+  const GoogleCloudApigeeV1SecurityProfileScoringConfigResponse({
     required this.description,
     required this.scorePath,
     required this.title,

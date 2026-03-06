@@ -12,7 +12,7 @@ class CertificateInfoResponse {
   /// Creates a new [CertificateInfoResponse].
   /// [certificateName] The certificate name
   /// [expiryDate] The certificate expiry date
-  CertificateInfoResponse({
+  const CertificateInfoResponse({
     required this.certificateName,
     required this.expiryDate,
   });

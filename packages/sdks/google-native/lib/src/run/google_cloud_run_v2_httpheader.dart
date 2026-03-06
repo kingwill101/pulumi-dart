@@ -12,7 +12,7 @@ class GoogleCloudRunV2HTTPHeader {
   /// Creates a new [GoogleCloudRunV2HTTPHeader].
   /// [name] The header field name
   /// [value] The header field value
-  GoogleCloudRunV2HTTPHeader({
+  const GoogleCloudRunV2HTTPHeader({
     required this.name,
     this.value,
   });

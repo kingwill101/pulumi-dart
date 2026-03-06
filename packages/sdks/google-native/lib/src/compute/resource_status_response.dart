@@ -26,7 +26,7 @@ class ResourceStatusResponse {
   /// [serviceIntegrationStatuses] Represents the status of the service integration specs defined by the user in instance.serviceIntegrationSpecs.
   /// [shutdownDetails] Details about stopping state of instance
   /// [upcomingMaintenance] Required.
-  ResourceStatusResponse({
+  const ResourceStatusResponse({
     required this.lastInstanceTerminationDetails,
     required this.physicalHost,
     required this.scheduling,

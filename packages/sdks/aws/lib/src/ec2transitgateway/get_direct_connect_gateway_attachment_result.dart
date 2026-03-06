@@ -24,7 +24,7 @@ class GetDirectConnectGatewayAttachmentResult {
   /// [region] Required.
   /// [tags] Key-value tags for the EC2 Transit Gateway Attachment.
   /// [transitGatewayId] Optional.
-  GetDirectConnectGatewayAttachmentResult({
+  const GetDirectConnectGatewayAttachmentResult({
     required this.arn,
     this.dxGatewayId,
     this.filters,

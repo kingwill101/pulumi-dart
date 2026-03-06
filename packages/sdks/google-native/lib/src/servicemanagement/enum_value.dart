@@ -16,7 +16,7 @@ class EnumValue {
   /// [name] Enum value name.
   /// [number] Enum value number.
   /// [options] Protocol buffer options.
-  EnumValue({
+  const EnumValue({
     this.name,
     this.number,
     this.options,

@@ -13,7 +13,7 @@ class DeviceConfigurationResponse {
   /// Creates a new [DeviceConfigurationResponse].
   /// [deviceMetadata] Device metadata details.
   /// [nicDetails] NIC Details of device
-  DeviceConfigurationResponse({
+  const DeviceConfigurationResponse({
     this.deviceMetadata,
     this.nicDetails,
   });

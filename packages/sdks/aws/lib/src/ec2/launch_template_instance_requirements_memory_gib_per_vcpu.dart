@@ -11,7 +11,7 @@ class LaunchTemplateInstanceRequirementsMemoryGibPerVcpu {
   /// Creates a new [LaunchTemplateInstanceRequirementsMemoryGibPerVcpu].
   /// [max] Maximum. May be a decimal number, e.g. `0.5`.
   /// [min] Minimum. May be a decimal number, e.g. `0.5`.
-  LaunchTemplateInstanceRequirementsMemoryGibPerVcpu({
+  const LaunchTemplateInstanceRequirementsMemoryGibPerVcpu({
     this.max,
     this.min,
   });

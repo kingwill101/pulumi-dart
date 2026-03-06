@@ -17,7 +17,7 @@ class LakeMetastoreStatus {
   /// [message] Additional information about the current status.
   /// [state] Output only. Current state of the lake. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
   /// [updateTime] Output only. The time when the lake was last updated.
-  LakeMetastoreStatus({
+  const LakeMetastoreStatus({
     this.endpoint,
     this.message,
     this.state,

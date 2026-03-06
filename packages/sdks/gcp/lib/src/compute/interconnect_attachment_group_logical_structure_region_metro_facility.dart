@@ -16,7 +16,7 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacility {
   /// Creates a new [InterconnectAttachmentGroupLogicalStructureRegionMetroFacility].
   /// [facility] (Output)
   /// [zones] (Output)
-  InterconnectAttachmentGroupLogicalStructureRegionMetroFacility({
+  const InterconnectAttachmentGroupLogicalStructureRegionMetroFacility({
     this.facility,
     this.zones,
   });

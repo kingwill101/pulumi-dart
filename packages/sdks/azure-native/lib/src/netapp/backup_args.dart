@@ -33,7 +33,7 @@ class BackupArgs {
   /// [snapshotName] The name of the snapshot
   /// [useExistingSnapshot] Manual backup an already existing snapshot. This will always be false for scheduled backups and true/false for manual backups
   /// [volumeResourceId] ResourceId used to identify the Volume
-  BackupArgs({
+  const BackupArgs({
     required this.accountName,
     this.backupName,
     required this.backupVaultName,

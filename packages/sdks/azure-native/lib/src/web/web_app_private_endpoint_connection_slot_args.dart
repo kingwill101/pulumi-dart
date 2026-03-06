@@ -29,7 +29,7 @@ class WebAppPrivateEndpointConnectionSlotArgs {
   /// [privateLinkServiceConnectionState] The state of a private link connection
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Required.
-  WebAppPrivateEndpointConnectionSlotArgs({
+  const WebAppPrivateEndpointConnectionSlotArgs({
     this.ipAddresses,
     this.kind,
     required this.name,

@@ -64,7 +64,7 @@ class GetIotSecuritySolutionResult {
   /// [unmaskedIpLoggingStatus] Unmasked IP address logging status
   /// [userDefinedResources] Properties of the IoT Security solution's user defined resources.
   /// [workspace] Workspace resource ID
-  GetIotSecuritySolutionResult({
+  const GetIotSecuritySolutionResult({
     this.additionalWorkspaces,
     required this.autoDiscoveredResources,
     required this.azureApiVersion,

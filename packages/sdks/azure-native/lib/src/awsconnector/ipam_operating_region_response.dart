@@ -9,7 +9,7 @@ class IpamOperatingRegionResponse {
 
   /// Creates a new [IpamOperatingRegionResponse].
   /// [regionName] &lt;p&gt;The name of the operating Region.&lt;/p&gt;
-  IpamOperatingRegionResponse({
+  const IpamOperatingRegionResponse({
     this.regionName,
   });
 

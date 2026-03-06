@@ -12,7 +12,7 @@ class GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig {
   /// Creates a new [GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig].
   /// [cookieBehavior] Determines whether any cookies in viewer requests are included in the cache key and automatically included in requests that CloudFront sends to the origin. Valid values are `none`, `whitelist`, `allExcept`, `all`.
   /// [cookies] Object that contains a list of cookie names. See Items for more information.
-  GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig({
+  const GetCachePolicyParametersInCacheKeyAndForwardedToOriginCookiesConfig({
     required this.cookieBehavior,
     required this.cookies,
   });

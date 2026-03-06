@@ -11,7 +11,7 @@ class UserIdentityPropertiesResponse {
   /// Creates a new [UserIdentityPropertiesResponse].
   /// [clientId] The client id of user assigned identity.
   /// [principalId] The principal id of user assigned identity.
-  UserIdentityPropertiesResponse({
+  const UserIdentityPropertiesResponse({
     this.clientId,
     this.principalId,
   });

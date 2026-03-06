@@ -18,7 +18,7 @@ class GetNodeGroupResult {
   /// [name] The Node group resource name (https://aip.dev/122).
   /// [nodeGroupConfig] Optional. The node group instance group configuration.
   /// [roles] Node group roles.
-  GetNodeGroupResult({
+  const GetNodeGroupResult({
     required this.labels,
     required this.name,
     required this.nodeGroupConfig,

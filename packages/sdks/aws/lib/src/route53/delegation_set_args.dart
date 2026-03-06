@@ -13,7 +13,7 @@ class DelegationSetArgs {
 
   /// Creates a new [DelegationSetArgs].
   /// [referenceName] This is a reference name used in Caller Reference
-  DelegationSetArgs({
+  const DelegationSetArgs({
     this.referenceName,
   });
 

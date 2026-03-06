@@ -34,7 +34,7 @@ class TagValueIamBindingArgs {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
   /// [tagValue] Used to find the parent resource to bind the IAM policy to
-  TagValueIamBindingArgs({
+  const TagValueIamBindingArgs({
     this.condition,
     required this.members,
     required this.role,

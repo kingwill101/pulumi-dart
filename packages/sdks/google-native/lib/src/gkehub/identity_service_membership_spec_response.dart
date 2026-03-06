@@ -10,7 +10,7 @@ class IdentityServiceMembershipSpecResponse {
 
   /// Creates a new [IdentityServiceMembershipSpecResponse].
   /// [authMethods] A member may support multiple auth methods.
-  IdentityServiceMembershipSpecResponse({
+  const IdentityServiceMembershipSpecResponse({
     required this.authMethods,
   });
 

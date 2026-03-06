@@ -8,7 +8,7 @@ class GetManagedRuleGroupRuleActionCountCustomRequestHandling {
 
   /// Creates a new [GetManagedRuleGroupRuleActionCountCustomRequestHandling].
   /// [insertHeaders] Required.
-  GetManagedRuleGroupRuleActionCountCustomRequestHandling({
+  const GetManagedRuleGroupRuleActionCountCustomRequestHandling({
     required this.insertHeaders,
   });
 

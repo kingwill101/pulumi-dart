@@ -12,7 +12,7 @@ class Principal {
   /// Creates a new [Principal].
   /// [id] The object id associated with the principal
   /// [type] The type of the object id. We currently allow users, groups, and service principals
-  Principal({
+  const Principal({
     required this.id,
     required this.type,
   });

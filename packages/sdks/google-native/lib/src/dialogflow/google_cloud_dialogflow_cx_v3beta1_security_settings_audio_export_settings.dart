@@ -19,7 +19,7 @@ class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings {
   /// [audioFormat] File format for exported audio file. Currently only in telephony recordings.
   /// [enableAudioRedaction] Enable audio redaction if it is true.
   /// [gcsBucket] Cloud Storage bucket to export audio record to. Setting this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
-  GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings({
+  const GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettings({
     this.audioExportPattern,
     this.audioFormat,
     this.enableAudioRedaction,

@@ -19,7 +19,7 @@ class ScopeResponse {
   /// [subnets] The collection of  subnets covered by the Managed Network
   /// [subscriptions] The collection of subscriptions covered by the Managed Network
   /// [virtualNetworks] The collection of virtual nets covered by the Managed Network
-  ScopeResponse({
+  const ScopeResponse({
     this.managementGroups,
     this.subnets,
     this.subscriptions,

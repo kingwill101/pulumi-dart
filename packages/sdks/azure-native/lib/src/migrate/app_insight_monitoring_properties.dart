@@ -24,7 +24,7 @@ class AppInsightMonitoringProperties {
   /// [resourceGroup] Gets or sets the resource group of the resource.
   /// [secretStoreDetails] Optional.
   /// [subscriptionId] Gets or sets the subscription id of the resource.
-  AppInsightMonitoringProperties({
+  const AppInsightMonitoringProperties({
     this.appInsightsName,
     this.isEnabled,
     this.region,

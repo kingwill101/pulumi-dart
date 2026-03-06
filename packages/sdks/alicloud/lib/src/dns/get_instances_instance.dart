@@ -27,7 +27,7 @@ class GetInstancesInstance {
   /// [paymentType] Required.
   /// [versionCode] Paid package version.
   /// [versionName] Paid package version name.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.dnsSecurity,
     required this.domain,
     required this.domainNumbers,

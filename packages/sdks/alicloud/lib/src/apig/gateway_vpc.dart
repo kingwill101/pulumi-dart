@@ -11,7 +11,7 @@ class GatewayVpc {
   /// Creates a new [GatewayVpc].
   /// [name] The zone name.
   /// [vpcId] The VPC network ID.
-  GatewayVpc({
+  const GatewayVpc({
     this.name,
     required this.vpcId,
   });

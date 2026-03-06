@@ -17,7 +17,7 @@ class GetImportDataFileArgs {
   /// [importJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetImportDataFileArgs({
+  const GetImportDataFileArgs({
     required this.importDataFileId,
     required this.importJobId,
     required this.location,

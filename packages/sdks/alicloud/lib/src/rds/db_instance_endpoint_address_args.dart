@@ -21,7 +21,7 @@ class DbInstanceEndpointAddressArgs {
   /// [dbInstanceEndpointId] The Endpoint ID of the instance.
   /// [dbInstanceId] The ID of the instance.
   /// [port] The port number of the public endpoint.
-  DbInstanceEndpointAddressArgs({
+  const DbInstanceEndpointAddressArgs({
     required this.connectionStringPrefix,
     required this.dbInstanceEndpointId,
     required this.dbInstanceId,

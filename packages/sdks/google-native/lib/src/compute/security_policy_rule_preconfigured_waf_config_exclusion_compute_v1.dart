@@ -24,7 +24,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionComputeV1 {
   /// [requestUrisToExclude] A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
   /// [targetRuleIds] A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
   /// [targetRuleSet] Target WAF rule set to apply the preconfigured WAF exclusion.
-  SecurityPolicyRulePreconfiguredWafConfigExclusionComputeV1({
+  const SecurityPolicyRulePreconfiguredWafConfigExclusionComputeV1({
     this.requestCookiesToExclude,
     this.requestHeadersToExclude,
     this.requestQueryParamsToExclude,

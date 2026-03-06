@@ -15,7 +15,7 @@ class DestinationOptionsModelPropertiesResponse {
   /// [fileFormat] Property fileFormat
   /// [hiveCompatiblePartitions] Property hiveCompatiblePartitions
   /// [perHourPartition] Property perHourPartition
-  DestinationOptionsModelPropertiesResponse({
+  const DestinationOptionsModelPropertiesResponse({
     this.fileFormat,
     this.hiveCompatiblePartitions,
     this.perHourPartition,

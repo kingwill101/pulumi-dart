@@ -22,7 +22,7 @@ class GetInstanceTypesInstanceType {
   /// [instanceTypeFamily] Required.
   /// [name] The name of the current instance type.
   /// [nameEn] The English name of the current instance type.
-  GetInstanceTypesInstanceType({
+  const GetInstanceTypesInstanceType({
     required this.cpuCoreCount,
     required this.defaultResolution,
     required this.instanceType,

@@ -53,7 +53,7 @@ class GovernanceRuleArgs {
   /// [ruleType] The rule type of the governance rule, defines the source of the rule e.g. Integrated
   /// [scope] The scope of the Governance rules. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   /// [sourceResourceType] The governance rule source, what the rule affects, e.g. Assessments
-  GovernanceRuleArgs({
+  const GovernanceRuleArgs({
     this.description,
     required this.displayName,
     this.excludedScopes,

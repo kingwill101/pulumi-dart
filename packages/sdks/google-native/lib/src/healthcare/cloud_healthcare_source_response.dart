@@ -9,7 +9,7 @@ class CloudHealthcareSourceResponse {
 
   /// Creates a new [CloudHealthcareSourceResponse].
   /// [name] Full path of a Cloud Healthcare API resource.
-  CloudHealthcareSourceResponse({
+  const CloudHealthcareSourceResponse({
     required this.name,
   });
 

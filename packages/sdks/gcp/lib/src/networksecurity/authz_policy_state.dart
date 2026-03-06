@@ -65,7 +65,7 @@ class AuthzPolicyState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [target] Specifies the set of resources to which this policy should be applied to.
   /// [updateTime] The timestamp when the resource was updated.
-  AuthzPolicyState({
+  const AuthzPolicyState({
     this.action,
     this.createTime,
     this.customProvider,

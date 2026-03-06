@@ -28,7 +28,7 @@ class VirtualNetworkGatewayNatRule {
   /// [mode] The Source NAT direction of a VPN NAT.
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [type] The type of NAT rule for VPN NAT.
-  VirtualNetworkGatewayNatRule({
+  const VirtualNetworkGatewayNatRule({
     this.externalMappings,
     this.id,
     this.internalMappings,

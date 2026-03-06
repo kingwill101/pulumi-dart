@@ -17,7 +17,7 @@ class NodeGroupAttachmentDataDisk {
   /// [deleteWithNode] Indicate whether the data disk is released with the node. true indicates that the data disk will be released together when the node unsubscribes.
   /// [performanceLevel] Performance level
   /// [size] Data disk size
-  NodeGroupAttachmentDataDisk({
+  const NodeGroupAttachmentDataDisk({
     this.category,
     this.deleteWithNode,
     this.performanceLevel,

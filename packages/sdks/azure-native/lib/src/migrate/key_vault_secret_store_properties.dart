@@ -18,7 +18,7 @@ class KeyVaultSecretStoreProperties {
   /// [secretStoreId] Optional.
   /// [subscriptionId] Optional.
   /// [tenantId] Optional.
-  KeyVaultSecretStoreProperties({
+  const KeyVaultSecretStoreProperties({
     this.keyvaultName,
     this.managedIdentityProperties,
     this.resourceGroup,

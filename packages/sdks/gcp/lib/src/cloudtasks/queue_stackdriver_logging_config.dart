@@ -10,7 +10,7 @@ class QueueStackdriverLoggingConfig {
 
   /// Creates a new [QueueStackdriverLoggingConfig].
   /// [samplingRatio] Specifies the fraction of operations to write to Stackdriver Logging.
-  QueueStackdriverLoggingConfig({
+  const QueueStackdriverLoggingConfig({
     required this.samplingRatio,
   });
 

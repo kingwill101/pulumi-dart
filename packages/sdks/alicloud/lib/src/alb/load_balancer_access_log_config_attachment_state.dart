@@ -18,7 +18,7 @@ class LoadBalancerAccessLogConfigAttachmentState {
   /// [loadBalancerId] The ID of the load balancing instance.
   /// [logProject] The log items shipped by the access log.
   /// [logStore] Logstore for log delivery.
-  LoadBalancerAccessLogConfigAttachmentState({
+  const LoadBalancerAccessLogConfigAttachmentState({
     this.createTime,
     this.loadBalancerId,
     this.logProject,

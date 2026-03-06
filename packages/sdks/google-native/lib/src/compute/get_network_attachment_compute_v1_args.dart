@@ -15,7 +15,7 @@ class GetNetworkAttachmentComputeV1Args {
   /// [networkAttachment] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetNetworkAttachmentComputeV1Args({
+  const GetNetworkAttachmentComputeV1Args({
     required this.networkAttachment,
     this.project,
     required this.region,

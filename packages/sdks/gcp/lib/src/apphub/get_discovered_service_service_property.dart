@@ -14,7 +14,7 @@ class GetDiscoveredServiceServiceProperty {
   /// [gcpProject] The service project identifier that the underlying cloud resource resides in.
   /// [location] The location of the discovered service.
   /// [zone] The location that the underlying resource resides in if it is zonal.
-  GetDiscoveredServiceServiceProperty({
+  const GetDiscoveredServiceServiceProperty({
     required this.gcpProject,
     required this.location,
     required this.zone,

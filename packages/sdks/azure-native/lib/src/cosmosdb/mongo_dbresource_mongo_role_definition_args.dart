@@ -36,7 +36,7 @@ class MongoDBResourceMongoRoleDefinitionArgs {
   /// [roleName] A user-friendly name for the Role Definition. Must be unique for the database account.
   /// [roles] The set of roles inherited by this Role Definition.
   /// [type] Indicates whether the Role Definition was built-in or user created.
-  MongoDBResourceMongoRoleDefinitionArgs({
+  const MongoDBResourceMongoRoleDefinitionArgs({
     required this.accountName,
     this.databaseName,
     this.mongoRoleDefinitionId,

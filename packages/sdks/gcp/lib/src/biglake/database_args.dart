@@ -23,7 +23,7 @@ class DatabaseArgs {
   /// [hiveOptions] Options of a Hive database.
   /// [name] The name of the database.
   /// [type] The database type.
-  DatabaseArgs({
+  const DatabaseArgs({
     required this.catalog,
     required this.hiveOptions,
     this.name,

@@ -12,7 +12,7 @@ class DiskEncryptionSetParameters {
 
   /// Creates a new [DiskEncryptionSetParameters].
   /// [id] Resource Id
-  DiskEncryptionSetParameters({
+  const DiskEncryptionSetParameters({
     this.id,
   });
 

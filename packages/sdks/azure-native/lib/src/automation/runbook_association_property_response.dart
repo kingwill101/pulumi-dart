@@ -9,7 +9,7 @@ class RunbookAssociationPropertyResponse {
 
   /// Creates a new [RunbookAssociationPropertyResponse].
   /// [name] Gets or sets the name of the runbook.
-  RunbookAssociationPropertyResponse({
+  const RunbookAssociationPropertyResponse({
     this.name,
   });
 

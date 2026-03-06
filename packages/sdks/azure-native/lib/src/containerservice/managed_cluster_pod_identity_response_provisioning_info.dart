@@ -9,7 +9,7 @@ class ManagedClusterPodIdentityResponseProvisioningInfo {
 
   /// Creates a new [ManagedClusterPodIdentityResponseProvisioningInfo].
   /// [error] Pod identity assignment error (if any).
-  ManagedClusterPodIdentityResponseProvisioningInfo({
+  const ManagedClusterPodIdentityResponseProvisioningInfo({
     this.error,
   });
 

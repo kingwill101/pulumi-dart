@@ -27,7 +27,7 @@ class GetJobCollectionResult {
   /// [properties] Gets or sets the job collection properties.
   /// [tags] Gets or sets the tags.
   /// [type] Gets the job collection resource type.
-  GetJobCollectionResult({
+  const GetJobCollectionResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

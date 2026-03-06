@@ -11,7 +11,7 @@ class GetRegionInstanceTemplateGuestAccelerator {
   /// Creates a new [GetRegionInstanceTemplateGuestAccelerator].
   /// [count] The number of the guest accelerator cards exposed to this instance.
   /// [type] The accelerator type resource to expose to this instance. E.g. `nvidia-tesla-k80`.
-  GetRegionInstanceTemplateGuestAccelerator({
+  const GetRegionInstanceTemplateGuestAccelerator({
     required this.count,
     required this.type,
   });

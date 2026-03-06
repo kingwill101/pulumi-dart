@@ -29,7 +29,7 @@ class GetLongTermRetentionPolicyResult {
   /// [weekOfYear] The week of year to take the yearly backup in an ISO 8601 format.
   /// [weeklyRetention] The weekly retention policy for an LTR backup in an ISO 8601 format.
   /// [yearlyRetention] The yearly retention policy for an LTR backup in an ISO 8601 format.
-  GetLongTermRetentionPolicyResult({
+  const GetLongTermRetentionPolicyResult({
     required this.azureApiVersion,
     required this.id,
     this.monthlyRetention,

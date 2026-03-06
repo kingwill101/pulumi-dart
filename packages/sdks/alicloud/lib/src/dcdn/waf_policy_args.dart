@@ -21,7 +21,7 @@ class WafPolicyArgs {
   /// [policyName] The name of the protection policy. The name must be 1 to 64 characters in length, and can contain letters, digits,and underscores (_).
   /// [policyType] The type of the protection policy. Valid values: `default`, `custom`.
   /// [status] The status of the resource. Valid values: `on`, `off`.
-  WafPolicyArgs({
+  const WafPolicyArgs({
     required this.defenseScene,
     required this.policyName,
     required this.policyType,

@@ -24,7 +24,7 @@ class GetLocationResult {
   /// [locationCode] Required.
   /// [locationName] Name of the location. This includes the name of the colocation partner and the physical site of the building.
   /// [region] Required.
-  GetLocationResult({
+  const GetLocationResult({
     required this.availableMacsecPortSpeeds,
     required this.availablePortSpeeds,
     required this.availableProviders,

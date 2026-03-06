@@ -18,7 +18,7 @@ class GetFirewallRuleArgs {
   /// [cacheName] The name of the Redis cache.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] The name of the firewall rule.
-  GetFirewallRuleArgs({
+  const GetFirewallRuleArgs({
     required this.cacheName,
     required this.resourceGroupName,
     required this.ruleName,

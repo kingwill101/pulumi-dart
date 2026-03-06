@@ -11,7 +11,7 @@ class GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance {
   /// Creates a new [GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance].
   /// [instance] The full resource path of the primary instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
   /// [uid] The unique id of the primary instance.
-  GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance({
+  const GetInstanceCrossInstanceReplicationConfigMembershipPrimaryInstance({
     required this.instance,
     required this.uid,
   });

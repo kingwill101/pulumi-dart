@@ -27,7 +27,7 @@ class GetGalleryResult {
   /// [provisioningState] The provisioning state of the resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetGalleryResult({
+  const GetGalleryResult({
     required this.azureApiVersion,
     required this.galleryResourceId,
     required this.id,

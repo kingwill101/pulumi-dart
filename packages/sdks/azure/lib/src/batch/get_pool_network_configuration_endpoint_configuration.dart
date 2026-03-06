@@ -21,7 +21,7 @@ class GetPoolNetworkConfigurationEndpointConfiguration {
   /// [name] The name of the Batch pool.
   /// [networkSecurityGroupRules] The list of network security group rules that are applied to the endpoint.
   /// [protocol] The protocol of the endpoint.
-  GetPoolNetworkConfigurationEndpointConfiguration({
+  const GetPoolNetworkConfigurationEndpointConfiguration({
     required this.backendPort,
     required this.frontendPortRange,
     required this.name,

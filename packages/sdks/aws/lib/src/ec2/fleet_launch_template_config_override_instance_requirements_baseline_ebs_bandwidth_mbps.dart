@@ -11,7 +11,7 @@ class FleetLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthM
   /// Creates a new [FleetLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthMbps].
   /// [max] The maximum baseline bandwidth, in Mbps. To specify no maximum limit, omit this parameter..
   /// [min] The minimum baseline bandwidth, in Mbps. To specify no minimum limit, omit this parameter..
-  FleetLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthMbps({
+  const FleetLaunchTemplateConfigOverrideInstanceRequirementsBaselineEbsBandwidthMbps({
     this.max,
     this.min,
   });

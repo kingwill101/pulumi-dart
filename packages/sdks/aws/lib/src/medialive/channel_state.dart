@@ -65,7 +65,7 @@ class ChannelState {
   /// [tags] A map of tags to assign to the channel. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Optional.
   /// [vpc] Settings for the VPC outputs. See VPC for more details.
-  ChannelState({
+  const ChannelState({
     this.arn,
     this.cdiInputSpecification,
     this.channelClass,

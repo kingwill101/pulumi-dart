@@ -9,7 +9,7 @@ class GetPlanStageTargetChannelTargetInfo {
   /// Creates a new [GetPlanStageTargetChannelTargetInfo].
   /// [contactChannelId] Required.
   /// [retryIntervalInMinutes] Required.
-  GetPlanStageTargetChannelTargetInfo({
+  const GetPlanStageTargetChannelTargetInfo({
     required this.contactChannelId,
     required this.retryIntervalInMinutes,
   });

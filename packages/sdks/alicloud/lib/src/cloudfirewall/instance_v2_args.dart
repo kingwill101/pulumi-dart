@@ -47,7 +47,7 @@ class InstanceV2Args {
   /// [renewalStatus] Whether to renew an instance automatically or not.
   /// [sdl] Data leakage protection status. Valid values: `true`, `false`.
   /// [spec] The edition of the Cloud Firewall instance. Valid values: `payg_version`, `premium_version`, `enterprise_version`,`ultimate_version`.
-  InstanceV2Args({
+  const InstanceV2Args({
     this.cfwLog,
     this.modifyType,
     required this.paymentType,

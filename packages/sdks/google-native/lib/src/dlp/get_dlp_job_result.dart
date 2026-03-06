@@ -46,7 +46,7 @@ class GetDlpJobResult {
   /// [startTime] Time when the job started.
   /// [state] State of a job.
   /// [type] The type of job.
-  GetDlpJobResult({
+  const GetDlpJobResult({
     required this.actionDetails,
     required this.createTime,
     required this.endTime,

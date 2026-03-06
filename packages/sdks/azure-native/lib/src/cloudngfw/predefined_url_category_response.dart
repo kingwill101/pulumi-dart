@@ -10,7 +10,7 @@ class PredefinedUrlCategoryResponse {
   /// Creates a new [PredefinedUrlCategoryResponse].
   /// [action] Required.
   /// [name] Required.
-  PredefinedUrlCategoryResponse({
+  const PredefinedUrlCategoryResponse({
     required this.action,
     required this.name,
   });

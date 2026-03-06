@@ -7,7 +7,7 @@ class ProviderFeaturesMachineLearning {
 
   /// Creates a new [ProviderFeaturesMachineLearning].
   /// [purgeSoftDeletedWorkspaceOnDestroy] Optional.
-  ProviderFeaturesMachineLearning({
+  const ProviderFeaturesMachineLearning({
     this.purgeSoftDeletedWorkspaceOnDestroy,
   });
 

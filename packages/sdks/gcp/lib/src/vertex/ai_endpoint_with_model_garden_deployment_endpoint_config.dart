@@ -22,7 +22,7 @@ class AiEndpointWithModelGardenDeploymentEndpointConfig {
   /// [dedicatedEndpointEnabled] If true, the endpoint will be exposed through a dedicated
   /// [endpointDisplayName] The user-specified display name of the endpoint. If not set, a
   /// [privateServiceConnectConfig] The configuration for Private Service Connect (PSC).
-  AiEndpointWithModelGardenDeploymentEndpointConfig({
+  const AiEndpointWithModelGardenDeploymentEndpointConfig({
     this.dedicatedEndpointEnabled,
     this.endpointDisplayName,
     this.privateServiceConnectConfig,

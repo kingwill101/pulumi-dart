@@ -9,7 +9,7 @@ class AttachedClusterSecurityPostureConfig {
 
   /// Creates a new [AttachedClusterSecurityPostureConfig].
   /// [vulnerabilityMode] Sets the mode of the Kubernetes security posture API's workload vulnerability scanning.
-  AttachedClusterSecurityPostureConfig({
+  const AttachedClusterSecurityPostureConfig({
     required this.vulnerabilityMode,
   });
 

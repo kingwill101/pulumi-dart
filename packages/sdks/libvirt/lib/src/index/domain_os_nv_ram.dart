@@ -21,7 +21,7 @@ class DomainOsNvRam {
   /// [source] Specifies the source of the backing store, determining its origin and how it is accessed.
   /// [template] Defines the template configuration for the NVRAM.
   /// [templateFormat] Specifies the format of the template for the NVRAM.
-  DomainOsNvRam({
+  const DomainOsNvRam({
     this.format,
     required this.nvRam,
     this.source,

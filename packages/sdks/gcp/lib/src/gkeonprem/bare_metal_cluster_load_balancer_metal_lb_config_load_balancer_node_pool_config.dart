@@ -10,7 +10,7 @@ class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig {
 
   /// Creates a new [BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig].
   /// [nodePoolConfig] The generic configuration for a node pool running a load balancer.
-  BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig({
+  const BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig({
     this.nodePoolConfig,
   });
 

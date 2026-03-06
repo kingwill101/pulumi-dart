@@ -38,7 +38,7 @@ class GetMetricRuleBlackListsResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetMetricRuleBlackListsResult({
+  const GetMetricRuleBlackListsResult({
     this.category,
     required this.id,
     required this.ids,

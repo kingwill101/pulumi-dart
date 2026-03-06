@@ -34,7 +34,7 @@ class GoogleCloudDialogflowCxV3FulfillmentResponse {
   /// [setParameterActions] Set parameter values before executing the webhook.
   /// [tag] The value of this field will be populated in the WebhookRequest `fulfillmentInfo.tag` field by Dialogflow when the associated webhook is called. The tag is typically used by the webhook service to identify which fulfillment is being called, but it could be used for other purposes. This field is required if `webhook` is specified.
   /// [webhook] The webhook to call. Format: `projects//locations//agents//webhooks/`.
-  GoogleCloudDialogflowCxV3FulfillmentResponse({
+  const GoogleCloudDialogflowCxV3FulfillmentResponse({
     required this.advancedSettings,
     required this.conditionalCases,
     required this.enableGenerativeFallback,

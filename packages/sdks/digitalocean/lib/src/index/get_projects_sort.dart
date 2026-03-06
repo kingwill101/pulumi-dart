@@ -12,7 +12,7 @@ class GetProjectsSort {
   /// Creates a new [GetProjectsSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
   /// [key] Sort the projects by this key. This may be one of `name`,
-  GetProjectsSort({
+  const GetProjectsSort({
     this.direction,
     required this.key,
   });

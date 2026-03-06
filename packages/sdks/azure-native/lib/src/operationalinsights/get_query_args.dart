@@ -18,7 +18,7 @@ class GetQueryArgs {
   /// [id] The id of a specific query defined in the Log Analytics QueryPack
   /// [queryPackName] The name of the Log Analytics QueryPack resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetQueryArgs({
+  const GetQueryArgs({
     required this.id,
     required this.queryPackName,
     required this.resourceGroupName,

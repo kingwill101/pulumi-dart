@@ -31,7 +31,7 @@ class ModelCardArgs {
   /// [securityConfig] KMS key to encrypt, decrypt, and re-encrypt model card content. Fields are documented below.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  ModelCardArgs({
+  const ModelCardArgs({
     required this.content,
     required this.modelCardName,
     required this.modelCardStatus,

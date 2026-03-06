@@ -14,7 +14,7 @@ class GetKnowledgeBaseResult {
   /// [displayName] The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
   /// [languageCode] Language which represents the KnowledgeBase. When the KnowledgeBase is created/updated, expect this to be present for non en-us languages. When unspecified, the default language code en-us applies.
   /// [name] The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`.
-  GetKnowledgeBaseResult({
+  const GetKnowledgeBaseResult({
     required this.displayName,
     required this.languageCode,
     required this.name,

@@ -25,7 +25,7 @@ class GetCertificatesCertificate {
   /// [notValidAfter] Required.
   /// [notValidBefore] Required.
   /// [type] Required.
-  GetCertificatesCertificate({
+  const GetCertificatesCertificate({
     required this.certificate,
     required this.created,
     required this.domainNames,

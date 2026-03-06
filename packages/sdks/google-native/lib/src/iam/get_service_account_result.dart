@@ -32,7 +32,7 @@ class GetServiceAccountResult {
   /// [oauth2ClientId] The OAuth 2.0 client ID for the service account.
   /// [project] The ID of the project that owns the service account.
   /// [uniqueId] The unique, stable numeric ID for the service account. Each service account retains its unique ID even if you delete the service account. For example, if you delete a service account, then create a new service account with the same name, the new service account has a different unique ID than the deleted service account.
-  GetServiceAccountResult({
+  const GetServiceAccountResult({
     required this.description,
     required this.disabled,
     required this.displayName,

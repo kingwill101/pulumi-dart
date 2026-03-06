@@ -41,7 +41,7 @@ class InstanceAdAuthServer {
   /// [port] The port that is used to access the AD server.
   /// [server] The address of the AD server.
   /// [standbyServer] The address of the secondary AD server.
-  InstanceAdAuthServer({
+  const InstanceAdAuthServer({
     required this.account,
     required this.baseDn,
     required this.domain,

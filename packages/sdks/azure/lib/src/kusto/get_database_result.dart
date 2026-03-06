@@ -26,7 +26,7 @@ class GetDatabaseResult {
   /// [resourceGroupName] Required.
   /// [size] The size of the database in bytes.
   /// [softDeletePeriod] The time the data should be kept before it stops being accessible to queries as ISO 8601 timespan.
-  GetDatabaseResult({
+  const GetDatabaseResult({
     required this.clusterName,
     required this.hotCachePeriod,
     required this.id,

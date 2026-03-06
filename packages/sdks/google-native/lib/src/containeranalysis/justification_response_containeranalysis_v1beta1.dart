@@ -12,7 +12,7 @@ class JustificationResponseContaineranalysisV1beta1 {
   /// Creates a new [JustificationResponseContaineranalysisV1beta1].
   /// [details] Additional details on why this justification was chosen.
   /// [justificationType] The justification type for this vulnerability.
-  JustificationResponseContaineranalysisV1beta1({
+  const JustificationResponseContaineranalysisV1beta1({
     required this.details,
     required this.justificationType,
   });

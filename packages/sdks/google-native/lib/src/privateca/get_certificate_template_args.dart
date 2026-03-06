@@ -15,7 +15,7 @@ class GetCertificateTemplateArgs {
   /// [certificateTemplateId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCertificateTemplateArgs({
+  const GetCertificateTemplateArgs({
     required this.certificateTemplateId,
     required this.location,
     this.project,

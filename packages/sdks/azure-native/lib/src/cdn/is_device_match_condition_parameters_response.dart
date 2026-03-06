@@ -21,7 +21,7 @@ class IsDeviceMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleIsDeviceConditionParameters'.
-  IsDeviceMatchConditionParametersResponse({
+  const IsDeviceMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

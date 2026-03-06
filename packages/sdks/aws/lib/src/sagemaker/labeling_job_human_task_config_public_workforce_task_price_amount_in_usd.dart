@@ -14,7 +14,7 @@ class LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd {
   /// [cents] Fractional portion, in cents, of the amount.
   /// [dollars] Whole number of dollars in the amount.
   /// [tenthFractionsOfACent] Fractions of a cent, in tenths.
-  LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd({
+  const LabelingJobHumanTaskConfigPublicWorkforceTaskPriceAmountInUsd({
     this.cents,
     this.dollars,
     this.tenthFractionsOfACent,

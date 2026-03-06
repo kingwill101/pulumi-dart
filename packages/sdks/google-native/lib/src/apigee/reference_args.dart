@@ -25,7 +25,7 @@ class ReferenceArgs {
   /// [organizationId] Required.
   /// [refers] The id of the resource to which this reference refers. Must be the id of a resource that exists in the parent environment and is of the given resource_type.
   /// [resourceType] The type of resource referred to by this reference. Valid values are 'KeyStore' or 'TrustStore'.
-  ReferenceArgs({
+  const ReferenceArgs({
     this.description,
     required this.environmentId,
     this.name,

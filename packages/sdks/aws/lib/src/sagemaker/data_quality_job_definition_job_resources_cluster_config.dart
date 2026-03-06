@@ -17,7 +17,7 @@ class DataQualityJobDefinitionJobResourcesClusterConfig {
   /// [instanceType] The ML compute instance type for the processing job.
   /// [volumeKmsKeyId] The AWS Key Management Service (AWS KMS) key that Amazon SageMaker AI uses to encrypt data on the storage volume attached to the ML compute instance(s) that run the model monitoring job.
   /// [volumeSizeInGb] The size of the ML storage volume, in gigabytes, that you want to provision. You must specify sufficient ML storage for your scenario.
-  DataQualityJobDefinitionJobResourcesClusterConfig({
+  const DataQualityJobDefinitionJobResourcesClusterConfig({
     required this.instanceCount,
     required this.instanceType,
     this.volumeKmsKeyId,

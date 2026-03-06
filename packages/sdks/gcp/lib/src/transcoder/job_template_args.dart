@@ -30,7 +30,7 @@ class JobTemplateArgs {
   /// [labels] The labels associated with this job template. You can use these to organize and group your job templates.
   /// [location] The location of the transcoding job template resource.
   /// [project] The ID of the project in which the resource belongs.
-  JobTemplateArgs({
+  const JobTemplateArgs({
     this.config,
     required this.jobTemplateId,
     this.labels,

@@ -11,7 +11,7 @@ class WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory {
   /// Creates a new [WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory].
   /// [physicalPath] The physical path for the Virtual Application.
   /// [virtualPath] The Virtual Path for the Virtual Application.
-  WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory({
+  const WindowsWebAppSiteConfigVirtualApplicationVirtualDirectory({
     this.physicalPath,
     this.virtualPath,
   });

@@ -28,7 +28,7 @@ class ReplicationNetworkMappingArgs {
   /// [properties] Input properties for creating network mapping.
   /// [resourceGroupName] The name of the resource group where the recovery services vault is present.
   /// [resourceName] The name of the recovery services vault.
-  ReplicationNetworkMappingArgs({
+  const ReplicationNetworkMappingArgs({
     required this.fabricName,
     this.networkMappingName,
     required this.networkName,

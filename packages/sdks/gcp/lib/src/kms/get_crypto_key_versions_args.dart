@@ -23,7 +23,7 @@ class GetCryptoKeyVersionsArgs {
   /// Creates a new [GetCryptoKeyVersionsArgs].
   /// [cryptoKey] The `id` of the Google Cloud Platform CryptoKey to which the key version belongs. This is also the `id` field of the
   /// [filter] The filter argument is used to add a filter query parameter that limits which versions are retrieved by the data source: ?filter={{filter}}. When no value is provided there is no filtering.
-  GetCryptoKeyVersionsArgs({
+  const GetCryptoKeyVersionsArgs({
     required this.cryptoKey,
     this.filter,
   });

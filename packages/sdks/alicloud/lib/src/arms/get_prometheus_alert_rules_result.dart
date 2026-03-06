@@ -28,7 +28,7 @@ class GetPrometheusAlertRulesResult {
   /// [rules] Required.
   /// [status] Optional.
   /// [type] Optional.
-  GetPrometheusAlertRulesResult({
+  const GetPrometheusAlertRulesResult({
     required this.clusterId,
     required this.id,
     required this.ids,

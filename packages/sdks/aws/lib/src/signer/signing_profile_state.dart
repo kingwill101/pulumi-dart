@@ -54,7 +54,7 @@ class SigningProfileState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [version] The current version of the signing profile.
   /// [versionArn] The signing profile ARN, including the profile version.
-  SigningProfileState({
+  const SigningProfileState({
     this.arn,
     this.name,
     this.namePrefix,

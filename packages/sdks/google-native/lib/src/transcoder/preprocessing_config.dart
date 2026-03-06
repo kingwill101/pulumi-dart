@@ -34,7 +34,7 @@ class PreprocessingConfig {
   /// [deinterlace] Specify the video deinterlace configuration.
   /// [denoise] Denoise preprocessing configuration.
   /// [pad] Specify the video pad filter configuration.
-  PreprocessingConfig({
+  const PreprocessingConfig({
     this.audio,
     this.color,
     this.crop,

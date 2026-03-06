@@ -13,7 +13,7 @@ class ColumnTransformer {
   /// Creates a new [ColumnTransformer].
   /// [fields] Fields to apply transformer logic on.
   /// [parameters] Different properties to be passed to transformer.
-  ColumnTransformer({
+  const ColumnTransformer({
     this.fields,
     this.parameters,
   });

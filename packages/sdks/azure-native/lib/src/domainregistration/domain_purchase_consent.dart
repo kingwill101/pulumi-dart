@@ -15,7 +15,7 @@ class DomainPurchaseConsent {
   /// [agreedAt] Timestamp when the agreements were accepted.
   /// [agreedBy] Client IP address.
   /// [agreementKeys] List of applicable legal agreement keys. This list can be retrieved using ListLegalAgreements API under &lt;code&gt;TopLevelDomain&lt;/code&gt; resource.
-  DomainPurchaseConsent({
+  const DomainPurchaseConsent({
     this.agreedAt,
     this.agreedBy,
     this.agreementKeys,

@@ -18,7 +18,7 @@ class GetRestorableDatabaseAccountsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] The location of the regional Cosmos DB Restorable Database Account.
   /// [name] Required.
-  GetRestorableDatabaseAccountsResult({
+  const GetRestorableDatabaseAccountsResult({
     required this.accounts,
     required this.id,
     required this.location,

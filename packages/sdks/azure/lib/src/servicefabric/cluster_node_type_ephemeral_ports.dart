@@ -11,7 +11,7 @@ class ClusterNodeTypeEphemeralPorts {
   /// Creates a new [ClusterNodeTypeEphemeralPorts].
   /// [endPort] The end of the Ephemeral Port Range on this Node Type.
   /// [startPort] The start of the Ephemeral Port Range on this Node Type.
-  ClusterNodeTypeEphemeralPorts({
+  const ClusterNodeTypeEphemeralPorts({
     required this.endPort,
     required this.startPort,
   });

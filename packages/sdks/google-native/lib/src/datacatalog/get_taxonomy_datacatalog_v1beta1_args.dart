@@ -15,7 +15,7 @@ class GetTaxonomyDatacatalogV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [taxonomyId] Required.
-  GetTaxonomyDatacatalogV1beta1Args({
+  const GetTaxonomyDatacatalogV1beta1Args({
     required this.location,
     this.project,
     required this.taxonomyId,

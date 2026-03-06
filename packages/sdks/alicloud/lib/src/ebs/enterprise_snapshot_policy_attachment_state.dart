@@ -12,7 +12,7 @@ class EnterpriseSnapshotPolicyAttachmentState {
   /// Creates a new [EnterpriseSnapshotPolicyAttachmentState].
   /// [diskId] Cloud Disk ID.
   /// [policyId] the enterprise snapshot policy id.
-  EnterpriseSnapshotPolicyAttachmentState({
+  const EnterpriseSnapshotPolicyAttachmentState({
     this.diskId,
     this.policyId,
   });

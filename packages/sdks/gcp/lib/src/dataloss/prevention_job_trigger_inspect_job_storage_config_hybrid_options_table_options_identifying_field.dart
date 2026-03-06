@@ -8,7 +8,7 @@ class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdenti
 
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField].
   /// [name] Name describing the field.
-  PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField({
+  const PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField({
     required this.name,
   });
 

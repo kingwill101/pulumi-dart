@@ -11,7 +11,7 @@ class TopicRuleHttpHttpHeader {
   /// Creates a new [TopicRuleHttpHttpHeader].
   /// [key] The name of the HTTP header.
   /// [value] The value of the HTTP header.
-  TopicRuleHttpHttpHeader({
+  const TopicRuleHttpHttpHeader({
     required this.key,
     required this.value,
   });

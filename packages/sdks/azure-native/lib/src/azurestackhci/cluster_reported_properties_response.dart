@@ -40,7 +40,7 @@ class ClusterReportedPropertiesResponse {
   /// [nodes] List of nodes reported by the cluster.
   /// [oemActivation] OEM activation status of the cluster.
   /// [supportedCapabilities] Capabilities supported by the cluster.
-  ClusterReportedPropertiesResponse({
+  const ClusterReportedPropertiesResponse({
     required this.clusterId,
     required this.clusterName,
     required this.clusterType,

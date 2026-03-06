@@ -74,7 +74,7 @@ class TrailState {
   /// [snsTopicName] Name of the Amazon SNS topic defined for notification of log file delivery. Specify the SNS topic ARN if it resides in another region.
   /// [tags] Map of tags to assign to the trail. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  TrailState({
+  const TrailState({
     this.advancedEventSelectors,
     this.arn,
     this.cloudWatchLogsGroupArn,

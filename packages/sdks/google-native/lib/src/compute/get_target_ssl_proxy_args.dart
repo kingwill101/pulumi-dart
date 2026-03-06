@@ -13,7 +13,7 @@ class GetTargetSslProxyArgs {
   /// Creates a new [GetTargetSslProxyArgs].
   /// [project] Optional.
   /// [targetSslProxy] Required.
-  GetTargetSslProxyArgs({
+  const GetTargetSslProxyArgs({
     this.project,
     required this.targetSslProxy,
   });

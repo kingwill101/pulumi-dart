@@ -23,7 +23,7 @@ class NetworkTapRuleMatchConfigurationResponse {
   /// [matchConditions] List of the match conditions.
   /// [matchConfigurationName] The name of the match configuration.
   /// [sequenceNumber] Sequence Number of the match configuration..
-  NetworkTapRuleMatchConfigurationResponse({
+  const NetworkTapRuleMatchConfigurationResponse({
     this.actions,
     this.ipAddressType,
     this.matchConditions,

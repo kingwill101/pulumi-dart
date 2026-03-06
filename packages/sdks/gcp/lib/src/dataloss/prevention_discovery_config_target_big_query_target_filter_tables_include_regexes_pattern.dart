@@ -14,7 +14,7 @@ class PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPat
   /// [datasetIdRegex] if unset, this property matches all datasets
   /// [projectIdRegex] For organizations, if unset, will match all projects. Has no effect for data profile configurations created within a project.
   /// [tableIdRegex] if unset, this property matches all tables
-  PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern({
+  const PreventionDiscoveryConfigTargetBigQueryTargetFilterTablesIncludeRegexesPattern({
     this.datasetIdRegex,
     this.projectIdRegex,
     this.tableIdRegex,

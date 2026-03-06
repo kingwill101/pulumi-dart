@@ -54,7 +54,7 @@ class RouteInfoResponseNetworkmanagementV1beta1 {
   /// [srcIpRange] Source IP address range of the route. Policy based routes only.
   /// [srcPortRanges] Source port ranges of the route. Policy based routes only.
   /// [uri] URI of a route. Dynamic, peering static and peering dynamic routes do not have an URI. Advertised route from Google Cloud VPC to on-premises network also does not have an URI.
-  RouteInfoResponseNetworkmanagementV1beta1({
+  const RouteInfoResponseNetworkmanagementV1beta1({
     required this.destIpRange,
     required this.destPortRanges,
     required this.displayName,

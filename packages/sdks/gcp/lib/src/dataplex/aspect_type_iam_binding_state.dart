@@ -44,7 +44,7 @@ class AspectTypeIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  AspectTypeIamBindingState({
+  const AspectTypeIamBindingState({
     this.aspectTypeId,
     this.condition,
     this.etag,

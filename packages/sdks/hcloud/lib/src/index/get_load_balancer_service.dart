@@ -25,7 +25,7 @@ class GetLoadBalancerService {
   /// [listenPort] (int) Port the service listen on. Can be everything between `1` and `65535`. Must be unique per Load Balancer.
   /// [protocol] (string) Protocol the health check uses. `http`, `https` or `tcp`
   /// [proxyprotocol] (bool) Enable proxyprotocol.
-  GetLoadBalancerService({
+  const GetLoadBalancerService({
     required this.destinationPort,
     required this.healthChecks,
     required this.https,

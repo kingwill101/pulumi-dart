@@ -32,7 +32,7 @@ class TagRuleArgs {
   /// [metricTagFilters] A `metric_tag_filter` block as defined below.
   /// [monitorId] Specifies the ID of the New Relic Monitor this Tag Rule should be created within. Changing this forces a new Azure Native New Relic Tag Rule to be created.
   /// [subscriptionLogEnabled] Whether subscription logs should be sent for the Monitor resource. Defaults to `false`.
-  TagRuleArgs({
+  const TagRuleArgs({
     this.activityLogEnabled,
     this.azureActiveDirectoryLogEnabled,
     this.logTagFilters,

@@ -28,7 +28,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefix {
   /// [isAddress] Whether the sub prefix is delegated to create Address resources in the delegatee project.
   /// [mode] The PublicDelegatedSubPrefix mode for IPv6 only.
   /// [name] The name of the sub public delegated prefix.
-  PublicDelegatedPrefixPublicDelegatedSubPrefix({
+  const PublicDelegatedPrefixPublicDelegatedSubPrefix({
     this.allocatablePrefixLength,
     this.delegateeProject,
     this.description,

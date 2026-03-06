@@ -20,7 +20,7 @@ class GetTestablePermissionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [permissions] A list of permissions matching the provided input. Structure is defined below.
   /// [stages] Optional.
-  GetTestablePermissionsResult({
+  const GetTestablePermissionsResult({
     this.customSupportLevel,
     required this.fullResourceName,
     required this.id,

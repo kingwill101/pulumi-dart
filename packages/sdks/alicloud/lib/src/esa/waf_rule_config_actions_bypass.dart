@@ -20,7 +20,7 @@ class WafRuleConfigActionsBypass {
   /// [regularTypes] The types of managed rules to skip.
   /// [skip] The scope that is skipped when requests match conditions defined in the whitelist rule.
   /// [tags] The rule categories that are skipped when requests match conditions defined in the whitelist rule.
-  WafRuleConfigActionsBypass({
+  const WafRuleConfigActionsBypass({
     this.customRules,
     this.regularRules,
     this.regularTypes,

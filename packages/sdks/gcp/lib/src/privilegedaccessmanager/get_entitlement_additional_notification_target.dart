@@ -11,7 +11,7 @@ class GetEntitlementAdditionalNotificationTarget {
   /// Creates a new [GetEntitlementAdditionalNotificationTarget].
   /// [adminEmailRecipients] Optional. Additional email addresses to be notified when a principal(requester) is granted access.
   /// [requesterEmailRecipients] Optional. Additional email address to be notified about an eligible entitlement.
-  GetEntitlementAdditionalNotificationTarget({
+  const GetEntitlementAdditionalNotificationTarget({
     required this.adminEmailRecipients,
     required this.requesterEmailRecipients,
   });

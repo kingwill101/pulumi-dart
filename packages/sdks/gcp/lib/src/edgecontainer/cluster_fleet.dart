@@ -16,7 +16,7 @@ class ClusterFleet {
   /// Creates a new [ClusterFleet].
   /// [membership] (Output)
   /// [project] The name of the Fleet host project where this cluster will be registered.
-  ClusterFleet({
+  const ClusterFleet({
     this.membership,
     required this.project,
   });

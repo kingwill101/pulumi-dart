@@ -86,7 +86,7 @@ class GetNodeDeviceInfoCapability {
   /// [type] Capability type (e.g., `pci`, `usb_device`, `net`, `storage`).
   /// [vendorId] Vendor ID.
   /// [vendorName] Vendor name.
-  GetNodeDeviceInfoCapability({
+  const GetNodeDeviceInfoCapability({
     required this.address,
     required this.block,
     required this.bus,

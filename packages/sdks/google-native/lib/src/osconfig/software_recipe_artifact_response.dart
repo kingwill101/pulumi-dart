@@ -17,7 +17,7 @@ class SoftwareRecipeArtifactResponse {
   /// [allowInsecure] Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
   /// [gcs] A Google Cloud Storage artifact.
   /// [remote] A generic remote artifact.
-  SoftwareRecipeArtifactResponse({
+  const SoftwareRecipeArtifactResponse({
     required this.allowInsecure,
     required this.gcs,
     required this.remote,

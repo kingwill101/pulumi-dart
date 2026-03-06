@@ -27,7 +27,7 @@ class GetRulesResult {
   /// [names] A list of SLB listener rules names.
   /// [outputFile] Optional.
   /// [slbRules] A list of SLB listener rules. Each element contains the following attributes:
-  GetRulesResult({
+  const GetRulesResult({
     required this.frontendPort,
     required this.id,
     required this.ids,

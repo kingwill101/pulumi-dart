@@ -12,7 +12,7 @@ class AdminCredentials {
   /// Creates a new [AdminCredentials].
   /// [sourceServerPassword] Password for the user of the source server.
   /// [targetServerPassword] Password for the user of the target server.
-  AdminCredentials({
+  const AdminCredentials({
     required this.sourceServerPassword,
     required this.targetServerPassword,
   });

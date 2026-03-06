@@ -47,7 +47,7 @@ class GetInstancesInstance {
   /// [status] The status of Ons instance. Valid values: `0` deploying, `2` arrears, `5` running, `7` upgrading.
   /// [tags] A map of tags assigned to the Ons instance.
   /// [tcpEndpoint] The TCP endpoint for the Message Queue for Apache RocketMQ instance.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.httpInternalEndpoint,
     required this.httpInternetEndpoint,
     required this.httpInternetSecureEndpoint,

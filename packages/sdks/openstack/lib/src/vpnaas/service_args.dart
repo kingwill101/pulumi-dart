@@ -40,7 +40,7 @@ class ServiceArgs {
   /// [subnetId] SubnetID is the ID of the subnet. Default is null.
   /// [tenantId] The owner of the service. Required if admin wants to
   /// [valueSpecs] Map of additional options.
-  ServiceArgs({
+  const ServiceArgs({
     this.adminStateUp,
     this.description,
     this.name,

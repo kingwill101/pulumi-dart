@@ -45,7 +45,7 @@ class GetServicePlanResult {
   /// [tags] A mapping of tags assigned to the Service Plan.
   /// [workerCount] The number of Workers (instances) allocated.
   /// [zoneBalancingEnabled] Is the Service Plan balance across Availability Zones in the region?
-  GetServicePlanResult({
+  const GetServicePlanResult({
     required this.appServiceEnvironmentId,
     required this.id,
     required this.kind,

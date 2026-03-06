@@ -13,7 +13,7 @@ class DomainSysInfo {
   /// Creates a new [DomainSysInfo].
   /// [fwCfg] Configures the firmware configuration settings for the virtual machine.
   /// [smbios] Configures the SMBIOS system information for the virtual machine.
-  DomainSysInfo({
+  const DomainSysInfo({
     this.fwCfg,
     this.smbios,
   });

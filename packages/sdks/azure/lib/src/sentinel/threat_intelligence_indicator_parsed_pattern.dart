@@ -12,7 +12,7 @@ class ThreatIntelligenceIndicatorParsedPattern {
   /// Creates a new [ThreatIntelligenceIndicatorParsedPattern].
   /// [patternTypeKey] The type key of parsed pattern.
   /// [patternTypeValues] A `pattern_type_values` block as defined below.
-  ThreatIntelligenceIndicatorParsedPattern({
+  const ThreatIntelligenceIndicatorParsedPattern({
     this.patternTypeKey,
     this.patternTypeValues,
   });

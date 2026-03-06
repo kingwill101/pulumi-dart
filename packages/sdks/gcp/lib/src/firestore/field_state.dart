@@ -36,7 +36,7 @@ class FieldState {
   /// [name] The name of this field. Format:
   /// [project] The ID of the project in which the resource belongs.
   /// [ttlConfig] The TTL configuration for this Field. If set to an empty block (i.e. `ttl_config {}`), a TTL policy is configured based on the field. If unset, a TTL policy is not configured (or will be disabled upon updating the resource).
-  FieldState({
+  const FieldState({
     this.collection,
     this.database,
     this.field,

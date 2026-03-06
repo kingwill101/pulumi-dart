@@ -35,7 +35,7 @@ class MigrateSqlServerSqlMISyncTaskPropertiesResponse {
   /// [output] Task output. This is ignored if submitted.
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskType] Task type.
-  MigrateSqlServerSqlMISyncTaskPropertiesResponse({
+  const MigrateSqlServerSqlMISyncTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     this.createdOn,

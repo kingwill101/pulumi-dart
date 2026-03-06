@@ -17,7 +17,7 @@ class EndpointDeliveryRuleUrlPathCondition {
   /// [negateCondition] Defaults to `false`.
   /// [operator] Valid values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan`, `LessThanOrEqual`, `RegEx` and `Wildcard`.
   /// [transforms] A list of transforms. Valid values are `Lowercase` and `Uppercase`.
-  EndpointDeliveryRuleUrlPathCondition({
+  const EndpointDeliveryRuleUrlPathCondition({
     this.matchValues,
     this.negateCondition,
     required this.operator,

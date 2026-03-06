@@ -14,7 +14,7 @@ class GetInstanceIamPolicyArgs {
   /// Creates a new [GetInstanceIamPolicyArgs].
   /// [instance] The name or relative resource id of the instance to manage IAM policies for.
   /// [project] Optional.
-  GetInstanceIamPolicyArgs({
+  const GetInstanceIamPolicyArgs({
     required this.instance,
     this.project,
   });

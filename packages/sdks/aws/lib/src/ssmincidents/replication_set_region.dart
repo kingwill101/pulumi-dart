@@ -18,7 +18,7 @@ class ReplicationSetRegion {
   /// [name] The name of the Region, such as `ap-southeast-2`.
   /// [status] The current status of the Region.
   /// [statusMessage] More information about the status of a Region.
-  ReplicationSetRegion({
+  const ReplicationSetRegion({
     this.kmsKeyArn,
     required this.name,
     this.status,

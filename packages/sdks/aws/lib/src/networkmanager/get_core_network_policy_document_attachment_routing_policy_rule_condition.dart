@@ -11,7 +11,7 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition {
   /// Creates a new [GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition].
   /// [type] Must be `routing-policy-label`.
   /// [value] Routing policy label to match.
-  GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition({
+  const GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleCondition({
     required this.type,
     required this.value,
   });

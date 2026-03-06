@@ -10,7 +10,7 @@ class GetCatalogDevBoxDefinitionErrorDetailsResult {
 
   /// Creates a new [GetCatalogDevBoxDefinitionErrorDetailsResult].
   /// [errors] Errors associated with resources synchronized from the catalog.
-  GetCatalogDevBoxDefinitionErrorDetailsResult({
+  const GetCatalogDevBoxDefinitionErrorDetailsResult({
     required this.errors,
   });
 

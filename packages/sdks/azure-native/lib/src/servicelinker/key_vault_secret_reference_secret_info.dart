@@ -16,7 +16,7 @@ class KeyVaultSecretReferenceSecretInfo {
   /// [name] Name of the Key Vault secret.
   /// [secretType] The secret type.
   /// [version] Version of the Key Vault secret.
-  KeyVaultSecretReferenceSecretInfo({
+  const KeyVaultSecretReferenceSecretInfo({
     this.name,
     required this.secretType,
     this.version,

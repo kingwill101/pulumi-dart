@@ -27,7 +27,7 @@ class GetDeploymentResult {
   /// [properties] Deployment properties.
   /// [tags] Deployment tags
   /// [type] The type of the deployment.
-  GetDeploymentResult({
+  const GetDeploymentResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

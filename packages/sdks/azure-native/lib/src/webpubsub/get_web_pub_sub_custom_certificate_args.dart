@@ -18,7 +18,7 @@ class GetWebPubSubCustomCertificateArgs {
   /// [certificateName] Custom certificate name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the resource.
-  GetWebPubSubCustomCertificateArgs({
+  const GetWebPubSubCustomCertificateArgs({
     required this.certificateName,
     required this.resourceGroupName,
     required this.resourceName,

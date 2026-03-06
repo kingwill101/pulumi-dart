@@ -15,7 +15,7 @@ class GetAzureLargeStorageInstanceArgs {
   /// Creates a new [GetAzureLargeStorageInstanceArgs].
   /// [azureLargeStorageInstanceName] Name of the AzureLargeStorageInstance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAzureLargeStorageInstanceArgs({
+  const GetAzureLargeStorageInstanceArgs({
     required this.azureLargeStorageInstanceName,
     required this.resourceGroupName,
   });

@@ -29,7 +29,7 @@ class IpsecServerIkeConfig {
   /// [ikeVersion] The IKE version. Valid values: `ikev1` and `ikev2`. Default value: `ikev2`.
   /// [localId] The identifier of the IPsec server. The value can be a fully qualified domain name (FQDN) or an IP address. The default value is the public IP address of the VPN gateway.
   /// [remoteId] The identifier of the customer gateway. The value can be an FQDN or an IP address. By default, this parameter is not specified.
-  IpsecServerIkeConfig({
+  const IpsecServerIkeConfig({
     this.ikeAuthAlg,
     this.ikeEncAlg,
     this.ikeLifetime,

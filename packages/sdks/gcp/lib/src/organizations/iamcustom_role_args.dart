@@ -29,7 +29,7 @@ class IAMCustomRoleArgs {
   /// [roleId] The role id to use for this role.
   /// [stage] The current launch stage of the role.
   /// [title] A human-readable title for the role.
-  IAMCustomRoleArgs({
+  const IAMCustomRoleArgs({
     this.description,
     required this.orgId,
     required this.permissions,

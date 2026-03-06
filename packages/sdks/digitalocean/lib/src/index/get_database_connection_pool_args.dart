@@ -15,7 +15,7 @@ class GetDatabaseConnectionPoolArgs {
   /// Creates a new [GetDatabaseConnectionPoolArgs].
   /// [clusterId] The ID of the original source database cluster.
   /// [name] The name for the database connection pool.
-  GetDatabaseConnectionPoolArgs({
+  const GetDatabaseConnectionPoolArgs({
     required this.clusterId,
     required this.name,
   });

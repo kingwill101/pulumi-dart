@@ -16,7 +16,7 @@ class AddOnResponse {
   /// [addOnType] The add-on type
   /// [autoSnapshotAddOnRequest] An object that represents additional parameters when enabling or modifying the automatic snapshot add-on
   /// [status] Status of the Addon
-  AddOnResponse({
+  const AddOnResponse({
     this.addOnType,
     this.autoSnapshotAddOnRequest,
     this.status,

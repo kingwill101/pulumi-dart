@@ -22,7 +22,7 @@ class MonitoringScheduleArgs {
   /// [name] The name of the monitoring schedule. The name must be unique within an AWS Region within an AWS account. If omitted, the provider will assign a random, unique name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] A mapping of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  MonitoringScheduleArgs({
+  const MonitoringScheduleArgs({
     required this.monitoringScheduleConfig,
     this.name,
     this.region,

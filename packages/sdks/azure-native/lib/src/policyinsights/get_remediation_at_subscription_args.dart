@@ -12,7 +12,7 @@ class GetRemediationAtSubscriptionArgs {
 
   /// Creates a new [GetRemediationAtSubscriptionArgs].
   /// [remediationName] The name of the remediation.
-  GetRemediationAtSubscriptionArgs({
+  const GetRemediationAtSubscriptionArgs({
     required this.remediationName,
   });
 

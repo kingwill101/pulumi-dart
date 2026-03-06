@@ -17,7 +17,7 @@ class GetServerNetwork {
   /// [ip] (string) The server's IP address within the network.
   /// [macAddress] (string) The MAC address associated with the server's private network interface.
   /// [networkId] (int) The unique identifier for the network.
-  GetServerNetwork({
+  const GetServerNetwork({
     required this.aliasIps,
     required this.ip,
     required this.macAddress,

@@ -16,7 +16,7 @@ class ApplicationGatewayIPConfiguration {
   /// [id] Resource ID.
   /// [name] Name of the IP configuration that is unique within an Application Gateway.
   /// [subnet] Reference to the subnet resource. A subnet from where application gateway gets its private address.
-  ApplicationGatewayIPConfiguration({
+  const ApplicationGatewayIPConfiguration({
     this.id,
     this.name,
     this.subnet,

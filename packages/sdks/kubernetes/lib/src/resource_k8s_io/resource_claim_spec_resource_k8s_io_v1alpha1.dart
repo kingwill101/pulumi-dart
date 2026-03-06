@@ -18,7 +18,7 @@ class ResourceClaimSpecResourceK8sIoV1alpha1 {
   /// [allocationMode] Allocation can start immediately or when a Pod wants to use the resource. "WaitForFirstConsumer" is the default.
   /// [parametersRef] ParametersRef references a separate object with arbitrary parameters that will be used by the driver when allocating a resource for the claim.
   /// [resourceClassName] ResourceClassName references the driver and additional parameters via the name of a ResourceClass that was created as part of the driver deployment.
-  ResourceClaimSpecResourceK8sIoV1alpha1({
+  const ResourceClaimSpecResourceK8sIoV1alpha1({
     this.allocationMode,
     this.parametersRef,
     required this.resourceClassName,

@@ -95,7 +95,7 @@ class RecommendedActionResponse {
   /// [timeSeries] Gets the time series info of metrics for this recommended action e.g., CPU consumption time series
   /// [type] Resource type.
   /// [validSince] Gets the time since when this recommended action is valid.
-  RecommendedActionResponse({
+  const RecommendedActionResponse({
     required this.details,
     required this.errorDetails,
     required this.estimatedImpact,

@@ -12,7 +12,7 @@ class ConfigurationBackupRetentionPolicyDailySchedule {
   /// Creates a new [ConfigurationBackupRetentionPolicyDailySchedule].
   /// [retentionDuration] A `retention_duration` block as defined below.
   /// [retentionTimes] The retention times of the backup policy.
-  ConfigurationBackupRetentionPolicyDailySchedule({
+  const ConfigurationBackupRetentionPolicyDailySchedule({
     this.retentionDuration,
     this.retentionTimes,
   });

@@ -33,7 +33,7 @@ class GetSuppressionListResult {
   /// [name] The name of the resource
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSuppressionListResult({
+  const GetSuppressionListResult({
     required this.azureApiVersion,
     required this.createdTimeStamp,
     required this.dataLocation,

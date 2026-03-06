@@ -15,7 +15,7 @@ class GatewayHostnameBindingKeyVaultResponse {
   /// [identityClientId] The default hostname of the data-plane gateway.
   /// [lastStatus] The last status of the Key Vault certificate fetch process.
   /// [secretId] The current provisioning state of the API Management gateway hostname binding.
-  GatewayHostnameBindingKeyVaultResponse({
+  const GatewayHostnameBindingKeyVaultResponse({
     this.identityClientId,
     this.lastStatus,
     required this.secretId,

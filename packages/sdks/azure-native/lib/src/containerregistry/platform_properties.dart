@@ -15,7 +15,7 @@ class PlatformProperties {
   /// [architecture] The OS architecture.
   /// [os] The operating system type required for the run.
   /// [variant] Variant of the CPU.
-  PlatformProperties({
+  const PlatformProperties({
     this.architecture,
     required this.os,
     this.variant,

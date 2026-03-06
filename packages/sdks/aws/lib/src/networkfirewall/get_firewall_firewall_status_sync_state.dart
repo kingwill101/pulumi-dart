@@ -12,7 +12,7 @@ class GetFirewallFirewallStatusSyncState {
   /// Creates a new [GetFirewallFirewallStatusSyncState].
   /// [attachments] Nested list describing the attachment status of the firewall's association with a single VPC subnet.
   /// [availabilityZone] The Availability Zone where the subnet is configured.
-  GetFirewallFirewallStatusSyncState({
+  const GetFirewallFirewallStatusSyncState({
     required this.attachments,
     required this.availabilityZone,
   });

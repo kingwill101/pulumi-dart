@@ -33,7 +33,7 @@ class ApplicationGatewaySslProfileResponse {
   /// [sslPolicy] SSL policy of the application gateway resource.
   /// [trustedClientCertificates] Array of references to application gateway trusted client certificates.
   /// [type] Type of the resource.
-  ApplicationGatewaySslProfileResponse({
+  const ApplicationGatewaySslProfileResponse({
     this.clientAuthConfiguration,
     required this.etag,
     this.id,

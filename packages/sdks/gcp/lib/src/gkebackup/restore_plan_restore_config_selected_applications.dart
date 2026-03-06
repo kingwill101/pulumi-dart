@@ -10,7 +10,7 @@ class RestorePlanRestoreConfigSelectedApplications {
 
   /// Creates a new [RestorePlanRestoreConfigSelectedApplications].
   /// [namespacedNames] A list of namespaced Kubernetes resources.
-  RestorePlanRestoreConfigSelectedApplications({
+  const RestorePlanRestoreConfigSelectedApplications({
     required this.namespacedNames,
   });
 

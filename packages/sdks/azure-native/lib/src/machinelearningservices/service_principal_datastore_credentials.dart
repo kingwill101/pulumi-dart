@@ -26,7 +26,7 @@ class ServicePrincipalDatastoreCredentials {
   /// [resourceUrl] Resource the service principal has access to.
   /// [secrets] [Required] Service principal secrets.
   /// [tenantId] [Required] ID of the tenant to which the service principal belongs.
-  ServicePrincipalDatastoreCredentials({
+  const ServicePrincipalDatastoreCredentials({
     this.authorityUrl,
     required this.clientId,
     required this.credentialsType,

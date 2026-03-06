@@ -9,7 +9,7 @@ class VirtualizationTypeEnumValue {
 
   /// Creates a new [VirtualizationTypeEnumValue].
   /// [value] Property value
-  VirtualizationTypeEnumValue({
+  const VirtualizationTypeEnumValue({
     this.value,
   });
 

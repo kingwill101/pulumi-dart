@@ -221,7 +221,7 @@ class NodeGroupV2Args {
   /// [spotPrice] Bidding price for spot instance. If set, only spot instances will be added as worker node.
   /// [taints] Custom k8s node taints to be attached to each worker node. Adds the given taints to the `--register-with-taints` kubelet argument
   /// [version] Desired Kubernetes master / control plane version. If you do not specify a value, the latest available version is used.
-  NodeGroupV2Args({
+  const NodeGroupV2Args({
     this.amiId,
     this.amiType,
     this.autoScalingGroupTags,

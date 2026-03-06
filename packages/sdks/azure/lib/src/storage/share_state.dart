@@ -49,7 +49,7 @@ class ShareState {
   /// [storageAccountId] Specifies the storage account in which to create the share.
   /// [storageAccountName] Specifies the storage account in which to create the share. This property is deprecated in favour of `storage_account_id`.
   /// [url] The URL of the File Share
-  ShareState({
+  const ShareState({
     this.accessTier,
     this.acls,
     this.enabledProtocol,

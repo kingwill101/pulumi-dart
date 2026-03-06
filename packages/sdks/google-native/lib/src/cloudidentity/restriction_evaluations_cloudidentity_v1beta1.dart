@@ -9,7 +9,7 @@ class RestrictionEvaluationsCloudidentityV1beta1 {
 
   /// Creates a new [RestrictionEvaluationsCloudidentityV1beta1].
   /// [memberRestrictionEvaluation] Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
-  RestrictionEvaluationsCloudidentityV1beta1({
+  const RestrictionEvaluationsCloudidentityV1beta1({
     this.memberRestrictionEvaluation,
   });
 

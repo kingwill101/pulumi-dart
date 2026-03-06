@@ -10,7 +10,7 @@ class ContainerRegistryProperties {
 
   /// Creates a new [ContainerRegistryProperties].
   /// [credentials] The credentials of the container registry resource.
-  ContainerRegistryProperties({
+  const ContainerRegistryProperties({
     required this.credentials,
   });
 

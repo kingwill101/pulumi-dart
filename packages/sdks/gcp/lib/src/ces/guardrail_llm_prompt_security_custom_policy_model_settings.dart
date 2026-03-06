@@ -15,7 +15,7 @@ class GuardrailLlmPromptSecurityCustomPolicyModelSettings {
   /// Creates a new [GuardrailLlmPromptSecurityCustomPolicyModelSettings].
   /// [model] The LLM model that the agent should use.
   /// [temperature] If set, this temperature will be used for the LLM model. Temperature
-  GuardrailLlmPromptSecurityCustomPolicyModelSettings({
+  const GuardrailLlmPromptSecurityCustomPolicyModelSettings({
     this.model,
     this.temperature,
   });

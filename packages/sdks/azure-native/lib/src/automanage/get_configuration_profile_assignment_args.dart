@@ -18,7 +18,7 @@ class GetConfigurationProfileAssignmentArgs {
   /// [configurationProfileAssignmentName] The configuration profile assignment name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmName] The name of the virtual machine.
-  GetConfigurationProfileAssignmentArgs({
+  const GetConfigurationProfileAssignmentArgs({
     required this.configurationProfileAssignmentName,
     required this.resourceGroupName,
     required this.vmName,

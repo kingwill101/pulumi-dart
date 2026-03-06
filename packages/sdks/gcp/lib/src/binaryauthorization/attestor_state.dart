@@ -22,7 +22,7 @@ class AttestorState {
   /// [description] A descriptive comment. This field may be updated. The field may be
   /// [name] The resource name.
   /// [project] The ID of the project in which the resource belongs.
-  AttestorState({
+  const AttestorState({
     this.attestationAuthorityNote,
     this.description,
     this.name,

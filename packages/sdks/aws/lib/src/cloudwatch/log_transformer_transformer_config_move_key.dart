@@ -9,7 +9,7 @@ class LogTransformerTransformerConfigMoveKey {
 
   /// Creates a new [LogTransformerTransformerConfigMoveKey].
   /// [entries] Objects containing the information about the keys to move to the log event. You must include at least one entry, and five at most. See `move_keys` `entry` below for details.
-  LogTransformerTransformerConfigMoveKey({
+  const LogTransformerTransformerConfigMoveKey({
     required this.entries,
   });
 

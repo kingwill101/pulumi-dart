@@ -39,7 +39,7 @@ class PrimaryIpArgs {
   /// [location] The location name to create the resource in. See the [Hetzner Docs](https://docs.hetzner.com/cloud/general/locations/#what-locations-are-there) for more details about locations.
   /// [name] Name of the Primary IP.
   /// [type] Type of the Primary IP. `ipv4` or `ipv6`
-  PrimaryIpArgs({
+  const PrimaryIpArgs({
     this.assigneeId,
     required this.assigneeType,
     required this.autoDelete,

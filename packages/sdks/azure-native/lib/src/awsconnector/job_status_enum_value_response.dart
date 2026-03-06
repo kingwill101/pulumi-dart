@@ -9,7 +9,7 @@ class JobStatusEnumValueResponse {
 
   /// Creates a new [JobStatusEnumValueResponse].
   /// [value] Property value
-  JobStatusEnumValueResponse({
+  const JobStatusEnumValueResponse({
     this.value,
   });
 

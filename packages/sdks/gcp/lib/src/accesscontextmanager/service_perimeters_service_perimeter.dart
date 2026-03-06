@@ -69,7 +69,7 @@ class ServicePerimetersServicePerimeter {
   /// [title] Human readable title. Must be unique within the Policy.
   /// [updateTime] (Output)
   /// [useExplicitDryRunSpec] Use explicit dry run spec flag. Ordinarily, a dry-run spec implicitly exists
-  ServicePerimetersServicePerimeter({
+  const ServicePerimetersServicePerimeter({
     this.createTime,
     this.description,
     required this.name,

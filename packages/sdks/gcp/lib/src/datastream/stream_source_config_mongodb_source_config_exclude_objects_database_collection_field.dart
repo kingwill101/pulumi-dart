@@ -8,7 +8,7 @@ class StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField
 
   /// Creates a new [StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField].
   /// [field] Field name.
-  StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField({
+  const StreamSourceConfigMongodbSourceConfigExcludeObjectsDatabaseCollectionField({
     this.field,
   });
 

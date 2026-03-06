@@ -30,7 +30,7 @@ class Route {
   /// [nextHopType] The type of Azure hop the packet should be sent to.
   /// [provisioningState] The provisioning state of the resource. Possible values are: 'Updating', 'Deleting', and 'Failed'.
   /// [type] The type of the resource.
-  Route({
+  const Route({
     this.addressPrefix,
     this.etag,
     this.id,

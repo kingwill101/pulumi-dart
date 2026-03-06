@@ -15,7 +15,7 @@ class GetSchemaReferenceArgs {
   /// Creates a new [GetSchemaReferenceArgs].
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
   /// [schemaReferenceName] The name of the SchemaReference
-  GetSchemaReferenceArgs({
+  const GetSchemaReferenceArgs({
     required this.resourceUri,
     required this.schemaReferenceName,
   });

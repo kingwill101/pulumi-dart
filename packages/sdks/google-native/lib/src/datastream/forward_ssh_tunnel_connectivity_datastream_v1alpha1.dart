@@ -21,7 +21,7 @@ class ForwardSshTunnelConnectivityDatastreamV1alpha1 {
   /// [port] Port for the SSH tunnel, default value is 22.
   /// [privateKey] Input only. SSH private key.
   /// [username] Username for the SSH tunnel.
-  ForwardSshTunnelConnectivityDatastreamV1alpha1({
+  const ForwardSshTunnelConnectivityDatastreamV1alpha1({
     required this.hostname,
     this.password,
     this.port,

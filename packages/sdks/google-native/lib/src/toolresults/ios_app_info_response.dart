@@ -9,7 +9,7 @@ class IosAppInfoResponse {
 
   /// Creates a new [IosAppInfoResponse].
   /// [name] The name of the app. Required
-  IosAppInfoResponse({
+  const IosAppInfoResponse({
     required this.name,
   });
 

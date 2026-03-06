@@ -21,7 +21,7 @@ class GetInstanceIamPolicyArgs {
   /// [instanceName] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the machine resides. Used to find the parent resource to bind the IAM policy to. If not specified,
-  GetInstanceIamPolicyArgs({
+  const GetInstanceIamPolicyArgs({
     required this.instanceName,
     this.project,
     this.zone,

@@ -40,7 +40,7 @@ class GetConnectionsConnectionTunnelOptionsSpecification {
   /// [tunnelIkeConfig] The configuration of Phase 1 negotiations in Tunnel.
   /// [tunnelIpsecConfig] IPsec configuration in Tunnel.
   /// [zoneNo] Required.
-  GetConnectionsConnectionTunnelOptionsSpecification({
+  const GetConnectionsConnectionTunnelOptionsSpecification({
     required this.customerGatewayId,
     required this.enableDpd,
     required this.enableNatTraversal,

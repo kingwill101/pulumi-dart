@@ -18,7 +18,7 @@ class UrlObservationArgs {
   /// [sdkType] SDK integration mode. Value:
   /// [siteId] The site ID.
   /// [url] The URL of the page to monitor.
-  UrlObservationArgs({
+  const UrlObservationArgs({
     required this.sdkType,
     required this.siteId,
     required this.url,

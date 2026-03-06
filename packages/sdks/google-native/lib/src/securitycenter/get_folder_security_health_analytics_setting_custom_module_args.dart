@@ -13,7 +13,7 @@ class GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs {
   /// Creates a new [GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs].
   /// [customModuleId] Required.
   /// [folderId] Required.
-  GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs({
+  const GetFolderSecurityHealthAnalyticsSettingCustomModuleArgs({
     required this.customModuleId,
     required this.folderId,
   });

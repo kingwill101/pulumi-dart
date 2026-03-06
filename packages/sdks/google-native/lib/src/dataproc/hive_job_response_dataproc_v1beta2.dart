@@ -25,7 +25,7 @@ class HiveJobResponseDataprocV1beta2 {
   /// [queryFileUri] The HCFS URI of the script that contains Hive queries.
   /// [queryList] A list of queries.
   /// [scriptVariables] Optional. Mapping of query variable names to values (equivalent to the Hive command: SET name="value";).
-  HiveJobResponseDataprocV1beta2({
+  const HiveJobResponseDataprocV1beta2({
     required this.continueOnFailure,
     required this.jarFileUris,
     required this.properties,

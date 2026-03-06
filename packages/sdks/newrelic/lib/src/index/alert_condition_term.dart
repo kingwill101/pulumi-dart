@@ -20,7 +20,7 @@ class AlertConditionTerm {
   /// [priority] One of (critical, warning). Defaults to critical.
   /// [threshold] Must be 0 or greater.
   /// [timeFunction] One of (all, any).
-  AlertConditionTerm({
+  const AlertConditionTerm({
     required this.duration,
     this.operator,
     this.priority,

@@ -7,7 +7,7 @@ class GetDisksDiskOperationLock {
 
   /// Creates a new [GetDisksDiskOperationLock].
   /// [lockReason] Required.
-  GetDisksDiskOperationLock({
+  const GetDisksDiskOperationLock({
     required this.lockReason,
   });
 

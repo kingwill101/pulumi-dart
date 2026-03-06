@@ -13,7 +13,7 @@ class GetOntapFileSystemEndpoint {
   /// Creates a new [GetOntapFileSystemEndpoint].
   /// [interclusters] A FileSystemEndpoint for managing your file system by setting up NetApp SnapMirror with other ONTAP systems. See FileSystemEndpoint below.
   /// [managements] A FileSystemEndpoint for managing your file system using the NetApp ONTAP CLI and NetApp ONTAP API. See FileSystemEndpoint below.
-  GetOntapFileSystemEndpoint({
+  const GetOntapFileSystemEndpoint({
     required this.interclusters,
     required this.managements,
   });

@@ -17,7 +17,7 @@ class WorkstationConfigCondition {
   /// [code] (Output)
   /// [details] (Output)
   /// [message] (Output)
-  WorkstationConfigCondition({
+  const WorkstationConfigCondition({
     this.code,
     this.details,
     this.message,

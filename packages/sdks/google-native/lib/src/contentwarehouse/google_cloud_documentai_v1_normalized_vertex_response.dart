@@ -12,7 +12,7 @@ class GoogleCloudDocumentaiV1NormalizedVertexResponse {
   /// Creates a new [GoogleCloudDocumentaiV1NormalizedVertexResponse].
   /// [x] X coordinate.
   /// [y] Y coordinate (starts from the top of the image).
-  GoogleCloudDocumentaiV1NormalizedVertexResponse({
+  const GoogleCloudDocumentaiV1NormalizedVertexResponse({
     required this.x,
     required this.y,
   });

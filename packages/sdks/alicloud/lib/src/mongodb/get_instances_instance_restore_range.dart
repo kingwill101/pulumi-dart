@@ -14,7 +14,7 @@ class GetInstancesInstanceRestoreRange {
   /// [restoreBeginTime] The beginning of the recoverable time range.
   /// [restoreEndTime] The end of the recoverable time range.
   /// [restoreType] The restoration method.
-  GetInstancesInstanceRestoreRange({
+  const GetInstancesInstanceRestoreRange({
     required this.restoreBeginTime,
     required this.restoreEndTime,
     required this.restoreType,

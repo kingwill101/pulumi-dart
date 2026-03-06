@@ -11,7 +11,7 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresh
   /// Creates a new [PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds].
   /// [scaleIn] The utilization triggering the scale-in operation in percent.
   /// [scaleOut] The utilization triggering the scale-out operation in percent.
-  PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds({
+  const PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyCpuThresholds({
     required this.scaleIn,
     required this.scaleOut,
   });

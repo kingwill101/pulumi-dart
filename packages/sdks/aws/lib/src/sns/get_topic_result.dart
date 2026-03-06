@@ -18,7 +18,7 @@ class GetTopicResult {
   /// [name] Required.
   /// [region] Required.
   /// [tags] Map of tags for the resource.
-  GetTopicResult({
+  const GetTopicResult({
     required this.arn,
     required this.id,
     required this.name,

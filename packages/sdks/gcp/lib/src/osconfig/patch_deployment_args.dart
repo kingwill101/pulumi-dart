@@ -53,7 +53,7 @@ class PatchDeploymentArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [recurringSchedule] Schedule recurring executions.
   /// [rollout] Rollout strategy of the patch job.
-  PatchDeploymentArgs({
+  const PatchDeploymentArgs({
     this.description,
     this.duration,
     required this.instanceFilter,

@@ -24,7 +24,7 @@ class GetScheduleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduleName] The name of the schedule that uniquely identifies it.
   /// [top] The maximum number of resources to return from the operation. Example: '$top=10'.
-  GetScheduleArgs({
+  const GetScheduleArgs({
     required this.poolName,
     required this.projectName,
     required this.resourceGroupName,

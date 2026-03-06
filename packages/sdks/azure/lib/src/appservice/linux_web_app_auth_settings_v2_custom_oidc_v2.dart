@@ -40,7 +40,7 @@ class LinuxWebAppAuthSettingsV2CustomOidcV2 {
   /// [openidConfigurationEndpoint] Specifies the endpoint used for OpenID Connect Discovery. For example `https://example.com/.well-known/openid-configuration`.
   /// [scopes] The list of the scopes that should be requested while authenticating.
   /// [tokenEndpoint] The endpoint used to request a Token as supplied by `openid_configuration_endpoint` response.
-  LinuxWebAppAuthSettingsV2CustomOidcV2({
+  const LinuxWebAppAuthSettingsV2CustomOidcV2({
     this.authorisationEndpoint,
     this.certificationUri,
     this.clientCredentialMethod,

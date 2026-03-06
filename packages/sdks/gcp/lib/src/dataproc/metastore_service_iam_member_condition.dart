@@ -11,7 +11,7 @@ class MetastoreServiceIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  MetastoreServiceIamMemberCondition({
+  const MetastoreServiceIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

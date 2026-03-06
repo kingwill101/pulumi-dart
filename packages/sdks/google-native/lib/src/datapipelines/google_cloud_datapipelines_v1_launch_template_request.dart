@@ -22,7 +22,7 @@ class GoogleCloudDatapipelinesV1LaunchTemplateRequest {
   /// [location] The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
   /// [project] The ID of the Cloud Platform project that the job belongs to.
   /// [validateOnly] If true, the request is validated but not actually executed. Defaults to false.
-  GoogleCloudDatapipelinesV1LaunchTemplateRequest({
+  const GoogleCloudDatapipelinesV1LaunchTemplateRequest({
     this.gcsPath,
     this.launchParameters,
     this.location,

@@ -11,7 +11,7 @@ class VirtualNodeSpecListenerTimeoutTcpIdle {
   /// Creates a new [VirtualNodeSpecListenerTimeoutTcpIdle].
   /// [unit] Unit of time. Valid values: `ms`, `s`.
   /// [value] Number of time units. Minimum value of `0`.
-  VirtualNodeSpecListenerTimeoutTcpIdle({
+  const VirtualNodeSpecListenerTimeoutTcpIdle({
     required this.unit,
     required this.value,
   });

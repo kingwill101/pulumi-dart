@@ -12,7 +12,7 @@ class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
   /// Creates a new [SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams].
   /// [op] The match operator for the field.
   /// [val] The value of the field.
-  SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams({
+  const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams({
     this.op,
     this.val,
   });

@@ -9,7 +9,7 @@ class IosAppInfo {
 
   /// Creates a new [IosAppInfo].
   /// [name] The name of the app. Required
-  IosAppInfo({
+  const IosAppInfo({
     this.name,
   });
 

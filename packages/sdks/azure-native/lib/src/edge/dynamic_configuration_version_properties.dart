@@ -9,7 +9,7 @@ class DynamicConfigurationVersionProperties {
 
   /// Creates a new [DynamicConfigurationVersionProperties].
   /// [values] Values of configuration version
-  DynamicConfigurationVersionProperties({
+  const DynamicConfigurationVersionProperties({
     required this.values,
   });
 

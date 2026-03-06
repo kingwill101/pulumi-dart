@@ -10,7 +10,7 @@ class HealthBotProperties {
 
   /// Creates a new [HealthBotProperties].
   /// [keyVaultProperties] KeyVault properties for the resource encryption.
-  HealthBotProperties({
+  const HealthBotProperties({
     this.keyVaultProperties,
   });
 

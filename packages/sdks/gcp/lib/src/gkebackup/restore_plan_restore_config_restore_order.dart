@@ -12,7 +12,7 @@ class RestorePlanRestoreConfigRestoreOrder {
 
   /// Creates a new [RestorePlanRestoreConfigRestoreOrder].
   /// [groupKindDependencies] A list of group kind dependency pairs
-  RestorePlanRestoreConfigRestoreOrder({
+  const RestorePlanRestoreConfigRestoreOrder({
     required this.groupKindDependencies,
   });
 

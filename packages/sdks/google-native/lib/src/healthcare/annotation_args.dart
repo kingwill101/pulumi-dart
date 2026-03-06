@@ -39,7 +39,7 @@ class AnnotationArgs {
   /// [project] Optional.
   /// [resourceAnnotation] Annotations for resource. For example, classification tags.
   /// [textAnnotation] Annotations for sensitive texts. For example, a range that describes the location of sensitive text.
-  AnnotationArgs({
+  const AnnotationArgs({
     this.annotationSource,
     required this.annotationStoreId,
     this.customData,

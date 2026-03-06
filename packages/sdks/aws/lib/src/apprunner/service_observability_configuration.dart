@@ -11,7 +11,7 @@ class ServiceObservabilityConfiguration {
   /// Creates a new [ServiceObservabilityConfiguration].
   /// [observabilityConfigurationArn] ARN of the observability configuration that is associated with the service. Specified only when `observability_enabled` is `true`.
   /// [observabilityEnabled] When `true`, an observability configuration resource is associated with the service.
-  ServiceObservabilityConfiguration({
+  const ServiceObservabilityConfiguration({
     this.observabilityConfigurationArn,
     required this.observabilityEnabled,
   });

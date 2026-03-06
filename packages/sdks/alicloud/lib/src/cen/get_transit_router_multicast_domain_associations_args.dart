@@ -33,7 +33,7 @@ class GetTransitRouterMulticastDomainAssociationsArgs {
   /// [transitRouterAttachmentId] The ID of the network instance connection.
   /// [transitRouterMulticastDomainId] The ID of the multicast domain.
   /// [vswitchId] The ID of the vSwitch.
-  GetTransitRouterMulticastDomainAssociationsArgs({
+  const GetTransitRouterMulticastDomainAssociationsArgs({
     this.ids,
     this.outputFile,
     this.resourceId,

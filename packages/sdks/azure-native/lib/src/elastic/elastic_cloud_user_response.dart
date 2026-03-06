@@ -15,7 +15,7 @@ class ElasticCloudUserResponse {
   /// [elasticCloudSsoDefaultUrl] Elastic cloud default dashboard sso URL of the Elastic user account.
   /// [emailAddress] Email of the Elastic User Account.
   /// [id] User Id of the elastic account of the User.
-  ElasticCloudUserResponse({
+  const ElasticCloudUserResponse({
     required this.elasticCloudSsoDefaultUrl,
     required this.emailAddress,
     required this.id,

@@ -38,7 +38,7 @@ class OccurenceArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [remediation] A description of actions that can be taken to remedy the note.
   /// [resourceUri] Required. Immutable. A URI that represents the resource for which
-  OccurenceArgs({
+  const OccurenceArgs({
     required this.attestation,
     required this.noteName,
     this.project,

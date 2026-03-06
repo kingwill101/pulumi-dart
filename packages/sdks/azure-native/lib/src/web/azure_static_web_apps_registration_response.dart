@@ -9,7 +9,7 @@ class AzureStaticWebAppsRegistrationResponse {
 
   /// Creates a new [AzureStaticWebAppsRegistrationResponse].
   /// [clientId] The Client ID of the app used for login.
-  AzureStaticWebAppsRegistrationResponse({
+  const AzureStaticWebAppsRegistrationResponse({
     this.clientId,
   });
 

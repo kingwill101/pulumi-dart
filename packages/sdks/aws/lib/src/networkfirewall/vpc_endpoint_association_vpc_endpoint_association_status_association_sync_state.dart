@@ -12,7 +12,7 @@ class VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState {
   /// Creates a new [VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState].
   /// [attachments] Nested list describing the attachment status of the firewall's VPC Endpoint Association with a single VPC subnet.
   /// [availabilityZone] The Availability Zone where the subnet is configured.
-  VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState({
+  const VpcEndpointAssociationVpcEndpointAssociationStatusAssociationSyncState({
     required this.attachments,
     required this.availabilityZone,
   });

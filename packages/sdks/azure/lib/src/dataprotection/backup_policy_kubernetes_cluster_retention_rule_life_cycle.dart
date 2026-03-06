@@ -11,7 +11,7 @@ class BackupPolicyKubernetesClusterRetentionRuleLifeCycle {
   /// Creates a new [BackupPolicyKubernetesClusterRetentionRuleLifeCycle].
   /// [dataStoreType] The type of data store. The only possible value is `OperationalStore`. Changing this forces a new resource to be created.
   /// [duration] The retention duration up to which the backups are to be retained in the data stores. It should follow `ISO 8601` duration format. Changing this forces a new resource to be created.
-  BackupPolicyKubernetesClusterRetentionRuleLifeCycle({
+  const BackupPolicyKubernetesClusterRetentionRuleLifeCycle({
     required this.dataStoreType,
     required this.duration,
   });

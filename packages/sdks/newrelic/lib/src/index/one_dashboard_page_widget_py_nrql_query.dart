@@ -11,7 +11,7 @@ class OneDashboardPageWidgetPyNrqlQuery {
   /// Creates a new [OneDashboardPageWidgetPyNrqlQuery].
   /// [accountId] Determines the New Relic account where the dashboard will be created. Defaults to the account associated with the API key used.
   /// [query] (Required) Valid NRQL query string. See [Writing NRQL Queries](https://docs.newrelic.com/docs/insights/nrql-new-relic-query-language/using-nrql/introduction-nrql) for help.
-  OneDashboardPageWidgetPyNrqlQuery({
+  const OneDashboardPageWidgetPyNrqlQuery({
     this.accountId,
     required this.query,
   });

@@ -17,7 +17,7 @@ class DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCu
   /// [patternDescription] The pattern description for the customer pattern.
   /// [patternName] The pattern name for the custom pattern.
   /// [patternRegex] The pattern regex for the customer pattern. The format must follow JavaScript regex format.
-  DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern({
+  const DataProtectionSettingsInlineRedactionConfigurationInlineRedactionPatternCustomPattern({
     this.keywordRegex,
     this.patternDescription,
     required this.patternName,

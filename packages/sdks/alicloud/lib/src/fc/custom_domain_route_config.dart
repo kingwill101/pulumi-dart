@@ -20,7 +20,7 @@ class CustomDomainRouteConfig {
   /// [path] The path that requests are routed from.
   /// [qualifier] The version or alias of the Function Compute service that requests are routed to. For example, qualifier v1 indicates that the requests are routed to the version 1 Function Compute service. For detail information about version and alias, please refer to the [developer guide](https://www.alibabacloud.com/help/doc-detail/96464.htm).
   /// [serviceName] The name of the Function Compute service that requests are routed to.
-  CustomDomainRouteConfig({
+  const CustomDomainRouteConfig({
     required this.functionName,
     this.methods,
     required this.path,

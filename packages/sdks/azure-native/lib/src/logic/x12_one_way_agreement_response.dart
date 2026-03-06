@@ -17,7 +17,7 @@ class X12OneWayAgreementResponse {
   /// [protocolSettings] The X12 protocol settings.
   /// [receiverBusinessIdentity] The receiver business identity
   /// [senderBusinessIdentity] The sender business identity
-  X12OneWayAgreementResponse({
+  const X12OneWayAgreementResponse({
     required this.protocolSettings,
     required this.receiverBusinessIdentity,
     required this.senderBusinessIdentity,

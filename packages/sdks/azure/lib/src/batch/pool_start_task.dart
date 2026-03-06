@@ -29,7 +29,7 @@ class PoolStartTask {
   /// [taskRetryMaximum] The number of retry count. If this is set to `0`, the Batch service does not retry Tasks. If this is set to `-1`, the Batch service retries Batch Tasks without limit.
   /// [userIdentity] A `user_identity` block that describes the user identity under which the start task runs as defined below.
   /// [waitForSuccess] A flag that indicates if the Batch pool should wait for the start task to be completed. Default to `false`.
-  PoolStartTask({
+  const PoolStartTask({
     required this.commandLine,
     this.commonEnvironmentProperties,
     this.containers,

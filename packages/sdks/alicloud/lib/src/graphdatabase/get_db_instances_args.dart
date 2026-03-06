@@ -24,7 +24,7 @@ class GetDbInstancesArgs {
   /// [ids] A list of Db Instance IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
-  GetDbInstancesArgs({
+  const GetDbInstancesArgs({
     this.dbInstanceDescription,
     this.enableDetails,
     this.ids,

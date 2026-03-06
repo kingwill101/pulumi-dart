@@ -15,7 +15,7 @@ class GetRegionSslCertificateComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [sslCertificate] Required.
-  GetRegionSslCertificateComputeBetaArgs({
+  const GetRegionSslCertificateComputeBetaArgs({
     this.project,
     required this.region,
     required this.sslCertificate,

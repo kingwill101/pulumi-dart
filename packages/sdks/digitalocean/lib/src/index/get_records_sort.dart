@@ -12,7 +12,7 @@ class GetRecordsSort {
   /// Creates a new [GetRecordsSort].
   /// [direction] The sort direction. This may be either `asc` or `desc`.
   /// [key] Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-  GetRecordsSort({
+  const GetRecordsSort({
     this.direction,
     required this.key,
   });

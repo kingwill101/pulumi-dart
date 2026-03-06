@@ -40,7 +40,7 @@ class GetDataBackupsResult {
   /// [pageSize] Optional.
   /// [startTime] Optional.
   /// [status] Backup set status. Value Description:-Success: The backup has been completed.-Failed: Backup Failed.If not, return all.
-  GetDataBackupsResult({
+  const GetDataBackupsResult({
     this.backupMode,
     required this.backups,
     this.dataBackupId,

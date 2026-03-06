@@ -38,7 +38,7 @@ class BgpPeerState {
   /// [customerAddress] The IPv4 CIDR destination address to which Amazon should send traffic.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [virtualInterfaceId] The ID of the Direct Connect virtual interface on which to create the BGP peer.
-  BgpPeerState({
+  const BgpPeerState({
     this.addressFamily,
     this.amazonAddress,
     this.awsDevice,

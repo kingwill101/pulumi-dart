@@ -50,7 +50,7 @@ class ManagedSslCertificateState {
   /// [selfLink] The URI of the created resource.
   /// [subjectAlternativeNames] Domains associated with the certificate via Subject Alternative Name.
   /// [type] Enum field whose value is always `MANAGED` - used to signal to the API
-  ManagedSslCertificateState({
+  const ManagedSslCertificateState({
     this.certificateId,
     this.creationTimestamp,
     this.description,

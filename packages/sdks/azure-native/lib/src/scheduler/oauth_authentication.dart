@@ -21,7 +21,7 @@ class OAuthAuthentication {
   /// [secret] Gets or sets the secret, return value will always be empty.
   /// [tenant] Gets or sets the tenant.
   /// [type] Gets or sets the HTTP authentication type.
-  OAuthAuthentication({
+  const OAuthAuthentication({
     this.audience,
     this.clientId,
     this.secret,

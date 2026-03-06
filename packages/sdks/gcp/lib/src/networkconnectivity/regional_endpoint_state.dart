@@ -58,7 +58,7 @@ class RegionalEndpointState {
   /// [subnetwork] The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
   /// [targetGoogleApi] The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \"cloudkms.us-central1.rep.googleapis.com\".
   /// [updateTime] Time when the RegionalEndpoint was updated.
-  RegionalEndpointState({
+  const RegionalEndpointState({
     this.accessType,
     this.address,
     this.createTime,

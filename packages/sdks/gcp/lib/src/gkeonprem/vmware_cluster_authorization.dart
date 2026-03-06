@@ -11,7 +11,7 @@ class VMwareClusterAuthorization {
 
   /// Creates a new [VMwareClusterAuthorization].
   /// [adminUsers] Users that will be granted the cluster-admin role on the cluster, providing
-  VMwareClusterAuthorization({
+  const VMwareClusterAuthorization({
     this.adminUsers,
   });
 

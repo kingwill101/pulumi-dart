@@ -12,7 +12,7 @@ class GetClusterSecretManagerConfig {
   /// Creates a new [GetClusterSecretManagerConfig].
   /// [enabled] Enable the Secret manager csi component.
   /// [rotationConfigs] Configuration for Secret Manager auto rotation.
-  GetClusterSecretManagerConfig({
+  const GetClusterSecretManagerConfig({
     required this.enabled,
     required this.rotationConfigs,
   });

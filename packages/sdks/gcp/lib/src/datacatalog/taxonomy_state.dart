@@ -34,7 +34,7 @@ class TaxonomyState {
   /// [name] Resource name of this taxonomy, whose format is:
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Taxonomy location region.
-  TaxonomyState({
+  const TaxonomyState({
     this.activatedPolicyTypes,
     this.description,
     this.displayName,

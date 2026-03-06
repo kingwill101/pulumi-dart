@@ -24,7 +24,7 @@ class RollingUpgradeMonitoringPolicy {
   /// [healthCheckWaitDuration] The amount of time to wait after completing an upgrade domain before applying health policies. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
   /// [upgradeDomainTimeout] The amount of time each upgrade domain has to complete before FailureAction is executed. Cannot be larger than 12 hours. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
   /// [upgradeTimeout] The amount of time the overall upgrade has to complete before FailureAction is executed. Cannot be larger than 12 hours. It is interpreted as a string representing an ISO 8601 duration with following format "hh:mm:ss.fff".
-  RollingUpgradeMonitoringPolicy({
+  const RollingUpgradeMonitoringPolicy({
     required this.failureAction,
     required this.healthCheckRetryTimeout,
     required this.healthCheckStableDuration,

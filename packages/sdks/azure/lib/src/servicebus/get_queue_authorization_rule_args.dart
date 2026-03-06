@@ -23,7 +23,7 @@ class GetQueueAuthorizationRuleArgs {
   /// [queueId] Optional.
   /// [queueName] The name of the ServiceBus Queue.
   /// [resourceGroupName] The name of the Resource Group where the ServiceBus Queue Authorisation Rule exists.
-  GetQueueAuthorizationRuleArgs({
+  const GetQueueAuthorizationRuleArgs({
     required this.name,
     this.namespaceName,
     this.queueId,

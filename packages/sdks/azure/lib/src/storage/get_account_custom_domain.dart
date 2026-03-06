@@ -8,7 +8,7 @@ class GetAccountCustomDomain {
 
   /// Creates a new [GetAccountCustomDomain].
   /// [name] Specifies the name of the Storage Account
-  GetAccountCustomDomain({
+  const GetAccountCustomDomain({
     required this.name,
   });
 

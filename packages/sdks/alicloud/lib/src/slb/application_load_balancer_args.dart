@@ -75,7 +75,7 @@ class ApplicationLoadBalancerArgs {
   /// [status] The status of slb load balancer. Valid values: `active` and `inactice`. The system default value is `active`.
   /// [tags] A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance. This filed mark as `Computed` since v1.217.1.
   /// [vswitchId] The VSwitch ID to launch in. **Note:** Required for a VPC SLB. If `address_type` is internet, it will be ignored.
-  ApplicationLoadBalancerArgs({
+  const ApplicationLoadBalancerArgs({
     this.address,
     this.addressIpVersion,
     this.addressType,

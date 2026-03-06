@@ -37,7 +37,7 @@ class ScaleIOPersistentVolumeSourcePatch {
   /// [storagePool] storagePool is the ScaleIO Storage Pool associated with the protection domain.
   /// [system] system is the name of the storage system as configured in ScaleIO.
   /// [volumeName] volumeName is the name of a volume already created in the ScaleIO system that is associated with this volume source.
-  ScaleIOPersistentVolumeSourcePatch({
+  const ScaleIOPersistentVolumeSourcePatch({
     this.fsType,
     this.gateway,
     this.protectionDomain,

@@ -15,7 +15,7 @@ class AdvancedThreatProtectionArgs {
   /// Creates a new [AdvancedThreatProtectionArgs].
   /// [enabled] Should Advanced Threat Protection be enabled on this resource?
   /// [targetResourceId] The ID of the Azure Resource which to enable Advanced Threat Protection on. Changing this forces a new resource to be created.
-  AdvancedThreatProtectionArgs({
+  const AdvancedThreatProtectionArgs({
     required this.enabled,
     required this.targetResourceId,
   });

@@ -18,7 +18,7 @@ class VaultPolicyState {
   /// [backupVaultName] Name of the backup vault to add policy for.
   /// [policy] The backup vault access policy document in JSON format.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  VaultPolicyState({
+  const VaultPolicyState({
     this.backupVaultArn,
     this.backupVaultName,
     this.policy,

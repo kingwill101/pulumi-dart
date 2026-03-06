@@ -15,7 +15,7 @@ class PrivateLinkServiceConnectionStateResponse {
   /// [actionsRequired] Any action that is required beyond basic workflow (approve/ reject/ disconnect)
   /// [description] The private link service connection description.
   /// [status] The private link service connection status.
-  PrivateLinkServiceConnectionStateResponse({
+  const PrivateLinkServiceConnectionStateResponse({
     required this.actionsRequired,
     this.description,
     this.status,

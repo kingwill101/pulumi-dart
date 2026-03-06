@@ -15,7 +15,7 @@ class MysqlSslConfigDatastreamV1alpha1 {
   /// [caCertificate] Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
   /// [clientCertificate] Input only. PEM-encoded certificate that will be used by the replica to authenticate against the source database server. If this field is used then the 'client_key' and the 'ca_certificate' fields are mandatory.
   /// [clientKey] Input only. PEM-encoded private key associated with the Client Certificate. If this field is used then the 'client_certificate' and the 'ca_certificate' fields are mandatory.
-  MysqlSslConfigDatastreamV1alpha1({
+  const MysqlSslConfigDatastreamV1alpha1({
     this.caCertificate,
     this.clientCertificate,
     this.clientKey,

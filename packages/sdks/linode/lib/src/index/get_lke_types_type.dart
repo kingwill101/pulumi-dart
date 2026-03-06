@@ -22,7 +22,7 @@ class GetLkeTypesType {
   /// [prices] Cost in US dollars, broken down into hourly and monthly charges.
   /// [regionPrices] A list of region-specific prices for this LKE Type.
   /// [transfer] The monthly outbound transfer amount, in MB.
-  GetLkeTypesType({
+  const GetLkeTypesType({
     required this.id,
     required this.label,
     required this.prices,

@@ -32,7 +32,7 @@ class ProviderAssumeRole {
   /// [sourceIdentity] Source identity specified by the principal assuming the role.
   /// [tags] Assume role session tags.
   /// [transitiveTagKeys] Assume role session tag keys to pass to any subsequent sessions.
-  ProviderAssumeRole({
+  const ProviderAssumeRole({
     this.duration,
     this.externalId,
     this.policy,

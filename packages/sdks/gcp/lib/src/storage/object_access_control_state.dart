@@ -44,7 +44,7 @@ class ObjectAccessControlState {
   /// [object_] The name of the object to apply the access control to.
   /// [projectTeams] The project team associated with the entity
   /// [role] The access permission for the entity.
-  ObjectAccessControlState({
+  const ObjectAccessControlState({
     this.bucket,
     this.domain,
     this.email,

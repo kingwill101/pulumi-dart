@@ -33,7 +33,7 @@ class GetFrontdoorProfileResult {
   /// [responseTimeoutSeconds] Specifies the maximum response timeout in seconds.
   /// [skuName] Specifies the SKU for this Front Door Profile.
   /// [tags] Specifies a mapping of Tags assigned to this Front Door Profile.
-  GetFrontdoorProfileResult({
+  const GetFrontdoorProfileResult({
     required this.id,
     required this.identity,
     required this.logScrubbingRules,

@@ -12,7 +12,7 @@ class NetworkManagerPropertiesNetworkManagerScopes {
   /// Creates a new [NetworkManagerPropertiesNetworkManagerScopes].
   /// [managementGroups] List of management groups.
   /// [subscriptions] List of subscriptions.
-  NetworkManagerPropertiesNetworkManagerScopes({
+  const NetworkManagerPropertiesNetworkManagerScopes({
     this.managementGroups,
     this.subscriptions,
   });

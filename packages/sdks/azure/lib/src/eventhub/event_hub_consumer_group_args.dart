@@ -24,7 +24,7 @@ class EventHubConsumerGroupArgs {
   /// [namespaceName] Specifies the name of the grandparent EventHub Namespace. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the EventHub Consumer Group's grandparent Namespace exists. Changing this forces a new resource to be created.
   /// [userMetadata] Specifies the user metadata.
-  EventHubConsumerGroupArgs({
+  const EventHubConsumerGroupArgs({
     required this.eventhubName,
     this.name,
     required this.namespaceName,

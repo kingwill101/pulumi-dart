@@ -15,7 +15,7 @@ class GetFluidRelayServerArgs {
   /// Creates a new [GetFluidRelayServerArgs].
   /// [fluidRelayServerName] The Fluid Relay server resource name.
   /// [resourceGroup] The resource group containing the resource.
-  GetFluidRelayServerArgs({
+  const GetFluidRelayServerArgs({
     required this.fluidRelayServerName,
     required this.resourceGroup,
   });

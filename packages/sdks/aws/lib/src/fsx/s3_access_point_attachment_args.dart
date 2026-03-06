@@ -31,7 +31,7 @@ class S3AccessPointAttachmentArgs {
   /// [s3AccessPoint] S3 access point configuration. See `s3_access_point` Block for details.
   /// [timeouts] Optional.
   /// [type] Type of S3 access point. Valid values: `OpenZFS`.
-  S3AccessPointAttachmentArgs({
+  const S3AccessPointAttachmentArgs({
     this.name,
     required this.openzfsConfiguration,
     this.region,

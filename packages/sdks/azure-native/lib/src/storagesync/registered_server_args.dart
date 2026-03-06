@@ -48,7 +48,7 @@ class RegisteredServerArgs {
   /// [serverOSVersion] Registered Server OS Version
   /// [serverRole] Registered Server serverRole
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
-  RegisteredServerArgs({
+  const RegisteredServerArgs({
     this.agentVersion,
     this.applicationId,
     this.clusterId,

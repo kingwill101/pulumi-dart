@@ -150,7 +150,7 @@ class VmwareAdminClusterState {
   /// [uid] The unique identifier of the VMware Admin Cluster.
   /// [updateTime] The time the cluster was last updated, in RFC3339 text format.
   /// [vcenter] Specifies vCenter config for the admin cluster.
-  VmwareAdminClusterState({
+  const VmwareAdminClusterState({
     this.addonNode,
     this.annotations,
     this.antiAffinityGroups,

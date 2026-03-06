@@ -9,7 +9,7 @@ class GetFirewallFirewallStatusCapacityUsageSummary {
 
   /// Creates a new [GetFirewallFirewallStatusCapacityUsageSummary].
   /// [cidrs] Capacity usage of CIDR blocks used by IP set references in a firewall.
-  GetFirewallFirewallStatusCapacityUsageSummary({
+  const GetFirewallFirewallStatusCapacityUsageSummary({
     required this.cidrs,
   });
 

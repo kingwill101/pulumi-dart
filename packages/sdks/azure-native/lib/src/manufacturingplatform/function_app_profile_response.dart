@@ -9,7 +9,7 @@ class FunctionAppProfileResponse {
 
   /// Creates a new [FunctionAppProfileResponse].
   /// [id] Resource Id of Azure Function App Resource
-  FunctionAppProfileResponse({
+  const FunctionAppProfileResponse({
     required this.id,
   });
 

@@ -76,7 +76,7 @@ class ClusterNodeGroup {
   /// [systemDisk] Host Ecs system disk information in this node group. See `system_disk` below.
   /// [vswitchIds] Global vSwitch ids, you can also specify it in node group. **NOTE:** From version 1.236.0, `vswitch_ids` can be modified.
   /// [withPublicIp] Whether the node has a public IP address enabled. **NOTE:** From version 1.236.0, `with_public_ip` can be modified.
-  ClusterNodeGroup({
+  const ClusterNodeGroup({
     this.ackConfig,
     this.additionalSecurityGroupIds,
     this.autoScalingPolicy,

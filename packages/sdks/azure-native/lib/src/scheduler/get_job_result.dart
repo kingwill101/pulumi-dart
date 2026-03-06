@@ -21,7 +21,7 @@ class GetJobResult {
   /// [name] Gets the job resource name.
   /// [properties] Gets or sets the job properties.
   /// [type] Gets the job resource type.
-  GetJobResult({
+  const GetJobResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

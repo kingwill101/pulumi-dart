@@ -11,7 +11,7 @@ class FilterFilterCriteriaAwsAccountId {
   /// Creates a new [FilterFilterCriteriaAwsAccountId].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaAwsAccountId({
+  const FilterFilterCriteriaAwsAccountId({
     required this.comparison,
     required this.value,
   });

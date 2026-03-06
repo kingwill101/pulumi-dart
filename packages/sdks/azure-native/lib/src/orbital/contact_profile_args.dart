@@ -46,7 +46,7 @@ class ContactProfileArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [thirdPartyConfigurations] Third-party mission configuration of the Contact Profile. Describes RF links, modem processing, and IP endpoints.
-  ContactProfileArgs({
+  const ContactProfileArgs({
     this.autoTrackingConfiguration,
     this.contactProfileName,
     this.eventHubUri,

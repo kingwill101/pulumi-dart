@@ -19,7 +19,7 @@ class ConfigMfa {
   /// [enabledProviders] A list of usable second factors for this project.
   /// [providerConfigs] A list of usable second factors for this project along with their configurations.
   /// [state] Whether MultiFactor Authentication has been enabled for this project.
-  ConfigMfa({
+  const ConfigMfa({
     this.enabledProviders,
     this.providerConfigs,
     this.state,

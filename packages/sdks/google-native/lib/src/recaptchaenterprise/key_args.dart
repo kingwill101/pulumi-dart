@@ -40,7 +40,7 @@ class KeyArgs {
   /// [testingOptions] Optional. Options for user acceptance testing.
   /// [wafSettings] Optional. Settings for WAF
   /// [webSettings] Settings for keys that can be used by websites.
-  KeyArgs({
+  const KeyArgs({
     this.androidSettings,
     required this.displayName,
     this.iosSettings,

@@ -15,7 +15,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations {
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations].
   /// [fieldTransformations] Transform the record by applying various field transformations.
   /// [recordSuppressions] Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations({
     this.fieldTransformations,
     this.recordSuppressions,
   });

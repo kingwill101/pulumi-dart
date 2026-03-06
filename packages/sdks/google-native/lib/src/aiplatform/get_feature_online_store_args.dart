@@ -15,7 +15,7 @@ class GetFeatureOnlineStoreArgs {
   /// [featureOnlineStoreId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetFeatureOnlineStoreArgs({
+  const GetFeatureOnlineStoreArgs({
     required this.featureOnlineStoreId,
     required this.location,
     this.project,

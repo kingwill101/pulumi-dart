@@ -17,7 +17,7 @@ class GetAuthorizationPolicyIamPolicyNetworksecurityV1beta1Args {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAuthorizationPolicyIamPolicyNetworksecurityV1beta1Args({
+  const GetAuthorizationPolicyIamPolicyNetworksecurityV1beta1Args({
     required this.authorizationPolicyId,
     required this.location,
     this.optionsRequestedPolicyVersion,

@@ -17,7 +17,7 @@ class DeploymentArtifactJarArtifact {
   /// [entryClass] Main class; you must specify the fully qualified class name
   /// [jarUri] Full URL path of the JAR job
   /// [mainArgs] Startup arguments
-  DeploymentArtifactJarArtifact({
+  const DeploymentArtifactJarArtifact({
     this.additionalDependencies,
     this.entryClass,
     this.jarUri,

@@ -133,7 +133,7 @@ class FirewallArgs {
   /// [sourceTags] If source tags are specified, the firewall will apply only to traffic
   /// [targetServiceAccounts] A list of service accounts indicating sets of instances located in the
   /// [targetTags] A list of instance tags indicating sets of instances located in the
-  FirewallArgs({
+  const FirewallArgs({
     this.allows,
     this.denies,
     this.description,

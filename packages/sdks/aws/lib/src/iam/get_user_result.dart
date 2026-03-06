@@ -26,7 +26,7 @@ class GetUserResult {
   /// [tags] Map of key-value pairs associated with the user.
   /// [userId] Unique ID assigned by AWS for this user.
   /// [userName] Name associated to this User
-  GetUserResult({
+  const GetUserResult({
     required this.arn,
     required this.id,
     required this.path,

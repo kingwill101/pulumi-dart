@@ -8,7 +8,7 @@ class GetDataCollectionRuleDataSourceLogFileSettingText {
 
   /// Creates a new [GetDataCollectionRuleDataSourceLogFileSettingText].
   /// [recordStartTimestampFormat] The timestamp format of the text log files. Possible values are `ISO 8601`, `YYYY-MM-DD HH:MM:SS`, `M/D/YYYY HH:MM:SS AM/PM`, `Mon DD, YYYY HH:MM:SS`, `yyMMdd HH:mm:ss`, `ddMMyy HH:mm:ss`, `MMM d hh:mm:ss`, `dd/MMM/yyyy:HH:mm:ss zzz`,and `yyyy-MM-ddTHH:mm:ssK`.
-  GetDataCollectionRuleDataSourceLogFileSettingText({
+  const GetDataCollectionRuleDataSourceLogFileSettingText({
     required this.recordStartTimestampFormat,
   });
 

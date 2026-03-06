@@ -31,7 +31,7 @@ class GetQuotaApplicationsResult {
   /// [quotaActionCode] Optional.
   /// [quotaCategory] Optional.
   /// [status] Optional.
-  GetQuotaApplicationsResult({
+  const GetQuotaApplicationsResult({
     required this.applications,
     this.dimensions,
     this.enableDetails,

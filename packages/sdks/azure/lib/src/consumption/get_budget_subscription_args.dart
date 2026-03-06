@@ -15,7 +15,7 @@ class GetBudgetSubscriptionArgs {
   /// Creates a new [GetBudgetSubscriptionArgs].
   /// [name] The name of this Consumption Budget.
   /// [subscriptionId] The ID of the subscription.
-  GetBudgetSubscriptionArgs({
+  const GetBudgetSubscriptionArgs({
     required this.name,
     required this.subscriptionId,
   });

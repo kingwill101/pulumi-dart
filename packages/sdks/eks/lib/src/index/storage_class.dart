@@ -44,7 +44,7 @@ class StorageClass {
   /// [type] The EBS volume type.
   /// [volumeBindingMode] VolumeBindingMode indicates how PersistentVolumeClaims should be provisioned and bound. When unset, VolumeBindingImmediate is used. This field is alpha-level and is only honored by servers that enable the VolumeScheduling feature.
   /// [zones] The AWS zone or zones for the EBS volume. If zones is not specified, volumes are generally round-robin-ed across all active zones where Kubernetes cluster has a node. zone and zones parameters must not be used at the same time.
-  StorageClass({
+  const StorageClass({
     this.allowVolumeExpansion,
     this.default_,
     this.encrypted,

@@ -31,7 +31,7 @@ class GetDatasetResult {
   /// [inputConfigs] This is populated with the original input configs where ImportData is called. It is available only after the clients import data to this dataset.
   /// [lastMigrateTime] Last time that the Dataset is migrated to AI Platform V2. If any of the AnnotatedDataset is migrated, the last_migration_time in Dataset is also updated.
   /// [name] Dataset resource name, format is: projects/{project_id}/datasets/{dataset_id}
-  GetDatasetResult({
+  const GetDatasetResult({
     required this.blockingResources,
     required this.createTime,
     required this.dataItemCount,

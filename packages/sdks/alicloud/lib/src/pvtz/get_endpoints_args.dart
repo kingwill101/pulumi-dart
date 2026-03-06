@@ -21,7 +21,7 @@ class GetEndpointsArgs {
   /// [nameRegex] A regex string to filter results by Endpoint name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
-  GetEndpointsArgs({
+  const GetEndpointsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

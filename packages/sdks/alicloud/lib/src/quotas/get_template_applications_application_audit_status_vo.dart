@@ -11,7 +11,7 @@ class GetTemplateApplicationsApplicationAuditStatusVo {
   /// Creates a new [GetTemplateApplicationsApplicationAuditStatusVo].
   /// [count] Approval document quantity.
   /// [status] The approval status of the quota promotion application. Value:-Disagree: reject.-Approve: approved.-Process: under review.-Cancel: Closed.
-  GetTemplateApplicationsApplicationAuditStatusVo({
+  const GetTemplateApplicationsApplicationAuditStatusVo({
     required this.count,
     required this.status,
   });

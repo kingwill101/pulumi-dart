@@ -24,7 +24,7 @@ class RecordSetResponse {
   /// [recordSetName] Recordset name.
   /// [recordType] Resource record type.
   /// [ttl] Recordset time to live.
-  RecordSetResponse({
+  const RecordSetResponse({
     this.fqdn,
     this.ipAddresses,
     required this.provisioningState,

@@ -13,7 +13,7 @@ class GetChainsChainChainConfigRouter {
   /// Creates a new [GetChainsChainChainConfigRouter].
   /// [froms] Source node.
   /// [tos] Destination node.
-  GetChainsChainChainConfigRouter({
+  const GetChainsChainChainConfigRouter({
     required this.froms,
     required this.tos,
   });

@@ -43,7 +43,7 @@ class JobArgs {
   /// [sku] The sku type.
   /// [tags] The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups).
   /// [transferType] Type of the data transfer.
-  JobArgs({
+  const JobArgs({
     this.deliveryInfo,
     this.deliveryType,
     this.details,

@@ -21,7 +21,7 @@ class VpcServiceControlsState {
   /// [network] The network that the consumer is using to connect with services.
   /// [project] The id of the Google Cloud project containing the consumer network.
   /// [service] The service that is managing peering connectivity for a service
-  VpcServiceControlsState({
+  const VpcServiceControlsState({
     this.enabled,
     this.network,
     this.project,

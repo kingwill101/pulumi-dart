@@ -39,7 +39,7 @@ class GatewayArgs {
   /// [spec] Gateway Node Specifications. Valid values: `MSE_GTW_2_4_200_c`, `MSE_GTW_4_8_200_c`, `MSE_GTW_8_16_200_c`, `MSE_GTW_16_32_200_c`.
   /// [vpcId] The ID of the vpc.
   /// [vswitchId] The ID of the vswitch.
-  GatewayArgs({
+  const GatewayArgs({
     this.backupVswitchId,
     this.deleteSlb,
     this.enterpriseSecurityGroup,

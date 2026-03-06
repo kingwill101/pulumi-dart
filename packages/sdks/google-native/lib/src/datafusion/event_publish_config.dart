@@ -12,7 +12,7 @@ class EventPublishConfig {
   /// Creates a new [EventPublishConfig].
   /// [enabled] Option to enable Event Publishing.
   /// [topic] The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id}
-  EventPublishConfig({
+  const EventPublishConfig({
     required this.enabled,
     required this.topic,
   });

@@ -17,7 +17,7 @@ class GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig {
   /// [forceUpgradeOnSignin] Users must have a password compliant with the password policy to sign-in.
   /// [passwordPolicyEnforcementState] Which enforcement mode to use for the password policy.
   /// [passwordPolicyVersions] Must be of length 1. Contains the strength attributes for the password policy.
-  GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig({
+  const GoogleCloudIdentitytoolkitAdminV2PasswordPolicyConfig({
     this.forceUpgradeOnSignin,
     this.passwordPolicyEnforcementState,
     this.passwordPolicyVersions,

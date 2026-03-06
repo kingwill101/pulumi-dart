@@ -10,7 +10,7 @@ class BackendCircuitBreakerResponse {
 
   /// Creates a new [BackendCircuitBreakerResponse].
   /// [rules] The rules for tripping the backend.
-  BackendCircuitBreakerResponse({
+  const BackendCircuitBreakerResponse({
     this.rules,
   });
 

@@ -23,7 +23,7 @@ class UserStackAssociationState {
   /// [sendEmailNotification] Whether a welcome email is sent to a user after the user is created in the user pool.
   /// [stackName] Name of the stack that is associated with the user.
   /// [userName] Email address of the user who is associated with the stack.
-  UserStackAssociationState({
+  const UserStackAssociationState({
     this.authenticationType,
     this.region,
     this.sendEmailNotification,

@@ -15,7 +15,7 @@ class ExtensionResponseAksAssignedIdentity {
   /// [principalId] The principal ID of resource identity.
   /// [tenantId] The tenant ID of resource.
   /// [type] The identity type.
-  ExtensionResponseAksAssignedIdentity({
+  const ExtensionResponseAksAssignedIdentity({
     required this.principalId,
     required this.tenantId,
     this.type,

@@ -11,7 +11,7 @@ class GetClusterNodeConfigContainerdConfigRegistryHostHostHeader {
   /// Creates a new [GetClusterNodeConfigContainerdConfigRegistryHostHostHeader].
   /// [key] Configures the header key.
   /// [values] Configures the header value.
-  GetClusterNodeConfigContainerdConfigRegistryHostHostHeader({
+  const GetClusterNodeConfigContainerdConfigRegistryHostHostHeader({
     required this.key,
     required this.values,
   });

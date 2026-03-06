@@ -51,7 +51,7 @@ class LinkedServiceAzureFileStorageArgs {
   /// [parameters] A map of parameters to associate with the Data Factory Linked Service.
   /// [password] The password to log in the server.
   /// [userId] The user ID to log in the server.
-  LinkedServiceAzureFileStorageArgs({
+  const LinkedServiceAzureFileStorageArgs({
     this.additionalProperties,
     this.annotations,
     required this.connectionString,

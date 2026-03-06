@@ -24,7 +24,7 @@ class TransitRouterRouteTableArgs {
   /// [transitRouterId] The ID of the transit router.
   /// [transitRouterRouteTableDescription] The description of the transit router route table.
   /// [transitRouterRouteTableName] The name of the transit router route table.
-  TransitRouterRouteTableArgs({
+  const TransitRouterRouteTableArgs({
     this.dryRun,
     this.tags,
     required this.transitRouterId,

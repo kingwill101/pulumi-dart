@@ -12,7 +12,7 @@ class JsonFileFormatResponseDatastreamV1alpha1 {
   /// Creates a new [JsonFileFormatResponseDatastreamV1alpha1].
   /// [compression] Compression of the loaded JSON file.
   /// [schemaFileFormat] The schema file format along JSON data files.
-  JsonFileFormatResponseDatastreamV1alpha1({
+  const JsonFileFormatResponseDatastreamV1alpha1({
     required this.compression,
     required this.schemaFileFormat,
   });

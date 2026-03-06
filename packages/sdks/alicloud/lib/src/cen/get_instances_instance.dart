@@ -35,7 +35,7 @@ class GetInstancesInstance {
   /// [protectionLevel] Indicates the allowed level of CIDR block overlapping.
   /// [status] The status of CEN instance. Valid value: `Active`, `Creating` and `Deleting`.
   /// [tags] A mapping of tags to assign to the resource.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.cenBandwidthPackageIds,
     required this.cenId,
     required this.cenInstanceName,

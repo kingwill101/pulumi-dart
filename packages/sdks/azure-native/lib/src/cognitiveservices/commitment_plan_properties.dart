@@ -25,7 +25,7 @@ class CommitmentPlanProperties {
   /// [hostingModel] Account hosting model.
   /// [next] Cognitive Services account commitment period.
   /// [planType] Commitment plan type.
-  CommitmentPlanProperties({
+  const CommitmentPlanProperties({
     this.autoRenew,
     this.commitmentPlanGuid,
     this.current,

@@ -24,7 +24,7 @@ class TriggerAction {
   /// [notificationProperty] Specifies configuration properties of a job run notification. See Notification Property details below.
   /// [securityConfiguration] The name of the Security Configuration structure to be used with this action.
   /// [timeout] The job run timeout in minutes. It overrides the timeout value of the job.
-  TriggerAction({
+  const TriggerAction({
     this.arguments,
     this.crawlerName,
     this.jobName,

@@ -12,7 +12,7 @@ class ServerNameItemResponse {
   /// Creates a new [ServerNameItemResponse].
   /// [fullyQualifiedDomainName] The fully qualified domain name of a server.
   /// [name] The name of a server.
-  ServerNameItemResponse({
+  const ServerNameItemResponse({
     required this.fullyQualifiedDomainName,
     this.name,
   });

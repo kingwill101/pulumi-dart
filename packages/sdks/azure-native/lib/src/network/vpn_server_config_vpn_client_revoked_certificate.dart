@@ -12,7 +12,7 @@ class VpnServerConfigVpnClientRevokedCertificate {
   /// Creates a new [VpnServerConfigVpnClientRevokedCertificate].
   /// [name] The certificate name.
   /// [thumbprint] The revoked VPN client certificate thumbprint.
-  VpnServerConfigVpnClientRevokedCertificate({
+  const VpnServerConfigVpnClientRevokedCertificate({
     this.name,
     this.thumbprint,
   });

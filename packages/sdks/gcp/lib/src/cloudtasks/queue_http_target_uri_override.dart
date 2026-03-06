@@ -42,7 +42,7 @@ class QueueHttpTargetUriOverride {
   /// [queryOverride] URI query.
   /// [scheme] Scheme override.
   /// [uriOverrideEnforceMode] URI Override Enforce Mode
-  QueueHttpTargetUriOverride({
+  const QueueHttpTargetUriOverride({
     this.host,
     this.pathOverride,
     this.port,

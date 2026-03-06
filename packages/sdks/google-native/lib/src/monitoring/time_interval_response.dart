@@ -12,7 +12,7 @@ class TimeIntervalResponse {
   /// Creates a new [TimeIntervalResponse].
   /// [endTime] The end of the time interval.
   /// [startTime] Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
-  TimeIntervalResponse({
+  const TimeIntervalResponse({
     required this.endTime,
     required this.startTime,
   });

@@ -10,7 +10,7 @@ class AgentFlowDefinitionNodeOutput {
   /// Creates a new [AgentFlowDefinitionNodeOutput].
   /// [name] A name for the flow.
   /// [type] Required.
-  AgentFlowDefinitionNodeOutput({
+  const AgentFlowDefinitionNodeOutput({
     required this.name,
     required this.type,
   });

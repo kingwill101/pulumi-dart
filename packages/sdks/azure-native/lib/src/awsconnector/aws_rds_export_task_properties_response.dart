@@ -55,7 +55,7 @@ class AwsRdsExportTaskPropertiesResponse {
   /// [taskStartTime] &lt;p&gt;The time when the snapshot or cluster export task started.&lt;/p&gt;
   /// [totalExtractedDataInGB] &lt;p&gt;The total amount of data exported, in gigabytes.&lt;/p&gt;
   /// [warningMessage] &lt;p&gt;A warning about the snapshot or cluster export task.&lt;/p&gt;
-  AwsRdsExportTaskPropertiesResponse({
+  const AwsRdsExportTaskPropertiesResponse({
     this.exportOnly,
     this.exportTaskIdentifier,
     this.failureCause,

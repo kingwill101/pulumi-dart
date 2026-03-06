@@ -15,7 +15,7 @@ class LineRegistrationResponse {
   /// [channelAccessToken] Access token for the line channel registration
   /// [channelSecret] Secret for the line channel registration
   /// [generatedId] Id generated for the line channel registration
-  LineRegistrationResponse({
+  const LineRegistrationResponse({
     this.channelAccessToken,
     this.channelSecret,
     required this.generatedId,

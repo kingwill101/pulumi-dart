@@ -12,7 +12,7 @@ class JobScheduleActionResponse {
   /// Creates a new [JobScheduleActionResponse].
   /// [actionType] Expected value is 'CreateJob'.
   /// [jobBaseProperties] [Required] Defines Schedule action definition details.
-  JobScheduleActionResponse({
+  const JobScheduleActionResponse({
     required this.actionType,
     required this.jobBaseProperties,
   });

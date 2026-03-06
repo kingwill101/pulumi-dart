@@ -11,7 +11,7 @@ class V3FunctionCustomDnsDnsOption {
   /// Creates a new [V3FunctionCustomDnsDnsOption].
   /// [name] Configuration Item Name
   /// [value] Configuration Item Value
-  V3FunctionCustomDnsDnsOption({
+  const V3FunctionCustomDnsDnsOption({
     this.name,
     this.value,
   });

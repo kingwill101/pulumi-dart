@@ -19,7 +19,7 @@ class CategoryInformationResponse {
   /// [categoryName] Category name of the child configuration.
   /// [description] Description text for the category.
   /// [links] Links for the category.
-  CategoryInformationResponse({
+  const CategoryInformationResponse({
     this.categoryDisplayName,
     this.categoryName,
     this.description,

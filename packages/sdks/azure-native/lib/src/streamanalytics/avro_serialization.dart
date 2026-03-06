@@ -10,7 +10,7 @@ class AvroSerialization {
 
   /// Creates a new [AvroSerialization].
   /// [type] Indicates the type of serialization that the input or output uses. Required on PUT (CreateOrReplace) requests.
-  AvroSerialization({
+  const AvroSerialization({
     required this.type,
   });
 

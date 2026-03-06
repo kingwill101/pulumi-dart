@@ -62,7 +62,7 @@ class Route {
   /// [requestValidator] Request Validator specifies the validator to use at the method level. This will override anything
   /// [requiredParameters] Required Parameters to validate. If the request validator is set to ALL or PARAMS_ONLY, api
   /// [target] The target for an integration route (see https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-api-integration-types.html).
-  Route({
+  const Route({
     this.apiKeyRequired,
     this.authorizers,
     this.contentType,

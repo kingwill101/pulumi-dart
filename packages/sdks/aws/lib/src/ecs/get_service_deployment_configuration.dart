@@ -37,7 +37,7 @@ class GetServiceDeploymentConfiguration {
   /// [maximumPercent] Upper limit on tasks during deployment
   /// [minimumHealthyPercent] Lower limit on healthy tasks during deployment
   /// [strategy] Deployment strategy (ROLLING, BLUE_GREEN, LINEAR, or CANARY)
-  GetServiceDeploymentConfiguration({
+  const GetServiceDeploymentConfiguration({
     required this.alarms,
     required this.bakeTimeInMinutes,
     required this.canaryConfigurations,

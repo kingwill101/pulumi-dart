@@ -8,7 +8,7 @@ class GcpIntegrationsRun {
 
   /// Creates a new [GcpIntegrationsRun].
   /// [metricsPollingInterval] the data polling interval in seconds
-  GcpIntegrationsRun({
+  const GcpIntegrationsRun({
     this.metricsPollingInterval,
   });
 

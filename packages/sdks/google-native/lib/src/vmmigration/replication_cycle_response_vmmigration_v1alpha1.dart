@@ -42,7 +42,7 @@ class ReplicationCycleResponseVmmigrationV1alpha1 {
   /// [steps] The cycle's steps list representing its progress.
   /// [totalPauseDuration] The accumulated duration the replication cycle was paused.
   /// [warnings] Warnings that occurred during the cycle.
-  ReplicationCycleResponseVmmigrationV1alpha1({
+  const ReplicationCycleResponseVmmigrationV1alpha1({
     required this.cycleNumber,
     required this.endTime,
     required this.error,

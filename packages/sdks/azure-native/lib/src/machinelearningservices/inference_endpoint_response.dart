@@ -29,7 +29,7 @@ class InferenceEndpointResponse {
   /// [properties] Property dictionary. Properties can be added, but not removed or altered.
   /// [provisioningState] Provisioning state for the endpoint.
   /// [requestConfiguration] RequestConfiguration for endpoint.
-  InferenceEndpointResponse({
+  const InferenceEndpointResponse({
     required this.authMode,
     this.description,
     required this.endpointUri,

@@ -43,7 +43,7 @@ class GetDatabaseAdvisorResult {
   /// [recommendationsStatus] Gets that status of recommendations for this advisor and reason for not having any recommendations. Possible values include, but are not limited to, 'Ok' (Recommendations available),LowActivity (not enough workload to analyze), 'DbSeemsTuned' (Database is doing well), etc.
   /// [recommendedActions] Gets the recommended actions for this advisor.
   /// [type] Resource type.
-  GetDatabaseAdvisorResult({
+  const GetDatabaseAdvisorResult({
     required this.advisorStatus,
     required this.autoExecuteStatus,
     required this.autoExecuteStatusInheritedFrom,

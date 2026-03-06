@@ -49,7 +49,7 @@ class GetFlavorArgs {
   /// [rxTxFactor] The `rx_tx_factor` of the flavor.
   /// [swap] The amount of swap (in gigabytes).
   /// [vcpus] The amount of VCPUs.
-  GetFlavorArgs({
+  const GetFlavorArgs({
     this.description,
     this.disk,
     this.flavorId,

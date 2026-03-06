@@ -28,7 +28,7 @@ class PreventionJobTriggerInspectJobActionDeidentify {
   /// [fileTypesToTransforms] List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed.
   /// [transformationConfig] User specified deidentify templates and configs for structured, unstructured, and image files.
   /// [transformationDetailsStorageConfig] Config for storing transformation details.
-  PreventionJobTriggerInspectJobActionDeidentify({
+  const PreventionJobTriggerInspectJobActionDeidentify({
     required this.cloudStorageOutput,
     this.fileTypesToTransforms,
     this.transformationConfig,

@@ -9,7 +9,7 @@ class ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse {
 
   /// Creates a new [ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse].
   /// [addOnPlanConversionAllowed] Add-on plan conversion allowed.
-  ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse({
+  const ResourceTypeRegistrationPropertiesMarketplaceOptionsResponse({
     this.addOnPlanConversionAllowed,
   });
 

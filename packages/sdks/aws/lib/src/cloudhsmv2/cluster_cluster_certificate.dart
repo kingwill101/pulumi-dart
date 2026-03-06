@@ -20,7 +20,7 @@ class ClusterClusterCertificate {
   /// [clusterCsr] The certificate signing request (CSR). Available only in `UNINITIALIZED` state after an HSM instance is added to the cluster.
   /// [hsmCertificate] The HSM certificate issued (signed) by the HSM hardware.
   /// [manufacturerHardwareCertificate] The HSM hardware certificate issued (signed) by the hardware manufacturer.
-  ClusterClusterCertificate({
+  const ClusterClusterCertificate({
     this.awsHardwareCertificate,
     this.clusterCertificate,
     this.clusterCsr,

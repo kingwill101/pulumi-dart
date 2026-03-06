@@ -12,7 +12,7 @@ class SessionTemplateJupyterSession {
   /// Creates a new [SessionTemplateJupyterSession].
   /// [displayName] Display name, shown in the Jupyter kernelspec card.
   /// [kernel] Kernel to be used with Jupyter interactive session.
-  SessionTemplateJupyterSession({
+  const SessionTemplateJupyterSession({
     this.displayName,
     this.kernel,
   });

@@ -23,7 +23,7 @@ class GetRealTimeLogDeliveriesDelivery {
   /// [project] The name of the Log Service project that is used for real-time log delivery.
   /// [slsRegion] The region where the Log Service project is deployed.
   /// [status] The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
-  GetRealTimeLogDeliveriesDelivery({
+  const GetRealTimeLogDeliveriesDelivery({
     required this.domain,
     required this.id,
     required this.logstore,

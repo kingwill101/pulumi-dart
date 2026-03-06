@@ -18,7 +18,7 @@ class GetIssueArgs {
   /// [azureMonitorWorkspaceName] The name of the Azure Monitor Workspace. The name is case insensitive
   /// [issueName] The name of the IssueResource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIssueArgs({
+  const GetIssueArgs({
     required this.azureMonitorWorkspaceName,
     required this.issueName,
     required this.resourceGroupName,

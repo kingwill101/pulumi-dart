@@ -37,7 +37,7 @@ class DomainDevicesSound {
   /// [model] This field specifies the model of the sound device in the guest domain configuration.
   /// [multiChannel] Configures whether the sound device supports multi-channel audio output.
   /// [streams] Sets the number of audio streams supported by the sound device.
-  DomainDevicesSound({
+  const DomainDevicesSound({
     this.acpi,
     this.address,
     this.alias,

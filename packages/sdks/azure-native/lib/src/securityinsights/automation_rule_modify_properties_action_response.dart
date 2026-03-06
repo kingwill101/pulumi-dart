@@ -15,7 +15,7 @@ class AutomationRuleModifyPropertiesActionResponse {
   /// [actionConfiguration] Optional.
   /// [actionType] The type of the automation rule action.
   /// [order] Required.
-  AutomationRuleModifyPropertiesActionResponse({
+  const AutomationRuleModifyPropertiesActionResponse({
     this.actionConfiguration,
     required this.actionType,
     required this.order,

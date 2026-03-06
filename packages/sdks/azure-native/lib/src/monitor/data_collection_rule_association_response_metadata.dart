@@ -12,7 +12,7 @@ class DataCollectionRuleAssociationResponseMetadata {
   /// Creates a new [DataCollectionRuleAssociationResponseMetadata].
   /// [provisionedBy] Azure offering managing this resource on-behalf-of customer.
   /// [provisionedByResourceId] Resource Id of azure offering managing this resource on-behalf-of customer.
-  DataCollectionRuleAssociationResponseMetadata({
+  const DataCollectionRuleAssociationResponseMetadata({
     required this.provisionedBy,
     required this.provisionedByResourceId,
   });

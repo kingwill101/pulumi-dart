@@ -12,7 +12,7 @@ class AmiEphemeralBlockDevice {
   /// Creates a new [AmiEphemeralBlockDevice].
   /// [deviceName] Path at which the device is exposed to created instances.
   /// [virtualName] Name for the ephemeral device, of the form "ephemeralN" where
-  AmiEphemeralBlockDevice({
+  const AmiEphemeralBlockDevice({
     required this.deviceName,
     required this.virtualName,
   });

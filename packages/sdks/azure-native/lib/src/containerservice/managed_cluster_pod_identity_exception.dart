@@ -15,7 +15,7 @@ class ManagedClusterPodIdentityException {
   /// [name] The name of the pod identity exception.
   /// [namespace] The namespace of the pod identity exception.
   /// [podLabels] The pod labels to match.
-  ManagedClusterPodIdentityException({
+  const ManagedClusterPodIdentityException({
     required this.name,
     required this.namespace,
     required this.podLabels,

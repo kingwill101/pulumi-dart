@@ -18,7 +18,7 @@ class GalleryInVMAccessControlProfilePropertiesResponse {
   /// [description] The description of this gallery inVMAccessControlProfile resources. This property is updatable.
   /// [osType] This property allows you to specify the OS type of the VMs/VMSS for which this profile can be used against. Possible values are: 'Windows' or 'Linux'
   /// [provisioningState] The provisioning state, which only appears in the response.
-  GalleryInVMAccessControlProfilePropertiesResponse({
+  const GalleryInVMAccessControlProfilePropertiesResponse({
     required this.applicableHostEndpoint,
     this.description,
     required this.osType,

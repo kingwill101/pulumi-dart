@@ -14,7 +14,7 @@ class GetKeyPairsPair {
   /// [id] The ID of the Key Pair. Its value is same as Queue Name.
   /// [keyPairFingerPrint] The Private Key of the Fingerprint.
   /// [keyPairName] The Key Name.
-  GetKeyPairsPair({
+  const GetKeyPairsPair({
     required this.id,
     required this.keyPairFingerPrint,
     required this.keyPairName,

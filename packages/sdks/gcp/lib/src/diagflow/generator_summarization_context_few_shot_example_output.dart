@@ -10,7 +10,7 @@ class GeneratorSummarizationContextFewShotExampleOutput {
 
   /// Creates a new [GeneratorSummarizationContextFewShotExampleOutput].
   /// [summarySuggestion] Optional. Suggested summary.
-  GeneratorSummarizationContextFewShotExampleOutput({
+  const GeneratorSummarizationContextFewShotExampleOutput({
     this.summarySuggestion,
   });
 

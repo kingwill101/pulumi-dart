@@ -11,7 +11,7 @@ class LaunchTemplateInstanceRequirementsAcceleratorCount {
   /// Creates a new [LaunchTemplateInstanceRequirementsAcceleratorCount].
   /// [max] Maximum. Set to `0` to exclude instance types with accelerators.
   /// [min] Minimum.
-  LaunchTemplateInstanceRequirementsAcceleratorCount({
+  const LaunchTemplateInstanceRequirementsAcceleratorCount({
     this.max,
     this.min,
   });

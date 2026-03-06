@@ -12,7 +12,7 @@ class SqlUserDefinedFunctionResource {
   /// Creates a new [SqlUserDefinedFunctionResource].
   /// [body] Body of the User Defined Function
   /// [id] Name of the Cosmos DB SQL userDefinedFunction
-  SqlUserDefinedFunctionResource({
+  const SqlUserDefinedFunctionResource({
     this.body,
     required this.id,
   });

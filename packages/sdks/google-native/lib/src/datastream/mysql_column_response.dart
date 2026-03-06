@@ -33,7 +33,7 @@ class MysqlColumnResponse {
   /// [precision] Column precision.
   /// [primaryKey] Whether or not the column represents a primary key.
   /// [scale] Column scale.
-  MysqlColumnResponse({
+  const MysqlColumnResponse({
     required this.collation,
     required this.column,
     required this.dataType,

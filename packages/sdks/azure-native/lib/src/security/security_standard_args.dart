@@ -31,7 +31,7 @@ class SecurityStandardArgs {
   /// [policySetDefinitionId] The policy set definition id associated with the standard.
   /// [scope] The scope of the security standard. Valid scopes are: management group (format: 'providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: 'subscriptions/{subscriptionId}'), or security connector (format: 'subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName})'
   /// [standardId] The Security Standard key - unique key for the standard type
-  SecurityStandardArgs({
+  const SecurityStandardArgs({
     this.assessments,
     this.cloudProviders,
     this.description,

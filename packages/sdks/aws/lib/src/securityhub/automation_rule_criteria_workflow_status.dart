@@ -9,7 +9,7 @@ class AutomationRuleCriteriaWorkflowStatus {
   /// Creates a new [AutomationRuleCriteriaWorkflowStatus].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaWorkflowStatus({
+  const AutomationRuleCriteriaWorkflowStatus({
     required this.comparison,
     required this.value,
   });

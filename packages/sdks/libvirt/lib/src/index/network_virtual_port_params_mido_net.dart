@@ -8,7 +8,7 @@ class NetworkVirtualPortParamsMidoNet {
 
   /// Creates a new [NetworkVirtualPortParamsMidoNet].
   /// [interfaceId] Specifies the interface ID for MidoNet virtual port parameters.
-  NetworkVirtualPortParamsMidoNet({
+  const NetworkVirtualPortParamsMidoNet({
     this.interfaceId,
   });
 

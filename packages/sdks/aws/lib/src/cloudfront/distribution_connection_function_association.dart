@@ -8,7 +8,7 @@ class DistributionConnectionFunctionAssociation {
 
   /// Creates a new [DistributionConnectionFunctionAssociation].
   /// [id] Identifier for the distribution. For example: `EDFDVBD632BHDS5`.
-  DistributionConnectionFunctionAssociation({
+  const DistributionConnectionFunctionAssociation({
     required this.id,
   });
 

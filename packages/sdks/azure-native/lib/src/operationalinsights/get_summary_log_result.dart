@@ -43,7 +43,7 @@ class GetSummaryLogResult {
   /// [statusCode] Indicates the reason for rule deactivation.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSummaryLogResult({
+  const GetSummaryLogResult({
     required this.azureApiVersion,
     this.description,
     this.displayName,

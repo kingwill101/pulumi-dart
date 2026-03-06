@@ -9,7 +9,7 @@ class FleetSpotOptionsMaintenanceStrategies {
 
   /// Creates a new [FleetSpotOptionsMaintenanceStrategies].
   /// [capacityRebalance] Nested argument containing the capacity rebalance for your fleet request. Defined below.
-  FleetSpotOptionsMaintenanceStrategies({
+  const FleetSpotOptionsMaintenanceStrategies({
     this.capacityRebalance,
   });
 

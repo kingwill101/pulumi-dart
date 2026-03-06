@@ -14,7 +14,7 @@ class RuleRuleActionFixedResponseConfig {
   /// [content] The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
   /// [contentType] The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
   /// [httpCode] The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
-  RuleRuleActionFixedResponseConfig({
+  const RuleRuleActionFixedResponseConfig({
     required this.content,
     this.contentType,
     this.httpCode,

@@ -98,7 +98,7 @@ class ImageArgs {
   /// [verifyChecksum] If false, the checksum will not be verified
   /// [visibility] The visibility of the image. Must be one of
   /// [webDownload] If true, the "web-download" import method will be
-  ImageArgs({
+  const ImageArgs({
     required this.containerFormat,
     this.decompress,
     required this.diskFormat,

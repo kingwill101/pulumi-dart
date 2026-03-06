@@ -17,7 +17,7 @@ class ScriptStorageLocation {
   /// [key] Name of the zip file containing your script files.
   /// [objectVersion] A specific version of the file. If not set, the latest version of the file is retrieved.
   /// [roleArn] ARN of the access role that allows Amazon GameLift to access your S3 bucket.
-  ScriptStorageLocation({
+  const ScriptStorageLocation({
     required this.bucket,
     required this.key,
     this.objectVersion,

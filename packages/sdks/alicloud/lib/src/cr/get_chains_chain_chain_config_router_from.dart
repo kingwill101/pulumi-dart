@@ -8,7 +8,7 @@ class GetChainsChainChainConfigRouterFrom {
 
   /// Creates a new [GetChainsChainChainConfigRouterFrom].
   /// [nodeName] The name of delivery chain node.
-  GetChainsChainChainConfigRouterFrom({
+  const GetChainsChainChainConfigRouterFrom({
     required this.nodeName,
   });
 

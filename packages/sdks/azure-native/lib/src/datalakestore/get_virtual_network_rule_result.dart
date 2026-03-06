@@ -20,7 +20,7 @@ class GetVirtualNetworkRuleResult {
   /// [name] The resource name.
   /// [subnetId] The resource identifier for the subnet.
   /// [type] The resource type.
-  GetVirtualNetworkRuleResult({
+  const GetVirtualNetworkRuleResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

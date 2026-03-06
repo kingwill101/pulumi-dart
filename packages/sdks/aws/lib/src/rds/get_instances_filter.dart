@@ -11,7 +11,7 @@ class GetInstancesFilter {
   /// Creates a new [GetInstancesFilter].
   /// [name] Name of the filter field. Valid values can be found in the [RDS DescribeDBClusters API Reference](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DescribeDBClusters.html) or [RDS DescribeDBInstances API Reference](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_DescribeDBInstances.html).
   /// [values] Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  GetInstancesFilter({
+  const GetInstancesFilter({
     required this.name,
     required this.values,
   });

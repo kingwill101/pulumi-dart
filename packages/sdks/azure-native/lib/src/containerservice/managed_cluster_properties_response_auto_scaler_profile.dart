@@ -66,7 +66,7 @@ class ManagedClusterPropertiesResponseAutoScalerProfile {
   /// [scanInterval] How often cluster is reevaluated for scale up or down. The default is '10'. Values must be an integer number of seconds.
   /// [skipNodesWithLocalStorage] If cluster autoscaler will skip deleting nodes with pods with local storage, for example, EmptyDir or HostPath. The default is true.
   /// [skipNodesWithSystemPods] If cluster autoscaler will skip deleting nodes with pods from kube-system (except for DaemonSet or mirror pods). The default is true.
-  ManagedClusterPropertiesResponseAutoScalerProfile({
+  const ManagedClusterPropertiesResponseAutoScalerProfile({
     this.balanceSimilarNodeGroups,
     this.daemonsetEvictionForEmptyNodes,
     this.daemonsetEvictionForOccupiedNodes,

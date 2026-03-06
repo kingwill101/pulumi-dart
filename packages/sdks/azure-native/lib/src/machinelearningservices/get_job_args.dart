@@ -18,7 +18,7 @@ class GetJobArgs {
   /// [id] The name and identifier for the Job. This is case-sensitive.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetJobArgs({
+  const GetJobArgs({
     required this.id,
     required this.resourceGroupName,
     required this.workspaceName,

@@ -14,7 +14,7 @@ class CspmMonitorGcpOffering {
   /// Creates a new [CspmMonitorGcpOffering].
   /// [nativeCloudConnection] The native cloud connection configuration
   /// [offeringType] The type of the security offering.
-  CspmMonitorGcpOffering({
+  const CspmMonitorGcpOffering({
     this.nativeCloudConnection,
     required this.offeringType,
   });

@@ -13,7 +13,7 @@ class DashboardPropertiesWithProvisioningState {
   /// Creates a new [DashboardPropertiesWithProvisioningState].
   /// [lenses] The dashboard lenses.
   /// [metadata] The dashboard metadata.
-  DashboardPropertiesWithProvisioningState({
+  const DashboardPropertiesWithProvisioningState({
     this.lenses,
     this.metadata,
   });

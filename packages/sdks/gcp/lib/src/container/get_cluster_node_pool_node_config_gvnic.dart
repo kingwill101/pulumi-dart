@@ -8,7 +8,7 @@ class GetClusterNodePoolNodeConfigGvnic {
 
   /// Creates a new [GetClusterNodePoolNodeConfigGvnic].
   /// [enabled] Whether or not gvnic is enabled
-  GetClusterNodePoolNodeConfigGvnic({
+  const GetClusterNodePoolNodeConfigGvnic({
     required this.enabled,
   });
 

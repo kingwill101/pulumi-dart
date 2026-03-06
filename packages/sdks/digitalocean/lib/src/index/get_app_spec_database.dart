@@ -26,7 +26,7 @@ class GetAppSpecDatabase {
   /// [name] The name of the component.
   /// [production] Whether this is a production or dev database.
   /// [version] The version of the database engine.
-  GetAppSpecDatabase({
+  const GetAppSpecDatabase({
     this.clusterName,
     this.dbName,
     this.dbUser,

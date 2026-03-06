@@ -11,7 +11,7 @@ class VirtualMachineManagerVirtualMachineInstanceOperatingSystem {
   /// Creates a new [VirtualMachineManagerVirtualMachineInstanceOperatingSystem].
   /// [adminPassword] The admin password of the Virtual Machine. Changing this forces a new resource to be created.
   /// [computerName] The computer name of the Virtual Machine. Changing this forces a new resource to be created.
-  VirtualMachineManagerVirtualMachineInstanceOperatingSystem({
+  const VirtualMachineManagerVirtualMachineInstanceOperatingSystem({
     this.adminPassword,
     this.computerName,
   });

@@ -38,7 +38,7 @@ class GetManagedPrefixListResult {
   /// [region] Required.
   /// [tags] Map of tags assigned to the resource.
   /// [version] Required.
-  GetManagedPrefixListResult({
+  const GetManagedPrefixListResult({
     required this.addressFamily,
     required this.arn,
     required this.entries,

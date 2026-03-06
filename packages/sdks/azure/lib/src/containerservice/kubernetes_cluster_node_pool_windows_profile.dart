@@ -10,7 +10,7 @@ class KubernetesClusterNodePoolWindowsProfile {
 
   /// Creates a new [KubernetesClusterNodePoolWindowsProfile].
   /// [outboundNatEnabled] Should the Windows nodes in this Node Pool have outbound NAT enabled? Defaults to `true`. Changing this forces a new resource to be created.
-  KubernetesClusterNodePoolWindowsProfile({
+  const KubernetesClusterNodePoolWindowsProfile({
     this.outboundNatEnabled,
   });
 

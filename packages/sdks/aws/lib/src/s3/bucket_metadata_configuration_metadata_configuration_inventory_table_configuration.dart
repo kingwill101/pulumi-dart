@@ -18,7 +18,7 @@ class BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguratio
   /// [encryptionConfiguration] Encryption configuration for the inventory table. See `encryption_configuration` Block for details.
   /// [tableArn] Inventory table ARN.
   /// [tableName] Inventory table name.
-  BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration({
+  const BucketMetadataConfigurationMetadataConfigurationInventoryTableConfiguration({
     required this.configurationState,
     this.encryptionConfiguration,
     this.tableArn,

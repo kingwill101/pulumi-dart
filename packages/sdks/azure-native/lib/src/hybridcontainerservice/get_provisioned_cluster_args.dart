@@ -15,7 +15,7 @@ class GetProvisionedClusterArgs {
   /// Creates a new [GetProvisionedClusterArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Parameter for the name of the provisioned cluster
-  GetProvisionedClusterArgs({
+  const GetProvisionedClusterArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

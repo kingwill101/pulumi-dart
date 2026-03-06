@@ -12,7 +12,7 @@ class LinuxVirtualMachineSecret {
   /// Creates a new [LinuxVirtualMachineSecret].
   /// [certificates] One or more `certificate` blocks as defined above.
   /// [keyVaultId] The ID of the Key Vault from which all Secrets should be sourced.
-  LinuxVirtualMachineSecret({
+  const LinuxVirtualMachineSecret({
     required this.certificates,
     required this.keyVaultId,
   });

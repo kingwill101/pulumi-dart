@@ -9,7 +9,7 @@ class LoggingComponentConfigResponse {
 
   /// Creates a new [LoggingComponentConfigResponse].
   /// [enableComponents] Select components to collect logs. An empty set would disable all logging.
-  LoggingComponentConfigResponse({
+  const LoggingComponentConfigResponse({
     required this.enableComponents,
   });
 

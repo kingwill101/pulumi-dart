@@ -18,7 +18,7 @@ class StorageBoxSnapshotArgs {
   /// [description] Description of the Storage Box Snapshot.
   /// [labels] User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   /// [storageBoxId] ID of the Storage Box.
-  StorageBoxSnapshotArgs({
+  const StorageBoxSnapshotArgs({
     this.description,
     this.labels,
     required this.storageBoxId,

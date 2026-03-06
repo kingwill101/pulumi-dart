@@ -22,7 +22,7 @@ class WorkstationConfigEphemeralDirectoryGcePd {
   /// [readOnly] Whether the disk is read only. If true, the disk may be shared by multiple VMs and `sourceSnapshot` must be set.
   /// [sourceImage] Name of the disk image to use as the source for the disk.
   /// [sourceSnapshot] Name of the snapshot to use as the source for the disk.
-  WorkstationConfigEphemeralDirectoryGcePd({
+  const WorkstationConfigEphemeralDirectoryGcePd({
     this.diskType,
     this.readOnly,
     this.sourceImage,

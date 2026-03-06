@@ -56,7 +56,7 @@ class ResourcePolicyAssignmentState {
   /// [policyDefinitionId] The ID of the Policy Definition or Policy Definition Set. Changing this forces a new Policy Assignment to be created.
   /// [resourceId] The ID of the Resource (or Resource Scope) where this should be applied. Changing this forces a new Resource Policy Assignment to be created.
   /// [resourceSelectors] One or more `resource_selectors` blocks as defined below to filter polices by resource properties.
-  ResourcePolicyAssignmentState({
+  const ResourcePolicyAssignmentState({
     this.description,
     this.displayName,
     this.enforce,

@@ -17,7 +17,7 @@ class VolumeTargetEncryptionCipher {
   /// [mode] Defines the mode for the encryption cipher of the storage volume.
   /// [name] Sets the name of the encryption cipher for the storage volume.
   /// [size] Sets the size of the encryption cipher for the storage volume.
-  VolumeTargetEncryptionCipher({
+  const VolumeTargetEncryptionCipher({
     required this.hash,
     required this.mode,
     required this.name,

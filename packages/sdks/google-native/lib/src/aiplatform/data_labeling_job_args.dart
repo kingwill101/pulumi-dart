@@ -48,7 +48,7 @@ class DataLabelingJobArgs {
   /// [location] Optional.
   /// [project] Optional.
   /// [specialistPools] The SpecialistPools' resource names associated with this job.
-  DataLabelingJobArgs({
+  const DataLabelingJobArgs({
     this.activeLearningConfig,
     this.annotationLabels,
     required this.datasets,

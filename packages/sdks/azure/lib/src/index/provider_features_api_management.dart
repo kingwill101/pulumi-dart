@@ -9,7 +9,7 @@ class ProviderFeaturesApiManagement {
   /// Creates a new [ProviderFeaturesApiManagement].
   /// [purgeSoftDeleteOnDestroy] Optional.
   /// [recoverSoftDeleted] Optional.
-  ProviderFeaturesApiManagement({
+  const ProviderFeaturesApiManagement({
     this.purgeSoftDeleteOnDestroy,
     this.recoverSoftDeleted,
   });

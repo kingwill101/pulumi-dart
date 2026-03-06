@@ -38,7 +38,7 @@ class ReplicaSetResponse {
   /// [serviceStatus] Status of Domain Service instance
   /// [subnetId] The name of the virtual network that Domain Services will be deployed on. The id of the subnet that Domain Services will be deployed on. /virtualNetwork/vnetName/subnets/subnetName.
   /// [vnetSiteId] Virtual network site id
-  ReplicaSetResponse({
+  const ReplicaSetResponse({
     required this.domainControllerIpAddress,
     required this.externalAccessIpAddress,
     required this.healthAlerts,

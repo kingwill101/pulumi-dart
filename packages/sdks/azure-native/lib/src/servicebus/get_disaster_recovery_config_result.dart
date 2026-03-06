@@ -39,7 +39,7 @@ class GetDisasterRecoveryConfigResult {
   /// [role] role of namespace in GEO DR - possible values 'Primary' or 'PrimaryNotReplicating' or 'Secondary'
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
-  GetDisasterRecoveryConfigResult({
+  const GetDisasterRecoveryConfigResult({
     this.alternateName,
     required this.azureApiVersion,
     required this.id,

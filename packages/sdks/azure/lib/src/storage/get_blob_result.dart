@@ -35,7 +35,7 @@ class GetBlobResult {
   /// [storageContainerName] Required.
   /// [type] The type of the storage blob
   /// [url] The URL of the storage blob.
-  GetBlobResult({
+  const GetBlobResult({
     required this.accessTier,
     required this.contentMd5,
     required this.contentType,

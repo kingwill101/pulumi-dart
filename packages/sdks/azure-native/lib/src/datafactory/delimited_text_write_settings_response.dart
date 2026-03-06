@@ -22,7 +22,7 @@ class DelimitedTextWriteSettingsResponse {
   /// [maxRowsPerFile] Limit the written file's row count to be smaller than or equal to the specified count. Type: integer (or Expression with resultType integer).
   /// [quoteAllText] Indicates whether string values should always be enclosed with quotes. Type: boolean (or Expression with resultType boolean).
   /// [type] The write setting type.
-  DelimitedTextWriteSettingsResponse({
+  const DelimitedTextWriteSettingsResponse({
     required this.fileExtension,
     this.fileNamePrefix,
     this.maxRowsPerFile,

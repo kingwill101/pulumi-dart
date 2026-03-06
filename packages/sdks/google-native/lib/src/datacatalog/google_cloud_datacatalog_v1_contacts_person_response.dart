@@ -12,7 +12,7 @@ class GoogleCloudDatacatalogV1ContactsPersonResponse {
   /// Creates a new [GoogleCloudDatacatalogV1ContactsPersonResponse].
   /// [designation] Designation of the person, for example, Data Steward.
   /// [email] Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
-  GoogleCloudDatacatalogV1ContactsPersonResponse({
+  const GoogleCloudDatacatalogV1ContactsPersonResponse({
     required this.designation,
     required this.email,
   });

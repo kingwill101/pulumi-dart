@@ -12,7 +12,7 @@ class MongoIndexOptionsResponse {
   /// Creates a new [MongoIndexOptionsResponse].
   /// [expireAfterSeconds] Expire after seconds
   /// [unique] Is unique or not
-  MongoIndexOptionsResponse({
+  const MongoIndexOptionsResponse({
     this.expireAfterSeconds,
     this.unique,
   });

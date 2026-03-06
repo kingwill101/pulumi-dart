@@ -8,7 +8,7 @@ class StreamStreamModeDetails {
 
   /// Creates a new [StreamStreamModeDetails].
   /// [streamMode] Specifies the capacity mode of the stream. Must be either `PROVISIONED` or `ON_DEMAND`.
-  StreamStreamModeDetails({
+  const StreamStreamModeDetails({
     required this.streamMode,
   });
 

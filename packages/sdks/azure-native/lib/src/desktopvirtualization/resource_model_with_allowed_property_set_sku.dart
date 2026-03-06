@@ -21,7 +21,7 @@ class ResourceModelWithAllowedPropertySetSku {
   /// [name] The name of the SKU. E.g. P3. It is typically a letter+number code
   /// [size] The SKU size. When the name field is the combination of tier and some other value, this would be the standalone code.
   /// [tier] This field is required to be implemented by the Resource Provider if the service has more than one tier, but is not required on a PUT.
-  ResourceModelWithAllowedPropertySetSku({
+  const ResourceModelWithAllowedPropertySetSku({
     this.capacity,
     this.family,
     required this.name,

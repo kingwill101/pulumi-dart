@@ -11,7 +11,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHot
   /// Creates a new [PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity].
   /// [windowAfter] Number of characters after the finding to consider.
   /// [windowBefore] Number of characters before the finding to consider.
-  PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity({
+  const PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity({
     this.windowAfter,
     this.windowBefore,
   });

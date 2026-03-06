@@ -16,7 +16,7 @@ class GetZonesResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [zones] Required.
-  GetZonesResult({
+  const GetZonesResult({
     required this.id,
     required this.ids,
     this.outputFile,

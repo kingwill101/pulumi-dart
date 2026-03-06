@@ -50,7 +50,7 @@ class GetReservationComputeV1Result {
   /// [specificReservationRequired] Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
   /// [status] The status of the reservation.
   /// [zone] Zone in which the reservation resides. A zone must be provided if the reservation is created within a commitment.
-  GetReservationComputeV1Result({
+  const GetReservationComputeV1Result({
     required this.commitment,
     required this.creationTimestamp,
     required this.description,

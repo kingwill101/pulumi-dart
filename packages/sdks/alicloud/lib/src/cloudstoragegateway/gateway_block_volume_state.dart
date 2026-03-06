@@ -57,7 +57,7 @@ class GatewayBlockVolumeState {
   /// [recovery] The recovery.
   /// [size] The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
   /// [status] The status of volume. Valid values:
-  GatewayBlockVolumeState({
+  const GatewayBlockVolumeState({
     this.cacheMode,
     this.chapEnabled,
     this.chapInPassword,

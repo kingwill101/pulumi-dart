@@ -13,7 +13,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOa
   /// [authCodeUrl] The authorization code url required to redirect to SAP Login Page to fetch authorization code for OAuth type authentication.
   /// [oauthScopes] The OAuth scopes required for OAuth type authentication.
   /// [tokenUrl] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesSapoDataOauthProperties({
     required this.authCodeUrl,
     required this.oauthScopes,
     required this.tokenUrl,

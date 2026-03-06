@@ -26,7 +26,7 @@ class TargetGroupAttachmentState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetGroupArn] The ARN of the target group with which to register targets.
   /// [targetId] The ID of the target. This is the Instance ID for an instance, or the container ID for an ECS container. If the target type is `ip`, specify an IP address. If the target type is `lambda`, specify the Lambda function ARN. If the target type is `alb`, specify the ALB ARN.
-  TargetGroupAttachmentState({
+  const TargetGroupAttachmentState({
     this.availabilityZone,
     this.port,
     this.quicServerId,

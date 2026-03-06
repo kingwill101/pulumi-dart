@@ -15,7 +15,7 @@ class GetNodeArgs {
   /// [location] Required.
   /// [nodeId] Required.
   /// [project] Optional.
-  GetNodeArgs({
+  const GetNodeArgs({
     required this.location,
     required this.nodeId,
     this.project,

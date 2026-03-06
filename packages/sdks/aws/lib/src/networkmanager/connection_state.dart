@@ -35,7 +35,7 @@ class ConnectionState {
   /// [linkId] ID of the link for the first device.
   /// [tags] Key-value tags for the connection. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ConnectionState({
+  const ConnectionState({
     this.arn,
     this.connectedDeviceId,
     this.connectedLinkId,

@@ -19,7 +19,7 @@ class AutoModeOptions {
   /// [computeConfig] Compute configuration for EKS Auto Mode.
   /// [createNodeRole] Whether to create an IAM role for the EKS Auto Mode node group if none is provided in `computeConfig`.
   /// [enabled] Whether to enable EKS Auto Mode. If enabled, EKS will manage node pools, EBS volumes and Load Balancers for you.
-  AutoModeOptions({
+  const AutoModeOptions({
     this.computeConfig,
     this.createNodeRole,
     required this.enabled,

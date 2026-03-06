@@ -11,7 +11,7 @@ class PolicyVMWorkloadSettings {
   /// Creates a new [PolicyVMWorkloadSettings].
   /// [compressionEnabled] The compression setting for the VM Workload Backup Policy. Defaults to `false`.
   /// [timeZone] The timezone for the VM Workload Backup Policy. [The possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/).
-  PolicyVMWorkloadSettings({
+  const PolicyVMWorkloadSettings({
     this.compressionEnabled,
     required this.timeZone,
   });

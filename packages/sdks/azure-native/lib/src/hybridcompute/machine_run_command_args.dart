@@ -60,7 +60,7 @@ class MachineRunCommandArgs {
   /// [source] The source of the run command script.
   /// [tags] Resource tags.
   /// [timeoutInSeconds] The timeout in seconds to execute the run command.
-  MachineRunCommandArgs({
+  const MachineRunCommandArgs({
     this.asyncExecution,
     this.errorBlobManagedIdentity,
     this.errorBlobUri,

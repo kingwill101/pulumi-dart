@@ -21,7 +21,7 @@ class GetFilesetsArgs {
   /// [ids] A list of Fileset IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
-  GetFilesetsArgs({
+  const GetFilesetsArgs({
     required this.fileSystemId,
     this.ids,
     this.outputFile,

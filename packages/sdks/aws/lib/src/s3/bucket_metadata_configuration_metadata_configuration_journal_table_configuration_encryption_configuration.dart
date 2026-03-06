@@ -11,7 +11,7 @@ class BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationE
   /// Creates a new [BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration].
   /// [kmsKeyArn] KMS key ARN when `sse_algorithm` is `aws:kms`.
   /// [sseAlgorithm] Encryption type for the metadata table. Valid values: `aws:kms`, `AES256`.
-  BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration({
+  const BucketMetadataConfigurationMetadataConfigurationJournalTableConfigurationEncryptionConfiguration({
     this.kmsKeyArn,
     required this.sseAlgorithm,
   });

@@ -12,7 +12,7 @@ class LocalizedMessageResponseComputeBeta {
   /// Creates a new [LocalizedMessageResponseComputeBeta].
   /// [locale] The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
   /// [message] The localized error message in the above locale.
-  LocalizedMessageResponseComputeBeta({
+  const LocalizedMessageResponseComputeBeta({
     required this.locale,
     required this.message,
   });

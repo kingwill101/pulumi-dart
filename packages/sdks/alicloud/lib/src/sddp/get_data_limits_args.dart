@@ -21,7 +21,7 @@ class GetDataLimitsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [parentId] The parent asset ID of the data asset.
   /// [resourceType] The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
-  GetDataLimitsArgs({
+  const GetDataLimitsArgs({
     this.ids,
     this.outputFile,
     this.parentId,

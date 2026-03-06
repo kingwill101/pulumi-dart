@@ -22,7 +22,7 @@ class DeploymentStacksDiagnosticResponse {
   /// [level] Denotes the additional response level.
   /// [message] The error message.
   /// [target] The error target.
-  DeploymentStacksDiagnosticResponse({
+  const DeploymentStacksDiagnosticResponse({
     this.additionalInfo,
     required this.code,
     required this.level,

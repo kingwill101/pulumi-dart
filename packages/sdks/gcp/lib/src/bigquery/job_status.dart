@@ -23,7 +23,7 @@ class JobStatus {
   /// [errorResults] (Output)
   /// [errors] (Output)
   /// [state] (Output)
-  JobStatus({
+  const JobStatus({
     this.errorResults,
     this.errors,
     this.state,

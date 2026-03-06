@@ -81,7 +81,7 @@ class GetVpcFirewallControlPoliciesPolicy {
   /// [sourceGroupType] The source address type in the access control policy. Unique value: **ip**. The IP address book contains one or more IP address segments.
   /// [sourceType] Access control over VPC firewalls policy source address type.
   /// [vpcFirewallId] The ID of the VPC firewall instance. Value:
-  GetVpcFirewallControlPoliciesPolicy({
+  const GetVpcFirewallControlPoliciesPolicy({
     required this.aclAction,
     required this.aclUuid,
     required this.applicationId,

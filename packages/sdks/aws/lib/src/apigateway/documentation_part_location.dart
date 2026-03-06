@@ -20,7 +20,7 @@ class DocumentationPartLocation {
   /// [path] URL path of the target. The default value is `/` for the root resource.
   /// [statusCode] HTTP status code of a response. The default value is `*` for any status code.
   /// [type] Type of API entity to which the documentation content appliesE.g., `API`, `METHOD` or `REQUEST_BODY`
-  DocumentationPartLocation({
+  const DocumentationPartLocation({
     this.method,
     this.name,
     this.path,

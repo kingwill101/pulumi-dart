@@ -13,7 +13,7 @@ class GetIosAppArgs {
   /// Creates a new [GetIosAppArgs].
   /// [iosAppId] Required.
   /// [project] Optional.
-  GetIosAppArgs({
+  const GetIosAppArgs({
     required this.iosAppId,
     this.project,
   });

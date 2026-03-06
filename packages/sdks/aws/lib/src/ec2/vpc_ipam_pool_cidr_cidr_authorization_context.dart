@@ -11,7 +11,7 @@ class VpcIpamPoolCidrCidrAuthorizationContext {
   /// Creates a new [VpcIpamPoolCidrCidrAuthorizationContext].
   /// [message] The plain-text authorization message for the prefix and account.
   /// [signature] The signed authorization message for the prefix and account.
-  VpcIpamPoolCidrCidrAuthorizationContext({
+  const VpcIpamPoolCidrCidrAuthorizationContext({
     this.message,
     this.signature,
   });

@@ -9,7 +9,7 @@ class KubeEnvironmentProfile {
 
   /// Creates a new [KubeEnvironmentProfile].
   /// [id] Resource ID of the Kubernetes Environment.
-  KubeEnvironmentProfile({
+  const KubeEnvironmentProfile({
     this.id,
   });
 

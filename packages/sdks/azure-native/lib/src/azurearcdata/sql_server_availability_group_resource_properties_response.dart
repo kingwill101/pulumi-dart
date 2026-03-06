@@ -36,7 +36,7 @@ class SqlServerAvailabilityGroupResourcePropertiesResponse {
   /// [replicas] A list of Availability Group Replicas.
   /// [serverName] the SQL server name.
   /// [vmId] The unique ID of the hybrid machine that this resource belongs to.
-  SqlServerAvailabilityGroupResourcePropertiesResponse({
+  const SqlServerAvailabilityGroupResourcePropertiesResponse({
     required this.availabilityGroupId,
     required this.collectionTimestamp,
     this.databases,

@@ -54,7 +54,7 @@ class CertificateArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [scope] The scope of the certificate.
   /// [selfManaged] Certificate data for a SelfManaged Certificate.
-  CertificateArgs({
+  const CertificateArgs({
     this.description,
     this.labels,
     this.location,

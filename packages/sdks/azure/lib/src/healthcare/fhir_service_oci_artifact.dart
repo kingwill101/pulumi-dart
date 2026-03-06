@@ -14,7 +14,7 @@ class FhirServiceOciArtifact {
   /// [digest] A digest of an image within Azure container registry used for export operations of the service instance to narrow the artifacts down.
   /// [imageName] An image within Azure container registry used for export operations of the service instance.
   /// [loginServer] An Azure container registry used for export operations of the service instance.
-  FhirServiceOciArtifact({
+  const FhirServiceOciArtifact({
     this.digest,
     this.imageName,
     required this.loginServer,

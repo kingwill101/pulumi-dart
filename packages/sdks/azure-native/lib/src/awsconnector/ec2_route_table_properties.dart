@@ -31,7 +31,7 @@ class Ec2RouteTableProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2RouteTableProperties({
+  const Ec2RouteTableProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

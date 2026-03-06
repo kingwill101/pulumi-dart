@@ -79,7 +79,7 @@ class SnapshotCopyState {
   /// [targetCustomAvailabilityZone] The external custom Availability Zone.
   /// [targetDbSnapshotIdentifier] The Identifier for the snapshot.
   /// [vpcId] Provides the VPC ID associated with the DB snapshot.
-  SnapshotCopyState({
+  const SnapshotCopyState({
     this.allocatedStorage,
     this.availabilityZone,
     this.copyTags,

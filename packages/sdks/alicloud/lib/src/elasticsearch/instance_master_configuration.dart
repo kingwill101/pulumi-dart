@@ -17,7 +17,7 @@ class InstanceMasterConfiguration {
   /// [disk] Elasticsearch proprietary master node disk size
   /// [diskType] Elasticsearch proprietary master node disk type
   /// [spec] Elasticsearch proprietary master node specifications
-  InstanceMasterConfiguration({
+  const InstanceMasterConfiguration({
     this.amount,
     this.disk,
     this.diskType,

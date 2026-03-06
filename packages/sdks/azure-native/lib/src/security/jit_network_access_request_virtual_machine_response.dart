@@ -12,7 +12,7 @@ class JitNetworkAccessRequestVirtualMachineResponse {
   /// Creates a new [JitNetworkAccessRequestVirtualMachineResponse].
   /// [id] Resource ID of the virtual machine that is linked to this policy
   /// [ports] The ports that were opened for the virtual machine
-  JitNetworkAccessRequestVirtualMachineResponse({
+  const JitNetworkAccessRequestVirtualMachineResponse({
     required this.id,
     required this.ports,
   });

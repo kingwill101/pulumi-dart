@@ -13,7 +13,7 @@ class ListCatalogDevicesResult {
   /// Creates a new [ListCatalogDevicesResult].
   /// [nextLink] The link to the next page of items
   /// [value] The Device items on this page
-  ListCatalogDevicesResult({
+  const ListCatalogDevicesResult({
     this.nextLink,
     required this.value,
   });

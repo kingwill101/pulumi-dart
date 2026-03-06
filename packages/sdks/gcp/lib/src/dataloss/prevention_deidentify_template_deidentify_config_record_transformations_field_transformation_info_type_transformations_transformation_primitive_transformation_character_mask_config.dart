@@ -23,7 +23,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// [maskingCharacter] Character to use to mask the sensitive values—for example, * for an alphabetic string such as a name, or 0 for a numeric string
   /// [numberToMask] Number of characters to mask. If not set, all matching chars will be masked. Skipped characters do not count towards this tally.
   /// [reverseOrder] Mask characters in reverse order. For example, if masking_character is 0, number_to_mask is 14, and reverse_order is `false`, then the
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfig({
     this.charactersToIgnores,
     this.maskingCharacter,
     this.numberToMask,

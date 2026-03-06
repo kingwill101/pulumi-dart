@@ -24,7 +24,7 @@ class ZoneRecordArgs {
   /// [type] Type of the Zone Record.
   /// [value] Value of the Zone Record.
   /// [zone] ID or Name of the parent Zone.
-  ZoneRecordArgs({
+  const ZoneRecordArgs({
     this.comment,
     this.name,
     required this.type,

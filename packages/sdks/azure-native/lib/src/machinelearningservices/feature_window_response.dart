@@ -12,7 +12,7 @@ class FeatureWindowResponse {
   /// Creates a new [FeatureWindowResponse].
   /// [featureWindowEnd] Specifies the feature window end time
   /// [featureWindowStart] Specifies the feature window start time
-  FeatureWindowResponse({
+  const FeatureWindowResponse({
     this.featureWindowEnd,
     this.featureWindowStart,
   });

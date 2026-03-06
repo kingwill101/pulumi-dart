@@ -12,7 +12,7 @@ class KinesisStreamSpecificationResponse {
   /// Creates a new [KinesisStreamSpecificationResponse].
   /// [approximateCreationDateTimePrecision] The precision for the time and date that the stream was created.
   /// [streamArn] The ARN for a specific Kinesis data stream. Length Constraints: Minimum length of 37. Maximum length of 1024.
-  KinesisStreamSpecificationResponse({
+  const KinesisStreamSpecificationResponse({
     this.approximateCreationDateTimePrecision,
     this.streamArn,
   });

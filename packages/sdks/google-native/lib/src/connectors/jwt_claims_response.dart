@@ -15,7 +15,7 @@ class JwtClaimsResponse {
   /// [audience] Value for the "aud" claim.
   /// [issuer] Value for the "iss" claim.
   /// [subject] Value for the "sub" claim.
-  JwtClaimsResponse({
+  const JwtClaimsResponse({
     required this.audience,
     required this.issuer,
     required this.subject,

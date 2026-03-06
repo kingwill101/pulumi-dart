@@ -27,7 +27,7 @@ class ProtectionGroupArgs {
   /// [protectionGroupId] The name of the protection group.
   /// [resourceType] The resource type to include in the protection group. You must set this when you set `pattern` to BY_RESOURCE_TYPE and you must not set it for any other `pattern` setting.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ProtectionGroupArgs({
+  const ProtectionGroupArgs({
     required this.aggregation,
     this.members,
     required this.pattern,

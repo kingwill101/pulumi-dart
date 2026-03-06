@@ -39,7 +39,7 @@ class TcpRouteArgs {
   /// [name] Name of the TcpRoute resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] Rules that define how traffic is routed and handled. At least one RouteRule must be supplied.
-  TcpRouteArgs({
+  const TcpRouteArgs({
     this.description,
     this.gateways,
     this.labels,

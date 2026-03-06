@@ -41,7 +41,7 @@ class WasmPluginArgs {
   /// [name] Identifier. Name of the WasmPlugin resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [versions] All versions of this WasmPlugin resource in the key-value format. The key is the resource ID, and the value is the VersionDetails object.
-  WasmPluginArgs({
+  const WasmPluginArgs({
     this.description,
     this.labels,
     this.location,

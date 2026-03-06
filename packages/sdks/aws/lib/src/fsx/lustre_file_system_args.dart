@@ -105,7 +105,7 @@ class LustreFileSystemArgs {
   /// [tags] A map of tags to assign to the file system. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [throughputCapacity] Throughput in MBps required for the `INTELLIGENT_TIERING` storage type. Must be 4000 or multiples of 4000.
   /// [weeklyMaintenanceStartTime] The preferred start time (in `d:HH:MM` format) to perform weekly maintenance, in the UTC time zone.
-  LustreFileSystemArgs({
+  const LustreFileSystemArgs({
     this.autoImportPolicy,
     this.automaticBackupRetentionDays,
     this.backupId,

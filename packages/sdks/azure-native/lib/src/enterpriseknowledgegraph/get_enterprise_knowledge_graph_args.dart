@@ -15,7 +15,7 @@ class GetEnterpriseKnowledgeGraphArgs {
   /// Creates a new [GetEnterpriseKnowledgeGraphArgs].
   /// [resourceGroupName] The name of the EnterpriseKnowledgeGraph resource group in the user subscription.
   /// [resourceName] The name of the EnterpriseKnowledgeGraph resource.
-  GetEnterpriseKnowledgeGraphArgs({
+  const GetEnterpriseKnowledgeGraphArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

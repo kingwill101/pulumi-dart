@@ -47,7 +47,7 @@ class GeminiGcpEnablementSettingBindingState {
   /// [settingBindingId] Id of the setting binding.
   /// [target] Target of the binding.
   /// [updateTime] Update time stamp.
-  GeminiGcpEnablementSettingBindingState({
+  const GeminiGcpEnablementSettingBindingState({
     this.createTime,
     this.effectiveLabels,
     this.geminiGcpEnablementSettingId,

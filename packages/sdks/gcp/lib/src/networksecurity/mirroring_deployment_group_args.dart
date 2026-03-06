@@ -34,7 +34,7 @@ class MirroringDeploymentGroupArgs {
   /// [mirroringDeploymentGroupId] The ID to use for the new deployment group, which will become the final
   /// [network] The network that will be used for all child deployments, for example:
   /// [project] The ID of the project in which the resource belongs.
-  MirroringDeploymentGroupArgs({
+  const MirroringDeploymentGroupArgs({
     this.description,
     this.labels,
     required this.location,

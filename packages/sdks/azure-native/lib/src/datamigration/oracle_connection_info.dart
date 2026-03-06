@@ -31,7 +31,7 @@ class OracleConnectionInfo {
   /// [serverVersion] server version
   /// [type] Type of connection info
   /// [userName] User name
-  OracleConnectionInfo({
+  const OracleConnectionInfo({
     this.authentication,
     required this.dataSource,
     this.password,

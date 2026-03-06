@@ -16,7 +16,7 @@ class VolumeDataProtectionBackupPolicy {
   /// [backupPolicyId] Resource ID of the backup policy to apply to the volume.
   /// [backupVaultId] Resource ID of the backup backup vault to associate this volume to.
   /// [policyEnabled] Enables the backup policy on the volume, defaults to `true`.
-  VolumeDataProtectionBackupPolicy({
+  const VolumeDataProtectionBackupPolicy({
     required this.backupPolicyId,
     required this.backupVaultId,
     this.policyEnabled,

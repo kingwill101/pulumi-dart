@@ -25,7 +25,7 @@ class IISApplicationDetails {
   /// [managedPipelineMode] Gets or sets the managed pipeline mode.
   /// [path] Second level entity for virtual directories.
   /// [runtimeVersion] Gets or sets the runtime version.
-  IISApplicationDetails({
+  const IISApplicationDetails({
     this.applicationPoolName,
     this.directories,
     this.enable32BitApiOnWin64,

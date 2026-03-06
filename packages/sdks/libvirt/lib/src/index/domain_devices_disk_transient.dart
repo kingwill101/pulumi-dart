@@ -8,7 +8,7 @@ class DomainDevicesDiskTransient {
 
   /// Creates a new [DomainDevicesDiskTransient].
   /// [shareBacking] Indicates if the transient disk device shares backing storage with other devices.
-  DomainDevicesDiskTransient({
+  const DomainDevicesDiskTransient({
     this.shareBacking,
   });
 

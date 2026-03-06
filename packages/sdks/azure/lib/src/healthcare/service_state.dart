@@ -52,7 +52,7 @@ class ServiceState {
   /// [publicNetworkAccessEnabled] Whether public network access is enabled or disabled for this service instance. Defaults to `true`.
   /// [resourceGroupName] The name of the Resource Group in which to create the Service. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  ServiceState({
+  const ServiceState({
     this.accessPolicyObjectIds,
     this.authenticationConfiguration,
     this.configurationExportStorageAccountName,

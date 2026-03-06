@@ -57,7 +57,7 @@ class RouteArgs {
   /// [routeName] Name of the routing rule.
   /// [ruleSets] rule sets referenced by this endpoint.
   /// [supportedProtocols] List of supported protocols for this route.
-  RouteArgs({
+  const RouteArgs({
     this.cacheConfiguration,
     this.customDomains,
     this.enabledState,

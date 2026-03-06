@@ -21,7 +21,7 @@ class AseV3NetworkingConfiguration {
   /// [inboundIpAddressOverride] Customer provided Inbound IP Address. Only able to be set on Ase create.
   /// [kind] Kind of resource.
   /// [remoteDebugEnabled] Property to enable and disable Remote Debug on ASEV3
-  AseV3NetworkingConfiguration({
+  const AseV3NetworkingConfiguration({
     this.allowNewPrivateEndpointConnections,
     this.ftpEnabled,
     this.inboundIpAddressOverride,

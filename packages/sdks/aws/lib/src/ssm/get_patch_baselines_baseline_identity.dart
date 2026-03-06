@@ -20,7 +20,7 @@ class GetPatchBaselinesBaselineIdentity {
   /// [baselineName] Name of the patch baseline.
   /// [defaultBaseline] Indicates whether this is the default baseline. AWS Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.
   /// [operatingSystem] Operating system the patch baseline applies to.
-  GetPatchBaselinesBaselineIdentity({
+  const GetPatchBaselinesBaselineIdentity({
     required this.baselineDescription,
     required this.baselineId,
     required this.baselineName,

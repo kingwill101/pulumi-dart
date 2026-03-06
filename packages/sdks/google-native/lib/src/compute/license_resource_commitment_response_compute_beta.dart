@@ -15,7 +15,7 @@ class LicenseResourceCommitmentResponseComputeBeta {
   /// [amount] The number of licenses purchased.
   /// [coresPerLicense] Specifies the core range of the instance for which this license applies.
   /// [license] Any applicable license URI.
-  LicenseResourceCommitmentResponseComputeBeta({
+  const LicenseResourceCommitmentResponseComputeBeta({
     required this.amount,
     required this.coresPerLicense,
     required this.license,

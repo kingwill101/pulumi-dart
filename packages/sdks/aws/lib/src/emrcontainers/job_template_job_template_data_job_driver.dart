@@ -13,7 +13,7 @@ class JobTemplateJobTemplateDataJobDriver {
   /// Creates a new [JobTemplateJobTemplateDataJobDriver].
   /// [sparkSqlJobDriver] The job driver for job type.
   /// [sparkSubmitJobDriver] The job driver parameters specified for spark submit.
-  JobTemplateJobTemplateDataJobDriver({
+  const JobTemplateJobTemplateDataJobDriver({
     this.sparkSqlJobDriver,
     this.sparkSubmitJobDriver,
   });

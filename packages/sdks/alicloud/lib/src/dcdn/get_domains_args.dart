@@ -41,7 +41,7 @@ class GetDomainsArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [securityToken] Optional.
   /// [status] The status of DCDN Domain.
-  GetDomainsArgs({
+  const GetDomainsArgs({
     this.changeEndTime,
     this.changeStartTime,
     this.checkDomainShow,

@@ -21,7 +21,7 @@ class ApplicationScaleState {
   /// [eccInfo] The ecc information of the resource supplied above. The value is formulated as `&lt;ecc1,ecc2&gt;`.
   /// [ecuInfos] The IDs of the Elastic Compute Unit (ECU) where you want to deploy the application. Type: List.
   /// [forceStatus] This parameter specifies whether to forcibly remove an ECS instance where the application is deployed. It is set as true only after the ECS instance expires. In normal cases, this parameter do not need to be specified.
-  ApplicationScaleState({
+  const ApplicationScaleState({
     this.appId,
     this.deployGroup,
     this.eccInfo,

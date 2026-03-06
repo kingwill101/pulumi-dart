@@ -28,7 +28,7 @@ class ProbeResponse {
   /// [probeAction] The action of the probe.
   /// [successThreshold] Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 for liveness and startup. Minimum value is 1.
   /// [timeoutSeconds] Number of seconds after which the probe times out. Minimum value is 1.
-  ProbeResponse({
+  const ProbeResponse({
     required this.disableProbe,
     this.failureThreshold,
     this.initialDelaySeconds,

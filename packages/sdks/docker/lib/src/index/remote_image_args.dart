@@ -30,7 +30,7 @@ class RemoteImageArgs {
   /// [platform] The platform to use when pulling the image. Defaults to the platform of the current machine.
   /// [pullTriggers] List of values which cause an image pull when changed. This is used to store the image digest from the registry when using the docker*registry*image.
   /// [triggers] A map of arbitrary strings that, when changed, will force the `docker.RemoteImage` resource to be replaced. This can be used to rebuild an image when contents of source code folders change
-  RemoteImageArgs({
+  const RemoteImageArgs({
     this.build,
     this.forceRemove,
     this.keepLocally,

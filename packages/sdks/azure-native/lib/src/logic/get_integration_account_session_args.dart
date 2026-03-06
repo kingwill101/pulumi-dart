@@ -18,7 +18,7 @@ class GetIntegrationAccountSessionArgs {
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
   /// [sessionName] The integration account session name.
-  GetIntegrationAccountSessionArgs({
+  const GetIntegrationAccountSessionArgs({
     required this.integrationAccountName,
     required this.resourceGroupName,
     required this.sessionName,

@@ -13,7 +13,7 @@ class ExecStepResponseOsconfigV1beta {
   /// Creates a new [ExecStepResponseOsconfigV1beta].
   /// [linuxExecStepConfig] The ExecStepConfig for all Linux VMs targeted by the PatchJob.
   /// [windowsExecStepConfig] The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-  ExecStepResponseOsconfigV1beta({
+  const ExecStepResponseOsconfigV1beta({
     required this.linuxExecStepConfig,
     required this.windowsExecStepConfig,
   });

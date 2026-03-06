@@ -23,7 +23,7 @@ class AwsRedshiftClusterParameterGroupProperties {
   /// [parameterGroupName] The name of the cluster parameter group.
   /// [parameters] An array of parameters to be modified. A maximum of 20 parameters can be modified in a single request.
   /// [tags] An array of key-value pairs to apply to this resource.
-  AwsRedshiftClusterParameterGroupProperties({
+  const AwsRedshiftClusterParameterGroupProperties({
     this.description,
     this.parameterGroupFamily,
     this.parameterGroupName,

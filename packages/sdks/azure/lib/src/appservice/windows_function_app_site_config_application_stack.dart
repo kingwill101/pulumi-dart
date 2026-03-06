@@ -25,7 +25,7 @@ class WindowsFunctionAppSiteConfigApplicationStack {
   /// [powershellCoreVersion] The version of PowerShell Core to run. Possible values are `7`, `7.2`, and `7.4`.
   /// [useCustomRuntime] Should the Windows Function App use a custom runtime?
   /// [useDotnetIsolatedRuntime] Should the DotNet process use an isolated runtime. Defaults to `false`.
-  WindowsFunctionAppSiteConfigApplicationStack({
+  const WindowsFunctionAppSiteConfigApplicationStack({
     this.dotnetVersion,
     this.javaVersion,
     this.nodeVersion,

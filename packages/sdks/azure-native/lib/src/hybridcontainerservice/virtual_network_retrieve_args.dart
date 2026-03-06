@@ -28,7 +28,7 @@ class VirtualNetworkRetrieveArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [virtualNetworksName] Parameter for the name of the virtual network
-  VirtualNetworkRetrieveArgs({
+  const VirtualNetworkRetrieveArgs({
     this.extendedLocation,
     this.location,
     this.properties,

@@ -15,7 +15,7 @@ class ElasticProfile {
   /// [containerGroupNamingPolicy] Container Groups are named on a generic guid based naming scheme/policy. Customer can modify naming policy to add prefix to CG names during scale out operation.
   /// [desiredCount] Optional.
   /// [maintainDesiredCount] Flag that indicates whether desiredCount should be maintained when customer deletes SPECIFIC container groups (CGs) from the NGroups. In this case, new CGs will be created by NGroup to compensate for the specific deleted ones.
-  ElasticProfile({
+  const ElasticProfile({
     this.containerGroupNamingPolicy,
     this.desiredCount,
     this.maintainDesiredCount,

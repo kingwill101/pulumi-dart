@@ -13,7 +13,7 @@ class GetConnectorSubnet {
   /// Creates a new [GetConnectorSubnet].
   /// [name] Name of the resource.
   /// [projectId] Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued.
-  GetConnectorSubnet({
+  const GetConnectorSubnet({
     required this.name,
     required this.projectId,
   });

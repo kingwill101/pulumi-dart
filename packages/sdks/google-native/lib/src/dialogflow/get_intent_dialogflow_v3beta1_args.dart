@@ -19,7 +19,7 @@ class GetIntentDialogflowV3beta1Args {
   /// [languageCode] Optional.
   /// [location] Required.
   /// [project] Optional.
-  GetIntentDialogflowV3beta1Args({
+  const GetIntentDialogflowV3beta1Args({
     required this.agentId,
     required this.intentId,
     this.languageCode,

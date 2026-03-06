@@ -20,7 +20,7 @@ class GetGatewayCertificateAuthorityResult {
   /// [isTrusted] Determines whether certificate authority is trusted.
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetGatewayCertificateAuthorityResult({
+  const GetGatewayCertificateAuthorityResult({
     required this.azureApiVersion,
     required this.id,
     this.isTrusted,

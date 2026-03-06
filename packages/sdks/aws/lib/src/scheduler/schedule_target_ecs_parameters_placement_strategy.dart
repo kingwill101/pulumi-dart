@@ -11,7 +11,7 @@ class ScheduleTargetEcsParametersPlacementStrategy {
   /// Creates a new [ScheduleTargetEcsParametersPlacementStrategy].
   /// [field] The field to apply the placement strategy against.
   /// [type] The type of placement strategy. One of: `random`, `spread`, `binpack`.
-  ScheduleTargetEcsParametersPlacementStrategy({
+  const ScheduleTargetEcsParametersPlacementStrategy({
     this.field,
     required this.type,
   });

@@ -13,7 +13,7 @@ class PolicyManagedRules {
   /// Creates a new [PolicyManagedRules].
   /// [exclusions] One or more `exclusion` block defined below.
   /// [managedRuleSets] One or more `managed_rule_set` block defined below.
-  PolicyManagedRules({
+  const PolicyManagedRules({
     this.exclusions,
     required this.managedRuleSets,
   });

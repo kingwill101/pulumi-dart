@@ -24,7 +24,7 @@ class GetConsumerImageShareGroupImageSharesArgs {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [tokenUuid] The UUID of the Token that has been accepted into the Image Share Group to list shared Images from.
-  GetConsumerImageShareGroupImageSharesArgs({
+  const GetConsumerImageShareGroupImageSharesArgs({
     this.filters,
     this.imageShares,
     this.order,

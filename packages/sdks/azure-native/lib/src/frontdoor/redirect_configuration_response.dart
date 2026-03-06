@@ -27,7 +27,7 @@ class RedirectConfigurationResponse {
   /// [odataType] Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorRedirectConfiguration'.
   /// [redirectProtocol] The protocol of the destination to where the traffic is redirected
   /// [redirectType] The redirect type the rule will use when redirecting traffic.
-  RedirectConfigurationResponse({
+  const RedirectConfigurationResponse({
     this.customFragment,
     this.customHost,
     this.customPath,

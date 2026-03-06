@@ -17,7 +17,7 @@ class GetRecommendationsResult {
   /// [filterByResourceGroups] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [recommendations] One or more `recommendations` blocks as defined below.
-  GetRecommendationsResult({
+  const GetRecommendationsResult({
     this.filterByCategories,
     this.filterByResourceGroups,
     required this.id,

@@ -19,7 +19,7 @@ class RetentionPolicyArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schedulerName] The name of the Scheduler
-  RetentionPolicyArgs({
+  const RetentionPolicyArgs({
     this.properties,
     required this.resourceGroupName,
     required this.schedulerName,

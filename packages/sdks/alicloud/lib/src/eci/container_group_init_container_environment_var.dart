@@ -12,7 +12,7 @@ class ContainerGroupInitContainerEnvironmentVar {
   /// [fieldReves] Optional.
   /// [key] Optional.
   /// [value] Optional.
-  ContainerGroupInitContainerEnvironmentVar({
+  const ContainerGroupInitContainerEnvironmentVar({
     this.fieldReves,
     this.key,
     this.value,

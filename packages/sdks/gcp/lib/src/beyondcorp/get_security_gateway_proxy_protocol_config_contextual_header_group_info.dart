@@ -8,7 +8,7 @@ class GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo {
 
   /// Creates a new [GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo].
   /// [outputType] The output type of the delegated group info. Possible values: ["PROTOBUF", "JSON", "NONE"]
-  GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo({
+  const GetSecurityGatewayProxyProtocolConfigContextualHeaderGroupInfo({
     required this.outputType,
   });
 

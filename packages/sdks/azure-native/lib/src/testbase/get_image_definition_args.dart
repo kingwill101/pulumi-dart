@@ -18,7 +18,7 @@ class GetImageDefinitionArgs {
   /// [imageDefinitionName] The resource name of the test base image definition.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetImageDefinitionArgs({
+  const GetImageDefinitionArgs({
     required this.imageDefinitionName,
     required this.resourceGroupName,
     required this.testBaseAccountName,

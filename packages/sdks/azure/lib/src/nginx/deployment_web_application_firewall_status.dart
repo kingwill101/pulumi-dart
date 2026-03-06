@@ -21,7 +21,7 @@ class DeploymentWebApplicationFirewallStatus {
   /// [botSignaturesPackages] One or more `bot_signatures_package` blocks as defined below.
   /// [componentVersions] One or more `component_versions` blocks as defined below.
   /// [threatCampaignsPackages] One or more `threat_campaigns_package` blocks as defined below.
-  DeploymentWebApplicationFirewallStatus({
+  const DeploymentWebApplicationFirewallStatus({
     this.attackSignaturesPackages,
     this.botSignaturesPackages,
     this.componentVersions,

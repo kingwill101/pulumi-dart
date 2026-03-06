@@ -18,7 +18,7 @@ class OriginProtectionArgs {
   /// Creates a new [OriginProtectionArgs].
   /// [originConverge] The IP convergence status.
   /// [siteId] Site Id
-  OriginProtectionArgs({
+  const OriginProtectionArgs({
     this.originConverge,
     required this.siteId,
   });

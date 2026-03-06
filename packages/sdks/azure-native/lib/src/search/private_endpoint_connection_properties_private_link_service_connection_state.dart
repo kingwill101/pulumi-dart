@@ -16,7 +16,7 @@ class PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState {
   /// [actionsRequired] A description of any extra actions that may be required.
   /// [description] The description for the private link service connection state.
   /// [status] Status of the the private link service connection. Valid values are Pending, Approved, Rejected, or Disconnected.
-  PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState({
+  const PrivateEndpointConnectionPropertiesPrivateLinkServiceConnectionState({
     this.actionsRequired,
     this.description,
     this.status,

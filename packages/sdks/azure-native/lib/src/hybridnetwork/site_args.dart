@@ -25,7 +25,7 @@ class SiteArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [siteName] The name of the network service site.
   /// [tags] Resource tags.
-  SiteArgs({
+  const SiteArgs({
     this.location,
     this.properties,
     required this.resourceGroupName,

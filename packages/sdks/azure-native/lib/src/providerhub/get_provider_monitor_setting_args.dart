@@ -15,7 +15,7 @@ class GetProviderMonitorSettingArgs {
   /// Creates a new [GetProviderMonitorSettingArgs].
   /// [providerMonitorSettingName] The name of the provider monitor setting.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetProviderMonitorSettingArgs({
+  const GetProviderMonitorSettingArgs({
     required this.providerMonitorSettingName,
     required this.resourceGroupName,
   });

@@ -51,7 +51,7 @@ class GetDiagnosticSettingResult {
   /// [systemData] The system metadata related to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [workspaceId] The full ARM resource ID of the Log Analytics workspace to which you would like to send Diagnostic Logs. Example: /subscriptions/4b9e8510-67ab-4e9a-95a9-e2f1e570ea9c/resourceGroups/insights-integration/providers/Microsoft.OperationalInsights/workspaces/viruela2
-  GetDiagnosticSettingResult({
+  const GetDiagnosticSettingResult({
     required this.azureApiVersion,
     this.eventHubAuthorizationRuleId,
     this.eventHubName,

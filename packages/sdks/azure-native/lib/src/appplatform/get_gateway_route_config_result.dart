@@ -25,7 +25,7 @@ class GetGatewayRouteConfigResult {
   /// [properties] API route config of the Spring Cloud Gateway
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetGatewayRouteConfigResult({
+  const GetGatewayRouteConfigResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

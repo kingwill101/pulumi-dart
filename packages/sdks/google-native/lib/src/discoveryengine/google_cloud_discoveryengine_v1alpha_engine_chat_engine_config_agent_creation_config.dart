@@ -15,7 +15,7 @@ class GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig
   /// [business] Name of the company, organization or other entity that the agent represents. Used for knowledge connector LLM prompt and for knowledge search.
   /// [defaultLanguageCode] The default language of the agent as a language tag. See [Language Support](https://cloud.google.com/dialogflow/docs/reference/language) for a list of the currently supported language codes.
   /// [timeZone] The time zone of the agent from the [time zone database](https://www.iana.org/time-zones), e.g., America/New_York, Europe/Paris.
-  GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig({
+  const GoogleCloudDiscoveryengineV1alphaEngineChatEngineConfigAgentCreationConfig({
     this.business,
     required this.defaultLanguageCode,
     required this.timeZone,

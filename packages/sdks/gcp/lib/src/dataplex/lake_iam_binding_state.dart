@@ -43,7 +43,7 @@ class LakeIamBindingState {
   /// [members] Identities that will be granted the privilege in `role`.
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
-  LakeIamBindingState({
+  const LakeIamBindingState({
     this.condition,
     this.etag,
     this.lake,

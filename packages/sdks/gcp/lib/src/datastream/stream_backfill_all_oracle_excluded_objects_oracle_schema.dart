@@ -13,7 +13,7 @@ class StreamBackfillAllOracleExcludedObjectsOracleSchema {
   /// Creates a new [StreamBackfillAllOracleExcludedObjectsOracleSchema].
   /// [oracleTables] Tables in the database.
   /// [schema] Schema name.
-  StreamBackfillAllOracleExcludedObjectsOracleSchema({
+  const StreamBackfillAllOracleExcludedObjectsOracleSchema({
     this.oracleTables,
     required this.schema,
   });

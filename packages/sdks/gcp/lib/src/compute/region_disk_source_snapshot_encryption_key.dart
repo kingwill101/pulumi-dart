@@ -17,7 +17,7 @@ class RegionDiskSourceSnapshotEncryptionKey {
   /// [kmsKeyName] The name of the encryption key that is stored in Google Cloud KMS.
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [sha256] (Output)
-  RegionDiskSourceSnapshotEncryptionKey({
+  const RegionDiskSourceSnapshotEncryptionKey({
     this.kmsKeyName,
     this.rawKey,
     this.sha256,

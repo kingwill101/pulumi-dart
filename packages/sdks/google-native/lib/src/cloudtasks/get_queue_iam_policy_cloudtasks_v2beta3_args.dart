@@ -15,7 +15,7 @@ class GetQueueIamPolicyCloudtasksV2beta3Args {
   /// [location] Required.
   /// [project] Optional.
   /// [queueId] Required.
-  GetQueueIamPolicyCloudtasksV2beta3Args({
+  const GetQueueIamPolicyCloudtasksV2beta3Args({
     required this.location,
     this.project,
     required this.queueId,

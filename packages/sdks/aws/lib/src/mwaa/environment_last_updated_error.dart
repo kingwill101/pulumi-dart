@@ -9,7 +9,7 @@ class EnvironmentLastUpdatedError {
   /// Creates a new [EnvironmentLastUpdatedError].
   /// [errorCode] Optional.
   /// [errorMessage] Optional.
-  EnvironmentLastUpdatedError({
+  const EnvironmentLastUpdatedError({
     this.errorCode,
     this.errorMessage,
   });

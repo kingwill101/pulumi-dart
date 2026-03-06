@@ -11,7 +11,7 @@ class DomainReferConfig {
   /// [allowEmpty] Optional.
   /// [referLists] Required.
   /// [referType] Optional.
-  DomainReferConfig({
+  const DomainReferConfig({
     this.allowEmpty,
     required this.referLists,
     this.referType,

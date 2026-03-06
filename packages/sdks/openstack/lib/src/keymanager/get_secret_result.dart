@@ -77,7 +77,7 @@ class GetSecretResult {
   /// [status] The status of the secret.
   /// [updatedAt] The date the secret ACL was last updated.
   /// [updatedAtFilter] See Argument Reference above.
-  GetSecretResult({
+  const GetSecretResult({
     this.aclOnly,
     required this.acls,
     this.algorithm,

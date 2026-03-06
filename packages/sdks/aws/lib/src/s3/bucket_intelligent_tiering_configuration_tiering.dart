@@ -11,7 +11,7 @@ class BucketIntelligentTieringConfigurationTiering {
   /// Creates a new [BucketIntelligentTieringConfigurationTiering].
   /// [accessTier] S3 Intelligent-Tiering access tier. Valid values: `ARCHIVE_ACCESS`, `DEEP_ARCHIVE_ACCESS`.
   /// [days] Number of consecutive days of no access after which an object will be eligible to be transitioned to the corresponding tier.
-  BucketIntelligentTieringConfigurationTiering({
+  const BucketIntelligentTieringConfigurationTiering({
     required this.accessTier,
     required this.days,
   });

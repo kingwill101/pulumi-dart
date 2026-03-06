@@ -8,7 +8,7 @@ class ClusterDiscoveryEndpointPscConfig {
 
   /// Creates a new [ClusterDiscoveryEndpointPscConfig].
   /// [network] The consumer network where the IP address resides, in the form of projects/{projectId}/global/networks/{network_id}.
-  ClusterDiscoveryEndpointPscConfig({
+  const ClusterDiscoveryEndpointPscConfig({
     this.network,
   });
 

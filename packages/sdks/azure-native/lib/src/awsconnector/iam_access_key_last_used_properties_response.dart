@@ -34,7 +34,7 @@ class IamAccessKeyLastUsedPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  IamAccessKeyLastUsedPropertiesResponse({
+  const IamAccessKeyLastUsedPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

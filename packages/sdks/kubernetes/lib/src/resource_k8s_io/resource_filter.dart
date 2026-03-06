@@ -13,7 +13,7 @@ class ResourceFilter {
   /// Creates a new [ResourceFilter].
   /// [driverName] DriverName is the name used by the DRA driver kubelet plugin.
   /// [namedResources] NamedResources describes a resource filter using the named resources model.
-  ResourceFilter({
+  const ResourceFilter({
     this.driverName,
     this.namedResources,
   });

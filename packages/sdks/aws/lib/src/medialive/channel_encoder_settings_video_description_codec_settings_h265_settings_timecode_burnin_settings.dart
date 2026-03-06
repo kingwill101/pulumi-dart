@@ -14,7 +14,7 @@ class ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBur
   /// [prefix] Set a prefix on the burned in timecode.
   /// [timecodeBurninFontSize] Sets the size of the burned in timecode.
   /// [timecodeBurninPosition] Sets the position of the burned in timecode.
-  ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings({
+  const ChannelEncoderSettingsVideoDescriptionCodecSettingsH265SettingsTimecodeBurninSettings({
     this.prefix,
     this.timecodeBurninFontSize,
     this.timecodeBurninPosition,

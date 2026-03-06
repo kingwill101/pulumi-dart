@@ -35,7 +35,7 @@ class RestorePointArgs {
   /// [sourceMetadata] Gets the details of the VM captured at the time of the restore point creation.
   /// [sourceRestorePoint] Resource Id of the source restore point from which a copy needs to be created.
   /// [timeCreated] Gets the creation time of the restore point.
-  RestorePointArgs({
+  const RestorePointArgs({
     this.consistencyMode,
     this.excludeDisks,
     required this.resourceGroupName,

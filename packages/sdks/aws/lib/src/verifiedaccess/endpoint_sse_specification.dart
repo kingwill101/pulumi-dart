@@ -9,7 +9,7 @@ class EndpointSseSpecification {
   /// Creates a new [EndpointSseSpecification].
   /// [customerManagedKeyEnabled] Optional.
   /// [kmsKeyArn] Optional.
-  EndpointSseSpecification({
+  const EndpointSseSpecification({
     this.customerManagedKeyEnabled,
     this.kmsKeyArn,
   });

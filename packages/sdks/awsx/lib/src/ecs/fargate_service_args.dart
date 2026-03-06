@@ -116,7 +116,7 @@ class FargateServiceArgs {
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger an in-place update (redeployment). Useful with `"plantimestamp()"`. When using the triggers property you also need to set the forceNewDeployment property to True.
   /// [volumeConfiguration] Configuration for a volume specified in the task definition as a volume that is configured at launch time. Currently, the only supported volume type is an Amazon EBS volume. See below.
   /// [vpcLatticeConfigurations] The VPC Lattice configuration for your service that allows Lattice to connect, secure, and monitor your service across multiple accounts and VPCs. See below.
-  FargateServiceArgs({
+  const FargateServiceArgs({
     this.alarms,
     this.assignPublicIp,
     this.availabilityZoneRebalancing,

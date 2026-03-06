@@ -10,7 +10,7 @@ class ManagementPolicySchemaResponse {
 
   /// Creates a new [ManagementPolicySchemaResponse].
   /// [rules] The Storage Account ManagementPolicies Rules. See more details in: https://learn.microsoft.com/azure/storage/blobs/lifecycle-management-overview.
-  ManagementPolicySchemaResponse({
+  const ManagementPolicySchemaResponse({
     required this.rules,
   });
 

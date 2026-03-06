@@ -28,7 +28,7 @@ class GetVirtualNetworkGatewayResiliencyInformationResult {
   /// [nextEligibleComputeTime] Timestamp denoting the next eligible time to re-compute the resiliency score for the gateway
   /// [overallScore] Current Resiliency Score for the gateway
   /// [scoreChange] Update in the Resiliency Score for the gateway from the last computed score
-  GetVirtualNetworkGatewayResiliencyInformationResult({
+  const GetVirtualNetworkGatewayResiliencyInformationResult({
     this.components,
     this.lastComputedTime,
     this.maxScoreFromRecommendations,

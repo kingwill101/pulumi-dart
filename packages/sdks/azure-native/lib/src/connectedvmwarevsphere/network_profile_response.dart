@@ -10,7 +10,7 @@ class NetworkProfileResponse {
 
   /// Creates a new [NetworkProfileResponse].
   /// [networkInterfaces] Gets or sets the list of network interfaces associated with the virtual machine.
-  NetworkProfileResponse({
+  const NetworkProfileResponse({
     this.networkInterfaces,
   });
 

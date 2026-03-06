@@ -16,7 +16,7 @@ class GetClientResult {
   /// [displayName] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [secret] Required.
-  GetClientResult({
+  const GetClientResult({
     required this.brand,
     required this.clientId,
     required this.displayName,

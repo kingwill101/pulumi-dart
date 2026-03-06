@@ -18,7 +18,7 @@ class LogConfigResponse {
   /// [cloudAudit] Cloud audit options.
   /// [counter] Counter options.
   /// [dataAccess] Data access options.
-  LogConfigResponse({
+  const LogConfigResponse({
     required this.cloudAudit,
     required this.counter,
     required this.dataAccess,

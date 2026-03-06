@@ -26,7 +26,7 @@ class GetSecurityPoliciesPolicy {
   /// [status] The status of the resource.
   /// [tags] A mapping of tags to assign to the resource.
   /// [tlsVersions] The TLS protocol versions that are supported.
-  GetSecurityPoliciesPolicy({
+  const GetSecurityPoliciesPolicy({
     required this.ciphers,
     required this.id,
     required this.resourceGroupId,

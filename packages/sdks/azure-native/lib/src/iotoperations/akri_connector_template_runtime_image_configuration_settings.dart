@@ -23,7 +23,7 @@ class AkriConnectorTemplateRuntimeImageConfigurationSettings {
   /// [registrySettings] The registry settings for the image. You can omit this field if using the default docker hub repository or using a local image.
   /// [replicas] The number of replicas to be set up.
   /// [tagDigestSettings] Optional image tag or digest. If not specified, the default tag is `latest`.
-  AkriConnectorTemplateRuntimeImageConfigurationSettings({
+  const AkriConnectorTemplateRuntimeImageConfigurationSettings({
     required this.imageName,
     this.imagePullPolicy,
     this.registrySettings,

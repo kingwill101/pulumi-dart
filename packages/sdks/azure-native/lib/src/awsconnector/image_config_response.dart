@@ -15,7 +15,7 @@ class ImageConfigResponse {
   /// [command] Specifies parameters that you want to pass in with ENTRYPOINT. You can specify a maximum of 1,500 parameters in the list.
   /// [entryPoint] Specifies the entry point to their application, which is typically the location of the runtime executable. You can specify a maximum of 1,500 string entries in the list.
   /// [workingDirectory] Specifies the working directory. The length of the directory string cannot exceed 1,000 characters.
-  ImageConfigResponse({
+  const ImageConfigResponse({
     this.command,
     this.entryPoint,
     this.workingDirectory,

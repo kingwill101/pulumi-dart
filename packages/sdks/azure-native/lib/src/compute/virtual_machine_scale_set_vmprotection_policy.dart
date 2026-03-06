@@ -12,7 +12,7 @@ class VirtualMachineScaleSetVMProtectionPolicy {
   /// Creates a new [VirtualMachineScaleSetVMProtectionPolicy].
   /// [protectFromScaleIn] Indicates that the virtual machine scale set VM shouldn't be considered for deletion during a scale-in operation.
   /// [protectFromScaleSetActions] Indicates that model updates or actions (including scale-in) initiated on the virtual machine scale set should not be applied to the virtual machine scale set VM.
-  VirtualMachineScaleSetVMProtectionPolicy({
+  const VirtualMachineScaleSetVMProtectionPolicy({
     this.protectFromScaleIn,
     this.protectFromScaleSetActions,
   });

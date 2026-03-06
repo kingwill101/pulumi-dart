@@ -44,7 +44,7 @@ class GetQuotasQuota {
   /// [totalQuota] TotalQuota.
   /// [totalUsage] The total of usage.
   /// [unadjustableDetail] The unadjustable detail.
-  GetQuotasQuota({
+  const GetQuotasQuota({
     required this.adjustable,
     required this.applicableRanges,
     required this.applicableType,

@@ -33,7 +33,7 @@ class GetSiteResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Optional.
   /// [type] Type of resource. Type = Microsoft.OffAzure/VMWareSites.
-  GetSiteResult({
+  const GetSiteResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

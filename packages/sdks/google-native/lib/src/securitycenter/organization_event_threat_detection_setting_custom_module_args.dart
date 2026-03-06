@@ -30,7 +30,7 @@ class OrganizationEventThreatDetectionSettingCustomModuleArgs {
   /// [name] Immutable. The resource name of the Event Threat Detection custom module. Its format is: * "organizations/{organization}/eventThreatDetectionSettings/customModules/{module}". * "folders/{folder}/eventThreatDetectionSettings/customModules/{module}". * "projects/{project}/eventThreatDetectionSettings/customModules/{module}".
   /// [organizationId] Required.
   /// [type] Type for the module. e.g. CONFIGURABLE_BAD_IP.
-  OrganizationEventThreatDetectionSettingCustomModuleArgs({
+  const OrganizationEventThreatDetectionSettingCustomModuleArgs({
     this.config,
     this.description,
     this.displayName,

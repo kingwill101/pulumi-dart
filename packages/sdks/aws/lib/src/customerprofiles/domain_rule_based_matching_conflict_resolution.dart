@@ -11,7 +11,7 @@ class DomainRuleBasedMatchingConflictResolution {
   /// Creates a new [DomainRuleBasedMatchingConflictResolution].
   /// [conflictResolvingModel] How the auto-merging process should resolve conflicts between different profiles. Valid values are `RECENCY` and `SOURCE`
   /// [sourceName] The `ObjectType` name that is used to resolve profile merging conflicts when choosing `SOURCE` as the `ConflictResolvingModel`.
-  DomainRuleBasedMatchingConflictResolution({
+  const DomainRuleBasedMatchingConflictResolution({
     required this.conflictResolvingModel,
     this.sourceName,
   });

@@ -9,7 +9,7 @@ class DefenderCspmAwsOfferingResponseCiemDiscovery {
 
   /// Creates a new [DefenderCspmAwsOfferingResponseCiemDiscovery].
   /// [cloudRoleArn] The cloud role ARN in AWS for Permissions Management discovery
-  DefenderCspmAwsOfferingResponseCiemDiscovery({
+  const DefenderCspmAwsOfferingResponseCiemDiscovery({
     this.cloudRoleArn,
   });
 

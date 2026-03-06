@@ -18,7 +18,7 @@ class ErrorDefinitionResponse {
   /// [details] Internal error details.
   /// [message] Description of the error.
   /// [recommendation] Description of the recommendation.
-  ErrorDefinitionResponse({
+  const ErrorDefinitionResponse({
     required this.code,
     required this.details,
     required this.message,

@@ -35,7 +35,7 @@ class GetLongRunningBackupResult {
   /// [source] Backup source
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetLongRunningBackupResult({
+  const GetLongRunningBackupResult({
     required this.azureApiVersion,
     this.backupNameV2,
     this.backupType,

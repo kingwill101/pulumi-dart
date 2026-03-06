@@ -28,7 +28,7 @@ class ServerGroupAttachmentArgs {
   /// [serverGroupId] ID of Server Group.
   /// [type] The type of server group N. Valid values: ALB, NLB.
   /// [weight] The weight of an ECS instance attached to the Server Group.
-  ServerGroupAttachmentArgs({
+  const ServerGroupAttachmentArgs({
     this.forceAttach,
     required this.port,
     required this.scalingGroupId,

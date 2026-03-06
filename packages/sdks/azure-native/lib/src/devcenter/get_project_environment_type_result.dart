@@ -55,7 +55,7 @@ class GetProjectEnvironmentTypeResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [userRoleAssignments] Role Assignments created on environment backing resources. This is a mapping from a user object ID to an object of role definition IDs.
-  GetProjectEnvironmentTypeResult({
+  const GetProjectEnvironmentTypeResult({
     required this.azureApiVersion,
     this.creatorRoleAssignment,
     this.deploymentTargetId,

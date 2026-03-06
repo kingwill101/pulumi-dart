@@ -95,7 +95,7 @@ class SparkJob {
   /// [resources] Compute Resource configuration for the job.
   /// [services] List of JobEndpoints.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  SparkJob({
+  const SparkJob({
     this.archives,
     this.args,
     required this.codeId,

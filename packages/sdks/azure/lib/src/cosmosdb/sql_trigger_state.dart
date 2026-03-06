@@ -21,7 +21,7 @@ class SqlTriggerState {
   /// [name] The name which should be used for this SQL Trigger. Changing this forces a new SQL Trigger to be created.
   /// [operation] The operation the trigger is associated with. Possible values are `All`, `Create`, `Update`, `Delete` and `Replace`.
   /// [type] Type of the Trigger. Possible values are `Pre` and `Post`.
-  SqlTriggerState({
+  const SqlTriggerState({
     this.body,
     this.containerId,
     this.name,

@@ -14,7 +14,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk {
   /// [clientId] Required.
   /// [clientSecret] Required.
   /// [oauthRequest] Optional.
-  ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk({
+  const ConnectorProfileConnectorProfileConfigConnectorProfileCredentialsZendesk({
     this.accessToken,
     required this.clientId,
     required this.clientSecret,

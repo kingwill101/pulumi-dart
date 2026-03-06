@@ -17,7 +17,7 @@ class LoggingConfig {
   /// [enableOnpremGcsTransferLogs] For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
   /// [logActionStates] States in which `log_actions` are logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
   /// [logActions] Specifies the actions to be logged. If empty, no logs are generated. Not supported for transfers with PosixFilesystem data sources; use enable_onprem_gcs_transfer_logs instead.
-  LoggingConfig({
+  const LoggingConfig({
     this.enableOnpremGcsTransferLogs,
     this.logActionStates,
     this.logActions,

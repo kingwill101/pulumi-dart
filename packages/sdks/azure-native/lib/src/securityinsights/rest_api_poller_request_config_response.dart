@@ -54,7 +54,7 @@ class RestApiPollerRequestConfigResponse {
   /// [retryCount] The retry count.
   /// [startTimeAttributeName] The query parameter name which the remote server expect to start query. This property goes hand to hand with `endTimeAttributeName`.
   /// [timeoutInSeconds] The timeout in seconds.
-  RestApiPollerRequestConfigResponse({
+  const RestApiPollerRequestConfigResponse({
     required this.apiEndpoint,
     this.endTimeAttributeName,
     this.headers,

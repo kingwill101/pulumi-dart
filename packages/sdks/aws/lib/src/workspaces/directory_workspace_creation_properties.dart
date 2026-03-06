@@ -20,7 +20,7 @@ class DirectoryWorkspaceCreationProperties {
   /// [enableInternetAccess] Indicates whether internet access is enabled for your WorkSpaces.
   /// [enableMaintenanceMode] Indicates whether maintenance mode is enabled for your WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
   /// [userEnabledAsLocalAdministrator] Indicates whether users are local administrators of their WorkSpaces. Valid only if `workspace_type` is set to `PERSONAL`.
-  DirectoryWorkspaceCreationProperties({
+  const DirectoryWorkspaceCreationProperties({
     this.customSecurityGroupId,
     this.defaultOu,
     this.enableInternetAccess,

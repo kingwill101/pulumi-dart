@@ -49,7 +49,7 @@ class DeploymentStacksWhatIfResourceChangeResponse {
   /// [symbolicName] The symbolic name of the resource being changed.
   /// [type] The resource type.
   /// [unsupportedReason] The explanation about why the resource is unsupported by What-If.
-  DeploymentStacksWhatIfResourceChangeResponse({
+  const DeploymentStacksWhatIfResourceChangeResponse({
     required this.apiVersion,
     required this.changeCertainty,
     required this.changeType,

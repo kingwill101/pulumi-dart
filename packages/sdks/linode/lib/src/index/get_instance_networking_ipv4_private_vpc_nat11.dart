@@ -14,7 +14,7 @@ class GetInstanceNetworkingIpv4PrivateVpcNat11 {
   /// [address] The address.
   /// [subnetId] The unique globally general API entity identifier for the VPC subnet.
   /// [vpcId] The unique globally general API entity identifier for the VPC.
-  GetInstanceNetworkingIpv4PrivateVpcNat11({
+  const GetInstanceNetworkingIpv4PrivateVpcNat11({
     required this.address,
     required this.subnetId,
     required this.vpcId,

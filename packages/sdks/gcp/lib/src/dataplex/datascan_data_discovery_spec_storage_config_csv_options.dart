@@ -20,7 +20,7 @@ class DatascanDataDiscoverySpecStorageConfigCsvOptions {
   /// [headerRows] The number of rows to interpret as header rows that should be skipped when reading data rows.
   /// [quote] The character used to quote column values. Accepts `"` (double quotation mark) or `'` (single quotation mark). If unspecified, defaults to `"` (double quotation mark).
   /// [typeInferenceDisabled] Whether to disable the inference of data types for CSV data. If true, all columns are registered as strings.
-  DatascanDataDiscoverySpecStorageConfigCsvOptions({
+  const DatascanDataDiscoverySpecStorageConfigCsvOptions({
     this.delimiter,
     this.encoding,
     this.headerRows,

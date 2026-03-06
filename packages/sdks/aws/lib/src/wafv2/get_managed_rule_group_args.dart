@@ -24,7 +24,7 @@ class GetManagedRuleGroupArgs {
   /// [scope] Whether this is for a global resource type, such as a Amazon CloudFront distribution. For an AWS Amplify application, use `CLOUDFRONT`. Valid values: `CLOUDFRONT`, `REGIONAL`.
   /// [vendorName] Managed rule group vendor name.
   /// [versionName] Version of the rule group.
-  GetManagedRuleGroupArgs({
+  const GetManagedRuleGroupArgs({
     required this.name,
     this.region,
     required this.scope,

@@ -14,7 +14,7 @@ class PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadence {
   /// Creates a new [PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadence].
   /// [inspectTemplateModifiedCadence] Governs when to update data profiles when the inspection rules defined by the `InspectTemplate` change. If not set, changing the template will not cause a data profile to update.
   /// [refreshFrequency] Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never.
-  PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadence({
+  const PreventionDiscoveryConfigTargetOtherCloudTargetGenerationCadence({
     this.inspectTemplateModifiedCadence,
     this.refreshFrequency,
   });

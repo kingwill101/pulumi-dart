@@ -8,7 +8,7 @@ class ResourceCollectionCloudformation {
 
   /// Creates a new [ResourceCollectionCloudformation].
   /// [stackNames] Array of the names of the AWS CloudFormation stacks. If `type` is `AWS_SERVICE` (all acccount resources) this array should be a single item containing a wildcard (`"*"`).
-  ResourceCollectionCloudformation({
+  const ResourceCollectionCloudformation({
     required this.stackNames,
   });
 

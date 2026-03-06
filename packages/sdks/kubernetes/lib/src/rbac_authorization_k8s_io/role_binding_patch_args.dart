@@ -27,7 +27,7 @@ class RoleBindingPatchArgs {
   /// [metadata] Standard object's metadata.
   /// [roleRef] RoleRef can reference a Role in the current namespace or a ClusterRole in the global namespace. If the RoleRef cannot be resolved, the Authorizer must return an error. This field is immutable.
   /// [subjects] Subjects holds references to the objects the role applies to.
-  RoleBindingPatchArgs({
+  const RoleBindingPatchArgs({
     this.apiVersion,
     this.kind,
     this.metadata,

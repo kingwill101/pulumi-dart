@@ -15,7 +15,7 @@ class InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout {
   /// Creates a new [InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second.
-  InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout({
+  const InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout({
     this.nanos,
     required this.seconds,
   });

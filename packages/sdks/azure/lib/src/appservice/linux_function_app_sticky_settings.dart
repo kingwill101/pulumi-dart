@@ -11,7 +11,7 @@ class LinuxFunctionAppStickySettings {
   /// Creates a new [LinuxFunctionAppStickySettings].
   /// [appSettingNames] A list of `app_setting` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
   /// [connectionStringNames] A list of `connection_string` names that the Linux Function App will not swap between Slots when a swap operation is triggered.
-  LinuxFunctionAppStickySettings({
+  const LinuxFunctionAppStickySettings({
     this.appSettingNames,
     this.connectionStringNames,
   });

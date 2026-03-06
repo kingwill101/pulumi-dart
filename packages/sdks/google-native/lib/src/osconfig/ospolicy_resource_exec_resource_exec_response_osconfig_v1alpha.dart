@@ -22,7 +22,7 @@ class OSPolicyResourceExecResourceExecResponseOsconfigV1alpha {
   /// [interpreter] The script interpreter to use.
   /// [outputFilePath] Only recorded for enforce Exec. Path to an output file (that is created by this Exec) whose content will be recorded in OSPolicyResourceCompliance after a successful run. Absence or failure to read this file will result in this ExecResource being non-compliant. Output file size is limited to 100K bytes.
   /// [script] An inline script. The size of the script is limited to 32KiB.
-  OSPolicyResourceExecResourceExecResponseOsconfigV1alpha({
+  const OSPolicyResourceExecResourceExecResponseOsconfigV1alpha({
     required this.args,
     required this.file,
     required this.interpreter,

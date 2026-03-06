@@ -12,7 +12,7 @@ class TagRulesMetricRule {
   /// Creates a new [TagRulesMetricRule].
   /// [filteringTags] Filtering tag for the metric rule. A `filtering_tag` block as defined below.
   /// [sendingMetricsEnabled] If sending metrics is enabled. The default value is `false`.
-  TagRulesMetricRule({
+  const TagRulesMetricRule({
     this.filteringTags,
     this.sendingMetricsEnabled,
   });

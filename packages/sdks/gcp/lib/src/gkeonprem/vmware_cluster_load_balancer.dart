@@ -25,7 +25,7 @@ class VMwareClusterLoadBalancer {
   /// [manualLbConfig] Manually configured load balancers.
   /// [metalLbConfig] Configuration for MetalLB typed load balancers.
   /// [vipConfig] The VIPs used by the load balancer.
-  VMwareClusterLoadBalancer({
+  const VMwareClusterLoadBalancer({
     this.f5Config,
     this.manualLbConfig,
     this.metalLbConfig,

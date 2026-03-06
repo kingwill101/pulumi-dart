@@ -75,7 +75,7 @@ class VpcEndpointState {
   /// [vpcEndpointName] The name of the endpoint.
   /// [vpcId] The ID of the VPC to which the endpoint belongs.
   /// [zonePrivateIpAddressCount] The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
-  VpcEndpointState({
+  const VpcEndpointState({
     this.addressIpVersion,
     this.bandwidth,
     this.connectionStatus,

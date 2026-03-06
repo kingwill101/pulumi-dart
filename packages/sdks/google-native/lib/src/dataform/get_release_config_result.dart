@@ -29,7 +29,7 @@ class GetReleaseConfigResult {
   /// [recentScheduledReleaseRecords] Records of the 10 most recent scheduled release attempts, ordered in in descending order of `release_time`. Updated whenever automatic creation of a compilation result is triggered by cron_schedule.
   /// [releaseCompilationResult] Optional. The name of the currently released compilation result for this release config. This value is updated when a compilation result is created from this release config, or when this resource is updated by API call (perhaps to roll back to an earlier release). The compilation result must have been created using this release config. Must be in the format `projects/*/locations/*/repositories/*/compilationResults/*`.
   /// [timeZone] Optional. Specifies the time zone to be used when interpreting cron_schedule. Must be a time zone name from the time zone database (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones). If left unspecified, the default is UTC.
-  GetReleaseConfigResult({
+  const GetReleaseConfigResult({
     required this.codeCompilationConfig,
     required this.cronSchedule,
     required this.gitCommitish,

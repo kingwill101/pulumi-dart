@@ -24,7 +24,7 @@ class PolicyAttachmentArgs {
   /// [policyArn] ARN of the policy you want to apply. Typically this should be a reference to the ARN of another resource to ensure dependency ordering, such as `aws_iam_policy.example.arn`.
   /// [roles] Role(s) the policy should be applied to.
   /// [users] User(s) the policy should be applied to.
-  PolicyAttachmentArgs({
+  const PolicyAttachmentArgs({
     this.groups,
     this.name,
     required this.policyArn,

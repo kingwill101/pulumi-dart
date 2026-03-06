@@ -14,7 +14,7 @@ class GetObjectStorageQuotasResult {
   /// [filters] Optional.
   /// [id] Required.
   /// [quotas] Required.
-  GetObjectStorageQuotasResult({
+  const GetObjectStorageQuotasResult({
     this.filters,
     required this.id,
     required this.quotas,

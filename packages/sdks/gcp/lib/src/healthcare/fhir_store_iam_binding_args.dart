@@ -33,7 +33,7 @@ class FhirStoreIamBindingArgs {
   /// [fhirStoreId] The FHIR store ID, in the form
   /// [members] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  FhirStoreIamBindingArgs({
+  const FhirStoreIamBindingArgs({
     this.condition,
     required this.fhirStoreId,
     required this.members,

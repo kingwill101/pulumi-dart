@@ -27,7 +27,7 @@ class GetWorkloadDeploymentResult {
   /// [systemData] Required.
   /// [tags] Gets or sets the resource tags.
   /// [type] Gets or sets the type of the resource.
-  GetWorkloadDeploymentResult({
+  const GetWorkloadDeploymentResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

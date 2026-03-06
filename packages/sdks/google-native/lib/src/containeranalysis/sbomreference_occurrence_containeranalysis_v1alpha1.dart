@@ -17,7 +17,7 @@ class SBOMReferenceOccurrenceContaineranalysisV1alpha1 {
   /// [payload] The actual payload that contains the SBOM reference data.
   /// [payloadType] The kind of payload that SbomReferenceIntotoPayload takes. Since it's in the intoto format, this value is expected to be 'application/vnd.in-toto+json'.
   /// [signatures] The signatures over the payload.
-  SBOMReferenceOccurrenceContaineranalysisV1alpha1({
+  const SBOMReferenceOccurrenceContaineranalysisV1alpha1({
     this.payload,
     this.payloadType,
     this.signatures,

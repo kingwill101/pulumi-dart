@@ -13,7 +13,7 @@ class PostgresqlSchema {
   /// Creates a new [PostgresqlSchema].
   /// [postgresqlTables] Tables in the schema.
   /// [schema] Schema name.
-  PostgresqlSchema({
+  const PostgresqlSchema({
     this.postgresqlTables,
     this.schema,
   });

@@ -8,7 +8,7 @@ class EnvironmentResponse {
 
   /// Creates a new [EnvironmentResponse].
   /// [customValues] Required.
-  EnvironmentResponse({
+  const EnvironmentResponse({
     required this.customValues,
   });
 

@@ -21,7 +21,7 @@ class ConnectionAuthConfigSshPublicKey {
   /// [sshClientCert] SSH Client Cert. It should contain both public and private key.
   /// [sshClientCertPass] Password (passphrase) for ssh client certificate if it has one.
   /// [username] The user account used to authenticate.
-  ConnectionAuthConfigSshPublicKey({
+  const ConnectionAuthConfigSshPublicKey({
     this.certType,
     this.sshClientCert,
     this.sshClientCertPass,

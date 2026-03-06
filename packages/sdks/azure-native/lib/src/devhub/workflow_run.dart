@@ -8,7 +8,7 @@ class WorkflowRun {
 
   /// Creates a new [WorkflowRun].
   /// [workflowRunStatus] Describes the status of the workflow run
-  WorkflowRun({
+  const WorkflowRun({
     this.workflowRunStatus,
   });
 

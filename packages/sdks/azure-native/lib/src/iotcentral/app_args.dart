@@ -45,7 +45,7 @@ class AppArgs {
   /// [subdomain] The subdomain of the application.
   /// [tags] Resource tags.
   /// [template] The ID of the application template, which is a blueprint that defines the characteristics and behaviors of an application. Optional; if not specified, defaults to a blank blueprint and allows the application to be defined from scratch.
-  AppArgs({
+  const AppArgs({
     this.displayName,
     this.identity,
     this.location,

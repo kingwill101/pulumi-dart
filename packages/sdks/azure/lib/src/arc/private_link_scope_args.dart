@@ -24,7 +24,7 @@ class PrivateLinkScopeArgs {
   /// [publicNetworkAccessEnabled] Indicates whether machines associated with the private link scope can also use public Azure Arc service endpoints. Defaults to `false`. Possible values are `true` and `false`.
   /// [resourceGroupName] The name of the Resource Group where the Azure Arc Private Link Scope should exist. Changing this forces a new Azure Arc Private Link Scope to be created.
   /// [tags] A mapping of tags which should be assigned to the Azure Arc Private Link Scope.
-  PrivateLinkScopeArgs({
+  const PrivateLinkScopeArgs({
     this.location,
     this.name,
     this.publicNetworkAccessEnabled,

@@ -12,7 +12,7 @@ class ParamKindPatchAdmissionregistrationK8sIoV1beta1 {
   /// Creates a new [ParamKindPatchAdmissionregistrationK8sIoV1beta1].
   /// [apiVersion] APIVersion is the API group version the resources belong to. In format of "group/version". Required.
   /// [kind] Kind is the API kind the resources belong to. Required.
-  ParamKindPatchAdmissionregistrationK8sIoV1beta1({
+  const ParamKindPatchAdmissionregistrationK8sIoV1beta1({
     this.apiVersion,
     this.kind,
   });

@@ -105,7 +105,7 @@ class DedicatedPropreHostArgs {
   /// [userDataEncoded] Whether custom data is encoded in Base64 format.
   /// [vpcId] VPCID of the VPC.
   /// [vswitchId] The ID of the virtual switch.
-  DedicatedPropreHostArgs({
+  const DedicatedPropreHostArgs({
     this.autoPay,
     this.autoRenew,
     this.dedicatedHostGroupId,

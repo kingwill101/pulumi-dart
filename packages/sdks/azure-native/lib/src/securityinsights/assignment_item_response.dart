@@ -9,7 +9,7 @@ class AssignmentItemResponse {
 
   /// Creates a new [AssignmentItemResponse].
   /// [resourceId] The resource id of the content item
-  AssignmentItemResponse({
+  const AssignmentItemResponse({
     this.resourceId,
   });
 

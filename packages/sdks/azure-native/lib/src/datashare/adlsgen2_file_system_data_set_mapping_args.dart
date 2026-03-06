@@ -40,7 +40,7 @@ class ADLSGen2FileSystemDataSetMappingArgs {
   /// [shareSubscriptionName] The name of the share subscription which will hold the data set sink.
   /// [storageAccountName] Storage account name of the source data set.
   /// [subscriptionId] Subscription id of storage account.
-  ADLSGen2FileSystemDataSetMappingArgs({
+  const ADLSGen2FileSystemDataSetMappingArgs({
     required this.accountName,
     required this.dataSetId,
     this.dataSetMappingName,

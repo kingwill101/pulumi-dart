@@ -15,7 +15,7 @@ class GetManagedHardwareSecurityModuleArgs {
   /// Creates a new [GetManagedHardwareSecurityModuleArgs].
   /// [name] The name of the Key Vault Managed Hardware Security Module.
   /// [resourceGroupName] The name of the Resource Group in which the Key Vault Managed Hardware Security Module exists.
-  GetManagedHardwareSecurityModuleArgs({
+  const GetManagedHardwareSecurityModuleArgs({
     required this.name,
     required this.resourceGroupName,
   });

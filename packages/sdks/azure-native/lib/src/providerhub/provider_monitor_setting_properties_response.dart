@@ -8,7 +8,7 @@ class ProviderMonitorSettingPropertiesResponse {
 
   /// Creates a new [ProviderMonitorSettingPropertiesResponse].
   /// [provisioningState] The provisioning state.
-  ProviderMonitorSettingPropertiesResponse({
+  const ProviderMonitorSettingPropertiesResponse({
     required this.provisioningState,
   });
 

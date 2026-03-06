@@ -12,7 +12,7 @@ class PropertyChangedConditionProperties {
   /// Creates a new [PropertyChangedConditionProperties].
   /// [conditionProperties] Optional.
   /// [conditionType] Expected value is 'PropertyChanged'.
-  PropertyChangedConditionProperties({
+  const PropertyChangedConditionProperties({
     this.conditionProperties,
     required this.conditionType,
   });

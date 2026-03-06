@@ -41,7 +41,7 @@ class GetProviderResult {
   /// [oidc] An OpenId Connect 1.0 identity provider.
   /// [saml] An SAML 2.0 identity provider.
   /// [state] The state of the provider.
-  GetProviderResult({
+  const GetProviderResult({
     required this.attributeCondition,
     required this.attributeMapping,
     required this.aws,

@@ -12,7 +12,7 @@ class HeaderField {
   /// Creates a new [HeaderField].
   /// [headerFieldName] The name of the header.
   /// [headerFieldValue] The value of the header.
-  HeaderField({
+  const HeaderField({
     this.headerFieldName,
     this.headerFieldValue,
   });

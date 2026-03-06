@@ -36,7 +36,7 @@ class VirtualDiskResponse {
   /// [label] Gets or sets the label of the virtual disk in vCenter.
   /// [name] Gets or sets the name of the virtual disk.
   /// [unitNumber] Gets or sets the unit number of the disk on the controller.
-  VirtualDiskResponse({
+  const VirtualDiskResponse({
     this.controllerKey,
     this.deviceKey,
     this.deviceName,

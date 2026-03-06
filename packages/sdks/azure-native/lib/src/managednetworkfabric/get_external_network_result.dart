@@ -61,7 +61,7 @@ class GetExternalNetworkResult {
   /// [provisioningState] Provisioning state of the resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetExternalNetworkResult({
+  const GetExternalNetworkResult({
     required this.administrativeState,
     this.annotation,
     required this.azureApiVersion,

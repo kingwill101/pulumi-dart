@@ -21,7 +21,7 @@ class GetFunctionArgs {
   /// [location] The location in which the resource belongs.
   /// [name] The name of a Cloud Function (2nd gen).
   /// [project] The project in which the resource belongs. If it
-  GetFunctionArgs({
+  const GetFunctionArgs({
     required this.location,
     required this.name,
     this.project,

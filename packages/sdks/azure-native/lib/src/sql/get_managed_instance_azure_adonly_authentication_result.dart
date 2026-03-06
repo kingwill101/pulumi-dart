@@ -20,7 +20,7 @@ class GetManagedInstanceAzureADOnlyAuthenticationResult {
   /// [id] Resource ID.
   /// [name] Resource name.
   /// [type] Resource type.
-  GetManagedInstanceAzureADOnlyAuthenticationResult({
+  const GetManagedInstanceAzureADOnlyAuthenticationResult({
     required this.azureADOnlyAuthentication,
     required this.azureApiVersion,
     required this.id,

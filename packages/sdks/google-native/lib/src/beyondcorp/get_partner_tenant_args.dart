@@ -13,7 +13,7 @@ class GetPartnerTenantArgs {
   /// Creates a new [GetPartnerTenantArgs].
   /// [organizationId] Required.
   /// [partnerTenantId] Required.
-  GetPartnerTenantArgs({
+  const GetPartnerTenantArgs({
     required this.organizationId,
     required this.partnerTenantId,
   });

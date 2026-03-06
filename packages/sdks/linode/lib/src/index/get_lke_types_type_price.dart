@@ -11,7 +11,7 @@ class GetLkeTypesTypePrice {
   /// Creates a new [GetLkeTypesTypePrice].
   /// [hourly] Cost (in US dollars) per hour.
   /// [monthly] Cost (in US dollars) per month.
-  GetLkeTypesTypePrice({
+  const GetLkeTypesTypePrice({
     required this.hourly,
     required this.monthly,
   });

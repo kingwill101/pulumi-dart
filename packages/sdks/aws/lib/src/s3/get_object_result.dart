@@ -107,7 +107,7 @@ class GetObjectResult {
   /// [tags] Map of tags assigned to the object.
   /// [versionId] Latest version ID of the object returned.
   /// [websiteRedirectLocation] If the bucket is configured as a website, redirects requests for this object to another object in the same bucket or to an external URL. Amazon S3 stores the value of this header in the object metadata.
-  GetObjectResult({
+  const GetObjectResult({
     required this.arn,
     required this.body,
     required this.bodyBase64,

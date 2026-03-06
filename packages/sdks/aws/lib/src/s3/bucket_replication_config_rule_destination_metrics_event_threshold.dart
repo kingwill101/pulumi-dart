@@ -8,7 +8,7 @@ class BucketReplicationConfigRuleDestinationMetricsEventThreshold {
 
   /// Creates a new [BucketReplicationConfigRuleDestinationMetricsEventThreshold].
   /// [minutes] Time in minutes. Valid values: `15`.
-  BucketReplicationConfigRuleDestinationMetricsEventThreshold({
+  const BucketReplicationConfigRuleDestinationMetricsEventThreshold({
     required this.minutes,
   });
 

@@ -81,7 +81,7 @@ class VirtualMachineScaleSetVMArgs {
   /// [tags] Resource tags.
   /// [userData] UserData for the VM, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01
   /// [vmScaleSetName] The name of the VM scale set.
-  VirtualMachineScaleSetVMArgs({
+  const VirtualMachineScaleSetVMArgs({
     this.additionalCapabilities,
     this.availabilitySet,
     this.diagnosticsProfile,

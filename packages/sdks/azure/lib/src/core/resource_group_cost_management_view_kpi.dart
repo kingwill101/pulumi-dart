@@ -8,7 +8,7 @@ class ResourceGroupCostManagementViewKpi {
 
   /// Creates a new [ResourceGroupCostManagementViewKpi].
   /// [type] KPI type. Possible values are `Budget` and `Forecast`.
-  ResourceGroupCostManagementViewKpi({
+  const ResourceGroupCostManagementViewKpi({
     required this.type,
   });
 

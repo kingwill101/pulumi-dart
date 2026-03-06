@@ -13,7 +13,7 @@ class ReplicationRuleAndOperator {
   /// Creates a new [ReplicationRuleAndOperator].
   /// [prefix] An object key name prefix that identifies the subset of objects to which the rule applies.
   /// [tagFilters] An array of tags containing key and value pairs.
-  ReplicationRuleAndOperator({
+  const ReplicationRuleAndOperator({
     this.prefix,
     this.tagFilters,
   });

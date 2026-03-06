@@ -15,7 +15,7 @@ class AssignmentVirtualMachineScaleSetState {
   /// [location] Specifies the supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [maintenanceConfigurationId] Specifies the ID of the Maintenance Configuration Resource. Changing this forces a new resource to be created.
   /// [virtualMachineScaleSetId] Specifies the Virtual Machine Scale Set ID to which the Maintenance Configuration will be assigned. Changing this forces a new resource to be created.
-  AssignmentVirtualMachineScaleSetState({
+  const AssignmentVirtualMachineScaleSetState({
     this.location,
     this.maintenanceConfigurationId,
     this.virtualMachineScaleSetId,

@@ -44,7 +44,7 @@ class DatabaseMigrationsMongoToCosmosDbvCoreMongoArgs {
   /// [sourceMongoConnection] Source Mongo connection details.
   /// [targetMongoConnection] Target Cosmos DB Mongo connection details.
   /// [targetResourceName] The name of the target resource/account.
-  DatabaseMigrationsMongoToCosmosDbvCoreMongoArgs({
+  const DatabaseMigrationsMongoToCosmosDbvCoreMongoArgs({
     this.collectionList,
     required this.kind,
     this.migrationName,

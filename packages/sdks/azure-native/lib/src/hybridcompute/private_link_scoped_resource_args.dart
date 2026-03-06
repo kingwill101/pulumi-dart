@@ -21,7 +21,7 @@ class PrivateLinkScopedResourceArgs {
   /// [name] The name of the scoped resource object.
   /// [resourceGroupName] The name of the resource group.
   /// [scopeName] The name of the Azure Arc PrivateLinkScope resource.
-  PrivateLinkScopedResourceArgs({
+  const PrivateLinkScopedResourceArgs({
     this.linkedResourceId,
     this.name,
     required this.resourceGroupName,

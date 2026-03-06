@@ -25,7 +25,7 @@ class SettingsApplicationSettingsAttributePropagationSettings {
   /// [enable] Whether the provided attribute propagation settings should be evaluated on user requests.
   /// [expression] Raw string CEL expression. Must return a list of attributes. A maximum of 45 attributes can
   /// [outputCredentials] Which output credentials attributes selected by the CEL expression should be propagated in.
-  SettingsApplicationSettingsAttributePropagationSettings({
+  const SettingsApplicationSettingsAttributePropagationSettings({
     this.enable,
     this.expression,
     this.outputCredentials,

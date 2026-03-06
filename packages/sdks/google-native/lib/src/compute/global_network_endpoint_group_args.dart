@@ -69,7 +69,7 @@ class GlobalNetworkEndpointGroupArgs {
   /// [serverlessDeployment] Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
   /// [subnetwork] Optional URL of the subnetwork to which all network endpoints in the NEG belong.
   /// [type] Specify the type of this network endpoint group. Only LOAD_BALANCING is valid for now.
-  GlobalNetworkEndpointGroupArgs({
+  const GlobalNetworkEndpointGroupArgs({
     this.annotations,
     this.appEngine,
     this.clientPortMappingMode,

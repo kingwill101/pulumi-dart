@@ -18,7 +18,7 @@ class GetUsersResult {
   /// [identityStoreId] Required.
   /// [region] Region of the address.
   /// [users] List of Identity Store Users
-  GetUsersResult({
+  const GetUsersResult({
     required this.id,
     required this.identityStoreId,
     required this.region,

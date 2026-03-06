@@ -11,7 +11,7 @@ class FoldersPolicyBindingTarget {
 
   /// Creates a new [FoldersPolicyBindingTarget].
   /// [principalSet] Required. Immutable. Full Resource Name of the principal set used for principal access boundary policy bindings.
-  FoldersPolicyBindingTarget({
+  const FoldersPolicyBindingTarget({
     this.principalSet,
   });
 

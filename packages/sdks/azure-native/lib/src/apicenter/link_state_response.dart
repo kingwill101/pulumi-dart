@@ -15,7 +15,7 @@ class LinkStateResponse {
   /// [lastUpdatedOn] The timestamp of the last update of the link state.
   /// [message] The state message.
   /// [state] The state of the link.
-  LinkStateResponse({
+  const LinkStateResponse({
     required this.lastUpdatedOn,
     this.message,
     this.state,

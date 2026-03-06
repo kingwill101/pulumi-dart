@@ -43,7 +43,7 @@ class GcpCredentialsDetailsProperties {
   /// [projectId] Project ID field of the API key (write only)
   /// [tokenUri] Token URI field of the API key (write only)
   /// [type] Type field of the API key (write only)
-  GcpCredentialsDetailsProperties({
+  const GcpCredentialsDetailsProperties({
     required this.authProviderX509CertUrl,
     required this.authUri,
     required this.authenticationType,

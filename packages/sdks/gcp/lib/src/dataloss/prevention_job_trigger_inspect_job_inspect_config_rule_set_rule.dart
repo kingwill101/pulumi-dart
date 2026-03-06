@@ -15,7 +15,7 @@ class PreventionJobTriggerInspectJobInspectConfigRuleSetRule {
   /// Creates a new [PreventionJobTriggerInspectJobInspectConfigRuleSetRule].
   /// [exclusionRule] The rule that specifies conditions when findings of infoTypes specified in InspectionRuleSet are removed from results.
   /// [hotwordRule] Hotword-based detection rule.
-  PreventionJobTriggerInspectJobInspectConfigRuleSetRule({
+  const PreventionJobTriggerInspectJobInspectConfigRuleSetRule({
     this.exclusionRule,
     this.hotwordRule,
   });

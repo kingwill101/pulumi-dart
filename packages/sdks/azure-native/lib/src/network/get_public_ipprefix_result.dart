@@ -72,7 +72,7 @@ class GetPublicIPPrefixResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [zones] A list of availability zones denoting the IP allocated for the resource needs to come from.
-  GetPublicIPPrefixResult({
+  const GetPublicIPPrefixResult({
     required this.azureApiVersion,
     this.customIPPrefix,
     required this.etag,

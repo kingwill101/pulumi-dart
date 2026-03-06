@@ -18,7 +18,7 @@ class GetPrivateEndpointConnectionOperationArgs {
   /// [privateEndpointConnectionName] Private endpoint connection ARM name
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetPrivateEndpointConnectionOperationArgs({
+  const GetPrivateEndpointConnectionOperationArgs({
     required this.privateEndpointConnectionName,
     required this.projectName,
     required this.resourceGroupName,

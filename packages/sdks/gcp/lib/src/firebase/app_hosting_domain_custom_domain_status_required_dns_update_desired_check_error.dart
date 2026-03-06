@@ -19,7 +19,7 @@ class AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError {
   /// [code] (Output)
   /// [details] (Output)
   /// [message] (Output)
-  AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError({
+  const AppHostingDomainCustomDomainStatusRequiredDnsUpdateDesiredCheckError({
     this.code,
     this.details,
     this.message,

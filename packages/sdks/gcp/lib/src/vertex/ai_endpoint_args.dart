@@ -62,7 +62,7 @@ class AiEndpointArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region for the resource
   /// [trafficSplit] A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
-  AiEndpointArgs({
+  const AiEndpointArgs({
     this.dedicatedEndpointEnabled,
     this.description,
     required this.displayName,

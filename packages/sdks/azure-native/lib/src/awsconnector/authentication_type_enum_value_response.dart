@@ -9,7 +9,7 @@ class AuthenticationTypeEnumValueResponse {
 
   /// Creates a new [AuthenticationTypeEnumValueResponse].
   /// [value] Property value
-  AuthenticationTypeEnumValueResponse({
+  const AuthenticationTypeEnumValueResponse({
     this.value,
   });
 

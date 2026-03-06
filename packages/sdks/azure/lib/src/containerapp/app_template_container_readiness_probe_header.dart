@@ -11,7 +11,7 @@ class AppTemplateContainerReadinessProbeHeader {
   /// Creates a new [AppTemplateContainerReadinessProbeHeader].
   /// [name] The HTTP Header Name.
   /// [value] The HTTP Header value.
-  AppTemplateContainerReadinessProbeHeader({
+  const AppTemplateContainerReadinessProbeHeader({
     required this.name,
     required this.value,
   });

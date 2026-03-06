@@ -62,7 +62,7 @@ class GetReceivedLicenseResult {
   /// [status] Granted license status.
   /// [validities] Date and time range during which the granted license is valid, in ISO8601-UTC format. Detailed below
   /// [version] Version of the granted license.
-  GetReceivedLicenseResult({
+  const GetReceivedLicenseResult({
     required this.beneficiary,
     required this.consumptionConfigurations,
     required this.createTime,

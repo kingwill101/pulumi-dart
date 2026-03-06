@@ -126,7 +126,7 @@ class AzureSqlMILinkedService {
   /// [type] Type of linked service.
   /// [userName] The user name to be used when connecting to server. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  AzureSqlMILinkedService({
+  const AzureSqlMILinkedService({
     this.alwaysEncryptedSettings,
     this.annotations,
     this.applicationIntent,

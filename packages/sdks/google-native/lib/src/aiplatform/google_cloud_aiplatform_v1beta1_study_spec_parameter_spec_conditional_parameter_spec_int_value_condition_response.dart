@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpec
 
   /// Creates a new [GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse].
   /// [values] Matches values of the parent parameter of 'INTEGER' type. All values must lie in `integer_value_spec` of parent parameter.
-  GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse({
+  const GoogleCloudAiplatformV1beta1StudySpecParameterSpecConditionalParameterSpecIntValueConditionResponse({
     required this.values,
   });
 

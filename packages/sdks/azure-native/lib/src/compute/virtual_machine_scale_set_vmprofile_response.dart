@@ -73,7 +73,7 @@ class VirtualMachineScaleSetVMProfileResponse {
   /// [storageProfile] Specifies the storage settings for the virtual machine disks.
   /// [timeCreated] Specifies the time in which this VM profile for the Virtual Machine Scale Set was created. This value will be added to VMSS Flex VM tags when creating/updating the VMSS VM Profile. Minimum API version for this property is 2023-09-01.
   /// [userData] UserData for the virtual machines in the scale set, which must be base-64 encoded. Customer should not pass any secrets in here. Minimum api-version: 2021-03-01.
-  VirtualMachineScaleSetVMProfileResponse({
+  const VirtualMachineScaleSetVMProfileResponse({
     this.applicationProfile,
     this.billingProfile,
     this.capacityReservation,

@@ -37,7 +37,7 @@ class AssetArgs {
   /// [project] Optional.
   /// [resourceSpec] Specification of the resource that is referenced by this asset.
   /// [zone] Optional.
-  AssetArgs({
+  const AssetArgs({
     required this.assetId,
     this.description,
     this.discoverySpec,

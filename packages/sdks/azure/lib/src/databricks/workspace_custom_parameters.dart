@@ -47,7 +47,7 @@ class WorkspaceCustomParameters {
   /// [storageAccountSkuName] Storage account SKU name. Possible values include `Standard_LRS`, `Standard_GRS`, `Standard_RAGRS`, `Standard_GZRS`, `Standard_RAGZRS`, `Standard_ZRS`, `Premium_LRS` or `Premium_ZRS`. Defaults to `Standard_GRS`.
   /// [virtualNetworkId] The ID of a Virtual Network where this Databricks Cluster should be created. Changing this forces a new resource to be created.
   /// [vnetAddressPrefix] Address prefix for Managed virtual network. Defaults to `10.139`. Changing this forces a new resource to be created.
-  WorkspaceCustomParameters({
+  const WorkspaceCustomParameters({
     this.machineLearningWorkspaceId,
     this.natGatewayName,
     this.noPublicIp,

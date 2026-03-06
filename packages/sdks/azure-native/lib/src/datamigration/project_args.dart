@@ -43,7 +43,7 @@ class ProjectArgs {
   /// [tags] Optional.
   /// [targetConnectionInfo] Information for connecting to target
   /// [targetPlatform] Target platform for the project
-  ProjectArgs({
+  const ProjectArgs({
     this.azureAuthenticationInfo,
     this.databasesInfo,
     required this.groupName,

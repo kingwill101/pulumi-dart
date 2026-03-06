@@ -18,7 +18,7 @@ class GetTrustedAccessRoleBindingArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
   /// [trustedAccessRoleBindingName] The name of trusted access role binding.
-  GetTrustedAccessRoleBindingArgs({
+  const GetTrustedAccessRoleBindingArgs({
     required this.resourceGroupName,
     required this.resourceName,
     required this.trustedAccessRoleBindingName,

@@ -10,7 +10,7 @@ class FieldIndexConfig {
 
   /// Creates a new [FieldIndexConfig].
   /// [indexes] The indexes to configure on the field. Order or array contains must be specified.
-  FieldIndexConfig({
+  const FieldIndexConfig({
     this.indexes,
   });
 

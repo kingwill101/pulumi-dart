@@ -11,7 +11,7 @@ class TableImportTableInputFormatOptionsCsv {
   /// Creates a new [TableImportTableInputFormatOptionsCsv].
   /// [delimiter] The delimiter used for separating items in the CSV file being imported.
   /// [headerLists] List of the headers used to specify a common header for all source CSV files being imported.
-  TableImportTableInputFormatOptionsCsv({
+  const TableImportTableInputFormatOptionsCsv({
     this.delimiter,
     this.headerLists,
   });

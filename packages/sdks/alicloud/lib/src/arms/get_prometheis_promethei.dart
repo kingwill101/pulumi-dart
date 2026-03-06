@@ -65,7 +65,7 @@ class GetPrometheisPromethei {
   /// [tags] A mapping of tags to assign to the resource.
   /// [vpcId] The ID of the VPC.
   /// [vswitchId] The ID of the vSwitch.
-  GetPrometheisPromethei({
+  const GetPrometheisPromethei({
     required this.authToken,
     required this.clusterId,
     required this.clusterName,

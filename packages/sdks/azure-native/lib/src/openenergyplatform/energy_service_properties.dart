@@ -10,7 +10,7 @@ class EnergyServiceProperties {
   /// Creates a new [EnergyServiceProperties].
   /// [authAppId] Optional.
   /// [dataPartitionNames] Optional.
-  EnergyServiceProperties({
+  const EnergyServiceProperties({
     this.authAppId,
     this.dataPartitionNames,
   });

@@ -59,7 +59,7 @@ class BackupVaultState {
   /// [sourceBackupVault] Name of the Backup vault created in source region.
   /// [sourceRegion] Region in which the backup vault is created.
   /// [state] The state of the Backup Vault.
-  BackupVaultState({
+  const BackupVaultState({
     this.backupRegion,
     this.backupRetentionPolicy,
     this.backupVaultType,

@@ -31,7 +31,7 @@ class ResourcefileArgs {
   /// [name] Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
   /// [organizationId] Required.
   /// [type] Required. Resource file type. {{ resource_file_type }}
-  ResourcefileArgs({
+  const ResourcefileArgs({
     this.contentType,
     this.data,
     required this.environmentId,

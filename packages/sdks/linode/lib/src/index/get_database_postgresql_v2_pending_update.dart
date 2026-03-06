@@ -14,7 +14,7 @@ class GetDatabasePostgresqlV2PendingUpdate {
   /// [deadline] The time when a mandatory update needs to be applied.
   /// [description] A description of the update.
   /// [plannedFor] The date and time a maintenance update will be applied.
-  GetDatabasePostgresqlV2PendingUpdate({
+  const GetDatabasePostgresqlV2PendingUpdate({
     required this.deadline,
     required this.description,
     required this.plannedFor,

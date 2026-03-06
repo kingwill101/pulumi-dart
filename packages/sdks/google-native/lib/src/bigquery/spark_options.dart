@@ -36,7 +36,7 @@ class SparkOptions {
   /// [properties] Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html) and the [procedure option list](https://cloud.google.com/bigquery/docs/reference/standard-sql/data-definition-language#procedure_option_list).
   /// [pyFileUris] Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
   /// [runtimeVersion] Runtime version. If not specified, the default runtime version is used.
-  SparkOptions({
+  const SparkOptions({
     this.archiveUris,
     this.connection,
     this.containerImage,

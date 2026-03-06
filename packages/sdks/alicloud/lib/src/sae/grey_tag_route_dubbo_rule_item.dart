@@ -17,7 +17,7 @@ class GreyTagRouteDubboRuleItem {
   /// [index] The parameter number.
   /// [operator] Optional.
   /// [value] Optional.
-  GreyTagRouteDubboRuleItem({
+  const GreyTagRouteDubboRuleItem({
     this.cond,
     this.expr,
     this.index,

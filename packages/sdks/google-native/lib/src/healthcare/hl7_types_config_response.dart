@@ -14,7 +14,7 @@ class Hl7TypesConfigResponse {
   /// Creates a new [Hl7TypesConfigResponse].
   /// [type] The HL7v2 type definitions.
   /// [version] The version selectors that this config applies to. A message must match ALL version sources to apply.
-  Hl7TypesConfigResponse({
+  const Hl7TypesConfigResponse({
     required this.type,
     required this.version,
   });

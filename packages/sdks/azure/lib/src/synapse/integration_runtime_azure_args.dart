@@ -30,7 +30,7 @@ class IntegrationRuntimeAzureArgs {
   /// [name] The name which should be used for this Synapse Azure Integration Runtime. Changing this forces a new Synapse Azure Integration Runtime to be created.
   /// [synapseWorkspaceId] The Synapse Workspace ID in which to associate the Integration Runtime with. Changing this forces a new Synapse Azure Integration Runtime to be created.
   /// [timeToLiveMin] Time to live (in minutes) setting of the cluster which will execute data flow job. Defaults to `0`.
-  IntegrationRuntimeAzureArgs({
+  const IntegrationRuntimeAzureArgs({
     this.computeType,
     this.coreCount,
     this.description,

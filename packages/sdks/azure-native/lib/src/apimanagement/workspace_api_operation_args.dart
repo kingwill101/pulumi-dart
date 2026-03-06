@@ -51,7 +51,7 @@ class WorkspaceApiOperationArgs {
   /// [templateParameters] Collection of URL template parameters.
   /// [urlTemplate] Relative URL template identifying the target resource for this operation. May include parameters. Example: /customers/{cid}/orders/{oid}/?date={date}
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceApiOperationArgs({
+  const WorkspaceApiOperationArgs({
     required this.apiId,
     this.description,
     required this.displayName,

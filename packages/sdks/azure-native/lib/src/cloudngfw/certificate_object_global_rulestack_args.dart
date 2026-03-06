@@ -27,7 +27,7 @@ class CertificateObjectGlobalRulestackArgs {
   /// [description] user description for this object
   /// [globalRulestackName] GlobalRulestack resource name
   /// [name] certificate name
-  CertificateObjectGlobalRulestackArgs({
+  const CertificateObjectGlobalRulestackArgs({
     this.auditComment,
     required this.certificateSelfSigned,
     this.certificateSignerResourceId,

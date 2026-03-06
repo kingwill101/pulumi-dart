@@ -8,7 +8,7 @@ class ArmIdWrapperResponse {
 
   /// Creates a new [ArmIdWrapperResponse].
   /// [id] Required.
-  ArmIdWrapperResponse({
+  const ArmIdWrapperResponse({
     required this.id,
   });
 

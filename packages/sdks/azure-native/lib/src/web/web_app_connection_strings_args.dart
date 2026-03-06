@@ -22,7 +22,7 @@ class WebAppConnectionStringsArgs {
   /// [name] Name of the app.
   /// [properties] Connection strings.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppConnectionStringsArgs({
+  const WebAppConnectionStringsArgs({
     this.kind,
     required this.name,
     this.properties,

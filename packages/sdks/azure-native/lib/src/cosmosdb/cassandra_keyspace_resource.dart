@@ -9,7 +9,7 @@ class CassandraKeyspaceResource {
 
   /// Creates a new [CassandraKeyspaceResource].
   /// [id] Name of the Cosmos DB Cassandra keyspace
-  CassandraKeyspaceResource({
+  const CassandraKeyspaceResource({
     required this.id,
   });
 

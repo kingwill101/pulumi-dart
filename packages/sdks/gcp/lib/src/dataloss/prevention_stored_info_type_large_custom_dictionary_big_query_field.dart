@@ -15,7 +15,7 @@ class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField {
   /// Creates a new [PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField].
   /// [field] Designated field in the BigQuery table.
   /// [table] Field in a BigQuery table where each cell represents a dictionary phrase.
-  PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField({
+  const PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField({
     required this.field,
     required this.table,
   });

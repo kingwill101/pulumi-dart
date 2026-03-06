@@ -15,7 +15,7 @@ class FloatingIpAssignmentArgs {
   /// Creates a new [FloatingIpAssignmentArgs].
   /// [dropletId] The ID of Droplet that the Floating IP will be assigned to.
   /// [ipAddress] The Floating IP to assign to the Droplet.
-  FloatingIpAssignmentArgs({
+  const FloatingIpAssignmentArgs({
     required this.dropletId,
     required this.ipAddress,
   });

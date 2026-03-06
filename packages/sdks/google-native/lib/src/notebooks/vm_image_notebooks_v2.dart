@@ -15,7 +15,7 @@ class VmImageNotebooksV2 {
   /// [family] Optional. Use this VM image family to find the image; the newest image in this family will be used.
   /// [name] Optional. Use VM image name to find the image.
   /// [project] The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}`
-  VmImageNotebooksV2({
+  const VmImageNotebooksV2({
     this.family,
     this.name,
     required this.project,

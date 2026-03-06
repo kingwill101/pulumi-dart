@@ -17,7 +17,7 @@ class GdcSparkApplicationSparkRApplicationConfig {
   /// [args] The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
   /// [fileUris] HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
   /// [mainRFileUri] The HCFS URI of the main R file to use as the driver. Must be a .R file.
-  GdcSparkApplicationSparkRApplicationConfig({
+  const GdcSparkApplicationSparkRApplicationConfig({
     this.archiveUris,
     this.args,
     this.fileUris,

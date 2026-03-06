@@ -23,7 +23,7 @@ class WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode {
   /// [statusCodeRange] The status code for this rule, accepts single status codes and status code ranges. e.g. `500` or `400-499`. Possible values are integers between `101` and `599`
   /// [subStatus] The Request Sub Status of the Status Code.
   /// [win32StatusCode] The Win32 Status Code of the Request.
-  WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode({
+  const WindowsWebAppSiteConfigAutoHealSettingTriggerStatusCode({
     required this.count,
     required this.interval,
     this.path,

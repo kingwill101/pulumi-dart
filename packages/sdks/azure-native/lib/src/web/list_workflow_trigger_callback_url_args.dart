@@ -21,7 +21,7 @@ class ListWorkflowTriggerCallbackUrlArgs {
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [triggerName] The workflow trigger name.
   /// [workflowName] The workflow name.
-  ListWorkflowTriggerCallbackUrlArgs({
+  const ListWorkflowTriggerCallbackUrlArgs({
     required this.name,
     required this.resourceGroupName,
     required this.triggerName,

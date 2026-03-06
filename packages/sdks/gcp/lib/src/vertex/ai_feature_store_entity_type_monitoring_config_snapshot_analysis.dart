@@ -21,7 +21,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
   /// [monitoringInterval] Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
   /// [monitoringIntervalDays] Configuration of the snapshot analysis based monitoring pipeline running interval. The value indicates number of days. The default value is 1.
   /// [stalenessDays] Customized export features time window for snapshot analysis. Unit is one day. The default value is 21 days. Minimum value is 1 day. Maximum value is 4000 days.
-  AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis({
+  const AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis({
     this.disabled,
     this.monitoringInterval,
     this.monitoringIntervalDays,

@@ -20,7 +20,7 @@ class BucketWormArgs {
   /// [bucket] The name of the bucket
   /// [retentionPeriodInDays] The specified number of days to retain the Object.
   /// [status] The status of the compliance retention policy. Optional values:
-  BucketWormArgs({
+  const BucketWormArgs({
     required this.bucket,
     this.retentionPeriodInDays,
     this.status,

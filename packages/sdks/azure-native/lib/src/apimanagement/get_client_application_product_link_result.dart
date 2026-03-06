@@ -20,7 +20,7 @@ class GetClientApplicationProductLinkResult {
   /// [name] The name of the resource
   /// [productId] The unique resource identifier of the Product.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetClientApplicationProductLinkResult({
+  const GetClientApplicationProductLinkResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

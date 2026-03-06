@@ -19,7 +19,7 @@ class ApplicationScopedVolumeResponse {
   /// [destinationPath] The path within the container at which the volume should be mounted. Only valid path characters are allowed.
   /// [name] Name of the volume being referenced.
   /// [readOnly] The flag indicating whether the volume is read only. Default is 'false'.
-  ApplicationScopedVolumeResponse({
+  const ApplicationScopedVolumeResponse({
     required this.creationParameters,
     required this.destinationPath,
     required this.name,

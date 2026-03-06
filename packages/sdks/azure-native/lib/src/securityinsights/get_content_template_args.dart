@@ -18,7 +18,7 @@ class GetContentTemplateArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [templateId] template Id
   /// [workspaceName] The name of the workspace.
-  GetContentTemplateArgs({
+  const GetContentTemplateArgs({
     required this.resourceGroupName,
     required this.templateId,
     required this.workspaceName,

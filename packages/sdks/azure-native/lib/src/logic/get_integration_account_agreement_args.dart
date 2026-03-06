@@ -18,7 +18,7 @@ class GetIntegrationAccountAgreementArgs {
   /// [agreementName] The integration account agreement name.
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
-  GetIntegrationAccountAgreementArgs({
+  const GetIntegrationAccountAgreementArgs({
     required this.agreementName,
     required this.integrationAccountName,
     required this.resourceGroupName,

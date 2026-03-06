@@ -24,7 +24,7 @@ class Solution {
   /// [planId] Plan Id.
   /// [saasSubscriptionId] Saas subscription Id.
   /// [saasSubscriptionName] Saas subscription name.
-  Solution({
+  const Solution({
     this.applicationName,
     this.marketPlacePublisherId,
     this.partnerId,

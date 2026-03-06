@@ -23,7 +23,7 @@ class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt {
   /// [distribution] Distribution of this repository.
   /// [gpgKey] URI of the key file for this repository. The agent
   /// [uri] URI for this repository.
-  OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt({
+  const OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt({
     required this.archiveType,
     required this.components,
     required this.distribution,

@@ -9,7 +9,7 @@ class StateNotificationConfig {
 
   /// Creates a new [StateNotificationConfig].
   /// [pubsubTopicName] A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
-  StateNotificationConfig({
+  const StateNotificationConfig({
     this.pubsubTopicName,
   });
 

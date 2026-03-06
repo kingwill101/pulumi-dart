@@ -40,7 +40,7 @@ class GetServerGroupsResult {
   /// [status] The status of the server.
   /// [tags] The tags of the resource. **Note:** `tags` takes effect only if `enable_details` is set to `true`.
   /// [vpcId] The ID of the VPC.
-  GetServerGroupsResult({
+  const GetServerGroupsResult({
     this.enableDetails,
     required this.groups,
     required this.id,

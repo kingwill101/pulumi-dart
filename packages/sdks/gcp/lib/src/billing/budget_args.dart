@@ -45,7 +45,7 @@ class BudgetArgs {
   /// [displayName] User data for display name in UI. Must be &lt;= 60 chars.
   /// [ownershipScope] The ownership scope of the budget. The ownership scope and users'
   /// [thresholdRules] Rules that trigger alerts (notifications of thresholds being
-  BudgetArgs({
+  const BudgetArgs({
     this.allUpdatesRule,
     required this.amount,
     required this.billingAccount,

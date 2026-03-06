@@ -12,7 +12,7 @@ class AssetStatusErrorResponse {
   /// Creates a new [AssetStatusErrorResponse].
   /// [code] Error code for classification of errors (ex: 400, 404, 500, etc.).
   /// [message] Human readable helpful error message to provide additional context for error (ex: “capability Id 'foo' does not exist”).
-  AssetStatusErrorResponse({
+  const AssetStatusErrorResponse({
     required this.code,
     required this.message,
   });

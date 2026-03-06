@@ -13,7 +13,7 @@ class GetRouteComputeBetaArgs {
   /// Creates a new [GetRouteComputeBetaArgs].
   /// [project] Optional.
   /// [route] Required.
-  GetRouteComputeBetaArgs({
+  const GetRouteComputeBetaArgs({
     this.project,
     required this.route,
   });

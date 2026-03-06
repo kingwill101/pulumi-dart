@@ -48,7 +48,7 @@ class GetIotDpsResourceResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] The resource tags.
   /// [type] The resource type.
-  GetIotDpsResourceResult({
+  const GetIotDpsResourceResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

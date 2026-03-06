@@ -15,7 +15,7 @@ class InstanceReferenceResponse {
   /// [name] The name of the Cloud SQL instance being referenced. This does not include the project ID.
   /// [project] The project ID of the Cloud SQL instance being referenced. The default is the same project ID as the instance references it.
   /// [region] The region of the Cloud SQL instance being referenced.
-  InstanceReferenceResponse({
+  const InstanceReferenceResponse({
     required this.name,
     required this.project,
     required this.region,

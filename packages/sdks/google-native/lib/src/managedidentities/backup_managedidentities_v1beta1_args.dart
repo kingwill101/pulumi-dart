@@ -22,7 +22,7 @@ class BackupManagedidentitiesV1beta1Args {
   /// [domainId] Required.
   /// [labels] Optional. Resource labels to represent user provided metadata.
   /// [project] Optional.
-  BackupManagedidentitiesV1beta1Args({
+  const BackupManagedidentitiesV1beta1Args({
     required this.backupId,
     this.description,
     required this.domainId,

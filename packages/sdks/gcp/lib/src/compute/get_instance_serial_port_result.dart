@@ -19,7 +19,7 @@ class GetInstanceSerialPortResult {
   /// [port] Required.
   /// [project] Required.
   /// [zone] Required.
-  GetInstanceSerialPortResult({
+  const GetInstanceSerialPortResult({
     required this.contents,
     required this.id,
     required this.instance,

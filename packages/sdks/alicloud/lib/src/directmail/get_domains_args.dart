@@ -27,7 +27,7 @@ class GetDomainsArgs {
   /// [nameRegex] A regex string to filter results by Domain name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the domain name. Valid values:
-  GetDomainsArgs({
+  const GetDomainsArgs({
     this.enableDetails,
     this.ids,
     this.keyWord,

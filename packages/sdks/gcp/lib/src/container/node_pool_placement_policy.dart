@@ -18,7 +18,7 @@ class NodePoolPlacementPolicy {
   /// [policyName] If set, refers to the name of a custom resource policy supplied by the user.
   /// [tpuTopology] The [TPU topology](https://cloud.google.com/kubernetes-engine/docs/concepts/plan-tpus#topology) like `"2x4"` or `"2x2x2"`.
   /// [type] The type of the policy. Supports a single value: COMPACT.
-  NodePoolPlacementPolicy({
+  const NodePoolPlacementPolicy({
     this.policyName,
     this.tpuTopology,
     required this.type,

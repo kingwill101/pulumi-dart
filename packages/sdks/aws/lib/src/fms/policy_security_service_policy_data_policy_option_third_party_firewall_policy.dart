@@ -8,7 +8,7 @@ class PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy {
 
   /// Creates a new [PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy].
   /// [firewallDeploymentModel] Defines the deployment model to use for the third-party firewall policy. Valid values are `CENTRALIZED` and `DISTRIBUTED`.
-  PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy({
+  const PolicySecurityServicePolicyDataPolicyOptionThirdPartyFirewallPolicy({
     this.firewallDeploymentModel,
   });
 

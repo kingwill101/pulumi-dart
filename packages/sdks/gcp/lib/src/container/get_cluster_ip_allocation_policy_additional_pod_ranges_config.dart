@@ -8,7 +8,7 @@ class GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
 
   /// Creates a new [GetClusterIpAllocationPolicyAdditionalPodRangesConfig].
   /// [podRangeNames] Name for pod secondary ipv4 range which has the actual range defined ahead.
-  GetClusterIpAllocationPolicyAdditionalPodRangesConfig({
+  const GetClusterIpAllocationPolicyAdditionalPodRangesConfig({
     required this.podRangeNames,
   });
 

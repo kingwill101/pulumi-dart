@@ -9,7 +9,7 @@ class BasicLoginInformationResponse {
 
   /// Creates a new [BasicLoginInformationResponse].
   /// [username] Login username.
-  BasicLoginInformationResponse({
+  const BasicLoginInformationResponse({
     this.username,
   });
 

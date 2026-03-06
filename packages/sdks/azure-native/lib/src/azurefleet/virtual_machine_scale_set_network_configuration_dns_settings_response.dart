@@ -9,7 +9,7 @@ class VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse {
 
   /// Creates a new [VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse].
   /// [dnsServers] List of DNS servers IP addresses
-  VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse({
+  const VirtualMachineScaleSetNetworkConfigurationDnsSettingsResponse({
     this.dnsServers,
   });
 

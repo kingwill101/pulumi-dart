@@ -25,7 +25,7 @@ class JobResourcePropertiesResponse {
   /// [source] Uploaded source information of the Job.
   /// [template] The template which is applied for all executions of the Job.
   /// [triggerConfig] The Job trigger related configuration.
-  JobResourcePropertiesResponse({
+  const JobResourcePropertiesResponse({
     this.managedComponentReferences,
     required this.provisioningState,
     this.source,

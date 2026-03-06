@@ -10,7 +10,7 @@ class DumpFlagsResponse {
 
   /// Creates a new [DumpFlagsResponse].
   /// [dumpFlags] The flags for the initial dump.
-  DumpFlagsResponse({
+  const DumpFlagsResponse({
     required this.dumpFlags,
   });
 

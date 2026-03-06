@@ -9,7 +9,7 @@ class SubnetDetails {
 
   /// Creates a new [SubnetDetails].
   /// [id] subnet arm resource id
-  SubnetDetails({
+  const SubnetDetails({
     this.id,
   });
 

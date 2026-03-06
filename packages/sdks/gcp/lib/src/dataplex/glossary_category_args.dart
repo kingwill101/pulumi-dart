@@ -37,7 +37,7 @@ class GlossaryCategoryArgs {
   /// [location] The location where the glossary category should reside.
   /// [parent] The immediate parent of the GlossaryCategory in the resource-hierarchy. It can either be a Glossary or a Category. Format: projects/{projectId}/locations/{locationId}/glossaries/{glossaryId} OR projects/{projectId}/locations/{locationId}/glossaries/{glossaryId}/categories/{categoryId}
   /// [project] The ID of the project in which the resource belongs.
-  GlossaryCategoryArgs({
+  const GlossaryCategoryArgs({
     this.categoryId,
     this.description,
     this.displayName,

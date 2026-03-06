@@ -11,7 +11,7 @@ class ApplicationDataSource {
   /// Creates a new [ApplicationDataSource].
   /// [dataSourceArn] The Amazon Resource Name (ARN) of the OpenSearch domain or collection. Must be between 20 and 2048 characters.
   /// [dataSourceDescription] A detailed description of the data source. Must be at most 1000 characters and contain only alphanumeric characters, underscores, spaces, and the following special characters: `@#%*+=:?./!-`.
-  ApplicationDataSource({
+  const ApplicationDataSource({
     this.dataSourceArn,
     this.dataSourceDescription,
   });

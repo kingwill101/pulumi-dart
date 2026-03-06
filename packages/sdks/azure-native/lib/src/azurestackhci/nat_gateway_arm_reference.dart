@@ -9,7 +9,7 @@ class NatGatewayArmReference {
 
   /// Creates a new [NatGatewayArmReference].
   /// [resourceId] The ARM ID for a Network Security Group.
-  NatGatewayArmReference({
+  const NatGatewayArmReference({
     this.resourceId,
   });
 

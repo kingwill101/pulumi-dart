@@ -15,7 +15,7 @@ class GetClusterMasterAuthorizedNetworksConfig {
   /// [cidrBlocks] External networks that can access the Kubernetes cluster master through HTTPS.
   /// [gcpPublicCidrsAccessEnabled] Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
   /// [privateEndpointEnforcementEnabled] Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
-  GetClusterMasterAuthorizedNetworksConfig({
+  const GetClusterMasterAuthorizedNetworksConfig({
     required this.cidrBlocks,
     required this.gcpPublicCidrsAccessEnabled,
     required this.privateEndpointEnforcementEnabled,

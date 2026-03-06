@@ -21,7 +21,7 @@ class DirectoryKustomizeArgs {
   /// [directory] The directory containing the kustomization to apply. The value can be a local directory or a folder in a
   /// [resourcePrefix] An optional prefix for the auto-generated resource names. Example: A resource created with resourcePrefix="foo" would produce a resource named "foo-resourceName".
   /// [transformations_] A set of transformations to apply to Kubernetes resource definitions before registering with engine.
-  DirectoryKustomizeArgs({
+  const DirectoryKustomizeArgs({
     required this.directory,
     this.resourcePrefix,
     this.transformations_,

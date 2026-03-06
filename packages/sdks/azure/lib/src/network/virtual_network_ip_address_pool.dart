@@ -16,7 +16,7 @@ class VirtualNetworkIpAddressPool {
   /// [allocatedIpAddressPrefixes] The list of IP address prefixes allocated to the Virtual Network.
   /// [id] The ID of the Network Manager IP Address Management (IPAM) Pool.
   /// [numberOfIpAddresses] The number of IP addresses to allocated to the Virtual Network. The value must be a string that represents a positive number, e.g., `"100"`.
-  VirtualNetworkIpAddressPool({
+  const VirtualNetworkIpAddressPool({
     this.allocatedIpAddressPrefixes,
     required this.id,
     required this.numberOfIpAddresses,

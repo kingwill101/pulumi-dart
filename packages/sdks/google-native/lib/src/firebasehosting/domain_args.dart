@@ -23,7 +23,7 @@ class DomainArgs {
   /// [project] Optional.
   /// [site] The site name of the association.
   /// [siteId] Required.
-  DomainArgs({
+  const DomainArgs({
     required this.domainName,
     this.domainRedirect,
     this.project,

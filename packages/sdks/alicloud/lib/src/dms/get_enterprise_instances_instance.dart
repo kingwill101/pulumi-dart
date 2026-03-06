@@ -75,7 +75,7 @@ class GetEnterpriseInstancesInstance {
   /// [status] Filter the results by status of the DMS Enterprise Instances. Valid values: `NORMAL`, `UNAVAILABLE`, `UNKNOWN`, `DELETED`, `DISABLE`.
   /// [useDsql] Indicates whether cross-database query was enabled for the database instance.
   /// [vpcId] The ID of the Virtual Private Cloud (VPC) to which the database instance belongs.
-  GetEnterpriseInstancesInstance({
+  const GetEnterpriseInstancesInstance({
     required this.dataLinkName,
     required this.databasePassword,
     required this.databaseUser,

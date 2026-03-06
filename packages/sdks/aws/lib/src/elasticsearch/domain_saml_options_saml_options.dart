@@ -27,7 +27,7 @@ class DomainSamlOptionsSamlOptions {
   /// [rolesKey] Element of the SAML assertion to use for backend roles. Default is roles.
   /// [sessionTimeoutMinutes] Duration of a session in minutes after a user logs in. Default is 60. Maximum value is 1,440.
   /// [subjectKey] Custom SAML attribute to use for user names. Default is an empty string - `""`. This will cause Elasticsearch to use the `NameID` element of the `Subject`, which is the default location for name identifiers in the SAML specification.
-  DomainSamlOptionsSamlOptions({
+  const DomainSamlOptionsSamlOptions({
     this.enabled,
     this.idp,
     this.masterBackendRole,

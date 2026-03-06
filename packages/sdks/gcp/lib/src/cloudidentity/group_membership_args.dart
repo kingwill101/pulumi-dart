@@ -31,7 +31,7 @@ class GroupMembershipArgs {
   /// [memberKey] EntityKey of the member.
   /// [preferredMemberKey] EntityKey of the member.
   /// [roles] The MembershipRoles that apply to the Membership.
-  GroupMembershipArgs({
+  const GroupMembershipArgs({
     this.createIgnoreAlreadyExists,
     required this.group,
     this.memberKey,

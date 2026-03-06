@@ -18,7 +18,7 @@ class OrganizationSecurityPolicyAssociationArgs {
   /// [attachmentId] The resource that the security policy is attached to.
   /// [name] The name for an association.
   /// [policyId] The security policy ID of the association.
-  OrganizationSecurityPolicyAssociationArgs({
+  const OrganizationSecurityPolicyAssociationArgs({
     required this.attachmentId,
     this.name,
     required this.policyId,

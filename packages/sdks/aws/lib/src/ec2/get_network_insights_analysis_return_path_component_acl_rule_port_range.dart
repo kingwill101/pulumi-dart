@@ -9,7 +9,7 @@ class GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange {
   /// Creates a new [GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange].
   /// [from] Required.
   /// [to] Required.
-  GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange({
+  const GetNetworkInsightsAnalysisReturnPathComponentAclRulePortRange({
     required this.from,
     required this.to,
   });

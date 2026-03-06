@@ -10,7 +10,7 @@ class QueuedResourceStatusFailedDataResponse {
 
   /// Creates a new [QueuedResourceStatusFailedDataResponse].
   /// [error] The error(s) that caused the QueuedResource to enter the FAILED state.
-  QueuedResourceStatusFailedDataResponse({
+  const QueuedResourceStatusFailedDataResponse({
     required this.error,
   });
 

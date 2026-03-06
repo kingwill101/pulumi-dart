@@ -52,7 +52,7 @@ class MaintenanceConfigurationArgs {
   /// [tags] Gets or sets tags of the resource
   /// [timeZone] Name of the timezone. List of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell. Example: Pacific Standard Time, UTC, W. Europe Standard Time, Korea Standard Time, Cen. Australia Standard Time.
   /// [visibility] Gets or sets the visibility of the configuration. The default value is 'Custom'
-  MaintenanceConfigurationArgs({
+  const MaintenanceConfigurationArgs({
     this.duration,
     this.expirationDateTime,
     this.extensionProperties,

@@ -29,7 +29,7 @@ class GetOrganizationalUnitChildAccountsAccount {
   /// [name] The friendly name of the account.
   /// [state] State of the account in the organization.
   /// [status] (**Deprecated** use `state` instead) Status of the account in the organization.
-  GetOrganizationalUnitChildAccountsAccount({
+  const GetOrganizationalUnitChildAccountsAccount({
     required this.arn,
     required this.email,
     required this.id,

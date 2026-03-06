@@ -8,7 +8,7 @@ class ClusterMeshCertificates {
 
   /// Creates a new [ClusterMeshCertificates].
   /// [enableCertificates] Controls the issuance of workload mTLS certificates. It is enabled by default. Workload Identity is required, see workload_config.
-  ClusterMeshCertificates({
+  const ClusterMeshCertificates({
     required this.enableCertificates,
   });
 

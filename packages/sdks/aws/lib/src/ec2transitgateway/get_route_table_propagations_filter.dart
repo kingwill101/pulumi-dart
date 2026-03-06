@@ -13,7 +13,7 @@ class GetRouteTablePropagationsFilter {
   /// Creates a new [GetRouteTablePropagationsFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetRouteTablePropagationsFilter({
+  const GetRouteTablePropagationsFilter({
     required this.name,
     required this.values,
   });

@@ -40,7 +40,7 @@ class AzureSqlTableDatasetResponse {
   /// [table] The table name of the Azure SQL database. Type: string (or Expression with resultType string).
   /// [tableName] This property will be retired. Please consider using schema + table properties instead.
   /// [type] Type of dataset.
-  AzureSqlTableDatasetResponse({
+  const AzureSqlTableDatasetResponse({
     this.annotations,
     this.description,
     this.folder,

@@ -12,7 +12,7 @@ class ProtectionHealthCheckAssociationState {
   /// Creates a new [ProtectionHealthCheckAssociationState].
   /// [healthCheckArn] The ARN (Amazon Resource Name) of the Route53 Health Check resource which will be associated to the protected resource.
   /// [shieldProtectionId] The ID of the protected resource.
-  ProtectionHealthCheckAssociationState({
+  const ProtectionHealthCheckAssociationState({
     this.healthCheckArn,
     this.shieldProtectionId,
   });

@@ -39,7 +39,7 @@ class KafkaConfigurationArgs {
   /// [eventStreamingType] The event streaming service type
   /// [kafkaConfigurationName] The kafka configuration name.
   /// [resourceGroupName] The resource group name.
-  KafkaConfigurationArgs({
+  const KafkaConfigurationArgs({
     required this.accountName,
     this.consumerGroup,
     this.credentials,

@@ -9,7 +9,7 @@ class StorageTaskAssignmentReportResponse {
 
   /// Creates a new [StorageTaskAssignmentReportResponse].
   /// [prefix] The container prefix for the location of storage task assignment report
-  StorageTaskAssignmentReportResponse({
+  const StorageTaskAssignmentReportResponse({
     required this.prefix,
   });
 

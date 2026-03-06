@@ -77,7 +77,7 @@ class GetInstanceResult {
   /// [uid] The system-generated UID of the resource. The UID is assigned when the resource is created, and it is retained until it is deleted.
   /// [updateTime] Update time stamp
   /// [writableNode] This is set for the read-write VM of the PRIMARY instance only.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.annotations,
     required this.availabilityType,
     required this.clientConnectionConfig,

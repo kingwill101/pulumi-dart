@@ -32,7 +32,7 @@ class GatewayRouteConfigPropertiesResponse {
   /// [provisioningState] State of the Spring Cloud Gateway route config.
   /// [routes] Array of API routes, each route contains properties such as `title`, `uri`, `ssoEnabled`, `predicates`, `filters`.
   /// [ssoEnabled] Enable Single Sign-On in app level.
-  GatewayRouteConfigPropertiesResponse({
+  const GatewayRouteConfigPropertiesResponse({
     this.appResourceId,
     this.filters,
     this.openApi,

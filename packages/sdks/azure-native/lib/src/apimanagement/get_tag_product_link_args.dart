@@ -21,7 +21,7 @@ class GetTagProductLinkArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [tagId] Tag identifier. Must be unique in the current API Management service instance.
-  GetTagProductLinkArgs({
+  const GetTagProductLinkArgs({
     required this.productLinkId,
     required this.resourceGroupName,
     required this.serviceName,

@@ -20,7 +20,7 @@ class FrontdoorRuleConditionsRequestHeaderCondition {
   /// [negateCondition] If `true` operator becomes the opposite of its value. Possible values `true` or `false`. Defaults to `false`. Details can be found in the `Condition Operator List` below.
   /// [operator] A Conditional operator. Possible values include `Any`, `Equal`, `Contains`, `BeginsWith`, `EndsWith`, `LessThan`, `LessThanOrEqual`, `GreaterThan`, `GreaterThanOrEqual` or `RegEx`. Details can be found in the `Condition Operator List` below.
   /// [transforms] A Conditional operator. Possible values include `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `UrlDecode` or `UrlEncode`. Details can be found in the `Condition Transform List` below.
-  FrontdoorRuleConditionsRequestHeaderCondition({
+  const FrontdoorRuleConditionsRequestHeaderCondition({
     required this.headerName,
     this.matchValues,
     this.negateCondition,

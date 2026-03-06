@@ -16,7 +16,7 @@ class DiskEncryptionSetResourceSettingsResponse {
   /// [resourceType] The resource type. For example, the value can be Microsoft.Compute/virtualMachines.
   /// [targetResourceGroupName] Gets or sets the target resource group name.
   /// [targetResourceName] Gets or sets the target Resource name.
-  DiskEncryptionSetResourceSettingsResponse({
+  const DiskEncryptionSetResourceSettingsResponse({
     required this.resourceType,
     this.targetResourceGroupName,
     this.targetResourceName,

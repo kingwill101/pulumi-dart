@@ -22,7 +22,7 @@ class GetKeyPairsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [pairs] Required.
-  GetKeyPairsResult({
+  const GetKeyPairsResult({
     required this.id,
     required this.ids,
     this.keyPairFingerPrint,

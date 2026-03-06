@@ -14,7 +14,7 @@ class ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm {
   /// [comparator] The operator to use in a condition. Valid values are: `EQ`, `GT`, `GTE`, `LT`, `LTE`, `NE`, `CONTAINS`, `STARTS_WITH`
   /// [key] The object property to use in the condition.
   /// [values] An array that lists the values to use in the condition.
-  ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm({
+  const ClassificationJobS3JobDefinitionScopingExcludesAndSimpleScopeTerm({
     this.comparator,
     this.key,
     this.values,

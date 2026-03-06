@@ -46,7 +46,7 @@ class GetLocalNetworkGatewayResult {
   /// [resourceGuid] The resource GUID property of the local network gateway resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetLocalNetworkGatewayResult({
+  const GetLocalNetworkGatewayResult({
     required this.azureApiVersion,
     this.bgpSettings,
     required this.etag,

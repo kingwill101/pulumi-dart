@@ -9,7 +9,7 @@ class AppVersionSnapshotAppTimeZoneSetting {
 
   /// Creates a new [AppVersionSnapshotAppTimeZoneSetting].
   /// [timeZone] (Output)
-  AppVersionSnapshotAppTimeZoneSetting({
+  const AppVersionSnapshotAppTimeZoneSetting({
     this.timeZone,
   });
 

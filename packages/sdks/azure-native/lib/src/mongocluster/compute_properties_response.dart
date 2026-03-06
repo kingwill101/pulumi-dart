@@ -9,7 +9,7 @@ class ComputePropertiesResponse {
 
   /// Creates a new [ComputePropertiesResponse].
   /// [tier] The compute tier to assign to the cluster, where each tier maps to a virtual-core and memory size. Example values: 'M30', 'M40'.
-  ComputePropertiesResponse({
+  const ComputePropertiesResponse({
     this.tier,
   });
 

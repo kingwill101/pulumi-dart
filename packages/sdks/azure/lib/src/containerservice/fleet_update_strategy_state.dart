@@ -16,7 +16,7 @@ class FleetUpdateStrategyState {
   /// [kubernetesFleetManagerId] The ID of the Fleet Manager. Changing this forces a new Kubernetes Fleet Update Strategy to be created.
   /// [name] The name which should be used for this Kubernetes Fleet Update Strategy. Changing this forces a new Kubernetes Fleet Update Strategy to be created.
   /// [stages] One or more `stage` blocks as defined below.
-  FleetUpdateStrategyState({
+  const FleetUpdateStrategyState({
     this.kubernetesFleetManagerId,
     this.name,
     this.stages,

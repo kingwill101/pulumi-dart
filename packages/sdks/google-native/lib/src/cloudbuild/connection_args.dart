@@ -40,7 +40,7 @@ class ConnectionArgs {
   /// [location] Optional.
   /// [name] Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
   /// [project] Optional.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.annotations,
     required this.connectionId,
     this.disabled,

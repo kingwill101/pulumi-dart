@@ -14,7 +14,7 @@ class AppDapr {
   /// [appId] The Dapr Application Identifier.
   /// [appPort] The port which the application is listening on. This is the same as the `ingress` port.
   /// [appProtocol] The protocol for the app. Possible values include `http` and `grpc`. Defaults to `http`.
-  AppDapr({
+  const AppDapr({
     required this.appId,
     this.appPort,
     this.appProtocol,

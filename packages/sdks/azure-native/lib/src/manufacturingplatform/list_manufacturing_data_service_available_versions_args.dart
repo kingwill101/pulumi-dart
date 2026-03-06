@@ -15,7 +15,7 @@ class ListManufacturingDataServiceAvailableVersionsArgs {
   /// Creates a new [ListManufacturingDataServiceAvailableVersionsArgs].
   /// [mdsResourceName] Name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListManufacturingDataServiceAvailableVersionsArgs({
+  const ListManufacturingDataServiceAvailableVersionsArgs({
     required this.mdsResourceName,
     required this.resourceGroupName,
   });

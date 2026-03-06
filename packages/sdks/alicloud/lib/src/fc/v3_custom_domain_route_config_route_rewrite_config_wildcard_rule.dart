@@ -11,7 +11,7 @@ class V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule {
   /// Creates a new [V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule].
   /// [match] Matching Rules
   /// [replacement] Replace Rules
-  V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule({
+  const V3CustomDomainRouteConfigRouteRewriteConfigWildcardRule({
     this.match,
     this.replacement,
   });

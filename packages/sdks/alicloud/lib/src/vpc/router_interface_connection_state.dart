@@ -23,7 +23,7 @@ class RouterInterfaceConnectionState {
   /// [oppositeInterfaceOwnerId] Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info &gt; Account Management to check the account ID. Default to Provider account_id.
   /// [oppositeRouterId] Another side router ID. It must belong the specified "opposite_interface_owner_id" account. It is valid when field "opposite_interface_owner_id" is specified.
   /// [oppositeRouterType] Another side router Type. Optional value: VRouter, VBR. It is valid when field "opposite_interface_owner_id" is specified.
-  RouterInterfaceConnectionState({
+  const RouterInterfaceConnectionState({
     this.interfaceId,
     this.oppositeInterfaceId,
     this.oppositeInterfaceOwnerId,

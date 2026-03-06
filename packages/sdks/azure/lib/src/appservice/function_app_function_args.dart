@@ -33,7 +33,7 @@ class FunctionAppFunctionArgs {
   /// [language] The language the Function is written in. Possible values are `CSharp`, `Custom`, `Java`, `Javascript`, `Python`, `PowerShell`, and `TypeScript`.
   /// [name] The name of the function. Changing this forces a new resource to be created.
   /// [testData] The test data for the function.
-  FunctionAppFunctionArgs({
+  const FunctionAppFunctionArgs({
     required this.configJson,
     this.enabled,
     this.files,

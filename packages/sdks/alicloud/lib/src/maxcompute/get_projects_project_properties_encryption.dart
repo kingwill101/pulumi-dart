@@ -14,7 +14,7 @@ class GetProjectsProjectPropertiesEncryption {
   /// [algorithm] The encryption algorithm supported by the key, including AES256, AESCTR, and RC4.
   /// [enable] Only enable function is supported. Value: (true).
   /// [key] The encryption algorithm Key, the Key type used by the project, including the Default Key (MaxCompute Default Key) and the self-contained Key (BYOK). The MaxCompute Default Key is the Default Key created inside MaxCompute.
-  GetProjectsProjectPropertiesEncryption({
+  const GetProjectsProjectPropertiesEncryption({
     required this.algorithm,
     required this.enable,
     required this.key,

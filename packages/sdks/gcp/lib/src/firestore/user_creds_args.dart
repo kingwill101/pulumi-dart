@@ -23,7 +23,7 @@ class UserCredsArgs {
   /// [database] The Firestore database ID.
   /// [name] The ID to use for the user creds, which will become the final component
   /// [project] The ID of the project in which the resource belongs.
-  UserCredsArgs({
+  const UserCredsArgs({
     required this.database,
     this.name,
     this.project,

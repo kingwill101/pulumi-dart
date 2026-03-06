@@ -9,7 +9,7 @@ class GremlinGraphIndexPolicyCompositeIndex {
 
   /// Creates a new [GremlinGraphIndexPolicyCompositeIndex].
   /// [indices] One or more `index` blocks as defined below.
-  GremlinGraphIndexPolicyCompositeIndex({
+  const GremlinGraphIndexPolicyCompositeIndex({
     required this.indices,
   });
 

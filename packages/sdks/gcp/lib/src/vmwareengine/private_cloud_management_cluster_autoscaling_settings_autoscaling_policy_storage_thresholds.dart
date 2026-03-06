@@ -11,7 +11,7 @@ class PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageTh
   /// Creates a new [PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds].
   /// [scaleIn] The utilization triggering the scale-in operation in percent.
   /// [scaleOut] The utilization triggering the scale-out operation in percent.
-  PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds({
+  const PrivateCloudManagementClusterAutoscalingSettingsAutoscalingPolicyStorageThresholds({
     required this.scaleIn,
     required this.scaleOut,
   });

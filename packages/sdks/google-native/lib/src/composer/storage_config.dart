@@ -9,7 +9,7 @@ class StorageConfig {
 
   /// Creates a new [StorageConfig].
   /// [bucket] Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix.
-  StorageConfig({
+  const StorageConfig({
     this.bucket,
   });
 

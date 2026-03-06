@@ -37,7 +37,7 @@ class FunctionEventTrigger {
   /// [serviceAccountEmail] Optional. The email of the trigger's service account. The service account
   /// [trigger] (Output)
   /// [triggerRegion] The region that the trigger will be in. The trigger will only receive
-  FunctionEventTrigger({
+  const FunctionEventTrigger({
     this.eventFilters,
     required this.eventType,
     this.pubsubTopic,

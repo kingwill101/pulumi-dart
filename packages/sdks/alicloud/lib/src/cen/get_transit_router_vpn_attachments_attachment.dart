@@ -51,7 +51,7 @@ class GetTransitRouterVpnAttachmentsAttachment {
   /// [vpnId] The ID of the IPsec-VPN attachment.
   /// [vpnOwnerId] The ID of the Alibaba Cloud account to which the IPsec-VPN connection belongs.
   /// [zones] The Zone ID in the current region.System will create resources under the Zone that you specify.Left blank if associated IPSec connection is in dual-tunnel mode.
-  GetTransitRouterVpnAttachmentsAttachment({
+  const GetTransitRouterVpnAttachmentsAttachment({
     required this.autoPublishRouteEnabled,
     required this.cenId,
     required this.chargeType,

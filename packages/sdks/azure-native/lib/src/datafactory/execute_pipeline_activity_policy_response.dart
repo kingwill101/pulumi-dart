@@ -9,7 +9,7 @@ class ExecutePipelineActivityPolicyResponse {
 
   /// Creates a new [ExecutePipelineActivityPolicyResponse].
   /// [secureInput] When set to true, Input from activity is considered as secure and will not be logged to monitoring.
-  ExecutePipelineActivityPolicyResponse({
+  const ExecutePipelineActivityPolicyResponse({
     this.secureInput,
   });
 

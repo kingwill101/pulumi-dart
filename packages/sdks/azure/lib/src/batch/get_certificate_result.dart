@@ -26,7 +26,7 @@ class GetCertificateResult {
   /// [resourceGroupName] Required.
   /// [thumbprint] The thumbprint of the certificate.
   /// [thumbprintAlgorithm] The algorithm of the certificate thumbprint.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.accountName,
     required this.format,
     required this.id,

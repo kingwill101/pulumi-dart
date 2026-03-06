@@ -8,7 +8,7 @@ class ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestination
 
   /// Creates a new [ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings].
   /// [styleControl] This field is not currently supported and will not affect the output styling. Leave the default value.
-  ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings({
+  const ChannelEncoderSettingsCaptionDescriptionDestinationSettingsTtmlDestinationSettings({
     required this.styleControl,
   });
 

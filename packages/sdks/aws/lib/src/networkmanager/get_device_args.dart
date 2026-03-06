@@ -18,7 +18,7 @@ class GetDeviceArgs {
   /// [deviceId] ID of the device.
   /// [globalNetworkId] ID of the global network.
   /// [tags] Key-value tags for the device.
-  GetDeviceArgs({
+  const GetDeviceArgs({
     required this.deviceId,
     required this.globalNetworkId,
     this.tags,

@@ -18,7 +18,7 @@ class TestBaseAccountSKU {
   /// [name] The name of the SKU. This is typically a letter + number code, such as B0 or S0.
   /// [resourceType] The type of resource the SKU applies to.
   /// [tier] The tier of this particular SKU.
-  TestBaseAccountSKU({
+  const TestBaseAccountSKU({
     this.locations,
     required this.name,
     this.resourceType,

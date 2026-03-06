@@ -20,7 +20,7 @@ class GetBucketsResult {
   /// [nameRegex] Optional.
   /// [names] A list of bucket names.
   /// [outputFile] Optional.
-  GetBucketsResult({
+  const GetBucketsResult({
     required this.buckets,
     required this.id,
     this.nameRegex,

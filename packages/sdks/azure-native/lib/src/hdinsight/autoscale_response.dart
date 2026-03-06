@@ -14,7 +14,7 @@ class AutoscaleResponse {
   /// Creates a new [AutoscaleResponse].
   /// [capacity] Parameters for load-based autoscale
   /// [recurrence] Parameters for schedule-based autoscale
-  AutoscaleResponse({
+  const AutoscaleResponse({
     this.capacity,
     this.recurrence,
   });

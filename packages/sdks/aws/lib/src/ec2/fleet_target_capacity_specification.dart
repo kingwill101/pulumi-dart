@@ -21,7 +21,7 @@ class FleetTargetCapacitySpecification {
   /// [spotTargetCapacity] The number of Spot units to request.
   /// [targetCapacityUnitType] The unit for the target capacity.
   /// [totalTargetCapacity] The number of units to request, filled using `default_target_capacity_type`.
-  FleetTargetCapacitySpecification({
+  const FleetTargetCapacitySpecification({
     required this.defaultTargetCapacityType,
     this.onDemandTargetCapacity,
     this.spotTargetCapacity,

@@ -11,7 +11,7 @@ class GetInstanceMemcacheParameter {
   /// Creates a new [GetInstanceMemcacheParameter].
   /// [id] This is a unique ID associated with this set of parameters.
   /// [params] User-defined set of parameters to use in the memcache process.
-  GetInstanceMemcacheParameter({
+  const GetInstanceMemcacheParameter({
     required this.id,
     required this.params,
   });

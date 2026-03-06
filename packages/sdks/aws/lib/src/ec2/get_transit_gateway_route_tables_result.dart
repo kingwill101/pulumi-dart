@@ -19,7 +19,7 @@ class GetTransitGatewayRouteTablesResult {
   /// [ids] Set of Transit Gateway Route Table identifiers.
   /// [region] Required.
   /// [tags] Required.
-  GetTransitGatewayRouteTablesResult({
+  const GetTransitGatewayRouteTablesResult({
     this.filters,
     required this.id,
     required this.ids,

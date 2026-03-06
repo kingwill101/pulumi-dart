@@ -21,7 +21,7 @@ class PosturePolicySetPolicy {
   /// [constraint] Policy constraint definition.It can have the definition of one of following constraints: orgPolicyConstraint orgPolicyConstraintCustom securityHealthAnalyticsModule securityHealthAnalyticsCustomModule
   /// [description] Description of the policy.
   /// [policyId] ID of the policy.
-  PosturePolicySetPolicy({
+  const PosturePolicySetPolicy({
     this.complianceStandards,
     required this.constraint,
     this.description,

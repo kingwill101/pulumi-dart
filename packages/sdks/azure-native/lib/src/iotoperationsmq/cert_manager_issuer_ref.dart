@@ -15,7 +15,7 @@ class CertManagerIssuerRef {
   /// [group] group of issuer.
   /// [kind] kind of issuer (Issuer or ClusterIssuer).
   /// [name] name of issuer.
-  CertManagerIssuerRef({
+  const CertManagerIssuerRef({
     required this.group,
     required this.kind,
     required this.name,

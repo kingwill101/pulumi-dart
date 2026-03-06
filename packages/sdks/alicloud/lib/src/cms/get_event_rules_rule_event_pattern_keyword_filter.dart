@@ -11,7 +11,7 @@ class GetEventRulesRuleEventPatternKeywordFilter {
   /// Creates a new [GetEventRulesRuleEventPatternKeywordFilter].
   /// [keyWords] The keywords that are used to match events.
   /// [relation] The relationship between multiple keywords in a condition.
-  GetEventRulesRuleEventPatternKeywordFilter({
+  const GetEventRulesRuleEventPatternKeywordFilter({
     required this.keyWords,
     required this.relation,
   });

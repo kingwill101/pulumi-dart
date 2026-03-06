@@ -14,7 +14,7 @@ class GetRemoteImageResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The name of the Docker image, including any tags or SHA256 repo digests.
   /// [repoDigest] The image sha256 digest in the form of `repo[:tag]@sha256:&lt;hash&gt;`. It may be empty in the edge case where the local image was pulled from a repo, tagged locally, and then referred to in the data source by that local name/tag.
-  GetRemoteImageResult({
+  const GetRemoteImageResult({
     required this.id,
     required this.name,
     required this.repoDigest,

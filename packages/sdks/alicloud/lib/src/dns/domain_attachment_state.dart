@@ -12,7 +12,7 @@ class DomainAttachmentState {
   /// Creates a new [DomainAttachmentState].
   /// [domainNames] The domain names bound to the DNS instance.
   /// [instanceId] The id of the DNS instance.
-  DomainAttachmentState({
+  const DomainAttachmentState({
     this.domainNames,
     this.instanceId,
   });

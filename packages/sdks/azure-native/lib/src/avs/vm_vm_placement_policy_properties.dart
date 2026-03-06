@@ -22,7 +22,7 @@ class VmVmPlacementPolicyProperties {
   /// [state] Whether the placement policy is enabled or disabled
   /// [type] Placement Policy type
   /// [vmMembers] Virtual machine members list
-  VmVmPlacementPolicyProperties({
+  const VmVmPlacementPolicyProperties({
     required this.affinityType,
     this.displayName,
     this.state,

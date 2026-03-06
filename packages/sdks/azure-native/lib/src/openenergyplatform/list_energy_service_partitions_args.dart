@@ -15,7 +15,7 @@ class ListEnergyServicePartitionsArgs {
   /// Creates a new [ListEnergyServicePartitionsArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The resource name.
-  ListEnergyServicePartitionsArgs({
+  const ListEnergyServicePartitionsArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

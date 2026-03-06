@@ -26,7 +26,7 @@ class ServicePerimeterEgressPolicyArgs {
   /// [egressTo] Defines the conditions on the `ApiOperation` and destination resources that
   /// [perimeter] The name of the Service Perimeter to add this resource to.
   /// [title] Human readable title. Must be unique within the perimeter. Does not affect behavior.
-  ServicePerimeterEgressPolicyArgs({
+  const ServicePerimeterEgressPolicyArgs({
     this.egressFrom,
     this.egressTo,
     required this.perimeter,

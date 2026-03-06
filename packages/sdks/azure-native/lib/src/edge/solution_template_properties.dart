@@ -18,7 +18,7 @@ class SolutionTemplateProperties {
   /// [description] Description of Solution template
   /// [enableExternalValidation] Flag to enable external validation
   /// [state] State of resource
-  SolutionTemplateProperties({
+  const SolutionTemplateProperties({
     required this.capabilities,
     required this.description,
     this.enableExternalValidation,

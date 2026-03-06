@@ -21,7 +21,7 @@ class GetDirectoriesArgs {
   /// [ids] A list of Directory IDs.
   /// [nameRegex] A regex string to filter results by Directory name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetDirectoriesArgs({
+  const GetDirectoriesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

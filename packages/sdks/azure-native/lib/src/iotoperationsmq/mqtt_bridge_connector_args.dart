@@ -56,7 +56,7 @@ class MqttBridgeConnectorArgs {
   /// [remoteBrokerConnection] The details for connecting with Remote Broker.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  MqttBridgeConnectorArgs({
+  const MqttBridgeConnectorArgs({
     this.bridgeInstances,
     this.clientIdPrefix,
     required this.extendedLocation,

@@ -18,7 +18,7 @@ class GetScheduleArgs {
   /// [labName] The name of the lab that uniquely identifies it within containing lab plan. Used in resource URIs.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scheduleName] The name of the schedule that uniquely identifies it within containing lab. Used in resource URIs.
-  GetScheduleArgs({
+  const GetScheduleArgs({
     required this.labName,
     required this.resourceGroupName,
     required this.scheduleName,

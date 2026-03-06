@@ -11,7 +11,7 @@ class SpatialSpecResponse {
   /// Creates a new [SpatialSpecResponse].
   /// [path] The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)
   /// [types] List of path's spatial type
-  SpatialSpecResponse({
+  const SpatialSpecResponse({
     this.path,
     this.types,
   });

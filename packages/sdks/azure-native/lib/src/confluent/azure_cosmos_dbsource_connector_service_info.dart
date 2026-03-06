@@ -28,7 +28,7 @@ class AzureCosmosDBSourceConnectorServiceInfo {
   /// [cosmosMasterKey] Azure Cosmos Database Master Key
   /// [cosmosMessageKeyEnabled] Azure Cosmos Database Message Key Enabled
   /// [cosmosMessageKeyField] Azure Cosmos Database Message Key Field
-  AzureCosmosDBSourceConnectorServiceInfo({
+  const AzureCosmosDBSourceConnectorServiceInfo({
     required this.connectorServiceType,
     this.cosmosConnectionEndpoint,
     this.cosmosContainersTopicMapping,

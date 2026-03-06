@@ -8,7 +8,7 @@ class GetOntapStorageVirtualMachineLifecycleTransitionReason {
 
   /// Creates a new [GetOntapStorageVirtualMachineLifecycleTransitionReason].
   /// [message] A detailed message.
-  GetOntapStorageVirtualMachineLifecycleTransitionReason({
+  const GetOntapStorageVirtualMachineLifecycleTransitionReason({
     required this.message,
   });
 

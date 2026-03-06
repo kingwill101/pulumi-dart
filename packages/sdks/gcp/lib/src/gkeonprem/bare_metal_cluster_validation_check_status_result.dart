@@ -24,7 +24,7 @@ class BareMetalClusterValidationCheckStatusResult {
   /// [details] (Output)
   /// [options] (Output)
   /// [reason] (Output)
-  BareMetalClusterValidationCheckStatusResult({
+  const BareMetalClusterValidationCheckStatusResult({
     this.category,
     this.description,
     this.details,

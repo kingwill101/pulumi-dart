@@ -15,7 +15,7 @@ class GetWebAclArgs {
   /// Creates a new [GetWebAclArgs].
   /// [name] Name of the WAF Regional Web ACL.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetWebAclArgs({
+  const GetWebAclArgs({
     required this.name,
     this.region,
   });

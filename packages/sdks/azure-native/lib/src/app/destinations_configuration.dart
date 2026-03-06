@@ -14,7 +14,7 @@ class DestinationsConfiguration {
   /// Creates a new [DestinationsConfiguration].
   /// [dataDogConfiguration] Open telemetry datadog destination configuration
   /// [otlpConfigurations] Open telemetry otlp configurations
-  DestinationsConfiguration({
+  const DestinationsConfiguration({
     this.dataDogConfiguration,
     this.otlpConfigurations,
   });

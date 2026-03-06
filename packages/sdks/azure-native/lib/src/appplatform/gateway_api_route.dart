@@ -33,7 +33,7 @@ class GatewayApiRoute {
   /// [title] A title, will be applied to methods in the generated OpenAPI documentation.
   /// [tokenRelay] Pass currently-authenticated user's identity token to application service, default is 'false'
   /// [uri] Full uri, will override `appName`.
-  GatewayApiRoute({
+  const GatewayApiRoute({
     this.description,
     this.filters,
     this.order,

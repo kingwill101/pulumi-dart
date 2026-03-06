@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout({
+  const GetDatabaseMysqlConfigMysqlInnodbLockWaitTimeout({
     required this.description,
     required this.example,
     required this.maximum,

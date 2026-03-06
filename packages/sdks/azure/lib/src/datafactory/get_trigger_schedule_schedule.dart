@@ -21,7 +21,7 @@ class GetTriggerScheduleSchedule {
   /// [hours] Hours of the day on which the trigger is scheduled.
   /// [minutes] Minutes of the hour on which the trigger is scheduled.
   /// [monthlies] A `monthly` block as documented below, which specifies the days of the month on which the trigger is scheduled.
-  GetTriggerScheduleSchedule({
+  const GetTriggerScheduleSchedule({
     required this.daysOfMonths,
     required this.daysOfWeeks,
     required this.hours,

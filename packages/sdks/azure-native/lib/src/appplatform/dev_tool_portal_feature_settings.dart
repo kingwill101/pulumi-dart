@@ -13,7 +13,7 @@ class DevToolPortalFeatureSettings {
   /// Creates a new [DevToolPortalFeatureSettings].
   /// [applicationAccelerator] Detail of Accelerator plugin
   /// [applicationLiveView] Detail of App Live View plugin
-  DevToolPortalFeatureSettings({
+  const DevToolPortalFeatureSettings({
     this.applicationAccelerator,
     this.applicationLiveView,
   });

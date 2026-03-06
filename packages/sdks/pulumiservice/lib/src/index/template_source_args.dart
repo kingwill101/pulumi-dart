@@ -22,7 +22,7 @@ class TemplateSourceArgs {
   /// [organizationName] Organization name.
   /// [sourceName] Source name.
   /// [sourceURL] Github URL of the repository from which to grab templates.
-  TemplateSourceArgs({
+  const TemplateSourceArgs({
     this.destination,
     required this.organizationName,
     required this.sourceName,

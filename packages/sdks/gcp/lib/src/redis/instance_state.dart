@@ -190,7 +190,7 @@ class InstanceState {
   /// [serverCaCerts] List of server CA certificates for the instance.
   /// [tier] The service tier of the instance. Must be one of these values:
   /// [transitEncryptionMode] The TLS mode of the Redis instance, If not provided, TLS is disabled for the instance.
-  InstanceState({
+  const InstanceState({
     this.alternativeLocationId,
     this.authEnabled,
     this.authString,

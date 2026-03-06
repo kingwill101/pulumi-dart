@@ -17,7 +17,7 @@ class GetWorkflowTemplateIamPolicyDataprocV1beta2Args {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [workflowTemplateId] Required.
-  GetWorkflowTemplateIamPolicyDataprocV1beta2Args({
+  const GetWorkflowTemplateIamPolicyDataprocV1beta2Args({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

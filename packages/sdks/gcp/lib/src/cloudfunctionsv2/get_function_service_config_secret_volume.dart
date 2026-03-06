@@ -18,7 +18,7 @@ class GetFunctionServiceConfigSecretVolume {
   /// [projectId] Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
   /// [secret] Name of the secret in secret manager (not the full resource name).
   /// [versions] List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
-  GetFunctionServiceConfigSecretVolume({
+  const GetFunctionServiceConfigSecretVolume({
     required this.mountPath,
     required this.projectId,
     required this.secret,

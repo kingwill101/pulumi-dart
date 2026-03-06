@@ -17,7 +17,7 @@ class LbCertificateAttachmentState {
   /// [certificateName] Name of your SSL/TLS certificate.
   /// [lbName] Name of the load balancer to which you want to associate the SSL/TLS certificate.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  LbCertificateAttachmentState({
+  const LbCertificateAttachmentState({
     this.certificateName,
     this.lbName,
     this.region,

@@ -8,7 +8,7 @@ class DashboardDashboardPublishOptionsDataPointDrillUpDownOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsDataPointDrillUpDownOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
-  DashboardDashboardPublishOptionsDataPointDrillUpDownOption({
+  const DashboardDashboardPublishOptionsDataPointDrillUpDownOption({
     this.availabilityStatus,
   });
 

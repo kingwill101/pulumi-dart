@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1GraphQLOperation {
   /// Creates a new [GoogleCloudApigeeV1GraphQLOperation].
   /// [operation] GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
   /// [operationTypes] GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types.
-  GoogleCloudApigeeV1GraphQLOperation({
+  const GoogleCloudApigeeV1GraphQLOperation({
     this.operation,
     required this.operationTypes,
   });

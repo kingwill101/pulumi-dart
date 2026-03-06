@@ -41,7 +41,7 @@ class GetImagesImage {
   /// [progress] The progress of the image.
   /// [size] The size of the image.
   /// [status] The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
-  GetImagesImage({
+  const GetImagesImage({
     required this.createTime,
     required this.dataDiskSize,
     required this.description,

@@ -21,7 +21,7 @@ class GetEdgeKubernetesClustersArgs {
   /// [ids] Cluster IDs to filter.
   /// [nameRegex] A regex string to filter results by cluster name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEdgeKubernetesClustersArgs({
+  const GetEdgeKubernetesClustersArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

@@ -29,7 +29,7 @@ class ShardingInstanceConfigServerList {
   /// [nodeId] The ID of the Config Server node.
   /// [nodeStorage] The storage space of the ConfigServer node.
   /// [port] The connection port of the Config Server node.
-  ShardingInstanceConfigServerList({
+  const ShardingInstanceConfigServerList({
     this.connectString,
     this.maxConnections,
     this.maxIops,

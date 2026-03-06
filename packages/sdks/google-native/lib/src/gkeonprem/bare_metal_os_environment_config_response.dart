@@ -9,7 +9,7 @@ class BareMetalOsEnvironmentConfigResponse {
 
   /// Creates a new [BareMetalOsEnvironmentConfigResponse].
   /// [packageRepoExcluded] Whether the package repo should not be included when initializing bare metal machines.
-  BareMetalOsEnvironmentConfigResponse({
+  const BareMetalOsEnvironmentConfigResponse({
     required this.packageRepoExcluded,
   });
 

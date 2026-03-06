@@ -33,7 +33,7 @@ class DeletedRunbookResponse {
   /// [runbookType] Type of the runbook.
   /// [runtime] Gets or sets runtime of the runbook.
   /// [runtimeEnvironment] Environment of the runbook.
-  DeletedRunbookResponse({
+  const DeletedRunbookResponse({
     this.creationTime,
     this.deletionTime,
     this.id,

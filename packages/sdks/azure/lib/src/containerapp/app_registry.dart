@@ -21,7 +21,7 @@ class AppRegistry {
   /// [passwordSecretName] The name of the Secret Reference containing the password value for this user on the Container Registry, `username` must also be supplied.
   /// [server] The hostname for the Container Registry.
   /// [username] The username to use for this Container Registry, `password_secret_name` must also be supplied..
-  AppRegistry({
+  const AppRegistry({
     this.identity,
     this.passwordSecretName,
     required this.server,

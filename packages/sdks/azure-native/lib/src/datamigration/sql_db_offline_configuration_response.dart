@@ -9,7 +9,7 @@ class SqlDbOfflineConfigurationResponse {
 
   /// Creates a new [SqlDbOfflineConfigurationResponse].
   /// [offline] Offline migration
-  SqlDbOfflineConfigurationResponse({
+  const SqlDbOfflineConfigurationResponse({
     required this.offline,
   });
 

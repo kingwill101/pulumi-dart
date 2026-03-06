@@ -10,7 +10,7 @@ class GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioResponse].
   /// [segments] Segments this audio response is composed of.
-  GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioResponse({
+  const GoogleCloudDialogflowCxV3beta1ResponseMessageMixedAudioResponse({
     required this.segments,
   });
 

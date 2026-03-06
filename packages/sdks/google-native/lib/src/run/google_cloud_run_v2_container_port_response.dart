@@ -12,7 +12,7 @@ class GoogleCloudRunV2ContainerPortResponse {
   /// Creates a new [GoogleCloudRunV2ContainerPortResponse].
   /// [containerPort] Port number the container listens on. This must be a valid TCP port number, 0 &lt; container_port &lt; 65536.
   /// [name] If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-  GoogleCloudRunV2ContainerPortResponse({
+  const GoogleCloudRunV2ContainerPortResponse({
     required this.containerPort,
     required this.name,
   });

@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2NumericalStatsConfig {
 
   /// Creates a new [GooglePrivacyDlpV2NumericalStatsConfig].
   /// [field] Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.
-  GooglePrivacyDlpV2NumericalStatsConfig({
+  const GooglePrivacyDlpV2NumericalStatsConfig({
     this.field,
   });
 

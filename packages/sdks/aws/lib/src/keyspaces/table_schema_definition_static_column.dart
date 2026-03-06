@@ -8,7 +8,7 @@ class TableSchemaDefinitionStaticColumn {
 
   /// Creates a new [TableSchemaDefinitionStaticColumn].
   /// [name] The name of the static column.
-  TableSchemaDefinitionStaticColumn({
+  const TableSchemaDefinitionStaticColumn({
     required this.name,
   });
 

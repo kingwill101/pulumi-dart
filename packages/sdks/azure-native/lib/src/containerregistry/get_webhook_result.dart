@@ -39,7 +39,7 @@ class GetWebhookResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] The tags of the resource.
   /// [type] The type of the resource.
-  GetWebhookResult({
+  const GetWebhookResult({
     required this.actions,
     required this.azureApiVersion,
     required this.id,

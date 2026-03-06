@@ -48,7 +48,7 @@ class GetNodeBalancerResult {
   /// [transfers] Required.
   /// [updated] When this firewall was last updated.
   /// [vpcs] Required.
-  GetNodeBalancerResult({
+  const GetNodeBalancerResult({
     required this.clientConnThrottle,
     required this.clientUdpSessThrottle,
     required this.created,

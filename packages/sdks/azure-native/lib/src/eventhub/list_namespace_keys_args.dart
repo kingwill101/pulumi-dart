@@ -18,7 +18,7 @@ class ListNamespaceKeysArgs {
   /// [authorizationRuleName] The authorization rule name.
   /// [namespaceName] The Namespace name
   /// [resourceGroupName] Name of the resource group within the azure subscription.
-  ListNamespaceKeysArgs({
+  const ListNamespaceKeysArgs({
     required this.authorizationRuleName,
     required this.namespaceName,
     required this.resourceGroupName,

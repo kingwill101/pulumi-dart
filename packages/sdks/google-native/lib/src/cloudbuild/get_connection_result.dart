@@ -42,7 +42,7 @@ class GetConnectionResult {
   /// [name] Immutable. The resource name of the connection, in the format `projects/{project}/locations/{location}/connections/{connection_id}`.
   /// [reconciling] Set to true when the connection is being set up or updated in the background.
   /// [updateTime] Server assigned timestamp for when the connection was updated.
-  GetConnectionResult({
+  const GetConnectionResult({
     required this.annotations,
     required this.createTime,
     required this.disabled,

@@ -34,7 +34,7 @@ class ScopeRbacRoleBindingArgs {
   /// [role] Role to bind to the principal
   /// [scopeId] Required.
   /// [user] user is the name of the user as seen by the kubernetes cluster, example "alice" or "alice@domain.tld"
-  ScopeRbacRoleBindingArgs({
+  const ScopeRbacRoleBindingArgs({
     this.group,
     this.labels,
     this.location,

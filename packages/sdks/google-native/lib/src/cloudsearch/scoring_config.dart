@@ -12,7 +12,7 @@ class ScoringConfig {
   /// Creates a new [ScoringConfig].
   /// [disableFreshness] Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
   /// [disablePersonalization] Whether to personalize the results. By default, personal signals will be used to boost results.
-  ScoringConfig({
+  const ScoringConfig({
     this.disableFreshness,
     this.disablePersonalization,
   });

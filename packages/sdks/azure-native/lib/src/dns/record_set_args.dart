@@ -86,7 +86,7 @@ class RecordSetArgs {
   /// [ttl] The TTL (time-to-live) of the records in the record set.
   /// [txtRecords] The list of TXT records in the record set.
   /// [zoneName] The name of the DNS zone (without a terminating dot).
-  RecordSetArgs({
+  const RecordSetArgs({
     this.aRecords,
     this.aaaaRecords,
     this.caaRecords,

@@ -38,7 +38,7 @@ class GrpcRouteNetworkservicesV1beta1Args {
   /// [name] Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/`
   /// [project] Optional.
   /// [rules] A list of detailed rules defining how to route traffic. Within a single GrpcRoute, the GrpcRoute.RouteAction associated with the first matching GrpcRoute.RouteRule will be executed. At least one rule must be supplied.
-  GrpcRouteNetworkservicesV1beta1Args({
+  const GrpcRouteNetworkservicesV1beta1Args({
     this.description,
     this.gateways,
     required this.grpcRouteId,

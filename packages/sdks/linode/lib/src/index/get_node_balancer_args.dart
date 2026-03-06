@@ -12,7 +12,7 @@ class GetNodeBalancerArgs {
 
   /// Creates a new [GetNodeBalancerArgs].
   /// [id] The NodeBalancer's ID.
-  GetNodeBalancerArgs({
+  const GetNodeBalancerArgs({
     required this.id,
   });
 

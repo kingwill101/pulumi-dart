@@ -22,7 +22,7 @@ class InstanceIamMemberArgs {
   /// [member] Required.
   /// [project] Optional.
   /// [role] Required.
-  InstanceIamMemberArgs({
+  const InstanceIamMemberArgs({
     this.condition,
     required this.instanceId,
     this.location,

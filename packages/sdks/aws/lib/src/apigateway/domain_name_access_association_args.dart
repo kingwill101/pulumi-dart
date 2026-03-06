@@ -24,7 +24,7 @@ class DomainNameAccessAssociationArgs {
   /// [domainNameArn] The ARN of the domain name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  DomainNameAccessAssociationArgs({
+  const DomainNameAccessAssociationArgs({
     required this.accessAssociationSource,
     required this.accessAssociationSourceType,
     required this.domainNameArn,

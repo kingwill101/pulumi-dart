@@ -12,7 +12,7 @@ class GoogleCloudDataplexV1DataScanExecutionStatusResponse {
   /// Creates a new [GoogleCloudDataplexV1DataScanExecutionStatusResponse].
   /// [latestJobEndTime] The time when the latest DataScanJob ended.
   /// [latestJobStartTime] The time when the latest DataScanJob started.
-  GoogleCloudDataplexV1DataScanExecutionStatusResponse({
+  const GoogleCloudDataplexV1DataScanExecutionStatusResponse({
     required this.latestJobEndTime,
     required this.latestJobStartTime,
   });

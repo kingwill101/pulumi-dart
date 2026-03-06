@@ -21,7 +21,7 @@ class GetRepositoryIamPolicyResult {
   /// [project] Required.
   /// [region] Required.
   /// [repository] Required.
-  GetRepositoryIamPolicyResult({
+  const GetRepositoryIamPolicyResult({
     required this.etag,
     required this.id,
     required this.policyData,

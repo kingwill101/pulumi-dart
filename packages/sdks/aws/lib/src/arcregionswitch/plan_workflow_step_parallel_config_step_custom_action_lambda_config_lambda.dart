@@ -14,7 +14,7 @@ class PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda {
   /// [arn] ARN of the Lambda function.
   /// [crossAccountRole] ARN of the cross-account role to assume.
   /// [externalId] External ID for cross-account role assumption.
-  PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda({
+  const PlanWorkflowStepParallelConfigStepCustomActionLambdaConfigLambda({
     required this.arn,
     this.crossAccountRole,
     this.externalId,

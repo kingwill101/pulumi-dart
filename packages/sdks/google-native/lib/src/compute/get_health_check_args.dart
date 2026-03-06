@@ -13,7 +13,7 @@ class GetHealthCheckArgs {
   /// Creates a new [GetHealthCheckArgs].
   /// [healthCheck] Required.
   /// [project] Optional.
-  GetHealthCheckArgs({
+  const GetHealthCheckArgs({
     required this.healthCheck,
     this.project,
   });

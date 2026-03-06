@@ -16,7 +16,7 @@ class InstanceIamPolicyState {
   /// [name] Optional.
   /// [policyData] Optional.
   /// [project] Optional.
-  InstanceIamPolicyState({
+  const InstanceIamPolicyState({
     this.etag,
     this.location,
     this.name,

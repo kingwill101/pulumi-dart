@@ -10,7 +10,7 @@ class K8sScheduling {
 
   /// Creates a new [K8sScheduling].
   /// [default_] The kubernetes scheduling options. It describes restrictions used to help Kubernetes select appropriate nodes to host the database service
-  K8sScheduling({
+  const K8sScheduling({
     this.default_,
   });
 

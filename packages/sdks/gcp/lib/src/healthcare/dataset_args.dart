@@ -29,7 +29,7 @@ class DatasetArgs {
   /// [name] The resource name for the Dataset.
   /// [project] The ID of the project in which the resource belongs.
   /// [timeZone] The default timezone used by this dataset. Must be a either a valid IANA time zone name such as
-  DatasetArgs({
+  const DatasetArgs({
     this.encryptionSpec,
     required this.location,
     this.name,

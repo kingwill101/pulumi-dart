@@ -14,7 +14,7 @@ class RecommendationConfigurationPropertiesResponse {
   /// [name] Required.
   /// [recommendationType] The type of IoT Security recommendation.
   /// [status] Recommendation status. When the recommendation status is disabled recommendations are not generated.
-  RecommendationConfigurationPropertiesResponse({
+  const RecommendationConfigurationPropertiesResponse({
     required this.name,
     required this.recommendationType,
     required this.status,

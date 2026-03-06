@@ -15,7 +15,7 @@ class AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameter
   /// Creates a new [AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters].
   /// [csv] Mapping information when the record format uses delimiters.
   /// [json] Mapping information when JSON is the record format on the streaming source.
-  AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters({
+  const AnalyticsApplicationReferenceDataSourcesSchemaRecordFormatMappingParameters({
     this.csv,
     this.json,
   });

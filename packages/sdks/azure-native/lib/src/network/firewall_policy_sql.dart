@@ -9,7 +9,7 @@ class FirewallPolicySQL {
 
   /// Creates a new [FirewallPolicySQL].
   /// [allowSqlRedirect] A flag to indicate if SQL Redirect traffic filtering is enabled. Turning on the flag requires no rule using port 11000-11999.
-  FirewallPolicySQL({
+  const FirewallPolicySQL({
     this.allowSqlRedirect,
   });
 

@@ -18,7 +18,7 @@ class MigrationClusterPropertiesResponse {
   /// [id] The resource ID of the cluster.
   /// [role] The role of the cluster in the migration process.
   /// [uri] The public URL of the cluster.
-  MigrationClusterPropertiesResponse({
+  const MigrationClusterPropertiesResponse({
     required this.dataIngestionUri,
     required this.id,
     required this.role,

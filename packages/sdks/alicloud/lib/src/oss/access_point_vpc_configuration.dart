@@ -8,7 +8,7 @@ class AccessPointVpcConfiguration {
 
   /// Creates a new [AccessPointVpcConfiguration].
   /// [vpcId] The vpc ID is required only when the value of NetworkOrigin is VPC.
-  AccessPointVpcConfiguration({
+  const AccessPointVpcConfiguration({
     this.vpcId,
   });
 

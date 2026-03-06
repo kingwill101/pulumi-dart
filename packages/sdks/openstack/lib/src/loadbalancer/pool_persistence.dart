@@ -13,7 +13,7 @@ class PoolPersistence {
   /// Creates a new [PoolPersistence].
   /// [cookieName] The name of the cookie if persistence mode is set
   /// [type] The type of persistence mode. The current specification
-  PoolPersistence({
+  const PoolPersistence({
     this.cookieName,
     required this.type,
   });

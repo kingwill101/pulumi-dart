@@ -19,7 +19,7 @@ class GetTemplatesVersionArgs {
   /// [productId] Required.
   /// [project] Optional.
   /// [versionId] Required.
-  GetTemplatesVersionArgs({
+  const GetTemplatesVersionArgs({
     required this.integrationtemplateId,
     required this.location,
     required this.productId,

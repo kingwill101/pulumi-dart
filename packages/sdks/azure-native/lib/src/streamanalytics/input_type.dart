@@ -13,7 +13,7 @@ class InputType {
   /// Creates a new [InputType].
   /// [name] Resource name
   /// [properties] The properties that are associated with an input. Required on PUT (CreateOrReplace) requests.
-  InputType({
+  const InputType({
     this.name,
     this.properties,
   });

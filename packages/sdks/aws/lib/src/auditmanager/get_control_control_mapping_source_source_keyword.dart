@@ -9,7 +9,7 @@ class GetControlControlMappingSourceSourceKeyword {
   /// Creates a new [GetControlControlMappingSourceSourceKeyword].
   /// [keywordInputType] Required.
   /// [keywordValue] Required.
-  GetControlControlMappingSourceSourceKeyword({
+  const GetControlControlMappingSourceSourceKeyword({
     required this.keywordInputType,
     required this.keywordValue,
   });

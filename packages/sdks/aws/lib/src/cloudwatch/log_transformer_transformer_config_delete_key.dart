@@ -8,7 +8,7 @@ class LogTransformerTransformerConfigDeleteKey {
 
   /// Creates a new [LogTransformerTransformerConfigDeleteKey].
   /// [withKeys] Specifies the keys to be deleted.
-  LogTransformerTransformerConfigDeleteKey({
+  const LogTransformerTransformerConfigDeleteKey({
     required this.withKeys,
   });
 

@@ -30,7 +30,7 @@ class ClientCloudKmsConfig {
   /// [kmsLocation] Location name of the key ring, e.g. "us-west1".
   /// [kmsProjectId] The Google Cloud project id of the project where the kms key stored. If empty,
   /// [kmsRing] A key ring organizes keys in a specific Google Cloud location and allows you to
-  ClientCloudKmsConfig({
+  const ClientCloudKmsConfig({
     required this.key,
     this.keyVersion,
     required this.kmsLocation,

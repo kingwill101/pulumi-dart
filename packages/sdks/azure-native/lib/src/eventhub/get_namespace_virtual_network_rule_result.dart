@@ -20,7 +20,7 @@ class GetNamespaceVirtualNetworkRuleResult {
   /// [name] The name of the resource
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualNetworkSubnetId] ARM ID of Virtual Network Subnet
-  GetNamespaceVirtualNetworkRuleResult({
+  const GetNamespaceVirtualNetworkRuleResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

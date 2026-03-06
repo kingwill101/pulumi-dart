@@ -38,7 +38,7 @@ class MultiLocationAlertConditionArgs {
   /// [runbookUrl] Runbook URL to display in notifications.
   /// [violationTimeLimitSeconds] The maximum number of seconds a violation can remain open before being closed by the system. The value must be between 300 seconds (5 minutes) to 2592000 seconds (30 days), both inclusive. Defaults to 259200 seconds (3 days) if this argument is not specified in the configuration, in accordance with the characteristics of this field in NerdGraph, as specified in the [docs](https://docs.newrelic.com/docs/alerts-applied-intelligence/new-relic-alerts/advanced-alerts/rest-api-alerts/alerts-conditions-api-field-names/#violation_time_limit_seconds).
   /// [warning] A condition term with the priority set to warning.
-  MultiLocationAlertConditionArgs({
+  const MultiLocationAlertConditionArgs({
     required this.critical,
     this.enabled,
     required this.entities,

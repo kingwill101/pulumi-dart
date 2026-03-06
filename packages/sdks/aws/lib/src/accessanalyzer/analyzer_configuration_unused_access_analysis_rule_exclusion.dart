@@ -11,7 +11,7 @@ class AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion {
   /// Creates a new [AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion].
   /// [accountIds] List of AWS account IDs to apply to the analysis rule criteria. The accounts cannot include the organization analyzer owner account. Account IDs can only be applied to the analysis rule criteria for organization-level analyzers.
   /// [resourceTags] List of key-value pairs for resource tags to exclude from the analysis.
-  AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion({
+  const AnalyzerConfigurationUnusedAccessAnalysisRuleExclusion({
     this.accountIds,
     this.resourceTags,
   });

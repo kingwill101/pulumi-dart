@@ -13,7 +13,7 @@ class WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation {
   /// Creates a new [WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation].
   /// [efsFileLocation] Specifies the details for the EFS file being copied.
   /// [s3FileLocation] Specifies the details for the S3 file being copied.
-  WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation({
+  const WorkflowOnExceptionStepDecryptStepDetailsDestinationFileLocation({
     this.efsFileLocation,
     this.s3FileLocation,
   });

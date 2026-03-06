@@ -13,7 +13,7 @@ class GetVpcDhcpOptionsFilter {
   /// Creates a new [GetVpcDhcpOptionsFilter].
   /// [name] Name of the field to filter.
   /// [values] Set of values for filtering.
-  GetVpcDhcpOptionsFilter({
+  const GetVpcDhcpOptionsFilter({
     required this.name,
     required this.values,
   });

@@ -18,7 +18,7 @@ class CombustionState {
   /// [name] Name for this combustion resource
   /// [path] Full path to the generated combustion script file
   /// [size] Size of the file in bytes
-  CombustionState({
+  const CombustionState({
     this.content,
     this.name,
     this.path,

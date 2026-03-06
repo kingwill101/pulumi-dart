@@ -18,7 +18,7 @@ class CacheExpirationActionParameters {
   /// [cacheDuration] The duration for which the content needs to be cached. Allowed format is [d.]hh:mm:ss
   /// [cacheType] The level at which the content needs to be cached.
   /// [typeName] Expected value is 'DeliveryRuleCacheExpirationActionParameters'.
-  CacheExpirationActionParameters({
+  const CacheExpirationActionParameters({
     required this.cacheBehavior,
     this.cacheDuration,
     required this.cacheType,

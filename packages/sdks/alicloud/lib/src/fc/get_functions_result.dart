@@ -25,7 +25,7 @@ class GetFunctionsResult {
   /// [names] A list of functions names.
   /// [outputFile] Optional.
   /// [serviceName] Required.
-  GetFunctionsResult({
+  const GetFunctionsResult({
     required this.functions,
     required this.id,
     required this.ids,

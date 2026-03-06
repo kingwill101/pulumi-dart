@@ -17,7 +17,7 @@ class GetRoleManagementPolicyNotificationRule {
   /// [activeAssignments] A `notification_target` block as defined below with the details of notfications on active role assignments.
   /// [eligibleActivations] A `notification_target` block as defined below with the details of notifications on activation of eligible role.
   /// [eligibleAssignments] A `notification_target` block as defined below with the details of notifications on eligible role assignments.
-  GetRoleManagementPolicyNotificationRule({
+  const GetRoleManagementPolicyNotificationRule({
     required this.activeAssignments,
     required this.eligibleActivations,
     required this.eligibleAssignments,

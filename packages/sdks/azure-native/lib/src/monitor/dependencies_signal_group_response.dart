@@ -15,7 +15,7 @@ class DependenciesSignalGroupResponse {
   /// [aggregationType] Aggregation type for child dependencies.
   /// [degradedThreshold] Degraded threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered degraded when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
   /// [unhealthyThreshold] Unhealthy threshold for aggregating the propagated health state of child dependencies. Can be either an absolute number that is greater than 0, or a percentage between 1-100%. The entity will be considered unhealthy when the number of not healthy child dependents (unhealthy, degraded, unknown) is equal to or above the threshold value. Must only be set when AggregationType is 'Thresholds'.
-  DependenciesSignalGroupResponse({
+  const DependenciesSignalGroupResponse({
     required this.aggregationType,
     this.degradedThreshold,
     this.unhealthyThreshold,

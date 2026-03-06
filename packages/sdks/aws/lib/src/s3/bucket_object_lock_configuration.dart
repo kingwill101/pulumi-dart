@@ -12,7 +12,7 @@ class BucketObjectLockConfiguration {
   /// Creates a new [BucketObjectLockConfiguration].
   /// [objectLockEnabled] Indicates whether this bucket has an Object Lock configuration enabled. Valid values are `true` or `false`. This argument is not supported in all regions or partitions.
   /// [rule] Object Lock rule in place for this bucket (documented below).
-  BucketObjectLockConfiguration({
+  const BucketObjectLockConfiguration({
     this.objectLockEnabled,
     this.rule,
   });

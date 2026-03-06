@@ -18,7 +18,7 @@ class FirewallPolicyInsights {
   /// [enabled] Whether the insights functionality is enabled for this Firewall Policy.
   /// [logAnalyticsWorkspaces] A list of `log_analytics_workspace` block as defined below.
   /// [retentionInDays] The log retention period in days.
-  FirewallPolicyInsights({
+  const FirewallPolicyInsights({
     required this.defaultLogAnalyticsWorkspaceId,
     required this.enabled,
     this.logAnalyticsWorkspaces,

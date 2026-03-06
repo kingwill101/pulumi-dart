@@ -20,7 +20,7 @@ class SessionLoggerAssociationArgs {
   /// [portalArn] ARN of the web portal.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [sessionLoggerArn] ARN of the session logger.
-  SessionLoggerAssociationArgs({
+  const SessionLoggerAssociationArgs({
     required this.portalArn,
     this.region,
     required this.sessionLoggerArn,

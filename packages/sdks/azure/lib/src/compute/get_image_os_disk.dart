@@ -23,7 +23,7 @@ class GetImageOsDisk {
   /// [osState] the State of the OS used in the Image, such as `Generalized`.
   /// [osType] the type of Operating System used on the OS Disk. such as `Linux` or `Windows`.
   /// [sizeGb] the size of this Data Disk in GB.
-  GetImageOsDisk({
+  const GetImageOsDisk({
     required this.blobUri,
     required this.caching,
     required this.managedDiskId,

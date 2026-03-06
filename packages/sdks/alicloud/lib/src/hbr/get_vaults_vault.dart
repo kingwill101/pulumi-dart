@@ -85,7 +85,7 @@ class GetVaultsVault {
   /// [vaultStatusMessage] Error status information of Vault. Only valid for remote backup warehouses. Only the remote backup warehouse is valid.
   /// [vaultStorageClass] The storage class of vault. Valid values: `STANDARD`.
   /// [vaultType] The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
-  GetVaultsVault({
+  const GetVaultsVault({
     required this.bucketName,
     required this.bytesDone,
     required this.createdTime,

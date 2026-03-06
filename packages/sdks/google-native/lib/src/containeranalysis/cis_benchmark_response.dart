@@ -10,7 +10,7 @@ class CisBenchmarkResponse {
   /// Creates a new [CisBenchmarkResponse].
   /// [profileLevel] Required.
   /// [severity] Required.
-  CisBenchmarkResponse({
+  const CisBenchmarkResponse({
     required this.profileLevel,
     required this.severity,
   });

@@ -29,7 +29,7 @@ class RouteServiceArgs {
   /// [host] The domain name or IP address of the cloud service.
   /// [hostRegionId] The region of the cloud service.
   /// [hostVpcId] The VPC associated with the cloud service.
-  RouteServiceArgs({
+  const RouteServiceArgs({
     required this.accessRegionId,
     required this.cenId,
     this.description,

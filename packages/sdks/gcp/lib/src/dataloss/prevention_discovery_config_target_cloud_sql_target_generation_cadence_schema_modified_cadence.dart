@@ -13,7 +13,7 @@ class PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifi
   /// Creates a new [PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence].
   /// [frequency] Frequency to regenerate data profiles when the schema is modified. Defaults to monthly.
   /// [types] The types of schema modifications to consider. Defaults to NEW_COLUMNS.
-  PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence({
+  const PreventionDiscoveryConfigTargetCloudSqlTargetGenerationCadenceSchemaModifiedCadence({
     this.frequency,
     this.types,
   });

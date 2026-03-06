@@ -35,7 +35,7 @@ class VolumeArgs {
   /// [name] Name of the volume to create (must be unique per project).
   /// [serverId] Server to attach the Volume to, not allowed if location argument is passed.
   /// [size] Size of the volume (in GB).
-  VolumeArgs({
+  const VolumeArgs({
     this.automount,
     this.deleteProtection,
     this.format,

@@ -28,7 +28,7 @@ class PolicyTargetTrackingConfigurationCustomizedMetricSpecification {
   /// [period] The period of the metric in seconds.
   /// [statistic] Statistic of the metric.
   /// [unit] Unit of the metric.
-  PolicyTargetTrackingConfigurationCustomizedMetricSpecification({
+  const PolicyTargetTrackingConfigurationCustomizedMetricSpecification({
     this.metricDimensions,
     this.metricName,
     this.metrics,

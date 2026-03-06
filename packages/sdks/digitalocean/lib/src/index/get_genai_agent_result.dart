@@ -95,7 +95,7 @@ class GetGenaiAgentResult {
   /// [updatedAt] Required.
   /// [url] Optional.
   /// [userId] Optional.
-  GetGenaiAgentResult({
+  const GetGenaiAgentResult({
     this.agentGuardrails,
     required this.agentId,
     this.anthropicApiKeys,

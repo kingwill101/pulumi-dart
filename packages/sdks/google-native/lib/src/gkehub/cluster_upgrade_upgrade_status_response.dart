@@ -15,7 +15,7 @@ class ClusterUpgradeUpgradeStatusResponse {
   /// [code] Status code of the upgrade.
   /// [reason] Reason for this status.
   /// [updateTime] Last timestamp the status was updated.
-  ClusterUpgradeUpgradeStatusResponse({
+  const ClusterUpgradeUpgradeStatusResponse({
     required this.code,
     required this.reason,
     required this.updateTime,

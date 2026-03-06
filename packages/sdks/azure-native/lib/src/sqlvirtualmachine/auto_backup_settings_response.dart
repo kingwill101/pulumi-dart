@@ -42,7 +42,7 @@ class AutoBackupSettingsResponse {
   /// [retentionPeriod] Retention period of backup: 1-90 days.
   /// [storageAccountUrl] Storage account url where backup will be taken to.
   /// [storageContainerName] Storage container name where backup will be taken to.
-  AutoBackupSettingsResponse({
+  const AutoBackupSettingsResponse({
     this.backupScheduleType,
     this.backupSystemDbs,
     this.daysOfWeek,

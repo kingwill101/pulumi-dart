@@ -11,7 +11,7 @@ class VirtualNetworkGatewayNatRuleExternalMapping {
   /// Creates a new [VirtualNetworkGatewayNatRuleExternalMapping].
   /// [addressSpace] The string CIDR representing the address space for the Virtual Network Gateway Nat Rule external mapping.
   /// [portRange] The single port range for the Virtual Network Gateway Nat Rule external mapping.
-  VirtualNetworkGatewayNatRuleExternalMapping({
+  const VirtualNetworkGatewayNatRuleExternalMapping({
     required this.addressSpace,
     this.portRange,
   });

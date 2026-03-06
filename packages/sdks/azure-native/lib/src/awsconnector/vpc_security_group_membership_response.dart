@@ -12,7 +12,7 @@ class VpcSecurityGroupMembershipResponse {
   /// Creates a new [VpcSecurityGroupMembershipResponse].
   /// [status] &lt;p&gt;The status of the VPC security group.&lt;/p&gt;
   /// [vpcSecurityGroupId] &lt;p&gt;The VPC security group ID.&lt;/p&gt;
-  VpcSecurityGroupMembershipResponse({
+  const VpcSecurityGroupMembershipResponse({
     this.status,
     this.vpcSecurityGroupId,
   });

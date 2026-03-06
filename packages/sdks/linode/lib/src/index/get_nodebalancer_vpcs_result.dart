@@ -22,7 +22,7 @@ class GetNodebalancerVpcsResult {
   /// [order] Optional.
   /// [orderBy] Optional.
   /// [vpcConfigs] Required.
-  GetNodebalancerVpcsResult({
+  const GetNodebalancerVpcsResult({
     this.filters,
     required this.id,
     required this.nodebalancerId,

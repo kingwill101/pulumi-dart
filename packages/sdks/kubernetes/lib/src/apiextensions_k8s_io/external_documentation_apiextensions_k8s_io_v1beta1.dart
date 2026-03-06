@@ -10,7 +10,7 @@ class ExternalDocumentationApiextensionsK8sIoV1beta1 {
   /// Creates a new [ExternalDocumentationApiextensionsK8sIoV1beta1].
   /// [description] Optional.
   /// [url] Optional.
-  ExternalDocumentationApiextensionsK8sIoV1beta1({
+  const ExternalDocumentationApiextensionsK8sIoV1beta1({
     this.description,
     this.url,
   });

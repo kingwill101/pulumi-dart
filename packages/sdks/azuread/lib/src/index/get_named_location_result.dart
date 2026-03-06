@@ -19,7 +19,7 @@ class GetNamedLocationResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ips] Required.
   /// [objectId] Required.
-  GetNamedLocationResult({
+  const GetNamedLocationResult({
     required this.countries,
     required this.displayName,
     required this.id,

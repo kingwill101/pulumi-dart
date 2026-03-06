@@ -13,7 +13,7 @@ class DefaultVirtualMachineScaleSetInfoResponse {
   /// Creates a new [DefaultVirtualMachineScaleSetInfoResponse].
   /// [constrainedMaximumCapacity] Indicates if the the maximum capacity of the default migrated Virtual Machine Scale Set after its migration will be constrained to a limited number of VMs.
   /// [defaultVirtualMachineScaleSet] The default Virtual Machine ScaleSet Uri that the Availability Set will be moved to upon triggering a seamless migration via the ConvertToVirtualMachineScaleSet API.
-  DefaultVirtualMachineScaleSetInfoResponse({
+  const DefaultVirtualMachineScaleSetInfoResponse({
     required this.constrainedMaximumCapacity,
     required this.defaultVirtualMachineScaleSet,
   });

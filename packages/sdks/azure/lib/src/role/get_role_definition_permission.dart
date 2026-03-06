@@ -23,7 +23,7 @@ class GetRoleDefinitionPermission {
   /// [dataActions] A list of data actions allowed by this role.
   /// [notActions] A list of actions which are denied by this role.
   /// [notDataActions] A list of data actions which are denied by this role.
-  GetRoleDefinitionPermission({
+  const GetRoleDefinitionPermission({
     required this.actions,
     required this.condition,
     required this.conditionVersion,

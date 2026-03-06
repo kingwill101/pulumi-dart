@@ -78,7 +78,7 @@ class GetKeyResult {
   /// [region] The AWS Region of a primary or replica key in a multi-Region key.
   /// [validTo] The time at which the imported key material expires. This value is present only when `origin` is `EXTERNAL` and whose `expiration_model` is `KEY_MATERIAL_EXPIRES`, otherwise this value is 0
   /// [xksKeyConfigurations] Information about the external key that is associated with a KMS key in an external key store.
-  GetKeyResult({
+  const GetKeyResult({
     required this.arn,
     required this.awsAccountId,
     required this.cloudHsmClusterId,

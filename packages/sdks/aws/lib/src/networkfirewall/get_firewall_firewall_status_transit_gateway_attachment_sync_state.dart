@@ -14,7 +14,7 @@ class GetFirewallFirewallStatusTransitGatewayAttachmentSyncState {
   /// [attachmentId] The unique identifier of the transit gateway attachment.
   /// [statusMessage] A message providing additional information about the current status.
   /// [transitGatewayAttachmentStatus] The current status of the transit gateway attachment.
-  GetFirewallFirewallStatusTransitGatewayAttachmentSyncState({
+  const GetFirewallFirewallStatusTransitGatewayAttachmentSyncState({
     required this.attachmentId,
     required this.statusMessage,
     required this.transitGatewayAttachmentStatus,

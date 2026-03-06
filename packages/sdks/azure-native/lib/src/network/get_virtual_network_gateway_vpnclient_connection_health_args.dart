@@ -15,7 +15,7 @@ class GetVirtualNetworkGatewayVpnclientConnectionHealthArgs {
   /// Creates a new [GetVirtualNetworkGatewayVpnclientConnectionHealthArgs].
   /// [resourceGroupName] The name of the resource group.
   /// [virtualNetworkGatewayName] The name of the virtual network gateway.
-  GetVirtualNetworkGatewayVpnclientConnectionHealthArgs({
+  const GetVirtualNetworkGatewayVpnclientConnectionHealthArgs({
     required this.resourceGroupName,
     required this.virtualNetworkGatewayName,
   });

@@ -17,7 +17,7 @@ class GetAddressGroupIamPolicyNetworksecurityV1beta1Args {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetAddressGroupIamPolicyNetworksecurityV1beta1Args({
+  const GetAddressGroupIamPolicyNetworksecurityV1beta1Args({
     required this.addressGroupId,
     required this.location,
     this.optionsRequestedPolicyVersion,

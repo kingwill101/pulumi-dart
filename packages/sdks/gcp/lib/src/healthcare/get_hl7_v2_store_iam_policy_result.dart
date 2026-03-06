@@ -16,7 +16,7 @@ class GetHl7V2StoreIamPolicyResult {
   /// [hl7V2StoreId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyData] (Computed) The policy data
-  GetHl7V2StoreIamPolicyResult({
+  const GetHl7V2StoreIamPolicyResult({
     required this.etag,
     required this.hl7V2StoreId,
     required this.id,

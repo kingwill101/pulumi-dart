@@ -17,7 +17,7 @@ class FolderReplayPolicysimulatorV1beta1Args {
   /// [config] The configuration used for the `Replay`.
   /// [folderId] Required.
   /// [location] Optional.
-  FolderReplayPolicysimulatorV1beta1Args({
+  const FolderReplayPolicysimulatorV1beta1Args({
     required this.config,
     required this.folderId,
     this.location,

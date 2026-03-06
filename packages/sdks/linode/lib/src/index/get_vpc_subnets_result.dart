@@ -17,7 +17,7 @@ class GetVpcSubnetsResult {
   /// [id] ID of the interface.
   /// [vpcId] Required.
   /// [vpcSubnets] Required.
-  GetVpcSubnetsResult({
+  const GetVpcSubnetsResult({
     this.filters,
     required this.id,
     required this.vpcId,

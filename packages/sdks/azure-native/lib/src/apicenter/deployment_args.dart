@@ -46,7 +46,7 @@ class DeploymentArgs {
   /// [state] State of API deployment.
   /// [title] API deployment title
   /// [workspaceName] The name of the workspace.
-  DeploymentArgs({
+  const DeploymentArgs({
     required this.apiName,
     this.customProperties,
     this.definitionId,

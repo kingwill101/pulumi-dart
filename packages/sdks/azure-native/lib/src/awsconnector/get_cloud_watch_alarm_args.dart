@@ -15,7 +15,7 @@ class GetCloudWatchAlarmArgs {
   /// Creates a new [GetCloudWatchAlarmArgs].
   /// [name] Name of CloudWatchAlarm
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCloudWatchAlarmArgs({
+  const GetCloudWatchAlarmArgs({
     required this.name,
     required this.resourceGroupName,
   });

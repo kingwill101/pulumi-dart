@@ -15,7 +15,7 @@ class AutomaticZoneRebalancingPolicy {
   /// [enabled] Specifies whether Automatic AZ Balancing should be enabled on the virtual machine scale set. The default value is false.
   /// [rebalanceBehavior] Type of rebalance behavior that will be used for recreating virtual machines in the scale set across availability zones. Default and only supported value for now is CreateBeforeDelete.
   /// [rebalanceStrategy] Type of rebalance strategy that will be used for rebalancing virtual machines in the scale set across availability zones. Default and only supported value for now is Recreate.
-  AutomaticZoneRebalancingPolicy({
+  const AutomaticZoneRebalancingPolicy({
     this.enabled,
     this.rebalanceBehavior,
     this.rebalanceStrategy,

@@ -40,7 +40,7 @@ class GetSourceVmmigrationV1alpha1Result {
   /// [name] The Source name.
   /// [updateTime] The update time timestamp.
   /// [vmware] Vmware type source details.
-  GetSourceVmmigrationV1alpha1Result({
+  const GetSourceVmmigrationV1alpha1Result({
     required this.aws,
     required this.azure,
     required this.createTime,

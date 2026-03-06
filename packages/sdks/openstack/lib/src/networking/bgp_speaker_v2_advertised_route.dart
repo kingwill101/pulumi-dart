@@ -9,7 +9,7 @@ class BgpSpeakerV2AdvertisedRoute {
   /// Creates a new [BgpSpeakerV2AdvertisedRoute].
   /// [destination] Optional.
   /// [nextHop] Optional.
-  BgpSpeakerV2AdvertisedRoute({
+  const BgpSpeakerV2AdvertisedRoute({
     this.destination,
     this.nextHop,
   });

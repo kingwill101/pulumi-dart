@@ -18,7 +18,7 @@ class Webhook {
   /// [webhookId] Unique identifier for the webhook.
   /// [webhookSecretUpdateTime] Time when the webhook secret was updated.
   /// [webhookUrl] URL that gets invoked by the webhook.
-  Webhook({
+  const Webhook({
     this.rotateWebhookSecret,
     this.webhookId,
     this.webhookSecretUpdateTime,

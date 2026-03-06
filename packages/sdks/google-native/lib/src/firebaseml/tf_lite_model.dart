@@ -12,7 +12,7 @@ class TfLiteModel {
   /// Creates a new [TfLiteModel].
   /// [automlModel] The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)
   /// [gcsTfliteUri] The TfLite file containing the model. (Stored in Google Cloud). The gcs_tflite_uri should have form: gs://some-bucket/some-model.tflite Note: If you update the file in the original location, it is necessary to call UpdateModel for ML to pick up and validate the updated file.
-  TfLiteModel({
+  const TfLiteModel({
     this.automlModel,
     this.gcsTfliteUri,
   });

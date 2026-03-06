@@ -11,7 +11,7 @@ class GetConnectFilter {
   /// Creates a new [GetConnectFilter].
   /// [name] Name of the filter.
   /// [values] List of one or more values for the filter.
-  GetConnectFilter({
+  const GetConnectFilter({
     required this.name,
     required this.values,
   });

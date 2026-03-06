@@ -13,7 +13,7 @@ class X12AgreementContent {
   /// Creates a new [X12AgreementContent].
   /// [receiveAgreement] The X12 one-way receive agreement.
   /// [sendAgreement] The X12 one-way send agreement.
-  X12AgreementContent({
+  const X12AgreementContent({
     required this.receiveAgreement,
     required this.sendAgreement,
   });

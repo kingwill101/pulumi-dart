@@ -18,7 +18,7 @@ class GetDiscoverySourceArgs {
   /// [mapName] Maps resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sourceName] discovery source resource
-  GetDiscoverySourceArgs({
+  const GetDiscoverySourceArgs({
     required this.mapName,
     required this.resourceGroupName,
     required this.sourceName,

@@ -28,7 +28,7 @@ class EventRuleEventPattern {
   /// [nameLists] The name of the event-triggered alert rule.
   /// [product] The type of the cloud service.
   /// [sqlFilter] The SQL condition that is used to filter events. If the content of an event meets the specified SQL condition, an alert is automatically triggered.
-  EventRuleEventPattern({
+  const EventRuleEventPattern({
     this.eventTypeLists,
     this.levelLists,
     this.nameLists,

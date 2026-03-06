@@ -11,7 +11,7 @@ class BlockchainNodesEthereumDetailsGethDetails {
 
   /// Creates a new [BlockchainNodesEthereumDetailsGethDetails].
   /// [garbageCollectionMode] Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
-  BlockchainNodesEthereumDetailsGethDetails({
+  const BlockchainNodesEthereumDetailsGethDetails({
     this.garbageCollectionMode,
   });
 

@@ -20,7 +20,7 @@ class GooglePrivacyDlpV2LDiversityEquivalenceClassResponse {
   /// [numDistinctSensitiveValues] Number of distinct sensitive values in this equivalence class.
   /// [quasiIdsValues] Quasi-identifier values defining the k-anonymity equivalence class. The order is always the same as the original request.
   /// [topSensitiveValues] Estimated frequencies of top sensitive values.
-  GooglePrivacyDlpV2LDiversityEquivalenceClassResponse({
+  const GooglePrivacyDlpV2LDiversityEquivalenceClassResponse({
     required this.equivalenceClassSize,
     required this.numDistinctSensitiveValues,
     required this.quasiIdsValues,

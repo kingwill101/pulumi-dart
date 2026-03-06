@@ -8,7 +8,7 @@ class CloudControlParameterSpecSubParameterDefaultValueStringListValue {
 
   /// Creates a new [CloudControlParameterSpecSubParameterDefaultValueStringListValue].
   /// [values] The strings in the list.
-  CloudControlParameterSpecSubParameterDefaultValueStringListValue({
+  const CloudControlParameterSpecSubParameterDefaultValueStringListValue({
     required this.values,
   });
 

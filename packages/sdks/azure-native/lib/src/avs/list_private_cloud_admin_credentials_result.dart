@@ -17,7 +17,7 @@ class ListPrivateCloudAdminCredentialsResult {
   /// [nsxtUsername] NSX-T Manager username
   /// [vcenterPassword] vCenter admin password
   /// [vcenterUsername] vCenter admin username
-  ListPrivateCloudAdminCredentialsResult({
+  const ListPrivateCloudAdminCredentialsResult({
     required this.nsxtPassword,
     required this.nsxtUsername,
     required this.vcenterPassword,

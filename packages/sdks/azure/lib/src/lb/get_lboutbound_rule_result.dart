@@ -35,7 +35,7 @@ class GetLBOutboundRuleResult {
   /// [name] The name of the Frontend IP Configuration.
   /// [protocol] The transport protocol for the external endpoint.
   /// [tcpResetEnabled] Is the bidirectional TCP Reset on TCP flow idle timeout or unexpected connection termination enabled? This value is useful when the protocol is set to TCP.
-  GetLBOutboundRuleResult({
+  const GetLBOutboundRuleResult({
     required this.allocatedOutboundPorts,
     required this.backendAddressPoolId,
     required this.enableTcpReset,

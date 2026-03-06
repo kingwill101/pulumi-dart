@@ -17,7 +17,7 @@ class GetImageVersionsResult {
   /// [imageVersions] A list of composer image versions available in the given project and location. Each `image_version` contains:
   /// [project] Required.
   /// [region] Required.
-  GetImageVersionsResult({
+  const GetImageVersionsResult({
     required this.id,
     required this.imageVersions,
     required this.project,

@@ -26,7 +26,7 @@ class SigningJobArgs {
   /// [profileName] The name of the profile to initiate the signing operation.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [source] The S3 bucket that contains the object to sign. See Source below for details.
-  SigningJobArgs({
+  const SigningJobArgs({
     required this.destination,
     this.ignoreSigningJobFailure,
     required this.profileName,

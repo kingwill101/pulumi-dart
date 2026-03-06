@@ -8,7 +8,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfi
 
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration].
   /// [storageSizeGib] The size of the tasks volume in GiB. Must be at least 1.
-  CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration({
+  const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateStorageConfiguration({
     required this.storageSizeGib,
   });
 

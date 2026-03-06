@@ -36,7 +36,7 @@ class SecurityGroupIngress {
   /// [securityGroups] List of security groups. A group name can be used relative to the default VPC. Otherwise, group ID.
   /// [self] Whether the security group itself will be added as a source to this ingress rule.
   /// [toPort] End range port (or ICMP code if protocol is `icmp`).
-  SecurityGroupIngress({
+  const SecurityGroupIngress({
     this.cidrBlocks,
     this.description,
     required this.fromPort,

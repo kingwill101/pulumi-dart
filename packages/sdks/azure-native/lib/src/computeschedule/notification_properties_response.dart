@@ -18,7 +18,7 @@ class NotificationPropertiesResponse {
   /// [disabled] Tells if the notification is enabled or not.
   /// [language] The language the notification should be sent on.
   /// [type] Type of notification to be sent.
-  NotificationPropertiesResponse({
+  const NotificationPropertiesResponse({
     required this.destination,
     this.disabled,
     required this.language,

@@ -34,7 +34,7 @@ class GetCustomDomainsDomain {
   /// [lastModifiedTime] The last modified time of the custom domain.
   /// [protocol] The custom domain protocol.
   /// [routeConfigs] The configuration of domain route, mapping the path and Function Compute function.
-  GetCustomDomainsDomain({
+  const GetCustomDomainsDomain({
     required this.accountId,
     required this.apiVersion,
     required this.certConfig,

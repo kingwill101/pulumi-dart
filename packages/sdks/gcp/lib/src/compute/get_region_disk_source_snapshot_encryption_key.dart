@@ -16,7 +16,7 @@ class GetRegionDiskSourceSnapshotEncryptionKey {
   /// [kmsKeyName] The name of the encryption key that is stored in Google Cloud KMS.
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [sha256] The RFC 4648 base64 encoded SHA-256 hash of the customer-supplied
-  GetRegionDiskSourceSnapshotEncryptionKey({
+  const GetRegionDiskSourceSnapshotEncryptionKey({
     required this.kmsKeyName,
     required this.rawKey,
     required this.sha256,

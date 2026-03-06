@@ -7,7 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva {
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva].
   /// [instanceUrl] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesVeeva({
     required this.instanceUrl,
   });
 

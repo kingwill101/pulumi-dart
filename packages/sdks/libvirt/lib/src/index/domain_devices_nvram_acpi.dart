@@ -8,7 +8,7 @@ class DomainDevicesNvramAcpi {
 
   /// Creates a new [DomainDevicesNvramAcpi].
   /// [index] Sets the index for the ACPI device associated with pstore, which is used for handling multiple ACPI elements.
-  DomainDevicesNvramAcpi({
+  const DomainDevicesNvramAcpi({
     this.index,
   });
 

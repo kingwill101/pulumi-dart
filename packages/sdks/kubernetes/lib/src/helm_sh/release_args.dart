@@ -114,7 +114,7 @@ class ReleaseArgs {
   /// [verify] Verify the package before installing it.
   /// [version] Specify the exact chart version to install. If this is not specified, the latest version is installed.
   /// [waitForJobs] Will wait until all Jobs have been completed before marking the release as successful. This is ignored if `skipAwait` is enabled.
-  ReleaseArgs({
+  const ReleaseArgs({
     this.allowNullValues,
     this.atomic,
     required this.chart,

@@ -20,7 +20,7 @@ class GetDatabasesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [nameRegex] Optional.
   /// [names] database name of the cluster.
-  GetDatabasesResult({
+  const GetDatabasesResult({
     required this.databases,
     required this.dbClusterId,
     required this.id,

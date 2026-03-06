@@ -36,7 +36,7 @@ class GetConversionWorkspaceResult {
   /// [name] Full name of the workspace resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}.
   /// [source] The source engine details.
   /// [updateTime] The timestamp when the workspace resource was last updated.
-  GetConversionWorkspaceResult({
+  const GetConversionWorkspaceResult({
     required this.createTime,
     required this.destination,
     required this.displayName,

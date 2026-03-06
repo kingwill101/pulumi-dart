@@ -21,7 +21,7 @@ class GetVirtualNetworkArgs {
   /// [labName] The name of the lab.
   /// [name] The name of the VirtualNetwork
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetVirtualNetworkArgs({
+  const GetVirtualNetworkArgs({
     this.expand,
     required this.labName,
     required this.name,

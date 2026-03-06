@@ -25,7 +25,7 @@ class GetAutoSnapshotPoliciesResult {
   /// [outputFile] Optional.
   /// [policies] A list of Auto Snapshot Policies. Each element contains the following attributes:
   /// [status] The status of the automatic snapshot policy.
-  GetAutoSnapshotPoliciesResult({
+  const GetAutoSnapshotPoliciesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

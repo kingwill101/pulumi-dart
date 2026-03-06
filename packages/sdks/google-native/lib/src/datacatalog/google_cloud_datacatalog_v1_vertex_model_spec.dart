@@ -22,7 +22,7 @@ class GoogleCloudDatacatalogV1VertexModelSpec {
   /// [versionDescription] The description of this version.
   /// [versionId] The version ID of the model.
   /// [vertexModelSourceInfo] Source of a Vertex model.
-  GoogleCloudDatacatalogV1VertexModelSpec({
+  const GoogleCloudDatacatalogV1VertexModelSpec({
     this.containerImageUri,
     this.versionAliases,
     this.versionDescription,

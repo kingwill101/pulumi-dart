@@ -21,7 +21,7 @@ class ServerInstanceArgs {
   /// [sapDiscoverySiteName] The name of the discovery site resource for SAP Migration.
   /// [sapInstanceName] The name of SAP Instance resource for SAP Migration.
   /// [serverInstanceName] The name of the Server instance resource for SAP Migration.
-  ServerInstanceArgs({
+  const ServerInstanceArgs({
     required this.resourceGroupName,
     required this.sapDiscoverySiteName,
     required this.sapInstanceName,

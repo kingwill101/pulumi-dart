@@ -13,7 +13,7 @@ class AmlFilesystemMaintenanceWindow {
   /// Creates a new [AmlFilesystemMaintenanceWindow].
   /// [dayOfWeek] Day of the week on which the maintenance window will occur.
   /// [timeOfDayUTC] The time of day (in UTC) to start the maintenance window.
-  AmlFilesystemMaintenanceWindow({
+  const AmlFilesystemMaintenanceWindow({
     this.dayOfWeek,
     this.timeOfDayUTC,
   });

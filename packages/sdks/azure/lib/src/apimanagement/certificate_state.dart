@@ -42,7 +42,7 @@ class CertificateState {
   /// [resourceGroupName] The Name of the Resource Group where the API Management Service exists. Changing this forces a new resource to be created.
   /// [subject] The Subject of this Certificate.
   /// [thumbprint] The Thumbprint of this Certificate.
-  CertificateState({
+  const CertificateState({
     this.apiManagementName,
     this.data,
     this.expiration,

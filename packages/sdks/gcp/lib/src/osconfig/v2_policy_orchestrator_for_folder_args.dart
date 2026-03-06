@@ -56,7 +56,7 @@ class V2PolicyOrchestratorForFolderArgs {
   /// [orchestrationScope] Defines a set of selectors which drive which resources are in scope of policy
   /// [policyOrchestratorId] The logical identifier of the policy orchestrator, with the following
   /// [state] State of the orchestrator. Can be updated to change orchestrator behaviour.
-  V2PolicyOrchestratorForFolderArgs({
+  const V2PolicyOrchestratorForFolderArgs({
     required this.action,
     this.description,
     required this.folderId,

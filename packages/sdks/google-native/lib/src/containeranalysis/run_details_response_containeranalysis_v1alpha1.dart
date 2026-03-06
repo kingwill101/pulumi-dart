@@ -14,7 +14,7 @@ class RunDetailsResponseContaineranalysisV1alpha1 {
   /// [builder] Required.
   /// [byproducts] Required.
   /// [metadata] Required.
-  RunDetailsResponseContaineranalysisV1alpha1({
+  const RunDetailsResponseContaineranalysisV1alpha1({
     required this.builder,
     required this.byproducts,
     required this.metadata,

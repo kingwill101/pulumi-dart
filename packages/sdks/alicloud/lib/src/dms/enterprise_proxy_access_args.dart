@@ -24,7 +24,7 @@ class EnterpriseProxyAccessArgs {
   /// [proxyAccessId] Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
   /// [proxyId] The ID of the security agent.
   /// [userId] The user ID.
-  EnterpriseProxyAccessArgs({
+  const EnterpriseProxyAccessArgs({
     this.indepAccount,
     this.indepPassword,
     this.proxyAccessId,

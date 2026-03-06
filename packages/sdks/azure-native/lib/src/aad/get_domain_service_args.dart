@@ -15,7 +15,7 @@ class GetDomainServiceArgs {
   /// Creates a new [GetDomainServiceArgs].
   /// [domainServiceName] The name of the domain service.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetDomainServiceArgs({
+  const GetDomainServiceArgs({
     required this.domainServiceName,
     required this.resourceGroupName,
   });

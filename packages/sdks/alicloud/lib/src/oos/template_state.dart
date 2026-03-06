@@ -57,7 +57,7 @@ class TemplateState {
   /// [updatedBy] The user who updated the template.
   /// [updatedDate] The time when the template was updated.
   /// [versionName] The name of template version.
-  TemplateState({
+  const TemplateState({
     this.autoDeleteExecutions,
     this.content,
     this.createdBy,

@@ -9,7 +9,7 @@ class SamlSsoInfo {
 
   /// Creates a new [SamlSsoInfo].
   /// [inboundSamlSsoProfile] Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`.
-  SamlSsoInfo({
+  const SamlSsoInfo({
     required this.inboundSamlSsoProfile,
   });
 

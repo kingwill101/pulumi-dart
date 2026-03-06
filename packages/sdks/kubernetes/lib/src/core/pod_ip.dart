@@ -9,7 +9,7 @@ class PodIP {
 
   /// Creates a new [PodIP].
   /// [ip] IP is the IP address assigned to the pod
-  PodIP({
+  const PodIP({
     required this.ip,
   });
 

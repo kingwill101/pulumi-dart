@@ -76,7 +76,7 @@ class PipelineArgs {
   /// [pipelineId] The user-provided ID to be assigned to the Pipeline. It should match the
   /// [project] The ID of the project in which the resource belongs.
   /// [retryPolicy] The retry policy configuration for the Pipeline. The pipeline
-  PipelineArgs({
+  const PipelineArgs({
     this.annotations,
     this.cryptoKeyName,
     required this.destinations,

@@ -16,7 +16,7 @@ class LinuxOperatingSystemProfile {
   /// [password] The password.
   /// [sshProfile] The SSH profile.
   /// [username] The username.
-  LinuxOperatingSystemProfile({
+  const LinuxOperatingSystemProfile({
     this.password,
     this.sshProfile,
     this.username,

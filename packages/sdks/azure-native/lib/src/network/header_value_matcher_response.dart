@@ -15,7 +15,7 @@ class HeaderValueMatcherResponse {
   /// [ignoreCase] Setting this parameter to truth value with force the pattern to do a case in-sensitive comparison.
   /// [negate] Setting this value as truth will force to check the negation of the condition given by the user in the pattern field.
   /// [pattern] The pattern, either fixed string or regular expression, that evaluates if a header value should be selected for rewrite.
-  HeaderValueMatcherResponse({
+  const HeaderValueMatcherResponse({
     this.ignoreCase,
     this.negate,
     this.pattern,

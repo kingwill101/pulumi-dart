@@ -9,7 +9,7 @@ class AzurePostgreSqlSinkUpsertSettings {
 
   /// Creates a new [AzurePostgreSqlSinkUpsertSettings].
   /// [keys] Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-  AzurePostgreSqlSinkUpsertSettings({
+  const AzurePostgreSqlSinkUpsertSettings({
     this.keys,
   });
 

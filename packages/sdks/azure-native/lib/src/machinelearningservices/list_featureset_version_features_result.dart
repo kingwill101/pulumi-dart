@@ -13,7 +13,7 @@ class ListFeaturesetVersionFeaturesResult {
   /// Creates a new [ListFeaturesetVersionFeaturesResult].
   /// [nextLink] The link to the next page of Feature objects. If null, there are no additional pages.
   /// [value] An array of objects of type Feature.
-  ListFeaturesetVersionFeaturesResult({
+  const ListFeaturesetVersionFeaturesResult({
     this.nextLink,
     this.value,
   });

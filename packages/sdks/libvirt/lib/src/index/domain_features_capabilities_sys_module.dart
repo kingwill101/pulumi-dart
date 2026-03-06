@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysModule {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysModule].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysModule({
+  const DomainFeaturesCapabilitiesSysModule({
     this.state,
   });
 

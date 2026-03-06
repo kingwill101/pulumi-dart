@@ -15,7 +15,7 @@ class AccountPropertiesResponseManagedResources {
   /// [eventHubNamespace] Gets the managed event hub namespace resource identifier.
   /// [resourceGroup] Gets the managed resource group resource identifier. This resource group will host resource dependencies for the account.
   /// [storageAccount] Gets the managed storage account resource identifier.
-  AccountPropertiesResponseManagedResources({
+  const AccountPropertiesResponseManagedResources({
     required this.eventHubNamespace,
     required this.resourceGroup,
     required this.storageAccount,

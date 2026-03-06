@@ -45,7 +45,7 @@ class CustomerEntity {
   /// [shouldMigrate] Customer resource flag for migration.
   /// [verifySignupCode] Customer resource flag for requiring verification of signup code as boolean.
   /// [verifySignupPhrase] Customer resource phrase for verifying signup.
-  CustomerEntity({
+  const CustomerEntity({
     this.clientTenantId,
     this.contactEmail,
     this.contactName,

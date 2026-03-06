@@ -12,7 +12,7 @@ class MySQLServerIdentity {
   /// Creates a new [MySQLServerIdentity].
   /// [type] Type of managed service identity.
   /// [userAssignedIdentities] Metadata of user assigned identity.
-  MySQLServerIdentity({
+  const MySQLServerIdentity({
     this.type,
     this.userAssignedIdentities,
   });

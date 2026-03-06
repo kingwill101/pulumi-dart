@@ -22,7 +22,7 @@ class GetZonesZone {
   /// [slaveZoneId] The secondary zone.
   /// [slbSlaveZoneIds] (Deprecated from 1.157.0) A list of slb slave zone ids in which the slb master zone.
   /// [supportedResources] (Available in 1.154.0+)A list of available resource which the slb master zone supported.
-  GetZonesZone({
+  const GetZonesZone({
     required this.id,
     required this.masterZoneId,
     required this.slaveZoneId,

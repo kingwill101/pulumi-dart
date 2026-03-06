@@ -8,7 +8,7 @@ class OptInResourceDataCatalog {
 
   /// Creates a new [OptInResourceDataCatalog].
   /// [id] Identifier for the catalog resource.
-  OptInResourceDataCatalog({
+  const OptInResourceDataCatalog({
     this.id,
   });
 

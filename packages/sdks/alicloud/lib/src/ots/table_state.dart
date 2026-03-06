@@ -44,7 +44,7 @@ class TableState {
   /// [sseRoleArn] The arn of role that can access kms service. `sse_role_arn` is valid only when `sse_key_type` is set to `SSE_BYOK`.
   /// [tableName] The table name of the OTS instance. If changed, a new table would be created.
   /// [timeToLive] The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
-  TableState({
+  const TableState({
     this.allowUpdate,
     this.definedColumns,
     this.deviationCellVersionInSec,

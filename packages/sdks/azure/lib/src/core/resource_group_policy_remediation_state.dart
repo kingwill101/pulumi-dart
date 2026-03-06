@@ -33,7 +33,7 @@ class ResourceGroupPolicyRemediationState {
   /// [resourceCount] Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
   /// [resourceDiscoveryMode] The way that resources to remediate are discovered. Possible values are `ExistingNonCompliant`, `ReEvaluateCompliance`. Defaults to `ExistingNonCompliant`.
   /// [resourceGroupId] The Resource Group ID at which the Policy Remediation should be applied. Changing this forces a new resource to be created.
-  ResourceGroupPolicyRemediationState({
+  const ResourceGroupPolicyRemediationState({
     this.failurePercentage,
     this.locationFilters,
     this.name,

@@ -9,7 +9,7 @@ class OptionalServices {
 
   /// Creates a new [OptionalServices].
   /// [customLocation] The name of custom location.
-  OptionalServices({
+  const OptionalServices({
     this.customLocation,
   });
 

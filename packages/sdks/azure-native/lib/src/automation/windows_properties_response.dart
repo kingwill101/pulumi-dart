@@ -18,7 +18,7 @@ class WindowsPropertiesResponse {
   /// [includedKbNumbers] KB numbers included from the software update configuration.
   /// [includedUpdateClassifications] Update classification included in the software update configuration. A comma separated string with required values
   /// [rebootSetting] Reboot setting for the software update configuration.
-  WindowsPropertiesResponse({
+  const WindowsPropertiesResponse({
     this.excludedKbNumbers,
     this.includedKbNumbers,
     this.includedUpdateClassifications,

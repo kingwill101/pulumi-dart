@@ -33,7 +33,7 @@ class GoogleCloudDocumentaiV1DocumentPageFormField {
   /// [provenance] The history of this annotation.
   /// [valueDetectedLanguages] A list of detected languages for value together with confidence.
   /// [valueType] If the value is non-textual, this field represents the type. Current valid values are: - blank (this indicates the `field_value` is normal text) - `unfilled_checkbox` - `filled_checkbox`
-  GoogleCloudDocumentaiV1DocumentPageFormField({
+  const GoogleCloudDocumentaiV1DocumentPageFormField({
     this.correctedKeyText,
     this.correctedValueText,
     this.fieldName,

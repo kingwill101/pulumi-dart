@@ -32,7 +32,7 @@ class LoadBalancerZoneMappingLoadBalancerAddress {
   /// [ipv6Address] An IP address of the IPv6 type.
   /// [ipv6AddressHcStatus] The IPv6 address detection status of the application-based load balancing instance.
   /// [ipv6LocalAddresses] IPv6 Local address list. The list of addresses used by ALB to interact with the backend service.
-  LoadBalancerZoneMappingLoadBalancerAddress({
+  const LoadBalancerZoneMappingLoadBalancerAddress({
     this.address,
     this.allocationId,
     this.eipType,

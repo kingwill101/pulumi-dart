@@ -12,7 +12,7 @@ class LoggingDestinationResponse {
   /// Creates a new [LoggingDestinationResponse].
   /// [logs] Names of the logs to be sent to this destination. Each name must be defined in the Service.logs section. If the log name is not a domain scoped name, it will be automatically prefixed with the service name followed by "/".
   /// [monitoredResource] The monitored resource type. The type must be defined in the Service.monitored_resources section.
-  LoggingDestinationResponse({
+  const LoggingDestinationResponse({
     required this.logs,
     required this.monitoredResource,
   });

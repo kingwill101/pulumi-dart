@@ -11,7 +11,7 @@ class ClusterClusterConfigEncryptionConfig {
 
   /// Creates a new [ClusterClusterConfigEncryptionConfig].
   /// [kmsKeyName] The Cloud KMS key name to use for PD disk encryption for
-  ClusterClusterConfigEncryptionConfig({
+  const ClusterClusterConfigEncryptionConfig({
     required this.kmsKeyName,
   });
 

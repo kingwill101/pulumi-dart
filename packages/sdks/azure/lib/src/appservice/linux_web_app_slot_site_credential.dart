@@ -13,7 +13,7 @@ class LinuxWebAppSlotSiteCredential {
   /// Creates a new [LinuxWebAppSlotSiteCredential].
   /// [name] The name which should be used for this Linux Web App Slot. Changing this forces a new Linux Web App Slot to be created.
   /// [password] The Site Credentials Password used for publishing.
-  LinuxWebAppSlotSiteCredential({
+  const LinuxWebAppSlotSiteCredential({
     this.name,
     this.password,
   });

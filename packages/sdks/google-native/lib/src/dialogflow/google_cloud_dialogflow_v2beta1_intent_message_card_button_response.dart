@@ -12,7 +12,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse].
   /// [postback] Optional. The text to send back to the Dialogflow API or a URI to open.
   /// [text] Optional. The text to show on the button.
-  GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse({
+  const GoogleCloudDialogflowV2beta1IntentMessageCardButtonResponse({
     required this.postback,
     required this.text,
   });

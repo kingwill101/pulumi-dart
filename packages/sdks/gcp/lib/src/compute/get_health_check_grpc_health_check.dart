@@ -37,7 +37,7 @@ class GetHealthCheckGrpcHealthCheck {
   /// [port] The port number for the health check request.
   /// [portName] Port name as defined in InstanceGroup#NamedPort#name. If both port and
   /// [portSpecification] Specifies how port is selected for health checking, can be one of the
-  GetHealthCheckGrpcHealthCheck({
+  const GetHealthCheckGrpcHealthCheck({
     required this.grpcServiceName,
     required this.port,
     required this.portName,

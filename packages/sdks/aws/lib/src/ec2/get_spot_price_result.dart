@@ -24,7 +24,7 @@ class GetSpotPriceResult {
   /// [region] Required.
   /// [spotPrice] Most recent Spot Price value for the given instance type and AZ.
   /// [spotPriceTimestamp] The timestamp at which the Spot Price value was published.
-  GetSpotPriceResult({
+  const GetSpotPriceResult({
     this.availabilityZone,
     this.filters,
     required this.id,

@@ -35,7 +35,7 @@ class DomainLaunchSecuritySevsnp {
   /// [policy] Sets the security policy for SEV-SNP operations within the domain.
   /// [reducedPhysBits] Configures the reduced physical bits setting for SEV-SNP to assign smaller address spaces.
   /// [vcek] Configures the VCEK (Virtual Machine Key) for the SEV-SNP feature.
-  DomainLaunchSecuritySevsnp({
+  const DomainLaunchSecuritySevsnp({
     this.authorKey,
     this.cbitPos,
     this.guestVisibleWorkarounds,

@@ -49,7 +49,7 @@ class GetNetworkInsightsAnalysisReturnPathComponent {
   /// [transitGatewayRouteTableRoutes] Required.
   /// [transitGateways] Required.
   /// [vpcs] Required.
-  GetNetworkInsightsAnalysisReturnPathComponent({
+  const GetNetworkInsightsAnalysisReturnPathComponent({
     required this.aclRules,
     required this.additionalDetails,
     required this.attachedTos,

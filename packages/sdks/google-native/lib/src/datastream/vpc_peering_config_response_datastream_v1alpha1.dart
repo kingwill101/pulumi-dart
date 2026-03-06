@@ -12,7 +12,7 @@ class VpcPeeringConfigResponseDatastreamV1alpha1 {
   /// Creates a new [VpcPeeringConfigResponseDatastreamV1alpha1].
   /// [subnet] A free subnet for peering. (CIDR of /29)
   /// [vpcName] fully qualified name of the VPC Datastream will peer to.
-  VpcPeeringConfigResponseDatastreamV1alpha1({
+  const VpcPeeringConfigResponseDatastreamV1alpha1({
     required this.subnet,
     required this.vpcName,
   });

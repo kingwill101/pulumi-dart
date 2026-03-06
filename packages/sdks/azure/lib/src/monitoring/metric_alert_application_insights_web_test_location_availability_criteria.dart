@@ -14,7 +14,7 @@ class MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria {
   /// [componentId] The ID of the Application Insights Resource.
   /// [failedLocationCount] The number of failed locations.
   /// [webTestId] The ID of the Application Insights Web Test.
-  MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria({
+  const MetricAlertApplicationInsightsWebTestLocationAvailabilityCriteria({
     required this.componentId,
     required this.failedLocationCount,
     required this.webTestId,

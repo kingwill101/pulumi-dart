@@ -12,7 +12,7 @@ class FirewallPolicyRuleConditionApplicationProtocol {
   /// Creates a new [FirewallPolicyRuleConditionApplicationProtocol].
   /// [port] Port number for the protocol, cannot be greater than 64000.
   /// [protocolType] Protocol type.
-  FirewallPolicyRuleConditionApplicationProtocol({
+  const FirewallPolicyRuleConditionApplicationProtocol({
     this.port,
     this.protocolType,
   });

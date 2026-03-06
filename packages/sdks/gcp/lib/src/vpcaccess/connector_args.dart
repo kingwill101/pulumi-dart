@@ -51,7 +51,7 @@ class ConnectorArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Region where the VPC Access connector resides. If it is not provided, the provider region is used.
   /// [subnet] The subnet in which to house the connector
-  ConnectorArgs({
+  const ConnectorArgs({
     this.ipCidrRange,
     this.machineType,
     this.maxInstances,

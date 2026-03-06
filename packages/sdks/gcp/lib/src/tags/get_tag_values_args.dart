@@ -12,7 +12,7 @@ class GetTagValuesArgs {
 
   /// Creates a new [GetTagValuesArgs].
   /// [parent] The resource name of the parent tagKey in format `tagKey/{name}`.
-  GetTagValuesArgs({
+  const GetTagValuesArgs({
     required this.parent,
   });
 

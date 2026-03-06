@@ -22,7 +22,7 @@ class RepositoryIamMemberArgs {
   /// [region] Optional.
   /// [repository] Required.
   /// [role] Required.
-  RepositoryIamMemberArgs({
+  const RepositoryIamMemberArgs({
     this.condition,
     required this.member,
     this.project,

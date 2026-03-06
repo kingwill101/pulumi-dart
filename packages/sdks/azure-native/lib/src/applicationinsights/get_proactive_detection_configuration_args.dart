@@ -18,7 +18,7 @@ class GetProactiveDetectionConfigurationArgs {
   /// [configurationId] The ProactiveDetection configuration ID. This is unique within a Application Insights component.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the Application Insights component resource.
-  GetProactiveDetectionConfigurationArgs({
+  const GetProactiveDetectionConfigurationArgs({
     required this.configurationId,
     required this.resourceGroupName,
     required this.resourceName,

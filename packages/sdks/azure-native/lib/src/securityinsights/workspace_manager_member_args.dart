@@ -24,7 +24,7 @@ class WorkspaceManagerMemberArgs {
   /// [targetWorkspaceTenantId] Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
   /// [workspaceManagerMemberName] The name of the workspace manager member
   /// [workspaceName] The name of the workspace.
-  WorkspaceManagerMemberArgs({
+  const WorkspaceManagerMemberArgs({
     required this.resourceGroupName,
     required this.targetWorkspaceResourceId,
     required this.targetWorkspaceTenantId,

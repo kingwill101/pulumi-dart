@@ -9,7 +9,7 @@ class ConnectorPlugin {
 
   /// Creates a new [ConnectorPlugin].
   /// [customPlugin] Details about a custom plugin. See `custom_plugin` Block for details.
-  ConnectorPlugin({
+  const ConnectorPlugin({
     required this.customPlugin,
   });
 

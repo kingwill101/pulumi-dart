@@ -81,7 +81,7 @@ class VMwareNodePoolState {
   /// [uid] The unique identifier of the node pool.
   /// [updateTime] The time the cluster was last updated, in RFC3339 text format.
   /// [vmwareCluster] The cluster this node pool belongs to.
-  VMwareNodePoolState({
+  const VMwareNodePoolState({
     this.annotations,
     this.config,
     this.createTime,

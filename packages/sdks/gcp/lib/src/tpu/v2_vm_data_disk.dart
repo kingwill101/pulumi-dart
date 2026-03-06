@@ -15,7 +15,7 @@ class V2VmDataDisk {
   /// Creates a new [V2VmDataDisk].
   /// [mode] The mode in which to attach this disk. If not specified, the default is READ_WRITE
   /// [sourceDisk] Specifies the full path to an existing disk. For example:
-  V2VmDataDisk({
+  const V2VmDataDisk({
     this.mode,
     required this.sourceDisk,
   });

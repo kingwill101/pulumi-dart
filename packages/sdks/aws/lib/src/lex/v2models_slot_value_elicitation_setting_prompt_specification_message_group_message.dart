@@ -17,7 +17,7 @@ class V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage 
   /// [imageResponseCard] Optional.
   /// [plainTextMessage] Optional.
   /// [ssmlMessage] Optional.
-  V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage({
+  const V2modelsSlotValueElicitationSettingPromptSpecificationMessageGroupMessage({
     this.customPayload,
     this.imageResponseCard,
     this.plainTextMessage,

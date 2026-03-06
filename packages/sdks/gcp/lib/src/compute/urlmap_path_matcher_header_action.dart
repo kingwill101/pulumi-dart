@@ -23,7 +23,7 @@ class URLMapPathMatcherHeaderAction {
   /// [requestHeadersToRemoves] A list of header names for headers that need to be removed from the request prior to
   /// [responseHeadersToAdds] Headers to add the response prior to sending the response back to the client.
   /// [responseHeadersToRemoves] A list of header names for headers that need to be removed from the response prior to sending the
-  URLMapPathMatcherHeaderAction({
+  const URLMapPathMatcherHeaderAction({
     this.requestHeadersToAdds,
     this.requestHeadersToRemoves,
     this.responseHeadersToAdds,

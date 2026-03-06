@@ -18,7 +18,7 @@ class GetKafkaConnectorArgs {
   /// [kafkaConnectorName] Name of MQ kafkaConnector resource
   /// [mqName] Name of MQ resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetKafkaConnectorArgs({
+  const GetKafkaConnectorArgs({
     required this.kafkaConnectorName,
     required this.mqName,
     required this.resourceGroupName,

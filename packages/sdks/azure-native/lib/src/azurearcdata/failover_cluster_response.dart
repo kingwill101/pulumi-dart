@@ -22,7 +22,7 @@ class FailoverClusterResponse {
   /// [id] The GUID of the SQL Server's underlying Failover Cluster.
   /// [networkName] The network name to connect to the SQL FCI.
   /// [sqlInstanceIds] The ARM IDs of the Arc SQL Server resources, belonging to the current server's Failover cluster.
-  FailoverClusterResponse({
+  const FailoverClusterResponse({
     required this.hostIPAddresses,
     required this.hostNames,
     required this.id,

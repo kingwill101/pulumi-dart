@@ -14,7 +14,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwat
   /// [enabled] Enables or disables the logging. Defaults to `false`.
   /// [logGroupName] The CloudWatch group name for logging. This value is required if `enabled` is true.
   /// [logStreamName] The CloudWatch log stream name for logging. This value is required if `enabled` is true.
-  FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions({
+  const FirehoseDeliveryStreamExtendedS3ConfigurationS3BackupConfigurationCloudwatchLoggingOptions({
     this.enabled,
     this.logGroupName,
     this.logStreamName,

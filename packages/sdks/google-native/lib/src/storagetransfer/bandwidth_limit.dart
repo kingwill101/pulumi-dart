@@ -9,7 +9,7 @@ class BandwidthLimit {
 
   /// Creates a new [BandwidthLimit].
   /// [limitMbps] Bandwidth rate in megabytes per second, distributed across all the agents in the pool.
-  BandwidthLimit({
+  const BandwidthLimit({
     this.limitMbps,
   });
 

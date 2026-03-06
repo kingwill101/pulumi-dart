@@ -9,7 +9,7 @@ class GetRouteSpecGrpcRouteMatchMetadataMatchRange {
   /// Creates a new [GetRouteSpecGrpcRouteMatchMetadataMatchRange].
   /// [end] Required.
   /// [start] Required.
-  GetRouteSpecGrpcRouteMatchMetadataMatchRange({
+  const GetRouteSpecGrpcRouteMatchMetadataMatchRange({
     required this.end,
     required this.start,
   });

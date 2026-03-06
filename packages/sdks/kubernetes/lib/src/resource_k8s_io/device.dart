@@ -83,7 +83,7 @@ class Device {
   /// [nodeName] NodeName identifies the node where the device is available.
   /// [nodeSelector] NodeSelector defines the nodes where the device is available.
   /// [taints] If specified, these are the driver-defined taints.
-  Device({
+  const Device({
     this.allNodes,
     this.allowMultipleAllocations,
     this.attributes,

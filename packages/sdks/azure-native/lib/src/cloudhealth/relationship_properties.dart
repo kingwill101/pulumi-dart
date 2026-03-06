@@ -18,7 +18,7 @@ class RelationshipProperties {
   /// [displayName] Display name
   /// [labels] Optional set of labels (key-value pairs)
   /// [parentEntityName] Resource name of the parent entity
-  RelationshipProperties({
+  const RelationshipProperties({
     required this.childEntityName,
     this.displayName,
     this.labels,

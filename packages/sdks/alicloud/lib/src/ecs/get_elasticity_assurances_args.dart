@@ -27,7 +27,7 @@ class GetElasticityAssurancesArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
   /// [tags] The tag key-value pair information bound by the elastic guarantee service.
-  GetElasticityAssurancesArgs({
+  const GetElasticityAssurancesArgs({
     this.ids,
     this.outputFile,
     this.privatePoolOptionsIds,

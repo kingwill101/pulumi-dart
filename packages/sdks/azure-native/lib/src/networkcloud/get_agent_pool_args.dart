@@ -18,7 +18,7 @@ class GetAgentPoolArgs {
   /// [agentPoolName] The name of the Kubernetes cluster agent pool.
   /// [kubernetesClusterName] The name of the Kubernetes cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAgentPoolArgs({
+  const GetAgentPoolArgs({
     required this.agentPoolName,
     required this.kubernetesClusterName,
     required this.resourceGroupName,

@@ -9,7 +9,7 @@ class DatabaseInstanceProperties {
 
   /// Creates a new [DatabaseInstanceProperties].
   /// [databaseInstanceId] Resource Id of existing database instance
-  DatabaseInstanceProperties({
+  const DatabaseInstanceProperties({
     this.databaseInstanceId,
   });
 

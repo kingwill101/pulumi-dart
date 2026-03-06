@@ -8,7 +8,7 @@ class QuickConnectQuickConnectConfigPhoneConfig {
 
   /// Creates a new [QuickConnectQuickConnectConfigPhoneConfig].
   /// [phoneNumber] Specifies the phone number in in E.164 format.
-  QuickConnectQuickConnectConfigPhoneConfig({
+  const QuickConnectQuickConnectConfigPhoneConfig({
     required this.phoneNumber,
   });
 

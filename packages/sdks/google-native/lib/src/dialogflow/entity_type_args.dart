@@ -37,7 +37,7 @@ class EntityTypeArgs {
   /// [location] Optional.
   /// [name] The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`.
   /// [project] Optional.
-  EntityTypeArgs({
+  const EntityTypeArgs({
     this.autoExpansionMode,
     required this.displayName,
     this.enableFuzzyExtraction,

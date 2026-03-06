@@ -26,7 +26,7 @@ class ImageDataDisk {
   /// [managedDiskId] Specifies the ID of the managed disk resource that you want to use to create the image. Changing this forces a new resource to be created.
   /// [sizeGb] Specifies the size of the image to be created. The target size can't be smaller than the source size.
   /// [storageType] The type of Storage Disk to use. Possible values are `Premium_LRS`, `PremiumV2_LRS`, `Premium_ZRS`, `Standard_LRS`, `StandardSSD_LRS`, `StandardSSD_ZRS` and `UltraSSD_LRS`. Changing this forces a new resource to be created.
-  ImageDataDisk({
+  const ImageDataDisk({
     this.blobUri,
     this.caching,
     this.diskEncryptionSetId,

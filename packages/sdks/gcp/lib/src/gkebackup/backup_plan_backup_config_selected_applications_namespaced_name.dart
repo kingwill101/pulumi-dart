@@ -11,7 +11,7 @@ class BackupPlanBackupConfigSelectedApplicationsNamespacedName {
   /// Creates a new [BackupPlanBackupConfigSelectedApplicationsNamespacedName].
   /// [name] The name of a Kubernetes Resource.
   /// [namespace] The namespace of a Kubernetes Resource.
-  BackupPlanBackupConfigSelectedApplicationsNamespacedName({
+  const BackupPlanBackupConfigSelectedApplicationsNamespacedName({
     required this.name,
     required this.namespace,
   });

@@ -20,7 +20,7 @@ class StaticCidrPropertiesResponse {
   /// [numberOfIPAddressesToAllocate] Number of IP addresses to allocate for a static CIDR resource. The IP addresses will be assigned based on IpamPools available space.
   /// [provisioningState] Provisioning states of a resource.
   /// [totalNumberOfIPAddresses] Total number of IP addresses allocated for the static CIDR resource.
-  StaticCidrPropertiesResponse({
+  const StaticCidrPropertiesResponse({
     this.addressPrefixes,
     this.description,
     this.numberOfIPAddressesToAllocate,

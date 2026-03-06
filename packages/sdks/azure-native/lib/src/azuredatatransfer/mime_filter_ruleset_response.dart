@@ -13,7 +13,7 @@ class MimeFilterRulesetResponse {
   /// Creates a new [MimeFilterRulesetResponse].
   /// [filters] Defines the Media types (f.k.a MIME types) and associated file extensions to be filtered. For more detail, please refer to the MimeTypeFiler model.
   /// [type] Specifies whether the filter is an allow list or deny list. For more detail, please refer to the FilterType model.
-  MimeFilterRulesetResponse({
+  const MimeFilterRulesetResponse({
     this.filters,
     this.type,
   });

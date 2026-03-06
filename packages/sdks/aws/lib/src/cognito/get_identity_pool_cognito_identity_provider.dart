@@ -11,7 +11,7 @@ class GetIdentityPoolCognitoIdentityProvider {
   /// [clientId] Required.
   /// [providerName] Required.
   /// [serverSideTokenCheck] Required.
-  GetIdentityPoolCognitoIdentityProvider({
+  const GetIdentityPoolCognitoIdentityProvider({
     required this.clientId,
     required this.providerName,
     required this.serverSideTokenCheck,

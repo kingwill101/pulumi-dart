@@ -36,7 +36,7 @@ class BucketV2LifecycleRule {
   /// [prefix] Object key prefix identifying one or more objects to which the rule applies.
   /// [tags] Specifies object tags key and value.
   /// [transitions] Specifies a period in the object's transitions. See Transition below for details.
-  BucketV2LifecycleRule({
+  const BucketV2LifecycleRule({
     this.abortIncompleteMultipartUploadDays,
     required this.enabled,
     this.expirations,

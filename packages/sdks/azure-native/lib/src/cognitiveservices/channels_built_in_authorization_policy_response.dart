@@ -10,7 +10,7 @@ class ChannelsBuiltInAuthorizationPolicyResponse {
 
   /// Creates a new [ChannelsBuiltInAuthorizationPolicyResponse].
   /// [type] Authorization scheme type.
-  ChannelsBuiltInAuthorizationPolicyResponse({
+  const ChannelsBuiltInAuthorizationPolicyResponse({
     required this.type,
   });
 

@@ -14,7 +14,7 @@ class GetDataCollectionRuleDestinationStorageTableDirect {
   /// [name] Specifies the name of the Data Collection Rule.
   /// [storageAccountId] The resource ID of the Storage Account.
   /// [tableName] The Storage Table name.
-  GetDataCollectionRuleDestinationStorageTableDirect({
+  const GetDataCollectionRuleDestinationStorageTableDirect({
     required this.name,
     required this.storageAccountId,
     required this.tableName,

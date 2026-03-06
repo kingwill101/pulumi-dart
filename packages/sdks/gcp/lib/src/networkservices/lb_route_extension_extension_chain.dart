@@ -24,7 +24,7 @@ class LbRouteExtensionExtensionChain {
   /// [extensions] A set of extensions to execute for the matching request.
   /// [matchCondition] Conditions under which this chain is invoked for a request.
   /// [name] The name for this extension chain. The name is logged as part of the HTTP request logs.
-  LbRouteExtensionExtensionChain({
+  const LbRouteExtensionExtensionChain({
     required this.extensions,
     required this.matchCondition,
     required this.name,

@@ -14,7 +14,7 @@ class DomainDevicesAudioFile {
   /// [input] Configures the output settings for the file-based audio device.
   /// [output] Configures the output settings for the file-based audio device.
   /// [path] Sets the file path for the file-based audio device.
-  DomainDevicesAudioFile({
+  const DomainDevicesAudioFile({
     this.input,
     this.output,
     this.path,

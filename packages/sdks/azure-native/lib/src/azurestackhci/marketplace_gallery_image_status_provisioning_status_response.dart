@@ -12,7 +12,7 @@ class MarketplaceGalleryImageStatusProvisioningStatusResponse {
   /// Creates a new [MarketplaceGalleryImageStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the gallery image
   /// [status] The status of the operation performed on the gallery image [Succeeded, Failed, InProgress]
-  MarketplaceGalleryImageStatusProvisioningStatusResponse({
+  const MarketplaceGalleryImageStatusProvisioningStatusResponse({
     this.operationId,
     required this.status,
   });

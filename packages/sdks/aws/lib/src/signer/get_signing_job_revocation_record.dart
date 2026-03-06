@@ -11,7 +11,7 @@ class GetSigningJobRevocationRecord {
   /// [reason] Required.
   /// [revokedAt] Required.
   /// [revokedBy] Required.
-  GetSigningJobRevocationRecord({
+  const GetSigningJobRevocationRecord({
     required this.reason,
     required this.revokedAt,
     required this.revokedBy,

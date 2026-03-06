@@ -51,7 +51,7 @@ class SamplingRuleArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   /// [urlPath] Matches the path from a request URL.
   /// [version] The version of the sampling rule format (`1` )
-  SamplingRuleArgs({
+  const SamplingRuleArgs({
     this.attributes,
     required this.fixedRate,
     required this.host,

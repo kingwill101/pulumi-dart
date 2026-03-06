@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2DataProfilePubSubConditionResponse {
 
   /// Creates a new [GooglePrivacyDlpV2DataProfilePubSubConditionResponse].
   /// [expressions] An expression.
-  GooglePrivacyDlpV2DataProfilePubSubConditionResponse({
+  const GooglePrivacyDlpV2DataProfilePubSubConditionResponse({
     required this.expressions,
   });
 

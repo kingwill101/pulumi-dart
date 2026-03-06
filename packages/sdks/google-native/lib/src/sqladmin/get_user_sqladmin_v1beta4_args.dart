@@ -17,7 +17,7 @@ class GetUserSqladminV1beta4Args {
   /// [instance] Required.
   /// [name] Required.
   /// [project] Optional.
-  GetUserSqladminV1beta4Args({
+  const GetUserSqladminV1beta4Args({
     this.host,
     required this.instance,
     required this.name,

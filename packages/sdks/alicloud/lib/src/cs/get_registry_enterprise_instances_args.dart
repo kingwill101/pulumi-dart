@@ -21,7 +21,7 @@ class GetRegistryEnterpriseInstancesArgs {
   /// [ids] A list of ids to filter results by instance id.
   /// [nameRegex] A regex string to filter results by instance name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetRegistryEnterpriseInstancesArgs({
+  const GetRegistryEnterpriseInstancesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

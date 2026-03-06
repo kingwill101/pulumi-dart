@@ -18,7 +18,7 @@ class InferenceContainerPropertiesResponse {
   /// [readinessRoute] The route to check the readiness of the inference server container.
   /// [scoringRoute] The port to send the scoring requests to, within the inference server container.
   /// [startupRoute] The route to check the startup of the application in the container.
-  InferenceContainerPropertiesResponse({
+  const InferenceContainerPropertiesResponse({
     this.livenessRoute,
     this.readinessRoute,
     this.scoringRoute,

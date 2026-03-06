@@ -15,7 +15,7 @@ class GetRegistryRepositoryResult {
   /// [project] Required.
   /// [region] Optional.
   /// [repositoryUrl] The URL at which the repository can be accessed.
-  GetRegistryRepositoryResult({
+  const GetRegistryRepositoryResult({
     required this.id,
     required this.project,
     this.region,

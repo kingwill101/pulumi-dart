@@ -13,7 +13,7 @@ class ExpressRouteCircuitSku {
   /// Creates a new [ExpressRouteCircuitSku].
   /// [family] The billing mode for bandwidth. Possible values are `MeteredData` or `UnlimitedData`.
   /// [tier] The service tier. Possible values are `Basic`, `Local`, `Standard` or `Premium`.
-  ExpressRouteCircuitSku({
+  const ExpressRouteCircuitSku({
     required this.family,
     required this.tier,
   });

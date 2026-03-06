@@ -33,7 +33,7 @@ class ReturnAddress {
   /// [stateOrProvince] The state or province to use when returning the drives.
   /// [streetAddress1] The first line of the street address to use when returning the drives.
   /// [streetAddress2] The second line of the street address to use when returning the drives.
-  ReturnAddress({
+  const ReturnAddress({
     required this.city,
     required this.countryOrRegion,
     required this.email,

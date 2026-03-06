@@ -66,7 +66,7 @@ class HostPoolArgs {
   /// [type] The type of the Virtual Desktop Host Pool. Valid options are `Personal` or `Pooled`. Changing the type forces a new resource to be created.
   /// [validateEnvironment] Allows you to test service changes before they are deployed to production. Defaults to `false`.
   /// [vmTemplate] A VM template for session hosts configuration within hostpool. This is a JSON string.
-  HostPoolArgs({
+  const HostPoolArgs({
     this.customRdpProperties,
     this.description,
     this.friendlyName,

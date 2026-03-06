@@ -22,7 +22,7 @@ class GetDatascanIamPolicyArgs {
   /// [dataScanId] Used to find the parent resource to bind the IAM policy to
   /// [location] The location where the data scan should reside.
   /// [project] The ID of the project in which the resource belongs.
-  GetDatascanIamPolicyArgs({
+  const GetDatascanIamPolicyArgs({
     required this.dataScanId,
     this.location,
     this.project,

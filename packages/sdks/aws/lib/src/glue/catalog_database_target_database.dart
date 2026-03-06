@@ -14,7 +14,7 @@ class CatalogDatabaseTargetDatabase {
   /// [catalogId] ID of the Data Catalog in which the database resides.
   /// [databaseName] Name of the catalog database.
   /// [region] Region of the target database.
-  CatalogDatabaseTargetDatabase({
+  const CatalogDatabaseTargetDatabase({
     required this.catalogId,
     required this.databaseName,
     this.region,

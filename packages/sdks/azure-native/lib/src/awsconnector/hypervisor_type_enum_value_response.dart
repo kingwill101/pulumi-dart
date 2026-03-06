@@ -9,7 +9,7 @@ class HypervisorTypeEnumValueResponse {
 
   /// Creates a new [HypervisorTypeEnumValueResponse].
   /// [value] Property value
-  HypervisorTypeEnumValueResponse({
+  const HypervisorTypeEnumValueResponse({
     this.value,
   });
 

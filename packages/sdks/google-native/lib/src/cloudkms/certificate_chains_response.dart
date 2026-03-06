@@ -15,7 +15,7 @@ class CertificateChainsResponse {
   /// [caviumCerts] Cavium certificate chain corresponding to the attestation.
   /// [googleCardCerts] Google card certificate chain corresponding to the attestation.
   /// [googlePartitionCerts] Google partition certificate chain corresponding to the attestation.
-  CertificateChainsResponse({
+  const CertificateChainsResponse({
     required this.caviumCerts,
     required this.googleCardCerts,
     required this.googlePartitionCerts,

@@ -26,7 +26,7 @@ class AppLanguageSettings {
   /// [enableMultilingualSupport] Enables multilingual support. If true, agents in the app will use pre-built
   /// [fallbackAction] The action to perform when an agent receives input in an unsupported
   /// [supportedLanguageCodes] List of languages codes supported by the app, in addition to the
-  AppLanguageSettings({
+  const AppLanguageSettings({
     this.defaultLanguageCode,
     this.enableMultilingualSupport,
     this.fallbackAction,

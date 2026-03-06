@@ -12,7 +12,7 @@ class EncryptionPreferences {
   /// Creates a new [EncryptionPreferences].
   /// [doubleEncryption] Defines secondary layer of software-based encryption enablement.
   /// [hardwareEncryption] Defines Hardware level encryption (Only for disk)
-  EncryptionPreferences({
+  const EncryptionPreferences({
     this.doubleEncryption,
     this.hardwareEncryption,
   });

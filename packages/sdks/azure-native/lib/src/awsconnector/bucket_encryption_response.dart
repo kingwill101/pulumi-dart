@@ -10,7 +10,7 @@ class BucketEncryptionResponse {
 
   /// Creates a new [BucketEncryptionResponse].
   /// [serverSideEncryptionConfiguration] Specifies the default server-side-encryption configuration.
-  BucketEncryptionResponse({
+  const BucketEncryptionResponse({
     this.serverSideEncryptionConfiguration,
   });
 

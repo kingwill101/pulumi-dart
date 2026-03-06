@@ -27,7 +27,7 @@ class ResourceRecordSetResponseDnsV1beta2 {
   /// [signatureRrdatas] As defined in RFC 4034 (section 3.2).
   /// [ttl] Number of seconds that this ResourceRecordSet can be cached by resolvers.
   /// [type] The identifier of a supported record type. See the list of Supported DNS record types.
-  ResourceRecordSetResponseDnsV1beta2({
+  const ResourceRecordSetResponseDnsV1beta2({
     required this.kind,
     required this.name,
     required this.routingPolicy,

@@ -41,7 +41,7 @@ class GetManagedRuleGroupResult {
   /// [snsTopicArn] ARN of the SNS topic that's used to provide notification of changes to the managed rule group.
   /// [vendorName] Required.
   /// [versionName] Optional.
-  GetManagedRuleGroupResult({
+  const GetManagedRuleGroupResult({
     required this.availableLabels,
     required this.capacity,
     required this.consumedLabels,

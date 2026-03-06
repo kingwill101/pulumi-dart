@@ -15,7 +15,7 @@ class BuildServiceAgentPoolSizePropertiesResponse {
   /// [cpu] The cpu property of build service agent pool size
   /// [memory] The memory property of build service agent pool size
   /// [name] The name of build service agent pool size
-  BuildServiceAgentPoolSizePropertiesResponse({
+  const BuildServiceAgentPoolSizePropertiesResponse({
     required this.cpu,
     required this.memory,
     this.name,

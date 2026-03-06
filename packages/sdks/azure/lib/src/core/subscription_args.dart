@@ -31,7 +31,7 @@ class SubscriptionArgs {
   /// [subscriptionName] The Name of the Subscription. This is the Display Name in the portal.
   /// [tags] A mapping of tags to assign to the Subscription.
   /// [workload] The workload type of the Subscription. Possible values are `Production` (default) and `DevTest`. Changing this forces a new Subscription to be created.
-  SubscriptionArgs({
+  const SubscriptionArgs({
     this.alias,
     this.billingScopeId,
     this.subscriptionId,

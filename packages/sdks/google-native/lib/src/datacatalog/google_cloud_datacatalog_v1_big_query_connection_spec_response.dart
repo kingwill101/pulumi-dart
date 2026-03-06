@@ -16,7 +16,7 @@ class GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse {
   /// [cloudSql] Specification for the BigQuery connection to a Cloud SQL instance.
   /// [connectionType] The type of the BigQuery connection.
   /// [hasCredential] True if there are credentials attached to the BigQuery connection; false otherwise.
-  GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse({
+  const GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse({
     required this.cloudSql,
     required this.connectionType,
     required this.hasCredential,

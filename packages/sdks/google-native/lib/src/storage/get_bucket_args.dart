@@ -19,7 +19,7 @@ class GetBucketArgs {
   /// [ifMetagenerationNotMatch] Optional.
   /// [projection] Optional.
   /// [userProject] Optional.
-  GetBucketArgs({
+  const GetBucketArgs({
     required this.bucket,
     this.ifMetagenerationMatch,
     this.ifMetagenerationNotMatch,

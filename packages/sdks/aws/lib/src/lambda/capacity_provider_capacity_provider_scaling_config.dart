@@ -15,7 +15,7 @@ class CapacityProviderCapacityProviderScalingConfig {
   /// [maxVcpuCount] The maximum number of VCPUs for the Capacity Provider.
   /// [scalingMode] The scaling mode for the Capacity Provider. Valid values are `"Auto"` and `"Manual"`. Defaults to `"Auto"`.
   /// [scalingPolicies] List of scaling policies. Only required if `scaling_mode` is set to `"Manual"`. See Scaling Policies below.
-  CapacityProviderCapacityProviderScalingConfig({
+  const CapacityProviderCapacityProviderScalingConfig({
     required this.maxVcpuCount,
     required this.scalingMode,
     required this.scalingPolicies,

@@ -18,7 +18,7 @@ class ResourceClassParametersReferenceResourceK8sIoV1alpha2 {
   /// [kind] Kind is the type of resource being referenced. This is the same value as in the parameter object's metadata.
   /// [name] Name is the name of resource being referenced.
   /// [namespace] Namespace that contains the referenced resource. Must be empty for cluster-scoped resources and non-empty for namespaced resources.
-  ResourceClassParametersReferenceResourceK8sIoV1alpha2({
+  const ResourceClassParametersReferenceResourceK8sIoV1alpha2({
     this.apiGroup,
     required this.kind,
     required this.name,

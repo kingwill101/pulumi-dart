@@ -33,7 +33,7 @@ class ScheduledSqlState {
   /// [scheduledSqlConfiguration] Task configuration. See `scheduled_sql_configuration` below.
   /// [scheduledSqlName] The job name. The naming rules are as follows:
   /// [status] The status of the scheduled SQL job.
-  ScheduledSqlState({
+  const ScheduledSqlState({
     this.description,
     this.displayName,
     this.project,

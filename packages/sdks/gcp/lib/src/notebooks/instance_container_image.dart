@@ -12,7 +12,7 @@ class InstanceContainerImage {
   /// Creates a new [InstanceContainerImage].
   /// [repository] The path to the container image repository.
   /// [tag] The tag of the container image. If not specified, this defaults to the latest tag.
-  InstanceContainerImage({
+  const InstanceContainerImage({
     required this.repository,
     this.tag,
   });

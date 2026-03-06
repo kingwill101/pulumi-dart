@@ -24,7 +24,7 @@ class GetParameterGroupsArgs {
   /// [ids] A list of Parameter Group IDs.
   /// [nameRegex] A regex string to filter results by Parameter Group name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetParameterGroupsArgs({
+  const GetParameterGroupsArgs({
     this.dbType,
     this.dbVersion,
     this.ids,

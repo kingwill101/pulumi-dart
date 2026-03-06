@@ -64,7 +64,7 @@ class TenantArgs {
   /// [recaptchaConfig] The tenant-level reCAPTCHA config.
   /// [smsRegionConfig] Configures which regions are enabled for SMS verification code sending.
   /// [testPhoneNumbers] A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
-  TenantArgs({
+  const TenantArgs({
     this.allowPasswordSignup,
     this.autodeleteAnonymousUsers,
     this.client,

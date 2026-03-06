@@ -17,7 +17,7 @@ class ProfileRewriteRequest {
   /// [insertXfwdHost] Enable to add the X-Forwarded Host header, to specify the originating host of the client. Valid choices are: `enabled, disabled`
   /// [insertXfwdProtocol] Enable to add the X-Forwarded Proto header, to specify the originating protocol of the client. Valid choices are: `enabled, disabled`
   /// [rewriteHeaders] Enable to rewrite headers in Request settings. Valid choices are: `enabled, disabled`
-  ProfileRewriteRequest({
+  const ProfileRewriteRequest({
     this.insertXfwdFor,
     this.insertXfwdHost,
     this.insertXfwdProtocol,

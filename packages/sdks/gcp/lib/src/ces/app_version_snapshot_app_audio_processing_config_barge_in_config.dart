@@ -12,7 +12,7 @@ class AppVersionSnapshotAppAudioProcessingConfigBargeInConfig {
 
   /// Creates a new [AppVersionSnapshotAppAudioProcessingConfigBargeInConfig].
   /// [bargeInAwareness] (Output)
-  AppVersionSnapshotAppAudioProcessingConfigBargeInConfig({
+  const AppVersionSnapshotAppAudioProcessingConfigBargeInConfig({
     this.bargeInAwareness,
   });
 

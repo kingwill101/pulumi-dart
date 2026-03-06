@@ -64,7 +64,7 @@ class ConnectionPropertiesResponse {
   /// [secondaryContacts] The secondary contacts for this connection request
   /// [status] Status of the connection
   /// [statusReason] Reason for status
-  ConnectionPropertiesResponse({
+  const ConnectionPropertiesResponse({
     required this.approver,
     required this.dateSubmitted,
     this.direction,

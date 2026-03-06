@@ -27,7 +27,7 @@ class RollingUpgradePolicyResponse {
   /// [pauseTimeBetweenBatches] The wait time between completing the update for all virtual machines in one batch and starting the next batch. The time duration should be specified in ISO 8601 format.
   /// [prioritizeUnhealthyInstances] Upgrade all unhealthy instances in a scale set before any healthy instances.
   /// [rollbackFailedInstancesOnPolicyBreach] Rollback failed instances to previous model if the Rolling Upgrade policy is violated.
-  RollingUpgradePolicyResponse({
+  const RollingUpgradePolicyResponse({
     this.enableCrossZoneUpgrade,
     this.maxBatchInstancePercent,
     this.maxUnhealthyInstancePercent,

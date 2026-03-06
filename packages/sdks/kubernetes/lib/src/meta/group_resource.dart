@@ -10,7 +10,7 @@ class GroupResource {
   /// Creates a new [GroupResource].
   /// [group] Required.
   /// [resource] Required.
-  GroupResource({
+  const GroupResource({
     required this.group,
     required this.resource,
   });

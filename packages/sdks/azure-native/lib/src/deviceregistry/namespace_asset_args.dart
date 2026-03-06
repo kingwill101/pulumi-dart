@@ -117,7 +117,7 @@ class NamespaceAssetArgs {
   /// [softwareRevision] Asset software revision number.
   /// [streams] Array of streams that are part of the asset. Each stream can have a per-stream configuration.
   /// [tags] Resource tags.
-  NamespaceAssetArgs({
+  const NamespaceAssetArgs({
     this.assetName,
     this.assetTypeRefs,
     this.attributes,

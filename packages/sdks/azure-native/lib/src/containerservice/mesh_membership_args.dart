@@ -25,7 +25,7 @@ class MeshMembershipArgs {
   /// [properties] Mesh membership properties of a managed cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  MeshMembershipArgs({
+  const MeshMembershipArgs({
     this.managedBy,
     this.meshMembershipName,
     this.properties,

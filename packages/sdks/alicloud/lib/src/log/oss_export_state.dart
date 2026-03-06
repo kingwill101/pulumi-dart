@@ -83,7 +83,7 @@ class OssExportState {
   /// [roleArn] Used to write to oss bucket, the OSS Bucket owner creates the role mark which has the oss bucket write policy, such as `acs:ram::13234:role/logrole`.
   /// [suffix] The suffix for the objects in which the shipped data is stored.
   /// [timeZone] This time zone that is used to format the time, `+0800` e.g.
-  OssExportState({
+  const OssExportState({
     this.bucket,
     this.bufferInterval,
     this.bufferSize,

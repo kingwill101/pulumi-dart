@@ -21,7 +21,7 @@ class RouteWarning {
   /// [code] (Output)
   /// [datas] (Output)
   /// [message] (Output)
-  RouteWarning({
+  const RouteWarning({
     this.code,
     this.datas,
     this.message,

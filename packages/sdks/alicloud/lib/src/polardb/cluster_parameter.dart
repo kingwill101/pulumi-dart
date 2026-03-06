@@ -11,7 +11,7 @@ class ClusterParameter {
   /// Creates a new [ClusterParameter].
   /// [name] Kernel parameter name.
   /// [value] Kernel parameter value.
-  ClusterParameter({
+  const ClusterParameter({
     required this.name,
     required this.value,
   });

@@ -19,7 +19,7 @@ class UserHierarchyStructureArgs {
   /// [hierarchyStructure] A block that defines the hierarchy structure's levels. The `hierarchy_structure` block is documented below.
   /// [instanceId] Specifies the identifier of the hosting Amazon Connect Instance.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  UserHierarchyStructureArgs({
+  const UserHierarchyStructureArgs({
     required this.hierarchyStructure,
     required this.instanceId,
     this.region,

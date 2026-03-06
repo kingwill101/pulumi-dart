@@ -12,7 +12,7 @@ class MaterialResponseContaineranalysisV1alpha1 {
   /// Creates a new [MaterialResponseContaineranalysisV1alpha1].
   /// [digest] digest is a map from a hash algorithm (e.g. sha256) to the value in the material
   /// [uri] uri is the uri of the material
-  MaterialResponseContaineranalysisV1alpha1({
+  const MaterialResponseContaineranalysisV1alpha1({
     required this.digest,
     required this.uri,
   });

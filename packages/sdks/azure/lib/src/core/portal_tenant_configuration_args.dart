@@ -14,7 +14,7 @@ class PortalTenantConfigurationArgs {
 
   /// Creates a new [PortalTenantConfigurationArgs].
   /// [privateMarkdownStorageEnforced] Is the private tile markdown storage which used to display custom dynamic and static content enabled?
-  PortalTenantConfigurationArgs({
+  const PortalTenantConfigurationArgs({
     required this.privateMarkdownStorageEnforced,
   });
 

@@ -40,7 +40,7 @@ class GetPolicySetDefinitionResult {
   /// [policyDefinitionReferences] One or more `policy_definition_reference` blocks as defined below.
   /// [policyDefinitions] The policy definitions contained within the policy set definition.
   /// [policyType] The Type of the Policy Set Definition.
-  GetPolicySetDefinitionResult({
+  const GetPolicySetDefinitionResult({
     required this.description,
     required this.displayName,
     required this.id,

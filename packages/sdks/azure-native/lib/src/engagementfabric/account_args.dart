@@ -25,7 +25,7 @@ class AccountArgs {
   /// [resourceGroupName] Resource Group Name
   /// [sku] The SKU of the resource
   /// [tags] The tags of the resource
-  AccountArgs({
+  const AccountArgs({
     this.accountName,
     this.location,
     required this.resourceGroupName,

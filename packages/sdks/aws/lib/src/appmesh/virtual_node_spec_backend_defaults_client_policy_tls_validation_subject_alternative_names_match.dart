@@ -8,7 +8,7 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeN
 
   /// Creates a new [VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch].
   /// [exacts] Values sent must match the specified values exactly.
-  VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch({
+  const VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNamesMatch({
     required this.exacts,
   });
 

@@ -30,7 +30,7 @@ class InstanceInfoResponse {
   /// [networkUri] URI of a Compute Engine network.
   /// [serviceAccount] Service account authorized for the instance.
   /// [uri] URI of a Compute Engine instance.
-  InstanceInfoResponse({
+  const InstanceInfoResponse({
     required this.displayName,
     required this.externalIp,
     required this.interface,

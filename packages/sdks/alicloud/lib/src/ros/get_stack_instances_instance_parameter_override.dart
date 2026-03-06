@@ -11,7 +11,7 @@ class GetStackInstancesInstanceParameterOverride {
   /// Creates a new [GetStackInstancesInstanceParameterOverride].
   /// [parameterKey] The key of override parameter.
   /// [parameterValue] The value of override parameter.
-  GetStackInstancesInstanceParameterOverride({
+  const GetStackInstancesInstanceParameterOverride({
     required this.parameterKey,
     required this.parameterValue,
   });

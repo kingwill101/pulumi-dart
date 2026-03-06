@@ -32,7 +32,7 @@ class AppleAppArgs {
   /// [displayName] The user-assigned display name of the App.
   /// [project] The ID of the project in which the resource belongs.
   /// [teamId] The Apple Developer Team ID associated with the App in the App Store.
-  AppleAppArgs({
+  const AppleAppArgs({
     this.apiKeyId,
     this.appStoreId,
     required this.bundleId,

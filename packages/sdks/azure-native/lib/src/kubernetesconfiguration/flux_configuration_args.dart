@@ -61,7 +61,7 @@ class FluxConfigurationArgs {
   /// [sourceKind] Source Kind to pull the configuration data from.
   /// [suspend] Whether this configuration should suspend its reconciliation of its kustomizations and sources.
   /// [waitForReconciliation] Whether flux configuration deployment should wait for cluster to reconcile the kustomizations.
-  FluxConfigurationArgs({
+  const FluxConfigurationArgs({
     this.azureBlob,
     this.bucket,
     required this.clusterName,

@@ -11,7 +11,7 @@ class GetInfrastructureConfigurationLoggingS3Log {
   /// Creates a new [GetInfrastructureConfigurationLoggingS3Log].
   /// [s3BucketName] Name of the S3 Bucket for logging.
   /// [s3KeyPrefix] Key prefix for S3 Bucket logging.
-  GetInfrastructureConfigurationLoggingS3Log({
+  const GetInfrastructureConfigurationLoggingS3Log({
     required this.s3BucketName,
     required this.s3KeyPrefix,
   });

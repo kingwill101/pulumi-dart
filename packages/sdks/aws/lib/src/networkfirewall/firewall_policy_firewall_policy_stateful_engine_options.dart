@@ -15,7 +15,7 @@ class FirewallPolicyFirewallPolicyStatefulEngineOptions {
   /// [flowTimeouts] Amount of time that can pass without any traffic sent through the firewall before the firewall determines that the connection is idle.
   /// [ruleOrder] Indicates how to manage the order of stateful rule evaluation for the policy. Default value: `DEFAULT_ACTION_ORDER`. Valid values: `DEFAULT_ACTION_ORDER`, `STRICT_ORDER`.
   /// [streamExceptionPolicy] Describes how to treat traffic which has broken midstream. Default value: `DROP`. Valid values: `DROP`, `CONTINUE`, `REJECT`.
-  FirewallPolicyFirewallPolicyStatefulEngineOptions({
+  const FirewallPolicyFirewallPolicyStatefulEngineOptions({
     this.flowTimeouts,
     this.ruleOrder,
     this.streamExceptionPolicy,

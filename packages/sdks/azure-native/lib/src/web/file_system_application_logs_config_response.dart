@@ -9,7 +9,7 @@ class FileSystemApplicationLogsConfigResponse {
 
   /// Creates a new [FileSystemApplicationLogsConfigResponse].
   /// [level] Log level.
-  FileSystemApplicationLogsConfigResponse({
+  const FileSystemApplicationLogsConfigResponse({
     this.level,
   });
 

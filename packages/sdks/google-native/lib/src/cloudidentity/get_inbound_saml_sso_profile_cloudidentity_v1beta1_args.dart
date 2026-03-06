@@ -11,7 +11,7 @@ class GetInboundSamlSsoProfileCloudidentityV1beta1Args {
 
   /// Creates a new [GetInboundSamlSsoProfileCloudidentityV1beta1Args].
   /// [inboundSamlSsoProfileId] Required.
-  GetInboundSamlSsoProfileCloudidentityV1beta1Args({
+  const GetInboundSamlSsoProfileCloudidentityV1beta1Args({
     required this.inboundSamlSsoProfileId,
   });
 

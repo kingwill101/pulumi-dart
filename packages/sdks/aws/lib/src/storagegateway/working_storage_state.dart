@@ -15,7 +15,7 @@ class WorkingStorageState {
   /// [diskId] Local disk identifier. For example, `pci-0000:03:00.0-scsi-0:0:0:0`.
   /// [gatewayArn] The Amazon Resource Name (ARN) of the gateway.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  WorkingStorageState({
+  const WorkingStorageState({
     this.diskId,
     this.gatewayArn,
     this.region,

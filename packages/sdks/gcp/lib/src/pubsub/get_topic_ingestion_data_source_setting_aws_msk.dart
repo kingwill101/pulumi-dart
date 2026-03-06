@@ -22,7 +22,7 @@ class GetTopicIngestionDataSourceSettingAwsMsk {
   /// [clusterArn] ARN that uniquely identifies the MSK cluster.
   /// [gcpServiceAccount] The GCP service account to be used for Federated Identity authentication
   /// [topic] The name of the MSK topic that Pub/Sub will import from.
-  GetTopicIngestionDataSourceSettingAwsMsk({
+  const GetTopicIngestionDataSourceSettingAwsMsk({
     required this.awsRoleArn,
     required this.clusterArn,
     required this.gcpServiceAccount,

@@ -18,7 +18,7 @@ class PatchGroupArgs {
   /// [baselineId] The ID of the patch baseline to register the patch group with.
   /// [patchGroup] The name of the patch group that should be registered with the patch baseline.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PatchGroupArgs({
+  const PatchGroupArgs({
     required this.baselineId,
     required this.patchGroup,
     this.region,

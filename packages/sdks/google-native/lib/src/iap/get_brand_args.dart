@@ -13,7 +13,7 @@ class GetBrandArgs {
   /// Creates a new [GetBrandArgs].
   /// [brandId] Required.
   /// [project] Optional.
-  GetBrandArgs({
+  const GetBrandArgs({
     required this.brandId,
     this.project,
   });

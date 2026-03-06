@@ -15,7 +15,7 @@ class GetCustomAssessmentAutomationArgs {
   /// Creates a new [GetCustomAssessmentAutomationArgs].
   /// [customAssessmentAutomationName] Name of the Custom Assessment Automation.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
-  GetCustomAssessmentAutomationArgs({
+  const GetCustomAssessmentAutomationArgs({
     required this.customAssessmentAutomationName,
     required this.resourceGroupName,
   });

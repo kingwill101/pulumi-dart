@@ -10,7 +10,7 @@ class ActionDefinitionResponse {
 
   /// Creates a new [ActionDefinitionResponse].
   /// [publishMetricAction] Property publishMetricAction
-  ActionDefinitionResponse({
+  const ActionDefinitionResponse({
     this.publishMetricAction,
   });
 

@@ -11,7 +11,7 @@ class ApiImportWsdlSelector {
   /// Creates a new [ApiImportWsdlSelector].
   /// [endpointName] The name of endpoint (port) to import from WSDL.
   /// [serviceName] The name of service to import from WSDL.
-  ApiImportWsdlSelector({
+  const ApiImportWsdlSelector({
     required this.endpointName,
     required this.serviceName,
   });

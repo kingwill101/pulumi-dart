@@ -39,7 +39,7 @@ class OnlineEndpointArgs {
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [tags] Resource tags.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  OnlineEndpointArgs({
+  const OnlineEndpointArgs({
     this.endpointName,
     this.identity,
     this.kind,

@@ -62,7 +62,7 @@ class PolicyAssignmentArgs {
   /// [policyDefinitionId] The ID of the policy definition or policy set definition being assigned.
   /// [resourceSelectors] The resource selector list to filter policies by resource properties.
   /// [scope] The scope of the policy assignment. Valid scopes are: management group (format: '/providers/Microsoft.Management/managementGroups/{managementGroup}'), subscription (format: '/subscriptions/{subscriptionId}'), resource group (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}', or resource (format: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}'
-  PolicyAssignmentArgs({
+  const PolicyAssignmentArgs({
     this.assignmentType,
     this.definitionVersion,
     this.description,

@@ -11,7 +11,7 @@ class ConformancePackInputParameter {
   /// Creates a new [ConformancePackInputParameter].
   /// [parameterName] The input key.
   /// [parameterValue] The input value.
-  ConformancePackInputParameter({
+  const ConformancePackInputParameter({
     required this.parameterName,
     required this.parameterValue,
   });

@@ -8,7 +8,7 @@ class GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy {
 
   /// Creates a new [GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy].
   /// [restartNode] Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-  GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy({
+  const GetKubernetesNodePoolsNodepoolManagementAutoRepairPolicy({
     required this.restartNode,
   });
 

@@ -32,7 +32,7 @@ class PolicyGroupArgs {
   /// [organizationName] The name of the Pulumi organization the policy group belongs to.
   /// [policyPacks] List of policy packs applied to this policy group.
   /// [stacks] List of stack references that belong to this policy group.
-  PolicyGroupArgs({
+  const PolicyGroupArgs({
     this.accounts,
     this.entityType,
     this.mode,

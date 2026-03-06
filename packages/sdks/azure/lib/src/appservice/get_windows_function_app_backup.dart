@@ -18,7 +18,7 @@ class GetWindowsFunctionAppBackup {
   /// [name] The name of this Windows Function App.
   /// [schedules] A `schedule` block as defined below.
   /// [storageAccountUrl] The SAS URL to the container.
-  GetWindowsFunctionAppBackup({
+  const GetWindowsFunctionAppBackup({
     required this.enabled,
     required this.name,
     required this.schedules,

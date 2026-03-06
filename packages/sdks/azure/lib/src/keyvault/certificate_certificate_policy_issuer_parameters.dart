@@ -8,7 +8,7 @@ class CertificateCertificatePolicyIssuerParameters {
 
   /// Creates a new [CertificateCertificatePolicyIssuerParameters].
   /// [name] The name of the Certificate Issuer. Possible values include `Self` (for self-signed certificate), or `Unknown` (for a certificate issuing authority like `Let's Encrypt` and Azure direct supported ones).
-  CertificateCertificatePolicyIssuerParameters({
+  const CertificateCertificatePolicyIssuerParameters({
     required this.name,
   });
 

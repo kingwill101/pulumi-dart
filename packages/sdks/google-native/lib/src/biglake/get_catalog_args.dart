@@ -15,7 +15,7 @@ class GetCatalogArgs {
   /// [catalogId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCatalogArgs({
+  const GetCatalogArgs({
     required this.catalogId,
     required this.location,
     this.project,

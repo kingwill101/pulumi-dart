@@ -14,7 +14,7 @@ class ListenerProxyProtocolConfig {
   /// [proxyProtocolConfigPrivateLinkEpIdEnabled] Whether to enable carrying PrivateLinkEpId to backend servers through Proxy Protocol.
   /// [proxyProtocolConfigPrivateLinkEpsIdEnabled] Whether to enable carrying PrivateLinkEpsId to backend servers through the Proxy Protocol.
   /// [proxyProtocolConfigVpcIdEnabled] Whether to enable carrying VpcId to backend servers through Proxy Protocol.
-  ListenerProxyProtocolConfig({
+  const ListenerProxyProtocolConfig({
     this.proxyProtocolConfigPrivateLinkEpIdEnabled,
     this.proxyProtocolConfigPrivateLinkEpsIdEnabled,
     this.proxyProtocolConfigVpcIdEnabled,

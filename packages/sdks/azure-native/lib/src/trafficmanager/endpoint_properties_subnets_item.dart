@@ -15,7 +15,7 @@ class EndpointPropertiesSubnetsItem {
   /// [first] First address in the subnet.
   /// [last] Last address in the subnet.
   /// [scope] Block size (number of leading bits in the subnet mask).
-  EndpointPropertiesSubnetsItem({
+  const EndpointPropertiesSubnetsItem({
     this.first,
     this.last,
     this.scope,

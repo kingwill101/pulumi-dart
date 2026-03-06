@@ -62,7 +62,7 @@ class JSONPatchPatchAdmissionregistrationK8sIoV1beta1 {
 
   /// Creates a new [JSONPatchPatchAdmissionregistrationK8sIoV1beta1].
   /// [expression] expression will be evaluated by CEL to create a [JSON patch](https://jsonpatch.com/). ref: https://github.com/google/cel-spec
-  JSONPatchPatchAdmissionregistrationK8sIoV1beta1({
+  const JSONPatchPatchAdmissionregistrationK8sIoV1beta1({
     this.expression,
   });
 

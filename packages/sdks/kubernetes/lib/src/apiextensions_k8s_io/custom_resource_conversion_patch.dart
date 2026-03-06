@@ -14,7 +14,7 @@ class CustomResourceConversionPatch {
   /// Creates a new [CustomResourceConversionPatch].
   /// [strategy] strategy specifies how custom resources are converted between versions. Allowed values are: - `"None"`: The converter only change the apiVersion and would not touch any other field in the custom resource. - `"Webhook"`: API Server will call to an external webhook to do the conversion. Additional information
   /// [webhook] webhook describes how to call the conversion webhook. Required when `strategy` is set to `"Webhook"`.
-  CustomResourceConversionPatch({
+  const CustomResourceConversionPatch({
     this.strategy,
     this.webhook,
   });

@@ -58,7 +58,7 @@ class TrustState {
   /// [trustState] State of the Trust relationship.
   /// [trustStateReason] Reason for the Trust state set in `trust_state`.
   /// [trustType] Type of the Trust relationship.
-  TrustState({
+  const TrustState({
     this.conditionalForwarderIpAddrs,
     this.createdDateTime,
     this.deleteAssociatedConditionalForwarder,

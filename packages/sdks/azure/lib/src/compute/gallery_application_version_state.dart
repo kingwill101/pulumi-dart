@@ -45,7 +45,7 @@ class GalleryApplicationVersionState {
   /// [source] A `source` block as defined below.
   /// [tags] A mapping of tags to assign to the Gallery Application Version.
   /// [targetRegions] One or more `target_region` blocks as defined below.
-  GalleryApplicationVersionState({
+  const GalleryApplicationVersionState({
     this.configFile,
     this.enableHealthCheck,
     this.endOfLifeDate,

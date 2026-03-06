@@ -15,7 +15,7 @@ class GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldIn
   /// [averageLength] Average length of non-null values in the scanned data.
   /// [maxLength] Maximum length of non-null values in the scanned data.
   /// [minLength] Minimum length of non-null values in the scanned data.
-  GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse({
+  const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfoResponse({
     required this.averageLength,
     required this.maxLength,
     required this.minLength,

@@ -26,7 +26,7 @@ class GetReposRepoTag {
   /// [imageUpdate] Last update time of this image, unix time in nanoseconds.
   /// [status] Status of this image.
   /// [tag] Tag of this image.
-  GetReposRepoTag({
+  const GetReposRepoTag({
     required this.digest,
     required this.imageCreate,
     required this.imageId,

@@ -19,7 +19,7 @@ class CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue 
   /// [numberValue] Represents a double value.
   /// [stringListValue] A list of strings.
   /// [stringValue] Represents a string value.
-  CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue({
+  const CloudControlParameterSpecSubParameterDefaultValueOneofValueParameterValue({
     this.boolValue,
     this.numberValue,
     this.stringListValue,

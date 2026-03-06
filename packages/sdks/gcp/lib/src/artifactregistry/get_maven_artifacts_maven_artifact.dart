@@ -29,7 +29,7 @@ class GetMavenArtifactsMavenArtifact {
   /// [pomUri] URL to access the pom file of the artifact.
   /// [updateTime] The time the artifact was last updated.
   /// [version] The version of the Maven artifact.
-  GetMavenArtifactsMavenArtifact({
+  const GetMavenArtifactsMavenArtifact({
     required this.artifactId,
     required this.createTime,
     required this.groupId,

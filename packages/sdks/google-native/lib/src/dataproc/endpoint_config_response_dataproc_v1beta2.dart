@@ -12,7 +12,7 @@ class EndpointConfigResponseDataprocV1beta2 {
   /// Creates a new [EndpointConfigResponseDataprocV1beta2].
   /// [enableHttpPortAccess] Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
   /// [httpPorts] The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true.
-  EndpointConfigResponseDataprocV1beta2({
+  const EndpointConfigResponseDataprocV1beta2({
     required this.enableHttpPortAccess,
     required this.httpPorts,
   });

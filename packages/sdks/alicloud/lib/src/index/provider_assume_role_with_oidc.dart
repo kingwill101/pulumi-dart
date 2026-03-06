@@ -25,7 +25,7 @@ class ProviderAssumeRoleWithOidc {
   /// [roleArn] ARN of a RAM role to assume prior to making API calls.
   /// [roleSessionName] The custom name of the role session. Set this parameter based on your business requirements. In most cases, this parameter is set to the identity of the user who calls the operation, for example, the username.
   /// [sessionExpiration] The validity period of the STS token. Unit: seconds. Default value: 3600. Minimum value: 900. Maximum value: the value of the MaxSessionDuration parameter when creating a ram role.
-  ProviderAssumeRoleWithOidc({
+  const ProviderAssumeRoleWithOidc({
     required this.oidcProviderArn,
     this.oidcToken,
     this.oidcTokenFile,

@@ -82,7 +82,7 @@ class HiveLinkedService {
   /// [username] The user name that you use to access Hive Server.
   /// [version] Version of the linked service.
   /// [zooKeeperNameSpace] The namespace on ZooKeeper under which Hive Server 2 nodes are added.
-  HiveLinkedService({
+  const HiveLinkedService({
     this.allowHostNameCNMismatch,
     this.allowSelfSignedServerCert,
     this.annotations,

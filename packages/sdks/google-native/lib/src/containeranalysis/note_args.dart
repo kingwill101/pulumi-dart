@@ -78,7 +78,7 @@ class NoteArgs {
   /// [upgrade] A note describing available package upgrades.
   /// [vulnerability] A note describing a package vulnerability.
   /// [vulnerabilityAssessment] A note describing a vulnerability assessment.
-  NoteArgs({
+  const NoteArgs({
     this.attestation,
     this.build,
     this.compliance,

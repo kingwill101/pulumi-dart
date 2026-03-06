@@ -8,7 +8,7 @@ class AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationU
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl].
   /// [url] Seed or starting point URL. Must match the pattern `^https?://[A-Za-z0-9][^\s]*$`.
-  AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl({
+  const AgentDataSourceDataSourceConfigurationWebConfigurationSourceConfigurationUrlConfigurationSeedUrl({
     this.url,
   });
 

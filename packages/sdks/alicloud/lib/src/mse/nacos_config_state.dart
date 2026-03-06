@@ -42,7 +42,7 @@ class NacosConfigState {
   /// [namespaceId] The id of Namespace. If you want to create a config under the `public` namespace, this parameter can be set to an empty string  *`""`* or just not set this parameter.
   /// [tags] The tags of the configuration.
   /// [type] The format of the configuration. Supported formats include TEXT, JSON, and XML.
-  NacosConfigState({
+  const NacosConfigState({
     this.acceptLanguage,
     this.appName,
     this.betaIps,

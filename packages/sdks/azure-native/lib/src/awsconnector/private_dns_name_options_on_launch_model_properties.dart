@@ -15,7 +15,7 @@ class PrivateDnsNameOptionsOnLaunchModelProperties {
   /// [enableResourceNameDnsAAAARecord] Property enableResourceNameDnsAAAARecord
   /// [enableResourceNameDnsARecord] Property enableResourceNameDnsARecord
   /// [hostnameType] Property hostnameType
-  PrivateDnsNameOptionsOnLaunchModelProperties({
+  const PrivateDnsNameOptionsOnLaunchModelProperties({
     this.enableResourceNameDnsAAAARecord,
     this.enableResourceNameDnsARecord,
     this.hostnameType,

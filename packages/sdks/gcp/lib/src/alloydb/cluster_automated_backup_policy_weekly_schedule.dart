@@ -14,7 +14,7 @@ class ClusterAutomatedBackupPolicyWeeklySchedule {
   /// Creates a new [ClusterAutomatedBackupPolicyWeeklySchedule].
   /// [daysOfWeeks] The days of the week to perform a backup. At least one day of the week must be provided.
   /// [startTimes] The times during the day to start a backup. At least one start time must be provided. The start times are assumed to be in UTC and to be an exact hour (e.g., 04:00:00).
-  ClusterAutomatedBackupPolicyWeeklySchedule({
+  const ClusterAutomatedBackupPolicyWeeklySchedule({
     this.daysOfWeeks,
     required this.startTimes,
   });

@@ -26,7 +26,7 @@ class GetVariableValueResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource (Microsoft.Authorization/variables/values).
   /// [values] Variable value column value array.
-  GetVariableValueResult({
+  const GetVariableValueResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

@@ -25,7 +25,7 @@ class GetEnvPodMonitorsResult {
   /// [nameRegex] Optional.
   /// [names] A list of ARMS Env Pod Monitor names.
   /// [outputFile] Optional.
-  GetEnvPodMonitorsResult({
+  const GetEnvPodMonitorsResult({
     required this.environmentId,
     required this.id,
     required this.ids,

@@ -48,7 +48,7 @@ class GetReadWriteDatabaseResult {
   /// [statistics] The statistics of the database.
   /// [suspensionDetails] The database suspension details. If the database is suspended, this object contains information related to the database's suspension state.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetReadWriteDatabaseResult({
+  const GetReadWriteDatabaseResult({
     required this.azureApiVersion,
     this.hotCachePeriod,
     required this.id,

@@ -10,7 +10,7 @@ class WindowsUserConfiguration {
 
   /// Creates a new [WindowsUserConfiguration].
   /// [loginMode] Specifies login mode for the user. The default value is Interactive.
-  WindowsUserConfiguration({
+  const WindowsUserConfiguration({
     this.loginMode,
   });
 

@@ -15,7 +15,7 @@ class GetConnectivityTestIamPolicyArgs {
   /// [connectivityTestId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetConnectivityTestIamPolicyArgs({
+  const GetConnectivityTestIamPolicyArgs({
     required this.connectivityTestId,
     this.optionsRequestedPolicyVersion,
     this.project,

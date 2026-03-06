@@ -13,7 +13,7 @@ class GetPatchDeploymentOsconfigV1betaArgs {
   /// Creates a new [GetPatchDeploymentOsconfigV1betaArgs].
   /// [patchDeploymentId] Required.
   /// [project] Optional.
-  GetPatchDeploymentOsconfigV1betaArgs({
+  const GetPatchDeploymentOsconfigV1betaArgs({
     required this.patchDeploymentId,
     this.project,
   });

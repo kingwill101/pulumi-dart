@@ -15,7 +15,7 @@ class GetSnsSubscriptionArgs {
   /// Creates a new [GetSnsSubscriptionArgs].
   /// [name] Name of SnsSubscription
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSnsSubscriptionArgs({
+  const GetSnsSubscriptionArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -16,7 +16,7 @@ class KubernetesVersionsArgs {
   /// Creates a new [KubernetesVersionsArgs].
   /// [customLocationResourceUri] The fully qualified Azure Resource Manager identifier of the custom location resource.
   /// [extendedLocation] Extended location pointing to the underlying infrastructure
-  KubernetesVersionsArgs({
+  const KubernetesVersionsArgs({
     required this.customLocationResourceUri,
     this.extendedLocation,
   });

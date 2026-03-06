@@ -9,7 +9,7 @@ class KubernetesRoleCompute {
 
   /// Creates a new [KubernetesRoleCompute].
   /// [vmProfile] VM profile
-  KubernetesRoleCompute({
+  const KubernetesRoleCompute({
     required this.vmProfile,
   });
 

@@ -51,7 +51,7 @@ class IacProfileArgs {
   /// [storageContainerName] Terraform Container Name
   /// [tags] Resource tags.
   /// [templates] Optional.
-  IacProfileArgs({
+  const IacProfileArgs({
     this.branchName,
     this.iacProfileName,
     this.location,

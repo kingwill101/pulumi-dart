@@ -24,7 +24,7 @@ class SiteArgs {
   /// [globalNetworkId] ID of the Global Network to create the site in.
   /// [location] Site location. See below.
   /// [tags] Key-value tags for the Site. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  SiteArgs({
+  const SiteArgs({
     this.description,
     required this.globalNetworkId,
     this.location,

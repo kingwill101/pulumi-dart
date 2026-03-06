@@ -31,7 +31,7 @@ class ConfigurationSetArgs {
   /// [reputationMetricsEnabled] Whether or not Amazon SES publishes reputation metrics for the configuration set, such as bounce and complaint rates, to Amazon CloudWatch. The default value is `false`.
   /// [sendingEnabled] Whether email sending is enabled or disabled for the configuration set. The default value is `true`.
   /// [trackingOptions] Domain that is used to redirect email recipients to an Amazon SES-operated domain. See below. **NOTE:** This functionality is best effort.
-  ConfigurationSetArgs({
+  const ConfigurationSetArgs({
     this.deliveryOptions,
     this.name,
     this.region,

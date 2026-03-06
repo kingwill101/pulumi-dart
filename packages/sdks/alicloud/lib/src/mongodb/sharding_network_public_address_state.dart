@@ -16,7 +16,7 @@ class ShardingNetworkPublicAddressState {
   /// [dbInstanceId] The ID of the instance.
   /// [networkAddresses] The endpoint of the instance.
   /// [nodeId] The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
-  ShardingNetworkPublicAddressState({
+  const ShardingNetworkPublicAddressState({
     this.dbInstanceId,
     this.networkAddresses,
     this.nodeId,

@@ -25,7 +25,7 @@ class SecretArgs {
   /// [secretName] Name of the secret. The value you provide may be copied globally for the purpose of running the service. The value provided should not include personally identifiable or sensitive information.
   /// [tags] The tags that will be assigned to the secret.
   /// [vaultName] Name of the vault
-  SecretArgs({
+  const SecretArgs({
     required this.properties,
     required this.resourceGroupName,
     this.secretName,

@@ -22,7 +22,7 @@ class GoogleCloudDialogflowCxV3TestCaseResultResponse {
   /// [name] The resource name for the test case result. Format: `projects//locations//agents//testCases/ /results/`.
   /// [testResult] Whether the test case passed in the agent environment.
   /// [testTime] The time that the test was run.
-  GoogleCloudDialogflowCxV3TestCaseResultResponse({
+  const GoogleCloudDialogflowCxV3TestCaseResultResponse({
     required this.conversationTurns,
     required this.environment,
     required this.name,

@@ -13,7 +13,7 @@ class GetSecurityPolicyComputeV1Args {
   /// Creates a new [GetSecurityPolicyComputeV1Args].
   /// [project] Optional.
   /// [securityPolicy] Required.
-  GetSecurityPolicyComputeV1Args({
+  const GetSecurityPolicyComputeV1Args({
     this.project,
     required this.securityPolicy,
   });

@@ -29,7 +29,7 @@ class GetTableGlobalSecondaryIndex {
   /// [readCapacity] Required.
   /// [warmThroughputs] Required.
   /// [writeCapacity] Required.
-  GetTableGlobalSecondaryIndex({
+  const GetTableGlobalSecondaryIndex({
     required this.hashKey,
     required this.keySchemas,
     required this.name,

@@ -33,7 +33,7 @@ class LocationFsxWindowsArgs {
   /// [subdirectory] Subdirectory to perform actions as source or destination.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [user] The user who has the permissions to access files and folders in the FSx for Windows file system.
-  LocationFsxWindowsArgs({
+  const LocationFsxWindowsArgs({
     this.domain,
     required this.fsxFilesystemArn,
     required this.password,

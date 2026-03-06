@@ -17,7 +17,7 @@ class QuotaScheduleScheduleList {
   /// [condition] The value of effective condition. See `condition` below.
   /// [plan] The name of the quota plan.
   /// [type] The type of the quota plan. Valid values: daily
-  QuotaScheduleScheduleList({
+  const QuotaScheduleScheduleList({
     this.condition,
     required this.plan,
     required this.type,

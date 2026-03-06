@@ -12,7 +12,7 @@ class ResourceConfigResponse {
   /// Creates a new [ResourceConfigResponse].
   /// [cpu] Required CPU in cores, e.g. 0.5
   /// [memory] Required memory, e.g. "1Gi"
-  ResourceConfigResponse({
+  const ResourceConfigResponse({
     this.cpu,
     this.memory,
   });

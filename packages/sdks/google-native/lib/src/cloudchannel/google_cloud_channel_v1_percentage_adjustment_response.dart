@@ -10,7 +10,7 @@ class GoogleCloudChannelV1PercentageAdjustmentResponse {
 
   /// Creates a new [GoogleCloudChannelV1PercentageAdjustmentResponse].
   /// [percentage] The percentage of the bill to adjust. For example: Mark down by 1% =&gt; "-1.00" Mark up by 1% =&gt; "1.00" Pass-Through =&gt; "0.00"
-  GoogleCloudChannelV1PercentageAdjustmentResponse({
+  const GoogleCloudChannelV1PercentageAdjustmentResponse({
     required this.percentage,
   });
 

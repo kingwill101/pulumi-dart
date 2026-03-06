@@ -10,7 +10,7 @@ class OrganizationFeedFeedOutputConfig {
 
   /// Creates a new [OrganizationFeedFeedOutputConfig].
   /// [pubsubDestination] Destination on Cloud Pubsub.
-  OrganizationFeedFeedOutputConfig({
+  const OrganizationFeedFeedOutputConfig({
     required this.pubsubDestination,
   });
 

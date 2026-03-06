@@ -9,7 +9,7 @@ class AttestationResponse {
 
   /// Creates a new [AttestationResponse].
   /// [pgpSignedAttestation] Required.
-  AttestationResponse({
+  const AttestationResponse({
     required this.pgpSignedAttestation,
   });
 

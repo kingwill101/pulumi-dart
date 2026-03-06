@@ -8,7 +8,7 @@ class ListArtifactManifestCredentialResult {
 
   /// Creates a new [ListArtifactManifestCredentialResult].
   /// [credentialType] The credential type.
-  ListArtifactManifestCredentialResult({
+  const ListArtifactManifestCredentialResult({
     required this.credentialType,
   });
 

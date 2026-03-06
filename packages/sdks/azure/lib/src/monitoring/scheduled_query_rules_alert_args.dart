@@ -63,7 +63,7 @@ class ScheduledQueryRulesAlertArgs {
   /// [throttling] Time (in minutes) for which Alerts should be throttled or suppressed. Values must be between 0 and 10000 (inclusive).
   /// [timeWindow] Time window for which data needs to be fetched for query (must be greater than or equal to `frequency`). Values must be between 5 and 2880 (inclusive).
   /// [trigger] A `trigger` block as defined below.
-  ScheduledQueryRulesAlertArgs({
+  const ScheduledQueryRulesAlertArgs({
     required this.action,
     this.authorizedResourceIds,
     this.autoMitigationEnabled,

@@ -15,7 +15,7 @@ class ListRegistryCredentialsArgs {
   /// Creates a new [ListRegistryCredentialsArgs].
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListRegistryCredentialsArgs({
+  const ListRegistryCredentialsArgs({
     required this.registryName,
     required this.resourceGroupName,
   });

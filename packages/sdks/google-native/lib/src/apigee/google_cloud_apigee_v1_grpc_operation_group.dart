@@ -10,7 +10,7 @@ class GoogleCloudApigeeV1GrpcOperationGroup {
 
   /// Creates a new [GoogleCloudApigeeV1GrpcOperationGroup].
   /// [operationConfigs] List of operation configurations for either Apigee API proxies that are associated with this API product.
-  GoogleCloudApigeeV1GrpcOperationGroup({
+  const GoogleCloudApigeeV1GrpcOperationGroup({
     required this.operationConfigs,
   });
 

@@ -12,7 +12,7 @@ class ClusterKey {
   /// Creates a new [ClusterKey].
   /// [name] Name of the Cosmos DB Cassandra table cluster key
   /// [orderBy] Order of the Cosmos DB Cassandra table cluster key, only support "Asc" and "Desc"
-  ClusterKey({
+  const ClusterKey({
     this.name,
     this.orderBy,
   });

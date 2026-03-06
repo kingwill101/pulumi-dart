@@ -85,7 +85,7 @@ class FunctionAppSiteConfig {
   /// [use32BitWorkerProcess] Should the Function App run in 32 bit mode, rather than 64 bit mode? Defaults to `true`.
   /// [vnetRouteAllEnabled] Should all outbound traffic to have Virtual Network Security Groups and User Defined Routes applied? Defaults to `false`.
   /// [websocketsEnabled] Should WebSockets be enabled?
-  FunctionAppSiteConfig({
+  const FunctionAppSiteConfig({
     this.alwaysOn,
     this.appScaleLimit,
     this.autoSwapSlotName,

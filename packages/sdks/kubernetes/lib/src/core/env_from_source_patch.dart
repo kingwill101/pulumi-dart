@@ -17,7 +17,7 @@ class EnvFromSourcePatch {
   /// [configMapRef] The ConfigMap to select from
   /// [prefix] Optional text to prepend to the name of each environment variable. May consist of any printable ASCII characters except '='.
   /// [secretRef] The Secret to select from
-  EnvFromSourcePatch({
+  const EnvFromSourcePatch({
     this.configMapRef,
     this.prefix,
     this.secretRef,

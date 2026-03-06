@@ -30,7 +30,7 @@ class ControlOrganizationIntelligenceConfigState {
   /// [name] Identifier of the GCP Organization. For GCP org, this field should be organization number.
   /// [trialConfigs] The trial configuration of the Storage Intelligence resource.
   /// [updateTime] The time at which the Storage Intelligence Config resource is last updated.
-  ControlOrganizationIntelligenceConfigState({
+  const ControlOrganizationIntelligenceConfigState({
     this.editionConfig,
     this.effectiveIntelligenceConfigs,
     this.filter,

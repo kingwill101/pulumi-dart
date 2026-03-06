@@ -59,7 +59,7 @@ class BackendBucketArgs {
   /// [name] Name of the resource. Provided by the client when the resource is
   /// [params] Additional params passed with the request, but not persisted as part of resource payload
   /// [project] The ID of the project in which the resource belongs.
-  BackendBucketArgs({
+  const BackendBucketArgs({
     required this.bucketName,
     this.cdnPolicy,
     this.compressionMode,

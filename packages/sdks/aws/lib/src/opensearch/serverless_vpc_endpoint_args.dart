@@ -29,7 +29,7 @@ class ServerlessVpcEndpointArgs {
   /// [subnetIds] One or more subnet IDs from which you'll access OpenSearch Serverless. Up to 6 subnets can be provided.
   /// [timeouts] Optional.
   /// [vpcId] ID of the VPC from which you'll access OpenSearch Serverless.
-  ServerlessVpcEndpointArgs({
+  const ServerlessVpcEndpointArgs({
     this.name,
     this.region,
     this.securityGroupIds,

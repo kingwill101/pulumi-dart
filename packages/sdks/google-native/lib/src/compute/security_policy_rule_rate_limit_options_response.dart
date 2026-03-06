@@ -39,7 +39,7 @@ class SecurityPolicyRuleRateLimitOptionsResponse {
   /// [exceedActionRpcStatus] Specified gRPC response status for proxyless gRPC requests that are above the configured rate limit threshold
   /// [exceedRedirectOptions] Parameters defining the redirect action that is used as the exceed action. Cannot be specified if the exceed action is not redirect. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// [rateLimitThreshold] Threshold at which to begin ratelimiting.
-  SecurityPolicyRuleRateLimitOptionsResponse({
+  const SecurityPolicyRuleRateLimitOptionsResponse({
     required this.banDurationSec,
     required this.banThreshold,
     required this.conformAction,

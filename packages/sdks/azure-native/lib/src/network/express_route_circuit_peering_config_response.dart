@@ -24,7 +24,7 @@ class ExpressRouteCircuitPeeringConfigResponse {
   /// [customerASN] The CustomerASN of the peering.
   /// [legacyMode] The legacy mode of the peering.
   /// [routingRegistryName] The RoutingRegistryName of the configuration.
-  ExpressRouteCircuitPeeringConfigResponse({
+  const ExpressRouteCircuitPeeringConfigResponse({
     this.advertisedCommunities,
     this.advertisedPublicPrefixes,
     required this.advertisedPublicPrefixesState,

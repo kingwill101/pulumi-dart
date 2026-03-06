@@ -19,7 +19,7 @@ class StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDat
   /// [datasetIdPrefix] If supplied, every created dataset will have its name prefixed by the provided value.
   /// [kmsKeyName] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery
   /// [location] The geographic location where the dataset should reside.
-  StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate({
+  const StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate({
     this.datasetIdPrefix,
     this.kmsKeyName,
     required this.location,

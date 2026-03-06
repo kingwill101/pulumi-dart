@@ -23,7 +23,7 @@ class GetPredictionTrainingResultsResult {
   /// [primaryProfileInstanceCount] Instance count of the primary profile.
   /// [scoreName] Score name.
   /// [tenantId] The hub name.
-  GetPredictionTrainingResultsResult({
+  const GetPredictionTrainingResultsResult({
     required this.canonicalProfiles,
     required this.predictionDistribution,
     required this.primaryProfileInstanceCount,

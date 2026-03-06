@@ -16,7 +16,7 @@ class NetworkInterface {
   /// [network] Optional. The name of the VPC that this VM instance is in. Format: `projects/{project_id}/global/networks/{network_id}`
   /// [nicType] Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
   /// [subnet] Optional. The name of the subnet that this VM instance is in. Format: `projects/{project_id}/regions/{region}/subnetworks/{subnetwork_id}`
-  NetworkInterface({
+  const NetworkInterface({
     this.network,
     this.nicType,
     this.subnet,

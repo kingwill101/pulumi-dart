@@ -14,7 +14,7 @@ class FunctionCustomContainerConfig {
   /// [args] The args field specifies the arguments passed to the command.
   /// [command] The entry point of the container, which specifies the actual command run by the container.
   /// [image] The container image address.
-  FunctionCustomContainerConfig({
+  const FunctionCustomContainerConfig({
     this.args,
     this.command,
     required this.image,

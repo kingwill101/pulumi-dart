@@ -13,7 +13,7 @@ class GuestConfigurationAssignmentProperties {
   /// Creates a new [GuestConfigurationAssignmentProperties].
   /// [context] The source which initiated the guest configuration assignment. Ex: Azure Policy
   /// [guestConfiguration] The guest configuration to assign.
-  GuestConfigurationAssignmentProperties({
+  const GuestConfigurationAssignmentProperties({
     this.context,
     this.guestConfiguration,
   });

@@ -13,7 +13,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchemaTable {
   /// Creates a new [StreamBackfillAllSpannerExcludedObjectsSchemaTable].
   /// [columns] Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  StreamBackfillAllSpannerExcludedObjectsSchemaTable({
+  const StreamBackfillAllSpannerExcludedObjectsSchemaTable({
     this.columns,
     required this.table,
   });

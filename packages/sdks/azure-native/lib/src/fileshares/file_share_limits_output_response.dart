@@ -14,7 +14,7 @@ class FileShareLimitsOutputResponse {
   /// Creates a new [FileShareLimitsOutputResponse].
   /// [limits] The limits for the file share.
   /// [provisioningConstants] The provisioning constants for the file share.
-  FileShareLimitsOutputResponse({
+  const FileShareLimitsOutputResponse({
     required this.limits,
     required this.provisioningConstants,
   });

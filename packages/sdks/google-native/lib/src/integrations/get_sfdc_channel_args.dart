@@ -19,7 +19,7 @@ class GetSfdcChannelArgs {
   /// [project] Optional.
   /// [sfdcChannelId] Required.
   /// [sfdcInstanceId] Required.
-  GetSfdcChannelArgs({
+  const GetSfdcChannelArgs({
     required this.location,
     required this.productId,
     this.project,

@@ -18,7 +18,7 @@ class IntentContentResponse {
   /// [destinationResourceId] Destination resource id of the intent.
   /// [ipTraffic] IP traffic information.
   /// [sourceResourceId] Source resource id of the intent.
-  IntentContentResponse({
+  const IntentContentResponse({
     this.description,
     required this.destinationResourceId,
     required this.ipTraffic,

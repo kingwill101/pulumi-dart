@@ -9,7 +9,7 @@ class InstanceMetadataEndpointStateEnumValue {
 
   /// Creates a new [InstanceMetadataEndpointStateEnumValue].
   /// [value] Property value
-  InstanceMetadataEndpointStateEnumValue({
+  const InstanceMetadataEndpointStateEnumValue({
     this.value,
   });
 

@@ -28,7 +28,7 @@ class GetAliasResult {
   /// [region] Required.
   /// [routingConfigurations] Routing Configuration of state machine alias
   /// [statemachineArn] Required.
-  GetAliasResult({
+  const GetAliasResult({
     required this.arn,
     required this.creationDate,
     this.description,

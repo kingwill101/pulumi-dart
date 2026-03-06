@@ -9,7 +9,7 @@ class TracingConfigResponse {
 
   /// Creates a new [TracingConfigResponse].
   /// [mode] The tracing mode.
-  TracingConfigResponse({
+  const TracingConfigResponse({
     this.mode,
   });
 

@@ -13,7 +13,7 @@ class GetAppTemplateHttpScaleRule {
   /// [authentications] Required.
   /// [concurrentRequests] Required.
   /// [name] The name of the Container App.
-  GetAppTemplateHttpScaleRule({
+  const GetAppTemplateHttpScaleRule({
     required this.authentications,
     required this.concurrentRequests,
     required this.name,

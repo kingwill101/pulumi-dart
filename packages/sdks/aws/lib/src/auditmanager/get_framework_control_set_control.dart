@@ -7,7 +7,7 @@ class GetFrameworkControlSetControl {
 
   /// Creates a new [GetFrameworkControlSetControl].
   /// [id] Required.
-  GetFrameworkControlSetControl({
+  const GetFrameworkControlSetControl({
     required this.id,
   });
 

@@ -15,7 +15,7 @@ class GetCacheArgs {
   /// Creates a new [GetCacheArgs].
   /// [name] The name of the Redis cache
   /// [resourceGroupName] The name of the resource group the Redis cache instance is located in.
-  GetCacheArgs({
+  const GetCacheArgs({
     required this.name,
     required this.resourceGroupName,
   });

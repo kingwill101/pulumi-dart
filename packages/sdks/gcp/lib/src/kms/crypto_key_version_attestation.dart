@@ -23,7 +23,7 @@ class CryptoKeyVersionAttestation {
   /// [content] (Output)
   /// [externalProtectionLevelOptions] ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
   /// [format] (Output)
-  CryptoKeyVersionAttestation({
+  const CryptoKeyVersionAttestation({
     this.certChains,
     this.content,
     this.externalProtectionLevelOptions,

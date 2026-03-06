@@ -58,7 +58,7 @@ class ProvisionedProductArgs {
   /// [retainPhysicalResources] _Only applies to deleting._ Whether to delete the Service Catalog provisioned product but leave the CloudFormation stack, stack set, or the underlying resources of the deleted provisioned product. The default value is `false`.
   /// [stackSetProvisioningPreferences] Configuration block with information about the provisioning preferences for a stack set. See `stack_set_provisioning_preferences` Block for details.
   /// [tags] Tags to apply to the provisioned product. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ProvisionedProductArgs({
+  const ProvisionedProductArgs({
     this.acceptLanguage,
     this.ignoreErrors,
     this.name,

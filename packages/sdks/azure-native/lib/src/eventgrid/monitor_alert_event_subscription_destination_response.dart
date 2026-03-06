@@ -21,7 +21,7 @@ class MonitorAlertEventSubscriptionDestinationResponse {
   /// [description] The description that will be attached to every Alert fired through this event subscription.
   /// [endpointType] Type of the endpoint for the event subscription destination.
   /// [severity] The severity that will be attached to every Alert fired through this event subscription.
-  MonitorAlertEventSubscriptionDestinationResponse({
+  const MonitorAlertEventSubscriptionDestinationResponse({
     this.actionGroups,
     this.description,
     required this.endpointType,

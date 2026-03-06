@@ -14,7 +14,7 @@ class GetZonesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [zones] Required.
-  GetZonesResult({
+  const GetZonesResult({
     required this.id,
     this.outputFile,
     required this.zones,

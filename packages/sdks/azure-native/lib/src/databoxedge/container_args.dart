@@ -24,7 +24,7 @@ class ContainerArgs {
   /// [deviceName] The device name.
   /// [resourceGroupName] The resource group name.
   /// [storageAccountName] The Storage Account Name
-  ContainerArgs({
+  const ContainerArgs({
     this.containerName,
     required this.dataFormat,
     required this.deviceName,

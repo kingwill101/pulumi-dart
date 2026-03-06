@@ -21,7 +21,7 @@ class ManagedInstanceActiveDirectoryAdministratorState {
   /// [managedInstanceId] The ID of the Azure SQL Managed Instance for which to set the administrator. Changing this forces a new resource to be created.
   /// [objectId] The Object ID of the principal to set as the Managed Instance Administrator.
   /// [tenantId] The Azure Active Directory Tenant ID.
-  ManagedInstanceActiveDirectoryAdministratorState({
+  const ManagedInstanceActiveDirectoryAdministratorState({
     this.azureadAuthenticationOnly,
     this.loginUsername,
     this.managedInstanceId,

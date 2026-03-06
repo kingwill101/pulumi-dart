@@ -12,7 +12,7 @@ class InstancePersistenceConfigAofConfig {
 
   /// Creates a new [InstancePersistenceConfigAofConfig].
   /// [appendFsync] Optional. The fsync mode.
-  InstancePersistenceConfigAofConfig({
+  const InstancePersistenceConfigAofConfig({
     this.appendFsync,
   });
 

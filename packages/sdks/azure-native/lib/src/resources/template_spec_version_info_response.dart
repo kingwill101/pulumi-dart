@@ -15,7 +15,7 @@ class TemplateSpecVersionInfoResponse {
   /// [description] Template Spec version description.
   /// [timeCreated] The timestamp of when the version was created.
   /// [timeModified] The timestamp of when the version was last modified.
-  TemplateSpecVersionInfoResponse({
+  const TemplateSpecVersionInfoResponse({
     required this.description,
     required this.timeCreated,
     required this.timeModified,

@@ -19,7 +19,7 @@ class NetworkIpv6CidrBlock {
   /// Creates a new [NetworkIpv6CidrBlock].
   /// [ipv6CidrBlock] The IPv6 CIDR block of the default VPC.
   /// [ipv6Isp] The IPv6 address segment type of the VPC. Value:
-  NetworkIpv6CidrBlock({
+  const NetworkIpv6CidrBlock({
     this.ipv6CidrBlock,
     this.ipv6Isp,
   });

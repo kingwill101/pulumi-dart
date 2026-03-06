@@ -129,7 +129,7 @@ class FileSystemState {
   /// [vpcId] The ID of the VPC network.
   /// [vswitchId] The ID of the switch.
   /// [zoneId] The zone ID.
-  FileSystemState({
+  const FileSystemState({
     this.capacity,
     this.createTime,
     this.description,

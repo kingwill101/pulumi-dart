@@ -9,7 +9,7 @@ class GrafanaIntegrationsResponse {
 
   /// Creates a new [GrafanaIntegrationsResponse].
   /// [azureMonitorWorkspaceIntegrations] Optional.
-  GrafanaIntegrationsResponse({
+  const GrafanaIntegrationsResponse({
     this.azureMonitorWorkspaceIntegrations,
   });
 

@@ -19,7 +19,7 @@ class RoboStartingIntentResponse {
   /// [noActivity] Skips the starting activity
   /// [startActivity] An intent that starts an activity with specific details.
   /// [timeout] Timeout in seconds for each intent.
-  RoboStartingIntentResponse({
+  const RoboStartingIntentResponse({
     required this.launcherActivity,
     required this.noActivity,
     required this.startActivity,

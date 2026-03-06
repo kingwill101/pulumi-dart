@@ -52,7 +52,7 @@ class TopicArgs {
   /// [status] Enumerates the possible values for the status of a messaging entity.
   /// [supportOrdering] Value that indicates whether the topic supports ordering.
   /// [topicName] The topic name.
-  TopicArgs({
+  const TopicArgs({
     this.autoDeleteOnIdle,
     this.defaultMessageTimeToLive,
     this.duplicateDetectionHistoryTimeWindow,

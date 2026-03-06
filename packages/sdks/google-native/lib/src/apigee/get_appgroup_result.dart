@@ -37,7 +37,7 @@ class GetAppgroupResult {
   /// [name] Immutable. Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._\-$ %.
   /// [organization] Immutable. the org the app group is created
   /// [status] Valid values are `active` or `inactive`. Note that the status of the AppGroup should be updated via UpdateAppGroupRequest by setting the action as `active` or `inactive`.
-  GetAppgroupResult({
+  const GetAppgroupResult({
     required this.appGroupId,
     required this.attributes,
     required this.channelId,

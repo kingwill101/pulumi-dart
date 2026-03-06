@@ -26,7 +26,7 @@ class TrafficPolicyState {
   /// [name] Name of the traffic policy.
   /// [type] DNS type of the resource record sets that Amazon Route 53 creates when you use a traffic policy to create a traffic policy instance.
   /// [version] Version number of the traffic policy. This value is automatically incremented by AWS after each update of this resource.
-  TrafficPolicyState({
+  const TrafficPolicyState({
     this.arn,
     this.comment,
     this.document,

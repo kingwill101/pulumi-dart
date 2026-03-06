@@ -11,7 +11,7 @@ class EntryGroupIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  EntryGroupIamBindingCondition({
+  const EntryGroupIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

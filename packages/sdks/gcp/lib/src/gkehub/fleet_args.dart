@@ -22,7 +22,7 @@ class FleetArgs {
   /// [defaultClusterConfig] The default cluster configurations to apply across the fleet.
   /// [displayName] A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
   /// [project] The ID of the project in which the resource belongs.
-  FleetArgs({
+  const FleetArgs({
     this.defaultClusterConfig,
     this.displayName,
     this.project,

@@ -11,7 +11,7 @@ class DomainKeyWrapCipher {
   /// Creates a new [DomainKeyWrapCipher].
   /// [name] Sets the name of the cipher used for key wrapping in the domain.
   /// [state] Configures the state of the cipher used for key wrapping in the domain.
-  DomainKeyWrapCipher({
+  const DomainKeyWrapCipher({
     required this.name,
     required this.state,
   });

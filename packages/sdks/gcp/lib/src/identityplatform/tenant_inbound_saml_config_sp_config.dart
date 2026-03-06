@@ -20,7 +20,7 @@ class TenantInboundSamlConfigSpConfig {
   /// [callbackUri] Callback URI where responses from IDP are handled. Must start with `https://`.
   /// [spCertificates] (Output)
   /// [spEntityId] Unique identifier for all SAML entities.
-  TenantInboundSamlConfigSpConfig({
+  const TenantInboundSamlConfigSpConfig({
     required this.callbackUri,
     this.spCertificates,
     required this.spEntityId,

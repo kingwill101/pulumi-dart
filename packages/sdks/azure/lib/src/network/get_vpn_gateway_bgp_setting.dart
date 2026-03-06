@@ -22,7 +22,7 @@ class GetVpnGatewayBgpSetting {
   /// [instance0BgpPeeringAddresses] an `instance_bgp_peering_address` block as defined below.
   /// [instance1BgpPeeringAddresses] an `instance_bgp_peering_address` block as defined below.
   /// [peerWeight] The weight added to Routes learned from this BGP Speaker.
-  GetVpnGatewayBgpSetting({
+  const GetVpnGatewayBgpSetting({
     required this.asn,
     required this.bgpPeeringAddress,
     required this.instance0BgpPeeringAddresses,

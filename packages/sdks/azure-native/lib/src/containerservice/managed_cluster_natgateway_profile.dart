@@ -13,7 +13,7 @@ class ManagedClusterNATGatewayProfile {
   /// Creates a new [ManagedClusterNATGatewayProfile].
   /// [idleTimeoutInMinutes] Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 4 minutes.
   /// [managedOutboundIPProfile] Profile of the managed outbound IP resources of the cluster NAT gateway.
-  ManagedClusterNATGatewayProfile({
+  const ManagedClusterNATGatewayProfile({
     this.idleTimeoutInMinutes,
     this.managedOutboundIPProfile,
   });

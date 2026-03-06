@@ -27,7 +27,7 @@ class FederatedIdentityCredentialArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the identity resource.
   /// [subject] The identifier of the external identity.
-  FederatedIdentityCredentialArgs({
+  const FederatedIdentityCredentialArgs({
     required this.audiences,
     this.federatedIdentityCredentialResourceName,
     required this.issuer,

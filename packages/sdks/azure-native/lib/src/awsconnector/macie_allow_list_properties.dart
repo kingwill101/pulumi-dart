@@ -31,7 +31,7 @@ class MacieAllowListProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  MacieAllowListProperties({
+  const MacieAllowListProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

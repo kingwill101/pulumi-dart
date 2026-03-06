@@ -25,7 +25,7 @@ class PolicyStepAdjustment {
   /// [metricIntervalLowerBound] Lower bound for the
   /// [metricIntervalUpperBound] Upper bound for the
   /// [scalingAdjustment] Number of members by which to
-  PolicyStepAdjustment({
+  const PolicyStepAdjustment({
     this.metricIntervalLowerBound,
     this.metricIntervalUpperBound,
     required this.scalingAdjustment,

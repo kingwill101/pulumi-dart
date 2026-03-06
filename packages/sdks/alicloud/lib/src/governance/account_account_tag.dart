@@ -11,7 +11,7 @@ class AccountAccountTag {
   /// Creates a new [AccountAccountTag].
   /// [tagKey] The key of the tags
   /// [tagValue] The value of the tags
-  AccountAccountTag({
+  const AccountAccountTag({
     this.tagKey,
     this.tagValue,
   });

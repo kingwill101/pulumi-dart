@@ -17,7 +17,7 @@ class GetInstanceTemplateNetworkInterfaceAccessConfig {
   /// [natIp] The IP address that will be 1:1 mapped to the instance's
   /// [networkTier] The [networking tier][network-tier] used for configuring
   /// [publicPtrDomainName] The DNS domain name for the public PTR record.The DNS domain name for the public PTR record.
-  GetInstanceTemplateNetworkInterfaceAccessConfig({
+  const GetInstanceTemplateNetworkInterfaceAccessConfig({
     required this.natIp,
     required this.networkTier,
     required this.publicPtrDomainName,

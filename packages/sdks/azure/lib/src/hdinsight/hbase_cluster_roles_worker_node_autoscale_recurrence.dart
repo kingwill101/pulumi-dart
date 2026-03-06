@@ -12,7 +12,7 @@ class HBaseClusterRolesWorkerNodeAutoscaleRecurrence {
   /// Creates a new [HBaseClusterRolesWorkerNodeAutoscaleRecurrence].
   /// [schedules] A list of `schedule` blocks as defined below.
   /// [timezone] The time zone for the autoscale schedule times.
-  HBaseClusterRolesWorkerNodeAutoscaleRecurrence({
+  const HBaseClusterRolesWorkerNodeAutoscaleRecurrence({
     required this.schedules,
     required this.timezone,
   });

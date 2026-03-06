@@ -12,7 +12,7 @@ class LunRange {
   /// Creates a new [LunRange].
   /// [quantity] Number of LUNs to create.
   /// [sizeGb] The requested size of each LUN, in GB.
-  LunRange({
+  const LunRange({
     this.quantity,
     this.sizeGb,
   });

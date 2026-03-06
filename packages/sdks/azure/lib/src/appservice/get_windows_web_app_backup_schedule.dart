@@ -23,7 +23,7 @@ class GetWindowsWebAppBackupSchedule {
   /// [lastExecutionTime] The time of the last backup attempt.
   /// [retentionPeriodDays] After how many days backups should be deleted.
   /// [startTime] When the schedule should start in RFC-3339 format.
-  GetWindowsWebAppBackupSchedule({
+  const GetWindowsWebAppBackupSchedule({
     required this.frequencyInterval,
     required this.frequencyUnit,
     required this.keepAtLeastOneBackup,

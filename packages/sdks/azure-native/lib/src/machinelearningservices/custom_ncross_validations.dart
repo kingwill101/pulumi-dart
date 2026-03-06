@@ -13,7 +13,7 @@ class CustomNCrossValidations {
   /// Creates a new [CustomNCrossValidations].
   /// [mode] Determines how N-Cross validations value is determined.
   /// [value] [Required] N-Cross validations value.
-  CustomNCrossValidations({
+  const CustomNCrossValidations({
     required this.mode,
     required this.value,
   });

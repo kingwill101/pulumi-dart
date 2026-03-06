@@ -10,7 +10,7 @@ class TroubleshootingAdditionalPropertiesResponse {
 
   /// Creates a new [TroubleshootingAdditionalPropertiesResponse].
   /// [unhealthyReplicaInfo] The unhealthy replica information
-  TroubleshootingAdditionalPropertiesResponse({
+  const TroubleshootingAdditionalPropertiesResponse({
     this.unhealthyReplicaInfo,
   });
 

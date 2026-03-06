@@ -11,7 +11,7 @@ class InboundIpRule {
   /// Creates a new [InboundIpRule].
   /// [action] Action to perform based on the match or no match of the IpMask.
   /// [ipMask] IP Address in CIDR notation e.g., 10.0.0.0/8.
-  InboundIpRule({
+  const InboundIpRule({
     this.action,
     this.ipMask,
   });

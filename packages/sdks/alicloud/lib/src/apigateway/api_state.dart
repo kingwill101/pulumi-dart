@@ -62,7 +62,7 @@ class ApiState {
   /// [serviceType] The type of backend service. Type including HTTP, VPC, FunctionCompute and MOCK. Defaults to null.
   /// [stageNames] Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
   /// [systemParameters] system_parameters defines the system parameters of the api. See `system_parameters` below.
-  ApiState({
+  const ApiState({
     this.apiId,
     this.authType,
     this.constantParameters,

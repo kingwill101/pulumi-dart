@@ -13,7 +13,7 @@ class DaemonSetUpdateStrategy {
   /// Creates a new [DaemonSetUpdateStrategy].
   /// [rollingUpdate] Rolling update config params. Present only if type = "RollingUpdate".
   /// [type] Type of daemon set update. Can be "RollingUpdate" or "OnDelete". Default is RollingUpdate.
-  DaemonSetUpdateStrategy({
+  const DaemonSetUpdateStrategy({
     this.rollingUpdate,
     this.type,
   });

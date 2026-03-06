@@ -13,7 +13,7 @@ class GetNetworkComputeV1Args {
   /// Creates a new [GetNetworkComputeV1Args].
   /// [network] Required.
   /// [project] Optional.
-  GetNetworkComputeV1Args({
+  const GetNetworkComputeV1Args({
     required this.network,
     this.project,
   });

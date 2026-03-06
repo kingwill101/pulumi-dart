@@ -12,7 +12,7 @@ class CountryResponse {
   /// Creates a new [CountryResponse].
   /// [code] country code
   /// [description] code description
-  CountryResponse({
+  const CountryResponse({
     required this.code,
     this.description,
   });

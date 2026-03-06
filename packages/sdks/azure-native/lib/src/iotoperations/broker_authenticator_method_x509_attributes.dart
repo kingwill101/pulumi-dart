@@ -12,7 +12,7 @@ class BrokerAuthenticatorMethodX509Attributes {
   /// Creates a new [BrokerAuthenticatorMethodX509Attributes].
   /// [attributes] Attributes object.
   /// [subject] Subject of the X509 attribute.
-  BrokerAuthenticatorMethodX509Attributes({
+  const BrokerAuthenticatorMethodX509Attributes({
     required this.attributes,
     required this.subject,
   });

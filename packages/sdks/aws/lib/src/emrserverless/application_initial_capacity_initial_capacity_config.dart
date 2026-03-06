@@ -12,7 +12,7 @@ class ApplicationInitialCapacityInitialCapacityConfig {
   /// Creates a new [ApplicationInitialCapacityInitialCapacityConfig].
   /// [workerConfiguration] The resource configuration of the initial capacity configuration.
   /// [workerCount] The number of workers in the initial capacity configuration.
-  ApplicationInitialCapacityInitialCapacityConfig({
+  const ApplicationInitialCapacityInitialCapacityConfig({
     this.workerConfiguration,
     required this.workerCount,
   });

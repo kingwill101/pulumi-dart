@@ -17,7 +17,7 @@ class ConfigurationValueWithoutSecrets {
   /// [configurationGroupSchemaResourceReference] The configuration group schema resource reference.
   /// [configurationType] The secret type which indicates if secret or not.
   /// [configurationValue] Name and value pairs that define the configuration value. It can be a well formed escaped JSON string.
-  ConfigurationValueWithoutSecrets({
+  const ConfigurationValueWithoutSecrets({
     this.configurationGroupSchemaResourceReference,
     required this.configurationType,
     this.configurationValue,

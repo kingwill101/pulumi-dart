@@ -13,7 +13,7 @@ class StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable {
   /// Creates a new [StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable].
   /// [columns] Spanner columns in the table. When unspecified as part of include/exclude objects, includes/excludes everything.
   /// [table] Table name.
-  StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable({
+  const StreamSourceConfigSqlServerSourceConfigIncludeObjectsSchemaTable({
     this.columns,
     required this.table,
   });

@@ -79,7 +79,7 @@ class GetWebAppSiteExtensionResult {
   /// [title] Optional.
   /// [type] Resource type.
   /// [version] Version information.
-  GetWebAppSiteExtensionResult({
+  const GetWebAppSiteExtensionResult({
     this.authors,
     required this.azureApiVersion,
     this.comment,

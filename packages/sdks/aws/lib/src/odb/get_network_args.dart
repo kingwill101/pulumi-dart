@@ -17,7 +17,7 @@ class GetNetworkArgs {
   /// Creates a new [GetNetworkArgs].
   /// [id] Unique identifier of the odb network resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetNetworkArgs({
+  const GetNetworkArgs({
     required this.id,
     this.region,
   });

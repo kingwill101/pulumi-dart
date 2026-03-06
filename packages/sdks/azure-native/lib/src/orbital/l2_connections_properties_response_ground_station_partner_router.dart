@@ -9,7 +9,7 @@ class L2ConnectionsPropertiesResponseGroundStationPartnerRouter {
 
   /// Creates a new [L2ConnectionsPropertiesResponseGroundStationPartnerRouter].
   /// [name] The unique name of the partner router that cross-connects with the Orbital Edge Router at the ground station site.
-  L2ConnectionsPropertiesResponseGroundStationPartnerRouter({
+  const L2ConnectionsPropertiesResponseGroundStationPartnerRouter({
     required this.name,
   });
 

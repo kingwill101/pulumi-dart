@@ -12,7 +12,7 @@ class ClusterPersistenceConfigAofConfig {
 
   /// Creates a new [ClusterPersistenceConfigAofConfig].
   /// [appendFsync] Optional. Available fsync modes.
-  ClusterPersistenceConfigAofConfig({
+  const ClusterPersistenceConfigAofConfig({
     this.appendFsync,
   });
 

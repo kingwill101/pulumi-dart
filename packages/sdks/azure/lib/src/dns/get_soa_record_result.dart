@@ -45,7 +45,7 @@ class GetSoaRecordResult {
   /// [tags] A mapping of tags assigned to the resource.
   /// [ttl] The Time To Live (TTL) of the DNS record in seconds.
   /// [zoneName] Required.
-  GetSoaRecordResult({
+  const GetSoaRecordResult({
     required this.email,
     required this.expireTime,
     required this.fqdn,

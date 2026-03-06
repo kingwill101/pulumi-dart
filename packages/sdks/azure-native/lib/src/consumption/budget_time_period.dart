@@ -12,7 +12,7 @@ class BudgetTimePeriod {
   /// Creates a new [BudgetTimePeriod].
   /// [endDate] The end date for the budget. If not provided, we default this to 10 years from the start date.
   /// [startDate] The start date for the budget.
-  BudgetTimePeriod({
+  const BudgetTimePeriod({
     this.endDate,
     required this.startDate,
   });

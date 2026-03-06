@@ -11,7 +11,7 @@ class InstanceStateInfo {
 
   /// Creates a new [InstanceStateInfo].
   /// [updateInfos] (Output)
-  InstanceStateInfo({
+  const InstanceStateInfo({
     this.updateInfos,
   });
 

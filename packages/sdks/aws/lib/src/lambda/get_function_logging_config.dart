@@ -17,7 +17,7 @@ class GetFunctionLoggingConfig {
   /// [logFormat] Format for your function's logs. Valid values: `Text`, `JSON`.
   /// [logGroup] CloudWatch log group your function sends logs to.
   /// [systemLogLevel] Detail level of the Lambda platform event logs sent to CloudWatch.
-  GetFunctionLoggingConfig({
+  const GetFunctionLoggingConfig({
     required this.applicationLogLevel,
     required this.logFormat,
     required this.logGroup,

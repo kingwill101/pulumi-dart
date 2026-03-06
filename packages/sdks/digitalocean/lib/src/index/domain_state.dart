@@ -19,7 +19,7 @@ class DomainState {
   /// [ipAddress] The IP address of the domain. If specified, this IP
   /// [name] The name of the domain
   /// [ttl] The TTL value of the domain
-  DomainState({
+  const DomainState({
     this.domainUrn,
     this.ipAddress,
     this.name,

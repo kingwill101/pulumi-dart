@@ -21,7 +21,7 @@ class GetApiTagDescriptionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [tagDescriptionId] Tag description identifier. Used when creating tagDescription for API/Tag association. Based on API and Tag names.
-  GetApiTagDescriptionArgs({
+  const GetApiTagDescriptionArgs({
     required this.apiId,
     required this.resourceGroupName,
     required this.serviceName,

@@ -9,7 +9,7 @@ class DefenderForServersAwsOfferingResponseSubPlan {
 
   /// Creates a new [DefenderForServersAwsOfferingResponseSubPlan].
   /// [type] The available sub plans
-  DefenderForServersAwsOfferingResponseSubPlan({
+  const DefenderForServersAwsOfferingResponseSubPlan({
     this.type,
   });
 

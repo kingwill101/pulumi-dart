@@ -9,7 +9,7 @@ class WebAclRuleActionAllowCustomRequestHandling {
 
   /// Creates a new [WebAclRuleActionAllowCustomRequestHandling].
   /// [insertHeaders] The `insert_header` blocks used to define HTTP headers added to the request. See `insert_header` below for details.
-  WebAclRuleActionAllowCustomRequestHandling({
+  const WebAclRuleActionAllowCustomRequestHandling({
     required this.insertHeaders,
   });
 

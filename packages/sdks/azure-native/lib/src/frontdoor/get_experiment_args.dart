@@ -18,7 +18,7 @@ class GetExperimentArgs {
   /// [experimentName] The Experiment identifier associated with the Experiment
   /// [profileName] The Profile identifier associated with the Tenant and Partner
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
-  GetExperimentArgs({
+  const GetExperimentArgs({
     required this.experimentName,
     required this.profileName,
     required this.resourceGroupName,

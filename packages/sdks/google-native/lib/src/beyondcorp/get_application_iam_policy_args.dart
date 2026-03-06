@@ -17,7 +17,7 @@ class GetApplicationIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetApplicationIamPolicyArgs({
+  const GetApplicationIamPolicyArgs({
     required this.applicationId,
     required this.location,
     this.optionsRequestedPolicyVersion,

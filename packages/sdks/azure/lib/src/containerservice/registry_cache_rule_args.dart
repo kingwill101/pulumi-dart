@@ -24,7 +24,7 @@ class RegistryCacheRuleArgs {
   /// [name] Specifies the name of the Container Registry Cache Rule. Only Alphanumeric characters allowed. Changing this forces a new resource to be created.
   /// [sourceRepo] The name of the source repository path. Changing this forces a new resource to be created.
   /// [targetRepo] The name of the new repository path to store artifacts. Changing this forces a new resource to be created.
-  RegistryCacheRuleArgs({
+  const RegistryCacheRuleArgs({
     required this.containerRegistryId,
     this.credentialSetId,
     this.name,

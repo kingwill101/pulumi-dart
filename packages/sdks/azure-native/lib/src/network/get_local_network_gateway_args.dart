@@ -15,7 +15,7 @@ class GetLocalNetworkGatewayArgs {
   /// Creates a new [GetLocalNetworkGatewayArgs].
   /// [localNetworkGatewayName] The name of the local network gateway.
   /// [resourceGroupName] The name of the resource group.
-  GetLocalNetworkGatewayArgs({
+  const GetLocalNetworkGatewayArgs({
     required this.localNetworkGatewayName,
     required this.resourceGroupName,
   });

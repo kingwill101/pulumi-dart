@@ -9,7 +9,7 @@ class ResourceTypeRegistrationPropertiesFeaturesRule {
 
   /// Creates a new [ResourceTypeRegistrationPropertiesFeaturesRule].
   /// [requiredFeaturesPolicy] The required feature policy.
-  ResourceTypeRegistrationPropertiesFeaturesRule({
+  const ResourceTypeRegistrationPropertiesFeaturesRule({
     required this.requiredFeaturesPolicy,
   });
 

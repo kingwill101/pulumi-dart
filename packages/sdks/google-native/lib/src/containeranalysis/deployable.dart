@@ -9,7 +9,7 @@ class Deployable {
 
   /// Creates a new [Deployable].
   /// [resourceUri] Resource URI for the artifact being deployed.
-  Deployable({
+  const Deployable({
     this.resourceUri,
   });
 

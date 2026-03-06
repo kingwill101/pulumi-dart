@@ -31,7 +31,7 @@ class ImageTemplatePowerShellCustomizer {
   /// [sha256Checksum] SHA256 checksum of the power shell script provided in the scriptUri field above
   /// [type] The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
   /// [validExitCodes] Valid exit codes for the PowerShell script. [Default: 0]
-  ImageTemplatePowerShellCustomizer({
+  const ImageTemplatePowerShellCustomizer({
     this.inline,
     this.name,
     this.runAsSystem,

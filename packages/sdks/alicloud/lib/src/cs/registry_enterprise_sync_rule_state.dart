@@ -65,7 +65,7 @@ class RegistryEnterpriseSyncRuleState {
   /// [targetRegionId] The region ID of the destination instance.
   /// [targetRepoName] The image repository name of the destination instance.
   /// [targetUserId] The UID of the account to which the target instance belongs.
-  RegistryEnterpriseSyncRuleState({
+  const RegistryEnterpriseSyncRuleState({
     this.createTime,
     this.instanceId,
     this.name,

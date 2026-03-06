@@ -29,7 +29,7 @@ class GetVirtualHubConnectionResult {
   /// [routings] A `routing` block as defined below.
   /// [virtualHubId] The ID of the Virtual Hub within which this connection is created
   /// [virtualHubName] Required.
-  GetVirtualHubConnectionResult({
+  const GetVirtualHubConnectionResult({
     required this.id,
     required this.internetSecurityEnabled,
     required this.name,

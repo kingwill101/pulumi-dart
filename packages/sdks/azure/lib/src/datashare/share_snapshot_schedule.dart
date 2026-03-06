@@ -14,7 +14,7 @@ class ShareSnapshotSchedule {
   /// [name] The name of the snapshot schedule.
   /// [recurrence] The interval of the synchronization with the source data. Possible values are `Hour` and `Day`.
   /// [startTime] The synchronization with the source data's start time.
-  ShareSnapshotSchedule({
+  const ShareSnapshotSchedule({
     required this.name,
     required this.recurrence,
     required this.startTime,

@@ -8,7 +8,7 @@ class GetEventIntegrationEventFilter {
 
   /// Creates a new [GetEventIntegrationEventFilter].
   /// [source] The source of the events.
-  GetEventIntegrationEventFilter({
+  const GetEventIntegrationEventFilter({
     required this.source,
   });
 

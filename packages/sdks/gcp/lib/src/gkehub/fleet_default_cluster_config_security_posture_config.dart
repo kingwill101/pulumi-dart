@@ -13,7 +13,7 @@ class FleetDefaultClusterConfigSecurityPostureConfig {
   /// Creates a new [FleetDefaultClusterConfigSecurityPostureConfig].
   /// [mode] Sets which mode to use for Security Posture features.
   /// [vulnerabilityMode] Sets which mode to use for vulnerability scanning.
-  FleetDefaultClusterConfigSecurityPostureConfig({
+  const FleetDefaultClusterConfigSecurityPostureConfig({
     this.mode,
     this.vulnerabilityMode,
   });

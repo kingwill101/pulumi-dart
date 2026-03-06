@@ -9,7 +9,7 @@ class NetworkPerformanceConfigResponse {
 
   /// Creates a new [NetworkPerformanceConfigResponse].
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for the NodePool.
-  NetworkPerformanceConfigResponse({
+  const NetworkPerformanceConfigResponse({
     required this.totalEgressBandwidthTier,
   });
 

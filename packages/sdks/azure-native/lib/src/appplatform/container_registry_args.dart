@@ -22,7 +22,7 @@ class ContainerRegistryArgs {
   /// [properties] Properties of the container registry resource payload.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  ContainerRegistryArgs({
+  const ContainerRegistryArgs({
     this.containerRegistryName,
     this.properties,
     required this.resourceGroupName,

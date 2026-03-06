@@ -44,7 +44,7 @@ class BgpPolicyContentFingerPrintRuleList {
   /// [seqNo] Serial number 1-100 ● Affects the order issued by the bottom layer ● The larger the number, the lower it is.
   /// [srcPortEnd] Source Port end 0-65535.
   /// [srcPortStart] Source port start 0-65535.
-  BgpPolicyContentFingerPrintRuleList({
+  const BgpPolicyContentFingerPrintRuleList({
     required this.dstPortEnd,
     required this.dstPortStart,
     this.fingerPrintRuleId,

@@ -14,7 +14,7 @@ class CxGenerativeSettingsGenerativeSafetySettings {
   /// Creates a new [CxGenerativeSettingsGenerativeSafetySettings].
   /// [bannedPhrases] Banned phrases for generated text.
   /// [defaultBannedPhraseMatchStrategy] Optional. Default phrase match strategy for banned phrases.
-  CxGenerativeSettingsGenerativeSafetySettings({
+  const CxGenerativeSettingsGenerativeSafetySettings({
     this.bannedPhrases,
     this.defaultBannedPhraseMatchStrategy,
   });

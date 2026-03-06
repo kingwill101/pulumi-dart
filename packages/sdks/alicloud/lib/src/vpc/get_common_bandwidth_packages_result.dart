@@ -36,7 +36,7 @@ class GetCommonBandwidthPackagesResult {
   /// [packages] A list of Common Bandwidth Packages. Each element contains the following attributes:
   /// [resourceGroupId] The Id of resource group which the common bandwidth package belongs.
   /// [status] Status of the Common Bandwidth Package.
-  GetCommonBandwidthPackagesResult({
+  const GetCommonBandwidthPackagesResult({
     this.bandwidthPackageName,
     this.dryRun,
     required this.id,

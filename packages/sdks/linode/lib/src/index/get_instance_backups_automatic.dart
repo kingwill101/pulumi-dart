@@ -34,7 +34,7 @@ class GetInstanceBackupsAutomatic {
   /// [status] The current state of a specific Backup. (`paused`, `pending`, `running`, `needsPostProcessing`, `successful`, `failed`, `userAborted`)
   /// [type] This indicates whether the Backup is an automatic Backup or manual snapshot taken by the User at a specific point in time. (`auto`, `snapshot`)
   /// [updated] The date the Backup was most recently updated.
-  GetInstanceBackupsAutomatic({
+  const GetInstanceBackupsAutomatic({
     required this.available,
     required this.configs,
     required this.created,

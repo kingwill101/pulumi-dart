@@ -17,7 +17,7 @@ class DnsRecordSetResponse {
   /// [checkError] An error Hosting services encountered when querying your domain name's DNS records. Note: Hosting ignores `NXDOMAIN` errors, as those generally just mean that a domain name hasn't been set up yet.
   /// [domainName] The domain name the record set pertains to.
   /// [records] Records on the domain.
-  DnsRecordSetResponse({
+  const DnsRecordSetResponse({
     required this.checkError,
     required this.domainName,
     required this.records,

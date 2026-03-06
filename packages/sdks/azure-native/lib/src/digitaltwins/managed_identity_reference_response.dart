@@ -12,7 +12,7 @@ class ManagedIdentityReferenceResponse {
   /// Creates a new [ManagedIdentityReferenceResponse].
   /// [type] The type of managed identity used.
   /// [userAssignedIdentity] The user identity ARM resource id if the managed identity type is 'UserAssigned'.
-  ManagedIdentityReferenceResponse({
+  const ManagedIdentityReferenceResponse({
     this.type,
     this.userAssignedIdentity,
   });

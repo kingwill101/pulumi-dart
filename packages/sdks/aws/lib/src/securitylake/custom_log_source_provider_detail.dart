@@ -11,7 +11,7 @@ class CustomLogSourceProviderDetail {
   /// Creates a new [CustomLogSourceProviderDetail].
   /// [location] The location of the partition in the Amazon S3 bucket for Security Lake.
   /// [roleArn] The ARN of the IAM role to be used by the entity putting logs into your custom source partition.
-  CustomLogSourceProviderDetail({
+  const CustomLogSourceProviderDetail({
     required this.location,
     required this.roleArn,
   });

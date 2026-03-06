@@ -13,7 +13,7 @@ class GCPolicyMaxAge {
   /// Creates a new [GCPolicyMaxAge].
   /// [days] Number of days before applying GC policy.
   /// [duration] Duration before applying GC policy (ex. "8h"). This is required when `days` isn't set
-  GCPolicyMaxAge({
+  const GCPolicyMaxAge({
     this.days,
     this.duration,
   });

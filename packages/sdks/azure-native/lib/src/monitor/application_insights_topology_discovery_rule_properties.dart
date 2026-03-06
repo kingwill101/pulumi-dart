@@ -25,7 +25,7 @@ class ApplicationInsightsTopologyDiscoveryRuleProperties {
   /// [discoverRelationships] Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
   /// [discoveryRuleKind] Discovery rule relationship discovery behavior
   /// [displayName] Display name
-  ApplicationInsightsTopologyDiscoveryRuleProperties({
+  const ApplicationInsightsTopologyDiscoveryRuleProperties({
     required this.addRecommendedSignals,
     required this.applicationInsightsResourceId,
     required this.authenticationSetting,

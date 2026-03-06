@@ -48,7 +48,7 @@ class HttpRouteRouteAction {
   /// [statefulSessionAffinity] Optional. Specifies cookie-based stateful session affinity.
   /// [timeout] Specifies the timeout for selected route. Timeout is computed from the time the request has been fully processed (i.e. end of stream) up until the response has been completely processed. Timeout includes all retries.
   /// [urlRewrite] The specification for rewrite URL before forwarding requests to the destination.
-  HttpRouteRouteAction({
+  const HttpRouteRouteAction({
     this.corsPolicy,
     this.destinations,
     this.faultInjectionPolicy,

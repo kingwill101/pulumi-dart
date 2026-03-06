@@ -52,7 +52,7 @@ class GetCloudEndpointResult {
   /// [storageAccountTenantId] Storage Account Tenant Id
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCloudEndpointResult({
+  const GetCloudEndpointResult({
     required this.azureApiVersion,
     this.azureFileShareName,
     required this.backupEnabled,

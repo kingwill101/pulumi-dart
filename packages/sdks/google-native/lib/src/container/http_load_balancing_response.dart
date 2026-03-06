@@ -9,7 +9,7 @@ class HttpLoadBalancingResponse {
 
   /// Creates a new [HttpLoadBalancingResponse].
   /// [disabled] Whether the HTTP Load Balancing controller is enabled in the cluster. When enabled, it runs a small pod in the cluster that manages the load balancers.
-  HttpLoadBalancingResponse({
+  const HttpLoadBalancingResponse({
     required this.disabled,
   });
 

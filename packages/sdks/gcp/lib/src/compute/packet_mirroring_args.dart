@@ -53,7 +53,7 @@ class PacketMirroringArgs {
   /// [priority] Since only one rule can be active at a time, priority is
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the created address should reside.
-  PacketMirroringArgs({
+  const PacketMirroringArgs({
     required this.collectorIlb,
     this.description,
     this.filter,

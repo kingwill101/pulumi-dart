@@ -11,7 +11,7 @@ class InstanceConfigDevicesSdb {
   /// Creates a new [InstanceConfigDevicesSdb].
   /// [diskId] The Disk ID to map to this disk slot
   /// [volumeId] The Block Storage volume ID to map to this disk slot
-  InstanceConfigDevicesSdb({
+  const InstanceConfigDevicesSdb({
     this.diskId,
     this.volumeId,
   });

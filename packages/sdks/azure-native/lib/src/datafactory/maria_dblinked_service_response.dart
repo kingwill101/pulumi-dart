@@ -58,7 +58,7 @@ class MariaDBLinkedServiceResponse {
   /// [useSystemTrustStore] This option specifies whether to use a CA certificate from the system trust store, or from a specified PEM file. E.g. UseSystemTrustStore=&lt;0/1&gt;; Options: Enabled (1) / Disabled (0) (Default)
   /// [username] Username for authentication. Type: string.
   /// [version] Version of the linked service.
-  MariaDBLinkedServiceResponse({
+  const MariaDBLinkedServiceResponse({
     this.annotations,
     this.connectVia,
     this.connectionString,

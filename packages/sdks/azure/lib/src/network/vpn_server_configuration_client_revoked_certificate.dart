@@ -11,7 +11,7 @@ class VpnServerConfigurationClientRevokedCertificate {
   /// Creates a new [VpnServerConfigurationClientRevokedCertificate].
   /// [name] A name used to uniquely identify this certificate.
   /// [thumbprint] The Thumbprint of the Certificate.
-  VpnServerConfigurationClientRevokedCertificate({
+  const VpnServerConfigurationClientRevokedCertificate({
     required this.name,
     required this.thumbprint,
   });

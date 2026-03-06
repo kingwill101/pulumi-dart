@@ -9,7 +9,7 @@ class WorkloadWorkloadPropertyIdentity {
 
   /// Creates a new [WorkloadWorkloadPropertyIdentity].
   /// [principal] (Output)
-  WorkloadWorkloadPropertyIdentity({
+  const WorkloadWorkloadPropertyIdentity({
     this.principal,
   });
 

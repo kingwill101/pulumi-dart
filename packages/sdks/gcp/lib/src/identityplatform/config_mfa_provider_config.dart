@@ -14,7 +14,7 @@ class ConfigMfaProviderConfig {
   /// Creates a new [ConfigMfaProviderConfig].
   /// [state] Whether MultiFactor Authentication has been enabled for this project.
   /// [totpProviderConfig] TOTP MFA provider config for this project.
-  ConfigMfaProviderConfig({
+  const ConfigMfaProviderConfig({
     this.state,
     this.totpProviderConfig,
   });

@@ -34,7 +34,7 @@ class PushInstallerDetailsResponse {
   /// [lastHeartbeatUtc] The last heartbeat received from the push installer.
   /// [name] The push installer name.
   /// [version] The version.
-  PushInstallerDetailsResponse({
+  const PushInstallerDetailsResponse({
     required this.biosId,
     required this.fabricObjectId,
     required this.fqdn,

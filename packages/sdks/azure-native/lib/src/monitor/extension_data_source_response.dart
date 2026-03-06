@@ -24,7 +24,7 @@ class ExtensionDataSourceResponse {
   /// [inputDataSources] The list of data sources this extension needs data from.
   /// [name] A friendly name for the data source.
   /// [streams] List of streams that this data source will be sent to.
-  ExtensionDataSourceResponse({
+  const ExtensionDataSourceResponse({
     required this.extensionName,
     this.extensionSettings,
     this.inputDataSources,

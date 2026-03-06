@@ -8,7 +8,7 @@ class StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedCostOp
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedCostOptimizationMetrics].
   /// [enabled] Whether advanced cost-optimization metrics are enabled.
-  StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedCostOptimizationMetrics({
+  const StorageLensConfigurationStorageLensConfigurationAccountLevelAdvancedCostOptimizationMetrics({
     this.enabled,
   });
 

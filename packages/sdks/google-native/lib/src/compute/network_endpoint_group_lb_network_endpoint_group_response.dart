@@ -18,7 +18,7 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponse {
   /// [network] The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified. [Deprecated] This field is deprecated.
   /// [subnetwork] Optional URL of the subnetwork to which all network endpoints in the NEG belong. [Deprecated] This field is deprecated.
   /// [zone] The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
-  NetworkEndpointGroupLbNetworkEndpointGroupResponse({
+  const NetworkEndpointGroupLbNetworkEndpointGroupResponse({
     required this.defaultPort,
     required this.network,
     required this.subnetwork,

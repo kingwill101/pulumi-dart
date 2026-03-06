@@ -17,7 +17,7 @@ class ManagedRuleGroupOverride {
   /// [exclusions] Describes the exclusions that are applied to all rules in the group.
   /// [ruleGroupName] Describes the managed rule group to override.
   /// [rules] List of rules that will be disabled. If none specified, all rules in the group will be disabled.
-  ManagedRuleGroupOverride({
+  const ManagedRuleGroupOverride({
     this.exclusions,
     required this.ruleGroupName,
     this.rules,

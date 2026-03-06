@@ -36,7 +36,7 @@ class GetTrunkResult {
   /// [subPorts] The set of the trunk subports. The structure of each subport is
   /// [tags] Optional.
   /// [trunkId] Optional.
-  GetTrunkResult({
+  const GetTrunkResult({
     this.adminStateUp,
     required this.allTags,
     this.description,

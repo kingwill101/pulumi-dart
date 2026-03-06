@@ -17,7 +17,7 @@ class ContextPropertiesResponse {
   /// [capabilities] List of Capabilities
   /// [hierarchies] List of Hierarchies
   /// [provisioningState] Provisioning state of resource
-  ContextPropertiesResponse({
+  const ContextPropertiesResponse({
     required this.capabilities,
     required this.hierarchies,
     required this.provisioningState,

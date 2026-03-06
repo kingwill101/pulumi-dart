@@ -11,7 +11,7 @@ class FeaturesNetapp {
   /// Creates a new [FeaturesNetapp].
   /// [deleteBackupsOnBackupVaultDestroy] When enabled, backups will be deleted when the `azure.netapp.BackupVault` resource is destroyed
   /// [preventVolumeDestruction] When enabled, the volume will not be destroyed, safeguarding from severe data loss
-  FeaturesNetapp({
+  const FeaturesNetapp({
     this.deleteBackupsOnBackupVaultDestroy,
     this.preventVolumeDestruction,
   });

@@ -13,7 +13,7 @@ class DomainOsNvRamSourceReservationsSourceQemuvdAgent {
   /// Creates a new [DomainOsNvRamSourceReservationsSourceQemuvdAgent].
   /// [clipBoard] Configures clipboard sharing settings for the QEMU guest agent.
   /// [mouse] Configures mouse settings for the QEMU guest agent in the random number generator setup.
-  DomainOsNvRamSourceReservationsSourceQemuvdAgent({
+  const DomainOsNvRamSourceReservationsSourceQemuvdAgent({
     this.clipBoard,
     this.mouse,
   });

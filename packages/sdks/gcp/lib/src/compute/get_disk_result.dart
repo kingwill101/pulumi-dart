@@ -133,7 +133,7 @@ class GetDiskResult {
   /// [type] URL of the disk type resource describing which disk type to use to
   /// [users] Links to the users of the disk (attached instances) in form:
   /// [zone] A reference to the zone where the disk resides.
-  GetDiskResult({
+  const GetDiskResult({
     required this.accessMode,
     required this.architecture,
     required this.asyncPrimaryDisks,

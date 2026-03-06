@@ -22,7 +22,7 @@ class OrganizationConfigurationState {
   /// [datasources] Configuration for the collected datasources. [Deprecated](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty-feature-object-api-changes-march2023.html) in favor of `aws.guardduty.OrganizationConfigurationFeature` resources.
   /// [detectorId] The detector ID of the GuardDuty account.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  OrganizationConfigurationState({
+  const OrganizationConfigurationState({
     this.autoEnableOrganizationMembers,
     this.datasources,
     this.detectorId,

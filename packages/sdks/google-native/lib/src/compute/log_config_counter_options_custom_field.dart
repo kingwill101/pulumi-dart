@@ -12,7 +12,7 @@ class LogConfigCounterOptionsCustomField {
   /// Creates a new [LogConfigCounterOptionsCustomField].
   /// [name] This is deprecated and has no effect. Do not use.
   /// [value] This is deprecated and has no effect. Do not use.
-  LogConfigCounterOptionsCustomField({
+  const LogConfigCounterOptionsCustomField({
     this.name,
     this.value,
   });

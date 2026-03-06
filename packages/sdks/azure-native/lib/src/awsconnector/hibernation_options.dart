@@ -9,7 +9,7 @@ class HibernationOptions {
 
   /// Creates a new [HibernationOptions].
   /// [configured] &lt;p&gt;If &lt;code&gt;true&lt;/code&gt;, your instance is enabled for hibernation; otherwise, it is not enabled for hibernation.&lt;/p&gt;
-  HibernationOptions({
+  const HibernationOptions({
     this.configured,
   });
 

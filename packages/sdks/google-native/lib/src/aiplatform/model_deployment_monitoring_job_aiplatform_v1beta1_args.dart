@@ -61,7 +61,7 @@ class ModelDeploymentMonitoringJobAiplatformV1beta1Args {
   /// [project] Optional.
   /// [samplePredictInstance] Sample Predict instance, same format as PredictRequest.instances, this can be set as a replacement of ModelDeploymentMonitoringJob.predict_instance_schema_uri. If not set, we will generate predict schema from collected predict requests.
   /// [statsAnomaliesBaseDirectory] Stats anomalies base folder path.
-  ModelDeploymentMonitoringJobAiplatformV1beta1Args({
+  const ModelDeploymentMonitoringJobAiplatformV1beta1Args({
     this.analysisInstanceSchemaUri,
     required this.displayName,
     this.enableMonitoringPipelineLogs,

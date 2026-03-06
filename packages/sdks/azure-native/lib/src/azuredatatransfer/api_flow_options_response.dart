@@ -27,7 +27,7 @@ class ApiFlowOptionsResponse {
   /// [remoteCallingModeClientId] Remote stub app registration Client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
   /// [remoteEndpoint] Remote host to which communication needs to be made. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the remoteEndpointSettings.endpoint property instead.
   /// [senderClientId] Sender's app user assigned Manage Identity client ID. The property has reached end of life support starting version 2025-05-30-preview. Please create and use the authentication property instead.
-  ApiFlowOptionsResponse({
+  const ApiFlowOptionsResponse({
     this.apiMode,
     this.audienceOverride,
     this.cname,

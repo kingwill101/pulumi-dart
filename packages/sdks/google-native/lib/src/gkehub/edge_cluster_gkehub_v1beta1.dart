@@ -9,7 +9,7 @@ class EdgeClusterGkehubV1beta1 {
 
   /// Creates a new [EdgeClusterGkehubV1beta1].
   /// [resourceLink] Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
-  EdgeClusterGkehubV1beta1({
+  const EdgeClusterGkehubV1beta1({
     this.resourceLink,
   });
 

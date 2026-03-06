@@ -13,7 +13,7 @@ class StorageVersionMigrationStatusStoragemigrationK8sIoV1beta1 {
   /// Creates a new [StorageVersionMigrationStatusStoragemigrationK8sIoV1beta1].
   /// [conditions] The latest available observations of the migration's current state.
   /// [resourceVersion] ResourceVersion to compare with the GC cache for performing the migration. This is the current resource version of given group, version and resource when kube-controller-manager first observes this StorageVersionMigration resource.
-  StorageVersionMigrationStatusStoragemigrationK8sIoV1beta1({
+  const StorageVersionMigrationStatusStoragemigrationK8sIoV1beta1({
     this.conditions,
     this.resourceVersion,
   });

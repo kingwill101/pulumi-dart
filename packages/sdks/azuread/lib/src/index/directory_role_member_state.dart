@@ -12,7 +12,7 @@ class DirectoryRoleMemberState {
   /// Creates a new [DirectoryRoleMemberState].
   /// [memberObjectId] The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
   /// [roleObjectId] The object ID of the directory role you want to add the member to. Changing this forces a new resource to be created.
-  DirectoryRoleMemberState({
+  const DirectoryRoleMemberState({
     this.memberObjectId,
     this.roleObjectId,
   });

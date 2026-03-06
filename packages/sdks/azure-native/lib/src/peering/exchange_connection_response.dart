@@ -22,7 +22,7 @@ class ExchangeConnectionResponse {
   /// [connectionState] The state of the connection.
   /// [errorMessage] The error message related to the connection state, if any.
   /// [peeringDBFacilityId] The PeeringDB.com ID of the facility at which the connection has to be set up.
-  ExchangeConnectionResponse({
+  const ExchangeConnectionResponse({
     this.bgpSession,
     this.connectionIdentifier,
     required this.connectionState,

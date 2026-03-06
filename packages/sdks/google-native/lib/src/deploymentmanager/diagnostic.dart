@@ -12,7 +12,7 @@ class Diagnostic {
   /// Creates a new [Diagnostic].
   /// [field] JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.
   /// [level] Level to record this diagnostic.
-  Diagnostic({
+  const Diagnostic({
     this.field,
     this.level,
   });

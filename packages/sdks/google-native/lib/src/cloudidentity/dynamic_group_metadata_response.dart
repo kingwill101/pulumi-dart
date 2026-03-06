@@ -14,7 +14,7 @@ class DynamicGroupMetadataResponse {
   /// Creates a new [DynamicGroupMetadataResponse].
   /// [queries] Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 100 dynamic groups.
   /// [status] Status of the dynamic group.
-  DynamicGroupMetadataResponse({
+  const DynamicGroupMetadataResponse({
     required this.queries,
     required this.status,
   });

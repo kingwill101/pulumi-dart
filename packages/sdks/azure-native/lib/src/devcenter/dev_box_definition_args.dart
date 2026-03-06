@@ -38,7 +38,7 @@ class DevBoxDefinitionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The SKU for Dev Boxes created using this definition.
   /// [tags] Resource tags.
-  DevBoxDefinitionArgs({
+  const DevBoxDefinitionArgs({
     this.devBoxDefinitionName,
     required this.devCenterName,
     this.hibernateSupport,

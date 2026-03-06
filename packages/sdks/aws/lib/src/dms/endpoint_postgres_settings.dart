@@ -59,7 +59,7 @@ class EndpointPostgresSettings {
   /// [pluginName] Specifies the plugin to use to create a replication slot. Valid values: `pglogical`, `test-decoding`.
   /// [serviceAccessRoleArn] Specifies the IAM role to use to authenticate the connection.
   /// [slotName] Sets the name of a previously created logical replication slot for a CDC load of the PostgreSQL source instance.
-  EndpointPostgresSettings({
+  const EndpointPostgresSettings({
     this.afterConnectScript,
     this.authenticationMethod,
     this.babelfishDatabaseName,

@@ -10,7 +10,7 @@ class EnterpriseCrmEventbusProtoEventParameters {
 
   /// Creates a new [EnterpriseCrmEventbusProtoEventParameters].
   /// [parameters] Parameters are a part of Event and can be used to communicate between different tasks that are part of the same integration execution.
-  EnterpriseCrmEventbusProtoEventParameters({
+  const EnterpriseCrmEventbusProtoEventParameters({
     this.parameters,
   });
 

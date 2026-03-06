@@ -11,7 +11,7 @@ class AccountPrivateEndpointConnection {
   /// Creates a new [AccountPrivateEndpointConnection].
   /// [id] The ID of the Automation Account.
   /// [name] Specifies the name of the Automation Account. Changing this forces a new resource to be created.
-  AccountPrivateEndpointConnection({
+  const AccountPrivateEndpointConnection({
     this.id,
     this.name,
   });

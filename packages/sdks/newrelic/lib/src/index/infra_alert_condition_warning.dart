@@ -11,7 +11,7 @@ class InfraAlertConditionWarning {
   /// [duration] Required.
   /// [timeFunction] Optional.
   /// [value] Optional.
-  InfraAlertConditionWarning({
+  const InfraAlertConditionWarning({
     required this.duration,
     this.timeFunction,
     this.value,

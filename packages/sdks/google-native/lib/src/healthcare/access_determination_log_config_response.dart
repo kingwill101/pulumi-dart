@@ -9,7 +9,7 @@ class AccessDeterminationLogConfigResponse {
 
   /// Creates a new [AccessDeterminationLogConfigResponse].
   /// [logLevel] Optional. Controls the amount of detail to include as part of the audit logs.
-  AccessDeterminationLogConfigResponse({
+  const AccessDeterminationLogConfigResponse({
     required this.logLevel,
   });
 

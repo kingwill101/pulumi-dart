@@ -10,7 +10,7 @@ class BareMetalAdminMaintenanceStatusResponse {
 
   /// Creates a new [BareMetalAdminMaintenanceStatusResponse].
   /// [machineDrainStatus] Represents the status of draining and drained machine nodes. This is used to show the progress of cluster upgrade.
-  BareMetalAdminMaintenanceStatusResponse({
+  const BareMetalAdminMaintenanceStatusResponse({
     required this.machineDrainStatus,
   });
 

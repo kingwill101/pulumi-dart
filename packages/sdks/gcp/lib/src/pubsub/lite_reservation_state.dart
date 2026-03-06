@@ -21,7 +21,7 @@ class LiteReservationState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the pubsub lite reservation.
   /// [throughputCapacity] The reserved throughput capacity. Every unit of throughput capacity is
-  LiteReservationState({
+  const LiteReservationState({
     this.name,
     this.project,
     this.region,

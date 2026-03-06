@@ -20,7 +20,7 @@ class CertificateCertificateDescriptionX509DescriptionKeyUsage {
   /// [baseKeyUsages] Describes high-level ways in which a key may be used.
   /// [extendedKeyUsages] Describes high-level ways in which a key may be used.
   /// [unknownExtendedKeyUsages] An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
-  CertificateCertificateDescriptionX509DescriptionKeyUsage({
+  const CertificateCertificateDescriptionX509DescriptionKeyUsage({
     this.baseKeyUsages,
     this.extendedKeyUsages,
     this.unknownExtendedKeyUsages,

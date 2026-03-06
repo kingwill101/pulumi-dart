@@ -26,7 +26,7 @@ class AksAssessmentOperationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scope] Gets or sets scope parameters to identify inventory items for assessment.
   /// [settings] Gets or sets AKS Assessment Settings.
-  AksAssessmentOperationArgs({
+  const AksAssessmentOperationArgs({
     this.assessmentName,
     required this.projectName,
     required this.resourceGroupName,

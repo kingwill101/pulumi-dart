@@ -26,7 +26,7 @@ class GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy {
   /// [nodeTypeId] The canonical identifier of the node type to add or remove.
   /// [scaleOutSize] Number of nodes to add to a cluster during a scale-out operation.
   /// [storageThresholds] Utilization thresholds pertaining to amount of consumed storage.
-  GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy({
+  const GetPrivateCloudManagementClusterAutoscalingSettingAutoscalingPolicy({
     required this.autoscalePolicyId,
     required this.consumedMemoryThresholds,
     required this.cpuThresholds,

@@ -30,7 +30,7 @@ class NetworkMappingArgs {
   /// [sourceRecoveryFabricName] Specifies the ASR fabric where mapping should be created. Changing this forces a new resource to be created.
   /// [targetNetworkId] The id of the recovery network. Changing this forces a new resource to be created.
   /// [targetRecoveryFabricName] The Azure Site Recovery fabric object corresponding to the recovery Azure region. Changing this forces a new resource to be created.
-  NetworkMappingArgs({
+  const NetworkMappingArgs({
     this.name,
     required this.recoveryVaultName,
     required this.resourceGroupName,

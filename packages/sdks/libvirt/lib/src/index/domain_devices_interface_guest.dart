@@ -11,7 +11,7 @@ class DomainDevicesInterfaceGuest {
   /// Creates a new [DomainDevicesInterfaceGuest].
   /// [actual] Indicates the actual guest device identifier.
   /// [dev] Sets the device identifier for the guest network interface.
-  DomainDevicesInterfaceGuest({
+  const DomainDevicesInterfaceGuest({
     this.actual,
     this.dev,
   });

@@ -24,7 +24,7 @@ class GetInstanceTypeOfferingsBrokerInstanceOption {
   /// [storageType] Filter response by storage type.
   /// [supportedDeploymentModes] List of supported deployment modes.
   /// [supportedEngineVersions] List of supported engine versions.
-  GetInstanceTypeOfferingsBrokerInstanceOption({
+  const GetInstanceTypeOfferingsBrokerInstanceOption({
     required this.availabilityZones,
     required this.engineType,
     required this.hostInstanceType,

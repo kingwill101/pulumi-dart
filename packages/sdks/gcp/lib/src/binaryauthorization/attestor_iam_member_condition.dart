@@ -11,7 +11,7 @@ class AttestorIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  AttestorIamMemberCondition({
+  const AttestorIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

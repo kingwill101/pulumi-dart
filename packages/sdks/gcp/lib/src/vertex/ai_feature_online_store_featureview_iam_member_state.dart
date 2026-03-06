@@ -46,7 +46,7 @@ class AiFeatureOnlineStoreFeatureviewIamMemberState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region for the resource. It should be the same as the featureonlinestore region. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
-  AiFeatureOnlineStoreFeatureviewIamMemberState({
+  const AiFeatureOnlineStoreFeatureviewIamMemberState({
     this.condition,
     this.etag,
     this.featureOnlineStore,

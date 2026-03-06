@@ -23,7 +23,7 @@ class GetScalingConfigurationsConfigurationDataDisk {
   /// [performanceLevel] The performance level of the ESSD used as data disk.
   /// [size] Size of data disk.
   /// [snapshotId] Size of data disk.
-  GetScalingConfigurationsConfigurationDataDisk({
+  const GetScalingConfigurationsConfigurationDataDisk({
     required this.category,
     required this.deleteWithInstance,
     required this.device,

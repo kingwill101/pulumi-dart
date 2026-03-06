@@ -28,7 +28,7 @@ class IssueArgs {
   /// [related] Related resource or alert that is to be added to the issue (default: empty - the issue will be created without any related resources or alerts)
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [startInvestigation] Whether to automatically start an investigation once the issue is created (default: false)
-  IssueArgs({
+  const IssueArgs({
     required this.azureMonitorWorkspaceName,
     this.issueName,
     this.properties,

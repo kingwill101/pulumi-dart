@@ -29,7 +29,7 @@ class LbFlavorprofileV2Args {
   /// [name] Name of the flavorprofile. Changing this updates the existing
   /// [providerName] The provider_name that the flavor_profile will use.
   /// [region] The region in which to obtain the V2 Networking client.
-  LbFlavorprofileV2Args({
+  const LbFlavorprofileV2Args({
     required this.flavorData,
     this.name,
     required this.providerName,

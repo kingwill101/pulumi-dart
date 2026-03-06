@@ -42,7 +42,7 @@ class GetDomainsDomain {
   /// [sslProtocol] Indicates whether the SSL certificate is enabled.
   /// [sslPub] Indicates the public key of the certificate.
   /// [status] The status of DCDN Domain.
-  GetDomainsDomain({
+  const GetDomainsDomain({
     required this.certName,
     required this.cname,
     required this.description,

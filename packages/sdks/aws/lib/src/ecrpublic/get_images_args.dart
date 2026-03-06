@@ -22,7 +22,7 @@ class GetImagesArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryId] AWS account ID associated with the public registry that contains the repository. If not specified, the default public registry is assumed.
   /// [repositoryName] Name of the public repository.
-  GetImagesArgs({
+  const GetImagesArgs({
     this.imageIds,
     this.region,
     this.registryId,

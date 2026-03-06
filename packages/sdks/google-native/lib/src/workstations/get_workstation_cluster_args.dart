@@ -15,7 +15,7 @@ class GetWorkstationClusterArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [workstationClusterId] Required.
-  GetWorkstationClusterArgs({
+  const GetWorkstationClusterArgs({
     required this.location,
     this.project,
     required this.workstationClusterId,

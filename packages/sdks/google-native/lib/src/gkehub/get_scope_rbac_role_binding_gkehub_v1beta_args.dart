@@ -17,7 +17,7 @@ class GetScopeRbacRoleBindingGkehubV1betaArgs {
   /// [project] Optional.
   /// [rbacrolebindingId] Required.
   /// [scopeId] Required.
-  GetScopeRbacRoleBindingGkehubV1betaArgs({
+  const GetScopeRbacRoleBindingGkehubV1betaArgs({
     required this.location,
     this.project,
     required this.rbacrolebindingId,

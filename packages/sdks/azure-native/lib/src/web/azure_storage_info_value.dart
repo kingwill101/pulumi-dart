@@ -25,7 +25,7 @@ class AzureStorageInfoValue {
   /// [protocol] Mounting protocol to use for the storage account.
   /// [shareName] Name of the file share (container name, for Blob storage).
   /// [type] Type of storage.
-  AzureStorageInfoValue({
+  const AzureStorageInfoValue({
     this.accessKey,
     this.accountName,
     this.mountPath,

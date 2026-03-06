@@ -13,7 +13,7 @@ class Privilege {
   /// Creates a new [Privilege].
   /// [actions] An array of actions that are allowed.
   /// [resource] An Azure Cosmos DB Mongo DB Resource.
-  Privilege({
+  const Privilege({
     this.actions,
     this.resource,
   });

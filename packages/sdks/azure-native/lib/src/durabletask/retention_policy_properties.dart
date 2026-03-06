@@ -10,7 +10,7 @@ class RetentionPolicyProperties {
 
   /// Creates a new [RetentionPolicyProperties].
   /// [retentionPolicies] The orchestration retention policies
-  RetentionPolicyProperties({
+  const RetentionPolicyProperties({
     this.retentionPolicies,
   });
 

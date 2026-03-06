@@ -18,7 +18,7 @@ class DatabaseKeyResponse {
   /// [subregion] Subregion of the server key.
   /// [thumbprint] Thumbprint of the database key.
   /// [type] The database key type. Only supported value is 'AzureKeyVault'.
-  DatabaseKeyResponse({
+  const DatabaseKeyResponse({
     required this.creationDate,
     required this.subregion,
     required this.thumbprint,

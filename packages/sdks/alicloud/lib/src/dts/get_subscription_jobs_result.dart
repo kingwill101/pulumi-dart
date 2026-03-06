@@ -26,7 +26,7 @@ class GetSubscriptionJobsResult {
   /// [outputFile] Optional.
   /// [status] Optional.
   /// [tags] Optional.
-  GetSubscriptionJobsResult({
+  const GetSubscriptionJobsResult({
     this.enableDetails,
     required this.id,
     required this.ids,

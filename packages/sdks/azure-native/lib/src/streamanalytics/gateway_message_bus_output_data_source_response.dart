@@ -13,7 +13,7 @@ class GatewayMessageBusOutputDataSourceResponse {
   /// Creates a new [GatewayMessageBusOutputDataSourceResponse].
   /// [topic] The name of the Service Bus topic.
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
-  GatewayMessageBusOutputDataSourceResponse({
+  const GatewayMessageBusOutputDataSourceResponse({
     this.topic,
     required this.type,
   });

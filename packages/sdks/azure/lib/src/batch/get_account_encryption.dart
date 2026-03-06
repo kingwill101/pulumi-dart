@@ -8,7 +8,7 @@ class GetAccountEncryption {
 
   /// Creates a new [GetAccountEncryption].
   /// [keyVaultKeyId] The full URL path of the Key Vault Key used to encrypt data for this Batch account.
-  GetAccountEncryption({
+  const GetAccountEncryption({
     required this.keyVaultKeyId,
   });
 

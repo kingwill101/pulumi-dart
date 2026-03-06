@@ -23,7 +23,7 @@ class GetLinuxWebAppStorageAccount {
   /// [name] The name of this Linux Web App.
   /// [shareName] The Name of the File Share or Container Name for Blob storage.
   /// [type] The Azure Storage Type.
-  GetLinuxWebAppStorageAccount({
+  const GetLinuxWebAppStorageAccount({
     required this.accessKey,
     required this.accountName,
     required this.mountPath,

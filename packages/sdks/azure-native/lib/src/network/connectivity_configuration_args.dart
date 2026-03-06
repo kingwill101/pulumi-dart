@@ -38,7 +38,7 @@ class ConnectivityConfigurationArgs {
   /// [isGlobal] Flag if global mesh is supported.
   /// [networkManagerName] The name of the network manager.
   /// [resourceGroupName] The name of the resource group.
-  ConnectivityConfigurationArgs({
+  const ConnectivityConfigurationArgs({
     required this.appliesToGroups,
     this.configurationName,
     required this.connectivityTopology,

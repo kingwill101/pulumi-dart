@@ -11,7 +11,7 @@ class DataCollectionRuleStreamDeclarationColumn {
   /// Creates a new [DataCollectionRuleStreamDeclarationColumn].
   /// [name] The name of the column.
   /// [type] The type of the column data. Possible values are `string`, `int`, `long`, `real`, `boolean`, `datetime`,and `dynamic`.
-  DataCollectionRuleStreamDeclarationColumn({
+  const DataCollectionRuleStreamDeclarationColumn({
     required this.name,
     required this.type,
   });

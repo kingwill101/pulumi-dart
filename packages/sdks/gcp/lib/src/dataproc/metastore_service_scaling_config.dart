@@ -17,7 +17,7 @@ class MetastoreServiceScalingConfig {
   /// [autoscalingConfig] Represents the autoscaling configuration of a metastore service.
   /// [instanceSize] Metastore instance sizes.
   /// [scalingFactor] Scaling factor, in increments of 0.1 for values less than 1.0, and increments of 1.0 for values greater than 1.0.
-  MetastoreServiceScalingConfig({
+  const MetastoreServiceScalingConfig({
     this.autoscalingConfig,
     this.instanceSize,
     this.scalingFactor,

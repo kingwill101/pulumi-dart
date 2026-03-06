@@ -12,7 +12,7 @@ class GetRepositoryRemoteRepositoryConfigNpmRepository {
   /// Creates a new [GetRepositoryRemoteRepositoryConfigNpmRepository].
   /// [customRepositories] [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
   /// [publicRepository] Address of the remote repository. Possible values: ["NPMJS"]
-  GetRepositoryRemoteRepositoryConfigNpmRepository({
+  const GetRepositoryRemoteRepositoryConfigNpmRepository({
     required this.customRepositories,
     required this.publicRepository,
   });

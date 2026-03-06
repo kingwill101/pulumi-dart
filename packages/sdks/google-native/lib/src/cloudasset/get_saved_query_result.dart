@@ -30,7 +30,7 @@ class GetSavedQueryResult {
   /// [lastUpdateTime] The last update time of this saved query.
   /// [lastUpdater] The account's email address who has updated this saved query most recently.
   /// [name] The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id
-  GetSavedQueryResult({
+  const GetSavedQueryResult({
     required this.content,
     required this.createTime,
     required this.creator,

@@ -17,7 +17,7 @@ class GetDevicesResult {
   /// [ids] IDs of the devices.
   /// [siteId] Optional.
   /// [tags] Optional.
-  GetDevicesResult({
+  const GetDevicesResult({
     required this.globalNetworkId,
     required this.id,
     required this.ids,

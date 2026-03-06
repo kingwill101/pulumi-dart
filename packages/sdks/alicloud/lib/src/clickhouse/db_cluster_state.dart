@@ -92,7 +92,7 @@ class DbClusterState {
   /// [vpcId] The id of the VPC.
   /// [vswitchId] The vswitch id of DBCluster.
   /// [zoneId] The zone ID of the instance.
-  DbClusterState({
+  const DbClusterState({
     this.allocatePublicConnection,
     this.category,
     this.coldStorage,

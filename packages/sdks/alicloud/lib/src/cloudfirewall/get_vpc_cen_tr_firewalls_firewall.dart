@@ -45,7 +45,7 @@ class GetVpcCenTrFirewallsFirewall {
   /// [resultCode] The operation result code of creating the VPC boundary firewall. Value:-**RegionDisable**: indicates that the region where the network instance is located is not supported by the VPC border firewall. You cannot create a VPC border firewall.-**Empty string**, indicating that the network instance can create a VPC firewall.
   /// [routeMode] The routing pattern. Value: managed: indicates automatic mode
   /// [transitRouterId] The ID of the transit router instance.
-  GetVpcCenTrFirewallsFirewall({
+  const GetVpcCenTrFirewallsFirewall({
     required this.cenId,
     required this.cenName,
     required this.firewallId,

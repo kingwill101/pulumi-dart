@@ -13,7 +13,7 @@ class PodGroup {
   /// Creates a new [PodGroup].
   /// [name] Name is a unique identifier for the PodGroup within the Workload. It must be a DNS label. This field is immutable.
   /// [policy] Policy defines the scheduling policy for this PodGroup.
-  PodGroup({
+  const PodGroup({
     required this.name,
     required this.policy,
   });

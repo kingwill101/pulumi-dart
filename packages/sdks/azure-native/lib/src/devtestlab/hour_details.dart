@@ -9,7 +9,7 @@ class HourDetails {
 
   /// Creates a new [HourDetails].
   /// [minute] Minutes of the hour the schedule will run.
-  HourDetails({
+  const HourDetails({
     this.minute,
   });
 

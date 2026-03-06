@@ -9,7 +9,7 @@ class ApiPropertiesResponse {
 
   /// Creates a new [ApiPropertiesResponse].
   /// [apiFreshnessTimeInMinutes] Interval in minutes for which the weather data for the api needs to be refreshed.
-  ApiPropertiesResponse({
+  const ApiPropertiesResponse({
     this.apiFreshnessTimeInMinutes,
   });
 

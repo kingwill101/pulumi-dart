@@ -24,7 +24,7 @@ class GetIntegrationRuntimeResult {
   /// [name] The resource name.
   /// [properties] Integration runtime properties.
   /// [type] The resource type.
-  GetIntegrationRuntimeResult({
+  const GetIntegrationRuntimeResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

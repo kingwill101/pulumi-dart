@@ -26,7 +26,7 @@ class GetIndexUserTokenConfigurationJwtTokenTypeConfiguration {
   /// [secretsManagerArn] ARN of the secret.
   /// [url] Signing key URL.
   /// [userNameAttributeField] The user name attribute field.
-  GetIndexUserTokenConfigurationJwtTokenTypeConfiguration({
+  const GetIndexUserTokenConfigurationJwtTokenTypeConfiguration({
     required this.claimRegex,
     required this.groupAttributeField,
     required this.issuer,

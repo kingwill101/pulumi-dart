@@ -15,7 +15,7 @@ class GetIamAccessKeyMetadataInfoArgs {
   /// Creates a new [GetIamAccessKeyMetadataInfoArgs].
   /// [name] Name of IamAccessKeyMetadata
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIamAccessKeyMetadataInfoArgs({
+  const GetIamAccessKeyMetadataInfoArgs({
     required this.name,
     required this.resourceGroupName,
   });

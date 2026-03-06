@@ -11,7 +11,7 @@ class ClusterV2ClusterCredentials {
   /// Creates a new [ClusterV2ClusterCredentials].
   /// [keyPairName] The SSH key of root of the cluster node.
   /// [password] The root password of the cluster node. It is 8 to 20 characters in length and must contain three types of characters: uppercase and lowercase letters, numbers, and special symbols. Special symbols can be: () ~! @ # $ % ^ & * - = + { } [ ] : ; ',. ? /
-  ClusterV2ClusterCredentials({
+  const ClusterV2ClusterCredentials({
     this.keyPairName,
     this.password,
   });

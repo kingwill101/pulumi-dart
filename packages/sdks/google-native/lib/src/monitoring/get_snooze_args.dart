@@ -13,7 +13,7 @@ class GetSnoozeArgs {
   /// Creates a new [GetSnoozeArgs].
   /// [project] Optional.
   /// [snoozeId] Required.
-  GetSnoozeArgs({
+  const GetSnoozeArgs({
     this.project,
     required this.snoozeId,
   });

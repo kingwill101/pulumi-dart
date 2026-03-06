@@ -11,7 +11,7 @@ class GetOsProfileLinuxPatch {
   /// Creates a new [GetOsProfileLinuxPatch].
   /// [assessmentMode] Specifies the assessment mode.
   /// [patchMode] Specifies the patch mode.
-  GetOsProfileLinuxPatch({
+  const GetOsProfileLinuxPatch({
     required this.assessmentMode,
     required this.patchMode,
   });

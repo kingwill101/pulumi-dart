@@ -52,7 +52,7 @@ class BgpPolicyContent {
   /// [sourceBlockLists] Source pull Black. See `source_block_list` below.
   /// [sourceLimit] Do not fill in when the source speed limit is deleted. See `source_limit` below.
   /// [whitenGfbrNets] Add white high protection back to source network segment switch.
-  BgpPolicyContent({
+  const BgpPolicyContent({
     this.blackIpListExpireAt,
     this.enableDefense,
     this.enableDropIcmp,

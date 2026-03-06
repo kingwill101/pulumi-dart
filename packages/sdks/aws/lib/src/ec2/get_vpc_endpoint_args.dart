@@ -41,7 +41,7 @@ class GetVpcEndpointArgs {
   /// [tags] Map of tags, each pair of which must exactly match
   /// [vpcEndpointType] VPC Endpoint type. Valid values are `Interface`, `Gateway`, `GatewayLoadBalancer`, `Resource`, and `ServiceNetwork`.
   /// [vpcId] ID of the VPC in which the specific VPC Endpoint is used.
-  GetVpcEndpointArgs({
+  const GetVpcEndpointArgs({
     this.filters,
     this.id,
     this.region,

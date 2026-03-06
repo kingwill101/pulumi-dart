@@ -33,7 +33,7 @@ class VpcConnectionState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [targetClusterArn] The Amazon Resource Name (ARN) of the cluster.
   /// [vpcId] The VPC ID of the remote client.
-  VpcConnectionState({
+  const VpcConnectionState({
     this.arn,
     this.authentication,
     this.clientSubnets,

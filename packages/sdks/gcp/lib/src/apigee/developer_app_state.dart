@@ -65,7 +65,7 @@ class DeveloperAppState {
   /// [orgId] The Apigee Organization associated with the Apigee instance,
   /// [scopes] Scopes to apply to the developer app.
   /// [status] Status of the credential. Valid values include approved or revoked.
-  DeveloperAppState({
+  const DeveloperAppState({
     this.apiProducts,
     this.appFamily,
     this.appId,

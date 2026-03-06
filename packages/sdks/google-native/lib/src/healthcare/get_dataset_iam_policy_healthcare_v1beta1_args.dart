@@ -17,7 +17,7 @@ class GetDatasetIamPolicyHealthcareV1beta1Args {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDatasetIamPolicyHealthcareV1beta1Args({
+  const GetDatasetIamPolicyHealthcareV1beta1Args({
     required this.datasetId,
     required this.location,
     this.optionsRequestedPolicyVersion,

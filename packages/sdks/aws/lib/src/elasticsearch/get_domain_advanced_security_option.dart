@@ -11,7 +11,7 @@ class GetDomainAdvancedSecurityOption {
   /// Creates a new [GetDomainAdvancedSecurityOption].
   /// [enabled] Whether node to node encryption is enabled.
   /// [internalUserDatabaseEnabled] Whether the internal user database is enabled.
-  GetDomainAdvancedSecurityOption({
+  const GetDomainAdvancedSecurityOption({
     required this.enabled,
     required this.internalUserDatabaseEnabled,
   });

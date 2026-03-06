@@ -21,7 +21,7 @@ class GetDatasetKustoDatabaseResult {
   /// [kustoDatabaseId] The resource ID of the Kusto Cluster Database to be shared with the receiver.
   /// [name] Required.
   /// [shareId] Required.
-  GetDatasetKustoDatabaseResult({
+  const GetDatasetKustoDatabaseResult({
     required this.displayName,
     required this.id,
     required this.kustoClusterLocation,

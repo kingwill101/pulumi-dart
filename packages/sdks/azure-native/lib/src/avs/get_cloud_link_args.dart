@@ -18,7 +18,7 @@ class GetCloudLinkArgs {
   /// [cloudLinkName] Name of the cloud link.
   /// [privateCloudName] Name of the private cloud
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetCloudLinkArgs({
+  const GetCloudLinkArgs({
     required this.cloudLinkName,
     required this.privateCloudName,
     required this.resourceGroupName,

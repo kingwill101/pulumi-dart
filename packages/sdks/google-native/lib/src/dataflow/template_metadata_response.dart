@@ -16,7 +16,7 @@ class TemplateMetadataResponse {
   /// [description] Optional. A description of the template.
   /// [name] The name of the template.
   /// [parameters] The parameters for the template.
-  TemplateMetadataResponse({
+  const TemplateMetadataResponse({
     required this.description,
     required this.name,
     required this.parameters,

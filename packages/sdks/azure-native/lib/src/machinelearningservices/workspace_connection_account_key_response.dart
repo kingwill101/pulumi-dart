@@ -7,7 +7,7 @@ class WorkspaceConnectionAccountKeyResponse {
 
   /// Creates a new [WorkspaceConnectionAccountKeyResponse].
   /// [key] Optional.
-  WorkspaceConnectionAccountKeyResponse({
+  const WorkspaceConnectionAccountKeyResponse({
     this.key,
   });
 

@@ -12,7 +12,7 @@ class SecurityContactPropertiesResponseNotificationsByRole {
   /// Creates a new [SecurityContactPropertiesResponseNotificationsByRole].
   /// [roles] Defines which RBAC roles will get email notifications from Microsoft Defender for Cloud. List of allowed RBAC roles:
   /// [state] Defines whether to send email notifications from AMicrosoft Defender for Cloud to persons with specific RBAC roles on the subscription.
-  SecurityContactPropertiesResponseNotificationsByRole({
+  const SecurityContactPropertiesResponseNotificationsByRole({
     this.roles,
     this.state,
   });

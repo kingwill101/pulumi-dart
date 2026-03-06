@@ -18,7 +18,7 @@ class GetMarkupRuleArgs {
   /// [billingAccountId] BillingAccount ID
   /// [billingProfileId] BillingProfile ID
   /// [name] Markup rule name.
-  GetMarkupRuleArgs({
+  const GetMarkupRuleArgs({
     required this.billingAccountId,
     required this.billingProfileId,
     required this.name,

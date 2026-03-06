@@ -53,7 +53,7 @@ class GetObjectAccessControlResult {
   /// [projectTeam] The project team associated with the entity, if any.
   /// [role] The access permission for the entity.
   /// [selfLink] The link to this access-control entry.
-  GetObjectAccessControlResult({
+  const GetObjectAccessControlResult({
     required this.bucket,
     required this.domain,
     required this.email,

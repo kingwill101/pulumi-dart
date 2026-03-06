@@ -20,7 +20,7 @@ class EndpointDeliveryRulePostArgCondition {
   /// [operator] Valid values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GreaterThan`, `GreaterThanOrEqual`, `LessThan` and `LessThanOrEqual`.
   /// [selector] Name of the post arg.
   /// [transforms] A list of transforms. Valid values are `Lowercase` and `Uppercase`.
-  EndpointDeliveryRulePostArgCondition({
+  const EndpointDeliveryRulePostArgCondition({
     this.matchValues,
     this.negateCondition,
     required this.operator,

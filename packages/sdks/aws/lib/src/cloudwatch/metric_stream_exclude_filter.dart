@@ -11,7 +11,7 @@ class MetricStreamExcludeFilter {
   /// Creates a new [MetricStreamExcludeFilter].
   /// [metricNames] An array that defines the metrics you want to exclude for this metric namespace
   /// [namespace] Name of the metric namespace in the filter.
-  MetricStreamExcludeFilter({
+  const MetricStreamExcludeFilter({
     this.metricNames,
     required this.namespace,
   });

@@ -8,7 +8,7 @@ class GetRegionalSecretsSecretCustomerManagedEncryption {
 
   /// Creates a new [GetRegionalSecretsSecretCustomerManagedEncryption].
   /// [kmsKeyName] Describes the Cloud KMS encryption key that will be used to protect destination secret.
-  GetRegionalSecretsSecretCustomerManagedEncryption({
+  const GetRegionalSecretsSecretCustomerManagedEncryption({
     required this.kmsKeyName,
   });
 

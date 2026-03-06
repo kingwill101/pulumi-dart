@@ -18,7 +18,7 @@ class UpdateProfileResponseRollingUpdateProfile {
   /// [maxBatchPercent] Maximum percentage of total Container Groups which can be updated simultaneously by rolling update in one batch.
   /// [maxUnhealthyPercent] Maximum percentage of the updated Container Groups which can be in unhealthy state after each batch is updated.
   /// [pauseTimeBetweenBatches] The wait time between batches after completing the one batch of the rolling update and starting the next batch. The time duration should be specified in ISO 8601 format for duration.
-  UpdateProfileResponseRollingUpdateProfile({
+  const UpdateProfileResponseRollingUpdateProfile({
     this.inPlaceUpdate,
     this.maxBatchPercent,
     this.maxUnhealthyPercent,

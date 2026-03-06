@@ -78,7 +78,7 @@ class RegionUrlMapArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the url map should reside.
   /// [tests] The list of expected URL mappings. Requests to update this UrlMap will
-  RegionUrlMapArgs({
+  const RegionUrlMapArgs({
     this.defaultRouteAction,
     this.defaultService,
     this.defaultUrlRedirect,

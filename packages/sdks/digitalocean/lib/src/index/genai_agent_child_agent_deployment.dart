@@ -26,7 +26,7 @@ class GenaiAgentChildAgentDeployment {
   /// [url] Url of the Deployment
   /// [uuid] API Key value
   /// [visibility] Visibility of the Deployment
-  GenaiAgentChildAgentDeployment({
+  const GenaiAgentChildAgentDeployment({
     this.createdAt,
     this.name,
     this.status,

@@ -18,7 +18,7 @@ class PerfDataSettings {
   /// [perfDataEndTime] Gets or sets perf data end time.
   /// [perfDataStartTime] Gets or sets perf data start time.
   /// [timeRange] Gets perf data time range.
-  PerfDataSettings({
+  const PerfDataSettings({
     required this.percentile,
     this.perfDataEndTime,
     this.perfDataStartTime,

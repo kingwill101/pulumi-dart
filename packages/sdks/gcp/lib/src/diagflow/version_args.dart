@@ -16,7 +16,7 @@ class VersionArgs {
   /// Creates a new [VersionArgs].
   /// [description] The developer-provided description of this version.
   /// [parent] The Flow to create an Version for.
-  VersionArgs({
+  const VersionArgs({
     this.description,
     this.parent,
   });

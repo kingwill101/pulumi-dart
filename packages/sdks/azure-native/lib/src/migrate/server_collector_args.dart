@@ -23,7 +23,7 @@ class ServerCollectorArgs {
   /// [properties] Optional.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [serverCollectorName] Unique name of a Server collector within a project.
-  ServerCollectorArgs({
+  const ServerCollectorArgs({
     this.eTag,
     required this.projectName,
     this.properties,

@@ -21,7 +21,7 @@ class OtsBackupPlanRule {
   /// [retention] Backup retention days, the minimum is 1.
   /// [ruleName] The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
   /// [schedule] Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
-  OtsBackupPlanRule({
+  const OtsBackupPlanRule({
     this.backupType,
     this.disabled,
     this.retention,

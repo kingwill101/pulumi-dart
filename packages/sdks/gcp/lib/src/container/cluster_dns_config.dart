@@ -17,7 +17,7 @@ class ClusterDnsConfig {
   /// [clusterDns] Which in-cluster DNS provider should be used. `PROVIDER_UNSPECIFIED` (default) or `PLATFORM_DEFAULT` or `CLOUD_DNS` or `KUBE_DNS`.
   /// [clusterDnsDomain] The suffix used for all cluster service records.
   /// [clusterDnsScope] The scope of access to cluster DNS records. `DNS_SCOPE_UNSPECIFIED` or `CLUSTER_SCOPE` or `VPC_SCOPE`. If the `cluster_dns` field is set to `CLOUD_DNS`, `DNS_SCOPE_UNSPECIFIED` and empty/null behave like `CLUSTER_SCOPE`.
-  ClusterDnsConfig({
+  const ClusterDnsConfig({
     this.additiveVpcScopeDnsDomain,
     this.clusterDns,
     this.clusterDnsDomain,

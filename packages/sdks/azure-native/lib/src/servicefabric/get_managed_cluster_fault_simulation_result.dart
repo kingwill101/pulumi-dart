@@ -21,7 +21,7 @@ class GetManagedClusterFaultSimulationResult {
   /// [simulationId] unique identifier for the fault simulation.
   /// [startTime] The start time of the fault simulation.
   /// [status] Fault simulation status
-  GetManagedClusterFaultSimulationResult({
+  const GetManagedClusterFaultSimulationResult({
     this.details,
     this.endTime,
     this.simulationId,

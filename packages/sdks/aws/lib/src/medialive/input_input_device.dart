@@ -8,7 +8,7 @@ class InputInputDevice {
 
   /// Creates a new [InputInputDevice].
   /// [id] The unique ID for the device.
-  InputInputDevice({
+  const InputInputDevice({
     required this.id,
   });
 

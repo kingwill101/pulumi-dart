@@ -67,7 +67,7 @@ class JobArgs {
   /// [scheduling] Optional. Job scheduling configuration.
   /// [sparkConfig] The config of the Spark job.
   /// [sparksqlConfig] The config of SparkSql job
-  JobArgs({
+  const JobArgs({
     this.forceDelete,
     this.hadoopConfig,
     this.hiveConfig,

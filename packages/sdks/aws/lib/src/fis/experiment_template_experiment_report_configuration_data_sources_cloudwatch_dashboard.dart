@@ -8,7 +8,7 @@ class ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashbo
 
   /// Creates a new [ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard].
   /// [dashboardArn] The ARN of the CloudWatch dashboard.
-  ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard({
+  const ExperimentTemplateExperimentReportConfigurationDataSourcesCloudwatchDashboard({
     this.dashboardArn,
   });
 

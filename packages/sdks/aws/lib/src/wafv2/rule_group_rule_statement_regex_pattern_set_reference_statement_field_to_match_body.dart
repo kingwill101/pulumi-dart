@@ -7,7 +7,7 @@ class RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody {
 
   /// Creates a new [RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody].
   /// [oversizeHandling] Optional.
-  RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody({
+  const RuleGroupRuleStatementRegexPatternSetReferenceStatementFieldToMatchBody({
     this.oversizeHandling,
   });
 

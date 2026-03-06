@@ -23,7 +23,7 @@ class DomainDevicesDiskMirror {
   /// [job] Configures the job identifier associated with the disk mirror operation.
   /// [ready] Indicates whether the disk mirror is ready for use.
   /// [source] Specifies the source of the backing store, determining its origin and how it is accessed.
-  DomainDevicesDiskMirror({
+  const DomainDevicesDiskMirror({
     this.backingStore,
     this.format,
     this.job,

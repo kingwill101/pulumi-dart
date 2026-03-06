@@ -12,7 +12,7 @@ class SubjectContaineranalysisV1beta1 {
   /// Creates a new [SubjectContaineranalysisV1beta1].
   /// [digest] `"": ""` Algorithms can be e.g. sha256, sha512 See https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
   /// [name] Identifier to distinguish this artifact from others within the subject.
-  SubjectContaineranalysisV1beta1({
+  const SubjectContaineranalysisV1beta1({
     this.digest,
     this.name,
   });

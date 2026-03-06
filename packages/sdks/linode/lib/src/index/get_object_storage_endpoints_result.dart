@@ -18,7 +18,7 @@ class GetObjectStorageEndpointsResult {
   /// [id] Required.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetObjectStorageEndpointsResult({
+  const GetObjectStorageEndpointsResult({
     required this.endpoints,
     this.filters,
     required this.id,

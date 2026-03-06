@@ -11,7 +11,7 @@ class KeyRegistrationKeyRegistration {
   /// Creates a new [KeyRegistrationKeyRegistration].
   /// [defaultKey] Whether the key is set as the default key for encryption and decryption use.
   /// [keyArn] ARN of the AWS KMS key that is registered for encryption and decryption use.
-  KeyRegistrationKeyRegistration({
+  const KeyRegistrationKeyRegistration({
     this.defaultKey,
     required this.keyArn,
   });

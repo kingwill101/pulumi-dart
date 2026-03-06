@@ -25,7 +25,7 @@ class GetRegionalSecretVersionAccessResult {
   /// [secret] Required.
   /// [secretData] The secret data. No larger than 64KiB.
   /// [version] Required.
-  GetRegionalSecretVersionAccessResult({
+  const GetRegionalSecretVersionAccessResult({
     required this.id,
     this.isSecretDataBase64,
     required this.location,

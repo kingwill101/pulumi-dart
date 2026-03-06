@@ -16,7 +16,7 @@ class LinkedRouterApplianceInstancesResponse {
   /// [instances] The list of router appliance instances.
   /// [siteToSiteDataTransfer] A value that controls whether site-to-site data transfer is enabled for these resources. Data transfer is available only in [supported locations](https://cloud.google.com/network-connectivity/docs/network-connectivity-center/concepts/locations).
   /// [vpcNetwork] The VPC network where these router appliance instances are located.
-  LinkedRouterApplianceInstancesResponse({
+  const LinkedRouterApplianceInstancesResponse({
     required this.instances,
     required this.siteToSiteDataTransfer,
     required this.vpcNetwork,

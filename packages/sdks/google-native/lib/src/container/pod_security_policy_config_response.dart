@@ -9,7 +9,7 @@ class PodSecurityPolicyConfigResponse {
 
   /// Creates a new [PodSecurityPolicyConfigResponse].
   /// [enabled] Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
-  PodSecurityPolicyConfigResponse({
+  const PodSecurityPolicyConfigResponse({
     required this.enabled,
   });
 

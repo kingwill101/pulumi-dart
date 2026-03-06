@@ -11,7 +11,7 @@ class MultitenantDistributionActiveTrustedKeyGroupItem {
   /// Creates a new [MultitenantDistributionActiveTrustedKeyGroupItem].
   /// [keyGroupId] ID of the key group that contains the public keys.
   /// [keyPairIds] Set of active CloudFront key pairs associated with the signer that can be used to verify the signatures of signed URLs and signed cookies.
-  MultitenantDistributionActiveTrustedKeyGroupItem({
+  const MultitenantDistributionActiveTrustedKeyGroupItem({
     this.keyGroupId,
     this.keyPairIds,
   });

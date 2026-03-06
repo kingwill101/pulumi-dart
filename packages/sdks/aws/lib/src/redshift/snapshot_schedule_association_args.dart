@@ -18,7 +18,7 @@ class SnapshotScheduleAssociationArgs {
   /// [clusterIdentifier] The cluster identifier.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [scheduleIdentifier] The snapshot schedule identifier.
-  SnapshotScheduleAssociationArgs({
+  const SnapshotScheduleAssociationArgs({
     required this.clusterIdentifier,
     this.region,
     required this.scheduleIdentifier,

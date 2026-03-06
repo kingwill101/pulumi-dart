@@ -37,7 +37,7 @@ class GetConsentHealthcareV1beta1Result {
   /// [state] Indicates the current state of this Consent.
   /// [ttl] Input only. The time to live for this Consent from when it is created.
   /// [userId] User's UUID provided by the client.
-  GetConsentHealthcareV1beta1Result({
+  const GetConsentHealthcareV1beta1Result({
     required this.consentArtifact,
     required this.expireTime,
     required this.metadata,

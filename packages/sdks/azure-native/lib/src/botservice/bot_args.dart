@@ -32,7 +32,7 @@ class BotArgs {
   /// [resourceName] The name of the Bot resource.
   /// [sku] Gets or sets the SKU of the resource.
   /// [tags] Contains resource tags defined as key/value pairs.
-  BotArgs({
+  const BotArgs({
     this.kind,
     this.location,
     this.properties,

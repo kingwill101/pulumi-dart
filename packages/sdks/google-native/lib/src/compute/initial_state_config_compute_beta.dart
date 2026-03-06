@@ -19,7 +19,7 @@ class InitialStateConfigComputeBeta {
   /// [dbxs] The forbidden key database (dbx).
   /// [keks] The Key Exchange Key (KEK).
   /// [pk] The Platform Key (PK).
-  InitialStateConfigComputeBeta({
+  const InitialStateConfigComputeBeta({
     this.dbs,
     this.dbxs,
     this.keks,

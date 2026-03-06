@@ -21,7 +21,7 @@ class SnapshotArgs {
   /// [diskId] Cloud Disk ID.
   /// [ensRegionId] The node ID of ENS.
   /// [snapshotName] Name of the snapshot instance.
-  SnapshotArgs({
+  const SnapshotArgs({
     this.description,
     required this.diskId,
     required this.ensRegionId,

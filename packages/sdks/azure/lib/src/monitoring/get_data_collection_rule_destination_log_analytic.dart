@@ -11,7 +11,7 @@ class GetDataCollectionRuleDestinationLogAnalytic {
   /// Creates a new [GetDataCollectionRuleDestinationLogAnalytic].
   /// [name] Specifies the name of the Data Collection Rule.
   /// [workspaceResourceId] The ID of a Log Analytic Workspace resource.
-  GetDataCollectionRuleDestinationLogAnalytic({
+  const GetDataCollectionRuleDestinationLogAnalytic({
     required this.name,
     required this.workspaceResourceId,
   });

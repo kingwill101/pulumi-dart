@@ -14,7 +14,7 @@ class DatabaseTypeDatamigrationV1beta1 {
   /// Creates a new [DatabaseTypeDatamigrationV1beta1].
   /// [engine] The database engine.
   /// [provider] The database provider.
-  DatabaseTypeDatamigrationV1beta1({
+  const DatabaseTypeDatamigrationV1beta1({
     this.engine,
     this.provider,
   });

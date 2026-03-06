@@ -40,7 +40,7 @@ class Office365DatasetResponse {
   /// [structure] Columns that define the structure of the dataset. Type: array (or Expression with resultType array), itemType: DatasetDataElement.
   /// [tableName] Name of the dataset to extract from Office 365. Type: string (or Expression with resultType string).
   /// [type] Type of dataset.
-  Office365DatasetResponse({
+  const Office365DatasetResponse({
     this.annotations,
     this.description,
     this.folder,

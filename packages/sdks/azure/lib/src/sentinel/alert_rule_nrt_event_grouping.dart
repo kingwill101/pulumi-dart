@@ -8,7 +8,7 @@ class AlertRuleNrtEventGrouping {
 
   /// Creates a new [AlertRuleNrtEventGrouping].
   /// [aggregationMethod] The aggregation type of grouping the events. Possible values are `AlertPerResult` and `SingleAlert`.
-  AlertRuleNrtEventGrouping({
+  const AlertRuleNrtEventGrouping({
     required this.aggregationMethod,
   });
 

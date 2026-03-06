@@ -12,7 +12,7 @@ class StorageBundleState {
   /// Creates a new [StorageBundleState].
   /// [description] The description of storage bundle.
   /// [storageBundleName] The name of storage bundle.
-  StorageBundleState({
+  const StorageBundleState({
     this.description,
     this.storageBundleName,
   });

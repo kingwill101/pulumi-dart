@@ -25,7 +25,7 @@ class GetDropletSnapshotArgs {
   /// [name] The name of the Droplet snapshot.
   /// [nameRegex] A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
   /// [region] A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
-  GetDropletSnapshotArgs({
+  const GetDropletSnapshotArgs({
     this.mostRecent,
     this.name,
     this.nameRegex,

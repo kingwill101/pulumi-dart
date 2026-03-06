@@ -13,7 +13,7 @@ class GenericServiceBasicService {
   /// Creates a new [GenericServiceBasicService].
   /// [serviceLabels] Labels that specify the resource that emits the monitoring data
   /// [serviceType] The type of service that this basic service defines, e.g.
-  GenericServiceBasicService({
+  const GenericServiceBasicService({
     this.serviceLabels,
     this.serviceType,
   });

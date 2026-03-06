@@ -9,7 +9,7 @@ class InsightFiltersAwsAccountId {
   /// Creates a new [InsightFiltersAwsAccountId].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersAwsAccountId({
+  const InsightFiltersAwsAccountId({
     required this.comparison,
     required this.value,
   });

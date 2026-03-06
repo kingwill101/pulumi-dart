@@ -46,7 +46,7 @@ class EnvironmentVersion {
   /// [properties] The asset property dictionary.
   /// [stage] Stage in the environment lifecycle assigned to this environment
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  EnvironmentVersion({
+  const EnvironmentVersion({
     this.autoRebuild,
     this.build,
     this.condaFile,

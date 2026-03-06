@@ -14,7 +14,7 @@ class GetMcaAccountScopeResult {
   /// [billingProfileName] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [invoiceSectionName] Required.
-  GetMcaAccountScopeResult({
+  const GetMcaAccountScopeResult({
     required this.billingAccountName,
     required this.billingProfileName,
     required this.id,

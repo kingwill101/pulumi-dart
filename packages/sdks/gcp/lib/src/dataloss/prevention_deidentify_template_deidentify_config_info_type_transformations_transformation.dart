@@ -17,7 +17,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransfo
   /// Creates a new [PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation].
   /// [infoTypes] InfoTypes to apply the transformation to. Leaving this empty will apply the transformation to apply to
   /// [primitiveTransformation] Apply the transformation to the entire field.
-  PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation({
+  const PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformation({
     this.infoTypes,
     required this.primitiveTransformation,
   });

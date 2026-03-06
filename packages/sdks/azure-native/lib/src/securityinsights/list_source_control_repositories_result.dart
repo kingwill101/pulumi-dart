@@ -13,7 +13,7 @@ class ListSourceControlRepositoriesResult {
   /// Creates a new [ListSourceControlRepositoriesResult].
   /// [nextLink] URL to fetch the next set of repositories.
   /// [value] Array of repositories.
-  ListSourceControlRepositoriesResult({
+  const ListSourceControlRepositoriesResult({
     required this.nextLink,
     required this.value,
   });

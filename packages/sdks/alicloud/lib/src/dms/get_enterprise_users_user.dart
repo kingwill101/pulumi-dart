@@ -34,7 +34,7 @@ class GetEnterpriseUsersUser {
   /// [uid] Required.
   /// [userId] The ID of the user.
   /// [userName] The nickname of the user.
-  GetEnterpriseUsersUser({
+  const GetEnterpriseUsersUser({
     required this.id,
     required this.mobile,
     required this.nickName,

@@ -82,7 +82,7 @@ class GetCrossRegionBackupsBackup {
   /// [recoveryBeginTime] The start time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   /// [recoveryEndTime] The end time to which data can be restored. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
   /// [restoreRegions] An array that consists of the regions to which the cross-region data backup file can be restored.
-  GetCrossRegionBackupsBackup({
+  const GetCrossRegionBackupsBackup({
     required this.backupEndTime,
     required this.backupMethod,
     required this.backupSetScale,

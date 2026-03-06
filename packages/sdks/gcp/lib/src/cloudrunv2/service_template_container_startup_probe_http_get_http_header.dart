@@ -11,7 +11,7 @@ class ServiceTemplateContainerStartupProbeHttpGetHttpHeader {
   /// Creates a new [ServiceTemplateContainerStartupProbeHttpGetHttpHeader].
   /// [name] The header field name
   /// [value] The header field value
-  ServiceTemplateContainerStartupProbeHttpGetHttpHeader({
+  const ServiceTemplateContainerStartupProbeHttpGetHttpHeader({
     required this.name,
     this.value,
   });

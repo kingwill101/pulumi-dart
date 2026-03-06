@@ -12,7 +12,7 @@ class GetConsoleResult {
   /// Creates a new [GetConsoleResult].
   /// [azureApiVersion] The Azure API version of the resource.
   /// [properties] Cloud shell console properties.
-  GetConsoleResult({
+  const GetConsoleResult({
     required this.azureApiVersion,
     required this.properties,
   });

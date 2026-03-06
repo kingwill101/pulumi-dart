@@ -43,7 +43,7 @@ class InstanceCluster {
   /// [state] describes the current state of the cluster.
   /// [storageType] The storage type to use. One of `"SSD"` or
   /// [zone] The zone to create the Cloud Bigtable cluster in. If it not
-  InstanceCluster({
+  const InstanceCluster({
     this.autoscalingConfig,
     required this.clusterId,
     this.kmsKeyName,

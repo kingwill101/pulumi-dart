@@ -15,7 +15,7 @@ class GetAzureLargeInstanceArgs {
   /// Creates a new [GetAzureLargeInstanceArgs].
   /// [azureLargeInstanceName] Name of the AzureLargeInstance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAzureLargeInstanceArgs({
+  const GetAzureLargeInstanceArgs({
     required this.azureLargeInstanceName,
     required this.resourceGroupName,
   });

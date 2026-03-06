@@ -12,7 +12,7 @@ class ToolResultsHistoryResponse {
   /// Creates a new [ToolResultsHistoryResponse].
   /// [historyId] A tool results history ID.
   /// [project] The cloud project that owns the tool results history.
-  ToolResultsHistoryResponse({
+  const ToolResultsHistoryResponse({
     required this.historyId,
     required this.project,
   });

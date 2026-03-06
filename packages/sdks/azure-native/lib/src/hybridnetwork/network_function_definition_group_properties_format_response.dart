@@ -12,7 +12,7 @@ class NetworkFunctionDefinitionGroupPropertiesFormatResponse {
   /// Creates a new [NetworkFunctionDefinitionGroupPropertiesFormatResponse].
   /// [description] The network function definition group description.
   /// [provisioningState] The provisioning state of the network function definition groups resource.
-  NetworkFunctionDefinitionGroupPropertiesFormatResponse({
+  const NetworkFunctionDefinitionGroupPropertiesFormatResponse({
     this.description,
     required this.provisioningState,
   });

@@ -29,7 +29,7 @@ class SolutionArgs {
   /// [resourceGroupName] The name of the resource group to get. The name is case insensitive.
   /// [solutionName] User Solution Name.
   /// [tags] Resource tags
-  SolutionArgs({
+  const SolutionArgs({
     this.location,
     this.plan,
     this.properties,

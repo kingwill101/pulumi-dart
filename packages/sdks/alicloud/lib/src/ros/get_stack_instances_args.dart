@@ -35,7 +35,7 @@ class GetStackInstancesArgs {
   /// [stackInstanceAccountId] The account to which the stack instance belongs.
   /// [stackInstanceRegionId] The region of the stack instance.
   /// [status] The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
-  GetStackInstancesArgs({
+  const GetStackInstancesArgs({
     this.enableDetails,
     this.ids,
     this.outputFile,

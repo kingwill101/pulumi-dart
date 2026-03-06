@@ -39,7 +39,7 @@ class GetExternalAccessRuleResult {
   /// [state] Required.
   /// [uid] Required.
   /// [updateTime] Required.
-  GetExternalAccessRuleResult({
+  const GetExternalAccessRuleResult({
     required this.action,
     required this.createTime,
     required this.description,

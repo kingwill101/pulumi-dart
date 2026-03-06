@@ -19,7 +19,7 @@ class PolicyArgs {
   /// [definition] The definition of the policy. See Definition below.
   /// [policyStoreId] The Policy Store ID of the policy store.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  PolicyArgs({
+  const PolicyArgs({
     required this.definition,
     required this.policyStoreId,
     this.region,

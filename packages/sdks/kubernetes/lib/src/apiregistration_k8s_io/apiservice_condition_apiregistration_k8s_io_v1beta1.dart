@@ -21,7 +21,7 @@ class APIServiceConditionApiregistrationK8sIoV1beta1 {
   /// [reason] Unique, one-word, CamelCase reason for the condition's last transition.
   /// [status] Status is the status of the condition. Can be True, False, Unknown.
   /// [type] Type is the type of the condition.
-  APIServiceConditionApiregistrationK8sIoV1beta1({
+  const APIServiceConditionApiregistrationK8sIoV1beta1({
     this.lastTransitionTime,
     this.message,
     this.reason,

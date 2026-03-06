@@ -55,7 +55,7 @@ class GetReservationSubBlockResult {
   /// [status] Status of the reservation sub-block.
   /// [subBlockCount] The number of hosts that are allocated in this reservation sub-block.
   /// [zone] Optional.
-  GetReservationSubBlockResult({
+  const GetReservationSubBlockResult({
     required this.creationTimestamp,
     required this.healthInfos,
     required this.id,

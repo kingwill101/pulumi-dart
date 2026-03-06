@@ -28,7 +28,7 @@ class CustomHostnameBindingState {
   /// [sslState] The SSL type. Possible values are `IpBasedEnabled` and `SniEnabled`. Changing this forces a new resource to be created.
   /// [thumbprint] The SSL certificate thumbprint. Changing this forces a new resource to be created.
   /// [virtualIp] The virtual IP address assigned to the hostname if IP based SSL is enabled.
-  CustomHostnameBindingState({
+  const CustomHostnameBindingState({
     this.appServiceName,
     this.hostname,
     this.resourceGroupName,

@@ -10,7 +10,7 @@ class OrganizationRootPolicyType {
   /// Creates a new [OrganizationRootPolicyType].
   /// [status] Status of the policy type as it relates to the associated root.
   /// [type] Optional.
-  OrganizationRootPolicyType({
+  const OrganizationRootPolicyType({
     this.status,
     this.type,
   });

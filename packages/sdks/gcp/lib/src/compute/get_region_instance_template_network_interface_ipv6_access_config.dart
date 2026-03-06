@@ -22,7 +22,7 @@ class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
   /// [name] The name of the instance template. One of `name` or `filter` must be provided.
   /// [networkTier] The [networking tier][network-tier] used for configuring
   /// [publicPtrDomainName] The domain name to be used when creating DNSv6 records for the external IPv6 ranges.
-  GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig({
+  const GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig({
     required this.externalIpv6,
     required this.externalIpv6PrefixLength,
     required this.name,

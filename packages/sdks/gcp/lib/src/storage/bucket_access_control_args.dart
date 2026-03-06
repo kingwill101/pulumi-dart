@@ -33,7 +33,7 @@ class BucketAccessControlArgs {
   /// [bucket] The name of the bucket.
   /// [entity] The entity holding the permission, in one of the following forms:
   /// [role] The access permission for the entity.
-  BucketAccessControlArgs({
+  const BucketAccessControlArgs({
     required this.bucket,
     required this.entity,
     this.role,

@@ -29,7 +29,7 @@ class GetLinuxWebAppSiteConfigScmIpRestriction {
   /// [priority] The priority value of this `ip_restriction`.
   /// [serviceTag] The Service Tag used for this IP Restriction.
   /// [virtualNetworkSubnetId] The subnet id which the Linux Web App is vNet Integrated with.
-  GetLinuxWebAppSiteConfigScmIpRestriction({
+  const GetLinuxWebAppSiteConfigScmIpRestriction({
     required this.action,
     required this.description,
     required this.headers,

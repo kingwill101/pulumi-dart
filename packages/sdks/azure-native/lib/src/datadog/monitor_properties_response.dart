@@ -27,7 +27,7 @@ class MonitorPropertiesResponse {
   /// [monitoringStatus] Flag specifying if the resource monitoring is enabled or disabled.
   /// [provisioningState] Required.
   /// [userInfo] Includes name, email and optionally, phone number. User Information can't be null.
-  MonitorPropertiesResponse({
+  const MonitorPropertiesResponse({
     this.datadogOrganizationProperties,
     required this.liftrResourceCategory,
     required this.liftrResourcePreference,

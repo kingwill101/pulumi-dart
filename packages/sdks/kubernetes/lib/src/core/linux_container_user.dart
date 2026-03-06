@@ -15,7 +15,7 @@ class LinuxContainerUser {
   /// [gid] GID is the primary gid initially attached to the first process in the container
   /// [supplementalGroups] SupplementalGroups are the supplemental groups initially attached to the first process in the container
   /// [uid] UID is the primary uid initially attached to the first process in the container
-  LinuxContainerUser({
+  const LinuxContainerUser({
     required this.gid,
     this.supplementalGroups,
     required this.uid,

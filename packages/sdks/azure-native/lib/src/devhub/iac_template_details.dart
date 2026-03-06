@@ -14,7 +14,7 @@ class IacTemplateDetails {
   /// [count] Count of the product
   /// [namingConvention] Naming convention of this product
   /// [productName] The name of the products.
-  IacTemplateDetails({
+  const IacTemplateDetails({
     this.count,
     this.namingConvention,
     this.productName,

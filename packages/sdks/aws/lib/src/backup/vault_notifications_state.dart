@@ -21,7 +21,7 @@ class VaultNotificationsState {
   /// [backupVaultName] Name of the backup vault to add notifications for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [snsTopicArn] The Amazon Resource Name (ARN) that specifies the topic for a backup vault’s events
-  VaultNotificationsState({
+  const VaultNotificationsState({
     this.backupVaultArn,
     this.backupVaultEvents,
     this.backupVaultName,

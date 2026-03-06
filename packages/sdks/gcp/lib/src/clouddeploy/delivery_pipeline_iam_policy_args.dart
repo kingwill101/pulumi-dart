@@ -17,7 +17,7 @@ class DeliveryPipelineIamPolicyArgs {
   /// [name] Optional.
   /// [policyData] Required.
   /// [project] Optional.
-  DeliveryPipelineIamPolicyArgs({
+  const DeliveryPipelineIamPolicyArgs({
     this.location,
     this.name,
     required this.policyData,

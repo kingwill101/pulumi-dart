@@ -11,7 +11,7 @@ class DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect {
   /// Creates a new [DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect].
   /// [enabled] Enables or disables the automatic reconnection feature for the UNIX domain socket.
   /// [timeout] Sets the timeout duration for reconnections in the UNIX socket settings.
-  DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect({
+  const DomainDevicesDiskMirrorSourceReservationsSourceUnixReconnect({
     required this.enabled,
     this.timeout,
   });

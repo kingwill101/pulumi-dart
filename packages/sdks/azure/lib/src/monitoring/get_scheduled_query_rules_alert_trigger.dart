@@ -14,7 +14,7 @@ class GetScheduledQueryRulesAlertTrigger {
   /// [metricTriggers] Required.
   /// [operator] Evaluation operation for rule.
   /// [threshold] Result or count threshold based on which rule should be triggered.
-  GetScheduledQueryRulesAlertTrigger({
+  const GetScheduledQueryRulesAlertTrigger({
     required this.metricTriggers,
     required this.operator,
     required this.threshold,

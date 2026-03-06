@@ -9,7 +9,7 @@ class DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment {
 
   /// Creates a new [DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment].
   /// [enabled] Is Microsoft Defender container image assessment enabled
-  DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment({
+  const DefenderCspmJFrogOfferingResponseMdcContainersImageAssessment({
     this.enabled,
   });
 

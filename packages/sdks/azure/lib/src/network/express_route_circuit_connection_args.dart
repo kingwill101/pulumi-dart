@@ -29,7 +29,7 @@ class ExpressRouteCircuitConnectionArgs {
   /// [name] The name which should be used for this Express Route Circuit Connection. Changing this forces a new Express Route Circuit Connection to be created.
   /// [peerPeeringId] The ID of the peered Express Route Circuit Private Peering. Changing this forces a new Express Route Circuit Connection to be created.
   /// [peeringId] The ID of the Express Route Circuit Private Peering that this Express Route Circuit Connection connects with. Changing this forces a new Express Route Circuit Connection to be created.
-  ExpressRouteCircuitConnectionArgs({
+  const ExpressRouteCircuitConnectionArgs({
     required this.addressPrefixIpv4,
     this.addressPrefixIpv6,
     this.authorizationKey,

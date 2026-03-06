@@ -25,7 +25,7 @@ class JobStagesResponse {
   /// [stageName] Name of the job stage.
   /// [stageStatus] Status of the job stage.
   /// [stageTime] Time for the job stage in UTC ISO 8601 format.
-  JobStagesResponse({
+  const JobStagesResponse({
     required this.delayInformation,
     required this.displayName,
     required this.jobStageDetails,

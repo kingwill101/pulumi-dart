@@ -27,7 +27,7 @@ class DelegationResponse {
   /// [provisioningState] The provisioning state of the service delegation resource.
   /// [serviceName] The name of the service to whom the subnet should be delegated (e.g. Microsoft.Sql/servers).
   /// [type] Resource type.
-  DelegationResponse({
+  const DelegationResponse({
     required this.actions,
     required this.etag,
     this.id,

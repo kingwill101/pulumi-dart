@@ -15,7 +15,7 @@ class GetScopeAssignmentArgs {
   /// Creates a new [GetScopeAssignmentArgs].
   /// [scope] The base resource of the scope assignment.
   /// [scopeAssignmentName] The name of the scope assignment to get.
-  GetScopeAssignmentArgs({
+  const GetScopeAssignmentArgs({
     required this.scope,
     required this.scopeAssignmentName,
   });

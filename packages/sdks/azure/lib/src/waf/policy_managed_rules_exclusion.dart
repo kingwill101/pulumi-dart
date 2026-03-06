@@ -18,7 +18,7 @@ class PolicyManagedRulesExclusion {
   /// [matchVariable] The name of the Match Variable. Possible values: `RequestArgKeys`, `RequestArgNames`, `RequestArgValues`, `RequestCookieKeys`, `RequestCookieNames`, `RequestCookieValues`, `RequestHeaderKeys`, `RequestHeaderNames`, `RequestHeaderValues`.
   /// [selector] Describes field of the matchVariable collection.
   /// [selectorMatchOperator] Describes operator to be matched. Possible values: `Contains`, `EndsWith`, `Equals`, `EqualsAny`, `StartsWith`.
-  PolicyManagedRulesExclusion({
+  const PolicyManagedRulesExclusion({
     this.excludedRuleSet,
     required this.matchVariable,
     required this.selector,

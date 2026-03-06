@@ -55,7 +55,7 @@ class GetPolicyBasedRouteResult {
   /// [updateTime] Time when the policy-based route was updated.
   /// [virtualMachine] Optional. VM instances to which this policy-based route applies to.
   /// [warnings] If potential misconfigurations are detected for this route, this field will be populated with warning messages.
-  GetPolicyBasedRouteResult({
+  const GetPolicyBasedRouteResult({
     required this.createTime,
     required this.description,
     required this.filter,

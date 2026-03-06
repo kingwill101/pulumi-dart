@@ -15,7 +15,7 @@ class DatabaseInstanceIpAddress {
   /// [ipAddress] The IPv4 address assigned.
   /// [timeToRetire] The time this IP address will be retired, in RFC
   /// [type] The type of this IP address.
-  DatabaseInstanceIpAddress({
+  const DatabaseInstanceIpAddress({
     this.ipAddress,
     this.timeToRetire,
     this.type,

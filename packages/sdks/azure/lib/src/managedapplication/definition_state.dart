@@ -45,7 +45,7 @@ class DefinitionState {
   /// [packageFileUri] Specifies the managed application definition package file Uri.
   /// [resourceGroupName] The name of the Resource Group where the Managed Application Definition should exist. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  DefinitionState({
+  const DefinitionState({
     this.authorizations,
     this.createUiDefinition,
     this.description,

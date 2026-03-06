@@ -67,7 +67,7 @@ class ApplicationArgs {
   /// [schedulerConfiguration] Scheduler configuration for batch and streaming jobs running on this application. Supported with release labels `emr-7.0.0` and above. See scheduler_configuration Arguments below.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [type] The type of application you want to start, such as `spark` or `hive`.
-  ApplicationArgs({
+  const ApplicationArgs({
     this.architecture,
     this.autoStartConfiguration,
     this.autoStopConfiguration,

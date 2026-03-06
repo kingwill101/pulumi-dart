@@ -9,7 +9,7 @@ class ConnectionAccessKey {
   /// Creates a new [ConnectionAccessKey].
   /// [accessKeyId] Optional.
   /// [secretAccessKey] Optional.
-  ConnectionAccessKey({
+  const ConnectionAccessKey({
     this.accessKeyId,
     this.secretAccessKey,
   });

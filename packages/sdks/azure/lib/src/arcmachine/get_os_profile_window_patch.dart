@@ -11,7 +11,7 @@ class GetOsProfileWindowPatch {
   /// Creates a new [GetOsProfileWindowPatch].
   /// [assessmentMode] Specifies the assessment mode.
   /// [patchMode] Specifies the patch mode.
-  GetOsProfileWindowPatch({
+  const GetOsProfileWindowPatch({
     required this.assessmentMode,
     required this.patchMode,
   });

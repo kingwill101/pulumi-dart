@@ -13,7 +13,7 @@ class GetEnvgroupArgs {
   /// Creates a new [GetEnvgroupArgs].
   /// [envgroupId] Required.
   /// [organizationId] Required.
-  GetEnvgroupArgs({
+  const GetEnvgroupArgs({
     required this.envgroupId,
     required this.organizationId,
   });

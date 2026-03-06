@@ -30,7 +30,7 @@ class IAMMemberState {
   /// [member] Identities that will be granted the privilege in `role`.
   /// [orgId] The organization id of the target organization.
   /// [role] The role that should be applied. Only one
-  IAMMemberState({
+  const IAMMemberState({
     this.condition,
     this.etag,
     this.member,

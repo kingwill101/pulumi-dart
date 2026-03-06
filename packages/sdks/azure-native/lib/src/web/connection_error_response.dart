@@ -30,7 +30,7 @@ class ConnectionErrorResponse {
   /// [name] Resource name
   /// [tags] Resource tags
   /// [type] Resource type
-  ConnectionErrorResponse({
+  const ConnectionErrorResponse({
     this.code,
     this.etag,
     required this.id,

@@ -9,7 +9,7 @@ class VpcPeeringConnectivityResponse {
 
   /// Creates a new [VpcPeeringConnectivityResponse].
   /// [vpc] The name of the VPC network to peer with the Cloud SQL private network.
-  VpcPeeringConnectivityResponse({
+  const VpcPeeringConnectivityResponse({
     required this.vpc,
   });
 

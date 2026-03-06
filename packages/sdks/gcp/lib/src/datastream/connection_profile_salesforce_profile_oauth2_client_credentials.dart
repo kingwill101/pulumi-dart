@@ -14,7 +14,7 @@ class ConnectionProfileSalesforceProfileOauth2ClientCredentials {
   /// [clientId] Client ID to use for authentication.
   /// [clientSecret] Client secret to use for authentication.
   /// [secretManagerStoredClientSecret] A reference to a Secret Manager resource name storing the client secret.
-  ConnectionProfileSalesforceProfileOauth2ClientCredentials({
+  const ConnectionProfileSalesforceProfileOauth2ClientCredentials({
     this.clientId,
     this.clientSecret,
     this.secretManagerStoredClientSecret,

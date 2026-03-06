@@ -35,7 +35,7 @@ class Ipv6AddressState {
   /// [status] The status of the resource.  Available, Pending and Deleting.
   /// [tags] The tags for the resource.
   /// [vswitchId] The VSwitchId of the IPv6 address.
-  Ipv6AddressState({
+  const Ipv6AddressState({
     this.addressType,
     this.createTime,
     this.ipv6Address,

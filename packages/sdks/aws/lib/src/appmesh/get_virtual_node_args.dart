@@ -24,7 +24,7 @@ class GetVirtualNodeArgs {
   /// [name] Name of the virtual node.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Map of tags.
-  GetVirtualNodeArgs({
+  const GetVirtualNodeArgs({
     required this.meshName,
     this.meshOwner,
     required this.name,

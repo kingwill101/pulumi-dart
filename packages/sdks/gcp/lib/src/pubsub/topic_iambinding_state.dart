@@ -38,7 +38,7 @@ class TopicIAMBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [topic] Used to find the parent resource to bind the IAM policy to
-  TopicIAMBindingState({
+  const TopicIAMBindingState({
     this.condition,
     this.etag,
     this.members,

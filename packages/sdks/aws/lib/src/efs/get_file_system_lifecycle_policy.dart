@@ -11,7 +11,7 @@ class GetFileSystemLifecyclePolicy {
   /// [transitionToArchive] Required.
   /// [transitionToIa] Required.
   /// [transitionToPrimaryStorageClass] Required.
-  GetFileSystemLifecyclePolicy({
+  const GetFileSystemLifecyclePolicy({
     required this.transitionToArchive,
     required this.transitionToIa,
     required this.transitionToPrimaryStorageClass,

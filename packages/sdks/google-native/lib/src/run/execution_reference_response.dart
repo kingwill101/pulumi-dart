@@ -15,7 +15,7 @@ class ExecutionReferenceResponse {
   /// [completionTimestamp] Optional. Completion timestamp of the execution.
   /// [creationTimestamp] Optional. Creation timestamp of the execution.
   /// [name] Optional. Name of the execution.
-  ExecutionReferenceResponse({
+  const ExecutionReferenceResponse({
     required this.completionTimestamp,
     required this.creationTimestamp,
     required this.name,

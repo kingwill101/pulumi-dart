@@ -12,7 +12,7 @@ class CustomHttpPatternResponse {
   /// Creates a new [CustomHttpPatternResponse].
   /// [kind] The name of this custom HTTP verb.
   /// [path] The path matched by this custom verb.
-  CustomHttpPatternResponse({
+  const CustomHttpPatternResponse({
     required this.kind,
     required this.path,
   });

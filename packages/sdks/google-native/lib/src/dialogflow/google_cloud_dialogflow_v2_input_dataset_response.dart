@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2InputDatasetResponse {
 
   /// Creates a new [GoogleCloudDialogflowV2InputDatasetResponse].
   /// [dataset] ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
-  GoogleCloudDialogflowV2InputDatasetResponse({
+  const GoogleCloudDialogflowV2InputDatasetResponse({
     required this.dataset,
   });
 

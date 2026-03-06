@@ -26,7 +26,7 @@ class GetReceiversReceiverse {
   /// [receiversId] The first ID of the resource.
   /// [receiversName] The name of the resource.
   /// [status] The status of the resource.
-  GetReceiversReceiverse({
+  const GetReceiversReceiverse({
     required this.createTime,
     required this.description,
     required this.id,

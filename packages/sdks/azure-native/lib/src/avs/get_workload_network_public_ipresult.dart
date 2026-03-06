@@ -33,7 +33,7 @@ class GetWorkloadNetworkPublicIPResult {
   /// [publicIPBlock] CIDR Block of the Public IP Block.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkloadNetworkPublicIPResult({
+  const GetWorkloadNetworkPublicIPResult({
     required this.azureApiVersion,
     this.displayName,
     required this.id,

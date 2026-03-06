@@ -12,7 +12,7 @@ class NetworkEndpointResponse {
   /// Creates a new [NetworkEndpointResponse].
   /// [ipAddress] The IP address of this network endpoint.
   /// [port] The port of this network endpoint.
-  NetworkEndpointResponse({
+  const NetworkEndpointResponse({
     required this.ipAddress,
     required this.port,
   });

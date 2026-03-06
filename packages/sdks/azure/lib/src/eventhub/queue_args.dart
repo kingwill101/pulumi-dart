@@ -67,7 +67,7 @@ class QueueArgs {
   /// [requiresDuplicateDetection] Boolean flag which controls whether the Queue requires duplicate detection. Changing this forces a new resource to be created. Defaults to `false`.
   /// [requiresSession] Boolean flag which controls whether the Queue requires sessions. This will allow ordered handling of unbounded sequences of related messages. With sessions enabled a queue can guarantee first-in-first-out delivery of messages. Changing this forces a new resource to be created. Defaults to `false`.
   /// [status] The status of the Queue. Possible values are `Active`, `Creating`, `Deleting`, `Disabled`, `ReceiveDisabled`, `Renaming`, `SendDisabled`, `Unknown`. Note that `Restoring` is not accepted. Defaults to `Active`.
-  QueueArgs({
+  const QueueArgs({
     this.autoDeleteOnIdle,
     this.batchedOperationsEnabled,
     this.deadLetteringOnMessageExpiration,

@@ -31,7 +31,7 @@ class SqsQueueProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  SqsQueueProperties({
+  const SqsQueueProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

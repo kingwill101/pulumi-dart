@@ -11,7 +11,7 @@ class GetAiIndexDeployedIndex {
   /// Creates a new [GetAiIndexDeployedIndex].
   /// [deployedIndexId] The ID of the DeployedIndex in the above IndexEndpoint.
   /// [indexEndpoint] A resource name of the IndexEndpoint.
-  GetAiIndexDeployedIndex({
+  const GetAiIndexDeployedIndex({
     required this.deployedIndexId,
     required this.indexEndpoint,
   });

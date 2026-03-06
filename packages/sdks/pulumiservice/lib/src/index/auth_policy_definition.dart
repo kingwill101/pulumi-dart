@@ -29,7 +29,7 @@ class AuthPolicyDefinition {
   /// [teamName] The team name for team tokens.
   /// [tokenType] The token type for this policy definition
   /// [userLogin] The user login for personal tokens.
-  AuthPolicyDefinition({
+  const AuthPolicyDefinition({
     this.authorizedPermissions,
     required this.decision,
     required this.rules,

@@ -13,7 +13,7 @@ class MongoClusterIdentity {
   /// Creates a new [MongoClusterIdentity].
   /// [identityIds] A list of one or more Resource IDs for User Assigned Managed identities to assign.
   /// [type] The type of managed identity to assign. Possible value is `UserAssigned`.
-  MongoClusterIdentity({
+  const MongoClusterIdentity({
     required this.identityIds,
     required this.type,
   });

@@ -30,7 +30,7 @@ class StaticSiteBuildPropertiesResponse {
   /// [githubActionSecretNameOverride] Github Action secret name override.
   /// [outputLocation] The output path of the app after building.
   /// [skipGithubActionWorkflowGeneration] Skip Github Action workflow generation.
-  StaticSiteBuildPropertiesResponse({
+  const StaticSiteBuildPropertiesResponse({
     this.apiBuildCommand,
     this.apiLocation,
     this.appArtifactLocation,

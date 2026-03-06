@@ -8,7 +8,7 @@ class OneDashboardPageWidgetAreaTooltip {
 
   /// Creates a new [OneDashboardPageWidgetAreaTooltip].
   /// [mode] (Required) The tooltip display mode. Valid values are:
-  OneDashboardPageWidgetAreaTooltip({
+  const OneDashboardPageWidgetAreaTooltip({
     required this.mode,
   });
 

@@ -8,7 +8,7 @@ class GetRouteSpecTcpRouteAction {
 
   /// Creates a new [GetRouteSpecTcpRouteAction].
   /// [weightedTargets] Required.
-  GetRouteSpecTcpRouteAction({
+  const GetRouteSpecTcpRouteAction({
     required this.weightedTargets,
   });
 

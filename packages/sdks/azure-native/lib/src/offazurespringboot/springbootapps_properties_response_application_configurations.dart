@@ -11,7 +11,7 @@ class SpringbootappsPropertiesResponseApplicationConfigurations {
   /// Creates a new [SpringbootappsPropertiesResponseApplicationConfigurations].
   /// [key] The application config file name.
   /// [value] The application config file content, only contains config keys.
-  SpringbootappsPropertiesResponseApplicationConfigurations({
+  const SpringbootappsPropertiesResponseApplicationConfigurations({
     required this.key,
     this.value,
   });

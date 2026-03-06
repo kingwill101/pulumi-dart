@@ -40,7 +40,7 @@ class BackupVaultArgs {
   /// [location] Location (region) of the backup vault.
   /// [name] The resource name of the backup vault. Needs to be unique per location.
   /// [project] The ID of the project in which the resource belongs.
-  BackupVaultArgs({
+  const BackupVaultArgs({
     this.backupRegion,
     this.backupRetentionPolicy,
     this.backupVaultType,

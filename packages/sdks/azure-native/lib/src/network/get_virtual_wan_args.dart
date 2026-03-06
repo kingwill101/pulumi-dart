@@ -15,7 +15,7 @@ class GetVirtualWanArgs {
   /// Creates a new [GetVirtualWanArgs].
   /// [resourceGroupName] The resource group name of the VirtualWan.
   /// [virtualWANName] The name of the VirtualWAN being retrieved.
-  GetVirtualWanArgs({
+  const GetVirtualWanArgs({
     required this.resourceGroupName,
     required this.virtualWANName,
   });

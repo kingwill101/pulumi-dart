@@ -13,7 +13,7 @@ class BlueGreenSettingsResponseContainerV1beta1 {
   /// Creates a new [BlueGreenSettingsResponseContainerV1beta1].
   /// [nodePoolSoakDuration] Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
   /// [standardRolloutPolicy] Standard policy for the blue-green upgrade.
-  BlueGreenSettingsResponseContainerV1beta1({
+  const BlueGreenSettingsResponseContainerV1beta1({
     required this.nodePoolSoakDuration,
     required this.standardRolloutPolicy,
   });

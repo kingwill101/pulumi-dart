@@ -12,7 +12,7 @@ class ContactProfileThirdPartyConfiguration {
   /// Creates a new [ContactProfileThirdPartyConfiguration].
   /// [missionConfiguration] Name of string referencing the configuration describing contact set-up for a particular mission. Expected values are those which have been created in collaboration with the partner network.
   /// [providerName] Name of the third-party provider.
-  ContactProfileThirdPartyConfiguration({
+  const ContactProfileThirdPartyConfiguration({
     required this.missionConfiguration,
     required this.providerName,
   });

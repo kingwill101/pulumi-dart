@@ -18,7 +18,7 @@ class GetAccessPolicyArgs {
   /// [accessPolicyName] The name of the access policy that is being added to the Redis cache.
   /// [cacheName] The name of the Redis cache.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccessPolicyArgs({
+  const GetAccessPolicyArgs({
     required this.accessPolicyName,
     required this.cacheName,
     required this.resourceGroupName,

@@ -25,7 +25,7 @@ class GetEnvServiceMonitorsResult {
   /// [nameRegex] Optional.
   /// [names] A list of ARMS Env Service Monitor names.
   /// [outputFile] Optional.
-  GetEnvServiceMonitorsResult({
+  const GetEnvServiceMonitorsResult({
     required this.environmentId,
     required this.id,
     required this.ids,

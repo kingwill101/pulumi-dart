@@ -9,7 +9,7 @@ class EncryptionConfig {
 
   /// Creates a new [EncryptionConfig].
   /// [kmsKeyName] The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
-  EncryptionConfig({
+  const EncryptionConfig({
     this.kmsKeyName,
   });
 

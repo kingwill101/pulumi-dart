@@ -14,7 +14,7 @@ class RulesetSourceFile {
   /// [content] Textual Content.
   /// [fingerprint] Fingerprint (e.g. github sha) associated with the `File`.
   /// [name] File name.
-  RulesetSourceFile({
+  const RulesetSourceFile({
     required this.content,
     this.fingerprint,
     required this.name,

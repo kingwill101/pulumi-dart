@@ -8,7 +8,7 @@ class ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets {
 
   /// Creates a new [ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets].
   /// [bucketIdRegexes] List of bucket id regexes to exclude in the storage intelligence plan.
-  ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets({
+  const ControlFolderIntelligenceConfigFilterExcludedCloudStorageBuckets({
     required this.bucketIdRegexes,
   });
 

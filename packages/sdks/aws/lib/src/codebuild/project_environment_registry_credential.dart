@@ -12,7 +12,7 @@ class ProjectEnvironmentRegistryCredential {
   /// Creates a new [ProjectEnvironmentRegistryCredential].
   /// [credential] ARN or name of credentials created using AWS Secrets Manager.
   /// [credentialProvider] Service that created the credentials to access a private Docker registry. Valid
-  ProjectEnvironmentRegistryCredential({
+  const ProjectEnvironmentRegistryCredential({
     required this.credential,
     required this.credentialProvider,
   });

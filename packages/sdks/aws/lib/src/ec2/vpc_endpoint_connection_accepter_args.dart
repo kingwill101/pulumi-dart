@@ -18,7 +18,7 @@ class VpcEndpointConnectionAccepterArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcEndpointId] AWS VPC Endpoint ID.
   /// [vpcEndpointServiceId] AWS VPC Endpoint Service ID.
-  VpcEndpointConnectionAccepterArgs({
+  const VpcEndpointConnectionAccepterArgs({
     this.region,
     required this.vpcEndpointId,
     required this.vpcEndpointServiceId,

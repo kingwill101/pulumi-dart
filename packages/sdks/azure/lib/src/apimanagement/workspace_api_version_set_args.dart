@@ -30,7 +30,7 @@ class WorkspaceApiVersionSetArgs {
   /// [versionHeaderName] Specifies the name of the header to read from inbound requests to determine the API version.
   /// [versionQueryName] Specifies the name of the query string parameter to read from inbound requests to determine the API version.
   /// [versioningScheme] Specifies where in a request that the API Version should be read from. Possible values are `Header`, `Query` and `Segment`.
-  WorkspaceApiVersionSetArgs({
+  const WorkspaceApiVersionSetArgs({
     required this.apiManagementWorkspaceId,
     this.description,
     required this.displayName,

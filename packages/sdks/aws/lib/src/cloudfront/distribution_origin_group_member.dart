@@ -7,7 +7,7 @@ class DistributionOriginGroupMember {
 
   /// Creates a new [DistributionOriginGroupMember].
   /// [originId] Required.
-  DistributionOriginGroupMember({
+  const DistributionOriginGroupMember({
     required this.originId,
   });
 

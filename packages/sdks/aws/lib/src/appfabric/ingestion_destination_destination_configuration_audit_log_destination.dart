@@ -13,7 +13,7 @@ class IngestionDestinationDestinationConfigurationAuditLogDestination {
   /// Creates a new [IngestionDestinationDestinationConfigurationAuditLogDestination].
   /// [firehoseStream] Contains information about an Amazon Data Firehose delivery stream.
   /// [s3Bucket] Contains information about an Amazon S3 bucket.
-  IngestionDestinationDestinationConfigurationAuditLogDestination({
+  const IngestionDestinationDestinationConfigurationAuditLogDestination({
     this.firehoseStream,
     this.s3Bucket,
   });

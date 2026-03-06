@@ -15,7 +15,7 @@ class GetGatewayArgs {
   /// [gatewayId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGatewayArgs({
+  const GetGatewayArgs({
     required this.gatewayId,
     required this.location,
     this.project,

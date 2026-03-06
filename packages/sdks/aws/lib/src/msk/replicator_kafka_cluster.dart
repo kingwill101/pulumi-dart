@@ -13,7 +13,7 @@ class ReplicatorKafkaCluster {
   /// Creates a new [ReplicatorKafkaCluster].
   /// [amazonMskCluster] Details of an Amazon MSK cluster.
   /// [vpcConfig] Details of an Amazon VPC which has network connectivity to the Apache Kafka cluster.
-  ReplicatorKafkaCluster({
+  const ReplicatorKafkaCluster({
     required this.amazonMskCluster,
     required this.vpcConfig,
   });

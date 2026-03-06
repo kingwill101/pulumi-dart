@@ -22,7 +22,7 @@ class GetInstanceArgs {
   /// [name] The name of a Redis instance.
   /// [project] The project in which the resource belongs. If it
   /// [region] The region in which the resource belongs. If it
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.name,
     this.project,
     this.region,

@@ -12,7 +12,7 @@ class DeliverInfoResponse {
   /// Creates a new [DeliverInfoResponse].
   /// [resourceUri] URI of the resource that the packet is delivered to.
   /// [target] Target type where the packet is delivered to.
-  DeliverInfoResponse({
+  const DeliverInfoResponse({
     required this.resourceUri,
     required this.target,
   });

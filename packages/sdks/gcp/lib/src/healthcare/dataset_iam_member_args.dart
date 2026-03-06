@@ -33,7 +33,7 @@ class DatasetIamMemberArgs {
   /// [datasetId] The dataset ID, in the form
   /// [member] Identities that will be granted the privilege in `role`.
   /// [role] The role that should be applied. Only one
-  DatasetIamMemberArgs({
+  const DatasetIamMemberArgs({
     this.condition,
     required this.datasetId,
     required this.member,

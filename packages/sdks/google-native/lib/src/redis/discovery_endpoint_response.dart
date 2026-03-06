@@ -16,7 +16,7 @@ class DiscoveryEndpointResponse {
   /// [address] Address of the exposed Redis endpoint used by clients to connect to the service. The address could be either IP or hostname.
   /// [port] The port number of the exposed Redis endpoint.
   /// [pscConfig] Customer configuration for where the endpoint is created and accessed from.
-  DiscoveryEndpointResponse({
+  const DiscoveryEndpointResponse({
     required this.address,
     required this.port,
     required this.pscConfig,

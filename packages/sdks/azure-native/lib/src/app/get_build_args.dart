@@ -18,7 +18,7 @@ class GetBuildArgs {
   /// [buildName] The name of a build.
   /// [builderName] The name of the builder.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBuildArgs({
+  const GetBuildArgs({
     required this.buildName,
     required this.builderName,
     required this.resourceGroupName,

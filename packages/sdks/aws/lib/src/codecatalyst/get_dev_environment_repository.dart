@@ -9,7 +9,7 @@ class GetDevEnvironmentRepository {
   /// Creates a new [GetDevEnvironmentRepository].
   /// [branchName] Required.
   /// [repositoryName] Required.
-  GetDevEnvironmentRepository({
+  const GetDevEnvironmentRepository({
     required this.branchName,
     required this.repositoryName,
   });

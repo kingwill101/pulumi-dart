@@ -41,7 +41,7 @@ class TableIamMemberArgs {
   /// [project] The project in which the table belongs. If it
   /// [role] The role that should be applied. Only one
   /// [table] The name or relative resource id of the table to manage IAM policies for.
-  TableIamMemberArgs({
+  const TableIamMemberArgs({
     this.condition,
     required this.instanceName,
     required this.member,

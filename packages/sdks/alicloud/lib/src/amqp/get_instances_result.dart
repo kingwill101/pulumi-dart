@@ -27,7 +27,7 @@ class GetInstancesResult {
   /// [names] A list of Instance names.
   /// [outputFile] Optional.
   /// [status] The status of the instance.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

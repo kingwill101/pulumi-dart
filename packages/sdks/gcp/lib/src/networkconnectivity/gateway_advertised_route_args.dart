@@ -42,7 +42,7 @@ class GatewayAdvertisedRouteArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [recipient] the recipient of this advertised route
   /// [spoke] The name of the spoke
-  GatewayAdvertisedRouteArgs({
+  const GatewayAdvertisedRouteArgs({
     this.description,
     this.ipRange,
     this.labels,

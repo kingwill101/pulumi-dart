@@ -40,7 +40,7 @@ class SecurityPolicyRule {
   /// [priority] An unique positive integer indicating the priority of evaluation for a rule.
   /// [rateLimitOptions] Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
   /// [redirectOptions] Can be specified if the `action` is `redirect`. Cannot be specified for other actions. Structure is documented below.
-  SecurityPolicyRule({
+  const SecurityPolicyRule({
     required this.action,
     this.description,
     this.headerAction,

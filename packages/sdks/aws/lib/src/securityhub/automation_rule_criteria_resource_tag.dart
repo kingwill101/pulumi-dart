@@ -12,7 +12,7 @@ class AutomationRuleCriteriaResourceTag {
   /// [comparison] Required.
   /// [key] The key of the map filter.
   /// [value] Required.
-  AutomationRuleCriteriaResourceTag({
+  const AutomationRuleCriteriaResourceTag({
     required this.comparison,
     required this.key,
     required this.value,

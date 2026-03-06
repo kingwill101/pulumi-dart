@@ -20,7 +20,7 @@ class GetAccessPackageArgs {
   /// [catalogId] The ID of the Catalog this access package is in.
   /// [displayName] The display name of the access package.
   /// [objectId] The ID of this access package.
-  GetAccessPackageArgs({
+  const GetAccessPackageArgs({
     this.catalogId,
     this.displayName,
     this.objectId,

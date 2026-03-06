@@ -18,7 +18,7 @@ class EdgeCacheKeysetPublicKey {
   /// [id] The ID of the public key. The ID must be 1-63 characters long, and comply with RFC1035.
   /// [managed] Set to true to have the CDN automatically manage this public key value.
   /// [value] The base64-encoded value of the Ed25519 public key. The base64 encoding can be padded (44 bytes) or unpadded (43 bytes).
-  EdgeCacheKeysetPublicKey({
+  const EdgeCacheKeysetPublicKey({
     required this.id,
     this.managed,
     this.value,

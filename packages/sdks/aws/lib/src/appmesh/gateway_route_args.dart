@@ -31,7 +31,7 @@ class GatewayRouteArgs {
   /// [spec] Gateway route specification to apply.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [virtualGatewayName] Name of the virtual gateway to associate the gateway route with. Must be between 1 and 255 characters in length.
-  GatewayRouteArgs({
+  const GatewayRouteArgs({
     required this.meshName,
     this.meshOwner,
     this.name,

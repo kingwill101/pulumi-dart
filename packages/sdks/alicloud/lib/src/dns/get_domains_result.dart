@@ -52,7 +52,7 @@ class GetDomainsResult {
   /// [starmark] Optional.
   /// [tags] Optional.
   /// [versionCode] Cloud resolution version ID.
-  GetDomainsResult({
+  const GetDomainsResult({
     this.aliDomain,
     this.domainNameRegex,
     required this.domains,

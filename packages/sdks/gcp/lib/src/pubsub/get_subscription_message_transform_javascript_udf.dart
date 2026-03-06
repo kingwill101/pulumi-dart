@@ -38,7 +38,7 @@ class GetSubscriptionMessageTransformJavascriptUdf {
   /// Creates a new [GetSubscriptionMessageTransformJavascriptUdf].
   /// [code] JavaScript code that contains a function 'function_name' with the
   /// [functionName] Name of the JavaScript function that should be applied to Pub/Sub messages.
-  GetSubscriptionMessageTransformJavascriptUdf({
+  const GetSubscriptionMessageTransformJavascriptUdf({
     required this.code,
     required this.functionName,
   });

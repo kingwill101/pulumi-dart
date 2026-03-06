@@ -35,7 +35,7 @@ class EndpointServicedirectoryV1beta1Args {
   /// [port] Optional. Service Directory rejects values outside of `[0, 65535]`.
   /// [project] Optional.
   /// [serviceId] Required.
-  EndpointServicedirectoryV1beta1Args({
+  const EndpointServicedirectoryV1beta1Args({
     this.address,
     required this.endpointId,
     this.location,

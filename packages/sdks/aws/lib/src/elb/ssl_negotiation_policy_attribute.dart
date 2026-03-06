@@ -11,7 +11,7 @@ class SslNegotiationPolicyAttribute {
   /// Creates a new [SslNegotiationPolicyAttribute].
   /// [name] The name of the attribute
   /// [value] The value of the attribute
-  SslNegotiationPolicyAttribute({
+  const SslNegotiationPolicyAttribute({
     required this.name,
     required this.value,
   });

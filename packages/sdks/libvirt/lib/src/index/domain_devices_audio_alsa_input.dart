@@ -8,7 +8,7 @@ class DomainDevicesAudioAlsaInput {
 
   /// Creates a new [DomainDevicesAudioAlsaInput].
   /// [dev] Sets the device node for the ALSA audio output.
-  DomainDevicesAudioAlsaInput({
+  const DomainDevicesAudioAlsaInput({
     this.dev,
   });
 

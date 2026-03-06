@@ -34,7 +34,7 @@ class CloudWatchAlarmPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CloudWatchAlarmPropertiesResponse({
+  const CloudWatchAlarmPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

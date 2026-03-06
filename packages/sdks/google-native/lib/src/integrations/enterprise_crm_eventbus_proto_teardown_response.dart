@@ -9,7 +9,7 @@ class EnterpriseCrmEventbusProtoTeardownResponse {
 
   /// Creates a new [EnterpriseCrmEventbusProtoTeardownResponse].
   /// [teardownTaskConfigs] Required.
-  EnterpriseCrmEventbusProtoTeardownResponse({
+  const EnterpriseCrmEventbusProtoTeardownResponse({
     required this.teardownTaskConfigs,
   });
 

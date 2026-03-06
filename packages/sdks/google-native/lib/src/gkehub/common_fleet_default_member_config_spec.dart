@@ -22,7 +22,7 @@ class CommonFleetDefaultMemberConfigSpec {
   /// [identityservice] Identity Service-specific spec.
   /// [mesh] Anthos Service Mesh-specific spec
   /// [policycontroller] Policy Controller spec.
-  CommonFleetDefaultMemberConfigSpec({
+  const CommonFleetDefaultMemberConfigSpec({
     this.configmanagement,
     this.identityservice,
     this.mesh,

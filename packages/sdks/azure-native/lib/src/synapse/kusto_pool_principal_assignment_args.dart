@@ -33,7 +33,7 @@ class KustoPoolPrincipalAssignmentArgs {
   /// [role] Cluster principal role.
   /// [tenantId] The tenant id of the principal
   /// [workspaceName] The name of the workspace.
-  KustoPoolPrincipalAssignmentArgs({
+  const KustoPoolPrincipalAssignmentArgs({
     required this.kustoPoolName,
     this.principalAssignmentName,
     required this.principalId,

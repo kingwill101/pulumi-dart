@@ -9,7 +9,7 @@ class ProducerPscConfig {
 
   /// Creates a new [ProducerPscConfig].
   /// [serviceAttachmentUri] The resource path of a service attachment. Example: projects/{projectNumOrId}/regions/{region}/serviceAttachments/{resourceId}.
-  ProducerPscConfig({
+  const ProducerPscConfig({
     this.serviceAttachmentUri,
   });
 

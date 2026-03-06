@@ -11,7 +11,7 @@ class HadoopClusterRolesWorkerNodeAutoscaleCapacity {
   /// Creates a new [HadoopClusterRolesWorkerNodeAutoscaleCapacity].
   /// [maxInstanceCount] The maximum number of worker nodes to autoscale to based on the cluster's activity.
   /// [minInstanceCount] The minimum number of worker nodes to autoscale to based on the cluster's activity.
-  HadoopClusterRolesWorkerNodeAutoscaleCapacity({
+  const HadoopClusterRolesWorkerNodeAutoscaleCapacity({
     required this.maxInstanceCount,
     required this.minInstanceCount,
   });

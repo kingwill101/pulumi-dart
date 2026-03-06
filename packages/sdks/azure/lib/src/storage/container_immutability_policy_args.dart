@@ -26,7 +26,7 @@ class ContainerImmutabilityPolicyArgs {
   /// [protectedAppendWritesAllEnabled] Whether to allow protected append writes to block and append blobs to the container. Defaults to `false`. Cannot be set with `protected_append_writes_enabled`.
   /// [protectedAppendWritesEnabled] Whether to allow protected append writes to append blobs to the container. Defaults to `false`. Cannot be set with `protected_append_writes_all_enabled`.
   /// [storageContainerResourceManagerId] The Resource Manager ID of the Storage Container where this Immutability Policy should be applied. Changing this forces a new resource to be created.
-  ContainerImmutabilityPolicyArgs({
+  const ContainerImmutabilityPolicyArgs({
     required this.immutabilityPeriodInDays,
     this.locked,
     this.protectedAppendWritesAllEnabled,

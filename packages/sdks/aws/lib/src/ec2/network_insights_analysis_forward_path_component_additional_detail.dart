@@ -10,7 +10,7 @@ class NetworkInsightsAnalysisForwardPathComponentAdditionalDetail {
   /// Creates a new [NetworkInsightsAnalysisForwardPathComponentAdditionalDetail].
   /// [additionalDetailType] Optional.
   /// [components] Optional.
-  NetworkInsightsAnalysisForwardPathComponentAdditionalDetail({
+  const NetworkInsightsAnalysisForwardPathComponentAdditionalDetail({
     this.additionalDetailType,
     this.components,
   });

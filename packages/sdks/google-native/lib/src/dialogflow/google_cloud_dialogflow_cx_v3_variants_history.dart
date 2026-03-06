@@ -13,7 +13,7 @@ class GoogleCloudDialogflowCxV3VariantsHistory {
   /// Creates a new [GoogleCloudDialogflowCxV3VariantsHistory].
   /// [updateTime] Update time of the variants.
   /// [versionVariants] The flow versions as the variants.
-  GoogleCloudDialogflowCxV3VariantsHistory({
+  const GoogleCloudDialogflowCxV3VariantsHistory({
     this.updateTime,
     this.versionVariants,
   });

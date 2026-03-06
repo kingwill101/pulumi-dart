@@ -11,7 +11,7 @@ class TriggerBlobEventPipeline {
   /// Creates a new [TriggerBlobEventPipeline].
   /// [name] The Data Factory Pipeline name that the trigger will act on.
   /// [parameters] The Data Factory Pipeline parameters that the trigger will act on.
-  TriggerBlobEventPipeline({
+  const TriggerBlobEventPipeline({
     required this.name,
     this.parameters,
   });

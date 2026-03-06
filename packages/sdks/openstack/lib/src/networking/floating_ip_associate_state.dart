@@ -22,7 +22,7 @@ class FloatingIpAssociateState {
   /// [floatingIp] IP Address of an existing floating IP.
   /// [portId] ID of an existing port with at least one IP address to
   /// [region] The region in which to obtain the V2 Networking client.
-  FloatingIpAssociateState({
+  const FloatingIpAssociateState({
     this.fixedIp,
     this.floatingIp,
     this.portId,

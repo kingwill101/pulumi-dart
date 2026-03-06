@@ -12,7 +12,7 @@ class VaultRetentionPolicy {
   /// Creates a new [VaultRetentionPolicy].
   /// [snapshotRetentionInDays] Required.
   /// [vaultRetention] Base class for retention policy.
-  VaultRetentionPolicy({
+  const VaultRetentionPolicy({
     required this.snapshotRetentionInDays,
     required this.vaultRetention,
   });

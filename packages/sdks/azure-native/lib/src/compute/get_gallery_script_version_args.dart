@@ -21,7 +21,7 @@ class GetGalleryScriptVersionArgs {
   /// [galleryScriptName] The name of the gallery Script Definition to be retrieved.
   /// [galleryScriptVersionName] The name of the gallery Script Version to be retrieved.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGalleryScriptVersionArgs({
+  const GetGalleryScriptVersionArgs({
     required this.galleryName,
     required this.galleryScriptName,
     required this.galleryScriptVersionName,

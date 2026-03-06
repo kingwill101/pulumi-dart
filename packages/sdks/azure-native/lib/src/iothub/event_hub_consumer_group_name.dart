@@ -9,7 +9,7 @@ class EventHubConsumerGroupName {
 
   /// Creates a new [EventHubConsumerGroupName].
   /// [name] EventHub consumer group name
-  EventHubConsumerGroupName({
+  const EventHubConsumerGroupName({
     required this.name,
   });
 

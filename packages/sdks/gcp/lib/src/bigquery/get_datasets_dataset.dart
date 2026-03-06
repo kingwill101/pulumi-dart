@@ -17,7 +17,7 @@ class GetDatasetsDataset {
   /// [friendlyName] The friendly name of the dataset.
   /// [labels] User-provided dataset labels, in key/value pairs.
   /// [location] The geographic location of the dataset.
-  GetDatasetsDataset({
+  const GetDatasetsDataset({
     required this.datasetId,
     required this.friendlyName,
     required this.labels,

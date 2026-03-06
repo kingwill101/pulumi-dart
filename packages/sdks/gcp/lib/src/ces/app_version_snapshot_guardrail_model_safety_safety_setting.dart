@@ -24,7 +24,7 @@ class AppVersionSnapshotGuardrailModelSafetySafetySetting {
   /// Creates a new [AppVersionSnapshotGuardrailModelSafetySafetySetting].
   /// [category] (Output)
   /// [threshold] (Output)
-  AppVersionSnapshotGuardrailModelSafetySafetySetting({
+  const AppVersionSnapshotGuardrailModelSafetySafetySetting({
     this.category,
     this.threshold,
   });

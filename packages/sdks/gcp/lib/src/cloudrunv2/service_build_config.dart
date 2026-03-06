@@ -33,7 +33,7 @@ class ServiceBuildConfig {
   /// [serviceAccount] Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
   /// [sourceLocation] The Cloud Storage bucket URI where the function source code is located.
   /// [workerPool] Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
-  ServiceBuildConfig({
+  const ServiceBuildConfig({
     this.baseImage,
     this.enableAutomaticUpdates,
     this.environmentVariables,

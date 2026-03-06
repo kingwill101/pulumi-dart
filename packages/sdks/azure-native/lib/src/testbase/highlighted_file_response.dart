@@ -15,7 +15,7 @@ class HighlightedFileResponse {
   /// [path] The path of the highlighted file.
   /// [sections] The name of sections to highlight.
   /// [visited] A flag to save whether this file is viewed by user.
-  HighlightedFileResponse({
+  const HighlightedFileResponse({
     required this.path,
     this.sections,
     this.visited,

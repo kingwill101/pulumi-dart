@@ -12,7 +12,7 @@ class RestorePointCollectionSourcePropertiesResponse {
   /// Creates a new [RestorePointCollectionSourcePropertiesResponse].
   /// [id] Resource Id of the source resource used to create this restore point collection
   /// [location] Location of the source resource used to create this restore point collection.
-  RestorePointCollectionSourcePropertiesResponse({
+  const RestorePointCollectionSourcePropertiesResponse({
     this.id,
     required this.location,
   });

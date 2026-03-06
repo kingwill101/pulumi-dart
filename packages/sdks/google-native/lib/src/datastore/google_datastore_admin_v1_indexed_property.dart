@@ -13,7 +13,7 @@ class GoogleDatastoreAdminV1IndexedProperty {
   /// Creates a new [GoogleDatastoreAdminV1IndexedProperty].
   /// [direction] The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
   /// [name] The property name to index.
-  GoogleDatastoreAdminV1IndexedProperty({
+  const GoogleDatastoreAdminV1IndexedProperty({
     required this.direction,
     required this.name,
   });

@@ -54,7 +54,7 @@ class GetCertificatesCertificate {
   /// [province] The cert's province.
   /// [sans] The cert's subject alternative name.
   /// [startDate] The cert's not valid before time.
-  GetCertificatesCertificate({
+  const GetCertificatesCertificate({
     required this.buyInAliyun,
     required this.cert,
     required this.certId,

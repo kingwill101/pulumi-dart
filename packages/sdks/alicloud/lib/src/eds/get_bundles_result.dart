@@ -24,7 +24,7 @@ class GetBundlesResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetBundlesResult({
+  const GetBundlesResult({
     required this.bundleIds,
     this.bundleType,
     required this.bundles,

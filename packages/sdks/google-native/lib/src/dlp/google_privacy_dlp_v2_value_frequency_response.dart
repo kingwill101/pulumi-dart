@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2ValueFrequencyResponse {
   /// Creates a new [GooglePrivacyDlpV2ValueFrequencyResponse].
   /// [count] How many times the value is contained in the field.
   /// [value] A value contained in the field in question.
-  GooglePrivacyDlpV2ValueFrequencyResponse({
+  const GooglePrivacyDlpV2ValueFrequencyResponse({
     required this.count,
     required this.value,
   });

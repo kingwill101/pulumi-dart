@@ -79,7 +79,7 @@ class GetBucketObjectContentResult {
   /// [sourceMd5hash] Required.
   /// [storageClass] Required.
   /// [temporaryHold] Required.
-  GetBucketObjectContentResult({
+  const GetBucketObjectContentResult({
     required this.bucket,
     required this.cacheControl,
     required this.content,

@@ -12,7 +12,7 @@ class AzureAppPushReceiver {
   /// Creates a new [AzureAppPushReceiver].
   /// [emailAddress] The email address registered for the Azure mobile app.
   /// [name] The name of the Azure mobile app push receiver. Names must be unique across all receivers within a tenant action group.
-  AzureAppPushReceiver({
+  const AzureAppPushReceiver({
     required this.emailAddress,
     required this.name,
   });

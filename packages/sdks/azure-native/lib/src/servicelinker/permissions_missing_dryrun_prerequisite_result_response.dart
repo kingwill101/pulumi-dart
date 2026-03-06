@@ -19,7 +19,7 @@ class PermissionsMissingDryrunPrerequisiteResultResponse {
   /// [recommendedRole] The recommended role to resolve permissions missing
   /// [scope] The permission scope
   /// [type] The type of dryrun result.
-  PermissionsMissingDryrunPrerequisiteResultResponse({
+  const PermissionsMissingDryrunPrerequisiteResultResponse({
     this.permissions,
     this.recommendedRole,
     this.scope,

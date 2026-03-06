@@ -9,7 +9,7 @@ class GooglePrivacyDlpV2UnwrappedCryptoKeyResponse {
 
   /// Creates a new [GooglePrivacyDlpV2UnwrappedCryptoKeyResponse].
   /// [key] A 128/192/256 bit key.
-  GooglePrivacyDlpV2UnwrappedCryptoKeyResponse({
+  const GooglePrivacyDlpV2UnwrappedCryptoKeyResponse({
     required this.key,
   });
 

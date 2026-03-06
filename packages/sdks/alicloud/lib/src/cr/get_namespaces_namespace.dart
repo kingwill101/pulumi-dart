@@ -14,7 +14,7 @@ class GetNamespacesNamespace {
   /// [autoCreate] Boolean, when it set to true, repositories are automatically created when pushing new images. If it set to false, you create repository for images before pushing.
   /// [defaultVisibility] `PUBLIC` or `PRIVATE`, default repository visibility in this namespace.
   /// [name] Name of Container Registry namespace.
-  GetNamespacesNamespace({
+  const GetNamespacesNamespace({
     required this.autoCreate,
     required this.defaultVisibility,
     required this.name,

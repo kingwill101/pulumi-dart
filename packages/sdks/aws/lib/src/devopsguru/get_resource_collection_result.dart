@@ -21,7 +21,7 @@ class GetResourceCollectionResult {
   /// [region] Required.
   /// [tags] AWS tags used to filter the resources in the resource collection. See `tags` below for additional details.
   /// [type] Required.
-  GetResourceCollectionResult({
+  const GetResourceCollectionResult({
     required this.cloudformations,
     required this.id,
     required this.region,

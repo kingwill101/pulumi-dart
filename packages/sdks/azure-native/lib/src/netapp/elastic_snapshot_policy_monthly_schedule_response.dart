@@ -18,7 +18,7 @@ class ElasticSnapshotPolicyMonthlyScheduleResponse {
   /// [hour] Indicates which hour in UTC timezone a snapshot should be taken
   /// [minute] Indicates which minute snapshot should be taken
   /// [snapshotsToKeep] Monthly snapshot count to keep
-  ElasticSnapshotPolicyMonthlyScheduleResponse({
+  const ElasticSnapshotPolicyMonthlyScheduleResponse({
     this.daysOfMonth,
     this.hour,
     this.minute,

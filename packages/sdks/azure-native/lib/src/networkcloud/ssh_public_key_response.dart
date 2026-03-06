@@ -8,7 +8,7 @@ class SshPublicKeyResponse {
 
   /// Creates a new [SshPublicKeyResponse].
   /// [keyData] The SSH public key data.
-  SshPublicKeyResponse({
+  const SshPublicKeyResponse({
     required this.keyData,
   });
 

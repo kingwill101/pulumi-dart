@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesDynatrace {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesDynatrace].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesDynatrace({
+  const FlowSourceFlowConfigSourceConnectorPropertiesDynatrace({
     required this.object_,
   });
 

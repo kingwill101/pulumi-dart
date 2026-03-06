@@ -21,7 +21,7 @@ class VirtualMachineOsProfileSecretVaultCertificate {
   /// Creates a new [VirtualMachineOsProfileSecretVaultCertificate].
   /// [certificateStore] (Required, on windows machines) Specifies the certificate store on the Virtual Machine where the certificate should be added to, such as `My`.
   /// [certificateUrl] The ID of the Key Vault Secret. Stored secret is the Base64 encoding of a JSON Object that which is encoded in UTF-8 of which the contents need to be:
-  VirtualMachineOsProfileSecretVaultCertificate({
+  const VirtualMachineOsProfileSecretVaultCertificate({
     this.certificateStore,
     required this.certificateUrl,
   });

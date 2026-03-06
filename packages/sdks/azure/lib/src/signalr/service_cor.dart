@@ -8,7 +8,7 @@ class ServiceCor {
 
   /// Creates a new [ServiceCor].
   /// [allowedOrigins] A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
-  ServiceCor({
+  const ServiceCor({
     required this.allowedOrigins,
   });
 

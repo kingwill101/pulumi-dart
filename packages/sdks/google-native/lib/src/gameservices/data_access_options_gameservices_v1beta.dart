@@ -9,7 +9,7 @@ class DataAccessOptionsGameservicesV1beta {
 
   /// Creates a new [DataAccessOptionsGameservicesV1beta].
   /// [logMode] Optional.
-  DataAccessOptionsGameservicesV1beta({
+  const DataAccessOptionsGameservicesV1beta({
     this.logMode,
   });
 

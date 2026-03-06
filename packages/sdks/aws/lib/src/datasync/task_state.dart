@@ -55,7 +55,7 @@ class TaskState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [taskMode] One of the following task modes for your data transfer:
   /// [taskReportConfig] Configuration block containing the configuration of a DataSync Task Report. See `task_report_config` below.
-  TaskState({
+  const TaskState({
     this.arn,
     this.cloudwatchLogGroupArn,
     this.destinationLocationArn,

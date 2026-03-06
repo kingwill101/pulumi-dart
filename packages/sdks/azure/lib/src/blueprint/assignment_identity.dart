@@ -15,7 +15,7 @@ class AssignmentIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Blueprint. Possible values are `SystemAssigned` and `UserAssigned`.
-  AssignmentIdentity({
+  const AssignmentIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

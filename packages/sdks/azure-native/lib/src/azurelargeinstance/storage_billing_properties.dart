@@ -12,7 +12,7 @@ class StorageBillingProperties {
   /// Creates a new [StorageBillingProperties].
   /// [billingMode] the billing mode for the storage instance
   /// [sku] the SKU type that is provisioned
-  StorageBillingProperties({
+  const StorageBillingProperties({
     this.billingMode,
     this.sku,
   });

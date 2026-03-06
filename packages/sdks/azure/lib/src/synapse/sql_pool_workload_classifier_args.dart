@@ -33,7 +33,7 @@ class SqlPoolWorkloadClassifierArgs {
   /// [name] The name which should be used for this Synapse SQL Pool Workload Classifier. Changing this forces a new Synapse SQL Pool Workload Classifier to be created.
   /// [startTime] The workload classifier start time for classification. It's of the `HH:MM` format in UTC time zone.
   /// [workloadGroupId] The ID of the Synapse SQL Pool Workload Group. Changing this forces a new Synapse SQL Pool Workload Classifier to be created.
-  SqlPoolWorkloadClassifierArgs({
+  const SqlPoolWorkloadClassifierArgs({
     this.context,
     this.endTime,
     this.importance,

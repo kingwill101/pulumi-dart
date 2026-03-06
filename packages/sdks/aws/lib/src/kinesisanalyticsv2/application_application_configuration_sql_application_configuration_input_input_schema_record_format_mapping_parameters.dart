@@ -13,7 +13,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSc
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters].
   /// [csvMappingParameters] Provides additional mapping information when the record format uses delimiters (for example, CSV).
   /// [jsonMappingParameters] Provides additional mapping information when JSON is the record format on the streaming source.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSchemaRecordFormatMappingParameters({
     this.csvMappingParameters,
     this.jsonMappingParameters,
   });

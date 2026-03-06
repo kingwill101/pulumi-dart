@@ -19,7 +19,7 @@ class ManagedRuleSetResponse {
   /// [ruleGroupOverrides] Defines the rule overrides to apply to the rule set.
   /// [ruleSetType] Defines the rule set type to use.
   /// [ruleSetVersion] Defines the version of the rule set to use.
-  ManagedRuleSetResponse({
+  const ManagedRuleSetResponse({
     this.anomalyScore,
     this.ruleGroupOverrides,
     required this.ruleSetType,

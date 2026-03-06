@@ -12,7 +12,7 @@ class MqttBridgeRouteSharedSubscriptionResponse {
   /// Creates a new [MqttBridgeRouteSharedSubscriptionResponse].
   /// [groupMinimumShareNumber] The group shared subscription minimum share number.
   /// [groupName] The group name for Shared subscription.
-  MqttBridgeRouteSharedSubscriptionResponse({
+  const MqttBridgeRouteSharedSubscriptionResponse({
     required this.groupMinimumShareNumber,
     required this.groupName,
   });

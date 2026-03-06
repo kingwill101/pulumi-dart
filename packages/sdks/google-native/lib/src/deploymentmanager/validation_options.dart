@@ -14,7 +14,7 @@ class ValidationOptions {
   /// Creates a new [ValidationOptions].
   /// [schemaValidation] Customize how deployment manager will validate the resource against schema errors.
   /// [undeclaredProperties] Specify what to do with extra properties when executing a request.
-  ValidationOptions({
+  const ValidationOptions({
     this.schemaValidation,
     this.undeclaredProperties,
   });

@@ -28,7 +28,7 @@ class OutboundEndpointArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [subnet] The reference to the subnet used for the outbound endpoint.
   /// [tags] Resource tags.
-  OutboundEndpointArgs({
+  const OutboundEndpointArgs({
     required this.dnsResolverName,
     this.location,
     this.outboundEndpointName,

@@ -18,7 +18,7 @@ class ListWebAppSitePushSettingsSlotArgs {
   /// [name] Name of web app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of web app slot. If not specified then will default to production slot.
-  ListWebAppSitePushSettingsSlotArgs({
+  const ListWebAppSitePushSettingsSlotArgs({
     required this.name,
     required this.resourceGroupName,
     required this.slot,

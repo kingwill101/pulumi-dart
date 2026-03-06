@@ -18,7 +18,7 @@ class ListDatabasePrincipalsArgs {
   /// [clusterName] The name of the Kusto cluster.
   /// [databaseName] The name of the database in the Kusto cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListDatabasePrincipalsArgs({
+  const ListDatabasePrincipalsArgs({
     required this.clusterName,
     required this.databaseName,
     required this.resourceGroupName,

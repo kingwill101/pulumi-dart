@@ -15,7 +15,7 @@ class JitApproverDefinition {
   /// [displayName] The approver display name.
   /// [id] The approver service principal Id.
   /// [type] The approver type.
-  JitApproverDefinition({
+  const JitApproverDefinition({
     this.displayName,
     required this.id,
     this.type,

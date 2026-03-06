@@ -56,7 +56,7 @@ class MembershipBindingGkehubState {
   /// [states] State of the membership binding resource.
   /// [uid] Google-generated UUID for this resource.
   /// [updateTime] Time the MembershipBinding was updated in UTC.
-  MembershipBindingGkehubState({
+  const MembershipBindingGkehubState({
     this.createTime,
     this.deleteTime,
     this.effectiveLabels,

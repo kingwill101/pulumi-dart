@@ -14,7 +14,7 @@ class K8sSlbAttachmentSlbConfigPortMappingServicePort {
   /// [port] The port of k8s service, values should be within range [1, 65535].
   /// [protocol] The protocol of k8s service, values can be 'TCP' or 'UDP'.
   /// [targetPort] The port of k8s pod, values should be within range [1, 65535].
-  K8sSlbAttachmentSlbConfigPortMappingServicePort({
+  const K8sSlbAttachmentSlbConfigPortMappingServicePort({
     required this.port,
     required this.protocol,
     required this.targetPort,

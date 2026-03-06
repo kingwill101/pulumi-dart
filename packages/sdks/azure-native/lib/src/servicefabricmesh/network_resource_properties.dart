@@ -13,7 +13,7 @@ class NetworkResourceProperties {
   /// Creates a new [NetworkResourceProperties].
   /// [description] User readable description of the network.
   /// [kind] The type of a Service Fabric container network.
-  NetworkResourceProperties({
+  const NetworkResourceProperties({
     this.description,
     required this.kind,
   });

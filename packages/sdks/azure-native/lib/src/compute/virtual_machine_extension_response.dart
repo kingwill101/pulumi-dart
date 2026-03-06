@@ -63,7 +63,7 @@ class VirtualMachineExtensionResponse {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  VirtualMachineExtensionResponse({
+  const VirtualMachineExtensionResponse({
     this.autoUpgradeMinorVersion,
     this.enableAutomaticUpgrade,
     this.forceUpdateTag,

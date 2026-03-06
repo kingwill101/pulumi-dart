@@ -14,7 +14,7 @@ class DigitalTwinsIdentity {
   /// Creates a new [DigitalTwinsIdentity].
   /// [type] The type of Managed Identity used by the DigitalTwinsInstance.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
-  DigitalTwinsIdentity({
+  const DigitalTwinsIdentity({
     this.type,
     this.userAssignedIdentities,
   });

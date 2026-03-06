@@ -27,7 +27,7 @@ class GetSubnetGroupResult {
   /// [subnetIds] Set of VPC Subnet ID-s of the subnet group.
   /// [tags] Map of tags assigned to the subnet group.
   /// [vpcId] VPC in which the subnet group exists.
-  GetSubnetGroupResult({
+  const GetSubnetGroupResult({
     required this.arn,
     required this.description,
     required this.id,

@@ -15,7 +15,7 @@ class GetGatewaySecurityPolicyNetworksecurityV1beta1Args {
   /// [gatewaySecurityPolicyId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGatewaySecurityPolicyNetworksecurityV1beta1Args({
+  const GetGatewaySecurityPolicyNetworksecurityV1beta1Args({
     required this.gatewaySecurityPolicyId,
     required this.location,
     this.project,

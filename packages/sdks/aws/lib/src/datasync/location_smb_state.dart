@@ -42,7 +42,7 @@ class LocationSmbState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [uri] Optional.
   /// [user] The user who can mount the share and has file and folder permissions in the SMB share.
-  LocationSmbState({
+  const LocationSmbState({
     this.agentArns,
     this.arn,
     this.domain,

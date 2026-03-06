@@ -27,7 +27,7 @@ class GetAccessRulesArgs {
   /// [rwAccess] Filter results by a specific RWAccess.
   /// [sourceCidrIp] Filter results by a specific SourceCidrIp.
   /// [userAccess] Filter results by a specific UserAccess.
-  GetAccessRulesArgs({
+  const GetAccessRulesArgs({
     required this.accessGroupName,
     this.ids,
     this.outputFile,

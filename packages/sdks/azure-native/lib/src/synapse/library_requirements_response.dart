@@ -15,7 +15,7 @@ class LibraryRequirementsResponse {
   /// [content] The library requirements.
   /// [filename] The filename of the library requirements file.
   /// [time] The last update time of the library requirements file.
-  LibraryRequirementsResponse({
+  const LibraryRequirementsResponse({
     this.content,
     this.filename,
     required this.time,

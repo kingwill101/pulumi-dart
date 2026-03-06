@@ -15,7 +15,7 @@ class VscMountPointInstance {
   /// [instanceId] The ID of the ECS instance to which the HDFS file system is mounted.
   /// [status] The status of the ECS instance on which the HDFS file system is mounted.
   /// [vscs] The VSC list of mounted HDFS file systems.
-  VscMountPointInstance({
+  const VscMountPointInstance({
     this.instanceId,
     this.status,
     this.vscs,

@@ -13,7 +13,7 @@ class ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult {
   /// Creates a new [ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult].
   /// [nextLink] The URI to get the next set of results.
   /// [value] A list of network fabric controllers.
-  ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult({
+  const ListArtifactStoreNetworkFabricControllerPrivateEndPointsResult({
     required this.nextLink,
     this.value,
   });

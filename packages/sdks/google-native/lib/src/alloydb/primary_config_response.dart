@@ -9,7 +9,7 @@ class PrimaryConfigResponse {
 
   /// Creates a new [PrimaryConfigResponse].
   /// [secondaryClusterNames] Names of the clusters that are replicating from this cluster.
-  PrimaryConfigResponse({
+  const PrimaryConfigResponse({
     required this.secondaryClusterNames,
   });
 

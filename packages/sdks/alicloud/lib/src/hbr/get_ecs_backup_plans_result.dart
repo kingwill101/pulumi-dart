@@ -24,7 +24,7 @@ class GetEcsBackupPlansResult {
   /// [outputFile] Optional.
   /// [plans] Required.
   /// [vaultId] Optional.
-  GetEcsBackupPlansResult({
+  const GetEcsBackupPlansResult({
     required this.id,
     required this.ids,
     this.instanceId,

@@ -24,7 +24,7 @@ class GetFeaturesetVersionFeatureArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Feature set version identifier. This is case-sensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetFeaturesetVersionFeatureArgs({
+  const GetFeaturesetVersionFeatureArgs({
     this.featureName,
     required this.name,
     required this.resourceGroupName,

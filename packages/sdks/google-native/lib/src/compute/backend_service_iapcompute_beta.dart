@@ -15,7 +15,7 @@ class BackendServiceIAPComputeBeta {
   /// [enabled] Whether the serving infrastructure will authenticate and authorize all incoming requests.
   /// [oauth2ClientId] OAuth2 client ID to use for the authentication flow.
   /// [oauth2ClientSecret] OAuth2 client secret to use for the authentication flow. For security reasons, this value cannot be retrieved via the API. Instead, the SHA-256 hash of the value is returned in the oauth2ClientSecretSha256 field. @InputOnly
-  BackendServiceIAPComputeBeta({
+  const BackendServiceIAPComputeBeta({
     this.enabled,
     this.oauth2ClientId,
     this.oauth2ClientSecret,

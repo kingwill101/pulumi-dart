@@ -196,7 +196,7 @@ class ScalingConfigurationArgs {
   /// [systemDiskSize] Size of system disk, in GiB. Valid values: Basic disk: 20 to 500, ESSD: The valid values depend on the performance level (PL) of the system disk (PL0 ESSD: 1 to 2048, PL1 ESSD: 20 to 2048, PL2 ESSD: 461 to 2048, PL3 ESSD: 1261 to 2048) , ESSD AutoPL disk: 1 to 2048, Other disk categories: 20 to 2048. The value of this parameter must be at least 1 and greater than or equal to the image size. Default value: 40 or the size of the image, whichever is larger.
   /// [tags] A mapping of tags to assign to the resource. It will be applied for ECS instances finally.
   /// [userData] User-defined data to customize the startup behaviors of the ECS instance and to pass data into the ECS instance.
-  ScalingConfigurationArgs({
+  const ScalingConfigurationArgs({
     this.active,
     this.creditSpecification,
     this.customPriorities,

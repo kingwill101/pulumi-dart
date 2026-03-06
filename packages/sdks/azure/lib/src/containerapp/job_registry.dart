@@ -17,7 +17,7 @@ class JobRegistry {
   /// [passwordSecretName] The name of the Secret that contains the registry login password.
   /// [server] The URL of the Azure Container Registry server.
   /// [username] The username to use to authenticate with Azure Container Registry.
-  JobRegistry({
+  const JobRegistry({
     this.identity,
     this.passwordSecretName,
     required this.server,

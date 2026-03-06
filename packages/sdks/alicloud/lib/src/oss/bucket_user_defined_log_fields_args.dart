@@ -18,7 +18,7 @@ class BucketUserDefinedLogFieldsArgs {
   /// [bucket] The name of the bucket.
   /// [headerSets] Container for custom request header configuration information.
   /// [paramSets] Container for custom request parameters configuration information.
-  BucketUserDefinedLogFieldsArgs({
+  const BucketUserDefinedLogFieldsArgs({
     required this.bucket,
     this.headerSets,
     this.paramSets,

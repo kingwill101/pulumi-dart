@@ -19,7 +19,7 @@ class ModelingResourceProperties {
   /// [frequency] Modeling frequency controls the modeling compute frequency.
   /// [inputData] The configuration to raw CDM data to be used as Modeling resource input.
   /// [size] Modeling size controls the maximum supported input data size.
-  ModelingResourceProperties({
+  const ModelingResourceProperties({
     this.features,
     this.frequency,
     this.inputData,

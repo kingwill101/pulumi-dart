@@ -12,7 +12,7 @@ class DatabaseTypeResponseDatamigrationV1beta1 {
   /// Creates a new [DatabaseTypeResponseDatamigrationV1beta1].
   /// [engine] The database engine.
   /// [provider] The database provider.
-  DatabaseTypeResponseDatamigrationV1beta1({
+  const DatabaseTypeResponseDatamigrationV1beta1({
     required this.engine,
     required this.provider,
   });

@@ -23,7 +23,7 @@ class GetEnterpriseDatabasesResult {
   /// [instanceId] The instance ID of the target database.
   /// [nameRegex] Optional.
   /// [outputFile] Optional.
-  GetEnterpriseDatabasesResult({
+  const GetEnterpriseDatabasesResult({
     required this.databases,
     required this.id,
     required this.ids,

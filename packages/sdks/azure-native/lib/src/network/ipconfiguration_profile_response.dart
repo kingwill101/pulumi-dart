@@ -25,7 +25,7 @@ class IPConfigurationProfileResponse {
   /// [provisioningState] The provisioning state of the IP configuration profile resource.
   /// [subnet] The reference to the subnet resource to create a container network interface ip configuration.
   /// [type] Sub Resource type.
-  IPConfigurationProfileResponse({
+  const IPConfigurationProfileResponse({
     required this.etag,
     this.id,
     this.name,

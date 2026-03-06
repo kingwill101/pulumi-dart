@@ -15,7 +15,7 @@ class BlobFilterDetails {
   /// [blobPathList] List of full path of the blobs to be transferred.
   /// [blobPrefixList] Prefix list of the Azure blobs to be transferred.
   /// [containerList] List of blob containers to be transferred.
-  BlobFilterDetails({
+  const BlobFilterDetails({
     this.blobPathList,
     this.blobPrefixList,
     this.containerList,

@@ -8,7 +8,7 @@ class InsightsDatasetConfigSourceProjects {
 
   /// Creates a new [InsightsDatasetConfigSourceProjects].
   /// [projectNumbers] The list of project numbers to include in the DatasetConfig.
-  InsightsDatasetConfigSourceProjects({
+  const InsightsDatasetConfigSourceProjects({
     this.projectNumbers,
   });
 

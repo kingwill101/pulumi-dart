@@ -14,7 +14,7 @@ class AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationR
   /// [databaseUser] Database username for authentication to an Amazon Redshift provisioned data warehouse.
   /// [type] Type of authentication to use. Valid values: `IAM`, `USERNAME_PASSWORD`.
   /// [usernamePasswordSecretArn] ARN of a Secrets Manager secret for authentication.
-  AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration({
+  const AgentKnowledgeBaseKnowledgeBaseConfigurationSqlKnowledgeBaseConfigurationRedshiftConfigurationQueryEngineConfigurationProvisionedConfigurationAuthConfiguration({
     this.databaseUser,
     required this.type,
     this.usernamePasswordSecretArn,

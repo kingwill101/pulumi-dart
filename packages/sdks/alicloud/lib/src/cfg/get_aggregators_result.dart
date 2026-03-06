@@ -27,7 +27,7 @@ class GetAggregatorsResult {
   /// [names] A list of Aggregator names.
   /// [outputFile] Optional.
   /// [status] The status of the resource.
-  GetAggregatorsResult({
+  const GetAggregatorsResult({
     required this.aggregators,
     this.enableDetails,
     required this.id,

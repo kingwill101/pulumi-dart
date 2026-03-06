@@ -23,7 +23,7 @@ class GetLoadBalancerDomain {
   /// [name] The name of load balancer.
   /// [sslValidationErrorReasons] list of domain SSL validation errors
   /// [verificationErrorReasons] list of domain verification errors
-  GetLoadBalancerDomain({
+  const GetLoadBalancerDomain({
     required this.certificateId,
     required this.certificateName,
     required this.isManaged,

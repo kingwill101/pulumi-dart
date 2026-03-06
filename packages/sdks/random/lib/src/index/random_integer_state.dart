@@ -21,7 +21,7 @@ class RandomIntegerState {
   /// [min] The minimum inclusive value of the range.
   /// [result] The random integer result.
   /// [seed] A custom seed to always produce the same value.
-  RandomIntegerState({
+  const RandomIntegerState({
     this.keepers,
     this.max,
     this.min,

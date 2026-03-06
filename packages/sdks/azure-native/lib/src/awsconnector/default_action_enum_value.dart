@@ -9,7 +9,7 @@ class DefaultActionEnumValue {
 
   /// Creates a new [DefaultActionEnumValue].
   /// [value] Property value
-  DefaultActionEnumValue({
+  const DefaultActionEnumValue({
     this.value,
   });
 

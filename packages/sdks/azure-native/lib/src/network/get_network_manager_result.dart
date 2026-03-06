@@ -46,7 +46,7 @@ class GetNetworkManagerResult {
   /// [systemData] The system metadata related to this resource.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetNetworkManagerResult({
+  const GetNetworkManagerResult({
     required this.azureApiVersion,
     this.description,
     required this.etag,

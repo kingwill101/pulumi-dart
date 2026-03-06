@@ -8,7 +8,7 @@ class GetDatabaseInstanceSettingActiveDirectoryConfig {
 
   /// Creates a new [GetDatabaseInstanceSettingActiveDirectoryConfig].
   /// [domain] Domain name of the Active Directory for SQL Server (e.g., mydomain.com).
-  GetDatabaseInstanceSettingActiveDirectoryConfig({
+  const GetDatabaseInstanceSettingActiveDirectoryConfig({
     required this.domain,
   });
 

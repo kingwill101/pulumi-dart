@@ -22,7 +22,7 @@ class FrontdoorFirewallPolicyManagedRule {
   /// [overrides] One or more `override` blocks as defined below.
   /// [type] The name of the managed rule to use with this resource. Possible values include `DefaultRuleSet`, `Microsoft_DefaultRuleSet`, `BotProtection`, or `Microsoft_BotManagerRuleSet`.
   /// [version] The version of the managed rule to use with this resource. Possible values depends on which default rule set type you are using, for the `DefaultRuleSet` type the possible values include `1.0` or `preview-0.1`. For `Microsoft_DefaultRuleSet` the possible values include `1.1`, `2.0`, or `2.1`. For `BotProtection` the value must be `preview-0.1` and for `Microsoft_BotManagerRuleSet` the possible values include `1.0` and `1.1`.
-  FrontdoorFirewallPolicyManagedRule({
+  const FrontdoorFirewallPolicyManagedRule({
     required this.action,
     this.exclusions,
     this.overrides,

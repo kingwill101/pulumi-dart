@@ -36,7 +36,7 @@ class QueueState {
   /// [messageTtl] The time to live (TTL) of a message in the queue.
   /// [queueName] The name of the queue to create.
   /// [virtualHostName] The name of the vhost to which the queue belongs. The name can contain only letters, digits, hyphens (-), underscores (_), periods (.), number signs (#), forward slashes (/), and at signs (@). The name must be 1 to 255 characters in length.
-  QueueState({
+  const QueueState({
     this.autoDeleteState,
     this.autoExpireState,
     this.deadLetterExchange,

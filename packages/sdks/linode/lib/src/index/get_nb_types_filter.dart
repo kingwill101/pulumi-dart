@@ -14,7 +14,7 @@ class GetNbTypesFilter {
   /// [matchBy] The type of comparison to use for this filter.
   /// [name] The name of the attribute to filter on.
   /// [values] The value(s) to be used in the filter.
-  GetNbTypesFilter({
+  const GetNbTypesFilter({
     this.matchBy,
     required this.name,
     required this.values,

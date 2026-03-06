@@ -62,7 +62,7 @@ class VpcIpamPoolArgs {
   /// [sourceIpamPoolId] The ID of the source IPAM pool. Use this argument to create a child pool within an existing pool.
   /// [sourceResource] Resource to use to use to configure a resource planning IPAM Pool. If configured, the `locale` of the parent pool must match the region that the vpc resides in.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  VpcIpamPoolArgs({
+  const VpcIpamPoolArgs({
     required this.addressFamily,
     this.allocationDefaultNetmaskLength,
     this.allocationMaxNetmaskLength,

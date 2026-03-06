@@ -8,7 +8,7 @@ class DomainDevicesSoundCodec {
 
   /// Creates a new [DomainDevicesSoundCodec].
   /// [type] This field specifies the type of codec used in the sound device configuration for the domain.
-  DomainDevicesSoundCodec({
+  const DomainDevicesSoundCodec({
     required this.type,
   });
 

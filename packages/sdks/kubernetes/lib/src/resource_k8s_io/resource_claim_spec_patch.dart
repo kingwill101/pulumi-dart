@@ -10,7 +10,7 @@ class ResourceClaimSpecPatch {
 
   /// Creates a new [ResourceClaimSpecPatch].
   /// [devices] Devices defines how to request devices.
-  ResourceClaimSpecPatch({
+  const ResourceClaimSpecPatch({
     this.devices,
   });
 

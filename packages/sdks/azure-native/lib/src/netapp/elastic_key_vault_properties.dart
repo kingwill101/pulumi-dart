@@ -15,7 +15,7 @@ class ElasticKeyVaultProperties {
   /// [keyName] The name of KeyVault key.
   /// [keyVaultResourceId] The resource ID of KeyVault.
   /// [keyVaultUri] The Uri of KeyVault.
-  ElasticKeyVaultProperties({
+  const ElasticKeyVaultProperties({
     this.keyName,
     this.keyVaultResourceId,
     this.keyVaultUri,

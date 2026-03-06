@@ -29,7 +29,7 @@ class NodePoolNodeConfigContainerdConfigRegistryHostHost {
   /// [headers] Configures the registry host headers.
   /// [host] Configures the registry host/mirror.
   /// [overridePath] Indicate the host's API root endpoint is defined in the URL path rather than by the API specification.
-  NodePoolNodeConfigContainerdConfigRegistryHostHost({
+  const NodePoolNodeConfigContainerdConfigRegistryHostHost({
     this.capabilities,
     this.cas,
     this.clients,

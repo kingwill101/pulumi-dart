@@ -18,7 +18,7 @@ class TrafficQosAssociationState {
   /// [instanceType] The type of the associated instance. Value: **physical connection** physical connection.
   /// [qosId] The QoS policy ID.
   /// [status] The status of the associated instance. Value:
-  TrafficQosAssociationState({
+  const TrafficQosAssociationState({
     this.instanceId,
     this.instanceType,
     this.qosId,

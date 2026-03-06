@@ -15,7 +15,7 @@ class GetRegionBackendServiceComputeBetaArgs {
   /// [backendService] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetRegionBackendServiceComputeBetaArgs({
+  const GetRegionBackendServiceComputeBetaArgs({
     required this.backendService,
     this.project,
     required this.region,

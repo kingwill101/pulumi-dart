@@ -15,7 +15,7 @@ class ParameterResponse {
   /// [asPath] List of AS paths.
   /// [community] List of BGP communities.
   /// [routePrefix] List of route prefixes.
-  ParameterResponse({
+  const ParameterResponse({
     this.asPath,
     this.community,
     this.routePrefix,

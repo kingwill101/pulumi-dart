@@ -24,7 +24,7 @@ class EnrichmentDomainWhoisRegistrarDetailsResponse {
   /// [name] The name of this registrar
   /// [url] This registrar's URL
   /// [whoisServer] The hostname of this registrar's whois server
-  EnrichmentDomainWhoisRegistrarDetailsResponse({
+  const EnrichmentDomainWhoisRegistrarDetailsResponse({
     this.abuseContactEmail,
     this.abuseContactPhone,
     this.ianaId,

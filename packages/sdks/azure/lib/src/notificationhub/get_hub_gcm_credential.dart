@@ -8,7 +8,7 @@ class GetHubGcmCredential {
 
   /// Creates a new [GetHubGcmCredential].
   /// [apiKey] The API Key associated with the Google Cloud Messaging service.
-  GetHubGcmCredential({
+  const GetHubGcmCredential({
     required this.apiKey,
   });
 

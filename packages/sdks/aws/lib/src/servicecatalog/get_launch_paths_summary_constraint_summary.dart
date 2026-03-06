@@ -11,7 +11,7 @@ class GetLaunchPathsSummaryConstraintSummary {
   /// Creates a new [GetLaunchPathsSummaryConstraintSummary].
   /// [description] Description of the constraint.
   /// [type] Type of constraint. Valid values are `LAUNCH`, `NOTIFICATION`, `STACKSET`, and `TEMPLATE`.
-  GetLaunchPathsSummaryConstraintSummary({
+  const GetLaunchPathsSummaryConstraintSummary({
     required this.description,
     required this.type,
   });

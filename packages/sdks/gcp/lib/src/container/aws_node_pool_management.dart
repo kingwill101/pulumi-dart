@@ -8,7 +8,7 @@ class AwsNodePoolManagement {
 
   /// Creates a new [AwsNodePoolManagement].
   /// [autoRepair] Optional. Whether or not the nodes will be automatically repaired.
-  AwsNodePoolManagement({
+  const AwsNodePoolManagement({
     this.autoRepair,
   });
 

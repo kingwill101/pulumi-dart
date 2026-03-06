@@ -14,7 +14,7 @@ class GetInstanceTypesType {
   /// [id] The ID of the instance type.
   /// [localStorageCapacity] Local capacity of the applied ecs instance for emr cluster. Unit: GB.
   /// [zoneId] The supported resources of specific zoneId.
-  GetInstanceTypesType({
+  const GetInstanceTypesType({
     required this.id,
     required this.localStorageCapacity,
     required this.zoneId,

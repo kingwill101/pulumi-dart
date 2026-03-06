@@ -25,7 +25,7 @@ class ContactProfileLinkResponse {
   /// [gainOverTemperature] Gain to noise temperature in db/K. It is the required G/T by the customer. Not used yet.
   /// [name] Link name.
   /// [polarization] Polarization. e.g. (RHCP, LHCP).
-  ContactProfileLinkResponse({
+  const ContactProfileLinkResponse({
     required this.channels,
     required this.direction,
     this.eirpdBW,

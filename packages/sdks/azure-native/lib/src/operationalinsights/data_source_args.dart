@@ -27,7 +27,7 @@ class DataSourceArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [workspaceName] The name of the workspace.
-  DataSourceArgs({
+  const DataSourceArgs({
     this.dataSourceName,
     required this.kind,
     required this.properties,

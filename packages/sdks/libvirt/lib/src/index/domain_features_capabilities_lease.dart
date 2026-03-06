@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesLease {
 
   /// Creates a new [DomainFeaturesCapabilitiesLease].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesLease({
+  const DomainFeaturesCapabilitiesLease({
     this.state,
   });
 

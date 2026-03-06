@@ -15,7 +15,7 @@ class VpnClientRevokedCertificate {
   /// [id] Resource ID.
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [thumbprint] The revoked VPN client certificate thumbprint.
-  VpnClientRevokedCertificate({
+  const VpnClientRevokedCertificate({
     this.id,
     this.name,
     this.thumbprint,

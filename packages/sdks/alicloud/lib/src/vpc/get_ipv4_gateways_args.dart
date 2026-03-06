@@ -27,7 +27,7 @@ class GetIpv4GatewaysArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
   /// [vpcId] The ID of the VPC associated with the IPv4 Gateway.
-  GetIpv4GatewaysArgs({
+  const GetIpv4GatewaysArgs({
     this.ids,
     this.ipv4GatewayName,
     this.nameRegex,

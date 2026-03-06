@@ -32,7 +32,7 @@ class CertificateArgs {
   /// [signingAlgorithm] Algorithm to use to sign certificate requests. Valid values: `SHA256WITHRSA`, `SHA256WITHECDSA`, `SHA384WITHRSA`, `SHA384WITHECDSA`, `SHA512WITHRSA`, `SHA512WITHECDSA`.
   /// [templateArn] Template to use when issuing a certificate.
   /// [validity] Configures end of the validity period for the certificate. See validity block below.
-  CertificateArgs({
+  const CertificateArgs({
     this.apiPassthrough,
     required this.certificateAuthorityArn,
     required this.certificateSigningRequest,

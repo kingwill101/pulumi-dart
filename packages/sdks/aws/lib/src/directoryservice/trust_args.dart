@@ -45,7 +45,7 @@ class TrustArgs {
   /// [trustDirection] The direction of the Trust relationship.
   /// [trustPassword] Password for the Trust.
   /// [trustType] Type of the Trust relationship.
-  TrustArgs({
+  const TrustArgs({
     this.conditionalForwarderIpAddrs,
     this.deleteAssociatedConditionalForwarder,
     required this.directoryId,

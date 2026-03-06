@@ -12,7 +12,7 @@ class LineRegistration {
   /// Creates a new [LineRegistration].
   /// [channelAccessToken] Access token for the line channel registration
   /// [channelSecret] Secret for the line channel registration
-  LineRegistration({
+  const LineRegistration({
     this.channelAccessToken,
     this.channelSecret,
   });

@@ -18,7 +18,7 @@ class GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse {
   /// [latestShardResource] BigQuery resource name of the latest shard.
   /// [shardCount] Total number of shards.
   /// [tablePrefix] The table name prefix of the shards. The name of any given shard is `[table_prefix]YYYYMMDD`. For example, for the `MyTable20180101` shard, the `table_prefix` is `MyTable`.
-  GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse({
+  const GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponse({
     required this.dataset,
     required this.latestShardResource,
     required this.shardCount,

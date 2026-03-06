@@ -15,7 +15,7 @@ class StartActivityIntent {
   /// [action] Action name. Required for START_ACTIVITY.
   /// [categories] Intent categories to set on the intent.
   /// [uri] URI for the action.
-  StartActivityIntent({
+  const StartActivityIntent({
     this.action,
     this.categories,
     this.uri,

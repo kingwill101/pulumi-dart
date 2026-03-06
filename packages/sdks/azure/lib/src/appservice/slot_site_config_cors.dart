@@ -11,7 +11,7 @@ class SlotSiteConfigCors {
   /// Creates a new [SlotSiteConfigCors].
   /// [allowedOrigins] A list of origins which should be able to make cross-origin calls. `*` can be used to allow all calls.
   /// [supportCredentials] Are credentials supported?
-  SlotSiteConfigCors({
+  const SlotSiteConfigCors({
     required this.allowedOrigins,
     this.supportCredentials,
   });

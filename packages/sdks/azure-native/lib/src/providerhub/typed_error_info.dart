@@ -9,7 +9,7 @@ class TypedErrorInfo {
 
   /// Creates a new [TypedErrorInfo].
   /// [type] The type of the error.
-  TypedErrorInfo({
+  const TypedErrorInfo({
     required this.type,
   });
 

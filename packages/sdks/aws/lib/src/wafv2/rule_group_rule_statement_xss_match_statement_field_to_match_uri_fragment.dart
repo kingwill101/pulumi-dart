@@ -8,7 +8,7 @@ class RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment {
 
   /// Creates a new [RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment].
   /// [fallbackBehavior] What AWS WAF should do if it fails to completely parse the JSON body. Valid values are `MATCH` (default) and `NO_MATCH`.
-  RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment({
+  const RuleGroupRuleStatementXssMatchStatementFieldToMatchUriFragment({
     this.fallbackBehavior,
   });
 

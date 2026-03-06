@@ -13,7 +13,7 @@ class GetInstanceArgs {
   /// Creates a new [GetInstanceArgs].
   /// [instanceId] Required.
   /// [organizationId] Required.
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.instanceId,
     required this.organizationId,
   });

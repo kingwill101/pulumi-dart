@@ -32,7 +32,7 @@ class DomainAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subDomains] Setting for the subdomain. Documented below.
   /// [waitForVerification] If enabled, the resource will wait for the domain association status to change to `PENDING_DEPLOYMENT` or `AVAILABLE`. Setting this to `false` will skip the process. Default: `true`.
-  DomainAssociationArgs({
+  const DomainAssociationArgs({
     required this.appId,
     this.certificateSettings,
     required this.domainName,

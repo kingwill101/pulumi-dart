@@ -17,7 +17,7 @@ class GetDomainMappingAppengineV1alphaResult {
   /// [name] Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
   /// [resourceRecords] The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
   /// [sslSettings] SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
-  GetDomainMappingAppengineV1alphaResult({
+  const GetDomainMappingAppengineV1alphaResult({
     required this.name,
     required this.resourceRecords,
     required this.sslSettings,

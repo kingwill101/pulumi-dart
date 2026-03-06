@@ -9,7 +9,7 @@ class MultitenantDistributionTenantConfigParameterDefinitionDefinition {
 
   /// Creates a new [MultitenantDistributionTenantConfigParameterDefinitionDefinition].
   /// [stringSchemas] String schema configuration. See String Schema below.
-  MultitenantDistributionTenantConfigParameterDefinitionDefinition({
+  const MultitenantDistributionTenantConfigParameterDefinitionDefinition({
     this.stringSchemas,
   });
 

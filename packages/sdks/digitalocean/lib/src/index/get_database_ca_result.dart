@@ -13,7 +13,7 @@ class GetDatabaseCaResult {
   /// [certificate] The CA certificate used to secure database connections decoded to a string.
   /// [clusterId] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
-  GetDatabaseCaResult({
+  const GetDatabaseCaResult({
     required this.certificate,
     required this.clusterId,
     required this.id,

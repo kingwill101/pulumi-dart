@@ -37,7 +37,7 @@ class AzureSearchLinkedService {
   /// [type] Type of linked service.
   /// [url] URL for Azure Search service. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  AzureSearchLinkedService({
+  const AzureSearchLinkedService({
     this.annotations,
     this.connectVia,
     this.description,

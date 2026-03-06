@@ -22,7 +22,7 @@ class GoogleCloudStorageLocationResponse {
   /// [folderPath] Specify the folder path of dataset. Type: string (or Expression with resultType string)
   /// [type] Type of dataset storage location.
   /// [version] Specify the version of Google Cloud Storage. Type: string (or Expression with resultType string).
-  GoogleCloudStorageLocationResponse({
+  const GoogleCloudStorageLocationResponse({
     this.bucketName,
     this.fileName,
     this.folderPath,

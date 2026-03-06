@@ -9,7 +9,7 @@ class CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequ
   /// Creates a new [CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryMib].
   /// [max] Optional.
   /// [min] Required.
-  CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryMib({
+  const CapacityProviderManagedInstancesProviderInstanceLaunchTemplateInstanceRequirementsMemoryMib({
     this.max,
     required this.min,
   });

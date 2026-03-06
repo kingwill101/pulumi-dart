@@ -20,7 +20,7 @@ class GetFoldersResult {
   /// [outputFile] Optional.
   /// [parentFolderPath] Required.
   /// [projectId] Required.
-  GetFoldersResult({
+  const GetFoldersResult({
     required this.folders,
     required this.id,
     required this.ids,

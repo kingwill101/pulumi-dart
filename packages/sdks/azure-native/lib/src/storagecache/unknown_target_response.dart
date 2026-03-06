@@ -9,7 +9,7 @@ class UnknownTargetResponse {
 
   /// Creates a new [UnknownTargetResponse].
   /// [attributes] Dictionary of string-&gt;string pairs containing information about the Storage Target.
-  UnknownTargetResponse({
+  const UnknownTargetResponse({
     this.attributes,
   });
 

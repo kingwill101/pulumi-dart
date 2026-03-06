@@ -8,7 +8,7 @@ class PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigR
 
   /// Creates a new [PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector].
   /// [resourceTypes] The resource types to run the detector on.
-  PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector({
+  const PosturePolicySetPolicyConstraintSecurityHealthAnalyticsCustomModuleConfigResourceSelector({
     required this.resourceTypes,
   });
 

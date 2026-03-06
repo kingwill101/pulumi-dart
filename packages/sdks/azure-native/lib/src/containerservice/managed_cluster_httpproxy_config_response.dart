@@ -18,7 +18,7 @@ class ManagedClusterHTTPProxyConfigResponse {
   /// [httpsProxy] The HTTPS proxy server endpoint to use.
   /// [noProxy] The endpoints that should not go through proxy.
   /// [trustedCa] Alternative CA cert to use for connecting to proxy servers.
-  ManagedClusterHTTPProxyConfigResponse({
+  const ManagedClusterHTTPProxyConfigResponse({
     this.httpProxy,
     this.httpsProxy,
     this.noProxy,

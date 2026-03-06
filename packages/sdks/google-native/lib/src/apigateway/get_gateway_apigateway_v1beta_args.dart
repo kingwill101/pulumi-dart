@@ -15,7 +15,7 @@ class GetGatewayApigatewayV1betaArgs {
   /// [gatewayId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGatewayApigatewayV1betaArgs({
+  const GetGatewayApigatewayV1betaArgs({
     required this.gatewayId,
     required this.location,
     this.project,

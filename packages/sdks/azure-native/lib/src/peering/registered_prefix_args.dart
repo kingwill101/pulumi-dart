@@ -21,7 +21,7 @@ class RegisteredPrefixArgs {
   /// [prefix] The customer's prefix from which traffic originates.
   /// [registeredPrefixName] The name of the registered prefix.
   /// [resourceGroupName] The name of the resource group.
-  RegisteredPrefixArgs({
+  const RegisteredPrefixArgs({
     required this.peeringName,
     this.prefix,
     this.registeredPrefixName,

@@ -27,7 +27,7 @@ class TemplateArgs {
   /// [location] The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request.
   /// [parameters] The runtime parameters to pass to the job.
   /// [project] Optional.
-  TemplateArgs({
+  const TemplateArgs({
     this.environment,
     required this.gcsPath,
     required this.jobName,

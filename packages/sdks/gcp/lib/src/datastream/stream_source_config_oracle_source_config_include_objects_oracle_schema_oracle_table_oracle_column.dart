@@ -40,7 +40,7 @@ class StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableO
   /// [precision] (Output)
   /// [primaryKey] (Output)
   /// [scale] (Output)
-  StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn({
+  const StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchemaOracleTableOracleColumn({
     this.column,
     this.dataType,
     this.encoding,

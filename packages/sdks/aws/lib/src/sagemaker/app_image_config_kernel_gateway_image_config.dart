@@ -13,7 +13,7 @@ class AppImageConfigKernelGatewayImageConfig {
   /// Creates a new [AppImageConfigKernelGatewayImageConfig].
   /// [fileSystemConfig] The URL where the Git repository is located. See File System Config details below.
   /// [kernelSpecs] The default branch for the Git repository. See Kernel Spec details below.
-  AppImageConfigKernelGatewayImageConfig({
+  const AppImageConfigKernelGatewayImageConfig({
     this.fileSystemConfig,
     required this.kernelSpecs,
   });

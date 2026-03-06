@@ -12,7 +12,7 @@ class WorkforcePoolProviderOidcClientSecretValue {
   /// Creates a new [WorkforcePoolProviderOidcClientSecretValue].
   /// [plainText] The plain text of the client secret value.
   /// [thumbprint] (Output)
-  WorkforcePoolProviderOidcClientSecretValue({
+  const WorkforcePoolProviderOidcClientSecretValue({
     required this.plainText,
     this.thumbprint,
   });

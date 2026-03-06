@@ -18,7 +18,7 @@ class GetStreamingJobArgs {
   /// [expand] The $expand OData query parameter. This is a comma-separated list of additional streaming job properties to include in the response, beyond the default set returned when this parameter is absent. The default set is all streaming job properties other than 'inputs', 'transformation', 'outputs', and 'functions'.
   /// [jobName] The name of the streaming job.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetStreamingJobArgs({
+  const GetStreamingJobArgs({
     this.expand,
     required this.jobName,
     required this.resourceGroupName,

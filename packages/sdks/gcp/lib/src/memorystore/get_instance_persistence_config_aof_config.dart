@@ -12,7 +12,7 @@ class GetInstancePersistenceConfigAofConfig {
 
   /// Creates a new [GetInstancePersistenceConfigAofConfig].
   /// [appendFsync] Optional. The fsync mode.
-  GetInstancePersistenceConfigAofConfig({
+  const GetInstancePersistenceConfigAofConfig({
     required this.appendFsync,
   });
 

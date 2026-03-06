@@ -11,7 +11,7 @@ class GetDataCollectionRuleDestinationEventHubDirect {
   /// Creates a new [GetDataCollectionRuleDestinationEventHubDirect].
   /// [eventHubId] The resource ID of the Event Hub.
   /// [name] Specifies the name of the Data Collection Rule.
-  GetDataCollectionRuleDestinationEventHubDirect({
+  const GetDataCollectionRuleDestinationEventHubDirect({
     required this.eventHubId,
     required this.name,
   });

@@ -25,7 +25,7 @@ class ReservationSpecificReservation {
   /// [inUseCount] (Output)
   /// [instanceProperties] The instance properties for the reservation.
   /// [sourceInstanceTemplate] Specifies the instance template to create the reservation. If you use this field, you must exclude the
-  ReservationSpecificReservation({
+  const ReservationSpecificReservation({
     this.assuredCount,
     required this.count,
     this.inUseCount,

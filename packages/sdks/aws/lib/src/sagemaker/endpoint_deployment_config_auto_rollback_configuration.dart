@@ -9,7 +9,7 @@ class EndpointDeploymentConfigAutoRollbackConfiguration {
 
   /// Creates a new [EndpointDeploymentConfigAutoRollbackConfiguration].
   /// [alarms] List of CloudWatch alarms in your account that are configured to monitor metrics on an endpoint. If any alarms are tripped during a deployment, SageMaker AI rolls back the deployment. See Alarms.
-  EndpointDeploymentConfigAutoRollbackConfiguration({
+  const EndpointDeploymentConfigAutoRollbackConfiguration({
     this.alarms,
   });
 

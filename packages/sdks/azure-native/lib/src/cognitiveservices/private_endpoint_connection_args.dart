@@ -25,7 +25,7 @@ class PrivateEndpointConnectionArgs {
   /// [privateEndpointConnectionName] The name of the private endpoint connection associated with the Cognitive Services Account
   /// [properties] Resource properties.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  PrivateEndpointConnectionArgs({
+  const PrivateEndpointConnectionArgs({
     required this.accountName,
     this.location,
     this.privateEndpointConnectionName,

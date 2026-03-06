@@ -16,7 +16,7 @@ class MccCacheNodeAutoUpdateHistoryPropertiesResponse {
   /// [autoUpdateHistory] Cache node resource auto update history information.
   /// [cacheNodeId] Mcc cache node resource Id.
   /// [customerId] Mcc customer resource Id.
-  MccCacheNodeAutoUpdateHistoryPropertiesResponse({
+  const MccCacheNodeAutoUpdateHistoryPropertiesResponse({
     this.autoUpdateHistory,
     required this.cacheNodeId,
     required this.customerId,

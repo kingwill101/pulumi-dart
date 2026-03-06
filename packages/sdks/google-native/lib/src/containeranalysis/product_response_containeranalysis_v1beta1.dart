@@ -12,7 +12,7 @@ class ProductResponseContaineranalysisV1beta1 {
   /// Creates a new [ProductResponseContaineranalysisV1beta1].
   /// [genericUri] Contains a URI which is vendor-specific. Example: The artifact repository URL of an image.
   /// [name] Name of the product.
-  ProductResponseContaineranalysisV1beta1({
+  const ProductResponseContaineranalysisV1beta1({
     required this.genericUri,
     required this.name,
   });

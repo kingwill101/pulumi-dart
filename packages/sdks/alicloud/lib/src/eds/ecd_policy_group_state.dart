@@ -68,7 +68,7 @@ class EcdPolicyGroupState {
   /// [watermark] The watermark policy. Valid values: `off`, `on`.
   /// [watermarkTransparency] The watermark transparency. Valid values: `DARK`, `LIGHT`, `MIDDLE`.
   /// [watermarkType] The type of watemark. Valid values: `EndUserId`, `HostName`.
-  EcdPolicyGroupState({
+  const EcdPolicyGroupState({
     this.authorizeAccessPolicyRules,
     this.authorizeSecurityPolicyRules,
     this.cameraRedirect,

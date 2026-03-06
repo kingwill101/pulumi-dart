@@ -11,7 +11,7 @@ class OneDashboardPageWidgetLogTableColorSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetLogTableColorSeriesOverride].
   /// [color] (Optional) Choose a color to customize the color of your charts per series in area, bar, line, pie, and stacked bar charts. Accepted values are RGB, HEX, or HSL code.
   /// [seriesName] Series name
-  OneDashboardPageWidgetLogTableColorSeriesOverride({
+  const OneDashboardPageWidgetLogTableColorSeriesOverride({
     this.color,
     this.seriesName,
   });

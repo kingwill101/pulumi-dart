@@ -18,7 +18,7 @@ class GetSshPublicKeyArgs {
   /// [name] The name of this SSH Public Key.
   /// [resourceGroupName] The name of the Resource Group where the SSH Public Key exists.
   /// [tags] A mapping of tags which should be assigned to the SSH Public Key.
-  GetSshPublicKeyArgs({
+  const GetSshPublicKeyArgs({
     required this.name,
     required this.resourceGroupName,
     this.tags,

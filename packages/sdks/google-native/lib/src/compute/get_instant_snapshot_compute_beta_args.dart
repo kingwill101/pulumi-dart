@@ -15,7 +15,7 @@ class GetInstantSnapshotComputeBetaArgs {
   /// [instantSnapshot] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetInstantSnapshotComputeBetaArgs({
+  const GetInstantSnapshotComputeBetaArgs({
     required this.instantSnapshot,
     this.project,
     required this.zone,

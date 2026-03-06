@@ -17,7 +17,7 @@ class GetActionRequestArgs {
   /// [actionRequestName] Required.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetActionRequestArgs({
+  const GetActionRequestArgs({
     required this.actionRequestName,
     required this.resourceGroupName,
     required this.testBaseAccountName,

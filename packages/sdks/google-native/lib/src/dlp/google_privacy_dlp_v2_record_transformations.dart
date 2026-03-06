@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2RecordTransformations {
   /// Creates a new [GooglePrivacyDlpV2RecordTransformations].
   /// [fieldTransformations] Transform the record by applying various field transformations.
   /// [recordSuppressions] Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output.
-  GooglePrivacyDlpV2RecordTransformations({
+  const GooglePrivacyDlpV2RecordTransformations({
     this.fieldTransformations,
     this.recordSuppressions,
   });

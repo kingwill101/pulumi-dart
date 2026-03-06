@@ -44,7 +44,7 @@ class GetLakeResult {
   /// [state] Current state of the lake.
   /// [uid] System generated globally unique ID for the lake. This ID will be different if the lake is deleted and re-created with the same name.
   /// [updateTime] The time when the lake was last updated.
-  GetLakeResult({
+  const GetLakeResult({
     required this.assetStatus,
     required this.createTime,
     required this.description,

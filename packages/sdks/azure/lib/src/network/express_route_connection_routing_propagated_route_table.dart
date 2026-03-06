@@ -11,7 +11,7 @@ class ExpressRouteConnectionRoutingPropagatedRouteTable {
   /// Creates a new [ExpressRouteConnectionRoutingPropagatedRouteTable].
   /// [labels] The list of labels to logically group route tables.
   /// [routeTableIds] A list of IDs of the Virtual Hub Route Table to propagate routes from Express Route Connection to the route table.
-  ExpressRouteConnectionRoutingPropagatedRouteTable({
+  const ExpressRouteConnectionRoutingPropagatedRouteTable({
     this.labels,
     this.routeTableIds,
   });

@@ -15,7 +15,7 @@ class InstanceState {
   /// [createTime] The creation time of the resource
   /// [instanceId] The first ID of the resource
   /// [status] The status of the resource
-  InstanceState({
+  const InstanceState({
     this.createTime,
     this.instanceId,
     this.status,

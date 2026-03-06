@@ -28,7 +28,7 @@ class AdministrativeUnitState {
   /// [members] A set of object IDs of members who should be present in this administrative unit. Supported object types are Users or Groups.
   /// [objectId] The object ID of the administrative unit.
   /// [preventDuplicateNames] If `true`, will return an error if an existing administrative unit is found with the same name
-  AdministrativeUnitState({
+  const AdministrativeUnitState({
     this.description,
     this.displayName,
     this.hiddenMembershipEnabled,

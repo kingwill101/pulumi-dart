@@ -41,7 +41,7 @@ class L3IsolationDomainArgs {
   /// [redistributeStaticRoutes] Advertise Static Routes. Ex: "True" | "False".
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  L3IsolationDomainArgs({
+  const L3IsolationDomainArgs({
     this.aggregateRouteConfiguration,
     this.annotation,
     this.connectedSubnetRoutePolicy,

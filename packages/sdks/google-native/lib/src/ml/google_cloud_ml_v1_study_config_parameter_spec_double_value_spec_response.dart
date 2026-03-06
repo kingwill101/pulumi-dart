@@ -11,7 +11,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse {
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse].
   /// [maxValue] Must be specified if type is `DOUBLE`. Maximum value of the parameter.
   /// [minValue] Must be specified if type is `DOUBLE`. Minimum value of the parameter.
-  GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse({
+  const GoogleCloudMlV1StudyConfigParameterSpecDoubleValueSpecResponse({
     required this.maxValue,
     required this.minValue,
   });

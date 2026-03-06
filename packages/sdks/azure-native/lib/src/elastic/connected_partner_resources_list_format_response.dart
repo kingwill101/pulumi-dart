@@ -10,7 +10,7 @@ class ConnectedPartnerResourcesListFormatResponse {
 
   /// Creates a new [ConnectedPartnerResourcesListFormatResponse].
   /// [properties] Connected Partner Resource Properties
-  ConnectedPartnerResourcesListFormatResponse({
+  const ConnectedPartnerResourcesListFormatResponse({
     this.properties,
   });
 

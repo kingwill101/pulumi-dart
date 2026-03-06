@@ -8,7 +8,7 @@ class IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery {
 
   /// Creates a new [IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery].
   /// [authorization] Determines whether the query scope is enabled or disabled.
-  IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery({
+  const IdcApplicationServiceIntegrationLakeFormationLakeFormationQuery({
     required this.authorization,
   });
 

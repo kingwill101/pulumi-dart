@@ -13,7 +13,7 @@ class OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCerti
   /// Creates a new [OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate].
   /// [store] The certificate store on the Virtual Machine where the certificate should be added.
   /// [url] The Secret URL of a Key Vault Certificate.
-  OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate({
+  const OrchestratedVirtualMachineScaleSetOsProfileWindowsConfigurationSecretCertificate({
     required this.store,
     required this.url,
   });

@@ -12,7 +12,7 @@ class Setting {
   /// Creates a new [Setting].
   /// [name] The name of the setting.
   /// [value] The value of the setting.
-  Setting({
+  const Setting({
     this.name,
     this.value,
   });

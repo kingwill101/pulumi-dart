@@ -33,7 +33,7 @@ class DeploymentConfigState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [trafficRoutingConfig] A traffic_routing_config block. Traffic Routing Config is documented below.
   /// [zonalConfig] A zonal_config block. Zonal Config is documented below.
-  DeploymentConfigState({
+  const DeploymentConfigState({
     this.arn,
     this.computePlatform,
     this.deploymentConfigId,

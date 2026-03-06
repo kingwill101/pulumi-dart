@@ -15,7 +15,7 @@ class GetNetworkSecurityPerimeterArgs {
   /// Creates a new [GetNetworkSecurityPerimeterArgs].
   /// [name] The name of this Network Security Perimeter.
   /// [resourceGroupName] The name of the Resource Group where the Network Security Perimeter exists.
-  GetNetworkSecurityPerimeterArgs({
+  const GetNetworkSecurityPerimeterArgs({
     required this.name,
     required this.resourceGroupName,
   });

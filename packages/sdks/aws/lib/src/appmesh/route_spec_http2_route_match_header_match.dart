@@ -21,7 +21,7 @@ class RouteSpecHttp2RouteMatchHeaderMatch {
   /// [range] Object that specifies the range of numbers that the header value sent by the client must be included in.
   /// [regex] Header value sent by the client must include the specified characters.
   /// [suffix] Header value sent by the client must end with the specified characters.
-  RouteSpecHttp2RouteMatchHeaderMatch({
+  const RouteSpecHttp2RouteMatchHeaderMatch({
     this.exact,
     this.prefix,
     this.range,

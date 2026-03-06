@@ -21,7 +21,7 @@ class GetGeofenceCollectionArgs {
   /// [kmsKeyId] Key identifier for an AWS KMS customer managed key assigned to the Amazon Location resource.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the geofence collection.
-  GetGeofenceCollectionArgs({
+  const GetGeofenceCollectionArgs({
     required this.collectionName,
     this.kmsKeyId,
     this.region,

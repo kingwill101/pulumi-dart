@@ -9,7 +9,7 @@ class EntityMove {
 
   /// Creates a new [EntityMove].
   /// [newSchema] The new schema
-  EntityMove({
+  const EntityMove({
     required this.newSchema,
   });
 

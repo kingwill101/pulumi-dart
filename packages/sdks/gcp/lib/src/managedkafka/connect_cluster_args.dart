@@ -37,7 +37,7 @@ class ConnectClusterArgs {
   /// [labels] List of label KEY=VALUE pairs to add. Keys must start with a lowercase character and contain only hyphens (-), underscores ( ), lowercase characters, and numbers. Values must contain only hyphens (-), underscores ( ), lowercase characters, and numbers.
   /// [location] ID of the location of the Kafka Connect resource. See https://cloud.google.com/managed-kafka/docs/locations for a list of supported locations.
   /// [project] The ID of the project in which the resource belongs.
-  ConnectClusterArgs({
+  const ConnectClusterArgs({
     required this.capacityConfig,
     required this.connectClusterId,
     required this.gcpConfig,

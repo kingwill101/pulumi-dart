@@ -36,7 +36,7 @@ class GetKeysKeySigningKey {
   /// [keyLength] Length of the key in bits. Specified at creation time then immutable.
   /// [keyTag] The key tag is a non-cryptographic hash of the a DNSKEY resource record associated with this DnsKey. The key tag can be used to identify a DNSKEY more quickly (but it is not a unique identifier). In particular, the key tag is used in a parent zone's DS record to point at the DNSKEY in this child ManagedZone. The key tag is a number in the range [0, 65535] and the algorithm to calculate it is specified in RFC4034 Appendix B.
   /// [publicKey] Base64 encoded public half of this key.
-  GetKeysKeySigningKey({
+  const GetKeysKeySigningKey({
     required this.algorithm,
     required this.creationTime,
     required this.description,

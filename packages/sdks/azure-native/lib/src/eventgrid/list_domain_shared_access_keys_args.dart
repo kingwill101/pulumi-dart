@@ -15,7 +15,7 @@ class ListDomainSharedAccessKeysArgs {
   /// Creates a new [ListDomainSharedAccessKeysArgs].
   /// [domainName] Name of the domain.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
-  ListDomainSharedAccessKeysArgs({
+  const ListDomainSharedAccessKeysArgs({
     required this.domainName,
     required this.resourceGroupName,
   });

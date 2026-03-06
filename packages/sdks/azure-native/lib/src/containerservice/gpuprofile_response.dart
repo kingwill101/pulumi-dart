@@ -9,7 +9,7 @@ class GPUProfileResponse {
 
   /// Creates a new [GPUProfileResponse].
   /// [driver] Whether to install GPU drivers. When it's not specified, default is Install.
-  GPUProfileResponse({
+  const GPUProfileResponse({
     this.driver,
   });
 

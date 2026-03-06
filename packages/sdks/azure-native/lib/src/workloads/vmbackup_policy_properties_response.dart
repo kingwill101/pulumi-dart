@@ -46,7 +46,7 @@ class VMBackupPolicyPropertiesResponse {
   /// [schedulePolicy] Backup schedule specified as part of backup policy.
   /// [tieringPolicy] Tiering policy to automatically move RPs to another tier
   /// [timeZone] Time zone optional input as string. For example: "Pacific Standard Time".
-  VMBackupPolicyPropertiesResponse({
+  const VMBackupPolicyPropertiesResponse({
     required this.backupManagementType,
     this.instantRPDetails,
     this.instantRpRetentionRangeInDays,

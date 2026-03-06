@@ -22,7 +22,7 @@ class EasyAuthMicrosoftEntraIDAuthInfo {
   /// [clientId] Application clientId for EasyAuth Microsoft Entra ID.
   /// [deleteOrUpdateBehavior] Indicates whether to clean up previous operation when Linker is updating or deleting
   /// [secret] Application Secret for EasyAuth Microsoft Entra ID.
-  EasyAuthMicrosoftEntraIDAuthInfo({
+  const EasyAuthMicrosoftEntraIDAuthInfo({
     this.authMode,
     required this.authType,
     this.clientId,

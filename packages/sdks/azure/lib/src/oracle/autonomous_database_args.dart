@@ -81,7 +81,7 @@ class AutonomousDatabaseArgs {
   /// [subnetId] The [OCID](https://docs.cloud.oracle.com/iaas/Content/General/Concepts/identifiers.htm) of the subnet the resource is associated with. Changing this forces a new Autonomous Database to be created.
   /// [tags] Optional.
   /// [virtualNetworkId] The ID of the vnet associated with the cloud VM cluster. Changing this forces a new Autonomous Database to be created.
-  AutonomousDatabaseArgs({
+  const AutonomousDatabaseArgs({
     required this.adminPassword,
     this.allowedIps,
     required this.autoScalingEnabled,

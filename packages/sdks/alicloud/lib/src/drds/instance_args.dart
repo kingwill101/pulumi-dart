@@ -44,7 +44,7 @@ class InstanceArgs {
   /// [vpcId] The id of the VPC.
   /// [vswitchId] The VSwitch ID to launch in.
   /// [zoneId] The Zone to launch the DRDS instance.
-  InstanceArgs({
+  const InstanceArgs({
     required this.description,
     this.instanceChargeType,
     required this.instanceSeries,

@@ -18,7 +18,7 @@ class GetDynamicSchemaArgs {
   /// [dynamicSchemaName] The name of the DynamicSchema
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [schemaName] The name of the Schema
-  GetDynamicSchemaArgs({
+  const GetDynamicSchemaArgs({
     required this.dynamicSchemaName,
     required this.resourceGroupName,
     required this.schemaName,

@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1ServiceSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1ServiceSpec].
   /// [cloudBigtableInstanceSpec] Specification that applies to Instance entries of `CLOUD_BIGTABLE` system.
-  GoogleCloudDatacatalogV1ServiceSpec({
+  const GoogleCloudDatacatalogV1ServiceSpec({
     this.cloudBigtableInstanceSpec,
   });
 

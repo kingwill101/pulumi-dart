@@ -24,7 +24,7 @@ class GuestPoliciesRecipeArtifact {
   /// [gcs] A Google Cloud Storage artifact.
   /// [id] Id of the artifact, which the installation and update steps of this recipe can reference.
   /// [remote] A generic remote artifact.
-  GuestPoliciesRecipeArtifact({
+  const GuestPoliciesRecipeArtifact({
     this.allowInsecure,
     this.gcs,
     required this.id,

@@ -30,7 +30,7 @@ class BucketReplicationConfigState {
   /// [role] ARN of the IAM role for Amazon S3 to assume when replicating the objects.
   /// [rules] List of configuration blocks describing the rules managing the replication. See below.
   /// [token] Token to allow replication to be enabled on an Object Lock-enabled bucket. You must contact AWS support for the bucket's "Object Lock token".
-  BucketReplicationConfigState({
+  const BucketReplicationConfigState({
     this.bucket,
     this.region,
     this.role,

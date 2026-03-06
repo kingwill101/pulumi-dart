@@ -15,7 +15,7 @@ class GroupPoliciesExclusiveArgs {
   /// Creates a new [GroupPoliciesExclusiveArgs].
   /// [groupName] IAM group name.
   /// [policyNames] A list of inline policy names to be assigned to the group. Policies attached to this group but not configured in this argument will be removed.
-  GroupPoliciesExclusiveArgs({
+  const GroupPoliciesExclusiveArgs({
     required this.groupName,
     required this.policyNames,
   });

@@ -15,7 +15,7 @@ class TopicMessageTransform {
   /// Creates a new [TopicMessageTransform].
   /// [disabled] Controls whether or not to use this transform. If not set or `false`,
   /// [javascriptUdf] Javascript User Defined Function. If multiple Javascript UDFs are specified on a resource,
-  TopicMessageTransform({
+  const TopicMessageTransform({
     this.disabled,
     this.javascriptUdf,
   });

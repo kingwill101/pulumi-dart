@@ -26,7 +26,7 @@ class DatabaseThreatDetectionPolicy {
   /// [state] The State of the Policy. Possible values are `Enabled` or `Disabled`. Defaults to `Disabled`.
   /// [storageAccountAccessKey] Specifies the identifier key of the Threat Detection audit storage account. Required if `state` is `Enabled`.
   /// [storageEndpoint] Specifies the blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all Threat Detection audit logs. Required if `state` is `Enabled`.
-  DatabaseThreatDetectionPolicy({
+  const DatabaseThreatDetectionPolicy({
     this.disabledAlerts,
     this.emailAccountAdmins,
     this.emailAddresses,

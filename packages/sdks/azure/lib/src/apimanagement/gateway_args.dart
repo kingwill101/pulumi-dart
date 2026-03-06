@@ -22,7 +22,7 @@ class GatewayArgs {
   /// [description] The description of the API Management Gateway.
   /// [locationData] A `location_data` block as documented below.
   /// [name] The name which should be used for the API Management Gateway. Changing this forces a new API Management Gateway to be created.
-  GatewayArgs({
+  const GatewayArgs({
     required this.apiManagementId,
     this.description,
     required this.locationData,

@@ -49,7 +49,7 @@ class SUCSchedulePropertiesResponse {
   /// [startTime] Gets or sets the start time of the schedule.
   /// [startTimeOffsetMinutes] Gets the start time's offset in minutes.
   /// [timeZone] Gets or sets the time zone of the schedule.
-  SUCSchedulePropertiesResponse({
+  const SUCSchedulePropertiesResponse({
     this.advancedSchedule,
     this.creationTime,
     this.description,

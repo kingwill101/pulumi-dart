@@ -11,7 +11,7 @@ class AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec {
 
   /// Creates a new [AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec].
   /// [machineType] The type of the machine.
-  AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec({
+  const AiIndexEndpointDeployedIndexDedicatedResourcesMachineSpec({
     this.machineType,
   });
 

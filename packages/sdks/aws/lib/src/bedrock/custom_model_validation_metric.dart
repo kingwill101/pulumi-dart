@@ -8,7 +8,7 @@ class CustomModelValidationMetric {
 
   /// Creates a new [CustomModelValidationMetric].
   /// [validationLoss] The validation loss associated with the validator.
-  CustomModelValidationMetric({
+  const CustomModelValidationMetric({
     required this.validationLoss,
   });
 

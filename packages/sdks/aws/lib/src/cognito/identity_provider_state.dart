@@ -27,7 +27,7 @@ class IdentityProviderState {
   /// [providerType] The provider type.  [See AWS API for valid values](https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_CreateIdentityProvider.html#CognitoUserPools-CreateIdentityProvider-request-ProviderType)
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] The user pool id
-  IdentityProviderState({
+  const IdentityProviderState({
     this.attributeMapping,
     this.idpIdentifiers,
     this.providerDetails,

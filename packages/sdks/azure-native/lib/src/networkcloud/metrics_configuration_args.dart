@@ -34,7 +34,7 @@ class MetricsConfigurationArgs {
   /// [metricsConfigurationName] The name of the metrics configuration for the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  MetricsConfigurationArgs({
+  const MetricsConfigurationArgs({
     required this.clusterName,
     required this.collectionInterval,
     this.enabledMetrics,

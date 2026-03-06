@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings {
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings].
   /// [enableInsightsExport] If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
-  GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings({
+  const GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettings({
     this.enableInsightsExport,
   });
 

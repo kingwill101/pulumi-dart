@@ -41,7 +41,7 @@ class NamespaceAuthorizationRuleState {
   /// [secondaryConnectionStringAlias] The alias Secondary Connection String for the ServiceBus Namespace
   /// [secondaryKey] The Secondary Key for the ServiceBus Namespace authorization Rule.
   /// [send] Grants send access to this Authorization Rule. Defaults to `false`.
-  NamespaceAuthorizationRuleState({
+  const NamespaceAuthorizationRuleState({
     this.listen,
     this.manage,
     this.name,

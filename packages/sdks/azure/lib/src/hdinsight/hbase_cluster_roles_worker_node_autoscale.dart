@@ -11,7 +11,7 @@ class HBaseClusterRolesWorkerNodeAutoscale {
 
   /// Creates a new [HBaseClusterRolesWorkerNodeAutoscale].
   /// [recurrence] A `recurrence` block as defined below.
-  HBaseClusterRolesWorkerNodeAutoscale({
+  const HBaseClusterRolesWorkerNodeAutoscale({
     this.recurrence,
   });
 

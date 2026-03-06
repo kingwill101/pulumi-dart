@@ -21,7 +21,7 @@ class EnvironmentWorkloadProfile {
   /// [minimumCount] The minimum number of instances of workload profile that can be deployed in the Container App Environment.
   /// [name] The name of the workload profile.
   /// [workloadProfileType] Workload profile type for the workloads to run on. Possible values include `Consumption`, `Consumption-GPU-NC24-A100`, `Consumption-GPU-NC8as-T4`, `D4`, `D8`, `D16`, `D32`, `E4`, `E8`, `E16`, `E32`, `NC24-A100`, `NC48-A100` and `NC96-A100`.
-  EnvironmentWorkloadProfile({
+  const EnvironmentWorkloadProfile({
     this.maximumCount,
     this.minimumCount,
     required this.name,

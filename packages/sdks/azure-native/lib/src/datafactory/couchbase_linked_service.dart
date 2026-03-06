@@ -37,7 +37,7 @@ class CouchbaseLinkedService {
   /// [parameters] Parameters for linked service.
   /// [type] Type of linked service.
   /// [version] Version of the linked service.
-  CouchbaseLinkedService({
+  const CouchbaseLinkedService({
     this.annotations,
     this.connectVia,
     this.connectionString,

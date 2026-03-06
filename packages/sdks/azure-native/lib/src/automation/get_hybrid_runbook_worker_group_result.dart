@@ -28,7 +28,7 @@ class GetHybridRunbookWorkerGroupResult {
   /// [name] The name of the resource
   /// [systemData] Resource system metadata.
   /// [type] The type of the resource.
-  GetHybridRunbookWorkerGroupResult({
+  const GetHybridRunbookWorkerGroupResult({
     required this.azureApiVersion,
     this.credential,
     this.groupType,

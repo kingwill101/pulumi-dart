@@ -35,7 +35,7 @@ class GetDbServersDbServerProperty {
   /// [ocpuCount] Output only
   /// [state] Output only
   /// [vmCount] Output only
-  GetDbServersDbServerProperty({
+  const GetDbServersDbServerProperty({
     required this.dbNodeIds,
     required this.dbNodeStorageSizeGb,
     required this.maxDbNodeStorageSizeGb,

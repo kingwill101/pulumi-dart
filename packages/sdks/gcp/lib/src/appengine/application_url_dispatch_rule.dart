@@ -11,7 +11,7 @@ class ApplicationUrlDispatchRule {
   /// [domain] Optional.
   /// [path] Optional.
   /// [service] Optional.
-  ApplicationUrlDispatchRule({
+  const ApplicationUrlDispatchRule({
     this.domain,
     this.path,
     this.service,

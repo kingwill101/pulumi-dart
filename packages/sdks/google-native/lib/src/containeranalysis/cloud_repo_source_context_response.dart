@@ -17,7 +17,7 @@ class CloudRepoSourceContextResponse {
   /// [aliasContext] An alias, which may be a branch or tag.
   /// [repoId] The ID of the repo.
   /// [revisionId] A revision ID.
-  CloudRepoSourceContextResponse({
+  const CloudRepoSourceContextResponse({
     required this.aliasContext,
     required this.repoId,
     required this.revisionId,

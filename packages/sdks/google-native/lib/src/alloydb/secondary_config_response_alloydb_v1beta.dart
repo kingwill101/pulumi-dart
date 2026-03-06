@@ -9,7 +9,7 @@ class SecondaryConfigResponseAlloydbV1beta {
 
   /// Creates a new [SecondaryConfigResponseAlloydbV1beta].
   /// [primaryClusterName] The name of the primary cluster name with the format: * projects/{project}/locations/{region}/clusters/{cluster_id}
-  SecondaryConfigResponseAlloydbV1beta({
+  const SecondaryConfigResponseAlloydbV1beta({
     required this.primaryClusterName,
   });
 

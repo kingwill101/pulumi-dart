@@ -28,7 +28,7 @@ class DefaultSecurityGroupArgs {
   /// [revokeRulesOnDelete] Optional.
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] VPC ID. **Note that changing the `vpc_id` will _not_ restore any default security group rules that were modified, added, or removed.** It will be left in its current state.
-  DefaultSecurityGroupArgs({
+  const DefaultSecurityGroupArgs({
     this.egress,
     this.ingress,
     this.region,

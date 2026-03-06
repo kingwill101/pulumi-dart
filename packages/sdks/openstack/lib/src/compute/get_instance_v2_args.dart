@@ -23,7 +23,7 @@ class GetInstanceV2Args {
   /// [networks] An array of maps, detailed below.
   /// [region] The region in which to obtain the V2 Compute client.
   /// [userData] The user data added when the server was created.
-  GetInstanceV2Args({
+  const GetInstanceV2Args({
     required this.id,
     this.networks,
     this.region,

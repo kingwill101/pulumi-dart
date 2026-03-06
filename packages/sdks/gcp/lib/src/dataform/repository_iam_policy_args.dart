@@ -17,7 +17,7 @@ class RepositoryIamPolicyArgs {
   /// [project] Optional.
   /// [region] Optional.
   /// [repository] Required.
-  RepositoryIamPolicyArgs({
+  const RepositoryIamPolicyArgs({
     required this.policyData,
     this.project,
     this.region,

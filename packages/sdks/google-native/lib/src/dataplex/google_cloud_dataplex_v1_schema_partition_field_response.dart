@@ -12,7 +12,7 @@ class GoogleCloudDataplexV1SchemaPartitionFieldResponse {
   /// Creates a new [GoogleCloudDataplexV1SchemaPartitionFieldResponse].
   /// [name] Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
   /// [type] Immutable. The type of field.
-  GoogleCloudDataplexV1SchemaPartitionFieldResponse({
+  const GoogleCloudDataplexV1SchemaPartitionFieldResponse({
     required this.name,
     required this.type,
   });

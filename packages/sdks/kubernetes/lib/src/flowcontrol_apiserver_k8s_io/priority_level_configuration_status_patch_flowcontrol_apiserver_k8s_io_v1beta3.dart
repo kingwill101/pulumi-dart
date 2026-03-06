@@ -10,7 +10,7 @@ class PriorityLevelConfigurationStatusPatchFlowcontrolApiserverK8sIoV1beta3 {
 
   /// Creates a new [PriorityLevelConfigurationStatusPatchFlowcontrolApiserverK8sIoV1beta3].
   /// [conditions] `conditions` is the current state of "request-priority".
-  PriorityLevelConfigurationStatusPatchFlowcontrolApiserverK8sIoV1beta3({
+  const PriorityLevelConfigurationStatusPatchFlowcontrolApiserverK8sIoV1beta3({
     this.conditions,
   });
 

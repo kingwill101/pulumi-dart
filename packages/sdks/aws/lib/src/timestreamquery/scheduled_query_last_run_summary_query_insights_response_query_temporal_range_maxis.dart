@@ -11,7 +11,7 @@ class ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis {
   /// Creates a new [ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis].
   /// [tableArn] ARN of the table which is queried with the largest time range.
   /// [value] Maximum duration in nanoseconds between the start and end of the query.
-  ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis({
+  const ScheduledQueryLastRunSummaryQueryInsightsResponseQueryTemporalRangeMaxis({
     this.tableArn,
     this.value,
   });

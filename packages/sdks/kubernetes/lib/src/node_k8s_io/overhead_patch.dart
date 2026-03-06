@@ -9,7 +9,7 @@ class OverheadPatch {
 
   /// Creates a new [OverheadPatch].
   /// [podFixed] podFixed represents the fixed resource overhead associated with running a pod.
-  OverheadPatch({
+  const OverheadPatch({
     this.podFixed,
   });
 

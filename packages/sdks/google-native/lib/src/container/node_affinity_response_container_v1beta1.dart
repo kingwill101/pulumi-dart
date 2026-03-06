@@ -15,7 +15,7 @@ class NodeAffinityResponseContainerV1beta1 {
   /// [key] Key for NodeAffinity.
   /// [operator] Operator for NodeAffinity.
   /// [values] Values for NodeAffinity.
-  NodeAffinityResponseContainerV1beta1({
+  const NodeAffinityResponseContainerV1beta1({
     required this.key,
     required this.operator,
     required this.values,

@@ -17,7 +17,7 @@ class HBaseClusterMetastores {
   /// [ambari] An `ambari` block as defined below.
   /// [hive] A `hive` block as defined below.
   /// [oozie] An `oozie` block as defined below.
-  HBaseClusterMetastores({
+  const HBaseClusterMetastores({
     this.ambari,
     this.hive,
     this.oozie,

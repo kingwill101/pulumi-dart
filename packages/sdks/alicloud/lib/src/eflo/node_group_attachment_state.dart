@@ -34,7 +34,7 @@ class NodeGroupAttachmentState {
   /// [userData] User-defined data
   /// [vpcId] Vpc id
   /// [vswitchId] vswitch id
-  NodeGroupAttachmentState({
+  const NodeGroupAttachmentState({
     this.clusterId,
     this.dataDisks,
     this.hostname,

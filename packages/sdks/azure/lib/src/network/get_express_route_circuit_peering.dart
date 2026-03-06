@@ -26,7 +26,7 @@ class GetExpressRouteCircuitPeering {
   /// [secondaryPeerAddressPrefix] A `/30` subnet for the secondary link.
   /// [sharedKey] The shared key. Can be a maximum of 25 characters.
   /// [vlanId] A valid VLAN ID to establish this peering on.
-  GetExpressRouteCircuitPeering({
+  const GetExpressRouteCircuitPeering({
     required this.azureAsn,
     required this.peerAsn,
     required this.peeringType,

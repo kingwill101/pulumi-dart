@@ -16,7 +16,7 @@ class SSISAccessCredentialResponse {
   /// [domain] Domain for windows authentication. Type: string (or Expression with resultType string).
   /// [password] Password for windows authentication.
   /// [userName] UseName for windows authentication. Type: string (or Expression with resultType string).
-  SSISAccessCredentialResponse({
+  const SSISAccessCredentialResponse({
     required this.domain,
     required this.password,
     required this.userName,

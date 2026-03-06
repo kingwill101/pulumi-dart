@@ -9,7 +9,7 @@ class HorizontalPodAutoscalingContainerV1beta1 {
 
   /// Creates a new [HorizontalPodAutoscalingContainerV1beta1].
   /// [disabled] Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring.
-  HorizontalPodAutoscalingContainerV1beta1({
+  const HorizontalPodAutoscalingContainerV1beta1({
     this.disabled,
   });
 

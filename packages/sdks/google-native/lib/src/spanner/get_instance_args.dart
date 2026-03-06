@@ -15,7 +15,7 @@ class GetInstanceArgs {
   /// [fieldMask] Optional.
   /// [instanceId] Required.
   /// [project] Optional.
-  GetInstanceArgs({
+  const GetInstanceArgs({
     this.fieldMask,
     required this.instanceId,
     this.project,

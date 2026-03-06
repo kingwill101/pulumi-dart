@@ -56,7 +56,7 @@ class DefenderForContainersAwsOfferingResponse {
   /// [mdcContainersImageAssessment] The Microsoft Defender container image assessment configuration
   /// [offeringType] The type of the security offering.
   /// [vmScanners] The Microsoft Defender for Container K8s VM host scanning configuration
-  DefenderForContainersAwsOfferingResponse({
+  const DefenderForContainersAwsOfferingResponse({
     this.cloudWatchToKinesis,
     this.dataCollectionExternalId,
     required this.description,

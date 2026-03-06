@@ -54,7 +54,7 @@ class GetSwitchesResult {
   /// [vswitchOwnerId] Optional.
   /// [vswitches] A list of VSwitches. Each element contains the following attributes:
   /// [zoneId] ID of the availability zone where the vSwitch is located.
-  GetSwitchesResult({
+  const GetSwitchesResult({
     this.cidrBlock,
     this.dryRun,
     required this.id,

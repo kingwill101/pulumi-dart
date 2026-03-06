@@ -38,7 +38,7 @@ class UserState {
   /// [resourceGroupName] The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
   /// [state] The state of this user. Possible values are `active`, `blocked` and `pending`.
   /// [userId] The Identifier for this User, which must be unique within the API Management Service. Changing this forces a new resource to be created.
-  UserState({
+  const UserState({
     this.apiManagementName,
     this.confirmation,
     this.email,

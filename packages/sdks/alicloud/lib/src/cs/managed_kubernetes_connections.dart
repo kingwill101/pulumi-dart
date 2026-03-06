@@ -17,7 +17,7 @@ class ManagedKubernetesConnections {
   /// [apiServerIntranet] API Server Intranet endpoint.
   /// [masterPublicIp] Master node SSH IP address.
   /// [serviceDomain] Service Access Domain.
-  ManagedKubernetesConnections({
+  const ManagedKubernetesConnections({
     this.apiServerInternet,
     this.apiServerIntranet,
     this.masterPublicIp,

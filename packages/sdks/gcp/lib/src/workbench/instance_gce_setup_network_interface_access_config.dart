@@ -12,7 +12,7 @@ class InstanceGceSetupNetworkInterfaceAccessConfig {
 
   /// Creates a new [InstanceGceSetupNetworkInterfaceAccessConfig].
   /// [externalIp] An external IP address associated with this instance. Specify an unused
-  InstanceGceSetupNetworkInterfaceAccessConfig({
+  const InstanceGceSetupNetworkInterfaceAccessConfig({
     required this.externalIp,
   });
 

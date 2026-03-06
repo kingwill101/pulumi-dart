@@ -10,7 +10,7 @@ class GrafeasV1beta1IntotoArtifactResponse {
   /// Creates a new [GrafeasV1beta1IntotoArtifactResponse].
   /// [hashes] Required.
   /// [resourceUri] Required.
-  GrafeasV1beta1IntotoArtifactResponse({
+  const GrafeasV1beta1IntotoArtifactResponse({
     required this.hashes,
     required this.resourceUri,
   });

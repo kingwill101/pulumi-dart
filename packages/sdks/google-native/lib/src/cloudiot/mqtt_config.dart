@@ -10,7 +10,7 @@ class MqttConfig {
 
   /// Creates a new [MqttConfig].
   /// [mqttEnabledState] If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
-  MqttConfig({
+  const MqttConfig({
     this.mqttEnabledState,
   });
 

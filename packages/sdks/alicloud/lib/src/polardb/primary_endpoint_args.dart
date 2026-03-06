@@ -32,7 +32,7 @@ class PrimaryEndpointArgs {
   /// [port] Port of the specified endpoint. Valid values: 3000 to 5999.
   /// [sslAutoRotate] Specifies whether automatic rotation of SSL certificates is enabled. Valid values: `Enable`,`Disable`.
   /// [sslEnabled] Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
-  PrimaryEndpointArgs({
+  const PrimaryEndpointArgs({
     this.connectionPrefix,
     required this.dbClusterId,
     this.dbEndpointDescription,

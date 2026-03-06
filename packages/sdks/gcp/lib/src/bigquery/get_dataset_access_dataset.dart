@@ -13,7 +13,7 @@ class GetDatasetAccessDataset {
   /// Creates a new [GetDatasetAccessDataset].
   /// [datasets] The dataset this entry applies to
   /// [targetTypes] Which resources in the dataset this entry applies to. Currently, only views are supported,
-  GetDatasetAccessDataset({
+  const GetDatasetAccessDataset({
     required this.datasets,
     required this.targetTypes,
   });

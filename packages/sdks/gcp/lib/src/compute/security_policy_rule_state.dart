@@ -59,7 +59,7 @@ class SecurityPolicyRuleState {
   /// [rateLimitOptions] Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
   /// [redirectOptions] Parameters defining the redirect action. Cannot be specified for any other actions. This field is only supported in Global Security Policies of type CLOUD_ARMOR.
   /// [securityPolicy] The name of the security policy this rule belongs to.
-  SecurityPolicyRuleState({
+  const SecurityPolicyRuleState({
     this.action,
     this.description,
     this.headerAction,

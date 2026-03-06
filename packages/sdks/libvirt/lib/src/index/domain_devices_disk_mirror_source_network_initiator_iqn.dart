@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorSourceNetworkInitiatorIqn {
 
   /// Creates a new [DomainDevicesDiskMirrorSourceNetworkInitiatorIqn].
   /// [name] Sets a name attribute for the iSCSI initiator's IQN for identification purposes.
-  DomainDevicesDiskMirrorSourceNetworkInitiatorIqn({
+  const DomainDevicesDiskMirrorSourceNetworkInitiatorIqn({
     this.name,
   });
 

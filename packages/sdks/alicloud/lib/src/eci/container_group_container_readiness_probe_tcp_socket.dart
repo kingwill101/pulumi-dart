@@ -7,7 +7,7 @@ class ContainerGroupContainerReadinessProbeTcpSocket {
 
   /// Creates a new [ContainerGroupContainerReadinessProbeTcpSocket].
   /// [port] Optional.
-  ContainerGroupContainerReadinessProbeTcpSocket({
+  const ContainerGroupContainerReadinessProbeTcpSocket({
     this.port,
   });
 

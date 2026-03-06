@@ -11,7 +11,7 @@ class ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey {
   /// Creates a new [ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey].
   /// [keyUrl] The URL to the Key Vault Key used as the Key Encryption Key that the Managed Disk will be associated with. This can be found as `id` on the `azure.keyvault.Key` resource. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Key Vault. This can be found as `id` on the `azure.keyvault.KeyVault` resource. Changing this forces a new resource to be created.
-  ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey({
+  const ReplicatedVMManagedDiskTargetDiskEncryptionKeyEncryptionKey({
     required this.keyUrl,
     required this.vaultId,
   });

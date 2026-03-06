@@ -34,7 +34,7 @@ class DataManagerForAgricultureSolutionResponse {
   /// [partnerTenantId] Partner tenant Id.
   /// [saasApplicationId] Saas application Id.
   /// [solutionId] Solution Id.
-  DataManagerForAgricultureSolutionResponse({
+  const DataManagerForAgricultureSolutionResponse({
     required this.accessAzureDataManagerForAgricultureApplicationId,
     required this.accessAzureDataManagerForAgricultureApplicationName,
     required this.dataAccessScopes,

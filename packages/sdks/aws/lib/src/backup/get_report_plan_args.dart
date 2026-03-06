@@ -18,7 +18,7 @@ class GetReportPlanArgs {
   /// [name] Backup report plan name.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Metadata that you can assign to help organize the report plans you create.
-  GetReportPlanArgs({
+  const GetReportPlanArgs({
     required this.name,
     this.region,
     this.tags,

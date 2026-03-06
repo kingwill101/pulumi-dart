@@ -64,7 +64,7 @@ class SpringCloudGatewayArgs {
   /// [sensitiveEnvironmentVariables] Specifies the sensitive environment variables of the Spring Cloud Gateway as a map of key-value pairs.
   /// [springCloudServiceId] The ID of the Spring Cloud Service. Changing this forces a new Spring Cloud Gateway to be created.
   /// [sso] A `sso` block as defined below.
-  SpringCloudGatewayArgs({
+  const SpringCloudGatewayArgs({
     this.apiMetadata,
     this.applicationPerformanceMonitoringIds,
     this.applicationPerformanceMonitoringTypes,

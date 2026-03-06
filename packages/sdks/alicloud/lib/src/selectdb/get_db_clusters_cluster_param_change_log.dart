@@ -26,7 +26,7 @@ class GetDbClustersClusterParamChangeLog {
   /// [name] Changed parameter name.
   /// [newValue] The new value of parameter.
   /// [oldValue] The old value of parameter.
-  GetDbClustersClusterParamChangeLog({
+  const GetDbClustersClusterParamChangeLog({
     required this.configId,
     required this.gmtCreated,
     required this.gmtModified,

@@ -40,7 +40,7 @@ class GetSchemaRegistryResult {
   /// [systemData] The system meta data relating to this resource.
   /// [type] The type of the resource. E.g. "Microsoft.EventHub/Namespaces" or "Microsoft.EventHub/Namespaces/EventHubs"
   /// [updatedAtUtc] Exact time the Schema Group was updated
-  GetSchemaRegistryResult({
+  const GetSchemaRegistryResult({
     required this.azureApiVersion,
     required this.createdAtUtc,
     required this.eTag,

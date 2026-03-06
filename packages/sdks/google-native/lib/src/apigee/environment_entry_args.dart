@@ -21,7 +21,7 @@ class EnvironmentEntryArgs {
   /// [name] Resource URI that can be used to identify the scope of the key value map entries.
   /// [organizationId] Required.
   /// [value] Data or payload that is being retrieved and associated with the unique key.
-  EnvironmentEntryArgs({
+  const EnvironmentEntryArgs({
     required this.environmentId,
     required this.keyvaluemapId,
     this.name,

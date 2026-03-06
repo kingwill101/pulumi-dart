@@ -13,7 +13,7 @@ class GetFolderBigQueryExportArgs {
   /// Creates a new [GetFolderBigQueryExportArgs].
   /// [bigQueryExportId] Required.
   /// [folderId] Required.
-  GetFolderBigQueryExportArgs({
+  const GetFolderBigQueryExportArgs({
     required this.bigQueryExportId,
     required this.folderId,
   });

@@ -9,7 +9,7 @@ class NetworkInsightsAnalysisExplanationAclRulePortRange {
   /// Creates a new [NetworkInsightsAnalysisExplanationAclRulePortRange].
   /// [from] Optional.
   /// [to] Optional.
-  NetworkInsightsAnalysisExplanationAclRulePortRange({
+  const NetworkInsightsAnalysisExplanationAclRulePortRange({
     this.from,
     this.to,
   });

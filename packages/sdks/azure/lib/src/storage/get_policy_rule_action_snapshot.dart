@@ -20,7 +20,7 @@ class GetPolicyRuleActionSnapshot {
   /// [deleteAfterDaysSinceCreationGreaterThan] The age in days after creation to delete the blob snapshot.
   /// [tierToArchiveAfterDaysSinceLastTierChangeGreaterThan] The age in days after last tier change to the blobs to skip to be archived.
   /// [tierToColdAfterDaysSinceCreationGreaterThan] Optional The age in days after creation to cold storage. Supports blob currently at Hot tier.
-  GetPolicyRuleActionSnapshot({
+  const GetPolicyRuleActionSnapshot({
     required this.changeTierToArchiveAfterDaysSinceCreation,
     required this.changeTierToCoolAfterDaysSinceCreation,
     required this.deleteAfterDaysSinceCreationGreaterThan,

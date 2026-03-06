@@ -36,7 +36,7 @@ class GetCertificateResult {
   /// [name] Required.
   /// [nginxDeploymentId] Required.
   /// [sha1Thumbprint] The SHA-1 thumbprint of the certificate.
-  GetCertificateResult({
+  const GetCertificateResult({
     required this.certificateVirtualPath,
     required this.errorCode,
     required this.errorMessage,

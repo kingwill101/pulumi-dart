@@ -26,7 +26,7 @@ class GenericProtectionPolicy {
   /// [resourceGuardOperationRequests] ResourceGuard Operation Requests
   /// [subProtectionPolicy] List of sub-protection policies which includes schedule and retention
   /// [timeZone] TimeZone optional input as string. For example: TimeZone = "Pacific Standard Time".
-  GenericProtectionPolicy({
+  const GenericProtectionPolicy({
     required this.backupManagementType,
     this.fabricName,
     this.protectedItemsCount,

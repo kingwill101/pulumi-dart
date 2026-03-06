@@ -19,7 +19,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
   /// [nodePool] The target GKE node pool.
   /// [nodePoolConfig] The configuration for the GKE node pool.
   /// [roles] The roles associated with the GKE node pool.
-  ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget({
+  const ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget({
     required this.nodePool,
     this.nodePoolConfig,
     required this.roles,

@@ -22,7 +22,7 @@ class GetServiceArgs {
   /// [name] The service name.
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [type] The service type.
-  GetServiceArgs({
+  const GetServiceArgs({
     this.enabled,
     this.name,
     this.region,

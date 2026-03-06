@@ -27,7 +27,7 @@ class Disk {
   /// [isSystemDisk] Is the Attached disk is the system disk of the Instance.
   /// [path] Path of the disk attached to the instance.
   /// [sizeInGb] Size of the disk attached to the Instance.
-  Disk({
+  const Disk({
     this.attachedTo,
     this.attachmentState,
     this.diskName,

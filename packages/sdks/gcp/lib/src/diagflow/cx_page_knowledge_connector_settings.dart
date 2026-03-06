@@ -28,7 +28,7 @@ class CxPageKnowledgeConnectorSettings {
   /// [targetFlow] The target flow to transition to. Format: projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/flows/&lt;FlowID&gt;.
   /// [targetPage] The target page to transition to. Format: projects/&lt;ProjectID&gt;/locations/&lt;LocationID&gt;/agents/&lt;AgentID&gt;/flows/&lt;FlowID&gt;/pages/&lt;PageID&gt;.
   /// [triggerFulfillment] The fulfillment to be triggered.
-  CxPageKnowledgeConnectorSettings({
+  const CxPageKnowledgeConnectorSettings({
     this.dataStoreConnections,
     this.enabled,
     this.targetFlow,

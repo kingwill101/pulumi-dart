@@ -29,7 +29,7 @@ class GetAgentsResult {
   /// [outputFile] Optional.
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetAgentsResult({
+  const GetAgentsResult({
     required this.agentName,
     required this.agents,
     required this.id,

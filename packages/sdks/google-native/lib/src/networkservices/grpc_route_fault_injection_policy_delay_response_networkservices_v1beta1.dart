@@ -12,7 +12,7 @@ class GrpcRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1 {
   /// Creates a new [GrpcRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1].
   /// [fixedDelay] Specify a fixed delay before forwarding the request.
   /// [percentage] The percentage of traffic on which delay will be injected. The value must be between [0, 100]
-  GrpcRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1({
+  const GrpcRouteFaultInjectionPolicyDelayResponseNetworkservicesV1beta1({
     required this.fixedDelay,
     required this.percentage,
   });

@@ -16,7 +16,7 @@ class EncryptionProperty {
   /// [identity] The identity that will be used to access the key vault for encryption at rest.
   /// [keyVaultProperties] Customer Key vault properties.
   /// [status] Indicates whether or not the encryption is enabled for the workspace.
-  EncryptionProperty({
+  const EncryptionProperty({
     this.identity,
     required this.keyVaultProperties,
     required this.status,

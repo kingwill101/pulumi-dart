@@ -12,7 +12,7 @@ class SqlDWUpsertSettingsResponse {
   /// Creates a new [SqlDWUpsertSettingsResponse].
   /// [interimSchemaName] Schema name for interim table. Type: string (or Expression with resultType string).
   /// [keys] Key column names for unique row identification. Type: array of strings (or Expression with resultType array of strings).
-  SqlDWUpsertSettingsResponse({
+  const SqlDWUpsertSettingsResponse({
     this.interimSchemaName,
     this.keys,
   });

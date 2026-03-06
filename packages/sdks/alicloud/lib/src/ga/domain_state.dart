@@ -15,7 +15,7 @@ class DomainState {
   /// [acceleratorId] The ID of the global acceleration instance.
   /// [domain] The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
   /// [status] The status of the resource
-  DomainState({
+  const DomainState({
     this.acceleratorId,
     this.domain,
     this.status,

@@ -22,7 +22,7 @@ class ProviderRegistryAuth {
   /// [configFileContent] Plain content of the docker json file for registry auth. `config_file_content` has precedence over username/password.
   /// [password] Password for the registry. Defaults to `DOCKER_REGISTRY_PASS` env variable if set.
   /// [username] Username for the registry. Defaults to `DOCKER_REGISTRY_USER` env variable if set.
-  ProviderRegistryAuth({
+  const ProviderRegistryAuth({
     required this.address,
     this.authDisabled,
     this.configFile,

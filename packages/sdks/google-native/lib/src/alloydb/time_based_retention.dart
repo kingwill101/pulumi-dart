@@ -9,7 +9,7 @@ class TimeBasedRetention {
 
   /// Creates a new [TimeBasedRetention].
   /// [retentionPeriod] The retention period.
-  TimeBasedRetention({
+  const TimeBasedRetention({
     this.retentionPeriod,
   });
 

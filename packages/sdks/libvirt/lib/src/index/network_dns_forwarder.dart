@@ -11,7 +11,7 @@ class NetworkDnsForwarder {
   /// Creates a new [NetworkDnsForwarder].
   /// [addr] Sets the address for each DNS forwarder, defining where to direct DNS queries.
   /// [domain] Configures the domain associated with each DNS forwarder, specifying the context for resolution.
-  NetworkDnsForwarder({
+  const NetworkDnsForwarder({
     this.addr,
     this.domain,
   });

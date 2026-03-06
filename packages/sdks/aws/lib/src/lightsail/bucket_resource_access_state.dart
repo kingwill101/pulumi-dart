@@ -15,7 +15,7 @@ class BucketResourceAccessState {
   /// [bucketName] Name of the bucket to grant access to.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceName] Name of the resource to grant bucket access.
-  BucketResourceAccessState({
+  const BucketResourceAccessState({
     this.bucketName,
     this.region,
     this.resourceName,

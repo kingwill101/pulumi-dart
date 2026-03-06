@@ -18,7 +18,7 @@ class MongoDbCursorMethodsProperties {
   /// [project] Specifies the fields to return in the documents that match the query filter. To return all fields in the matching documents, omit this parameter. Type: string (or Expression with resultType string).
   /// [skip] Specifies the how many documents skipped and where MongoDB begins returning results. This approach may be useful in implementing paginated results. Type: integer (or Expression with resultType integer).
   /// [sort] Specifies the order in which the query returns matching documents. Type: string (or Expression with resultType string). Type: string (or Expression with resultType string).
-  MongoDbCursorMethodsProperties({
+  const MongoDbCursorMethodsProperties({
     this.limit,
     this.project,
     this.skip,

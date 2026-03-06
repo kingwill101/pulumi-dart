@@ -14,7 +14,7 @@ class GoogleCloudDialogflowV2IntentMessageMediaContent {
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageMediaContent].
   /// [mediaObjects] List of media objects.
   /// [mediaType] Optional. What type of media is the content (ie "audio").
-  GoogleCloudDialogflowV2IntentMessageMediaContent({
+  const GoogleCloudDialogflowV2IntentMessageMediaContent({
     required this.mediaObjects,
     this.mediaType,
   });

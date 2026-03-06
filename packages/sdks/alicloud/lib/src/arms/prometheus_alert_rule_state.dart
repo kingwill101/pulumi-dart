@@ -44,7 +44,7 @@ class PrometheusAlertRuleState {
   /// [prometheusAlertRuleName] The name of the resource.
   /// [status] The status of the resource. Valid values: `0`, `1`.
   /// [type] The type of the alert rule.
-  PrometheusAlertRuleState({
+  const PrometheusAlertRuleState({
     this.annotations,
     this.clusterId,
     this.dispatchRuleId,

@@ -16,7 +16,7 @@ class GetHybridMonitorDatasData {
   /// [labels] The label of the time dimension.
   /// [metricName] The name of the monitoring indicator.
   /// [values] The metric values that are collected at different timestamps.
-  GetHybridMonitorDatasData({
+  const GetHybridMonitorDatasData({
     required this.labels,
     required this.metricName,
     required this.values,

@@ -12,7 +12,7 @@ class NodeConfigResponse {
   /// Creates a new [NodeConfigResponse].
   /// [maxNodeCount] Maximum number of nodes in the runtime nodes.
   /// [minNodeCount] Minimum number of nodes in the runtime nodes.
-  NodeConfigResponse({
+  const NodeConfigResponse({
     required this.maxNodeCount,
     required this.minNodeCount,
   });

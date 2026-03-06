@@ -25,7 +25,7 @@ class GetCredentialsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
   /// [workgroupName] Required.
-  GetCredentialsResult({
+  const GetCredentialsResult({
     this.dbName,
     required this.dbPassword,
     required this.dbUser,

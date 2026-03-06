@@ -32,7 +32,7 @@ class GetUsersResult {
   /// [returnAll] Optional.
   /// [userPrincipalNames] The user principal names (UPNs) of the users.
   /// [users] A list of users. Each `user` object provides the attributes documented below.
-  GetUsersResult({
+  const GetUsersResult({
     required this.employeeIds,
     required this.id,
     this.ignoreMissing,

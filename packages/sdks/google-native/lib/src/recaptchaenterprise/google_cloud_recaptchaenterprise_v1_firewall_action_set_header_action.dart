@@ -12,7 +12,7 @@ class GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction {
   /// Creates a new [GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction].
   /// [key] Optional. The header key to set in the request to the backend server.
   /// [value] Optional. The header value to set in the request to the backend server.
-  GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction({
+  const GoogleCloudRecaptchaenterpriseV1FirewallActionSetHeaderAction({
     this.key,
     this.value,
   });

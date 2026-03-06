@@ -15,7 +15,7 @@ class GetAttachedNetworkResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [networkConnectionId] The ID of the attached Dev Center Network Connection.
-  GetAttachedNetworkResult({
+  const GetAttachedNetworkResult({
     required this.devCenterId,
     required this.id,
     required this.name,

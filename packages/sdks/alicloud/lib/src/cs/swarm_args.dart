@@ -37,7 +37,7 @@ class SwarmArgs {
   /// [releaseEip] Optional.
   /// [size] Optional.
   /// [vswitchId] Required.
-  SwarmArgs({
+  const SwarmArgs({
     required this.cidrBlock,
     this.diskCategory,
     this.diskSize,

@@ -16,7 +16,7 @@ class EnvGroupAttachmentState {
   /// [envgroupId] The Apigee environment group associated with the Apigee environment,
   /// [environment] The resource ID of the environment.
   /// [name] The name of the newly created  attachment (output parameter).
-  EnvGroupAttachmentState({
+  const EnvGroupAttachmentState({
     this.envgroupId,
     this.environment,
     this.name,

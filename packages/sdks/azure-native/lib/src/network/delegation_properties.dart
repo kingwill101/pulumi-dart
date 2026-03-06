@@ -9,7 +9,7 @@ class DelegationProperties {
 
   /// Creates a new [DelegationProperties].
   /// [serviceName] The service name to which the NVA is delegated.
-  DelegationProperties({
+  const DelegationProperties({
     this.serviceName,
   });
 

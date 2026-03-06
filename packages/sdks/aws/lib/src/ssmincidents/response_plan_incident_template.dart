@@ -24,7 +24,7 @@ class ResponsePlanIncidentTemplate {
   /// [notificationTargets] The Amazon Simple Notification Service (Amazon SNS) targets that this incident notifies when it is updated. The `notification_target` configuration block supports the following argument:
   /// [summary] The summary of an incident.
   /// [title] The title of a generated incident.
-  ResponsePlanIncidentTemplate({
+  const ResponsePlanIncidentTemplate({
     this.dedupeString,
     required this.impact,
     this.incidentTags,

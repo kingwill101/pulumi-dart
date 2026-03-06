@@ -17,7 +17,7 @@ class ResourceSetResource {
   /// [dnsTargetResource] Component for DNS/Routing Control Readiness Checks.
   /// [readinessScopes] Recovery group ARN or cell ARN that contains this resource set.
   /// [resourceArn] ARN of the resource.
-  ResourceSetResource({
+  const ResourceSetResource({
     this.componentId,
     this.dnsTargetResource,
     this.readinessScopes,

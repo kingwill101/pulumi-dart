@@ -19,7 +19,7 @@ class DatascanDataQualitySpecRuleRangeExpectation {
   /// [minValue] The minimum column value allowed for a row to pass this validation. At least one of minValue and maxValue need to be provided.
   /// [strictMaxEnabled] Whether each value needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.
   /// [strictMinEnabled] Whether each value needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.
-  DatascanDataQualitySpecRuleRangeExpectation({
+  const DatascanDataQualitySpecRuleRangeExpectation({
     this.maxValue,
     this.minValue,
     this.strictMaxEnabled,

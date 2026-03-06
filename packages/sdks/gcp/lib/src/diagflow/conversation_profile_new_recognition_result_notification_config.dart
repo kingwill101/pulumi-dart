@@ -15,7 +15,7 @@ class ConversationProfileNewRecognitionResultNotificationConfig {
   /// Creates a new [ConversationProfileNewRecognitionResultNotificationConfig].
   /// [messageFormat] Format of message.
   /// [topic] Name of the Pub/Sub topic to publish conversation events like CONVERSATION_STARTED as serialized ConversationEvent protos.
-  ConversationProfileNewRecognitionResultNotificationConfig({
+  const ConversationProfileNewRecognitionResultNotificationConfig({
     this.messageFormat,
     this.topic,
   });

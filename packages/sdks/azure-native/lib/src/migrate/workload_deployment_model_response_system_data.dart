@@ -25,7 +25,7 @@ class WorkloadDeploymentModelResponseSystemData {
   /// [lastModifiedAt] Gets or sets the timestamp of resource last modification (UTC).
   /// [lastModifiedBy] Gets or sets the identity that last modified the resource.
   /// [lastModifiedByType] Gets or sets the type of identity that last modified the resource: user, application,
-  WorkloadDeploymentModelResponseSystemData({
+  const WorkloadDeploymentModelResponseSystemData({
     this.createdAt,
     this.createdBy,
     this.createdByType,

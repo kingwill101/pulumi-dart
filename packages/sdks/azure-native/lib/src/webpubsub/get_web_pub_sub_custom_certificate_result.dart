@@ -33,7 +33,7 @@ class GetWebPubSubCustomCertificateResult {
   /// [provisioningState] Provisioning state of the resource.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWebPubSubCustomCertificateResult({
+  const GetWebPubSubCustomCertificateResult({
     required this.azureApiVersion,
     required this.id,
     required this.keyVaultBaseUri,

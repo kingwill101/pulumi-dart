@@ -23,7 +23,7 @@ class GetGroupResult {
   /// [migrationTargetType] Immutable. The target type of this group.
   /// [name] The Group name.
   /// [updateTime] The update time timestamp.
-  GetGroupResult({
+  const GetGroupResult({
     required this.createTime,
     required this.description,
     required this.displayName,

@@ -8,7 +8,7 @@ class ScheduledQueryNotificationConfigurationSnsConfiguration {
 
   /// Creates a new [ScheduledQueryNotificationConfigurationSnsConfiguration].
   /// [topicArn] SNS topic ARN that the scheduled query status notifications will be sent to.
-  ScheduledQueryNotificationConfigurationSnsConfiguration({
+  const ScheduledQueryNotificationConfigurationSnsConfiguration({
     required this.topicArn,
   });
 

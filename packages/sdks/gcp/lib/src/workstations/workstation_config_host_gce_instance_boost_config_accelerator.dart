@@ -11,7 +11,7 @@ class WorkstationConfigHostGceInstanceBoostConfigAccelerator {
   /// Creates a new [WorkstationConfigHostGceInstanceBoostConfigAccelerator].
   /// [count] Number of accelerator cards exposed to the instance.
   /// [type] Type of accelerator resource to attach to the instance, for example, "nvidia-tesla-p100".
-  WorkstationConfigHostGceInstanceBoostConfigAccelerator({
+  const WorkstationConfigHostGceInstanceBoostConfigAccelerator({
     required this.count,
     required this.type,
   });

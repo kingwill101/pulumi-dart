@@ -11,7 +11,7 @@ class StaticWebAppBasicAuth {
   /// Creates a new [StaticWebAppBasicAuth].
   /// [environments] The Environment types to use the Basic Auth for access. Possible values include `AllEnvironments` and `StagingEnvironments`.
   /// [password] The password for the basic authentication access.
-  StaticWebAppBasicAuth({
+  const StaticWebAppBasicAuth({
     required this.environments,
     required this.password,
   });

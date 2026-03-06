@@ -15,7 +15,7 @@ class CustomDomainResponse {
   /// [bindingType] Custom Domain binding type.
   /// [certificateId] Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
   /// [name] Hostname.
-  CustomDomainResponse({
+  const CustomDomainResponse({
     this.bindingType,
     this.certificateId,
     required this.name,

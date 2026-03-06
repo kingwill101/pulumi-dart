@@ -41,7 +41,7 @@ class HciRemoteSupportJobPropertiesResponse {
   /// [startTimeUtc] The UTC date and time at which the job started.
   /// [status] Status of Edge device job.
   /// [type] Remote support type.
-  HciRemoteSupportJobPropertiesResponse({
+  const HciRemoteSupportJobPropertiesResponse({
     required this.accessLevel,
     this.deploymentMode,
     required this.endTimeUtc,

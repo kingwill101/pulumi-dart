@@ -26,7 +26,7 @@ class AkriConnectorTemplateArgs {
   /// [instanceName] Name of instance.
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AkriConnectorTemplateArgs({
+  const AkriConnectorTemplateArgs({
     this.akriConnectorTemplateName,
     this.extendedLocation,
     required this.instanceName,

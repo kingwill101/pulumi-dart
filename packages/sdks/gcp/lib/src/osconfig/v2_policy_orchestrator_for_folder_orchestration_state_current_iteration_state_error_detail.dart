@@ -12,7 +12,7 @@ class V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorD
   /// Creates a new [V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail].
   /// [typeUrl] (Output)
   /// [value] (Output)
-  V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail({
+  const V2PolicyOrchestratorForFolderOrchestrationStateCurrentIterationStateErrorDetail({
     this.typeUrl,
     this.value,
   });

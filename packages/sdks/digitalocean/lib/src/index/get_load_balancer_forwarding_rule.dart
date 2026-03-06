@@ -26,7 +26,7 @@ class GetLoadBalancerForwardingRule {
   /// [targetPort] the port on the backend Droplets to which the load balancer will send traffic
   /// [targetProtocol] the protocol used for traffic to the backend droplets
   /// [tlsPassthrough] whether ssl encrypted traffic will be passed through to the backend droplets
-  GetLoadBalancerForwardingRule({
+  const GetLoadBalancerForwardingRule({
     required this.certificateId,
     required this.certificateName,
     required this.entryPort,

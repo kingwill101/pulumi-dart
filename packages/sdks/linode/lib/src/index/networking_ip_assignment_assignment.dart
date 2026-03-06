@@ -11,7 +11,7 @@ class NetworkingIpAssignmentAssignment {
   /// Creates a new [NetworkingIpAssignmentAssignment].
   /// [address] The IPv4 address or IPv6 range to assign.
   /// [linodeId] The ID of the Linode to which the IP address will be assigned.
-  NetworkingIpAssignmentAssignment({
+  const NetworkingIpAssignmentAssignment({
     required this.address,
     required this.linodeId,
   });

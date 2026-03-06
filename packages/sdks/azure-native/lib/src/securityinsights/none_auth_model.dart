@@ -10,7 +10,7 @@ class NoneAuthModel {
 
   /// Creates a new [NoneAuthModel].
   /// [type] Type of paging
-  NoneAuthModel({
+  const NoneAuthModel({
     required this.type,
   });
 

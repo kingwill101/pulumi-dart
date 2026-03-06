@@ -17,7 +17,7 @@ class GetOrchestratedVirtualMachineScaleSetIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Orchestrated Virtual Machine Scale Set.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Orchestrated Virtual Machine Scale Set.
   /// [type] The Type of IP Tag.
-  GetOrchestratedVirtualMachineScaleSetIdentity({
+  const GetOrchestratedVirtualMachineScaleSetIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

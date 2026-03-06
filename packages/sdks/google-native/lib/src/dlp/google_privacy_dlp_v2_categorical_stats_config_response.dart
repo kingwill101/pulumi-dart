@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2CategoricalStatsConfigResponse {
 
   /// Creates a new [GooglePrivacyDlpV2CategoricalStatsConfigResponse].
   /// [field] Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data.
-  GooglePrivacyDlpV2CategoricalStatsConfigResponse({
+  const GooglePrivacyDlpV2CategoricalStatsConfigResponse({
     required this.field,
   });
 

@@ -12,7 +12,7 @@ class GroupPolicyAttachmentState {
   /// Creates a new [GroupPolicyAttachmentState].
   /// [group] The group the policy should be applied to
   /// [policyArn] The ARN of the policy you want to apply
-  GroupPolicyAttachmentState({
+  const GroupPolicyAttachmentState({
     this.group,
     this.policyArn,
   });

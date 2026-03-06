@@ -45,7 +45,7 @@ class MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse {
   /// [targetServerBrandVersion] Target server brand version
   /// [targetServerName] Target server name
   /// [targetServerVersion] Target server version
-  MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse({
+  const MigrateSqlServerSqlMISyncTaskOutputMigrationLevelResponse({
     required this.databaseCount,
     required this.databaseErrorCount,
     required this.endedOn,

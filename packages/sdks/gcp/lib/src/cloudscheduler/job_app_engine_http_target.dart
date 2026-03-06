@@ -31,7 +31,7 @@ class JobAppEngineHttpTarget {
   /// [headers] HTTP request headers.
   /// [httpMethod] Which HTTP method to use for the request.
   /// [relativeUri] The relative URI.
-  JobAppEngineHttpTarget({
+  const JobAppEngineHttpTarget({
     this.appEngineRouting,
     this.body,
     this.headers,

@@ -24,7 +24,7 @@ class InstanceArgs {
   /// [location] The location is a GCP region. Currently only `us-central1` is supported.
   /// [parent] Resource name of the project containing the instance. Format: `projects/[PROJECT_ID]`.
   /// [project] Optional.
-  InstanceArgs({
+  const InstanceArgs({
     this.featurePolicy,
     this.instanceId,
     this.location,

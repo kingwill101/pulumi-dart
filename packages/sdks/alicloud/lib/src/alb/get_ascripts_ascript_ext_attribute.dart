@@ -11,7 +11,7 @@ class GetAscriptsAscriptExtAttribute {
   /// Creates a new [GetAscriptsAscriptExtAttribute].
   /// [attributeKey] The key of the extended attribute.
   /// [attributeValue] The value of the extended attribute.
-  GetAscriptsAscriptExtAttribute({
+  const GetAscriptsAscriptExtAttribute({
     required this.attributeKey,
     required this.attributeValue,
   });

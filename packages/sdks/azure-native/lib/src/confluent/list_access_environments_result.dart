@@ -17,7 +17,7 @@ class ListAccessEnvironmentsResult {
   /// [data] Environment list data
   /// [kind] Type of response
   /// [metadata] Metadata of the  environment list
-  ListAccessEnvironmentsResult({
+  const ListAccessEnvironmentsResult({
     this.data,
     this.kind,
     this.metadata,

@@ -12,7 +12,7 @@ class UserAssignedServiceIdentity {
   /// Creates a new [UserAssignedServiceIdentity].
   /// [type] Type of manage identity
   /// [userAssignedIdentities] User assigned identities dictionary
-  UserAssignedServiceIdentity({
+  const UserAssignedServiceIdentity({
     required this.type,
     this.userAssignedIdentities,
   });

@@ -59,7 +59,7 @@ class GetImagesResult {
   /// [status] The status of the image. Possible values: `UnAvailable`, `Available`, `Creating` and `CreateFailed`.
   /// [tags] Optional.
   /// [usage] Optional.
-  GetImagesResult({
+  const GetImagesResult({
     this.actionType,
     this.architecture,
     this.dryRun,

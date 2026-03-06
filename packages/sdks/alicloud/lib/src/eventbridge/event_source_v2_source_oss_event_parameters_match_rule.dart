@@ -13,7 +13,7 @@ class EventSourceV2SourceOssEventParametersMatchRule {
   /// [name] Optional.
   /// [prefix] Optional.
   /// [suffix] Optional.
-  EventSourceV2SourceOssEventParametersMatchRule({
+  const EventSourceV2SourceOssEventParametersMatchRule({
     this.matchState,
     this.name,
     this.prefix,

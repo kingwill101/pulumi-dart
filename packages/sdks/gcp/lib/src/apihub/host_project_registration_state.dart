@@ -32,7 +32,7 @@ class HostProjectRegistrationState {
   /// [location] Part of `parent`. See documentation of `projectsId`.
   /// [name] Identifier. The name of the host project registration.
   /// [project] The ID of the project in which the resource belongs.
-  HostProjectRegistrationState({
+  const HostProjectRegistrationState({
     this.createTime,
     this.gcpProject,
     this.hostProjectRegistrationId,

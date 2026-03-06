@@ -11,7 +11,7 @@ class AwsIntegrationsAwsDirectConnect {
   /// Creates a new [AwsIntegrationsAwsDirectConnect].
   /// [awsRegions] Specify each AWS region that includes the resources that you want to monitor.
   /// [metricsPollingInterval] The data polling interval in seconds.
-  AwsIntegrationsAwsDirectConnect({
+  const AwsIntegrationsAwsDirectConnect({
     this.awsRegions,
     this.metricsPollingInterval,
   });

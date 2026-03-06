@@ -21,7 +21,7 @@ class CIFSMountConfiguration {
   /// [relativeMountPath] All file systems are mounted relative to the Batch mounts directory, accessible via the AZ_BATCH_NODE_MOUNTS_DIR environment variable.
   /// [source] The URI of the file system to mount.
   /// [userName] The user to use for authentication against the CIFS file system.
-  CIFSMountConfiguration({
+  const CIFSMountConfiguration({
     this.mountOptions,
     required this.password,
     required this.relativeMountPath,

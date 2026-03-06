@@ -24,7 +24,7 @@ class SiteAddressPropertiesResponse {
   /// [stateOrProvince] State or province of the address
   /// [streetAddress1] First line of the street address
   /// [streetAddress2] Second line of the street address
-  SiteAddressPropertiesResponse({
+  const SiteAddressPropertiesResponse({
     this.city,
     this.country,
     this.postalCode,

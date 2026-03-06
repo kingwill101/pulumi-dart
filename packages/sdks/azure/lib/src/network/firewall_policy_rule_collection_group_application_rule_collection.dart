@@ -18,7 +18,7 @@ class FirewallPolicyRuleCollectionGroupApplicationRuleCollection {
   /// [name] The name which should be used for this application rule collection.
   /// [priority] The priority of the application rule collection. The range is `100` - `65000`.
   /// [rules] One or more `application_rule` blocks as defined below.
-  FirewallPolicyRuleCollectionGroupApplicationRuleCollection({
+  const FirewallPolicyRuleCollectionGroupApplicationRuleCollection({
     required this.action,
     required this.name,
     required this.priority,

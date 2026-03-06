@@ -17,7 +17,7 @@ class ManagedRedisIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Managed Redis instance. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
-  ManagedRedisIdentity({
+  const ManagedRedisIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

@@ -22,7 +22,7 @@ class ManagementGroupArgs {
   /// [displayName] The friendly name of the management group. If no value is passed then this  field will be set to the groupId.
   /// [groupId] Management Group ID.
   /// [name] The name of the management group. For example, 00000000-0000-0000-0000-000000000000
-  ManagementGroupArgs({
+  const ManagementGroupArgs({
     this.details,
     this.displayName,
     this.groupId,

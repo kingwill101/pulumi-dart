@@ -25,7 +25,7 @@ class CodeVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [version] Version identifier. This is case-sensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  CodeVersionArgs({
+  const CodeVersionArgs({
     required this.codeVersionProperties,
     required this.name,
     required this.resourceGroupName,

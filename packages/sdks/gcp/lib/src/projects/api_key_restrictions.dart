@@ -25,7 +25,7 @@ class ApiKeyRestrictions {
   /// [browserKeyRestrictions] The HTTP referrers (websites) that are allowed to use the key.
   /// [iosKeyRestrictions] The iOS apps that are allowed to use the key.
   /// [serverKeyRestrictions] The IP addresses of callers that are allowed to use the key.
-  ApiKeyRestrictions({
+  const ApiKeyRestrictions({
     this.androidKeyRestrictions,
     this.apiTargets,
     this.browserKeyRestrictions,

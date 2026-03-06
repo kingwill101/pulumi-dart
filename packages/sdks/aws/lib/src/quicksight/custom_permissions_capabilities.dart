@@ -74,7 +74,7 @@ class CustomPermissionsCapabilities {
   /// [shareDatasets] The ability to share datasets. Valid values: `DENY`.
   /// [subscribeDashboardEmailReports] The ability to subscribe to email reports. Valid values: `DENY`.
   /// [viewAccountSpiceCapacity] The ability to view account SPICE capacity. Valid values: `DENY`.
-  CustomPermissionsCapabilities({
+  const CustomPermissionsCapabilities({
     this.addOrRunAnomalyDetectionForAnalyses,
     this.createAndUpdateDashboardEmailReports,
     this.createAndUpdateDataSources,

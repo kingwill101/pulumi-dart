@@ -34,7 +34,7 @@ class CloudTrailTrailPropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  CloudTrailTrailPropertiesResponse({
+  const CloudTrailTrailPropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

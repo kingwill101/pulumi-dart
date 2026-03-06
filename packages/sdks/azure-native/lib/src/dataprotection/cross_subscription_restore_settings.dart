@@ -9,7 +9,7 @@ class CrossSubscriptionRestoreSettings {
 
   /// Creates a new [CrossSubscriptionRestoreSettings].
   /// [state] CrossSubscriptionRestore state
-  CrossSubscriptionRestoreSettings({
+  const CrossSubscriptionRestoreSettings({
     this.state,
   });
 

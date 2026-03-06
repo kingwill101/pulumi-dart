@@ -19,7 +19,7 @@ class UserSettingsWithLocationArgs {
   /// [location] The provider location
   /// [properties] The cloud shell user settings properties.
   /// [userSettingsName] The name of the user settings
-  UserSettingsWithLocationArgs({
+  const UserSettingsWithLocationArgs({
     required this.location,
     required this.properties,
     this.userSettingsName,

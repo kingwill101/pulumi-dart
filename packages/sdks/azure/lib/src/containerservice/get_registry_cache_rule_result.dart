@@ -21,7 +21,7 @@ class GetRegistryCacheRuleResult {
   /// [name] Required.
   /// [sourceRepo] The name of the source repository path.
   /// [targetRepo] The name of the new repository path to store artifacts.
-  GetRegistryCacheRuleResult({
+  const GetRegistryCacheRuleResult({
     required this.containerRegistryId,
     required this.credentialSetId,
     required this.id,

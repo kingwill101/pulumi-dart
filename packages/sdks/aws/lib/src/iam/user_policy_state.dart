@@ -18,7 +18,7 @@ class UserPolicyState {
   /// [namePrefix] Creates a unique name beginning with the specified prefix. Conflicts with `name`.
   /// [policy] The policy document. This is a JSON formatted string.
   /// [user] IAM user to which to attach this policy.
-  UserPolicyState({
+  const UserPolicyState({
     this.name,
     this.namePrefix,
     this.policy,

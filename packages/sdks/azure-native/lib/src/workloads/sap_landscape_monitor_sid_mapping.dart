@@ -12,7 +12,7 @@ class SapLandscapeMonitorSidMapping {
   /// Creates a new [SapLandscapeMonitorSidMapping].
   /// [name] Gets or sets the name of the grouping.
   /// [topSid] Gets or sets the list of SID's.
-  SapLandscapeMonitorSidMapping({
+  const SapLandscapeMonitorSidMapping({
     this.name,
     this.topSid,
   });

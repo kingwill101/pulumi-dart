@@ -53,7 +53,7 @@ class GetVpcFirewallCensCenLocalVpc {
   /// [vpcCidrTableLists] The VPC network segment list.
   /// [vpcId] The ID of the VPC instance.
   /// [vpcName] The instance name of the VPC.
-  GetVpcFirewallCensCenLocalVpc({
+  const GetVpcFirewallCensCenLocalVpc({
     required this.attachmentId,
     required this.attachmentName,
     required this.defendCidrLists,

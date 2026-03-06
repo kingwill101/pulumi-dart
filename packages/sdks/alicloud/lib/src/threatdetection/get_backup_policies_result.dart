@@ -33,7 +33,7 @@ class GetBackupPoliciesResult {
   /// [pageSize] Optional.
   /// [policies] A list of Threat Detection Backup policies. Each element contains the following attributes:
   /// [status] The status of the anti-ransomware policy.
-  GetBackupPoliciesResult({
+  const GetBackupPoliciesResult({
     this.currentPage,
     required this.id,
     required this.ids,

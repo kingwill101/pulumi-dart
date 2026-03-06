@@ -18,7 +18,7 @@ class GetNetworkSecurityGroupArgs {
   /// [expand] Expands referenced resources.
   /// [networkSecurityGroupName] The name of the network security group.
   /// [resourceGroupName] The name of the resource group.
-  GetNetworkSecurityGroupArgs({
+  const GetNetworkSecurityGroupArgs({
     this.expand,
     required this.networkSecurityGroupName,
     required this.resourceGroupName,

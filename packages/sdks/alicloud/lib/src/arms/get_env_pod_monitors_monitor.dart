@@ -26,7 +26,7 @@ class GetEnvPodMonitorsMonitor {
   /// [namespace] The namespace.
   /// [regionId] The region ID.
   /// [status] The status of the PodMonitor.
-  GetEnvPodMonitorsMonitor({
+  const GetEnvPodMonitorsMonitor({
     required this.configYaml,
     required this.envPodMonitorName,
     required this.environmentId,

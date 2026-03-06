@@ -27,7 +27,7 @@ class WorkforcePoolProviderScimTokenArgs {
   /// [scimTenantId] The ID of the SCIM Tenant.
   /// [scimTokenId] The ID to use for the SCIM Token, which becomes the final component of the resource name. This value should be 4-32 characters and follow the pattern: `(a-z)`.
   /// [workforcePoolId] The ID of the Workforce Pool.
-  WorkforcePoolProviderScimTokenArgs({
+  const WorkforcePoolProviderScimTokenArgs({
     this.displayName,
     required this.location,
     required this.providerId,

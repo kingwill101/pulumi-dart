@@ -45,7 +45,7 @@ class MethodState {
   /// [requestValidatorId] ID of a `aws.apigateway.RequestValidator`
   /// [resourceId] API resource ID
   /// [restApi] ID of the associated REST API
-  MethodState({
+  const MethodState({
     this.apiKeyRequired,
     this.authorization,
     this.authorizationScopes,

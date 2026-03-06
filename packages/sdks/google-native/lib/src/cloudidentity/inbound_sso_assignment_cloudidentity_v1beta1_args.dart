@@ -33,7 +33,7 @@ class InboundSsoAssignmentCloudidentityV1beta1Args {
   /// [ssoMode] Inbound SSO behavior.
   /// [targetGroup] Immutable. Must be of the form `groups/{group}`.
   /// [targetOrgUnit] Immutable. Must be of the form `orgUnits/{org_unit}`.
-  InboundSsoAssignmentCloudidentityV1beta1Args({
+  const InboundSsoAssignmentCloudidentityV1beta1Args({
     this.customer,
     this.rank,
     this.samlSsoInfo,

@@ -9,7 +9,7 @@ class DomainDevicesHostdevCapsMisc {
 
   /// Creates a new [DomainDevicesHostdevCapsMisc].
   /// [source] Specifies the source attributes for the miscellaneous capabilities of the host device.
-  DomainDevicesHostdevCapsMisc({
+  const DomainDevicesHostdevCapsMisc({
     this.source,
   });
 

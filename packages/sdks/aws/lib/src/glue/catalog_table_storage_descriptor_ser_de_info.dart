@@ -14,7 +14,7 @@ class CatalogTableStorageDescriptorSerDeInfo {
   /// [name] Name of the SerDe.
   /// [parameters] Map of initialization parameters for the SerDe, in key-value form.
   /// [serializationLibrary] Usually the class that implements the SerDe. An example is `org.apache.hadoop.hive.serde2.columnar.ColumnarSerDe`.
-  CatalogTableStorageDescriptorSerDeInfo({
+  const CatalogTableStorageDescriptorSerDeInfo({
     this.name,
     this.parameters,
     this.serializationLibrary,

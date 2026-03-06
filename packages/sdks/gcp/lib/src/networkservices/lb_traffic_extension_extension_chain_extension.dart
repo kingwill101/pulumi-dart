@@ -46,7 +46,7 @@ class LbTrafficExtensionExtensionChainExtension {
   /// [service] The reference to the service that runs the extension.
   /// [supportedEvents] A set of events during request or response processing for which this extension is called.
   /// [timeout] Specifies the timeout for each individual message on the stream. The timeout must be between 10-1000 milliseconds.
-  LbTrafficExtensionExtensionChainExtension({
+  const LbTrafficExtensionExtensionChainExtension({
     this.authority,
     this.failOpen,
     this.forwardHeaders,

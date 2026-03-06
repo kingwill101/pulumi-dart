@@ -36,7 +36,7 @@ class MultipleActivationKeyArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [supportType] Type of support
   /// [tags] Resource tags.
-  MultipleActivationKeyArgs({
+  const MultipleActivationKeyArgs({
     this.agreementNumber,
     this.installedServerNumber,
     this.isEligible,

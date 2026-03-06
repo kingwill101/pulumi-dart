@@ -40,7 +40,7 @@ class LifecyclePolicyArgs {
   /// [resourceType] The type of Image Builder resource that the lifecycle policy applies to. Valid values: `AMI_IMAGE` or `CONTAINER_IMAGE`.
   /// [status] The status of the lifecycle policy.
   /// [tags] Key-value map of resource tags for the Image Builder Lifecycle Policy. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LifecyclePolicyArgs({
+  const LifecyclePolicyArgs({
     this.description,
     required this.executionRole,
     this.name,

@@ -15,7 +15,7 @@ class NetworkInfoResponseNetworkmanagementV1beta1 {
   /// [displayName] Name of a Compute Engine network.
   /// [matchedIpRange] The IP range that matches the test.
   /// [uri] URI of a Compute Engine network.
-  NetworkInfoResponseNetworkmanagementV1beta1({
+  const NetworkInfoResponseNetworkmanagementV1beta1({
     required this.displayName,
     required this.matchedIpRange,
     required this.uri,

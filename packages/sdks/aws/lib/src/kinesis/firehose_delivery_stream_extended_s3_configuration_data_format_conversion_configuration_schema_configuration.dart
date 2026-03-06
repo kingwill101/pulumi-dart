@@ -23,7 +23,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigura
   /// [roleArn] The role that Kinesis Data Firehose can use to access AWS Glue. This role must be in the same account you use for Kinesis Data Firehose. Cross-account roles aren't allowed.
   /// [tableName] Specifies the AWS Glue table that contains the column information that constitutes your data schema.
   /// [versionId] Specifies the table version for the output data schema. Defaults to `LATEST`.
-  FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration({
+  const FirehoseDeliveryStreamExtendedS3ConfigurationDataFormatConversionConfigurationSchemaConfiguration({
     this.catalogId,
     required this.databaseName,
     this.region,

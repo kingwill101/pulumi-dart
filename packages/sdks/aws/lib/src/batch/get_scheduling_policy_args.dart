@@ -18,7 +18,7 @@ class GetSchedulingPolicyArgs {
   /// [arn] ARN of the scheduling policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags
-  GetSchedulingPolicyArgs({
+  const GetSchedulingPolicyArgs({
     required this.arn,
     this.region,
     this.tags,

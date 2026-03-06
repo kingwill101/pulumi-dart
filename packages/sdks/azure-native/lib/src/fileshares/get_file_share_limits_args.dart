@@ -12,7 +12,7 @@ class GetFileShareLimitsArgs {
 
   /// Creates a new [GetFileShareLimitsArgs].
   /// [location] The name of the Azure region.
-  GetFileShareLimitsArgs({
+  const GetFileShareLimitsArgs({
     required this.location,
   });
 

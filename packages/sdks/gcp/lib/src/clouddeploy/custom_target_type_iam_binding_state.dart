@@ -21,7 +21,7 @@ class CustomTargetTypeIamBindingState {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Optional.
-  CustomTargetTypeIamBindingState({
+  const CustomTargetTypeIamBindingState({
     this.condition,
     this.etag,
     this.location,

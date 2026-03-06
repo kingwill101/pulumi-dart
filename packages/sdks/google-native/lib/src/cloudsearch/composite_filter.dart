@@ -13,7 +13,7 @@ class CompositeFilter {
   /// Creates a new [CompositeFilter].
   /// [logicOperator] The logic operator of the sub filter.
   /// [subFilters] Sub filters.
-  CompositeFilter({
+  const CompositeFilter({
     this.logicOperator,
     this.subFilters,
   });

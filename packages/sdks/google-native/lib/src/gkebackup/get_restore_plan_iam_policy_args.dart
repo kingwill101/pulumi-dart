@@ -17,7 +17,7 @@ class GetRestorePlanIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [restorePlanId] Required.
-  GetRestorePlanIamPolicyArgs({
+  const GetRestorePlanIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

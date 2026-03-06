@@ -24,7 +24,7 @@ class CrossAccountAttachmentArgs {
   /// [principals] List of AWS account IDs that are allowed to associate resources with the accelerator.
   /// [resources] List of resources to be associated with the accelerator.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  CrossAccountAttachmentArgs({
+  const CrossAccountAttachmentArgs({
     this.name,
     this.principals,
     this.resources,

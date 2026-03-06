@@ -46,7 +46,7 @@ class DeploymentPropertiesResponse {
   /// [rateLimits] Required.
   /// [scaleSettings] Properties of Cognitive Services account deployment model. (Deprecated, please use Deployment.sku instead.)
   /// [versionUpgradeOption] Deployment model version upgrade option.
-  DeploymentPropertiesResponse({
+  const DeploymentPropertiesResponse({
     required this.callRateLimit,
     required this.capabilities,
     this.capacitySettings,

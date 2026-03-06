@@ -44,7 +44,7 @@ class IdentityPoolState {
   /// [supportedLoginProviders] Key-Value pairs mapping provider names to provider app IDs.
   /// [tags] A map of tags to assign to the Identity Pool. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  IdentityPoolState({
+  const IdentityPoolState({
     this.allowClassicFlow,
     this.allowUnauthenticatedIdentities,
     this.arn,

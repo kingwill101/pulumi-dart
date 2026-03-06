@@ -22,7 +22,7 @@ class ConversationProfileTtsConfig {
   /// [speakingRate] Speaking rate/speed, in the range [0.25, 4.0].
   /// [voice] The desired voice of the synthesized audio.
   /// [volumeGainDb] Volume gain (in dB) of the normal native volume supported by the specific voice.
-  ConversationProfileTtsConfig({
+  const ConversationProfileTtsConfig({
     this.effectsProfileIds,
     this.pitch,
     this.speakingRate,

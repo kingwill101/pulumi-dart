@@ -45,7 +45,7 @@ class GetVpcCenTrFirewallsResult {
   /// [regionNo] The region ID of the transit router instance.
   /// [routeMode] The routing pattern. Value: managed: indicates automatic mode
   /// [transitRouterId] The ID of the transit router instance.
-  GetVpcCenTrFirewallsResult({
+  const GetVpcCenTrFirewallsResult({
     this.cenId,
     this.currentPage,
     this.firewallId,

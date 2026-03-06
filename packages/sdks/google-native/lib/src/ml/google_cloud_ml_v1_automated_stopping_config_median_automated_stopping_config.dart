@@ -9,7 +9,7 @@ class GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig {
 
   /// Creates a new [GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig].
   /// [useElapsedTime] If true, the median automated stopping rule applies to measurement.use_elapsed_time, which means the elapsed_time field of the current trial's latest measurement is used to compute the median objective value for each completed trial.
-  GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig({
+  const GoogleCloudMlV1AutomatedStoppingConfigMedianAutomatedStoppingConfig({
     this.useElapsedTime,
   });
 

@@ -14,7 +14,7 @@ class DeleteDependencyResponse {
   /// [linkedProperty] Linked property.
   /// [linkedType] Linked type.
   /// [requiredFeatures] Required features.
-  DeleteDependencyResponse({
+  const DeleteDependencyResponse({
     this.linkedProperty,
     this.linkedType,
     this.requiredFeatures,

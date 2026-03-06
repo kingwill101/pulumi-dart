@@ -18,7 +18,7 @@ class ResourcePolicyArgs {
   /// [policy] An IAM policy. The policy string in JSON must not contain newlines or blank lines.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [resourceArn] The ID or Amazon Resource Name (ARN) of the service network or service for which the policy is created.
-  ResourcePolicyArgs({
+  const ResourcePolicyArgs({
     required this.policy,
     this.region,
     required this.resourceArn,

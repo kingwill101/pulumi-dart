@@ -13,7 +13,7 @@ class GetWebAppArgs {
   /// Creates a new [GetWebAppArgs].
   /// [project] Optional.
   /// [webAppId] Required.
-  GetWebAppArgs({
+  const GetWebAppArgs({
     this.project,
     required this.webAppId,
   });

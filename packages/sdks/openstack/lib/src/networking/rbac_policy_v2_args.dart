@@ -33,7 +33,7 @@ class RbacPolicyV2Args {
   /// [objectType] The type of the object that the RBAC policy
   /// [region] The region in which to obtain the V2 networking client.
   /// [targetTenant] The ID of the tenant to which the RBAC policy
-  RbacPolicyV2Args({
+  const RbacPolicyV2Args({
     required this.action,
     required this.objectId,
     required this.objectType,

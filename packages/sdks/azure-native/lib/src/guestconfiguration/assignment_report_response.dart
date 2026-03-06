@@ -35,7 +35,7 @@ class AssignmentReportResponse {
   /// [resources] The list of resources for which guest configuration assignment compliance is checked.
   /// [startTime] Start date and time of the guest configuration assignment compliance status check.
   /// [vm] Information about the VM.
-  AssignmentReportResponse({
+  const AssignmentReportResponse({
     this.assignment,
     required this.complianceStatus,
     required this.endTime,

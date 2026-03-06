@@ -17,7 +17,7 @@ class GetApplicationAssignmentsResult {
   /// [applicationAssignments] List of principals assigned to the application. See the `application_assignments` attribute reference below.
   /// [id] Required.
   /// [region] Required.
-  GetApplicationAssignmentsResult({
+  const GetApplicationAssignmentsResult({
     required this.applicationArn,
     required this.applicationAssignments,
     required this.id,

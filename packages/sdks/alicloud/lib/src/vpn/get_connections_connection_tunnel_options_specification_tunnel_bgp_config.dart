@@ -22,7 +22,7 @@ class GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig {
   /// [peerAsn] The counterpart autonomous system number.
   /// [peerBgpIp] The BGP address on the other side.
   /// [tunnelCidr] BGP Tunnel CIDR.
-  GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig({
+  const GetConnectionsConnectionTunnelOptionsSpecificationTunnelBgpConfig({
     required this.bgpStatus,
     required this.localAsn,
     required this.localBgpIp,

@@ -20,7 +20,7 @@ class DedicatedHostInstanceViewWithNameResponse {
   /// [availableCapacity] Unutilized capacity of the dedicated host.
   /// [name] The name of the dedicated host.
   /// [statuses] The resource status information.
-  DedicatedHostInstanceViewWithNameResponse({
+  const DedicatedHostInstanceViewWithNameResponse({
     required this.assetId,
     this.availableCapacity,
     required this.name,

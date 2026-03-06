@@ -49,7 +49,7 @@ class GetLBRuleResult {
   /// [probeId] A reference to a Probe used by this Load Balancing Rule.
   /// [protocol] The transport protocol for the external endpoint.
   /// [tcpResetEnabled] Required.
-  GetLBRuleResult({
+  const GetLBRuleResult({
     required this.backendAddressPoolId,
     required this.backendPort,
     required this.disableOutboundSnat,

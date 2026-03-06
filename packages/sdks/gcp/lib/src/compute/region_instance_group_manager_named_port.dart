@@ -12,7 +12,7 @@ class RegionInstanceGroupManagerNamedPort {
   /// Creates a new [RegionInstanceGroupManagerNamedPort].
   /// [name] The name of the port.
   /// [port] The port number.
-  RegionInstanceGroupManagerNamedPort({
+  const RegionInstanceGroupManagerNamedPort({
     required this.name,
     required this.port,
   });

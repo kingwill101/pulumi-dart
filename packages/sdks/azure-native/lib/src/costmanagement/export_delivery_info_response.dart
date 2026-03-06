@@ -10,7 +10,7 @@ class ExportDeliveryInfoResponse {
 
   /// Creates a new [ExportDeliveryInfoResponse].
   /// [destination] Has destination for the export being delivered.
-  ExportDeliveryInfoResponse({
+  const ExportDeliveryInfoResponse({
     required this.destination,
   });
 

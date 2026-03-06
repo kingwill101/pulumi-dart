@@ -17,7 +17,7 @@ class VpnGatewayBgpSettingsInstance0BgpPeeringAddress {
   /// [defaultIps] The list of default BGP peering addresses which belong to the pre-defined VPN Gateway IP configuration.
   /// [ipConfigurationId] The pre-defined id of VPN Gateway IP Configuration.
   /// [tunnelIps] The list of tunnel public IP addresses which belong to the pre-defined VPN Gateway IP configuration.
-  VpnGatewayBgpSettingsInstance0BgpPeeringAddress({
+  const VpnGatewayBgpSettingsInstance0BgpPeeringAddress({
     required this.customIps,
     this.defaultIps,
     this.ipConfigurationId,

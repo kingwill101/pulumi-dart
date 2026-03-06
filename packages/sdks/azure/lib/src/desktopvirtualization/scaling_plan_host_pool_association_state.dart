@@ -15,7 +15,7 @@ class ScalingPlanHostPoolAssociationState {
   /// [enabled] Should the Scaling Plan be enabled on this Host Pool.
   /// [hostPoolId] The resource ID for the Virtual Desktop Host Pool. Changing this forces a new resource to be created.
   /// [scalingPlanId] The resource ID for the Virtual Desktop Scaling Plan. Changing this forces a new resource to be created.
-  ScalingPlanHostPoolAssociationState({
+  const ScalingPlanHostPoolAssociationState({
     this.enabled,
     this.hostPoolId,
     this.scalingPlanId,

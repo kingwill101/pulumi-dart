@@ -39,7 +39,7 @@ class RouteEntryState {
   /// [nexthopType] The type of Next Hop. Valid values:
   /// [routeTableId] The ID of the Route Table.
   /// [routerId] This argument has been deprecated. Please use other arguments to launch a custom route entry.
-  RouteEntryState({
+  const RouteEntryState({
     this.description,
     this.destinationCidrblock,
     this.name,

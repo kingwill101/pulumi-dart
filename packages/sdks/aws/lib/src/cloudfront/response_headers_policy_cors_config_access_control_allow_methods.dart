@@ -7,7 +7,7 @@ class ResponseHeadersPolicyCorsConfigAccessControlAllowMethods {
 
   /// Creates a new [ResponseHeadersPolicyCorsConfigAccessControlAllowMethods].
   /// [items] Optional.
-  ResponseHeadersPolicyCorsConfigAccessControlAllowMethods({
+  const ResponseHeadersPolicyCorsConfigAccessControlAllowMethods({
     this.items,
   });
 

@@ -47,7 +47,7 @@ class LogViewIamBindingArgs {
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [parent] The parent of the resource. Used to find the parent resource to bind the IAM policy to
   /// [role] The role that should be applied. Only one
-  LogViewIamBindingArgs({
+  const LogViewIamBindingArgs({
     required this.bucket,
     this.condition,
     this.location,

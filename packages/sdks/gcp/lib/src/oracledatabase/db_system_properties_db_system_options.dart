@@ -11,7 +11,7 @@ class DbSystemPropertiesDbSystemOptions {
 
   /// Creates a new [DbSystemPropertiesDbSystemOptions].
   /// [storageManagement] The storage option used in DB system.
-  DbSystemPropertiesDbSystemOptions({
+  const DbSystemPropertiesDbSystemOptions({
     this.storageManagement,
   });
 

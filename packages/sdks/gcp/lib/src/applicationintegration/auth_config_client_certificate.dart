@@ -15,7 +15,7 @@ class AuthConfigClientCertificate {
   /// [encryptedPrivateKey] The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
   /// [passphrase] 'passphrase' should be left unset if private key is not encrypted.
   /// [sslCertificate] The ssl certificate encoded in PEM format. This string must include the begin header and end footer lines.
-  AuthConfigClientCertificate({
+  const AuthConfigClientCertificate({
     required this.encryptedPrivateKey,
     this.passphrase,
     required this.sslCertificate,

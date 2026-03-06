@@ -22,7 +22,7 @@ class DropletAutoscaleArgs {
   /// [config] The configuration parameters for Droplet Autoscale pool, the supported arguments are
   /// [dropletTemplate] The droplet template parameters for Droplet Autoscale pool, the supported arguments
   /// [name] The name of the Droplet Autoscale pool.
-  DropletAutoscaleArgs({
+  const DropletAutoscaleArgs({
     required this.config,
     required this.dropletTemplate,
     this.name,

@@ -41,7 +41,7 @@ class GetNamespaceAuthorizationRuleResult {
   /// [secondaryConnectionStringAlias] The alias of the Secondary Connection String for the Event Hubs authorization Rule.
   /// [secondaryKey] The Secondary Key for the Event Hubs authorization Rule.
   /// [send] Does this Authorization Rule have permissions to Send to the Event Hub?
-  GetNamespaceAuthorizationRuleResult({
+  const GetNamespaceAuthorizationRuleResult({
     required this.id,
     required this.listen,
     required this.manage,

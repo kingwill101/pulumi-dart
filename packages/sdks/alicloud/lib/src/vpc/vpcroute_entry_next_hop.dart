@@ -24,7 +24,7 @@ class VPCRouteEntryNextHop {
   /// [nexthopId] ID of next hop
   /// [nexthopType] type of next hop
   /// [weight] The weight of the route entry.
-  VPCRouteEntryNextHop({
+  const VPCRouteEntryNextHop({
     this.enabled,
     this.nextHopRegionId,
     this.nextHopRelatedInfo,

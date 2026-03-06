@@ -15,7 +15,7 @@ class CloudTieringVolumeFreeSpacePolicyStatusResponse {
   /// [currentVolumeFreeSpacePercent] Current volume free space percentage.
   /// [effectiveVolumeFreeSpacePolicy] In the case where multiple server endpoints are present in a volume, an effective free space policy is applied.
   /// [lastUpdatedTimestamp] Last updated timestamp
-  CloudTieringVolumeFreeSpacePolicyStatusResponse({
+  const CloudTieringVolumeFreeSpacePolicyStatusResponse({
     required this.currentVolumeFreeSpacePercent,
     required this.effectiveVolumeFreeSpacePolicy,
     required this.lastUpdatedTimestamp,

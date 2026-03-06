@@ -21,7 +21,7 @@ class GetConnectionDeploymentArgs {
   /// [deploymentName] Name of the deployment resource
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
-  GetConnectionDeploymentArgs({
+  const GetConnectionDeploymentArgs({
     required this.connectionName,
     required this.deploymentName,
     required this.resourceGroupName,

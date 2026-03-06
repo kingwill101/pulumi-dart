@@ -11,7 +11,7 @@ class ServiceTaskSpecContainerSpecMountTmpfsOptions {
   /// Creates a new [ServiceTaskSpecContainerSpecMountTmpfsOptions].
   /// [mode] The permission mode for the tmpfs mount in an integer
   /// [sizeBytes] The size for the tmpfs mount in bytes
-  ServiceTaskSpecContainerSpecMountTmpfsOptions({
+  const ServiceTaskSpecContainerSpecMountTmpfsOptions({
     this.mode,
     this.sizeBytes,
   });

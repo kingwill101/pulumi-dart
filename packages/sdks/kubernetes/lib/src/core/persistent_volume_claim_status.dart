@@ -70,7 +70,7 @@ class PersistentVolumeClaimStatus {
   /// [modifyVolumeStatus] ModifyVolumeStatus represents the status object of ControllerModifyVolume operation. When this is unset, there is no ModifyVolume operation being attempted.
   /// [phase] phase represents the current phase of PersistentVolumeClaim.
   /// [resizeStatus] resizeStatus stores status of resize operation. ResizeStatus is not set by default but when expansion is complete resizeStatus is set to empty string by resize controller or kubelet. This is an alpha field and requires enabling RecoverVolumeExpansionFailure feature.
-  PersistentVolumeClaimStatus({
+  const PersistentVolumeClaimStatus({
     this.accessModes,
     this.allocatedResourceStatuses,
     this.allocatedResources,

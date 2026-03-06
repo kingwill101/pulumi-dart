@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse {
   /// Creates a new [GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse].
   /// [deidentifyStats] Stats about the de-identification operation.
   /// [requestedOptions] De-identification config used for the request.
-  GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse({
+  const GooglePrivacyDlpV2DeidentifyDataSourceDetailsResponse({
     required this.deidentifyStats,
     required this.requestedOptions,
   });

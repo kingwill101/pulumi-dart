@@ -12,7 +12,7 @@ class StatusMessage {
   /// Creates a new [StatusMessage].
   /// [errorCode] The error code
   /// [message] The error or status message
-  StatusMessage({
+  const StatusMessage({
     this.errorCode,
     this.message,
   });

@@ -10,7 +10,7 @@ class NotificationConfigResponse {
 
   /// Creates a new [NotificationConfigResponse].
   /// [pubsub] Notification config for Pub/Sub.
-  NotificationConfigResponse({
+  const NotificationConfigResponse({
     required this.pubsub,
   });
 

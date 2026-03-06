@@ -15,7 +15,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesSalesforce {
   /// [enableDynamicFieldUpdate] Flag that enables dynamic fetching of new (recently added) fields in the Salesforce objects while running a flow.
   /// [includeDeletedRecords] Whether Amazon AppFlow includes deleted files in the flow run.
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesSalesforce({
+  const FlowSourceFlowConfigSourceConnectorPropertiesSalesforce({
     this.dataTransferApi,
     this.enableDynamicFieldUpdate,
     this.includeDeletedRecords,

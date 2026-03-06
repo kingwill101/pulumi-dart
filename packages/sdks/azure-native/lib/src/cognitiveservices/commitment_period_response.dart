@@ -22,7 +22,7 @@ class CommitmentPeriodResponse {
   /// [quota] Cognitive Services account commitment quota.
   /// [startDate] Commitment period start date.
   /// [tier] Commitment period commitment tier.
-  CommitmentPeriodResponse({
+  const CommitmentPeriodResponse({
     this.count,
     required this.endDate,
     required this.quota,

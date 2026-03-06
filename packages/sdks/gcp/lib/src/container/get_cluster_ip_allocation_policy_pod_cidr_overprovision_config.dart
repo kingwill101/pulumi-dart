@@ -7,7 +7,7 @@ class GetClusterIpAllocationPolicyPodCidrOverprovisionConfig {
 
   /// Creates a new [GetClusterIpAllocationPolicyPodCidrOverprovisionConfig].
   /// [disabled] Required.
-  GetClusterIpAllocationPolicyPodCidrOverprovisionConfig({
+  const GetClusterIpAllocationPolicyPodCidrOverprovisionConfig({
     required this.disabled,
   });
 

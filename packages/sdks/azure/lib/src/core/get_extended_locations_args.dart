@@ -12,7 +12,7 @@ class GetExtendedLocationsArgs {
 
   /// Creates a new [GetExtendedLocationsArgs].
   /// [location] The Azure location to retrieve the Extended Locations for.
-  GetExtendedLocationsArgs({
+  const GetExtendedLocationsArgs({
     required this.location,
   });
 

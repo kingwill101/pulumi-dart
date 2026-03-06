@@ -10,7 +10,7 @@ class WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern
   /// Creates a new [WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern].
   /// [all] An empty configuration block that is used for inspecting all headers.
   /// [includedPaths] Optional.
-  WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern({
+  const WebAclRuleStatementSizeConstraintStatementFieldToMatchJsonBodyMatchPattern({
     this.all,
     this.includedPaths,
   });

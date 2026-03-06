@@ -9,7 +9,7 @@ class WorkteamWorkerAccessConfiguration {
 
   /// Creates a new [WorkteamWorkerAccessConfiguration].
   /// [s3Presign] Defines any Amazon S3 resource constraints. see S3 Presign details below.
-  WorkteamWorkerAccessConfiguration({
+  const WorkteamWorkerAccessConfiguration({
     this.s3Presign,
   });
 

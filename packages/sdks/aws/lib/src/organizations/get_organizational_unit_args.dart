@@ -15,7 +15,7 @@ class GetOrganizationalUnitArgs {
   /// Creates a new [GetOrganizationalUnitArgs].
   /// [name] Name of the organizational unit
   /// [parentId] Parent ID of the organizational unit.
-  GetOrganizationalUnitArgs({
+  const GetOrganizationalUnitArgs({
     required this.name,
     required this.parentId,
   });

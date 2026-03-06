@@ -13,7 +13,7 @@ class SelfHostedServerResponse {
   /// Creates a new [SelfHostedServerResponse].
   /// [endpoint] The endpoint of service.
   /// [type] The target service type.
-  SelfHostedServerResponse({
+  const SelfHostedServerResponse({
     this.endpoint,
     required this.type,
   });

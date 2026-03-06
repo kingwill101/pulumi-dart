@@ -26,7 +26,7 @@ class BatchPysparkBatch {
   /// [jarFileUris] HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
   /// [mainPythonFileUri] The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file.
   /// [pythonFileUris] HCFS file URIs of Python files to pass to the PySpark framework.
-  BatchPysparkBatch({
+  const BatchPysparkBatch({
     this.archiveUris,
     this.args,
     this.fileUris,

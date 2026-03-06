@@ -17,7 +17,7 @@ class ClusterNodeGroupDataDisk {
   /// [count] The count of a data disk.
   /// [performanceLevel] Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
   /// [size] The size of a data disk, at least 40. Unit: GiB.
-  ClusterNodeGroupDataDisk({
+  const ClusterNodeGroupDataDisk({
     required this.category,
     this.count,
     this.performanceLevel,

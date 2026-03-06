@@ -25,7 +25,7 @@ class GetOutboundRuleResult {
   /// [properties] Outbound Rule for the managed network of a machine learning workspace.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetOutboundRuleResult({
+  const GetOutboundRuleResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

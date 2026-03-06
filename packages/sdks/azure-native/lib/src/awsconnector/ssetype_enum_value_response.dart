@@ -9,7 +9,7 @@ class SSETypeEnumValueResponse {
 
   /// Creates a new [SSETypeEnumValueResponse].
   /// [value] Property value
-  SSETypeEnumValueResponse({
+  const SSETypeEnumValueResponse({
     this.value,
   });
 

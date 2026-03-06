@@ -34,7 +34,7 @@ class ScaleSetNetworkProfileIpConfiguration {
   /// [primary] Specifies if this ip_configuration is the primary one.
   /// [publicIpAddressConfiguration] Describes a virtual machines scale set IP Configuration's PublicIPAddress configuration. The `public_ip_address_configuration` block is documented below.
   /// [subnetId] Specifies the identifier of the subnet.
-  ScaleSetNetworkProfileIpConfiguration({
+  const ScaleSetNetworkProfileIpConfiguration({
     this.applicationGatewayBackendAddressPoolIds,
     this.applicationSecurityGroupIds,
     this.loadBalancerBackendAddressPoolIds,

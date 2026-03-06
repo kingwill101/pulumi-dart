@@ -27,7 +27,7 @@ class StaticFilesHandlerResponseAppengineV1beta {
   /// [path] Path to the static files matched by the URL pattern, from the application root directory. The path can refer to text matched in groupings in the URL pattern.
   /// [requireMatchingFile] Whether this handler should match the request if the file referenced by the handler does not exist.
   /// [uploadPathRegex] Regular expression that matches the file paths for all files that should be referenced by this handler.
-  StaticFilesHandlerResponseAppengineV1beta({
+  const StaticFilesHandlerResponseAppengineV1beta({
     required this.applicationReadable,
     required this.expiration,
     required this.httpHeaders,

@@ -12,7 +12,7 @@ class JobConfigInput {
   /// Creates a new [JobConfigInput].
   /// [key] A unique key for this input. Must be specified when using advanced mapping and edit lists.
   /// [uri] URI of the media. Input files must be at least 5 seconds in duration and stored in Cloud Storage (for example, gs://bucket/inputs/file.mp4).
-  JobConfigInput({
+  const JobConfigInput({
     this.key,
     this.uri,
   });

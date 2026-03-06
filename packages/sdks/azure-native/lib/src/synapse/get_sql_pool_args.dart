@@ -18,7 +18,7 @@ class GetSqlPoolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlPoolName] SQL pool name
   /// [workspaceName] The name of the workspace.
-  GetSqlPoolArgs({
+  const GetSqlPoolArgs({
     required this.resourceGroupName,
     required this.sqlPoolName,
     required this.workspaceName,

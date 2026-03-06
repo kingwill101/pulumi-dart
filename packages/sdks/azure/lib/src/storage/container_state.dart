@@ -42,7 +42,7 @@ class ContainerState {
   /// [resourceManagerId] The Resource Manager ID of this Storage Container.
   /// [storageAccountId] The name of the Storage Account where the Container should be created.
   /// [storageAccountName] The name of the Storage Account where the Container should be created. This property is deprecated in favour of `storage_account_id`.
-  ContainerState({
+  const ContainerState({
     this.containerAccessType,
     this.defaultEncryptionScope,
     this.encryptionScopeOverrideEnabled,

@@ -46,7 +46,7 @@ class GetInstancesInstance {
   /// [vncUrl] VNC login address.
   /// [vswitchId] The vswitch id.
   /// [zoneId] Required.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.description,
     required this.id,
     required this.imageId,

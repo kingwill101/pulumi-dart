@@ -22,7 +22,7 @@ class GetWebAclResult {
   /// [region] Required.
   /// [resourceArn] Optional.
   /// [scope] Required.
-  GetWebAclResult({
+  const GetWebAclResult({
     required this.arn,
     required this.description,
     required this.id,

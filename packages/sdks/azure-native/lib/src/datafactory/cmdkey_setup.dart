@@ -20,7 +20,7 @@ class CmdkeySetup {
   /// [targetName] The server name of data source access. Type: string.
   /// [type] The type of custom setup.
   /// [userName] The user name of data source access. Type: string.
-  CmdkeySetup({
+  const CmdkeySetup({
     required this.password,
     required this.targetName,
     required this.type,

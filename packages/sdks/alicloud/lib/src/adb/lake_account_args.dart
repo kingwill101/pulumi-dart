@@ -28,7 +28,7 @@ class LakeAccountArgs {
   /// [accountPrivileges] List of permissions granted. See `account_privileges` below.
   /// [accountType] The type of the account.
   /// [dbClusterId] The DBCluster ID.
-  LakeAccountArgs({
+  const LakeAccountArgs({
     this.accountDescription,
     required this.accountName,
     required this.accountPassword,

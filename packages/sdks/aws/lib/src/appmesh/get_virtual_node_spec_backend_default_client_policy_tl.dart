@@ -15,7 +15,7 @@ class GetVirtualNodeSpecBackendDefaultClientPolicyTl {
   /// [enforce] Required.
   /// [ports] Required.
   /// [validations] Required.
-  GetVirtualNodeSpecBackendDefaultClientPolicyTl({
+  const GetVirtualNodeSpecBackendDefaultClientPolicyTl({
     required this.certificates,
     required this.enforce,
     required this.ports,

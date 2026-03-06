@@ -8,7 +8,7 @@ class ScheduledActionTargetActionResumeCluster {
 
   /// Creates a new [ScheduledActionTargetActionResumeCluster].
   /// [clusterIdentifier] The identifier of the cluster to be resumed.
-  ScheduledActionTargetActionResumeCluster({
+  const ScheduledActionTargetActionResumeCluster({
     required this.clusterIdentifier,
   });
 

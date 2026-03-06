@@ -10,7 +10,7 @@ class ReleaseChannel {
 
   /// Creates a new [ReleaseChannel].
   /// [channel] channel specifies which release channel the cluster is subscribed to.
-  ReleaseChannel({
+  const ReleaseChannel({
     this.channel,
   });
 

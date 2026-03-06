@@ -24,7 +24,7 @@ class GetWorkspaceApiDiagnosticArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  GetWorkspaceApiDiagnosticArgs({
+  const GetWorkspaceApiDiagnosticArgs({
     required this.apiId,
     required this.diagnosticId,
     required this.resourceGroupName,

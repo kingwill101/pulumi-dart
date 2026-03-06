@@ -36,7 +36,7 @@ class TargetSiteArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [providedUriPattern] The user provided URI pattern from which the `generated_uri_pattern` is
   /// [type] The possible target site types.
-  TargetSiteArgs({
+  const TargetSiteArgs({
     required this.dataStoreId,
     this.exactMatch,
     required this.location,

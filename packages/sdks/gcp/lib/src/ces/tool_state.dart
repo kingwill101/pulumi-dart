@@ -88,7 +88,7 @@ class ToolState {
   /// [systemTools] The system tool.
   /// [toolId] The ID to use for the tool, which will become the final component of
   /// [updateTime] Timestamp when the tool was last updated.
-  ToolState({
+  const ToolState({
     this.app,
     this.clientFunction,
     this.createTime,

@@ -11,7 +11,7 @@ class DatascanDataDiscoverySpecStorageConfigJsonOptions {
   /// Creates a new [DatascanDataDiscoverySpecStorageConfigJsonOptions].
   /// [encoding] The character encoding of the data. The default is UTF-8.
   /// [typeInferenceDisabled] Whether to disable the inference of data types for JSON data. If true, all columns are registered as their primitive types (strings, number, or boolean).
-  DatascanDataDiscoverySpecStorageConfigJsonOptions({
+  const DatascanDataDiscoverySpecStorageConfigJsonOptions({
     this.encoding,
     this.typeInferenceDisabled,
   });

@@ -23,7 +23,7 @@ class ForwardingConfiguration {
   /// [customForwardingPath] A custom path used to rewrite resource paths matched by this rule. Leave empty to use incoming path.
   /// [forwardingProtocol] Protocol this rule will use when forwarding traffic to backends.
   /// [odataType] Expected value is '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration'.
-  ForwardingConfiguration({
+  const ForwardingConfiguration({
     this.backendPool,
     this.cacheConfiguration,
     this.customForwardingPath,

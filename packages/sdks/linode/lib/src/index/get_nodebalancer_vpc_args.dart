@@ -15,7 +15,7 @@ class GetNodebalancerVpcArgs {
   /// Creates a new [GetNodebalancerVpcArgs].
   /// [id] The ID of the VPC configuration.
   /// [nodebalancerId] The ID of the parent NodeBalancer of the VPC configuration.
-  GetNodebalancerVpcArgs({
+  const GetNodebalancerVpcArgs({
     required this.id,
     required this.nodebalancerId,
   });

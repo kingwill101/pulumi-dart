@@ -52,7 +52,7 @@ class KubernetesClusterArgs {
   /// [networkConfiguration] The configuration of the Kubernetes cluster networking, including the attachment of networks that span the cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  KubernetesClusterArgs({
+  const KubernetesClusterArgs({
     this.aadConfiguration,
     this.administratorConfiguration,
     required this.controlPlaneNodeConfiguration,

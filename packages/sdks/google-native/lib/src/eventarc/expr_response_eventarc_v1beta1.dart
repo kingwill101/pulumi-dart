@@ -18,7 +18,7 @@ class ExprResponseEventarcV1beta1 {
   /// [expression] Textual representation of an expression in Common Expression Language syntax.
   /// [location] Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
   /// [title] Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
-  ExprResponseEventarcV1beta1({
+  const ExprResponseEventarcV1beta1({
     required this.description,
     required this.expression,
     required this.location,

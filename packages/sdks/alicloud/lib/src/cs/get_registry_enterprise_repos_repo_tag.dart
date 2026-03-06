@@ -26,7 +26,7 @@ class GetRegistryEnterpriseReposRepoTag {
   /// [imageUpdate] The time when the image was last updated.
   /// [status] The status of the image.
   /// [tag] The tag of the image.
-  GetRegistryEnterpriseReposRepoTag({
+  const GetRegistryEnterpriseReposRepoTag({
     required this.digest,
     required this.imageCreate,
     required this.imageId,

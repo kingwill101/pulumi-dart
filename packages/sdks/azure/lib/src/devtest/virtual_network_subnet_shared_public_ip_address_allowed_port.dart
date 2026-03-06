@@ -11,7 +11,7 @@ class VirtualNetworkSubnetSharedPublicIpAddressAllowedPort {
   /// Creates a new [VirtualNetworkSubnetSharedPublicIpAddressAllowedPort].
   /// [backendPort] The port on the Virtual Machine that the traffic will be sent to.
   /// [transportProtocol] The transport protocol that the traffic will use. Possible values are `TCP` and `UDP`.
-  VirtualNetworkSubnetSharedPublicIpAddressAllowedPort({
+  const VirtualNetworkSubnetSharedPublicIpAddressAllowedPort({
     this.backendPort,
     this.transportProtocol,
   });

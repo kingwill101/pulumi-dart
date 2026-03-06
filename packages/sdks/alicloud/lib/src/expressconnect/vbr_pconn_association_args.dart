@@ -47,7 +47,7 @@ class VbrPconnAssociationArgs {
   /// [physicalConnectionId] The ID of the leased line instance.
   /// [vbrId] The ID of the VBR instance.
   /// [vlanId] VLAN ID of the VBR. Valid values: **0 to 2999**.
-  VbrPconnAssociationArgs({
+  const VbrPconnAssociationArgs({
     this.enableIpv6,
     this.localGatewayIp,
     this.localIpv6GatewayIp,

@@ -24,7 +24,7 @@ class GetAppSpecServiceLogDestination {
   /// [name] The name of the component.
   /// [openSearch] OpenSearch configuration.
   /// [papertrail] Papertrail configuration.
-  GetAppSpecServiceLogDestination({
+  const GetAppSpecServiceLogDestination({
     this.datadog,
     this.logtail,
     required this.name,

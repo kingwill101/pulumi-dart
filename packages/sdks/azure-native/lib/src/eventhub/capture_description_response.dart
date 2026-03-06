@@ -25,7 +25,7 @@ class CaptureDescriptionResponse {
   /// [intervalInSeconds] The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds
   /// [sizeLimitInBytes] The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
   /// [skipEmptyArchives] A value that indicates whether to Skip Empty Archives
-  CaptureDescriptionResponse({
+  const CaptureDescriptionResponse({
     this.destination,
     this.enabled,
     this.encoding,

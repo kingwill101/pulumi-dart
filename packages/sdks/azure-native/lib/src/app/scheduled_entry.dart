@@ -16,7 +16,7 @@ class ScheduledEntry {
   /// [durationHours] Length of maintenance window range from 8 to 24 hours.
   /// [startHourUtc] Start hour after which managed environment maintenance can start from 0 to 23 hour.
   /// [weekDay] Day of the week when a managed environment can be patched.
-  ScheduledEntry({
+  const ScheduledEntry({
     required this.durationHours,
     required this.startHourUtc,
     required this.weekDay,

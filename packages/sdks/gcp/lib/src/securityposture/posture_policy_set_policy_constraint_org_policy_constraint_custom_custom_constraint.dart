@@ -27,7 +27,7 @@ class PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint 
   /// [methodTypes] A list of RESTful methods for which to enforce the constraint. Can be `CREATE`, `UPDATE`, or both. Not all Google Cloud services support both methods. To see supported methods for each service, find the service in [Supported services](https://docs.cloud.google.com/resource-manager/docs/organization-policy/custom-constraint-supported-services).
   /// [name] Immutable. The name of the custom constraint. This is unique within the organization.
   /// [resourceTypes] Immutable. The fully qualified name of the Google Cloud REST resource containing the object and field you want to restrict. For example, `container.googleapis.com/NodePool`.
-  PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint({
+  const PosturePolicySetPolicyConstraintOrgPolicyConstraintCustomCustomConstraint({
     required this.actionType,
     required this.condition,
     this.description,

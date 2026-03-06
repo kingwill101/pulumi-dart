@@ -38,7 +38,7 @@ class StarRocksInstanceBackendNodeGroup {
   /// [storagePerformanceLevel] Performance levels of cloud disks include the following values:
   /// [storageSize] Storage size, measured in GiB.
   /// [zoneId] Zone ID.
-  StarRocksInstanceBackendNodeGroup({
+  const StarRocksInstanceBackendNodeGroup({
     this.cu,
     this.diskNumber,
     this.localStorageInstanceType,

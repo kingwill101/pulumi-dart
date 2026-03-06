@@ -11,7 +11,7 @@ class ClusterConfigurationInfo {
   /// Creates a new [ClusterConfigurationInfo].
   /// [arn] Amazon Resource Name (ARN) of the MSK Configuration to use in the cluster.
   /// [revision] Revision of the MSK Configuration to use in the cluster.
-  ClusterConfigurationInfo({
+  const ClusterConfigurationInfo({
     required this.arn,
     required this.revision,
   });

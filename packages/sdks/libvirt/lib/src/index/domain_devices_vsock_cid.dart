@@ -11,7 +11,7 @@ class DomainDevicesVsockCid {
   /// Creates a new [DomainDevicesVsockCid].
   /// [address] Defines the address attribute for the CID of the vsock device.
   /// [auto] Indicates whether the CID is automatically assigned for the vsock device.
-  DomainDevicesVsockCid({
+  const DomainDevicesVsockCid({
     this.address,
     this.auto,
   });

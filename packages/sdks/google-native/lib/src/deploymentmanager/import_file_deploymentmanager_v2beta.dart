@@ -11,7 +11,7 @@ class ImportFileDeploymentmanagerV2beta {
   /// Creates a new [ImportFileDeploymentmanagerV2beta].
   /// [content] The contents of the file.
   /// [name] The name of the file.
-  ImportFileDeploymentmanagerV2beta({
+  const ImportFileDeploymentmanagerV2beta({
     this.content,
     this.name,
   });

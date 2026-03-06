@@ -13,7 +13,7 @@ class GetIndexUserTokenConfiguration {
   /// Creates a new [GetIndexUserTokenConfiguration].
   /// [jsonTokenTypeConfigurations] A block that specifies the information about the JSON token type configuration.
   /// [jwtTokenTypeConfigurations] A block that specifies the information about the JWT token type configuration.
-  GetIndexUserTokenConfiguration({
+  const GetIndexUserTokenConfiguration({
     required this.jsonTokenTypeConfigurations,
     required this.jwtTokenTypeConfigurations,
   });

@@ -34,7 +34,7 @@ class FirewallNatRuleCollectionRule {
   /// [sourceIpGroups] A list of source IP Group IDs for the rule.
   /// [translatedAddress] The address of the service behind the Firewall.
   /// [translatedPort] The port of the service behind the Firewall.
-  FirewallNatRuleCollectionRule({
+  const FirewallNatRuleCollectionRule({
     this.description,
     required this.destinationAddresses,
     required this.destinationPorts,

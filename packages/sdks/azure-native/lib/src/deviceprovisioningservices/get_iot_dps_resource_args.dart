@@ -15,7 +15,7 @@ class GetIotDpsResourceArgs {
   /// Creates a new [GetIotDpsResourceArgs].
   /// [provisioningServiceName] Name of the provisioning service to retrieve.
   /// [resourceGroupName] Resource group name.
-  GetIotDpsResourceArgs({
+  const GetIotDpsResourceArgs({
     required this.provisioningServiceName,
     required this.resourceGroupName,
   });

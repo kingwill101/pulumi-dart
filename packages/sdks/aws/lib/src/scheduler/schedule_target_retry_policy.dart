@@ -11,7 +11,7 @@ class ScheduleTargetRetryPolicy {
   /// Creates a new [ScheduleTargetRetryPolicy].
   /// [maximumEventAgeInSeconds] Maximum amount of time, in seconds, to continue to make retry attempts. Ranges from `60` to `86400` (default).
   /// [maximumRetryAttempts] Maximum number of retry attempts to make before the request fails. Ranges from `0` to `185` (default).
-  ScheduleTargetRetryPolicy({
+  const ScheduleTargetRetryPolicy({
     this.maximumEventAgeInSeconds,
     this.maximumRetryAttempts,
   });

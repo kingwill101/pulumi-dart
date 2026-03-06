@@ -32,7 +32,7 @@ class GetTargetTcpProxyComputeBetaResult {
   /// [region] URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
   /// [selfLink] Server-defined URL for the resource.
   /// [service] URL to the BackendService resource.
-  GetTargetTcpProxyComputeBetaResult({
+  const GetTargetTcpProxyComputeBetaResult({
     required this.creationTimestamp,
     required this.description,
     required this.kind,

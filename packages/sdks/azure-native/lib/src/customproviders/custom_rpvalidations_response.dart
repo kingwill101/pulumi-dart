@@ -12,7 +12,7 @@ class CustomRPValidationsResponse {
   /// Creates a new [CustomRPValidationsResponse].
   /// [specification] A link to the validation specification. The specification must be hosted on raw.githubusercontent.com.
   /// [validationType] The type of validation to run against a matching request.
-  CustomRPValidationsResponse({
+  const CustomRPValidationsResponse({
     required this.specification,
     this.validationType,
   });

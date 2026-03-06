@@ -18,7 +18,7 @@ class AwsLambdaFunctionCodeLocationPropertiesResponse {
   /// [location] &lt;p&gt;A presigned URL that you can use to download the deployment package.&lt;/p&gt;
   /// [repositoryType] &lt;p&gt;The service that's hosting the file.&lt;/p&gt;
   /// [resolvedImageUri] &lt;p&gt;The resolved URI for the image.&lt;/p&gt;
-  AwsLambdaFunctionCodeLocationPropertiesResponse({
+  const AwsLambdaFunctionCodeLocationPropertiesResponse({
     this.imageUri,
     this.location,
     this.repositoryType,

@@ -10,7 +10,7 @@ class EnterpriseCrmEventbusProtoEventBusProperties {
 
   /// Creates a new [EnterpriseCrmEventbusProtoEventBusProperties].
   /// [properties] An unordered list of property entries.
-  EnterpriseCrmEventbusProtoEventBusProperties({
+  const EnterpriseCrmEventbusProtoEventBusProperties({
     this.properties,
   });
 

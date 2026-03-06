@@ -23,7 +23,7 @@ class GetLienCloudresourcemanagerV3Result {
   /// [parent] A reference to the resource this Lien is attached to. The server will validate the parent against those for which Liens are supported. Example: `projects/1234`
   /// [reason] Concise user-visible strings indicating why an action cannot be performed on a resource. Maximum length of 200 characters. Example: 'Holds production API key'
   /// [restrictions] The types of operations which should be blocked as a result of this Lien. Each value should correspond to an IAM permission. The server will validate the permissions against those for which Liens are supported. An empty list is meaningless and will be rejected. Example: ['resourcemanager.projects.delete']
-  GetLienCloudresourcemanagerV3Result({
+  const GetLienCloudresourcemanagerV3Result({
     required this.createTime,
     required this.name,
     required this.origin,

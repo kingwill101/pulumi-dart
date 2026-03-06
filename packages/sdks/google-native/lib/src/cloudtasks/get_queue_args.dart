@@ -15,7 +15,7 @@ class GetQueueArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [queueId] Required.
-  GetQueueArgs({
+  const GetQueueArgs({
     required this.location,
     this.project,
     required this.queueId,

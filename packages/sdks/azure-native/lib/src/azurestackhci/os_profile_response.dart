@@ -30,7 +30,7 @@ class OsProfileResponse {
   /// [osSku] OS SKU (e.g., “ Microsoft Azure Linux ROE“, “Azure Stack HCI", "Microsoft Azure Linux 3.0")
   /// [osType] OS type (“windows", “linux”)
   /// [osVersion] OS Version
-  OsProfileResponse({
+  const OsProfileResponse({
     required this.assemblyVersion,
     required this.baseImageVersion,
     required this.bootType,

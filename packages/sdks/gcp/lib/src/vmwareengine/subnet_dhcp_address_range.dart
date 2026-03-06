@@ -13,7 +13,7 @@ class SubnetDhcpAddressRange {
   /// Creates a new [SubnetDhcpAddressRange].
   /// [firstAddress] (Output)
   /// [lastAddress] (Output)
-  SubnetDhcpAddressRange({
+  const SubnetDhcpAddressRange({
     this.firstAddress,
     this.lastAddress,
   });

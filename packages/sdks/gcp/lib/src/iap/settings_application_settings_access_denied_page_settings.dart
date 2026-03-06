@@ -14,7 +14,7 @@ class SettingsApplicationSettingsAccessDeniedPageSettings {
   /// [accessDeniedPageUri] The URI to be redirected to when access is denied.
   /// [generateTroubleshootingUri] Whether to generate a troubleshooting URL on access denied events to this application.
   /// [remediationTokenGenerationEnabled] Whether to generate remediation token on access denied events to this application.
-  SettingsApplicationSettingsAccessDeniedPageSettings({
+  const SettingsApplicationSettingsAccessDeniedPageSettings({
     this.accessDeniedPageUri,
     this.generateTroubleshootingUri,
     this.remediationTokenGenerationEnabled,

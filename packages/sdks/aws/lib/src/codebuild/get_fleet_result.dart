@@ -59,7 +59,7 @@ class GetFleetResult {
   /// [statuses] Nested attribute containing information about the current status of the fleet.
   /// [tags] Mapping of Key-Value tags for the resource.
   /// [vpcConfigs] Nested attribute containing information about the VPC configuration.
-  GetFleetResult({
+  const GetFleetResult({
     required this.arn,
     required this.baseCapacity,
     required this.computeConfigurations,

@@ -9,7 +9,7 @@ class DataAccessOptions {
 
   /// Creates a new [DataAccessOptions].
   /// [logMode] Optional.
-  DataAccessOptions({
+  const DataAccessOptions({
     this.logMode,
   });
 

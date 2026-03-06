@@ -47,7 +47,7 @@ class AutomationArgs {
   /// [selector] Selected resources to which the automation will be applied.
   /// [serviceAccount] Email address of the user-managed IAM service account that creates Cloud Deploy release and rollout resources.
   /// [suspended] Optional. When Suspended, automation is deactivated from execution.
-  AutomationArgs({
+  const AutomationArgs({
     this.annotations,
     required this.automationId,
     required this.deliveryPipelineId,

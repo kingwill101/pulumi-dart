@@ -70,7 +70,7 @@ class ServerGroupHealthCheckConfig {
   /// [healthCheckProtocol] The protocol that is used for health checks. Valid values:
   /// [healthyThreshold] The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from `fail` to `success`.
   /// [unhealthyThreshold] The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from `success` to `fail`.
-  ServerGroupHealthCheckConfig({
+  const ServerGroupHealthCheckConfig({
     this.healthCheckConnectPort,
     this.healthCheckConnectTimeout,
     this.healthCheckDomain,

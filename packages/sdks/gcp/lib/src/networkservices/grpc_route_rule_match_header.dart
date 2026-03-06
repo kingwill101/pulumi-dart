@@ -16,7 +16,7 @@ class GrpcRouteRuleMatchHeader {
   /// [key] Required. The key of the header.
   /// [type] The type of match.
   /// [value] Required. The value of the header.
-  GrpcRouteRuleMatchHeader({
+  const GrpcRouteRuleMatchHeader({
     required this.key,
     this.type,
     required this.value,

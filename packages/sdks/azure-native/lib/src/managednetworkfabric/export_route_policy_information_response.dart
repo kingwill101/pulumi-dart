@@ -12,7 +12,7 @@ class ExportRoutePolicyInformationResponse {
   /// Creates a new [ExportRoutePolicyInformationResponse].
   /// [exportIpv4RoutePolicyId] Export IPv4 Route Policy Id.
   /// [exportIpv6RoutePolicyId] Export IPv6 Route Policy Id.
-  ExportRoutePolicyInformationResponse({
+  const ExportRoutePolicyInformationResponse({
     this.exportIpv4RoutePolicyId,
     this.exportIpv6RoutePolicyId,
   });

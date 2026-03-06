@@ -12,7 +12,7 @@ class ArtifactParameterProperties {
   /// Creates a new [ArtifactParameterProperties].
   /// [name] The name of the artifact parameter.
   /// [value] The value of the artifact parameter.
-  ArtifactParameterProperties({
+  const ArtifactParameterProperties({
     this.name,
     this.value,
   });

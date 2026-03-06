@@ -17,7 +17,7 @@ class AppVersionSnapshotGuardrailLlmPolicyModelSetting {
   /// Creates a new [AppVersionSnapshotGuardrailLlmPolicyModelSetting].
   /// [model] (Output)
   /// [temperature] (Output)
-  AppVersionSnapshotGuardrailLlmPolicyModelSetting({
+  const AppVersionSnapshotGuardrailLlmPolicyModelSetting({
     this.model,
     this.temperature,
   });

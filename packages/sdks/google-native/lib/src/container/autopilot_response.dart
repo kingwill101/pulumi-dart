@@ -13,7 +13,7 @@ class AutopilotResponse {
   /// Creates a new [AutopilotResponse].
   /// [enabled] Enable Autopilot
   /// [workloadPolicyConfig] Workload policy configuration for Autopilot.
-  AutopilotResponse({
+  const AutopilotResponse({
     required this.enabled,
     required this.workloadPolicyConfig,
   });

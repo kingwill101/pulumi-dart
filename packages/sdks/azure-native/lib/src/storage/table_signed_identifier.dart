@@ -13,7 +13,7 @@ class TableSignedIdentifier {
   /// Creates a new [TableSignedIdentifier].
   /// [accessPolicy] Access policy
   /// [id] unique-64-character-value of the stored access policy.
-  TableSignedIdentifier({
+  const TableSignedIdentifier({
     this.accessPolicy,
     required this.id,
   });

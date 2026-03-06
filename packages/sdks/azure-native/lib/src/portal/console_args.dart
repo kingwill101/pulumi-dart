@@ -16,7 +16,7 @@ class ConsoleArgs {
   /// Creates a new [ConsoleArgs].
   /// [consoleName] The name of the console
   /// [properties] Cloud shell properties for creating a console.
-  ConsoleArgs({
+  const ConsoleArgs({
     this.consoleName,
     required this.properties,
   });

@@ -23,7 +23,7 @@ class GetAggregateV2Result {
   /// [name] See Argument Reference above.
   /// [region] See Argument Reference above.
   /// [zone] Availability zone of the Host Aggregate
-  GetAggregateV2Result({
+  const GetAggregateV2Result({
     required this.hosts,
     required this.id,
     required this.metadata,

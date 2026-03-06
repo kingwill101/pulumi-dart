@@ -32,7 +32,7 @@ class LaunchTemplatePlacement {
   /// [partitionNumber] The number of the partition the instance should launch in. Valid only if the placement group strategy is set to partition.
   /// [spreadDomain] Reserved for future use.
   /// [tenancy] The tenancy of the instance (if the instance is running in a VPC). Can be `default`, `dedicated`, or `host`.
-  LaunchTemplatePlacement({
+  const LaunchTemplatePlacement({
     this.affinity,
     this.availabilityZone,
     this.groupId,

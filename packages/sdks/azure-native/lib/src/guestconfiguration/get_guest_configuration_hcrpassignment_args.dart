@@ -18,7 +18,7 @@ class GetGuestConfigurationHCRPAssignmentArgs {
   /// [guestConfigurationAssignmentName] The guest configuration assignment name.
   /// [machineName] The name of the ARC machine.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGuestConfigurationHCRPAssignmentArgs({
+  const GetGuestConfigurationHCRPAssignmentArgs({
     required this.guestConfigurationAssignmentName,
     required this.machineName,
     required this.resourceGroupName,

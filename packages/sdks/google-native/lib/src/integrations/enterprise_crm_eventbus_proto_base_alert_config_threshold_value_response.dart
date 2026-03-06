@@ -10,7 +10,7 @@ class EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse {
   /// Creates a new [EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse].
   /// [absolute] Required.
   /// [percentage] Required.
-  EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse({
+  const EnterpriseCrmEventbusProtoBaseAlertConfigThresholdValueResponse({
     required this.absolute,
     required this.percentage,
   });

@@ -9,7 +9,7 @@ class MembershipSpecResponse {
 
   /// Creates a new [MembershipSpecResponse].
   /// [certificateManagement] Specifies workload certificate management.
-  MembershipSpecResponse({
+  const MembershipSpecResponse({
     required this.certificateManagement,
   });
 

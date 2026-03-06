@@ -34,7 +34,7 @@ class AvailabilityGroupInfo {
   /// [isDistributed] Specifies whether this is a distributed availability group.
   /// [listener] The listener for the sql server availability group
   /// [requiredSynchronizedSecondariesToCommit] The number of secondary replicas that must be in a synchronized state for a commit to complete.
-  AvailabilityGroupInfo({
+  const AvailabilityGroupInfo({
     this.basicFeatures,
     this.dbFailover,
     this.dtcSupport,

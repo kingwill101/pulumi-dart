@@ -12,7 +12,7 @@ class DeploymentCapacitySettingsResponse {
   /// Creates a new [DeploymentCapacitySettingsResponse].
   /// [designatedCapacity] The designated capacity.
   /// [priority] The priority of this capacity setting.
-  DeploymentCapacitySettingsResponse({
+  const DeploymentCapacitySettingsResponse({
     this.designatedCapacity,
     this.priority,
   });

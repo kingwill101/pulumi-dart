@@ -38,7 +38,7 @@ class EndpointArgs {
   /// [severity] Lowest threat severity that this endpoint will alert on.
   /// [threatExceptions] List of threat IDs to be excepted from generating alerts.
   /// [trafficLogs] Whether the endpoint should report traffic logs in addition to threat logs.
-  EndpointArgs({
+  const EndpointArgs({
     this.description,
     required this.endpointId,
     this.labels,

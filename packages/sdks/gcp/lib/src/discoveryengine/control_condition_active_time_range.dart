@@ -11,7 +11,7 @@ class ControlConditionActiveTimeRange {
   /// Creates a new [ControlConditionActiveTimeRange].
   /// [endTime] The end time of the active time range.
   /// [startTime] The start time of the active time range.
-  ControlConditionActiveTimeRange({
+  const ControlConditionActiveTimeRange({
     this.endTime,
     this.startTime,
   });

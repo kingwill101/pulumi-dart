@@ -16,7 +16,7 @@ class IamAuditConfigAuditLogConfig {
   /// Creates a new [IamAuditConfigAuditLogConfig].
   /// [exemptedMembers] Identities that do not cause logging for this type of permission.
   /// [logType] Permission type for which logging is to be configured.  Must be one of `DATA_READ`, `DATA_WRITE`, or `ADMIN_READ`.
-  IamAuditConfigAuditLogConfig({
+  const IamAuditConfigAuditLogConfig({
     this.exemptedMembers,
     required this.logType,
   });

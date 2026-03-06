@@ -16,7 +16,7 @@ class ClusterV2ManagerDns {
   /// Creates a new [ClusterV2ManagerDns].
   /// [type] The scheduler type. Valid values:
   /// [version] Optional.
-  ClusterV2ManagerDns({
+  const ClusterV2ManagerDns({
     this.type,
     this.version,
   });

@@ -21,7 +21,7 @@ class DomainDevicesHostdevSubsysScsi {
   /// [sgio] Controls whether SCSI generic I/O is enabled for the device.
   /// [shareable] Indicates if the SCSI device can be shared among different guests.
   /// [source] Specifies the source configuration for the SCSI device being passed through.
-  DomainDevicesHostdevSubsysScsi({
+  const DomainDevicesHostdevSubsysScsi({
     this.rawIo,
     this.readOnly,
     this.sgio,

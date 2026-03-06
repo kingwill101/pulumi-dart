@@ -27,7 +27,7 @@ class VpcState {
   /// [label] The label of the VPC. This field can only contain ASCII letters, digits and dashes.
   /// [region] The region of the VPC.
   /// [updated] The date and time when the VPC was last updated.
-  VpcState({
+  const VpcState({
     this.created,
     this.description,
     this.ipv6s,

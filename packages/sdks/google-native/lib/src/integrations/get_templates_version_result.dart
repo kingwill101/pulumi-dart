@@ -56,7 +56,7 @@ class GetTemplatesVersionResult {
   /// [triggerConfigs] Optional. Trigger configurations.
   /// [updateTime] Auto-generated.
   /// [userLabel] Optional. A user-defined label that annotates an integration version. Typically, this is only set when the integration version is created.
-  GetTemplatesVersionResult({
+  const GetTemplatesVersionResult({
     required this.createTime,
     required this.databasePersistencePolicy,
     required this.description,

@@ -24,7 +24,7 @@ class WorkspaceArgs {
   /// [serviceName] The name of Azure API Center service.
   /// [title] Workspace title.
   /// [workspaceName] The name of the workspace.
-  WorkspaceArgs({
+  const WorkspaceArgs({
     this.description,
     required this.resourceGroupName,
     required this.serviceName,

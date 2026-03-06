@@ -44,7 +44,7 @@ class VirtualMachineInstanceArgs {
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the Hybrid Compute machine resource to be extended.
   /// [securityProfile] Gets the security profile.
   /// [storageProfile] Storage properties.
-  VirtualMachineInstanceArgs({
+  const VirtualMachineInstanceArgs({
     this.extendedLocation,
     this.hardwareProfile,
     this.infrastructureProfile,

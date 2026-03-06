@@ -11,7 +11,7 @@ class GetLinuxFunctionAppSiteConfigAppServiceLog {
   /// Creates a new [GetLinuxFunctionAppSiteConfigAppServiceLog].
   /// [diskQuotaMb] The amount of disk space used for logs.
   /// [retentionPeriodDays] After how many days backups are deleted.
-  GetLinuxFunctionAppSiteConfigAppServiceLog({
+  const GetLinuxFunctionAppSiteConfigAppServiceLog({
     required this.diskQuotaMb,
     required this.retentionPeriodDays,
   });

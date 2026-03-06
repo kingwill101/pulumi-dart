@@ -13,7 +13,7 @@ class CostInformationResponse {
   /// Creates a new [CostInformationResponse].
   /// [billingInfoUrl] Default url to display billing information.
   /// [billingMeterDetails] Details on the various billing aspects for the product system.
-  CostInformationResponse({
+  const CostInformationResponse({
     required this.billingInfoUrl,
     required this.billingMeterDetails,
   });

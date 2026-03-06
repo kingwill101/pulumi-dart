@@ -22,7 +22,7 @@ class GetAddressBooksArgs {
   /// [ids] A list of Address Book IDs.
   /// [nameRegex] A regex string to filter results Address Book name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetAddressBooksArgs({
+  const GetAddressBooksArgs({
     this.groupType,
     this.ids,
     this.nameRegex,

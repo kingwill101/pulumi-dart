@@ -12,7 +12,7 @@ class VariableSpecificationResponse {
   /// Creates a new [VariableSpecificationResponse].
   /// [defaultValue] Default value of variable.
   /// [type] Variable type.
-  VariableSpecificationResponse({
+  const VariableSpecificationResponse({
     this.defaultValue,
     required this.type,
   });

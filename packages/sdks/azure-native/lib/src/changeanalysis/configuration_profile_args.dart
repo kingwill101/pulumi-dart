@@ -23,7 +23,7 @@ class ConfigurationProfileArgs {
   /// [location] The location where the resource is to be deployed.
   /// [profileName] The name of the configuration profile. The profile name should be set to 'default', all other names will be overwritten.
   /// [properties] The properties of a configuration profile.
-  ConfigurationProfileArgs({
+  const ConfigurationProfileArgs({
     this.identity,
     this.location,
     this.profileName,

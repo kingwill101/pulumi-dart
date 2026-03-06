@@ -14,7 +14,7 @@ class UserSettingsCookieSynchronizationConfigurationBlocklist {
   /// [domain] Domain of the cookie.
   /// [name] Name of the cookie.
   /// [path] Path of the cookie.
-  UserSettingsCookieSynchronizationConfigurationBlocklist({
+  const UserSettingsCookieSynchronizationConfigurationBlocklist({
     required this.domain,
     this.name,
     this.path,

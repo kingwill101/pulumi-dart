@@ -61,7 +61,7 @@ class ExactDeviceRequestPatch {
   /// [deviceClassName] DeviceClassName references a specific DeviceClass, which can define additional configuration and selectors to be inherited by this request.
   /// [selectors] Selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered.
   /// [tolerations] If specified, the request's tolerations.
-  ExactDeviceRequestPatch({
+  const ExactDeviceRequestPatch({
     this.adminAccess,
     this.allocationMode,
     this.capacity,

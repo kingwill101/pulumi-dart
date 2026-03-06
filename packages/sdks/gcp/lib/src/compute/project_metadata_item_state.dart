@@ -18,7 +18,7 @@ class ProjectMetadataItemState {
   /// [key] The metadata key to set.
   /// [project] The ID of the project in which the resource belongs. If it
   /// [value] The value to set for the given metadata key.
-  ProjectMetadataItemState({
+  const ProjectMetadataItemState({
     this.key,
     this.project,
     this.value,

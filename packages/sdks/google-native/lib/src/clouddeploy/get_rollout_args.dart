@@ -19,7 +19,7 @@ class GetRolloutArgs {
   /// [project] Optional.
   /// [releaseId] Required.
   /// [rolloutId] Required.
-  GetRolloutArgs({
+  const GetRolloutArgs({
     required this.deliveryPipelineId,
     required this.location,
     this.project,

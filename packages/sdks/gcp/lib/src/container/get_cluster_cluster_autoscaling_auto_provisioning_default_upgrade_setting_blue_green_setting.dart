@@ -14,7 +14,7 @@ class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreen
   /// Creates a new [GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting].
   /// [nodePoolSoakDuration] Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
   /// [standardRolloutPolicies] Standard policy for the blue-green upgrade.
-  GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting({
+  const GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting({
     required this.nodePoolSoakDuration,
     required this.standardRolloutPolicies,
   });

@@ -31,7 +31,7 @@ class KubernetesPropertiesResponse {
   /// [relayConnectionString] Relay connection string.
   /// [serviceBusConnectionString] ServiceBus connection string.
   /// [vcName] VC name.
-  KubernetesPropertiesResponse({
+  const KubernetesPropertiesResponse({
     this.defaultInstanceType,
     this.extensionInstanceReleaseTrain,
     this.extensionPrincipalId,

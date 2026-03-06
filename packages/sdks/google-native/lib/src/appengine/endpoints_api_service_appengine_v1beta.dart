@@ -19,7 +19,7 @@ class EndpointsApiServiceAppengineV1beta {
   /// [disableTraceSampling] Enable or disable trace sampling. By default, this is set to false for enabled.
   /// [name] Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog"
   /// [rolloutStrategy] Endpoints rollout strategy. If FIXED, config_id must be specified. If MANAGED, config_id must be omitted.
-  EndpointsApiServiceAppengineV1beta({
+  const EndpointsApiServiceAppengineV1beta({
     this.configId,
     this.disableTraceSampling,
     this.name,

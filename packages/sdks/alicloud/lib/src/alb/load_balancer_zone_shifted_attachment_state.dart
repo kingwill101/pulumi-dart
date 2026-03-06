@@ -18,7 +18,7 @@ class LoadBalancerZoneShiftedAttachmentState {
   /// [status] Availability zone status. Value:
   /// [vswitchId] The VSwitch corresponding to the zone. By default, each zone uses one VSwitch and one subnet.
   /// [zoneId] The ID of the zone.
-  LoadBalancerZoneShiftedAttachmentState({
+  const LoadBalancerZoneShiftedAttachmentState({
     this.loadBalancerId,
     this.status,
     this.vswitchId,

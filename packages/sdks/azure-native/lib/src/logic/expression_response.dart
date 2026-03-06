@@ -18,7 +18,7 @@ class ExpressionResponse {
   /// [subexpressions] The sub expressions.
   /// [text] The text.
   /// [value] Optional.
-  ExpressionResponse({
+  const ExpressionResponse({
     this.error,
     this.subexpressions,
     this.text,

@@ -54,7 +54,7 @@ class EngineArgs {
   /// [searchEngineConfig] Configurations for the Search Engine. Only applicable if solution_type is SOLUTION_TYPE_SEARCH.
   /// [similarDocumentsConfig] Additional config specs for a `similar-items` engine.
   /// [solutionType] The solutions of the engine.
-  EngineArgs({
+  const EngineArgs({
     this.chatEngineConfig,
     required this.collectionId,
     this.commonConfig,

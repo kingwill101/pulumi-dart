@@ -11,7 +11,7 @@ class GetLoadBalancerConnectionLog {
   /// [bucket] Required.
   /// [enabled] Required.
   /// [prefix] Required.
-  GetLoadBalancerConnectionLog({
+  const GetLoadBalancerConnectionLog({
     required this.bucket,
     required this.enabled,
     required this.prefix,

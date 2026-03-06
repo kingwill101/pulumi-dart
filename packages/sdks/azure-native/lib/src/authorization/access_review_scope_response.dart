@@ -36,7 +36,7 @@ class AccessReviewScopeResponse {
   /// [principalType] The identity type user/servicePrincipal to review
   /// [resourceId] ResourceId in which this review is getting created
   /// [roleDefinitionId] This is used to indicate the role being reviewed
-  AccessReviewScopeResponse({
+  const AccessReviewScopeResponse({
     required this.assignmentState,
     this.excludeResourceId,
     this.excludeRoleDefinitionId,

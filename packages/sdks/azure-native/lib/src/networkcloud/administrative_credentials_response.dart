@@ -11,7 +11,7 @@ class AdministrativeCredentialsResponse {
   /// Creates a new [AdministrativeCredentialsResponse].
   /// [password] The password of the administrator of the device used during initialization.
   /// [username] The username of the administrator of the device used during initialization.
-  AdministrativeCredentialsResponse({
+  const AdministrativeCredentialsResponse({
     required this.password,
     required this.username,
   });

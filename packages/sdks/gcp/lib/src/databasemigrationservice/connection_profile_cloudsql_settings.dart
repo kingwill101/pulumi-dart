@@ -66,7 +66,7 @@ class ConnectionProfileCloudsqlSettings {
   /// [tier] The tier (or machine type) for this instance, for example: db-n1-standard-1 (MySQL instances) or db-custom-1-3840 (PostgreSQL instances).
   /// [userLabels] The resource labels for a Cloud SQL instance to use to annotate any related underlying resources such as Compute Engine VMs.
   /// [zone] The Google Cloud Platform zone where your Cloud SQL datdabse instance is located.
-  ConnectionProfileCloudsqlSettings({
+  const ConnectionProfileCloudsqlSettings({
     this.activationPolicy,
     this.autoStorageIncrease,
     this.cmekKeyName,

@@ -9,7 +9,7 @@ class HighAvailabilityProperties {
 
   /// Creates a new [HighAvailabilityProperties].
   /// [targetMode] The target high availability mode requested for the cluster.
-  HighAvailabilityProperties({
+  const HighAvailabilityProperties({
     this.targetMode,
   });
 

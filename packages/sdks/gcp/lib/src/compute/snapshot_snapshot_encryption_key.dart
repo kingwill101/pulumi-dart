@@ -27,7 +27,7 @@ class SnapshotSnapshotEncryptionKey {
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [rsaEncryptedKey] Specifies an encryption key stored in Google Cloud KMS, encoded in
   /// [sha256] (Output)
-  SnapshotSnapshotEncryptionKey({
+  const SnapshotSnapshotEncryptionKey({
     this.kmsKeySelfLink,
     this.kmsKeyServiceAccount,
     this.rawKey,

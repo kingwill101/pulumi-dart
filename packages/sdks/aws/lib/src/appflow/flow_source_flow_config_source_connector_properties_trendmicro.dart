@@ -7,7 +7,7 @@ class FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro {
 
   /// Creates a new [FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro].
   /// [object_] Required.
-  FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro({
+  const FlowSourceFlowConfigSourceConnectorPropertiesTrendmicro({
     required this.object_,
   });
 

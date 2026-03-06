@@ -18,7 +18,7 @@ class GetMscSubWebhooksArgs {
   /// [ids] A list of Webhook IDs.
   /// [nameRegex] A regex string to filter results by Webhook name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetMscSubWebhooksArgs({
+  const GetMscSubWebhooksArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

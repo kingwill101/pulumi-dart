@@ -49,7 +49,7 @@ class GetTransferJobResult {
   /// [schedule] Specifies schedule for the transfer job. This is an optional field. When the field is not set, the job never executes a transfer, unless you invoke RunTransferJob or update the job to have a non-empty schedule.
   /// [status] Status of the job. This value MUST be specified for `CreateTransferJobRequests`. **Note:** The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.
   /// [transferSpec] Transfer specification.
-  GetTransferJobResult({
+  const GetTransferJobResult({
     required this.creationTime,
     required this.deletionTime,
     required this.description,

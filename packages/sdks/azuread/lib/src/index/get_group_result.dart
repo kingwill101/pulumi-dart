@@ -99,7 +99,7 @@ class GetGroupResult {
   /// [types] A list of group types configured for the group. Supported values are `DynamicMembership`, which denotes a group with dynamic membership, and `Unified`, which specifies a Microsoft 365 group.
   /// [visibility] The group join policy and group content visibility. Possible values are `Private`, `Public`, or `Hiddenmembership`. Only Microsoft 365 groups can have `Hiddenmembership` visibility.
   /// [writebackEnabled] Whether the group will be written back to the configured on-premises Active Directory when Azure AD Connect is used.
-  GetGroupResult({
+  const GetGroupResult({
     required this.assignableToRole,
     required this.autoSubscribeNewMembers,
     required this.behaviors,

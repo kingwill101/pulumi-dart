@@ -65,7 +65,7 @@ class PipelineJob {
   /// [settings] Pipeline settings, for things like ContinueRunOnStepFailure etc.
   /// [sourceJobId] ARM resource ID of source job.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
-  PipelineJob({
+  const PipelineJob({
     this.componentId,
     this.computeId,
     this.description,

@@ -13,7 +13,7 @@ class GetExternalVpnGatewayComputeBetaArgs {
   /// Creates a new [GetExternalVpnGatewayComputeBetaArgs].
   /// [externalVpnGateway] Required.
   /// [project] Optional.
-  GetExternalVpnGatewayComputeBetaArgs({
+  const GetExternalVpnGatewayComputeBetaArgs({
     required this.externalVpnGateway,
     this.project,
   });

@@ -13,7 +13,7 @@ class GetDataSetRowLevelPermissionTagConfigurationTagRule {
   /// [matchAllValue] Required.
   /// [tagKey] Required.
   /// [tagMultiValueDelimiter] Required.
-  GetDataSetRowLevelPermissionTagConfigurationTagRule({
+  const GetDataSetRowLevelPermissionTagConfigurationTagRule({
     required this.columnName,
     required this.matchAllValue,
     required this.tagKey,

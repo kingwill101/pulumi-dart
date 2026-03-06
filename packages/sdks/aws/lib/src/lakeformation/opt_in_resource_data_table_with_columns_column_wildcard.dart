@@ -7,7 +7,7 @@ class OptInResourceDataTableWithColumnsColumnWildcard {
 
   /// Creates a new [OptInResourceDataTableWithColumnsColumnWildcard].
   /// [excludedColumnNames] Optional.
-  OptInResourceDataTableWithColumnsColumnWildcard({
+  const OptInResourceDataTableWithColumnsColumnWildcard({
     this.excludedColumnNames,
   });
 

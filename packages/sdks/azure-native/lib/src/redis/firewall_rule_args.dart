@@ -24,7 +24,7 @@ class FirewallRuleArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [ruleName] The name of the firewall rule.
   /// [startIP] lowest IP address included in the range
-  FirewallRuleArgs({
+  const FirewallRuleArgs({
     required this.cacheName,
     required this.endIP,
     required this.resourceGroupName,

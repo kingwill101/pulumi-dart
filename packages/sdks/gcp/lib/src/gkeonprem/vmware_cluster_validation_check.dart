@@ -19,7 +19,7 @@ class VMwareClusterValidationCheck {
   /// [options] (Output)
   /// [scenario] (Output)
   /// [statuses] (Output)
-  VMwareClusterValidationCheck({
+  const VMwareClusterValidationCheck({
     this.options,
     this.scenario,
     this.statuses,

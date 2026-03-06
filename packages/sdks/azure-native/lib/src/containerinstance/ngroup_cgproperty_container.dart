@@ -13,7 +13,7 @@ class NGroupCGPropertyContainer {
   /// Creates a new [NGroupCGPropertyContainer].
   /// [name] container name
   /// [properties] container properties
-  NGroupCGPropertyContainer({
+  const NGroupCGPropertyContainer({
     this.name,
     this.properties,
   });

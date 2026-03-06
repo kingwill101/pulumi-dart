@@ -11,7 +11,7 @@ class ContainerCapabilities {
   /// Creates a new [ContainerCapabilities].
   /// [adds] List of linux capabilities to add.
   /// [drops] List of linux capabilities to drop.
-  ContainerCapabilities({
+  const ContainerCapabilities({
     this.adds,
     this.drops,
   });

@@ -21,7 +21,7 @@ class SyslogDataSourceResponse {
   /// [logLevels] The log levels to collect.
   /// [name] A friendly name for the data source.
   /// [streams] List of streams that this data source will be sent to.
-  SyslogDataSourceResponse({
+  const SyslogDataSourceResponse({
     this.facilityNames,
     this.logLevels,
     this.name,

@@ -12,7 +12,7 @@ class CustomerEncryptionKeyResponseWorkstationsV1beta {
   /// Creates a new [CustomerEncryptionKeyResponseWorkstationsV1beta].
   /// [kmsKey] Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration.
   /// [kmsKeyServiceAccount] Immutable. The service account to use with the specified KMS key. We recommend that you use a separate service account and follow KMS best practices. For more information, see [Separation of duties](https://cloud.google.com/kms/docs/separation-of-duties) and `gcloud kms keys add-iam-policy-binding` [`--member`](https://cloud.google.com/sdk/gcloud/reference/kms/keys/add-iam-policy-binding#--member).
-  CustomerEncryptionKeyResponseWorkstationsV1beta({
+  const CustomerEncryptionKeyResponseWorkstationsV1beta({
     required this.kmsKey,
     required this.kmsKeyServiceAccount,
   });

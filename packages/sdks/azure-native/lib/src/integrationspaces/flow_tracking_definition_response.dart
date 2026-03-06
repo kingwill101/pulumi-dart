@@ -14,7 +14,7 @@ class FlowTrackingDefinitionResponse {
   /// Creates a new [FlowTrackingDefinitionResponse].
   /// [correlationContext] The tracking correlation context.
   /// [events] The tracking events.
-  FlowTrackingDefinitionResponse({
+  const FlowTrackingDefinitionResponse({
     this.correlationContext,
     this.events,
   });

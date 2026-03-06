@@ -46,7 +46,7 @@ class GetFwGroupV2Args {
   /// [shared] The sharing status of the firewall group.
   /// [status] Enabled status for the firewall group.
   /// [tenantId] This argument conflicts and is interchangeable
-  GetFwGroupV2Args({
+  const GetFwGroupV2Args({
     this.adminStateUp,
     this.description,
     this.egressFirewallPolicyId,

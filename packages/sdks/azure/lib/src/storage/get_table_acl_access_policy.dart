@@ -11,7 +11,7 @@ class GetTableAclAccessPolicy {
   /// [expiry] Required.
   /// [permissions] Required.
   /// [start] Required.
-  GetTableAclAccessPolicy({
+  const GetTableAclAccessPolicy({
     required this.expiry,
     required this.permissions,
     required this.start,

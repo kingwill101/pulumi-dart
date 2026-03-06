@@ -8,7 +8,7 @@ class GremlinDatabaseAutoscaleSettings {
 
   /// Creates a new [GremlinDatabaseAutoscaleSettings].
   /// [maxThroughput] The maximum throughput of the Gremlin database (RU/s). Must be between `1,000` and `1,000,000`. Must be set in increments of `1,000`. Conflicts with `throughput`.
-  GremlinDatabaseAutoscaleSettings({
+  const GremlinDatabaseAutoscaleSettings({
     this.maxThroughput,
   });
 

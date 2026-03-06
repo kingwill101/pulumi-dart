@@ -21,7 +21,7 @@ class GetAgentApplicationArgs {
   /// [name] Name for the Agent Application.
   /// [projectName] The name of Cognitive Services account's project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAgentApplicationArgs({
+  const GetAgentApplicationArgs({
     required this.accountName,
     required this.name,
     required this.projectName,

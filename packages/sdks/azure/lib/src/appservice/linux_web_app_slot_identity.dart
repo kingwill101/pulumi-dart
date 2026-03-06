@@ -19,7 +19,7 @@ class LinuxWebAppSlotIdentity {
   /// [principalId] The Principal ID associated with this Managed Service Identity.
   /// [tenantId] The Tenant ID associated with this Managed Service Identity.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Linux Web App Slot. Possible values are `SystemAssigned`, `UserAssigned` and `SystemAssigned, UserAssigned` (to enable both).
-  LinuxWebAppSlotIdentity({
+  const LinuxWebAppSlotIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

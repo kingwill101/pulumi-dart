@@ -127,7 +127,7 @@ class InstanceSqladminV1beta4Args {
   /// [sqlNetworkArchitecture] The SQL network architecture for the instance.
   /// [state] The current serving state of the Cloud SQL instance.
   /// [suspensionReason] If the instance state is SUSPENDED, the reason for the suspension.
-  InstanceSqladminV1beta4Args({
+  const InstanceSqladminV1beta4Args({
     this.backendType,
     this.connectionName,
     this.currentDiskSize,

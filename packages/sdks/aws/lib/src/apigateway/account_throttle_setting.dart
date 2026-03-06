@@ -11,7 +11,7 @@ class AccountThrottleSetting {
   /// Creates a new [AccountThrottleSetting].
   /// [burstLimit] Absolute maximum number of times API Gateway allows the API to be called per second (RPS).
   /// [rateLimit] Number of times API Gateway allows the API to be called per second on average (RPS).
-  AccountThrottleSetting({
+  const AccountThrottleSetting({
     required this.burstLimit,
     required this.rateLimit,
   });

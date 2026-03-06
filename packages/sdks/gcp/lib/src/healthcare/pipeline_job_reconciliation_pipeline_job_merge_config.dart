@@ -13,7 +13,7 @@ class PipelineJobReconciliationPipelineJobMergeConfig {
   /// Creates a new [PipelineJobReconciliationPipelineJobMergeConfig].
   /// [description] Describes the mapping configuration.
   /// [whistleConfigSource] Specifies the path to the mapping configuration for harmonization pipeline.
-  PipelineJobReconciliationPipelineJobMergeConfig({
+  const PipelineJobReconciliationPipelineJobMergeConfig({
     this.description,
     required this.whistleConfigSource,
   });

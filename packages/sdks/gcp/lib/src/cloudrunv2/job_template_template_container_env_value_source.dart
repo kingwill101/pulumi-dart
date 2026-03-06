@@ -10,7 +10,7 @@ class JobTemplateTemplateContainerEnvValueSource {
 
   /// Creates a new [JobTemplateTemplateContainerEnvValueSource].
   /// [secretKeyRef] Selects a secret and a specific version from Cloud Secret Manager.
-  JobTemplateTemplateContainerEnvValueSource({
+  const JobTemplateTemplateContainerEnvValueSource({
     this.secretKeyRef,
   });
 

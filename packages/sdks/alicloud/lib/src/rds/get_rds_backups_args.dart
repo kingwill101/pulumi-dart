@@ -30,7 +30,7 @@ class GetRdsBackupsArgs {
   /// [ids] A list of Backup IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [startTime] The start time.
-  GetRdsBackupsArgs({
+  const GetRdsBackupsArgs({
     this.backupMode,
     this.backupStatus,
     required this.dbInstanceId,

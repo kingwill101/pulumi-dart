@@ -51,7 +51,7 @@ class AppVersionState {
   /// [name] (Output)
   /// [project] The ID of the project in which the resource belongs.
   /// [snapshots] A snapshot of the app.
-  AppVersionState({
+  const AppVersionState({
     this.app,
     this.appVersionId,
     this.createTime,

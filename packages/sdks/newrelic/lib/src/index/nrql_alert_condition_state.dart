@@ -107,7 +107,7 @@ class NrqlAlertConditionState {
   /// [violationTimeLimit] **DEPRECATED:** Use `violation_time_limit_seconds` instead. Sets a time limit, in hours, that will automatically force-close a long-lasting incident after the time limit you select. Possible values are `ONE_HOUR`, `TWO_HOURS`, `FOUR_HOURS`, `EIGHT_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`, `THIRTY_DAYS` (case insensitive).&lt;br&gt;
   /// [violationTimeLimitSeconds] Sets a time limit, in seconds, that will automatically force-close a long-lasting incident after the time limit you select. The value must be between 300 seconds (5 minutes) to 2592000 seconds (30 days) (inclusive). &lt;br&gt;
   /// [warning] A list containing the `warning` threshold values. At least one `critical` or `warning` threshold must be defined. See Terms below for details.
-  NrqlAlertConditionState({
+  const NrqlAlertConditionState({
     this.accountId,
     this.aggregationDelay,
     this.aggregationMethod,

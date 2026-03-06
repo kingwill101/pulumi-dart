@@ -9,7 +9,7 @@ class DistributionOriginCustomHeader {
   /// Creates a new [DistributionOriginCustomHeader].
   /// [name] Required.
   /// [value] Required.
-  DistributionOriginCustomHeader({
+  const DistributionOriginCustomHeader({
     required this.name,
     required this.value,
   });

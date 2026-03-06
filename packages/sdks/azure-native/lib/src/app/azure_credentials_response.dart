@@ -9,7 +9,7 @@ class AzureCredentialsResponse {
 
   /// Creates a new [AzureCredentialsResponse].
   /// [subscriptionId] Subscription Id.
-  AzureCredentialsResponse({
+  const AzureCredentialsResponse({
     this.subscriptionId,
   });
 

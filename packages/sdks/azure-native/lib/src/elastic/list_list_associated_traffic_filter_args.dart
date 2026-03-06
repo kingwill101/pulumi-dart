@@ -15,7 +15,7 @@ class ListListAssociatedTrafficFilterArgs {
   /// Creates a new [ListListAssociatedTrafficFilterArgs].
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListListAssociatedTrafficFilterArgs({
+  const ListListAssociatedTrafficFilterArgs({
     required this.monitorName,
     required this.resourceGroupName,
   });

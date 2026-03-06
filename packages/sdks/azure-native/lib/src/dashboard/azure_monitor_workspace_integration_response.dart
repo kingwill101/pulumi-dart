@@ -9,7 +9,7 @@ class AzureMonitorWorkspaceIntegrationResponse {
 
   /// Creates a new [AzureMonitorWorkspaceIntegrationResponse].
   /// [azureMonitorWorkspaceResourceId] The resource Id of the connected Azure Monitor Workspace.
-  AzureMonitorWorkspaceIntegrationResponse({
+  const AzureMonitorWorkspaceIntegrationResponse({
     this.azureMonitorWorkspaceResourceId,
   });
 

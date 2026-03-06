@@ -13,7 +13,7 @@ class JsonWebKeySet {
 
   /// Creates a new [JsonWebKeySet].
   /// [keys] The value of the "keys" parameter is an array of JWK values.  By
-  JsonWebKeySet({
+  const JsonWebKeySet({
     this.keys,
   });
 

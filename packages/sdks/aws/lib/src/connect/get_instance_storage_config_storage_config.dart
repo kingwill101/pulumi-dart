@@ -24,7 +24,7 @@ class GetInstanceStorageConfigStorageConfig {
   /// [kinesisVideoStreamConfigs] A block that specifies the configuration of the Kinesis video stream. Documented below.
   /// [s3Configs] A block that specifies the configuration of S3 Bucket. Documented below.
   /// [storageType] A valid storage type. Valid Values: `S3` | `KINESIS_VIDEO_STREAM` | `KINESIS_STREAM` | `KINESIS_FIREHOSE`.
-  GetInstanceStorageConfigStorageConfig({
+  const GetInstanceStorageConfigStorageConfig({
     required this.kinesisFirehoseConfigs,
     required this.kinesisStreamConfigs,
     required this.kinesisVideoStreamConfigs,

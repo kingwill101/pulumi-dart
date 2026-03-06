@@ -9,7 +9,7 @@ class IdentityConfig {
 
   /// Creates a new [IdentityConfig].
   /// [userServiceAccountMapping] Map of user to service account.
-  IdentityConfig({
+  const IdentityConfig({
     required this.userServiceAccountMapping,
   });
 

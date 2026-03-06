@@ -8,7 +8,7 @@ class ReplicatorReplicationInfoListTopicReplicationStartingPosition {
 
   /// Creates a new [ReplicatorReplicationInfoListTopicReplicationStartingPosition].
   /// [type] The type of replication starting position. Supports `LATEST` and `EARLIEST`.
-  ReplicatorReplicationInfoListTopicReplicationStartingPosition({
+  const ReplicatorReplicationInfoListTopicReplicationStartingPosition({
     this.type,
   });
 

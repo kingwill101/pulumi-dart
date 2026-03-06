@@ -15,7 +15,7 @@ class GetIndexEndpointAiplatformV1beta1Args {
   /// [indexEndpointId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetIndexEndpointAiplatformV1beta1Args({
+  const GetIndexEndpointAiplatformV1beta1Args({
     required this.indexEndpointId,
     required this.location,
     this.project,

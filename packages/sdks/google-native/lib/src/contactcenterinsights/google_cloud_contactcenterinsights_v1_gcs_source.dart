@@ -12,7 +12,7 @@ class GoogleCloudContactcenterinsightsV1GcsSource {
   /// Creates a new [GoogleCloudContactcenterinsightsV1GcsSource].
   /// [audioUri] Cloud Storage URI that points to a file that contains the conversation audio.
   /// [transcriptUri] Immutable. Cloud Storage URI that points to a file that contains the conversation transcript.
-  GoogleCloudContactcenterinsightsV1GcsSource({
+  const GoogleCloudContactcenterinsightsV1GcsSource({
     this.audioUri,
     this.transcriptUri,
   });

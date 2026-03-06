@@ -9,7 +9,7 @@ class SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement {
 
   /// Creates a new [SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement].
   /// [idleSettings] Settings related to idle shutdown of Studio applications. See `idle_settings` Block below.
-  SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement({
+  const SpaceSpaceSettingsCodeEditorAppSettingsAppLifecycleManagement({
     this.idleSettings,
   });
 

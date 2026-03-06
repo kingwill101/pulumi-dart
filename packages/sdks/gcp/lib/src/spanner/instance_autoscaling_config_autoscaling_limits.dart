@@ -20,7 +20,7 @@ class InstanceAutoscalingConfigAutoscalingLimits {
   /// [maxProcessingUnits] Specifies maximum number of processing units allocated to the instance.
   /// [minNodes] The minimum number of nodes for this specific replica.
   /// [minProcessingUnits] Specifies minimum number of processing units allocated to the instance.
-  InstanceAutoscalingConfigAutoscalingLimits({
+  const InstanceAutoscalingConfigAutoscalingLimits({
     this.maxNodes,
     this.maxProcessingUnits,
     this.minNodes,

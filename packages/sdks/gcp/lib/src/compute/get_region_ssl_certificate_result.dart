@@ -30,7 +30,7 @@ class GetRegionSslCertificateResult {
   /// [project] Optional.
   /// [region] Optional.
   /// [selfLink] Required.
-  GetRegionSslCertificateResult({
+  const GetRegionSslCertificateResult({
     required this.certificate,
     required this.certificateId,
     required this.creationTimestamp,

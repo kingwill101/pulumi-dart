@@ -53,7 +53,7 @@ class GetHostPoolResult {
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The type of the Virtual Desktop Host Pool.
   /// [validateEnvironment] Returns `true` if the Host Pool is in Validation mode.
-  GetHostPoolResult({
+  const GetHostPoolResult({
     required this.customRdpProperties,
     required this.description,
     required this.friendlyName,

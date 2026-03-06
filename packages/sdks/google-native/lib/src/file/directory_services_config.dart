@@ -10,7 +10,7 @@ class DirectoryServicesConfig {
 
   /// Creates a new [DirectoryServicesConfig].
   /// [managedActiveDirectory] Configuration for Managed Service for Microsoft Active Directory.
-  DirectoryServicesConfig({
+  const DirectoryServicesConfig({
     this.managedActiveDirectory,
   });
 

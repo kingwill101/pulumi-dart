@@ -11,7 +11,7 @@ class GetPeeringAttachmentsFilter {
   /// Creates a new [GetPeeringAttachmentsFilter].
   /// [name] Name of the field to filter by, as defined by [the underlying AWS API](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeTransitGatewayPeeringAttachments.html)
   /// [values] List of one or more values for the filter.
-  GetPeeringAttachmentsFilter({
+  const GetPeeringAttachmentsFilter({
     required this.name,
     required this.values,
   });

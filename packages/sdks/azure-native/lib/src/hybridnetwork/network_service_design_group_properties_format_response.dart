@@ -12,7 +12,7 @@ class NetworkServiceDesignGroupPropertiesFormatResponse {
   /// Creates a new [NetworkServiceDesignGroupPropertiesFormatResponse].
   /// [description] The network service design group description.
   /// [provisioningState] The provisioning state of the network service design groups resource.
-  NetworkServiceDesignGroupPropertiesFormatResponse({
+  const NetworkServiceDesignGroupPropertiesFormatResponse({
     this.description,
     required this.provisioningState,
   });

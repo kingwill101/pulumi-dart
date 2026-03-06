@@ -21,7 +21,7 @@ class BareMetalBgpLbConfigResponse {
   /// [asn] BGP autonomous system number (ASN) of the cluster. This field can be updated after cluster creation.
   /// [bgpPeerConfigs] The list of BGP peers that the cluster will connect to. At least one peer must be configured for each control plane node. Control plane nodes will connect to these peers to advertise the control plane VIP. The Services load balancer also uses these peers by default. This field can be updated after cluster creation.
   /// [loadBalancerNodePoolConfig] Specifies the node pool running data plane load balancing. L2 connectivity is required among nodes in this pool. If missing, the control plane node pool is used for data plane load balancing.
-  BareMetalBgpLbConfigResponse({
+  const BareMetalBgpLbConfigResponse({
     required this.addressPools,
     required this.asn,
     required this.bgpPeerConfigs,

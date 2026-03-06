@@ -33,7 +33,7 @@ class AgentPromptVariant {
   /// [name] Name of the prompt variant.
   /// [templateConfiguration] Contains configurations for the prompt template. See Template Configuration for more information.
   /// [templateType] Type of prompt template to use. Valid values: `CHAT`, `TEXT`.
-  AgentPromptVariant({
+  const AgentPromptVariant({
     this.additionalModelRequestFields,
     this.genAiResource,
     this.inferenceConfiguration,

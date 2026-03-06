@@ -27,7 +27,7 @@ class GetCustomEntityStoreAssignmentResult {
   /// [principal] The principal assigned with entity store. Format of principal is: [AAD type]=[PrincipalObjectId];[TenantId]
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] Resource type
-  GetCustomEntityStoreAssignmentResult({
+  const GetCustomEntityStoreAssignmentResult({
     required this.azureApiVersion,
     this.entityStoreDatabaseLink,
     required this.id,

@@ -19,7 +19,7 @@ class EventBusPolicyArgs {
   /// [eventBusName] The name of the event bus to set the permissions on.
   /// [policy] The text of the policy.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EventBusPolicyArgs({
+  const EventBusPolicyArgs({
     this.eventBusName,
     required this.policy,
     this.region,

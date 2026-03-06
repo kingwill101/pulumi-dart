@@ -12,7 +12,7 @@ class ComputeIsolationPropertiesResponse {
   /// Creates a new [ComputeIsolationPropertiesResponse].
   /// [enableComputeIsolation] The flag indicates whether enable compute isolation or not.
   /// [hostSku] The host sku.
-  ComputeIsolationPropertiesResponse({
+  const ComputeIsolationPropertiesResponse({
     this.enableComputeIsolation,
     this.hostSku,
   });

@@ -21,7 +21,7 @@ class OrganizationArgs {
   /// [iotcentralApplicationId] The application `id`. Changing this forces a new resource to be created.
   /// [organizationId] The ID of the organization. Changing this forces a new resource to be created.
   /// [parentOrganizationId] The `organization_id` of the parent organization. Changing this forces a new resource to be created.
-  OrganizationArgs({
+  const OrganizationArgs({
     required this.displayName,
     required this.iotcentralApplicationId,
     required this.organizationId,

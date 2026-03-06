@@ -11,7 +11,7 @@ class GetAppSpecStaticSiteGit {
   /// Creates a new [GetAppSpecStaticSiteGit].
   /// [branch] The name of the branch to use.
   /// [repoCloneUrl] The clone URL of the repo.
-  GetAppSpecStaticSiteGit({
+  const GetAppSpecStaticSiteGit({
     this.branch,
     this.repoCloneUrl,
   });

@@ -15,7 +15,7 @@ class GetNotebookRuntimeTemplateArgs {
   /// [location] Required.
   /// [notebookRuntimeTemplateId] Required.
   /// [project] Optional.
-  GetNotebookRuntimeTemplateArgs({
+  const GetNotebookRuntimeTemplateArgs({
     required this.location,
     required this.notebookRuntimeTemplateId,
     this.project,

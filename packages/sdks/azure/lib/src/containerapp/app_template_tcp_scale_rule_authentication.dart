@@ -11,7 +11,7 @@ class AppTemplateTcpScaleRuleAuthentication {
   /// Creates a new [AppTemplateTcpScaleRuleAuthentication].
   /// [secretName] The name of the Container App Secret to use for this Scale Rule Authentication.
   /// [triggerParameter] The Trigger Parameter name to use the supply the value retrieved from the `secret_name`.
-  AppTemplateTcpScaleRuleAuthentication({
+  const AppTemplateTcpScaleRuleAuthentication({
     required this.secretName,
     this.triggerParameter,
   });

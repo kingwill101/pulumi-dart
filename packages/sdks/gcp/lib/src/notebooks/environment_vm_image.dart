@@ -15,7 +15,7 @@ class EnvironmentVmImage {
   /// [imageFamily] Use this VM image family to find the image; the newest image in this family will be used.
   /// [imageName] Use VM image name to find the image.
   /// [project] The name of the Google Cloud project that this VM image belongs to.
-  EnvironmentVmImage({
+  const EnvironmentVmImage({
     this.imageFamily,
     this.imageName,
     required this.project,

@@ -36,7 +36,7 @@ class UpstreamTemplate {
   /// [eventPattern] Gets or sets the matching pattern for event names. If not set, it matches any event.
   /// [hubPattern] Gets or sets the matching pattern for hub names. If not set, it matches any hub.
   /// [urlTemplate] Gets or sets the Upstream URL template. You can use 3 predefined parameters {hub}, {category} {event} inside the template, the value of the Upstream URL is dynamically calculated when the client request comes in.
-  UpstreamTemplate({
+  const UpstreamTemplate({
     this.auth,
     this.categoryPattern,
     this.eventPattern,

@@ -82,7 +82,7 @@ class ServiceTaskSpecContainerSpec {
   /// [stopSignal] Signal to stop the container
   /// [sysctl] Sysctls config (Linux only)
   /// [user] The user inside the container
-  ServiceTaskSpecContainerSpec({
+  const ServiceTaskSpecContainerSpec({
     this.args,
     this.capAdds,
     this.capDrops,

@@ -12,7 +12,7 @@ class CertDnsChallengeResponse {
   /// Creates a new [CertDnsChallengeResponse].
   /// [domainName] The domain name upon which the DNS challenge must be satisfied.
   /// [token] The value that must be present as a TXT record on the domain name to satisfy the challenge.
-  CertDnsChallengeResponse({
+  const CertDnsChallengeResponse({
     required this.domainName,
     required this.token,
   });

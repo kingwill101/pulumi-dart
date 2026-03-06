@@ -22,7 +22,7 @@ class RuleGroup {
   /// [ruleVariables] Property ruleVariables
   /// [rulesSource] Property rulesSource
   /// [statefulRuleOptions] Property statefulRuleOptions
-  RuleGroup({
+  const RuleGroup({
     this.referenceSets,
     this.ruleVariables,
     this.rulesSource,

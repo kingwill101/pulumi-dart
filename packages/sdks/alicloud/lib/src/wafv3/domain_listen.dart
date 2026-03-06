@@ -61,7 +61,7 @@ class DomainListen {
   /// [tlsVersion] The version of TLS to add. This parameter is used only if the value of `HttpsPorts` is not empty (indicating that the domain name uses the HTTPS protocol). Value:
   /// [xffHeaderMode] The method that is used to obtain the originating IP address of a client. Valid values:
   /// [xffHeaders] The custom header fields that are used to obtain the originating IP address of a client. Specify the value in the **\["header1","header2",...]** format.
-  DomainListen({
+  const DomainListen({
     this.certId,
     this.cipherSuite,
     this.customCiphers,

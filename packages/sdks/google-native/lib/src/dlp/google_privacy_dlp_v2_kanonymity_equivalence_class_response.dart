@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse {
   /// Creates a new [GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse].
   /// [equivalenceClassSize] Size of the equivalence class, for example number of rows with the above set of values.
   /// [quasiIdsValues] Set of values defining the equivalence class. One value per quasi-identifier column in the original KAnonymity metric message. The order is always the same as the original request.
-  GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse({
+  const GooglePrivacyDlpV2KAnonymityEquivalenceClassResponse({
     required this.equivalenceClassSize,
     required this.quasiIdsValues,
   });

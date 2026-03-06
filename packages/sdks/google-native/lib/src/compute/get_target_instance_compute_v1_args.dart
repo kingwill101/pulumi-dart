@@ -15,7 +15,7 @@ class GetTargetInstanceComputeV1Args {
   /// [project] Optional.
   /// [targetInstance] Required.
   /// [zone] Required.
-  GetTargetInstanceComputeV1Args({
+  const GetTargetInstanceComputeV1Args({
     this.project,
     required this.targetInstance,
     required this.zone,

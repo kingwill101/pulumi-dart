@@ -41,7 +41,7 @@ class GetPolicyAssignmentArtifactResult {
   /// [policyDefinitionId] Azure resource ID of the policy definition.
   /// [resourceGroup] Name of the resource group placeholder to which the policy will be assigned.
   /// [type] Type of this resource.
-  GetPolicyAssignmentArtifactResult({
+  const GetPolicyAssignmentArtifactResult({
     required this.azureApiVersion,
     this.dependsOn,
     this.description,

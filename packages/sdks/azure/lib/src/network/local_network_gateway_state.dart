@@ -33,7 +33,7 @@ class LocalNetworkGatewayState {
   /// [name] The name of the local network gateway. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the local network gateway. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  LocalNetworkGatewayState({
+  const LocalNetworkGatewayState({
     this.addressSpaces,
     this.bgpSettings,
     this.gatewayAddress,

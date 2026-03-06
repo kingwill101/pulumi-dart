@@ -8,7 +8,7 @@ class EndpointClientRouteEnforcementOptions {
 
   /// Creates a new [EndpointClientRouteEnforcementOptions].
   /// [enforced] Enable or disable Client Route Enforcement. The default is `false` (not enabled).
-  EndpointClientRouteEnforcementOptions({
+  const EndpointClientRouteEnforcementOptions({
     this.enforced,
   });
 

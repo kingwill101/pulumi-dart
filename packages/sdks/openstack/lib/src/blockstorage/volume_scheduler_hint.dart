@@ -33,7 +33,7 @@ class VolumeSchedulerHint {
   /// [localToInstance] An instance UUID. The volume should be
   /// [query] A conditional query that a back-end must pass in
   /// [sameHosts] A list of volume UUIDs. The volume should be
-  VolumeSchedulerHint({
+  const VolumeSchedulerHint({
     this.additionalProperties,
     this.differentHosts,
     this.localToInstance,

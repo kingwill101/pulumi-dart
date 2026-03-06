@@ -18,7 +18,7 @@ class GetBackendServersArgs {
   /// [ids] List of attached ECS instance IDs.
   /// [loadBalancerId] ID of the SLB with attachments.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetBackendServersArgs({
+  const GetBackendServersArgs({
     this.ids,
     required this.loadBalancerId,
     this.outputFile,

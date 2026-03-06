@@ -47,7 +47,7 @@ class CassandraDatacenterArgs {
   /// [name] The name which should be used for this Cassandra Datacenter. Changing this forces a new Cassandra Datacenter to be created.
   /// [nodeCount] The number of nodes the Cassandra Datacenter should have. The number should be equal or greater than `3`. Defaults to `3`.
   /// [skuName] Determines the selected sku. Defaults to `Standard_E16s_v5`.
-  CassandraDatacenterArgs({
+  const CassandraDatacenterArgs({
     this.availabilityZonesEnabled,
     this.backupStorageCustomerKeyUri,
     this.base64EncodedYamlFragment,

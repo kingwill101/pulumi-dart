@@ -11,7 +11,7 @@ class NamespaceNetworkRuleSetNetworkRule {
   /// Creates a new [NamespaceNetworkRuleSetNetworkRule].
   /// [ignoreMissingVnetServiceEndpoint] Should the Service Bus Namespace Network Rule Set ignore missing Virtual Network Service Endpoint option in the Subnet? Defaults to `false`.
   /// [subnetId] The Subnet ID which should be able to access this Service Bus Namespace.
-  NamespaceNetworkRuleSetNetworkRule({
+  const NamespaceNetworkRuleSetNetworkRule({
     this.ignoreMissingVnetServiceEndpoint,
     required this.subnetId,
   });

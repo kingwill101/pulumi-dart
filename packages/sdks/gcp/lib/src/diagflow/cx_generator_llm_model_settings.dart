@@ -11,7 +11,7 @@ class CxGeneratorLlmModelSettings {
   /// Creates a new [CxGeneratorLlmModelSettings].
   /// [model] The selected LLM model.
   /// [promptText] The custom prompt to use.
-  CxGeneratorLlmModelSettings({
+  const CxGeneratorLlmModelSettings({
     this.model,
     this.promptText,
   });

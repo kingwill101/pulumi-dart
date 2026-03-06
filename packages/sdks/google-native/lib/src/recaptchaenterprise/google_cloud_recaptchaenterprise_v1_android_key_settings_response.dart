@@ -15,7 +15,7 @@ class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse {
   /// [allowAllPackageNames] Optional. If set to true, allowed_package_names are not enforced.
   /// [allowedPackageNames] Optional. Android package names of apps allowed to use the key. Example: 'com.companyname.appname'
   /// [supportNonGoogleAppStoreDistribution] Optional. Set to true for keys that are used in an Android application that is available for download in app stores in addition to the Google Play Store.
-  GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse({
+  const GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsResponse({
     required this.allowAllPackageNames,
     required this.allowedPackageNames,
     required this.supportNonGoogleAppStoreDistribution,

@@ -18,7 +18,7 @@ class ListManagedClusterAccessProfileArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [resourceName] The name of the managed cluster resource.
   /// [roleName] The name of the role for managed cluster accessProfile resource.
-  ListManagedClusterAccessProfileArgs({
+  const ListManagedClusterAccessProfileArgs({
     required this.resourceGroupName,
     required this.resourceName,
     required this.roleName,

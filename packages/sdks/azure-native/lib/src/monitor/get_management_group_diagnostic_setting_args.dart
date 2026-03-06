@@ -15,7 +15,7 @@ class GetManagementGroupDiagnosticSettingArgs {
   /// Creates a new [GetManagementGroupDiagnosticSettingArgs].
   /// [managementGroupId] The management group id.
   /// [name] The name of the diagnostic setting.
-  GetManagementGroupDiagnosticSettingArgs({
+  const GetManagementGroupDiagnosticSettingArgs({
     required this.managementGroupId,
     required this.name,
   });

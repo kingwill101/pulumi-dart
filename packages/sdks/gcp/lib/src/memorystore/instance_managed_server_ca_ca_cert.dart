@@ -9,7 +9,7 @@ class InstanceManagedServerCaCaCert {
 
   /// Creates a new [InstanceManagedServerCaCaCert].
   /// [certificates] (Output)
-  InstanceManagedServerCaCaCert({
+  const InstanceManagedServerCaCaCert({
     this.certificates,
   });
 

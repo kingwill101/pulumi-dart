@@ -68,7 +68,7 @@ class GetIndexResult {
   /// [userContextPolicy] User context policy. Valid values are `ATTRIBUTE_FILTER` or `USER_TOKEN`. For more information, refer to [UserContextPolicy](https://docs.aws.amazon.com/kendra/latest/APIReference/API_CreateIndex.html#kendra-CreateIndex-request-UserContextPolicy).
   /// [userGroupResolutionConfigurations] A block that enables fetching access levels of groups and users from an AWS Single Sign-On identity source. Documented below.
   /// [userTokenConfigurations] A block that specifies the user token configuration. Documented below.
-  GetIndexResult({
+  const GetIndexResult({
     required this.arn,
     required this.capacityUnits,
     required this.createdAt,

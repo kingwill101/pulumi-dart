@@ -47,7 +47,7 @@ class GalleryApplicationArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [supportedOSType] This property allows you to specify the supported type of the OS that application is built for. Possible values are: **Windows,** **Linux.**
   /// [tags] Resource tags.
-  GalleryApplicationArgs({
+  const GalleryApplicationArgs({
     this.customActions,
     this.description,
     this.endOfLifeDate,

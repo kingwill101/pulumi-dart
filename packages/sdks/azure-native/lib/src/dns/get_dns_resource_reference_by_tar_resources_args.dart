@@ -13,7 +13,7 @@ class GetDnsResourceReferenceByTarResourcesArgs {
 
   /// Creates a new [GetDnsResourceReferenceByTarResourcesArgs].
   /// [targetResources] A list of references to azure resources for which referencing dns records need to be queried.
-  GetDnsResourceReferenceByTarResourcesArgs({
+  const GetDnsResourceReferenceByTarResourcesArgs({
     this.targetResources,
   });
 

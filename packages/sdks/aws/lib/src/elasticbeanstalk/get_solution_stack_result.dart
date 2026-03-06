@@ -17,7 +17,7 @@ class GetSolutionStackResult {
   /// [name] Name of the solution stack.
   /// [nameRegex] Required.
   /// [region] Required.
-  GetSolutionStackResult({
+  const GetSolutionStackResult({
     required this.id,
     this.mostRecent,
     required this.name,

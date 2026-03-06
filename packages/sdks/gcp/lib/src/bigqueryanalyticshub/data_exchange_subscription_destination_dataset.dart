@@ -24,7 +24,7 @@ class DataExchangeSubscriptionDestinationDataset {
   /// [friendlyName] A descriptive name for the dataset.
   /// [labels] The labels associated with this dataset. You can use these to
   /// [location] The geographic location where the dataset should reside.
-  DataExchangeSubscriptionDestinationDataset({
+  const DataExchangeSubscriptionDestinationDataset({
     required this.datasetReference,
     this.description,
     this.friendlyName,

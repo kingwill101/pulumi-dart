@@ -15,7 +15,7 @@ class GetManagedMaintenanceWindowStatusArgs {
   /// Creates a new [GetManagedMaintenanceWindowStatusArgs].
   /// [clusterName] The name of the cluster resource.
   /// [resourceGroupName] The name of the resource group.
-  GetManagedMaintenanceWindowStatusArgs({
+  const GetManagedMaintenanceWindowStatusArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

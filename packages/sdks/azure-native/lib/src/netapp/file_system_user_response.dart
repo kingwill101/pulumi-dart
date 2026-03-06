@@ -14,7 +14,7 @@ class FileSystemUserResponse {
   /// Creates a new [FileSystemUserResponse].
   /// [cifsUser] The effective CIFS username when accessing the volume data.
   /// [nfsUser] The effective NFS User ID and Group ID when accessing the volume data.
-  FileSystemUserResponse({
+  const FileSystemUserResponse({
     this.cifsUser,
     this.nfsUser,
   });

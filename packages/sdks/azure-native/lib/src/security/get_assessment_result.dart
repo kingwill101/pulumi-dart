@@ -43,7 +43,7 @@ class GetAssessmentResult {
   /// [resourceDetails] Details of the resource that was assessed
   /// [status] The result of the assessment
   /// [type] Resource type
-  GetAssessmentResult({
+  const GetAssessmentResult({
     this.additionalData,
     required this.azureApiVersion,
     required this.displayName,

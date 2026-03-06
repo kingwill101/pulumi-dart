@@ -23,7 +23,7 @@ class GetAccountAzureFilesAuthenticationActiveDirectory {
   /// [forestName] The name of the Active Directory forest.
   /// [netbiosDomainName] The NetBIOS domain name.
   /// [storageSid] The security identifier for Azure Storage.
-  GetAccountAzureFilesAuthenticationActiveDirectory({
+  const GetAccountAzureFilesAuthenticationActiveDirectory({
     required this.domainGuid,
     required this.domainName,
     required this.domainSid,

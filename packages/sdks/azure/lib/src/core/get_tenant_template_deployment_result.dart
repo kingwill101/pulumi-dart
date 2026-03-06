@@ -13,7 +13,7 @@ class GetTenantTemplateDeploymentResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [outputContent] The JSON Content of the Outputs of the ARM Template Deployment.
-  GetTenantTemplateDeploymentResult({
+  const GetTenantTemplateDeploymentResult({
     required this.id,
     required this.name,
     required this.outputContent,

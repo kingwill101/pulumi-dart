@@ -32,7 +32,7 @@ class AKSSchemaProperties {
   /// [loadBalancerSubnet] Load Balancer Subnet
   /// [loadBalancerType] Load Balancer Type
   /// [sslConfiguration] SSL configuration
-  AKSSchemaProperties({
+  const AKSSchemaProperties({
     this.agentCount,
     this.agentVmSize,
     this.aksNetworkingConfiguration,

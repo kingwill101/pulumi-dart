@@ -10,7 +10,7 @@ class ConnectToSourceOracleSyncTaskInputResponse {
 
   /// Creates a new [ConnectToSourceOracleSyncTaskInputResponse].
   /// [sourceConnectionInfo] Information for connecting to Oracle source
-  ConnectToSourceOracleSyncTaskInputResponse({
+  const ConnectToSourceOracleSyncTaskInputResponse({
     required this.sourceConnectionInfo,
   });
 

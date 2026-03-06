@@ -8,7 +8,7 @@ class AgentcoreGatewayInterceptorConfigurationInputConfiguration {
 
   /// Creates a new [AgentcoreGatewayInterceptorConfigurationInputConfiguration].
   /// [passRequestHeaders] Whether to pass request headers to the interceptor.
-  AgentcoreGatewayInterceptorConfigurationInputConfiguration({
+  const AgentcoreGatewayInterceptorConfigurationInputConfiguration({
     required this.passRequestHeaders,
   });
 

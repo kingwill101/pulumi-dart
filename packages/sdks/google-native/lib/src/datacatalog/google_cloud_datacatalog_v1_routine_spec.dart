@@ -27,7 +27,7 @@ class GoogleCloudDatacatalogV1RoutineSpec {
   /// [returnType] Return type of the argument. The exact value depends on the source system and the language.
   /// [routineArguments] Arguments of the routine.
   /// [routineType] The type of the routine.
-  GoogleCloudDatacatalogV1RoutineSpec({
+  const GoogleCloudDatacatalogV1RoutineSpec({
     this.bigqueryRoutineSpec,
     this.definitionBody,
     this.language,

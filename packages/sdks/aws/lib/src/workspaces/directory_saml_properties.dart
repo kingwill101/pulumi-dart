@@ -14,7 +14,7 @@ class DirectorySamlProperties {
   /// [relayStateParameterName] The relay state parameter name supported by the SAML 2.0 identity provider (IdP). Default `RelayState`.
   /// [status] Status of SAML 2.0 authentication. Default `DISABLED`.
   /// [userAccessUrl] The SAML 2.0 identity provider (IdP) user access URL.
-  DirectorySamlProperties({
+  const DirectorySamlProperties({
     this.relayStateParameterName,
     this.status,
     this.userAccessUrl,

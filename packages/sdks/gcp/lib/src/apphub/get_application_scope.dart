@@ -11,7 +11,7 @@ class GetApplicationScope {
 
   /// Creates a new [GetApplicationScope].
   /// [type] Required. Scope Type.
-  GetApplicationScope({
+  const GetApplicationScope({
     required this.type,
   });
 

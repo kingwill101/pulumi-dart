@@ -9,7 +9,7 @@ class Predeploy {
 
   /// Creates a new [Predeploy].
   /// [actions] Optional. A sequence of Skaffold custom actions to invoke during execution of the predeploy job.
-  Predeploy({
+  const Predeploy({
     this.actions,
   });
 

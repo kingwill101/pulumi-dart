@@ -44,7 +44,7 @@ class GetCustomJobAiplatformV1beta1Result {
   /// [state] The detailed state of the job.
   /// [updateTime] Time when the CustomJob was most recently updated.
   /// [webAccessUris] URIs for accessing [interactive shells](https://cloud.google.com/vertex-ai/docs/training/monitor-debug-interactive-shell) (one URI for each training node). Only available if job_spec.enable_web_access is `true`. The keys are names of each node in the training job; for example, `workerpool0-0` for the primary node, `workerpool1-0` for the first node in the second worker pool, and `workerpool1-1` for the second node in the second worker pool. The values are the URIs for each node's interactive shell.
-  GetCustomJobAiplatformV1beta1Result({
+  const GetCustomJobAiplatformV1beta1Result({
     required this.createTime,
     required this.displayName,
     required this.encryptionSpec,

@@ -24,7 +24,7 @@ class GuardrailContentFilter {
   /// [bannedContentsInUserInputs] List of banned phrases. Applies only to user inputs.
   /// [disregardDiacritics] If true, diacritics are ignored during matching.
   /// [matchType] Match type for the content filter.
-  GuardrailContentFilter({
+  const GuardrailContentFilter({
     this.bannedContents,
     this.bannedContentsInAgentResponses,
     this.bannedContentsInUserInputs,

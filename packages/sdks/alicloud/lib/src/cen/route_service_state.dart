@@ -29,7 +29,7 @@ class RouteServiceState {
   /// [hostRegionId] The region of the cloud service.
   /// [hostVpcId] The VPC associated with the cloud service.
   /// [status] The status of the cloud service.
-  RouteServiceState({
+  const RouteServiceState({
     this.accessRegionId,
     this.cenId,
     this.description,

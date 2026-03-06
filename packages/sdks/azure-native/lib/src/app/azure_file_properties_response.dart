@@ -22,7 +22,7 @@ class AzureFilePropertiesResponse {
   /// [accountKeyVaultProperties] Storage account key stored as an Azure Key Vault secret.
   /// [accountName] Storage account name for azure file.
   /// [shareName] Azure file share name.
-  AzureFilePropertiesResponse({
+  const AzureFilePropertiesResponse({
     this.accessMode,
     this.accountKey,
     this.accountKeyVaultProperties,

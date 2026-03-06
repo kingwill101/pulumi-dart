@@ -24,7 +24,7 @@ class VpcArgs {
   /// [ipv6s] The IPv6 configuration of this VPC.
   /// [label] The label of the VPC. This field can only contain ASCII letters, digits and dashes.
   /// [region] The region of the VPC.
-  VpcArgs({
+  const VpcArgs({
     this.description,
     this.ipv6s,
     required this.label,

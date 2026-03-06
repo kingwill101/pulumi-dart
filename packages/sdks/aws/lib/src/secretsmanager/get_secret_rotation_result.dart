@@ -23,7 +23,7 @@ class GetSecretRotationResult {
   /// [rotationLambdaArn] Amazon Resource Name (ARN) of the lambda function used for rotation.
   /// [rotationRules] Configuration block for rotation rules. See `rotation_rules` below.
   /// [secretId] Required.
-  GetSecretRotationResult({
+  const GetSecretRotationResult({
     required this.id,
     required this.region,
     required this.rotationEnabled,

@@ -61,7 +61,7 @@ class AlarmArgs {
   /// [scalingGroupId] The scaling group associated with this alarm, the 'ForceNew' attribute is available in 1.56.0+.
   /// [statistics] The statistic to apply to the alarm's associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
   /// [threshold] The value against which the specified statistics is compared.
-  AlarmArgs({
+  const AlarmArgs({
     required this.alarmActions,
     this.cloudMonitorGroupId,
     this.comparisonOperator,

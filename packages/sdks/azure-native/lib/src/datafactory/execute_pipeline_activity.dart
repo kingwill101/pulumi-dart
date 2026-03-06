@@ -44,7 +44,7 @@ class ExecutePipelineActivity {
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
   /// [waitOnCompletion] Defines whether activity execution will wait for the dependent pipeline execution to finish. Default is false.
-  ExecutePipelineActivity({
+  const ExecutePipelineActivity({
     this.dependsOn,
     this.description,
     required this.name,

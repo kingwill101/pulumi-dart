@@ -17,7 +17,7 @@ class DomainDevicesDiskGeometry {
   /// [headers] Sets the number of headers in the disk geometry, impacting data accessibility and organization.
   /// [sectors] Configures the number of sectors per track in the disk's geometry, influencing data density and performance.
   /// [trans] Indicates the type of translation used for the disk geometry, affecting how it maps its virtual space to physical storage.
-  DomainDevicesDiskGeometry({
+  const DomainDevicesDiskGeometry({
     required this.cylinders,
     required this.headers,
     required this.sectors,

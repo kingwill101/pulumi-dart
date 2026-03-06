@@ -20,7 +20,7 @@ class GooglePrivacyDlpV2ImageTransformation {
   /// [allText] Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
   /// [redactionColor] The color to use when redacting content from an image. If not specified, the default is black.
   /// [selectedInfoTypes] Apply transformation to the selected info_types.
-  GooglePrivacyDlpV2ImageTransformation({
+  const GooglePrivacyDlpV2ImageTransformation({
     this.allInfoTypes,
     this.allText,
     this.redactionColor,

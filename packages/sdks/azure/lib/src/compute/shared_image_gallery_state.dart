@@ -28,7 +28,7 @@ class SharedImageGalleryState {
   /// [sharing] A `sharing` block as defined below. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the Shared Image Gallery.
   /// [uniqueName] The Unique Name for this Shared Image Gallery.
-  SharedImageGalleryState({
+  const SharedImageGalleryState({
     this.description,
     this.location,
     this.name,

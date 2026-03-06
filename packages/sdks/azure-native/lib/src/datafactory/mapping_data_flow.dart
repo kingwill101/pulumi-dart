@@ -38,7 +38,7 @@ class MappingDataFlow {
   /// [sources] List of sources in data flow.
   /// [transformations_] List of transformations in data flow.
   /// [type] Type of data flow.
-  MappingDataFlow({
+  const MappingDataFlow({
     this.annotations,
     this.description,
     this.folder,

@@ -11,7 +11,7 @@ class SiteDeliveryTaskSlsDelivery {
   /// [slsLogStore] Optional.
   /// [slsProject] Optional.
   /// [slsRegion] Optional.
-  SiteDeliveryTaskSlsDelivery({
+  const SiteDeliveryTaskSlsDelivery({
     this.slsLogStore,
     this.slsProject,
     this.slsRegion,

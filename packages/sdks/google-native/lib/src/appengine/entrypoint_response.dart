@@ -9,7 +9,7 @@ class EntrypointResponse {
 
   /// Creates a new [EntrypointResponse].
   /// [shell] The format should be a shell command that can be fed to bash -c.
-  EntrypointResponse({
+  const EntrypointResponse({
     required this.shell,
   });
 

@@ -9,7 +9,7 @@ class ShardingProperties {
 
   /// Creates a new [ShardingProperties].
   /// [shardCount] Number of shards to provision on the cluster.
-  ShardingProperties({
+  const ShardingProperties({
     this.shardCount,
   });
 

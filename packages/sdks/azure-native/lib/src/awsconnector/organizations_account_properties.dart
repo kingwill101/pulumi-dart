@@ -31,7 +31,7 @@ class OrganizationsAccountProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  OrganizationsAccountProperties({
+  const OrganizationsAccountProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

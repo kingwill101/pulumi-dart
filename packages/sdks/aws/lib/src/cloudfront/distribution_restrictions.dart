@@ -8,7 +8,7 @@ class DistributionRestrictions {
 
   /// Creates a new [DistributionRestrictions].
   /// [geoRestriction] Required.
-  DistributionRestrictions({
+  const DistributionRestrictions({
     required this.geoRestriction,
   });
 

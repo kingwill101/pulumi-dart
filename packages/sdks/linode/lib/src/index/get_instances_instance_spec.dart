@@ -23,7 +23,7 @@ class GetInstancesInstanceSpec {
   /// [memory] The amount of RAM, in MB, this Linode has access to. Typically a Linode will choose to boot with all of its available RAM, but this can be configured in a Config profile.
   /// [transfer] The amount of network transfer this Linode is allotted each month.
   /// [vcpus] The number of vcpus this Linode has access to. Typically a Linode will choose to boot with all of its available vcpus, but this can be configured in a Config Profile.
-  GetInstancesInstanceSpec({
+  const GetInstancesInstanceSpec({
     required this.acceleratedDevices,
     required this.disk,
     required this.gpus,

@@ -7,7 +7,7 @@ class ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus
 
   /// Creates a new [ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus].
   /// [instanceUrl] Required.
-  ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus({
+  const ConnectorProfileConnectorProfileConfigConnectorProfilePropertiesInforNexus({
     required this.instanceUrl,
   });
 

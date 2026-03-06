@@ -77,7 +77,7 @@ class GetNotificationHubResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [wnsCredential] Description of a NotificationHub WnsCredential.
   /// [xiaomiCredential] Description of a NotificationHub XiaomiCredential.
-  GetNotificationHubResult({
+  const GetNotificationHubResult({
     this.admCredential,
     this.apnsCredential,
     required this.authorizationRules,

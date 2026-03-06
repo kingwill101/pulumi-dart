@@ -30,7 +30,7 @@ class DatabaseLogsinkOpensearchArgs {
   /// [indexPrefix] Prefix for the indices where logs will be stored.
   /// [name] Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
   /// [timeoutSeconds] Request timeout for log deliveries in seconds. Must be 1 or greater.
-  DatabaseLogsinkOpensearchArgs({
+  const DatabaseLogsinkOpensearchArgs({
     this.caCert,
     required this.clusterId,
     required this.endpoint,

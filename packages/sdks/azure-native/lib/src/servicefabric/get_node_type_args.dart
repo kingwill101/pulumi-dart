@@ -18,7 +18,7 @@ class GetNodeTypeArgs {
   /// [clusterName] The name of the cluster resource.
   /// [nodeTypeName] The name of the node type.
   /// [resourceGroupName] The name of the resource group.
-  GetNodeTypeArgs({
+  const GetNodeTypeArgs({
     required this.clusterName,
     required this.nodeTypeName,
     required this.resourceGroupName,

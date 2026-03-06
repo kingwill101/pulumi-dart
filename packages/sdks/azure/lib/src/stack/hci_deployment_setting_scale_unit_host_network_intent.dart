@@ -35,7 +35,7 @@ class HciDeploymentSettingScaleUnitHostNetworkIntent {
   /// [trafficTypes] Specifies a list of network traffic types. Possible values are `Compute`, `Storage`, `Management`. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [virtualSwitchConfigurationOverride] A `virtual_switch_configuration_override` block as defined below. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [virtualSwitchConfigurationOverrideEnabled] Whether to override virtual switch configuration. Possible values are `true` and `false`. defaults to `false`. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitHostNetworkIntent({
+  const HciDeploymentSettingScaleUnitHostNetworkIntent({
     this.adapterPropertyOverride,
     this.adapterPropertyOverrideEnabled,
     required this.adapters,

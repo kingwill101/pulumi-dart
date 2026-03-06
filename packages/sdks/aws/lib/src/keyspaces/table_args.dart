@@ -54,7 +54,7 @@ class TableArgs {
   /// [tableName] The name of the table.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [ttl] Enables Time to Live custom settings for the table. More information can be found in the [Developer Guide](https://docs.aws.amazon.com/keyspaces/latest/devguide/TTL.html).
-  TableArgs({
+  const TableArgs({
     this.capacitySpecification,
     this.clientSideTimestamps,
     this.comment,

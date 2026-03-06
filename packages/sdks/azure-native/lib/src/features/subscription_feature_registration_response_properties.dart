@@ -48,7 +48,7 @@ class SubscriptionFeatureRegistrationResponseProperties {
   /// [state] The state.
   /// [subscriptionId] The subscriptionId.
   /// [tenantId] The tenantId.
-  SubscriptionFeatureRegistrationResponseProperties({
+  const SubscriptionFeatureRegistrationResponseProperties({
     required this.approvalType,
     this.authorizationProfile,
     this.description,

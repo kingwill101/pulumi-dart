@@ -12,7 +12,7 @@ class GetSyncGroupResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
   /// [storageSyncId] Required.
-  GetSyncGroupResult({
+  const GetSyncGroupResult({
     required this.id,
     required this.name,
     required this.storageSyncId,

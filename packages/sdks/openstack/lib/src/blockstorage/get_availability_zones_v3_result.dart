@@ -18,7 +18,7 @@ class GetAvailabilityZonesV3Result {
   /// [names] The names of the availability zones, ordered alphanumerically, that
   /// [region] See Argument Reference above.
   /// [state] See Argument Reference above.
-  GetAvailabilityZonesV3Result({
+  const GetAvailabilityZonesV3Result({
     required this.id,
     required this.names,
     required this.region,

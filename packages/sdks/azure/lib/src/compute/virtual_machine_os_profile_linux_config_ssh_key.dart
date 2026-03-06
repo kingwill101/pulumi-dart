@@ -15,7 +15,7 @@ class VirtualMachineOsProfileLinuxConfigSshKey {
   /// Creates a new [VirtualMachineOsProfileLinuxConfigSshKey].
   /// [keyData] The Public SSH Key which should be written to the `path` defined above.
   /// [path] The path of the destination file on the virtual machine
-  VirtualMachineOsProfileLinuxConfigSshKey({
+  const VirtualMachineOsProfileLinuxConfigSshKey({
     required this.keyData,
     required this.path,
   });

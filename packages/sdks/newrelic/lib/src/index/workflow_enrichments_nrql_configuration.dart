@@ -8,7 +8,7 @@ class WorkflowEnrichmentsNrqlConfiguration {
 
   /// Creates a new [WorkflowEnrichmentsNrqlConfiguration].
   /// [query] enrichment's NRQL query
-  WorkflowEnrichmentsNrqlConfiguration({
+  const WorkflowEnrichmentsNrqlConfiguration({
     required this.query,
   });
 

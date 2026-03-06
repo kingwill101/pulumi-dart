@@ -54,7 +54,7 @@ class IpamIpamPoolArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [sourceIpamPoolId] The instance ID of the source IPAM address pool.
   /// [tags] The tag of the resource.
-  IpamIpamPoolArgs({
+  const IpamIpamPoolArgs({
     this.allocationDefaultCidrMask,
     this.allocationMaxCidrMask,
     this.allocationMinCidrMask,

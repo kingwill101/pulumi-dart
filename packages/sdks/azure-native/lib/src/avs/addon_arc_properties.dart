@@ -13,7 +13,7 @@ class AddonArcProperties {
   /// Creates a new [AddonArcProperties].
   /// [addonType] Addon type
   /// [vCenter] The VMware vCenter resource ID
-  AddonArcProperties({
+  const AddonArcProperties({
     required this.addonType,
     this.vCenter,
   });

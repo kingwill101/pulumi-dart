@@ -10,7 +10,7 @@ class GlossaryTermsSet {
 
   /// Creates a new [GlossaryTermsSet].
   /// [terms] Each term in the set represents a term that can be replaced by the other terms.
-  GlossaryTermsSet({
+  const GlossaryTermsSet({
     this.terms,
   });
 

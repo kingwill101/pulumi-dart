@@ -8,7 +8,7 @@ class ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration {
 
   /// Creates a new [ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration].
   /// [logGroupArn] The Amazon Resource Name (ARN) of the destination Amazon CloudWatch Logs log group. The ARN must end with `:*`
-  ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration({
+  const ExperimentTemplateLogConfigurationCloudwatchLogsConfiguration({
     required this.logGroupArn,
   });
 

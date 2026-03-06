@@ -23,7 +23,7 @@ class EndpointServicePrivateDnsVerificationArgs {
   /// [serviceId] ID of the endpoint service.
   /// [timeouts] Optional.
   /// [waitForVerification] Whether to wait until the endpoint service returns a `Verified` status for the configured private DNS name.
-  EndpointServicePrivateDnsVerificationArgs({
+  const EndpointServicePrivateDnsVerificationArgs({
     this.region,
     required this.serviceId,
     this.timeouts,

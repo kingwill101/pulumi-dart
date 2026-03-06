@@ -21,7 +21,7 @@ class DatascanDataQualitySpecPostScanActionsNotificationReport {
   /// [jobFailureTrigger] This trigger is triggered when the scan job itself fails, regardless of the result.
   /// [recipients] The individuals or groups who are designated to receive notifications upon triggers.
   /// [scoreThresholdTrigger] This trigger is triggered when the DQ score in the job result is less than a specified input score.
-  DatascanDataQualitySpecPostScanActionsNotificationReport({
+  const DatascanDataQualitySpecPostScanActionsNotificationReport({
     this.jobEndTrigger,
     this.jobFailureTrigger,
     required this.recipients,

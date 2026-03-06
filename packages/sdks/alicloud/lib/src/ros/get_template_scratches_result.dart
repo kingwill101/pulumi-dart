@@ -22,7 +22,7 @@ class GetTemplateScratchesResult {
   /// [scratches] Required.
   /// [status] Optional.
   /// [templateScratchType] Optional.
-  GetTemplateScratchesResult({
+  const GetTemplateScratchesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

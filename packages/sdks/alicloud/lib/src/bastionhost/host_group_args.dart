@@ -18,7 +18,7 @@ class HostGroupArgs {
   /// [comment] Specify the New Host Group of Notes, Supports up to 500 Characters.
   /// [hostGroupName] Specify the New Host Group Name, Supports up to 128 Characters.
   /// [instanceId] Specify the New Host Group Where the Bastion Host ID of.
-  HostGroupArgs({
+  const HostGroupArgs({
     this.comment,
     required this.hostGroupName,
     required this.instanceId,

@@ -17,7 +17,7 @@ class PlacementGroupAssignmentArgs {
   /// [compliantOnly] Optional.
   /// [linodeId] The unique ID of the Linode to assign.
   /// [placementGroupId] The unique ID of the target Placement Group.
-  PlacementGroupAssignmentArgs({
+  const PlacementGroupAssignmentArgs({
     this.compliantOnly,
     required this.linodeId,
     required this.placementGroupId,

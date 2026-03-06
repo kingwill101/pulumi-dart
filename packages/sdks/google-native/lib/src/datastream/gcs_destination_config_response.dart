@@ -22,7 +22,7 @@ class GcsDestinationConfigResponse {
   /// [fileRotationMb] The maximum file size to be saved in the bucket.
   /// [jsonFileFormat] JSON file format configuration.
   /// [path] Path inside the Cloud Storage bucket to write data to.
-  GcsDestinationConfigResponse({
+  const GcsDestinationConfigResponse({
     required this.avroFileFormat,
     required this.fileRotationInterval,
     required this.fileRotationMb,

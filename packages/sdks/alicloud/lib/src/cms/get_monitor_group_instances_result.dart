@@ -18,7 +18,7 @@ class GetMonitorGroupInstancesResult {
   /// [instances] Required.
   /// [keyword] Optional.
   /// [outputFile] Optional.
-  GetMonitorGroupInstancesResult({
+  const GetMonitorGroupInstancesResult({
     required this.id,
     required this.ids,
     required this.instances,

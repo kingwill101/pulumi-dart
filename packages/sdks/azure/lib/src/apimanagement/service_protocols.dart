@@ -10,7 +10,7 @@ class ServiceProtocols {
   /// Creates a new [ServiceProtocols].
   /// [enableHttp2] Optional.
   /// [http2Enabled] Should HTTP/2 be supported by the API Management Service? Defaults to `false`.
-  ServiceProtocols({
+  const ServiceProtocols({
     this.enableHttp2,
     this.http2Enabled,
   });

@@ -14,7 +14,7 @@ class FluxConfigurationKustomizationPostBuildSubstituteFrom {
   /// [kind] Specifies the source kind to hold the variables to be used in substitution. Possible values are `ConfigMap` and `Secret`.
   /// [name] Specifies the name of the ConfigMap/Secret that holds the variables to be used in substitution.
   /// [optional] Whether to proceed without ConfigMap/Secret if it is not present. Defaults to `false`.
-  FluxConfigurationKustomizationPostBuildSubstituteFrom({
+  const FluxConfigurationKustomizationPostBuildSubstituteFrom({
     required this.kind,
     required this.name,
     this.optional,

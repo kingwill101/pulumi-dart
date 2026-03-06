@@ -10,7 +10,7 @@ class ApplicationCloudwatchLoggingOptions {
   /// Creates a new [ApplicationCloudwatchLoggingOptions].
   /// [cloudwatchLoggingOptionId] Optional.
   /// [logStreamArn] The ARN of the CloudWatch log stream to receive application messages.
-  ApplicationCloudwatchLoggingOptions({
+  const ApplicationCloudwatchLoggingOptions({
     this.cloudwatchLoggingOptionId,
     required this.logStreamArn,
   });

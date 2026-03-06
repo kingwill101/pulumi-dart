@@ -42,7 +42,7 @@ class CertificateState {
   /// [siteId] The site ID, which can be obtained by calling the ListSites interface.
   /// [status] Certificate status.(within 30 days).- issued.- applying.- application failed.- canceled.
   /// [type] Certificate type. Possible values: lets_encrypt: Let's Encrypt certificate;
-  CertificateState({
+  const CertificateState({
     this.casId,
     this.certId,
     this.certName,

@@ -21,7 +21,7 @@ class ProductGroupArgs {
   /// [groupName] The Name of the API Management Group within the API Management Service. Changing this forces a new resource to be created.
   /// [productId] The ID of the API Management Product within the API Management Service. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the Resource Group in which the API Management Service exists. Changing this forces a new resource to be created.
-  ProductGroupArgs({
+  const ProductGroupArgs({
     required this.apiManagementName,
     required this.groupName,
     required this.productId,

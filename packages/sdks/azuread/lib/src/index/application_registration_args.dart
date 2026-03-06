@@ -54,7 +54,7 @@ class ApplicationRegistrationArgs {
   /// [signInAudience] The Microsoft account types that are supported for the current application. Must be one of `AzureADMyOrg`, `AzureADMultipleOrgs`, `AzureADandPersonalMicrosoftAccount` or `PersonalMicrosoftAccount`. Defaults to `AzureADMyOrg`.
   /// [supportUrl] URL of the support page for the application.
   /// [termsOfServiceUrl] URL of the terms of service statement for the application.
-  ApplicationRegistrationArgs({
+  const ApplicationRegistrationArgs({
     this.description,
     required this.displayName,
     this.groupMembershipClaims,

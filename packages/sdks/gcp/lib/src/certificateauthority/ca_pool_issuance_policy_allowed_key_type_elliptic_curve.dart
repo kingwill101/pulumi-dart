@@ -9,7 +9,7 @@ class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
 
   /// Creates a new [CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve].
   /// [signatureAlgorithm] The algorithm used.
-  CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve({
+  const CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve({
     required this.signatureAlgorithm,
   });
 

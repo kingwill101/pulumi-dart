@@ -28,7 +28,7 @@ class CachePolicyArgs {
   /// [minTtl] Minimum amount of time, in seconds, that objects should remain in the CloudFront cache before a new request is sent to the origin to check for updates.
   /// [name] Unique name used to identify the cache policy.
   /// [parametersInCacheKeyAndForwardedToOrigin] Configuration for including HTTP headers, cookies, and URL query strings in the cache key. For more information, refer to the Parameters In Cache Key And Forwarded To Origin section.
-  CachePolicyArgs({
+  const CachePolicyArgs({
     this.comment,
     this.defaultTtl,
     this.maxTtl,

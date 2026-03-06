@@ -18,7 +18,7 @@ class ShortUrlState {
   /// [shortUrlName] The name of the resource.
   /// [sourceUrl] The original link address.
   /// [status] Short chain status.
-  ShortUrlState({
+  const ShortUrlState({
     this.effectiveDays,
     this.shortUrlName,
     this.sourceUrl,

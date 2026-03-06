@@ -58,7 +58,7 @@ class AwsEc2IpamPropertiesResponse {
   /// [stateMessage] &lt;p&gt;The state message.&lt;/p&gt;
   /// [tags] &lt;p&gt;The key/value combination of a tag assigned to the resource. Use the tag key in the filter name and the tag value as the filter value. For example, to find all resources that have a tag with the key &lt;code&gt;Owner&lt;/code&gt; and the value &lt;code&gt;TeamA&lt;/code&gt;, specify &lt;code&gt;tag:Owner&lt;/code&gt; for the filter name and &lt;code&gt;TeamA&lt;/code&gt; for the filter value.&lt;/p&gt;
   /// [tier] &lt;p&gt;IPAM is offered in a Free Tier and an Advanced Tier. For more information about the features available in each tier and the costs associated with the tiers, see &lt;a href='http://aws.amazon.com/vpc/pricing/'&gt;Amazon VPC pricing &gt; IPAM tab&lt;/a&gt;.&lt;/p&gt;
-  AwsEc2IpamPropertiesResponse({
+  const AwsEc2IpamPropertiesResponse({
     this.defaultResourceDiscoveryAssociationId,
     this.defaultResourceDiscoveryId,
     this.description,

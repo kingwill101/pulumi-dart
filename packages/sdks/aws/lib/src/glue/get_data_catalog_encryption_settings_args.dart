@@ -15,7 +15,7 @@ class GetDataCatalogEncryptionSettingsArgs {
   /// Creates a new [GetDataCatalogEncryptionSettingsArgs].
   /// [catalogId] ID of the Data Catalog. This is typically the AWS account ID.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDataCatalogEncryptionSettingsArgs({
+  const GetDataCatalogEncryptionSettingsArgs({
     required this.catalogId,
     this.region,
   });

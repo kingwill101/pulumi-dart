@@ -18,7 +18,7 @@ class LifecyclePolicyState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [registryId] The registry ID where the repository was created.
   /// [repository] Name of the repository to apply the policy.
-  LifecyclePolicyState({
+  const LifecyclePolicyState({
     this.policy,
     this.region,
     this.registryId,

@@ -48,7 +48,7 @@ class PartitionStorageDescriptor {
   /// [skewedInfo] Information about values that appear very frequently in a column (skewed values).
   /// [sortColumns] A list of Order objects specifying the sort order of each bucket in the table.
   /// [storedAsSubDirectories] True if the table data is stored in subdirectories, or False if not.
-  PartitionStorageDescriptor({
+  const PartitionStorageDescriptor({
     this.additionalLocations,
     this.bucketColumns,
     this.columns,

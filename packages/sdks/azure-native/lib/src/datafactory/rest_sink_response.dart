@@ -43,7 +43,7 @@ class RestSinkResponse {
   /// [type] Copy sink type.
   /// [writeBatchSize] Write batch size. Type: integer (or Expression with resultType integer), minimum: 0.
   /// [writeBatchTimeout] Write batch timeout. Type: string (or Expression with resultType string), pattern: ((\d+)\.)?(\d\d):(60|([0-5][0-9])):(60|([0-5][0-9])).
-  RestSinkResponse({
+  const RestSinkResponse({
     this.additionalHeaders,
     this.disableMetricsCollection,
     this.httpCompressionType,

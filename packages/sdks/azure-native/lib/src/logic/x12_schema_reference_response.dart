@@ -18,7 +18,7 @@ class X12SchemaReferenceResponse {
   /// [schemaName] The schema name.
   /// [schemaVersion] The schema version.
   /// [senderApplicationId] The sender application id.
-  X12SchemaReferenceResponse({
+  const X12SchemaReferenceResponse({
     required this.messageId,
     required this.schemaName,
     required this.schemaVersion,

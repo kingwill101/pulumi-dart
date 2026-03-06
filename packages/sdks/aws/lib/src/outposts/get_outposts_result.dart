@@ -24,7 +24,7 @@ class GetOutpostsResult {
   /// [ownerId] Required.
   /// [region] Required.
   /// [siteId] Required.
-  GetOutpostsResult({
+  const GetOutpostsResult({
     required this.arns,
     required this.availabilityZone,
     required this.availabilityZoneId,

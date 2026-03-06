@@ -16,7 +16,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecific
   /// [audioSpecification] Configuration block for the settings on audio input. See `audio_specification`.
   /// [dtmfSpecification] Configuration block for the settings on DTMF input. See `dtmf_specification`.
   /// [startTimeoutMs] Time for which a bot waits before assuming that the customer isn't going to speak or press a key. This timeout is shared between Audio and DTMF inputs.
-  V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification({
+  const V2modelsIntentConfirmationSettingPromptSpecificationPromptAttemptsSpecificationAudioAndDtmfInputSpecification({
     this.audioSpecification,
     this.dtmfSpecification,
     required this.startTimeoutMs,

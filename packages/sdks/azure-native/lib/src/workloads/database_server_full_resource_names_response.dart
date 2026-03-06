@@ -17,7 +17,7 @@ class DatabaseServerFullResourceNamesResponse {
   /// [availabilitySetName] The full name for availability set. In case name is not provided, it will be defaulted to {SID}-DB-AvSet.
   /// [loadBalancer] The resource names object for load balancer and related resources.
   /// [virtualMachines] The list of virtual machine naming details.
-  DatabaseServerFullResourceNamesResponse({
+  const DatabaseServerFullResourceNamesResponse({
     this.availabilitySetName,
     this.loadBalancer,
     this.virtualMachines,

@@ -87,7 +87,7 @@ class HadoopClusterState {
   /// [tags] A map of Tags which should be assigned to this HDInsight Hadoop Cluster.
   /// [tier] Specifies the Tier which should be used for this HDInsight Hadoop Cluster. Possible values are `Standard` or `Premium`. Changing this forces a new resource to be created.
   /// [tlsMinVersion] The minimal supported TLS version. Possible values are 1.0, 1.1 or 1.2. Changing this forces a new resource to be created.
-  HadoopClusterState({
+  const HadoopClusterState({
     this.clusterVersion,
     this.componentVersion,
     this.computeIsolation,

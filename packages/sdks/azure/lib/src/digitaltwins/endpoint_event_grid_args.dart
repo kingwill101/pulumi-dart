@@ -27,7 +27,7 @@ class EndpointEventGridArgs {
   /// [eventgridTopicPrimaryAccessKey] The primary access key of the Event Grid Topic.
   /// [eventgridTopicSecondaryAccessKey] The secondary access key of the Event Grid Topic.
   /// [name] The name which should be used for this Digital Twins Eventgrid Endpoint. Changing this forces a new Digital Twins Eventgrid Endpoint to be created.
-  EndpointEventGridArgs({
+  const EndpointEventGridArgs({
     this.deadLetterStorageSecret,
     required this.digitalTwinsId,
     required this.eventgridTopicEndpoint,

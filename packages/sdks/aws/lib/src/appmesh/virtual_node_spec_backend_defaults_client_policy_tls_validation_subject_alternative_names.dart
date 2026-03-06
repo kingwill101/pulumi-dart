@@ -9,7 +9,7 @@ class VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeN
 
   /// Creates a new [VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames].
   /// [match] Criteria for determining a SAN's match.
-  VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames({
+  const VirtualNodeSpecBackendDefaultsClientPolicyTlsValidationSubjectAlternativeNames({
     required this.match,
   });
 

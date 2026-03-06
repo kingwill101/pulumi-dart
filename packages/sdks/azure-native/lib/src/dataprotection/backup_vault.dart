@@ -28,7 +28,7 @@ class BackupVault {
   /// [resourceGuardOperationRequests] ResourceGuardOperationRequests on which LAC check will be performed
   /// [securitySettings] Security Settings
   /// [storageSettings] Storage Settings
-  BackupVault({
+  const BackupVault({
     this.featureSettings,
     this.monitoringSettings,
     this.replicatedRegions,

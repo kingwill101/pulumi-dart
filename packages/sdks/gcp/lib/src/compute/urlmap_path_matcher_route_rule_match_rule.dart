@@ -66,7 +66,7 @@ class URLMapPathMatcherRouteRuleMatchRule {
   /// [prefixMatch] For satisfying the matchRule condition, the request's path must begin with the
   /// [queryParameterMatches] Specifies a list of query parameter match criteria, all of which must match
   /// [regexMatch] For satisfying the matchRule condition, the path of the request must satisfy the
-  URLMapPathMatcherRouteRuleMatchRule({
+  const URLMapPathMatcherRouteRuleMatchRule({
     this.fullPathMatch,
     this.headerMatches,
     this.ignoreCase,

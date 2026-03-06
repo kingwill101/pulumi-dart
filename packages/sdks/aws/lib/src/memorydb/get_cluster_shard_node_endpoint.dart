@@ -11,7 +11,7 @@ class GetClusterShardNodeEndpoint {
   /// Creates a new [GetClusterShardNodeEndpoint].
   /// [address] DNS hostname of the node.
   /// [port] Port number that this node is listening on.
-  GetClusterShardNodeEndpoint({
+  const GetClusterShardNodeEndpoint({
     required this.address,
     required this.port,
   });

@@ -10,7 +10,7 @@ class StateInfoResponseRedisV1beta1 {
 
   /// Creates a new [StateInfoResponseRedisV1beta1].
   /// [updateInfo] Describes ongoing update on the cluster when cluster state is UPDATING.
-  StateInfoResponseRedisV1beta1({
+  const StateInfoResponseRedisV1beta1({
     required this.updateInfo,
   });
 

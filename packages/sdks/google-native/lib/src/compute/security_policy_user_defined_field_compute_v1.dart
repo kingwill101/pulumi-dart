@@ -21,7 +21,7 @@ class SecurityPolicyUserDefinedFieldComputeV1 {
   /// [name] The name of this field. Must be unique within the policy.
   /// [offset] Offset of the first byte of the field (in network byte order) relative to 'base'.
   /// [size] Size of the field in bytes. Valid values: 1-4.
-  SecurityPolicyUserDefinedFieldComputeV1({
+  const SecurityPolicyUserDefinedFieldComputeV1({
     this.base,
     this.mask,
     this.name,

@@ -21,7 +21,7 @@ class GetServiceDatabaseTableIamPolicyMetastoreV1betaArgs {
   /// [project] Optional.
   /// [serviceId] Required.
   /// [tableId] Required.
-  GetServiceDatabaseTableIamPolicyMetastoreV1betaArgs({
+  const GetServiceDatabaseTableIamPolicyMetastoreV1betaArgs({
     required this.databaseId,
     required this.location,
     this.optionsRequestedPolicyVersion,

@@ -17,7 +17,7 @@ class JitNetworkAccessRequest {
   /// [requestor] The identity of the person who made the request
   /// [startTimeUtc] The start time of the request in UTC
   /// [virtualMachines] Required.
-  JitNetworkAccessRequest({
+  const JitNetworkAccessRequest({
     this.justification,
     required this.requestor,
     required this.startTimeUtc,

@@ -10,7 +10,7 @@ class GetSubscriptionPushConfigNoWrapper {
 
   /// Creates a new [GetSubscriptionPushConfigNoWrapper].
   /// [writeMetadata] When true, writes the Pub/Sub message metadata to
-  GetSubscriptionPushConfigNoWrapper({
+  const GetSubscriptionPushConfigNoWrapper({
     required this.writeMetadata,
   });
 

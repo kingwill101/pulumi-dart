@@ -23,7 +23,7 @@ class ApplicationScalingRuleScalingRuleMetric {
   /// [minReplicas] Minimum number of instances applied.
   /// [scaleDownRules] Apply shrink rules. See `scale_down_rules` below.
   /// [scaleUpRules] Apply expansion rules. See `scale_up_rules` below.
-  ApplicationScalingRuleScalingRuleMetric({
+  const ApplicationScalingRuleScalingRuleMetric({
     this.maxReplicas,
     this.metrics,
     this.minReplicas,

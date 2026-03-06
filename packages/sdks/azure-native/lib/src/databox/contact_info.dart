@@ -18,7 +18,7 @@ class ContactInfo {
   /// [mobile] Mobile number of the contact person.
   /// [phone] Phone number of the contact person.
   /// [phoneExtension] Phone extension number of the contact person.
-  ContactInfo({
+  const ContactInfo({
     required this.contactName,
     this.mobile,
     required this.phone,

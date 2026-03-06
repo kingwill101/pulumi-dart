@@ -27,7 +27,7 @@ class Ipv6GatewayArgs {
   /// [spec] IPv6 gateways do not distinguish between specifications. This parameter is no longer used.
   /// [tags] The tags for the resource.
   /// [vpcId] The ID of the virtual private cloud (VPC) for which you want to create the IPv6 gateway.
-  Ipv6GatewayArgs({
+  const Ipv6GatewayArgs({
     this.description,
     this.ipv6GatewayName,
     this.resourceGroupId,

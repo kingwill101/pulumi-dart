@@ -15,7 +15,7 @@ class GetUserArgs {
   /// Creates a new [GetUserArgs].
   /// [tags] Map of key-value pairs associated with the user.
   /// [userName] Friendly IAM user name to match.
-  GetUserArgs({
+  const GetUserArgs({
     this.tags,
     required this.userName,
   });

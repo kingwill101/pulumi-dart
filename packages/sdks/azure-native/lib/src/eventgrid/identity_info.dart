@@ -21,7 +21,7 @@ class IdentityInfo {
   /// [tenantId] The tenant ID of resource.
   /// [type] The type of managed identity used. The type 'SystemAssigned, UserAssigned' includes both an implicitly created identity and a set of user-assigned identities. The type 'None' will remove any identity.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
-  IdentityInfo({
+  const IdentityInfo({
     this.principalId,
     this.tenantId,
     this.type,

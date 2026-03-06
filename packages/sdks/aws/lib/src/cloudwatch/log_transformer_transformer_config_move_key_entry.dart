@@ -15,7 +15,7 @@ class LogTransformerTransformerConfigMoveKeyEntry {
   /// [overwriteIfExists] Specifies whether to overwrite the value if the destination key already exists. Defaults to `false`.
   /// [source] Specifies the key to modify.
   /// [target] Specifies the key to move to.
-  LogTransformerTransformerConfigMoveKeyEntry({
+  const LogTransformerTransformerConfigMoveKeyEntry({
     this.overwriteIfExists,
     required this.source,
     required this.target,

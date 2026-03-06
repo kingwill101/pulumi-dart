@@ -11,7 +11,7 @@ class PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation {
   /// Creates a new [PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation].
   /// [accountId] The AWS account ID that this discovery config applies to. Within an organization, you can find the AWS account ID inside an AWS account ARN. Example: arn:&lt;partition&gt;:organizations::&lt;management-account-id&gt;:account/&lt;organization-id&gt;/&lt;account-id&gt;
   /// [allAssetInventoryAssets] All AWS assets stored in Asset Inventory that didn't match other AWS discovery configs.
-  PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation({
+  const PreventionDiscoveryConfigOtherCloudStartingLocationAwsLocation({
     this.accountId,
     this.allAssetInventoryAssets,
   });

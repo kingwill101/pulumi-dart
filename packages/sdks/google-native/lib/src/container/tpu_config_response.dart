@@ -15,7 +15,7 @@ class TpuConfigResponse {
   /// [enabled] Whether Cloud TPU integration is enabled or not.
   /// [ipv4CidrBlock] IPv4 CIDR block reserved for Cloud TPU in the VPC.
   /// [useServiceNetworking] Whether to use service networking for Cloud TPU or not.
-  TpuConfigResponse({
+  const TpuConfigResponse({
     required this.enabled,
     required this.ipv4CidrBlock,
     required this.useServiceNetworking,

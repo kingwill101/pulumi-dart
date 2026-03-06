@@ -19,7 +19,7 @@ class SchedulerPropertiesResponse {
   /// [ipAllowlist] IP allow list for durable task scheduler. Values can be IPv4, IPv6 or CIDR
   /// [provisioningState] The status of the last operation
   /// [sku] SKU of the durable task scheduler
-  SchedulerPropertiesResponse({
+  const SchedulerPropertiesResponse({
     required this.endpoint,
     required this.ipAllowlist,
     required this.provisioningState,

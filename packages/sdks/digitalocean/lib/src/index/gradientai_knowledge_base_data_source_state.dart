@@ -15,7 +15,7 @@ class GradientaiKnowledgeBaseDataSourceState {
   /// [knowledgeBaseUuid] UUID of the Knowledge Base
   /// [spacesDataSource] Optional.
   /// [webCrawlerDataSource] Optional.
-  GradientaiKnowledgeBaseDataSourceState({
+  const GradientaiKnowledgeBaseDataSourceState({
     this.knowledgeBaseUuid,
     this.spacesDataSource,
     this.webCrawlerDataSource,

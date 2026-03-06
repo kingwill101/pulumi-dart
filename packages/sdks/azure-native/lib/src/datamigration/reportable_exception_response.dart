@@ -24,7 +24,7 @@ class ReportableExceptionResponse {
   /// [lineNumber] The line number where exception occurred
   /// [message] Error message
   /// [stackTrace] Stack trace
-  ReportableExceptionResponse({
+  const ReportableExceptionResponse({
     this.actionableMessage,
     this.filePath,
     this.hResult,

@@ -7,7 +7,7 @@ class GetVirtualNetworkGatewayConnectionIkeSasResult {
 
   /// Creates a new [GetVirtualNetworkGatewayConnectionIkeSasResult].
   /// [value] Optional.
-  GetVirtualNetworkGatewayConnectionIkeSasResult({
+  const GetVirtualNetworkGatewayConnectionIkeSasResult({
     this.value,
   });
 

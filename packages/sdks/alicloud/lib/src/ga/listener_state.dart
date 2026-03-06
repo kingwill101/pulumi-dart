@@ -65,7 +65,7 @@ class ListenerState {
   /// [requestTimeout] The timeout period for HTTP or HTTPS requests. Unit: seconds. Default Value: `60`. Valid values: `1` to `180`.
   /// [securityPolicyId] The ID of the security policy. **NOTE:** Only `HTTPS` listeners support this parameter. Valid values:
   /// [status] The status of the listener.
-  ListenerState({
+  const ListenerState({
     this.acceleratorId,
     this.certificates,
     this.clientAffinity,

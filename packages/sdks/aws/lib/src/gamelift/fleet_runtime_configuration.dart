@@ -15,7 +15,7 @@ class FleetRuntimeConfiguration {
   /// [gameSessionActivationTimeoutSeconds] Maximum amount of time (in seconds) that a game session can remain in status `ACTIVATING`.
   /// [maxConcurrentGameSessionActivations] Maximum number of game sessions with status `ACTIVATING` to allow on an instance simultaneously.
   /// [serverProcesses] Collection of server process configurations that describe which server processes to run on each instance in a fleet. See below.
-  FleetRuntimeConfiguration({
+  const FleetRuntimeConfiguration({
     this.gameSessionActivationTimeoutSeconds,
     this.maxConcurrentGameSessionActivations,
     this.serverProcesses,

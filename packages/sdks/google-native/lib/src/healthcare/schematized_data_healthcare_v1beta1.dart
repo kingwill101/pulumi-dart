@@ -12,7 +12,7 @@ class SchematizedDataHealthcareV1beta1 {
   /// Creates a new [SchematizedDataHealthcareV1beta1].
   /// [data] JSON output of the parser.
   /// [error] The error output of the parser.
-  SchematizedDataHealthcareV1beta1({
+  const SchematizedDataHealthcareV1beta1({
     this.data,
     this.error,
   });

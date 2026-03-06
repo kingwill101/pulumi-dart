@@ -11,7 +11,7 @@ class EndpointDependencyResponse {
   /// Creates a new [EndpointDependencyResponse].
   /// [domainName] The domain name of the dependency.
   /// [port] The port of this endpoint.
-  EndpointDependencyResponse({
+  const EndpointDependencyResponse({
     required this.domainName,
     this.port,
   });

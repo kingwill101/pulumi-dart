@@ -37,7 +37,7 @@ class ApplicationGatewayFrontendIPConfigurationResponse {
   /// [publicIPAddress] Reference to the PublicIP resource.
   /// [subnet] Reference to the subnet resource.
   /// [type] Type of the resource.
-  ApplicationGatewayFrontendIPConfigurationResponse({
+  const ApplicationGatewayFrontendIPConfigurationResponse({
     required this.etag,
     this.id,
     this.name,

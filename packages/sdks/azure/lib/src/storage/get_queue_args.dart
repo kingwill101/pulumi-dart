@@ -23,7 +23,7 @@ class GetQueueArgs {
   /// [name] The name of the Queue.
   /// [storageAccountId] The name of the Storage Account where the Queue exists. This property will become Required in version 5.0 of the Provider.
   /// [storageAccountName] The name of the Storage Account where the Queue exists. This property is deprecated in favour of `storage_account_id`.
-  GetQueueArgs({
+  const GetQueueArgs({
     this.metadata,
     required this.name,
     this.storageAccountId,

@@ -12,7 +12,7 @@ class TagResponseVmmigrationV1alpha1 {
   /// Creates a new [TagResponseVmmigrationV1alpha1].
   /// [key] Key of tag.
   /// [value] Value of tag.
-  TagResponseVmmigrationV1alpha1({
+  const TagResponseVmmigrationV1alpha1({
     required this.key,
     required this.value,
   });

@@ -16,7 +16,7 @@ class PreventionDiscoveryConfigTargetCloudStorageTargetConditions {
   /// [cloudStorageConditions] Cloud Storage conditions.
   /// [createdAfter] File store must have been created after this date. Used to avoid backfilling. A timestamp in RFC3339 UTC "Zulu" format with nanosecond resolution and upto nine fractional digits.
   /// [minAge] Duration format.  Minimum age a resource must be before a profile can be generated. Value must be 1 hour or greater. Minimum age is not supported for Azure Blob Storage containers.
-  PreventionDiscoveryConfigTargetCloudStorageTargetConditions({
+  const PreventionDiscoveryConfigTargetCloudStorageTargetConditions({
     this.cloudStorageConditions,
     this.createdAfter,
     this.minAge,

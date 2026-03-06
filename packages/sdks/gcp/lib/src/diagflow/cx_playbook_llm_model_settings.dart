@@ -11,7 +11,7 @@ class CxPlaybookLlmModelSettings {
   /// Creates a new [CxPlaybookLlmModelSettings].
   /// [model] The selected LLM model.
   /// [promptText] The custom prompt to use.
-  CxPlaybookLlmModelSettings({
+  const CxPlaybookLlmModelSettings({
     this.model,
     this.promptText,
   });

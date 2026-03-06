@@ -13,7 +13,7 @@ class ConnectionMonitorEndpointFilterResponse {
   /// Creates a new [ConnectionMonitorEndpointFilterResponse].
   /// [items] List of items in the filter.
   /// [type] The behavior of the endpoint filter. Currently only 'Include' is supported.
-  ConnectionMonitorEndpointFilterResponse({
+  const ConnectionMonitorEndpointFilterResponse({
     this.items,
     this.type,
   });

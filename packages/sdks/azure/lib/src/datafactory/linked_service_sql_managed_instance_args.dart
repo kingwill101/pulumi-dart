@@ -49,7 +49,7 @@ class LinkedServiceSqlManagedInstanceArgs {
   /// [servicePrincipalId] The service principal id in which to authenticate against the Azure SQL Managed Instance.
   /// [servicePrincipalKey] The service principal key in which to authenticate against the Azure SQL Managed Instance.
   /// [tenant] The tenant id or name in which to authenticate against the Azure SQL Managed Instance.
-  LinkedServiceSqlManagedInstanceArgs({
+  const LinkedServiceSqlManagedInstanceArgs({
     this.annotations,
     this.connectionString,
     required this.dataFactoryId,

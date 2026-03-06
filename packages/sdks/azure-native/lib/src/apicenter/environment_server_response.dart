@@ -12,7 +12,7 @@ class EnvironmentServerResponse {
   /// Creates a new [EnvironmentServerResponse].
   /// [managementPortalUri] The location of the management portal
   /// [type] Type of the server that represents the environment.
-  EnvironmentServerResponse({
+  const EnvironmentServerResponse({
     this.managementPortalUri,
     this.type,
   });

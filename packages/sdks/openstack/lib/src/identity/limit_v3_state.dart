@@ -33,7 +33,7 @@ class LimitV3State {
   /// [resourceLimit] Integer for the actual limit.
   /// [resourceName] The resource that the limit applies to. Changing
   /// [serviceId] The service the limit applies to. Changing this
-  LimitV3State({
+  const LimitV3State({
     this.description,
     this.domainId,
     this.projectId,

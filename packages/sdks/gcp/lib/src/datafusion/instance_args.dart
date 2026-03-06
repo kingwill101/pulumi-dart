@@ -99,7 +99,7 @@ class InstanceArgs {
   /// [type] Represents the type of Data Fusion instance. Each type is configured with
   /// [version] Current version of the Data Fusion.
   /// [zone] Name of the zone in which the Data Fusion instance will be created. Only DEVELOPER instances use this field.
-  InstanceArgs({
+  const InstanceArgs({
     this.accelerators,
     this.cryptoKeyConfig,
     this.dataprocServiceAccount,

@@ -28,7 +28,7 @@ class DatabaseAccountMongoDBCollectionArgs {
   /// [options] A key-value pair of options to be applied for the request. This corresponds to the headers sent with the request.
   /// [resource] The standard JSON format of a MongoDB collection
   /// [resourceGroupName] Name of an Azure resource group.
-  DatabaseAccountMongoDBCollectionArgs({
+  const DatabaseAccountMongoDBCollectionArgs({
     required this.accountName,
     this.collectionName,
     required this.databaseName,

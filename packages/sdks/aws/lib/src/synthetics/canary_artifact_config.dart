@@ -9,7 +9,7 @@ class CanaryArtifactConfig {
 
   /// Creates a new [CanaryArtifactConfig].
   /// [s3Encryption] Configuration of the encryption-at-rest settings for artifacts that the canary uploads to Amazon S3. See S3 Encryption.
-  CanaryArtifactConfig({
+  const CanaryArtifactConfig({
     this.s3Encryption,
   });
 

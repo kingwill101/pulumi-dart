@@ -33,7 +33,7 @@ class ServiceAssociationLinkResponse {
   /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [provisioningState] The provisioning state of the service association link resource.
   /// [type] Resource type.
-  ServiceAssociationLinkResponse({
+  const ServiceAssociationLinkResponse({
     this.allowDelete,
     required this.etag,
     this.id,

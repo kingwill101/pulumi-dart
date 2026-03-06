@@ -19,7 +19,7 @@ class NetworkInterfaceResponse {
   /// [macAddress] The MAC address of the network interface.
   /// [networkInterfaceName] The name of the network interface.
   /// [vmSwitchType] The type of the VM switch.
-  NetworkInterfaceResponse({
+  const NetworkInterfaceResponse({
     this.ipConfigurations,
     this.macAddress,
     this.networkInterfaceName,

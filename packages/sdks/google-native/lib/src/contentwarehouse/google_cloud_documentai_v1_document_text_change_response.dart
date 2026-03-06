@@ -17,7 +17,7 @@ class GoogleCloudDocumentaiV1DocumentTextChangeResponse {
   /// [changedText] The text that replaces the text identified in the `text_anchor`.
   /// [provenance] The history of this annotation.
   /// [textAnchor] Provenance of the correction. Text anchor indexing into the Document.text. There can only be a single `TextAnchor.text_segments` element. If the start and end index of the text segment are the same, the text change is inserted before that index.
-  GoogleCloudDocumentaiV1DocumentTextChangeResponse({
+  const GoogleCloudDocumentaiV1DocumentTextChangeResponse({
     required this.changedText,
     required this.provenance,
     required this.textAnchor,

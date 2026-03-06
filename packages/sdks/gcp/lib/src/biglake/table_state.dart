@@ -52,7 +52,7 @@ class TableState {
   /// [name] Output only. The name of the Table. Format:
   /// [type] The database type.
   /// [updateTime] Output only. The last modification time of the table. A timestamp in
-  TableState({
+  const TableState({
     this.createTime,
     this.database,
     this.deleteTime,

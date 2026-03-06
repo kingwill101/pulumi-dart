@@ -36,7 +36,7 @@ class DomainDefaultUserSettingsCanvasAppSettings {
   /// [modelRegisterSettings] The model registry settings for the SageMaker AI Canvas application. See `model_register_settings` Block below.
   /// [timeSeriesForecastingSettings] Time series forecast settings for the Canvas app. See `time_series_forecasting_settings` Block below.
   /// [workspaceSettings] The workspace settings for the SageMaker AI Canvas application. See `workspace_settings` Block below.
-  DomainDefaultUserSettingsCanvasAppSettings({
+  const DomainDefaultUserSettingsCanvasAppSettings({
     this.directDeploySettings,
     this.emrServerlessSettings,
     this.generativeAiSettings,

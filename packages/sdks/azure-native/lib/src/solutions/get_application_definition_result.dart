@@ -87,7 +87,7 @@ class GetApplicationDefinitionResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Resource tags
   /// [type] Resource type
-  GetApplicationDefinitionResult({
+  const GetApplicationDefinitionResult({
     this.artifacts,
     this.authorizations,
     required this.azureApiVersion,

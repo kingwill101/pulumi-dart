@@ -10,7 +10,7 @@ class SecurityProfile {
 
   /// Creates a new [SecurityProfile].
   /// [uefiSettings] Specifies the security settings like secure boot used while creating the virtual machine.
-  SecurityProfile({
+  const SecurityProfile({
     this.uefiSettings,
   });
 

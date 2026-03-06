@@ -27,7 +27,7 @@ class AppArgs {
   /// [deploymentPerPage] (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
   /// [projectId] The ID of the project that the app is assigned to.
   /// [spec] A DigitalOcean App spec describing the app.
-  AppArgs({
+  const AppArgs({
     this.dedicatedIps,
     this.deploymentPerPage,
     this.projectId,

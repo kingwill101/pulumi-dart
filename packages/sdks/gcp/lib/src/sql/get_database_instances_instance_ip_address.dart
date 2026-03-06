@@ -11,7 +11,7 @@ class GetDatabaseInstancesInstanceIpAddress {
   /// [ipAddress] Required.
   /// [timeToRetire] Required.
   /// [type] Required.
-  GetDatabaseInstancesInstanceIpAddress({
+  const GetDatabaseInstancesInstanceIpAddress({
     required this.ipAddress,
     required this.timeToRetire,
     required this.type,

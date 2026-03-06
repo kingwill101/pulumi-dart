@@ -41,7 +41,7 @@ class GetControllerDetailsResult {
   /// [resourceGuid] Resource guid.
   /// [tags] The resource tags.
   /// [type] The type of resource.
-  GetControllerDetailsResult({
+  const GetControllerDetailsResult({
     required this.azureApiVersion,
     required this.dncAppId,
     required this.dncEndpoint,

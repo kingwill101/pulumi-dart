@@ -13,7 +13,7 @@ class LabelingJobTextProperties {
   /// Creates a new [LabelingJobTextProperties].
   /// [annotationType] Annotation type of text labeling job.
   /// [mediaType] Media type of data asset.
-  LabelingJobTextProperties({
+  const LabelingJobTextProperties({
     this.annotationType,
     required this.mediaType,
   });

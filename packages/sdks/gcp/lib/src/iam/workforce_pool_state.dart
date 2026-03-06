@@ -56,7 +56,7 @@ class WorkforcePoolState {
   /// [sessionDuration] Duration that the Google Cloud access tokens, console sign-in sessions,
   /// [state] Output only. The state of the pool.
   /// [workforcePoolId] The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
-  WorkforcePoolState({
+  const WorkforcePoolState({
     this.accessRestrictions,
     this.description,
     this.disabled,

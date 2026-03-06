@@ -23,7 +23,7 @@ class GetVariableObjectResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [value] The value of the Automation Variable as a json encoded `string`.
-  GetVariableObjectResult({
+  const GetVariableObjectResult({
     required this.automationAccountName,
     required this.description,
     required this.encrypted,

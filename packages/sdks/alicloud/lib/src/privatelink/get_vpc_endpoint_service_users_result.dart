@@ -23,7 +23,7 @@ class GetVpcEndpointServiceUsersResult {
   /// [serviceId] Required.
   /// [userId] The Id of Ram User.
   /// [users] A list of Privatelink Vpc Endpoint Service Users. Each element contains the following attributes:
-  GetVpcEndpointServiceUsersResult({
+  const GetVpcEndpointServiceUsersResult({
     required this.id,
     required this.ids,
     this.outputFile,

@@ -9,7 +9,7 @@ class ApprovalConfigResponse {
 
   /// Creates a new [ApprovalConfigResponse].
   /// [approvalRequired] Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
-  ApprovalConfigResponse({
+  const ApprovalConfigResponse({
     required this.approvalRequired,
   });
 

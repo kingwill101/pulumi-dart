@@ -24,7 +24,7 @@ class GetRegistryImageArgs {
   /// [project] The project ID that this image is attached to.  If not provider, provider project will be used instead.
   /// [region] The GCR region to use.  As of this writing, one of `asia`, `eu`, and `us`.  See [the documentation](https://cloud.google.com/container-registry/docs/pushing-and-pulling) for additional information.
   /// [tag] The tag to fetch, if any.
-  GetRegistryImageArgs({
+  const GetRegistryImageArgs({
     this.digest,
     required this.name,
     this.project,

@@ -34,7 +34,7 @@ class NetworkArgs {
   /// [networkId] A unique ID that identifies this network.
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] The name of the target Distributed Cloud Edge zone.
-  NetworkArgs({
+  const NetworkArgs({
     this.description,
     this.labels,
     required this.location,

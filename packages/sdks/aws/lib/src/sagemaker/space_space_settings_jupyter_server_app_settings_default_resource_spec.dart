@@ -20,7 +20,7 @@ class SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec {
   /// [sagemakerImageArn] The Amazon Resource Name (ARN) of the SageMaker AI image created on the instance.
   /// [sagemakerImageVersionAlias] The SageMaker AI Image Version Alias.
   /// [sagemakerImageVersionArn] The ARN of the image version created on the instance.
-  SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec({
+  const SpaceSpaceSettingsJupyterServerAppSettingsDefaultResourceSpec({
     this.instanceType,
     this.lifecycleConfigArn,
     this.sagemakerImageArn,

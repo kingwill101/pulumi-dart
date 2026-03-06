@@ -39,7 +39,7 @@ class ApiState {
   /// [name] The resource name of the API. Format `projects/{{project}}/locations/global/apis/{{apiId}}`
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  ApiState({
+  const ApiState({
     this.apiId,
     this.createTime,
     this.displayName,

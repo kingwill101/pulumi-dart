@@ -9,7 +9,7 @@ class ConfigurationPropertiesResponse {
 
   /// Creates a new [ConfigurationPropertiesResponse].
   /// [provisioningState] Provisioning state of resource
-  ConfigurationPropertiesResponse({
+  const ConfigurationPropertiesResponse({
     required this.provisioningState,
   });
 

@@ -21,7 +21,7 @@ class GetContainerArgs {
   /// [deviceName] The device name.
   /// [resourceGroupName] The resource group name.
   /// [storageAccountName] The Storage Account Name
-  GetContainerArgs({
+  const GetContainerArgs({
     required this.containerName,
     required this.deviceName,
     required this.resourceGroupName,

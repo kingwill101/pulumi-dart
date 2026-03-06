@@ -9,7 +9,7 @@ class ControlFolderIntelligenceConfigTrialConfig {
 
   /// Creates a new [ControlFolderIntelligenceConfigTrialConfig].
   /// [expireTime] (Output)
-  ControlFolderIntelligenceConfigTrialConfig({
+  const ControlFolderIntelligenceConfigTrialConfig({
     this.expireTime,
   });
 

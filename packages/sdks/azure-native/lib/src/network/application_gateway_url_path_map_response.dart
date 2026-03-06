@@ -41,7 +41,7 @@ class ApplicationGatewayUrlPathMapResponse {
   /// [pathRules] Path rule of URL path map resource.
   /// [provisioningState] The provisioning state of the URL path map resource.
   /// [type] Type of the resource.
-  ApplicationGatewayUrlPathMapResponse({
+  const ApplicationGatewayUrlPathMapResponse({
     this.defaultBackendAddressPool,
     this.defaultBackendHttpSettings,
     this.defaultLoadDistributionPolicy,

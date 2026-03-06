@@ -21,7 +21,7 @@ class NodeGroupSpec {
   /// [kind] The node type deployed in the node group.
   /// [nodeCount] The number of nodes in the node group.
   /// [sku] The resource sku for the node group. This defines the size of CPU and memory that is provisioned for each node. Example values: 'M30', 'M40'.
-  NodeGroupSpec({
+  const NodeGroupSpec({
     this.diskSizeGB,
     this.enableHa,
     this.kind,

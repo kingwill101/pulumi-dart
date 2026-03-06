@@ -59,7 +59,7 @@ class GetEipsResult {
   /// [segmentInstanceId] Optional.
   /// [status] EIP status. Possible values are: `Associating`, `Unassociating`, `InUse` and `Available`.
   /// [tags] Optional.
-  GetEipsResult({
+  const GetEipsResult({
     this.addressName,
     required this.addresses,
     this.associatedInstanceId,

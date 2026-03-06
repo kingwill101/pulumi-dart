@@ -12,7 +12,7 @@ class GetNodeDeviceInfoArgs {
 
   /// Creates a new [GetNodeDeviceInfoArgs].
   /// [name] Device name from `libvirt.getNodeDevices` data source (e.g., `pci_0000_00_1f_2`).
-  GetNodeDeviceInfoArgs({
+  const GetNodeDeviceInfoArgs({
     required this.name,
   });
 

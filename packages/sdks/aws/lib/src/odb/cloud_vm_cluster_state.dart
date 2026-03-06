@@ -155,7 +155,7 @@ class CloudVmClusterState {
   /// [timeouts] Optional.
   /// [timezone] The configured time zone of the VM cluster. Changing this will create a new resource.
   /// [vipIds] The virtual IP (VIP) addresses assigned to the VM cluster. CRS assigns one VIP per node for failover support.
-  CloudVmClusterState({
+  const CloudVmClusterState({
     this.arn,
     this.cloudExadataInfrastructureArn,
     this.cloudExadataInfrastructureId,

@@ -12,7 +12,7 @@ class GetDefaultScraperConfigurationArgs {
 
   /// Creates a new [GetDefaultScraperConfigurationArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDefaultScraperConfigurationArgs({
+  const GetDefaultScraperConfigurationArgs({
     this.region,
   });
 

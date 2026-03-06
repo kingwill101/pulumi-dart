@@ -36,7 +36,7 @@ class LbCertificateState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [subjectAlternativeNames] Set of domains that should be SANs in the issued certificate. `domain_name` attribute is automatically added as a Subject Alternative Name.
   /// [supportCode] Support code for the certificate.
-  LbCertificateState({
+  const LbCertificateState({
     this.arn,
     this.createdAt,
     this.domainName,

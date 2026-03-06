@@ -13,7 +13,7 @@ class ResourceForestSettings {
   /// Creates a new [ResourceForestSettings].
   /// [resourceForest] Resource Forest
   /// [settings] List of settings for Resource Forest
-  ResourceForestSettings({
+  const ResourceForestSettings({
     this.resourceForest,
     this.settings,
   });

@@ -24,7 +24,7 @@ class DataCollectorArgs {
   /// [name] ID of the data collector. Must begin with `dc_`.
   /// [organizationId] Required.
   /// [type] Immutable. The type of data this data collector will collect.
-  DataCollectorArgs({
+  const DataCollectorArgs({
     this.dataCollectorId,
     this.description,
     this.name,

@@ -38,7 +38,7 @@ class TrafficMarkingPolicyState {
   /// [trafficMarkingPolicyName] TrafficMarkingPolicyName
   /// [trafficMatchRules] List of stream classification rules.
   /// [transitRouterId] TransitRouterId
-  TrafficMarkingPolicyState({
+  const TrafficMarkingPolicyState({
     this.description,
     this.dryRun,
     this.force,

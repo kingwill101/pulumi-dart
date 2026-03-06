@@ -17,7 +17,7 @@ class GetSpokeIamPolicyArgs {
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
   /// [spokeId] Required.
-  GetSpokeIamPolicyArgs({
+  const GetSpokeIamPolicyArgs({
     required this.location,
     this.optionsRequestedPolicyVersion,
     this.project,

@@ -15,7 +15,7 @@ class TransitGatewayRegistrationArgs {
   /// Creates a new [TransitGatewayRegistrationArgs].
   /// [globalNetworkId] ID of the Global Network to register to.
   /// [transitGatewayArn] ARN of the Transit Gateway to register.
-  TransitGatewayRegistrationArgs({
+  const TransitGatewayRegistrationArgs({
     required this.globalNetworkId,
     required this.transitGatewayArn,
   });

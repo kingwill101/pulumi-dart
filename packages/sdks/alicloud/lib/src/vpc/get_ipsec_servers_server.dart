@@ -58,7 +58,7 @@ class GetIpsecServersServer {
   /// [psk] The pre-shared key.
   /// [pskEnabled] Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
   /// [vpnGatewayId] The ID of the VPN gateway.
-  GetIpsecServersServer({
+  const GetIpsecServersServer({
     required this.clientIpPool,
     required this.createTime,
     required this.effectImmediately,

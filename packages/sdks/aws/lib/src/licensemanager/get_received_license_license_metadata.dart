@@ -11,7 +11,7 @@ class GetReceivedLicenseLicenseMetadata {
   /// Creates a new [GetReceivedLicenseLicenseMetadata].
   /// [name] The key name.
   /// [value] The value.
-  GetReceivedLicenseLicenseMetadata({
+  const GetReceivedLicenseLicenseMetadata({
     required this.name,
     required this.value,
   });

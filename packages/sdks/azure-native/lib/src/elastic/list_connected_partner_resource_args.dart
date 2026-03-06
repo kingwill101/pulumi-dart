@@ -15,7 +15,7 @@ class ListConnectedPartnerResourceArgs {
   /// Creates a new [ListConnectedPartnerResourceArgs].
   /// [monitorName] Monitor resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListConnectedPartnerResourceArgs({
+  const ListConnectedPartnerResourceArgs({
     required this.monitorName,
     required this.resourceGroupName,
   });

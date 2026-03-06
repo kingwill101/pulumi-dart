@@ -31,7 +31,7 @@ class DatabaseMigrationServiceReplicationInstanceProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  DatabaseMigrationServiceReplicationInstanceProperties({
+  const DatabaseMigrationServiceReplicationInstanceProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

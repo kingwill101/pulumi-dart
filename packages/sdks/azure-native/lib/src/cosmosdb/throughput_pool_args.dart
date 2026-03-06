@@ -24,7 +24,7 @@ class ThroughputPoolArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
   /// [throughputPoolName] Cosmos DB Throughput Pool name.
-  ThroughputPoolArgs({
+  const ThroughputPoolArgs({
     this.location,
     this.maxThroughput,
     required this.resourceGroupName,

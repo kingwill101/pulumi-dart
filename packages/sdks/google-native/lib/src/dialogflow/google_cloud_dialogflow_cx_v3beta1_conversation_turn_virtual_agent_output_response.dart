@@ -32,7 +32,7 @@ class GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse {
   /// [status] Response error from the agent in the test result. If set, other output is empty.
   /// [textResponses] The text responses from the agent for the turn.
   /// [triggeredIntent] The Intent that triggered the response. Only name and displayName will be set.
-  GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse({
+  const GoogleCloudDialogflowCxV3beta1ConversationTurnVirtualAgentOutputResponse({
     required this.currentPage,
     required this.diagnosticInfo,
     required this.differences,

@@ -11,7 +11,7 @@ class UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings {
   /// Creates a new [UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings].
   /// [defaultEbsVolumeSizeInGb] The default size of the EBS storage volume for a private space.
   /// [maximumEbsVolumeSizeInGb] The maximum size of the EBS storage volume for a private space.
-  UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings({
+  const UserProfileUserSettingsSpaceStorageSettingsDefaultEbsStorageSettings({
     required this.defaultEbsVolumeSizeInGb,
     required this.maximumEbsVolumeSizeInGb,
   });

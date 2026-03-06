@@ -30,7 +30,7 @@ class GetChannelPartnerLinkResult {
   /// [publicId] Public identifier that a customer must use to generate a transfer token to move to this distributor-reseller combination.
   /// [resellerCloudIdentityId] Cloud Identity ID of the linked reseller.
   /// [updateTime] Timestamp of when the channel partner link is updated.
-  GetChannelPartnerLinkResult({
+  const GetChannelPartnerLinkResult({
     required this.channelPartnerCloudIdentityInfo,
     required this.createTime,
     required this.inviteLinkUri,

@@ -14,7 +14,7 @@ class VirtualMachineAutoPatching {
   /// [dayOfWeek] The day of week to apply the patch on. Possible values are `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` and `Sunday`.
   /// [maintenanceWindowDurationInMinutes] The size of the Maintenance Window in minutes.
   /// [maintenanceWindowStartingHour] The Hour, in the Virtual Machine Time-Zone when the patching maintenance window should begin.
-  VirtualMachineAutoPatching({
+  const VirtualMachineAutoPatching({
     required this.dayOfWeek,
     required this.maintenanceWindowDurationInMinutes,
     required this.maintenanceWindowStartingHour,

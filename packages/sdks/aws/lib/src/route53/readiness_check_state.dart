@@ -23,7 +23,7 @@ class ReadinessCheckState {
   /// [resourceSetName] Name describing the resource set that will be monitored for readiness.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  ReadinessCheckState({
+  const ReadinessCheckState({
     this.arn,
     this.readinessCheckName,
     this.resourceSetName,

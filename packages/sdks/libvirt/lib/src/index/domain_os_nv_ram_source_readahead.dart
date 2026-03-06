@@ -8,7 +8,7 @@ class DomainOsNvRamSourceReadahead {
 
   /// Creates a new [DomainOsNvRamSourceReadahead].
   /// [size] Configures the size of data that should be prefetched when reading from the network block device.
-  DomainOsNvRamSourceReadahead({
+  const DomainOsNvRamSourceReadahead({
     required this.size,
   });
 

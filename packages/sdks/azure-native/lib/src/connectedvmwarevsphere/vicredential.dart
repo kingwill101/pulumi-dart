@@ -12,7 +12,7 @@ class VICredential {
   /// Creates a new [VICredential].
   /// [password] Gets or sets the password to connect with the vCenter.
   /// [username] Gets or sets username to connect with the vCenter.
-  VICredential({
+  const VICredential({
     this.password,
     this.username,
   });

@@ -34,7 +34,7 @@ class DispatchRuleArgs {
   /// [labelMatchExpressionGrids] Sets the dispatch rule. See `label_match_expression_grid` below.
   /// [notifyRules] Sets the notification rule. See `notify_rules` below. It will be ignored  when `dispatch_type = "DISCARD_ALERT"`.
   /// [notifyTemplates] Sets the notification template. See `notify_template` below.
-  DispatchRuleArgs({
+  const DispatchRuleArgs({
     required this.dispatchRuleName,
     this.dispatchType,
     required this.groupRules,

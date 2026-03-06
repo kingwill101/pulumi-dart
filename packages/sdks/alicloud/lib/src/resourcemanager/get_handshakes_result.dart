@@ -23,7 +23,7 @@ class GetHandshakesResult {
   /// [ids] A list of Resource Manager Handshake IDs.
   /// [outputFile] Optional.
   /// [status] The status of the invitation.
-  GetHandshakesResult({
+  const GetHandshakesResult({
     this.enableDetails,
     required this.handshakes,
     required this.id,

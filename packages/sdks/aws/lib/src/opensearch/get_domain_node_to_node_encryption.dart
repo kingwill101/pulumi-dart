@@ -8,7 +8,7 @@ class GetDomainNodeToNodeEncryption {
 
   /// Creates a new [GetDomainNodeToNodeEncryption].
   /// [enabled] Enabled disabled toggle for off-peak update window
-  GetDomainNodeToNodeEncryption({
+  const GetDomainNodeToNodeEncryption({
     required this.enabled,
   });
 

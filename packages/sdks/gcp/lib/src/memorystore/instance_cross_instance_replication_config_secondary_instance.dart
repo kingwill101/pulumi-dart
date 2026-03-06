@@ -13,7 +13,7 @@ class InstanceCrossInstanceReplicationConfigSecondaryInstance {
   /// Creates a new [InstanceCrossInstanceReplicationConfigSecondaryInstance].
   /// [instance] (Output)
   /// [uid] (Output)
-  InstanceCrossInstanceReplicationConfigSecondaryInstance({
+  const InstanceCrossInstanceReplicationConfigSecondaryInstance({
     this.instance,
     this.uid,
   });

@@ -13,7 +13,7 @@ class CustomDomain {
   /// Creates a new [CustomDomain].
   /// [domain] Domain name.
   /// [state] Domain state.
-  CustomDomain({
+  const CustomDomain({
     this.domain,
     this.state,
   });

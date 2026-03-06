@@ -9,7 +9,7 @@ class Explicit {
 
   /// Creates a new [Explicit].
   /// [bounds] The values must be monotonically increasing.
-  Explicit({
+  const Explicit({
     this.bounds,
   });
 

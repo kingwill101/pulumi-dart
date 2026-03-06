@@ -27,7 +27,7 @@ class NasFileSystemArgs {
   /// [nasFileSystemName] The name of nas file system.
   /// [officeSiteId] The ID of office site.
   /// [reset] The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
-  NasFileSystemArgs({
+  const NasFileSystemArgs({
     this.description,
     this.fileSystemId,
     this.mountTargetDomain,

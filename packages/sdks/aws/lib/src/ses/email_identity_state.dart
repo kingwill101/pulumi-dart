@@ -15,7 +15,7 @@ class EmailIdentityState {
   /// [arn] The ARN of the email identity.
   /// [email] The email address to assign to SES.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  EmailIdentityState({
+  const EmailIdentityState({
     this.arn,
     this.email,
     this.region,

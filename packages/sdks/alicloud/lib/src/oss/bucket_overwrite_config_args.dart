@@ -16,7 +16,7 @@ class BucketOverwriteConfigArgs {
   /// Creates a new [BucketOverwriteConfigArgs].
   /// [bucket] The name of the bucket
   /// [rules] Forbid overwrite rule See `rule` below.
-  BucketOverwriteConfigArgs({
+  const BucketOverwriteConfigArgs({
     required this.bucket,
     this.rules,
   });

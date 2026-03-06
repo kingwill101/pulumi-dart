@@ -69,7 +69,7 @@ class ChildConfigurationResponse {
   /// [provisioningSupport] Determining nature of provisioning that the configuration supports.
   /// [specifications] Specifications of the configuration.
   /// [supportedTermCommitmentDurations] The Term Commitment Durations that are supported for a configuration.
-  ChildConfigurationResponse({
+  const ChildConfigurationResponse({
     required this.availabilityInformation,
     required this.childConfigurationType,
     required this.childConfigurationTypes,

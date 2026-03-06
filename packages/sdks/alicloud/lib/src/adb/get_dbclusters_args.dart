@@ -37,7 +37,7 @@ class GetDBClustersArgs {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the resource.
   /// [tags] A map of tags assigned to the cluster.
-  GetDBClustersArgs({
+  const GetDBClustersArgs({
     this.description,
     this.descriptionRegex,
     this.enableDetails,

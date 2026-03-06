@@ -51,7 +51,7 @@ class OrganizationFeedArgs {
   /// [feedId] This is the client-assigned asset feed identifier and it needs to be unique under a specific parent.
   /// [feedOutputConfig] Output configuration for asset feed destination.
   /// [orgId] The organization this feed should be created in.
-  OrganizationFeedArgs({
+  const OrganizationFeedArgs({
     this.assetNames,
     this.assetTypes,
     required this.billingProject,

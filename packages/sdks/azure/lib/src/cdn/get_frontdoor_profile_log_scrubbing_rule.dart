@@ -8,7 +8,7 @@ class GetFrontdoorProfileLogScrubbingRule {
 
   /// Creates a new [GetFrontdoorProfileLogScrubbingRule].
   /// [matchVariable] The variable that is scrubbed from the logs.
-  GetFrontdoorProfileLogScrubbingRule({
+  const GetFrontdoorProfileLogScrubbingRule({
     required this.matchVariable,
   });
 

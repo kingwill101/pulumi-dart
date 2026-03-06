@@ -45,7 +45,7 @@ class RegionalEndpointArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [subnetwork] The name of the subnetwork from which the IP address will be allocated. Format: `projects/{project}/regions/{region}/subnetworks/{subnetwork}`
   /// [targetGoogleApi] The service endpoint this private regional endpoint connects to. Format: `{apiname}.{region}.rep.googleapis.com` Example: \"cloudkms.us-central1.rep.googleapis.com\".
-  RegionalEndpointArgs({
+  const RegionalEndpointArgs({
     required this.accessType,
     this.address,
     this.description,

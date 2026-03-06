@@ -26,7 +26,7 @@ class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
   /// [requestHeaderToRemoves] A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
   /// [responseHeaderToAdds] Headers to add to the response prior to sending it back to the client.
   /// [responseHeaderToRemoves] A list of header names for headers that need to be removed from the request prior to forwarding the request to the origin.
-  EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction({
+  const EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction({
     this.requestHeaderToAdds,
     this.requestHeaderToRemoves,
     this.responseHeaderToAdds,

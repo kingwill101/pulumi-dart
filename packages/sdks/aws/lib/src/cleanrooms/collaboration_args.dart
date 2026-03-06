@@ -43,7 +43,7 @@ class CollaborationArgs {
   /// [queryLogStatus] Whether members of the collaboration can enable query logs within their own memberships. Valid values [may be found here](https://docs.aws.amazon.com/clean-rooms/latest/apireference/API_CreateCollaboration.html#API-CreateCollaboration-request-queryLogStatus).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key value pairs which tag the collaboration.
-  CollaborationArgs({
+  const CollaborationArgs({
     this.analyticsEngine,
     required this.creatorDisplayName,
     required this.creatorMemberAbilities,

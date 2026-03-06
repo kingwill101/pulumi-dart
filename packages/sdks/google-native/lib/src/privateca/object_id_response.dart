@@ -9,7 +9,7 @@ class ObjectIdResponse {
 
   /// Creates a new [ObjectIdResponse].
   /// [objectIdPath] The parts of an OID path. The most significant parts of the path come first.
-  ObjectIdResponse({
+  const ObjectIdResponse({
     required this.objectIdPath,
   });
 

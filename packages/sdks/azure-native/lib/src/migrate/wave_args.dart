@@ -22,7 +22,7 @@ class WaveArgs {
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [waveName] Migration Wave Resource
-  WaveArgs({
+  const WaveArgs({
     required this.projectName,
     this.properties,
     required this.resourceGroupName,

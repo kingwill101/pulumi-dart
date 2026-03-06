@@ -17,7 +17,7 @@ class GetRegionInstantSnapshotIamPolicyComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [resource] Required.
-  GetRegionInstantSnapshotIamPolicyComputeBetaArgs({
+  const GetRegionInstantSnapshotIamPolicyComputeBetaArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.region,

@@ -18,7 +18,7 @@ class VpcAssociationAuthorizationArgs {
   /// [vpcId] The VPC to authorize for association with the private hosted zone.
   /// [vpcRegion] The VPC's region. Defaults to the region of the AWS provider.
   /// [zoneId] The ID of the private hosted zone that you want to authorize associating a VPC with.
-  VpcAssociationAuthorizationArgs({
+  const VpcAssociationAuthorizationArgs({
     required this.vpcId,
     this.vpcRegion,
     required this.zoneId,

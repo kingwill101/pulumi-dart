@@ -14,7 +14,7 @@ class DomainDefaultUserSettingsRSessionAppSettingsCustomImage {
   /// [appImageConfigName] The name of the App Image Config.
   /// [imageName] The name of the Custom Image.
   /// [imageVersionNumber] The version number of the Custom Image.
-  DomainDefaultUserSettingsRSessionAppSettingsCustomImage({
+  const DomainDefaultUserSettingsRSessionAppSettingsCustomImage({
     required this.appImageConfigName,
     required this.imageName,
     this.imageVersionNumber,

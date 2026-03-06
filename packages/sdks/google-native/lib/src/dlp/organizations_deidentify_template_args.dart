@@ -27,7 +27,7 @@ class OrganizationsDeidentifyTemplateArgs {
   /// [location] Deprecated. This field has no effect.
   /// [organizationId] Required.
   /// [templateId] The template id can contain uppercase and lowercase letters, numbers, and hyphens; that is, it must match the regular expression: `[a-zA-Z\d-_]+`. The maximum length is 100 characters. Can be empty to allow the system to generate one.
-  OrganizationsDeidentifyTemplateArgs({
+  const OrganizationsDeidentifyTemplateArgs({
     this.deidentifyConfig,
     this.description,
     this.displayName,

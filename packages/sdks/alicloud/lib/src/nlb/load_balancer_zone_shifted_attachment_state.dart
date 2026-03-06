@@ -18,7 +18,7 @@ class LoadBalancerZoneShiftedAttachmentState {
   /// [status] Status
   /// [vswitchId] The list of zones and vSwitch mappings
   /// [zoneId] ZoneId
-  LoadBalancerZoneShiftedAttachmentState({
+  const LoadBalancerZoneShiftedAttachmentState({
     this.loadBalancerId,
     this.status,
     this.vswitchId,

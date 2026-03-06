@@ -17,7 +17,7 @@ class GetDatasetArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [readMask] Optional.
-  GetDatasetArgs({
+  const GetDatasetArgs({
     required this.datasetId,
     required this.location,
     this.project,

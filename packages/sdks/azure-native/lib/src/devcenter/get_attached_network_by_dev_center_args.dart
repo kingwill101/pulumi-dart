@@ -18,7 +18,7 @@ class GetAttachedNetworkByDevCenterArgs {
   /// [attachedNetworkConnectionName] The name of the attached NetworkConnection.
   /// [devCenterName] The name of the devcenter.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAttachedNetworkByDevCenterArgs({
+  const GetAttachedNetworkByDevCenterArgs({
     required this.attachedNetworkConnectionName,
     required this.devCenterName,
     required this.resourceGroupName,

@@ -17,7 +17,7 @@ class GetHistoryResult {
   /// [historyId] A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set
   /// [name] A name to uniquely identify a history within a project. Maximum of 200 characters. - In response always set - In create request: always set
   /// [testPlatform] The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
-  GetHistoryResult({
+  const GetHistoryResult({
     required this.displayName,
     required this.historyId,
     required this.name,

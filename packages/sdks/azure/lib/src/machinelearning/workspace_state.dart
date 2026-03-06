@@ -94,7 +94,7 @@ class WorkspaceState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [v1LegacyModeEnabled] Enable V1 API features, enabling `v1_legacy_mode` may prevent you from using features provided by the v2 API. Defaults to `false`.
   /// [workspaceId] The immutable id associated with this workspace.
-  WorkspaceState({
+  const WorkspaceState({
     this.applicationInsightsId,
     this.containerRegistryId,
     this.description,

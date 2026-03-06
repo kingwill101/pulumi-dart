@@ -9,7 +9,7 @@ class DomainConfigResponse {
 
   /// Creates a new [DomainConfigResponse].
   /// [domain] Immutable. Domain used by Workstations for HTTP ingress.
-  DomainConfigResponse({
+  const DomainConfigResponse({
     required this.domain,
   });
 

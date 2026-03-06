@@ -15,7 +15,7 @@ class GkeNamespace {
   /// [clusterName] The name of the parent cluster.
   /// [location] The location of the parent cluster. This may be a zone or region.
   /// [namespaceName] The name of this namespace.
-  GkeNamespace({
+  const GkeNamespace({
     this.clusterName,
     this.location,
     this.namespaceName,

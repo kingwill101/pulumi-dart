@@ -23,7 +23,7 @@ class KeyVaultSigningKeyParameters {
   /// [subscriptionId] Subscription Id of the user's Key Vault containing the secret
   /// [typeName] Required.
   /// [vaultName] The name of the user's Key Vault containing the secret
-  KeyVaultSigningKeyParameters({
+  const KeyVaultSigningKeyParameters({
     required this.resourceGroupName,
     required this.secretName,
     required this.secretVersion,

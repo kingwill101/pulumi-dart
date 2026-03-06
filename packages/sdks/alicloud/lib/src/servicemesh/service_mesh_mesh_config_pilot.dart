@@ -11,7 +11,7 @@ class ServiceMeshMeshConfigPilot {
   /// Creates a new [ServiceMeshMeshConfigPilot].
   /// [http10Enabled] Whether to support the HTTP1.0
   /// [traceSampling] Link trace sampling percentage
-  ServiceMeshMeshConfigPilot({
+  const ServiceMeshMeshConfigPilot({
     this.http10Enabled,
     this.traceSampling,
   });

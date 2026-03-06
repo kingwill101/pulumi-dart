@@ -26,7 +26,7 @@ class GradientaiAgentDeployment {
   /// [url] Url of the Deployment
   /// [uuid] API Key value
   /// [visibility] Visibility of the Deployment
-  GradientaiAgentDeployment({
+  const GradientaiAgentDeployment({
     this.createdAt,
     this.name,
     this.status,

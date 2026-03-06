@@ -26,7 +26,7 @@ class QosDefinitionResponse {
   /// [protocol] RNM supported protocol types.
   /// [sourceIpRanges] Source IP ranges.
   /// [sourcePortRanges] Sources port ranges.
-  QosDefinitionResponse({
+  const QosDefinitionResponse({
     this.destinationIpRanges,
     this.destinationPortRanges,
     this.markings,

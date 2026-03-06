@@ -12,7 +12,7 @@ class GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse {
   /// Creates a new [GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse].
   /// [scope] A space-delimited list of requested scope permissions.
   /// [serviceAccount] Name of the service account that has the permission to make the request.
-  GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse({
+  const GoogleCloudIntegrationsV1alphaServiceAccountCredentialsResponse({
     required this.scope,
     required this.serviceAccount,
   });

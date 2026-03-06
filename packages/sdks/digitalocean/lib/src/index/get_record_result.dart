@@ -36,7 +36,7 @@ class GetRecordResult {
   /// [ttl] This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
   /// [type] The type of the DNS record.
   /// [weight] The weight for SRV records.
-  GetRecordResult({
+  const GetRecordResult({
     required this.data,
     required this.domain,
     required this.flags,

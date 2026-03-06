@@ -34,7 +34,7 @@ class GetUsersResult {
   /// [status] Optional.
   /// [userName] Optional.
   /// [users] Required.
-  GetUsersResult({
+  const GetUsersResult({
     this.displayName,
     required this.id,
     required this.ids,

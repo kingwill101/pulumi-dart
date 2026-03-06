@@ -15,7 +15,7 @@ class ConsumerImageShareGroupTokenArgs {
   /// Creates a new [ConsumerImageShareGroupTokenArgs].
   /// [label] A label for the token.
   /// [validForSharegroupUuid] The UUID of the Image Share Group for which to create a token.
-  ConsumerImageShareGroupTokenArgs({
+  const ConsumerImageShareGroupTokenArgs({
     this.label,
     required this.validForSharegroupUuid,
   });

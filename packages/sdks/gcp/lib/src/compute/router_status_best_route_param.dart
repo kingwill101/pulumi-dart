@@ -13,7 +13,7 @@ class RouterStatusBestRouteParam {
 
   /// Creates a new [RouterStatusBestRouteParam].
   /// [resourceManagerTags] Resource manager tags to be bound to the route. Tag keys and values have the
-  RouterStatusBestRouteParam({
+  const RouterStatusBestRouteParam({
     required this.resourceManagerTags,
   });
 

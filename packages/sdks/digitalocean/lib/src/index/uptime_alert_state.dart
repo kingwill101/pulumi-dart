@@ -28,7 +28,7 @@ class UptimeAlertState {
   /// [period] Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
   /// [threshold] The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
   /// [type] The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
-  UptimeAlertState({
+  const UptimeAlertState({
     this.checkId,
     this.comparison,
     this.name,

@@ -43,7 +43,7 @@ class DatasetAzureSqlTableArgs {
   /// [schema] The schema name of the table in the Azure SQL Database.
   /// [schemaColumns] A `schema_column` block as defined below.
   /// [table] The table name of the table in the Azure SQL Database.
-  DatasetAzureSqlTableArgs({
+  const DatasetAzureSqlTableArgs({
     this.additionalProperties,
     this.annotations,
     required this.dataFactoryId,

@@ -13,7 +13,7 @@ class GetMetricArgs {
   /// Creates a new [GetMetricArgs].
   /// [metricId] Required.
   /// [project] Optional.
-  GetMetricArgs({
+  const GetMetricArgs({
     required this.metricId,
     this.project,
   });

@@ -33,7 +33,7 @@ class BgpSession {
   /// [peerSessionIPv6Address] The IPv6 session address on peer's end.
   /// [sessionPrefixV4] The IPv4 prefix that contains both ends' IPv4 addresses.
   /// [sessionPrefixV6] The IPv6 prefix that contains both ends' IPv6 addresses.
-  BgpSession({
+  const BgpSession({
     this.maxPrefixesAdvertisedV4,
     this.maxPrefixesAdvertisedV6,
     this.md5AuthenticationKey,

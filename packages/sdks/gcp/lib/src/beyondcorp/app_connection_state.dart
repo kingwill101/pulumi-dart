@@ -50,7 +50,7 @@ class AppConnectionState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [region] The region of the AppConnection.
   /// [type] The type of network connectivity used by the AppConnection. Refer
-  AppConnectionState({
+  const AppConnectionState({
     this.applicationEndpoint,
     this.connectors,
     this.displayName,

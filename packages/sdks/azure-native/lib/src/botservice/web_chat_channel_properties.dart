@@ -10,7 +10,7 @@ class WebChatChannelProperties {
 
   /// Creates a new [WebChatChannelProperties].
   /// [sites] The list of Web Chat sites
-  WebChatChannelProperties({
+  const WebChatChannelProperties({
     this.sites,
   });
 

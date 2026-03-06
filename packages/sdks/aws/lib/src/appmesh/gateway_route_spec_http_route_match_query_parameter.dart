@@ -12,7 +12,7 @@ class GatewayRouteSpecHttpRouteMatchQueryParameter {
   /// Creates a new [GatewayRouteSpecHttpRouteMatchQueryParameter].
   /// [match] The query parameter to match on.
   /// [name] Name for the query parameter that will be matched on.
-  GatewayRouteSpecHttpRouteMatchQueryParameter({
+  const GatewayRouteSpecHttpRouteMatchQueryParameter({
     this.match,
     required this.name,
   });

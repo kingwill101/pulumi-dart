@@ -48,7 +48,7 @@ class GetServersServer {
   /// [rescue] Required.
   /// [serverType] Required.
   /// [status] Required.
-  GetServersServer({
+  const GetServersServer({
     required this.backupWindow,
     required this.backups,
     required this.datacenter,

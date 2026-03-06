@@ -15,7 +15,7 @@ class GetDirectoryArgs {
   /// Creates a new [GetDirectoryArgs].
   /// [domainName] Domain name of the B2C tenant, including the `.onmicrosoft.com` suffix.
   /// [resourceGroupName] The name of the Resource Group where the AAD B2C Directory exists.
-  GetDirectoryArgs({
+  const GetDirectoryArgs({
     required this.domainName,
     required this.resourceGroupName,
   });

@@ -12,7 +12,7 @@ class GPUDriverConfig {
   /// Creates a new [GPUDriverConfig].
   /// [customGpuDriverPath] Optional. Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
   /// [enableGpuDriver] Optional. Whether the end user authorizes Google Cloud to install GPU driver on this VM instance. If this field is empty or set to false, the GPU driver won't be installed. Only applicable to instances with GPUs.
-  GPUDriverConfig({
+  const GPUDriverConfig({
     this.customGpuDriverPath,
     this.enableGpuDriver,
   });

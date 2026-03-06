@@ -15,7 +15,7 @@ class GetBucketObjectArgs {
   /// Creates a new [GetBucketObjectArgs].
   /// [bucket] The name of the containing bucket.
   /// [name] The name of the object.
-  GetBucketObjectArgs({
+  const GetBucketObjectArgs({
     this.bucket,
     this.name,
   });

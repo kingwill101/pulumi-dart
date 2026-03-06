@@ -23,7 +23,7 @@ class TelegramChannelResponse {
   /// [location] Specifies the location of the resource.
   /// [properties] The set of properties specific to Telegram channel resource
   /// [provisioningState] Provisioning state of the resource
-  TelegramChannelResponse({
+  const TelegramChannelResponse({
     required this.channelName,
     this.etag,
     this.location,

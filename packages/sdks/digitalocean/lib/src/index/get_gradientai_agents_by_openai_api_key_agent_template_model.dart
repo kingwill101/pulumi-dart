@@ -46,7 +46,7 @@ class GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel {
   /// [url] URL of the Model
   /// [usecases] List of Usecases for the Model
   /// [versions] URL of the Model
-  GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel({
+  const GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel({
     this.agreements,
     required this.createdAt,
     this.inferenceName,

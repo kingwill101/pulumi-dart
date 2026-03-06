@@ -10,7 +10,7 @@ class GetVirtualGatewaySpecLoggingAccessLogFile {
   /// Creates a new [GetVirtualGatewaySpecLoggingAccessLogFile].
   /// [formats] Required.
   /// [path] Required.
-  GetVirtualGatewaySpecLoggingAccessLogFile({
+  const GetVirtualGatewaySpecLoggingAccessLogFile({
     required this.formats,
     required this.path,
   });

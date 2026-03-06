@@ -24,7 +24,7 @@ class MetadataDependencies {
   /// [name] Name of the content item
   /// [operator] Operator used for list of dependencies in criteria array.
   /// [version] Version of the the content item we depend on.  Can be blank, * or missing to indicate any version fulfills the dependency.  If version does not match our defined numeric format then an exact match is required.
-  MetadataDependencies({
+  const MetadataDependencies({
     this.contentId,
     this.criteria,
     this.kind,

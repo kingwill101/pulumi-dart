@@ -11,7 +11,7 @@ class IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonth
   /// Creates a new [IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly].
   /// [week] The occurrence of the week within the month.
   /// [weekday] The day of the occurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday` and `Saturday`.
-  IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly({
+  const IntegrationAccountBatchConfigurationReleaseCriteriaRecurrenceScheduleMonthly({
     required this.week,
     required this.weekday,
   });

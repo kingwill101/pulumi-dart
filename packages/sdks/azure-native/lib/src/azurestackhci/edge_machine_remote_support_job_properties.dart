@@ -22,7 +22,7 @@ class EdgeMachineRemoteSupportJobProperties {
   /// [expirationTimestamp] Remote support expiration timestamp.
   /// [jobType] Job Type supported.
   /// [type] Remote support type.
-  EdgeMachineRemoteSupportJobProperties({
+  const EdgeMachineRemoteSupportJobProperties({
     required this.accessLevel,
     this.deploymentMode,
     required this.expirationTimestamp,

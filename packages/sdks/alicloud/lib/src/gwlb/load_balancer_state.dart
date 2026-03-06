@@ -38,7 +38,7 @@ class LoadBalancerState {
   /// [tags] The tag keys. You can specify at most 20 tags in each call.
   /// [vpcId] The virtual private cloud (VPC) ID.
   /// [zoneMappings] The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones. See `zone_mappings` below.
-  LoadBalancerState({
+  const LoadBalancerState({
     this.addressIpVersion,
     this.createTime,
     this.dryRun,

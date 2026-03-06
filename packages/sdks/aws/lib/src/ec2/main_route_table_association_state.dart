@@ -19,7 +19,7 @@ class MainRouteTableAssociationState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [routeTableId] The ID of the Route Table to set as the new
   /// [vpcId] The ID of the VPC whose main route table should be set
-  MainRouteTableAssociationState({
+  const MainRouteTableAssociationState({
     this.originalRouteTableId,
     this.region,
     this.routeTableId,

@@ -11,7 +11,7 @@ class DomainDefaultUserSettingsCanvasAppSettingsModelRegisterSettings {
   /// Creates a new [DomainDefaultUserSettingsCanvasAppSettingsModelRegisterSettings].
   /// [crossAccountModelRegisterRoleArn] The Amazon Resource Name (ARN) of the SageMaker AI model registry account. Required only to register model versions created by a different SageMaker AI Canvas AWS account than the AWS account in which SageMaker AI model registry is set up.
   /// [status] Describes whether the integration to the model registry is enabled or disabled in the Canvas application. Valid values are `ENABLED` and `DISABLED`.
-  DomainDefaultUserSettingsCanvasAppSettingsModelRegisterSettings({
+  const DomainDefaultUserSettingsCanvasAppSettingsModelRegisterSettings({
     this.crossAccountModelRegisterRoleArn,
     this.status,
   });

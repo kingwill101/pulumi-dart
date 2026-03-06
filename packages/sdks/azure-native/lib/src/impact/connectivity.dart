@@ -19,7 +19,7 @@ class Connectivity {
   /// [protocol] Protocol used for the connection
   /// [source] Source from which the connection was attempted
   /// [target] target which connection was attempted
-  Connectivity({
+  const Connectivity({
     this.port,
     this.protocol,
     this.source,

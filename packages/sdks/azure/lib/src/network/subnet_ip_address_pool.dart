@@ -16,7 +16,7 @@ class SubnetIpAddressPool {
   /// [allocatedIpAddressPrefixes] The list of IP address prefixes allocated to the subnet.
   /// [id] The ID of the Network Manager IP Address Management (IPAM) Pool.
   /// [numberOfIpAddresses] The number of IP addresses to allocated to the subnet. The value must be a string that represents a positive number, e.g., `"100"`.
-  SubnetIpAddressPool({
+  const SubnetIpAddressPool({
     this.allocatedIpAddressPrefixes,
     required this.id,
     required this.numberOfIpAddresses,

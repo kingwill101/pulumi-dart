@@ -24,7 +24,7 @@ class ApplicationGetHttpsEndpointResponse {
   /// [location] The location of the endpoint.
   /// [privateIPAddress] The private ip address of the endpoint.
   /// [publicPort] The public port to connect to.
-  ApplicationGetHttpsEndpointResponse({
+  const ApplicationGetHttpsEndpointResponse({
     this.accessModes,
     this.destinationPort,
     this.disableGatewayAuth,

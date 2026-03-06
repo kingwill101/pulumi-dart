@@ -9,7 +9,7 @@ class StorageProfileResponse {
 
   /// Creates a new [StorageProfileResponse].
   /// [id] Resource Id of Storage Resource
-  StorageProfileResponse({
+  const StorageProfileResponse({
     required this.id,
   });
 

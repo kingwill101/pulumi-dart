@@ -54,7 +54,7 @@ class GetSqlPoolResult {
   /// [storageAccountType] The storage account type used to store backups for this sql pool.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetSqlPoolResult({
+  const GetSqlPoolResult({
     required this.azureApiVersion,
     this.collation,
     required this.creationDate,

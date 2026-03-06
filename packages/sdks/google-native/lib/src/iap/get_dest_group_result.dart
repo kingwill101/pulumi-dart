@@ -14,7 +14,7 @@ class GetDestGroupResult {
   /// [cidrs] Unordered list. List of CIDRs that this group applies to.
   /// [fqdns] Unordered list. List of FQDNs that this group applies to.
   /// [name] Immutable. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-).
-  GetDestGroupResult({
+  const GetDestGroupResult({
     required this.cidrs,
     required this.fqdns,
     required this.name,

@@ -22,7 +22,7 @@ class DeliveryPipelineIamMemberArgs {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Required.
-  DeliveryPipelineIamMemberArgs({
+  const DeliveryPipelineIamMemberArgs({
     this.condition,
     this.location,
     required this.member,

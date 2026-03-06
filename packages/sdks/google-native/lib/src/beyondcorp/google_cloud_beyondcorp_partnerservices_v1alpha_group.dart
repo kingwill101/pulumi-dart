@@ -12,7 +12,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaGroup {
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaGroup].
   /// [email] The group email id
   /// [id] Google group id
-  GoogleCloudBeyondcorpPartnerservicesV1alphaGroup({
+  const GoogleCloudBeyondcorpPartnerservicesV1alphaGroup({
     this.email,
     this.id,
   });

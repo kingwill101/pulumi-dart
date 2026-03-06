@@ -13,7 +13,7 @@ class OutboundEndpointsResponse {
   /// Creates a new [OutboundEndpointsResponse].
   /// [assigned] Endpoints the device can connect to.
   /// [unassigned] Set of most recently removed endpoints.
-  OutboundEndpointsResponse({
+  const OutboundEndpointsResponse({
     required this.assigned,
     this.unassigned,
   });

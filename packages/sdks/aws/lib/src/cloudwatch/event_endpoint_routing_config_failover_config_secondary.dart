@@ -8,7 +8,7 @@ class EventEndpointRoutingConfigFailoverConfigSecondary {
 
   /// Creates a new [EventEndpointRoutingConfigFailoverConfigSecondary].
   /// [route] The name of the secondary Region.
-  EventEndpointRoutingConfigFailoverConfigSecondary({
+  const EventEndpointRoutingConfigFailoverConfigSecondary({
     this.route,
   });
 

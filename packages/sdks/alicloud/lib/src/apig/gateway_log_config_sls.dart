@@ -8,7 +8,7 @@ class GatewayLogConfigSls {
 
   /// Creates a new [GatewayLogConfigSls].
   /// [enable] Enable Log Service
-  GatewayLogConfigSls({
+  const GatewayLogConfigSls({
     this.enable,
   });
 

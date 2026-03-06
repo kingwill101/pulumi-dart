@@ -18,7 +18,7 @@ class StatementConditionPropertiesResponse {
   /// [ipExtendedCommunityIds] List of IP Extended Community resource IDs.
   /// [ipPrefixId] Arm Resource Id of IpPrefix.
   /// [type] Type of the condition used.
-  StatementConditionPropertiesResponse({
+  const StatementConditionPropertiesResponse({
     this.ipCommunityIds,
     this.ipExtendedCommunityIds,
     this.ipPrefixId,

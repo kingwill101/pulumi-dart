@@ -18,7 +18,7 @@ class ListIntegrationRuntimeAuthKeysArgs {
   /// [factoryName] The factory name.
   /// [integrationRuntimeName] The integration runtime name.
   /// [resourceGroupName] The resource group name.
-  ListIntegrationRuntimeAuthKeysArgs({
+  const ListIntegrationRuntimeAuthKeysArgs({
     required this.factoryName,
     required this.integrationRuntimeName,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class GetGroupMigrationcenterV1alpha1Args {
   /// [groupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGroupMigrationcenterV1alpha1Args({
+  const GetGroupMigrationcenterV1alpha1Args({
     required this.groupId,
     required this.location,
     this.project,

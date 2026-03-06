@@ -60,7 +60,7 @@ class NetworkFirewallPolicyPacketMirroringRuleArgs {
   /// [securityProfileGroup] A fully-qualified URL of a SecurityProfile resource instance.
   /// [targetSecureTags] A list of secure tags that controls which instances the firewall rule applies to.
   /// [tlsInspect] Boolean flag indicating if the traffic should be TLS decrypted.
-  NetworkFirewallPolicyPacketMirroringRuleArgs({
+  const NetworkFirewallPolicyPacketMirroringRuleArgs({
     required this.action,
     this.description,
     required this.direction,

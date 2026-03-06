@@ -8,7 +8,7 @@ class DomainClusterConfigColdStorageOptions {
 
   /// Creates a new [DomainClusterConfigColdStorageOptions].
   /// [enabled] Boolean to enable cold storage for an Elasticsearch domain. Defaults to `false`. Master and ultrawarm nodes must be enabled for cold storage.
-  DomainClusterConfigColdStorageOptions({
+  const DomainClusterConfigColdStorageOptions({
     this.enabled,
   });
 

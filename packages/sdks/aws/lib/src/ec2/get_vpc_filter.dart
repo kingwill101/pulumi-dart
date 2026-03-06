@@ -13,7 +13,7 @@ class GetVpcFilter {
   /// Creates a new [GetVpcFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetVpcFilter({
+  const GetVpcFilter({
     required this.name,
     required this.values,
   });

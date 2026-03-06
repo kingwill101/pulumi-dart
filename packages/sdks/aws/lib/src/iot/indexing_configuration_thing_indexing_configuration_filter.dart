@@ -8,7 +8,7 @@ class IndexingConfigurationThingIndexingConfigurationFilter {
 
   /// Creates a new [IndexingConfigurationThingIndexingConfigurationFilter].
   /// [namedShadowNames] List of shadow names that you select to index.
-  IndexingConfigurationThingIndexingConfigurationFilter({
+  const IndexingConfigurationThingIndexingConfigurationFilter({
     this.namedShadowNames,
   });
 

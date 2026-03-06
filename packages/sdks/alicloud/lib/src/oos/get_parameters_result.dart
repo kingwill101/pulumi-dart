@@ -40,7 +40,7 @@ class GetParametersResult {
   /// [sortOrder] Optional.
   /// [tags] The tags added to the common parameter.
   /// [type] The data type of the common parameter.
-  GetParametersResult({
+  const GetParametersResult({
     this.enableDetails,
     required this.id,
     required this.ids,

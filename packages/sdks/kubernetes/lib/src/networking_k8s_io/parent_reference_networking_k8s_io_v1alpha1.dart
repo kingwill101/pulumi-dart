@@ -21,7 +21,7 @@ class ParentReferenceNetworkingK8sIoV1alpha1 {
   /// [namespace] Namespace is the namespace of the object being referenced.
   /// [resource] Resource is the resource of the object being referenced.
   /// [uid] UID is the uid of the object being referenced.
-  ParentReferenceNetworkingK8sIoV1alpha1({
+  const ParentReferenceNetworkingK8sIoV1alpha1({
     this.group,
     required this.name,
     this.namespace,

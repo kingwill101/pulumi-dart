@@ -19,7 +19,7 @@ class GetVulWhitelistsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetVulWhitelistsArgs({
+  const GetVulWhitelistsArgs({
     this.ids,
     this.outputFile,
     this.pageNumber,

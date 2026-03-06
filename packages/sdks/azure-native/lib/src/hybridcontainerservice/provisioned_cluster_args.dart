@@ -32,7 +32,7 @@ class ProvisionedClusterArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] Parameter for the name of the provisioned cluster
   /// [tags] Resource tags.
-  ProvisionedClusterArgs({
+  const ProvisionedClusterArgs({
     this.extendedLocation,
     this.identity,
     this.location,

@@ -12,7 +12,7 @@ class DefaultRolloutSpecificationCanaryResponse {
   /// Creates a new [DefaultRolloutSpecificationCanaryResponse].
   /// [regions] The regions.
   /// [skipRegions] The skip regions.
-  DefaultRolloutSpecificationCanaryResponse({
+  const DefaultRolloutSpecificationCanaryResponse({
     this.regions,
     this.skipRegions,
   });

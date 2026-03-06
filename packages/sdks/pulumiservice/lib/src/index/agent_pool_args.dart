@@ -21,7 +21,7 @@ class AgentPoolArgs {
   /// [forceDestroy] Optional. Flag indicating whether to delete the agent pool even if stacks are configured to use it.
   /// [name] Name of the agent pool.
   /// [organizationName] The organization's name.
-  AgentPoolArgs({
+  const AgentPoolArgs({
     this.description,
     this.forceDestroy,
     required this.name,

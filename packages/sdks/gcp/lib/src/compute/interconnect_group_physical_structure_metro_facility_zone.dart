@@ -19,7 +19,7 @@ class InterconnectGroupPhysicalStructureMetroFacilityZone {
   /// Creates a new [InterconnectGroupPhysicalStructureMetroFacilityZone].
   /// [interconnects] Interconnects in the InterconnectGroup. Keys are arbitrary user-specified
   /// [zone] (Output)
-  InterconnectGroupPhysicalStructureMetroFacilityZone({
+  const InterconnectGroupPhysicalStructureMetroFacilityZone({
     this.interconnects,
     this.zone,
   });

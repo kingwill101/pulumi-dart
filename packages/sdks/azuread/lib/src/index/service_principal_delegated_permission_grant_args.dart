@@ -23,7 +23,7 @@ class ServicePrincipalDelegatedPermissionGrantArgs {
   /// [resourceServicePrincipalObjectId] The object ID of the service principal representing the resource to be accessed. Changing this forces a new resource to be created.
   /// [servicePrincipalObjectId] The object ID of the service principal for which this delegated permission grant should be created. Changing this forces a new resource to be created.
   /// [userObjectId] The object ID of the user on behalf of whom the service principal is authorized to access the resource. When omitted, the delegated permission grant will be consented for all users. Changing this forces a new resource to be created.
-  ServicePrincipalDelegatedPermissionGrantArgs({
+  const ServicePrincipalDelegatedPermissionGrantArgs({
     required this.claimValues,
     required this.resourceServicePrincipalObjectId,
     required this.servicePrincipalObjectId,

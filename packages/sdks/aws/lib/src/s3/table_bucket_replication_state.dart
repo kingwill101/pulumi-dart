@@ -21,7 +21,7 @@ class TableBucketReplicationState {
   /// [rule] Replication rules. See Rule below for more details.
   /// [tableBucketArn] ARN referencing the Table Bucket that owns this replication configuration.
   /// [versionToken] Optional.
-  TableBucketReplicationState({
+  const TableBucketReplicationState({
     this.region,
     this.role,
     this.rule,

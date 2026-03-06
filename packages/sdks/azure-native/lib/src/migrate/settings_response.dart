@@ -18,7 +18,7 @@ class SettingsResponse {
   /// [azureArcSettings] Azure arc settings.
   /// [azureSettings] Azure settings for a business case.
   /// [onPremiseSettings] On-premise settings.
-  SettingsResponse({
+  const SettingsResponse({
     this.azureArcSettings,
     required this.azureSettings,
     this.onPremiseSettings,

@@ -32,7 +32,7 @@ class DatabaseExtendedAuditingPolicyState {
   /// [storageAccountAccessKey] The access key to use for the auditing storage account.
   /// [storageAccountAccessKeyIsSecondary] Is `storage_account_access_key` value the storage's secondary key?
   /// [storageEndpoint] The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
-  DatabaseExtendedAuditingPolicyState({
+  const DatabaseExtendedAuditingPolicyState({
     this.databaseId,
     this.enabled,
     this.logMonitoringEnabled,

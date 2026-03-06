@@ -28,7 +28,7 @@ class CustomHttpsConfigurationCustomHttpsConfiguration {
   /// [minimumTlsVersion] Minimum client TLS version supported.
   /// [provisioningState] Optional.
   /// [provisioningSubstate] Optional.
-  CustomHttpsConfigurationCustomHttpsConfiguration({
+  const CustomHttpsConfigurationCustomHttpsConfiguration({
     this.azureKeyVaultCertificateSecretName,
     this.azureKeyVaultCertificateSecretVersion,
     this.azureKeyVaultCertificateVaultId,

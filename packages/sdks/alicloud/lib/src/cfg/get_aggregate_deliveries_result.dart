@@ -28,7 +28,7 @@ class GetAggregateDeliveriesResult {
   /// [names] A list of Aggregate Delivery names.
   /// [outputFile] Optional.
   /// [status] The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled.
-  GetAggregateDeliveriesResult({
+  const GetAggregateDeliveriesResult({
     required this.aggregatorId,
     required this.deliveries,
     required this.id,

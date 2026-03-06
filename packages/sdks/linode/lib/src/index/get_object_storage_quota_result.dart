@@ -32,7 +32,7 @@ class GetObjectStorageQuotaResult {
   /// [quotaUsage] The usage data for a specific Object Storage related quota on your account. For more information, see the [Linode APIv4 docs](https://techdocs.akamai.com/linode-api/reference/get-object-storage-quota-usage).
   /// [resourceMetric] The specific Object Storage resource for the quota.
   /// [s3Endpoint] The S3 endpoint URL of the Object Storage, based on the `endpoint_type` and `region`.
-  GetObjectStorageQuotaResult({
+  const GetObjectStorageQuotaResult({
     required this.description,
     required this.endpointType,
     required this.id,

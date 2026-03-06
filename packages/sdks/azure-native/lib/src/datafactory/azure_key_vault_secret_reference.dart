@@ -20,7 +20,7 @@ class AzureKeyVaultSecretReference {
   /// [secretVersion] The version of the secret in Azure Key Vault. The default value is the latest version of the secret. Type: string (or Expression with resultType string).
   /// [store] The Azure Key Vault linked service reference.
   /// [type] Type of the secret.
-  AzureKeyVaultSecretReference({
+  const AzureKeyVaultSecretReference({
     required this.secretName,
     this.secretVersion,
     required this.store,

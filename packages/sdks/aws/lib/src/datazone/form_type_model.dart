@@ -10,7 +10,7 @@ class FormTypeModel {
 
   /// Creates a new [FormTypeModel].
   /// [smithy] Smithy document that indicates the model of the API. Must be between the lengths 1 and 100,000 and be encoded as a smithy document.
-  FormTypeModel({
+  const FormTypeModel({
     required this.smithy,
   });
 

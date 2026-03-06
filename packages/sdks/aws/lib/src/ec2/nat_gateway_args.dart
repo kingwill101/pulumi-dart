@@ -46,7 +46,7 @@ class NatGatewayArgs {
   /// [subnetId] The Subnet ID of the subnet in which to place the NAT Gateway. Required when `availability_mode` is set to `zonal`. Must not be set when `availability_mode` is set to `regional`.
   /// [tags] A map of tags to assign to the resource. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [vpcId] VPC ID where this NAT Gateway will be created. Required when `availability_mode` is set to `regional`.
-  NatGatewayArgs({
+  const NatGatewayArgs({
     this.allocationId,
     this.availabilityMode,
     this.availabilityZoneAddresses,

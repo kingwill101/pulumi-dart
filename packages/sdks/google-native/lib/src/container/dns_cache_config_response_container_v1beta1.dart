@@ -9,7 +9,7 @@ class DnsCacheConfigResponseContainerV1beta1 {
 
   /// Creates a new [DnsCacheConfigResponseContainerV1beta1].
   /// [enabled] Whether NodeLocal DNSCache is enabled for this cluster.
-  DnsCacheConfigResponseContainerV1beta1({
+  const DnsCacheConfigResponseContainerV1beta1({
     required this.enabled,
   });
 

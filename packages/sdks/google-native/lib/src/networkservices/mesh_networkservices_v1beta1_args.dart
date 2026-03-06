@@ -28,7 +28,7 @@ class MeshNetworkservicesV1beta1Args {
   /// [meshId] Required. Short name of the Mesh resource to be created.
   /// [name] Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
   /// [project] Optional.
-  MeshNetworkservicesV1beta1Args({
+  const MeshNetworkservicesV1beta1Args({
     this.description,
     this.interceptionPort,
     this.labels,

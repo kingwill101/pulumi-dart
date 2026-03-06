@@ -13,7 +13,7 @@ class PersistentDirectory {
   /// Creates a new [PersistentDirectory].
   /// [gcePd] A PersistentDirectory backed by a Compute Engine persistent disk.
   /// [mountPath] Optional. Location of this directory in the running workstation.
-  PersistentDirectory({
+  const PersistentDirectory({
     this.gcePd,
     this.mountPath,
   });

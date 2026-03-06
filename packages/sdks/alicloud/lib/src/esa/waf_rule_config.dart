@@ -73,7 +73,7 @@ class WafRuleConfig {
   /// [timer] Configuration for the time schedule when the rule takes effect. See `timer` below.
   /// [type] The type category of the WAF rule.
   /// [value] The value of the custom signature field used for validation.
-  WafRuleConfig({
+  const WafRuleConfig({
     this.action,
     this.actions,
     this.appPackage,

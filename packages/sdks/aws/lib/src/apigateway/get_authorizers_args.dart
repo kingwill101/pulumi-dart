@@ -15,7 +15,7 @@ class GetAuthorizersArgs {
   /// Creates a new [GetAuthorizersArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [restApiId] ID of the associated REST API.
-  GetAuthorizersArgs({
+  const GetAuthorizersArgs({
     this.region,
     required this.restApiId,
   });

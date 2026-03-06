@@ -11,7 +11,7 @@ class DomainPage404Config {
   /// [customPageUrl] Optional.
   /// [errorCode] Optional.
   /// [pageType] Optional.
-  DomainPage404Config({
+  const DomainPage404Config({
     this.customPageUrl,
     this.errorCode,
     this.pageType,

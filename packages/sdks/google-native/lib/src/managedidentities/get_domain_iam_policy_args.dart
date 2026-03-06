@@ -15,7 +15,7 @@ class GetDomainIamPolicyArgs {
   /// [domainId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDomainIamPolicyArgs({
+  const GetDomainIamPolicyArgs({
     required this.domainId,
     this.optionsRequestedPolicyVersion,
     this.project,

@@ -15,7 +15,7 @@ class GetCustomJobAiplatformV1beta1Args {
   /// [customJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCustomJobAiplatformV1beta1Args({
+  const GetCustomJobAiplatformV1beta1Args({
     required this.customJobId,
     required this.location,
     this.project,

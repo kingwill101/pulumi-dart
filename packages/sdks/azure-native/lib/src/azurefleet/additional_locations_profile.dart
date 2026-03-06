@@ -10,7 +10,7 @@ class AdditionalLocationsProfile {
 
   /// Creates a new [AdditionalLocationsProfile].
   /// [locationProfiles] The list of location profiles.
-  AdditionalLocationsProfile({
+  const AdditionalLocationsProfile({
     required this.locationProfiles,
   });
 

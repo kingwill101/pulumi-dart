@@ -12,7 +12,7 @@ class AdditionalNodeNetworkConfigResponseContainerV1beta1 {
   /// Creates a new [AdditionalNodeNetworkConfigResponseContainerV1beta1].
   /// [network] Name of the VPC where the additional interface belongs
   /// [subnetwork] Name of the subnetwork where the additional interface belongs
-  AdditionalNodeNetworkConfigResponseContainerV1beta1({
+  const AdditionalNodeNetworkConfigResponseContainerV1beta1({
     required this.network,
     required this.subnetwork,
   });

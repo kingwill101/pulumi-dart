@@ -32,7 +32,7 @@ class AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig {
   /// [oauthGrantType] (Output)
   /// [scopes] (Output)
   /// [tokenEndpoint] (Output)
-  AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig({
+  const AppVersionSnapshotToolOpenApiToolApiAuthenticationOauthConfig({
     this.clientId,
     this.clientSecretVersion,
     this.oauthGrantType,

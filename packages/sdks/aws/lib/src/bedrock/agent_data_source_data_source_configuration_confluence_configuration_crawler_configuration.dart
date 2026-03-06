@@ -9,7 +9,7 @@ class AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfig
 
   /// Creates a new [AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration].
   /// [filterConfiguration] The Salesforce standard object configuration. See `filter_configuration` block for details.
-  AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration({
+  const AgentDataSourceDataSourceConfigurationConfluenceConfigurationCrawlerConfiguration({
     this.filterConfiguration,
   });
 

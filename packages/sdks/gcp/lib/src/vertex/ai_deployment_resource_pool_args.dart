@@ -24,7 +24,7 @@ class AiDeploymentResourcePoolArgs {
   /// [name] The resource name of deployment resource pool. The maximum length is 63 characters, and valid characters are `/^a-z?$/`.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of deployment resource pool. eg us-central1
-  AiDeploymentResourcePoolArgs({
+  const AiDeploymentResourcePoolArgs({
     this.dedicatedResources,
     this.name,
     this.project,

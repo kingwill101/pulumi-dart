@@ -27,7 +27,7 @@ class RuleWithOperationsPatch {
   /// [operations] Operations is the operations the admission hook cares about - CREATE, UPDATE, DELETE, CONNECT or * for all of those operations and any future admission operations that are added. If '*' is present, the length of the slice must be one. Required.
   /// [resources] Resources is a list of resources this rule applies to.
   /// [scope] scope specifies the scope of this rule. Valid values are "Cluster", "Namespaced", and "*" "Cluster" means that only cluster-scoped resources will match this rule. Namespace API objects are cluster-scoped. "Namespaced" means that only namespaced resources will match this rule. "*" means that there are no scope restrictions. Subresources match the scope of their parent resource. Default is "*".
-  RuleWithOperationsPatch({
+  const RuleWithOperationsPatch({
     this.apiGroups,
     this.apiVersions,
     this.operations,

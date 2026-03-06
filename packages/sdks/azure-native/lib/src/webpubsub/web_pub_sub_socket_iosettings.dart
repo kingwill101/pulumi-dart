@@ -11,7 +11,7 @@ class WebPubSubSocketIOSettings {
 
   /// Creates a new [WebPubSubSocketIOSettings].
   /// [serviceMode] The service mode of Web PubSub for Socket.IO. Values allowed:
-  WebPubSubSocketIOSettings({
+  const WebPubSubSocketIOSettings({
     this.serviceMode,
   });
 

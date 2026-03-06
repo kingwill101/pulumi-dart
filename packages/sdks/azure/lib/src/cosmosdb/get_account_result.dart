@@ -102,7 +102,7 @@ class GetAccountResult {
   /// [tags] A mapping of tags assigned to the resource.
   /// [virtualNetworkRules] Subnets that are allowed to access this CosmosDB account.
   /// [writeEndpoints] A list of write endpoints available for this CosmosDB account.
-  GetAccountResult({
+  const GetAccountResult({
     required this.automaticFailoverEnabled,
     required this.capabilities,
     required this.consistencyPolicies,

@@ -15,7 +15,7 @@ class RangePartitioningRangeResponse {
   /// [end] [TrustedTester] [Required] The end of range partitioning, exclusive.
   /// [interval] [TrustedTester] [Required] The width of each interval.
   /// [start] [TrustedTester] [Required] The start of range partitioning, inclusive.
-  RangePartitioningRangeResponse({
+  const RangePartitioningRangeResponse({
     required this.end,
     required this.interval,
     required this.start,

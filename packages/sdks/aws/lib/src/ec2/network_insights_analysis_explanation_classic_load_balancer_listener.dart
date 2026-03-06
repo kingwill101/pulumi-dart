@@ -9,7 +9,7 @@ class NetworkInsightsAnalysisExplanationClassicLoadBalancerListener {
   /// Creates a new [NetworkInsightsAnalysisExplanationClassicLoadBalancerListener].
   /// [instancePort] Optional.
   /// [loadBalancerPort] Optional.
-  NetworkInsightsAnalysisExplanationClassicLoadBalancerListener({
+  const NetworkInsightsAnalysisExplanationClassicLoadBalancerListener({
     this.instancePort,
     this.loadBalancerPort,
   });

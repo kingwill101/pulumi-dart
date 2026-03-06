@@ -15,7 +15,7 @@ class ClusterNotificationConfigPubsub {
   /// [enabled] Whether or not the notification config is enabled
   /// [filter] Choose what type of notifications you want to receive. If no filters are applied, you'll receive all notification types. Structure is documented below.
   /// [topic] The pubsub topic to push upgrade notifications to. Must be in the same project as the cluster. Must be in the format: `projects/{project}/topics/{topic}`.
-  ClusterNotificationConfigPubsub({
+  const ClusterNotificationConfigPubsub({
     required this.enabled,
     this.filter,
     this.topic,

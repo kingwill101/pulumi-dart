@@ -9,7 +9,7 @@ class GetEnvironmentConfigWebServerNetworkAccessControl {
 
   /// Creates a new [GetEnvironmentConfigWebServerNetworkAccessControl].
   /// [allowedIpRanges] A collection of allowed IP ranges with descriptions.
-  GetEnvironmentConfigWebServerNetworkAccessControl({
+  const GetEnvironmentConfigWebServerNetworkAccessControl({
     required this.allowedIpRanges,
   });
 

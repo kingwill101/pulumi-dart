@@ -37,7 +37,7 @@ class GetConnectivityTestRunReachabilityDetailTraceEndpointInfo {
   /// [sourceIp] (Output)
   /// [sourceNetworkUri] (Output)
   /// [sourcePort] (Output)
-  GetConnectivityTestRunReachabilityDetailTraceEndpointInfo({
+  const GetConnectivityTestRunReachabilityDetailTraceEndpointInfo({
     required this.destinationIp,
     required this.destinationNetworkUri,
     required this.destinationPort,

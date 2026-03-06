@@ -55,7 +55,7 @@ class AwsClusterControlPlane {
   /// [subnetIds] The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
   /// [tags] Optional. A set of AWS resource tags to propagate to all underlying managed AWS resources. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
   /// [version] The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
-  AwsClusterControlPlane({
+  const AwsClusterControlPlane({
     required this.awsServicesAuthentication,
     required this.configEncryption,
     required this.databaseEncryption,

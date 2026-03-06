@@ -15,7 +15,7 @@ class GetReservationComputeV1Args {
   /// [project] Optional.
   /// [reservation] Required.
   /// [zone] Required.
-  GetReservationComputeV1Args({
+  const GetReservationComputeV1Args({
     this.project,
     required this.reservation,
     required this.zone,

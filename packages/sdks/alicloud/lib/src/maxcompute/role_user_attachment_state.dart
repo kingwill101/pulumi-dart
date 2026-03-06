@@ -19,7 +19,7 @@ class RoleUserAttachmentState {
   /// [projectName] Project Name
   /// [roleName] Role Name, Valid Values: super_administrator, admin, Custom Role
   /// [user] Supported input: Alibaba Cloud account, RAM user, and RAM role
-  RoleUserAttachmentState({
+  const RoleUserAttachmentState({
     this.projectName,
     this.roleName,
     this.user,

@@ -50,7 +50,7 @@ class KeystoresAliasesPkcs12CertsInfoCertInfo {
   /// [subjectAlternativeNames] (Output)
   /// [validFrom] (Output)
   /// [version] (Output)
-  KeystoresAliasesPkcs12CertsInfoCertInfo({
+  const KeystoresAliasesPkcs12CertsInfoCertInfo({
     this.basicConstraints,
     this.expiryDate,
     this.isValid,

@@ -15,7 +15,7 @@ class AssetSelectionConfigState {
   /// [businessType] The first ID of the resource
   /// [platform] The operating system type.
   /// [targetType] Target object type.
-  AssetSelectionConfigState({
+  const AssetSelectionConfigState({
     this.businessType,
     this.platform,
     this.targetType,

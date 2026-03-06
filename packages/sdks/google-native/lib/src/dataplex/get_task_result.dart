@@ -49,7 +49,7 @@ class GetTaskResult {
   /// [triggerSpec] Spec related to how often and when a task should be triggered.
   /// [uid] System generated globally unique ID for the task. This ID will be different if the task is deleted and re-created with the same name.
   /// [updateTime] The time when the task was last updated.
-  GetTaskResult({
+  const GetTaskResult({
     required this.createTime,
     required this.description,
     required this.displayName,

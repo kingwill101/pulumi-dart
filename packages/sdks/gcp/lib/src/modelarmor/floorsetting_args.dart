@@ -44,7 +44,7 @@ class FloorsettingArgs {
   /// [integratedServices] List of integrated services for which the floor setting is applicable.
   /// [location] Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
   /// [parent] Will be any one of these:
-  FloorsettingArgs({
+  const FloorsettingArgs({
     this.aiPlatformFloorSetting,
     this.enableFloorSettingEnforcement,
     required this.filterConfig,

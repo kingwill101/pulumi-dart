@@ -14,7 +14,7 @@ class CertVerificationResponse {
   /// Creates a new [CertVerificationResponse].
   /// [dns] A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name.
   /// [http] A file to add to your existing, non-Hosting hosting service that confirms your intent to let Hosting create an SSL cert for your domain name.
-  CertVerificationResponse({
+  const CertVerificationResponse({
     required this.dns,
     required this.http,
   });

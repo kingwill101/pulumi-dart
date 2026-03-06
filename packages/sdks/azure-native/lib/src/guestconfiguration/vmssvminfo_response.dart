@@ -21,7 +21,7 @@ class VMSSVMInfoResponse {
   /// [latestReportId] Id of the latest report for the guest configuration assignment.
   /// [vmId] UUID of the VM.
   /// [vmResourceId] Azure resource Id of the VM.
-  VMSSVMInfoResponse({
+  const VMSSVMInfoResponse({
     required this.complianceStatus,
     required this.lastComplianceChecked,
     required this.latestReportId,

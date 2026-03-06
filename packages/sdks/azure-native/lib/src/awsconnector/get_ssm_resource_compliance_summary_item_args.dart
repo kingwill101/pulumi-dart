@@ -15,7 +15,7 @@ class GetSsmResourceComplianceSummaryItemArgs {
   /// Creates a new [GetSsmResourceComplianceSummaryItemArgs].
   /// [name] Name of SsmResourceComplianceSummaryItem
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetSsmResourceComplianceSummaryItemArgs({
+  const GetSsmResourceComplianceSummaryItemArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -42,7 +42,7 @@ class OnlineDeploymentArgs {
   /// [sku] Sku details required for ARM contract for Autoscaling.
   /// [tags] Resource tags.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  OnlineDeploymentArgs({
+  const OnlineDeploymentArgs({
     this.deploymentName,
     required this.endpointName,
     this.identity,

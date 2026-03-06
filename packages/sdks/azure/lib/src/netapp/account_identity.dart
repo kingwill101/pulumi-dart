@@ -15,7 +15,7 @@ class AccountIdentity {
   /// [principalId] Optional.
   /// [tenantId] Optional.
   /// [type] The identity type, which can be `SystemAssigned` or `UserAssigned`. Only one type at a time is supported by Azure NetApp Files.
-  AccountIdentity({
+  const AccountIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

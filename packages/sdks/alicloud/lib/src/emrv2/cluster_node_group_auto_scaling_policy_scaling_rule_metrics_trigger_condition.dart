@@ -21,7 +21,7 @@ class ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition {
   /// [statistics] The statistics for this scaling rule specific metrics trigger.
   /// [tags] A mapping of tags to assign to the resource.
   /// [threshold] The threshold for this scaling rule specific metrics trigger.
-  ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition({
+  const ClusterNodeGroupAutoScalingPolicyScalingRuleMetricsTriggerCondition({
     required this.comparisonOperator,
     required this.metricName,
     required this.statistics,

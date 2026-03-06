@@ -63,7 +63,7 @@ class GetNetworkDeviceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] Current version of the device as defined in SKU.
-  GetNetworkDeviceResult({
+  const GetNetworkDeviceResult({
     required this.administrativeState,
     this.annotation,
     required this.azureApiVersion,

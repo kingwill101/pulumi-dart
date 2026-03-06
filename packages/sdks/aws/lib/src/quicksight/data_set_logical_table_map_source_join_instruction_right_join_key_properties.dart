@@ -8,7 +8,7 @@ class DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties {
 
   /// Creates a new [DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties].
   /// [uniqueKey] A value that indicates that a row in a table is uniquely identified by the columns in a join key. This is used by Amazon QuickSight to optimize query performance.
-  DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties({
+  const DataSetLogicalTableMapSourceJoinInstructionRightJoinKeyProperties({
     this.uniqueKey,
   });
 

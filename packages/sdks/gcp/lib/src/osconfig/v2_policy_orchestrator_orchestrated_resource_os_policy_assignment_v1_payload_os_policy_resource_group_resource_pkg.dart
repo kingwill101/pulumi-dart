@@ -55,7 +55,7 @@ class V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolic
   /// [rpm] An RPM package file. RPM packages only support INSTALLED state.
   /// [yum] A package managed by YUM.
   /// [zypper] A package managed by Zypper.
-  V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg({
+  const V2PolicyOrchestratorOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourcePkg({
     this.apt,
     this.deb,
     required this.desiredState,

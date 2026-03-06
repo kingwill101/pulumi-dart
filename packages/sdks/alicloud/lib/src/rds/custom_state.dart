@@ -121,7 +121,7 @@ class CustomState {
   /// [tags] The tag of the resource
   /// [vswitchId] The ID of the virtual switch. The zone in which the vSwitch is located must correspond to the zone ID entered in ZoneId.
   /// [zoneId] The zone ID  of the resource
-  CustomState({
+  const CustomState({
     this.amount,
     this.autoPay,
     this.autoRenew,

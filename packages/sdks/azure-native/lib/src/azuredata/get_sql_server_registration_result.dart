@@ -36,7 +36,7 @@ class GetSqlServerRegistrationResult {
   /// [systemData] Read only system data
   /// [tags] Resource tags.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetSqlServerRegistrationResult({
+  const GetSqlServerRegistrationResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

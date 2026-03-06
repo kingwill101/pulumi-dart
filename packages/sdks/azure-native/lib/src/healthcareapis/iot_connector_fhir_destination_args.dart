@@ -34,7 +34,7 @@ class IotConnectorFhirDestinationArgs {
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceIdentityResolutionType] Determines how resource identity is resolved on the destination.
   /// [workspaceName] The name of workspace resource.
-  IotConnectorFhirDestinationArgs({
+  const IotConnectorFhirDestinationArgs({
     this.fhirDestinationName,
     required this.fhirMapping,
     required this.fhirServiceResourceId,

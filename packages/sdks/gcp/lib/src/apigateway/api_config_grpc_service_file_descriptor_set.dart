@@ -11,7 +11,7 @@ class ApiConfigGrpcServiceFileDescriptorSet {
   /// Creates a new [ApiConfigGrpcServiceFileDescriptorSet].
   /// [contents] Base64 encoded content of the file.
   /// [path] The file path (full or relative path). This is typically the path of the file when it is uploaded.
-  ApiConfigGrpcServiceFileDescriptorSet({
+  const ApiConfigGrpcServiceFileDescriptorSet({
     required this.contents,
     required this.path,
   });

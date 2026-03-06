@@ -8,7 +8,7 @@ class ApiEventConfigConnectionAuthMode {
 
   /// Creates a new [ApiEventConfigConnectionAuthMode].
   /// [authType] Type of authentication. Valid values: `API_KEY`, `AWS_IAM`, `AMAZON_COGNITO_USER_POOLS`, `OPENID_CONNECT`, `AWS_LAMBDA`.
-  ApiEventConfigConnectionAuthMode({
+  const ApiEventConfigConnectionAuthMode({
     required this.authType,
   });
 

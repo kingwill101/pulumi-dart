@@ -24,7 +24,7 @@ class ListLogicAppWorkflowsConnectionsResult {
   /// [name] Gets the resource name.
   /// [properties] Additional workflow properties.
   /// [type] Gets the resource type.
-  ListLogicAppWorkflowsConnectionsResult({
+  const ListLogicAppWorkflowsConnectionsResult({
     required this.id,
     this.kind,
     this.location,

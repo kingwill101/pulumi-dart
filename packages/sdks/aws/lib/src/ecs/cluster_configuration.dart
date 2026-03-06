@@ -13,7 +13,7 @@ class ClusterConfiguration {
   /// Creates a new [ClusterConfiguration].
   /// [executeCommandConfiguration] Details of the execute command configuration. See `execute_command_configuration` Block for details.
   /// [managedStorageConfiguration] Details of the managed storage configuration. See `managed_storage_configuration` Block for details.
-  ClusterConfiguration({
+  const ClusterConfiguration({
     this.executeCommandConfiguration,
     this.managedStorageConfiguration,
   });

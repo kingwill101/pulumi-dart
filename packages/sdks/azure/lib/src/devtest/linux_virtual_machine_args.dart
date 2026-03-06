@@ -68,7 +68,7 @@ class LinuxVirtualMachineArgs {
   /// [storageType] The type of Storage to use on this Virtual Machine. Possible values are `Standard` and `Premium`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [username] The Username associated with the local administrator on this Virtual Machine. Changing this forces a new resource to be created.
-  LinuxVirtualMachineArgs({
+  const LinuxVirtualMachineArgs({
     this.allowClaim,
     this.disallowPublicIpAddress,
     required this.galleryImageReference,

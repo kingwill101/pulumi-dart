@@ -24,7 +24,7 @@ class GetGalleryApplicationVersionArgs {
   /// [galleryApplicationVersionName] The name of the gallery Application Version to be retrieved.
   /// [galleryName] The name of the Shared Image Gallery.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGalleryApplicationVersionArgs({
+  const GetGalleryApplicationVersionArgs({
     this.expand,
     required this.galleryApplicationName,
     required this.galleryApplicationVersionName,

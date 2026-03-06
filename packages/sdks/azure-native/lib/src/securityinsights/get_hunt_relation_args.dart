@@ -21,7 +21,7 @@ class GetHuntRelationArgs {
   /// [huntRelationId] The hunt relation id (GUID)
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  GetHuntRelationArgs({
+  const GetHuntRelationArgs({
     required this.huntId,
     required this.huntRelationId,
     required this.resourceGroupName,

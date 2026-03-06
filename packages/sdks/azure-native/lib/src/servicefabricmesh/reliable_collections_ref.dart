@@ -12,7 +12,7 @@ class ReliableCollectionsRef {
   /// Creates a new [ReliableCollectionsRef].
   /// [doNotPersistState] False (the default) if ReliableCollections state is persisted to disk as usual. True if you do not want to persist state, in which case replication is still enabled and you can use ReliableCollections as distributed cache.
   /// [name] Name of ReliableCollection resource. Right now it's not used and you can use any string.
-  ReliableCollectionsRef({
+  const ReliableCollectionsRef({
     this.doNotPersistState,
     required this.name,
   });

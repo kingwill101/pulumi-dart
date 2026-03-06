@@ -18,7 +18,7 @@ class GetSqlDatabaseArgs {
   /// [accountName] The name of the Cosmos DB SQL Database to create the table within.
   /// [name] Specifies the name of the Cosmos DB SQL Database.
   /// [resourceGroupName] The name of the resource group in which the Cosmos DB SQL Database is created.
-  GetSqlDatabaseArgs({
+  const GetSqlDatabaseArgs({
     required this.accountName,
     required this.name,
     required this.resourceGroupName,

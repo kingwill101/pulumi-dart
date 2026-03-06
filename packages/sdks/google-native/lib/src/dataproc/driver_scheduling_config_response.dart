@@ -12,7 +12,7 @@ class DriverSchedulingConfigResponse {
   /// Creates a new [DriverSchedulingConfigResponse].
   /// [memoryMb] The amount of memory in MB the driver is requesting.
   /// [vcores] The number of vCPUs the driver is requesting.
-  DriverSchedulingConfigResponse({
+  const DriverSchedulingConfigResponse({
     required this.memoryMb,
     required this.vcores,
   });

@@ -34,7 +34,7 @@ class GetClusterIstioServiceResult {
   /// [serviceNamespace] Required.
   /// [telemetries] Configuration for how to query telemetry on the Service. Structure is documented below.
   /// [userLabels] Required.
-  GetClusterIstioServiceResult({
+  const GetClusterIstioServiceResult({
     required this.clusterName,
     required this.displayName,
     required this.id,

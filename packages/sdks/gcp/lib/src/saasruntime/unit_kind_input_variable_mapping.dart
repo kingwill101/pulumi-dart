@@ -18,7 +18,7 @@ class UnitKindInputVariableMapping {
   /// [from] Output variables whose values will be passed on to dependencies
   /// [to] Input variables whose values will be passed on to dependencies
   /// [variable] name of the variable
-  UnitKindInputVariableMapping({
+  const UnitKindInputVariableMapping({
     this.from,
     this.to,
     required this.variable,

@@ -8,7 +8,7 @@ class WorkerPoolTemplateNodeSelector {
 
   /// Creates a new [WorkerPoolTemplateNodeSelector].
   /// [accelerator] The GPU to attach to an instance. See https://cloud.google.com/run/docs/configuring/services/gpu for configuring GPU.
-  WorkerPoolTemplateNodeSelector({
+  const WorkerPoolTemplateNodeSelector({
     required this.accelerator,
   });
 

@@ -18,7 +18,7 @@ class GetDnsSecurityRuleArgs {
   /// [dnsResolverPolicyName] The name of the DNS resolver policy.
   /// [dnsSecurityRuleName] The name of the DNS security rule.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetDnsSecurityRuleArgs({
+  const GetDnsSecurityRuleArgs({
     required this.dnsResolverPolicyName,
     required this.dnsSecurityRuleName,
     required this.resourceGroupName,

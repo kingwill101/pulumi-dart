@@ -24,7 +24,7 @@ class CustomResourceDefinitionNames {
   /// [plural] plural is the plural name of the resource to serve. The custom resources are served under `/apis/&lt;group&gt;/&lt;version&gt;/.../&lt;plural&gt;`. Must match the name of the CustomResourceDefinition (in the form `&lt;names.plural&gt;.&lt;group&gt;`). Must be all lowercase.
   /// [shortNames] shortNames are short names for the resource, exposed in API discovery documents, and used by clients to support invocations like `kubectl get &lt;shortname&gt;`. It must be all lowercase.
   /// [singular] singular is the singular name of the resource. It must be all lowercase. Defaults to lowercased `kind`.
-  CustomResourceDefinitionNames({
+  const CustomResourceDefinitionNames({
     this.categories,
     required this.kind,
     this.listKind,

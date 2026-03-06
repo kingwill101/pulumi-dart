@@ -12,7 +12,7 @@ class SDKInfoResponse {
   /// Creates a new [SDKInfoResponse].
   /// [language] The SDK Language.
   /// [version] Optional. The SDK version.
-  SDKInfoResponse({
+  const SDKInfoResponse({
     required this.language,
     required this.version,
   });

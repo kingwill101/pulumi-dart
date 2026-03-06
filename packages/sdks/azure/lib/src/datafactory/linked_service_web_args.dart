@@ -44,7 +44,7 @@ class LinkedServiceWebArgs {
   /// [password] The password for Basic authentication. Required if `authentication_type` sets to `Basic`.
   /// [url] The URL of the web service endpoint (e.g. &lt;https://www.microsoft.com&gt;).
   /// [username] The username for Basic authentication. Required if `authentication_type` sets to `Basic`.
-  LinkedServiceWebArgs({
+  const LinkedServiceWebArgs({
     this.additionalProperties,
     this.annotations,
     required this.authenticationType,

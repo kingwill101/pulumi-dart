@@ -12,7 +12,7 @@ class GitHubClientSecretResponse {
   /// Creates a new [GitHubClientSecretResponse].
   /// [byoaSecretAkvUrl] Bring your own app client secret AKV URL.
   /// [byoaSecretName] Bring your own app client secret name in AKV.
-  GitHubClientSecretResponse({
+  const GitHubClientSecretResponse({
     this.byoaSecretAkvUrl,
     this.byoaSecretName,
   });

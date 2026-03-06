@@ -32,7 +32,7 @@ class GetKernelsKernel {
   /// [pvops] If this Kernel is suitable for paravirtualized operations.
   /// [version] Linux Kernel version
   /// [xen] If this Kernel is suitable for Xen Linodes.
-  GetKernelsKernel({
+  const GetKernelsKernel({
     required this.architecture,
     required this.built,
     required this.deprecated,

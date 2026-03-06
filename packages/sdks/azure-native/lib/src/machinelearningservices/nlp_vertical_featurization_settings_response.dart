@@ -8,7 +8,7 @@ class NlpVerticalFeaturizationSettingsResponse {
 
   /// Creates a new [NlpVerticalFeaturizationSettingsResponse].
   /// [datasetLanguage] Dataset language, useful for the text data.
-  NlpVerticalFeaturizationSettingsResponse({
+  const NlpVerticalFeaturizationSettingsResponse({
     this.datasetLanguage,
   });
 

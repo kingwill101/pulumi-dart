@@ -37,7 +37,7 @@ class GetAccountProjectResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Cognitive Services Account Project.
-  GetAccountProjectResult({
+  const GetAccountProjectResult({
     required this.cognitiveAccountName,
     required this.default_,
     required this.description,

@@ -26,7 +26,7 @@ class ComputeInstance {
   /// [disableLocalAuth] Opt-out of local authentication and ensure customers can use only MSI and AAD exclusively for authentication.
   /// [properties] Properties of ComputeInstance
   /// [resourceId] ARM resource id of the underlying compute
-  ComputeInstance({
+  const ComputeInstance({
     this.computeLocation,
     required this.computeType,
     this.description,

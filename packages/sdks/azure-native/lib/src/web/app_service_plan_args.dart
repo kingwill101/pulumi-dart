@@ -81,7 +81,7 @@ class AppServicePlanArgs {
   /// [targetWorkerSizeId] Scaling worker size ID.
   /// [workerTierName] Target worker tier assigned to the App Service plan.
   /// [zoneRedundant] If &lt;code&gt;true&lt;/code&gt;, this App Service Plan will perform availability zone balancing.
-  AppServicePlanArgs({
+  const AppServicePlanArgs({
     this.elasticScaleEnabled,
     this.extendedLocation,
     this.freeOfferExpirationTime,

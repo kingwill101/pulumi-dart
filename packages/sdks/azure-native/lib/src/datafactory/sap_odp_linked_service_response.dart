@@ -82,7 +82,7 @@ class SapOdpLinkedServiceResponse {
   /// [userName] Username to access the SAP server where the table is located. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
   /// [x509CertificatePath] SNC X509 certificate file path. Type: string (or Expression with resultType string).
-  SapOdpLinkedServiceResponse({
+  const SapOdpLinkedServiceResponse({
     this.annotations,
     this.clientId,
     this.connectVia,

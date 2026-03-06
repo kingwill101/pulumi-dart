@@ -51,7 +51,7 @@ class GetComponentResult {
   /// [tags] Key-value map of resource tags for the component.
   /// [type] Type of the component.
   /// [version] Version of the component.
-  GetComponentResult({
+  const GetComponentResult({
     required this.arn,
     required this.changeDescription,
     required this.data,

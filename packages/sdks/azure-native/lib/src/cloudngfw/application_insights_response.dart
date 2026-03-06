@@ -12,7 +12,7 @@ class ApplicationInsightsResponse {
   /// Creates a new [ApplicationInsightsResponse].
   /// [id] Resource id for Application Insights
   /// [key] Application Insights key
-  ApplicationInsightsResponse({
+  const ApplicationInsightsResponse({
     this.id,
     this.key,
   });

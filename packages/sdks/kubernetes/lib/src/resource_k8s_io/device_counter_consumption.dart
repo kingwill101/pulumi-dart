@@ -15,7 +15,7 @@ class DeviceCounterConsumption {
   /// Creates a new [DeviceCounterConsumption].
   /// [counterSet] CounterSet is the name of the set from which the counters defined will be consumed.
   /// [counters] Counters defines the counters that will be consumed by the device.
-  DeviceCounterConsumption({
+  const DeviceCounterConsumption({
     required this.counterSet,
     required this.counters,
   });

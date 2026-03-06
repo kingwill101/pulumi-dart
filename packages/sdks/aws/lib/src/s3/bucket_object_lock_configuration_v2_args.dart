@@ -29,7 +29,7 @@ class BucketObjectLockConfigurationV2Args {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [rule] Configuration block for specifying the Object Lock rule for the specified object. See below.
   /// [token] This argument is deprecated and no longer needed to enable Object Lock.
-  BucketObjectLockConfigurationV2Args({
+  const BucketObjectLockConfigurationV2Args({
     required this.bucket,
     this.expectedBucketOwner,
     this.objectLockEnabled,

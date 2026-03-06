@@ -9,7 +9,7 @@ class SseKmsEncryptedObjects {
 
   /// Creates a new [SseKmsEncryptedObjects].
   /// [status] Specifies whether Amazon S3 replicates objects created with server-side encryption using an AWS KMS key stored in AWS Key Management Service.
-  SseKmsEncryptedObjects({
+  const SseKmsEncryptedObjects({
     this.status,
   });
 

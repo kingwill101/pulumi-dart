@@ -19,7 +19,7 @@ class InstancePrivateIpAddressResponse {
   /// [primary] &lt;p&gt;Indicates whether this IPv4 address is the primary private IP address of the network interface.&lt;/p&gt;
   /// [privateDnsName] &lt;p&gt;The private IPv4 DNS name.&lt;/p&gt;
   /// [privateIpAddress] &lt;p&gt;The private IPv4 address of the network interface.&lt;/p&gt;
-  InstancePrivateIpAddressResponse({
+  const InstancePrivateIpAddressResponse({
     this.association,
     this.primary,
     this.privateDnsName,

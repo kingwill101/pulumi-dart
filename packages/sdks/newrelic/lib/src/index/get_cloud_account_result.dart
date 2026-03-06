@@ -14,7 +14,7 @@ class GetCloudAccountResult {
   /// [cloudProvider] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] Required.
-  GetCloudAccountResult({
+  const GetCloudAccountResult({
     this.accountId,
     required this.cloudProvider,
     required this.id,

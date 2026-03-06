@@ -27,7 +27,7 @@ class ResourceGroupDefinitionResponse {
   /// [name] Name of this resourceGroup. Leave empty if the resource group name will be specified during the blueprint assignment.
   /// [strongType] StrongType for UI to render rich experience during blueprint assignment. Supported strong types are resourceType, principalId and location.
   /// [tags] Tags to be assigned to this resource group.
-  ResourceGroupDefinitionResponse({
+  const ResourceGroupDefinitionResponse({
     this.dependsOn,
     this.description,
     this.displayName,

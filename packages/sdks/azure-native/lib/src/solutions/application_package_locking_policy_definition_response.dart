@@ -12,7 +12,7 @@ class ApplicationPackageLockingPolicyDefinitionResponse {
   /// Creates a new [ApplicationPackageLockingPolicyDefinitionResponse].
   /// [allowedActions] The deny assignment excluded actions.
   /// [allowedDataActions] The deny assignment excluded data actions.
-  ApplicationPackageLockingPolicyDefinitionResponse({
+  const ApplicationPackageLockingPolicyDefinitionResponse({
     this.allowedActions,
     this.allowedDataActions,
   });

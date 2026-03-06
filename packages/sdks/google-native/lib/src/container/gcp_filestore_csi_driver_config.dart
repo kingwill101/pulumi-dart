@@ -9,7 +9,7 @@ class GcpFilestoreCsiDriverConfig {
 
   /// Creates a new [GcpFilestoreCsiDriverConfig].
   /// [enabled] Whether the GCP Filestore CSI driver is enabled for this cluster.
-  GcpFilestoreCsiDriverConfig({
+  const GcpFilestoreCsiDriverConfig({
     this.enabled,
   });
 

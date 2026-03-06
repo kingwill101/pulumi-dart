@@ -39,7 +39,7 @@ class GetGroupsGroup {
   /// [regionId] The ID of the region where the API group is located.
   /// [subDomain] Second-level domain name automatically assigned to the API group.
   /// [trafficLimit] Upper QPS limit of the API group; default value: 500, which can be increased by submitting an application.
-  GetGroupsGroup({
+  const GetGroupsGroup({
     required this.billingStatus,
     required this.createdTime,
     required this.description,

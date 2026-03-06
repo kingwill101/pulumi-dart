@@ -19,7 +19,7 @@ class AccessPackageAssignmentPolicyQuestion {
   /// [required] Whether this question is required.
   /// [sequence] The sequence number of this question.
   /// [text] A block describing the content of this question, as documented below.
-  AccessPackageAssignmentPolicyQuestion({
+  const AccessPackageAssignmentPolicyQuestion({
     this.choices,
     this.required,
     this.sequence,

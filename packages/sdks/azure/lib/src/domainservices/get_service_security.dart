@@ -26,7 +26,7 @@ class GetServiceSecurity {
   /// [syncNtlmPasswords] Whether NTLM password hashes are synchronized to the managed domain.
   /// [syncOnPremPasswords] Whether on-premises password hashes are synchronized to the managed domain.
   /// [tlsV1Enabled] Whether legacy TLS v1 support is enabled.
-  GetServiceSecurity({
+  const GetServiceSecurity({
     required this.kerberosArmoringEnabled,
     required this.kerberosRc4EncryptionEnabled,
     required this.ntlmV1Enabled,

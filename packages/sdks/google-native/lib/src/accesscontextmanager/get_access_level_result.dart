@@ -22,7 +22,7 @@ class GetAccessLevelResult {
   /// [description] Description of the `AccessLevel` and its use. Does not affect behavior.
   /// [name] Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`.
   /// [title] Human readable title. Must be unique within the Policy.
-  GetAccessLevelResult({
+  const GetAccessLevelResult({
     required this.basic,
     required this.custom,
     required this.description,

@@ -9,7 +9,7 @@ class GetRouterRoute {
   /// Creates a new [GetRouterRoute].
   /// [destinationCidr] Required.
   /// [nextHop] Required.
-  GetRouterRoute({
+  const GetRouterRoute({
     required this.destinationCidr,
     required this.nextHop,
   });

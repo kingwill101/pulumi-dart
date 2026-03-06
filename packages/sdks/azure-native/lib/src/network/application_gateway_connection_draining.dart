@@ -12,7 +12,7 @@ class ApplicationGatewayConnectionDraining {
   /// Creates a new [ApplicationGatewayConnectionDraining].
   /// [drainTimeoutInSec] The number of seconds connection draining is active. Acceptable values are from 1 second to 3600 seconds.
   /// [enabled] Whether connection draining is enabled or not.
-  ApplicationGatewayConnectionDraining({
+  const ApplicationGatewayConnectionDraining({
     required this.drainTimeoutInSec,
     required this.enabled,
   });

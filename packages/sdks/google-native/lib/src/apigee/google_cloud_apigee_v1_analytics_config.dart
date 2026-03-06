@@ -9,7 +9,7 @@ class GoogleCloudApigeeV1AnalyticsConfig {
 
   /// Creates a new [GoogleCloudApigeeV1AnalyticsConfig].
   /// [enabled] Whether the Analytics add-on is enabled.
-  GoogleCloudApigeeV1AnalyticsConfig({
+  const GoogleCloudApigeeV1AnalyticsConfig({
     this.enabled,
   });
 

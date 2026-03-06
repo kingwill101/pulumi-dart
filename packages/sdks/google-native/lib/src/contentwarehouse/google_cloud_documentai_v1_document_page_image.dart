@@ -18,7 +18,7 @@ class GoogleCloudDocumentaiV1DocumentPageImage {
   /// [height] Height of the image in pixels.
   /// [mimeType] Encoding [media type (MIME type)](https://www.iana.org/assignments/media-types/media-types.xhtml) for the image.
   /// [width] Width of the image in pixels.
-  GoogleCloudDocumentaiV1DocumentPageImage({
+  const GoogleCloudDocumentaiV1DocumentPageImage({
     this.content,
     this.height,
     this.mimeType,

@@ -35,7 +35,7 @@ class GetApplicationResult {
   /// [portalOptions] Options for the portal associated with an application. See the `aws.ssoadmin.Application` resource documentation. The attributes are the same.
   /// [region] Required.
   /// [status] Status of the application.
-  GetApplicationResult({
+  const GetApplicationResult({
     required this.applicationAccount,
     required this.applicationArn,
     required this.applicationProviderArn,

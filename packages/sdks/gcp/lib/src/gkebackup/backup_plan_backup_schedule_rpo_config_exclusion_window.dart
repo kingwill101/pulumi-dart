@@ -37,7 +37,7 @@ class BackupPlanBackupScheduleRpoConfigExclusionWindow {
   /// [duration] Specifies duration of the window in seconds with up to nine fractional digits,
   /// [singleOccurrenceDate] No recurrence. The exclusion window occurs only once and on this date in UTC.
   /// [startTime] Specifies the start time of the window using time of the day in UTC.
-  BackupPlanBackupScheduleRpoConfigExclusionWindow({
+  const BackupPlanBackupScheduleRpoConfigExclusionWindow({
     this.daily,
     this.daysOfWeek,
     required this.duration,

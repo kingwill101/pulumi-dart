@@ -23,7 +23,7 @@ class TrafficQosArgs {
   /// [qosName] The name of the QoS policy.
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
-  TrafficQosArgs({
+  const TrafficQosArgs({
     this.qosDescription,
     this.qosName,
     this.resourceGroupId,

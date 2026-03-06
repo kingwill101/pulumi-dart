@@ -15,7 +15,7 @@ class MabFileFolderProtectedItemExtendedInfoResponse {
   /// [lastRefreshedAt] Last time when the agent data synced to service.
   /// [oldestRecoveryPoint] The oldest backup copy available.
   /// [recoveryPointCount] Number of backup copies associated with the backup item.
-  MabFileFolderProtectedItemExtendedInfoResponse({
+  const MabFileFolderProtectedItemExtendedInfoResponse({
     this.lastRefreshedAt,
     this.oldestRecoveryPoint,
     this.recoveryPointCount,

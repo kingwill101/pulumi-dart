@@ -13,7 +13,7 @@ class GetTargetGrpcProxyArgs {
   /// Creates a new [GetTargetGrpcProxyArgs].
   /// [project] Optional.
   /// [targetGrpcProxy] Required.
-  GetTargetGrpcProxyArgs({
+  const GetTargetGrpcProxyArgs({
     this.project,
     required this.targetGrpcProxy,
   });

@@ -12,7 +12,7 @@ class DenoiseResponse {
   /// Creates a new [DenoiseResponse].
   /// [strength] Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
   /// [tune] Set the denoiser mode. The default is `standard`. Supported denoiser modes: - `standard` - `grain`
-  DenoiseResponse({
+  const DenoiseResponse({
     required this.strength,
     required this.tune,
   });

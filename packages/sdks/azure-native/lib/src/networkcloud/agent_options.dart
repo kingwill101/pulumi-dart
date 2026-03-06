@@ -11,7 +11,7 @@ class AgentOptions {
   /// Creates a new [AgentOptions].
   /// [hugepagesCount] The number of hugepages to allocate.
   /// [hugepagesSize] The size of the hugepages to allocate.
-  AgentOptions({
+  const AgentOptions({
     required this.hugepagesCount,
     this.hugepagesSize,
   });

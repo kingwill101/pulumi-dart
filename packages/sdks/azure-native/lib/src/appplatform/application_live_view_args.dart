@@ -18,7 +18,7 @@ class ApplicationLiveViewArgs {
   /// [applicationLiveViewName] The name of Application Live View.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
-  ApplicationLiveViewArgs({
+  const ApplicationLiveViewArgs({
     this.applicationLiveViewName,
     required this.resourceGroupName,
     required this.serviceName,

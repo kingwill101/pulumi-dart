@@ -39,7 +39,7 @@ class CertificateProfileArgs {
   /// [profileName] Certificate profile name.
   /// [profileType] Profile type of the certificate.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  CertificateProfileArgs({
+  const CertificateProfileArgs({
     required this.accountName,
     required this.identityValidationId,
     this.includeCity,

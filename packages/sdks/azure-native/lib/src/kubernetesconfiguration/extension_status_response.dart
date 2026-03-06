@@ -21,7 +21,7 @@ class ExtensionStatusResponse {
   /// [level] Level of the status.
   /// [message] Detailed message of the status from the Extension.
   /// [time] DateLiteral (per ISO8601) noting the time of installation status.
-  ExtensionStatusResponse({
+  const ExtensionStatusResponse({
     this.code,
     this.displayStatus,
     this.level,

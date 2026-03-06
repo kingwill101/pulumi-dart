@@ -9,7 +9,7 @@ class AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectation
 
   /// Creates a new [AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds].
   /// [toolInvocationParameterCorrectnessThreshold] The success threshold for individual tool invocation parameter
-  AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds({
+  const AppEvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds({
     this.toolInvocationParameterCorrectnessThreshold,
   });
 

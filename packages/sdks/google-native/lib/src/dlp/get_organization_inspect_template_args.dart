@@ -15,7 +15,7 @@ class GetOrganizationInspectTemplateArgs {
   /// [inspectTemplateId] Required.
   /// [location] Required.
   /// [organizationId] Required.
-  GetOrganizationInspectTemplateArgs({
+  const GetOrganizationInspectTemplateArgs({
     required this.inspectTemplateId,
     required this.location,
     required this.organizationId,

@@ -22,7 +22,7 @@ class DatasetArgs {
   /// [factoryName] The factory name.
   /// [properties] Dataset properties.
   /// [resourceGroupName] The resource group name.
-  DatasetArgs({
+  const DatasetArgs({
     this.datasetName,
     required this.factoryName,
     required this.properties,

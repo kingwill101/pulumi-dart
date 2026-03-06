@@ -13,7 +13,7 @@ class LinuxVirtualMachineTerminationNotification {
   /// Creates a new [LinuxVirtualMachineTerminationNotification].
   /// [enabled] Should the termination notification be enabled on this Virtual Machine?
   /// [timeout] Length of time (in minutes, between `5` and `15`) a notification to be sent to the VM on the instance metadata server till the VM gets deleted. The time duration should be specified in ISO 8601 format. Defaults to `PT5M`.
-  LinuxVirtualMachineTerminationNotification({
+  const LinuxVirtualMachineTerminationNotification({
     required this.enabled,
     this.timeout,
   });

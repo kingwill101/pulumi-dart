@@ -8,7 +8,7 @@ class ClusterRemoteNetworkConfigRemotePodNetworks {
 
   /// Creates a new [ClusterRemoteNetworkConfigRemotePodNetworks].
   /// [cidrs] List of network CIDRs that can contain pods that run Kubernetes webhooks on hybrid nodes.
-  ClusterRemoteNetworkConfigRemotePodNetworks({
+  const ClusterRemoteNetworkConfigRemotePodNetworks({
     this.cidrs,
   });
 

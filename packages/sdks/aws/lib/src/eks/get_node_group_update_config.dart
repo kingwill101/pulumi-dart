@@ -11,7 +11,7 @@ class GetNodeGroupUpdateConfig {
   /// [maxUnavailable] Required.
   /// [maxUnavailablePercentage] Required.
   /// [updateStrategy] Required.
-  GetNodeGroupUpdateConfig({
+  const GetNodeGroupUpdateConfig({
     required this.maxUnavailable,
     required this.maxUnavailablePercentage,
     required this.updateStrategy,

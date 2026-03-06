@@ -51,7 +51,7 @@ class GetSwitchesArgs {
   /// [vswitchName] The name of the vSwitch.
   /// [vswitchOwnerId] The vSwitch owner id.
   /// [zoneId] The availability zone of the vSwitch.
-  GetSwitchesArgs({
+  const GetSwitchesArgs({
     this.cidrBlock,
     this.dryRun,
     this.ids,

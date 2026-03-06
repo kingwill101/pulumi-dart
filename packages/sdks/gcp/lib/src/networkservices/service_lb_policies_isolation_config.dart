@@ -14,7 +14,7 @@ class ServiceLbPoliciesIsolationConfig {
   /// Creates a new [ServiceLbPoliciesIsolationConfig].
   /// [isolationGranularity] The isolation granularity of the load balancer.
   /// [isolationMode] The isolation mode of the load balancer.
-  ServiceLbPoliciesIsolationConfig({
+  const ServiceLbPoliciesIsolationConfig({
     this.isolationGranularity,
     this.isolationMode,
   });

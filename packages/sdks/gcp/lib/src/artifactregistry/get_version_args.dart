@@ -27,7 +27,7 @@ class GetVersionArgs {
   /// [repositoryId] The last part of the repository name to fetch from.
   /// [versionName] The name of the version.
   /// [view] The view, which determines what version information is returned in a response. Possible values are `"BASIC"` and `"FULL"`. Defaults to `"BASIC"`.
-  GetVersionArgs({
+  const GetVersionArgs({
     required this.location,
     required this.packageName,
     this.project,

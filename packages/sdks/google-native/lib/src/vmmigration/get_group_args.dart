@@ -15,7 +15,7 @@ class GetGroupArgs {
   /// [groupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetGroupArgs({
+  const GetGroupArgs({
     required this.groupId,
     required this.location,
     this.project,

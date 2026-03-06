@@ -21,7 +21,7 @@ class GetServiceEndpointConnectionsResult {
   /// [resourceGroupName] Required.
   /// [serviceId] Required.
   /// [serviceName] The name of the private link service.
-  GetServiceEndpointConnectionsResult({
+  const GetServiceEndpointConnectionsResult({
     required this.id,
     required this.location,
     required this.privateEndpointConnections,

@@ -15,7 +15,7 @@ class GetNamespaceArgs {
   /// Creates a new [GetNamespaceArgs].
   /// [name] Specifies the Name of the Notification Hub Namespace.
   /// [resourceGroupName] Specifies the Name of the Resource Group within which the Notification Hub exists.
-  GetNamespaceArgs({
+  const GetNamespaceArgs({
     required this.name,
     required this.resourceGroupName,
   });

@@ -9,7 +9,7 @@ class JsonMapperSourceFieldResponse {
 
   /// Creates a new [JsonMapperSourceFieldResponse].
   /// [fieldName] Define a source field name from which the json array mapper will read the json array. Leaving this empty, means reading the body of the message itself.
-  JsonMapperSourceFieldResponse({
+  const JsonMapperSourceFieldResponse({
     this.fieldName,
   });
 

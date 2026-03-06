@@ -18,7 +18,7 @@ class GetDicomServiceArgs {
   /// [dicomServiceName] The name of DICOM Service resource.
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
-  GetDicomServiceArgs({
+  const GetDicomServiceArgs({
     required this.dicomServiceName,
     required this.resourceGroupName,
     required this.workspaceName,

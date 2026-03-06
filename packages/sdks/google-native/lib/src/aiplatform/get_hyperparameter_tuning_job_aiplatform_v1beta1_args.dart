@@ -15,7 +15,7 @@ class GetHyperparameterTuningJobAiplatformV1beta1Args {
   /// [hyperparameterTuningJobId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetHyperparameterTuningJobAiplatformV1beta1Args({
+  const GetHyperparameterTuningJobAiplatformV1beta1Args({
     required this.hyperparameterTuningJobId,
     required this.location,
     this.project,

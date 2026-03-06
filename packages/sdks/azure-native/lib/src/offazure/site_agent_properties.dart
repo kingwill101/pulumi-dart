@@ -12,7 +12,7 @@ class SiteAgentProperties {
   /// Creates a new [SiteAgentProperties].
   /// [keyVaultId] Gets or sets the key vault ARM Id.
   /// [keyVaultUri] Gets or sets the key vault URI.
-  SiteAgentProperties({
+  const SiteAgentProperties({
     this.keyVaultId,
     this.keyVaultUri,
   });

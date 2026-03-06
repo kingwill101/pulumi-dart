@@ -14,7 +14,7 @@ class ConnectionConfigVariableEncryptionKeyValue {
   /// Creates a new [ConnectionConfigVariableEncryptionKeyValue].
   /// [kmsKeyName] The [KMS key name] with which the content of the Operation is encrypted. The
   /// [type] Type of Encryption Key
-  ConnectionConfigVariableEncryptionKeyValue({
+  const ConnectionConfigVariableEncryptionKeyValue({
     this.kmsKeyName,
     required this.type,
   });

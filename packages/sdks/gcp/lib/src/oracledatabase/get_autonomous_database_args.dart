@@ -21,7 +21,7 @@ class GetAutonomousDatabaseArgs {
   /// [autonomousDatabaseId] The ID of the AutonomousDatabase.
   /// [location] The location of the resource.
   /// [project] The project to which the resource belongs. If it
-  GetAutonomousDatabaseArgs({
+  const GetAutonomousDatabaseArgs({
     required this.autonomousDatabaseId,
     required this.location,
     this.project,

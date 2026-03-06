@@ -26,7 +26,7 @@ class GetCoipPoolResult {
   /// [poolId] Required.
   /// [region] Required.
   /// [tags] Required.
-  GetCoipPoolResult({
+  const GetCoipPoolResult({
     required this.arn,
     this.filters,
     required this.id,

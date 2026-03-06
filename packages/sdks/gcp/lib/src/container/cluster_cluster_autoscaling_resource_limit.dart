@@ -16,7 +16,7 @@ class ClusterClusterAutoscalingResourceLimit {
   /// [maximum] Maximum amount of the resource in the cluster.
   /// [minimum] Minimum amount of the resource in the cluster.
   /// [resourceType] The type of the resource. For example, `cpu` and
-  ClusterClusterAutoscalingResourceLimit({
+  const ClusterClusterAutoscalingResourceLimit({
     required this.maximum,
     this.minimum,
     required this.resourceType,

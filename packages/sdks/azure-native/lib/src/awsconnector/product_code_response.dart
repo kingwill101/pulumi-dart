@@ -13,7 +13,7 @@ class ProductCodeResponse {
   /// Creates a new [ProductCodeResponse].
   /// [productCodeId] &lt;p&gt;The product code.&lt;/p&gt;
   /// [productCodeType] &lt;p&gt;The type of product code.&lt;/p&gt;
-  ProductCodeResponse({
+  const ProductCodeResponse({
     this.productCodeId,
     this.productCodeType,
   });

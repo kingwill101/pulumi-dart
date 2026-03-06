@@ -44,7 +44,7 @@ class CxToolVersionTool {
   /// [name] (Output)
   /// [openApiSpec] OpenAPI specification of the Tool.
   /// [toolType] (Output)
-  CxToolVersionTool({
+  const CxToolVersionTool({
     this.connectorSpec,
     this.dataStoreSpec,
     required this.description,

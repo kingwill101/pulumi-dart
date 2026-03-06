@@ -25,7 +25,7 @@ class V2modelsSlotValueElicitationSettingWaitAndContinueSpecification {
   /// [continueResponses] Response that Amazon Lex sends to indicate that the bot is ready to continue the conversation.
   /// [stillWaitingResponses] Response that Amazon Lex sends periodically to the user to indicate that the bot is still waiting for input from the user.
   /// [waitingResponses] Response that Amazon Lex sends to indicate that the bot is waiting for the conversation to continue.
-  V2modelsSlotValueElicitationSettingWaitAndContinueSpecification({
+  const V2modelsSlotValueElicitationSettingWaitAndContinueSpecification({
     this.active,
     this.continueResponses,
     this.stillWaitingResponses,

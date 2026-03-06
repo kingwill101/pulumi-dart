@@ -11,7 +11,7 @@ class AutomationRuleRepairRolloutRuleRepairPhaseRollback {
   /// Creates a new [AutomationRuleRepairRolloutRuleRepairPhaseRollback].
   /// [destinationPhase] Optional. The starting phase ID for the Rollout. If unspecified, the Rollout will start in the stable phase.
   /// [disableRollbackIfRolloutPending] Optional. If pending rollout exists on the target, the rollback operation will be aborted.
-  AutomationRuleRepairRolloutRuleRepairPhaseRollback({
+  const AutomationRuleRepairRolloutRuleRepairPhaseRollback({
     this.destinationPhase,
     this.disableRollbackIfRolloutPending,
   });

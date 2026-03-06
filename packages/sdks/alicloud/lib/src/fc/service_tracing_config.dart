@@ -11,7 +11,7 @@ class ServiceTracingConfig {
   /// Creates a new [ServiceTracingConfig].
   /// [params] Tracing parameters, which type is map[string]string. When the protocol type is Jaeger, the key is "endpoint" and the value is your tracing intranet endpoint. For example endpoint: &lt;http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/traces&gt;.
   /// [type] Tracing protocol type. Currently, only Jaeger is supported.
-  ServiceTracingConfig({
+  const ServiceTracingConfig({
     required this.params,
     required this.type,
   });

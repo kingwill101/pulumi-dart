@@ -11,7 +11,7 @@ class GoogleCloudApigeeV1TlsInfoCommonNameResponse {
   /// Creates a new [GoogleCloudApigeeV1TlsInfoCommonNameResponse].
   /// [value] The TLS Common Name string of the certificate.
   /// [wildcardMatch] Indicates whether the cert should be matched against as a wildcard cert.
-  GoogleCloudApigeeV1TlsInfoCommonNameResponse({
+  const GoogleCloudApigeeV1TlsInfoCommonNameResponse({
     required this.value,
     required this.wildcardMatch,
   });

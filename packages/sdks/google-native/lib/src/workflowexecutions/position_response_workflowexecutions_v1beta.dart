@@ -15,7 +15,7 @@ class PositionResponseWorkflowexecutionsV1beta {
   /// [column] The source code column position (of the line) the current instruction was generated from.
   /// [length] The number of bytes of source code making up this stack trace element.
   /// [line] The source code line number the current instruction was generated from.
-  PositionResponseWorkflowexecutionsV1beta({
+  const PositionResponseWorkflowexecutionsV1beta({
     required this.column,
     required this.length,
     required this.line,

@@ -21,7 +21,7 @@ class SecurityLabelArgs {
   /// [labelProvider] The name of the provider with which this label is to be associated.
   /// [objectName] The name of the object to be labeled. Names of objects that reside in schemas (tables, functions, etc.) can be schema-qualified.
   /// [objectType] The PostgreSQL object type to apply this security label to.
-  SecurityLabelArgs({
+  const SecurityLabelArgs({
     required this.label,
     required this.labelProvider,
     required this.objectName,

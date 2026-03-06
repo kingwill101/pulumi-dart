@@ -13,7 +13,7 @@ class GetDeploymentDeploymentmanagerV2Args {
   /// Creates a new [GetDeploymentDeploymentmanagerV2Args].
   /// [deployment] Required.
   /// [project] Optional.
-  GetDeploymentDeploymentmanagerV2Args({
+  const GetDeploymentDeploymentmanagerV2Args({
     required this.deployment,
     this.project,
   });

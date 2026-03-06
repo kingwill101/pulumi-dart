@@ -27,7 +27,7 @@ class ServicePrincipalPasswordArgs {
   /// [rotateWhenChanged] A map of arbitrary key/value pairs that will force recreation of the password when they change, enabling password rotation based on external conditions such as a rotating timestamp. Changing this forces a new resource to be created.
   /// [servicePrincipalId] The ID of the service principal for which this password should be created. Changing this field forces a new resource to be created.
   /// [startDate] The start date from which the password is valid, formatted as an RFC3339 date string (e.g. `2018-01-01T01:02:03Z`). If this isn't specified, the current date is used.  Changing this field forces a new resource to be created.
-  ServicePrincipalPasswordArgs({
+  const ServicePrincipalPasswordArgs({
     this.displayName,
     this.endDate,
     this.endDateRelative,

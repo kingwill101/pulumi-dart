@@ -28,7 +28,7 @@ class IpamPoolArgs {
   /// [properties] Properties of IpamPool resource properties which are specific to the Pool resource.
   /// [resourceGroupName] The name of the resource group.
   /// [tags] Resource tags.
-  IpamPoolArgs({
+  const IpamPoolArgs({
     this.location,
     required this.networkManagerName,
     this.poolName,

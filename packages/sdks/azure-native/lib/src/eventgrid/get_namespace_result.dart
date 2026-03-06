@@ -69,7 +69,7 @@ class GetNamespaceResult {
   /// [topicSpacesConfiguration] Topic spaces configuration information for the namespace resource
   /// [topicsConfiguration] Topics configuration information for the namespace resource
   /// [type] Type of the resource.
-  GetNamespaceResult({
+  const GetNamespaceResult({
     required this.azureApiVersion,
     required this.id,
     this.identity,

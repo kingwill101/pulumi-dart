@@ -24,7 +24,7 @@ class RoleAliasArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] The identity of the role to which the alias refers.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  RoleAliasArgs({
+  const RoleAliasArgs({
     required this.alias,
     this.credentialDuration,
     this.region,

@@ -36,7 +36,7 @@ class VirtualMachineScaleSetOSProfileResponse {
   /// [requireGuestProvisionSignal] Optional property which must either be set to True or omitted.
   /// [secrets] Specifies set of certificates that should be installed onto the virtual machines in the scale set. To install certificates on a virtual machine it is recommended to use the [Azure Key Vault virtual machine extension for Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-linux) or the [Azure Key Vault virtual machine extension for Windows](https://docs.microsoft.com/azure/virtual-machines/extensions/key-vault-windows).
   /// [windowsConfiguration] Specifies Windows operating system settings on the virtual machine.
-  VirtualMachineScaleSetOSProfileResponse({
+  const VirtualMachineScaleSetOSProfileResponse({
     this.adminPassword,
     this.adminUsername,
     this.allowExtensionOperations,

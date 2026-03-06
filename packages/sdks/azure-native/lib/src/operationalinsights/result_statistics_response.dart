@@ -15,7 +15,7 @@ class ResultStatisticsResponse {
   /// [ingestedRecords] The number of rows that were returned by the search job.
   /// [progress] Search job completion percentage.
   /// [scannedGb] Search job: Amount of scanned data.
-  ResultStatisticsResponse({
+  const ResultStatisticsResponse({
     required this.ingestedRecords,
     required this.progress,
     required this.scannedGb,

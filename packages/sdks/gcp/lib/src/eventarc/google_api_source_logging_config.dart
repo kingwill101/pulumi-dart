@@ -10,7 +10,7 @@ class GoogleApiSourceLoggingConfig {
 
   /// Creates a new [GoogleApiSourceLoggingConfig].
   /// [logSeverity] The minimum severity of logs that will be sent to Stackdriver/Platform
-  GoogleApiSourceLoggingConfig({
+  const GoogleApiSourceLoggingConfig({
     this.logSeverity,
   });
 

@@ -30,7 +30,7 @@ class ProducerImageShareGroupMemberState {
   /// [token] The token of the prospective member.
   /// [tokenUuid] The UUID of member's token.
   /// [updated] When the member was last updated.
-  ProducerImageShareGroupMemberState({
+  const ProducerImageShareGroupMemberState({
     this.created,
     this.expiry,
     this.label,

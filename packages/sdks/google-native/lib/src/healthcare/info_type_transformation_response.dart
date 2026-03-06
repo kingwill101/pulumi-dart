@@ -27,7 +27,7 @@ class InfoTypeTransformationResponse {
   /// [infoTypes] InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type.
   /// [redactConfig] Config for text redaction.
   /// [replaceWithInfoTypeConfig] Config for replace with InfoType.
-  InfoTypeTransformationResponse({
+  const InfoTypeTransformationResponse({
     required this.characterMaskConfig,
     required this.cryptoHashConfig,
     required this.dateShiftConfig,

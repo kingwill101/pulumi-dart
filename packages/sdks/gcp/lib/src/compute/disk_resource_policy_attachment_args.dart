@@ -23,7 +23,7 @@ class DiskResourcePolicyAttachmentArgs {
   /// [name] The resource policy to be attached to the disk for scheduling snapshot
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] A reference to the zone where the disk resides.
-  DiskResourcePolicyAttachmentArgs({
+  const DiskResourcePolicyAttachmentArgs({
     required this.disk,
     this.name,
     this.project,

@@ -8,7 +8,7 @@ class DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfig
 
   /// Creates a new [DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration].
   /// [targetResourceCount] The number of pre-provisioned snapshots to keep on hand for a fast-launch enabled Windows AMI.
-  DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration({
+  const DistributionConfigurationDistributionFastLaunchConfigurationSnapshotConfiguration({
     this.targetResourceCount,
   });
 

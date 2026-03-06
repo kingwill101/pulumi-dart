@@ -22,7 +22,7 @@ class VolumePropertiesResponseDataProtection {
   /// [replication] Replication properties
   /// [snapshot] Snapshot properties.
   /// [volumeRelocation] VolumeRelocation properties
-  VolumePropertiesResponseDataProtection({
+  const VolumePropertiesResponseDataProtection({
     this.backup,
     this.replication,
     this.snapshot,

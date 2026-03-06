@@ -40,7 +40,7 @@ class GetVersionResult {
   /// [updateTime] The time, as a RFC 3339 string, this package was last updated. This includes publishing a new version of the package.
   /// [versionName] Required.
   /// [view] Optional.
-  GetVersionResult({
+  const GetVersionResult({
     required this.annotations,
     required this.createTime,
     required this.description,

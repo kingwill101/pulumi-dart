@@ -9,7 +9,7 @@ class GcpFilestoreCsiDriverConfigResponseContainerV1beta1 {
 
   /// Creates a new [GcpFilestoreCsiDriverConfigResponseContainerV1beta1].
   /// [enabled] Whether the GCP Filestore CSI driver is enabled for this cluster.
-  GcpFilestoreCsiDriverConfigResponseContainerV1beta1({
+  const GcpFilestoreCsiDriverConfigResponseContainerV1beta1({
     required this.enabled,
   });
 

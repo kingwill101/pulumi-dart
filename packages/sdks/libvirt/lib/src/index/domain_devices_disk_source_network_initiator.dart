@@ -9,7 +9,7 @@ class DomainDevicesDiskSourceNetworkInitiator {
 
   /// Creates a new [DomainDevicesDiskSourceNetworkInitiator].
   /// [iqn] Configures the iSCSI qualified name (IQN) used for the initiator in network block device configurations.
-  DomainDevicesDiskSourceNetworkInitiator({
+  const DomainDevicesDiskSourceNetworkInitiator({
     this.iqn,
   });
 

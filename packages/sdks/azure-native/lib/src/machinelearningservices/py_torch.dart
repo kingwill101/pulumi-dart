@@ -13,7 +13,7 @@ class PyTorch {
   /// Creates a new [PyTorch].
   /// [distributionType] Enum to determine the job distribution type.
   /// [processCountPerInstance] Number of processes per node.
-  PyTorch({
+  const PyTorch({
     required this.distributionType,
     this.processCountPerInstance,
   });

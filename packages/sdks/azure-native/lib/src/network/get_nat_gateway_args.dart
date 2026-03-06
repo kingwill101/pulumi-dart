@@ -18,7 +18,7 @@ class GetNatGatewayArgs {
   /// [expand] Expands referenced resources.
   /// [natGatewayName] The name of the nat gateway.
   /// [resourceGroupName] The name of the resource group.
-  GetNatGatewayArgs({
+  const GetNatGatewayArgs({
     this.expand,
     required this.natGatewayName,
     required this.resourceGroupName,

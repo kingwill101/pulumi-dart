@@ -14,7 +14,7 @@ class SourceControlSecurity {
   /// [refreshToken] The refresh token of specified rpeo.
   /// [token] The access token of specified repo.
   /// [tokenType] Specify the token type, possible values are `PersonalAccessToken` and `Oauth`.
-  SourceControlSecurity({
+  const SourceControlSecurity({
     this.refreshToken,
     required this.token,
     required this.tokenType,

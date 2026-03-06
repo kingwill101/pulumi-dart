@@ -14,7 +14,7 @@ class AggregatorAggregatorAccount {
   /// [accountId] The member ID.
   /// [accountName] The member name.
   /// [accountType] The affiliation of the member. Valid values: `ResourceDirectory`.
-  AggregatorAggregatorAccount({
+  const AggregatorAggregatorAccount({
     this.accountId,
     this.accountName,
     this.accountType,

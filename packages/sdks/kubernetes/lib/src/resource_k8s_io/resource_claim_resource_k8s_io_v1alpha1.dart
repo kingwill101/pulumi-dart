@@ -26,7 +26,7 @@ class ResourceClaimResourceK8sIoV1alpha1 {
   /// [metadata] Standard object metadata
   /// [spec] Spec describes the desired attributes of a resource that then needs to be allocated. It can only be set once when creating the ResourceClaim.
   /// [status] Status describes whether the resource is available and with which attributes.
-  ResourceClaimResourceK8sIoV1alpha1({
+  const ResourceClaimResourceK8sIoV1alpha1({
     this.apiVersion,
     this.kind,
     this.metadata,

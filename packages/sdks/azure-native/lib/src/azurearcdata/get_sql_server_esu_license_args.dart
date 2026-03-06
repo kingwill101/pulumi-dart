@@ -15,7 +15,7 @@ class GetSqlServerEsuLicenseArgs {
   /// Creates a new [GetSqlServerEsuLicenseArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sqlServerEsuLicenseName] Name of SQL Server ESU License
-  GetSqlServerEsuLicenseArgs({
+  const GetSqlServerEsuLicenseArgs({
     required this.resourceGroupName,
     required this.sqlServerEsuLicenseName,
   });

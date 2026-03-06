@@ -10,7 +10,7 @@ class GoogleCloudDatacatalogV1DataplexFilesetSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1DataplexFilesetSpec].
   /// [dataplexSpec] Common Dataplex fields.
-  GoogleCloudDatacatalogV1DataplexFilesetSpec({
+  const GoogleCloudDatacatalogV1DataplexFilesetSpec({
     this.dataplexSpec,
   });
 

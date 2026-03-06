@@ -18,7 +18,7 @@ class GetCloudVmClustersArgs {
   /// Creates a new [GetCloudVmClustersArgs].
   /// [location] The location of the resource.
   /// [project] The project to which the resource belongs. If it
-  GetCloudVmClustersArgs({
+  const GetCloudVmClustersArgs({
     required this.location,
     this.project,
   });

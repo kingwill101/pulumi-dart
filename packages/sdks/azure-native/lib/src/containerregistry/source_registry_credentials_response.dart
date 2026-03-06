@@ -11,7 +11,7 @@ class SourceRegistryCredentialsResponse {
 
   /// Creates a new [SourceRegistryCredentialsResponse].
   /// [loginMode] The authentication mode which determines the source registry login scope. The credentials for the source registry
-  SourceRegistryCredentialsResponse({
+  const SourceRegistryCredentialsResponse({
     this.loginMode,
   });
 

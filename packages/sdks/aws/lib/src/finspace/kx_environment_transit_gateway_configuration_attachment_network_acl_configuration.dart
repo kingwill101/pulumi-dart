@@ -25,7 +25,7 @@ class KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration 
   /// [protocol] Protocol number. A value of `1` means all the protocols.
   /// [ruleAction] Indicates whether to `allow` or `deny` the traffic that matches the rule.
   /// [ruleNumber] Rule number for the entry. All the network ACL entries are processed in ascending order by rule number.
-  KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration({
+  const KxEnvironmentTransitGatewayConfigurationAttachmentNetworkAclConfiguration({
     required this.cidrBlock,
     this.icmpTypeCode,
     this.portRange,

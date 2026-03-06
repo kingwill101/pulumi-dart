@@ -10,7 +10,7 @@ class GetRegionalSecretTopic {
 
   /// Creates a new [GetRegionalSecretTopic].
   /// [name] The resource name of the Pub/Sub topic that will be published to, in the following format:
-  GetRegionalSecretTopic({
+  const GetRegionalSecretTopic({
     required this.name,
   });
 

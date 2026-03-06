@@ -15,7 +15,7 @@ class GetFolderReplayArgs {
   /// [folderId] Required.
   /// [location] Required.
   /// [replayId] Required.
-  GetFolderReplayArgs({
+  const GetFolderReplayArgs({
     required this.folderId,
     required this.location,
     required this.replayId,

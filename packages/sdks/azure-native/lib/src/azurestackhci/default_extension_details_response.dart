@@ -12,7 +12,7 @@ class DefaultExtensionDetailsResponse {
   /// Creates a new [DefaultExtensionDetailsResponse].
   /// [category] Default extension category
   /// [consentTime] Consent time for extension category
-  DefaultExtensionDetailsResponse({
+  const DefaultExtensionDetailsResponse({
     required this.category,
     required this.consentTime,
   });

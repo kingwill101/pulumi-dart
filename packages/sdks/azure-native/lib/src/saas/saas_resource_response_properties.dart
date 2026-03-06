@@ -58,7 +58,7 @@ class SaasResourceResponseProperties {
   /// [status] The SaaS Subscription Status.
   /// [term] The current Term object.
   /// [termId] The current Term id.
-  SaasResourceResponseProperties({
+  const SaasResourceResponseProperties({
     this.autoRenew,
     required this.created,
     this.isFreeTrial,

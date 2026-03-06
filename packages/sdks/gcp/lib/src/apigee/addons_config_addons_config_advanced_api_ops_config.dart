@@ -8,7 +8,7 @@ class AddonsConfigAddonsConfigAdvancedApiOpsConfig {
 
   /// Creates a new [AddonsConfigAddonsConfigAdvancedApiOpsConfig].
   /// [enabled] Flag that specifies whether the Advanced API Ops add-on is enabled.
-  AddonsConfigAddonsConfigAdvancedApiOpsConfig({
+  const AddonsConfigAddonsConfigAdvancedApiOpsConfig({
     this.enabled,
   });
 

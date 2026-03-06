@@ -19,7 +19,7 @@ class GetDomainsArgs {
   /// Creates a new [GetDomainsArgs].
   /// [filters] Filter the results.
   /// [sorts] Sort the results.
-  GetDomainsArgs({
+  const GetDomainsArgs({
     this.filters,
     this.sorts,
   });

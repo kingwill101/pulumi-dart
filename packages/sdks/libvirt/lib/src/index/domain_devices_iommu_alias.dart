@@ -8,7 +8,7 @@ class DomainDevicesIommuAlias {
 
   /// Creates a new [DomainDevicesIommuAlias].
   /// [name] Sets the name of the alias for the persistent storage device, used for reference in management tasks.
-  DomainDevicesIommuAlias({
+  const DomainDevicesIommuAlias({
     required this.name,
   });
 

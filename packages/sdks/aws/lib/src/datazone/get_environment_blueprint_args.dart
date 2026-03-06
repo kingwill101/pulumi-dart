@@ -21,7 +21,7 @@ class GetEnvironmentBlueprintArgs {
   /// [managed] Whether the blueprint is managed by Amazon DataZone.
   /// [name] Name of the blueprint.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetEnvironmentBlueprintArgs({
+  const GetEnvironmentBlueprintArgs({
     required this.domainId,
     required this.managed,
     required this.name,

@@ -13,7 +13,7 @@ class ConnectivityCriterionResponse {
   /// Creates a new [ConnectivityCriterionResponse].
   /// [type] Gets or sets the type of connectivity.
   /// [value] Gets or sets the queries for checking connectivity.
-  ConnectivityCriterionResponse({
+  const ConnectivityCriterionResponse({
     required this.type,
     this.value,
   });

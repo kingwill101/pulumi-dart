@@ -26,7 +26,7 @@ class GetAppsResult {
   /// [osType] Optional.
   /// [outputFile] Optional.
   /// [productId] Required.
-  GetAppsResult({
+  const GetAppsResult({
     required this.apps,
     this.enableDetails,
     required this.id,

@@ -15,7 +15,7 @@ class ConnectionStatePropertiesResponse {
   /// [actionsRequired] The actions required on the managed private endpoint
   /// [description] The managed private endpoint description
   /// [status] The approval status
-  ConnectionStatePropertiesResponse({
+  const ConnectionStatePropertiesResponse({
     required this.actionsRequired,
     required this.description,
     required this.status,

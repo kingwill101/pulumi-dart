@@ -44,7 +44,7 @@ class GetCapacityPoolSubvolumeMetadataResult {
   /// [provisioningState] Azure lifecycle management
   /// [size] Size of subvolume
   /// [type] Resource type
-  GetCapacityPoolSubvolumeMetadataResult({
+  const GetCapacityPoolSubvolumeMetadataResult({
     this.accessedTimeStamp,
     this.bytesUsed,
     this.changedTimeStamp,

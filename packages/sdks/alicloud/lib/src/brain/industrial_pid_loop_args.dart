@@ -30,7 +30,7 @@ class IndustrialPidLoopArgs {
   /// [pidLoopName] The name of Pid Loop.
   /// [pidLoopType] The type of Pid Loop. Valid values: `0`, `1`, `2`, `3`, `4`, `5`.
   /// [pidProjectId] The pid project id.
-  IndustrialPidLoopArgs({
+  const IndustrialPidLoopArgs({
     required this.pidLoopConfiguration,
     required this.pidLoopDcsType,
     this.pidLoopDesc,

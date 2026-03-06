@@ -10,7 +10,7 @@ class UserIdentity {
 
   /// Creates a new [UserIdentity].
   /// [identityType] Enum to determine identity framework.
-  UserIdentity({
+  const UserIdentity({
     required this.identityType,
   });
 

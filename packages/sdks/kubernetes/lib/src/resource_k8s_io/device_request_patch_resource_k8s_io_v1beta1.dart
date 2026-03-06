@@ -84,7 +84,7 @@ class DeviceRequestPatchResourceK8sIoV1beta1 {
   /// [name] Name can be used to reference this request in a pod.spec.containers[].resources.claims entry and in a constraint of the claim.
   /// [selectors] Selectors define criteria which must be satisfied by a specific device in order for that device to be considered for this request. All selectors must be satisfied for a device to be considered.
   /// [tolerations] If specified, the request's tolerations.
-  DeviceRequestPatchResourceK8sIoV1beta1({
+  const DeviceRequestPatchResourceK8sIoV1beta1({
     this.adminAccess,
     this.allocationMode,
     this.capacity,

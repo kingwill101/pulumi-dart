@@ -24,7 +24,7 @@ class DeploymentConditionPatch {
   /// [reason] The reason for the condition's last transition.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of deployment condition.
-  DeploymentConditionPatch({
+  const DeploymentConditionPatch({
     this.lastTransitionTime,
     this.lastUpdateTime,
     this.message,

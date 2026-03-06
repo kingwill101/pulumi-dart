@@ -11,7 +11,7 @@ class GetNetworkInsightsAnalysisFilter {
   /// Creates a new [GetNetworkInsightsAnalysisFilter].
   /// [name] Name of the filter field. Valid values can be found in the EC2 [`DescribeNetworkInsightsAnalyses`](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeNetworkInsightsAnalyses.html) API Reference.
   /// [values] Set of values that are accepted for the given filter field. Results will be selected if any given value matches.
-  GetNetworkInsightsAnalysisFilter({
+  const GetNetworkInsightsAnalysisFilter({
     required this.name,
     required this.values,
   });

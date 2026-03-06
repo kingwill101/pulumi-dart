@@ -9,7 +9,7 @@ class GetRoleManagementPolicyActivationRuleApprovalStage {
 
   /// Creates a new [GetRoleManagementPolicyActivationRuleApprovalStage].
   /// [primaryApprovers] The IDs of the users or groups who can approve the activation
-  GetRoleManagementPolicyActivationRuleApprovalStage({
+  const GetRoleManagementPolicyActivationRuleApprovalStage({
     required this.primaryApprovers,
   });
 

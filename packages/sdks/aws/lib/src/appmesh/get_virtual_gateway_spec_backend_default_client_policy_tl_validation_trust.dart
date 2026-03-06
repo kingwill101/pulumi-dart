@@ -14,7 +14,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust {
   /// [acms] Required.
   /// [files] Required.
   /// [sds] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationTrust({
     required this.acms,
     required this.files,
     required this.sds,

@@ -15,7 +15,7 @@ class GetReceivedLicenseConsumptionConfiguration {
   /// [borrowConfigurations] Details about a borrow configuration. Detailed below
   /// [provisionalConfigurations] Details about a provisional configuration. Detailed below
   /// [renewType] Required.
-  GetReceivedLicenseConsumptionConfiguration({
+  const GetReceivedLicenseConsumptionConfiguration({
     required this.borrowConfigurations,
     required this.provisionalConfigurations,
     required this.renewType,

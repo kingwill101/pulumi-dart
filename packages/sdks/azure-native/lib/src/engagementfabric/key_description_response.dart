@@ -15,7 +15,7 @@ class KeyDescriptionResponse {
   /// [name] The name of the key
   /// [rank] The rank of the key
   /// [value] The value of the key
-  KeyDescriptionResponse({
+  const KeyDescriptionResponse({
     required this.name,
     required this.rank,
     required this.value,

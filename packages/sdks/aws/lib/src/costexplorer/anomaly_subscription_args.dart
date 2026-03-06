@@ -32,7 +32,7 @@ class AnomalySubscriptionArgs {
   /// [subscribers] A subscriber configuration. Multiple subscribers can be defined.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [thresholdExpression] An Expression object used to specify the anomalies that you want to generate alerts for. See Threshold Expression.
-  AnomalySubscriptionArgs({
+  const AnomalySubscriptionArgs({
     this.accountId,
     required this.frequency,
     required this.monitorArnLists,

@@ -42,7 +42,7 @@ class GroupArgs {
   /// [initialGroupConfig] The initial configuration options for creating a Group.
   /// [labels] One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value.
   /// [parent] The resource name of the entity under which this Group resides in the
-  GroupArgs({
+  const GroupArgs({
     this.description,
     this.displayName,
     required this.groupKey,

@@ -17,7 +17,7 @@ class RouteTableRoute {
   /// [name] The name of the route.
   /// [nextHopInIpAddress] Contains the IP address packets should be forwarded to. Next hop values are only allowed in routes where the next hop type is `VirtualAppliance`.
   /// [nextHopType] The type of Azure hop the packet should be sent to. Possible values are `VirtualNetworkGateway`, `VnetLocal`, `Internet`, `VirtualAppliance` and `None`.
-  RouteTableRoute({
+  const RouteTableRoute({
     required this.addressPrefix,
     required this.name,
     this.nextHopInIpAddress,

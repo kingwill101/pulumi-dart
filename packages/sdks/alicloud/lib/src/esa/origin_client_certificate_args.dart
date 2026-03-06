@@ -24,7 +24,7 @@ class OriginClientCertificateArgs {
   /// [originClientCertificateName] The certificate name.
   /// [privateKey] The private key of the certificate.
   /// [siteId] Site ID.
-  OriginClientCertificateArgs({
+  const OriginClientCertificateArgs({
     required this.certificate,
     this.hostnames,
     this.originClientCertificateName,

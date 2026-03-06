@@ -14,7 +14,7 @@ class GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifica
   /// [additionalRecipients] The additional recipients to notify
   /// [defaultRecipients] Whether the default recipients are notified
   /// [notificationLevel] What level of notifications are sent
-  GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications({
+  const GroupRoleManagementPolicyNotificationRulesEligibleActivationsAdminNotifications({
     this.additionalRecipients,
     required this.defaultRecipients,
     required this.notificationLevel,

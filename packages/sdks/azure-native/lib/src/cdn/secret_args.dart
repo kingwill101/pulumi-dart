@@ -22,7 +22,7 @@ class SecretArgs {
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [secretName] Name of the Secret under the profile.
-  SecretArgs({
+  const SecretArgs({
     this.parameters,
     required this.profileName,
     required this.resourceGroupName,

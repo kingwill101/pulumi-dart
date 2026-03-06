@@ -45,7 +45,7 @@ class ReportTemplateArgs {
   /// [reportTemplateDescription] Report Template Description
   /// [reportTemplateName] Report Template Name
   /// [subscriptionFrequency] Report subscription frequency. If this field is not empty, it is a Cron expression in Quartz format triggered by the subscription notification.
-  ReportTemplateArgs({
+  const ReportTemplateArgs({
     this.reportFileFormats,
     this.reportGranularity,
     this.reportLanguage,

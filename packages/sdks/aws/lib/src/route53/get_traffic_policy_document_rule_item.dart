@@ -9,7 +9,7 @@ class GetTrafficPolicyDocumentRuleItem {
   /// Creates a new [GetTrafficPolicyDocumentRuleItem].
   /// [endpointReference] Optional.
   /// [healthCheck] Optional.
-  GetTrafficPolicyDocumentRuleItem({
+  const GetTrafficPolicyDocumentRuleItem({
     this.endpointReference,
     this.healthCheck,
   });

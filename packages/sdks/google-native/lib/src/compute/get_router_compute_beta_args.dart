@@ -15,7 +15,7 @@ class GetRouterComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [router] Required.
-  GetRouterComputeBetaArgs({
+  const GetRouterComputeBetaArgs({
     this.project,
     required this.region,
     required this.router,

@@ -15,7 +15,7 @@ class GetPrivateLinkServicesForM365ComplianceCenterArgs {
   /// Creates a new [GetPrivateLinkServicesForM365ComplianceCenterArgs].
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceName] The name of the service instance.
-  GetPrivateLinkServicesForM365ComplianceCenterArgs({
+  const GetPrivateLinkServicesForM365ComplianceCenterArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

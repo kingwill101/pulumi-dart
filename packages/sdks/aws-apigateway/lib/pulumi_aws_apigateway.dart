@@ -3,11 +3,11 @@
 import 'package:pulumi_aws_apigateway/index.dart' as module_index;
 import 'package:pulumi_aws_apigateway/providers.dart' as module_providers;
 
-final index = _IndexModuleNamespace();
-final providers = _ProvidersModuleNamespace();
+final index = const _IndexModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final APIKeySource = module_index.APIKeySource.values;
   final Authorizer = module_index.Authorizer.new;
   final AuthorizerArgs = module_index.Authorizer.new;
@@ -29,6 +29,6 @@ class _IndexModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final AwsApigateway = module_providers.ProviderProvider.new;
 }

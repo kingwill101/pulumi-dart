@@ -50,7 +50,7 @@ class GetRouterComputeV1Result {
   /// [network] URI of the network to which this router belongs.
   /// [region] URI of the region where the router resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
   /// [selfLink] Server-defined URL for the resource.
-  GetRouterComputeV1Result({
+  const GetRouterComputeV1Result({
     required this.bgp,
     required this.bgpPeers,
     required this.creationTimestamp,

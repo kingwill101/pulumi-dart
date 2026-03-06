@@ -212,7 +212,7 @@ class InstanceGroupState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [runningInstanceCount] The number of instances currently running in this instance group.
   /// [status] The current status of the instance group.
-  InstanceGroupState({
+  const InstanceGroupState({
     this.autoscalingPolicy,
     this.bidPrice,
     this.clusterId,

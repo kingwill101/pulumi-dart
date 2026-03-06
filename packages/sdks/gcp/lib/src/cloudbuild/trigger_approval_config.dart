@@ -9,7 +9,7 @@ class TriggerApprovalConfig {
 
   /// Creates a new [TriggerApprovalConfig].
   /// [approvalRequired] Whether or not approval is needed. If this is set on a build, it will become pending when run,
-  TriggerApprovalConfig({
+  const TriggerApprovalConfig({
     this.approvalRequired,
   });
 

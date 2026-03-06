@@ -18,7 +18,7 @@ class StageSource {
   /// [originalTransformOrCollection] User name for the original user transform or collection with which this source is most closely associated.
   /// [sizeBytes] Size of the source, if measurable.
   /// [userName] Human-readable name for this source; may be user or system generated.
-  StageSource({
+  const StageSource({
     this.name,
     this.originalTransformOrCollection,
     this.sizeBytes,

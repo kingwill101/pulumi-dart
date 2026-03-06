@@ -21,7 +21,7 @@ class MachineAssessmentV2PropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [scope] Gets or sets the scope of assessment.
   /// [settings] Gets or sets the settings for the assessment.
-  MachineAssessmentV2PropertiesResponse({
+  const MachineAssessmentV2PropertiesResponse({
     this.details,
     required this.provisioningState,
     this.scope,

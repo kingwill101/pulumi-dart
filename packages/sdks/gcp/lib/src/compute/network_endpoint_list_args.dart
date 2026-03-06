@@ -26,7 +26,7 @@ class NetworkEndpointListArgs {
   /// [networkEndpoints] The network endpoints to be added to the enclosing network endpoint group
   /// [project] The ID of the project in which the resource belongs.
   /// [zone] Zone where the containing network endpoint group is located.
-  NetworkEndpointListArgs({
+  const NetworkEndpointListArgs({
     required this.networkEndpointGroup,
     this.networkEndpoints,
     this.project,

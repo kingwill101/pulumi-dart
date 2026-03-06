@@ -37,7 +37,7 @@ class ConsentStoreArgs {
   /// [enableConsentCreateOnUpdate] If true, [consents.patch] [google.cloud.healthcare.v1.consent.UpdateConsent] creates the consent if it does not already exist.
   /// [labels] User-supplied key-value pairs used to organize Consent stores.
   /// [name] The name of this ConsentStore, for example:
-  ConsentStoreArgs({
+  const ConsentStoreArgs({
     required this.dataset,
     this.defaultConsentTtl,
     this.enableConsentCreateOnUpdate,

@@ -18,7 +18,7 @@ class PackageInformation {
   /// [driveCount] The number of drives included in the package.
   /// [shipDate] The date when the package is shipped.
   /// [trackingNumber] The tracking number of the package.
-  PackageInformation({
+  const PackageInformation({
     required this.carrierName,
     required this.driveCount,
     required this.shipDate,

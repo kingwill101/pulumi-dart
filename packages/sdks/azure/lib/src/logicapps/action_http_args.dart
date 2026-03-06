@@ -36,7 +36,7 @@ class ActionHttpArgs {
   /// [queries] Specifies a Map of Key-Value Pairs that should be sent to the `uri` when this HTTP Action is triggered.
   /// [runAfters] Specifies the place of the HTTP Action in the Logic App Workflow. If not specified, the HTTP Action is right after the Trigger. A `run_after` block is as defined below.
   /// [uri] Specifies the URI which will be called when this HTTP Action is triggered.
-  ActionHttpArgs({
+  const ActionHttpArgs({
     this.body,
     this.headers,
     required this.logicAppId,

@@ -49,7 +49,7 @@ class GetCIAMTenantResult {
   /// [tags] Resource Tags
   /// [tenantId] An identifier of the Azure AD for customers tenant.
   /// [type] The type of the Azure AD for customers tenant resource.
-  GetCIAMTenantResult({
+  const GetCIAMTenantResult({
     required this.azureApiVersion,
     required this.billingType,
     required this.createTenantProperties,

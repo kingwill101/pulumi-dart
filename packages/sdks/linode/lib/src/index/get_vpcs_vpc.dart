@@ -27,7 +27,7 @@ class GetVpcsVpc {
   /// [label] The label of the VPC.
   /// [region] The region where the VPC is deployed.
   /// [updated] The date and time when the VPC was last updated.
-  GetVpcsVpc({
+  const GetVpcsVpc({
     required this.created,
     required this.description,
     required this.id,

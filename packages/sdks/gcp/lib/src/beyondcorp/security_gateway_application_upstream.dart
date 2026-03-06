@@ -25,7 +25,7 @@ class SecurityGatewayApplicationUpstream {
   /// [external] List of the external endpoints to forward traffic to.
   /// [network] Network to forward traffic to.
   /// [proxyProtocol] Shared proxy configuration for all apps.
-  SecurityGatewayApplicationUpstream({
+  const SecurityGatewayApplicationUpstream({
     this.egressPolicy,
     this.external,
     this.network,

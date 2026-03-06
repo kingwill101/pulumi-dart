@@ -23,7 +23,7 @@ class DockerBuild {
   /// [dockerSpecificationType] Enum to determine docker specification type. Must be either Build or Image.
   /// [dockerfile] [Required] Docker command line instructions to assemble an image.
   /// [platform] The platform information of the docker image.
-  DockerBuild({
+  const DockerBuild({
     this.context,
     required this.dockerSpecificationType,
     required this.dockerfile,

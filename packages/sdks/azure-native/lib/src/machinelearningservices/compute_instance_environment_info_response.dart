@@ -12,7 +12,7 @@ class ComputeInstanceEnvironmentInfoResponse {
   /// Creates a new [ComputeInstanceEnvironmentInfoResponse].
   /// [name] name of environment.
   /// [version] version of environment.
-  ComputeInstanceEnvironmentInfoResponse({
+  const ComputeInstanceEnvironmentInfoResponse({
     this.name,
     this.version,
   });

@@ -19,7 +19,7 @@ class AgreementState {
   /// [plan] The Plan of the Marketplace Image. Changing this forces a new resource to be created.
   /// [privacyPolicyLink] Optional.
   /// [publisher] The Publisher of the Marketplace Image. Changing this forces a new resource to be created.
-  AgreementState({
+  const AgreementState({
     this.licenseTextLink,
     this.offer,
     this.plan,

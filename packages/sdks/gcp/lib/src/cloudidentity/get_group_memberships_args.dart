@@ -12,7 +12,7 @@ class GetGroupMembershipsArgs {
 
   /// Creates a new [GetGroupMembershipsArgs].
   /// [group] The parent Group resource under which to lookup the Membership names. Must be of the form groups/{group_id}.
-  GetGroupMembershipsArgs({
+  const GetGroupMembershipsArgs({
     required this.group,
   });
 

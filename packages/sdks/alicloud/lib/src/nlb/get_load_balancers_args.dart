@@ -50,7 +50,7 @@ class GetLoadBalancersArgs {
   /// [tags] Optional.
   /// [vpcIds] The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify at most 10 IDs.
   /// [zoneId] The name of the zone.
-  GetLoadBalancersArgs({
+  const GetLoadBalancersArgs({
     this.addressIpVersion,
     this.addressType,
     this.dnsName,

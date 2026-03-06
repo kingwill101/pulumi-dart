@@ -38,7 +38,7 @@ class GetIpv6GatewaysGateway {
   /// [spec] The specification of the IPv6 gateway. Valid values: `Large`, `Medium` and `Small`. `Small` (default): Free Edition. `Medium`: Enterprise Edition . `Large`: Enhanced Enterprise Edition. The throughput capacity of an IPv6 gateway varies based on the edition. For more information, see [Editions of IPv6 gateways](https://www.alibabacloud.com/help/doc-detail/98926.htm).
   /// [status] The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
   /// [vpcId] The ID of the virtual private cloud (VPC) to which the IPv6 gateway belongs.
-  GetIpv6GatewaysGateway({
+  const GetIpv6GatewaysGateway({
     required this.businessStatus,
     required this.createTime,
     required this.description,

@@ -25,7 +25,7 @@ class ProfileState {
   /// [name] Specifies the name of the Network Profile. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the resource. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags assigned to the resource.
-  ProfileState({
+  const ProfileState({
     this.containerNetworkInterface,
     this.containerNetworkInterfaceIds,
     this.location,

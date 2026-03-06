@@ -55,7 +55,7 @@ class HttpLinkedService {
   /// [url] The base URL of the HTTP endpoint, e.g. https://www.microsoft.com. Type: string (or Expression with resultType string).
   /// [userName] User name for Basic, Digest, or Windows authentication. Type: string (or Expression with resultType string).
   /// [version] Version of the linked service.
-  HttpLinkedService({
+  const HttpLinkedService({
     this.annotations,
     this.authHeaders,
     this.authenticationType,

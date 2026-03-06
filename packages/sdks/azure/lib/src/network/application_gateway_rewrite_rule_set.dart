@@ -15,7 +15,7 @@ class ApplicationGatewayRewriteRuleSet {
   /// [id] The ID of the Rewrite Rule Set
   /// [name] Unique name of the rewrite rule set block
   /// [rewriteRules] One or more `rewrite_rule` blocks as defined below.
-  ApplicationGatewayRewriteRuleSet({
+  const ApplicationGatewayRewriteRuleSet({
     this.id,
     required this.name,
     this.rewriteRules,

@@ -12,7 +12,7 @@ class TargetDnsServerResponse {
   /// Creates a new [TargetDnsServerResponse].
   /// [ipAddress] DNS server IP address.
   /// [port] DNS server port.
-  TargetDnsServerResponse({
+  const TargetDnsServerResponse({
     required this.ipAddress,
     this.port,
   });

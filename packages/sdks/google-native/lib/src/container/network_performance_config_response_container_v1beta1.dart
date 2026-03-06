@@ -12,7 +12,7 @@ class NetworkPerformanceConfigResponseContainerV1beta1 {
   /// Creates a new [NetworkPerformanceConfigResponseContainerV1beta1].
   /// [externalIpEgressBandwidthTier] Specifies the network bandwidth tier for the NodePool for traffic to external/public IP addresses.
   /// [totalEgressBandwidthTier] Specifies the total network bandwidth tier for the NodePool.
-  NetworkPerformanceConfigResponseContainerV1beta1({
+  const NetworkPerformanceConfigResponseContainerV1beta1({
     required this.externalIpEgressBandwidthTier,
     required this.totalEgressBandwidthTier,
   });

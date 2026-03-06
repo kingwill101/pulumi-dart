@@ -35,7 +35,7 @@ class GetCustomRoutingEndpointGroupsGroup {
   /// [id] The id of the Custom Routing Endpoint Group.
   /// [listenerId] The ID of the custom routing listener.
   /// [status] The status of the endpoint group. Valid Values: `init`, `active`, `updating`, `deleting`.
-  GetCustomRoutingEndpointGroupsGroup({
+  const GetCustomRoutingEndpointGroupsGroup({
     required this.acceleratorId,
     required this.customRoutingEndpointGroupName,
     required this.description,

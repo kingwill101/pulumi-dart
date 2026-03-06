@@ -11,7 +11,7 @@ class GetReservationSpecificReservationInstancePropertyLocalSsd {
   /// Creates a new [GetReservationSpecificReservationInstancePropertyLocalSsd].
   /// [diskSizeGb] The size of the disk in base-2 GB.
   /// [interface] The disk interface to use for attaching this disk. Default value: "SCSI" Possible values: ["SCSI", "NVME"]
-  GetReservationSpecificReservationInstancePropertyLocalSsd({
+  const GetReservationSpecificReservationInstancePropertyLocalSsd({
     required this.diskSizeGb,
     required this.interface,
   });

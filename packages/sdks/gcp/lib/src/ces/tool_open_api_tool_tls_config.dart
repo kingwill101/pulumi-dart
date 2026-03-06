@@ -12,7 +12,7 @@ class ToolOpenApiToolTlsConfig {
 
   /// Creates a new [ToolOpenApiToolTlsConfig].
   /// [caCerts] (Output)
-  ToolOpenApiToolTlsConfig({
+  const ToolOpenApiToolTlsConfig({
     this.caCerts,
   });
 

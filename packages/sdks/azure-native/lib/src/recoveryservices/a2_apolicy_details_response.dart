@@ -25,7 +25,7 @@ class A2APolicyDetailsResponse {
   /// [multiVmSyncStatus] A value indicating whether multi-VM sync has to be enabled.
   /// [recoveryPointHistory] The duration in minutes until which the recovery points need to be stored.
   /// [recoveryPointThresholdInMinutes] The recovery point threshold in minutes.
-  A2APolicyDetailsResponse({
+  const A2APolicyDetailsResponse({
     this.appConsistentFrequencyInMinutes,
     this.crashConsistentFrequencyInMinutes,
     required this.instanceType,

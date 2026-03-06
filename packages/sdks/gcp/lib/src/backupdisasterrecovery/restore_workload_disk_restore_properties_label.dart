@@ -11,7 +11,7 @@ class RestoreWorkloadDiskRestorePropertiesLabel {
   /// Creates a new [RestoreWorkloadDiskRestorePropertiesLabel].
   /// [key] The identifier for this object. Format specified above.
   /// [value] (Optional)
-  RestoreWorkloadDiskRestorePropertiesLabel({
+  const RestoreWorkloadDiskRestorePropertiesLabel({
     required this.key,
     this.value,
   });

@@ -13,7 +13,7 @@ class GetWafPolicyResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [policyId] Required.
   /// [policyJson] Exported WAF policy JSON
-  GetWafPolicyResult({
+  const GetWafPolicyResult({
     required this.id,
     required this.policyId,
     required this.policyJson,

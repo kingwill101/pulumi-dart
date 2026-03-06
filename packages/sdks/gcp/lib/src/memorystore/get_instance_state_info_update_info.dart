@@ -17,7 +17,7 @@ class GetInstanceStateInfoUpdateInfo {
   /// [targetNodeType] Output only. Target node type for the instance.
   /// [targetReplicaCount] Output only. Target number of replica nodes per shard for the instance.
   /// [targetShardCount] Output only. Target number of shards for the instance.
-  GetInstanceStateInfoUpdateInfo({
+  const GetInstanceStateInfoUpdateInfo({
     required this.targetEngineVersion,
     required this.targetNodeType,
     required this.targetReplicaCount,

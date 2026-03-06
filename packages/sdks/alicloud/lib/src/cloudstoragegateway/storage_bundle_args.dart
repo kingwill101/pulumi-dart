@@ -15,7 +15,7 @@ class StorageBundleArgs {
   /// Creates a new [StorageBundleArgs].
   /// [description] The description of storage bundle.
   /// [storageBundleName] The name of storage bundle.
-  StorageBundleArgs({
+  const StorageBundleArgs({
     this.description,
     required this.storageBundleName,
   });

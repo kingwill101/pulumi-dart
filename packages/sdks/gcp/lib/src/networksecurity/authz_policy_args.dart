@@ -55,7 +55,7 @@ class AuthzPolicyArgs {
   /// [name] Identifier. Name of the AuthzPolicy resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [target] Specifies the set of resources to which this policy should be applied to.
-  AuthzPolicyArgs({
+  const AuthzPolicyArgs({
     required this.action,
     this.customProvider,
     this.description,

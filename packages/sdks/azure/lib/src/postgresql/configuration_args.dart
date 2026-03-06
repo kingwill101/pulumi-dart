@@ -21,7 +21,7 @@ class ConfigurationArgs {
   /// [resourceGroupName] The name of the resource group in which the PostgreSQL Server exists. Changing this forces a new resource to be created.
   /// [serverName] Specifies the name of the PostgreSQL Server. Changing this forces a new resource to be created.
   /// [value] Specifies the value of the PostgreSQL Configuration. See the PostgreSQL documentation for valid values. Changing this forces a new resource to be created.
-  ConfigurationArgs({
+  const ConfigurationArgs({
     required this.name,
     required this.resourceGroupName,
     required this.serverName,

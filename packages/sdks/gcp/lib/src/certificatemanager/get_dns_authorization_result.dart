@@ -30,7 +30,7 @@ class GetDnsAuthorizationResult {
   /// [project] Optional.
   /// [pulumiLabels] Required.
   /// [type] Required.
-  GetDnsAuthorizationResult({
+  const GetDnsAuthorizationResult({
     required this.description,
     required this.dnsResourceRecords,
     required this.domain,

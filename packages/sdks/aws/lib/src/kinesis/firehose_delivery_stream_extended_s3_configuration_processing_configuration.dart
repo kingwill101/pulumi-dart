@@ -12,7 +12,7 @@ class FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration {
   /// Creates a new [FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration].
   /// [enabled] Enables or disables data processing.
   /// [processors] Specifies the data processors as multiple blocks. See `processors` block below for details.
-  FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration({
+  const FirehoseDeliveryStreamExtendedS3ConfigurationProcessingConfiguration({
     this.enabled,
     this.processors,
   });

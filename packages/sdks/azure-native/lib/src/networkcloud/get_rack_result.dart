@@ -58,7 +58,7 @@ class GetRackResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetRackResult({
+  const GetRackResult({
     required this.availabilityZone,
     required this.azureApiVersion,
     required this.clusterId,

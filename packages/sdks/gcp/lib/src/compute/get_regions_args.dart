@@ -16,7 +16,7 @@ class GetRegionsArgs {
   /// Creates a new [GetRegionsArgs].
   /// [project] Project from which to list available regions. Defaults to project declared in the provider.
   /// [status] Allows to filter list of regions based on their current status. Status can be either `UP` or `DOWN`.
-  GetRegionsArgs({
+  const GetRegionsArgs({
     this.project,
     this.status,
   });

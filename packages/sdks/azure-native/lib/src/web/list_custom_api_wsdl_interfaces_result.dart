@@ -10,7 +10,7 @@ class ListCustomApiWsdlInterfacesResult {
 
   /// Creates a new [ListCustomApiWsdlInterfacesResult].
   /// [value] Collection of WSDL interfaces
-  ListCustomApiWsdlInterfacesResult({
+  const ListCustomApiWsdlInterfacesResult({
     this.value,
   });
 

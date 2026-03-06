@@ -14,7 +14,7 @@ class EncryptionProperties {
   /// Creates a new [EncryptionProperties].
   /// [keySource] Type of the key source.
   /// [keyVaultProperties] Additional details when using Microsoft.KeyVault
-  EncryptionProperties({
+  const EncryptionProperties({
     this.keySource,
     this.keyVaultProperties,
   });

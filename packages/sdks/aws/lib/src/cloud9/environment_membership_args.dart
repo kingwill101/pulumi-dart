@@ -21,7 +21,7 @@ class EnvironmentMembershipArgs {
   /// [permissions] The type of environment member permissions you want to associate with this environment member. Allowed values are `read-only` and `read-write` .
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userArn] The Amazon Resource Name (ARN) of the environment member you want to add.
-  EnvironmentMembershipArgs({
+  const EnvironmentMembershipArgs({
     required this.environmentId,
     required this.permissions,
     this.region,

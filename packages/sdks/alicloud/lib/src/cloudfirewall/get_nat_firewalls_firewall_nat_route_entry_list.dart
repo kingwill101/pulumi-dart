@@ -17,7 +17,7 @@ class GetNatFirewallsFirewallNatRouteEntryList {
   /// [nexthopId] The next hop address of the original NAT gateway.
   /// [nexthopType] The network type of the next hop. Value: NatGateway : NAT Gateway.
   /// [routeTableId] The route table where the default route of the NAT gateway is located.
-  GetNatFirewallsFirewallNatRouteEntryList({
+  const GetNatFirewallsFirewallNatRouteEntryList({
     required this.destinationCidr,
     required this.nexthopId,
     required this.nexthopType,

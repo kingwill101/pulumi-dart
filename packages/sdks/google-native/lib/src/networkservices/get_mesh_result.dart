@@ -26,7 +26,7 @@ class GetMeshResult {
   /// [name] Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`.
   /// [selfLink] Server-defined URL of this resource
   /// [updateTime] The timestamp when the resource was updated.
-  GetMeshResult({
+  const GetMeshResult({
     required this.createTime,
     required this.description,
     required this.interceptionPort,

@@ -20,7 +20,7 @@ class GetEcsBackupClientsResult {
   /// [instanceIds] Optional.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetEcsBackupClientsResult({
+  const GetEcsBackupClientsResult({
     required this.clients,
     required this.id,
     required this.ids,

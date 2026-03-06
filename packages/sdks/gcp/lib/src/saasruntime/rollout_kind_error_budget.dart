@@ -13,7 +13,7 @@ class RolloutKindErrorBudget {
   /// Creates a new [RolloutKindErrorBudget].
   /// [allowedCount] The maximum number of failed units allowed in a location without pausing
   /// [allowedPercentage] The maximum percentage of units allowed to fail (0, 100] within a location
-  RolloutKindErrorBudget({
+  const RolloutKindErrorBudget({
     this.allowedCount,
     this.allowedPercentage,
   });

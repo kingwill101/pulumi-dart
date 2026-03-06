@@ -21,7 +21,7 @@ class GetPartitionArgs {
   /// [partitionId] Required.
   /// [project] Optional.
   /// [zone] Required.
-  GetPartitionArgs({
+  const GetPartitionArgs({
     required this.entityId,
     required this.lakeId,
     required this.location,

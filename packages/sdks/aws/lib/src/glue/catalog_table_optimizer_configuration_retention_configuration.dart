@@ -9,7 +9,7 @@ class CatalogTableOptimizerConfigurationRetentionConfiguration {
 
   /// Creates a new [CatalogTableOptimizerConfigurationRetentionConfiguration].
   /// [icebergConfiguration] The configuration for an Iceberg snapshot retention optimizer.
-  CatalogTableOptimizerConfigurationRetentionConfiguration({
+  const CatalogTableOptimizerConfigurationRetentionConfiguration({
     this.icebergConfiguration,
   });
 

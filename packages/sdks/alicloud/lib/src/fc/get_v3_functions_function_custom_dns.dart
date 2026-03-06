@@ -15,7 +15,7 @@ class GetV3FunctionsFunctionCustomDns {
   /// [dnsOptions] List of configuration items in the resolv.conf file. Each item corresponds to a key-value pair in the format of key:value, where the key is required.
   /// [nameServers] IP Address List of DNS servers.
   /// [searches] DNS search domain list.
-  GetV3FunctionsFunctionCustomDns({
+  const GetV3FunctionsFunctionCustomDns({
     required this.dnsOptions,
     required this.nameServers,
     required this.searches,

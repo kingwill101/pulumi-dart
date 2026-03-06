@@ -12,7 +12,7 @@ class GetProviderRegistrationArgs {
 
   /// Creates a new [GetProviderRegistrationArgs].
   /// [providerNamespace] The name of the resource provider hosted within ProviderHub.
-  GetProviderRegistrationArgs({
+  const GetProviderRegistrationArgs({
     required this.providerNamespace,
   });
 

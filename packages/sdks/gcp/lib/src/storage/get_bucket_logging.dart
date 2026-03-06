@@ -11,7 +11,7 @@ class GetBucketLogging {
   /// Creates a new [GetBucketLogging].
   /// [logBucket] The bucket that will receive log objects.
   /// [logObjectPrefix] The object prefix for log objects. If it's not provided, by default Google Cloud Storage sets this to this bucket's name.
-  GetBucketLogging({
+  const GetBucketLogging({
     required this.logBucket,
     required this.logObjectPrefix,
   });

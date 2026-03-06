@@ -16,7 +16,7 @@ class GetStocksResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [outputFile] Optional.
   /// [stocks] Required.
-  GetStocksResult({
+  const GetStocksResult({
     this.gatewayClass,
     required this.id,
     this.outputFile,

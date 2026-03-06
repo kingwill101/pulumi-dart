@@ -89,7 +89,7 @@ class GetJobResult {
   /// [tags] The list of key value pairs that describe the resource. These tags can be used in viewing and grouping this resource (across resource groups).
   /// [transferType] Type of the data transfer.
   /// [type] Type of the object.
-  GetJobResult({
+  const GetJobResult({
     required this.allDevicesLost,
     required this.azureApiVersion,
     required this.cancellationReason,

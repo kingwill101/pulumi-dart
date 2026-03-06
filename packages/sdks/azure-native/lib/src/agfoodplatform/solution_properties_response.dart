@@ -30,7 +30,7 @@ class SolutionPropertiesResponse {
   /// [saasSubscriptionId] SaaS subscriptionId of the installed SaaS application.
   /// [saasSubscriptionName] SaaS subscription name of the installed SaaS application.
   /// [termId] SaaS application Term Id.
-  SolutionPropertiesResponse({
+  const SolutionPropertiesResponse({
     required this.marketplacePublisherId,
     required this.offerId,
     required this.partnerId,

@@ -20,7 +20,7 @@ class DicomServiceCors {
   /// [allowedMethods] A list of allowed methods for CORS.
   /// [allowedOrigins] A list of allowed origins for CORS.
   /// [maxAgeInSeconds] The maximum age in seconds for the CORS configuration (must be between 0 and 99998 inclusive).
-  DicomServiceCors({
+  const DicomServiceCors({
     this.allowCredentials,
     this.allowedHeaders,
     this.allowedMethods,

@@ -14,7 +14,7 @@ class DomainDevicesHostdevSubsysUsbSourceAddress {
   /// [bus] Sets the bus identifier where the USB device resides.
   /// [device] Specifies the device identifier corresponding to the USB device.
   /// [port] Indicates the port number for the USB device connection.
-  DomainDevicesHostdevSubsysUsbSourceAddress({
+  const DomainDevicesHostdevSubsysUsbSourceAddress({
     this.bus,
     this.device,
     this.port,

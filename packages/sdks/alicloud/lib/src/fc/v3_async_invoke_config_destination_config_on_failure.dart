@@ -8,7 +8,7 @@ class V3AsyncInvokeConfigDestinationConfigOnFailure {
 
   /// Creates a new [V3AsyncInvokeConfigDestinationConfigOnFailure].
   /// [destination] Asynchronous call target Resource Descriptor
-  V3AsyncInvokeConfigDestinationConfigOnFailure({
+  const V3AsyncInvokeConfigDestinationConfigOnFailure({
     this.destination,
   });
 

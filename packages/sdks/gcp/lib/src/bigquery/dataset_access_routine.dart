@@ -16,7 +16,7 @@ class DatasetAccessRoutine {
   /// [datasetId] The ID of the dataset containing this table.
   /// [projectId] The ID of the project containing this table.
   /// [routineId] The ID of the routine. The ID must contain only letters (a-z,
-  DatasetAccessRoutine({
+  const DatasetAccessRoutine({
     required this.datasetId,
     required this.projectId,
     required this.routineId,

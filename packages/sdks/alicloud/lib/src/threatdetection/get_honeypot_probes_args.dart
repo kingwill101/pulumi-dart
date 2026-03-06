@@ -29,7 +29,7 @@ class GetHoneypotProbesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [probeStatus] Optional.
   /// [probeType] Probe type
-  GetHoneypotProbesArgs({
+  const GetHoneypotProbesArgs({
     this.displayName,
     this.enableDetails,
     this.ids,

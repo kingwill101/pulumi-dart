@@ -17,7 +17,7 @@ class GetAdConnectorOfficeSitesSiteAdConnector {
   /// [connectorStatus] AD Connector of the State. Possible Values: Creating: in the Creation of. Connecting: Connection. Requires the User to Your Own Ad Configured on the Domain to Which. Running: Run. Expired: If You Are out-of-Date. CONNECT_ERROR: Connection Error.
   /// [networkInterfaceId] AD Connector Mount of the Card ID.
   /// [vswitchId] AD Connector in the Network Corresponding to the ID of the vSwitch in.
-  GetAdConnectorOfficeSitesSiteAdConnector({
+  const GetAdConnectorOfficeSitesSiteAdConnector({
     required this.adConnectorAddress,
     required this.connectorStatus,
     required this.networkInterfaceId,

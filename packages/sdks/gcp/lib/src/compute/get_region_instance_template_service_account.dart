@@ -14,7 +14,7 @@ class GetRegionInstanceTemplateServiceAccount {
   /// Creates a new [GetRegionInstanceTemplateServiceAccount].
   /// [email] The service account e-mail address. If not given, the
   /// [scopes] A list of service scopes. Both OAuth2 URLs and gcloud
-  GetRegionInstanceTemplateServiceAccount({
+  const GetRegionInstanceTemplateServiceAccount({
     required this.email,
     required this.scopes,
   });

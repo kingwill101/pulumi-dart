@@ -10,7 +10,7 @@ class MessagingResponse {
 
   /// Creates a new [MessagingResponse].
   /// [endpoints] Dictionary of messaging endpoints.
-  MessagingResponse({
+  const MessagingResponse({
     this.endpoints,
   });
 

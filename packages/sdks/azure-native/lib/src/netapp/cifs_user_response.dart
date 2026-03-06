@@ -9,7 +9,7 @@ class CifsUserResponse {
 
   /// Creates a new [CifsUserResponse].
   /// [username] The CIFS user's username
-  CifsUserResponse({
+  const CifsUserResponse({
     this.username,
   });
 

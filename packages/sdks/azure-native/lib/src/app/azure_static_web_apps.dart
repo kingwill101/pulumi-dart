@@ -13,7 +13,7 @@ class AzureStaticWebApps {
   /// Creates a new [AzureStaticWebApps].
   /// [enabled] &lt;code&gt;false&lt;/code&gt; if the Azure Static Web Apps provider should not be enabled despite the set registration; otherwise, &lt;code&gt;true&lt;/code&gt;.
   /// [registration] The configuration settings of the Azure Static Web Apps registration.
-  AzureStaticWebApps({
+  const AzureStaticWebApps({
     this.enabled,
     this.registration,
   });

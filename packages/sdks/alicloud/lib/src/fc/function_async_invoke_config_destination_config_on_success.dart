@@ -8,7 +8,7 @@ class FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
 
   /// Creates a new [FunctionAsyncInvokeConfigDestinationConfigOnSuccess].
   /// [destination] Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-  FunctionAsyncInvokeConfigDestinationConfigOnSuccess({
+  const FunctionAsyncInvokeConfigDestinationConfigOnSuccess({
     required this.destination,
   });
 

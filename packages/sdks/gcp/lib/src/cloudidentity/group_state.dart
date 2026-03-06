@@ -54,7 +54,7 @@ class GroupState {
   /// [name] Resource name of the Group in the format: groups/{group_id}, where group_id
   /// [parent] The resource name of the entity under which this Group resides in the
   /// [updateTime] The time when the Group was last updated.
-  GroupState({
+  const GroupState({
     this.additionalGroupKeys,
     this.createTime,
     this.description,

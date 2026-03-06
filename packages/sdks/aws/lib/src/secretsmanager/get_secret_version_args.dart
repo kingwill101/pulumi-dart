@@ -21,7 +21,7 @@ class GetSecretVersionArgs {
   /// [secretId] Specifies the secret containing the version that you want to retrieve. You can specify either the ARN or the friendly name of the secret.
   /// [versionId] Specifies the unique identifier of the version of the secret that you want to retrieve. Overrides `version_stage`.
   /// [versionStage] Specifies the secret version that you want to retrieve by the staging label attached to the version. Defaults to `AWSCURRENT`.
-  GetSecretVersionArgs({
+  const GetSecretVersionArgs({
     this.region,
     required this.secretId,
     this.versionId,

@@ -37,7 +37,7 @@ class StatefulSetStatus {
   /// [replicas] replicas is the number of Pods created by the StatefulSet controller.
   /// [updateRevision] updateRevision, if not empty, indicates the version of the StatefulSet used to generate Pods in the sequence [replicas-updatedReplicas,replicas)
   /// [updatedReplicas] updatedReplicas is the number of Pods created by the StatefulSet controller from the StatefulSet version indicated by updateRevision.
-  StatefulSetStatus({
+  const StatefulSetStatus({
     this.availableReplicas,
     this.collisionCount,
     this.conditions,

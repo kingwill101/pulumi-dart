@@ -92,7 +92,7 @@ class AwsGovcloudIntegrationsState {
   /// [s3] The s3 integration
   /// [sns] SNS AwsGovCloud integration.See Integration blocks below for details.
   /// [sqs] SQS AwsGovCloud integration.See Integration blocks below for details.
-  AwsGovcloudIntegrationsState({
+  const AwsGovcloudIntegrationsState({
     this.accountId,
     this.alb,
     this.apiGateway,

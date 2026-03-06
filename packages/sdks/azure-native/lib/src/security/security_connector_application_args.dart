@@ -27,7 +27,7 @@ class SecurityConnectorApplicationArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [securityConnectorName] The security connector name.
   /// [sourceResourceType] The application source, what it affects, e.g. Assessments
-  SecurityConnectorApplicationArgs({
+  const SecurityConnectorApplicationArgs({
     this.applicationId,
     this.description,
     this.displayName,

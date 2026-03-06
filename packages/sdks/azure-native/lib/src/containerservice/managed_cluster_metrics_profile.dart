@@ -10,7 +10,7 @@ class ManagedClusterMetricsProfile {
 
   /// Creates a new [ManagedClusterMetricsProfile].
   /// [costAnalysis] The configuration for detailed per-Kubernetes resource cost analysis.
-  ManagedClusterMetricsProfile({
+  const ManagedClusterMetricsProfile({
     this.costAnalysis,
   });
 

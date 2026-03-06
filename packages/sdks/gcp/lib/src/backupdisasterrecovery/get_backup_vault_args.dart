@@ -21,7 +21,7 @@ class GetBackupVaultArgs {
   /// [backupVaultId] The id of Backup Vault resource.
   /// [location] The location in which the Backup Vault resource belongs.
   /// [project] The project in which the resource belongs. If it
-  GetBackupVaultArgs({
+  const GetBackupVaultArgs({
     required this.backupVaultId,
     required this.location,
     this.project,

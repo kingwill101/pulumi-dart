@@ -30,7 +30,7 @@ class ConfigManagementGitConfig {
   /// [syncRepo] The URL of the Git repository to use as the source of truth.
   /// [syncRev] Git revision (tag or hash) to check out. Default HEAD.
   /// [syncWaitSecs] Period in seconds between consecutive syncs. Default: 15.
-  ConfigManagementGitConfig({
+  const ConfigManagementGitConfig({
     this.gcpServiceAccountEmail,
     this.httpsProxy,
     this.policyDir,

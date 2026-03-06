@@ -8,7 +8,7 @@ class InstanceGroupManagerStatusVersionTargetResponseComputeV1 {
 
   /// Creates a new [InstanceGroupManagerStatusVersionTargetResponseComputeV1].
   /// [isReached] A bit indicating whether version target has been reached in this managed instance group, i.e. all instances are in their target version. Instances' target version are specified by version field on Instance Group Manager.
-  InstanceGroupManagerStatusVersionTargetResponseComputeV1({
+  const InstanceGroupManagerStatusVersionTargetResponseComputeV1({
     required this.isReached,
   });
 

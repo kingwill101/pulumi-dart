@@ -8,7 +8,7 @@ class EndpointConfigurationDataCaptureConfigCaptureOption {
 
   /// Creates a new [EndpointConfigurationDataCaptureConfigCaptureOption].
   /// [captureMode] Data to be captured. Should be one of `Input`, `Output` or `InputAndOutput`.
-  EndpointConfigurationDataCaptureConfigCaptureOption({
+  const EndpointConfigurationDataCaptureConfigCaptureOption({
     required this.captureMode,
   });
 

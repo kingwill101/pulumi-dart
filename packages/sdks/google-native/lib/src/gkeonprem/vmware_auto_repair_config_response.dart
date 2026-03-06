@@ -9,7 +9,7 @@ class VmwareAutoRepairConfigResponse {
 
   /// Creates a new [VmwareAutoRepairConfigResponse].
   /// [enabled] Whether auto repair is enabled.
-  VmwareAutoRepairConfigResponse({
+  const VmwareAutoRepairConfigResponse({
     required this.enabled,
   });
 

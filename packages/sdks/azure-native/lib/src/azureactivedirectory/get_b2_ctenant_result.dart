@@ -41,7 +41,7 @@ class GetB2CTenantResult {
   /// [tags] Resource Tags
   /// [tenantId] An identifier of the Azure AD B2C tenant.
   /// [type] The type of the B2C tenant resource.
-  GetB2CTenantResult({
+  const GetB2CTenantResult({
     required this.azureApiVersion,
     this.billingConfig,
     required this.id,

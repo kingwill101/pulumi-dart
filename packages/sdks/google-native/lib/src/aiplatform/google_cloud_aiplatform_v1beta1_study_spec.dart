@@ -50,7 +50,7 @@ class GoogleCloudAiplatformV1beta1StudySpec {
   /// [parameters] The set of parameters to tune.
   /// [studyStoppingConfig] Conditions for automated stopping of a Study. Enable automated stopping by configuring at least one condition.
   /// [transferLearningConfig] The configuration info/options for transfer learning. Currently supported for Vertex AI Vizier service, not HyperParameterTuningJob
-  GoogleCloudAiplatformV1beta1StudySpec({
+  const GoogleCloudAiplatformV1beta1StudySpec({
     this.algorithm,
     this.convexAutomatedStoppingSpec,
     this.convexStopConfig,

@@ -10,7 +10,7 @@ class DailyRetentionFormatResponse {
 
   /// Creates a new [DailyRetentionFormatResponse].
   /// [daysOfTheMonth] List of days of the month.
-  DailyRetentionFormatResponse({
+  const DailyRetentionFormatResponse({
     this.daysOfTheMonth,
   });
 

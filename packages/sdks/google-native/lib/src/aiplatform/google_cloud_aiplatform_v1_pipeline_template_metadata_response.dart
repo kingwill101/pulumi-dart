@@ -9,7 +9,7 @@ class GoogleCloudAiplatformV1PipelineTemplateMetadataResponse {
 
   /// Creates a new [GoogleCloudAiplatformV1PipelineTemplateMetadataResponse].
   /// [version] The version_name in artifact registry. Will always be presented in output if the PipelineJob.template_uri is from supported template registry. Format is "sha256:abcdef123456...".
-  GoogleCloudAiplatformV1PipelineTemplateMetadataResponse({
+  const GoogleCloudAiplatformV1PipelineTemplateMetadataResponse({
     required this.version,
   });
 

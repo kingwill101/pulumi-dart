@@ -8,7 +8,7 @@ class DomainDevicesControllerDriverIoThreadsIoThreadQueue {
 
   /// Creates a new [DomainDevicesControllerDriverIoThreadsIoThreadQueue].
   /// [id] Assigns a unique identifier to the queue associated with the specific I/O thread of the controller driver.
-  DomainDevicesControllerDriverIoThreadsIoThreadQueue({
+  const DomainDevicesControllerDriverIoThreadsIoThreadQueue({
     this.id,
   });
 

@@ -88,7 +88,7 @@ class AlertPolicyConditionConditionThresholdDenominatorAggregation {
   /// [crossSeriesReducer] The approach to be used to combine
   /// [groupByFields] The set of fields to preserve when
   /// [perSeriesAligner] The approach to be used to align
-  AlertPolicyConditionConditionThresholdDenominatorAggregation({
+  const AlertPolicyConditionConditionThresholdDenominatorAggregation({
     this.alignmentPeriod,
     this.crossSeriesReducer,
     this.groupByFields,

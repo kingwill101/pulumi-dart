@@ -16,7 +16,7 @@ class FirewallPolicyInsights {
   /// [isEnabled] A flag to indicate if the insights are enabled on the policy.
   /// [logAnalyticsResources] Workspaces needed to configure the Firewall Policy Insights.
   /// [retentionDays] Number of days the insights should be enabled on the policy.
-  FirewallPolicyInsights({
+  const FirewallPolicyInsights({
     this.isEnabled,
     this.logAnalyticsResources,
     this.retentionDays,

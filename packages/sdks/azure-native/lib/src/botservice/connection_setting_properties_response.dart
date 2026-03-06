@@ -37,7 +37,7 @@ class ConnectionSettingPropertiesResponse {
   /// [serviceProviderDisplayName] Service Provider Display Name associated with the Connection Setting
   /// [serviceProviderId] Service Provider Id associated with the Connection Setting
   /// [settingId] Setting Id set by the service for the Connection Setting.
-  ConnectionSettingPropertiesResponse({
+  const ConnectionSettingPropertiesResponse({
     this.clientId,
     this.clientSecret,
     this.id,

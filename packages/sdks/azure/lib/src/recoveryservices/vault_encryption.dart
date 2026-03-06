@@ -21,7 +21,7 @@ class VaultEncryption {
   /// [keyId] The Key Vault key id used to encrypt this vault. Key managed by Vault Managed Hardware Security Module is also supported.
   /// [useSystemAssignedIdentity] Indicate that system assigned identity should be used or not. Defaults to `true`. Must be set to `false` when `user_assigned_identity_id` is set.
   /// [userAssignedIdentityId] Specifies the user assigned identity ID to be used.
-  VaultEncryption({
+  const VaultEncryption({
     required this.infrastructureEncryptionEnabled,
     required this.keyId,
     this.useSystemAssignedIdentity,

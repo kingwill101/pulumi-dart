@@ -12,7 +12,7 @@ class UserAssignedIdentityResponse {
   /// Creates a new [UserAssignedIdentityResponse].
   /// [clientId] Gets or Sets Client ID
   /// [principalId] Gets or Sets Principal ID
-  UserAssignedIdentityResponse({
+  const UserAssignedIdentityResponse({
     required this.clientId,
     required this.principalId,
   });

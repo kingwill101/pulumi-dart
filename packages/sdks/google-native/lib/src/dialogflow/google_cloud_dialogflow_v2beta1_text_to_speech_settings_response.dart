@@ -18,7 +18,7 @@ class GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse {
   /// [outputAudioEncoding] Audio encoding of the synthesized audio content.
   /// [sampleRateHertz] Optional. The synthesis sample rate (in hertz) for this audio. If not provided, then the synthesizer will use the default sample rate based on the audio encoding. If this is different from the voice's natural sample rate, then the synthesizer will honor this request by converting to the desired sample rate (which might result in worse audio quality).
   /// [synthesizeSpeechConfigs] Optional. Configuration of how speech should be synthesized, mapping from language (https://cloud.google.com/dialogflow/docs/reference/language) to SynthesizeSpeechConfig.
-  GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse({
+  const GoogleCloudDialogflowV2beta1TextToSpeechSettingsResponse({
     required this.enableTextToSpeech,
     required this.outputAudioEncoding,
     required this.sampleRateHertz,

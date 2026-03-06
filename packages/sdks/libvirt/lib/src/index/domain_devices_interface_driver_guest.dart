@@ -20,7 +20,7 @@ class DomainDevicesInterfaceDriverGuest {
   /// [tso4] Controls TCP Segmentation Offloading (TSO) for IPv4 in the guest driver, enhancing network performance by offloading packet segmentation.
   /// [tso6] Controls TCP Segmentation Offloading (TSO) for IPv6 in the guest driver, enhancing network performance by offloading packet segmentation.
   /// [ufo] Enables or disables UDP Fragmentation Offloading (UFO) for the guest driver, optimizing the handling of UDP packets.
-  DomainDevicesInterfaceDriverGuest({
+  const DomainDevicesInterfaceDriverGuest({
     this.csum,
     this.ecn,
     this.tso4,

@@ -11,7 +11,7 @@ class InstanceAutomatedBackupConfigFixedFrequencySchedule {
 
   /// Creates a new [InstanceAutomatedBackupConfigFixedFrequencySchedule].
   /// [startTime] The start time of every automated backup in UTC.
-  InstanceAutomatedBackupConfigFixedFrequencySchedule({
+  const InstanceAutomatedBackupConfigFixedFrequencySchedule({
     required this.startTime,
   });
 

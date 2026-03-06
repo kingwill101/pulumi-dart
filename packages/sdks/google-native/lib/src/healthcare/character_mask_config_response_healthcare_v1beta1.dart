@@ -9,7 +9,7 @@ class CharacterMaskConfigResponseHealthcareV1beta1 {
 
   /// Creates a new [CharacterMaskConfigResponseHealthcareV1beta1].
   /// [maskingCharacter] Character to mask the sensitive values. If not supplied, defaults to "*".
-  CharacterMaskConfigResponseHealthcareV1beta1({
+  const CharacterMaskConfigResponseHealthcareV1beta1({
     required this.maskingCharacter,
   });
 

@@ -11,7 +11,7 @@ class SecurityPolicyAssociation {
   /// Creates a new [SecurityPolicyAssociation].
   /// [attachmentId] The resource that the security policy is attached to.
   /// [name] The name for an association.
-  SecurityPolicyAssociation({
+  const SecurityPolicyAssociation({
     this.attachmentId,
     this.name,
   });

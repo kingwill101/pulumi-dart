@@ -32,7 +32,7 @@ class ExportArgs {
   /// [name] Display name of the export job.
   /// [organizationId] Required.
   /// [outputFormat] Optional. Output format of the export. Valid values include: `csv` or `json`. Defaults to `json`. Note: Configure the delimiter for CSV output using the `csvDelimiter` property.
-  ExportArgs({
+  const ExportArgs({
     this.csvDelimiter,
     required this.datastoreName,
     required this.dateRange,

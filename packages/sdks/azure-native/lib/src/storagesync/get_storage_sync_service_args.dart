@@ -15,7 +15,7 @@ class GetStorageSyncServiceArgs {
   /// Creates a new [GetStorageSyncServiceArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageSyncServiceName] Name of Storage Sync Service resource.
-  GetStorageSyncServiceArgs({
+  const GetStorageSyncServiceArgs({
     required this.resourceGroupName,
     required this.storageSyncServiceName,
   });

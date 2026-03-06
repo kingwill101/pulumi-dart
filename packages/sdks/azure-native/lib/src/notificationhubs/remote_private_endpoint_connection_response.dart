@@ -9,7 +9,7 @@ class RemotePrivateEndpointConnectionResponse {
 
   /// Creates a new [RemotePrivateEndpointConnectionResponse].
   /// [id] ARM resource ID of the Private Endpoint. This may belong to different subscription and resource group than a Notification Hubs namespace.
-  RemotePrivateEndpointConnectionResponse({
+  const RemotePrivateEndpointConnectionResponse({
     required this.id,
   });
 

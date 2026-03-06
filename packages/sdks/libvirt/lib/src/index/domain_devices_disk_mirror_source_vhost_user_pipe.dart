@@ -12,7 +12,7 @@ class DomainDevicesDiskMirrorSourceVhostUserPipe {
   /// Creates a new [DomainDevicesDiskMirrorSourceVhostUserPipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainDevicesDiskMirrorSourceVhostUserPipe({
+  const DomainDevicesDiskMirrorSourceVhostUserPipe({
     required this.path,
     this.secLabels,
   });

@@ -11,7 +11,7 @@ class ScriptMonitorLocationPrivate {
   /// Creates a new [ScriptMonitorLocationPrivate].
   /// [guid] The unique identifier for the Synthetics private location in New Relic.
   /// [vsePassword] The location's Verified Script Execution password, Only necessary if Verified Script Execution is enabled for the location.
-  ScriptMonitorLocationPrivate({
+  const ScriptMonitorLocationPrivate({
     required this.guid,
     this.vsePassword,
   });

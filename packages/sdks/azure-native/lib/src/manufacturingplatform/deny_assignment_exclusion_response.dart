@@ -12,7 +12,7 @@ class DenyAssignmentExclusionResponse {
   /// Creates a new [DenyAssignmentExclusionResponse].
   /// [id] Object Id of Identity
   /// [type] Type of Identity
-  DenyAssignmentExclusionResponse({
+  const DenyAssignmentExclusionResponse({
     required this.id,
     required this.type,
   });

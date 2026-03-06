@@ -44,7 +44,7 @@ class GetBackupResult {
   /// [sourceInstanceTier] The service tier of the source Filestore instance that this backup is created from.
   /// [state] The backup state.
   /// [storageBytes] The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
-  GetBackupResult({
+  const GetBackupResult({
     required this.capacityGb,
     required this.createTime,
     required this.description,

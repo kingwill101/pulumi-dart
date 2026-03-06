@@ -18,7 +18,7 @@ class JobArgs {
   /// [description] The description of the Elastic Job.
   /// [jobAgentId] The ID of the Elastic Job Agent. Changing this forces a new Elastic Job to be created.
   /// [name] The name which should be used for this Elastic Job. Changing this forces a new Elastic Job to be created.
-  JobArgs({
+  const JobArgs({
     this.description,
     required this.jobAgentId,
     this.name,

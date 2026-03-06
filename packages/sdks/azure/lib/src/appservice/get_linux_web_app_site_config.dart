@@ -109,7 +109,7 @@ class GetLinuxWebAppSiteConfig {
   /// [vnetRouteAllEnabled] Are all outbound traffic to NAT Gateways, Network Security Groups and User Defined Routes applied?
   /// [websocketsEnabled] Are Web Sockets enabled?
   /// [workerCount] The number of Workers for this Linux App Service.
-  GetLinuxWebAppSiteConfig({
+  const GetLinuxWebAppSiteConfig({
     required this.alwaysOn,
     required this.apiDefinitionUrl,
     required this.apiManagementApiId,

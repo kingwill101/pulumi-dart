@@ -65,7 +65,7 @@ class ConnectionArgs {
   /// [location] The geographic location where the connection should reside.
   /// [project] The ID of the project in which the resource belongs.
   /// [spark] Container for connection properties to execute stored procedures for Apache Spark. resources.
-  ConnectionArgs({
+  const ConnectionArgs({
     this.aws,
     this.azure,
     this.cloudResource,

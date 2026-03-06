@@ -8,7 +8,7 @@ class GetInstanceNodeConfig {
 
   /// Creates a new [GetInstanceNodeConfig].
   /// [sizeGb] Output only. Memory size in GB of the node.
-  GetInstanceNodeConfig({
+  const GetInstanceNodeConfig({
     required this.sizeGb,
   });
 

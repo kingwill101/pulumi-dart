@@ -18,7 +18,7 @@ class SqlFunctionArgs {
   /// [body] Body of the User Defined Function.
   /// [containerId] The id of the Cosmos DB SQL Container to create the SQL User Defined Function within. Changing this forces a new SQL User Defined Function to be created.
   /// [name] The name which should be used for this SQL User Defined Function. Changing this forces a new SQL User Defined Function to be created.
-  SqlFunctionArgs({
+  const SqlFunctionArgs({
     required this.body,
     required this.containerId,
     this.name,

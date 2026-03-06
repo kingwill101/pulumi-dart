@@ -12,7 +12,7 @@ class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse {
   /// [digest] Required.
   /// [entryPoint] Required.
   /// [uri] Required.
-  GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse({
+  const GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceResponse({
     required this.digest,
     required this.entryPoint,
     required this.uri,

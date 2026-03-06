@@ -43,7 +43,7 @@ class ScheduleArgs {
   /// [scheduleName] The schedule name.
   /// [startTime] Gets or sets the start time of the schedule.
   /// [timeZone] Gets or sets the time zone of the schedule.
-  ScheduleArgs({
+  const ScheduleArgs({
     this.advancedSchedule,
     required this.automationAccountName,
     this.description,

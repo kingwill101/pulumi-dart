@@ -15,7 +15,7 @@ class GetApiGatewayStageArgs {
   /// Creates a new [GetApiGatewayStageArgs].
   /// [name] Name of ApiGatewayStage
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetApiGatewayStageArgs({
+  const GetApiGatewayStageArgs({
     required this.name,
     required this.resourceGroupName,
   });

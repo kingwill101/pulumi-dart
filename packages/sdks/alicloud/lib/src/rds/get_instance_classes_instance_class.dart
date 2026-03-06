@@ -19,7 +19,7 @@ class GetInstanceClassesInstanceClass {
   /// [price] Unit price of instance specifications.
   /// [storageRange] DB Instance available storage range.
   /// [zoneIds] A list of Zone to launch the DB instance.
-  GetInstanceClassesInstanceClass({
+  const GetInstanceClassesInstanceClass({
     required this.instanceClass,
     required this.price,
     required this.storageRange,

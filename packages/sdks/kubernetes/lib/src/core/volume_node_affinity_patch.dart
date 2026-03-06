@@ -10,7 +10,7 @@ class VolumeNodeAffinityPatch {
 
   /// Creates a new [VolumeNodeAffinityPatch].
   /// [required] required specifies hard node constraints that must be met.
-  VolumeNodeAffinityPatch({
+  const VolumeNodeAffinityPatch({
     this.required,
   });
 

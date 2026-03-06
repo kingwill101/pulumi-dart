@@ -37,7 +37,7 @@ class GetTrafficManagerProfileResult {
   /// [tags] A mapping of tags to assign to the resource.
   /// [trafficRoutingMethod] Specifies the algorithm used to route traffic.
   /// [trafficViewEnabled] Indicates whether Traffic View is enabled for the Traffic Manager profile.
-  GetTrafficManagerProfileResult({
+  const GetTrafficManagerProfileResult({
     required this.dnsConfigs,
     required this.fqdn,
     required this.id,

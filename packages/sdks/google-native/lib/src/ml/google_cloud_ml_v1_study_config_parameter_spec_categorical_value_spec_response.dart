@@ -8,7 +8,7 @@ class GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse {
 
   /// Creates a new [GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse].
   /// [values] Must be specified if type is `CATEGORICAL`. The list of possible categories.
-  GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse({
+  const GoogleCloudMlV1StudyConfigParameterSpecCategoricalValueSpecResponse({
     required this.values,
   });
 

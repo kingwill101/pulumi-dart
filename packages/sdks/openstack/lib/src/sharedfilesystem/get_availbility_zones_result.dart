@@ -14,7 +14,7 @@ class GetAvailbilityZonesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [names] The names of the availability zones, ordered alphanumerically.
   /// [region] See Argument Reference above.
-  GetAvailbilityZonesResult({
+  const GetAvailbilityZonesResult({
     required this.id,
     required this.names,
     required this.region,

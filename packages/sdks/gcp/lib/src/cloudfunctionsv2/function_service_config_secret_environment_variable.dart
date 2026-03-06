@@ -17,7 +17,7 @@ class FunctionServiceConfigSecretEnvironmentVariable {
   /// [projectId] Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
   /// [secret] Name of the secret in secret manager (not the full resource name).
   /// [version] Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
-  FunctionServiceConfigSecretEnvironmentVariable({
+  const FunctionServiceConfigSecretEnvironmentVariable({
     required this.key,
     required this.projectId,
     required this.secret,

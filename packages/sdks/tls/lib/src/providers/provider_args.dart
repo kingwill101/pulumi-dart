@@ -13,7 +13,7 @@ class ProviderArgs {
 
   /// Creates a new [ProviderArgs].
   /// [proxy] Proxy used by resources and data sources that connect to external endpoints.
-  ProviderArgs({
+  const ProviderArgs({
     this.proxy,
   });
 

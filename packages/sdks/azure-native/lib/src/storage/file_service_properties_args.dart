@@ -30,7 +30,7 @@ class FileServicePropertiesArgs {
   /// [protocolSettings] Protocol settings for file service
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [shareDeleteRetentionPolicy] The file service properties for share soft delete.
-  FileServicePropertiesArgs({
+  const FileServicePropertiesArgs({
     required this.accountName,
     this.cors,
     this.fileServicesName,

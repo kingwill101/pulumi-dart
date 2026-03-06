@@ -51,7 +51,7 @@ class X12AcknowledgementSettings {
   /// [needTechnicalAcknowledgement] The value indicating whether technical acknowledgement is needed.
   /// [rolloverAcknowledgementControlNumber] The value indicating whether to rollover acknowledgement control number.
   /// [sendSynchronousAcknowledgement] The value indicating whether to send synchronous acknowledgement.
-  X12AcknowledgementSettings({
+  const X12AcknowledgementSettings({
     required this.acknowledgementControlNumberLowerBound,
     this.acknowledgementControlNumberPrefix,
     this.acknowledgementControlNumberSuffix,

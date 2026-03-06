@@ -12,7 +12,7 @@ class GroupIdentifierResponse {
   /// Creates a new [GroupIdentifierResponse].
   /// [groupId] &lt;p&gt;The ID of the security group.&lt;/p&gt;
   /// [groupName] &lt;p&gt;The name of the security group.&lt;/p&gt;
-  GroupIdentifierResponse({
+  const GroupIdentifierResponse({
     this.groupId,
     this.groupName,
   });

@@ -21,7 +21,7 @@ class ProducerImageShareGroupArgs {
   /// [description] The description of the Image Share Group
   /// [images] The images to be shared using this Image Share Group.
   /// [label] The label of the Image Share Group.
-  ProducerImageShareGroupArgs({
+  const ProducerImageShareGroupArgs({
     this.description,
     this.images,
     required this.label,

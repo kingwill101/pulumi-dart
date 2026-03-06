@@ -18,7 +18,7 @@ class GetJobArgs {
   /// [jobCollectionName] The job collection name.
   /// [jobName] The job name.
   /// [resourceGroupName] The resource group name.
-  GetJobArgs({
+  const GetJobArgs({
     required this.jobCollectionName,
     required this.jobName,
     required this.resourceGroupName,

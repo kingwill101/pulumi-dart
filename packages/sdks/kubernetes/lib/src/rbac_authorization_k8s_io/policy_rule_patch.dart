@@ -21,7 +21,7 @@ class PolicyRulePatch {
   /// [resourceNames] ResourceNames is an optional white list of names that the rule applies to.  An empty set means that everything is allowed.
   /// [resources] Resources is a list of resources this rule applies to. '*' represents all resources.
   /// [verbs] Verbs is a list of Verbs that apply to ALL the ResourceKinds contained in this rule. '*' represents all verbs.
-  PolicyRulePatch({
+  const PolicyRulePatch({
     this.apiGroups,
     this.nonResourceURLs,
     this.resourceNames,

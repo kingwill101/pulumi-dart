@@ -32,7 +32,7 @@ class ExperimentPlanTemplateTemplatePipelineEnvParams {
   /// [pyTorchVersion] The version of the PyTorch framework used. PyTorch is a widely used deep learning library, and differences between versions may affect the performance and functional support of model training and inference.
   /// [shareMemory] Shared memory GB allocation
   /// [workerNum] The total number of nodes. This parameter directly affects the parallelism and computing speed of the task, and a higher number of working nodes usually accelerates the completion of the task.
-  ExperimentPlanTemplateTemplatePipelineEnvParams({
+  const ExperimentPlanTemplateTemplatePipelineEnvParams({
     required this.cpuPerWorker,
     this.cudaVersion,
     this.gpuDriverVersion,

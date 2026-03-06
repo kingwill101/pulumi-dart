@@ -48,7 +48,7 @@ class StoragePoolStatus {
   /// [totalProvisionedDiskCapacityGb] (Output)
   /// [totalProvisionedDiskIops] (Output)
   /// [totalProvisionedDiskThroughput] (Output)
-  StoragePoolStatus({
+  const StoragePoolStatus({
     this.diskCount,
     this.lastResizeTimestamp,
     this.maxTotalProvisionedDiskCapacityGb,

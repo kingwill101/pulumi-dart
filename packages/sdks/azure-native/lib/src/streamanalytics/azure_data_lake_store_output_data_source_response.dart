@@ -37,7 +37,7 @@ class AzureDataLakeStoreOutputDataSourceResponse {
   /// [tokenUserDisplayName] The user display name of the user that was used to obtain the refresh token. Use this property to help remember which user was used to obtain the refresh token.
   /// [tokenUserPrincipalName] The user principal name (UPN) of the user that was used to obtain the refresh token. Use this property to help remember which user was used to obtain the refresh token.
   /// [type] Indicates the type of data source output will be written to. Required on PUT (CreateOrReplace) requests.
-  AzureDataLakeStoreOutputDataSourceResponse({
+  const AzureDataLakeStoreOutputDataSourceResponse({
     this.accountName,
     this.authenticationMode,
     this.dateFormat,

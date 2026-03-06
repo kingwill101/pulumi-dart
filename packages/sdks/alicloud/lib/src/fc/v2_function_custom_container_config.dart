@@ -20,7 +20,7 @@ class V2FunctionCustomContainerConfig {
   /// [command] Container start command, equivalent to Docker ENTRYPOINT.
   /// [image] Container Image address. Example value: registry-vpc.cn-hangzhou.aliyuncs.com/fc-demo/helloworld:v1beta1.
   /// [webServerMode] Whether the image is run in Web Server mode. The value of true needs to implement the Web Server in the container image to listen to the port and process the request. The value of false needs to actively exit the process after the container runs, and the ExitCode needs to be 0. Default true.
-  V2FunctionCustomContainerConfig({
+  const V2FunctionCustomContainerConfig({
     this.accelerationType,
     this.args,
     this.command,

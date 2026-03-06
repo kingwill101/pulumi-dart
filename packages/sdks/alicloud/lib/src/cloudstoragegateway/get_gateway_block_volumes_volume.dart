@@ -82,7 +82,7 @@ class GetGatewayBlockVolumesVolume {
   /// [totalDownload] The total amount of downloaded data. Unit: `B`.
   /// [totalUpload] The total amount of uploaded data. Unit: `B`.
   /// [volumeState] Required.
-  GetGatewayBlockVolumesVolume({
+  const GetGatewayBlockVolumesVolume({
     required this.address,
     required this.cacheMode,
     required this.chapEnabled,

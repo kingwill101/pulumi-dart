@@ -12,7 +12,7 @@ class VmwareVipConfigResponse {
   /// Creates a new [VmwareVipConfigResponse].
   /// [controlPlaneVip] The VIP which you previously set aside for the Kubernetes API of this cluster.
   /// [ingressVip] The VIP which you previously set aside for ingress traffic into this cluster.
-  VmwareVipConfigResponse({
+  const VmwareVipConfigResponse({
     required this.controlPlaneVip,
     required this.ingressVip,
   });

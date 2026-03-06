@@ -15,7 +15,7 @@ class ContainerServiceDeploymentVersionPublicEndpoint {
   /// [containerName] Name of the container for the endpoint.
   /// [containerPort] Port of the container to which traffic is forwarded to.
   /// [healthCheck] Configuration block that describes the health check configuration of the container. See below.
-  ContainerServiceDeploymentVersionPublicEndpoint({
+  const ContainerServiceDeploymentVersionPublicEndpoint({
     required this.containerName,
     required this.containerPort,
     required this.healthCheck,

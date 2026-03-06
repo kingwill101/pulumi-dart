@@ -10,7 +10,7 @@ class ConnectToSourcePostgreSqlSyncTaskInput {
 
   /// Creates a new [ConnectToSourcePostgreSqlSyncTaskInput].
   /// [sourceConnectionInfo] Connection information for source PostgreSQL server
-  ConnectToSourcePostgreSqlSyncTaskInput({
+  const ConnectToSourcePostgreSqlSyncTaskInput({
     required this.sourceConnectionInfo,
   });
 

@@ -12,7 +12,7 @@ class AmiCopyEphemeralBlockDevice {
   /// Creates a new [AmiCopyEphemeralBlockDevice].
   /// [deviceName] Path at which the device is exposed to created instances.
   /// [virtualName] Name for the ephemeral device, of the form "ephemeralN" where
-  AmiCopyEphemeralBlockDevice({
+  const AmiCopyEphemeralBlockDevice({
     this.deviceName,
     this.virtualName,
   });

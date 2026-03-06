@@ -10,7 +10,7 @@ class TransportResponse {
 
   /// Creates a new [TransportResponse].
   /// [pubsub] The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
-  TransportResponse({
+  const TransportResponse({
     required this.pubsub,
   });
 

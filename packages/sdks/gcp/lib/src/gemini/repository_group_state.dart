@@ -45,7 +45,7 @@ class RepositoryGroupState {
   /// [repositories] Required. List of repositories to group.
   /// [repositoryGroupId] Required. Id of the Repository Group.
   /// [updateTime] Output only. Update time stamp.
-  RepositoryGroupState({
+  const RepositoryGroupState({
     this.codeRepositoryIndex,
     this.createTime,
     this.effectiveLabels,

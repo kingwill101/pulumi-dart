@@ -14,7 +14,7 @@ class AddonStatusResponse {
   /// [errorMessage] ErrorMessage will be set in the event that there is a terminal problem reconciling the AddOn and will contain a more verbose string suitable for logging and human consumption.
   /// [phase] Phase represents the current phase of cluster actuation. E.g. Pending, Running, Terminating, Failed etc.
   /// [ready] Optional.
-  AddonStatusResponse({
+  const AddonStatusResponse({
     this.errorMessage,
     this.phase,
     this.ready,

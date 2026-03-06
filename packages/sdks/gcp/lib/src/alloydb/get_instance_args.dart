@@ -25,7 +25,7 @@ class GetInstanceArgs {
   /// [instanceId] The ID of the alloydb instance.
   /// [location] (optional)
   /// [project] (optional)
-  GetInstanceArgs({
+  const GetInstanceArgs({
     required this.clusterId,
     required this.instanceId,
     this.location,

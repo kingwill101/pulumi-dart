@@ -15,7 +15,7 @@ class GetUserGroupsArgs {
   /// Creates a new [GetUserGroupsArgs].
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userPoolId] User pool the client belongs to.
-  GetUserGroupsArgs({
+  const GetUserGroupsArgs({
     this.region,
     required this.userPoolId,
   });

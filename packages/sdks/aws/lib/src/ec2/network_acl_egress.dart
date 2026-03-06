@@ -36,7 +36,7 @@ class NetworkAclEgress {
   /// [protocol] The protocol to match. If using the -1 'all'
   /// [ruleNo] The rule number. Used for ordering.
   /// [toPort] The to port to match.
-  NetworkAclEgress({
+  const NetworkAclEgress({
     required this.action,
     this.cidrBlock,
     required this.fromPort,

@@ -42,7 +42,7 @@ class WebhookState {
   /// [scopeConfiguration] Scope configuration for global or organization webhooks. See scope_configuration for details.
   /// [secret] The secret token of the associated repository. Not returned by the CodeBuild API for all source types.
   /// [url] The URL to the webhook.
-  WebhookState({
+  const WebhookState({
     this.branchFilter,
     this.buildType,
     this.filterGroups,

@@ -34,7 +34,7 @@ class GetDirectoriesDirectory {
   /// [samlIdentityProviderConfigurations] The saml identity provider configuration.
   /// [scimSynchronizationStatus] The scim synchronization status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
   /// [tasks] Asynchronous Task Information Array.
-  GetDirectoriesDirectory({
+  const GetDirectoriesDirectory({
     required this.createTime,
     required this.directoryId,
     required this.directoryName,

@@ -14,7 +14,7 @@ class DeliveryRuleRequestHeaderAction {
   /// Creates a new [DeliveryRuleRequestHeaderAction].
   /// [name] The name of the action for the delivery rule.
   /// [parameters] Defines the parameters for the action.
-  DeliveryRuleRequestHeaderAction({
+  const DeliveryRuleRequestHeaderAction({
     required this.name,
     required this.parameters,
   });

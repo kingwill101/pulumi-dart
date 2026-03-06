@@ -13,7 +13,7 @@ class GetConfigArgs {
   /// Creates a new [GetConfigArgs].
   /// [configId] Required.
   /// [project] Optional.
-  GetConfigArgs({
+  const GetConfigArgs({
     required this.configId,
     this.project,
   });

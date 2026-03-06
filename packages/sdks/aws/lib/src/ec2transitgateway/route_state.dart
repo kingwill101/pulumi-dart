@@ -21,7 +21,7 @@ class RouteState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [transitGatewayAttachmentId] Identifier of EC2 Transit Gateway Attachment (required if `blackhole` is set to false).
   /// [transitGatewayRouteTableId] Identifier of EC2 Transit Gateway Route Table.
-  RouteState({
+  const RouteState({
     this.blackhole,
     this.destinationCidrBlock,
     this.region,

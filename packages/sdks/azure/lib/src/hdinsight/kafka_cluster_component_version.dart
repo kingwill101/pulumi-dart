@@ -8,7 +8,7 @@ class KafkaClusterComponentVersion {
 
   /// Creates a new [KafkaClusterComponentVersion].
   /// [kafka] The version of Kafka which should be used for this HDInsight Kafka Cluster. Changing this forces a new resource to be created.
-  KafkaClusterComponentVersion({
+  const KafkaClusterComponentVersion({
     required this.kafka,
   });
 

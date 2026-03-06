@@ -18,7 +18,7 @@ class GetIpGroupArgs {
   /// [expand] Expands resourceIds (of Firewalls/Network Security Groups etc.) back referenced by the IpGroups resource.
   /// [ipGroupsName] The name of the ipGroups.
   /// [resourceGroupName] The name of the resource group.
-  GetIpGroupArgs({
+  const GetIpGroupArgs({
     this.expand,
     required this.ipGroupsName,
     required this.resourceGroupName,

@@ -12,7 +12,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse {
   /// Creates a new [GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse].
   /// [maxSize] The maximal number of workers. Must be equal to or greater than min_size.
   /// [minSize] The minimal number of workers. Must be greater than 0.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse({
+  const GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleResponse({
     required this.maxSize,
     required this.minSize,
   });

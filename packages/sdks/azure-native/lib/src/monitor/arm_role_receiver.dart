@@ -15,7 +15,7 @@ class ArmRoleReceiver {
   /// [name] The name of the arm role receiver. Names must be unique across all receivers within an action group.
   /// [roleId] The arm role id.
   /// [useCommonAlertSchema] Indicates whether to use common alert schema.
-  ArmRoleReceiver({
+  const ArmRoleReceiver({
     required this.name,
     required this.roleId,
     this.useCommonAlertSchema,

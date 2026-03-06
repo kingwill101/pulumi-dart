@@ -7,7 +7,7 @@ class DeliveryChannelResourceSnapshotDeliverySlsProperties {
 
   /// Creates a new [DeliveryChannelResourceSnapshotDeliverySlsProperties].
   /// [oversizedDataOssTargetArn] Optional.
-  DeliveryChannelResourceSnapshotDeliverySlsProperties({
+  const DeliveryChannelResourceSnapshotDeliverySlsProperties({
     this.oversizedDataOssTargetArn,
   });
 

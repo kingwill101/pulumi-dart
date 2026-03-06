@@ -15,7 +15,7 @@ class ShieldedInstanceConfigResponse {
   /// [enableIntegrityMonitoring] Optional. Defines whether instances have integrity monitoring enabled.
   /// [enableSecureBoot] Optional. Defines whether instances have Secure Boot enabled.
   /// [enableVtpm] Optional. Defines whether instances have the vTPM enabled.
-  ShieldedInstanceConfigResponse({
+  const ShieldedInstanceConfigResponse({
     required this.enableIntegrityMonitoring,
     required this.enableSecureBoot,
     required this.enableVtpm,

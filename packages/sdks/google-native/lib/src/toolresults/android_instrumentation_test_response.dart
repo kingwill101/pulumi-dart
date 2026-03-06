@@ -18,7 +18,7 @@ class AndroidInstrumentationTestResponse {
   /// [testRunnerClass] The InstrumentationTestRunner class. Required
   /// [testTargets] Each target must be fully qualified with the package name or class name, in one of these formats: - "package package_name" - "class package_name.class_name" - "class package_name.class_name#method_name" If empty, all targets in the module will be run.
   /// [useOrchestrator] The flag indicates whether Android Test Orchestrator will be used to run test or not.
-  AndroidInstrumentationTestResponse({
+  const AndroidInstrumentationTestResponse({
     required this.testPackageId,
     required this.testRunnerClass,
     required this.testTargets,

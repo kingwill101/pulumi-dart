@@ -25,7 +25,7 @@ class PatchDeploymentInstanceFilter {
   /// [instanceNamePrefixes] Targets VMs whose name starts with one of these prefixes. Similar to labels, this is another way to group
   /// [instances] Targets any of the VM instances specified. Instances are specified by their URI in the `form zones/{{zone}}/instances/{{instance_name}}`,
   /// [zones] Targets VM instances in ANY of these zones. Leave empty to target VM instances in any zone.
-  PatchDeploymentInstanceFilter({
+  const PatchDeploymentInstanceFilter({
     this.all,
     this.groupLabels,
     this.instanceNamePrefixes,

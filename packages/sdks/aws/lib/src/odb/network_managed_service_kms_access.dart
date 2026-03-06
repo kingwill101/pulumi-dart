@@ -15,7 +15,7 @@ class NetworkManagedServiceKmsAccess {
   /// [ipv4Addresses] Required.
   /// [kmsPolicyDocument] Specifies the endpoint policy for KMS access from the ODB network.
   /// [status] The status of the network resource.
-  NetworkManagedServiceKmsAccess({
+  const NetworkManagedServiceKmsAccess({
     required this.domainName,
     required this.ipv4Addresses,
     required this.kmsPolicyDocument,

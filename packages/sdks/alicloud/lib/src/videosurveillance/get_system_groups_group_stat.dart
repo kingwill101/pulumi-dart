@@ -17,7 +17,7 @@ class GetSystemGroupsGroupStat {
   /// [iedNum] The total number of smart devices in the group.
   /// [ipcNum] The total number of cameras in the group.
   /// [platformNum] The total number of platforms in the group.
-  GetSystemGroupsGroupStat({
+  const GetSystemGroupsGroupStat({
     required this.deviceNum,
     required this.iedNum,
     required this.ipcNum,

@@ -9,7 +9,7 @@ class DefenderForServersAwsOfferingConfiguration {
 
   /// Creates a new [DefenderForServersAwsOfferingConfiguration].
   /// [type] The Vulnerability Assessment solution to be provisioned. Can be either 'TVM' or 'Qualys'
-  DefenderForServersAwsOfferingConfiguration({
+  const DefenderForServersAwsOfferingConfiguration({
     this.type,
   });
 

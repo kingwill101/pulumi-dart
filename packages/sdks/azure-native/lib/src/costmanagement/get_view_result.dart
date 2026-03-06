@@ -70,7 +70,7 @@ class GetViewResult {
   /// [timePeriod] Has time period for pulling data for the report.
   /// [timeframe] The time frame for pulling data for the report. If custom, then a specific time period must be provided.
   /// [type] Resource type.
-  GetViewResult({
+  const GetViewResult({
     this.accumulated,
     required this.azureApiVersion,
     this.chart,

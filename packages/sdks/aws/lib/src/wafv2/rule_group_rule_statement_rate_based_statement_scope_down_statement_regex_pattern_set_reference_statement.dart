@@ -18,7 +18,7 @@ class RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetR
   /// [arn] The Amazon Resource Name (ARN) of the Regex Pattern Set that this statement references.
   /// [fieldToMatch] The part of a web request that you want AWS WAF to inspect. See Field to Match below for details.
   /// [textTransformations] Text transformations eliminate some of the unusual formatting that attackers use in web requests in an effort to bypass detection.
-  RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatement({
+  const RuleGroupRuleStatementRateBasedStatementScopeDownStatementRegexPatternSetReferenceStatement({
     required this.arn,
     this.fieldToMatch,
     required this.textTransformations,

@@ -96,7 +96,7 @@ class TrafficQosRuleState {
   /// [srcIpv6Cidr] The QoS rule traffic matches the source IPv6 network segment.
   /// [srcPortRange] The source port number of the QoS rule traffic matching. The value range is `0` to `65535`. If the traffic does not match, the value is - 1. Currently, only a single port number is supported, and the start and end of the port number must be the same.
   /// [status] The status of the QoS rule. Value:
-  TrafficQosRuleState({
+  const TrafficQosRuleState({
     this.dstCidr,
     this.dstIpv6Cidr,
     this.dstPortRange,

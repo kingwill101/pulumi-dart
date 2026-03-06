@@ -12,7 +12,7 @@ class DomainDevicesDiskMirrorSourceNetworkAuth {
   /// Creates a new [DomainDevicesDiskMirrorSourceNetworkAuth].
   /// [secret] Specifies the secret used for authenticating the iSCSI connection.
   /// [username] Sets the username for iSCSI authentication.
-  DomainDevicesDiskMirrorSourceNetworkAuth({
+  const DomainDevicesDiskMirrorSourceNetworkAuth({
     this.secret,
     this.username,
   });

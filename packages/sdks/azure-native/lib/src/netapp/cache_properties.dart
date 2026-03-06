@@ -60,7 +60,7 @@ class CacheProperties {
   /// [smbSettings] SMB information for the cache
   /// [throughputMibps] Maximum throughput in MiB/s that can be achieved by this cache volume and this will be accepted as input only for manual qosType cache
   /// [writeBack] Flag indicating whether writeback is enabled for the cache.
-  CacheProperties({
+  const CacheProperties({
     required this.cacheSubnetResourceId,
     this.cifsChangeNotifications,
     required this.encryptionKeySource,

@@ -31,7 +31,7 @@ class Ec2SecurityGroupProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2SecurityGroupProperties({
+  const Ec2SecurityGroupProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

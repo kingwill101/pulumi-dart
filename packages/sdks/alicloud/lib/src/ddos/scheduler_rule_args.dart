@@ -28,7 +28,7 @@ class SchedulerRuleArgs {
   /// [ruleName] The name of the rule.
   /// [ruleType] The rule type. Valid values:
   /// [rules] The information about the scheduling rules. See `rules` below.
-  SchedulerRuleArgs({
+  const SchedulerRuleArgs({
     this.param,
     this.resourceGroupId,
     required this.ruleName,

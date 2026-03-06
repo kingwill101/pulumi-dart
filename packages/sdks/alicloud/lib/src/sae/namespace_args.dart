@@ -24,7 +24,7 @@ class NamespaceArgs {
   /// [namespaceId] The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
   /// [namespaceName] The Name of Namespace.
   /// [namespaceShortId] The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
-  NamespaceArgs({
+  const NamespaceArgs({
     this.enableMicroRegistration,
     this.namespaceDescription,
     this.namespaceId,

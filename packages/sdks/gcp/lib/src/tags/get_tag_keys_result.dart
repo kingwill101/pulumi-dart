@@ -15,7 +15,7 @@ class GetTagKeysResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [keys] Required.
   /// [parent] The resource name of the TagKey's parent. A TagKey can be parented by an Orgination or a Project.
-  GetTagKeysResult({
+  const GetTagKeysResult({
     required this.id,
     required this.keys,
     required this.parent,

@@ -9,7 +9,7 @@ class NsRecordResponse {
 
   /// Creates a new [NsRecordResponse].
   /// [nsdname] The name server name for this NS record.
-  NsRecordResponse({
+  const NsRecordResponse({
     this.nsdname,
   });
 

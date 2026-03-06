@@ -13,7 +13,7 @@ class GoogleCloudRetailV2PriceInfoPriceRangeResponse {
   /// Creates a new [GoogleCloudRetailV2PriceInfoPriceRangeResponse].
   /// [originalPrice] The inclusive Product.pricing_info.original_price internal of all variant Product having the same Product.primary_product_id.
   /// [price] The inclusive Product.pricing_info.price interval of all variant Product having the same Product.primary_product_id.
-  GoogleCloudRetailV2PriceInfoPriceRangeResponse({
+  const GoogleCloudRetailV2PriceInfoPriceRangeResponse({
     required this.originalPrice,
     required this.price,
   });

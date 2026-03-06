@@ -22,7 +22,7 @@ class SubnetworkSecondaryIpRange {
   /// [ipCidrRange] The range of IP addresses belonging to this subnetwork secondary
   /// [rangeName] The name associated with this subnetwork secondary range, used
   /// [reservedInternalRange] The ID of the reserved internal range. Must be prefixed with `networkconnectivity.googleapis.com`
-  SubnetworkSecondaryIpRange({
+  const SubnetworkSecondaryIpRange({
     this.ipCidrRange,
     required this.rangeName,
     this.reservedInternalRange,

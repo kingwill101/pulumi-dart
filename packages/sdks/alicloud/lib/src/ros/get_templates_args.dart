@@ -30,7 +30,7 @@ class GetTemplatesArgs {
   /// [shareType] Share Type. Valid Values: `Private`, `Shared`
   /// [tags] Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
   /// [templateName] The name of the template.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
-  GetTemplatesArgs({
+  const GetTemplatesArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

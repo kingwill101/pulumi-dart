@@ -22,7 +22,7 @@ class GetApplicationsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [tags] Optional.
-  GetApplicationsResult({
+  const GetApplicationsResult({
     required this.applications,
     required this.id,
     required this.ids,

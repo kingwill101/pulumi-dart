@@ -45,7 +45,7 @@ class ServerlessKubernetesDeleteOption {
   /// Creates a new [ServerlessKubernetesDeleteOption].
   /// [deleteMode] The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
   /// [resourceType] The type of resources that are created by cluster. Valid values:
-  ServerlessKubernetesDeleteOption({
+  const ServerlessKubernetesDeleteOption({
     this.deleteMode,
     this.resourceType,
   });

@@ -20,7 +20,7 @@ class GetDbServerArgs {
   /// [cloudExadataInfrastructureId] The unique identifier of the cloud vm cluster.
   /// [id] The unique identifier of db node associated with vm cluster.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetDbServerArgs({
+  const GetDbServerArgs({
     required this.cloudExadataInfrastructureId,
     required this.id,
     this.region,

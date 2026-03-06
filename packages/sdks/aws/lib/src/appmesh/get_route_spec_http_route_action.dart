@@ -8,7 +8,7 @@ class GetRouteSpecHttpRouteAction {
 
   /// Creates a new [GetRouteSpecHttpRouteAction].
   /// [weightedTargets] Required.
-  GetRouteSpecHttpRouteAction({
+  const GetRouteSpecHttpRouteAction({
     required this.weightedTargets,
   });
 

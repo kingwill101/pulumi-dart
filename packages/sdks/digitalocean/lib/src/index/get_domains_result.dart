@@ -19,7 +19,7 @@ class GetDomainsResult {
   /// [filters] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [sorts] Optional.
-  GetDomainsResult({
+  const GetDomainsResult({
     required this.domains,
     this.filters,
     required this.id,

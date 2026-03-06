@@ -32,7 +32,7 @@ class GetResourceBridgeApplianceResult {
   /// [publicKeyBase64] RSA public key in PKCS1 format encoded in base64.
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags assigned to the Arc Resource Bridge Appliance.
-  GetResourceBridgeApplianceResult({
+  const GetResourceBridgeApplianceResult({
     required this.distro,
     required this.id,
     required this.identities,

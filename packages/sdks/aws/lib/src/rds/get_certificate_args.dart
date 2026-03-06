@@ -21,7 +21,7 @@ class GetCertificateArgs {
   /// [id] Certificate identifier. For example, `rds-ca-2019`.
   /// [latestValidTill] When enabled, returns the certificate with the latest `ValidTill`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     this.defaultForNewLaunches,
     this.id,
     this.latestValidTill,

@@ -43,7 +43,7 @@ class DbInstanceEndpointState {
   /// [privateIpAddress] The IP address of the internal endpoint.
   /// [vpcId] The virtual private cloud (VPC) ID of the internal endpoint.
   /// [vswitchId] The vSwitch ID of the internal endpoint.
-  DbInstanceEndpointState({
+  const DbInstanceEndpointState({
     this.connectionString,
     this.connectionStringPrefix,
     this.dbInstanceEndpointDescription,

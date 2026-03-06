@@ -28,7 +28,7 @@ class GetUserPoolSchemaAttribute {
   /// [numberAttributeConstraints] Required.
   /// [required] - Whether the attribute is required during user registration.
   /// [stringAttributeConstraints] Required.
-  GetUserPoolSchemaAttribute({
+  const GetUserPoolSchemaAttribute({
     required this.attributeDataType,
     required this.developerOnlyAttribute,
     required this.mutable,

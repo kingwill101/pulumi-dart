@@ -17,7 +17,7 @@ class GetDiskIamPolicyComputeBetaArgs {
   /// [project] Optional.
   /// [resource] Required.
   /// [zone] Required.
-  GetDiskIamPolicyComputeBetaArgs({
+  const GetDiskIamPolicyComputeBetaArgs({
     this.optionsRequestedPolicyVersion,
     this.project,
     required this.resource,

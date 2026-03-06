@@ -18,7 +18,7 @@ class UptimeCheckConfigContentMatcher {
   /// [content] String or regex content to match (max 1024 bytes)
   /// [jsonPathMatcher] Information needed to perform a JSONPath content match. Used for `ContentMatcherOption::MATCHES_JSON_PATH` and `ContentMatcherOption::NOT_MATCHES_JSON_PATH`.
   /// [matcher] The type of content matcher that will be applied to the server output, compared to the content string when the check is run.
-  UptimeCheckConfigContentMatcher({
+  const UptimeCheckConfigContentMatcher({
     required this.content,
     this.jsonPathMatcher,
     this.matcher,

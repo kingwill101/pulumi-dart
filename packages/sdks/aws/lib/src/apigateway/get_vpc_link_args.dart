@@ -19,7 +19,7 @@ class GetVpcLinkArgs {
   /// [name] Name of the API Gateway VPC Link to look up. If no API Gateway VPC Link is found with this name, an error will be returned.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags
-  GetVpcLinkArgs({
+  const GetVpcLinkArgs({
     required this.name,
     this.region,
     this.tags,

@@ -48,7 +48,7 @@ class BuildProvenance {
   /// [sourceProvenance] Details of the Source input to the build.
   /// [startTime] Time at which execution of the build was started.
   /// [triggerId] Trigger identifier if the build was triggered automatically; empty if not.
-  BuildProvenance({
+  const BuildProvenance({
     this.buildOptions,
     this.builderVersion,
     this.builtArtifacts,

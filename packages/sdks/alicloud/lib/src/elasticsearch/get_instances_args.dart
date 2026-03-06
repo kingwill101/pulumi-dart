@@ -19,7 +19,7 @@ class GetInstancesArgs {
   /// [outputFile] Optional.
   /// [tags] Optional.
   /// [version] Optional.
-  GetInstancesArgs({
+  const GetInstancesArgs({
     this.descriptionRegex,
     this.ids,
     this.outputFile,

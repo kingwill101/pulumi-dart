@@ -24,7 +24,7 @@ class GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress {
   /// [name] The name of this Virtual Machine Scale Set.
   /// [publicIpPrefixId] The ID of the public IP prefix.
   /// [version] The Internet Protocol Version of the public IP address.
-  GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress({
+  const GetVirtualMachineScaleSetNetworkInterfaceIpConfigurationPublicIpAddress({
     required this.domainNameLabel,
     required this.idleTimeoutInMinutes,
     required this.ipTags,

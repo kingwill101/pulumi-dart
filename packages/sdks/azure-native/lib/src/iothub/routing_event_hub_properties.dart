@@ -34,7 +34,7 @@ class RoutingEventHubProperties {
   /// [name] The name that identifies this endpoint. The name can only include alphanumeric characters, periods, underscores, hyphens and has a maximum length of 64 characters. The following names are reserved:  events, fileNotifications, $default. Endpoint names must be unique across endpoint types.
   /// [resourceGroup] The name of the resource group of the event hub endpoint.
   /// [subscriptionId] The subscription identifier of the event hub endpoint.
-  RoutingEventHubProperties({
+  const RoutingEventHubProperties({
     this.authenticationType,
     this.connectionString,
     this.endpointUri,

@@ -25,7 +25,7 @@ class GetEndpointKinesisSetting {
   /// [serviceAccessRoleArn] Required.
   /// [streamArn] Required.
   /// [useLargeIntegerValue] Required.
-  GetEndpointKinesisSetting({
+  const GetEndpointKinesisSetting({
     required this.includeControlDetails,
     required this.includeNullAndEmpty,
     required this.includePartitionValue,

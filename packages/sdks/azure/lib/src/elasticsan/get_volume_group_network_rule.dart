@@ -11,7 +11,7 @@ class GetVolumeGroupNetworkRule {
   /// Creates a new [GetVolumeGroupNetworkRule].
   /// [action] The action to take when an access attempt to this Elastic SAN Volume Group from this Subnet is made.
   /// [subnetId] The ID of the Subnet from which access to this Elastic SAN Volume Group is allowed.
-  GetVolumeGroupNetworkRule({
+  const GetVolumeGroupNetworkRule({
     required this.action,
     required this.subnetId,
   });

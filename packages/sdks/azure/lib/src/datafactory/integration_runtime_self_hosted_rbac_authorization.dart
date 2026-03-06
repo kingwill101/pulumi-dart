@@ -12,7 +12,7 @@ class IntegrationRuntimeSelfHostedRbacAuthorization {
 
   /// Creates a new [IntegrationRuntimeSelfHostedRbacAuthorization].
   /// [resourceId] The resource identifier of the integration runtime to be shared.
-  IntegrationRuntimeSelfHostedRbacAuthorization({
+  const IntegrationRuntimeSelfHostedRbacAuthorization({
     required this.resourceId,
   });
 

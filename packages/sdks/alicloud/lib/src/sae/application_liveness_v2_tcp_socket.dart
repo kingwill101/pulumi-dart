@@ -7,7 +7,7 @@ class ApplicationLivenessV2TcpSocket {
 
   /// Creates a new [ApplicationLivenessV2TcpSocket].
   /// [port] Optional.
-  ApplicationLivenessV2TcpSocket({
+  const ApplicationLivenessV2TcpSocket({
     this.port,
   });
 

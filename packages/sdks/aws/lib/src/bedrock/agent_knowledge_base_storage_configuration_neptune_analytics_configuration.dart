@@ -12,7 +12,7 @@ class AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration {
   /// Creates a new [AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration].
   /// [fieldMapping] The names of the fields to which to map information about the vector store. This block supports the following arguments:
   /// [graphArn] ARN of the Neptune Analytics vector store.
-  AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration({
+  const AgentKnowledgeBaseStorageConfigurationNeptuneAnalyticsConfiguration({
     required this.fieldMapping,
     required this.graphArn,
   });

@@ -14,7 +14,7 @@ class FailoverGroupPartnerServer {
   /// [id] The ID of a partner SQL server to include in the failover group.
   /// [location] The location of the partner server.
   /// [role] The replication role of the partner server. Possible values include `Primary` or `Secondary`.
-  FailoverGroupPartnerServer({
+  const FailoverGroupPartnerServer({
     required this.id,
     this.location,
     this.role,

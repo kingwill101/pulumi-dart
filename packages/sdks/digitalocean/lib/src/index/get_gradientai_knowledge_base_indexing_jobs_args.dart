@@ -11,7 +11,7 @@ class GetGradientaiKnowledgeBaseIndexingJobsArgs {
 
   /// Creates a new [GetGradientaiKnowledgeBaseIndexingJobsArgs].
   /// [knowledgeBaseUuid] Required.
-  GetGradientaiKnowledgeBaseIndexingJobsArgs({
+  const GetGradientaiKnowledgeBaseIndexingJobsArgs({
     required this.knowledgeBaseUuid,
   });
 

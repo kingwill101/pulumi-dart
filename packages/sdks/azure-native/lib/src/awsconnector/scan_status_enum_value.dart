@@ -9,7 +9,7 @@ class ScanStatusEnumValue {
 
   /// Creates a new [ScanStatusEnumValue].
   /// [value] Property value
-  ScanStatusEnumValue({
+  const ScanStatusEnumValue({
     this.value,
   });
 

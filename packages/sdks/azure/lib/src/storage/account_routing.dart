@@ -14,7 +14,7 @@ class AccountRouting {
   /// [choice] Specifies the kind of network routing opted by the user. Possible values are `InternetRouting` and `MicrosoftRouting`. Defaults to `MicrosoftRouting`.
   /// [publishInternetEndpoints] Should internet routing storage endpoints be published? Defaults to `false`.
   /// [publishMicrosoftEndpoints] Should Microsoft routing storage endpoints be published? Defaults to `false`.
-  AccountRouting({
+  const AccountRouting({
     this.choice,
     this.publishInternetEndpoints,
     this.publishMicrosoftEndpoints,

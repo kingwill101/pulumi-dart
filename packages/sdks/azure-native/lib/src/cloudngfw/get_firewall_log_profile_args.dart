@@ -15,7 +15,7 @@ class GetFirewallLogProfileArgs {
   /// Creates a new [GetFirewallLogProfileArgs].
   /// [firewallName] Firewall resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFirewallLogProfileArgs({
+  const GetFirewallLogProfileArgs({
     required this.firewallName,
     required this.resourceGroupName,
   });

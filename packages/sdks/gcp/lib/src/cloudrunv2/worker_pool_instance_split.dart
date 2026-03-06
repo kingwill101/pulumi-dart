@@ -15,7 +15,7 @@ class WorkerPoolInstanceSplit {
   /// [percent] Specifies percent of the instance split to this Revision. This defaults to zero if unspecified.
   /// [revision] Revision to which to assign this portion of instances, if split allocation is by revision.
   /// [type] The allocation type for this instance split.
-  WorkerPoolInstanceSplit({
+  const WorkerPoolInstanceSplit({
     this.percent,
     this.revision,
     this.type,

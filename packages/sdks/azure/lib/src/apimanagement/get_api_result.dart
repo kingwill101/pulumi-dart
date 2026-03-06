@@ -54,7 +54,7 @@ class GetApiResult {
   /// [subscriptionRequired] Should this API require a subscription key?
   /// [version] The Version number of this API, if this API is versioned.
   /// [versionSetId] The ID of the Version Set which this API is associated with.
-  GetApiResult({
+  const GetApiResult({
     required this.apiManagementName,
     required this.description,
     required this.displayName,

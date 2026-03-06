@@ -13,7 +13,7 @@ class NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig {
   /// Creates a new [NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig].
   /// [port] The port on which to receive traffic.
   /// [publicIpAddressId] The ID of the Public IP Address on which to receive traffic.
-  NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig({
+  const NextGenerationFirewallVirtualNetworkPanoramaDestinationNatFrontendConfig({
     required this.port,
     required this.publicIpAddressId,
   });

@@ -9,7 +9,7 @@ class GetContactsRotationRecurrenceMonthlySettingHandOffTime {
   /// Creates a new [GetContactsRotationRecurrenceMonthlySettingHandOffTime].
   /// [hourOfDay] Required.
   /// [minuteOfHour] Required.
-  GetContactsRotationRecurrenceMonthlySettingHandOffTime({
+  const GetContactsRotationRecurrenceMonthlySettingHandOffTime({
     required this.hourOfDay,
     required this.minuteOfHour,
   });

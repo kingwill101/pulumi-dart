@@ -9,7 +9,7 @@ class StorageSpacesPropertiesError {
   /// Creates a new [StorageSpacesPropertiesError].
   /// [code] Optional.
   /// [message] Optional.
-  StorageSpacesPropertiesError({
+  const StorageSpacesPropertiesError({
     this.code,
     this.message,
   });

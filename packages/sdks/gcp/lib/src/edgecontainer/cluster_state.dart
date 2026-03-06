@@ -119,7 +119,7 @@ class ClusterState {
   /// [systemAddonsConfig] Config that customers are allowed to define for GDCE system add-ons.
   /// [targetVersion] The target cluster version. For example: "1.5.0".
   /// [updateTime] (Output)
-  ClusterState({
+  const ClusterState({
     this.authorization,
     this.clusterCaCertificate,
     this.controlPlane,

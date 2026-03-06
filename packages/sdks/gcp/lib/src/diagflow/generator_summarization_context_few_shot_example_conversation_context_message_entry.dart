@@ -18,7 +18,7 @@ class GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry
   /// [languageCode] Optional. The language of the text.
   /// [role] Optional. Participant role of the message.
   /// [text] Optional. Transcript content of the message.
-  GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry({
+  const GeneratorSummarizationContextFewShotExampleConversationContextMessageEntry({
     this.createTime,
     this.languageCode,
     this.role,

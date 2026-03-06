@@ -12,7 +12,7 @@ class DomainOsNvRamSourceReservationsSourcePipe {
   /// Creates a new [DomainOsNvRamSourceReservationsSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainOsNvRamSourceReservationsSourcePipe({
+  const DomainOsNvRamSourceReservationsSourcePipe({
     required this.path,
     this.secLabels,
   });

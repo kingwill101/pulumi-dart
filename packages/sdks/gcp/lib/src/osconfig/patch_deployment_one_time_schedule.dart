@@ -9,7 +9,7 @@ class PatchDeploymentOneTimeSchedule {
 
   /// Creates a new [PatchDeploymentOneTimeSchedule].
   /// [executeTime] The desired patch job execution time. A timestamp in RFC3339 UTC "Zulu" format,
-  PatchDeploymentOneTimeSchedule({
+  const PatchDeploymentOneTimeSchedule({
     required this.executeTime,
   });
 

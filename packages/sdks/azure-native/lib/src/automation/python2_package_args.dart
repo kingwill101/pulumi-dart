@@ -25,7 +25,7 @@ class Python2PackageArgs {
   /// [packageName] The name of python package.
   /// [resourceGroupName] Name of an Azure Resource group.
   /// [tags] Gets or sets the tags attached to the resource.
-  Python2PackageArgs({
+  const Python2PackageArgs({
     required this.automationAccountName,
     required this.contentLink,
     this.packageName,

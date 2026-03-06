@@ -21,7 +21,7 @@ class ApplicationMonitoringConfiguration {
   /// [managedPersistenceMonitoringConfiguration] The managed log persistence configuration for monitoring logs.
   /// [prometheusMonitoringConfiguration] The Prometheus configuration for monitoring metrics.
   /// [s3MonitoringConfiguration] The Amazon S3 configuration for monitoring log publishing.
-  ApplicationMonitoringConfiguration({
+  const ApplicationMonitoringConfiguration({
     this.cloudwatchLoggingConfiguration,
     this.managedPersistenceMonitoringConfiguration,
     this.prometheusMonitoringConfiguration,

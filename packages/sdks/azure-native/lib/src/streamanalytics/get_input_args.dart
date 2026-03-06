@@ -18,7 +18,7 @@ class GetInputArgs {
   /// [inputName] The name of the input.
   /// [jobName] The name of the streaming job.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetInputArgs({
+  const GetInputArgs({
     required this.inputName,
     required this.jobName,
     required this.resourceGroupName,

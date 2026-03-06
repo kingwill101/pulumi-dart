@@ -11,7 +11,7 @@ class DomainDevicesParallelTarget {
   /// Creates a new [DomainDevicesParallelTarget].
   /// [port] Specifies the port number for the target parallel device, determining its connection point.
   /// [type] Sets the type attribute for the target parallel device, defining its interface specifications.
-  DomainDevicesParallelTarget({
+  const DomainDevicesParallelTarget({
     this.port,
     this.type,
   });

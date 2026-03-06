@@ -33,7 +33,7 @@ class HttpIncomingResponseHeaderModificationRuleArgs {
   /// [sequence] Order of rule execution. The smaller the value, the higher the priority for execution.
   /// [siteId] The site ID.
   /// [siteVersion] The version number of the site configuration. For sites that have enabled configuration version management, this parameter can be used to specify the effective version of the configuration site, which defaults to version 0.
-  HttpIncomingResponseHeaderModificationRuleArgs({
+  const HttpIncomingResponseHeaderModificationRuleArgs({
     required this.responseHeaderModifications,
     this.rule,
     this.ruleEnable,

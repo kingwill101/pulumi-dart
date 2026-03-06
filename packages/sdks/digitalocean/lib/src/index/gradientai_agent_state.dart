@@ -137,7 +137,7 @@ class GradientaiAgentState {
   /// [updatedAt] Timestamp when the Agent was updated
   /// [url] URL for the Agent
   /// [userId] User ID linked with the Agent
-  GradientaiAgentState({
+  const GradientaiAgentState({
     this.agentGuardrails,
     this.anthropicApiKeys,
     this.anthropicKeyUuid,

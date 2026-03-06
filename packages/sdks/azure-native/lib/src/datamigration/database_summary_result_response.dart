@@ -36,7 +36,7 @@ class DatabaseSummaryResultResponse {
   /// [startedOn] Migration start time
   /// [state] Current state of migration
   /// [statusMessage] Status message
-  DatabaseSummaryResultResponse({
+  const DatabaseSummaryResultResponse({
     required this.endedOn,
     required this.errorPrefix,
     required this.itemsCompletedCount,

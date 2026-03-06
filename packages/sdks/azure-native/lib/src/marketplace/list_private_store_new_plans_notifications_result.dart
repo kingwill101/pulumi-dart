@@ -9,7 +9,7 @@ class ListPrivateStoreNewPlansNotificationsResult {
 
   /// Creates a new [ListPrivateStoreNewPlansNotificationsResult].
   /// [newPlansNotifications] Optional.
-  ListPrivateStoreNewPlansNotificationsResult({
+  const ListPrivateStoreNewPlansNotificationsResult({
     this.newPlansNotifications,
   });
 

@@ -59,7 +59,7 @@ class DatabaseArgs {
   /// [relationalDatabaseName] Name to use for your Lightsail database resource. Names be unique within each AWS Region in your Lightsail account.
   /// [skipFinalSnapshot] Whether a final database snapshot is created before your database is deleted. If true is specified, no database snapshot is created. If false is specified, a database snapshot is created before your database is deleted. You must specify the final relational database snapshot name parameter if the skip final snapshot parameter is false.
   /// [tags] Map of tags to assign to the resource. To create a key-only tag, use an empty string as the value. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.applyImmediately,
     this.availabilityZone,
     this.backupRetentionEnabled,

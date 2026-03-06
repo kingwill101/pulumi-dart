@@ -13,7 +13,7 @@ class GoogleCloudDataplexV1DataScanExecutionSpecResponse {
   /// Creates a new [GoogleCloudDataplexV1DataScanExecutionSpecResponse].
   /// [field] Immutable. The unnested field (of type Date or Timestamp) that contains values which monotonically increase over time.If not specified, a data scan will run for all data in the table.
   /// [trigger] Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is OnDemand, which means the scan will not run until the user calls RunDataScan API.
-  GoogleCloudDataplexV1DataScanExecutionSpecResponse({
+  const GoogleCloudDataplexV1DataScanExecutionSpecResponse({
     required this.field,
     required this.trigger,
   });

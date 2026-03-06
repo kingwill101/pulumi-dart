@@ -11,7 +11,7 @@ class GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter {
   /// Creates a new [GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter].
   /// [filter] The filter pattern to use for excluding image tags from the mutability setting.
   /// [filterType] The type of filter to use.
-  GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter({
+  const GetRepositoryCreationTemplateImageTagMutabilityExclusionFilter({
     required this.filter,
     required this.filterType,
   });

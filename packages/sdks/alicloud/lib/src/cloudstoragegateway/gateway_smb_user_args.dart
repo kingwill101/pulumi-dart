@@ -18,7 +18,7 @@ class GatewaySmbUserArgs {
   /// [gatewayId] The Gateway ID of the Gateway SMB User.
   /// [password] The password of the Gateway SMB User.
   /// [username] The username of the Gateway SMB User.
-  GatewaySmbUserArgs({
+  const GatewaySmbUserArgs({
     required this.gatewayId,
     required this.password,
     required this.username,

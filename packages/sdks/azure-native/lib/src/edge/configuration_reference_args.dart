@@ -19,7 +19,7 @@ class ConfigurationReferenceArgs {
   /// [configurationReferenceName] The name of the ConfigurationReference
   /// [properties] The resource-specific properties for this resource.
   /// [resourceUri] The fully qualified Azure Resource manager identifier of the resource.
-  ConfigurationReferenceArgs({
+  const ConfigurationReferenceArgs({
     this.configurationReferenceName,
     this.properties,
     required this.resourceUri,

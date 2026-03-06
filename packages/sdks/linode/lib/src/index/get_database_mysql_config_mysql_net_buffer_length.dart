@@ -17,7 +17,7 @@ class GetDatabaseMysqlConfigMysqlNetBufferLength {
   /// [minimum] Required.
   /// [requiresRestart] Required.
   /// [type] Required.
-  GetDatabaseMysqlConfigMysqlNetBufferLength({
+  const GetDatabaseMysqlConfigMysqlNetBufferLength({
     required this.description,
     required this.example,
     required this.maximum,

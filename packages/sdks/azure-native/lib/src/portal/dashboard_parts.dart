@@ -14,7 +14,7 @@ class DashboardParts {
   /// Creates a new [DashboardParts].
   /// [metadata] The dashboard's part metadata.
   /// [position] The dashboard's part position.
-  DashboardParts({
+  const DashboardParts({
     this.metadata,
     required this.position,
   });

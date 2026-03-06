@@ -15,7 +15,7 @@ class GetCloudVmClusterArgs {
   /// Creates a new [GetCloudVmClusterArgs].
   /// [name] The name of this Cloud VM Cluster.
   /// [resourceGroupName] The name of the Resource Group where the Cloud VM Cluster exists.
-  GetCloudVmClusterArgs({
+  const GetCloudVmClusterArgs({
     required this.name,
     required this.resourceGroupName,
   });

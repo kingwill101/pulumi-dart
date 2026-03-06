@@ -11,7 +11,7 @@ class ClusterEncryptionDetail {
   /// Creates a new [ClusterEncryptionDetail].
   /// [encryptionStatus] The status of encryption for the DSQL Cluster.
   /// [encryptionType] The type of encryption that protects the data on the DSQL Cluster.
-  ClusterEncryptionDetail({
+  const ClusterEncryptionDetail({
     required this.encryptionStatus,
     required this.encryptionType,
   });

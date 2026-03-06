@@ -23,7 +23,7 @@ class CustomResourceDefinitionApiextensionsK8sIoV1beta1 {
   /// [metadata] Optional.
   /// [spec] spec describes how the user wants the resources to appear
   /// [status] status indicates the actual state of the CustomResourceDefinition
-  CustomResourceDefinitionApiextensionsK8sIoV1beta1({
+  const CustomResourceDefinitionApiextensionsK8sIoV1beta1({
     this.apiVersion,
     this.kind,
     this.metadata,

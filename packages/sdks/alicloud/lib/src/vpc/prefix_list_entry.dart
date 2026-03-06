@@ -11,7 +11,7 @@ class PrefixListEntry {
   /// Creates a new [PrefixListEntry].
   /// [cidr] The CIDR address block of the prefix list.
   /// [description] The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-  PrefixListEntry({
+  const PrefixListEntry({
     this.cidr,
     this.description,
   });

@@ -10,7 +10,7 @@ class ListAccountChannelTypesResult {
 
   /// Creates a new [ListAccountChannelTypesResult].
   /// [value] Channel descriptions
-  ListAccountChannelTypesResult({
+  const ListAccountChannelTypesResult({
     this.value,
   });
 

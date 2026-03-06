@@ -24,7 +24,7 @@ class SparkStandaloneAutoscalingConfig {
   /// [scaleDownMinWorkerFraction] Optional. Minimum scale-down threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2 worker scale-down for the cluster to scale. A threshold of 0 means the autoscaler will scale down on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
   /// [scaleUpFactor] Fraction of required workers to add to Spark Standalone clusters. A scale-up factor of 1.0 will result in scaling up so that there are no more required workers for the Spark Job (more aggressive scaling). A scale-up factor closer to 0 will result in a smaller magnitude of scaling up (less aggressive scaling).Bounds: 0.0, 1.0.
   /// [scaleUpMinWorkerFraction] Optional. Minimum scale-up threshold as a fraction of total cluster size before scaling occurs. For example, in a 20-worker cluster, a threshold of 0.1 means the autoscaler must recommend at least a 2-worker scale-up for the cluster to scale. A threshold of 0 means the autoscaler will scale up on any recommended change.Bounds: 0.0, 1.0. Default: 0.0.
-  SparkStandaloneAutoscalingConfig({
+  const SparkStandaloneAutoscalingConfig({
     required this.gracefulDecommissionTimeout,
     this.removeOnlyIdleWorkers,
     required this.scaleDownFactor,

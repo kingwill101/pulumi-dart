@@ -8,7 +8,7 @@ class AgentPromptVariantGenAiResourceAgent {
 
   /// Creates a new [AgentPromptVariantGenAiResourceAgent].
   /// [agentIdentifier] ARN of the agent with which to use the prompt.
-  AgentPromptVariantGenAiResourceAgent({
+  const AgentPromptVariantGenAiResourceAgent({
     required this.agentIdentifier,
   });
 

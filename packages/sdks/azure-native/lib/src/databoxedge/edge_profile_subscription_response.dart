@@ -29,7 +29,7 @@ class EdgeProfileSubscriptionResponse {
   /// [state] Optional.
   /// [subscriptionId] Optional.
   /// [tenantId] Optional.
-  EdgeProfileSubscriptionResponse({
+  const EdgeProfileSubscriptionResponse({
     this.id,
     this.locationPlacementId,
     this.quotaId,

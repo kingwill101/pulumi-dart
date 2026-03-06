@@ -13,7 +13,7 @@ class WorkstationConfigPersistentDirectory {
   /// Creates a new [WorkstationConfigPersistentDirectory].
   /// [gcePd] A directory to persist across workstation sessions, backed by a Compute Engine regional persistent disk. Can only be updated if not empty during creation.
   /// [mountPath] Location of this directory in the running workstation.
-  WorkstationConfigPersistentDirectory({
+  const WorkstationConfigPersistentDirectory({
     this.gcePd,
     this.mountPath,
   });

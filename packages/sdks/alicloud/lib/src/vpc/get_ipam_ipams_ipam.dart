@@ -47,7 +47,7 @@ class GetIpamIpamsIpam {
   /// [resourceGroupId] The ID of the resource group.
   /// [status] The status of the resource.
   /// [tags] The tag of the resource.
-  GetIpamIpamsIpam({
+  const GetIpamIpamsIpam({
     required this.createTime,
     required this.defaultResourceDiscoveryAssociationId,
     required this.defaultResourceDiscoveryId,

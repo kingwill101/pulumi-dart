@@ -18,7 +18,7 @@ class ApplicationAccessPointArgs {
   /// [applicationAccessPointName] Application Access Point Name.
   /// [description] Description .
   /// [policies] The policies that have bound to the Application Access Point (AAP).
-  ApplicationAccessPointArgs({
+  const ApplicationAccessPointArgs({
     required this.applicationAccessPointName,
     this.description,
     required this.policies,

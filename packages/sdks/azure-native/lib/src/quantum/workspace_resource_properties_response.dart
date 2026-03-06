@@ -25,7 +25,7 @@ class WorkspaceResourcePropertiesResponse {
   /// [provisioningState] Provisioning status field
   /// [storageAccount] ARM Resource Id of the storage account associated with this workspace.
   /// [usable] Whether the current workspace is ready to accept Jobs.
-  WorkspaceResourcePropertiesResponse({
+  const WorkspaceResourcePropertiesResponse({
     this.apiKeyEnabled,
     required this.endpointUri,
     this.providers,

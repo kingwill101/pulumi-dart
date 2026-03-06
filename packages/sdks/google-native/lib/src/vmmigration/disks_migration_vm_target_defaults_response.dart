@@ -52,7 +52,7 @@ class DisksMigrationVmTargetDefaultsResponse {
   /// [secureBoot] Optional. Defines whether the instance has Secure Boot enabled. This can be set to true only if the VM boot option is EFI.
   /// [serviceAccount] Optional. The service account to associate the VM with.
   /// [vmName] The name of the VM to create.
-  DisksMigrationVmTargetDefaultsResponse({
+  const DisksMigrationVmTargetDefaultsResponse({
     required this.additionalLicenses,
     required this.bootDiskDefaults,
     required this.computeScheduling,

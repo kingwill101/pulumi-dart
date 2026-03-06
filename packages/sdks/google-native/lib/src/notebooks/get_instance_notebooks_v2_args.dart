@@ -15,7 +15,7 @@ class GetInstanceNotebooksV2Args {
   /// [instanceId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetInstanceNotebooksV2Args({
+  const GetInstanceNotebooksV2Args({
     required this.instanceId,
     required this.location,
     this.project,

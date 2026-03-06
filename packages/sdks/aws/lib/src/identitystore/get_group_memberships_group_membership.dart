@@ -17,7 +17,7 @@ class GetGroupMembershipsGroupMembership {
   /// [identityStoreId] Identity Store ID associated with the Single Sign-On Instance.
   /// [memberId] An object containing the identifier of a group member. See `member_id` below.
   /// [membershipId] Required.
-  GetGroupMembershipsGroupMembership({
+  const GetGroupMembershipsGroupMembership({
     required this.groupId,
     required this.identityStoreId,
     required this.memberId,

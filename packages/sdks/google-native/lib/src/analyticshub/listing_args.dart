@@ -56,7 +56,7 @@ class ListingArgs {
   /// [publisher] Optional. Details of the publisher who owns the listing and who can share the source data.
   /// [requestAccess] Optional. Email or URL of the request access of the listing. Subscribers can use this reference to request access. Max Length: 1000 bytes.
   /// [restrictedExportConfig] Optional. If set, restricted export configuration will be propagated and enforced on the linked dataset.
-  ListingArgs({
+  const ListingArgs({
     required this.bigqueryDataset,
     this.categories,
     required this.dataExchangeId,

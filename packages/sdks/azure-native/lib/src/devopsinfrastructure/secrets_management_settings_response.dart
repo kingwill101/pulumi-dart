@@ -18,7 +18,7 @@ class SecretsManagementSettingsResponse {
   /// [certificateStoreName] Name of the certificate store to use on the machine, currently 'My' and 'Root' are supported.
   /// [keyExportable] Defines if the key of the certificates should be exportable.
   /// [observedCertificates] The list of certificates to install on all machines in the pool.
-  SecretsManagementSettingsResponse({
+  const SecretsManagementSettingsResponse({
     this.certificateStoreLocation,
     this.certificateStoreName,
     required this.keyExportable,

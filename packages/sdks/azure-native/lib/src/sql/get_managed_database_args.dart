@@ -18,7 +18,7 @@ class GetManagedDatabaseArgs {
   /// [databaseName] The name of the database.
   /// [managedInstanceName] The name of the managed instance.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  GetManagedDatabaseArgs({
+  const GetManagedDatabaseArgs({
     required this.databaseName,
     required this.managedInstanceName,
     required this.resourceGroupName,

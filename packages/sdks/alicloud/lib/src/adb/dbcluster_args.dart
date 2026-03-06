@@ -107,7 +107,7 @@ class DBClusterArgs {
   /// [vpcId] The vpc ID of the resource.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The zone ID of the resource.
-  DBClusterArgs({
+  const DBClusterArgs({
     this.autoRenewPeriod,
     this.computeResource,
     required this.dbClusterCategory,

@@ -41,7 +41,7 @@ class GetHoneypotProbesProbe {
   /// [status] The status of the resource.
   /// [uuid] Machine uuid. Has a value when the type is `host_probe`.
   /// [vpcId] The ID of the VPC. Has a value when the type is `vpc_black_hole_probe`.
-  GetHoneypotProbesProbe({
+  const GetHoneypotProbesProbe({
     required this.arp,
     required this.controlNodeId,
     required this.displayName,

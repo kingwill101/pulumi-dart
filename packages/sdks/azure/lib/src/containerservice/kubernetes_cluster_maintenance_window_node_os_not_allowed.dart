@@ -11,7 +11,7 @@ class KubernetesClusterMaintenanceWindowNodeOsNotAllowed {
   /// Creates a new [KubernetesClusterMaintenanceWindowNodeOsNotAllowed].
   /// [end] The end of a time span, formatted as an RFC3339 string.
   /// [start] The start of a time span, formatted as an RFC3339 string.
-  KubernetesClusterMaintenanceWindowNodeOsNotAllowed({
+  const KubernetesClusterMaintenanceWindowNodeOsNotAllowed({
     required this.end,
     required this.start,
   });

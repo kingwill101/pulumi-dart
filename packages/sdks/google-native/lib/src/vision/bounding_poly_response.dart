@@ -14,7 +14,7 @@ class BoundingPolyResponse {
   /// Creates a new [BoundingPolyResponse].
   /// [normalizedVertices] The bounding polygon normalized vertices.
   /// [vertices] The bounding polygon vertices.
-  BoundingPolyResponse({
+  const BoundingPolyResponse({
     required this.normalizedVertices,
     required this.vertices,
   });

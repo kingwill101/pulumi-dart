@@ -12,7 +12,7 @@ class PrometheusRuleResolveConfigurationResponse {
   /// Creates a new [PrometheusRuleResolveConfigurationResponse].
   /// [autoResolved] Enable alert auto-resolution.
   /// [timeToResolve] Alert auto-resolution timeout.
-  PrometheusRuleResolveConfigurationResponse({
+  const PrometheusRuleResolveConfigurationResponse({
     this.autoResolved,
     this.timeToResolve,
   });

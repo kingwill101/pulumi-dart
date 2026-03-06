@@ -29,7 +29,7 @@ class GetIngressesIngress {
   /// [listenerPort] SLB listening port.
   /// [namespaceId] The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
   /// [slbId] SLB ID.
-  GetIngressesIngress({
+  const GetIngressesIngress({
     required this.certId,
     required this.defaultRule,
     required this.description,

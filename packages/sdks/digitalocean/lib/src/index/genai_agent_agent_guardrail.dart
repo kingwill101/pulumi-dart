@@ -41,7 +41,7 @@ class GenaiAgentAgentGuardrail {
   /// [type] Type of the Guardrail
   /// [updatedAt] Updated At timestamp for the Guardrail
   /// [uuid] Guardrail UUID
-  GenaiAgentAgentGuardrail({
+  const GenaiAgentAgentGuardrail({
     this.agentUuid,
     this.createdAt,
     this.defaultResponse,

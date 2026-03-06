@@ -42,7 +42,7 @@ class GetAnycastEipAddressesArgs {
   /// [paymentType] The payment model of Anycast EIP instance. `PayAsYouGo`: Refers to the post-paid mode. Default value is `PayAsYouGo`.
   /// [serviceLocation] Anycast EIP instance access area. `international`: Refers to areas outside of Mainland China.
   /// [status] IP status。- `Associating`, `Unassociating`, `Allocated`, `Associated`, `Modifying`, `Releasing`, `Released`. Valid values: `Allocated`, `Associated`.
-  GetAnycastEipAddressesArgs({
+  const GetAnycastEipAddressesArgs({
     this.anycastEipAddressName,
     this.bindInstanceIds,
     this.businessStatus,

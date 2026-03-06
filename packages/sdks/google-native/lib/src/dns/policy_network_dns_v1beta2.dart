@@ -10,7 +10,7 @@ class PolicyNetworkDnsV1beta2 {
   /// Creates a new [PolicyNetworkDnsV1beta2].
   /// [kind] Optional.
   /// [networkUrl] The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
-  PolicyNetworkDnsV1beta2({
+  const PolicyNetworkDnsV1beta2({
     this.kind,
     this.networkUrl,
   });

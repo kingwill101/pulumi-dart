@@ -65,7 +65,7 @@ class BackupState {
   /// [vaultName] Name of the backup vault to store the backup in.
   /// [volumeRegion] Region of the volume from which the backup was created.
   /// [volumeUsageBytes] Size of the file system when the backup was created. When creating a new volume from the backup, the volume capacity will have to be at least as big.
-  BackupState({
+  const BackupState({
     this.backupRegion,
     this.backupType,
     this.chainStorageBytes,

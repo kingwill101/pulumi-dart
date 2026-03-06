@@ -19,7 +19,7 @@ class ManagedIdentity {
   /// [identityType] Enum to determine identity framework.
   /// [objectId] Specifies a user-assigned identity by object ID. For system-assigned, do not set this field.
   /// [resourceId] Specifies a user-assigned identity by ARM resource ID. For system-assigned, do not set this field.
-  ManagedIdentity({
+  const ManagedIdentity({
     this.clientId,
     required this.identityType,
     this.objectId,

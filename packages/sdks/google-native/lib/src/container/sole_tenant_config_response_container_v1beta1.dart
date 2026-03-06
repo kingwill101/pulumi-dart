@@ -10,7 +10,7 @@ class SoleTenantConfigResponseContainerV1beta1 {
 
   /// Creates a new [SoleTenantConfigResponseContainerV1beta1].
   /// [nodeAffinities] NodeAffinities used to match to a shared sole tenant node group.
-  SoleTenantConfigResponseContainerV1beta1({
+  const SoleTenantConfigResponseContainerV1beta1({
     required this.nodeAffinities,
   });
 

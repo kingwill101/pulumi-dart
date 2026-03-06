@@ -43,7 +43,7 @@ class AppEngineServiceIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [service] Used to find the parent resource to bind the IAM policy to
-  AppEngineServiceIamBindingArgs({
+  const AppEngineServiceIamBindingArgs({
     required this.appId,
     this.condition,
     required this.members,

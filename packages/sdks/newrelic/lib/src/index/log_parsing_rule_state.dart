@@ -33,7 +33,7 @@ class LogParsingRuleState {
   /// [matched] Whether the Grok pattern matched.
   /// [name] Name of rule.
   /// [nrql] The NRQL to match events to the parsing rule.
-  LogParsingRuleState({
+  const LogParsingRuleState({
     this.accountId,
     this.attribute,
     this.deleted,

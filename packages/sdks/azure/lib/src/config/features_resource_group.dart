@@ -7,7 +7,7 @@ class FeaturesResourceGroup {
 
   /// Creates a new [FeaturesResourceGroup].
   /// [preventDeletionIfContainsResources] Optional.
-  FeaturesResourceGroup({
+  const FeaturesResourceGroup({
     this.preventDeletionIfContainsResources,
   });
 

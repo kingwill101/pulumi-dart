@@ -8,7 +8,7 @@ class ServerBindingComputeBeta {
 
   /// Creates a new [ServerBindingComputeBeta].
   /// [type] Optional.
-  ServerBindingComputeBeta({
+  const ServerBindingComputeBeta({
     this.type,
   });
 

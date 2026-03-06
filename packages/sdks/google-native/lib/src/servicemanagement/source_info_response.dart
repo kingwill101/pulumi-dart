@@ -9,7 +9,7 @@ class SourceInfoResponse {
 
   /// Creates a new [SourceInfoResponse].
   /// [sourceFiles] All files used during config generation.
-  SourceInfoResponse({
+  const SourceInfoResponse({
     required this.sourceFiles,
   });
 

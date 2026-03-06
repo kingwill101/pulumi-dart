@@ -18,7 +18,7 @@ class GetStorageAccountCredentialArgs {
   /// [deviceName] The device name.
   /// [name] The storage account credential name.
   /// [resourceGroupName] The resource group name.
-  GetStorageAccountCredentialArgs({
+  const GetStorageAccountCredentialArgs({
     required this.deviceName,
     required this.name,
     required this.resourceGroupName,

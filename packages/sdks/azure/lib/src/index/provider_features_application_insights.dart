@@ -7,7 +7,7 @@ class ProviderFeaturesApplicationInsights {
 
   /// Creates a new [ProviderFeaturesApplicationInsights].
   /// [disableGeneratedRule] Optional.
-  ProviderFeaturesApplicationInsights({
+  const ProviderFeaturesApplicationInsights({
     this.disableGeneratedRule,
   });
 

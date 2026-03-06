@@ -24,7 +24,7 @@ class Condition {
   /// [svc] This is deprecated and has no effect. Do not use.
   /// [sys] This is deprecated and has no effect. Do not use.
   /// [values] This is deprecated and has no effect. Do not use.
-  Condition({
+  const Condition({
     this.iam,
     this.op,
     this.svc,

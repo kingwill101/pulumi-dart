@@ -56,7 +56,7 @@ class SnapshotArgs {
   /// [sourceUri] Specifies the URI to a Managed or Unmanaged Disk. Changing this forces a new resource to be created.
   /// [storageAccountId] Specifies the ID of an storage account. Used with `source_uri` to allow authorization during import of unmanaged blobs from a different subscription. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  SnapshotArgs({
+  const SnapshotArgs({
     required this.createOption,
     this.diskAccessId,
     this.diskSizeGb,

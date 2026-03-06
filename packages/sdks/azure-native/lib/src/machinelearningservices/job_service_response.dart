@@ -29,7 +29,7 @@ class JobServiceResponse {
   /// [port] Port for endpoint.
   /// [properties] Additional properties to set on the endpoint.
   /// [status] Status of endpoint.
-  JobServiceResponse({
+  const JobServiceResponse({
     this.endpoint,
     required this.errorMessage,
     this.jobServiceType,

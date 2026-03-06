@@ -18,7 +18,7 @@ class NodeConfigDefaultsContainerV1beta1 {
   /// [gcfsConfig] GCFS (Google Container File System, also known as Riptide) options.
   /// [hostMaintenancePolicy] HostMaintenancePolicy contains the desired maintenance policy for the Google Compute Engine hosts.
   /// [loggingConfig] Logging configuration for node pools.
-  NodeConfigDefaultsContainerV1beta1({
+  const NodeConfigDefaultsContainerV1beta1({
     this.gcfsConfig,
     this.hostMaintenancePolicy,
     this.loggingConfig,

@@ -36,7 +36,7 @@ class HybridRunbookWorkerState {
   /// [workerId] Specify the ID of this HybridWorker in UUID notation. Changing this forces a new Automation to be created.
   /// [workerName] The name of HybridWorker.
   /// [workerType] The type of the HybridWorker, the possible values are `HybridV1` and `HybridV2`.
-  HybridRunbookWorkerState({
+  const HybridRunbookWorkerState({
     this.automationAccountName,
     this.ip,
     this.lastSeenDateTime,

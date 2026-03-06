@@ -25,7 +25,7 @@ class DatabaseOnlineMigrationState {
   /// [ignoreDbs] A list of databases that should be ignored during migration.
   /// [source] Configuration for migration
   /// [status] The status of the online migration
-  DatabaseOnlineMigrationState({
+  const DatabaseOnlineMigrationState({
     this.clusterId,
     this.createdAt,
     this.disableSsl,

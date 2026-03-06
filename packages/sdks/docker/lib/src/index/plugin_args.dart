@@ -37,7 +37,7 @@ class PluginArgs {
   /// [grantAllPermissions] If true, grant all permissions necessary to run the plugin
   /// [grantPermissions] Grant specific permissions only
   /// [name] Docker Plugin name
-  PluginArgs({
+  const PluginArgs({
     this.alias,
     this.enableTimeout,
     this.enabled,

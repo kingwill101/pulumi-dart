@@ -8,7 +8,7 @@ class GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig {
 
   /// Creates a new [GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig].
   /// [localSsdCount] Number of raw-block local NVMe SSD disks to be attached to the node. Each local SSD is 375 GB in size.
-  GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig({
+  const GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig({
     required this.localSsdCount,
   });
 

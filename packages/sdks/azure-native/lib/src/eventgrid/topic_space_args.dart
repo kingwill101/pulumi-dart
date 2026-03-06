@@ -28,7 +28,7 @@ class TopicSpaceArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [topicSpaceName] The topic space name.
   /// [topicTemplates] The topic filters in the topic space.
-  TopicSpaceArgs({
+  const TopicSpaceArgs({
     this.description,
     required this.namespaceName,
     required this.resourceGroupName,

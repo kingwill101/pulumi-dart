@@ -32,7 +32,7 @@ class ObjectReplicationPolicyArgs {
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [rules] The storage account object replication rules.
   /// [sourceAccount] Required. Source account name. It should be full resource id if allowCrossTenantReplication set to false.
-  ObjectReplicationPolicyArgs({
+  const ObjectReplicationPolicyArgs({
     required this.accountName,
     required this.destinationAccount,
     this.metrics,

@@ -22,7 +22,7 @@ class TriggerDeveloperConnectEventConfig {
   /// [gitRepositoryLinkType] (Output)
   /// [pullRequest] Filter to match changes in pull requests.
   /// [push] Filter to match changes in refs like branches and tags.
-  TriggerDeveloperConnectEventConfig({
+  const TriggerDeveloperConnectEventConfig({
     required this.gitRepositoryLink,
     this.gitRepositoryLinkType,
     this.pullRequest,

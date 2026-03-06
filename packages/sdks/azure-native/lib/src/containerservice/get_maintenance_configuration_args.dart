@@ -18,7 +18,7 @@ class GetMaintenanceConfigurationArgs {
   /// [configName] The name of the maintenance configuration.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceName] The name of the managed cluster resource.
-  GetMaintenanceConfigurationArgs({
+  const GetMaintenanceConfigurationArgs({
     required this.configName,
     required this.resourceGroupName,
     required this.resourceName,

@@ -13,7 +13,7 @@ class RepositoryGroupRepository {
   /// Creates a new [RepositoryGroupRepository].
   /// [branchPattern] Required. The Git branch pattern used for indexing in RE2 syntax.
   /// [resource] Required. The DeveloperConnect repository full resource name, relative resource name
-  RepositoryGroupRepository({
+  const RepositoryGroupRepository({
     required this.branchPattern,
     required this.resource,
   });

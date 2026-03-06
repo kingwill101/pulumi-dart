@@ -10,7 +10,7 @@ class ManagedOpsProperties {
 
   /// Creates a new [ManagedOpsProperties].
   /// [desiredConfiguration] Desired configuration input by the user.
-  ManagedOpsProperties({
+  const ManagedOpsProperties({
     required this.desiredConfiguration,
   });
 

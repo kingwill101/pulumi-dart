@@ -11,7 +11,7 @@ class DomainCpuTuneMemoryTuneNode {
   /// Creates a new [DomainCpuTuneMemoryTuneNode].
   /// [bandwidth] Sets the bandwidth limit for a specific memory tuning node, affecting memory access speed and performance.
   /// [id] Identifies the specific tuning node for memory adjustments, linking it to allocated memory resources.
-  DomainCpuTuneMemoryTuneNode({
+  const DomainCpuTuneMemoryTuneNode({
     required this.bandwidth,
     this.id,
   });

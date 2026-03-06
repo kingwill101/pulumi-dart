@@ -8,7 +8,7 @@ class InstanceTemplateNetworkPerformanceConfig {
 
   /// Creates a new [InstanceTemplateNetworkPerformanceConfig].
   /// [totalEgressBandwidthTier] The egress bandwidth tier to enable. Possible values: TIER_1, DEFAULT
-  InstanceTemplateNetworkPerformanceConfig({
+  const InstanceTemplateNetworkPerformanceConfig({
     required this.totalEgressBandwidthTier,
   });
 

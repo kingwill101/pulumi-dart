@@ -12,7 +12,7 @@ class GetWorkloadImpactArgs {
 
   /// Creates a new [GetWorkloadImpactArgs].
   /// [workloadImpactName] workloadImpact resource
-  GetWorkloadImpactArgs({
+  const GetWorkloadImpactArgs({
     required this.workloadImpactName,
   });
 

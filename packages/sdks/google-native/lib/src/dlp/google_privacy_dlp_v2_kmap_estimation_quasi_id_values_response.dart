@@ -13,7 +13,7 @@ class GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse {
   /// Creates a new [GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse].
   /// [estimatedAnonymity] The estimated anonymity for these quasi-identifier values.
   /// [quasiIdsValues] The quasi-identifier values.
-  GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse({
+  const GooglePrivacyDlpV2KMapEstimationQuasiIdValuesResponse({
     required this.estimatedAnonymity,
     required this.quasiIdsValues,
   });

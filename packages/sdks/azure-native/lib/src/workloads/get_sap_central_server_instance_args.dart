@@ -18,7 +18,7 @@ class GetSapCentralServerInstanceArgs {
   /// [centralInstanceName] Central Services Instance resource name string modeled as parameter for auto generation to work correctly.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sapVirtualInstanceName] The name of the Virtual Instances for SAP solutions resource
-  GetSapCentralServerInstanceArgs({
+  const GetSapCentralServerInstanceArgs({
     required this.centralInstanceName,
     required this.resourceGroupName,
     required this.sapVirtualInstanceName,

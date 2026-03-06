@@ -32,7 +32,7 @@ class DomainProvisioningResponse {
   /// [dnsFetchTime] The time at which the last DNS fetch occurred.
   /// [dnsStatus] The DNS record match status as of the last DNS fetch.
   /// [expectedIps] The list of IPs to which the domain is expected to resolve.
-  DomainProvisioningResponse({
+  const DomainProvisioningResponse({
     required this.certChallengeDiscoveredTxt,
     required this.certChallengeDns,
     required this.certChallengeHttp,

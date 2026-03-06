@@ -27,7 +27,7 @@ class HistoryArgs {
   /// [project] Optional.
   /// [requestId] A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended.
   /// [testPlatform] The platform of the test history. - In response: always set. Returns the platform of the last execution if unknown.
-  HistoryArgs({
+  const HistoryArgs({
     this.displayName,
     this.historyId,
     this.name,

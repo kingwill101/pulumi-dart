@@ -14,7 +14,7 @@ class AutomationSource {
   /// Creates a new [AutomationSource].
   /// [eventSource] Type of data that will trigger this automation. Must be one of `Alerts`, `Assessments`, `AssessmentsSnapshot`, `RegulatoryComplianceAssessment`, `RegulatoryComplianceAssessmentSnapshot`, `SecureScoreControls`, `SecureScoreControlsSnapshot`, `SecureScores`, `SecureScoresSnapshot`, `SubAssessments` or `SubAssessmentsSnapshot`. Note. assessments are also referred to as recommendations
   /// [ruleSets] A set of rules which evaluate upon event and data interception. This is defined in one or more `rule_set` blocks as defined below.
-  AutomationSource({
+  const AutomationSource({
     required this.eventSource,
     this.ruleSets,
   });

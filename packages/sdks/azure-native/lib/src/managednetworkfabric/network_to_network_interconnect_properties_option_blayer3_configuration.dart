@@ -24,7 +24,7 @@ class NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration {
   /// [secondaryIpv4Prefix] Secondary IPv4 Address Prefix.
   /// [secondaryIpv6Prefix] Secondary IPv6 Address Prefix.
   /// [vlanId] VLAN for CE/PE Layer 3 connectivity.Example : 501
-  NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration({
+  const NetworkToNetworkInterconnectPropertiesOptionBLayer3Configuration({
     required this.peerASN,
     this.primaryIpv4Prefix,
     this.primaryIpv6Prefix,

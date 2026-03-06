@@ -9,7 +9,7 @@ class ProjectVisibilityTypeEnumValueResponse {
 
   /// Creates a new [ProjectVisibilityTypeEnumValueResponse].
   /// [value] Property value
-  ProjectVisibilityTypeEnumValueResponse({
+  const ProjectVisibilityTypeEnumValueResponse({
     this.value,
   });
 

@@ -21,7 +21,7 @@ class CreatorState {
   /// [name] The name of the Azure Maps Creator. Changing this forces a new resource to be created.
   /// [storageUnits] The storage units to be allocated. Integer values from 1 to 100, inclusive.
   /// [tags] A mapping of tags which should be assigned to the Azure Maps Creator.
-  CreatorState({
+  const CreatorState({
     this.location,
     this.mapsAccountId,
     this.name,

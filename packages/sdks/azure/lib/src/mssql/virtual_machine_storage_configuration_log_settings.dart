@@ -9,7 +9,7 @@ class VirtualMachineStorageConfigurationLogSettings {
   /// Creates a new [VirtualMachineStorageConfigurationLogSettings].
   /// [defaultFilePath] Required.
   /// [luns] Required.
-  VirtualMachineStorageConfigurationLogSettings({
+  const VirtualMachineStorageConfigurationLogSettings({
     required this.defaultFilePath,
     required this.luns,
   });

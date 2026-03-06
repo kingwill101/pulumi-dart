@@ -35,7 +35,7 @@ class GetWebAppResult {
   /// [project] Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `WebApp`.
   /// [state] The lifecycle state of the App.
   /// [webId] Immutable. A unique, Firebase-assigned identifier for the `WebApp`. This identifier is only used to populate the `namespace` value for the `WebApp`. For most use cases, use `appId` to identify or reference the App. The `webId` value is only unique within a `FirebaseProject` and its associated Apps.
-  GetWebAppResult({
+  const GetWebAppResult({
     required this.apiKeyId,
     required this.appId,
     required this.appUrls,

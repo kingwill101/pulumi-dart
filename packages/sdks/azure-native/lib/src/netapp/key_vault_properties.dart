@@ -15,7 +15,7 @@ class KeyVaultProperties {
   /// [keyName] The name of KeyVault key.
   /// [keyVaultResourceId] The resource ID of KeyVault.
   /// [keyVaultUri] The Uri of KeyVault.
-  KeyVaultProperties({
+  const KeyVaultProperties({
     required this.keyName,
     this.keyVaultResourceId,
     required this.keyVaultUri,

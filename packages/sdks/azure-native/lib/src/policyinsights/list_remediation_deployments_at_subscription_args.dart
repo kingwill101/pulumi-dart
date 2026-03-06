@@ -15,7 +15,7 @@ class ListRemediationDeploymentsAtSubscriptionArgs {
   /// Creates a new [ListRemediationDeploymentsAtSubscriptionArgs].
   /// [remediationName] The name of the remediation.
   /// [top] Maximum number of records to return.
-  ListRemediationDeploymentsAtSubscriptionArgs({
+  const ListRemediationDeploymentsAtSubscriptionArgs({
     required this.remediationName,
     this.top,
   });

@@ -17,7 +17,7 @@ class DomainSource {
   /// [sourcePort] The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
   /// [sourcePriority] The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
   /// [sourceType] The type of the origin server. Valid values:
-  DomainSource({
+  const DomainSource({
     required this.sourceContent,
     required this.sourcePort,
     this.sourcePriority,

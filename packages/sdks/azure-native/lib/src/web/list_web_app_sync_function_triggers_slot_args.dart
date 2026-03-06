@@ -18,7 +18,7 @@ class ListWebAppSyncFunctionTriggersSlotArgs {
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
   /// [slot] Name of the deployment slot.
-  ListWebAppSyncFunctionTriggersSlotArgs({
+  const ListWebAppSyncFunctionTriggersSlotArgs({
     required this.name,
     required this.resourceGroupName,
     required this.slot,

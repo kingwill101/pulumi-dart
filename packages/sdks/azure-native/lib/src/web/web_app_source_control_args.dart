@@ -40,7 +40,7 @@ class WebAppSourceControlArgs {
   /// [name] Name of the app.
   /// [repoUrl] Repository or source control URL.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  WebAppSourceControlArgs({
+  const WebAppSourceControlArgs({
     this.branch,
     this.deploymentRollbackEnabled,
     this.gitHubActionConfiguration,

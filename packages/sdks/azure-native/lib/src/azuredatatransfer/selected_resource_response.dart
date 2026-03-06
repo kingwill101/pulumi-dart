@@ -18,7 +18,7 @@ class SelectedResourceResponse {
   /// [location] Location of the connection
   /// [name] Name of the connection
   /// [subscriptionName] Name of the subscription with the connection
-  SelectedResourceResponse({
+  const SelectedResourceResponse({
     required this.id,
     this.location,
     this.name,

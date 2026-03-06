@@ -96,7 +96,7 @@ class V2FunctionState {
   /// [runtime] runtime of function code.
   /// [serviceName] The name of the function Service.
   /// [timeout] max running time of function.
-  V2FunctionState({
+  const V2FunctionState({
     this.caPort,
     this.code,
     this.codeChecksum,

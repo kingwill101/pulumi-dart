@@ -22,7 +22,7 @@ class DirectoryConnectSettings {
   /// [customerUsername] The username corresponding to the password provided.
   /// [subnetIds] The identifiers of the subnets for the directory servers (2 subnets in 2 different AZs).
   /// [vpcId] The identifier of the VPC that the directory is in.
-  DirectoryConnectSettings({
+  const DirectoryConnectSettings({
     this.availabilityZones,
     this.connectIps,
     required this.customerDnsIps,

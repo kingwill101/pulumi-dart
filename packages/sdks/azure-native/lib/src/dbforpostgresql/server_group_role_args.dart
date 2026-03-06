@@ -31,7 +31,7 @@ class ServerGroupRoleArgs {
   /// [roleName] The name of the cluster role.
   /// [roleType] Optional.
   /// [tenantId] A type definition that refers the id to an Azure Resource Manager resource.
-  ServerGroupRoleArgs({
+  const ServerGroupRoleArgs({
     required this.clusterName,
     required this.objectId,
     this.password,

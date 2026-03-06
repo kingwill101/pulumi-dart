@@ -9,7 +9,7 @@ class GetVirtualRouterSpecListenerPortMapping {
   /// Creates a new [GetVirtualRouterSpecListenerPortMapping].
   /// [port] Required.
   /// [protocol] Required.
-  GetVirtualRouterSpecListenerPortMapping({
+  const GetVirtualRouterSpecListenerPortMapping({
     required this.port,
     required this.protocol,
   });

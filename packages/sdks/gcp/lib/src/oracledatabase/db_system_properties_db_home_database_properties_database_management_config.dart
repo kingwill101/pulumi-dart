@@ -25,7 +25,7 @@ class DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig {
   /// Creates a new [DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig].
   /// [managementState] (Output)
   /// [managementType] (Output)
-  DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig({
+  const DbSystemPropertiesDbHomeDatabasePropertiesDatabaseManagementConfig({
     this.managementState,
     this.managementType,
   });

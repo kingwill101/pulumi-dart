@@ -14,7 +14,7 @@ class IntegrationAccountCertificateKeyVaultKey {
   /// [keyName] The name of Key Vault Key.
   /// [keyVaultId] The ID of the Key Vault.
   /// [keyVersion] The version of Key Vault Key.
-  IntegrationAccountCertificateKeyVaultKey({
+  const IntegrationAccountCertificateKeyVaultKey({
     required this.keyName,
     required this.keyVaultId,
     this.keyVersion,

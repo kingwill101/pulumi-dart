@@ -90,7 +90,7 @@ class GetBackupResult {
   /// [uid] Server generated global unique identifier of [UUID4](https://en.wikipedia.org/wiki/Universally_unique_identifier)
   /// [updateTime] The timestamp when this Backup resource was last updated.
   /// [volumeCount] The total number of volume backups contained in the Backup.
-  GetBackupResult({
+  const GetBackupResult({
     required this.allNamespaces,
     required this.clusterMetadata,
     required this.completeTime,

@@ -9,7 +9,7 @@ class FileLocation {
 
   /// Creates a new [FileLocation].
   /// [filePath] For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
-  FileLocation({
+  const FileLocation({
     this.filePath,
   });
 

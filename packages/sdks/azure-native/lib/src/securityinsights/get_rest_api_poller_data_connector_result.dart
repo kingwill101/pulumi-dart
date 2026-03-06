@@ -60,7 +60,7 @@ class GetRestApiPollerDataConnectorResult {
   /// [response] The response configuration.
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetRestApiPollerDataConnectorResult({
+  const GetRestApiPollerDataConnectorResult({
     this.addOnAttributes,
     required this.auth,
     required this.azureApiVersion,

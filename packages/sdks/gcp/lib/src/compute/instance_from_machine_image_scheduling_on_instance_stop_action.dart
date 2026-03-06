@@ -8,7 +8,7 @@ class InstanceFromMachineImageSchedulingOnInstanceStopAction {
 
   /// Creates a new [InstanceFromMachineImageSchedulingOnInstanceStopAction].
   /// [discardLocalSsd] If true, the contents of any attached Local SSD disks will be discarded.
-  InstanceFromMachineImageSchedulingOnInstanceStopAction({
+  const InstanceFromMachineImageSchedulingOnInstanceStopAction({
     this.discardLocalSsd,
   });
 

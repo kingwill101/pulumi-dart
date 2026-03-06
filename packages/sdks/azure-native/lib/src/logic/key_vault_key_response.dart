@@ -13,7 +13,7 @@ class KeyVaultKeyResponse {
   /// Creates a new [KeyVaultKeyResponse].
   /// [attributes] The key attributes.
   /// [kid] The key id.
-  KeyVaultKeyResponse({
+  const KeyVaultKeyResponse({
     this.attributes,
     this.kid,
   });

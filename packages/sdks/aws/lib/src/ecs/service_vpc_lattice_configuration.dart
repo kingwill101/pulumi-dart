@@ -14,7 +14,7 @@ class ServiceVpcLatticeConfiguration {
   /// [portName] The name of the port for a target group associated with the VPC Lattice configuration.
   /// [roleArn] The ARN of the IAM role to associate with this volume. This is the Amazon ECS infrastructure IAM role that is used to manage your AWS infrastructure.
   /// [targetGroupArn] The full ARN of the target group or groups associated with the VPC Lattice configuration.
-  ServiceVpcLatticeConfiguration({
+  const ServiceVpcLatticeConfiguration({
     required this.portName,
     required this.roleArn,
     required this.targetGroupArn,

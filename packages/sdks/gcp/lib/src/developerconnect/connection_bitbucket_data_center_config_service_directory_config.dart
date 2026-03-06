@@ -10,7 +10,7 @@ class ConnectionBitbucketDataCenterConfigServiceDirectoryConfig {
 
   /// Creates a new [ConnectionBitbucketDataCenterConfigServiceDirectoryConfig].
   /// [service] Required. The Service Directory service name.
-  ConnectionBitbucketDataCenterConfigServiceDirectoryConfig({
+  const ConnectionBitbucketDataCenterConfigServiceDirectoryConfig({
     required this.service,
   });
 

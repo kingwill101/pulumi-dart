@@ -30,7 +30,7 @@ class PrivateEndpointConnectionResponse {
   /// [provisioningState] The provisioning state of private endpoint connection resource.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  PrivateEndpointConnectionResponse({
+  const PrivateEndpointConnectionResponse({
     required this.id,
     required this.name,
     this.privateEndpoint,

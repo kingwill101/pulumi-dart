@@ -25,7 +25,7 @@ class GetVolumeSnapshotArgs {
   /// [name] The name of the volume snapshot.
   /// [nameRegex] A regex string to apply to the volume snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
   /// [region] A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only volume snapshots available in the region will be returned.
-  GetVolumeSnapshotArgs({
+  const GetVolumeSnapshotArgs({
     this.mostRecent,
     this.name,
     this.nameRegex,

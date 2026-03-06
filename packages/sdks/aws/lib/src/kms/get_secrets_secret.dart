@@ -26,7 +26,7 @@ class GetSecretsSecret {
   /// [keyId] Specifies the KMS key that AWS KMS uses to decrypt the ciphertext. This parameter is required only when the ciphertext was encrypted under an asymmetric KMS key.
   /// [name] Name to export this secret under in the attributes.
   /// [payload] Base64 encoded payload, as returned from a KMS encrypt operation.
-  GetSecretsSecret({
+  const GetSecretsSecret({
     this.context,
     this.encryptionAlgorithm,
     this.grantTokens,

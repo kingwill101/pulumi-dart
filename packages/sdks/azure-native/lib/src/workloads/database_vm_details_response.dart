@@ -16,7 +16,7 @@ class DatabaseVmDetailsResponse {
   /// [status] Defines the SAP Instance status.
   /// [storageDetails] Storage details of all the Storage Accounts attached to the Database Virtual Machine. For e.g. NFS on AFS Shared Storage.
   /// [virtualMachineId] The virtual machine id.
-  DatabaseVmDetailsResponse({
+  const DatabaseVmDetailsResponse({
     required this.status,
     required this.storageDetails,
     required this.virtualMachineId,

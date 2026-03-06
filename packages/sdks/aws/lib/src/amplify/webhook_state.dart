@@ -24,7 +24,7 @@ class WebhookState {
   /// [description] Description for a webhook.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [url] URL of the webhook.
-  WebhookState({
+  const WebhookState({
     this.appId,
     this.arn,
     this.branchName,

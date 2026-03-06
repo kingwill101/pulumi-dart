@@ -56,7 +56,7 @@ class FleetArgs {
   /// [vmAttributes] Attribute based Fleet.
   /// [vmSizesProfile] List of VM sizes supported for Compute Fleet
   /// [zones] Zones in which the Compute Fleet is available
-  FleetArgs({
+  const FleetArgs({
     this.additionalLocationsProfile,
     required this.computeProfile,
     this.fleetName,

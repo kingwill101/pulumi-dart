@@ -8,7 +8,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperationDeidentify {
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperationDeidentify].
   /// [maskConfig] An empty object that configures masking.
-  GetLogDataProtectionPolicyDocumentStatementOperationDeidentify({
+  const GetLogDataProtectionPolicyDocumentStatementOperationDeidentify({
     required this.maskConfig,
   });
 

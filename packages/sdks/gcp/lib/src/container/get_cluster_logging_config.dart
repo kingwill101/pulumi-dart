@@ -8,7 +8,7 @@ class GetClusterLoggingConfig {
 
   /// Creates a new [GetClusterLoggingConfig].
   /// [enableComponents] GKE components exposing logs. Valid values include SYSTEM_COMPONENTS, APISERVER, CONTROLLER_MANAGER, KCP_CONNECTION, KCP_SSHD, KCP_HPA, SCHEDULER, and WORKLOADS.
-  GetClusterLoggingConfig({
+  const GetClusterLoggingConfig({
     required this.enableComponents,
   });
 

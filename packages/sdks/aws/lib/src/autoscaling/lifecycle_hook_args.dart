@@ -36,7 +36,7 @@ class LifecycleHookArgs {
   /// [notificationTargetArn] ARN of the notification target that Auto Scaling will use to notify you when an instance is in the transition state for the lifecycle hook. This ARN target can be either an SQS queue, an SNS topic, or a Lambda function.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] ARN of the IAM role that allows the Auto Scaling group to publish to the specified notification target.
-  LifecycleHookArgs({
+  const LifecycleHookArgs({
     required this.autoscalingGroupName,
     this.defaultResult,
     this.heartbeatTimeout,

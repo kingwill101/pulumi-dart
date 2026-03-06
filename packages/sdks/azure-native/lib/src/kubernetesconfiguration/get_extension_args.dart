@@ -24,7 +24,7 @@ class GetExtensionArgs {
   /// [clusterRp] The Kubernetes cluster RP - i.e. Microsoft.ContainerService, Microsoft.Kubernetes, Microsoft.HybridContainerService.
   /// [extensionName] Name of the Extension.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetExtensionArgs({
+  const GetExtensionArgs({
     required this.clusterName,
     required this.clusterResourceName,
     required this.clusterRp,

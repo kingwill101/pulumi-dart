@@ -17,7 +17,7 @@ class GetVpcAttachmentsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] A list of all attachments ids matching the filter. You can retrieve more information about the attachment using the [aws.ec2transitgateway.VpcAttachment][2] data source, searching by identifier.
   /// [region] Required.
-  GetVpcAttachmentsResult({
+  const GetVpcAttachmentsResult({
     this.filters,
     required this.id,
     required this.ids,

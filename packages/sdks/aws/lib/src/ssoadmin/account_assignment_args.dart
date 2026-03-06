@@ -30,7 +30,7 @@ class AccountAssignmentArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [targetId] An AWS account identifier, typically a 10-12 digit string.
   /// [targetType] The entity type for which the assignment will be created. Valid values: `AWS_ACCOUNT`.
-  AccountAssignmentArgs({
+  const AccountAssignmentArgs({
     required this.instanceArn,
     required this.permissionSetArn,
     required this.principalId,

@@ -15,7 +15,7 @@ class ScalingConfigResponse {
   /// [desiredSize] Property desiredSize
   /// [maxSize] Property maxSize
   /// [minSize] Property minSize
-  ScalingConfigResponse({
+  const ScalingConfigResponse({
     this.desiredSize,
     this.maxSize,
     this.minSize,

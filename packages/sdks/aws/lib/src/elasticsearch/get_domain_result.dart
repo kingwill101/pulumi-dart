@@ -86,7 +86,7 @@ class GetDomainResult {
   /// [snapshotOptions] Domain snapshot related options.
   /// [tags] Tags assigned to the domain.
   /// [vpcOptions] VPC Options for private Elasticsearch domains.
-  GetDomainResult({
+  const GetDomainResult({
     required this.accessPolicies,
     required this.advancedOptions,
     required this.advancedSecurityOptions,

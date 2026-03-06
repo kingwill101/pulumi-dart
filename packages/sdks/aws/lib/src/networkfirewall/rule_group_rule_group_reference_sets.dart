@@ -8,7 +8,7 @@ class RuleGroupRuleGroupReferenceSets {
 
   /// Creates a new [RuleGroupRuleGroupReferenceSets].
   /// [ipSetReferences] Optional.
-  RuleGroupRuleGroupReferenceSets({
+  const RuleGroupRuleGroupReferenceSets({
     this.ipSetReferences,
   });
 

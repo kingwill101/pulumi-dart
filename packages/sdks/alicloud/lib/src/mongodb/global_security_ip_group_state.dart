@@ -17,7 +17,7 @@ class GlobalSecurityIpGroupState {
   /// [globalIgName] The name of the IP whitelist template.
   /// [globalSecurityIpList] The IP address in the whitelist template.
   /// [regionId] The region ID of the resource
-  GlobalSecurityIpGroupState({
+  const GlobalSecurityIpGroupState({
     this.globalIgName,
     this.globalSecurityIpList,
     this.regionId,

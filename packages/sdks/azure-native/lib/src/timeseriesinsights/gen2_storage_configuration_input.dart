@@ -12,7 +12,7 @@ class Gen2StorageConfigurationInput {
   /// Creates a new [Gen2StorageConfigurationInput].
   /// [accountName] The name of the storage account that will hold the environment's Gen2 data.
   /// [managementKey] The value of the management key that grants the Time Series Insights service write access to the storage account. This property is not shown in environment responses.
-  Gen2StorageConfigurationInput({
+  const Gen2StorageConfigurationInput({
     required this.accountName,
     required this.managementKey,
   });

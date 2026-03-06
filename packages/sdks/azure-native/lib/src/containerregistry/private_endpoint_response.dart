@@ -9,7 +9,7 @@ class PrivateEndpointResponse {
 
   /// Creates a new [PrivateEndpointResponse].
   /// [id] This is private endpoint resource created with Microsoft.Network resource provider.
-  PrivateEndpointResponse({
+  const PrivateEndpointResponse({
     this.id,
   });
 

@@ -12,7 +12,7 @@ class GetOrganizationalUnitDescendantOrganizationalUnitsArgs {
 
   /// Creates a new [GetOrganizationalUnitDescendantOrganizationalUnitsArgs].
   /// [parentId] Parent ID of the organizational unit.
-  GetOrganizationalUnitDescendantOrganizationalUnitsArgs({
+  const GetOrganizationalUnitDescendantOrganizationalUnitsArgs({
     required this.parentId,
   });
 

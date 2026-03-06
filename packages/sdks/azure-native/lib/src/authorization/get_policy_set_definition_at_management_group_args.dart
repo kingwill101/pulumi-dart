@@ -18,7 +18,7 @@ class GetPolicySetDefinitionAtManagementGroupArgs {
   /// [expand] Comma-separated list of additional properties to be included in the response. Supported values are 'LatestDefinitionVersion, EffectiveDefinitionVersion'.
   /// [managementGroupId] The ID of the management group.
   /// [policySetDefinitionName] The name of the policy set definition to get.
-  GetPolicySetDefinitionAtManagementGroupArgs({
+  const GetPolicySetDefinitionAtManagementGroupArgs({
     this.expand,
     required this.managementGroupId,
     required this.policySetDefinitionName,

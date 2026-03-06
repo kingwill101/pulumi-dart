@@ -9,7 +9,7 @@ class OpenApiConfiguration {
 
   /// Creates a new [OpenApiConfiguration].
   /// [validation] The open api validation.
-  OpenApiConfiguration({
+  const OpenApiConfiguration({
     this.validation,
   });
 

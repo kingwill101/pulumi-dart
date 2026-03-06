@@ -11,7 +11,7 @@ class LinkedServiceOdbcBasicAuthentication {
   /// Creates a new [LinkedServiceOdbcBasicAuthentication].
   /// [password] The password associated with the username, which can be used to authenticate to the ODBC endpoint.
   /// [username] The username which can be used to authenticate to the ODBC endpoint.
-  LinkedServiceOdbcBasicAuthentication({
+  const LinkedServiceOdbcBasicAuthentication({
     required this.password,
     required this.username,
   });

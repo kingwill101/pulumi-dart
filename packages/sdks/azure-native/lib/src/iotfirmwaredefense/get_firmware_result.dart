@@ -50,7 +50,7 @@ class GetFirmwareResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vendor] Firmware vendor.
   /// [version] Firmware version.
-  GetFirmwareResult({
+  const GetFirmwareResult({
     required this.azureApiVersion,
     this.description,
     this.fileName,

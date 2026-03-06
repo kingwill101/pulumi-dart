@@ -13,7 +13,7 @@ class KafkaX509Authentication {
   /// Creates a new [KafkaX509Authentication].
   /// [keyVault] Keyvault X509 secret properties.
   /// [secretName] Secret where cert details are stored.
-  KafkaX509Authentication({
+  const KafkaX509Authentication({
     this.keyVault,
     this.secretName,
   });

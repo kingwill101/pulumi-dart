@@ -32,7 +32,7 @@ class ApiArgs {
   /// [name] Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
   /// [organizationId] Required.
   /// [validate] Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
-  ApiArgs({
+  const ApiArgs({
     this.action,
     this.contentType,
     this.data,

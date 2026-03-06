@@ -25,7 +25,7 @@ class GetEnvironmentConfigWorkloadsConfig {
   /// [triggerers] Configuration for resources used by Airflow triggerers.
   /// [webServers] Configuration for resources used by Airflow web server.
   /// [workers] Configuration for resources used by Airflow workers.
-  GetEnvironmentConfigWorkloadsConfig({
+  const GetEnvironmentConfigWorkloadsConfig({
     required this.dagProcessors,
     required this.schedulers,
     required this.triggerers,

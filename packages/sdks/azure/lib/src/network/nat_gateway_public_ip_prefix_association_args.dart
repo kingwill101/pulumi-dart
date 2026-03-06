@@ -15,7 +15,7 @@ class NatGatewayPublicIpPrefixAssociationArgs {
   /// Creates a new [NatGatewayPublicIpPrefixAssociationArgs].
   /// [natGatewayId] The ID of the NAT Gateway. Changing this forces a new resource to be created.
   /// [publicIpPrefixId] The ID of the Public IP Prefix which this NAT Gateway which should be connected to. Changing this forces a new resource to be created.
-  NatGatewayPublicIpPrefixAssociationArgs({
+  const NatGatewayPublicIpPrefixAssociationArgs({
     required this.natGatewayId,
     required this.publicIpPrefixId,
   });

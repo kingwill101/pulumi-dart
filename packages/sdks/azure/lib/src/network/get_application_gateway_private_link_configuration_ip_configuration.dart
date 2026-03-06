@@ -20,7 +20,7 @@ class GetApplicationGatewayPrivateLinkConfigurationIpConfiguration {
   /// [privateIpAddress] The Static IP Address which is used.
   /// [privateIpAddressAllocation] The allocation method used for the Private IP Address.
   /// [subnetId] The ID of the subnet the private link configuration is connected to.
-  GetApplicationGatewayPrivateLinkConfigurationIpConfiguration({
+  const GetApplicationGatewayPrivateLinkConfigurationIpConfiguration({
     required this.name,
     required this.primary,
     required this.privateIpAddress,

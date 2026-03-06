@@ -22,7 +22,7 @@ class TargetIamBindingArgs {
   /// [name] Optional.
   /// [project] Optional.
   /// [role] Required.
-  TargetIamBindingArgs({
+  const TargetIamBindingArgs({
     this.condition,
     this.location,
     required this.members,

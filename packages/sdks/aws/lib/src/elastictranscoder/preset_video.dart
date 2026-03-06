@@ -44,7 +44,7 @@ class PresetVideo {
   /// [paddingPolicy] When you set PaddingPolicy to Pad, Elastic Transcoder might add black bars to the top and bottom and/or left and right sides of the output video to make the total size of the output video match the values that you specified for `max_width` and `max_height`.
   /// [resolution] The width and height of the video in the output file, in pixels. Valid values are `auto` and `widthxheight`. (see note for `aspect_ratio`)
   /// [sizingPolicy] A value that controls scaling of the output video. Valid values are: `Fit`, `Fill`, `Stretch`, `Keep`, `ShrinkToFit`, `ShrinkToFill`.
-  PresetVideo({
+  const PresetVideo({
     this.aspectRatio,
     this.bitRate,
     this.codec,

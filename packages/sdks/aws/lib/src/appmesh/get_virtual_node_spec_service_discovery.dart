@@ -11,7 +11,7 @@ class GetVirtualNodeSpecServiceDiscovery {
   /// Creates a new [GetVirtualNodeSpecServiceDiscovery].
   /// [awsCloudMaps] Required.
   /// [dns] Required.
-  GetVirtualNodeSpecServiceDiscovery({
+  const GetVirtualNodeSpecServiceDiscovery({
     required this.awsCloudMaps,
     required this.dns,
   });

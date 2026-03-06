@@ -27,7 +27,7 @@ class CustomJobArgs {
   /// [labels] The labels with user-defined metadata to organize CustomJobs. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. See https://goo.gl/xmQnxf for more information and examples of labels.
   /// [location] Optional.
   /// [project] Optional.
-  CustomJobArgs({
+  const CustomJobArgs({
     required this.displayName,
     this.encryptionSpec,
     required this.jobSpec,

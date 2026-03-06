@@ -32,7 +32,7 @@ class ProjectArgs {
   /// [properties] Properties of Cognitive Services project.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  ProjectArgs({
+  const ProjectArgs({
     required this.accountName,
     this.identity,
     this.location,

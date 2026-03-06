@@ -12,7 +12,7 @@ class SecurityProfileUrlFilteringProfile {
 
   /// Creates a new [SecurityProfileUrlFilteringProfile].
   /// [urlFilters] The configuration for action to take based on domain name match.
-  SecurityProfileUrlFilteringProfile({
+  const SecurityProfileUrlFilteringProfile({
     this.urlFilters,
   });
 

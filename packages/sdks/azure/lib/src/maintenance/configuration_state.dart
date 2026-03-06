@@ -40,7 +40,7 @@ class ConfigurationState {
   /// [tags] A mapping of tags to assign to the resource. The key could not contain upper case letter.
   /// [visibility] The visibility of the Maintenance Configuration. The only allowable value is `Custom`. Defaults to `Custom`.
   /// [window] A `window` block as defined below.
-  ConfigurationState({
+  const ConfigurationState({
     this.inGuestUserPatchMode,
     this.installPatches,
     this.location,

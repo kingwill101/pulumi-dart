@@ -14,7 +14,7 @@ class GetReservationSubBlockPhysicalTopology {
   /// [block] The hash of the capacity block within the cluster.
   /// [cluster] The cluster name of the reservation sub-block.
   /// [subBlock] The hash of the capacity sub-block within the capacity block.
-  GetReservationSubBlockPhysicalTopology({
+  const GetReservationSubBlockPhysicalTopology({
     required this.block,
     required this.cluster,
     required this.subBlock,

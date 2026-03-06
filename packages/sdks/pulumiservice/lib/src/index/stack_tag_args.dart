@@ -24,7 +24,7 @@ class StackTagArgs {
   /// [project] Project name.
   /// [stack] Stack name.
   /// [value] Value of the tag. The 'value' part of the key=value pair
-  StackTagArgs({
+  const StackTagArgs({
     required this.name,
     required this.organization,
     required this.project,

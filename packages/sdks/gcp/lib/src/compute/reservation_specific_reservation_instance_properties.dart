@@ -33,7 +33,7 @@ class ReservationSpecificReservationInstanceProperties {
   /// [machineType] The name of the machine type to reserve.
   /// [maintenanceInterval] Specifies the frequency of planned maintenance events.
   /// [minCpuPlatform] The minimum CPU platform for the reservation. For example,
-  ReservationSpecificReservationInstanceProperties({
+  const ReservationSpecificReservationInstanceProperties({
     this.guestAccelerators,
     this.localSsds,
     this.locationHint,

@@ -13,7 +13,7 @@ class AzureToAzureVmSyncedConfigDetailsResponse {
   /// Creates a new [AzureToAzureVmSyncedConfigDetailsResponse].
   /// [inputEndpoints] The Azure VM input endpoints.
   /// [tags] The Azure VM tags.
-  AzureToAzureVmSyncedConfigDetailsResponse({
+  const AzureToAzureVmSyncedConfigDetailsResponse({
     this.inputEndpoints,
     this.tags,
   });

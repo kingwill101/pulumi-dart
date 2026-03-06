@@ -16,7 +16,7 @@ class GetEmailIdentityResult {
   /// [email] Email identity.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Required.
-  GetEmailIdentityResult({
+  const GetEmailIdentityResult({
     required this.arn,
     required this.email,
     required this.id,

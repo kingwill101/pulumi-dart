@@ -19,7 +19,7 @@ class BucketHttpsConfigState {
   /// [cipherSuit] TLS encryption algorithm suite configuration See `cipher_suit` below.
   /// [enable] Specifies whether to enable TLS version management for the bucket. Valid values: true, false.
   /// [tlsVersions] Specifies the TLS versions allowed to access this buckets.
-  BucketHttpsConfigState({
+  const BucketHttpsConfigState({
     this.bucket,
     this.cipherSuit,
     this.enable,

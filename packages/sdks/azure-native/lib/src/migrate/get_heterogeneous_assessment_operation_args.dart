@@ -18,7 +18,7 @@ class GetHeterogeneousAssessmentOperationArgs {
   /// [assessmentName] Heterogeneous Assessment ARM name
   /// [projectName] Assessment Project Name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetHeterogeneousAssessmentOperationArgs({
+  const GetHeterogeneousAssessmentOperationArgs({
     required this.assessmentName,
     required this.projectName,
     required this.resourceGroupName,

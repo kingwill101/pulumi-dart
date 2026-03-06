@@ -22,7 +22,7 @@ class HoneypotPresetArgs {
   /// [meta] Honeypot template custom parameters. See `meta` below.
   /// [nodeId] Unique id of management node
   /// [presetName] Honeypot template custom name
-  HoneypotPresetArgs({
+  const HoneypotPresetArgs({
     required this.honeypotImageName,
     required this.meta,
     required this.nodeId,

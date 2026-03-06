@@ -10,7 +10,7 @@ class PlacementV1Affinity {
 
   /// Creates a new [PlacementV1Affinity].
   /// [clusterAffinity] ClusterAffinity contains cluster affinity scheduling rules for the selected resources.
-  PlacementV1Affinity({
+  const PlacementV1Affinity({
     this.clusterAffinity,
   });
 

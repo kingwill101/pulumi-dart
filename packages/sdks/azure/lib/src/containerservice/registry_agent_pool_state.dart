@@ -30,7 +30,7 @@ class RegistryAgentPoolState {
   /// [tags] A mapping of tags which should be assigned to the Azure Container Registry Agent Pool.
   /// [tier] Sets the VM your agent pool will run on. Valid values are: `S1` (2 vCPUs, 3 GiB RAM), `S2` (4 vCPUs, 8 GiB RAM), `S3` (8 vCPUs, 16 GiB RAM) or `I6` (64 vCPUs, 216 GiB RAM, Isolated). Defaults to `S1`. Changing this forces a new Azure Container Registry Agent Pool to be created.
   /// [virtualNetworkSubnetId] The ID of the Virtual Network Subnet Resource where the agent machines will be running. Changing this forces a new Azure Container Registry Agent Pool to be created.
-  RegistryAgentPoolState({
+  const RegistryAgentPoolState({
     this.containerRegistryName,
     this.instanceCount,
     this.location,

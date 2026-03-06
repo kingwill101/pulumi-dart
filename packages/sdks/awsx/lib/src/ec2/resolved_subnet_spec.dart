@@ -22,7 +22,7 @@ class ResolvedSubnetSpec {
   /// [name] The subnet's name. Will be templated upon creation.
   /// [size] Optional size of the subnet's CIDR block - the number of hosts. This value must be a power of 2 (e.g. 256, 512, 1024, etc.). This is optional, the default value is inferred from the `cidrMask`, `cidrBlocks` or based on an even distribution of available space from the VPC's CIDR block after being divided evenly by availability zone.
   /// [type] The type of subnet.
-  ResolvedSubnetSpec({
+  const ResolvedSubnetSpec({
     this.cidrBlocks,
     this.cidrMask,
     this.name,

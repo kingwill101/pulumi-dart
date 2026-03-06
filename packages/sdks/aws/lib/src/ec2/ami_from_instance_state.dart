@@ -110,7 +110,7 @@ class AmiFromInstanceState {
   /// [uefiData] Base64 representation of the non-volatile UEFI variable store.
   /// [usageOperation] Optional.
   /// [virtualizationType] Keyword to choose what virtualization mode created instances
-  AmiFromInstanceState({
+  const AmiFromInstanceState({
     this.architecture,
     this.arn,
     this.bootMode,

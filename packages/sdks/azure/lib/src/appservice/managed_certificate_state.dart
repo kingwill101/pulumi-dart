@@ -36,7 +36,7 @@ class ManagedCertificateState {
   /// [subjectName] The Subject Name for the Certificate.
   /// [tags] A mapping of tags which should be assigned to the App Service Managed Certificate.
   /// [thumbprint] The Certificate Thumbprint.
-  ManagedCertificateState({
+  const ManagedCertificateState({
     this.canonicalName,
     this.customHostnameBindingId,
     this.expirationDate,

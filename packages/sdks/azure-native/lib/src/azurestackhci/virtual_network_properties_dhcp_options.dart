@@ -9,7 +9,7 @@ class VirtualNetworkPropertiesDhcpOptions {
 
   /// Creates a new [VirtualNetworkPropertiesDhcpOptions].
   /// [dnsServers] The list of DNS servers IP addresses.
-  VirtualNetworkPropertiesDhcpOptions({
+  const VirtualNetworkPropertiesDhcpOptions({
     this.dnsServers,
   });
 

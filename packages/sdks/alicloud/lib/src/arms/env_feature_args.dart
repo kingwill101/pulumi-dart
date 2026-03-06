@@ -18,7 +18,7 @@ class EnvFeatureArgs {
   /// [envFeatureName] The name of the resource.
   /// [environmentId] The first ID of the resource.
   /// [featureVersion] Version information of the Feature. You can query Feature information by using ListEnvironmentFeatures.
-  EnvFeatureArgs({
+  const EnvFeatureArgs({
     required this.envFeatureName,
     required this.environmentId,
     required this.featureVersion,

@@ -15,7 +15,7 @@ class WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseB
   /// [customResponseBodyKey] Key of a custom response body to use.
   /// [responseCode] HTTP response code to return (200-599).
   /// [responseHeaders] Headers to include in the response. See below.
-  WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlockCustomResponse({
+  const WebAclRuleGroupAssociationRuleGroupReferenceRuleActionOverrideActionToUseBlockCustomResponse({
     this.customResponseBodyKey,
     required this.responseCode,
     this.responseHeaders,

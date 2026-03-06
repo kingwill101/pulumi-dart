@@ -38,7 +38,7 @@ class LicenseResponse {
   /// [tags] Resource tags.
   /// [tenantId] Describes the tenant id.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  LicenseResponse({
+  const LicenseResponse({
     required this.id,
     this.licenseDetails,
     this.licenseType,

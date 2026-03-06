@@ -24,7 +24,7 @@ class ListIntegrationAccountMapContentCallbackUrlArgs {
   /// [mapName] The integration account map name.
   /// [notAfter] The expiry time.
   /// [resourceGroupName] The resource group name.
-  ListIntegrationAccountMapContentCallbackUrlArgs({
+  const ListIntegrationAccountMapContentCallbackUrlArgs({
     required this.integrationAccountName,
     this.keyType,
     required this.mapName,

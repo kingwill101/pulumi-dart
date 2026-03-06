@@ -18,7 +18,7 @@ class SourceAddrResponse {
   /// [countries] list of countries
   /// [feeds] list of feeds
   /// [prefixLists] prefix list
-  SourceAddrResponse({
+  const SourceAddrResponse({
     this.cidrs,
     this.countries,
     this.feeds,

@@ -38,7 +38,7 @@ class GetOpenIdConnectProviderResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [useInApiDocumentation] If true, the Open ID Connect provider will be used in the API documentation in the developer portal. False by default if no value is provided.
   /// [useInTestConsole] If true, the Open ID Connect provider may be used in the developer portal test console. True by default if no value is provided.
-  GetOpenIdConnectProviderResult({
+  const GetOpenIdConnectProviderResult({
     required this.azureApiVersion,
     required this.clientId,
     this.clientSecret,

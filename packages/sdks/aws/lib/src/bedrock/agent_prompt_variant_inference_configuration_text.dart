@@ -17,7 +17,7 @@ class AgentPromptVariantInferenceConfigurationText {
   /// [stopSequences] List of strings that define sequences after which the model will stop generating.
   /// [temperature] Controls the randomness of the response. Choose a lower value for more predictable outputs and a higher value for more surprising outputs.
   /// [topP] Percentage of most-likely candidates that the model considers for the next token.
-  AgentPromptVariantInferenceConfigurationText({
+  const AgentPromptVariantInferenceConfigurationText({
     this.maxTokens,
     this.stopSequences,
     this.temperature,

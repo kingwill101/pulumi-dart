@@ -18,7 +18,7 @@ class NetworkWatcherState {
   /// [name] The name of the Network Watcher. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the Network Watcher. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  NetworkWatcherState({
+  const NetworkWatcherState({
     this.location,
     this.name,
     this.resourceGroupName,

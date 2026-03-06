@@ -27,7 +27,7 @@ class LogViewArgs {
   /// [location] The location of the resource. The supported locations are: global, us-central1, us-east1, us-west1, asia-east1, europe-west1.
   /// [name] The resource name of the view. For example: \`projects/my-project/locations/global/buckets/my-bucket/views/my-view\`
   /// [parent] The parent of the resource.
-  LogViewArgs({
+  const LogViewArgs({
     required this.bucket,
     this.description,
     this.filter,

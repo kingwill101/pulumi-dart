@@ -24,7 +24,7 @@ class CommandState {
   /// [desktopId] The desktop id of the Desktop.
   /// [status] Script Is Executed in the Overall Implementation of the State. Valid values: `Pending`, `Failed`, `PartialFailed`, `Running`, `Stopped`, `Stopping`, `Finished`, `Success`.
   /// [timeout] The timeout period for script execution the unit is seconds. Default to: `60`.
-  CommandState({
+  const CommandState({
     this.commandContent,
     this.commandType,
     this.contentEncoding,

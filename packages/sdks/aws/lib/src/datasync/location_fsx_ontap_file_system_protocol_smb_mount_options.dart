@@ -7,7 +7,7 @@ class LocationFsxOntapFileSystemProtocolSmbMountOptions {
 
   /// Creates a new [LocationFsxOntapFileSystemProtocolSmbMountOptions].
   /// [version] Optional.
-  LocationFsxOntapFileSystemProtocolSmbMountOptions({
+  const LocationFsxOntapFileSystemProtocolSmbMountOptions({
     this.version,
   });
 

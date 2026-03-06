@@ -12,7 +12,7 @@ class GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse {
   /// Creates a new [GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse].
   /// [plainText] Input only. The plain text of the client secret value. For security reasons, this field is only used for input and will never be populated in any response.
   /// [thumbprint] A thumbprint to represent the current client secret value.
-  GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse({
+  const GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValueResponse({
     required this.plainText,
     required this.thumbprint,
   });

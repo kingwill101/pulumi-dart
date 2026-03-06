@@ -9,7 +9,7 @@ class GangSchedulingPolicyPatch {
 
   /// Creates a new [GangSchedulingPolicyPatch].
   /// [minCount] MinCount is the minimum number of pods that must be schedulable or scheduled at the same time for the scheduler to admit the entire group. It must be a positive integer.
-  GangSchedulingPolicyPatch({
+  const GangSchedulingPolicyPatch({
     this.minCount,
   });
 

@@ -21,7 +21,7 @@ class ChannelAlexaArgs {
   /// [location] The supported Azure location where the resource exists. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group where the Alexa Channel should be created. Changing this forces a new resource to be created.
   /// [skillId] The Alexa skill ID for the Alexa Channel.
-  ChannelAlexaArgs({
+  const ChannelAlexaArgs({
     required this.botName,
     this.location,
     required this.resourceGroupName,

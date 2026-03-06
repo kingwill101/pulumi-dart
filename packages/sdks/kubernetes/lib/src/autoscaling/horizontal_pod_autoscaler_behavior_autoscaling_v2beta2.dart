@@ -16,7 +16,7 @@ class HorizontalPodAutoscalerBehaviorAutoscalingV2beta2 {
   /// Creates a new [HorizontalPodAutoscalerBehaviorAutoscalingV2beta2].
   /// [scaleDown] scaleDown is scaling policy for scaling Down. If not set, the default value is to allow to scale down to minReplicas pods, with a 300 second stabilization window (i.e., the highest recommendation for the last 300sec is used).
   /// [scaleUp] scaleUp is scaling policy for scaling Up. If not set, the default value is the higher of:
-  HorizontalPodAutoscalerBehaviorAutoscalingV2beta2({
+  const HorizontalPodAutoscalerBehaviorAutoscalingV2beta2({
     this.scaleDown,
     this.scaleUp,
   });

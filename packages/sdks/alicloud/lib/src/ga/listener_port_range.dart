@@ -11,7 +11,7 @@ class ListenerPortRange {
   /// Creates a new [ListenerPortRange].
   /// [fromPort] The initial listening port used to receive requests and forward them to terminal nodes.
   /// [toPort] The end listening port used to receive requests and forward them to terminal nodes.
-  ListenerPortRange({
+  const ListenerPortRange({
     required this.fromPort,
     required this.toPort,
   });

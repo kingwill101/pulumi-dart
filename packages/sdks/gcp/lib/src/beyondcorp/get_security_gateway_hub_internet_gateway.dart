@@ -8,7 +8,7 @@ class GetSecurityGatewayHubInternetGateway {
 
   /// Creates a new [GetSecurityGatewayHubInternetGateway].
   /// [assignedIps] Output only. List of IP addresses assigned to the Cloud NAT.
-  GetSecurityGatewayHubInternetGateway({
+  const GetSecurityGatewayHubInternetGateway({
     required this.assignedIps,
   });
 

@@ -14,7 +14,7 @@ class AppVersionSnapshotToolSystemTool {
   /// Creates a new [AppVersionSnapshotToolSystemTool].
   /// [description] The description of the app version.
   /// [name] (Output)
-  AppVersionSnapshotToolSystemTool({
+  const AppVersionSnapshotToolSystemTool({
     this.description,
     this.name,
   });

@@ -14,7 +14,7 @@ class RuntimeConfig {
   /// Creates a new [RuntimeConfig].
   /// [cloudRun] Cloud Run runtime configuration.
   /// [kubernetes] Kubernetes runtime configuration.
-  RuntimeConfig({
+  const RuntimeConfig({
     this.cloudRun,
     this.kubernetes,
   });

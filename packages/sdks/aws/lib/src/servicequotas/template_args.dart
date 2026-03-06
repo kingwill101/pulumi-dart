@@ -24,7 +24,7 @@ class TemplateArgs {
   /// [region] AWS Region to which the template applies. Use `aws.getRegion` instead.
   /// [serviceCode] Service identifier. To find the service code value for an AWS service, use the aws.servicequotas.getService data source.
   /// [value] The new, increased value for the quota.
-  TemplateArgs({
+  const TemplateArgs({
     this.awsRegion,
     required this.quotaCode,
     this.region,

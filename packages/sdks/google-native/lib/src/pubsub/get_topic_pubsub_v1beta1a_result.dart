@@ -8,7 +8,7 @@ class GetTopicPubsubV1beta1aResult {
 
   /// Creates a new [GetTopicPubsubV1beta1aResult].
   /// [name] Name of the topic.
-  GetTopicPubsubV1beta1aResult({
+  const GetTopicPubsubV1beta1aResult({
     required this.name,
   });
 

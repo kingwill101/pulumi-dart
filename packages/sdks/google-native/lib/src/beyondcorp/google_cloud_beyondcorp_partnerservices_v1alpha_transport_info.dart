@@ -12,7 +12,7 @@ class GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo {
   /// Creates a new [GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo].
   /// [serverCaCertPem] PEM encoded CA certificate associated with the proxy server certificate.
   /// [sslDecryptCaCertPem] Optional. PEM encoded CA certificate associated with the certificate used by proxy server for SSL decryption.
-  GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo({
+  const GoogleCloudBeyondcorpPartnerservicesV1alphaTransportInfo({
     required this.serverCaCertPem,
     this.sslDecryptCaCertPem,
   });

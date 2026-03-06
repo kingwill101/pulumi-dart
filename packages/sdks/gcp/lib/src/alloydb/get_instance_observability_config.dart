@@ -32,7 +32,7 @@ class GetInstanceObservabilityConfig {
   /// [trackActiveQueries] Track actively running queries. If not set, default value is "off".
   /// [trackWaitEventTypes] Record wait event types during query execution for an instance.
   /// [trackWaitEvents] Record wait events during query execution for an instance.
-  GetInstanceObservabilityConfig({
+  const GetInstanceObservabilityConfig({
     required this.assistiveExperiencesEnabled,
     required this.enabled,
     required this.maxQueryStringLength,

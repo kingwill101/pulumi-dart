@@ -19,7 +19,7 @@ class GetVpcsResult {
   /// [ids] List of all the VPC Ids found.
   /// [region] Required.
   /// [tags] Required.
-  GetVpcsResult({
+  const GetVpcsResult({
     this.filters,
     required this.id,
     required this.ids,

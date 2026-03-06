@@ -10,7 +10,7 @@ class UpdatePolicy {
 
   /// Creates a new [UpdatePolicy].
   /// [mode] Mode for updating the instance.
-  UpdatePolicy({
+  const UpdatePolicy({
     this.mode,
   });
 

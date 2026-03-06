@@ -9,7 +9,7 @@ class ReadEndpoint {
 
   /// Creates a new [ReadEndpoint].
   /// [address] The reader endpoint for the DB cluster.
-  ReadEndpoint({
+  const ReadEndpoint({
     this.address,
   });
 

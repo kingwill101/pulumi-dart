@@ -20,7 +20,7 @@ class GetServerAzureADOnlyAuthenticationResult {
   /// [id] Resource ID.
   /// [name] Resource name.
   /// [type] Resource type.
-  GetServerAzureADOnlyAuthenticationResult({
+  const GetServerAzureADOnlyAuthenticationResult({
     required this.azureADOnlyAuthentication,
     required this.azureApiVersion,
     required this.id,

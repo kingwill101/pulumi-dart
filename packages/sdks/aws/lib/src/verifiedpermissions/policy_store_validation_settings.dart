@@ -10,7 +10,7 @@ class PolicyStoreValidationSettings {
 
   /// Creates a new [PolicyStoreValidationSettings].
   /// [mode] The mode for the validation settings. Valid values: `OFF`, `STRICT`.
-  PolicyStoreValidationSettings({
+  const PolicyStoreValidationSettings({
     required this.mode,
   });
 

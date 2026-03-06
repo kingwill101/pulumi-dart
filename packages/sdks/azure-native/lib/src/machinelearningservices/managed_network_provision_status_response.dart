@@ -11,7 +11,7 @@ class ManagedNetworkProvisionStatusResponse {
   /// Creates a new [ManagedNetworkProvisionStatusResponse].
   /// [sparkReady] Optional.
   /// [status] Status for the managed network of a machine learning workspace.
-  ManagedNetworkProvisionStatusResponse({
+  const ManagedNetworkProvisionStatusResponse({
     this.sparkReady,
     this.status,
   });

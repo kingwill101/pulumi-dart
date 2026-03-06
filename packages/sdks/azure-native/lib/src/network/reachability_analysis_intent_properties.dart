@@ -18,7 +18,7 @@ class ReachabilityAnalysisIntentProperties {
   /// [destinationResourceId] Destination resource id to verify the reachability path of.
   /// [ipTraffic] IP traffic information.
   /// [sourceResourceId] Source resource id to verify the reachability path of.
-  ReachabilityAnalysisIntentProperties({
+  const ReachabilityAnalysisIntentProperties({
     this.description,
     required this.destinationResourceId,
     required this.ipTraffic,

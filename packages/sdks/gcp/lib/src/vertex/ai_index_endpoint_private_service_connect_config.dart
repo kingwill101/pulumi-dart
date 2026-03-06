@@ -16,7 +16,7 @@ class AiIndexEndpointPrivateServiceConnectConfig {
   /// [enablePrivateServiceConnect] If set to true, the IndexEndpoint is created without private service access.
   /// [projectAllowlists] A list of Projects from which the forwarding rule will target the service attachment.
   /// [pscAutomationConfigs] List of projects and networks where the PSC endpoints will be created. This field is used by Online Inference(Prediction) only.
-  AiIndexEndpointPrivateServiceConnectConfig({
+  const AiIndexEndpointPrivateServiceConnectConfig({
     required this.enablePrivateServiceConnect,
     this.projectAllowlists,
     this.pscAutomationConfigs,

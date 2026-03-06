@@ -11,7 +11,7 @@ class DomainOsFirmwareInfoFeature {
   /// Creates a new [DomainOsFirmwareInfoFeature].
   /// [enabled] Indicates whether a particular firmware feature is enabled or not.
   /// [name] Sets the name identifier of a specific firmware feature.
-  DomainOsFirmwareInfoFeature({
+  const DomainOsFirmwareInfoFeature({
     this.enabled,
     this.name,
   });

@@ -9,7 +9,7 @@ class AppSkuInfoResponse {
 
   /// Creates a new [AppSkuInfoResponse].
   /// [name] The name of the SKU.
-  AppSkuInfoResponse({
+  const AppSkuInfoResponse({
     required this.name,
   });
 

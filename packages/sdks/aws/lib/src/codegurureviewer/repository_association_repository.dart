@@ -17,7 +17,7 @@ class RepositoryAssociationRepository {
   /// [codecommit] Optional.
   /// [githubEnterpriseServer] Optional.
   /// [s3Bucket] Optional.
-  RepositoryAssociationRepository({
+  const RepositoryAssociationRepository({
     this.bitbucket,
     this.codecommit,
     this.githubEnterpriseServer,

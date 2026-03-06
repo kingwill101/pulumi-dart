@@ -14,7 +14,7 @@ class ServiceStatusPatch {
   /// Creates a new [ServiceStatusPatch].
   /// [conditions] Current service state
   /// [loadBalancer] LoadBalancer contains the current status of the load-balancer, if one is present.
-  ServiceStatusPatch({
+  const ServiceStatusPatch({
     this.conditions,
     this.loadBalancer,
   });

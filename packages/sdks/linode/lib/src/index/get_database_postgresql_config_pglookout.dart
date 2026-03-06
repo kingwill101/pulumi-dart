@@ -8,7 +8,7 @@ class GetDatabasePostgresqlConfigPglookout {
 
   /// Creates a new [GetDatabasePostgresqlConfigPglookout].
   /// [maxFailoverReplicationTimeLag] Required.
-  GetDatabasePostgresqlConfigPglookout({
+  const GetDatabasePostgresqlConfigPglookout({
     required this.maxFailoverReplicationTimeLag,
   });
 

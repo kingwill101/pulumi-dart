@@ -18,7 +18,7 @@ class GroupWarmPool {
   /// [maxGroupPreparedCapacity] Total maximum number of instances that are allowed to be in the warm pool or in any state except Terminated for the Auto Scaling group.
   /// [minSize] Minimum number of instances to maintain in the warm pool. This helps you to ensure that there is always a certain number of warmed instances available to handle traffic spikes. Defaults to 0 if not specified.
   /// [poolState] Sets the instance state to transition to after the lifecycle hooks finish. Valid values are: Stopped (default), Running or Hibernated.
-  GroupWarmPool({
+  const GroupWarmPool({
     this.instanceReusePolicy,
     this.maxGroupPreparedCapacity,
     this.minSize,

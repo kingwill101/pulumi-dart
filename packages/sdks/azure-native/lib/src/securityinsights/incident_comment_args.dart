@@ -24,7 +24,7 @@ class IncidentCommentArgs {
   /// [message] The comment message
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the workspace.
-  IncidentCommentArgs({
+  const IncidentCommentArgs({
     this.incidentCommentId,
     required this.incidentId,
     required this.message,

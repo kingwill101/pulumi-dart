@@ -16,7 +16,7 @@ class IoTEdgeAgentInfo {
   /// [imageName] Name of the IoT edge agent image.
   /// [imageRepository] Image repository details.
   /// [tag] Image Tag.
-  IoTEdgeAgentInfo({
+  const IoTEdgeAgentInfo({
     required this.imageName,
     this.imageRepository,
     required this.tag,

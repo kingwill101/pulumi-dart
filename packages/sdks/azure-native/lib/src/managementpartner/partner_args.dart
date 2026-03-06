@@ -12,7 +12,7 @@ class PartnerArgs {
 
   /// Creates a new [PartnerArgs].
   /// [partnerId] Id of the Partner
-  PartnerArgs({
+  const PartnerArgs({
     this.partnerId,
   });
 

@@ -75,7 +75,7 @@ class InsightsDatasetConfigArgs {
   /// [retentionPeriodDays] Number of days of history that must be retained.
   /// [sourceFolders] Defines the options for providing source folders for the DatasetConfig.
   /// [sourceProjects] Defines the options for providing source projects for the DatasetConfig.
-  InsightsDatasetConfigArgs({
+  const InsightsDatasetConfigArgs({
     this.activityDataRetentionPeriodDays,
     required this.datasetConfigId,
     this.description,

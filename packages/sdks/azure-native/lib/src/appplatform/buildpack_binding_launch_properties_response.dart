@@ -12,7 +12,7 @@ class BuildpackBindingLaunchPropertiesResponse {
   /// Creates a new [BuildpackBindingLaunchPropertiesResponse].
   /// [properties] Non-sensitive properties for launchProperties
   /// [secrets] Sensitive properties for launchProperties
-  BuildpackBindingLaunchPropertiesResponse({
+  const BuildpackBindingLaunchPropertiesResponse({
     this.properties,
     this.secrets,
   });

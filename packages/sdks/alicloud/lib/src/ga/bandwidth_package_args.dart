@@ -67,7 +67,7 @@ class BandwidthPackageArgs {
   /// [resourceGroupId] The ID of the resource group. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
-  BandwidthPackageArgs({
+  const BandwidthPackageArgs({
     this.autoPay,
     this.autoRenewDuration,
     this.autoUseCoupon,

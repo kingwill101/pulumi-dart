@@ -72,7 +72,7 @@ class GetFleetResult {
   /// [vmAttributes] Attribute based Fleet.
   /// [vmSizesProfile] List of VM sizes supported for Compute Fleet
   /// [zones] Zones in which the Compute Fleet is available
-  GetFleetResult({
+  const GetFleetResult({
     this.additionalLocationsProfile,
     required this.azureApiVersion,
     required this.computeProfile,

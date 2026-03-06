@@ -12,7 +12,7 @@ class CapabilitiesPatch {
   /// Creates a new [CapabilitiesPatch].
   /// [add] Added capabilities
   /// [drop] Removed capabilities
-  CapabilitiesPatch({
+  const CapabilitiesPatch({
     this.add,
     this.drop,
   });

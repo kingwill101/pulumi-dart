@@ -23,7 +23,7 @@ class AwsIntegrationsKinesis {
   /// [metricsPollingInterval] The data polling interval in seconds.
   /// [tagKey] Specify a Tag key associated with the resources that you want to monitor. Filter values are case-sensitive.
   /// [tagValue] Specify a Tag value associated with the resources that you want to monitor. Filter values are case-sensitive.
-  AwsIntegrationsKinesis({
+  const AwsIntegrationsKinesis({
     this.awsRegions,
     this.fetchShards,
     this.fetchTags,

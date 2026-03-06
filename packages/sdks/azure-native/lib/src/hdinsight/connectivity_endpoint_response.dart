@@ -21,7 +21,7 @@ class ConnectivityEndpointResponse {
   /// [port] The port to connect to.
   /// [privateIPAddress] The private ip address of the endpoint.
   /// [protocol] The protocol of the endpoint.
-  ConnectivityEndpointResponse({
+  const ConnectivityEndpointResponse({
     this.location,
     this.name,
     this.port,

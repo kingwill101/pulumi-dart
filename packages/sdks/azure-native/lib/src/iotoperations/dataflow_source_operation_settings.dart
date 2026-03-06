@@ -21,7 +21,7 @@ class DataflowSourceOperationSettings {
   /// [endpointRef] Reference to the Dataflow Endpoint resource. Can only be of Broker and Kafka type.
   /// [schemaRef] Schema CR reference. Data will be deserialized according to the schema, and dropped if it doesn't match.
   /// [serializationFormat] Content is a JSON Schema. Allowed: JSON Schema/draft-7.
-  DataflowSourceOperationSettings({
+  const DataflowSourceOperationSettings({
     this.assetRef,
     required this.dataSources,
     required this.endpointRef,

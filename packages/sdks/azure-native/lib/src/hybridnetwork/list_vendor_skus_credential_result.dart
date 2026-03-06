@@ -20,7 +20,7 @@ class ListVendorSkusCredentialResult {
   /// [expiry] The UTC time when credential will expire.
   /// [repositories] The repositories that could be accessed using the current credential.
   /// [username] The username of the sku credential.
-  ListVendorSkusCredentialResult({
+  const ListVendorSkusCredentialResult({
     this.acrServerUrl,
     this.acrToken,
     this.expiry,

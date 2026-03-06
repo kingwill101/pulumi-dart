@@ -16,7 +16,7 @@ class InstanceSchedulingMaxRunDuration {
   /// Creates a new [InstanceSchedulingMaxRunDuration].
   /// [nanos] Span of time that's a fraction of a second at nanosecond
   /// [seconds] Span of time at a resolution of a second. Must be from 0 to
-  InstanceSchedulingMaxRunDuration({
+  const InstanceSchedulingMaxRunDuration({
     this.nanos,
     required this.seconds,
   });

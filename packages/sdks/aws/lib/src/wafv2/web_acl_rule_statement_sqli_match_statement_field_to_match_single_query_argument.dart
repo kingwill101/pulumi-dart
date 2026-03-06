@@ -8,7 +8,7 @@ class WebAclRuleStatementSqliMatchStatementFieldToMatchSingleQueryArgument {
 
   /// Creates a new [WebAclRuleStatementSqliMatchStatementFieldToMatchSingleQueryArgument].
   /// [name] Name of the query header to inspect. This setting must be provided as lower case characters.
-  WebAclRuleStatementSqliMatchStatementFieldToMatchSingleQueryArgument({
+  const WebAclRuleStatementSqliMatchStatementFieldToMatchSingleQueryArgument({
     required this.name,
   });
 

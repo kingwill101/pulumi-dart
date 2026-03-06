@@ -14,7 +14,7 @@ class GetServerlessCacheCacheUsageLimitsDataStorage {
   /// [maximum] The maximum number of ECPUs the cache can consume per second.
   /// [minimum] The minimum number of ECPUs the cache can consume per second.
   /// [unit] The unit that the storage is measured in.
-  GetServerlessCacheCacheUsageLimitsDataStorage({
+  const GetServerlessCacheCacheUsageLimitsDataStorage({
     required this.maximum,
     required this.minimum,
     required this.unit,

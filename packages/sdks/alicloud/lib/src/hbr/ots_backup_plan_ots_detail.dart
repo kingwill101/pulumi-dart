@@ -8,7 +8,7 @@ class OtsBackupPlanOtsDetail {
 
   /// Creates a new [OtsBackupPlanOtsDetail].
   /// [tableNames] The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
-  OtsBackupPlanOtsDetail({
+  const OtsBackupPlanOtsDetail({
     this.tableNames,
   });
 

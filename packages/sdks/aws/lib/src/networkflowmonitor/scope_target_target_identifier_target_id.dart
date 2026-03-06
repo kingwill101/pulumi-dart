@@ -8,7 +8,7 @@ class ScopeTargetTargetIdentifierTargetId {
 
   /// Creates a new [ScopeTargetTargetIdentifierTargetId].
   /// [accountId] AWS account ID.
-  ScopeTargetTargetIdentifierTargetId({
+  const ScopeTargetTargetIdentifierTargetId({
     required this.accountId,
   });
 

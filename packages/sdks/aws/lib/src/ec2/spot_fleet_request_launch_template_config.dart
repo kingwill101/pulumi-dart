@@ -13,7 +13,7 @@ class SpotFleetRequestLaunchTemplateConfig {
   /// Creates a new [SpotFleetRequestLaunchTemplateConfig].
   /// [launchTemplateSpecification] Launch template specification. See Launch Template Specification below for more details.
   /// [overrides] One or more override configurations. See Overrides below for more details.
-  SpotFleetRequestLaunchTemplateConfig({
+  const SpotFleetRequestLaunchTemplateConfig({
     required this.launchTemplateSpecification,
     this.overrides,
   });

@@ -11,7 +11,7 @@ class ConnectorPluginCustomPlugin {
   /// Creates a new [ConnectorPluginCustomPlugin].
   /// [arn] The Amazon Resource Name (ARN) of the custom plugin.
   /// [revision] The revision of the custom plugin.
-  ConnectorPluginCustomPlugin({
+  const ConnectorPluginCustomPlugin({
     required this.arn,
     required this.revision,
   });

@@ -17,7 +17,7 @@ class PrivateEndpointConnection {
   /// [privateEndpoint] The Private Endpoint resource for this Connection.
   /// [privateLinkServiceConnectionState] Details about the state of the connection.
   /// [provisioningState] Provisioning state of the Private Endpoint Connection.
-  PrivateEndpointConnection({
+  const PrivateEndpointConnection({
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,
     this.provisioningState,

@@ -13,7 +13,7 @@ class GetVirtualGatewaySpecListenerTl {
   /// [certificates] Required.
   /// [mode] Required.
   /// [validations] Required.
-  GetVirtualGatewaySpecListenerTl({
+  const GetVirtualGatewaySpecListenerTl({
     required this.certificates,
     required this.mode,
     required this.validations,

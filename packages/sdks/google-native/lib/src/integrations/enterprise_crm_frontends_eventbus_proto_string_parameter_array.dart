@@ -7,7 +7,7 @@ class EnterpriseCrmFrontendsEventbusProtoStringParameterArray {
 
   /// Creates a new [EnterpriseCrmFrontendsEventbusProtoStringParameterArray].
   /// [stringValues] Optional.
-  EnterpriseCrmFrontendsEventbusProtoStringParameterArray({
+  const EnterpriseCrmFrontendsEventbusProtoStringParameterArray({
     this.stringValues,
   });
 

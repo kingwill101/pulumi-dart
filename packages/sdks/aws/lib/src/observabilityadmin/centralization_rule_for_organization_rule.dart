@@ -13,7 +13,7 @@ class CentralizationRuleForOrganizationRule {
   /// Creates a new [CentralizationRuleForOrganizationRule].
   /// [destination] Configuration block for the destination where logs will be centralized. See `destination` below.
   /// [source] Configuration block for the source of logs to be centralized. See `source` below.
-  CentralizationRuleForOrganizationRule({
+  const CentralizationRuleForOrganizationRule({
     required this.destination,
     required this.source,
   });

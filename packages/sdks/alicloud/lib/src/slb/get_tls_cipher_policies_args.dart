@@ -27,7 +27,7 @@ class GetTlsCipherPoliciesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] TLS policy instance state. Valid values: `configuring`, `normal`.
   /// [tlsCipherPolicyName] TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
-  GetTlsCipherPoliciesArgs({
+  const GetTlsCipherPoliciesArgs({
     this.ids,
     this.includeListener,
     this.nameRegex,

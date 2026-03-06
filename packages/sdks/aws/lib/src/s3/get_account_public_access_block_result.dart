@@ -22,7 +22,7 @@ class GetAccountPublicAccessBlockResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ignorePublicAcls] Whether or not Amazon S3 should ignore public ACLs for buckets in this account is enabled. Returns as `true` or `false`.
   /// [restrictPublicBuckets] Whether or not Amazon S3 should restrict public bucket policies for buckets in this account is enabled. Returns as `true` or `false`.
-  GetAccountPublicAccessBlockResult({
+  const GetAccountPublicAccessBlockResult({
     this.accountId,
     required this.blockPublicAcls,
     required this.blockPublicPolicy,

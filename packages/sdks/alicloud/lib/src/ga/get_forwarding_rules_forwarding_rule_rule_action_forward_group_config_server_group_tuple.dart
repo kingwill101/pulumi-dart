@@ -8,7 +8,7 @@ class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTup
 
   /// Creates a new [GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple].
   /// [endpointGroupId] Terminal node group ID.
-  GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple({
+  const GetForwardingRulesForwardingRuleRuleActionForwardGroupConfigServerGroupTuple({
     required this.endpointGroupId,
   });
 

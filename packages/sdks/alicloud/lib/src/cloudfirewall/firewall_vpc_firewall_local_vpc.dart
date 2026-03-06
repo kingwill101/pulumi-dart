@@ -27,7 +27,7 @@ class FirewallVpcFirewallLocalVpc {
   /// [routerInterfaceId] The ID of the router interface in the peer VPC.
   /// [vpcId] The ID of the local VPC instance.
   /// [vpcName] The instance name of the peer VPC.
-  FirewallVpcFirewallLocalVpc({
+  const FirewallVpcFirewallLocalVpc({
     this.eniId,
     this.eniPrivateIpAddress,
     required this.localVpcCidrTableLists,

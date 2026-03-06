@@ -14,7 +14,7 @@ class GetSharedImagePurchasePlan {
   /// [name] The name of the Shared Image.
   /// [product] (Optional) The Purchase Plan Product for this Gallery Image.
   /// [publisher] (Optional) The Purchase Plan Publisher for this Gallery Image.
-  GetSharedImagePurchasePlan({
+  const GetSharedImagePurchasePlan({
     required this.name,
     required this.product,
     required this.publisher,

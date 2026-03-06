@@ -18,7 +18,7 @@ class GetProfessionalServiceSubscriptionLevelArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [resourceName] The name of the resource.
   /// [subscriptionId] The Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-  GetProfessionalServiceSubscriptionLevelArgs({
+  const GetProfessionalServiceSubscriptionLevelArgs({
     required this.resourceGroupName,
     required this.resourceName,
     this.subscriptionId,

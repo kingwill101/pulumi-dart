@@ -7,15 +7,15 @@ import 'package:pulumi_newrelic/plugins.dart' as module_plugins;
 import 'package:pulumi_newrelic/providers.dart' as module_providers;
 import 'package:pulumi_newrelic/synthetics.dart' as module_synthetics;
 
-final cloud = _CloudModuleNamespace();
-final index = _IndexModuleNamespace();
-final insights = _InsightsModuleNamespace();
-final plugins = _PluginsModuleNamespace();
-final providers = _ProvidersModuleNamespace();
-final synthetics = _SyntheticsModuleNamespace();
+final cloud = const _CloudModuleNamespace();
+final index = const _IndexModuleNamespace();
+final insights = const _InsightsModuleNamespace();
+final plugins = const _PluginsModuleNamespace();
+final providers = const _ProvidersModuleNamespace();
+final synthetics = const _SyntheticsModuleNamespace();
 
 class _CloudModuleNamespace {
-  _CloudModuleNamespace();
+  const _CloudModuleNamespace();
   final AwsEuSovereignIntegrations = module_cloud.AwsEuSovereignIntegrations.new;
   final AwsEuSovereignIntegrationsArgs = module_cloud.AwsEuSovereignIntegrationsArgs.new;
   final AwsEuSovereignIntegrationsBilling = module_cloud.AwsEuSovereignIntegrationsBilling.new;
@@ -335,7 +335,7 @@ class _CloudModuleNamespace {
 }
 
 class _IndexModuleNamespace {
-  _IndexModuleNamespace();
+  const _IndexModuleNamespace();
   final AccountManagement = module_index.AccountManagement.new;
   final AccountManagementArgs = module_index.AccountManagementArgs.new;
   final AccountManagementState = module_index.AccountManagementState.new;
@@ -927,7 +927,7 @@ class _IndexModuleNamespace {
 }
 
 class _InsightsModuleNamespace {
-  _InsightsModuleNamespace();
+  const _InsightsModuleNamespace();
   final Event = module_insights.Event.new;
   final EventArgs = module_insights.EventArgs.new;
   final EventEvent = module_insights.EventEvent.new;
@@ -939,7 +939,7 @@ class _InsightsModuleNamespace {
 }
 
 class _PluginsModuleNamespace {
-  _PluginsModuleNamespace();
+  const _PluginsModuleNamespace();
   final ApplicationSettings = module_plugins.ApplicationSettings.new;
   final ApplicationSettingsArgs = module_plugins.ApplicationSettingsArgs.new;
   final ApplicationSettingsErrorCollector = module_plugins.ApplicationSettingsErrorCollector.new;
@@ -975,7 +975,7 @@ class _PluginsModuleNamespace {
 }
 
 class _ProvidersModuleNamespace {
-  _ProvidersModuleNamespace();
+  const _ProvidersModuleNamespace();
   final Newrelic = module_providers.ProviderProvider.new;
   final NewrelicArgs = module_providers.ProviderArgs.new;
   final ProviderArgs = module_providers.ProviderArgs.new;
@@ -988,7 +988,7 @@ class _ProvidersModuleNamespace {
 }
 
 class _SyntheticsModuleNamespace {
-  _SyntheticsModuleNamespace();
+  const _SyntheticsModuleNamespace();
   final AlertCondition = module_synthetics.AlertCondition.new;
   final AlertConditionArgs = module_synthetics.AlertConditionArgs.new;
   final AlertConditionState = module_synthetics.AlertConditionState.new;

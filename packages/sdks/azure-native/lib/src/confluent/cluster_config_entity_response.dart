@@ -9,7 +9,7 @@ class ClusterConfigEntityResponse {
 
   /// Creates a new [ClusterConfigEntityResponse].
   /// [kind] The lifecycle phase of the cluster
-  ClusterConfigEntityResponse({
+  const ClusterConfigEntityResponse({
     this.kind,
   });
 

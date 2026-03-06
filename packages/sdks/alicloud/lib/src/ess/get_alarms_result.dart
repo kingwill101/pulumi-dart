@@ -29,7 +29,7 @@ class GetAlarmsResult {
   /// [names] A list of alarm names.
   /// [outputFile] Optional.
   /// [scalingGroupId] The scaling group associated with this alarm.
-  GetAlarmsResult({
+  const GetAlarmsResult({
     required this.alarms,
     required this.id,
     required this.ids,

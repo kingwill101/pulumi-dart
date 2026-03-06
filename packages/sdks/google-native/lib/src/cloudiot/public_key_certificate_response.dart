@@ -16,7 +16,7 @@ class PublicKeyCertificateResponse {
   /// [certificate] The certificate data.
   /// [format] The certificate format.
   /// [x509Details] [Output only] The certificate details. Used only for X.509 certificates.
-  PublicKeyCertificateResponse({
+  const PublicKeyCertificateResponse({
     required this.certificate,
     required this.format,
     required this.x509Details,

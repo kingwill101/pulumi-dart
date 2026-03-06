@@ -18,7 +18,7 @@ class DatasetKustoClusterArgs {
   /// [kustoClusterId] The resource ID of the Kusto Cluster to be shared with the receiver. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   /// [name] The name which should be used for this Data Share Kusto Cluster Dataset. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
   /// [shareId] The resource ID of the Data Share where this Data Share Kusto Cluster Dataset should be created. Changing this forces a new Data Share Kusto Cluster Dataset to be created.
-  DatasetKustoClusterArgs({
+  const DatasetKustoClusterArgs({
     required this.kustoClusterId,
     this.name,
     required this.shareId,

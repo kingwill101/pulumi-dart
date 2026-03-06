@@ -15,7 +15,7 @@ class GetTrunkedNetworkArgs {
   /// Creates a new [GetTrunkedNetworkArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [trunkedNetworkName] The name of the trunked network.
-  GetTrunkedNetworkArgs({
+  const GetTrunkedNetworkArgs({
     required this.resourceGroupName,
     required this.trunkedNetworkName,
   });

@@ -29,7 +29,7 @@ class WorkspaceWorkspaceState {
   /// [envTypes] Environments contained in the workspace:
   /// [status] Workspace state, possible values:
   /// [workspaceName] The workspace name. The format is as follows:
-  WorkspaceWorkspaceState({
+  const WorkspaceWorkspaceState({
     this.createTime,
     this.description,
     this.displayName,

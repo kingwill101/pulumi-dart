@@ -18,7 +18,7 @@ class ServiceAttachmentConnectedEndpointResponse {
   /// [endpoint] The url of a connected endpoint.
   /// [pscConnectionId] The PSC connection id of the connected endpoint.
   /// [status] The status of a connected endpoint to this service attachment.
-  ServiceAttachmentConnectedEndpointResponse({
+  const ServiceAttachmentConnectedEndpointResponse({
     required this.consumerNetwork,
     required this.endpoint,
     required this.pscConnectionId,

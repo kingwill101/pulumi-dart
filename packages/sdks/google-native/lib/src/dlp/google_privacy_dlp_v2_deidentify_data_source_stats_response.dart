@@ -15,7 +15,7 @@ class GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse {
   /// [transformationCount] Number of successfully applied transformations.
   /// [transformationErrorCount] Number of errors encountered while trying to apply transformations.
   /// [transformedBytes] Total size in bytes that were transformed in some way.
-  GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse({
+  const GooglePrivacyDlpV2DeidentifyDataSourceStatsResponse({
     required this.transformationCount,
     required this.transformationErrorCount,
     required this.transformedBytes,

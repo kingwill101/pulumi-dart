@@ -11,7 +11,7 @@ class GetKeyRingResult {
   /// Creates a new [GetKeyRingResult].
   /// [createTime] The time at which this KeyRing was created.
   /// [name] The resource name for the KeyRing in the format `projects/*/locations/*/keyRings/*`.
-  GetKeyRingResult({
+  const GetKeyRingResult({
     required this.createTime,
     required this.name,
   });

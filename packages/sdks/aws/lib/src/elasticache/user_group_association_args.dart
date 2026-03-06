@@ -18,7 +18,7 @@ class UserGroupAssociationArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userGroupId] ID of the user group.
   /// [userId] ID of the user to associated with the user group.
-  UserGroupAssociationArgs({
+  const UserGroupAssociationArgs({
     this.region,
     required this.userGroupId,
     required this.userId,

@@ -65,7 +65,7 @@ class GetBookmarkResult {
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [updated] The last time the bookmark was updated
   /// [updatedBy] Describes a user that updated the bookmark
-  GetBookmarkResult({
+  const GetBookmarkResult({
     required this.azureApiVersion,
     this.created,
     this.createdBy,

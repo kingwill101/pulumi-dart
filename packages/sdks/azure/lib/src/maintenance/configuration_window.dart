@@ -20,7 +20,7 @@ class ConfigurationWindow {
   /// [recurEvery] The rate at which a maintenance window is expected to recur. The rate can be expressed as daily, weekly, or monthly schedules.
   /// [startDateTime] Effective start date of the maintenance window in YYYY-MM-DD hh:mm format.
   /// [timeZone] The time zone for the maintenance window. A list of timezones can be obtained by executing [System.TimeZoneInfo]::GetSystemTimeZones() in PowerShell.
-  ConfigurationWindow({
+  const ConfigurationWindow({
     this.duration,
     this.expirationDateTime,
     this.recurEvery,

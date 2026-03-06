@@ -15,7 +15,7 @@ class ClusterJobResponse {
   /// [id] Resource ID of the streaming job.
   /// [jobState] The current execution state of the streaming job.
   /// [streamingUnits] The number of streaming units that are used by the streaming job.
-  ClusterJobResponse({
+  const ClusterJobResponse({
     required this.id,
     required this.jobState,
     required this.streamingUnits,

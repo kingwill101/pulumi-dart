@@ -23,7 +23,7 @@ class InstanceDataNodeConfiguration {
   /// [diskType] Elasticsearch cluster data node disk type
   /// [performanceLevel] Elasticsearch cluster data node Essd disk level
   /// [spec] Elasticsearch data node specification
-  InstanceDataNodeConfiguration({
+  const InstanceDataNodeConfiguration({
     this.amount,
     this.disk,
     this.diskEncryption,

@@ -18,7 +18,7 @@ class FlavorAccessState {
   /// [flavorId] The UUID of flavor to use. Changing this creates a new flavor access.
   /// [region] The region in which to obtain the V2 Compute client.
   /// [tenantId] The UUID of tenant which is allowed to use the flavor.
-  FlavorAccessState({
+  const FlavorAccessState({
     this.flavorId,
     this.region,
     this.tenantId,

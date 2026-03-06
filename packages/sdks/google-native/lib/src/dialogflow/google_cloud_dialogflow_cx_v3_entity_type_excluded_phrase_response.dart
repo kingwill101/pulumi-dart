@@ -9,7 +9,7 @@ class GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse {
 
   /// Creates a new [GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse].
   /// [value] The word or phrase to be excluded.
-  GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse({
+  const GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseResponse({
     required this.value,
   });
 

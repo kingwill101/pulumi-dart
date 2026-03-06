@@ -51,7 +51,7 @@ class EdifactEnvelopeOverride {
   /// [senderApplicationId] The sender application id.
   /// [senderApplicationQualifier] The sender application qualifier.
   /// [targetNamespace] The target namespace on which this envelope settings has to be applied.
-  EdifactEnvelopeOverride({
+  const EdifactEnvelopeOverride({
     this.applicationPassword,
     this.associationAssignedCode,
     this.controllingAgencyCode,

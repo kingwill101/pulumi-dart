@@ -19,7 +19,7 @@ class EkmConnectionServiceResolver {
   /// [hostname] Required. The hostname of the EKM replica used at TLS and HTTP layers.
   /// [serverCertificates] Required. A list of leaf server certificates used to authenticate HTTPS connections to the EKM replica. Currently, a maximum of 10 Certificate is supported.
   /// [serviceDirectoryService] Required. The resource name of the Service Directory service pointing to an EKM replica, in the format projects/*/locations/*/namespaces/*/services/*
-  EkmConnectionServiceResolver({
+  const EkmConnectionServiceResolver({
     this.endpointFilter,
     required this.hostname,
     required this.serverCertificates,

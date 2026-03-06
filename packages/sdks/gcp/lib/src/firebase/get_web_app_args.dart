@@ -19,7 +19,7 @@ class GetWebAppArgs {
   /// Creates a new [GetWebAppArgs].
   /// [appId] The app_ip of name of the Firebase webApp.
   /// [project] The ID of the project in which the resource belongs.
-  GetWebAppArgs({
+  const GetWebAppArgs({
     required this.appId,
     this.project,
   });

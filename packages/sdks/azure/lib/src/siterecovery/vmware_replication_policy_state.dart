@@ -18,7 +18,7 @@ class VMWareReplicationPolicyState {
   /// [name] The name which should be used for this Classic Replication Policy. Changing this forces a new Replication Policy to be created.
   /// [recoveryPointRetentionInMinutes] Specifies the period up to which the recovery points will be retained. Must between `0` to `21600`.
   /// [recoveryVaultId] ID of the Recovery Services Vault. Changing this forces a new Replication Policy to be created.
-  VMWareReplicationPolicyState({
+  const VMWareReplicationPolicyState({
     this.applicationConsistentSnapshotFrequencyInMinutes,
     this.name,
     this.recoveryPointRetentionInMinutes,

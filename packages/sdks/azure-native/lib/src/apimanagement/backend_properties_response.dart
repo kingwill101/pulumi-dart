@@ -10,7 +10,7 @@ class BackendPropertiesResponse {
 
   /// Creates a new [BackendPropertiesResponse].
   /// [serviceFabricCluster] Backend Service Fabric Cluster Properties
-  BackendPropertiesResponse({
+  const BackendPropertiesResponse({
     this.serviceFabricCluster,
   });
 

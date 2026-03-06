@@ -11,7 +11,7 @@ class DomainHttpHeaderConfig {
   /// [headerId] Optional.
   /// [headerKey] Required.
   /// [headerValue] Required.
-  DomainHttpHeaderConfig({
+  const DomainHttpHeaderConfig({
     this.headerId,
     required this.headerKey,
     required this.headerValue,

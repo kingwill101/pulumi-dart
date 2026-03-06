@@ -63,7 +63,7 @@ class WaitingRoomArgs {
   /// [totalActiveUsers] Total number of active users.
   /// [waitingRoomName] The name of the waiting room.
   /// [waitingRoomType] Waiting room type, support:
-  WaitingRoomArgs({
+  const WaitingRoomArgs({
     required this.cookieName,
     this.customPageHtml,
     this.description,

@@ -12,7 +12,7 @@ class RecommendationConfigurationProperties {
   /// Creates a new [RecommendationConfigurationProperties].
   /// [recommendationType] The type of IoT Security recommendation.
   /// [status] Recommendation status. When the recommendation status is disabled recommendations are not generated.
-  RecommendationConfigurationProperties({
+  const RecommendationConfigurationProperties({
     required this.recommendationType,
     required this.status,
   });

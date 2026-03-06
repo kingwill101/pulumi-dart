@@ -33,7 +33,7 @@ class InboundSamlConfigArgs {
   /// [project] Optional.
   /// [spConfig] The SAML SP (Service Provider) configuration when the project acts as the relying party to receive and accept an authentication assertion issued by a SAML identity provider.
   /// [tenantId] Required.
-  InboundSamlConfigArgs({
+  const InboundSamlConfigArgs({
     this.displayName,
     this.enabled,
     this.idpConfig,

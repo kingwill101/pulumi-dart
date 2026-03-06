@@ -24,7 +24,7 @@ class GetEcsDeploymentSetsResult {
   /// [outputFile] Optional.
   /// [sets] Required.
   /// [strategy] Optional.
-  GetEcsDeploymentSetsResult({
+  const GetEcsDeploymentSetsResult({
     this.deploymentSetName,
     required this.id,
     required this.ids,

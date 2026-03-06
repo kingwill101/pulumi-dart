@@ -15,7 +15,7 @@ class AclEntryAttachmentState {
   /// [aclId] The ID of the ACL that the entry will be attached to.
   /// [comment] The comment for the entry.
   /// [entry] The CIDR block of the entry to attach.
-  AclEntryAttachmentState({
+  const AclEntryAttachmentState({
     this.aclId,
     this.comment,
     this.entry,

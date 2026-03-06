@@ -11,7 +11,7 @@ class IdentitySelector {
   /// Creates a new [IdentitySelector].
   /// [identityType] The type of managed identity that is being selected.
   /// [userAssignedIdentityResourceId] The user assigned managed identity resource ID to use. Mutually exclusive with a system assigned identity type.
-  IdentitySelector({
+  const IdentitySelector({
     this.identityType,
     this.userAssignedIdentityResourceId,
   });

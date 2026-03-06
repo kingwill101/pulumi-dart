@@ -21,7 +21,7 @@ class TrafficMirrorFilterIngressRule {
   /// [sourceCidrBlock] Optional.
   /// [sourcePortRange] Optional.
   /// [trafficMirrorFilterRuleStatus] Optional.
-  TrafficMirrorFilterIngressRule({
+  const TrafficMirrorFilterIngressRule({
     required this.action,
     this.destinationCidrBlock,
     this.destinationPortRange,

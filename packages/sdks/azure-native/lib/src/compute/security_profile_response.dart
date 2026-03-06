@@ -24,7 +24,7 @@ class SecurityProfileResponse {
   /// [proxyAgentSettings] Specifies ProxyAgent settings while creating the virtual machine. Minimum api-version: 2023-09-01.
   /// [securityType] Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. The default behavior is: UefiSettings will not be enabled unless this property is set.
   /// [uefiSettings] Specifies the security settings like secure boot and vTPM used while creating the virtual machine. Minimum api-version: 2020-12-01.
-  SecurityProfileResponse({
+  const SecurityProfileResponse({
     this.encryptionAtHost,
     this.encryptionIdentity,
     this.proxyAgentSettings,

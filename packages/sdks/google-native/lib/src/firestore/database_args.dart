@@ -43,7 +43,7 @@ class DatabaseArgs {
   /// [pointInTimeRecoveryEnablement] Whether to enable the PITR feature on this database.
   /// [project] Optional.
   /// [type] The type of the database. See https://cloud.google.com/datastore/docs/firestore-or-datastore for information about how to choose.
-  DatabaseArgs({
+  const DatabaseArgs({
     this.appEngineIntegrationMode,
     this.concurrencyMode,
     required this.databaseId,

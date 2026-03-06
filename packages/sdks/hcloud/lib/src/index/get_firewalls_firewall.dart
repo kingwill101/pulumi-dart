@@ -17,7 +17,7 @@ class GetFirewallsFirewall {
   /// [labels] Optional.
   /// [name] Required.
   /// [rules] Optional.
-  GetFirewallsFirewall({
+  const GetFirewallsFirewall({
     this.applyTos,
     this.id,
     this.labels,

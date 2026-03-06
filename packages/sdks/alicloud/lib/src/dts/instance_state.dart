@@ -149,7 +149,7 @@ class InstanceState {
   /// [tags] The tag value corresponding to the tag key.See the following `Block Tags`.
   /// [type] The instance type. Valid values:
   /// [usedTime] Prepaid instance purchase duration.
-  InstanceState({
+  const InstanceState({
     this.autoPay,
     this.autoStart,
     this.computeUnit,

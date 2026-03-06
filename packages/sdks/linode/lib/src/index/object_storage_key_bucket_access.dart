@@ -17,7 +17,7 @@ class ObjectStorageKeyBucketAccess {
   /// [cluster] The Object Storage cluster where the bucket resides. Deprecated in favor of `region`.
   /// [permissions] This Limited Access Key’s permissions for the selected bucket. *Changing `permissions` forces the creation of a new Object Storage Key.* (`read_write`, `read_only`)
   /// [region] The region where the bucket resides.
-  ObjectStorageKeyBucketAccess({
+  const ObjectStorageKeyBucketAccess({
     required this.bucketName,
     this.cluster,
     required this.permissions,

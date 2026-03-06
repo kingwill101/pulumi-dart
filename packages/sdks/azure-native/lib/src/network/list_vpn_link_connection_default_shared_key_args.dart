@@ -21,7 +21,7 @@ class ListVpnLinkConnectionDefaultSharedKeyArgs {
   /// [gatewayName] The name of the gateway.
   /// [linkConnectionName] The name of the vpn link connection.
   /// [resourceGroupName] The name of the resource group.
-  ListVpnLinkConnectionDefaultSharedKeyArgs({
+  const ListVpnLinkConnectionDefaultSharedKeyArgs({
     required this.connectionName,
     required this.gatewayName,
     required this.linkConnectionName,

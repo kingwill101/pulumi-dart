@@ -22,7 +22,7 @@ class GetDbClustersResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetDbClustersResult({
+  const GetDbClustersResult({
     required this.clusters,
     this.dbClusterDescription,
     this.enableDetails,

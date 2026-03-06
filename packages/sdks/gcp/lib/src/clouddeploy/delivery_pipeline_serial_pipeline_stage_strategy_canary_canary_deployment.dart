@@ -19,7 +19,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment {
   /// [postdeploy] Optional. Configuration for the postdeploy job of the last phase. If this is not configured, postdeploy job will not be present.
   /// [predeploy] Optional. Configuration for the predeploy job of the first phase. If this is not configured, predeploy job will not be present.
   /// [verify] Whether to run verify tests after each percentage deployment.
-  DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment({
+  const DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment({
     required this.percentages,
     this.postdeploy,
     this.predeploy,

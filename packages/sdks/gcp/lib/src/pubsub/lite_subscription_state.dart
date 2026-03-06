@@ -27,7 +27,7 @@ class LiteSubscriptionState {
   /// [region] The region of the pubsub lite topic.
   /// [topic] A reference to a Topic resource.
   /// [zone] The zone of the pubsub lite topic.
-  LiteSubscriptionState({
+  const LiteSubscriptionState({
     this.deliveryConfig,
     this.name,
     this.project,

@@ -40,7 +40,7 @@ class SecretParameterState {
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The data type of the encryption parameter. Valid values: `Secret`.
   /// [value] The value of the encryption parameter. The value must be `1` to `4096` characters in length.
-  SecretParameterState({
+  const SecretParameterState({
     this.constraints,
     this.createTime,
     this.description,

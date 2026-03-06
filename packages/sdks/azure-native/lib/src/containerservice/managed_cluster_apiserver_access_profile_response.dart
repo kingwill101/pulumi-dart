@@ -27,7 +27,7 @@ class ManagedClusterAPIServerAccessProfileResponse {
   /// [enableVnetIntegration] Whether to enable apiserver vnet integration for the cluster or not. See aka.ms/AksVnetIntegration for more details.
   /// [privateDNSZone] The private DNS zone mode for the cluster. The default is System. For more details see [configure private DNS zone](https://docs.microsoft.com/azure/aks/private-clusters#configure-private-dns-zone). Allowed values are 'system' and 'none'.
   /// [subnetId] The subnet to be used when apiserver vnet integration is enabled. It is required when creating a new cluster with BYO Vnet, or when updating an existing cluster to enable apiserver vnet integration.
-  ManagedClusterAPIServerAccessProfileResponse({
+  const ManagedClusterAPIServerAccessProfileResponse({
     this.authorizedIPRanges,
     this.disableRunCommand,
     this.enablePrivateCluster,

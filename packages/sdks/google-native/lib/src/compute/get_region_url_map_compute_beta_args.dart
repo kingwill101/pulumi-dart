@@ -15,7 +15,7 @@ class GetRegionUrlMapComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [urlMap] Required.
-  GetRegionUrlMapComputeBetaArgs({
+  const GetRegionUrlMapComputeBetaArgs({
     this.project,
     required this.region,
     required this.urlMap,

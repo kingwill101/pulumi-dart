@@ -23,7 +23,7 @@ class NetworkSecurityGroupResourceSettings {
   /// [tags] Gets or sets the Resource tags.
   /// [targetResourceGroupName] Gets or sets the target resource group name.
   /// [targetResourceName] Gets or sets the target Resource name.
-  NetworkSecurityGroupResourceSettings({
+  const NetworkSecurityGroupResourceSettings({
     required this.resourceType,
     this.securityRules,
     this.tags,

@@ -35,7 +35,7 @@ class GalleryApplicationVersionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [safetyProfile] The safety profile of the Gallery Application Version.
   /// [tags] Resource tags.
-  GalleryApplicationVersionArgs({
+  const GalleryApplicationVersionArgs({
     required this.galleryApplicationName,
     this.galleryApplicationVersionName,
     required this.galleryName,

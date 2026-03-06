@@ -9,7 +9,7 @@ class PrivateConnectivityResponse {
 
   /// Creates a new [PrivateConnectivityResponse].
   /// [privateConnection] A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
-  PrivateConnectivityResponse({
+  const PrivateConnectivityResponse({
     required this.privateConnection,
   });
 

@@ -17,7 +17,7 @@ class IpamIpamPoolCidrArgs {
   /// Creates a new [IpamIpamPoolCidrArgs].
   /// [cidr] The CIDR address segment to be preset.
   /// [ipamPoolId] The ID of the IPAM pool instance.
-  IpamIpamPoolCidrArgs({
+  const IpamIpamPoolCidrArgs({
     required this.cidr,
     required this.ipamPoolId,
   });

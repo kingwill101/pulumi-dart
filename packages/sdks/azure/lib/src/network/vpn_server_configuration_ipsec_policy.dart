@@ -29,7 +29,7 @@ class VpnServerConfigurationIpsecPolicy {
   /// [pfsGroup] The Pfs Group, used in IKE Phase 2. Possible values include `ECP256`, `ECP384`, `PFS1`, `PFS2`, `PFS14`, `PFS24`, `PFS2048`, `PFSMM` and `None`.
   /// [saDataSizeKilobytes] The IPSec Security Association payload size in KB for a Site-to-Site VPN tunnel.
   /// [saLifetimeSeconds] The IPSec Security Association lifetime in seconds for a Site-to-Site VPN tunnel.
-  VpnServerConfigurationIpsecPolicy({
+  const VpnServerConfigurationIpsecPolicy({
     required this.dhGroup,
     required this.ikeEncryption,
     required this.ikeIntegrity,

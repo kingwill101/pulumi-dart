@@ -50,7 +50,7 @@ class SoftwareUpdateConfigurationArgs {
   /// [target] A `target` blocks as defined below.
   /// [virtualMachineIds] Specifies a list of Azure Resource IDs of azure virtual machines.
   /// [windows] A `windows` block as defined below.
-  SoftwareUpdateConfigurationArgs({
+  const SoftwareUpdateConfigurationArgs({
     required this.automationAccountId,
     this.duration,
     this.linux,

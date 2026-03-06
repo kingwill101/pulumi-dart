@@ -32,7 +32,7 @@ class FilterFindingCriteriaCriterion {
   /// [matches] List of string values to be evaluated as matching conditions.
   /// [notEquals] List of string values to be evaluated.
   /// [notMatches] List of string values to be evaluated as non-matching conditions.
-  FilterFindingCriteriaCriterion({
+  const FilterFindingCriteriaCriterion({
     this.equals,
     required this.field,
     this.greaterThan,

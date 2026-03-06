@@ -37,7 +37,7 @@ class GetAddressResult {
   /// [status] Indicates if the address is used. Possible values are: RESERVED or IN_USE.
   /// [subnetwork] Required.
   /// [users] Required.
-  GetAddressResult({
+  const GetAddressResult({
     required this.address,
     required this.addressType,
     required this.id,

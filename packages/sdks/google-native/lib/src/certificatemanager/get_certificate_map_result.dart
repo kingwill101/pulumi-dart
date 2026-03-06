@@ -25,7 +25,7 @@ class GetCertificateMapResult {
   /// [labels] Set of labels associated with a Certificate Map.
   /// [name] A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`.
   /// [updateTime] The update timestamp of a Certificate Map.
-  GetCertificateMapResult({
+  const GetCertificateMapResult({
     required this.createTime,
     required this.description,
     required this.gclbTargets,

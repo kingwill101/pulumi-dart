@@ -21,7 +21,7 @@ class ManagementGroupChildInfoResponse {
   /// [id] The fully qualified ID for the child resource (management group or subscription).  For example, /providers/Microsoft.Management/managementGroups/0000000-0000-0000-0000-000000000000
   /// [name] The name of the child entity.
   /// [type] The fully qualified resource type which includes provider namespace (e.g. Microsoft.Management/managementGroups)
-  ManagementGroupChildInfoResponse({
+  const ManagementGroupChildInfoResponse({
     this.children,
     this.displayName,
     this.id,

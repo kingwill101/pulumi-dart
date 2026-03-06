@@ -13,7 +13,7 @@ class StreamBackfillAllSpannerExcludedObjectsSchema {
   /// Creates a new [StreamBackfillAllSpannerExcludedObjectsSchema].
   /// [schema] Schema name.
   /// [tables] Tables in the schema.
-  StreamBackfillAllSpannerExcludedObjectsSchema({
+  const StreamBackfillAllSpannerExcludedObjectsSchema({
     required this.schema,
     this.tables,
   });

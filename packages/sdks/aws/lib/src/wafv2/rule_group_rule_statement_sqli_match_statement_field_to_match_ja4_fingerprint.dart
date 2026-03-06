@@ -8,7 +8,7 @@ class RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa4Fingerprint {
 
   /// Creates a new [RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa4Fingerprint].
   /// [fallbackBehavior] The match status to assign to the web request if the request doesn't have a JA4 fingerprint. Valid values include: `MATCH` or `NO_MATCH`.
-  RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa4Fingerprint({
+  const RuleGroupRuleStatementSqliMatchStatementFieldToMatchJa4Fingerprint({
     required this.fallbackBehavior,
   });
 

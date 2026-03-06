@@ -18,7 +18,7 @@ class CxToolConnectorSpecEndUserAuthConfig {
   /// Creates a new [CxToolConnectorSpecEndUserAuthConfig].
   /// [oauth2AuthCodeConfig] Oauth 2.0 Authorization Code authentication. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
   /// [oauth2JwtBearerConfig] JWT Profile Oauth 2.0 Authorization Grant authentication.. This field is part of a union field `end_user_auth_config`. Only one of `oauth2AuthCodeConfig` or `oauth2JwtBearerConfig` may be set.
-  CxToolConnectorSpecEndUserAuthConfig({
+  const CxToolConnectorSpecEndUserAuthConfig({
     this.oauth2AuthCodeConfig,
     this.oauth2JwtBearerConfig,
   });

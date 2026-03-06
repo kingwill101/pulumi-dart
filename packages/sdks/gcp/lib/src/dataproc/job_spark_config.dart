@@ -34,7 +34,7 @@ class JobSparkConfig {
   /// [mainClass] The class containing the main method of the driver. Must be in a
   /// [mainJarFileUri] The HCFS URI of jar file containing
   /// [properties] A mapping of property names to values, used to configure Spark. Properties that conflict with values set by the Cloud Dataproc API may be overwritten. Can include properties set in `/etc/spark/conf/spark-defaults.conf` and classes in user code.
-  JobSparkConfig({
+  const JobSparkConfig({
     this.archiveUris,
     this.args,
     this.fileUris,

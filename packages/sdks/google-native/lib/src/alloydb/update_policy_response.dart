@@ -9,7 +9,7 @@ class UpdatePolicyResponse {
 
   /// Creates a new [UpdatePolicyResponse].
   /// [mode] Mode for updating the instance.
-  UpdatePolicyResponse({
+  const UpdatePolicyResponse({
     required this.mode,
   });
 

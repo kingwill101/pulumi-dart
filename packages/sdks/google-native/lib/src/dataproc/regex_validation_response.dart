@@ -9,7 +9,7 @@ class RegexValidationResponse {
 
   /// Creates a new [RegexValidationResponse].
   /// [regexes] RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient).
-  RegexValidationResponse({
+  const RegexValidationResponse({
     required this.regexes,
   });
 

@@ -58,7 +58,7 @@ class FirewallEndpointAssociationState {
   /// [state] The current state of the endpoint.
   /// [tlsInspectionPolicy] The URL of the TlsInspectionPolicy that is being associated.
   /// [updateTime] Time the firewall endpoint was updated in UTC.
-  FirewallEndpointAssociationState({
+  const FirewallEndpointAssociationState({
     this.createTime,
     this.disabled,
     this.effectiveLabels,

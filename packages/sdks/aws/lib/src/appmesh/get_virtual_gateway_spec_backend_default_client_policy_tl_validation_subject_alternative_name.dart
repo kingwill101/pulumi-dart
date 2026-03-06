@@ -8,7 +8,7 @@ class GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternat
 
   /// Creates a new [GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName].
   /// [matches] Required.
-  GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName({
+  const GetVirtualGatewaySpecBackendDefaultClientPolicyTlValidationSubjectAlternativeName({
     required this.matches,
   });
 

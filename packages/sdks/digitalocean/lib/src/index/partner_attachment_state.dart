@@ -39,7 +39,7 @@ class PartnerAttachmentState {
   /// [region] The region where the Partner Attachment will be created
   /// [state] The state of the Partner Attachment
   /// [vpcIds] The list of VPC IDs to attach the Partner Attachment to
-  PartnerAttachmentState({
+  const PartnerAttachmentState({
     this.bgp,
     this.childrens,
     this.connectionBandwidthInMbps,

@@ -32,7 +32,7 @@ class ManagedCCFPropertiesResponse {
   /// [nodeCount] Number of CCF nodes in the Managed CCF.
   /// [provisioningState] Provisioning state of Managed CCF Resource
   /// [runningState] Object representing RunningState for Managed CCF.
-  ManagedCCFPropertiesResponse({
+  const ManagedCCFPropertiesResponse({
     required this.appName,
     required this.appUri,
     this.deploymentType,

@@ -18,7 +18,7 @@ class ApplicationGatewayTrustedRootCertificate {
   /// [id] Resource ID.
   /// [keyVaultSecretId] Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault.
   /// [name] Name of the trusted root certificate that is unique within an Application Gateway.
-  ApplicationGatewayTrustedRootCertificate({
+  const ApplicationGatewayTrustedRootCertificate({
     this.data,
     this.id,
     this.keyVaultSecretId,

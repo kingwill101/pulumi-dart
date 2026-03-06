@@ -18,7 +18,7 @@ class BatchOperationsJobBucketListBuckets {
   /// [bucket] Bucket name for the objects to be transformed.
   /// [manifest] contain the manifest source file that is a CSV file in a Google Cloud Storage bucket.
   /// [prefixList] Specifies objects matching a prefix set.
-  BatchOperationsJobBucketListBuckets({
+  const BatchOperationsJobBucketListBuckets({
     required this.bucket,
     this.manifest,
     this.prefixList,

@@ -14,7 +14,7 @@ class PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption {
   /// [description] Description of the option.
   /// [displayName] Display name of the option.
   /// [id] Id of the option.
-  PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption({
+  const PluginConfigTemplateAdditionalConfigTemplateMultiSelectOption({
     this.description,
     required this.displayName,
     required this.id,

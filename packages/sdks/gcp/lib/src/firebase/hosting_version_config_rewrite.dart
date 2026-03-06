@@ -22,7 +22,7 @@ class HostingVersionConfigRewrite {
   /// [path] The URL path to rewrite the request to.
   /// [regex] The user-supplied RE2 regular expression to match against the request URL path.
   /// [run] The request will be forwarded to Cloud Run.
-  HostingVersionConfigRewrite({
+  const HostingVersionConfigRewrite({
     this.function,
     this.glob,
     this.path,

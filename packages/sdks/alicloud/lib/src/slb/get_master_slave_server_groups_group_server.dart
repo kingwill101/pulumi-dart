@@ -20,7 +20,7 @@ class GetMasterSlaveServerGroupsGroupServer {
   /// [port] The port used by the master slave server group.
   /// [serverType] The server type of the attached ECS instance.
   /// [weight] Weight associated to the ECS instance.
-  GetMasterSlaveServerGroupsGroupServer({
+  const GetMasterSlaveServerGroupsGroupServer({
     required this.instanceId,
     required this.isBackup,
     required this.port,

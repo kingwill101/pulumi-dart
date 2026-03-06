@@ -20,7 +20,7 @@ class GoogleCloudChannelV1RenewalSettings {
   /// [paymentCycle] Describes how frequently the reseller will be billed, such as once per month.
   /// [paymentPlan] Describes how a reseller will be billed.
   /// [resizeUnitCount] If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time.
-  GoogleCloudChannelV1RenewalSettings({
+  const GoogleCloudChannelV1RenewalSettings({
     this.enableRenewal,
     this.paymentCycle,
     this.paymentPlan,

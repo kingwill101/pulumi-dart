@@ -15,7 +15,7 @@ class IdentityResponse {
   /// [principalId] The identity principal ID
   /// [tenantId] The identity tenantId
   /// [type] The identity type
-  IdentityResponse({
+  const IdentityResponse({
     required this.principalId,
     required this.tenantId,
     this.type,

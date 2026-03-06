@@ -24,7 +24,7 @@ class X12ProcessingSettingsResponse {
   /// [preserveInterchange] The value indicating whether to preserve interchange.
   /// [suspendInterchangeOnError] The value indicating whether to suspend interchange on error.
   /// [useDotAsDecimalSeparator] The value indicating whether to use dot as decimal separator.
-  X12ProcessingSettingsResponse({
+  const X12ProcessingSettingsResponse({
     required this.convertImpliedDecimal,
     required this.createEmptyXmlTagsForTrailingSeparators,
     required this.maskSecurityInfo,

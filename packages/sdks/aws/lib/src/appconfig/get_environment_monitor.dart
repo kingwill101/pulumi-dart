@@ -11,7 +11,7 @@ class GetEnvironmentMonitor {
   /// Creates a new [GetEnvironmentMonitor].
   /// [alarmArn] ARN of the Amazon CloudWatch alarm.
   /// [alarmRoleArn] ARN of an IAM role for AWS AppConfig to monitor.
-  GetEnvironmentMonitor({
+  const GetEnvironmentMonitor({
     required this.alarmArn,
     required this.alarmRoleArn,
   });

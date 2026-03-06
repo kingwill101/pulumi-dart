@@ -38,7 +38,7 @@ class GremlinGraphResource {
   /// [partitionKey] The configuration of the partition key to be used for partitioning data into multiple partitions
   /// [restoreParameters] Parameters to indicate the information about the restore
   /// [uniqueKeyPolicy] The unique key policy configuration for specifying uniqueness constraints on documents in the collection in the Azure Cosmos DB service.
-  GremlinGraphResource({
+  const GremlinGraphResource({
     this.analyticalStorageTtl,
     this.conflictResolutionPolicy,
     this.createMode,

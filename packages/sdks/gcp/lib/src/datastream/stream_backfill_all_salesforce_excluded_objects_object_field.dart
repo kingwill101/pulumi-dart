@@ -8,7 +8,7 @@ class StreamBackfillAllSalesforceExcludedObjectsObjectField {
 
   /// Creates a new [StreamBackfillAllSalesforceExcludedObjectsObjectField].
   /// [name] Field name.
-  StreamBackfillAllSalesforceExcludedObjectsObjectField({
+  const StreamBackfillAllSalesforceExcludedObjectsObjectField({
     this.name,
   });
 

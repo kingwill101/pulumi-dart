@@ -13,7 +13,7 @@ class RegistryCredentialSetAuthenticationCredentials {
   /// Creates a new [RegistryCredentialSetAuthenticationCredentials].
   /// [passwordSecretId] The URI of the secret containing the password in a Key Vault.
   /// [usernameSecretId] The URI of the secret containing the username in a Key Vault.
-  RegistryCredentialSetAuthenticationCredentials({
+  const RegistryCredentialSetAuthenticationCredentials({
     required this.passwordSecretId,
     required this.usernameSecretId,
   });

@@ -15,7 +15,7 @@ class ProjectArgs {
   /// Creates a new [ProjectArgs].
   /// [project] The name of Project.
   /// [serviceRole] The service role authorized to the Intelligent Media Management service to access other cloud resources. Default value: `AliyunIMMDefaultRole`. You can also create authorization  roles through the `alicloud.ram.Role`.
-  ProjectArgs({
+  const ProjectArgs({
     required this.project,
     this.serviceRole,
   });

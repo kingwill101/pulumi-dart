@@ -15,7 +15,7 @@ class LogConfigState {
   /// [logType] The type the of log. Valid values: `PROVIDER`.
   /// [slsLogStore] The name of the Log Store.
   /// [slsProject] The name of the Project.
-  LogConfigState({
+  const LogConfigState({
     this.logType,
     this.slsLogStore,
     this.slsProject,

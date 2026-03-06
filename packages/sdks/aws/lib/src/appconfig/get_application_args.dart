@@ -18,7 +18,7 @@ class GetApplicationArgs {
   /// [id] ID of the Application. Either `id` or `name` must be specified.
   /// [name] AWS AppConfig Application name. Either `name` or `id` must be specified.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetApplicationArgs({
+  const GetApplicationArgs({
     this.id,
     this.name,
     this.region,

@@ -13,7 +13,7 @@ class GetGlobalNetworkEndpointGroupComputeV1Args {
   /// Creates a new [GetGlobalNetworkEndpointGroupComputeV1Args].
   /// [networkEndpointGroup] Required.
   /// [project] Optional.
-  GetGlobalNetworkEndpointGroupComputeV1Args({
+  const GetGlobalNetworkEndpointGroupComputeV1Args({
     required this.networkEndpointGroup,
     this.project,
   });

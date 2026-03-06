@@ -26,7 +26,7 @@ class GetInstanceEnginesResult {
   /// [instanceEngines] A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) available instance engines. Each element contains the following attributes:
   /// [outputFile] Optional.
   /// [zoneId] The Zone to launch the Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance.
-  GetInstanceEnginesResult({
+  const GetInstanceEnginesResult({
     this.engine,
     this.engineVersion,
     required this.id,

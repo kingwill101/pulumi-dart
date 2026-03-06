@@ -36,7 +36,7 @@ class LabState {
   /// [resourceGroupName] The name of the resource group under which the Dev Test Lab resource has to be created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [uniqueIdentifier] The unique immutable identifier of the Dev Test Lab.
-  LabState({
+  const LabState({
     this.artifactsStorageAccountId,
     this.defaultPremiumStorageAccountId,
     this.defaultStorageAccountId,

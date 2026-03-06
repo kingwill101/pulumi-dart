@@ -15,7 +15,7 @@ class InboundConnectionAccepterState {
   /// [connectionId] Specifies the ID of the connection to accept.
   /// [connectionStatus] Status of the connection request.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InboundConnectionAccepterState({
+  const InboundConnectionAccepterState({
     this.connectionId,
     this.connectionStatus,
     this.region,

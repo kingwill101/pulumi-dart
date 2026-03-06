@@ -16,7 +16,7 @@ class ErState {
   /// [description] Routine The description of the routine.
   /// [envConf] The configurations of the specified environment. See `env_conf` below.
   /// [erName] The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
-  ErState({
+  const ErState({
     this.description,
     this.envConf,
     this.erName,

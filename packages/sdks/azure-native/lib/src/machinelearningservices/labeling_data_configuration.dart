@@ -12,7 +12,7 @@ class LabelingDataConfiguration {
   /// Creates a new [LabelingDataConfiguration].
   /// [dataId] Resource Id of the data asset to perform labeling.
   /// [incrementalDataRefresh] Indicates whether to enable incremental data refresh.
-  LabelingDataConfiguration({
+  const LabelingDataConfiguration({
     this.dataId,
     this.incrementalDataRefresh,
   });

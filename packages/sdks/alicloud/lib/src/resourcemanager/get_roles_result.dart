@@ -25,7 +25,7 @@ class GetRolesResult {
   /// [names] A list of role names.
   /// [outputFile] Optional.
   /// [roles] A list of roles. Each element contains the following attributes:
-  GetRolesResult({
+  const GetRolesResult({
     this.enableDetails,
     required this.id,
     required this.ids,

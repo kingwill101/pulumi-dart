@@ -16,7 +16,7 @@ class GetCloudExadataInfrastructuresResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   /// [project] Optional.
-  GetCloudExadataInfrastructuresResult({
+  const GetCloudExadataInfrastructuresResult({
     required this.cloudExadataInfrastructures,
     required this.id,
     required this.location,

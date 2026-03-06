@@ -33,7 +33,7 @@ class ExperimentAiplatformV1beta1Args {
   /// [source] Immutable. Source of the TensorboardExperiment. Example: a custom training job.
   /// [tensorboardExperimentId] Required. The ID to use for the Tensorboard experiment, which becomes the final component of the Tensorboard experiment's resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`.
   /// [tensorboardId] Required.
-  ExperimentAiplatformV1beta1Args({
+  const ExperimentAiplatformV1beta1Args({
     this.description,
     this.displayName,
     this.etag,

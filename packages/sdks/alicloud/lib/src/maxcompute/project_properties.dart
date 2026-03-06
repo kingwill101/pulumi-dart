@@ -47,7 +47,7 @@ class ProjectProperties {
   /// [tableLifecycle] Set whether the lifecycle of the table in the project needs to be configured, that is, set the ODPS. table.lifecycle property, See `table_lifecycle` below.
   /// [timezone] Project time zone, example value: Asia/Shanghai
   /// [typeSystem] Data type version. Value:(1/2/hive)
-  ProjectProperties({
+  const ProjectProperties({
     this.allowFullScan,
     this.enableDecimal2,
     this.enableDr,

@@ -59,7 +59,7 @@ class ManagementPolicyRuleActionsBaseBlob {
   /// [tierToCoolAfterDaysSinceCreationGreaterThan] The age in days after creation to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
   /// [tierToCoolAfterDaysSinceLastAccessTimeGreaterThan] The age in days after last access time to tier blobs to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
   /// [tierToCoolAfterDaysSinceModificationGreaterThan] The age in days after last modification to tier blobs to cool storage. Supports blob currently at Hot tier. Must be between `0` and `99999`. Defaults to `-1`.
-  ManagementPolicyRuleActionsBaseBlob({
+  const ManagementPolicyRuleActionsBaseBlob({
     this.autoTierToHotFromCoolEnabled,
     this.deleteAfterDaysSinceCreationGreaterThan,
     this.deleteAfterDaysSinceLastAccessTimeGreaterThan,

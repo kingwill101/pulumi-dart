@@ -16,7 +16,7 @@ class SecurityProfileThreatPreventionProfileThreatOverride {
   /// [action] Threat action.
   /// [threatId] Vendor-specific ID of a threat to override.
   /// [type] (Output)
-  SecurityProfileThreatPreventionProfileThreatOverride({
+  const SecurityProfileThreatPreventionProfileThreatOverride({
     required this.action,
     required this.threatId,
     this.type,

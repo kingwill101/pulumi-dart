@@ -44,7 +44,7 @@ class EntryGroupIamBindingState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] EntryGroup location region.
   /// [role] The role that should be applied. Only one
-  EntryGroupIamBindingState({
+  const EntryGroupIamBindingState({
     this.condition,
     this.entryGroup,
     this.etag,

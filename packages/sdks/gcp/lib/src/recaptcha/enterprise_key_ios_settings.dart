@@ -11,7 +11,7 @@ class EnterpriseKeyIosSettings {
   /// Creates a new [EnterpriseKeyIosSettings].
   /// [allowAllBundleIds] If set to true, it means allowed_bundle_ids will not be enforced.
   /// [allowedBundleIds] iOS bundle ids of apps allowed to use the key. Example: 'com.companyname.productname.appname'
-  EnterpriseKeyIosSettings({
+  const EnterpriseKeyIosSettings({
     this.allowAllBundleIds,
     this.allowedBundleIds,
   });

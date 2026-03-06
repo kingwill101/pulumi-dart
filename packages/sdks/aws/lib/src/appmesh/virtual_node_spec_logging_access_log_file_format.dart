@@ -12,7 +12,7 @@ class VirtualNodeSpecLoggingAccessLogFileFormat {
   /// Creates a new [VirtualNodeSpecLoggingAccessLogFileFormat].
   /// [jsons] The logging format for JSON.
   /// [text] The logging format for text. Must be between 1 and 1000 characters in length.
-  VirtualNodeSpecLoggingAccessLogFileFormat({
+  const VirtualNodeSpecLoggingAccessLogFileFormat({
     this.jsons,
     this.text,
   });

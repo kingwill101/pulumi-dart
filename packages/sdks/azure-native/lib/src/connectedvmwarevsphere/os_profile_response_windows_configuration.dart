@@ -12,7 +12,7 @@ class OsProfileResponseWindowsConfiguration {
   /// Creates a new [OsProfileResponseWindowsConfiguration].
   /// [assessmentMode] Specifies the assessment mode.
   /// [patchMode] Specifies the patch mode.
-  OsProfileResponseWindowsConfiguration({
+  const OsProfileResponseWindowsConfiguration({
     this.assessmentMode,
     this.patchMode,
   });

@@ -29,7 +29,7 @@ class JobSourceControlDetails {
   /// [owner] The owner of the remote repository that contains the job artifacts.
   /// [provider] The provider for the remote repository. Valid values are: `GITHUB`, `GITLAB`, `BITBUCKET`, and `AWS_CODE_COMMIT`.
   /// [repository] The name of the remote repository that contains the job artifacts.
-  JobSourceControlDetails({
+  const JobSourceControlDetails({
     this.authStrategy,
     this.authToken,
     this.branch,

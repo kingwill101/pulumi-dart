@@ -10,7 +10,7 @@ class CachePropertiesExportPolicy {
 
   /// Creates a new [CachePropertiesExportPolicy].
   /// [rules] Export policy rule
-  CachePropertiesExportPolicy({
+  const CachePropertiesExportPolicy({
     this.rules,
   });
 

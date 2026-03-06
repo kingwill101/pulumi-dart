@@ -23,7 +23,7 @@ class GetWindowsFunctionAppBackupSchedule {
   /// [lastExecutionTime] The time the backup was last attempted.
   /// [retentionPeriodDays] After how many days backups is deleted.
   /// [startTime] When the schedule should start working in RFC-3339 format.
-  GetWindowsFunctionAppBackupSchedule({
+  const GetWindowsFunctionAppBackupSchedule({
     required this.frequencyInterval,
     required this.frequencyUnit,
     required this.keepAtLeastOneBackup,

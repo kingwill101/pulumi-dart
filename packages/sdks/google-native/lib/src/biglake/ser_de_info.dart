@@ -9,7 +9,7 @@ class SerDeInfo {
 
   /// Creates a new [SerDeInfo].
   /// [serializationLib] The fully qualified Java class name of the serialization library.
-  SerDeInfo({
+  const SerDeInfo({
     this.serializationLib,
   });
 

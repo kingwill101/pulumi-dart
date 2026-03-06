@@ -17,7 +17,7 @@ class DomainCognitoOptions {
   /// [identityPoolId] ID of the Cognito Identity Pool to use.
   /// [roleArn] ARN of the IAM role that has the AmazonESCognitoAccess policy attached.
   /// [userPoolId] ID of the Cognito User Pool to use.
-  DomainCognitoOptions({
+  const DomainCognitoOptions({
     this.enabled,
     required this.identityPoolId,
     required this.roleArn,

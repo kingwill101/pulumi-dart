@@ -13,7 +13,7 @@ class NGroupCGPropertyContainerResponse {
   /// Creates a new [NGroupCGPropertyContainerResponse].
   /// [name] container name
   /// [properties] container properties
-  NGroupCGPropertyContainerResponse({
+  const NGroupCGPropertyContainerResponse({
     this.name,
     this.properties,
   });

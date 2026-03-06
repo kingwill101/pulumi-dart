@@ -9,7 +9,7 @@ class AutopilotConversionStatusResponse {
 
   /// Creates a new [AutopilotConversionStatusResponse].
   /// [state] The current state of the conversion.
-  AutopilotConversionStatusResponse({
+  const AutopilotConversionStatusResponse({
     required this.state,
   });
 

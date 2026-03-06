@@ -27,7 +27,7 @@ class IndexFirestoreV1beta1Args {
   /// [name] The resource name of the index. Output only.
   /// [project] Optional.
   /// [state] The state of the index. Output only.
-  IndexFirestoreV1beta1Args({
+  const IndexFirestoreV1beta1Args({
     this.collectionId,
     required this.databaseId,
     this.fields,

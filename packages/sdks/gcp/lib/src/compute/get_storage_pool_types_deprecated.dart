@@ -28,7 +28,7 @@ class GetStoragePoolTypesDeprecated {
   /// [obsolete] An optional RFC3339 timestamp on or after which the state of this resource is intended to change to OBSOLETE.
   /// [replacement] The URL of the suggested replacement for a deprecated resource.
   /// [state] The deprecation state of this resource. This can be ACTIVE, DEPRECATED, OBSOLETE, or DELETED.
-  GetStoragePoolTypesDeprecated({
+  const GetStoragePoolTypesDeprecated({
     required this.deleted,
     required this.deprecated,
     required this.obsolete,

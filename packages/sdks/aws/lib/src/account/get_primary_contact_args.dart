@@ -12,7 +12,7 @@ class GetPrimaryContactArgs {
 
   /// Creates a new [GetPrimaryContactArgs].
   /// [accountId] The ID of the target account when managing member accounts. Will manage current user's account by default if omitted.
-  GetPrimaryContactArgs({
+  const GetPrimaryContactArgs({
     this.accountId,
   });
 

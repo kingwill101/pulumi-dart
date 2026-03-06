@@ -13,7 +13,7 @@ class InstanceGceSetupServiceAccount {
   /// Creates a new [InstanceGceSetupServiceAccount].
   /// [email] Optional. Email address of the service account.
   /// [scopes] (Output)
-  InstanceGceSetupServiceAccount({
+  const InstanceGceSetupServiceAccount({
     this.email,
     this.scopes,
   });

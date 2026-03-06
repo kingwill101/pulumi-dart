@@ -35,7 +35,7 @@ class GetRecordsRecord {
   /// [ttl] TTL of the record.
   /// [type] Record type. Valid items are `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
   /// [value] Host record value of the domain.
-  GetRecordsRecord({
+  const GetRecordsRecord({
     required this.domainName,
     required this.hostRecord,
     required this.line,

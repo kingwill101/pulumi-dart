@@ -128,7 +128,7 @@ class GetInstanceResult {
   /// [updateTime] Instance update time.
   /// [upgradeHistory] The upgrade history of this instance.
   /// [vmImage] Use a Compute Engine VM image to start the notebook instance.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.acceleratorConfig,
     required this.bootDiskSizeGb,
     required this.bootDiskType,

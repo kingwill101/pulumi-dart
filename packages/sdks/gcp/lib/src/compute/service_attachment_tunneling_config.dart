@@ -11,7 +11,7 @@ class ServiceAttachmentTunnelingConfig {
   /// Creates a new [ServiceAttachmentTunnelingConfig].
   /// [encapsulationProfile] The encapsulation profile for tunneling traffic.
   /// [routingMode] The routing mode for tunneling traffic.
-  ServiceAttachmentTunnelingConfig({
+  const ServiceAttachmentTunnelingConfig({
     this.encapsulationProfile,
     this.routingMode,
   });

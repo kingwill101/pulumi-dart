@@ -19,7 +19,7 @@ class SpringCloudAppIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Managed Service Identity of this Spring Cloud Application.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Managed Service Identity of this Spring Cloud Application.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Spring Cloud Application. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
-  SpringCloudAppIdentity({
+  const SpringCloudAppIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

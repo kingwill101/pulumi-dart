@@ -17,7 +17,7 @@ class GetClusterNodePoolNodeConfigContainerdConfig {
   /// [privateRegistryAccessConfigs] Parameters for private container registries configuration.
   /// [registryHosts] Configures containerd registry host configuration. Each registry_hosts entry represents a hosts.toml file.
   /// [writableCgroups] Parameters for writable cgroups configuration.
-  GetClusterNodePoolNodeConfigContainerdConfig({
+  const GetClusterNodePoolNodeConfigContainerdConfig({
     required this.privateRegistryAccessConfigs,
     required this.registryHosts,
     required this.writableCgroups,

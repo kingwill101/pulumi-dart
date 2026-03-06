@@ -185,7 +185,7 @@ class VpnConnectionArgs {
   /// [type] The type of VPN connection. The only type AWS supports at this time is "ipsec.1".
   /// [vpnConcentratorId] ID of the VPN concentrator to associate with the VPN connection.
   /// [vpnGatewayId] The ID of the Virtual Private Gateway.
-  VpnConnectionArgs({
+  const VpnConnectionArgs({
     required this.customerGatewayId,
     this.enableAcceleration,
     this.localIpv4NetworkCidr,

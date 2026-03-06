@@ -14,7 +14,7 @@ class GetAliasesAlias {
   /// [aliasName] The unique identifier of the alias.
   /// [id] ID of the alias. The value is same as KMS alias_name.
   /// [keyId] ID of the key.
-  GetAliasesAlias({
+  const GetAliasesAlias({
     required this.aliasName,
     required this.id,
     required this.keyId,

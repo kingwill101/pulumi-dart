@@ -11,7 +11,7 @@ class DomainCpuNumaCellCachLine {
   /// Creates a new [DomainCpuNumaCellCachLine].
   /// [unit] Defines the unit of measurement for the cache line size, such as bytes or kilobytes.
   /// [value] Sets the actual value for the cache line size as defined by the line unit.
-  DomainCpuNumaCellCachLine({
+  const DomainCpuNumaCellCachLine({
     required this.unit,
     required this.value,
   });

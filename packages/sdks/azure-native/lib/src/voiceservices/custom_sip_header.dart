@@ -9,7 +9,7 @@ class CustomSipHeader {
 
   /// Creates a new [CustomSipHeader].
   /// [name] The name of the Custom SIP Header
-  CustomSipHeader({
+  const CustomSipHeader({
     this.name,
   });
 

@@ -12,7 +12,7 @@ class CodeConfiguration {
   /// Creates a new [CodeConfiguration].
   /// [codeId] ARM resource ID of the code asset.
   /// [scoringScript] [Required] The script to execute on startup. eg. "score.py"
-  CodeConfiguration({
+  const CodeConfiguration({
     this.codeId,
     required this.scoringScript,
   });

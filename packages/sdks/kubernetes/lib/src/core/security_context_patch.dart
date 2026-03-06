@@ -47,7 +47,7 @@ class SecurityContextPatch {
   /// [seLinuxOptions] The SELinux context to be applied to the container. If unspecified, the container runtime will allocate a random SELinux context for each container.  May also be set in PodSecurityContext.  If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows.
   /// [seccompProfile] The seccomp options to use by this container. If seccomp options are provided at both the pod & container level, the container options override the pod options. Note that this field cannot be set when spec.os.name is windows.
   /// [windowsOptions] The Windows specific settings applied to all containers. If unspecified, the options from the PodSecurityContext will be used. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is linux.
-  SecurityContextPatch({
+  const SecurityContextPatch({
     this.allowPrivilegeEscalation,
     this.appArmorProfile,
     this.capabilities,

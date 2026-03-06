@@ -19,7 +19,7 @@ class LandingZoneRegistrationResourcePropertiesResponse {
   /// [existingTopLevelMgId] The resource id of the top level management group
   /// [managedIdentity] The managed identity to be assigned to this landing zone registration.
   /// [provisioningState] The state that reflects the current stage in the creation, updating, or deletion process of the landing zone registration resource type.
-  LandingZoneRegistrationResourcePropertiesResponse({
+  const LandingZoneRegistrationResourcePropertiesResponse({
     required this.existingLandingZoneConfigurationId,
     required this.existingTopLevelMgId,
     this.managedIdentity,

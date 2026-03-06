@@ -9,7 +9,7 @@ class ConfidentialComputePropertiesResponse {
 
   /// Creates a new [ConfidentialComputePropertiesResponse].
   /// [ccePolicy] The base64 encoded confidential compute enforcement policy
-  ConfidentialComputePropertiesResponse({
+  const ConfidentialComputePropertiesResponse({
     this.ccePolicy,
   });
 

@@ -34,7 +34,7 @@ class SessionAuthModelResponse {
   /// [sessionTimeoutInMinutes] Session timeout in minutes.
   /// [type] Type of paging
   /// [userName] The user name attribute key value.
-  SessionAuthModelResponse({
+  const SessionAuthModelResponse({
     this.headers,
     this.isPostPayloadJson,
     required this.password,

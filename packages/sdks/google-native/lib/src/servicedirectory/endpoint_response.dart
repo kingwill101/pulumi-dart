@@ -24,7 +24,7 @@ class EndpointResponse {
   /// [network] Immutable. The Google Compute Engine network (VPC) of the endpoint in the format `projects//locations/global/networks/*`. The project must be specified by project number (project id is rejected). Incorrectly formatted networks are rejected, we also check to make sure that you have the servicedirectory.networks.attach permission on the project specified.
   /// [port] Optional. Service Directory rejects values outside of `[0, 65535]`.
   /// [uid] The globally unique identifier of the endpoint in the UUID4 format.
-  EndpointResponse({
+  const EndpointResponse({
     required this.address,
     required this.annotations,
     required this.name,

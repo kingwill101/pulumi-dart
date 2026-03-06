@@ -60,7 +60,7 @@ class GetRouterInterfacesInterface {
   /// [specification] Specification of the link, such as `Small.1` (10Mb), `Middle.1` (100Mb), `Large.2` (2Gb), ...etc.
   /// [status] Expected status. Valid values are `Active`, `Inactive` and `Idle`.
   /// [vpcId] ID of the VPC that owns the router in the local region.
-  GetRouterInterfacesInterface({
+  const GetRouterInterfacesInterface({
     required this.accessPointId,
     required this.creationTime,
     required this.description,

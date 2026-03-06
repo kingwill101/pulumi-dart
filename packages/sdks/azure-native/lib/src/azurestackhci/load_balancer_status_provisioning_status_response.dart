@@ -12,7 +12,7 @@ class LoadBalancerStatusProvisioningStatusResponse {
   /// Creates a new [LoadBalancerStatusProvisioningStatusResponse].
   /// [operationId] The ID of the operation performed on the load balancer
   /// [status] The status of the operation performed on the loadbalancer [Succeeded, Failed, InProgress]
-  LoadBalancerStatusProvisioningStatusResponse({
+  const LoadBalancerStatusProvisioningStatusResponse({
     this.operationId,
     required this.status,
   });

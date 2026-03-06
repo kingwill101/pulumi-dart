@@ -15,7 +15,7 @@ class VpnServerConfigurationPolicyGroupMember {
   /// [attributeType] The Vpn Policy member attribute type.
   /// [attributeValue] The value of Attribute used for this VpnServerConfigurationPolicyGroupMember.
   /// [name] Name of the VpnServerConfigurationPolicyGroupMember.
-  VpnServerConfigurationPolicyGroupMember({
+  const VpnServerConfigurationPolicyGroupMember({
     this.attributeType,
     this.attributeValue,
     this.name,

@@ -24,7 +24,7 @@ class GetExecutionArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [versionName] The name of the workflowVersion.
   /// [workflowName] Name of the workflow
-  GetExecutionArgs({
+  const GetExecutionArgs({
     required this.contextName,
     required this.executionName,
     required this.resourceGroupName,

@@ -70,7 +70,7 @@ class PostRuleArgs {
   /// [ruleState] state of this rule
   /// [source] source address
   /// [tags] tag for rule
-  PostRuleArgs({
+  const PostRuleArgs({
     this.actionType,
     this.applications,
     this.auditComment,

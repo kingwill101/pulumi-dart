@@ -39,7 +39,7 @@ class GetSAPSizingRecommendationsArgs {
   /// [location] The name of Azure region.
   /// [sapProduct] Defines the SAP Product type.
   /// [saps] The SAP Application Performance Standard measurement.
-  GetSAPSizingRecommendationsArgs({
+  const GetSAPSizingRecommendationsArgs({
     required this.appLocation,
     required this.databaseType,
     required this.dbMemory,

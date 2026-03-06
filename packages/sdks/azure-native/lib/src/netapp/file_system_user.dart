@@ -14,7 +14,7 @@ class FileSystemUser {
   /// Creates a new [FileSystemUser].
   /// [cifsUser] The effective CIFS username when accessing the volume data.
   /// [nfsUser] The effective NFS User ID and Group ID when accessing the volume data.
-  FileSystemUser({
+  const FileSystemUser({
     this.cifsUser,
     this.nfsUser,
   });

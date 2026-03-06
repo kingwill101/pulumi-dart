@@ -11,7 +11,7 @@ class GetContainerGroupsGroupEciSecurityContextSysctl {
   /// Creates a new [GetContainerGroupsGroupEciSecurityContextSysctl].
   /// [name] The name of the variable.
   /// [value] The value of the variable.
-  GetContainerGroupsGroupEciSecurityContextSysctl({
+  const GetContainerGroupsGroupEciSecurityContextSysctl({
     required this.name,
     required this.value,
   });

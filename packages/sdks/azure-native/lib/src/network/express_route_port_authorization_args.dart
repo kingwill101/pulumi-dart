@@ -24,7 +24,7 @@ class ExpressRoutePortAuthorizationArgs {
   /// [id] Resource ID.
   /// [name] The name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [resourceGroupName] The name of the resource group.
-  ExpressRoutePortAuthorizationArgs({
+  const ExpressRoutePortAuthorizationArgs({
     this.authorizationName,
     required this.expressRoutePortName,
     this.id,

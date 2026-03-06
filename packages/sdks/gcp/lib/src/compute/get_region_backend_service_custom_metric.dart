@@ -11,7 +11,7 @@ class GetRegionBackendServiceCustomMetric {
   /// Creates a new [GetRegionBackendServiceCustomMetric].
   /// [dryRun] If true, the metric data is not used for load balancing.
   /// [name] The name of the regional backend service.
-  GetRegionBackendServiceCustomMetric({
+  const GetRegionBackendServiceCustomMetric({
     required this.dryRun,
     required this.name,
   });

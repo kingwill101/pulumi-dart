@@ -38,7 +38,7 @@ class GetStoragePoolStatus {
   /// [totalProvisionedDiskCapacityGb] Sum of all the capacity provisioned in disks in this storage pool.
   /// [totalProvisionedDiskIops] Sum of all the disks' provisioned IOPS.
   /// [totalProvisionedDiskThroughput] Sum of all the disks' provisioned throughput in MB/s,
-  GetStoragePoolStatus({
+  const GetStoragePoolStatus({
     required this.diskCount,
     required this.lastResizeTimestamp,
     required this.maxTotalProvisionedDiskCapacityGb,

@@ -52,7 +52,7 @@ class LookupActivityResponse {
   /// [treatDecimalAsString] Indicates whether to treat decimal values as strings to avoid value overflow issue. This option is enabled for SnowflakeV2 connector only. Type: boolean (or Expression with resultType boolean).
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  LookupActivityResponse({
+  const LookupActivityResponse({
     required this.dataset,
     this.dependsOn,
     this.description,

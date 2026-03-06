@@ -37,7 +37,7 @@ class ProfilesAssociationState {
   /// [tags] Map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [timeouts] Optional.
-  ProfilesAssociationState({
+  const ProfilesAssociationState({
     this.arn,
     this.name,
     this.ownerId,

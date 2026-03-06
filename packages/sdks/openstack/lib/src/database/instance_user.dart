@@ -21,7 +21,7 @@ class InstanceUser {
   /// [host] An ip address or % sign indicating what ip addresses can connect with
   /// [name] Username to be created on new instance. Changing this creates a
   /// [password] User's password. Changing this creates a
-  InstanceUser({
+  const InstanceUser({
     this.databases,
     this.host,
     required this.name,

@@ -11,7 +11,7 @@ class ServiceNetworkServiceAssociationDnsEntry {
   /// Creates a new [ServiceNetworkServiceAssociationDnsEntry].
   /// [domainName] The domain name of the service.
   /// [hostedZoneId] The ID of the hosted zone.
-  ServiceNetworkServiceAssociationDnsEntry({
+  const ServiceNetworkServiceAssociationDnsEntry({
     this.domainName,
     this.hostedZoneId,
   });

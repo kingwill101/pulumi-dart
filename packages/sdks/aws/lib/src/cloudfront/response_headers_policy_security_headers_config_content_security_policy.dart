@@ -11,7 +11,7 @@ class ResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy {
   /// Creates a new [ResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy].
   /// [contentSecurityPolicy] The policy directives and their values that CloudFront includes as values for the `Content-Security-Policy` HTTP response header.
   /// [override] Whether CloudFront overrides the `Content-Security-Policy` HTTP response header received from the origin with the one specified in this response headers policy.
-  ResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy({
+  const ResponseHeadersPolicySecurityHeadersConfigContentSecurityPolicy({
     required this.contentSecurityPolicy,
     required this.override,
   });

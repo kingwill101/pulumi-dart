@@ -21,7 +21,7 @@ class V2VmSymptom {
   /// [details] (Output)
   /// [symptomType] (Output)
   /// [workerId] (Output)
-  V2VmSymptom({
+  const V2VmSymptom({
     this.createTime,
     this.details,
     this.symptomType,

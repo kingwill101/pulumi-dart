@@ -13,7 +13,7 @@ class A2AExtendedLocationDetailsResponse {
   /// Creates a new [A2AExtendedLocationDetailsResponse].
   /// [primaryExtendedLocation] The primary ExtendedLocation.
   /// [recoveryExtendedLocation] The recovery ExtendedLocation.
-  A2AExtendedLocationDetailsResponse({
+  const A2AExtendedLocationDetailsResponse({
     this.primaryExtendedLocation,
     this.recoveryExtendedLocation,
   });

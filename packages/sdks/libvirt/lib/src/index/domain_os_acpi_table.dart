@@ -11,7 +11,7 @@ class DomainOsAcpiTable {
   /// Creates a new [DomainOsAcpiTable].
   /// [path] Defines the path to the ACPI table file that is loaded into the guest, specifying the resource location.
   /// [type] Sets the type attribute for the ACPI table, defining its format and characteristics.
-  DomainOsAcpiTable({
+  const DomainOsAcpiTable({
     required this.path,
     required this.type,
   });

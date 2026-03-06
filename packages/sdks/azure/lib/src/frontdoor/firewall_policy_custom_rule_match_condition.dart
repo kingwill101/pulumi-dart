@@ -23,7 +23,7 @@ class FirewallPolicyCustomRuleMatchCondition {
   /// [operator] Comparison type to use for matching with the variable value. Possible values are `Any`, `BeginsWith`, `Contains`, `EndsWith`, `Equal`, `GeoMatch`, `GreaterThan`, `GreaterThanOrEqual`, `IPMatch`, `LessThan`, `LessThanOrEqual` or `RegEx`.
   /// [selector] Match against a specific key if the `match_variable` is `QueryString`, `PostArgs`, `RequestHeader` or `Cookies`.
   /// [transforms] Up to `5` transforms to apply. Possible values are `Lowercase`, `RemoveNulls`, `Trim`, `Uppercase`, `URLDecode` or`URLEncode`.
-  FirewallPolicyCustomRuleMatchCondition({
+  const FirewallPolicyCustomRuleMatchCondition({
     required this.matchValues,
     required this.matchVariable,
     this.negationCondition,

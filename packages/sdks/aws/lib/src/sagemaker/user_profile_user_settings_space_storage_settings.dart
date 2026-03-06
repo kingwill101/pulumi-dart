@@ -9,7 +9,7 @@ class UserProfileUserSettingsSpaceStorageSettings {
 
   /// Creates a new [UserProfileUserSettingsSpaceStorageSettings].
   /// [defaultEbsStorageSettings] The default EBS storage settings for a private space. See Default EBS Storage Settings below.
-  UserProfileUserSettingsSpaceStorageSettings({
+  const UserProfileUserSettingsSpaceStorageSettings({
     this.defaultEbsStorageSettings,
   });
 

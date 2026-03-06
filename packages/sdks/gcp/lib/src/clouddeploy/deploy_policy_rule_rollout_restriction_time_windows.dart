@@ -18,7 +18,7 @@ class DeployPolicyRuleRolloutRestrictionTimeWindows {
   /// [oneTimeWindows] One-time windows within which actions are restricted.
   /// [timeZone] The time zone in IANA format IANA Time Zone Database (e.g. America/New_York).
   /// [weeklyWindows] Recurring weekly windows within which actions are restricted.
-  DeployPolicyRuleRolloutRestrictionTimeWindows({
+  const DeployPolicyRuleRolloutRestrictionTimeWindows({
     this.oneTimeWindows,
     required this.timeZone,
     this.weeklyWindows,

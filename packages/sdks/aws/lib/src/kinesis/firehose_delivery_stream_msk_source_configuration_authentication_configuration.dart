@@ -11,7 +11,7 @@ class FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration {
   /// Creates a new [FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration].
   /// [connectivity] The type of connectivity used to access the Amazon MSK cluster. Valid values: `PUBLIC`, `PRIVATE`.
   /// [roleArn] The ARN of the role used to access the Amazon MSK cluster.
-  FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration({
+  const FirehoseDeliveryStreamMskSourceConfigurationAuthenticationConfiguration({
     required this.connectivity,
     required this.roleArn,
   });

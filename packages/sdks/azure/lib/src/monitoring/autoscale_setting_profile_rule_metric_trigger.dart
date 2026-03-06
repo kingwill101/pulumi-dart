@@ -41,7 +41,7 @@ class AutoscaleSettingProfileRuleMetricTrigger {
   /// [timeAggregation] Specifies how the data that's collected should be combined over time. Possible values include `Average`, `Count`, `Maximum`, `Minimum`, `Last` and `Total`.
   /// [timeGrain] Specifies the granularity of metrics that the rule monitors, which must be one of the pre-defined values returned from the metric definitions for the metric. This value must be between 1 minute and 12 hours an be formatted as an ISO 8601 string.
   /// [timeWindow] Specifies the time range for which data is collected, which must be greater than the delay in metric collection (which varies from resource to resource). This value must be between 5 minutes and 12 hours and be formatted as an ISO 8601 string.
-  AutoscaleSettingProfileRuleMetricTrigger({
+  const AutoscaleSettingProfileRuleMetricTrigger({
     this.dimensions,
     this.divideByInstanceCount,
     required this.metricName,

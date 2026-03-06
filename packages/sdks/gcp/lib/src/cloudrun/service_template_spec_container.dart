@@ -79,7 +79,7 @@ class ServiceTemplateSpecContainer {
   /// [startupProbe] Startup probe of application within the container.
   /// [volumeMounts] Volume to mount into the container's filesystem.
   /// [workingDir] (Optional, Deprecated)
-  ServiceTemplateSpecContainer({
+  const ServiceTemplateSpecContainer({
     this.args,
     this.commands,
     this.envFroms,

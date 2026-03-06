@@ -9,7 +9,7 @@ class GitHubResourceInfo {
 
   /// Creates a new [GitHubResourceInfo].
   /// [appInstallationId] GitHub application installation id.
-  GitHubResourceInfo({
+  const GitHubResourceInfo({
     this.appInstallationId,
   });
 

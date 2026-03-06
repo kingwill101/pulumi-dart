@@ -18,7 +18,7 @@ class GetDataQualityRulesArgs {
   /// [dataScanId] The ID of the data profile scan which the generation of quality rules will be basing on.
   /// [location] The location where the referenced data profile scan resides.
   /// [project] The ID of the project in which the datascan belongs.
-  GetDataQualityRulesArgs({
+  const GetDataQualityRulesArgs({
     required this.dataScanId,
     this.location,
     this.project,

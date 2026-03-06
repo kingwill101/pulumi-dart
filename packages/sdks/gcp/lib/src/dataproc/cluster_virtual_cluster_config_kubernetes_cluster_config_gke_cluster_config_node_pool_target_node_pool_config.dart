@@ -19,7 +19,7 @@ class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePool
   /// [autoscaling] The autoscaler configuration for this node pool.
   /// [config] The node pool configuration.
   /// [locations] The list of Compute Engine zones where node pool nodes associated
-  ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig({
+  const ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig({
     this.autoscaling,
     this.config,
     required this.locations,

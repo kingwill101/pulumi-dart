@@ -18,7 +18,7 @@ class GetServerCollectorArgs {
   /// [projectName] Name of the Azure Migrate project.
   /// [resourceGroupName] Name of the Azure Resource Group that project is part of.
   /// [serverCollectorName] Unique name of a Server collector within a project.
-  GetServerCollectorArgs({
+  const GetServerCollectorArgs({
     required this.projectName,
     required this.resourceGroupName,
     required this.serverCollectorName,

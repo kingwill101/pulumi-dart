@@ -13,7 +13,7 @@ class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature {
   /// Creates a new [GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature].
   /// [allowedValues] A list of acceptable values. Only effective when the policy is `RESTRICTED`.
   /// [policy] The policy of the feature.
-  GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature({
+  const GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature({
     this.allowedValues,
     this.policy,
   });

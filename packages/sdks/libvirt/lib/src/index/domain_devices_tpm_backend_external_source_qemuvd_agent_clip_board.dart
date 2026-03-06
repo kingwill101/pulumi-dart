@@ -8,7 +8,7 @@ class DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoard {
 
   /// Creates a new [DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoard].
   /// [copyPaste] Enables or disables clipboard copy-paste functionality through the QEMU guest agent.
-  DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoard({
+  const DomainDevicesTpmBackendExternalSourceQemuvdAgentClipBoard({
     required this.copyPaste,
   });
 

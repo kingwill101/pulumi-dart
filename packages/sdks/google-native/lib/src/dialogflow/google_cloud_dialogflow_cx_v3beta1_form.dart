@@ -10,7 +10,7 @@ class GoogleCloudDialogflowCxV3beta1Form {
 
   /// Creates a new [GoogleCloudDialogflowCxV3beta1Form].
   /// [parameters] Parameters to collect from the user.
-  GoogleCloudDialogflowCxV3beta1Form({
+  const GoogleCloudDialogflowCxV3beta1Form({
     this.parameters,
   });
 

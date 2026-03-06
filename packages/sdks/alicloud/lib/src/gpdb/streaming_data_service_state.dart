@@ -27,7 +27,7 @@ class StreamingDataServiceState {
   /// [serviceName] Service Name
   /// [serviceSpec] Resource Specifications
   /// [status] The status of the resource
-  StreamingDataServiceState({
+  const StreamingDataServiceState({
     this.createTime,
     this.dbInstanceId,
     this.serviceDescription,

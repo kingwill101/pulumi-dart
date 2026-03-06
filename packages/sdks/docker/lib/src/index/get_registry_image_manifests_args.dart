@@ -19,7 +19,7 @@ class GetRegistryImageManifestsArgs {
   /// [authConfig] Authentication configuration for the Docker registry. It is only used for this resource.
   /// [insecureSkipVerify] If `true`, the verification of TLS certificates of the server/registry is disabled. Defaults to `false`
   /// [name] The name of the Docker image, including any tags. e.g. `alpine:latest`
-  GetRegistryImageManifestsArgs({
+  const GetRegistryImageManifestsArgs({
     this.authConfig,
     this.insecureSkipVerify,
     required this.name,

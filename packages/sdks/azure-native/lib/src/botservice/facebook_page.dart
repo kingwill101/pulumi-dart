@@ -12,7 +12,7 @@ class FacebookPage {
   /// Creates a new [FacebookPage].
   /// [accessToken] Facebook application access token. Value only returned through POST to the action Channel List API, otherwise empty.
   /// [id] Page id
-  FacebookPage({
+  const FacebookPage({
     this.accessToken,
     required this.id,
   });

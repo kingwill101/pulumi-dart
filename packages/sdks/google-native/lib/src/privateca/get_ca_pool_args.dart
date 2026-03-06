@@ -15,7 +15,7 @@ class GetCaPoolArgs {
   /// [caPoolId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetCaPoolArgs({
+  const GetCaPoolArgs({
     required this.caPoolId,
     required this.location,
     this.project,

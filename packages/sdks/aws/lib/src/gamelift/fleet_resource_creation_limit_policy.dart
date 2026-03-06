@@ -11,7 +11,7 @@ class FleetResourceCreationLimitPolicy {
   /// Creates a new [FleetResourceCreationLimitPolicy].
   /// [newGameSessionsPerCreator] Maximum number of game sessions that an individual can create during the policy period.
   /// [policyPeriodInMinutes] Time span used in evaluating the resource creation limit policy.
-  FleetResourceCreationLimitPolicy({
+  const FleetResourceCreationLimitPolicy({
     this.newGameSessionsPerCreator,
     this.policyPeriodInMinutes,
   });

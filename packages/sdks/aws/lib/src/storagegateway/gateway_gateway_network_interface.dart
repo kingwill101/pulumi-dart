@@ -8,7 +8,7 @@ class GatewayGatewayNetworkInterface {
 
   /// Creates a new [GatewayGatewayNetworkInterface].
   /// [ipv4Address] The Internet Protocol version 4 (IPv4) address of the interface.
-  GatewayGatewayNetworkInterface({
+  const GatewayGatewayNetworkInterface({
     this.ipv4Address,
   });
 

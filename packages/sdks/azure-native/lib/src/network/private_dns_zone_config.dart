@@ -12,7 +12,7 @@ class PrivateDnsZoneConfig {
   /// Creates a new [PrivateDnsZoneConfig].
   /// [name] Name of the resource that is unique within a resource group. This name can be used to access the resource.
   /// [privateDnsZoneId] The resource id of the private dns zone.
-  PrivateDnsZoneConfig({
+  const PrivateDnsZoneConfig({
     this.name,
     this.privateDnsZoneId,
   });

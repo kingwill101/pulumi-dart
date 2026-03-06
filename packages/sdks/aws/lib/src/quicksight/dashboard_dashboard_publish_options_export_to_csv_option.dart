@@ -8,7 +8,7 @@ class DashboardDashboardPublishOptionsExportToCsvOption {
 
   /// Creates a new [DashboardDashboardPublishOptionsExportToCsvOption].
   /// [availabilityStatus] Availability status. Possibles values: ENABLED, DISABLED.
-  DashboardDashboardPublishOptionsExportToCsvOption({
+  const DashboardDashboardPublishOptionsExportToCsvOption({
     this.availabilityStatus,
   });
 

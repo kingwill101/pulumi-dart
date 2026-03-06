@@ -53,7 +53,7 @@ class ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings {
   /// [stereoDownmix] Optional.
   /// [surroundExMode] Optional.
   /// [surroundMode] Optional.
-  ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings({
+  const ChannelEncoderSettingsAudioDescriptionCodecSettingsEac3Settings({
     this.attenuationControl,
     this.bitrate,
     this.bitstreamMode,

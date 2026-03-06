@@ -18,7 +18,7 @@ class FolderArgs {
   /// [folderName] The name of the folder.
   /// [parentFolderId] The ID of the parent folder.
   /// [tags] The tag of the resource.
-  FolderArgs({
+  const FolderArgs({
     required this.folderName,
     this.parentFolderId,
     this.tags,

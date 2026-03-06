@@ -17,7 +17,7 @@ class GetUserTablesMySqlTaskOutputResponse {
   /// [databasesToTables] Mapping from database name to list of tables
   /// [id] Result identifier
   /// [validationErrors] Validation errors
-  GetUserTablesMySqlTaskOutputResponse({
+  const GetUserTablesMySqlTaskOutputResponse({
     required this.databasesToTables,
     required this.id,
     required this.validationErrors,

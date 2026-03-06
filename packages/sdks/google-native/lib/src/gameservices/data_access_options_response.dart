@@ -8,7 +8,7 @@ class DataAccessOptionsResponse {
 
   /// Creates a new [DataAccessOptionsResponse].
   /// [logMode] Required.
-  DataAccessOptionsResponse({
+  const DataAccessOptionsResponse({
     required this.logMode,
   });
 

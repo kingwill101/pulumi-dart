@@ -27,7 +27,7 @@ class SchemaState {
   /// [name] The ID to use for the schema, which will become the final component of the schema's resource name.
   /// [project] The ID of the project in which the resource belongs.
   /// [type] The type of the schema definition
-  SchemaState({
+  const SchemaState({
     this.definition,
     this.name,
     this.project,

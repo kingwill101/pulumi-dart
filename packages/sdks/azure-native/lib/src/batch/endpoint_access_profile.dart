@@ -14,7 +14,7 @@ class EndpointAccessProfile {
   /// Creates a new [EndpointAccessProfile].
   /// [defaultAction] Default action for endpoint access. It is only applicable when publicNetworkAccess is enabled.
   /// [ipRules] Array of IP ranges to filter client IP address.
-  EndpointAccessProfile({
+  const EndpointAccessProfile({
     required this.defaultAction,
     this.ipRules,
   });

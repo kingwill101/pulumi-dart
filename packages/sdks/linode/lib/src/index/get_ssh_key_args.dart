@@ -15,7 +15,7 @@ class GetSshKeyArgs {
   /// Creates a new [GetSshKeyArgs].
   /// [id] The ID of the SSH Key
   /// [label] The label of the SSH Key to select.
-  GetSshKeyArgs({
+  const GetSshKeyArgs({
     this.id,
     required this.label,
   });

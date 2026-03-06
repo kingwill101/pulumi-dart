@@ -14,7 +14,7 @@ class SubjectConfigResponse {
   /// Creates a new [SubjectConfigResponse].
   /// [subject] Optional. Contains distinguished name fields such as the common name, location and organization.
   /// [subjectAltName] Optional. The subject alternative name fields.
-  SubjectConfigResponse({
+  const SubjectConfigResponse({
     required this.subject,
     required this.subjectAltName,
   });

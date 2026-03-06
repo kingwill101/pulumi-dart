@@ -12,7 +12,7 @@ class VirtualNetworkRule {
   /// Creates a new [VirtualNetworkRule].
   /// [id] Full resource id of a vnet subnet, such as '/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/subnet1'.
   /// [ignoreMissingVnetServiceEndpoint] Property to specify whether NRP will ignore the check if parent subnet has serviceEndpoints configured.
-  VirtualNetworkRule({
+  const VirtualNetworkRule({
     required this.id,
     this.ignoreMissingVnetServiceEndpoint,
   });

@@ -12,7 +12,7 @@ class DomainDevicesRngBackendEgdSourcePipe {
   /// Creates a new [DomainDevicesRngBackendEgdSourcePipe].
   /// [path] Sets the path for the pipe source in the EGD backend.
   /// [secLabels] Configures security label settings for the pipe source in the EGD backend.
-  DomainDevicesRngBackendEgdSourcePipe({
+  const DomainDevicesRngBackendEgdSourcePipe({
     required this.path,
     this.secLabels,
   });

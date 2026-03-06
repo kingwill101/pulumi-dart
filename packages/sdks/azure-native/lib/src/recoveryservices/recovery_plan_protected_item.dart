@@ -12,7 +12,7 @@ class RecoveryPlanProtectedItem {
   /// Creates a new [RecoveryPlanProtectedItem].
   /// [id] The ARM Id of the recovery plan protected item.
   /// [virtualMachineId] The virtual machine Id.
-  RecoveryPlanProtectedItem({
+  const RecoveryPlanProtectedItem({
     this.id,
     this.virtualMachineId,
   });

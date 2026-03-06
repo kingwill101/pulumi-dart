@@ -18,7 +18,7 @@ class GetManagedInstancePrivateEndpointConnectionArgs {
   /// [managedInstanceName] The name of the managed instance.
   /// [privateEndpointConnectionName] The name of the private endpoint connection.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
-  GetManagedInstancePrivateEndpointConnectionArgs({
+  const GetManagedInstancePrivateEndpointConnectionArgs({
     required this.managedInstanceName,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

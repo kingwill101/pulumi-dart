@@ -12,7 +12,7 @@ class DeviceRef {
   /// Creates a new [DeviceRef].
   /// [deviceName] Name of the device resource
   /// [endpointName] The name of endpoint to use
-  DeviceRef({
+  const DeviceRef({
     required this.deviceName,
     required this.endpointName,
   });

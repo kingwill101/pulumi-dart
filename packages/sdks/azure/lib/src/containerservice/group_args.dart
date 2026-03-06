@@ -94,7 +94,7 @@ class GroupArgs {
   /// [subnetIds] The subnet resource IDs for a container group. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zones] A list of Availability Zones in which this Container Group is located. Changing this forces a new resource to be created.
-  GroupArgs({
+  const GroupArgs({
     required this.containers,
     this.diagnostics,
     this.dnsConfig,

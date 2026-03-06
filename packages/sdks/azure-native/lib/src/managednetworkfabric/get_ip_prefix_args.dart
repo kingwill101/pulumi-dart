@@ -15,7 +15,7 @@ class GetIpPrefixArgs {
   /// Creates a new [GetIpPrefixArgs].
   /// [ipPrefixName] Name of the IP Prefix.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetIpPrefixArgs({
+  const GetIpPrefixArgs({
     required this.ipPrefixName,
     required this.resourceGroupName,
   });

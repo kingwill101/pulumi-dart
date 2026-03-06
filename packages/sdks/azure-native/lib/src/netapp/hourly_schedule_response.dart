@@ -15,7 +15,7 @@ class HourlyScheduleResponse {
   /// [minute] Indicates which minute snapshot should be taken
   /// [snapshotsToKeep] Hourly snapshot count to keep
   /// [usedBytes] Resource size in bytes, current storage usage for the volume in bytes
-  HourlyScheduleResponse({
+  const HourlyScheduleResponse({
     this.minute,
     this.snapshotsToKeep,
     this.usedBytes,

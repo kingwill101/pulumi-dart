@@ -14,7 +14,7 @@ class DomainDevicesFilesystemIdMapGid {
   /// [count] Specifies the number of group IDs to be mapped in the filesystem.
   /// [start] Sets the starting group ID for mapping in the filesystem.
   /// [target] Defines the target group ID for the mapping in the filesystem.
-  DomainDevicesFilesystemIdMapGid({
+  const DomainDevicesFilesystemIdMapGid({
     required this.count,
     required this.start,
     required this.target,

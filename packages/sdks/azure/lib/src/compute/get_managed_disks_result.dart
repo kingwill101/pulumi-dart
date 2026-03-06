@@ -15,7 +15,7 @@ class GetManagedDisksResult {
   /// [disks] a `disk` block as detailed below.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [resourceGroupName] Required.
-  GetManagedDisksResult({
+  const GetManagedDisksResult({
     required this.disks,
     required this.id,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class PolicyPolicySettingsLogScrubbingRule {
   /// [matchVariable] Required.
   /// [selector] When matchVariable is a collection, operator used to specify which elements in the collection this rule applies to.
   /// [selectorMatchOperator] Optional.
-  PolicyPolicySettingsLogScrubbingRule({
+  const PolicyPolicySettingsLogScrubbingRule({
     this.enabled,
     required this.matchVariable,
     this.selector,

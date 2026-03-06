@@ -17,7 +17,7 @@ class LoadBalancerRuleFixedResponse {
   /// [location] The location field in the http return.
   /// [messageBody] The body value of the response.
   /// [statusCode] Status Code.
-  LoadBalancerRuleFixedResponse({
+  const LoadBalancerRuleFixedResponse({
     this.contentType,
     this.location,
     this.messageBody,

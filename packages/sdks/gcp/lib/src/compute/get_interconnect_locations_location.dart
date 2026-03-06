@@ -46,7 +46,7 @@ class GetInterconnectLocationsLocation {
   /// [selfLink] The URI of the created resource.
   /// [status] The status of this InterconnectLocation.
   /// [supportsPzs] Reserved for future use.
-  GetInterconnectLocationsLocation({
+  const GetInterconnectLocationsLocation({
     required this.address,
     required this.availabilityZone,
     required this.availableFeatures,

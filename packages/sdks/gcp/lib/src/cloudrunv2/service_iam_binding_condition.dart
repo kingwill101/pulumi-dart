@@ -11,7 +11,7 @@ class ServiceIamBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ServiceIamBindingCondition({
+  const ServiceIamBindingCondition({
     this.description,
     required this.expression,
     required this.title,

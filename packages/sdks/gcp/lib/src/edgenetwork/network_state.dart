@@ -52,7 +52,7 @@ class NetworkState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] The time when the subnet was last updated.
   /// [zone] The name of the target Distributed Cloud Edge zone.
-  NetworkState({
+  const NetworkState({
     this.createTime,
     this.description,
     this.effectiveLabels,

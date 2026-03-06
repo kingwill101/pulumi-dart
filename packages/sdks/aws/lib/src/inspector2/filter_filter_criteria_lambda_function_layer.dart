@@ -11,7 +11,7 @@ class FilterFilterCriteriaLambdaFunctionLayer {
   /// Creates a new [FilterFilterCriteriaLambdaFunctionLayer].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaLambdaFunctionLayer({
+  const FilterFilterCriteriaLambdaFunctionLayer({
     required this.comparison,
     required this.value,
   });

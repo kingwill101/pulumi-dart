@@ -15,7 +15,7 @@ class RegistryPolicyArgs {
   /// Creates a new [RegistryPolicyArgs].
   /// [policy] The policy document. This is a JSON formatted string.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  RegistryPolicyArgs({
+  const RegistryPolicyArgs({
     required this.policy,
     this.region,
   });

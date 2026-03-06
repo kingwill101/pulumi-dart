@@ -11,7 +11,7 @@ class GetPatchBaselinesFilter {
   /// Creates a new [GetPatchBaselinesFilter].
   /// [key] Filter key. See the [AWS SSM documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribePatchBaselines.html) for valid values.
   /// [values] Filter values. See the [AWS SSM documentation](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_DescribePatchBaselines.html) for example values.
-  GetPatchBaselinesFilter({
+  const GetPatchBaselinesFilter({
     required this.key,
     required this.values,
   });

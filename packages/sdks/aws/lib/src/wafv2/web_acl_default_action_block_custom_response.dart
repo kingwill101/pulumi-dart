@@ -15,7 +15,7 @@ class WebAclDefaultActionBlockCustomResponse {
   /// [customResponseBodyKey] References the response body that you want AWS WAF to return to the web request client. This must reference a `key` defined in a `custom_response_body` block of this resource.
   /// [responseCode] The HTTP status code to return to the client.
   /// [responseHeaders] The `response_header` blocks used to define the HTTP response headers added to the response. See `response_header` below for details.
-  WebAclDefaultActionBlockCustomResponse({
+  const WebAclDefaultActionBlockCustomResponse({
     this.customResponseBodyKey,
     required this.responseCode,
     this.responseHeaders,

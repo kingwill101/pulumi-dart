@@ -32,7 +32,7 @@ class GetApplicationSecurityGroupResult {
   /// [resourceGuid] The resource GUID property of the application security group resource. It uniquely identifies a resource, even if the user changes its name or migrate the resource across subscriptions or resource groups.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetApplicationSecurityGroupResult({
+  const GetApplicationSecurityGroupResult({
     required this.azureApiVersion,
     required this.etag,
     this.id,

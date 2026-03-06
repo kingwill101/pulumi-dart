@@ -19,7 +19,7 @@ class MetricsConfigurationResponse {
   /// [id] The ID used to identify the metrics configuration. This can be any value you choose that helps you identify your metrics configuration.
   /// [prefix] The prefix that an object must have to be included in the metrics results.
   /// [tagFilters] Specifies a list of tag filters to use as a metrics configuration filter. The metrics configuration includes only objects that meet the filter's criteria.
-  MetricsConfigurationResponse({
+  const MetricsConfigurationResponse({
     this.accessPointArn,
     this.id,
     this.prefix,

@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1beta1MeasurementMetricResponse {
   /// Creates a new [GoogleCloudAiplatformV1beta1MeasurementMetricResponse].
   /// [metricId] The ID of the Metric. The Metric should be defined in StudySpec's Metrics.
   /// [value] The value for this metric.
-  GoogleCloudAiplatformV1beta1MeasurementMetricResponse({
+  const GoogleCloudAiplatformV1beta1MeasurementMetricResponse({
     required this.metricId,
     required this.value,
   });

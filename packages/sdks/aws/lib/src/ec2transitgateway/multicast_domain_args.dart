@@ -27,7 +27,7 @@ class MulticastDomainArgs {
   /// [staticSourcesSupport] Whether to enable support for statically configuring multicast group sources for the EC2 Transit Gateway Multicast Domain. Valid values: `disable`, `enable`. Default value: `disable`.
   /// [tags] Key-value tags for the EC2 Transit Gateway Multicast Domain. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [transitGatewayId] EC2 Transit Gateway identifier. The EC2 Transit Gateway must have `multicast_support` enabled.
-  MulticastDomainArgs({
+  const MulticastDomainArgs({
     this.autoAcceptSharedAssociations,
     this.igmpv2Support,
     this.region,

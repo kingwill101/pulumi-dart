@@ -129,7 +129,7 @@ class GetVirtualMachineScaleSetResult {
   /// [zonalPlatformFaultDomainAlignMode] Specifies the align mode between Virtual Machine Scale Set compute and storage Fault Domain count.
   /// [zoneBalance] Whether to force strictly even Virtual Machine distribution cross x-zones in case there is zone outage. zoneBalance property can only be set if the zones property of the scale set contains more than one zone. If there are no zones or only one zone specified, then zoneBalance property should not be set.
   /// [zones] The availability zones.
-  GetVirtualMachineScaleSetResult({
+  const GetVirtualMachineScaleSetResult({
     this.additionalCapabilities,
     this.automaticRepairsPolicy,
     required this.azureApiVersion,

@@ -13,7 +13,7 @@ class CloudServiceRoleProfilePropertiesResponse {
   /// Creates a new [CloudServiceRoleProfilePropertiesResponse].
   /// [name] Resource name.
   /// [sku] Describes the cloud service role sku.
-  CloudServiceRoleProfilePropertiesResponse({
+  const CloudServiceRoleProfilePropertiesResponse({
     this.name,
     this.sku,
   });

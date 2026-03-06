@@ -8,7 +8,7 @@ class ApplicationReadinessV2Exec {
 
   /// Creates a new [ApplicationReadinessV2Exec].
   /// [commands] Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-  ApplicationReadinessV2Exec({
+  const ApplicationReadinessV2Exec({
     this.commands,
   });
 

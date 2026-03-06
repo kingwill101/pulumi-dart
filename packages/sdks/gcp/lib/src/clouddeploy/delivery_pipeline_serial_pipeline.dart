@@ -9,7 +9,7 @@ class DeliveryPipelineSerialPipeline {
 
   /// Creates a new [DeliveryPipelineSerialPipeline].
   /// [stages] Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow.
-  DeliveryPipelineSerialPipeline({
+  const DeliveryPipelineSerialPipeline({
     this.stages,
   });
 

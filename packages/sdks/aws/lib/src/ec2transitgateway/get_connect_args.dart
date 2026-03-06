@@ -22,7 +22,7 @@ class GetConnectArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value tags for the EC2 Transit Gateway Connect
   /// [transitGatewayConnectId] Identifier of the EC2 Transit Gateway Connect.
-  GetConnectArgs({
+  const GetConnectArgs({
     this.filters,
     this.region,
     this.tags,

@@ -9,7 +9,7 @@ class ClientCertificateConfigResponseContainerV1beta1 {
 
   /// Creates a new [ClientCertificateConfigResponseContainerV1beta1].
   /// [issueClientCertificate] Issue a client certificate.
-  ClientCertificateConfigResponseContainerV1beta1({
+  const ClientCertificateConfigResponseContainerV1beta1({
     required this.issueClientCertificate,
   });
 

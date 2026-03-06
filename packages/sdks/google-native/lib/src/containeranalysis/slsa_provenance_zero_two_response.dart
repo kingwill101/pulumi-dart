@@ -21,7 +21,7 @@ class SlsaProvenanceZeroTwoResponse {
   /// [invocation] Required.
   /// [materials] Required.
   /// [metadata] Required.
-  SlsaProvenanceZeroTwoResponse({
+  const SlsaProvenanceZeroTwoResponse({
     required this.buildConfig,
     required this.buildType,
     required this.builder,

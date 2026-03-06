@@ -25,7 +25,7 @@ class FunctionArgs {
   /// [name] Resource name
   /// [properties] The properties that are associated with a function.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  FunctionArgs({
+  const FunctionArgs({
     this.functionName,
     required this.jobName,
     this.name,

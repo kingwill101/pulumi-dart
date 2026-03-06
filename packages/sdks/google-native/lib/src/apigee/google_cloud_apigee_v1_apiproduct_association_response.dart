@@ -12,7 +12,7 @@ class GoogleCloudApigeeV1APIProductAssociationResponse {
   /// Creates a new [GoogleCloudApigeeV1APIProductAssociationResponse].
   /// [apiproduct] API product to be associated with the credential.
   /// [status] The API product credential associated status. Valid values are `approved` or `revoked`.
-  GoogleCloudApigeeV1APIProductAssociationResponse({
+  const GoogleCloudApigeeV1APIProductAssociationResponse({
     required this.apiproduct,
     required this.status,
   });

@@ -55,7 +55,7 @@ class GetEventHubDataConnectionResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tableName] The table where the data should be ingested. Optionally the table information can be added to each message.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetEventHubDataConnectionResult({
+  const GetEventHubDataConnectionResult({
     required this.azureApiVersion,
     this.compression,
     required this.consumerGroup,

@@ -8,7 +8,7 @@ class BucketReplicationConfigRuleDeleteMarkerReplication {
 
   /// Creates a new [BucketReplicationConfigRuleDeleteMarkerReplication].
   /// [status] Whether delete markers should be replicated. Either `"Enabled"` or `"Disabled"`.
-  BucketReplicationConfigRuleDeleteMarkerReplication({
+  const BucketReplicationConfigRuleDeleteMarkerReplication({
     required this.status,
   });
 

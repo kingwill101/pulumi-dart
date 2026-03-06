@@ -16,7 +16,7 @@ class TaskSetNetworkConfiguration {
   /// [assignPublicIp] Whether to assign a public IP address to the ENI (`FARGATE` launch type only). Valid values are `true` or `false`. Default `false`.
   /// [securityGroups] The security groups associated with the task or service. If you do not specify a security group, the default security group for the VPC is used. Maximum of 5.
   /// [subnets] The subnets associated with the task or service. Maximum of 16.
-  TaskSetNetworkConfiguration({
+  const TaskSetNetworkConfiguration({
     this.assignPublicIp,
     this.securityGroups,
     required this.subnets,

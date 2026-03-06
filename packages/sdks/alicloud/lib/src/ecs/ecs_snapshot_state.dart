@@ -48,7 +48,7 @@ class EcsSnapshotState {
   /// [snapshotName] The name of the snapshot.
   /// [status] The status of the Snapshot.
   /// [tags] A mapping of tags to assign to the resource.
-  EcsSnapshotState({
+  const EcsSnapshotState({
     this.category,
     this.createTime,
     this.description,

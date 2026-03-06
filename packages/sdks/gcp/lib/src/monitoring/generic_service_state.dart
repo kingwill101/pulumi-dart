@@ -41,7 +41,7 @@ class GenericServiceState {
   /// [serviceId] An optional service ID to use. If not given, the server will generate a
   /// [telemetries] Configuration for how to query telemetry on a Service.
   /// [userLabels] Labels which have been used to annotate the service. Label keys must start
-  GenericServiceState({
+  const GenericServiceState({
     this.basicService,
     this.displayName,
     this.name,

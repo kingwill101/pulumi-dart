@@ -11,7 +11,7 @@ class OneDashboardPageWidgetStackedBarUnitSeriesOverride {
   /// Creates a new [OneDashboardPageWidgetStackedBarUnitSeriesOverride].
   /// [seriesName] Series name
   /// [unit] (Optional) Choose a unit to customize the unit on your Y axis and in each of your series.
-  OneDashboardPageWidgetStackedBarUnitSeriesOverride({
+  const OneDashboardPageWidgetStackedBarUnitSeriesOverride({
     this.seriesName,
     this.unit,
   });

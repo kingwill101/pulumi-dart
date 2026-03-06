@@ -8,7 +8,7 @@ class BucketObjectv2OverrideProviderDefaultTags {
 
   /// Creates a new [BucketObjectv2OverrideProviderDefaultTags].
   /// [tags] Map of tags to assign to the object. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  BucketObjectv2OverrideProviderDefaultTags({
+  const BucketObjectv2OverrideProviderDefaultTags({
     this.tags,
   });
 

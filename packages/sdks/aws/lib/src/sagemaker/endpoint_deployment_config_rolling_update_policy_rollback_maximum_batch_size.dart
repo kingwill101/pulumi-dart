@@ -11,7 +11,7 @@ class EndpointDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize {
   /// Creates a new [EndpointDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize].
   /// [type] Specifies the endpoint capacity type. Valid values are: `INSTANCE_COUNT`, or `CAPACITY_PERCENT`.
   /// [value] Defines the capacity size, either as a number of instances or a capacity percentage.
-  EndpointDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize({
+  const EndpointDeploymentConfigRollingUpdatePolicyRollbackMaximumBatchSize({
     required this.type,
     required this.value,
   });

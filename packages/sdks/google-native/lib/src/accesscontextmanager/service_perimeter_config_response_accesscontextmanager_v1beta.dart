@@ -22,7 +22,7 @@ class ServicePerimeterConfigResponseAccesscontextmanagerV1beta {
   /// [restrictedServices] Google Cloud services that are subject to the Service Perimeter restrictions. Must contain a list of services. For example, if `storage.googleapis.com` is specified, access to the storage buckets inside the perimeter must meet the perimeter's access restrictions.
   /// [unrestrictedServices] Google Cloud services that are not subject to the Service Perimeter restrictions. Deprecated. Must be set to a single wildcard "*". The wildcard means that unless explicitly specified by "restricted_services" list, any service is treated as unrestricted.
   /// [vpcAccessibleServices] Beta. Configuration for APIs allowed within Perimeter.
-  ServicePerimeterConfigResponseAccesscontextmanagerV1beta({
+  const ServicePerimeterConfigResponseAccesscontextmanagerV1beta({
     required this.accessLevels,
     required this.resources,
     required this.restrictedServices,

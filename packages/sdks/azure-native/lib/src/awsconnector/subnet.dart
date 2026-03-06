@@ -16,7 +16,7 @@ class Subnet {
   /// [subnetAvailabilityZone] &lt;p&gt;The Availability Zone of the subnet.&lt;/p&gt;
   /// [subnetIdentifier] &lt;p&gt;The subnet identifier.&lt;/p&gt;
   /// [subnetStatus] &lt;p&gt;The status of the subnet.&lt;/p&gt;
-  Subnet({
+  const Subnet({
     this.subnetAvailabilityZone,
     this.subnetIdentifier,
     this.subnetStatus,

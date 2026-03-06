@@ -31,7 +31,7 @@ class JobPrestoConfig {
   /// [properties] A mapping of property names to values. Used to set Presto session properties Equivalent to using the --session flag in the Presto CLI.
   /// [queryFileUri] The HCFS URI of the script that contains SQL queries.
   /// [queryLists] The list of SQL queries or statements to execute as part of the job.
-  JobPrestoConfig({
+  const JobPrestoConfig({
     this.clientTags,
     this.continueOnFailure,
     this.loggingConfig,

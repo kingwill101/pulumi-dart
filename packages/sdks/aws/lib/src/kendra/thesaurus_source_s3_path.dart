@@ -13,7 +13,7 @@ class ThesaurusSourceS3Path {
   /// Creates a new [ThesaurusSourceS3Path].
   /// [bucket] The name of the S3 bucket that contains the file.
   /// [key] The name of the file.
-  ThesaurusSourceS3Path({
+  const ThesaurusSourceS3Path({
     required this.bucket,
     required this.key,
   });

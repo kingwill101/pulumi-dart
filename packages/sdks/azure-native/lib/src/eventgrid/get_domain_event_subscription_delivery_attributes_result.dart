@@ -10,7 +10,7 @@ class GetDomainEventSubscriptionDeliveryAttributesResult {
 
   /// Creates a new [GetDomainEventSubscriptionDeliveryAttributesResult].
   /// [value] A collection of DeliveryAttributeMapping
-  GetDomainEventSubscriptionDeliveryAttributesResult({
+  const GetDomainEventSubscriptionDeliveryAttributesResult({
     this.value,
   });
 

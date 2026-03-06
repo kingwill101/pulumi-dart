@@ -8,7 +8,7 @@ class ThemeConfigurationSheetTileBorder {
 
   /// Creates a new [ThemeConfigurationSheetTileBorder].
   /// [show] The option to enable display of borders for visuals.
-  ThemeConfigurationSheetTileBorder({
+  const ThemeConfigurationSheetTileBorder({
     this.show,
   });
 

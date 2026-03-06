@@ -10,7 +10,7 @@ class CopyOnExpiryOption {
 
   /// Creates a new [CopyOnExpiryOption].
   /// [objectType] Type of the specific object - used for deserializing
-  CopyOnExpiryOption({
+  const CopyOnExpiryOption({
     required this.objectType,
   });
 

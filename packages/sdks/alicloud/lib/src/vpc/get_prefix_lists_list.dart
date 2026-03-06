@@ -33,7 +33,7 @@ class GetPrefixListsList {
   /// [prefixListId] The ID of the query Prefix List.
   /// [prefixListName] The name of the prefix list.
   /// [shareType] The share type of the prefix list.
-  GetPrefixListsList({
+  const GetPrefixListsList({
     required this.createTime,
     required this.entrys,
     required this.id,

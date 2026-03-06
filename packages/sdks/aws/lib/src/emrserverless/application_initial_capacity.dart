@@ -12,7 +12,7 @@ class ApplicationInitialCapacity {
   /// Creates a new [ApplicationInitialCapacity].
   /// [initialCapacityConfig] The initial capacity configuration per worker.
   /// [initialCapacityType] The worker type for an analytics framework. For Spark applications, the key can either be set to `Driver` or `Executor`. For Hive applications, it can be set to `HiveDriver` or `TezTask`.
-  ApplicationInitialCapacity({
+  const ApplicationInitialCapacity({
     this.initialCapacityConfig,
     required this.initialCapacityType,
   });

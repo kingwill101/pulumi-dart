@@ -41,7 +41,7 @@ class GetSecurityStandardResult {
   /// [policySetDefinitionId] The policy set definition id associated with the standard.
   /// [standardType] Standard type (Custom or Default or Compliance only currently)
   /// [type] Resource type
-  GetSecurityStandardResult({
+  const GetSecurityStandardResult({
     this.assessments,
     required this.azureApiVersion,
     this.cloudProviders,

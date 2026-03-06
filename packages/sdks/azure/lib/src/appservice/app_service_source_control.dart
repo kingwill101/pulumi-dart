@@ -20,7 +20,7 @@ class AppServiceSourceControl {
   /// [repoUrl] The URL of the source code repository.
   /// [rollbackEnabled] Enable roll-back for the repository. Defaults to `false` if not specified.
   /// [useMercurial] Use Mercurial if `true`, otherwise uses Git.
-  AppServiceSourceControl({
+  const AppServiceSourceControl({
     this.branch,
     this.manualIntegration,
     this.repoUrl,

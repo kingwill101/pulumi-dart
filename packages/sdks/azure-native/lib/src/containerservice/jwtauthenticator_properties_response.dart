@@ -24,7 +24,7 @@ class JWTAuthenticatorPropertiesResponse {
   /// [issuer] The JWT OIDC issuer details.
   /// [provisioningState] The current provisioning state of the JWT authenticator.
   /// [userValidationRules] The rules that are applied to the mapped user before completing authentication. All the expressions must evaluate to true for validation to succeed.
-  JWTAuthenticatorPropertiesResponse({
+  const JWTAuthenticatorPropertiesResponse({
     required this.claimMappings,
     this.claimValidationRules,
     required this.issuer,

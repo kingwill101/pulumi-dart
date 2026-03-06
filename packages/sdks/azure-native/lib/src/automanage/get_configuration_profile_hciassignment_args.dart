@@ -18,7 +18,7 @@ class GetConfigurationProfileHCIAssignmentArgs {
   /// [clusterName] The name of the Arc machine.
   /// [configurationProfileAssignmentName] The configuration profile assignment name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetConfigurationProfileHCIAssignmentArgs({
+  const GetConfigurationProfileHCIAssignmentArgs({
     required this.clusterName,
     required this.configurationProfileAssignmentName,
     required this.resourceGroupName,

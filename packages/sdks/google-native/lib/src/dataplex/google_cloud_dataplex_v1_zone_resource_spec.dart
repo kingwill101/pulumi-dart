@@ -10,7 +10,7 @@ class GoogleCloudDataplexV1ZoneResourceSpec {
 
   /// Creates a new [GoogleCloudDataplexV1ZoneResourceSpec].
   /// [locationType] Immutable. The location type of the resources that are allowed to be attached to the assets within this zone.
-  GoogleCloudDataplexV1ZoneResourceSpec({
+  const GoogleCloudDataplexV1ZoneResourceSpec({
     required this.locationType,
   });
 

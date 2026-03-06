@@ -12,7 +12,7 @@ class DataProvider {
   /// Creates a new [DataProvider].
   /// [name] Optional. Name of the data provider.
   /// [primaryContact] Optional. Email or URL of the data provider. Max Length: 1000 bytes.
-  DataProvider({
+  const DataProvider({
     this.name,
     this.primaryContact,
   });

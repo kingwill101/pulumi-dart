@@ -36,7 +36,7 @@ class DatabasePrincipalAssignmentArgs {
   /// [role] Database principal role.
   /// [tenantId] The tenant id of the principal
   /// [workspaceName] The name of the workspace
-  DatabasePrincipalAssignmentArgs({
+  const DatabasePrincipalAssignmentArgs({
     required this.databaseName,
     required this.kustoPoolName,
     this.principalAssignmentName,

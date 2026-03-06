@@ -35,7 +35,7 @@ class GetPortfoliosResult {
   /// [scope] Optional.
   /// [sortBy] Optional.
   /// [sortOrder] Optional.
-  GetPortfoliosResult({
+  const GetPortfoliosResult({
     required this.id,
     required this.ids,
     this.nameRegex,

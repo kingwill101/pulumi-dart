@@ -14,7 +14,7 @@ class CompositeAlarmActionsSuppressor {
   /// [alarm] Can be an AlarmName or an Amazon Resource Name (ARN) from an existing alarm.
   /// [extensionPeriod] The maximum time in seconds that the composite alarm waits after suppressor alarm goes out of the `ALARM` state. After this time, the composite alarm performs its actions.
   /// [waitPeriod] The maximum time in seconds that the composite alarm waits for the suppressor alarm to go into the `ALARM` state. After this time, the composite alarm performs its actions.
-  CompositeAlarmActionsSuppressor({
+  const CompositeAlarmActionsSuppressor({
     required this.alarm,
     required this.extensionPeriod,
     required this.waitPeriod,

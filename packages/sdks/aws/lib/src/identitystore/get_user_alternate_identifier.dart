@@ -15,7 +15,7 @@ class GetUserAlternateIdentifier {
   /// Creates a new [GetUserAlternateIdentifier].
   /// [externalId] Configuration block for filtering by the identifier issued by an external identity provider. Detailed below.
   /// [uniqueAttribute] An entity attribute that's unique to a specific entity. Detailed below.
-  GetUserAlternateIdentifier({
+  const GetUserAlternateIdentifier({
     this.externalId,
     this.uniqueAttribute,
   });

@@ -29,7 +29,7 @@ class GetLocationsLocation {
   /// [longitude] Longitude of the city closest to the Location.
   /// [name] Name of the Location.
   /// [networkZone] Name of the Network Zone this Location resides in.
-  GetLocationsLocation({
+  const GetLocationsLocation({
     required this.city,
     required this.country,
     required this.description,

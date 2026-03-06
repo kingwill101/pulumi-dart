@@ -48,7 +48,7 @@ class GetFluidRelayServerResult {
   /// [systemData] System meta data for this resource, including creation and modification information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetFluidRelayServerResult({
+  const GetFluidRelayServerResult({
     required this.azureApiVersion,
     this.encryption,
     required this.fluidRelayEndpoints,

@@ -36,7 +36,7 @@ class BudgetResourceGroupArgs {
   /// [resourceGroupId] The ID of the Resource Group to create the consumption budget for in the form of /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroup1. Changing this forces a new Resource Group Consumption Budget to be created.
   /// [timeGrain] The time covered by a budget. Tracking of the amount will be reset based on the time grain. Must be one of `BillingAnnual`, `BillingMonth`, `BillingQuarter`, `Annually`, `Monthly` and `Quarterly`. Defaults to `Monthly`. Changing this forces a new resource to be created.
   /// [timePeriod] A `time_period` block as defined below.
-  BudgetResourceGroupArgs({
+  const BudgetResourceGroupArgs({
     required this.amount,
     this.etag,
     this.filter,

@@ -30,7 +30,7 @@ class TransitionRouteGroupArgs {
   /// [name] The unique identifier of the transition route group. TransitionRouteGroups.CreateTransitionRouteGroup populates the name automatically. Format: `projects//locations//agents//flows//transitionRouteGroups/` .
   /// [project] Optional.
   /// [transitionRoutes] Transition routes associated with the TransitionRouteGroup.
-  TransitionRouteGroupArgs({
+  const TransitionRouteGroupArgs({
     required this.agentId,
     required this.displayName,
     required this.flowId,

@@ -38,7 +38,7 @@ class GetSecurityUserRuleCollectionResult {
   /// [resourceGuid] Unique identifier for this resource.
   /// [systemData] The system metadata related to this resource.
   /// [type] Resource type.
-  GetSecurityUserRuleCollectionResult({
+  const GetSecurityUserRuleCollectionResult({
     required this.appliesToGroups,
     required this.azureApiVersion,
     this.description,

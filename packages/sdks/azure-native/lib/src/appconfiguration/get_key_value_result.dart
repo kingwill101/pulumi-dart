@@ -45,7 +45,7 @@ class GetKeyValueResult {
   /// [tags] A dictionary of tags that can help identify what a key-value may be applicable for.
   /// [type] The type of the resource.
   /// [value] The value of the key-value.
-  GetKeyValueResult({
+  const GetKeyValueResult({
     required this.azureApiVersion,
     this.contentType,
     required this.eTag,

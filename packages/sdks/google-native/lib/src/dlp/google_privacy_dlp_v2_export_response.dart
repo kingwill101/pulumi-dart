@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2ExportResponse {
 
   /// Creates a new [GooglePrivacyDlpV2ExportResponse].
   /// [profileTable] Store all table and column profiles in an existing table or a new table in an existing dataset. Each re-generation will result in a new row in BigQuery.
-  GooglePrivacyDlpV2ExportResponse({
+  const GooglePrivacyDlpV2ExportResponse({
     required this.profileTable,
   });
 

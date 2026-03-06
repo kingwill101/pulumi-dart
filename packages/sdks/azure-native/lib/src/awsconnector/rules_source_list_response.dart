@@ -15,7 +15,7 @@ class RulesSourceListResponse {
   /// [generatedRulesType] Property generatedRulesType
   /// [targetTypes] Property targetTypes
   /// [targets] Property targets
-  RulesSourceListResponse({
+  const RulesSourceListResponse({
     this.generatedRulesType,
     this.targetTypes,
     this.targets,

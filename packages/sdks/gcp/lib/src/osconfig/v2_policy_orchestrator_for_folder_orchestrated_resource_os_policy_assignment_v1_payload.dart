@@ -68,7 +68,7 @@ class V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Paylo
   /// [rollout] Message to configure the rollout at the zonal level for the OS policy
   /// [rolloutState] OS policy assignment rollout state
   /// [uid] Server generated unique id for the OS policy assignment resource.
-  V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload({
+  const V2PolicyOrchestratorForFolderOrchestratedResourceOsPolicyAssignmentV1Payload({
     this.baseline,
     this.deleted,
     this.description,

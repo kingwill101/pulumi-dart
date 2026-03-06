@@ -30,7 +30,7 @@ class GetPublishedVersionResult {
   /// [timeCreated] Required.
   /// [type] The type of the Blueprint
   /// [version] Required.
-  GetPublishedVersionResult({
+  const GetPublishedVersionResult({
     required this.blueprintName,
     required this.description,
     required this.displayName,

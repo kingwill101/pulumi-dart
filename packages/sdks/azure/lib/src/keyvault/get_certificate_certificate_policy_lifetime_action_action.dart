@@ -8,7 +8,7 @@ class GetCertificateCertificatePolicyLifetimeActionAction {
 
   /// Creates a new [GetCertificateCertificatePolicyLifetimeActionAction].
   /// [actionType] The Type of action to be performed when the lifetime trigger is triggerec.
-  GetCertificateCertificatePolicyLifetimeActionAction({
+  const GetCertificateCertificatePolicyLifetimeActionAction({
     required this.actionType,
   });
 

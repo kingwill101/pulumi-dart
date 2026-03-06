@@ -34,7 +34,7 @@ class RuleState {
   /// [ruleConditions] The conditions of the forwarding rule. See `rule_conditions` below.
   /// [ruleName] The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
   /// [status] The status of the resource.
-  RuleState({
+  const RuleState({
     this.direction,
     this.dryRun,
     this.listenerId,

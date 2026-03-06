@@ -27,7 +27,7 @@ class ImageArgs {
   /// [imageName] Image name. Use an image GUID for GA versions of the API.
   /// [regionalDataBoundary] Regional data boundary for an image
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ImageArgs({
+  const ImageArgs({
     required this.catalogName,
     this.image,
     this.imageId,

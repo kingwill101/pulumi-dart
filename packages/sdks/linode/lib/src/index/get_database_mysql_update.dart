@@ -15,7 +15,7 @@ class GetDatabaseMysqlUpdate {
   /// [frequency] Required.
   /// [hourOfDay] Required.
   /// [weekOfMonth] Required.
-  GetDatabaseMysqlUpdate({
+  const GetDatabaseMysqlUpdate({
     required this.dayOfWeek,
     required this.duration,
     required this.frequency,

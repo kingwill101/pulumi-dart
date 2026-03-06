@@ -39,7 +39,7 @@ class ApplicationArgs {
   /// [name] The name of the Virtual Desktop Application. Changing the name forces a new resource to be created.
   /// [path] The file path location of the app on the Virtual Desktop OS.
   /// [showInPortal] Specifies whether to show the RemoteApp program in the RD Web Access server.
-  ApplicationArgs({
+  const ApplicationArgs({
     required this.applicationGroupId,
     required this.commandLineArgumentPolicy,
     this.commandLineArguments,

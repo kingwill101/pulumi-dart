@@ -51,7 +51,7 @@ class PolicyV2State {
   /// [rules] An array of one or more firewall rules that comprise
   /// [shared] Sharing status of the firewall policy (must be "true"
   /// [tenantId] This argument conflicts and is interchangeable
-  PolicyV2State({
+  const PolicyV2State({
     this.audited,
     this.description,
     this.name,

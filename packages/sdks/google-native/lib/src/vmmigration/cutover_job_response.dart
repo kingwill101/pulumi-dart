@@ -43,7 +43,7 @@ class CutoverJobResponse {
   /// [stateMessage] A message providing possible extra details about the current state.
   /// [stateTime] The time the state was last updated.
   /// [steps] The cutover steps list representing its progress.
-  CutoverJobResponse({
+  const CutoverJobResponse({
     required this.computeEngineDisksTargetDetails,
     required this.computeEngineTargetDetails,
     required this.createTime,

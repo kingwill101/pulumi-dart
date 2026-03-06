@@ -42,7 +42,7 @@ class GetResolverFirewallRuleGroupResult {
   /// [shareStatus] Whether the rule group is shared with other Amazon Web Services accounts, or was shared with the current account by another Amazon Web Services account.
   /// [status] The status of the rule group.
   /// [statusMessage] Additional information about the status of the rule group, if available.
-  GetResolverFirewallRuleGroupResult({
+  const GetResolverFirewallRuleGroupResult({
     required this.arn,
     required this.creationTime,
     required this.creatorRequestId,

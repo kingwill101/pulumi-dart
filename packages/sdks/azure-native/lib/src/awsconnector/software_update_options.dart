@@ -9,7 +9,7 @@ class SoftwareUpdateOptions {
 
   /// Creates a new [SoftwareUpdateOptions].
   /// [autoSoftwareUpdateEnabled] &lt;p&gt;Whether automatic service software updates are enabled for the domain.&lt;/p&gt;
-  SoftwareUpdateOptions({
+  const SoftwareUpdateOptions({
     this.autoSoftwareUpdateEnabled,
   });
 

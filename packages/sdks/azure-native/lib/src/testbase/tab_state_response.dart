@@ -12,7 +12,7 @@ class TabStateResponse {
   /// Creates a new [TabStateResponse].
   /// [currentTab] Current tab.
   /// [visitedTabs] visited tabs.
-  TabStateResponse({
+  const TabStateResponse({
     this.currentTab,
     this.visitedTabs,
   });

@@ -31,7 +31,7 @@ class IndexState {
   /// [logstoreName] Logstore name
   /// [maxTextLen] Maximum length of statistical field
   /// [projectName] Project name
-  IndexState({
+  const IndexState({
     this.keys,
     this.line,
     this.logReduce,

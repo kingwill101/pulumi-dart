@@ -18,7 +18,7 @@ class ThrottlingRuleResponse {
   /// [matchPatterns] Optional.
   /// [minCount] Optional.
   /// [renewalPeriod] Optional.
-  ThrottlingRuleResponse({
+  const ThrottlingRuleResponse({
     this.count,
     this.dynamicThrottlingEnabled,
     this.key,

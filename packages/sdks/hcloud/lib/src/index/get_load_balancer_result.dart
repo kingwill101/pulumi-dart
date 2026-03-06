@@ -52,7 +52,7 @@ class GetLoadBalancerResult {
   /// [services] (list) List of services a Load Balancer provides.
   /// [targets] (list) List of targets of the Load Balancer.
   /// [withSelector] Optional.
-  GetLoadBalancerResult({
+  const GetLoadBalancerResult({
     required this.algorithms,
     required this.deleteProtection,
     required this.id,

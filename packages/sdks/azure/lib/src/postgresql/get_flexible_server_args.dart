@@ -15,7 +15,7 @@ class GetFlexibleServerArgs {
   /// Creates a new [GetFlexibleServerArgs].
   /// [name] The name of this PostgreSQL Flexible Server.
   /// [resourceGroupName] The name of the Resource Group where the PostgreSQL Flexible Server exists.
-  GetFlexibleServerArgs({
+  const GetFlexibleServerArgs({
     required this.name,
     required this.resourceGroupName,
   });

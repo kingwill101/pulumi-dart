@@ -12,7 +12,7 @@ class AppliedLicenseResponse {
   /// Creates a new [AppliedLicenseResponse].
   /// [osLicense] The OS license returned from the adaptation module's report.
   /// [type] The license type that was used in OS adaptation.
-  AppliedLicenseResponse({
+  const AppliedLicenseResponse({
     required this.osLicense,
     required this.type,
   });

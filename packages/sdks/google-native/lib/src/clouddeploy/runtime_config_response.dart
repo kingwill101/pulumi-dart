@@ -14,7 +14,7 @@ class RuntimeConfigResponse {
   /// Creates a new [RuntimeConfigResponse].
   /// [cloudRun] Cloud Run runtime configuration.
   /// [kubernetes] Kubernetes runtime configuration.
-  RuntimeConfigResponse({
+  const RuntimeConfigResponse({
     required this.cloudRun,
     required this.kubernetes,
   });

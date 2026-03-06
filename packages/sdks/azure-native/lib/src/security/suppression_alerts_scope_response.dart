@@ -9,7 +9,7 @@ class SuppressionAlertsScopeResponse {
 
   /// Creates a new [SuppressionAlertsScopeResponse].
   /// [allOf] All the conditions inside need to be true in order to suppress the alert
-  SuppressionAlertsScopeResponse({
+  const SuppressionAlertsScopeResponse({
     required this.allOf,
   });
 

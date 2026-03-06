@@ -33,7 +33,7 @@ class ClusterEndpointArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [staticMembers] List of DB instance identifiers that are part of the custom endpoint group. Conflicts with `excluded_members`.
   /// [tags] Key-value map of resource tags. .If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  ClusterEndpointArgs({
+  const ClusterEndpointArgs({
     required this.clusterEndpointIdentifier,
     required this.clusterIdentifier,
     required this.customEndpointType,

@@ -21,7 +21,7 @@ class DiscoveryRuleProperties {
   /// [discoverRelationships] Whether to create relationships between the discovered entities based on a set of built-in rules. These relationships cannot be manually deleted.
   /// [displayName] Display name
   /// [resourceGraphQuery] Azure Resource Graph query text in KQL syntax. The query must return at least a column named 'id' which contains the resource ID of the discovered resources.
-  DiscoveryRuleProperties({
+  const DiscoveryRuleProperties({
     required this.addRecommendedSignals,
     required this.authenticationSetting,
     required this.discoverRelationships,

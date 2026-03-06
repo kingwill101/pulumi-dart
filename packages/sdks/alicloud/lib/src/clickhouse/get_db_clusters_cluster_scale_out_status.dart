@@ -11,7 +11,7 @@ class GetDbClustersClusterScaleOutStatus {
   /// Creates a new [GetDbClustersClusterScaleOutStatus].
   /// [progress] Process.
   /// [ratio] Efficiency.
-  GetDbClustersClusterScaleOutStatus({
+  const GetDbClustersClusterScaleOutStatus({
     required this.progress,
     required this.ratio,
   });

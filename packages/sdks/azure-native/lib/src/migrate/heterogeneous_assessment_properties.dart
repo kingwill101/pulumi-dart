@@ -9,7 +9,7 @@ class HeterogeneousAssessmentProperties {
 
   /// Creates a new [HeterogeneousAssessmentProperties].
   /// [assessmentArmIds] Arm id of partner assessments.
-  HeterogeneousAssessmentProperties({
+  const HeterogeneousAssessmentProperties({
     this.assessmentArmIds,
   });
 

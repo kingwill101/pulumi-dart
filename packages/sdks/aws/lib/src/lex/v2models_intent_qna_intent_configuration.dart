@@ -13,7 +13,7 @@ class V2modelsIntentQnaIntentConfiguration {
   /// Creates a new [V2modelsIntentQnaIntentConfiguration].
   /// [bedrockModelConfiguration] Configuration block for the Amazon Bedrock model to use for generating responses. See `bedrock_model_configuration`.
   /// [dataSourceConfiguration] Configuration block for the data sources to use for the QnA intent. Only one data source (Bedrock Knowledge Base, Kendra, or OpenSearch) can be specified. See `data_source_configuration`.
-  V2modelsIntentQnaIntentConfiguration({
+  const V2modelsIntentQnaIntentConfiguration({
     this.bedrockModelConfiguration,
     this.dataSourceConfiguration,
   });

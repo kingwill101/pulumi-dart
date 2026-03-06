@@ -18,7 +18,7 @@ class GetMHSMPrivateEndpointConnectionArgs {
   /// [name] Name of the managed HSM Pool
   /// [privateEndpointConnectionName] Name of the private endpoint connection associated with the managed hsm pool.
   /// [resourceGroupName] Name of the resource group that contains the managed HSM pool.
-  GetMHSMPrivateEndpointConnectionArgs({
+  const GetMHSMPrivateEndpointConnectionArgs({
     required this.name,
     required this.privateEndpointConnectionName,
     required this.resourceGroupName,

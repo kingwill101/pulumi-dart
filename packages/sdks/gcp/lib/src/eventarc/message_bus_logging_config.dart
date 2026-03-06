@@ -10,7 +10,7 @@ class MessageBusLoggingConfig {
 
   /// Creates a new [MessageBusLoggingConfig].
   /// [logSeverity] Optional. The minimum severity of logs that will be sent to Stackdriver/Platform
-  MessageBusLoggingConfig({
+  const MessageBusLoggingConfig({
     this.logSeverity,
   });
 

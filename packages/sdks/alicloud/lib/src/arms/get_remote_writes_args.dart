@@ -21,7 +21,7 @@ class GetRemoteWritesArgs {
   /// [ids] A list of Remote Write IDs.
   /// [nameRegex] A regex string to filter results by Remote Write name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetRemoteWritesArgs({
+  const GetRemoteWritesArgs({
     required this.clusterId,
     this.ids,
     this.nameRegex,

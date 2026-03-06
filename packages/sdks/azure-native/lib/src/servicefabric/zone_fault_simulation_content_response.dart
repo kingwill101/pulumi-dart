@@ -20,7 +20,7 @@ class ZoneFaultSimulationContentResponse {
   /// [faultKind] The kind of fault simulation.
   /// [force] Force the action to go through without any check on the cluster.
   /// [zones] Indicates the zones of the fault simulation.
-  ZoneFaultSimulationContentResponse({
+  const ZoneFaultSimulationContentResponse({
     this.constraints,
     required this.faultKind,
     this.force,

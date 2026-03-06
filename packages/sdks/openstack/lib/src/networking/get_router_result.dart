@@ -50,7 +50,7 @@ class GetRouterResult {
   /// [status] Optional.
   /// [tags] Optional.
   /// [tenantId] Optional.
-  GetRouterResult({
+  const GetRouterResult({
     this.adminStateUp,
     required this.allTags,
     required this.availabilityZoneHints,

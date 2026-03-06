@@ -17,7 +17,7 @@ class GetLinuxWebAppIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Linux Web App.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Linux Web App.
   /// [type] The Azure Storage Type.
-  GetLinuxWebAppIdentity({
+  const GetLinuxWebAppIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

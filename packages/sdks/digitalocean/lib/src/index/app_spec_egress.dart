@@ -8,7 +8,7 @@ class AppSpecEgress {
 
   /// Creates a new [AppSpecEgress].
   /// [type] The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
-  AppSpecEgress({
+  const AppSpecEgress({
     this.type,
   });
 

@@ -17,7 +17,7 @@ class NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfileVnetCo
   /// [trustedSubnetId] The ID of the Trust subnet.
   /// [untrustedSubnetId] The ID of the UnTrust subnet.
   /// [virtualNetworkId] The ID of the Virtual Network.
-  NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfileVnetConfiguration({
+  const NextGenerationFirewallVirtualNetworkStrataCloudManagerNetworkProfileVnetConfiguration({
     this.ipOfTrustForUserDefinedRoutes,
     this.trustedSubnetId,
     this.untrustedSubnetId,

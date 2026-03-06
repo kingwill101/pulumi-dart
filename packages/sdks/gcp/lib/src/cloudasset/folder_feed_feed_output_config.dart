@@ -10,7 +10,7 @@ class FolderFeedFeedOutputConfig {
 
   /// Creates a new [FolderFeedFeedOutputConfig].
   /// [pubsubDestination] Destination on Cloud Pubsub.
-  FolderFeedFeedOutputConfig({
+  const FolderFeedFeedOutputConfig({
     required this.pubsubDestination,
   });
 

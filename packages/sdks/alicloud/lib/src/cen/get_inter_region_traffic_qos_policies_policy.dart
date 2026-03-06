@@ -26,7 +26,7 @@ class GetInterRegionTrafficQosPoliciesPolicy {
   /// [status] The status of the traffic scheduling policy. Valid Value: `Creating`, `Active`, `Modifying`, `Deleting`, `Deleted`.
   /// [transitRouterAttachmentId] The ID of the inter-region connection.
   /// [transitRouterId] The ID of the transit router.
-  GetInterRegionTrafficQosPoliciesPolicy({
+  const GetInterRegionTrafficQosPoliciesPolicy({
     required this.id,
     required this.interRegionTrafficQosPolicyDescription,
     required this.interRegionTrafficQosPolicyId,

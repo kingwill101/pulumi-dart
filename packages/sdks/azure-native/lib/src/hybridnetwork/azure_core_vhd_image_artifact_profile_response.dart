@@ -14,7 +14,7 @@ class AzureCoreVhdImageArtifactProfileResponse {
   /// Creates a new [AzureCoreVhdImageArtifactProfileResponse].
   /// [artifactStore] The reference to artifact store.
   /// [vhdArtifactProfile] Vhd artifact profile.
-  AzureCoreVhdImageArtifactProfileResponse({
+  const AzureCoreVhdImageArtifactProfileResponse({
     this.artifactStore,
     this.vhdArtifactProfile,
   });

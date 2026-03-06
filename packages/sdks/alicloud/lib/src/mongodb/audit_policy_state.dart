@@ -18,7 +18,7 @@ class AuditPolicyState {
   /// [dbInstanceId] Database Instance Id
   /// [filter] The type of logs collected by the audit log feature of the instance. Separate multiple types with commas (,). Valid values:
   /// [storagePeriod] Audit log retention duration. The value range is 1 to 365 days. The default value is 30 days.
-  AuditPolicyState({
+  const AuditPolicyState({
     this.auditStatus,
     this.dbInstanceId,
     this.filter,

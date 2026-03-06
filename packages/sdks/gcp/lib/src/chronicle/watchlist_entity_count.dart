@@ -13,7 +13,7 @@ class WatchlistEntityCount {
   /// Creates a new [WatchlistEntityCount].
   /// [asset] (Output)
   /// [user] (Output)
-  WatchlistEntityCount({
+  const WatchlistEntityCount({
     this.asset,
     this.user,
   });

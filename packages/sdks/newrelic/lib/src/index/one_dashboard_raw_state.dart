@@ -28,7 +28,7 @@ class OneDashboardRawState {
   /// [pages] A nested block that describes a page. See Nested page blocks below for details.
   /// [permalink] The URL for viewing the dashboard.
   /// [permissions] Determines who can see the dashboard in an account. Valid values are `private`, `public_read_only`, or `public_read_write`. Defaults to `public_read_only`.
-  OneDashboardRawState({
+  const OneDashboardRawState({
     this.accountId,
     this.description,
     this.guid,

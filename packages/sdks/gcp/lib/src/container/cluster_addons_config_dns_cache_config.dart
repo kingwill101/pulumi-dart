@@ -7,7 +7,7 @@ class ClusterAddonsConfigDnsCacheConfig {
 
   /// Creates a new [ClusterAddonsConfigDnsCacheConfig].
   /// [enabled] Required.
-  ClusterAddonsConfigDnsCacheConfig({
+  const ClusterAddonsConfigDnsCacheConfig({
     required this.enabled,
   });
 

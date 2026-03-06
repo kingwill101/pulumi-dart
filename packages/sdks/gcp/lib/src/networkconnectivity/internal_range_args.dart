@@ -72,7 +72,7 @@ class InternalRangeArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [targetCidrRanges] Optional. Can be set to narrow down or pick a different address space while searching for a free range.
   /// [usage] The type of usage set for this InternalRange.
-  InternalRangeArgs({
+  const InternalRangeArgs({
     this.allocationOptions,
     this.description,
     this.excludeCidrRanges,

@@ -37,7 +37,7 @@ class GetQuotasResult {
   /// [quotas] Required.
   /// [sortField] Optional.
   /// [sortOrder] Optional.
-  GetQuotasResult({
+  const GetQuotasResult({
     this.dimensions,
     this.groupCode,
     required this.id,

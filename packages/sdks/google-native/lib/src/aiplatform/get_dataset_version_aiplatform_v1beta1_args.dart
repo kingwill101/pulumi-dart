@@ -19,7 +19,7 @@ class GetDatasetVersionAiplatformV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [readMask] Optional.
-  GetDatasetVersionAiplatformV1beta1Args({
+  const GetDatasetVersionAiplatformV1beta1Args({
     required this.datasetId,
     required this.datasetVersionId,
     required this.location,

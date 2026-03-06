@@ -24,7 +24,7 @@ class GetClustersArgs {
   /// [nameRegex] A regex string to filter results by Cluster name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values:
-  GetClustersArgs({
+  const GetClustersArgs({
     this.enableDetails,
     this.ids,
     this.nameRegex,

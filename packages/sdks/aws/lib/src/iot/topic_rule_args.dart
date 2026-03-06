@@ -91,7 +91,7 @@ class TopicRuleArgs {
   /// [stepFunctions] Optional.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timestreams] Optional.
-  TopicRuleArgs({
+  const TopicRuleArgs({
     this.cloudwatchAlarms,
     this.cloudwatchLogs,
     this.cloudwatchMetrics,

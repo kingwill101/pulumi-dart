@@ -11,7 +11,7 @@ class AppAuthorizationTenant {
   /// Creates a new [AppAuthorizationTenant].
   /// [tenantDisplayName] The display name of the tenant.
   /// [tenantIdentifier] The ID of the application tenant.
-  AppAuthorizationTenant({
+  const AppAuthorizationTenant({
     required this.tenantDisplayName,
     required this.tenantIdentifier,
   });

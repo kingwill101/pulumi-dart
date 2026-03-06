@@ -15,7 +15,7 @@ class GetTlsInspectionPolicyNetworksecurityV1beta1Args {
   /// [location] Required.
   /// [project] Optional.
   /// [tlsInspectionPolicyId] Required.
-  GetTlsInspectionPolicyNetworksecurityV1beta1Args({
+  const GetTlsInspectionPolicyNetworksecurityV1beta1Args({
     required this.location,
     this.project,
     required this.tlsInspectionPolicyId,

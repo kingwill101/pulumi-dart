@@ -18,7 +18,7 @@ class GetRouteMapArgs {
   /// [resourceGroupName] The resource group name of the RouteMap's resource group.
   /// [routeMapName] The name of the RouteMap.
   /// [virtualHubName] The name of the VirtualHub containing the RouteMap.
-  GetRouteMapArgs({
+  const GetRouteMapArgs({
     required this.resourceGroupName,
     required this.routeMapName,
     required this.virtualHubName,

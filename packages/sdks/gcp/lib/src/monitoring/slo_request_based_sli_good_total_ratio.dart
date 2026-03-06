@@ -31,7 +31,7 @@ class SloRequestBasedSliGoodTotalRatio {
   /// [badServiceFilter] A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// [goodServiceFilter] A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
   /// [totalServiceFilter] A TimeSeries [monitoring filter](https://cloud.google.com/monitoring/api/v3/filters)
-  SloRequestBasedSliGoodTotalRatio({
+  const SloRequestBasedSliGoodTotalRatio({
     this.badServiceFilter,
     this.goodServiceFilter,
     this.totalServiceFilter,

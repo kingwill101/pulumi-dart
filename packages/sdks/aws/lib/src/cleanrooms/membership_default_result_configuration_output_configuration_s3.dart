@@ -11,7 +11,7 @@ class MembershipDefaultResultConfigurationOutputConfigurationS3 {
   /// [bucket] Required.
   /// [keyPrefix] Optional.
   /// [resultFormat] Required.
-  MembershipDefaultResultConfigurationOutputConfigurationS3({
+  const MembershipDefaultResultConfigurationOutputConfigurationS3({
     required this.bucket,
     this.keyPrefix,
     required this.resultFormat,

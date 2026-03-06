@@ -21,7 +21,7 @@ class RecommendedActionImpactRecordResponse {
   /// [changeValueRelative] Gets the relative change in the value of this dimension. e.g., Relative Disk space change in Percentage
   /// [dimensionName] Gets the name of the impact dimension. e.g., CPUChange, DiskSpaceChange, NumberOfQueriesAffected.
   /// [unit] Gets the name of the impact dimension. e.g., CPUChange, DiskSpaceChange, NumberOfQueriesAffected.
-  RecommendedActionImpactRecordResponse({
+  const RecommendedActionImpactRecordResponse({
     required this.absoluteValue,
     required this.changeValueAbsolute,
     required this.changeValueRelative,

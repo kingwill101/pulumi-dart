@@ -75,7 +75,7 @@ class GetDatabasePostgresqlResult {
   /// [updated] When this Managed Database was last updated.
   /// [updates] Required.
   /// [version] The Managed Database engine version. (e.g. `v8.0.26`)
-  GetDatabasePostgresqlResult({
+  const GetDatabasePostgresqlResult({
     required this.allowLists,
     required this.caCert,
     required this.clusterSize,

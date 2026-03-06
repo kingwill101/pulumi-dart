@@ -30,7 +30,7 @@ class GetCustomApiResult {
   /// [properties] Custom API properties
   /// [tags] Resource tags
   /// [type] Resource type
-  GetCustomApiResult({
+  const GetCustomApiResult({
     required this.azureApiVersion,
     this.etag,
     required this.id,

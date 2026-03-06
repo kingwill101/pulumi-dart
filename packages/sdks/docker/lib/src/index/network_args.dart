@@ -47,7 +47,7 @@ class NetworkArgs {
   /// [labels] User-defined key/value metadata
   /// [name] The name of the Docker network.
   /// [options] Only available with bridge networks. See [bridge options docs](https://docs.docker.com/engine/reference/commandline/network_create/#bridge-driver-options) for more details.
-  NetworkArgs({
+  const NetworkArgs({
     this.attachable,
     this.checkDuplicate,
     this.driver,

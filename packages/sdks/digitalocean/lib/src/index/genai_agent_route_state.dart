@@ -23,7 +23,7 @@ class GenaiAgentRouteState {
   /// [rollback] Optional.
   /// [routeName] A name for the route.
   /// [uuid] The UUID of the linkage
-  GenaiAgentRouteState({
+  const GenaiAgentRouteState({
     this.childAgentUuid,
     this.ifCase,
     this.parentAgentUuid,

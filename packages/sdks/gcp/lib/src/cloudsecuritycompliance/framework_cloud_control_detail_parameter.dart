@@ -13,7 +13,7 @@ class FrameworkCloudControlDetailParameter {
   /// Creates a new [FrameworkCloudControlDetailParameter].
   /// [name] The name of the parameter.
   /// [parameterValue] Possible parameter value types.
-  FrameworkCloudControlDetailParameter({
+  const FrameworkCloudControlDetailParameter({
     required this.name,
     required this.parameterValue,
   });

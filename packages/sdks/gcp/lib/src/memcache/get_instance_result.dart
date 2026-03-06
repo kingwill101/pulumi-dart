@@ -56,7 +56,7 @@ class GetInstanceResult {
   /// [region] Optional.
   /// [reservedIpRangeIds] Required.
   /// [zones] Required.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.authorizedNetwork,
     required this.createTime,
     required this.deletionProtection,

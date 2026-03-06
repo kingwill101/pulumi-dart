@@ -39,7 +39,7 @@ class EntityRecognizerInputDataConfig {
   /// [documents] Specifies a collection of training documents.
   /// [entityList] Specifies location of the entity list data.
   /// [entityTypes] Set of entity types to be recognized.
-  EntityRecognizerInputDataConfig({
+  const EntityRecognizerInputDataConfig({
     this.annotations,
     this.augmentedManifests,
     this.dataFormat,

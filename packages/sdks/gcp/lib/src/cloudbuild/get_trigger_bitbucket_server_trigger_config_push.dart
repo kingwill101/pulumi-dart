@@ -14,7 +14,7 @@ class GetTriggerBitbucketServerTriggerConfigPush {
   /// [branch] Regex of branches to match.  Specify only one of branch or tag.
   /// [invertRegex] When true, only trigger a build if the revision regex does NOT match the gitRef regex.
   /// [tag] Regex of tags to match.  Specify only one of branch or tag.
-  GetTriggerBitbucketServerTriggerConfigPush({
+  const GetTriggerBitbucketServerTriggerConfigPush({
     required this.branch,
     required this.invertRegex,
     required this.tag,

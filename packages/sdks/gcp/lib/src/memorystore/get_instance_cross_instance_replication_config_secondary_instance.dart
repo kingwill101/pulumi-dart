@@ -11,7 +11,7 @@ class GetInstanceCrossInstanceReplicationConfigSecondaryInstance {
   /// Creates a new [GetInstanceCrossInstanceReplicationConfigSecondaryInstance].
   /// [instance] The full resource path of the Nth instance in the format: projects/{project}/locations/{region}/instance/{instance-id}
   /// [uid] The unique id of the Nth instance.
-  GetInstanceCrossInstanceReplicationConfigSecondaryInstance({
+  const GetInstanceCrossInstanceReplicationConfigSecondaryInstance({
     required this.instance,
     required this.uid,
   });

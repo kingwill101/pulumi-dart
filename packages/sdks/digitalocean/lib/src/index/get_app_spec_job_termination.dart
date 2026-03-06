@@ -8,7 +8,7 @@ class GetAppSpecJobTermination {
 
   /// Creates a new [GetAppSpecJobTermination].
   /// [gracePeriodSeconds] The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
-  GetAppSpecJobTermination({
+  const GetAppSpecJobTermination({
     this.gracePeriodSeconds,
   });
 

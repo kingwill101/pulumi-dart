@@ -32,7 +32,7 @@ class GetSfdcChannelResult {
   /// [lastReplayId] Last sfdc messsage replay id for channel
   /// [name] Resource name of the SFDC channel projects/{project}/locations/{location}/sfdcInstances/{sfdc_instance}/sfdcChannels/{sfdc_channel}.
   /// [updateTime] Time when the channel was last updated
-  GetSfdcChannelResult({
+  const GetSfdcChannelResult({
     required this.channelTopic,
     required this.createTime,
     required this.deleteTime,

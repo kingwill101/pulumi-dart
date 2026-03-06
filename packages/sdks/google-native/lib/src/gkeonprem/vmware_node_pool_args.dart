@@ -41,7 +41,7 @@ class VmwareNodePoolArgs {
   /// [project] Optional.
   /// [vmwareClusterId] Required.
   /// [vmwareNodePoolId] The ID to use for the node pool, which will become the final component of the node pool's resource name. This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format. The value must not be permitted to be a UUID (or UUID-like: anything matching /^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i).
-  VmwareNodePoolArgs({
+  const VmwareNodePoolArgs({
     this.annotations,
     required this.config,
     this.displayName,

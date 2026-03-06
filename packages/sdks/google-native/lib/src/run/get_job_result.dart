@@ -23,7 +23,7 @@ class GetJobResult {
   /// [metadata] Optional. Standard object's metadata.
   /// [spec] Optional. Specification of the desired behavior of a job.
   /// [status] Current status of a job.
-  GetJobResult({
+  const GetJobResult({
     required this.apiVersion,
     required this.kind,
     required this.metadata,

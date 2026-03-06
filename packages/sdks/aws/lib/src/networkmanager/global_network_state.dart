@@ -18,7 +18,7 @@ class GlobalNetworkState {
   /// [description] Description of the Global Network.
   /// [tags] Key-value tags for the Global Network. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  GlobalNetworkState({
+  const GlobalNetworkState({
     this.arn,
     this.description,
     this.tags,

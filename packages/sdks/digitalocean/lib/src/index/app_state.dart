@@ -45,7 +45,7 @@ class AppState {
   /// [projectId] The ID of the project that the app is assigned to.
   /// [spec] A DigitalOcean App spec describing the app.
   /// [updatedAt] The date and time of when the app was last updated.
-  AppState({
+  const AppState({
     this.activeDeploymentId,
     this.appUrn,
     this.createdAt,

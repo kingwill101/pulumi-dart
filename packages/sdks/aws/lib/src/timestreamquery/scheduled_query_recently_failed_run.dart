@@ -29,7 +29,7 @@ class ScheduledQueryRecentlyFailedRun {
   /// [queryInsightsResponses] Various insights and metrics related to the run summary of the scheduled query.
   /// [runStatus] Status of a scheduled query run. Valid values: `AUTO_TRIGGER_SUCCESS`, `AUTO_TRIGGER_FAILURE`, `MANUAL_TRIGGER_SUCCESS`, `MANUAL_TRIGGER_FAILURE`.
   /// [triggerTime] Actual time when the query was run.
-  ScheduledQueryRecentlyFailedRun({
+  const ScheduledQueryRecentlyFailedRun({
     this.errorReportLocations,
     this.executionStats,
     this.failureReason,

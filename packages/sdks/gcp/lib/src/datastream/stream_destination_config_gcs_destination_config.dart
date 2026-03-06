@@ -23,7 +23,7 @@ class StreamDestinationConfigGcsDestinationConfig {
   /// [fileRotationMb] The maximum file size to be saved in the bucket.
   /// [jsonFileFormat] JSON file format configuration.
   /// [path] Path inside the Cloud Storage bucket to write data to.
-  StreamDestinationConfigGcsDestinationConfig({
+  const StreamDestinationConfigGcsDestinationConfig({
     this.avroFileFormat,
     this.fileRotationInterval,
     this.fileRotationMb,

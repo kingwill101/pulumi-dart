@@ -8,7 +8,7 @@ class DomainFeaturesCapabilitiesSysPAcct {
 
   /// Creates a new [DomainFeaturesCapabilitiesSysPAcct].
   /// [state] Sets the state of the capability to wake from an alarm.
-  DomainFeaturesCapabilitiesSysPAcct({
+  const DomainFeaturesCapabilitiesSysPAcct({
     this.state,
   });
 

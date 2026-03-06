@@ -11,7 +11,7 @@ class EnvironmentV3ClusterSetting {
   /// Creates a new [EnvironmentV3ClusterSetting].
   /// [name] The name of the Cluster Setting.
   /// [value] The value for the Cluster Setting.
-  EnvironmentV3ClusterSetting({
+  const EnvironmentV3ClusterSetting({
     required this.name,
     required this.value,
   });

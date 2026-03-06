@@ -26,7 +26,7 @@ class GetVolumeGroupOracleVolumeExportPolicyRule {
   /// [ruleIndex] The index number of the rule.
   /// [unixReadOnly] Is the file system on unix read only?.
   /// [unixReadWrite] Is the file system on unix read and write?.
-  GetVolumeGroupOracleVolumeExportPolicyRule({
+  const GetVolumeGroupOracleVolumeExportPolicyRule({
     required this.allowedClients,
     required this.nfsv3Enabled,
     required this.nfsv41Enabled,

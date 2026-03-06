@@ -14,7 +14,7 @@ class ClusterApiServerProfile {
   /// [ipAddress] The IP Address the Ingress Profile is associated with.
   /// [url] The URL the API Server Profile is associated with.
   /// [visibility] Cluster API server visibility. Supported values are `Public` and `Private`. Changing this forces a new resource to be created.
-  ClusterApiServerProfile({
+  const ClusterApiServerProfile({
     this.ipAddress,
     this.url,
     required this.visibility,

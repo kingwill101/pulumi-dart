@@ -31,7 +31,7 @@ class ConfigurationTemplateState {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [settings] Option settings to configure the new Environment. These
   /// [solutionStackName] A solution stack to base your Template
-  ConfigurationTemplateState({
+  const ConfigurationTemplateState({
     this.application,
     this.description,
     this.environmentId,

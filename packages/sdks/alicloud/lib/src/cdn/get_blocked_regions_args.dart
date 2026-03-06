@@ -12,7 +12,7 @@ class GetBlockedRegionsArgs {
 
   /// Creates a new [GetBlockedRegionsArgs].
   /// [language] The language. Valid values: `zh`, `en`, `jp`.
-  GetBlockedRegionsArgs({
+  const GetBlockedRegionsArgs({
     required this.language,
   });
 

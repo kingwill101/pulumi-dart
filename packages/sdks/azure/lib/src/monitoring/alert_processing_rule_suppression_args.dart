@@ -35,7 +35,7 @@ class AlertProcessingRuleSuppressionArgs {
   /// [schedule] A `schedule` block as defined below.
   /// [scopes] A list of resource IDs which will be the target of Alert Processing Rule.
   /// [tags] A mapping of tags which should be assigned to the Alert Processing Rule.
-  AlertProcessingRuleSuppressionArgs({
+  const AlertProcessingRuleSuppressionArgs({
     this.condition,
     this.description,
     this.enabled,

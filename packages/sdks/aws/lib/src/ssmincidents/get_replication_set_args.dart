@@ -12,7 +12,7 @@ class GetReplicationSetArgs {
 
   /// Creates a new [GetReplicationSetArgs].
   /// [tags] All tags applied to the replication set.
-  GetReplicationSetArgs({
+  const GetReplicationSetArgs({
     this.tags,
   });
 

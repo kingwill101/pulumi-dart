@@ -53,7 +53,7 @@ class VolumeAttachArgs {
   /// [volumeId] The ID of the Volume to attach to an Instance.
   /// [wwnn] A wwnn name. Used for Fibre Channel connections.
   /// [wwpns] An array of wwpn strings. Used for Fibre Channel
-  VolumeAttachArgs({
+  const VolumeAttachArgs({
     this.attachMode,
     this.device,
     required this.hostName,

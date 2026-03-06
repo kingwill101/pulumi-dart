@@ -19,7 +19,7 @@ class ApplicationJitAccessPolicyResponse {
   /// [jitApprovalMode] JIT approval mode.
   /// [jitApprovers] The JIT approvers
   /// [maximumJitAccessDuration] The maximum duration JIT access is granted. This is an ISO8601 time period value.
-  ApplicationJitAccessPolicyResponse({
+  const ApplicationJitAccessPolicyResponse({
     required this.jitAccessEnabled,
     this.jitApprovalMode,
     this.jitApprovers,

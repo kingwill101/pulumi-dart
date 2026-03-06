@@ -29,7 +29,7 @@ class JobRetryConfig {
   /// [maxRetryDuration] The time limit for retrying a failed job, measured from time when an execution was first attempted.
   /// [minBackoffDuration] The minimum amount of time to wait before retrying a job after it fails.
   /// [retryCount] The number of attempts that the system will make to run a
-  JobRetryConfig({
+  const JobRetryConfig({
     this.maxBackoffDuration,
     this.maxDoublings,
     this.maxRetryDuration,

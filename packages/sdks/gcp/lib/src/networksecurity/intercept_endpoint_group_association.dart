@@ -25,7 +25,7 @@ class InterceptEndpointGroupAssociation {
   /// [name] (Output)
   /// [network] (Output)
   /// [state] (Output)
-  InterceptEndpointGroupAssociation({
+  const InterceptEndpointGroupAssociation({
     this.name,
     this.network,
     this.state,

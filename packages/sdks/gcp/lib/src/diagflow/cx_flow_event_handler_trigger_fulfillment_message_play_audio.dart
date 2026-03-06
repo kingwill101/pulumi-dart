@@ -14,7 +14,7 @@ class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio {
   /// Creates a new [CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio].
   /// [allowPlaybackInterruption] (Output)
   /// [audioUri] URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
-  CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio({
+  const CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio({
     this.allowPlaybackInterruption,
     required this.audioUri,
   });

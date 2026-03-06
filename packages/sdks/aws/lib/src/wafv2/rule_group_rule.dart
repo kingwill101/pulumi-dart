@@ -31,7 +31,7 @@ class RuleGroupRule {
   /// [ruleLabels] Labels to apply to web requests that match the rule match statement. See Rule Label below for details.
   /// [statement] The AWS WAF processing statement for the rule, for example `byte_match_statement` or `geo_match_statement`. See Statement below for details.
   /// [visibilityConfig] Defines and enables Amazon CloudWatch metrics and web request sample collection. See Visibility Configuration below for details.
-  RuleGroupRule({
+  const RuleGroupRule({
     required this.action,
     this.captchaConfig,
     required this.name,

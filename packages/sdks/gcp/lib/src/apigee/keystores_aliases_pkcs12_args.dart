@@ -32,7 +32,7 @@ class KeystoresAliasesPkcs12Args {
   /// [keystore] Keystore Name
   /// [orgId] Organization ID associated with the alias, without organization/ prefix
   /// [password] Password for the PKCS12 file if it's encrypted
-  KeystoresAliasesPkcs12Args({
+  const KeystoresAliasesPkcs12Args({
     required this.alias,
     required this.environment,
     required this.file,

@@ -8,7 +8,7 @@ class ApplicationPreStopV2Exec {
 
   /// Creates a new [ApplicationPreStopV2Exec].
   /// [commands] Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
-  ApplicationPreStopV2Exec({
+  const ApplicationPreStopV2Exec({
     this.commands,
   });
 

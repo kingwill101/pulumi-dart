@@ -8,7 +8,7 @@ class GetClientTokenResult {
 
   /// Creates a new [GetClientTokenResult].
   /// [token] OAuth token for Azure Management API and SDK authentication.
-  GetClientTokenResult({
+  const GetClientTokenResult({
     required this.token,
   });
 

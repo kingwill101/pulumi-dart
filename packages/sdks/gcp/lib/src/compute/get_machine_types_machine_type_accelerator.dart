@@ -11,7 +11,7 @@ class GetMachineTypesMachineTypeAccelerator {
   /// Creates a new [GetMachineTypesMachineTypeAccelerator].
   /// [guestAcceleratorCount] Number of accelerator cards exposed to the guest.
   /// [guestAcceleratorType] The accelerator type resource name, not a full URL, e.g. `nvidia-tesla-t4`.
-  GetMachineTypesMachineTypeAccelerator({
+  const GetMachineTypesMachineTypeAccelerator({
     required this.guestAcceleratorCount,
     required this.guestAcceleratorType,
   });

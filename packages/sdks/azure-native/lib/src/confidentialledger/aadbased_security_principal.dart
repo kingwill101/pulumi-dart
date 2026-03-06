@@ -15,7 +15,7 @@ class AADBasedSecurityPrincipal {
   /// [ledgerRoleName] LedgerRole associated with the Security Principal of Ledger
   /// [principalId] UUID/GUID based Principal Id of the Security Principal
   /// [tenantId] UUID/GUID based Tenant Id of the Security Principal
-  AADBasedSecurityPrincipal({
+  const AADBasedSecurityPrincipal({
     this.ledgerRoleName,
     this.principalId,
     this.tenantId,

@@ -12,7 +12,7 @@ class DefaultRolloutSpecificationAutoProvisionConfig {
   /// Creates a new [DefaultRolloutSpecificationAutoProvisionConfig].
   /// [resourceGraph] Whether auto provisioning for resource graph is enabled.
   /// [storage] Whether auto provisioning for storage is enabled.
-  DefaultRolloutSpecificationAutoProvisionConfig({
+  const DefaultRolloutSpecificationAutoProvisionConfig({
     this.resourceGraph,
     this.storage,
   });

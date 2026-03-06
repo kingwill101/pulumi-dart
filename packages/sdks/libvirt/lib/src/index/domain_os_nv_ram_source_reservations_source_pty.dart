@@ -12,7 +12,7 @@ class DomainOsNvRamSourceReservationsSourcePty {
   /// Creates a new [DomainOsNvRamSourceReservationsSourcePty].
   /// [path] Sets the path for the PTY source in the EGD backend.
   /// [secLabels] This field configures the security label for the Pseudo TTY device, enabling security controls over access.
-  DomainOsNvRamSourceReservationsSourcePty({
+  const DomainOsNvRamSourceReservationsSourcePty({
     required this.path,
     this.secLabels,
   });

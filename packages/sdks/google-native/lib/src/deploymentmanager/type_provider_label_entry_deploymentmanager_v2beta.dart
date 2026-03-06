@@ -12,7 +12,7 @@ class TypeProviderLabelEntryDeploymentmanagerV2beta {
   /// Creates a new [TypeProviderLabelEntryDeploymentmanagerV2beta].
   /// [key] Key of the label
   /// [value] Value of the label
-  TypeProviderLabelEntryDeploymentmanagerV2beta({
+  const TypeProviderLabelEntryDeploymentmanagerV2beta({
     this.key,
     this.value,
   });

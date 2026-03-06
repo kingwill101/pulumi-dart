@@ -8,7 +8,7 @@ class TopicRuleDynamodbv2PutItem {
 
   /// Creates a new [TopicRuleDynamodbv2PutItem].
   /// [tableName] The name of the DynamoDB table.
-  TopicRuleDynamodbv2PutItem({
+  const TopicRuleDynamodbv2PutItem({
     required this.tableName,
   });
 

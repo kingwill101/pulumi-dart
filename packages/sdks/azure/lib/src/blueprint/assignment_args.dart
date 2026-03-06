@@ -44,7 +44,7 @@ class AssignmentArgs {
   /// [resourceGroups] a JSON string to supply the Blueprint Resource Group information.
   /// [targetSubscriptionId] The Subscription ID the Blueprint Published Version is to be applied to. Changing this forces a new resource to be created.
   /// [versionId] The ID of the Published Version of the blueprint to be assigned.
-  AssignmentArgs({
+  const AssignmentArgs({
     required this.identity,
     this.location,
     this.lockExcludeActions,

@@ -27,7 +27,7 @@ class LeaseSpecPatch {
   /// [preferredHolder] PreferredHolder signals to a lease holder that the lease has a more optimal holder and should be given up. This field can only be set if Strategy is also set.
   /// [renewTime] renewTime is a time when the current holder of a lease has last updated the lease.
   /// [strategy] Strategy indicates the strategy for picking the leader for coordinated leader election. If the field is not specified, there is no active coordination for this lease. (Alpha) Using this field requires the CoordinatedLeaderElection feature gate to be enabled.
-  LeaseSpecPatch({
+  const LeaseSpecPatch({
     this.acquireTime,
     this.holderIdentity,
     this.leaseDurationSeconds,

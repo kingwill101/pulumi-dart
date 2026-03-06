@@ -12,7 +12,7 @@ class ApplicationUpdateStrategyV2 {
   /// Creates a new [ApplicationUpdateStrategyV2].
   /// [batchUpdate] The phased release policy. See `batch_update` below.
   /// [type] The type of the release policy. Valid values: `GrayBatchUpdate` and `BatchUpdate`.
-  ApplicationUpdateStrategyV2({
+  const ApplicationUpdateStrategyV2({
     this.batchUpdate,
     this.type,
   });

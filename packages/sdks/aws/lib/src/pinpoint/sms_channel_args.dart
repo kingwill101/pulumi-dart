@@ -24,7 +24,7 @@ class SmsChannelArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [senderId] Identifier of the sender for your messages.
   /// [shortCode] Short Code registered with the phone provider.
-  SmsChannelArgs({
+  const SmsChannelArgs({
     required this.applicationId,
     this.enabled,
     this.region,

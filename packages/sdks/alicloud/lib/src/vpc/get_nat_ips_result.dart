@@ -30,7 +30,7 @@ class GetNatIpsResult {
   /// [natIpNames] Optional.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetNatIpsResult({
+  const GetNatIpsResult({
     required this.id,
     required this.ids,
     required this.ips,

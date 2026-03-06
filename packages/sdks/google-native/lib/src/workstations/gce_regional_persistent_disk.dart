@@ -22,7 +22,7 @@ class GceRegionalPersistentDisk {
   /// [reclaimPolicy] Optional. Whether the persistent disk should be deleted when the workstation is deleted. Valid values are `DELETE` and `RETAIN`. Defaults to `DELETE`.
   /// [sizeGb] Optional. The GB capacity of a persistent home directory for each workstation created with this configuration. Must be empty if source_snapshot is set. Valid values are `10`, `50`, `100`, `200`, `500`, or `1000`. Defaults to `200`. If less than `200` GB, the disk_type must be `"pd-balanced"` or `"pd-ssd"`.
   /// [sourceSnapshot] Optional. Name of the snapshot to use as the source for the disk. If set, size_gb and fs_type must be empty.
-  GceRegionalPersistentDisk({
+  const GceRegionalPersistentDisk({
     this.diskType,
     this.fsType,
     this.reclaimPolicy,

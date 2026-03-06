@@ -12,7 +12,7 @@ class IotHubLocationDescriptionResponse {
   /// Creates a new [IotHubLocationDescriptionResponse].
   /// [location] The name of the Azure region
   /// [role] The role of the region, can be either primary or secondary. The primary region is where the IoT hub is currently provisioned. The secondary region is the Azure disaster recovery (DR) paired region and also the region where the IoT hub can failover to.
-  IotHubLocationDescriptionResponse({
+  const IotHubLocationDescriptionResponse({
     this.location,
     this.role,
   });

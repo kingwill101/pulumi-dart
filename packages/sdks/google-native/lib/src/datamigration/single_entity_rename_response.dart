@@ -9,7 +9,7 @@ class SingleEntityRenameResponse {
 
   /// Creates a new [SingleEntityRenameResponse].
   /// [newName] The new name of the destination entity
-  SingleEntityRenameResponse({
+  const SingleEntityRenameResponse({
     required this.newName,
   });
 

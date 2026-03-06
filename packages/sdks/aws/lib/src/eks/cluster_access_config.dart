@@ -11,7 +11,7 @@ class ClusterAccessConfig {
   /// Creates a new [ClusterAccessConfig].
   /// [authenticationMode] The authentication mode for the cluster. Valid values are `CONFIG_MAP`, `API` or `API_AND_CONFIG_MAP`
   /// [bootstrapClusterCreatorAdminPermissions] Whether or not to bootstrap the access config values to the cluster. Default is `true`.
-  ClusterAccessConfig({
+  const ClusterAccessConfig({
     this.authenticationMode,
     this.bootstrapClusterCreatorAdminPermissions,
   });

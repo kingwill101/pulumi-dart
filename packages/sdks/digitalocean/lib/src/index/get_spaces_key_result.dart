@@ -22,7 +22,7 @@ class GetSpacesKeyResult {
   /// [grants] The list of grants associated with the Spaces key.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] The name of the Spaces key
-  GetSpacesKeyResult({
+  const GetSpacesKeyResult({
     required this.accessKey,
     required this.createdAt,
     required this.grants,

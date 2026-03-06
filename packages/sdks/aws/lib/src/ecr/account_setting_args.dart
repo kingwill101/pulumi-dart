@@ -21,7 +21,7 @@ class AccountSettingArgs {
   /// [name] Name of the account setting. One of: `BASIC_SCAN_TYPE_VERSION`, `BLOB_MOUNTING`, `REGISTRY_POLICY_SCOPE`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [value] Setting value that is specified. Valid values are:
-  AccountSettingArgs({
+  const AccountSettingArgs({
     this.name,
     this.region,
     required this.value,

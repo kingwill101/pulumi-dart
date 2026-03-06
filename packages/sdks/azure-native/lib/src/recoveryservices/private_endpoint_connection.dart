@@ -20,7 +20,7 @@ class PrivateEndpointConnection {
   /// [privateEndpoint] Gets or sets private endpoint associated with the private endpoint connection
   /// [privateLinkServiceConnectionState] Gets or sets private link service connection state
   /// [provisioningState] Gets or sets provisioning state of the private endpoint connection
-  PrivateEndpointConnection({
+  const PrivateEndpointConnection({
     this.groupIds,
     this.privateEndpoint,
     this.privateLinkServiceConnectionState,

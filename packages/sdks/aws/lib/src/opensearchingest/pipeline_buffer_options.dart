@@ -8,7 +8,7 @@ class PipelineBufferOptions {
 
   /// Creates a new [PipelineBufferOptions].
   /// [persistentBufferEnabled] Whether persistent buffering should be enabled.
-  PipelineBufferOptions({
+  const PipelineBufferOptions({
     required this.persistentBufferEnabled,
   });
 

@@ -94,7 +94,7 @@ class GetClusterResult {
   /// [version] Kubernetes server version for the cluster.
   /// [vpcConfig] Nested list containing VPC configuration for the cluster.
   /// [zonalShiftConfigs] Contains Zonal Shift Configuration.
-  GetClusterResult({
+  const GetClusterResult({
     required this.accessConfigs,
     required this.arn,
     required this.certificateAuthorities,

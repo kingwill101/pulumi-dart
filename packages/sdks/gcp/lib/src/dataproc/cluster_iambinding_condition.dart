@@ -11,7 +11,7 @@ class ClusterIAMBindingCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  ClusterIAMBindingCondition({
+  const ClusterIAMBindingCondition({
     this.description,
     required this.expression,
     required this.title,

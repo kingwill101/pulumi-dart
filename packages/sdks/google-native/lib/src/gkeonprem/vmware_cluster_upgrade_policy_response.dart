@@ -9,7 +9,7 @@ class VmwareClusterUpgradePolicyResponse {
 
   /// Creates a new [VmwareClusterUpgradePolicyResponse].
   /// [controlPlaneOnly] Controls whether the upgrade applies to the control plane only.
-  VmwareClusterUpgradePolicyResponse({
+  const VmwareClusterUpgradePolicyResponse({
     required this.controlPlaneOnly,
   });
 

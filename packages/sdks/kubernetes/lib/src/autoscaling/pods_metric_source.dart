@@ -14,7 +14,7 @@ class PodsMetricSource {
   /// Creates a new [PodsMetricSource].
   /// [metric] metric identifies the target metric by name and selector
   /// [target] target specifies the target value for the given metric
-  PodsMetricSource({
+  const PodsMetricSource({
     required this.metric,
     required this.target,
   });

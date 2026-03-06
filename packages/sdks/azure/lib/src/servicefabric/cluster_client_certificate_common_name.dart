@@ -16,7 +16,7 @@ class ClusterClientCertificateCommonName {
   /// [commonName] The common or subject name of the certificate.
   /// [isAdmin] Does the Client Certificate have Admin Access to the cluster? Non-admin clients can only perform read only operations on the cluster.
   /// [issuerThumbprint] The Issuer Thumbprint of the Certificate.
-  ClusterClientCertificateCommonName({
+  const ClusterClientCertificateCommonName({
     required this.commonName,
     required this.isAdmin,
     this.issuerThumbprint,

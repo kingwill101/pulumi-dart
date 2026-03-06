@@ -47,7 +47,7 @@ class RegionBackendServiceIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The Region in which the created backend service should reside.
   /// [role] The role that should be applied. Only one
-  RegionBackendServiceIamMemberArgs({
+  const RegionBackendServiceIamMemberArgs({
     this.condition,
     required this.member,
     this.name,

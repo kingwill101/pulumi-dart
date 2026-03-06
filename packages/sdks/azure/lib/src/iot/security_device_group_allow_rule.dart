@@ -17,7 +17,7 @@ class SecurityDeviceGroupAllowRule {
   /// [connectionToIpsNotAlloweds] Specifies which IP is not allowed to be connected to in current device group for outbound connection.
   /// [localUsersNotAlloweds] Specifies which local user is not allowed to login in current device group.
   /// [processesNotAlloweds] Specifies which process is not allowed to be executed in current device group.
-  SecurityDeviceGroupAllowRule({
+  const SecurityDeviceGroupAllowRule({
     this.connectionFromIpsNotAlloweds,
     this.connectionToIpsNotAlloweds,
     this.localUsersNotAlloweds,

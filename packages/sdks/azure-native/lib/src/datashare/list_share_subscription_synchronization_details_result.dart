@@ -13,7 +13,7 @@ class ListShareSubscriptionSynchronizationDetailsResult {
   /// Creates a new [ListShareSubscriptionSynchronizationDetailsResult].
   /// [nextLink] The Url of next result page.
   /// [value] Collection of items of type DataTransferObjects.
-  ListShareSubscriptionSynchronizationDetailsResult({
+  const ListShareSubscriptionSynchronizationDetailsResult({
     this.nextLink,
     required this.value,
   });

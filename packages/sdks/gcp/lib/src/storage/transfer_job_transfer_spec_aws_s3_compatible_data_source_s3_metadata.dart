@@ -17,7 +17,7 @@ class TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata {
   /// [listApi] The Listing API to use for discovering objects. When not specified, Transfer Service will attempt to determine the right API to use.
   /// [protocol] The network protocol of the agent. When not specified, the default value of NetworkProtocol NETWORK_PROTOCOL_HTTPS is used.
   /// [requestModel] API request model used to call the storage service. When not specified, the default value of RequestModel REQUEST_MODEL_VIRTUAL_HOSTED_STYLE is used.
-  TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata({
+  const TransferJobTransferSpecAwsS3CompatibleDataSourceS3Metadata({
     this.authMethod,
     this.listApi,
     this.protocol,

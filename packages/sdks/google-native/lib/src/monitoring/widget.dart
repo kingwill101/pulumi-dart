@@ -55,7 +55,7 @@ class Widget {
   /// [timeSeriesTable] A widget that displays time series data in a tabular format.
   /// [title] Optional. The title of the widget.
   /// [xyChart] A chart of time series data.
-  Widget({
+  const Widget({
     this.alertChart,
     this.blank,
     this.collapsibleGroup,

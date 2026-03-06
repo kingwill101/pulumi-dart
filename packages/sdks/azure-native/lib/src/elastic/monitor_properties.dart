@@ -38,7 +38,7 @@ class MonitorProperties {
   /// [subscriptionState] State of the Azure Subscription containing the monitor resource
   /// [userInfo] User information.
   /// [version] Version of elastic of the monitor resource
-  MonitorProperties({
+  const MonitorProperties({
     this.generateApiKey,
     this.monitoringStatus,
     this.planDetails,

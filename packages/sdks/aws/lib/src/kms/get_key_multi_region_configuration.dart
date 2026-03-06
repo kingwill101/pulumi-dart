@@ -16,7 +16,7 @@ class GetKeyMultiRegionConfiguration {
   /// [multiRegionKeyType] Indicates whether the KMS key is a `PRIMARY` or `REPLICA` key.
   /// [primaryKeys] The key ARN and Region of the primary key. This is the current KMS key if it is the primary key.
   /// [replicaKeys] The key ARNs and Regions of all replica keys. Includes the current KMS key if it is a replica key.
-  GetKeyMultiRegionConfiguration({
+  const GetKeyMultiRegionConfiguration({
     required this.multiRegionKeyType,
     required this.primaryKeys,
     required this.replicaKeys,

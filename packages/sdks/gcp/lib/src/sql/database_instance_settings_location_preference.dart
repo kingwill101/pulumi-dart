@@ -16,7 +16,7 @@ class DatabaseInstanceSettingsLocationPreference {
   /// [followGaeApplication] A GAE application whose zone to remain
   /// [secondaryZone] The preferred Compute Engine zone for the secondary/failover.
   /// [zone] The preferred compute engine
-  DatabaseInstanceSettingsLocationPreference({
+  const DatabaseInstanceSettingsLocationPreference({
     this.followGaeApplication,
     this.secondaryZone,
     this.zone,

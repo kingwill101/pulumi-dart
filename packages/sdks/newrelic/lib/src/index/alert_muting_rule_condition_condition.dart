@@ -14,7 +14,7 @@ class AlertMutingRuleConditionCondition {
   /// [attribute] The attribute on an incident.
   /// [operator] The operator used to compare the attribute's value with the supplied value(s).
   /// [values] The value(s) to compare against the attribute's value.
-  AlertMutingRuleConditionCondition({
+  const AlertMutingRuleConditionCondition({
     required this.attribute,
     required this.operator,
     required this.values,

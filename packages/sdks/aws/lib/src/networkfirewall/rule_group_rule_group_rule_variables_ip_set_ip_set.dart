@@ -8,7 +8,7 @@ class RuleGroupRuleGroupRuleVariablesIpSetIpSet {
 
   /// Creates a new [RuleGroupRuleGroupRuleVariablesIpSetIpSet].
   /// [definitions] Set of IP addresses and address ranges, in CIDR notation.
-  RuleGroupRuleGroupRuleVariablesIpSetIpSet({
+  const RuleGroupRuleGroupRuleVariablesIpSetIpSet({
     required this.definitions,
   });
 

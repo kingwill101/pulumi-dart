@@ -59,7 +59,7 @@ class PrivateRecordSetArgs {
   /// [srvRecords] The list of SRV records in the record set.
   /// [ttl] The TTL (time-to-live) of the records in the record set.
   /// [txtRecords] The list of TXT records in the record set.
-  PrivateRecordSetArgs({
+  const PrivateRecordSetArgs({
     this.aRecords,
     this.aaaaRecords,
     this.cnameRecord,

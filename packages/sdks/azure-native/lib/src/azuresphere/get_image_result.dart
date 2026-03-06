@@ -48,7 +48,7 @@ class GetImageResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uri] Location the image
-  GetImageResult({
+  const GetImageResult({
     required this.azureApiVersion,
     required this.componentId,
     required this.description,

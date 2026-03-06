@@ -10,7 +10,7 @@ class HostResponse {
 
   /// Creates a new [HostResponse].
   /// [gceInstance] Specifies a Compute Engine instance as the host.
-  HostResponse({
+  const HostResponse({
     required this.gceInstance,
   });
 

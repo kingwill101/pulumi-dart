@@ -17,7 +17,7 @@ class GetEvaluationArgs {
   /// [evaluationId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEvaluationArgs({
+  const GetEvaluationArgs({
     required this.conversationModelId,
     required this.evaluationId,
     required this.location,

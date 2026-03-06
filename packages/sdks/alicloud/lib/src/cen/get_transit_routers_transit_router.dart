@@ -32,7 +32,7 @@ class GetTransitRoutersTransitRouter {
   /// [transitRouterName] The name of the transit router.
   /// [type] The Type of the transit router.
   /// [xgwVip] The vip of the XGW.
-  GetTransitRoutersTransitRouter({
+  const GetTransitRoutersTransitRouter({
     required this.aliUid,
     required this.cenId,
     required this.id,

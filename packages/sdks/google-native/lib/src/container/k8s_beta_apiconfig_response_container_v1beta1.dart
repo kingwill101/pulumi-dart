@@ -9,7 +9,7 @@ class K8sBetaAPIConfigResponseContainerV1beta1 {
 
   /// Creates a new [K8sBetaAPIConfigResponseContainerV1beta1].
   /// [enabledApis] api name, e.g. storage.k8s.io/v1beta1/csistoragecapacities.
-  K8sBetaAPIConfigResponseContainerV1beta1({
+  const K8sBetaAPIConfigResponseContainerV1beta1({
     required this.enabledApis,
   });
 

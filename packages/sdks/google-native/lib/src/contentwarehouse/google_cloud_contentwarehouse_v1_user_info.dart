@@ -12,7 +12,7 @@ class GoogleCloudContentwarehouseV1UserInfo {
   /// Creates a new [GoogleCloudContentwarehouseV1UserInfo].
   /// [groupIds] The unique group identifications which the user is belong to. The format is "group:yyyy@example.com";
   /// [id] A unique user identification string, as determined by the client. The maximum number of allowed characters is 255. Allowed characters include numbers 0 to 9, uppercase and lowercase letters, and restricted special symbols (:, @, +, -, _, ~) The format is "user:xxxx@example.com";
-  GoogleCloudContentwarehouseV1UserInfo({
+  const GoogleCloudContentwarehouseV1UserInfo({
     this.groupIds,
     this.id,
   });

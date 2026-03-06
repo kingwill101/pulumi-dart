@@ -11,7 +11,7 @@ class EventGridTopicInboundIpRule {
   /// Creates a new [EventGridTopicInboundIpRule].
   /// [action] The action to take when the rule is matched. Possible values are `Allow`. Defaults to `Allow`.
   /// [ipMask] The IP mask (CIDR) to match on.
-  EventGridTopicInboundIpRule({
+  const EventGridTopicInboundIpRule({
     this.action,
     required this.ipMask,
   });

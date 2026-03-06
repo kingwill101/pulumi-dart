@@ -15,7 +15,7 @@ class GovernanceAssignmentAdditionalDataResponse {
   /// [ticketLink] Ticket link associated with this governance assignment - for example: https://snow.com
   /// [ticketNumber] Ticket number associated with this governance assignment
   /// [ticketStatus] The ticket status associated with this governance assignment - for example: Active
-  GovernanceAssignmentAdditionalDataResponse({
+  const GovernanceAssignmentAdditionalDataResponse({
     this.ticketLink,
     this.ticketNumber,
     this.ticketStatus,

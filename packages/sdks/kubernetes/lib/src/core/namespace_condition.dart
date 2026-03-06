@@ -21,7 +21,7 @@ class NamespaceCondition {
   /// [reason] Unique, one-word, CamelCase reason for the condition's last transition.
   /// [status] Status of the condition, one of True, False, Unknown.
   /// [type] Type of namespace controller condition.
-  NamespaceCondition({
+  const NamespaceCondition({
     this.lastTransitionTime,
     this.message,
     this.reason,

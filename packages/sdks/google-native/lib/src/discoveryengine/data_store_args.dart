@@ -39,7 +39,7 @@ class DataStoreArgs {
   /// [name] Immutable. The full resource name of the data store. Format: `projects/{project}/locations/{location}/collections/{collection_id}/dataStores/{data_store_id}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
   /// [project] Optional.
   /// [solutionTypes] The solutions that the data store enrolls. Available solutions for each industry_vertical: * `MEDIA`: `SOLUTION_TYPE_RECOMMENDATION` and `SOLUTION_TYPE_SEARCH`. * `SITE_SEARCH`: `SOLUTION_TYPE_SEARCH` is automatically enrolled. Other solutions cannot be enrolled.
-  DataStoreArgs({
+  const DataStoreArgs({
     required this.collectionId,
     this.contentConfig,
     this.createAdvancedSiteSearch,

@@ -59,7 +59,7 @@ class GetVirtualNodesNode {
   /// [vpcId] Required.
   /// [vswitchId] The vswitch id.
   /// [zoneId] The Zone.
-  GetVirtualNodesNode({
+  const GetVirtualNodesNode({
     required this.cpu,
     required this.createTime,
     required this.eniInstanceId,

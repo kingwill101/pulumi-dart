@@ -35,7 +35,7 @@ class GetTargetInstanceComputeBetaResult {
   /// [securityPolicy] The resource URL for the security policy associated with this target instance.
   /// [selfLink] Server-defined URL for the resource.
   /// [zone] URL of the zone where the target instance resides. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
-  GetTargetInstanceComputeBetaResult({
+  const GetTargetInstanceComputeBetaResult({
     required this.creationTimestamp,
     required this.description,
     required this.instance,

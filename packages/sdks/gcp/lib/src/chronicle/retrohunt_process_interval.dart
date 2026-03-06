@@ -11,7 +11,7 @@ class RetrohuntProcessInterval {
   /// Creates a new [RetrohuntProcessInterval].
   /// [endTime] Exclusive end of the interval.
   /// [startTime] Inclusive start of the interval.
-  RetrohuntProcessInterval({
+  const RetrohuntProcessInterval({
     required this.endTime,
     required this.startTime,
   });

@@ -15,7 +15,7 @@ class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponse {
   /// [allowPlaybackInterruption] Whether the playback of this message can be interrupted by the end user's speech and the client can then starts the next Dialogflow request.
   /// [ssml] The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-speech/docs/ssml).
   /// [text] The raw text to be synthesized.
-  GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponse({
+  const GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextResponse({
     required this.allowPlaybackInterruption,
     required this.ssml,
     required this.text,

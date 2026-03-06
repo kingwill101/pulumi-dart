@@ -30,7 +30,7 @@ class SchemaArgs {
   /// [name] The name of the schema. Must be unique in the PostgreSQL
   /// [owner] The ROLE who owns the schema.
   /// [policies] Can be specified multiple times for each policy.  Each
-  SchemaArgs({
+  const SchemaArgs({
     this.database,
     this.dropCascade,
     this.ifNotExists,

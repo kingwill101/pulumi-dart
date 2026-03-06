@@ -12,7 +12,7 @@ class ReportRecurrencePeriodResponse {
   /// Creates a new [ReportRecurrencePeriodResponse].
   /// [from] The start date of recurrence.
   /// [to] The end date of recurrence.
-  ReportRecurrencePeriodResponse({
+  const ReportRecurrencePeriodResponse({
     required this.from,
     this.to,
   });

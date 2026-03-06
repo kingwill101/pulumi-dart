@@ -15,7 +15,7 @@ class GetSolutionArgs {
   /// Creates a new [GetSolutionArgs].
   /// [resourceGroupName] The name of the resource group to get. The name is case insensitive.
   /// [solutionName] User Solution Name.
-  GetSolutionArgs({
+  const GetSolutionArgs({
     required this.resourceGroupName,
     required this.solutionName,
   });

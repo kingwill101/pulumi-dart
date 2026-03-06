@@ -8,7 +8,7 @@ class SigningJobSignedObject {
 
   /// Creates a new [SigningJobSignedObject].
   /// [s3s] Optional.
-  SigningJobSignedObject({
+  const SigningJobSignedObject({
     this.s3s,
   });
 

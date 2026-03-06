@@ -24,7 +24,7 @@ class HttpApiState {
   /// [protocols] API protocol
   /// [resourceGroupId] The ID of the resource group
   /// [type] API type
-  HttpApiState({
+  const HttpApiState({
     this.basePath,
     this.description,
     this.httpApiName,

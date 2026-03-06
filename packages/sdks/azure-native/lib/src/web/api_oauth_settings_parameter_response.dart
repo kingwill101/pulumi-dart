@@ -15,7 +15,7 @@ class ApiOAuthSettingsParameterResponse {
   /// [options] Options available to this parameter
   /// [uiDefinition] UI definitions per culture as caller can specify the culture
   /// [value] Value of the setting
-  ApiOAuthSettingsParameterResponse({
+  const ApiOAuthSettingsParameterResponse({
     this.options,
     this.uiDefinition,
     this.value,

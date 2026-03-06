@@ -11,7 +11,7 @@ class FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSku
   /// Creates a new [FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator].
   /// [acceleratorCount] The number of the guest accelerator cards exposed to this instance.
   /// [acceleratorType] Full or partial URL of the accelerator type resource to attach to this instance.
-  FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator({
+  const FutureReservationStatusLastKnownGoodStateFutureReservationSpecsSpecificSkuPropertiesInstancePropertiesGuestAccelerator({
     this.acceleratorCount,
     this.acceleratorType,
   });

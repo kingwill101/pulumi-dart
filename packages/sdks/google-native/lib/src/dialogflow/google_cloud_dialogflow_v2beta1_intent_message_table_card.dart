@@ -28,7 +28,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageTableCard {
   /// [rows] Optional. Rows in this table of data.
   /// [subtitle] Optional. Subtitle to the title.
   /// [title] Title of the card.
-  GoogleCloudDialogflowV2beta1IntentMessageTableCard({
+  const GoogleCloudDialogflowV2beta1IntentMessageTableCard({
     this.buttons,
     this.columnProperties,
     this.image,

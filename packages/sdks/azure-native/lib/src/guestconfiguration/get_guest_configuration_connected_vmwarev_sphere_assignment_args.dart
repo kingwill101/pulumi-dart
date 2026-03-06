@@ -18,7 +18,7 @@ class GetGuestConfigurationConnectedVMwarevSphereAssignmentArgs {
   /// [guestConfigurationAssignmentName] The guest configuration assignment name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vmName] The name of the virtual machine.
-  GetGuestConfigurationConnectedVMwarevSphereAssignmentArgs({
+  const GetGuestConfigurationConnectedVMwarevSphereAssignmentArgs({
     required this.guestConfigurationAssignmentName,
     required this.resourceGroupName,
     required this.vmName,

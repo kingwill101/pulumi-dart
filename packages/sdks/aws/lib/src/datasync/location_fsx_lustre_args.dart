@@ -24,7 +24,7 @@ class LocationFsxLustreArgs {
   /// [securityGroupArns] The Amazon Resource Names (ARNs) of the security groups that are to use to configure the FSx for Lustre file system.
   /// [subdirectory] Subdirectory to perform actions as source or destination.
   /// [tags] Key-value pairs of resource tags to assign to the DataSync Location. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  LocationFsxLustreArgs({
+  const LocationFsxLustreArgs({
     required this.fsxFilesystemArn,
     this.region,
     required this.securityGroupArns,

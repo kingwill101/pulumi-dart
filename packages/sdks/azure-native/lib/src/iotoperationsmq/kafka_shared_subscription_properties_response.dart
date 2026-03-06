@@ -12,7 +12,7 @@ class KafkaSharedSubscriptionPropertiesResponse {
   /// Creates a new [KafkaSharedSubscriptionPropertiesResponse].
   /// [groupMinimumShareNumber] The minimum number to use in a group for subscription.
   /// [groupName] The name of the shared subscription.
-  KafkaSharedSubscriptionPropertiesResponse({
+  const KafkaSharedSubscriptionPropertiesResponse({
     required this.groupMinimumShareNumber,
     required this.groupName,
   });

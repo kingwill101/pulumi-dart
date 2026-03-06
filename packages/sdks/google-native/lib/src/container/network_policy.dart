@@ -13,7 +13,7 @@ class NetworkPolicy {
   /// Creates a new [NetworkPolicy].
   /// [enabled] Whether network policy is enabled on the cluster.
   /// [provider] The selected network policy provider.
-  NetworkPolicy({
+  const NetworkPolicy({
     this.enabled,
     this.provider,
   });

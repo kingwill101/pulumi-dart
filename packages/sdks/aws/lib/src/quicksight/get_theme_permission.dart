@@ -11,7 +11,7 @@ class GetThemePermission {
   /// Creates a new [GetThemePermission].
   /// [actions] List of IAM actions to grant or revoke permissions on.
   /// [principal] ARN of the principal. See the [ResourcePermission documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_ResourcePermission.html) for the applicable ARN values.
-  GetThemePermission({
+  const GetThemePermission({
     required this.actions,
     required this.principal,
   });

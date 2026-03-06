@@ -16,7 +16,7 @@ class RouteTargetAddressPropertiesFormat {
   /// [privateIPAddress] The private IPv4 or IPv6 address of the service gateway route target address.
   /// [privateIPAllocationMethod] The Private IP allocation method.
   /// [subnet] The reference to the subnet resource.
-  RouteTargetAddressPropertiesFormat({
+  const RouteTargetAddressPropertiesFormat({
     this.privateIPAddress,
     this.privateIPAllocationMethod,
     this.subnet,

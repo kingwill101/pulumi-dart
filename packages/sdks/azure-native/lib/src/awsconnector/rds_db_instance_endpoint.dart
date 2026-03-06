@@ -15,7 +15,7 @@ class RdsDbInstanceEndpoint {
   /// [address] Specifies the DNS address of the DB instance.
   /// [hostedZoneId] Specifies the ID that Amazon Route 53 assigns when you create a hosted zone.
   /// [port] Specifies the port that the database engine is listening on.
-  RdsDbInstanceEndpoint({
+  const RdsDbInstanceEndpoint({
     this.address,
     this.hostedZoneId,
     this.port,

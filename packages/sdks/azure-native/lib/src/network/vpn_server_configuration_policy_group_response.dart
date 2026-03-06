@@ -35,7 +35,7 @@ class VpnServerConfigurationPolicyGroupResponse {
   /// [priority] Priority for VpnServerConfigurationPolicyGroup.
   /// [provisioningState] The provisioning state of the VpnServerConfigurationPolicyGroup resource.
   /// [type] Resource type.
-  VpnServerConfigurationPolicyGroupResponse({
+  const VpnServerConfigurationPolicyGroupResponse({
     required this.etag,
     this.id,
     this.isDefault,

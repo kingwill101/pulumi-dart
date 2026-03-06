@@ -21,7 +21,7 @@ class GetRegionDiskIamPolicyArgs {
   /// [name] Used to find the parent resource to bind the IAM policy to
   /// [project] The ID of the project in which the resource belongs.
   /// [region] A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
-  GetRegionDiskIamPolicyArgs({
+  const GetRegionDiskIamPolicyArgs({
     required this.name,
     this.project,
     this.region,

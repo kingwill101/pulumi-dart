@@ -26,7 +26,7 @@ class GetZonesResult {
   /// [outputFile] Optional.
   /// [productType] Optional.
   /// [zones] A list of availability zones. Each element contains the following attributes:
-  GetZonesResult({
+  const GetZonesResult({
     this.engine,
     required this.id,
     required this.ids,

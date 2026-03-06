@@ -8,7 +8,7 @@ class GetAppSpecIngressRuleMatchPath {
 
   /// Creates a new [GetAppSpecIngressRuleMatchPath].
   /// [prefix] The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-  GetAppSpecIngressRuleMatchPath({
+  const GetAppSpecIngressRuleMatchPath({
     required this.prefix,
   });
 

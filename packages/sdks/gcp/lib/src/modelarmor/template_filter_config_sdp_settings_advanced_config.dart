@@ -24,7 +24,7 @@ class TemplateFilterConfigSdpSettingsAdvancedConfig {
   /// Creates a new [TemplateFilterConfigSdpSettingsAdvancedConfig].
   /// [deidentifyTemplate] Optional Sensitive Data Protection Deidentify template resource name.
   /// [inspectTemplate] Sensitive Data Protection inspect template resource name
-  TemplateFilterConfigSdpSettingsAdvancedConfig({
+  const TemplateFilterConfigSdpSettingsAdvancedConfig({
     this.deidentifyTemplate,
     this.inspectTemplate,
   });

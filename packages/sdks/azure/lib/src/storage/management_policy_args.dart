@@ -16,7 +16,7 @@ class ManagementPolicyArgs {
   /// Creates a new [ManagementPolicyArgs].
   /// [rules] A `rule` block as documented below.
   /// [storageAccountId] Specifies the id of the storage account to apply the management policy to. Changing this forces a new resource to be created.
-  ManagementPolicyArgs({
+  const ManagementPolicyArgs({
     this.rules,
     required this.storageAccountId,
   });

@@ -13,7 +13,7 @@ class GetListenerMutualAuthentication {
   /// [ignoreClientCertificateExpiry] Required.
   /// [mode] Required.
   /// [trustStoreArn] Required.
-  GetListenerMutualAuthentication({
+  const GetListenerMutualAuthentication({
     required this.advertiseTrustStoreCaNames,
     required this.ignoreClientCertificateExpiry,
     required this.mode,

@@ -12,7 +12,7 @@ class ChannelNamespaceHandlerConfigsOnPublish {
   /// Creates a new [ChannelNamespaceHandlerConfigsOnPublish].
   /// [behavior] Behavior for the handler. Valid values: `CODE`, `DIRECT`.
   /// [integration] Integration data source configuration for the handler. See Integration below.
-  ChannelNamespaceHandlerConfigsOnPublish({
+  const ChannelNamespaceHandlerConfigsOnPublish({
     required this.behavior,
     required this.integration,
   });

@@ -61,7 +61,7 @@ class PreventionDiscoveryConfigState {
   /// [status] Required. A status for this configuration
   /// [targets] Target to match against for determining what to scan and how frequently
   /// [updateTime] Output only. The last update timestamp of a DiscoveryConfig.
-  PreventionDiscoveryConfigState({
+  const PreventionDiscoveryConfigState({
     this.actions,
     this.createTime,
     this.displayName,

@@ -9,7 +9,7 @@ class ReplicationSyncResponseVmmigrationV1alpha1 {
 
   /// Creates a new [ReplicationSyncResponseVmmigrationV1alpha1].
   /// [lastSyncTime] The most updated snapshot created time in the source that finished replication.
-  ReplicationSyncResponseVmmigrationV1alpha1({
+  const ReplicationSyncResponseVmmigrationV1alpha1({
     required this.lastSyncTime,
   });
 

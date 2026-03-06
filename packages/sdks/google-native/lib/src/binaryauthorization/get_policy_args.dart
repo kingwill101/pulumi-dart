@@ -15,7 +15,7 @@ class GetPolicyArgs {
   /// [platformId] Required.
   /// [policyId] Required.
   /// [project] Optional.
-  GetPolicyArgs({
+  const GetPolicyArgs({
     required this.platformId,
     required this.policyId,
     this.project,

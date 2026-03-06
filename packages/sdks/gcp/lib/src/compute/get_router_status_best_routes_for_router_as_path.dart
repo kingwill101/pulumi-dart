@@ -15,7 +15,7 @@ class GetRouterStatusBestRoutesForRouterAsPath {
   /// Creates a new [GetRouterStatusBestRoutesForRouterAsPath].
   /// [asLists] The AS numbers of the AS Path.
   /// [pathSegmentType] The type of the AS Path, which can be one of the following values:
-  GetRouterStatusBestRoutesForRouterAsPath({
+  const GetRouterStatusBestRoutesForRouterAsPath({
     required this.asLists,
     required this.pathSegmentType,
   });

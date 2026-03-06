@@ -8,7 +8,7 @@ class BatchOperationsJobBucketListBucketsPrefixList {
 
   /// Creates a new [BatchOperationsJobBucketListBucketsPrefixList].
   /// [includedObjectPrefixes] (Optional)
-  BatchOperationsJobBucketListBucketsPrefixList({
+  const BatchOperationsJobBucketListBucketsPrefixList({
     this.includedObjectPrefixes,
   });
 

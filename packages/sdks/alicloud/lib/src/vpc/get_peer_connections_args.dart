@@ -27,7 +27,7 @@ class GetPeerConnectionsArgs {
   /// [peerConnectionName] The name of the resource.
   /// [status] The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
   /// [vpcId] The ID of the requester VPC.
-  GetPeerConnectionsArgs({
+  const GetPeerConnectionsArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

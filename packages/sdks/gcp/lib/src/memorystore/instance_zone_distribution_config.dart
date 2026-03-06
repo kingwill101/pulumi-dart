@@ -16,7 +16,7 @@ class InstanceZoneDistributionConfig {
   /// Creates a new [InstanceZoneDistributionConfig].
   /// [mode] Optional. Current zone distribution mode. Defaults to MULTI_ZONE.
   /// [zone] Optional. Defines zone where all resources will be allocated with SINGLE_ZONE mode.
-  InstanceZoneDistributionConfig({
+  const InstanceZoneDistributionConfig({
     this.mode,
     this.zone,
   });

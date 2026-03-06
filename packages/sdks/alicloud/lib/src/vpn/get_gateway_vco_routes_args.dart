@@ -28,7 +28,7 @@ class GetGatewayVcoRoutesArgs {
   /// [routeEntryType] The Routing input type. Valid values: `custom`, `bgp`.
   /// [status] The status of the vpn route entry. Valid values: `normal`, `published`.
   /// [vpnConnectionId] The id of the vpn connection.
-  GetGatewayVcoRoutesArgs({
+  const GetGatewayVcoRoutesArgs({
     this.ids,
     this.outputFile,
     this.pageNumber,

@@ -8,7 +8,7 @@ class ControlSynonymsAction {
 
   /// Creates a new [ControlSynonymsAction].
   /// [synonyms] The synonyms to apply to the search results.
-  ControlSynonymsAction({
+  const ControlSynonymsAction({
     this.synonyms,
   });
 

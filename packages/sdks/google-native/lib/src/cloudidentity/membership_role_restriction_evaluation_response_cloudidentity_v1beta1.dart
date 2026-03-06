@@ -9,7 +9,7 @@ class MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1 {
 
   /// Creates a new [MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1].
   /// [state] The current state of the restriction
-  MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1({
+  const MembershipRoleRestrictionEvaluationResponseCloudidentityV1beta1({
     required this.state,
   });
 

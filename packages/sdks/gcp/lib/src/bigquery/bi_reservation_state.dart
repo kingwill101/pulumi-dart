@@ -28,7 +28,7 @@ class BiReservationState {
   /// [project] The ID of the project in which the resource belongs.
   /// [size] Size of a reservation, in bytes.
   /// [updateTime] The last update timestamp of a reservation.
-  BiReservationState({
+  const BiReservationState({
     this.location,
     this.name,
     this.preferredTables,

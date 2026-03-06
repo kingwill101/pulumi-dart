@@ -13,7 +13,7 @@ class SiteDetailsResponse {
   /// Creates a new [SiteDetailsResponse].
   /// [deviceConfiguration] Edge Device configuration received from site common configuration.
   /// [siteResourceId] Site resource Id to be set during Edge Machine resource creation.
-  SiteDetailsResponse({
+  const SiteDetailsResponse({
     this.deviceConfiguration,
     required this.siteResourceId,
   });

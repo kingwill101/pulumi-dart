@@ -28,7 +28,7 @@ class AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue {
   /// [ignoreCase] If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
   /// [prefix] The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
   /// [suffix] The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-  AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue({
+  const AuthzPolicyHttpRuleToNotOperationHeaderSetHeaderValue({
     this.contains,
     this.exact,
     this.ignoreCase,

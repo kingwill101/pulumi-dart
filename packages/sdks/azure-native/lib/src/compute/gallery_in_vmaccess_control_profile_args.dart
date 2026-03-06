@@ -28,7 +28,7 @@ class GalleryInVMAccessControlProfileArgs {
   /// [properties] Describes the properties of a gallery inVMAccessControlProfile.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  GalleryInVMAccessControlProfileArgs({
+  const GalleryInVMAccessControlProfileArgs({
     required this.galleryName,
     this.inVMAccessControlProfileName,
     this.location,

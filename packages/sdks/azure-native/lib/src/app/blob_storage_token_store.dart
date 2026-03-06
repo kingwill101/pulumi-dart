@@ -18,7 +18,7 @@ class BlobStorageTokenStore {
   /// [clientId] The Client ID of a User-Assigned Managed Identity. Should not be used along with managedIdentityResourceId.
   /// [managedIdentityResourceId] The Resource ID of a User-Assigned Managed Identity. Should not be used along with clientId.
   /// [sasUrlSettingName] The name of the app secrets containing the SAS URL of the blob storage containing the tokens. Should not be used along with blobContainerUri.
-  BlobStorageTokenStore({
+  const BlobStorageTokenStore({
     this.blobContainerUri,
     this.clientId,
     this.managedIdentityResourceId,

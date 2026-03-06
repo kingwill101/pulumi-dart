@@ -26,7 +26,7 @@ class GetDirectoryRadiusSetting {
   /// [radiusServers] Set of strings that contains the fully qualified domain name (FQDN) or IP addresses of the RADIUS server endpoints, or the FQDN or IP addresses of your RADIUS server load balancer.
   /// [radiusTimeout] Amount of time, in seconds, to wait for the RADIUS server to respond.
   /// [useSameUsername] Not currently used.
-  GetDirectoryRadiusSetting({
+  const GetDirectoryRadiusSetting({
     required this.authenticationProtocol,
     required this.displayLabel,
     required this.radiusPort,

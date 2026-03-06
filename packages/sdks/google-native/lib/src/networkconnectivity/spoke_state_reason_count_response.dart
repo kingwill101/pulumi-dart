@@ -12,7 +12,7 @@ class SpokeStateReasonCountResponse {
   /// Creates a new [SpokeStateReasonCountResponse].
   /// [count] The total number of spokes that are inactive for a particular reason and associated with a given hub.
   /// [stateReasonCode] The reason that a spoke is inactive.
-  SpokeStateReasonCountResponse({
+  const SpokeStateReasonCountResponse({
     required this.count,
     required this.stateReasonCode,
   });

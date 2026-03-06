@@ -20,7 +20,7 @@ class GetNetworkAttachmentConnectionEndpoint {
   /// [secondaryIpCidrRanges] Alias IP ranges from the same subnetwork.
   /// [status] The status of a connected endpoint to this network attachment.
   /// [subnetwork] The subnetwork used to assign the IP to the producer instance network interface.
-  GetNetworkAttachmentConnectionEndpoint({
+  const GetNetworkAttachmentConnectionEndpoint({
     required this.ipAddress,
     required this.projectIdOrNum,
     required this.secondaryIpCidrRanges,

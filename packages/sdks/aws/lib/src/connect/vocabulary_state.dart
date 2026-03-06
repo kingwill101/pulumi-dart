@@ -43,7 +43,7 @@ class VocabularyState {
   /// [tags] Tags to apply to the vocabulary. If configured with a provider
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [vocabularyId] The identifier of the custom vocabulary.
-  VocabularyState({
+  const VocabularyState({
     this.arn,
     this.content,
     this.failureReason,

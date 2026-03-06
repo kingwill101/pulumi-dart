@@ -14,7 +14,7 @@ class DatasetStorageDestinationResponse {
   /// Creates a new [DatasetStorageDestinationResponse].
   /// [configuration] The storage destination configuration.
   /// [target] The set of supported dataset destinations for an asset.
-  DatasetStorageDestinationResponse({
+  const DatasetStorageDestinationResponse({
     required this.configuration,
     required this.target,
   });

@@ -9,7 +9,7 @@ class VirtualMachineStorageConfigurationDataSettings {
   /// Creates a new [VirtualMachineStorageConfigurationDataSettings].
   /// [defaultFilePath] Required.
   /// [luns] Required.
-  VirtualMachineStorageConfigurationDataSettings({
+  const VirtualMachineStorageConfigurationDataSettings({
     required this.defaultFilePath,
     required this.luns,
   });

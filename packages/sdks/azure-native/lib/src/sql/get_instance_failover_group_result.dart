@@ -43,7 +43,7 @@ class GetInstanceFailoverGroupResult {
   /// [replicationState] Replication state of the failover group instance.
   /// [secondaryType] Type of the geo-secondary instance. Set 'Standby' if the instance is used as a DR option only.
   /// [type] Resource type.
-  GetInstanceFailoverGroupResult({
+  const GetInstanceFailoverGroupResult({
     required this.azureApiVersion,
     required this.id,
     required this.managedInstancePairs,

@@ -16,7 +16,7 @@ class TrustAnchorNotificationSetting {
   /// [enabled] Whether or not the Trust Anchor should be enabled.
   /// [event] Optional.
   /// [threshold] Optional.
-  TrustAnchorNotificationSetting({
+  const TrustAnchorNotificationSetting({
     this.channel,
     this.configuredBy,
     this.enabled,

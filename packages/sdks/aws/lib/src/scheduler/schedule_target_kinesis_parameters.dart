@@ -8,7 +8,7 @@ class ScheduleTargetKinesisParameters {
 
   /// Creates a new [ScheduleTargetKinesisParameters].
   /// [partitionKey] Specifies the shard to which EventBridge Scheduler sends the event. Up to 256 characters.
-  ScheduleTargetKinesisParameters({
+  const ScheduleTargetKinesisParameters({
     required this.partitionKey,
   });
 

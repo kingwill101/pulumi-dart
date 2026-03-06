@@ -11,7 +11,7 @@ class ServerlessComputeSettingsResponse {
   /// Creates a new [ServerlessComputeSettingsResponse].
   /// [serverlessComputeCustomSubnet] The resource ID of an existing virtual network subnet in which serverless compute nodes should be deployed
   /// [serverlessComputeNoPublicIP] The flag to signal if serverless compute nodes deployed in custom vNet would have no public IP addresses for a workspace with private endpoint
-  ServerlessComputeSettingsResponse({
+  const ServerlessComputeSettingsResponse({
     this.serverlessComputeCustomSubnet,
     this.serverlessComputeNoPublicIP,
   });

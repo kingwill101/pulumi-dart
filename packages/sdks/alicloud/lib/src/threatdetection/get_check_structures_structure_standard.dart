@@ -18,7 +18,7 @@ class GetCheckStructuresStructureStandard {
   /// [requirements] The standards of the check items.
   /// [showName] The display name of the standard for the check item.
   /// [type] The standard type of the check item. Valid values:- **RISK**: security risk.- **IDENTITY_PERMISSION**: CIEM.- **COMPLIANCE**: security compliance.
-  GetCheckStructuresStructureStandard({
+  const GetCheckStructuresStructureStandard({
     required this.id,
     required this.requirements,
     required this.showName,

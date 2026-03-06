@@ -24,7 +24,7 @@ class VscState {
   /// [tags] The tag of the resource.
   /// [vscName] The name of the Vsc.
   /// [vscType] The type of the Vsc. Default value: `primary`. Valid values: `primary`.
-  VscState({
+  const VscState({
     this.nodeId,
     this.resourceGroupId,
     this.status,

@@ -8,7 +8,7 @@ class ProjectDataDeliveryCloudwatchLogs {
 
   /// Creates a new [ProjectDataDeliveryCloudwatchLogs].
   /// [logGroup] The name of the log group where the project stores evaluation events.
-  ProjectDataDeliveryCloudwatchLogs({
+  const ProjectDataDeliveryCloudwatchLogs({
     this.logGroup,
   });
 

@@ -12,7 +12,7 @@ class WebAclRuleGroupAssociationRuleGroupReference {
   /// Creates a new [WebAclRuleGroupAssociationRuleGroupReference].
   /// [arn] ARN of the Rule Group to associate with the Web ACL.
   /// [ruleActionOverrides] Override actions for specific rules within the rule group. See below.
-  WebAclRuleGroupAssociationRuleGroupReference({
+  const WebAclRuleGroupAssociationRuleGroupReference({
     required this.arn,
     this.ruleActionOverrides,
   });

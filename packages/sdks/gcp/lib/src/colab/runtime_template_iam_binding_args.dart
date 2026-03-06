@@ -43,7 +43,7 @@ class RuntimeTemplateIamBindingArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [role] The role that should be applied. Only one
   /// [runtimeTemplate] Used to find the parent resource to bind the IAM policy to
-  RuntimeTemplateIamBindingArgs({
+  const RuntimeTemplateIamBindingArgs({
     this.condition,
     this.location,
     required this.members,

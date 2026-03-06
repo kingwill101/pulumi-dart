@@ -15,7 +15,7 @@ class PrivateLinkServiceConnectionStateResponse {
   /// [actionsRequired] The actions required for private link service connection.
   /// [description] The private link service connection description.
   /// [status] The private link service connection status.
-  PrivateLinkServiceConnectionStateResponse({
+  const PrivateLinkServiceConnectionStateResponse({
     required this.actionsRequired,
     this.description,
     this.status,

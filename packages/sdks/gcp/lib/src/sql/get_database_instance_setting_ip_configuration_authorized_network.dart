@@ -12,7 +12,7 @@ class GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork {
   /// [expirationTime] Required.
   /// [name] The name of the instance.
   /// [value] Required.
-  GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork({
+  const GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork({
     required this.expirationTime,
     required this.name,
     required this.value,

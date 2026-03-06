@@ -12,7 +12,7 @@ class PayloadFileResponse {
   /// Creates a new [PayloadFileResponse].
   /// [data] The file data.
   /// [name] The file name.
-  PayloadFileResponse({
+  const PayloadFileResponse({
     required this.data,
     required this.name,
   });

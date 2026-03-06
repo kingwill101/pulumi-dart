@@ -35,7 +35,7 @@ class ProvisionedClusterArgs {
   /// [name] The name which should be used for this Arc Kubernetes Provisioned Cluster. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   /// [resourceGroupName] The name of the Resource Group where the Arc Kubernetes Provisioned Cluster should exist. Changing this forces a new Arc Kubernetes Provisioned Cluster to be created.
   /// [tags] A mapping of tags which should be assigned to the Arc Kubernetes Provisioned Cluster.
-  ProvisionedClusterArgs({
+  const ProvisionedClusterArgs({
     this.arcAgentAutoUpgradeEnabled,
     this.arcAgentDesiredVersion,
     this.azureActiveDirectory,

@@ -9,7 +9,7 @@ class ServiceAttributesEnvironment {
 
   /// Creates a new [ServiceAttributesEnvironment].
   /// [type] Environment type.
-  ServiceAttributesEnvironment({
+  const ServiceAttributesEnvironment({
     required this.type,
   });
 

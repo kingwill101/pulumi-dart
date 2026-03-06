@@ -69,7 +69,7 @@ class SyntheticTaskMonitorConfWebsite {
   /// [verifyStringBlacklist] The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
   /// [verifyStringWhitelist] The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
   /// [waitCompletionTime] The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
-  SyntheticTaskMonitorConfWebsite({
+  const SyntheticTaskMonitorConfWebsite({
     this.automaticScrolling,
     this.customHeader,
     this.customHeaderContent,

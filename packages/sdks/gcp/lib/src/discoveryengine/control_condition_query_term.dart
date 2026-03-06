@@ -11,7 +11,7 @@ class ControlConditionQueryTerm {
   /// Creates a new [ControlConditionQueryTerm].
   /// [fullMatch] If true, the query term must be an exact match. Otherwise, the query term can be a partial match.
   /// [value] The value of the query term.
-  ControlConditionQueryTerm({
+  const ControlConditionQueryTerm({
     this.fullMatch,
     this.value,
   });

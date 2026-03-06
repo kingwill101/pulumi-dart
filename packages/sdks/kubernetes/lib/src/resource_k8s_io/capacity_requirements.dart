@@ -19,7 +19,7 @@ class CapacityRequirements {
 
   /// Creates a new [CapacityRequirements].
   /// [requests] Requests represent individual device resource requests for distinct resources, all of which must be provided by the device.
-  CapacityRequirements({
+  const CapacityRequirements({
     this.requests,
   });
 

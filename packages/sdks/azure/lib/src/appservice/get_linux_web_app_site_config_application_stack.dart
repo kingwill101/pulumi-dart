@@ -43,7 +43,7 @@ class GetLinuxWebAppSiteConfigApplicationStack {
   /// [phpVersion] The version of PHP in use.
   /// [pythonVersion] The version of Python in use.
   /// [rubyVersion] The version of Ruby in use.
-  GetLinuxWebAppSiteConfigApplicationStack({
+  const GetLinuxWebAppSiteConfigApplicationStack({
     required this.dockerImageName,
     required this.dockerRegistryPassword,
     required this.dockerRegistryUrl,

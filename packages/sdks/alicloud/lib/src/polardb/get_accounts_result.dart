@@ -20,7 +20,7 @@ class GetAccountsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [nameRegex] Optional.
   /// [names] Account name of the cluster.
-  GetAccountsResult({
+  const GetAccountsResult({
     required this.accounts,
     required this.dbClusterId,
     required this.id,

@@ -11,7 +11,7 @@ class CapacityReservationSku {
   /// Creates a new [CapacityReservationSku].
   /// [capacity] Specifies the number of instances to be reserved. It must be greater than or equal to `0` and not exceed the quota in the subscription.
   /// [name] Name of the sku, such as `Standard_F2`. Changing this forces a new resource to be created.
-  CapacityReservationSku({
+  const CapacityReservationSku({
     required this.capacity,
     required this.name,
   });

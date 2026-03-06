@@ -31,7 +31,7 @@ class ConditionalAccessPolicySessionControls {
   /// [signInFrequencyAuthenticationType] Authentication type for enforcing sign-in frequency. Possible values are: `primaryAndSecondaryAuthentication` or `secondaryAuthentication`. Defaults to `primaryAndSecondaryAuthentication`.
   /// [signInFrequencyInterval] The interval to apply to sign-in frequency control. Possible values are: `timeBased` or `everyTime`. Defaults to `timeBased`.
   /// [signInFrequencyPeriod] The time period to enforce sign-in frequency. Possible values are: `hours` or `days`. Required when `sign_in_frequency_period` is specified.
-  ConditionalAccessPolicySessionControls({
+  const ConditionalAccessPolicySessionControls({
     this.applicationEnforcedRestrictionsEnabled,
     this.cloudAppSecurityPolicy,
     this.disableResilienceDefaults,

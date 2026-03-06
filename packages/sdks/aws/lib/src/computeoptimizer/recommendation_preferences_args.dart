@@ -43,7 +43,7 @@ class RecommendationPreferencesArgs {
   /// [savingsEstimationMode] The status of the savings estimation mode preference. Valid values: `AfterDiscounts`, `BeforeDiscounts`.
   /// [scope] The scope of the recommendation preferences. See Scope below.
   /// [utilizationPreferences] The preference to control the resource’s CPU utilization threshold, CPU utilization headroom, and memory utilization headroom. See Utilization Preferences below.
-  RecommendationPreferencesArgs({
+  const RecommendationPreferencesArgs({
     this.enhancedInfrastructureMetrics,
     this.externalMetricsPreference,
     this.inferredWorkloadTypes,

@@ -13,7 +13,7 @@ class MysqlTableResponseDatastreamV1alpha1 {
   /// Creates a new [MysqlTableResponseDatastreamV1alpha1].
   /// [mysqlColumns] MySQL columns in the database. When unspecified as part of include/exclude lists, includes/excludes everything.
   /// [tableName] Table name.
-  MysqlTableResponseDatastreamV1alpha1({
+  const MysqlTableResponseDatastreamV1alpha1({
     required this.mysqlColumns,
     required this.tableName,
   });

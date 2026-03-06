@@ -23,7 +23,7 @@ class GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse {
   /// [targetFlow] The target flow to transition to. Format: `projects//locations//agents//flows/`.
   /// [targetPage] The target page to transition to. Format: `projects//locations//agents//flows//pages/`.
   /// [triggerFulfillment] The fulfillment to be triggered. When the answers from the Knowledge Connector are selected by Dialogflow, you can utitlize the request scoped parameter `$request.knowledge.answers` (contains up to the 5 highest confidence answers) and `$request.knowledge.questions` (contains the corresponding questions) to construct the fulfillment.
-  GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse({
+  const GoogleCloudDialogflowCxV3KnowledgeConnectorSettingsResponse({
     required this.dataStoreConnections,
     required this.enabled,
     required this.targetFlow,

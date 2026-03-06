@@ -18,7 +18,7 @@ class PipelineConditionResponse {
   /// [pipelineReadyCondition] Details around the Pipeline's overall status.
   /// [targetsPresentCondition] Details around targets enumerated in the pipeline.
   /// [targetsTypeCondition] Details on the whether the targets enumerated in the pipeline are of the same type.
-  PipelineConditionResponse({
+  const PipelineConditionResponse({
     required this.pipelineReadyCondition,
     required this.targetsPresentCondition,
     required this.targetsTypeCondition,

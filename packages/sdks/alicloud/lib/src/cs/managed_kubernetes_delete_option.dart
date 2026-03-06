@@ -40,7 +40,7 @@ class ManagedKubernetesDeleteOption {
   /// Creates a new [ManagedKubernetesDeleteOption].
   /// [deleteMode] The deletion mode of the cluster. Different resources may have different default behavior, see `resource_type` for details. Valid values:
   /// [resourceType] The type of resources that are created by cluster. Valid values:
-  ManagedKubernetesDeleteOption({
+  const ManagedKubernetesDeleteOption({
     this.deleteMode,
     this.resourceType,
   });

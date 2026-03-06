@@ -21,7 +21,7 @@ class GoogleDevtoolsContaineranalysisV1alpha1SourceContext {
   /// [gerrit] A SourceContext referring to a Gerrit project.
   /// [git] A SourceContext referring to any third party Git repo (e.g., GitHub).
   /// [labels] Labels with user defined metadata.
-  GoogleDevtoolsContaineranalysisV1alpha1SourceContext({
+  const GoogleDevtoolsContaineranalysisV1alpha1SourceContext({
     this.cloudRepo,
     this.gerrit,
     this.git,

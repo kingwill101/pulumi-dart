@@ -7,7 +7,7 @@ class TrustProviderDeviceOptions {
 
   /// Creates a new [TrustProviderDeviceOptions].
   /// [tenantId] Optional.
-  TrustProviderDeviceOptions({
+  const TrustProviderDeviceOptions({
     this.tenantId,
   });
 

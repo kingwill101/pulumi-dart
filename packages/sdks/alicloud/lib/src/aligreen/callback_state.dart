@@ -24,7 +24,7 @@ class CallbackState {
   /// [callbackUrl] The detection result will be called back to the url.
   /// [createTime] The creation time of the Callback.
   /// [cryptType] The encryption algorithm is used to verify that the callback request is sent by the Aliyun Green Service to your business service. Value: 0:SHA256,1: SM3.
-  CallbackState({
+  const CallbackState({
     this.callbackName,
     this.callbackSuggestions,
     this.callbackTypes,

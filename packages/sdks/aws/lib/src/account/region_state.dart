@@ -18,7 +18,7 @@ class RegionState {
   /// [enabled] Whether the region is enabled.
   /// [optStatus] The region opt status.
   /// [regionName] The region name to manage.
-  RegionState({
+  const RegionState({
     this.accountId,
     this.enabled,
     this.optStatus,

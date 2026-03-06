@@ -15,7 +15,7 @@ class DomainIdentityArgs {
   /// Creates a new [DomainIdentityArgs].
   /// [domain] The domain name to assign to SES
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  DomainIdentityArgs({
+  const DomainIdentityArgs({
     required this.domain,
     this.region,
   });

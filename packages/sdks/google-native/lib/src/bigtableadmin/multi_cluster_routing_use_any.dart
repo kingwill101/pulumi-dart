@@ -9,7 +9,7 @@ class MultiClusterRoutingUseAny {
 
   /// Creates a new [MultiClusterRoutingUseAny].
   /// [clusterIds] The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible.
-  MultiClusterRoutingUseAny({
+  const MultiClusterRoutingUseAny({
     this.clusterIds,
   });
 

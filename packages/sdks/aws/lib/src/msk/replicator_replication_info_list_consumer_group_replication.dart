@@ -17,7 +17,7 @@ class ReplicatorReplicationInfoListConsumerGroupReplication {
   /// [consumerGroupsToReplicates] List of regular expression patterns indicating the consumer groups to copy.
   /// [detectAndCopyNewConsumerGroups] Whether to periodically check for new consumer groups.
   /// [synchroniseConsumerGroupOffsets] Whether to periodically write the translated offsets to __consumer_offsets topic in target cluster.
-  ReplicatorReplicationInfoListConsumerGroupReplication({
+  const ReplicatorReplicationInfoListConsumerGroupReplication({
     this.consumerGroupsToExcludes,
     required this.consumerGroupsToReplicates,
     this.detectAndCopyNewConsumerGroups,

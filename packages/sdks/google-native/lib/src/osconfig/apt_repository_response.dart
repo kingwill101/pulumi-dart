@@ -21,7 +21,7 @@ class AptRepositoryResponse {
   /// [distribution] Distribution of this repository.
   /// [gpgKey] URI of the key file for this repository. The agent maintains a keyring at `/etc/apt/trusted.gpg.d/osconfig_agent_managed.gpg` containing all the keys in any applied guest policy.
   /// [uri] URI for this repository.
-  AptRepositoryResponse({
+  const AptRepositoryResponse({
     required this.archiveType,
     required this.components,
     required this.distribution,

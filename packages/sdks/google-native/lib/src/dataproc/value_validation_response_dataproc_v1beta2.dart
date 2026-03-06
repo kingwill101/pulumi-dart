@@ -9,7 +9,7 @@ class ValueValidationResponseDataprocV1beta2 {
 
   /// Creates a new [ValueValidationResponseDataprocV1beta2].
   /// [values] List of allowed values for the parameter.
-  ValueValidationResponseDataprocV1beta2({
+  const ValueValidationResponseDataprocV1beta2({
     required this.values,
   });
 

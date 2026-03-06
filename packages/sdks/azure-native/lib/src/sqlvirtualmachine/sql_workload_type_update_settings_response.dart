@@ -9,7 +9,7 @@ class SqlWorkloadTypeUpdateSettingsResponse {
 
   /// Creates a new [SqlWorkloadTypeUpdateSettingsResponse].
   /// [sqlWorkloadType] SQL Server workload type.
-  SqlWorkloadTypeUpdateSettingsResponse({
+  const SqlWorkloadTypeUpdateSettingsResponse({
     this.sqlWorkloadType,
   });
 

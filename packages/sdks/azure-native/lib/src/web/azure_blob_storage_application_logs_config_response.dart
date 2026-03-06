@@ -17,7 +17,7 @@ class AzureBlobStorageApplicationLogsConfigResponse {
   /// [level] Log level.
   /// [retentionInDays] Retention in days.
   /// [sasUrl] SAS url to a azure blob container with read/write/list/delete permissions.
-  AzureBlobStorageApplicationLogsConfigResponse({
+  const AzureBlobStorageApplicationLogsConfigResponse({
     this.level,
     this.retentionInDays,
     this.sasUrl,

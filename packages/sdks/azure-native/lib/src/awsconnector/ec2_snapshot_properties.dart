@@ -31,7 +31,7 @@ class Ec2SnapshotProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2SnapshotProperties({
+  const Ec2SnapshotProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

@@ -18,7 +18,7 @@ class GetServerTrustGroupArgs {
   /// [locationName] The name of the region where the resource is located.
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serverTrustGroupName] The name of the server trust group.
-  GetServerTrustGroupArgs({
+  const GetServerTrustGroupArgs({
     required this.locationName,
     required this.resourceGroupName,
     required this.serverTrustGroupName,

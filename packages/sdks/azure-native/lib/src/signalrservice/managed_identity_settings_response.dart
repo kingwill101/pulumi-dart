@@ -10,7 +10,7 @@ class ManagedIdentitySettingsResponse {
 
   /// Creates a new [ManagedIdentitySettingsResponse].
   /// [resource] The Resource indicating the App ID URI of the target resource.
-  ManagedIdentitySettingsResponse({
+  const ManagedIdentitySettingsResponse({
     this.resource,
   });
 

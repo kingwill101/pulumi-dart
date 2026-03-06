@@ -11,7 +11,7 @@ class HBaseClusterComputeIsolation {
   /// Creates a new [HBaseClusterComputeIsolation].
   /// [computeIsolationEnabled] This field indicates whether enable compute isolation or not. Possible values are `true` or `false`.
   /// [hostSku] The name of the host SKU.
-  HBaseClusterComputeIsolation({
+  const HBaseClusterComputeIsolation({
     this.computeIsolationEnabled,
     this.hostSku,
   });

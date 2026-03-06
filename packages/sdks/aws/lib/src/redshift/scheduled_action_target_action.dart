@@ -17,7 +17,7 @@ class ScheduledActionTargetAction {
   /// [pauseCluster] An action that runs a `PauseCluster` API operation. Documented below.
   /// [resizeCluster] An action that runs a `ResizeCluster` API operation. Documented below.
   /// [resumeCluster] An action that runs a `ResumeCluster` API operation. Documented below.
-  ScheduledActionTargetAction({
+  const ScheduledActionTargetAction({
     this.pauseCluster,
     this.resizeCluster,
     this.resumeCluster,

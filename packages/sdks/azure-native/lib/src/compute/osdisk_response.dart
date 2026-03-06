@@ -46,7 +46,7 @@ class OSDiskResponse {
   /// [osType] This property allows you to specify the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD. Possible values are: **Windows,** **Linux.**
   /// [vhd] The virtual hard disk.
   /// [writeAcceleratorEnabled] Specifies whether writeAccelerator should be enabled or disabled on the disk.
-  OSDiskResponse({
+  const OSDiskResponse({
     this.caching,
     required this.createOption,
     this.deleteOption,

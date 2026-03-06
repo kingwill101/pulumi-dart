@@ -8,7 +8,7 @@ class CertificateTemplatePassthroughExtensionsAdditionalExtension {
 
   /// Creates a new [CertificateTemplatePassthroughExtensionsAdditionalExtension].
   /// [objectIdPaths] Required. The parts of an OID path. The most significant parts of the path come first.
-  CertificateTemplatePassthroughExtensionsAdditionalExtension({
+  const CertificateTemplatePassthroughExtensionsAdditionalExtension({
     required this.objectIdPaths,
   });
 

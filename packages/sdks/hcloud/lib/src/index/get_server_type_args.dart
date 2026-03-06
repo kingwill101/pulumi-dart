@@ -15,7 +15,7 @@ class GetServerTypeArgs {
   /// Creates a new [GetServerTypeArgs].
   /// [id] ID of the Server Type.
   /// [name] Name of the Server Type.
-  GetServerTypeArgs({
+  const GetServerTypeArgs({
     this.id,
     this.name,
   });

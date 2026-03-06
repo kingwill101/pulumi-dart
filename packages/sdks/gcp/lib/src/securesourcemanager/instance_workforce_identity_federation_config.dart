@@ -8,7 +8,7 @@ class InstanceWorkforceIdentityFederationConfig {
 
   /// Creates a new [InstanceWorkforceIdentityFederationConfig].
   /// [enabled] 'Whether Workforce Identity Federation is enabled.'
-  InstanceWorkforceIdentityFederationConfig({
+  const InstanceWorkforceIdentityFederationConfig({
     required this.enabled,
   });
 

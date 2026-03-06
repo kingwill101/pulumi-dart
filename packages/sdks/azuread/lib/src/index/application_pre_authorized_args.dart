@@ -18,7 +18,7 @@ class ApplicationPreAuthorizedArgs {
   /// [applicationId] The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
   /// [authorizedClientId] The client ID of the application being authorized. Changing this field forces a new resource to be created.
   /// [permissionIds] A set of permission scope IDs required by the authorized application.
-  ApplicationPreAuthorizedArgs({
+  const ApplicationPreAuthorizedArgs({
     required this.applicationId,
     required this.authorizedClientId,
     required this.permissionIds,

@@ -21,7 +21,7 @@ class HostNameMatchConditionParameters {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleHostNameConditionParameters'.
-  HostNameMatchConditionParameters({
+  const HostNameMatchConditionParameters({
     this.matchValues,
     this.negateCondition,
     required this.operator,

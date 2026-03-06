@@ -18,7 +18,7 @@ class GetSnapshotPolicyArgs {
   /// [accountName] The name of the NetApp account where the NetApp Snapshot Policy exists.
   /// [name] The name of the NetApp Snapshot Policy.
   /// [resourceGroupName] The Name of the Resource Group where the NetApp Snapshot Policy exists.
-  GetSnapshotPolicyArgs({
+  const GetSnapshotPolicyArgs({
     required this.accountName,
     required this.name,
     required this.resourceGroupName,

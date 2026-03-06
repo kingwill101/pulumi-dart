@@ -10,7 +10,7 @@ class RouteTable {
 
   /// Creates a new [RouteTable].
   /// [routes] Collection of routes contained within a route table.
-  RouteTable({
+  const RouteTable({
     this.routes,
   });
 

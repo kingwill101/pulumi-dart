@@ -59,7 +59,7 @@ class GetSnapshotResult {
   /// [storageBytes] Required.
   /// [storageLocations] Required.
   /// [zone] Required.
-  GetSnapshotResult({
+  const GetSnapshotResult({
     required this.chainName,
     required this.creationTimestamp,
     required this.description,

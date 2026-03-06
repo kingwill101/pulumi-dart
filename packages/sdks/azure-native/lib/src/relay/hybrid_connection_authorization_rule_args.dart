@@ -24,7 +24,7 @@ class HybridConnectionAuthorizationRuleArgs {
   /// [namespaceName] The namespace name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [rights] The rights associated with the rule.
-  HybridConnectionAuthorizationRuleArgs({
+  const HybridConnectionAuthorizationRuleArgs({
     this.authorizationRuleName,
     required this.hybridConnectionName,
     required this.namespaceName,

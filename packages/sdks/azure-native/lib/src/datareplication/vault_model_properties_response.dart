@@ -15,7 +15,7 @@ class VaultModelPropertiesResponse {
   /// [provisioningState] Gets or sets the provisioning state of the vault.
   /// [serviceResourceId] Gets or sets the service resource Id.
   /// [vaultType] Gets or sets the type of vault.
-  VaultModelPropertiesResponse({
+  const VaultModelPropertiesResponse({
     required this.provisioningState,
     required this.serviceResourceId,
     this.vaultType,

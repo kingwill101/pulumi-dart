@@ -16,7 +16,7 @@ class NodeTaint {
   /// [effect] The taint effect.
   /// [key] Key associated with the effect.
   /// [value] Value associated with the effect.
-  NodeTaint({
+  const NodeTaint({
     this.effect,
     this.key,
     this.value,

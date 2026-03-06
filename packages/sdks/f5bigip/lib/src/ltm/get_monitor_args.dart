@@ -15,7 +15,7 @@ class GetMonitorArgs {
   /// Creates a new [GetMonitorArgs].
   /// [name] Name of the ltm monitor
   /// [partition] partition of the ltm monitor
-  GetMonitorArgs({
+  const GetMonitorArgs({
     required this.name,
     required this.partition,
   });

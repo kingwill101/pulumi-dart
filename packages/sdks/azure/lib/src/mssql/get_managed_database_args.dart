@@ -15,7 +15,7 @@ class GetManagedDatabaseArgs {
   /// Creates a new [GetManagedDatabaseArgs].
   /// [managedInstanceId] The SQL Managed Instance ID.
   /// [name] The name of this Azure SQL Azure Managed Database.
-  GetManagedDatabaseArgs({
+  const GetManagedDatabaseArgs({
     required this.managedInstanceId,
     required this.name,
   });

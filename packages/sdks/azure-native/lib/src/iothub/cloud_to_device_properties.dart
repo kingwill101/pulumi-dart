@@ -16,7 +16,7 @@ class CloudToDeviceProperties {
   /// [defaultTtlAsIso8601] The default time to live for cloud-to-device messages in the device queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
   /// [feedback] The properties of the feedback queue for cloud-to-device messages.
   /// [maxDeliveryCount] The max delivery count for cloud-to-device messages in the device queue. See: https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messaging#cloud-to-device-messages.
-  CloudToDeviceProperties({
+  const CloudToDeviceProperties({
     this.defaultTtlAsIso8601,
     this.feedback,
     this.maxDeliveryCount,

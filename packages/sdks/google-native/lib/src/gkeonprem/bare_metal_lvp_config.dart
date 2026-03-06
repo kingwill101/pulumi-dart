@@ -12,7 +12,7 @@ class BareMetalLvpConfig {
   /// Creates a new [BareMetalLvpConfig].
   /// [path] The host machine path.
   /// [storageClass] The StorageClass name that PVs will be created with.
-  BareMetalLvpConfig({
+  const BareMetalLvpConfig({
     required this.path,
     required this.storageClass,
   });

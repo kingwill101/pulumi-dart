@@ -12,7 +12,7 @@ class AzureFirewallSku {
   /// Creates a new [AzureFirewallSku].
   /// [name] Name of an Azure Firewall SKU.
   /// [tier] Tier of an Azure Firewall.
-  AzureFirewallSku({
+  const AzureFirewallSku({
     this.name,
     this.tier,
   });

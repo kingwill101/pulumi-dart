@@ -16,7 +16,7 @@ class FleetspacePropertiesResponse {
   /// [capacityMax] Maximum number of vCores database fleet manager is allowed to provision in the fleetspace.
   /// [mainPrincipal] Main Microsoft Entra ID principal that has admin access to all databases in the fleetspace.
   /// [provisioningState] Fleetspace state.
-  FleetspacePropertiesResponse({
+  const FleetspacePropertiesResponse({
     this.capacityMax,
     this.mainPrincipal,
     required this.provisioningState,

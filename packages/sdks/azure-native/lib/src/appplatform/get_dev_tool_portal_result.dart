@@ -25,7 +25,7 @@ class GetDevToolPortalResult {
   /// [properties] Dev Tool Portal properties payload
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  GetDevToolPortalResult({
+  const GetDevToolPortalResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

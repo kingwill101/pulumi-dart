@@ -17,7 +17,7 @@ class GetNetworkIpamConfig {
   /// [gateway] The IP address of the gateway
   /// [ipRange] The ip range in CIDR form
   /// [subnet] The subnet in CIDR form
-  GetNetworkIpamConfig({
+  const GetNetworkIpamConfig({
     this.auxAddress,
     this.gateway,
     this.ipRange,

@@ -34,7 +34,7 @@ class AccessKeyState {
   /// [secretFile] The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn't get its secret ever.
   /// [status] The status of the AccessKey. Value:
   /// [userName] The RAM user name.
-  AccessKeyState({
+  const AccessKeyState({
     this.createTime,
     this.encryptedSecret,
     this.keyFingerprint,

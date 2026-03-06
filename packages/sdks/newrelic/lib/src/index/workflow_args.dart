@@ -40,7 +40,7 @@ class WorkflowArgs {
   /// [issuesFilter] A filter used to identify issues handled by this workflow. See Nested issues_filter blocks below for details.
   /// [mutingRulesHandling] How to handle muted issues. See Muting Rules below for details.
   /// [name] The name of the workflow.
-  WorkflowArgs({
+  const WorkflowArgs({
     this.accountId,
     required this.destinations,
     this.destinationsEnabled,

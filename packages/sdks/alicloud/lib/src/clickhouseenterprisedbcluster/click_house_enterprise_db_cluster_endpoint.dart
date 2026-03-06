@@ -36,7 +36,7 @@ class ClickHouseEnterpriseDbClusterEndpoint {
   /// [vpcId] The VPC ID.
   /// [vpcInstanceId] The VPC instance ID.
   /// [vswitchId] vSwitch ID.
-  ClickHouseEnterpriseDbClusterEndpoint({
+  const ClickHouseEnterpriseDbClusterEndpoint({
     this.computingGroupId,
     this.connectionString,
     this.endpointName,

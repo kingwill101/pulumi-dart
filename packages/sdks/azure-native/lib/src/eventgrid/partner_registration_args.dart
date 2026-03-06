@@ -25,7 +25,7 @@ class PartnerRegistrationArgs {
   /// [partnerRegistrationName] Name of the partner registration.
   /// [resourceGroupName] The name of the resource group within the user's subscription.
   /// [tags] Tags of the resource.
-  PartnerRegistrationArgs({
+  const PartnerRegistrationArgs({
     this.location,
     this.partnerRegistrationImmutableId,
     this.partnerRegistrationName,

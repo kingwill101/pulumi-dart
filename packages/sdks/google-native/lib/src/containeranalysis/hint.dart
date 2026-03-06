@@ -9,7 +9,7 @@ class Hint {
 
   /// Creates a new [Hint].
   /// [humanReadableName] The human readable name of this attestation authority, for example "qa".
-  Hint({
+  const Hint({
     required this.humanReadableName,
   });
 

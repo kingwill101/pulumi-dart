@@ -10,7 +10,7 @@ class WindowsConfigurationResponse {
 
   /// Creates a new [WindowsConfigurationResponse].
   /// [osType] The OS Type
-  WindowsConfigurationResponse({
+  const WindowsConfigurationResponse({
     required this.osType,
   });
 

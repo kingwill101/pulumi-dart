@@ -31,7 +31,7 @@ class GetMigrateProjectsControllerMigrateProjectResult {
   /// [properties] Properties of a migrate project.
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] Type of the object = [Microsoft.Migrate/migrateProjects].
-  GetMigrateProjectsControllerMigrateProjectResult({
+  const GetMigrateProjectsControllerMigrateProjectResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

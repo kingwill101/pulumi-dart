@@ -25,7 +25,7 @@ class HybridRunbookWorkerGroupArgs {
   /// [hybridRunbookWorkerGroupName] The hybrid runbook worker group name
   /// [name] Gets or sets the name of the resource.
   /// [resourceGroupName] Name of an Azure Resource group.
-  HybridRunbookWorkerGroupArgs({
+  const HybridRunbookWorkerGroupArgs({
     required this.automationAccountName,
     this.credential,
     this.hybridRunbookWorkerGroupName,

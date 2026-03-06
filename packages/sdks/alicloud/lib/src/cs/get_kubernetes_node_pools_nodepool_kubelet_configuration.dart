@@ -100,7 +100,7 @@ class GetKubernetesNodePoolsNodepoolKubeletConfiguration {
   /// [systemReserved] Same as systemReserved. The set of ResourceName=ResourceQuantity (e.g. cpu=200m,memory=150G) pairs that describe resources reserved for non-kubernetes components. Currently, only cpu and memory are supported. See [compute resources](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) for more details.
   /// [topologyManagerPolicy] Name of the Topology Manager policy used.
   /// [tracing] OpenTelemetry tracks the configuration information for client settings versioning.
-  GetKubernetesNodePoolsNodepoolKubeletConfiguration({
+  const GetKubernetesNodePoolsNodepoolKubeletConfiguration({
     required this.allowedUnsafeSysctls,
     required this.clusterDns,
     required this.containerLogMaxFiles,

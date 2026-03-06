@@ -59,7 +59,7 @@ class WorkspaceCustomParametersResponse {
   /// [storageAccountName] Default DBFS storage account name.
   /// [storageAccountSkuName] Storage account SKU name, ex: Standard_GRS, Standard_LRS. Refer https://aka.ms/storageskus for valid inputs.
   /// [vnetAddressPrefix] Address prefix for Managed virtual network. Default value for this input is 10.139.
-  WorkspaceCustomParametersResponse({
+  const WorkspaceCustomParametersResponse({
     this.amlWorkspaceId,
     this.customPrivateSubnetName,
     this.customPublicSubnetName,

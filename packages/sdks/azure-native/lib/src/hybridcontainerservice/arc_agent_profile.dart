@@ -12,7 +12,7 @@ class ArcAgentProfile {
   /// Creates a new [ArcAgentProfile].
   /// [agentAutoUpgrade] Indicates whether the Arc agents on the provisioned clusters be upgraded automatically to the latest version. Defaults to Enabled.
   /// [agentVersion] Version of the Arc agents to be installed on the provisioned Provisioned cluster resource
-  ArcAgentProfile({
+  const ArcAgentProfile({
     this.agentAutoUpgrade,
     this.agentVersion,
   });

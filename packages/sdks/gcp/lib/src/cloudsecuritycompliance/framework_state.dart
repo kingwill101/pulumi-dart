@@ -55,7 +55,7 @@ class FrameworkState {
   /// [supportedEnforcementModes] The supported enforcement modes of the framework.
   /// [supportedTargetResourceTypes] target resource types supported by the Framework.
   /// [type] The type of the framework. The default is TYPE_CUSTOM.
-  FrameworkState({
+  const FrameworkState({
     this.categories,
     this.cloudControlDetails,
     this.description,

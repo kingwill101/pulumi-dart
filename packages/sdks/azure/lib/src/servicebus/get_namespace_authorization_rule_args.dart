@@ -19,7 +19,7 @@ class GetNamespaceAuthorizationRuleArgs {
   /// [namespaceId] Specifies the ID of the ServiceBus Namespace where the Service Bus Namespace Authorization Rule exists.
   /// [namespaceName] Optional.
   /// [resourceGroupName] Optional.
-  GetNamespaceAuthorizationRuleArgs({
+  const GetNamespaceAuthorizationRuleArgs({
     required this.name,
     this.namespaceId,
     this.namespaceName,

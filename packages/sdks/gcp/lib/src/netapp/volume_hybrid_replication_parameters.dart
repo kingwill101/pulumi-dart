@@ -45,7 +45,7 @@ class VolumeHybridReplicationParameters {
   /// [peerVolumeName] Required. Name of the ONTAP source volume to be replicated to NetApp Volumes destination volume.
   /// [replication] Required. Desired name for the replication of this volume.
   /// [replicationSchedule] Optional. Replication Schedule for the replication created.
-  VolumeHybridReplicationParameters({
+  const VolumeHybridReplicationParameters({
     this.clusterLocation,
     this.description,
     this.hybridReplicationType,

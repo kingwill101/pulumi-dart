@@ -19,7 +19,7 @@ class DeviceCapacityPatchResourceK8sIoV1beta1 {
   /// Creates a new [DeviceCapacityPatchResourceK8sIoV1beta1].
   /// [requestPolicy] RequestPolicy defines how this DeviceCapacity must be consumed when the device is allowed to be shared by multiple allocations.
   /// [value] Value defines how much of a certain capacity that device has.
-  DeviceCapacityPatchResourceK8sIoV1beta1({
+  const DeviceCapacityPatchResourceK8sIoV1beta1({
     this.requestPolicy,
     this.value,
   });

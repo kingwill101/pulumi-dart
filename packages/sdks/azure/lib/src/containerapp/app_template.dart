@@ -51,7 +51,7 @@ class AppTemplate {
   /// [tcpScaleRules] One or more `tcp_scale_rule` blocks as defined below.
   /// [terminationGracePeriodSeconds] The time in seconds after the container is sent the termination signal before the process if forcibly killed.
   /// [volumes] A `volume` block as detailed below.
-  AppTemplate({
+  const AppTemplate({
     this.azureQueueScaleRules,
     required this.containers,
     this.cooldownPeriodInSeconds,

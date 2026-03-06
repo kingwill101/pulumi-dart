@@ -18,7 +18,7 @@ class AvsEstimatedExternalStorageResponse {
   /// [storageType] Recommended External Storage.
   /// [storageUtilization] Predicted storage utilization.
   /// [totalStorageInGB] Predicted total Storage used in GB.
-  AvsEstimatedExternalStorageResponse({
+  const AvsEstimatedExternalStorageResponse({
     this.monthlyPrice,
     this.storageType,
     this.storageUtilization,

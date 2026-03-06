@@ -15,7 +15,7 @@ class ConnectionFunctionConnectionFunctionConfig {
   /// [comment] Comment to describe the function.
   /// [keyValueStoreAssociation] Key value store associations. See `key_value_store_association` below.
   /// [runtime] Runtime environment for the function. Valid values are `cloudfront-js-1.0` and `cloudfront-js-2.0`.
-  ConnectionFunctionConnectionFunctionConfig({
+  const ConnectionFunctionConnectionFunctionConfig({
     required this.comment,
     this.keyValueStoreAssociation,
     required this.runtime,

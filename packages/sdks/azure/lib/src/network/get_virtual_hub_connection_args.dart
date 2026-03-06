@@ -18,7 +18,7 @@ class GetVirtualHubConnectionArgs {
   /// [name] The name of the Connection which should be retrieved.
   /// [resourceGroupName] The Name of the Resource Group where the Virtual Hub Connection exists.
   /// [virtualHubName] The name of the Virtual Hub where this Connection exists.
-  GetVirtualHubConnectionArgs({
+  const GetVirtualHubConnectionArgs({
     required this.name,
     required this.resourceGroupName,
     required this.virtualHubName,

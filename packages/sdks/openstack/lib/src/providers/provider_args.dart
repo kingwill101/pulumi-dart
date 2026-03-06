@@ -110,7 +110,7 @@ class ProviderArgs {
   /// [userDomainName] The name of the domain where the user resides (Identity v3).
   /// [userId] User ID to login with.
   /// [userName] Username to login with.
-  ProviderArgs({
+  const ProviderArgs({
     this.allowReauth,
     this.applicationCredentialId,
     this.applicationCredentialName,

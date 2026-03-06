@@ -41,7 +41,7 @@ class GetAlidnsRecordsRecord {
   /// [ttl] TTL of the record.
   /// [type] Record type. Valid values: `A`, `NS`, `MX`, `TXT`, `CNAME`, `SRV`, `AAAA`, `REDIRECT_URL`, `FORWORD_URL` .
   /// [value] Host record value of the domain.
-  GetAlidnsRecordsRecord({
+  const GetAlidnsRecordsRecord({
     required this.domainName,
     required this.id,
     required this.line,

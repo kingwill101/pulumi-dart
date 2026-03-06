@@ -15,7 +15,7 @@ class ProjectFileProperties {
   /// [extension] Optional File extension. If submitted it should not have a leading period and must match the extension from filePath.
   /// [filePath] Relative path of this file resource. This property can be set when creating or updating the file resource.
   /// [mediaType] File content type. This property can be modified to reflect the file content type.
-  ProjectFileProperties({
+  const ProjectFileProperties({
     this.extension,
     this.filePath,
     this.mediaType,

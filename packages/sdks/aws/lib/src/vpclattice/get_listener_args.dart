@@ -21,7 +21,7 @@ class GetListenerArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceIdentifier] ID or Amazon Resource Name (ARN) of the service network
   /// [tags] List of tags associated with the listener.
-  GetListenerArgs({
+  const GetListenerArgs({
     required this.listenerIdentifier,
     this.region,
     required this.serviceIdentifier,

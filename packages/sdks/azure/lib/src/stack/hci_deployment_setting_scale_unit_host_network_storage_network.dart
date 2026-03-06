@@ -14,7 +14,7 @@ class HciDeploymentSettingScaleUnitHostNetworkStorageNetwork {
   /// [name] The name of the storage network. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [networkAdapterName] The name of the network adapter. Changing this forces a new Stack HCI Deployment Setting to be created.
   /// [vlanId] Specifies the ID for the VLAN storage network. This setting is applied to the network interfaces that route the storage and VM migration traffic. Changing this forces a new Stack HCI Deployment Setting to be created.
-  HciDeploymentSettingScaleUnitHostNetworkStorageNetwork({
+  const HciDeploymentSettingScaleUnitHostNetworkStorageNetwork({
     required this.name,
     required this.networkAdapterName,
     required this.vlanId,

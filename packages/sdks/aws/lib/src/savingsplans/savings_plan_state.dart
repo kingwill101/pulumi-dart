@@ -77,7 +77,7 @@ class SavingsPlanState {
   /// [termDurationInSeconds] The duration of the term, in seconds.
   /// [timeouts] Optional.
   /// [upfrontPaymentAmount] The up-front payment amount.
-  SavingsPlanState({
+  const SavingsPlanState({
     this.commitment,
     this.currency,
     this.description,

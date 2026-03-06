@@ -13,7 +13,7 @@ class SqlServerAvailabilityGroupResourcePropertiesResponseReplicas {
   /// Creates a new [SqlServerAvailabilityGroupResourcePropertiesResponseReplicas].
   /// [nextLink] Link to retrieve next page of results.
   /// [value] Array of Availability Group Replicas.
-  SqlServerAvailabilityGroupResourcePropertiesResponseReplicas({
+  const SqlServerAvailabilityGroupResourcePropertiesResponseReplicas({
     required this.nextLink,
     this.value,
   });

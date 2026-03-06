@@ -33,7 +33,7 @@ class NameConstraints {
   /// [permittedEmailAddresses] Contains the permitted email addresses. The value can be a particular email address, a hostname to indicate all email addresses on that host or a domain with a leading period (e.g. `.example.com`) to indicate all email addresses in that domain.
   /// [permittedIpRanges] Contains the permitted IP ranges. For IPv4 addresses, the ranges are expressed using CIDR notation as specified in RFC 4632. For IPv6 addresses, the ranges are expressed in similar encoding as IPv4 addresses.
   /// [permittedUris] Contains the permitted URIs that apply to the host part of the name. The value can be a hostname or a domain with a leading period (like `.example.com`)
-  NameConstraints({
+  const NameConstraints({
     this.critical,
     this.excludedDnsNames,
     this.excludedEmailAddresses,

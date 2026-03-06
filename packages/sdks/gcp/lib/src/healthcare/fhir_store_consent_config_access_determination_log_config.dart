@@ -10,7 +10,7 @@ class FhirStoreConsentConfigAccessDeterminationLogConfig {
 
   /// Creates a new [FhirStoreConsentConfigAccessDeterminationLogConfig].
   /// [logLevel] Controls the amount of detail to include as part of the audit logs.
-  FhirStoreConsentConfigAccessDeterminationLogConfig({
+  const FhirStoreConsentConfigAccessDeterminationLogConfig({
     this.logLevel,
   });
 

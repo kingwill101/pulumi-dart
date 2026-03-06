@@ -15,7 +15,7 @@ class GetOrganizationArgs {
   /// Creates a new [GetOrganizationArgs].
   /// [organizationName] Organization resource name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetOrganizationArgs({
+  const GetOrganizationArgs({
     required this.organizationName,
     required this.resourceGroupName,
   });

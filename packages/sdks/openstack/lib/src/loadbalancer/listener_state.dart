@@ -148,7 +148,7 @@ class ListenerState {
   /// [timeoutTcpInspect] The time in milliseconds, to wait for
   /// [tlsCiphers] List of ciphers in OpenSSL format
   /// [tlsVersions] A list of TLS protocol versions. Available
-  ListenerState({
+  const ListenerState({
     this.adminStateUp,
     this.allowedCidrs,
     this.alpnProtocols,

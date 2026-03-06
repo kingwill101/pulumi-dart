@@ -14,7 +14,7 @@ class PrivateEndpointConnectionPropertiesResponse {
   /// Creates a new [PrivateEndpointConnectionPropertiesResponse].
   /// [privateEndpoint] The private endpoint property of a private endpoint connection
   /// [privateLinkServiceConnectionState] The current state of a private endpoint connection
-  PrivateEndpointConnectionPropertiesResponse({
+  const PrivateEndpointConnectionPropertiesResponse({
     this.privateEndpoint,
     required this.privateLinkServiceConnectionState,
   });

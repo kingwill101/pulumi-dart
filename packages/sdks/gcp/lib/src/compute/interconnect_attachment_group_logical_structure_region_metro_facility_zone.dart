@@ -25,7 +25,7 @@ class InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone {
   /// [attachment] (Output, Deprecated)
   /// [attachments] Attachments in the AttachmentGroup. Keys are arbitrary user-specified
   /// [zone] (Output)
-  InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone({
+  const InterconnectAttachmentGroupLogicalStructureRegionMetroFacilityZone({
     this.attachment,
     this.attachments,
     this.zone,

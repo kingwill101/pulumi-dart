@@ -14,7 +14,7 @@ class SeverityOverride {
   /// Creates a new [SeverityOverride].
   /// [action] Threat action override.
   /// [severity] Severity level to match.
-  SeverityOverride({
+  const SeverityOverride({
     required this.action,
     required this.severity,
   });

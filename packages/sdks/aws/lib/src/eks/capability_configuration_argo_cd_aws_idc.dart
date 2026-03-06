@@ -13,7 +13,7 @@ class CapabilityConfigurationArgoCdAwsIdc {
   /// [idcInstanceArn] ARN of the IAM Identity Center instance.
   /// [idcManagedApplicationArn] Optional.
   /// [idcRegion] Region of the IAM Identity Center instance.
-  CapabilityConfigurationArgoCdAwsIdc({
+  const CapabilityConfigurationArgoCdAwsIdc({
     required this.idcInstanceArn,
     this.idcManagedApplicationArn,
     this.idcRegion,

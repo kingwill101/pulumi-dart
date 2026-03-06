@@ -18,7 +18,7 @@ class V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration {
   /// [guardrail] Configuration block for the guardrail to use with the Bedrock model. See `guardrail`.
   /// [modelArn] ARN of the Bedrock model to use.
   /// [traceStatus] Whether to enable tracing for the Bedrock model. Valid values are `ENABLED` and `DISABLED`.
-  V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration({
+  const V2modelsIntentQnaIntentConfigurationBedrockModelConfiguration({
     this.customPrompt,
     this.guardrail,
     required this.modelArn,

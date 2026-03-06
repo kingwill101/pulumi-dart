@@ -9,7 +9,7 @@ class ReservationReservationSharingPolicy {
 
   /// Creates a new [ReservationReservationSharingPolicy].
   /// [serviceShareType] Sharing config for all Google Cloud services.
-  ReservationReservationSharingPolicy({
+  const ReservationReservationSharingPolicy({
     this.serviceShareType,
   });
 

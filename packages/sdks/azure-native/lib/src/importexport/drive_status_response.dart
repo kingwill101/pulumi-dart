@@ -42,7 +42,7 @@ class DriveStatusResponse {
   /// [percentComplete] Percentage completed for the drive.
   /// [state] The drive's current state.
   /// [verboseLogUri] A URI that points to the blob containing the verbose log for the data transfer operation.
-  DriveStatusResponse({
+  const DriveStatusResponse({
     this.bitLockerKey,
     this.bytesSucceeded,
     this.copyStatus,

@@ -35,7 +35,7 @@ class OneDashboardVariable {
   /// [replacementStrategy] (Optional) Indicates the strategy to apply when replacing a variable in a NRQL query. One of `default`, `identifier`, `number` or `string`.
   /// [title] (Optional) A human-friendly display string for this value.
   /// [type] (Required) Specifies the data type of the variable and where its possible values may come from. One of `enum`, `nrql` or `string`
-  OneDashboardVariable({
+  const OneDashboardVariable({
     this.defaultValues,
     this.isMultiSelection,
     this.items,

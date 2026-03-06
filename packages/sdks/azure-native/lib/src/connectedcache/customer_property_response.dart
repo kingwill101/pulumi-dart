@@ -33,7 +33,7 @@ class CustomerPropertyResponse {
   /// [statusCode] Mcc response status code.
   /// [statusDetails] Mcc response status details for retrieving response inner details.
   /// [statusText] Mcc response status text as string for retrieving status details.
-  CustomerPropertyResponse({
+  const CustomerPropertyResponse({
     this.additionalCustomerProperties,
     this.customer,
     required this.error,

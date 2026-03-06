@@ -14,7 +14,7 @@ class GetInstanceNetworkingIpv6 {
   /// [globals] Required.
   /// [linkLocal] Required.
   /// [slaac] Required.
-  GetInstanceNetworkingIpv6({
+  const GetInstanceNetworkingIpv6({
     required this.globals,
     required this.linkLocal,
     required this.slaac,

@@ -40,7 +40,7 @@ class PipelineRunResponseResponse {
   /// [status] The current status of the pipeline run.
   /// [target] The target of the pipeline run.
   /// [trigger] The trigger that caused the pipeline run.
-  PipelineRunResponseResponse({
+  const PipelineRunResponseResponse({
     this.catalogDigest,
     this.finishTime,
     this.importedArtifacts,

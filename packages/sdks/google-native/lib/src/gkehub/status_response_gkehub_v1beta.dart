@@ -12,7 +12,7 @@ class StatusResponseGkehubV1beta {
   /// Creates a new [StatusResponseGkehubV1beta].
   /// [code] Code specifies AppDevExperienceFeature's subcomponent ready state.
   /// [description] Description is populated if Code is Failed, explaining why it has failed.
-  StatusResponseGkehubV1beta({
+  const StatusResponseGkehubV1beta({
     required this.code,
     required this.description,
   });

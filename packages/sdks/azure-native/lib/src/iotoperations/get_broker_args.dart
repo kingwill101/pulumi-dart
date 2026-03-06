@@ -18,7 +18,7 @@ class GetBrokerArgs {
   /// [brokerName] Name of broker.
   /// [instanceName] Name of instance.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetBrokerArgs({
+  const GetBrokerArgs({
     required this.brokerName,
     required this.instanceName,
     required this.resourceGroupName,

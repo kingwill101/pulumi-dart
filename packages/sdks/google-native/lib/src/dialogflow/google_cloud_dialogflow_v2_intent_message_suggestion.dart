@@ -9,7 +9,7 @@ class GoogleCloudDialogflowV2IntentMessageSuggestion {
 
   /// Creates a new [GoogleCloudDialogflowV2IntentMessageSuggestion].
   /// [title] The text shown the in the suggestion chip.
-  GoogleCloudDialogflowV2IntentMessageSuggestion({
+  const GoogleCloudDialogflowV2IntentMessageSuggestion({
     required this.title,
   });
 

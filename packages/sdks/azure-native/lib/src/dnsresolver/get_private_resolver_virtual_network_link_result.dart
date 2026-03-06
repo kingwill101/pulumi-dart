@@ -34,7 +34,7 @@ class GetPrivateResolverVirtualNetworkLinkResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [virtualNetwork] The reference to the virtual network. This cannot be changed after creation.
-  GetPrivateResolverVirtualNetworkLinkResult({
+  const GetPrivateResolverVirtualNetworkLinkResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

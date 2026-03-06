@@ -8,7 +8,7 @@ class GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinati
 
   /// Creates a new [GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogs].
   /// [logGroup] Name of the CloudWatch Log Group to send findings to.
-  GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogs({
+  const GetLogDataProtectionPolicyDocumentStatementOperationAuditFindingsDestinationCloudwatchLogs({
     required this.logGroup,
   });
 

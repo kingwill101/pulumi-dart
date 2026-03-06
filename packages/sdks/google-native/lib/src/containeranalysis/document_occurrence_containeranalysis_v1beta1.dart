@@ -33,7 +33,7 @@ class DocumentOccurrenceContaineranalysisV1beta1 {
   /// [licenseListVersion] A field for creators of the SPDX file to provide the version of the SPDX License List used when the SPDX file was created
   /// [namespace] Provide an SPDX document specific namespace as a unique absolute Uniform Resource Identifier (URI) as specified in RFC-3986, with the exception of the ‘#’ delimiter
   /// [title] Identify name of this document as designated by creator
-  DocumentOccurrenceContaineranalysisV1beta1({
+  const DocumentOccurrenceContaineranalysisV1beta1({
     this.createTime,
     this.creatorComment,
     this.creators,

@@ -15,7 +15,7 @@ class BucketCnameTokenState {
   /// [bucket] The name of the bucket
   /// [domain] The custom domain
   /// [token] Token used to verify domain ownership
-  BucketCnameTokenState({
+  const BucketCnameTokenState({
     this.bucket,
     this.domain,
     this.token,

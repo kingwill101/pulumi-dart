@@ -64,7 +64,7 @@ class NodeBalancerConfigArgs {
   /// [sslKey] The private key corresponding to this port's certificate. This is not returned. If set, this field will come back as `&lt;REDACTED&gt;`. Please use the ssl_commonname and ssl_fingerprint to identify the certificate.
   /// [stickiness] Controls how session stickiness is handled on this port. (`none`, `table`, `http_cookie`)
   /// [udpCheckPort] Specifies the port on the backend node used for active health checks, which may differ from the port serving traffic. Defaults to 80.
-  NodeBalancerConfigArgs({
+  const NodeBalancerConfigArgs({
     this.algorithm,
     this.check,
     this.checkAttempts,

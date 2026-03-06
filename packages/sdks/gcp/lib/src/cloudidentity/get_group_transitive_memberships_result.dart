@@ -15,7 +15,7 @@ class GetGroupTransitiveMembershipsResult {
   /// [group] Required.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [memberships] The list of memberships under the given group. Structure is documented below.
-  GetGroupTransitiveMembershipsResult({
+  const GetGroupTransitiveMembershipsResult({
     required this.group,
     required this.id,
     required this.memberships,

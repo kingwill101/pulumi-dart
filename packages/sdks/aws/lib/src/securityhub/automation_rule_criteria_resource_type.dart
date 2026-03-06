@@ -9,7 +9,7 @@ class AutomationRuleCriteriaResourceType {
   /// Creates a new [AutomationRuleCriteriaResourceType].
   /// [comparison] Required.
   /// [value] Required.
-  AutomationRuleCriteriaResourceType({
+  const AutomationRuleCriteriaResourceType({
     required this.comparison,
     required this.value,
   });

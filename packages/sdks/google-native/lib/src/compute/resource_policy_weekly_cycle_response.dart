@@ -10,7 +10,7 @@ class ResourcePolicyWeeklyCycleResponse {
 
   /// Creates a new [ResourcePolicyWeeklyCycleResponse].
   /// [dayOfWeeks] Up to 7 intervals/windows, one for each day of the week.
-  ResourcePolicyWeeklyCycleResponse({
+  const ResourcePolicyWeeklyCycleResponse({
     required this.dayOfWeeks,
   });
 

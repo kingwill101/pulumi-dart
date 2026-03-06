@@ -17,7 +17,7 @@ class GetRamDirectoriesDirectoryLog {
   /// [message] The message of log.
   /// [step] The step of log.
   /// [timeStamp] The time stamp of log.
-  GetRamDirectoriesDirectoryLog({
+  const GetRamDirectoriesDirectoryLog({
     required this.level,
     required this.message,
     required this.step,

@@ -12,7 +12,7 @@ class HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1 {
   /// Creates a new [HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1].
   /// [end] End of the range (exclusive)
   /// [start] Start of the range (inclusive)
-  HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1({
+  const HttpRouteHeaderMatchIntegerRangeNetworkservicesV1beta1({
     this.end,
     this.start,
   });

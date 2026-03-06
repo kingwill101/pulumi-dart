@@ -47,7 +47,7 @@ class GetBucketObjectsObject {
   /// [serverSideEncryption] Server-side encryption of the object in OSS. It can be empty or `AES256`.
   /// [sseKmsKeyId] If present, specifies the ID of the Key Management Service(KMS) master encryption key that was used for the object.
   /// [storageClass] Object storage type. Possible values: `Standard`, `IA`, `Archive` and `ColdArchive`.
-  GetBucketObjectsObject({
+  const GetBucketObjectsObject({
     required this.acl,
     required this.cacheControl,
     required this.contentDisposition,

@@ -36,7 +36,7 @@ class AccountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [sku] The resource model definition representing SKU
   /// [tags] Resource tags.
-  AccountArgs({
+  const AccountArgs({
     this.accountName,
     this.identity,
     this.kind,

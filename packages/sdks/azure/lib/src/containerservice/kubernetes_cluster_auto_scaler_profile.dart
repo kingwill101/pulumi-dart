@@ -66,7 +66,7 @@ class KubernetesClusterAutoScalerProfile {
   /// [scanInterval] How often the AKS Cluster should be re-evaluated for scale up/down. Defaults to `10s`.
   /// [skipNodesWithLocalStorage] If `true` cluster autoscaler will never delete nodes with pods with local storage, for example, EmptyDir or HostPath. Defaults to `false`.
   /// [skipNodesWithSystemPods] If `true` cluster autoscaler will never delete nodes with pods from kube-system (except for DaemonSet or mirror pods). Defaults to `true`.
-  KubernetesClusterAutoScalerProfile({
+  const KubernetesClusterAutoScalerProfile({
     this.balanceSimilarNodeGroups,
     this.daemonsetEvictionForEmptyNodesEnabled,
     this.daemonsetEvictionForOccupiedNodesEnabled,

@@ -11,7 +11,7 @@ class WorkspaceManagedNetwork {
   /// Creates a new [WorkspaceManagedNetwork].
   /// [isolationMode] The isolation mode of the Machine Learning Workspace. Possible values are `Disabled`, `AllowOnlyApprovedOutbound`, and `AllowInternetOutbound`.
   /// [provisionOnCreationEnabled] Set to trigger the provisioning of the managed VNet with the default options when creating a Machine Learning Workspace with the managed VNet enabled. Defaults to `false`. Changing this forces a new resource to be created.
-  WorkspaceManagedNetwork({
+  const WorkspaceManagedNetwork({
     this.isolationMode,
     this.provisionOnCreationEnabled,
   });

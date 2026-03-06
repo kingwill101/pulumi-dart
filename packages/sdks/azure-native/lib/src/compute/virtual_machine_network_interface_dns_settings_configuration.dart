@@ -9,7 +9,7 @@ class VirtualMachineNetworkInterfaceDnsSettingsConfiguration {
 
   /// Creates a new [VirtualMachineNetworkInterfaceDnsSettingsConfiguration].
   /// [dnsServers] List of DNS servers IP addresses
-  VirtualMachineNetworkInterfaceDnsSettingsConfiguration({
+  const VirtualMachineNetworkInterfaceDnsSettingsConfiguration({
     this.dnsServers,
   });
 

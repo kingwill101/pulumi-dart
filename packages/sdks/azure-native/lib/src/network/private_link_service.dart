@@ -44,7 +44,7 @@ class PrivateLinkService {
   /// [location] Resource location.
   /// [tags] Resource tags.
   /// [visibility] The visibility list of the private link service.
-  PrivateLinkService({
+  const PrivateLinkService({
     this.autoApproval,
     this.destinationIPAddress,
     this.enableProxyProtocol,

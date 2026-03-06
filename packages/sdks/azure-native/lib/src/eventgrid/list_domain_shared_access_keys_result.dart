@@ -11,7 +11,7 @@ class ListDomainSharedAccessKeysResult {
   /// Creates a new [ListDomainSharedAccessKeysResult].
   /// [key1] Shared access key1 for the domain.
   /// [key2] Shared access key2 for the domain.
-  ListDomainSharedAccessKeysResult({
+  const ListDomainSharedAccessKeysResult({
     this.key1,
     this.key2,
   });

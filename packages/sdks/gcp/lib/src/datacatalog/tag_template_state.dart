@@ -30,7 +30,7 @@ class TagTemplateState {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] Template location region.
   /// [tagTemplateId] The id of the tag template to create.
-  TagTemplateState({
+  const TagTemplateState({
     this.displayName,
     this.fields,
     this.forceDelete,

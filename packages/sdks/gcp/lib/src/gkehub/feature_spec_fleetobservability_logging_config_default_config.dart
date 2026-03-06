@@ -9,7 +9,7 @@ class FeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
 
   /// Creates a new [FeatureSpecFleetobservabilityLoggingConfigDefaultConfig].
   /// [mode] Specified if fleet logging feature is enabled.
-  FeatureSpecFleetobservabilityLoggingConfigDefaultConfig({
+  const FeatureSpecFleetobservabilityLoggingConfigDefaultConfig({
     this.mode,
   });
 

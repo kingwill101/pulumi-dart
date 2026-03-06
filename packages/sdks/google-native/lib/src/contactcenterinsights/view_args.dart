@@ -22,7 +22,7 @@ class ViewArgs {
   /// [name] Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view}
   /// [project] Optional.
   /// [value] String with specific view properties, must be non-empty.
-  ViewArgs({
+  const ViewArgs({
     this.displayName,
     this.location,
     this.name,

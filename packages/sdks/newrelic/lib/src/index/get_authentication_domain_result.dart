@@ -10,7 +10,7 @@ class GetAuthenticationDomainResult {
   /// Creates a new [GetAuthenticationDomainResult].
   /// [id] The ID of the matching authentication domain fetched.
   /// [name] Required.
-  GetAuthenticationDomainResult({
+  const GetAuthenticationDomainResult({
     required this.id,
     required this.name,
   });

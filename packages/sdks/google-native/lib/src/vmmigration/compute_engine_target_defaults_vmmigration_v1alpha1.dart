@@ -62,7 +62,7 @@ class ComputeEngineTargetDefaultsVmmigrationV1alpha1 {
   /// [targetProject] The full path of the resource of type TargetProject which represents the Compute Engine project in which to create this VM.
   /// [vmName] The name of the VM to create.
   /// [zone] The zone in which to create the VM.
-  ComputeEngineTargetDefaultsVmmigrationV1alpha1({
+  const ComputeEngineTargetDefaultsVmmigrationV1alpha1({
     this.additionalLicenses,
     this.computeScheduling,
     this.diskType,

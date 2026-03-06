@@ -39,7 +39,7 @@ class ListTaskRunDetailsResult {
   /// [runResult] The result of this task run
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [type] The type of the resource.
-  ListTaskRunDetailsResult({
+  const ListTaskRunDetailsResult({
     this.forceUpdateTag,
     required this.id,
     this.identity,

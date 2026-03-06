@@ -20,7 +20,7 @@ class ChannelDestination {
   /// [mediaPackageSettings] Destination settings for a MediaPackage output; one destination for both encoders. See Media Package Settings for more details.
   /// [multiplexSettings] Destination settings for a Multiplex output; one destination for both encoders. See Multiplex Settings for more details.
   /// [settings] Destination settings for a standard output; one destination for each redundant encoder. See Settings for more details.
-  ChannelDestination({
+  const ChannelDestination({
     required this.id,
     this.mediaPackageSettings,
     this.multiplexSettings,

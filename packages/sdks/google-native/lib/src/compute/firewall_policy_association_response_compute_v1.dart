@@ -20,7 +20,7 @@ class FirewallPolicyAssociationResponseComputeV1 {
   /// [firewallPolicyId] The firewall policy ID of the association.
   /// [name] The name for an association.
   /// [shortName] The short name of the firewall policy of the association.
-  FirewallPolicyAssociationResponseComputeV1({
+  const FirewallPolicyAssociationResponseComputeV1({
     required this.attachmentTarget,
     required this.displayName,
     required this.firewallPolicyId,

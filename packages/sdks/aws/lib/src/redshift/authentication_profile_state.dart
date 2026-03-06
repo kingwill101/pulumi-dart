@@ -15,7 +15,7 @@ class AuthenticationProfileState {
   /// [authenticationProfileContent] The content of the authentication profile in JSON format. The maximum length of the JSON string is determined by a quota for your account.
   /// [authenticationProfileName] The name of the authentication profile.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  AuthenticationProfileState({
+  const AuthenticationProfileState({
     this.authenticationProfileContent,
     this.authenticationProfileName,
     this.region,

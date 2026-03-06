@@ -13,7 +13,7 @@ class WebRegionForwardingRuleServiceIamMemberCondition {
   /// [description] Optional.
   /// [expression] Textual representation of an expression in Common Expression Language syntax.
   /// [title] A title for the expression, i.e. a short string describing its purpose.
-  WebRegionForwardingRuleServiceIamMemberCondition({
+  const WebRegionForwardingRuleServiceIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

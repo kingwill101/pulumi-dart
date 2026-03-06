@@ -20,7 +20,7 @@ class ApiOperationRequestRepresentationFormParameterExample {
   /// [name] The name of this example.
   /// [summary] A short description for this example.
   /// [value] The example of the representation.
-  ApiOperationRequestRepresentationFormParameterExample({
+  const ApiOperationRequestRepresentationFormParameterExample({
     this.description,
     this.externalValue,
     required this.name,

@@ -22,7 +22,7 @@ class GoogleCloudDialogflowCxV3ExperimentResultMetricResponse {
   /// [countType] Count-based metric type. Only one of type or count_type is specified in each Metric.
   /// [ratio] Ratio value of a metric.
   /// [type] Ratio-based metric type. Only one of type or count_type is specified in each Metric.
-  GoogleCloudDialogflowCxV3ExperimentResultMetricResponse({
+  const GoogleCloudDialogflowCxV3ExperimentResultMetricResponse({
     required this.confidenceInterval,
     required this.count,
     required this.countType,

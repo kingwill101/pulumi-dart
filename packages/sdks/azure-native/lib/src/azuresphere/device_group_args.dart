@@ -36,7 +36,7 @@ class DeviceGroupArgs {
   /// [regionalDataBoundary] Regional data boundary for the device group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [updatePolicy] Update policy of the device group.
-  DeviceGroupArgs({
+  const DeviceGroupArgs({
     this.allowCrashDumpsCollection,
     required this.catalogName,
     this.description,

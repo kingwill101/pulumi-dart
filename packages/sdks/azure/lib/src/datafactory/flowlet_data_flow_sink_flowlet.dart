@@ -14,7 +14,7 @@ class FlowletDataFlowSinkFlowlet {
   /// [datasetParameters] Specifies the reference data flow parameters from dataset.
   /// [name] The name for the Data Factory Flowlet.
   /// [parameters] A map of parameters to associate with the Data Factory Flowlet.
-  FlowletDataFlowSinkFlowlet({
+  const FlowletDataFlowSinkFlowlet({
     this.datasetParameters,
     required this.name,
     this.parameters,

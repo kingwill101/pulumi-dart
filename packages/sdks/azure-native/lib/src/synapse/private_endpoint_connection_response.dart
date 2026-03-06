@@ -26,7 +26,7 @@ class PrivateEndpointConnectionResponse {
   /// [privateLinkServiceConnectionState] Connection state of the private endpoint connection.
   /// [provisioningState] Provisioning state of the private endpoint connection.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  PrivateEndpointConnectionResponse({
+  const PrivateEndpointConnectionResponse({
     required this.id,
     required this.name,
     this.privateEndpoint,

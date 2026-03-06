@@ -12,7 +12,7 @@ class KubernetesIPConfigurationResponse {
   /// Creates a new [KubernetesIPConfigurationResponse].
   /// [ipAddress] IP address of the Kubernetes node.
   /// [port] Port of the Kubernetes node.
-  KubernetesIPConfigurationResponse({
+  const KubernetesIPConfigurationResponse({
     this.ipAddress,
     required this.port,
   });

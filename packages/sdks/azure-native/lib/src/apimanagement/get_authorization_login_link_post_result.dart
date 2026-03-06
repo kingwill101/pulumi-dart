@@ -8,7 +8,7 @@ class GetAuthorizationLoginLinkPostResult {
 
   /// Creates a new [GetAuthorizationLoginLinkPostResult].
   /// [loginLink] The login link
-  GetAuthorizationLoginLinkPostResult({
+  const GetAuthorizationLoginLinkPostResult({
     this.loginLink,
   });
 

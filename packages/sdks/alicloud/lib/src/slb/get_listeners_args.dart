@@ -24,7 +24,7 @@ class GetListenersArgs {
   /// [loadBalancerId] ID of the SLB with listeners.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [protocol] Filter listeners by the specified protocol. Valid values: `http`, `https`, `tcp` and `udp`.
-  GetListenersArgs({
+  const GetListenersArgs({
     this.descriptionRegex,
     this.frontendPort,
     required this.loadBalancerId,

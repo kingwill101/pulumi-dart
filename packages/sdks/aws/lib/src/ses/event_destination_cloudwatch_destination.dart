@@ -14,7 +14,7 @@ class EventDestinationCloudwatchDestination {
   /// [defaultValue] The default value for the event
   /// [dimensionName] The name for the dimension
   /// [valueSource] The source for the value. May be any of `"messageTag"`, `"emailHeader"` or `"linkTag"`.
-  EventDestinationCloudwatchDestination({
+  const EventDestinationCloudwatchDestination({
     required this.defaultValue,
     required this.dimensionName,
     required this.valueSource,

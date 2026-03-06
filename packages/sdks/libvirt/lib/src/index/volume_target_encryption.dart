@@ -20,7 +20,7 @@ class VolumeTargetEncryption {
   /// [format] Defines the format of the encryption for the storage volume.
   /// [ivgen] Controls the initialization vector generation settings for the encryption.
   /// [secret] Provides the configuration for the secret used in the encryption process.
-  VolumeTargetEncryption({
+  const VolumeTargetEncryption({
     this.cipher,
     required this.format,
     this.ivgen,

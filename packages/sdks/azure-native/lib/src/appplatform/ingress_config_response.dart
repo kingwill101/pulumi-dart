@@ -9,7 +9,7 @@ class IngressConfigResponse {
 
   /// Creates a new [IngressConfigResponse].
   /// [readTimeoutInSeconds] Ingress read time out in seconds.
-  IngressConfigResponse({
+  const IngressConfigResponse({
     this.readTimeoutInSeconds,
   });
 

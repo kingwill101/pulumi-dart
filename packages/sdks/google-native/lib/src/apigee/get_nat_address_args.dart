@@ -15,7 +15,7 @@ class GetNatAddressArgs {
   /// [instanceId] Required.
   /// [natAddressId] Required.
   /// [organizationId] Required.
-  GetNatAddressArgs({
+  const GetNatAddressArgs({
     required this.instanceId,
     required this.natAddressId,
     required this.organizationId,

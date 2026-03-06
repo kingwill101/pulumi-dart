@@ -16,7 +16,7 @@ class FloorsettingGoogleMcpServerFloorSetting {
   /// [enableCloudLogging] If true, log Model Armor filter results to Cloud Logging.
   /// [inspectAndBlock] If true, Model Armor filters will be run in inspect and block mode.
   /// [inspectOnly] If true, Model Armor filters will be run in inspect only mode. No action
-  FloorsettingGoogleMcpServerFloorSetting({
+  const FloorsettingGoogleMcpServerFloorSetting({
     this.enableCloudLogging,
     this.inspectAndBlock,
     this.inspectOnly,

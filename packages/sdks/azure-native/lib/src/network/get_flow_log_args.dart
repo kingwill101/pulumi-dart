@@ -18,7 +18,7 @@ class GetFlowLogArgs {
   /// [flowLogName] The name of the flow log resource.
   /// [networkWatcherName] The name of the network watcher.
   /// [resourceGroupName] The name of the resource group.
-  GetFlowLogArgs({
+  const GetFlowLogArgs({
     required this.flowLogName,
     required this.networkWatcherName,
     required this.resourceGroupName,

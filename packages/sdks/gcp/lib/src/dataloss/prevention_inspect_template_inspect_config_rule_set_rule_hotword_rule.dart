@@ -24,7 +24,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule {
   /// [hotwordRegex] Regular expression pattern defining what qualifies as a hotword.
   /// [likelihoodAdjustment] Likelihood adjustment to apply to all matching findings.
   /// [proximity] Proximity of the finding within which the entire hotword must reside. The total length of the window cannot
-  PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule({
+  const PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule({
     required this.hotwordRegex,
     required this.likelihoodAdjustment,
     required this.proximity,

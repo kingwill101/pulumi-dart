@@ -36,7 +36,7 @@ class WebhookArgs {
   /// [runOnWorkerGroup] Name of the hybrid worker group the Webhook job will run on.
   /// [runbookName] Name of the Automation Runbook to execute by Webhook.
   /// [uri] URI to initiate the webhook. Can be generated using [Generate URI API](https://docs.microsoft.com/rest/api/automation/webhook/generate-uri). By default, new URI is generated on each new resource creation. Changing this forces a new resource to be created.
-  WebhookArgs({
+  const WebhookArgs({
     required this.automationAccountName,
     this.enabled,
     required this.expiryTime,

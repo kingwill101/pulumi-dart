@@ -13,7 +13,7 @@ class ReplicatedVMManagedDiskTargetDiskEncryption {
   /// Creates a new [ReplicatedVMManagedDiskTargetDiskEncryption].
   /// [diskEncryptionKey] A `disk_encryption_key` block as defined below.
   /// [keyEncryptionKey] A `key_encryption_key` block as defined below.
-  ReplicatedVMManagedDiskTargetDiskEncryption({
+  const ReplicatedVMManagedDiskTargetDiskEncryption({
     required this.diskEncryptionKey,
     this.keyEncryptionKey,
   });

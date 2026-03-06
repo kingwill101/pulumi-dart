@@ -8,7 +8,7 @@ class DomainOsNvRamSourceNetworkSnapshot {
 
   /// Creates a new [DomainOsNvRamSourceNetworkSnapshot].
   /// [name] Configures the name attribute for the snapshot used in network storage operations.
-  DomainOsNvRamSourceNetworkSnapshot({
+  const DomainOsNvRamSourceNetworkSnapshot({
     required this.name,
   });
 

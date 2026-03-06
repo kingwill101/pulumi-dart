@@ -53,7 +53,7 @@ class AgentcoreGatewayArgs {
   /// [roleArn] ARN of the IAM role that the gateway assumes to access AWS services.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  AgentcoreGatewayArgs({
+  const AgentcoreGatewayArgs({
     this.authorizerConfiguration,
     required this.authorizerType,
     this.description,

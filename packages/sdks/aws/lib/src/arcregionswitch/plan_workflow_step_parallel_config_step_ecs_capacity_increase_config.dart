@@ -22,7 +22,7 @@ class PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig {
   /// [targetPercent] Target capacity percentage.
   /// [timeoutMinutes] Timeout in minutes.
   /// [ungraceful] Ungraceful behavior configuration. See Ungraceful Capacity below.
-  PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig({
+  const PlanWorkflowStepParallelConfigStepEcsCapacityIncreaseConfig({
     required this.capacityMonitoringApproach,
     this.services,
     this.targetPercent,

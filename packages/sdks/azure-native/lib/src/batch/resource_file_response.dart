@@ -28,7 +28,7 @@ class ResourceFileResponse {
   /// [httpUrl] The autoStorageContainerName, storageContainerUrl and httpUrl properties are mutually exclusive and one of them must be specified. If the URL points to Azure Blob Storage, it must be readable from compute nodes. There are three ways to get such a URL for a blob in Azure storage: include a Shared Access Signature (SAS) granting read permissions on the blob, use a managed identity with read permission, or set the ACL for the blob or its container to allow public access.
   /// [identityReference] The reference to a user assigned identity associated with the Batch pool which a compute node will use.
   /// [storageContainerUrl] The autoStorageContainerName, storageContainerUrl and httpUrl properties are mutually exclusive and one of them must be specified. This URL must be readable and listable from compute nodes. There are three ways to get such a URL for a container in Azure storage: include a Shared Access Signature (SAS) granting read and list permissions on the container, use a managed identity with read and list permissions, or set the ACL for the container to allow public access.
-  ResourceFileResponse({
+  const ResourceFileResponse({
     this.autoStorageContainerName,
     this.blobPrefix,
     this.fileMode,

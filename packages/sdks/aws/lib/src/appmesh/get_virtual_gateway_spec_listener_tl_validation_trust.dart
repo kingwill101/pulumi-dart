@@ -11,7 +11,7 @@ class GetVirtualGatewaySpecListenerTlValidationTrust {
   /// Creates a new [GetVirtualGatewaySpecListenerTlValidationTrust].
   /// [files] Required.
   /// [sds] Required.
-  GetVirtualGatewaySpecListenerTlValidationTrust({
+  const GetVirtualGatewaySpecListenerTlValidationTrust({
     required this.files,
     required this.sds,
   });

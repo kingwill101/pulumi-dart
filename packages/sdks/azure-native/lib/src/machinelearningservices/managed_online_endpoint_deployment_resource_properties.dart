@@ -16,7 +16,7 @@ class ManagedOnlineEndpointDeploymentResourceProperties {
   /// [failureReason] The failure reason if the creation failed.
   /// [model] Optional.
   /// [type] Kind of the deployment.
-  ManagedOnlineEndpointDeploymentResourceProperties({
+  const ManagedOnlineEndpointDeploymentResourceProperties({
     this.endpointComputeType,
     this.failureReason,
     this.model,

@@ -24,7 +24,7 @@ class HyperVReplicaAzureManagedDiskDetailsResponse {
   /// [sectorSizeInBytes] The logical sector size (in bytes), 512 by default.
   /// [seedManagedDiskId] Seed managed disk Id.
   /// [targetDiskAccountType] The disk type.
-  HyperVReplicaAzureManagedDiskDetailsResponse({
+  const HyperVReplicaAzureManagedDiskDetailsResponse({
     this.diskEncryptionSetId,
     this.diskId,
     this.replicaDiskType,

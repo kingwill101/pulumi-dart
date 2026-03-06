@@ -26,7 +26,7 @@ class EcsDeploymentSetState {
   /// [granularity] Field `granularity` has been deprecated from provider version 1.243.0.
   /// [onUnableToRedeployFailedInstance] The emergency solution to use in the situation where instances in the deployment set cannot be evenly distributed to different zones due to resource insufficiency after the instances failover. Valid values:
   /// [strategy] The deployment strategy. Default value: `Availability`. Valid values: `Availability`, `AvailabilityGroup`, `LowLatency`.
-  EcsDeploymentSetState({
+  const EcsDeploymentSetState({
     this.deploymentSetName,
     this.description,
     this.domain,

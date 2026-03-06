@@ -12,7 +12,7 @@ class UserOwnedAmlWorkspaceResponse {
   /// Creates a new [UserOwnedAmlWorkspaceResponse].
   /// [identityClientId] Identity Client id of a AML workspace resource.
   /// [resourceId] Full resource id of a AML workspace resource.
-  UserOwnedAmlWorkspaceResponse({
+  const UserOwnedAmlWorkspaceResponse({
     this.identityClientId,
     this.resourceId,
   });

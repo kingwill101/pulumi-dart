@@ -20,7 +20,7 @@ class GetPolicyTagResult {
   /// [displayName] User-defined name of this policy tag. The name can't start or end with spaces and must be unique within the parent taxonomy, contain only Unicode letters, numbers, underscores, dashes and spaces, and be at most 200 bytes long when encoded in UTF-8.
   /// [name] Resource name of this policy tag in the URL format. The policy tag manager generates unique taxonomy IDs and policy tag IDs.
   /// [parentPolicyTag] Resource name of this policy tag's parent policy tag. If empty, this is a top level tag. If not set, defaults to an empty string. For example, for the "LatLong" policy tag in the example above, this field contains the resource name of the "Geolocation" policy tag, and, for "Geolocation", this field is empty.
-  GetPolicyTagResult({
+  const GetPolicyTagResult({
     required this.childPolicyTags,
     required this.description,
     required this.displayName,

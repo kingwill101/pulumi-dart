@@ -36,7 +36,7 @@ class GetNetworkPolicyResult {
   /// [updateTime] Last update time of this resource.
   /// [vmwareEngineNetwork] Optional. The relative resource name of the VMware Engine network. Specify the name in the following form: `projects/{project}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}` where `{project}` can either be a project number or a project ID.
   /// [vmwareEngineNetworkCanonical] The canonical name of the VMware Engine network in the form: `projects/{project_number}/locations/{location}/vmwareEngineNetworks/{vmware_engine_network_id}`
-  GetNetworkPolicyResult({
+  const GetNetworkPolicyResult({
     required this.createTime,
     required this.description,
     required this.edgeServicesCidr,

@@ -35,7 +35,7 @@ class ConnectToSourceSqlServerTaskPropertiesResponse {
   /// [state] The state of the task. This is ignored if submitted.
   /// [taskId] Task id
   /// [taskType] Task type.
-  ConnectToSourceSqlServerTaskPropertiesResponse({
+  const ConnectToSourceSqlServerTaskPropertiesResponse({
     this.clientData,
     required this.commands,
     required this.errors,

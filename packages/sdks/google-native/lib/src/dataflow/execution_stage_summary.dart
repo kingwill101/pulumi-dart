@@ -34,7 +34,7 @@ class ExecutionStageSummary {
   /// [name] Dataflow service generated name for this stage.
   /// [outputSource] Output sources for this stage.
   /// [prerequisiteStage] Other stages that must complete before this stage can run.
-  ExecutionStageSummary({
+  const ExecutionStageSummary({
     this.componentSource,
     this.componentTransform,
     this.id,

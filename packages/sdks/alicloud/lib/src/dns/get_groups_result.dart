@@ -23,7 +23,7 @@ class GetGroupsResult {
   /// [nameRegex] Optional.
   /// [names] A list of group names.
   /// [outputFile] Optional.
-  GetGroupsResult({
+  const GetGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

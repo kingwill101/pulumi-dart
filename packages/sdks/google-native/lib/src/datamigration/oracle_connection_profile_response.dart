@@ -39,7 +39,7 @@ class OracleConnectionProfileResponse {
   /// [ssl] SSL configuration for the connection to the source Oracle database. * Only `SERVER_ONLY` configuration is supported for Oracle SSL. * SSL is supported for Oracle versions 12 and above.
   /// [staticServiceIpConnectivity] Static Service IP connectivity.
   /// [username] The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
-  OracleConnectionProfileResponse({
+  const OracleConnectionProfileResponse({
     required this.databaseService,
     required this.forwardSshConnectivity,
     required this.host,

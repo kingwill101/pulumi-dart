@@ -54,7 +54,7 @@ class X12ProtocolSettingsResponse {
   /// [validationOverrides] The X12 validation override settings.
   /// [validationSettings] The X12 validation settings.
   /// [x12DelimiterOverrides] The X12 delimiter override settings.
-  X12ProtocolSettingsResponse({
+  const X12ProtocolSettingsResponse({
     required this.acknowledgementSettings,
     this.envelopeOverrides,
     required this.envelopeSettings,

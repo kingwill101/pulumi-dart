@@ -18,7 +18,7 @@ class RecordGeoproximityRoutingPolicy {
   /// [bias] Route more traffic or less traffic to the resource by specifying a value ranges between -90 to 90. See https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-geoproximity.html for bias details.
   /// [coordinates] Specify `latitude` and `longitude` for routing traffic to non-AWS resources.
   /// [localZoneGroup] A AWS local zone group where the resource is present. See https://docs.aws.amazon.com/local-zones/latest/ug/available-local-zones.html for local zone group list.
-  RecordGeoproximityRoutingPolicy({
+  const RecordGeoproximityRoutingPolicy({
     this.awsRegion,
     this.bias,
     this.coordinates,

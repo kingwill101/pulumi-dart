@@ -13,7 +13,7 @@ class AutonomousDatabaseLongTermBackupSchedule {
   /// [repeatCadence] Required.
   /// [retentionPeriodInDays] Required.
   /// [timeOfBackup] Required.
-  AutonomousDatabaseLongTermBackupSchedule({
+  const AutonomousDatabaseLongTermBackupSchedule({
     required this.enabled,
     required this.repeatCadence,
     required this.retentionPeriodInDays,

@@ -11,7 +11,7 @@ class SoftwareUpdateConfigurationTargetNonAzureQuery {
   /// Creates a new [SoftwareUpdateConfigurationTargetNonAzureQuery].
   /// [functionAlias] Specifies the Log Analytics save search name.
   /// [workspaceId] The workspace id for Log Analytics in which the saved search in.
-  SoftwareUpdateConfigurationTargetNonAzureQuery({
+  const SoftwareUpdateConfigurationTargetNonAzureQuery({
     this.functionAlias,
     this.workspaceId,
   });

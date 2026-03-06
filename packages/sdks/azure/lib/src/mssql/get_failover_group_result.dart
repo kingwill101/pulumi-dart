@@ -30,7 +30,7 @@ class GetFailoverGroupResult {
   /// [readonlyEndpointFailoverPolicyEnabled] Whether failover is enabled for the readonly endpoint.
   /// [serverId] Required.
   /// [tags] A mapping of tags which are assigned to the resource.
-  GetFailoverGroupResult({
+  const GetFailoverGroupResult({
     required this.databases,
     required this.id,
     required this.name,

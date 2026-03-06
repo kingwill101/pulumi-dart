@@ -56,7 +56,7 @@ class GetSpokeResult {
   /// [state] The current lifecycle state of this spoke.
   /// [uniqueId] The Google-generated UUID for the spoke. This value is unique across all spoke resources. If a spoke is deleted and another with the same name is created, the new spoke is assigned a different `unique_id`.
   /// [updateTime] The time the spoke was last updated.
-  GetSpokeResult({
+  const GetSpokeResult({
     required this.createTime,
     required this.description,
     required this.group,

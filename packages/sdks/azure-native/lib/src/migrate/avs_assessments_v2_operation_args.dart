@@ -22,7 +22,7 @@ class AvsAssessmentsV2OperationArgs {
   /// [projectName] Assessment Project Name
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AvsAssessmentsV2OperationArgs({
+  const AvsAssessmentsV2OperationArgs({
     this.assessmentName,
     required this.projectName,
     this.properties,

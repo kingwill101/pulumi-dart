@@ -17,7 +17,7 @@ class DbInstancePlanPlanConfigScaleOut {
   /// [planCronTime] The Cron Time of the plan.
   /// [planTaskStatus] (Available since v1.231.0) The status of the plan task.
   /// [segmentNodeNum] The segment Node Num of the Plan.
-  DbInstancePlanPlanConfigScaleOut({
+  const DbInstancePlanPlanConfigScaleOut({
     this.executeTime,
     this.planCronTime,
     this.planTaskStatus,

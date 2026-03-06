@@ -12,7 +12,7 @@ class SchedulerSku {
   /// Creates a new [SchedulerSku].
   /// [capacity] The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
   /// [name] The name of the SKU
-  SchedulerSku({
+  const SchedulerSku({
     this.capacity,
     required this.name,
   });

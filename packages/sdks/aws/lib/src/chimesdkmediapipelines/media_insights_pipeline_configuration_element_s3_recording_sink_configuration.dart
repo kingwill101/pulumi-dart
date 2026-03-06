@@ -8,7 +8,7 @@ class MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration {
 
   /// Creates a new [MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration].
   /// [destination] S3 URI to deliver recordings.
-  MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration({
+  const MediaInsightsPipelineConfigurationElementS3RecordingSinkConfiguration({
     this.destination,
   });
 

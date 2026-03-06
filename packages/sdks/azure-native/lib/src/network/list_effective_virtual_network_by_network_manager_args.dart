@@ -24,7 +24,7 @@ class ListEffectiveVirtualNetworkByNetworkManagerArgs {
   /// [resourceGroupName] The name of the resource group.
   /// [skipToken] Continuation token for pagination, capturing the next page size and offset, as well as the context of the query.
   /// [top] An optional query parameter which specifies the maximum number of records to be returned by the server.
-  ListEffectiveVirtualNetworkByNetworkManagerArgs({
+  const ListEffectiveVirtualNetworkByNetworkManagerArgs({
     this.conditionalMembers,
     required this.networkManagerName,
     required this.resourceGroupName,

@@ -15,7 +15,7 @@ class GetAccountArgs {
   /// Creates a new [GetAccountArgs].
   /// [name] The name of the Batch account.
   /// [resourceGroupName] The Name of the Resource Group where this Batch account exists.
-  GetAccountArgs({
+  const GetAccountArgs({
     required this.name,
     required this.resourceGroupName,
   });

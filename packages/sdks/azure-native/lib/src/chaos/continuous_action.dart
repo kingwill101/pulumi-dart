@@ -23,7 +23,7 @@ class ContinuousAction {
   /// [parameters] List of key value pairs.
   /// [selectorId] String that represents a selector.
   /// [type] Enum that discriminates between action models.
-  ContinuousAction({
+  const ContinuousAction({
     required this.duration,
     required this.name,
     required this.parameters,

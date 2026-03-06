@@ -14,7 +14,7 @@ class RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig {
   /// [enableIntegrityMonitoring] (Optional)
   /// [enableSecureBoot] (Optional)
   /// [enableVtpm] (Optional)
-  RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig({
+  const RestoreWorkloadComputeInstanceRestorePropertiesShieldedInstanceConfig({
     this.enableIntegrityMonitoring,
     this.enableSecureBoot,
     this.enableVtpm,

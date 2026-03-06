@@ -15,7 +15,7 @@ class GetDomainAutoTuneOption {
   /// [desiredState] The Auto-Tune desired state for the domain.
   /// [maintenanceSchedules] A list of the nested configurations for the Auto-Tune maintenance windows of the domain.
   /// [rollbackOnDisable] Whether the domain is set to roll back to default Auto-Tune settings when disabling Auto-Tune.
-  GetDomainAutoTuneOption({
+  const GetDomainAutoTuneOption({
     required this.desiredState,
     required this.maintenanceSchedules,
     required this.rollbackOnDisable,

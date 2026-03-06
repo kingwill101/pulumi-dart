@@ -13,7 +13,7 @@ class JMS {
   /// Creates a new [JMS].
   /// [name] Optional. Name of the JMS source. i.e. queueName or topicName
   /// [type] Optional. Type of the JMS Source. i.e. Queue or Topic
-  JMS({
+  const JMS({
     this.name,
     this.type,
   });

@@ -14,7 +14,7 @@ class ProjectEnvironmentEnvironmentVariable {
   /// [name] Environment variable's name or key.
   /// [type] Type of environment variable. Valid values: `PARAMETER_STORE`, `PLAINTEXT`, `SECRETS_MANAGER`.
   /// [value] Environment variable's value.
-  ProjectEnvironmentEnvironmentVariable({
+  const ProjectEnvironmentEnvironmentVariable({
     required this.name,
     this.type,
     required this.value,

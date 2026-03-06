@@ -47,7 +47,7 @@ class GetDomainClusterConfig {
   /// [warmType] Instance type for the OpenSearch cluster's warm nodes.
   /// [zoneAwarenessConfigs] Configuration block containing zone awareness settings.
   /// [zoneAwarenessEnabled] Indicates whether zone awareness is enabled.
-  GetDomainClusterConfig({
+  const GetDomainClusterConfig({
     required this.coldStorageOptions,
     required this.dedicatedMasterCount,
     required this.dedicatedMasterEnabled,

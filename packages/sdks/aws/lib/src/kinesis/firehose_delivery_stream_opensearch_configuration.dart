@@ -55,7 +55,7 @@ class FirehoseDeliveryStreamOpensearchConfiguration {
   /// [s3Configuration] The S3 Configuration. See `s3_configuration` block below for details.
   /// [typeName] The Elasticsearch type name with maximum length of 100 characters. Types are deprecated in OpenSearch_1.1. TypeName must be empty.
   /// [vpcConfig] The VPC configuration for the delivery stream to connect to OpenSearch associated with the VPC. See `vpc_config` block below for details.
-  FirehoseDeliveryStreamOpensearchConfiguration({
+  const FirehoseDeliveryStreamOpensearchConfiguration({
     this.bufferingInterval,
     this.bufferingSize,
     this.cloudwatchLoggingOptions,

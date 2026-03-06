@@ -22,7 +22,7 @@ class VmSkuPropertiesResponse {
   /// [resourceType] The type of resource the SKU applies to.
   /// [size] The size of the VM SKU
   /// [tier] The tier of the VM SKU
-  VmSkuPropertiesResponse({
+  const VmSkuPropertiesResponse({
     required this.capabilities,
     required this.name,
     required this.resourceType,

@@ -11,7 +11,7 @@ class CapacityProviderCapacityProviderScalingConfigScalingPolicy {
   /// Creates a new [CapacityProviderCapacityProviderScalingConfigScalingPolicy].
   /// [predefinedMetricType] The predefined metric type for the scaling policy. Valid values are `"LambdaCapacityProviderAverageCPUUtilization"`.
   /// [targetValue] The target value for the scaling policy.
-  CapacityProviderCapacityProviderScalingConfigScalingPolicy({
+  const CapacityProviderCapacityProviderScalingConfigScalingPolicy({
     required this.predefinedMetricType,
     required this.targetValue,
   });

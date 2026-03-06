@@ -13,7 +13,7 @@ class LiftrBaseMarketplaceDetails {
   /// Creates a new [LiftrBaseMarketplaceDetails].
   /// [offerDetails] Offer details for the marketplace that is selected by the user
   /// [subscriptionId] Azure subscription id for the the marketplace offer is purchased from
-  LiftrBaseMarketplaceDetails({
+  const LiftrBaseMarketplaceDetails({
     required this.offerDetails,
     this.subscriptionId,
   });

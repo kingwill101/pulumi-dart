@@ -9,7 +9,7 @@ class NotebookInstanceStatusEnumValue {
 
   /// Creates a new [NotebookInstanceStatusEnumValue].
   /// [value] Property value
-  NotebookInstanceStatusEnumValue({
+  const NotebookInstanceStatusEnumValue({
     this.value,
   });
 

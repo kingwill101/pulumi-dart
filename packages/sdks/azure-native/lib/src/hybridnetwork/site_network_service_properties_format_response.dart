@@ -45,7 +45,7 @@ class SiteNetworkServicePropertiesFormatResponse {
   /// [publisherName] The publisher name for the site network service.
   /// [publisherScope] The scope of the publisher.
   /// [siteReference] The site details
-  SiteNetworkServicePropertiesFormatResponse({
+  const SiteNetworkServicePropertiesFormatResponse({
     this.desiredStateConfigurationGroupValueReferences,
     required this.lastStateConfigurationGroupValueReferences,
     required this.lastStateNetworkServiceDesignVersionName,

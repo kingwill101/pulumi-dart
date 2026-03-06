@@ -8,7 +8,7 @@ class DomainFeaturesKvmDirtyRing {
 
   /// Creates a new [DomainFeaturesKvmDirtyRing].
   /// [size] Sets the size of the dirty ring buffer for KVM, which affects the efficiency of memory updates.
-  DomainFeaturesKvmDirtyRing({
+  const DomainFeaturesKvmDirtyRing({
     this.size,
   });
 

@@ -26,7 +26,7 @@ class TransitRouterCidrState {
   /// [transitRouterCidrId] The ID of the CIDR block.
   /// [transitRouterCidrName] The new name of the transit router CIDR block.
   /// [transitRouterId] The ID of the transit router.
-  TransitRouterCidrState({
+  const TransitRouterCidrState({
     this.cidr,
     this.description,
     this.publishCidrRoute,

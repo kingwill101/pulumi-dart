@@ -18,7 +18,7 @@ class UptimeCheckConfigHttpCheckAuthInfo {
   /// [passwordWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [passwordWoVersion] The password write-only version.
   /// [username] The username to authenticate.
-  UptimeCheckConfigHttpCheckAuthInfo({
+  const UptimeCheckConfigHttpCheckAuthInfo({
     this.password,
     this.passwordWo,
     this.passwordWoVersion,

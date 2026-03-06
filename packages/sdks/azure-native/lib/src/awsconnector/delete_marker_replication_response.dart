@@ -9,7 +9,7 @@ class DeleteMarkerReplicationResponse {
 
   /// Creates a new [DeleteMarkerReplicationResponse].
   /// [status] Indicates whether to replicate delete markers. Disabled by default.
-  DeleteMarkerReplicationResponse({
+  const DeleteMarkerReplicationResponse({
     this.status,
   });
 

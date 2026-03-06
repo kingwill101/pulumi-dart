@@ -12,7 +12,7 @@ class NodeConfig {
   /// Creates a new [NodeConfig].
   /// [cpuCount] Number of cpus per Memcached node.
   /// [memorySizeMb] Memory size in MiB for each Memcached node.
-  NodeConfig({
+  const NodeConfig({
     required this.cpuCount,
     required this.memorySizeMb,
   });

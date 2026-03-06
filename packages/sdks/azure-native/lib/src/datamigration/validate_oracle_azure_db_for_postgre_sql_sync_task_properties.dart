@@ -17,7 +17,7 @@ class ValidateOracleAzureDbForPostgreSqlSyncTaskProperties {
   /// [clientData] Key value pairs of client data to attach meta data information to task
   /// [input] Input for the task that migrates Oracle databases to Azure Database for PostgreSQL for online migrations
   /// [taskType] Task type.
-  ValidateOracleAzureDbForPostgreSqlSyncTaskProperties({
+  const ValidateOracleAzureDbForPostgreSqlSyncTaskProperties({
     this.clientData,
     this.input,
     required this.taskType,

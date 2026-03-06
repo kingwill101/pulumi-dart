@@ -32,7 +32,7 @@ class ExportPipelineArgs {
   /// [registryName] The name of the container registry.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [target] The target properties of the export pipeline.
-  ExportPipelineArgs({
+  const ExportPipelineArgs({
     this.exportPipelineName,
     this.identity,
     this.location,

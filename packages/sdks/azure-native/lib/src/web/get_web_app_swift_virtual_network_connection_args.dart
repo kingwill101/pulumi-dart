@@ -15,7 +15,7 @@ class GetWebAppSwiftVirtualNetworkConnectionArgs {
   /// Creates a new [GetWebAppSwiftVirtualNetworkConnectionArgs].
   /// [name] Name of the app.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetWebAppSwiftVirtualNetworkConnectionArgs({
+  const GetWebAppSwiftVirtualNetworkConnectionArgs({
     required this.name,
     required this.resourceGroupName,
   });

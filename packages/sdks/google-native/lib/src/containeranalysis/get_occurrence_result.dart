@@ -74,7 +74,7 @@ class GetOccurrenceResult {
   /// [updateTime] The time this occurrence was last updated.
   /// [upgrade] Describes an available package upgrade on the linked resource.
   /// [vulnerability] Describes a security vulnerability.
-  GetOccurrenceResult({
+  const GetOccurrenceResult({
     required this.attestation,
     required this.build,
     required this.compliance,

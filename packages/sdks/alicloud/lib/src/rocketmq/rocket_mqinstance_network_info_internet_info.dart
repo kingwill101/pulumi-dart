@@ -21,7 +21,7 @@ class RocketMQInstanceNetworkInfoInternetInfo {
   /// [flowOutType] Public network billing type.  Parameter values are as follows:
   /// [internetSpec] Whether to enable public network access.  The parameter values are as follows:
   /// [ipWhitelists] Field `ip_whitelist` has been deprecated from provider version 1.245.0. New field `ip_whitelists` instead.
-  RocketMQInstanceNetworkInfoInternetInfo({
+  const RocketMQInstanceNetworkInfoInternetInfo({
     this.flowOutBandwidth,
     required this.flowOutType,
     required this.internetSpec,

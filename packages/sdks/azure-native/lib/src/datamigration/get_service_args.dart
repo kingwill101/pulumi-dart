@@ -15,7 +15,7 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [groupName] Name of the resource group
   /// [serviceName] Name of the service
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.groupName,
     required this.serviceName,
   });

@@ -30,7 +30,7 @@ class GetManagedDatabaseResult {
   /// [pointInTimeRestores] A `point_in_time_restore` block as defined below.
   /// [resourceGroupName] The name of the Resource Group where the Azure SQL Azure Managed Instance exists.
   /// [shortTermRetentionDays] The backup retention period in days. This is how many days Point-in-Time Restore will be supported.
-  GetManagedDatabaseResult({
+  const GetManagedDatabaseResult({
     required this.id,
     required this.longTermRetentionPolicies,
     required this.managedInstanceId,

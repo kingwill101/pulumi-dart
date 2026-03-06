@@ -28,7 +28,7 @@ class RackDefinitionResponse {
   /// [rackSerialNumber] The unique identifier for the rack within Network Cloud cluster. An alternate unique alphanumeric value other than a serial number may be provided if desired.
   /// [rackSkuId] The resource ID of the sku for the rack being added.
   /// [storageApplianceConfigurationData] The list of storage appliance configuration data for this rack.
-  RackDefinitionResponse({
+  const RackDefinitionResponse({
     this.availabilityZone,
     this.bareMetalMachineConfigurationData,
     required this.networkRackId,

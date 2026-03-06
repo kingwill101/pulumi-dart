@@ -11,7 +11,7 @@ class DirectoryConfigCertificateBasedAuthProperties {
   /// Creates a new [DirectoryConfigCertificateBasedAuthProperties].
   /// [certificateAuthorityArn] The ARN of the AWS Certificate Manager Private CA resource.
   /// [status] The status of the certificate-based authentication properties. Valid values - ["DISABLED", "ENABLED", "ENABLED_NO_DIRECTORY_LOGIN_FALLBACK"].
-  DirectoryConfigCertificateBasedAuthProperties({
+  const DirectoryConfigCertificateBasedAuthProperties({
     this.certificateAuthorityArn,
     this.status,
   });

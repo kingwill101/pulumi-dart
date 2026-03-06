@@ -37,7 +37,7 @@ class EntityProperties {
   /// [kind] Entity kind
   /// [signals] Signal groups which are assigned to this entity
   /// [tags] Optional set of labels (key-value pairs)
-  EntityProperties({
+  const EntityProperties({
     this.alerts,
     this.canvasPosition,
     this.displayName,

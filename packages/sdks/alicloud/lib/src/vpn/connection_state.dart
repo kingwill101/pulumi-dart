@@ -78,7 +78,7 @@ class ConnectionState {
   /// [tunnelOptionsSpecifications] The tunnel options of IPsec. See `tunnel_options_specification` below.
   /// [vpnConnectionName] The name of the IPsec-VPN connection.
   /// [vpnGatewayId] The ID of the VPN gateway.
-  ConnectionState({
+  const ConnectionState({
     this.autoConfigRoute,
     this.bgpConfig,
     this.createTime,

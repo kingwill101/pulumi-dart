@@ -11,7 +11,7 @@ class GetGenaiIndexingJobArgs {
 
   /// Creates a new [GetGenaiIndexingJobArgs].
   /// [uuid] Required.
-  GetGenaiIndexingJobArgs({
+  const GetGenaiIndexingJobArgs({
     required this.uuid,
   });
 

@@ -41,7 +41,7 @@ class ScheduleAiplatformV1beta1Args {
   /// [name] Immutable. The resource name of the Schedule.
   /// [project] Optional.
   /// [startTime] Optional. Timestamp after which the first run can be scheduled. Default to Schedule create time if not specified.
-  ScheduleAiplatformV1beta1Args({
+  const ScheduleAiplatformV1beta1Args({
     this.allowQueueing,
     this.createPipelineJobRequest,
     this.cron,

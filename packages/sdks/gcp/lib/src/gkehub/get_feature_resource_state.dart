@@ -11,7 +11,7 @@ class GetFeatureResourceState {
   /// Creates a new [GetFeatureResourceState].
   /// [hasResources] Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
   /// [state] The current state of the Feature resource in the Hub API.
-  GetFeatureResourceState({
+  const GetFeatureResourceState({
     required this.hasResources,
     required this.state,
   });

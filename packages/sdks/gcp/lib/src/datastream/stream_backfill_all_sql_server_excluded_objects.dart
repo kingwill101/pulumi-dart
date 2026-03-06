@@ -10,7 +10,7 @@ class StreamBackfillAllSqlServerExcludedObjects {
 
   /// Creates a new [StreamBackfillAllSqlServerExcludedObjects].
   /// [schemas] SQL Server schemas/databases in the database server
-  StreamBackfillAllSqlServerExcludedObjects({
+  const StreamBackfillAllSqlServerExcludedObjects({
     required this.schemas,
   });
 

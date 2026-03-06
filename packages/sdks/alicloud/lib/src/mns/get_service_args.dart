@@ -14,7 +14,7 @@ class GetServiceArgs {
 
   /// Creates a new [GetServiceArgs].
   /// [enable] Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
-  GetServiceArgs({
+  const GetServiceArgs({
     this.enable,
   });
 

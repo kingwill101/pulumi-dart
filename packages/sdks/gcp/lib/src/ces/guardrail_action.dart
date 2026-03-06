@@ -20,7 +20,7 @@ class GuardrailAction {
   /// [generativeAnswer] The agent will immediately respond with a generative answer.
   /// [respondImmediately] The agent will immediately respond with a preconfigured response.
   /// [transferAgent] The agent will transfer the conversation to a different agent.
-  GuardrailAction({
+  const GuardrailAction({
     this.generativeAnswer,
     this.respondImmediately,
     this.transferAgent,

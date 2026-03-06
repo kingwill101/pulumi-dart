@@ -17,7 +17,7 @@ class ReplayPolicysimulatorV1alphaArgs {
   /// [config] The configuration used for the `Replay`.
   /// [location] Optional.
   /// [project] Optional.
-  ReplayPolicysimulatorV1alphaArgs({
+  const ReplayPolicysimulatorV1alphaArgs({
     required this.config,
     this.location,
     this.project,

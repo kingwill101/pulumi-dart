@@ -10,7 +10,7 @@ class ManagedEnvironmentResponsePeerTrafficConfiguration {
 
   /// Creates a new [ManagedEnvironmentResponsePeerTrafficConfiguration].
   /// [encryption] Peer traffic encryption settings for the Managed Environment
-  ManagedEnvironmentResponsePeerTrafficConfiguration({
+  const ManagedEnvironmentResponsePeerTrafficConfiguration({
     this.encryption,
   });
 

@@ -8,7 +8,7 @@ class GetAppConnectorPrincipalInfoServiceAccount {
 
   /// Creates a new [GetAppConnectorPrincipalInfoServiceAccount].
   /// [email] Email address of the service account.
-  GetAppConnectorPrincipalInfoServiceAccount({
+  const GetAppConnectorPrincipalInfoServiceAccount({
     required this.email,
   });
 

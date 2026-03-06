@@ -13,7 +13,7 @@ class CustomForecastHorizonResponse {
   /// Creates a new [CustomForecastHorizonResponse].
   /// [mode] Enum to determine forecast horizon selection mode.
   /// [value] [Required] Forecast horizon value.
-  CustomForecastHorizonResponse({
+  const CustomForecastHorizonResponse({
     required this.mode,
     required this.value,
   });

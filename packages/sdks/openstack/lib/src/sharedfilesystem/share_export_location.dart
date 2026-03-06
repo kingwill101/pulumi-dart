@@ -9,7 +9,7 @@ class ShareExportLocation {
   /// Creates a new [ShareExportLocation].
   /// [path] Optional.
   /// [preferred] Optional.
-  ShareExportLocation({
+  const ShareExportLocation({
     this.path,
     this.preferred,
   });

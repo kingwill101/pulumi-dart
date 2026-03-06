@@ -23,7 +23,7 @@ class FrontdoorRoutingRuleRedirectConfiguration {
   /// [customQueryString] Replace any existing query string from the incoming request URL.
   /// [redirectProtocol] Protocol to use when redirecting. Valid options are `HttpOnly`, `HttpsOnly`, or `MatchRequest`.
   /// [redirectType] Status code for the redirect. Valida options are `Moved`, `Found`, `TemporaryRedirect`, `PermanentRedirect`.
-  FrontdoorRoutingRuleRedirectConfiguration({
+  const FrontdoorRoutingRuleRedirectConfiguration({
     this.customFragment,
     this.customHost,
     this.customPath,

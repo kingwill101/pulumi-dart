@@ -15,7 +15,7 @@ class TermCommitmentInformationResponse {
   /// [pendingDaysForTerm] Number of Days Pending for Term Commitment
   /// [termCommitmentType] Term Commitment Type
   /// [termCommitmentTypeDuration] Term Commitment Duration. Currently Supporting P365D, P1095D
-  TermCommitmentInformationResponse({
+  const TermCommitmentInformationResponse({
     required this.pendingDaysForTerm,
     required this.termCommitmentType,
     required this.termCommitmentTypeDuration,

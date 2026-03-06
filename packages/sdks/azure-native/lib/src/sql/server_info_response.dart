@@ -9,7 +9,7 @@ class ServerInfoResponse {
 
   /// Creates a new [ServerInfoResponse].
   /// [serverId] Server Id.
-  ServerInfoResponse({
+  const ServerInfoResponse({
     required this.serverId,
   });
 

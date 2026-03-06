@@ -36,7 +36,7 @@ class GoogleCloudBillingBudgetsV1beta1Filter {
   /// [resourceAncestors] Optional. A set of folder and organization names of the form `folders/{folderId}` or `organizations/{organizationId}`, specifying that usage from only this set of folders and organizations should be included in the budget. If omitted, the budget includes all usage that the billing account pays for. If the folder or organization contains projects that are paid for by a different Cloud Billing account, the budget *doesn't* apply to those projects.
   /// [services] Optional. A set of services of the form `services/{service_id}`, specifying that usage from only this set of services should be included in the budget. If omitted, the report will include usage for all the services. The service names are available through the Catalog API: https://cloud.google.com/billing/v1/how-tos/catalog-api.
   /// [subaccounts] Optional. A set of subaccounts of the form `billingAccounts/{account_id}`, specifying that usage from only this set of subaccounts should be included in the budget. If a subaccount is set to the name of the parent account, usage from the parent account will be included. If omitted, the report will include usage from the parent account and all subaccounts, if they exist.
-  GoogleCloudBillingBudgetsV1beta1Filter({
+  const GoogleCloudBillingBudgetsV1beta1Filter({
     this.calendarPeriod,
     this.creditTypes,
     this.creditTypesTreatment,

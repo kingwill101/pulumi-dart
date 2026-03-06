@@ -12,7 +12,7 @@ class SecurityActionFlag {
 
   /// Creates a new [SecurityActionFlag].
   /// [headers] A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction.
-  SecurityActionFlag({
+  const SecurityActionFlag({
     this.headers,
   });
 

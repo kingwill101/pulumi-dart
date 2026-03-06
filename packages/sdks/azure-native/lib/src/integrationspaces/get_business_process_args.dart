@@ -21,7 +21,7 @@ class GetBusinessProcessArgs {
   /// [businessProcessName] The name of the business process
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [spaceName] The name of the space
-  GetBusinessProcessArgs({
+  const GetBusinessProcessArgs({
     required this.applicationName,
     required this.businessProcessName,
     required this.resourceGroupName,

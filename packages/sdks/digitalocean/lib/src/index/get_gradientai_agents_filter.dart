@@ -13,7 +13,7 @@ class GetGradientaiAgentsFilter {
   /// [key] Required.
   /// [matchBy] Optional.
   /// [values] Required.
-  GetGradientaiAgentsFilter({
+  const GetGradientaiAgentsFilter({
     this.all,
     required this.key,
     this.matchBy,

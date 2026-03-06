@@ -34,7 +34,7 @@ class NetworkInterfaceProperties {
   /// [sshAuthority] The SshAuthority property is a server DNS host name or IP address followed by the service port number for SSH.
   /// [subnetId] The resource ID of the sub net.
   /// [virtualNetworkId] The resource ID of the virtual network.
-  NetworkInterfaceProperties({
+  const NetworkInterfaceProperties({
     this.dnsName,
     this.privateIpAddress,
     this.publicIpAddress,

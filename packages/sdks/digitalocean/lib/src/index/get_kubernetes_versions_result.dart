@@ -16,7 +16,7 @@ class GetKubernetesVersionsResult {
   /// [latestVersion] The most recent version available.
   /// [validVersions] A list of available versions.
   /// [versionPrefix] Optional.
-  GetKubernetesVersionsResult({
+  const GetKubernetesVersionsResult({
     required this.id,
     required this.latestVersion,
     required this.validVersions,

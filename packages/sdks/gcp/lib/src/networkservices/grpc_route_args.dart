@@ -41,7 +41,7 @@ class GrpcRouteArgs {
   /// [name] Name of the GrpcRoute resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [rules] Rules that define how traffic is routed and handled.
-  GrpcRouteArgs({
+  const GrpcRouteArgs({
     this.description,
     this.gateways,
     required this.hostnames,

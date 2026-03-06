@@ -8,7 +8,7 @@ class AliasRoutingConfig {
 
   /// Creates a new [AliasRoutingConfig].
   /// [additionalVersionWeights] A map that defines the proportion of events that should be sent to different versions of a Function Compute service.
-  AliasRoutingConfig({
+  const AliasRoutingConfig({
     this.additionalVersionWeights,
   });
 

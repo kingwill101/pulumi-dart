@@ -36,7 +36,7 @@ class NetworkConnectionState {
   /// [resourceGroupName] Specifies the name of the Resource Group within which this Dev Center Network Connection should exist. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet that is used to attach Virtual Machines.
   /// [tags] A mapping of tags which should be assigned to the Dev Center Network Connection.
-  NetworkConnectionState({
+  const NetworkConnectionState({
     this.domainJoinType,
     this.domainName,
     this.domainPassword,

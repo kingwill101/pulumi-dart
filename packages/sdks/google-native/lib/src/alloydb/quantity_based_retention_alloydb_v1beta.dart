@@ -9,7 +9,7 @@ class QuantityBasedRetentionAlloydbV1beta {
 
   /// Creates a new [QuantityBasedRetentionAlloydbV1beta].
   /// [count] The number of backups to retain.
-  QuantityBasedRetentionAlloydbV1beta({
+  const QuantityBasedRetentionAlloydbV1beta({
     this.count,
   });
 

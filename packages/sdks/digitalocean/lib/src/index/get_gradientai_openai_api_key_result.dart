@@ -24,7 +24,7 @@ class GetGradientaiOpenaiApiKeyResult {
   /// [name] Required.
   /// [updatedAt] Required.
   /// [uuid] Required.
-  GetGradientaiOpenaiApiKeyResult({
+  const GetGradientaiOpenaiApiKeyResult({
     required this.createdAt,
     required this.createdBy,
     required this.deletedAt,

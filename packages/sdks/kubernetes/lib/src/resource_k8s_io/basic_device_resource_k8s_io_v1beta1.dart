@@ -80,7 +80,7 @@ class BasicDeviceResourceK8sIoV1beta1 {
   /// [nodeName] NodeName identifies the node where the device is available.
   /// [nodeSelector] NodeSelector defines the nodes where the device is available.
   /// [taints] If specified, these are the driver-defined taints.
-  BasicDeviceResourceK8sIoV1beta1({
+  const BasicDeviceResourceK8sIoV1beta1({
     this.allNodes,
     this.allowMultipleAllocations,
     this.attributes,

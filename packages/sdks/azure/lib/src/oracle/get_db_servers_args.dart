@@ -15,7 +15,7 @@ class GetDbServersArgs {
   /// Creates a new [GetDbServersArgs].
   /// [cloudExadataInfrastructureName] The name of the Cloud Exadata Infrastructure.
   /// [resourceGroupName] The name of the Resource Group where the DB Server exists.
-  GetDbServersArgs({
+  const GetDbServersArgs({
     required this.cloudExadataInfrastructureName,
     required this.resourceGroupName,
   });

@@ -15,7 +15,7 @@ class GetServiceArgs {
   /// Creates a new [GetServiceArgs].
   /// [name] Specify the name of the database migration service.
   /// [resourceGroupName] Specifies the Name of the Resource Group within which the database migration service exists
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.name,
     required this.resourceGroupName,
   });

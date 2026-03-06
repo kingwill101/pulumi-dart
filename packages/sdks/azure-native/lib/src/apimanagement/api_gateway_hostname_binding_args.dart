@@ -25,7 +25,7 @@ class ApiGatewayHostnameBindingArgs {
   /// [hostnameBindingName] Gateway hostname binding identifier. Must be unique in the scope of parent Gateway entity.
   /// [keyVault] The link to the API Management service workspace.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ApiGatewayHostnameBindingArgs({
+  const ApiGatewayHostnameBindingArgs({
     required this.gatewayName,
     required this.hostname,
     this.hostnameBindingName,

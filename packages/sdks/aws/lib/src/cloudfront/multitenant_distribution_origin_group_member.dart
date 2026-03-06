@@ -7,7 +7,7 @@ class MultitenantDistributionOriginGroupMember {
 
   /// Creates a new [MultitenantDistributionOriginGroupMember].
   /// [originId] Required.
-  MultitenantDistributionOriginGroupMember({
+  const MultitenantDistributionOriginGroupMember({
     required this.originId,
   });
 

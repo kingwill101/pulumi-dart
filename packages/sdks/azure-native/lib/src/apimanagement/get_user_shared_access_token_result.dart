@@ -8,7 +8,7 @@ class GetUserSharedAccessTokenResult {
 
   /// Creates a new [GetUserSharedAccessTokenResult].
   /// [value] Shared Access Authorization token for the User.
-  GetUserSharedAccessTokenResult({
+  const GetUserSharedAccessTokenResult({
     this.value,
   });
 

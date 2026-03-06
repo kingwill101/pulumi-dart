@@ -29,7 +29,7 @@ class EtlArgs {
   /// [displayName] The display name of the data processing task.
   /// [jobName] The job name. Naming rules are as follows:
   /// [project] Project name.
-  EtlArgs({
+  const EtlArgs({
     required this.configuration,
     this.description,
     required this.displayName,

@@ -8,7 +8,7 @@ class V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVa
 
   /// Creates a new [V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVariationCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVariationCustomPayload({
+  const V2modelsIntentClosingSettingConditionalDefaultBranchResponseMessageGroupVariationCustomPayload({
     required this.value,
   });
 

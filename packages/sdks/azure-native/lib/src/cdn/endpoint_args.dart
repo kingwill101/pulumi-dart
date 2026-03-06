@@ -80,7 +80,7 @@ class EndpointArgs {
   /// [tags] Resource tags.
   /// [urlSigningKeys] List of keys used to validate the signed URL hashes.
   /// [webApplicationFirewallPolicyLink] Defines the Web Application Firewall policy for the endpoint (if applicable)
-  EndpointArgs({
+  const EndpointArgs({
     this.contentTypesToCompress,
     this.defaultOriginGroup,
     this.deliveryPolicy,

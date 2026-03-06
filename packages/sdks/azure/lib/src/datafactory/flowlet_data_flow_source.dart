@@ -31,7 +31,7 @@ class FlowletDataFlowSource {
   /// [name] The name for the Data Flow Source.
   /// [rejectedLinkedService] A `rejected_linked_service` block as defined below.
   /// [schemaLinkedService] A `schema_linked_service` block as defined below.
-  FlowletDataFlowSource({
+  const FlowletDataFlowSource({
     this.dataset,
     this.description,
     this.flowlet,

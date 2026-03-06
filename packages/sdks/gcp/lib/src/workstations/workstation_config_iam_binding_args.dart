@@ -48,7 +48,7 @@ class WorkstationConfigIamBindingArgs {
   /// [role] The role that should be applied. Only one
   /// [workstationClusterId] The ID of the parent workstation cluster.
   /// [workstationConfigId] Used to find the parent resource to bind the IAM policy to
-  WorkstationConfigIamBindingArgs({
+  const WorkstationConfigIamBindingArgs({
     this.condition,
     this.location,
     required this.members,

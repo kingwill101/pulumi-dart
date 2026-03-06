@@ -15,7 +15,7 @@ class SnapshotState {
   /// [description] Description of the snapshot.
   /// [labels] User-defined labels (key-value pairs) should be created with.
   /// [serverId] Server to the snapshot should be created from.
-  SnapshotState({
+  const SnapshotState({
     this.description,
     this.labels,
     this.serverId,

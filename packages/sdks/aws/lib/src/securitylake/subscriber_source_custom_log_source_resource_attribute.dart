@@ -14,7 +14,7 @@ class SubscriberSourceCustomLogSourceResourceAttribute {
   /// [crawlerArn] The ARN of the AWS Glue crawler.
   /// [databaseArn] The ARN of the AWS Glue database where results are written.
   /// [tableArn] The ARN of the AWS Glue table.
-  SubscriberSourceCustomLogSourceResourceAttribute({
+  const SubscriberSourceCustomLogSourceResourceAttribute({
     required this.crawlerArn,
     required this.databaseArn,
     required this.tableArn,

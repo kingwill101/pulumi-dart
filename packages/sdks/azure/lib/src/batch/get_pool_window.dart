@@ -8,7 +8,7 @@ class GetPoolWindow {
 
   /// Creates a new [GetPoolWindow].
   /// [enableAutomaticUpdates] Whether automatic updates are enabled on the virtual machine.
-  GetPoolWindow({
+  const GetPoolWindow({
     required this.enableAutomaticUpdates,
   });
 

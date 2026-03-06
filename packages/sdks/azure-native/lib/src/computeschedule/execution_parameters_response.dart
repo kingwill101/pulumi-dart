@@ -13,7 +13,7 @@ class ExecutionParametersResponse {
   /// Creates a new [ExecutionParametersResponse].
   /// [optimizationPreference] Details that could optimize the user's request
   /// [retryPolicy] Retry policy the user can pass
-  ExecutionParametersResponse({
+  const ExecutionParametersResponse({
     this.optimizationPreference,
     this.retryPolicy,
   });

@@ -14,7 +14,7 @@ class GetV3FunctionsFunctionInvocationRestriction {
   /// [disable] Whether invocation is disabled.
   /// [lastModifiedTime] Last time the function was Updated
   /// [reason] Disable Reason.
-  GetV3FunctionsFunctionInvocationRestriction({
+  const GetV3FunctionsFunctionInvocationRestriction({
     required this.disable,
     required this.lastModifiedTime,
     required this.reason,

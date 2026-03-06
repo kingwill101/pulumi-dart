@@ -52,7 +52,7 @@ class CmekConfigState {
   /// [setDefault] Set the following CmekConfig as the default to be used for child resources
   /// [singleRegionKeys] Single-regional CMEKs that are required for some VAIS features.
   /// [state] The state of the CmekConfig.
-  CmekConfigState({
+  const CmekConfigState({
     this.cmekConfigId,
     this.isDefault,
     this.kmsKey,

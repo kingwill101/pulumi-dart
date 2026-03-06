@@ -50,7 +50,7 @@ class GetWorkflowResult {
   /// [workflowOutboundIpAddresses] The list of outgoing IP addresses of workflow.
   /// [workflowSchema] The Schema used for this Logic App Workflow.
   /// [workflowVersion] The version of the Schema used for this Logic App Workflow. Defaults to `1.0.0.0`.
-  GetWorkflowResult({
+  const GetWorkflowResult({
     required this.accessEndpoint,
     required this.connectorEndpointIpAddresses,
     required this.connectorOutboundIpAddresses,

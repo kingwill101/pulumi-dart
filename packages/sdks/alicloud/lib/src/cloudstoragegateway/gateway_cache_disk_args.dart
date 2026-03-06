@@ -21,7 +21,7 @@ class GatewayCacheDiskArgs {
   /// [cacheDiskSizeInGb] The capacity of the cache disk.
   /// [gatewayId] The ID of the gateway.
   /// [performanceLevel] The performance level (PL) of the Enterprise SSD (ESSD). Valid values: `PL1`, `PL2`, `PL3`. **NOTE:** If `cache_disk_category` is set to `cloud_essd`, `performance_level` is required.
-  GatewayCacheDiskArgs({
+  const GatewayCacheDiskArgs({
     this.cacheDiskCategory,
     required this.cacheDiskSizeInGb,
     required this.gatewayId,

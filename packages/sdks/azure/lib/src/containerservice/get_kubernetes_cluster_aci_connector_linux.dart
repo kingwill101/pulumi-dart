@@ -8,7 +8,7 @@ class GetKubernetesClusterAciConnectorLinux {
 
   /// Creates a new [GetKubernetesClusterAciConnectorLinux].
   /// [subnetName] The subnet name for the virtual nodes to run.
-  GetKubernetesClusterAciConnectorLinux({
+  const GetKubernetesClusterAciConnectorLinux({
     required this.subnetName,
   });
 

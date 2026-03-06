@@ -11,7 +11,7 @@ class ServiceLevelObjectiveTimeWindowRolling {
   /// Creates a new [ServiceLevelObjectiveTimeWindowRolling].
   /// [count] Valid values are `1`, `7` and `28`.
   /// [unit] The only supported value is `DAY`.
-  ServiceLevelObjectiveTimeWindowRolling({
+  const ServiceLevelObjectiveTimeWindowRolling({
     required this.count,
     required this.unit,
   });

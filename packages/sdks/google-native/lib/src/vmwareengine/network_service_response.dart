@@ -12,7 +12,7 @@ class NetworkServiceResponse {
   /// Creates a new [NetworkServiceResponse].
   /// [enabled] True if the service is enabled; false otherwise.
   /// [state] State of the service. New values may be added to this enum when appropriate.
-  NetworkServiceResponse({
+  const NetworkServiceResponse({
     required this.enabled,
     required this.state,
   });

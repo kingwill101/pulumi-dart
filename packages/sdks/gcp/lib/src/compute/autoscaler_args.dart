@@ -38,7 +38,7 @@ class AutoscalerArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [target] URL of the managed instance group that this autoscaler will scale.
   /// [zone] URL of the zone where the instance group resides.
-  AutoscalerArgs({
+  const AutoscalerArgs({
     required this.autoscalingPolicy,
     this.description,
     this.name,

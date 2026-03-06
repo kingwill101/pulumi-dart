@@ -10,7 +10,7 @@ class PreventionDiscoveryConfigOtherCloudStartingLocation {
 
   /// Creates a new [PreventionDiscoveryConfigOtherCloudStartingLocation].
   /// [awsLocation] A nested object resource.
-  PreventionDiscoveryConfigOtherCloudStartingLocation({
+  const PreventionDiscoveryConfigOtherCloudStartingLocation({
     this.awsLocation,
   });
 

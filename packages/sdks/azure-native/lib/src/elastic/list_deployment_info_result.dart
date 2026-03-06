@@ -27,7 +27,7 @@ class ListDeploymentInfoResult {
   /// [memoryCapacity] RAM capacity of the elasticsearch in Elastic cloud deployment.
   /// [status] The Elastic deployment status.
   /// [version] Version of the elasticsearch in Elastic cloud deployment.
-  ListDeploymentInfoResult({
+  const ListDeploymentInfoResult({
     required this.deploymentUrl,
     required this.diskCapacity,
     required this.elasticsearchEndPoint,

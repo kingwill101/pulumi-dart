@@ -38,7 +38,7 @@ class ClientCredentialsResponse {
   /// [subscriptionId] Subscription ID.
   /// [tenantId] The ID of the tenant the service principal/app belongs to.
   /// [thumbprint] The thumbprint of the certificate above.
-  ClientCredentialsResponse({
+  const ClientCredentialsResponse({
     this.authorityUrl,
     this.certificate,
     this.clientId,

@@ -53,7 +53,7 @@ class NotificationChannelArgs {
   /// [sensitiveLabels] Different notification type behaviors are configured primarily using the the `labels` field on this
   /// [type] The type of the notification channel. This field matches the value of the NotificationChannelDescriptor.type field. See https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannelDescriptors/list to get the list of valid values such as "email", "slack", etc...
   /// [userLabels] User-supplied key/value data that does not need to conform to the corresponding NotificationChannelDescriptor's schema, unlike the labels field. This field is intended to be used for organizing and identifying the NotificationChannel objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
-  NotificationChannelArgs({
+  const NotificationChannelArgs({
     this.description,
     this.displayName,
     this.enabled,

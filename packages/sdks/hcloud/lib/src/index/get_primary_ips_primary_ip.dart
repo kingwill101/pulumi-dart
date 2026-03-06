@@ -29,7 +29,7 @@ class GetPrimaryIpsPrimaryIp {
   /// [location] Required.
   /// [name] Optional.
   /// [type] Required.
-  GetPrimaryIpsPrimaryIp({
+  const GetPrimaryIpsPrimaryIp({
     required this.assigneeId,
     required this.assigneeType,
     required this.autoDelete,

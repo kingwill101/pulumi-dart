@@ -15,7 +15,7 @@ class GetCertificateArgs {
   /// Creates a new [GetCertificateArgs].
   /// [name] Name of the certificate.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  GetCertificateArgs({
+  const GetCertificateArgs({
     required this.name,
     required this.resourceGroupName,
   });

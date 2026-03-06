@@ -14,7 +14,7 @@ class DeliveryRuleCacheKeyQueryStringActionResponse {
   /// Creates a new [DeliveryRuleCacheKeyQueryStringActionResponse].
   /// [name] The name of the action for the delivery rule.
   /// [parameters] Defines the parameters for the action.
-  DeliveryRuleCacheKeyQueryStringActionResponse({
+  const DeliveryRuleCacheKeyQueryStringActionResponse({
     required this.name,
     required this.parameters,
   });

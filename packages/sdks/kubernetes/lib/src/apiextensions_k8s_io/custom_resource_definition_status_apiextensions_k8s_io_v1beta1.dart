@@ -17,7 +17,7 @@ class CustomResourceDefinitionStatusApiextensionsK8sIoV1beta1 {
   /// [acceptedNames] acceptedNames are the names that are actually being used to serve discovery. They may be different than the names in spec.
   /// [conditions] conditions indicate state for particular aspects of a CustomResourceDefinition
   /// [storedVersions] storedVersions lists all versions of CustomResources that were ever persisted. Tracking these versions allows a migration path for stored versions in etcd. The field is mutable so a migration controller can finish a migration to another version (ensuring no old objects are left in storage), and then remove the rest of the versions from this list. Versions may not be removed from `spec.versions` while they exist in this list.
-  CustomResourceDefinitionStatusApiextensionsK8sIoV1beta1({
+  const CustomResourceDefinitionStatusApiextensionsK8sIoV1beta1({
     required this.acceptedNames,
     this.conditions,
     required this.storedVersions,

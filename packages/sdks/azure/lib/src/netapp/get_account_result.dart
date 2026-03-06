@@ -20,7 +20,7 @@ class GetAccountResult {
   /// [name] Required.
   /// [resourceGroupName] Required.
   /// [tags] Required.
-  GetAccountResult({
+  const GetAccountResult({
     required this.id,
     this.identity,
     required this.location,

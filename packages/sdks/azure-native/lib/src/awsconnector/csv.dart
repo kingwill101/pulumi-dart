@@ -12,7 +12,7 @@ class Csv {
   /// Creates a new [Csv].
   /// [delimiter] The delimiter used for separating items in the CSV file being imported.
   /// [headerList] List of the headers used to specify a common header for all source CSV files being imported. If this field is specified then the first line of each CSV file is treated as data instead of the header. If this field is not specified the the first line of each CSV file is treated as the header.
-  Csv({
+  const Csv({
     this.delimiter,
     this.headerList,
   });

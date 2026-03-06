@@ -12,7 +12,7 @@ class ContainerLabelResponse {
   /// Creates a new [ContainerLabelResponse].
   /// [name] The name of the container label.
   /// [value] The value of the container label.
-  ContainerLabelResponse({
+  const ContainerLabelResponse({
     required this.name,
     required this.value,
   });

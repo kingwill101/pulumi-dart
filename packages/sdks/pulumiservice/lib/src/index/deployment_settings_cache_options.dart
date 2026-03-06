@@ -9,7 +9,7 @@ class DeploymentSettingsCacheOptions {
 
   /// Creates a new [DeploymentSettingsCacheOptions].
   /// [enable] Enable dependency caching
-  DeploymentSettingsCacheOptions({
+  const DeploymentSettingsCacheOptions({
     this.enable,
   });
 

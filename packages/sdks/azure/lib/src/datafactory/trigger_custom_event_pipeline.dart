@@ -11,7 +11,7 @@ class TriggerCustomEventPipeline {
   /// Creates a new [TriggerCustomEventPipeline].
   /// [name] The Data Factory Pipeline name that the trigger will act on.
   /// [parameters] The Data Factory Pipeline parameters that the trigger will act on.
-  TriggerCustomEventPipeline({
+  const TriggerCustomEventPipeline({
     required this.name,
     this.parameters,
   });

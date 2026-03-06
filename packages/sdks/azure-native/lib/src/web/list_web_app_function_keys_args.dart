@@ -18,7 +18,7 @@ class ListWebAppFunctionKeysArgs {
   /// [functionName] Function name.
   /// [name] Site name.
   /// [resourceGroupName] Name of the resource group to which the resource belongs.
-  ListWebAppFunctionKeysArgs({
+  const ListWebAppFunctionKeysArgs({
     required this.functionName,
     required this.name,
     required this.resourceGroupName,

@@ -18,7 +18,7 @@ class SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification {
   /// [id] The ID of the launch template. Conflicts with `name`.
   /// [name] The name of the launch template. Conflicts with `id`.
   /// [version] Template version. Unlike the autoscaling equivalent, does not support `$Latest` or `$Default`, so use the launch_template resource's attribute, e.g., `"${aws_launch_template.foo.latest_version}"`. It will use the default version if omitted.
-  SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification({
+  const SpotFleetRequestLaunchTemplateConfigLaunchTemplateSpecification({
     this.id,
     this.name,
     this.version,

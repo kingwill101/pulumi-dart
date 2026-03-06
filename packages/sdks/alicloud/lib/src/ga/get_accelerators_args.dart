@@ -26,7 +26,7 @@ class GetAcceleratorsArgs {
   /// [nameRegex] A regex string to filter results by Accelerator name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the GA instance. Valid values: `active`, `binding`, `configuring`, `deleting`, `finacialLocked`, `init`, `unbinding`.
-  GetAcceleratorsArgs({
+  const GetAcceleratorsArgs({
     this.bandwidthBillingType,
     this.ids,
     this.nameRegex,

@@ -15,7 +15,7 @@ class ServiceReferencePatchApiregistrationK8sIoV1beta1 {
   /// [name] Name is the name of the service
   /// [namespace] Namespace is the namespace of the service
   /// [port] If specified, the port on the service that hosting webhook. Default to 443 for backward compatibility. `port` should be a valid port number (1-65535, inclusive).
-  ServiceReferencePatchApiregistrationK8sIoV1beta1({
+  const ServiceReferencePatchApiregistrationK8sIoV1beta1({
     this.name,
     this.namespace,
     this.port,

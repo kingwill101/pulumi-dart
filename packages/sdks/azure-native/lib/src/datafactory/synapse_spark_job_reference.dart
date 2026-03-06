@@ -12,7 +12,7 @@ class SynapseSparkJobReference {
   /// Creates a new [SynapseSparkJobReference].
   /// [referenceName] Reference spark job name. Expression with resultType string.
   /// [type] Synapse spark job reference type.
-  SynapseSparkJobReference({
+  const SynapseSparkJobReference({
     required this.referenceName,
     required this.type,
   });

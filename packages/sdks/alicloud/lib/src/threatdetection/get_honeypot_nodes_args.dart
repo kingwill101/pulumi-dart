@@ -28,7 +28,7 @@ class GetHoneypotNodesArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetHoneypotNodesArgs({
+  const GetHoneypotNodesArgs({
     this.ids,
     this.nameRegex,
     this.nodeId,

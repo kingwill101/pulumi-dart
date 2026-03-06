@@ -8,7 +8,7 @@ class GetDomainClusterConfigColdStorageOption {
 
   /// Creates a new [GetDomainClusterConfigColdStorageOption].
   /// [enabled] Enabled disabled toggle for off-peak update window
-  GetDomainClusterConfigColdStorageOption({
+  const GetDomainClusterConfigColdStorageOption({
     required this.enabled,
   });
 

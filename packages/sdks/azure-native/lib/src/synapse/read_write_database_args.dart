@@ -34,7 +34,7 @@ class ReadWriteDatabaseArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [softDeletePeriod] The time the data should be kept before it stops being accessible to queries in TimeSpan.
   /// [workspaceName] The name of the workspace.
-  ReadWriteDatabaseArgs({
+  const ReadWriteDatabaseArgs({
     this.databaseName,
     this.hotCachePeriod,
     required this.kind,

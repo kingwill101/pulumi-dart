@@ -15,7 +15,7 @@ class GetInputArgs {
   /// Creates a new [GetInputArgs].
   /// [id] The ID of the Input.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetInputArgs({
+  const GetInputArgs({
     required this.id,
     this.region,
   });

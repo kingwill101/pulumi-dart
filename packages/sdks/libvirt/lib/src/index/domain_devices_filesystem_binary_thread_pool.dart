@@ -8,7 +8,7 @@ class DomainDevicesFilesystemBinaryThreadPool {
 
   /// Creates a new [DomainDevicesFilesystemBinaryThreadPool].
   /// [size] Specifies the number of threads in the thread pool for the binary filesystem.
-  DomainDevicesFilesystemBinaryThreadPool({
+  const DomainDevicesFilesystemBinaryThreadPool({
     this.size,
   });
 

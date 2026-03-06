@@ -58,7 +58,7 @@ class RepositoryArgs {
   /// [remoteRepositoryConfig] Configuration specific for a Remote Repository.
   /// [repositoryId] Required. The repository id to use for this repository.
   /// [virtualRepositoryConfig] Configuration specific for a Virtual Repository.
-  RepositoryArgs({
+  const RepositoryArgs({
     this.cleanupPolicies,
     this.cleanupPolicyDryRun,
     this.description,

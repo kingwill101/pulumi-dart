@@ -66,7 +66,7 @@ class InstanceArgs {
   /// [perUnitStorageThroughput] The throughput of the instance in MB/s/TiB.
   /// [placementPolicy] The placement policy name for the instance in the format of
   /// [project] The ID of the project in which the resource belongs.
-  InstanceArgs({
+  const InstanceArgs({
     this.accessRulesOptions,
     required this.capacityGib,
     this.description,

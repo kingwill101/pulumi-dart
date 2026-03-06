@@ -35,7 +35,7 @@ class PolicyCustomRule {
   /// [rateLimitDuration] Specifies the duration at which the rate limit policy will be applied. Should be used with `RateLimitRule` rule type. Possible values are `FiveMins` and `OneMin`.
   /// [rateLimitThreshold] Specifies the threshold value for the rate limit policy. Must be greater than or equal to 1 if provided.
   /// [ruleType] Describes the type of rule. Possible values are `MatchRule`, `RateLimitRule` and `Invalid`.
-  PolicyCustomRule({
+  const PolicyCustomRule({
     required this.action,
     this.enabled,
     this.groupRateLimitBy,

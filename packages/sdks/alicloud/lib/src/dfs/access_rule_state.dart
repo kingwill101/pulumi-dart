@@ -27,7 +27,7 @@ class AccessRuleState {
   /// [networkSegment] The IP address or network segment of the authorized object.
   /// [priority] Permission rule priority. When the same authorization object matches multiple rules, the high-priority rule takes effect. Value range: 1~100,1 is the highest priority.
   /// [rwAccessType] The read and write permissions of the authorized object on the file system. Value: RDWR: readable and writable RDONLY: Read only.
-  AccessRuleState({
+  const AccessRuleState({
     this.accessGroupId,
     this.accessRuleId,
     this.createTime,

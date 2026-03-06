@@ -17,7 +17,7 @@ class GetFeatureIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetFeatureIamPolicyArgs({
+  const GetFeatureIamPolicyArgs({
     required this.featureId,
     required this.location,
     this.optionsRequestedPolicyVersion,

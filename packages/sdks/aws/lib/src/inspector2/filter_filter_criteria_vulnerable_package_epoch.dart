@@ -11,7 +11,7 @@ class FilterFilterCriteriaVulnerablePackageEpoch {
   /// Creates a new [FilterFilterCriteriaVulnerablePackageEpoch].
   /// [lowerInclusive] (Optional) Lower bound of the range, inclusive.
   /// [upperInclusive] (Optional) Upper bound of the range, inclusive.
-  FilterFilterCriteriaVulnerablePackageEpoch({
+  const FilterFilterCriteriaVulnerablePackageEpoch({
     required this.lowerInclusive,
     required this.upperInclusive,
   });

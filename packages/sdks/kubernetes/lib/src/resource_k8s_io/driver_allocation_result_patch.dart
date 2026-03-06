@@ -13,7 +13,7 @@ class DriverAllocationResultPatch {
   /// Creates a new [DriverAllocationResultPatch].
   /// [namedResources] NamedResources describes the allocation result when using the named resources model.
   /// [vendorRequestParameters] VendorRequestParameters are the per-request configuration parameters from the time that the claim was allocated.
-  DriverAllocationResultPatch({
+  const DriverAllocationResultPatch({
     this.namedResources,
     this.vendorRequestParameters,
   });

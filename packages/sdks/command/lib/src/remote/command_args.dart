@@ -67,7 +67,7 @@ class CommandArgs {
   /// [stdin] Pass a string to the command's process as standard in
   /// [triggers] The resource will be updated (or replaced) if any of these values change.
   /// [update] The command to run when the resource is updated.
-  CommandArgs({
+  const CommandArgs({
     this.addPreviousOutputInEnv,
     required this.connection,
     this.create,

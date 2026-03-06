@@ -30,7 +30,7 @@ class EtlConfiguration {
   /// [script] Processing script.
   /// [sinks] List of output destinations for processing results.   See `sink` below.
   /// [toTime] End timestamp of the processing time (accurate to the second). Enter 0 if processing continues until manually stopped.
-  EtlConfiguration({
+  const EtlConfiguration({
     required this.fromTime,
     required this.lang,
     required this.logstore,

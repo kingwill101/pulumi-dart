@@ -12,7 +12,7 @@ class Identity {
   /// Creates a new [Identity].
   /// [type] Identity Type
   /// [userAssignedIdentities] User Assigned Identities
-  Identity({
+  const Identity({
     this.type,
     this.userAssignedIdentities,
   });

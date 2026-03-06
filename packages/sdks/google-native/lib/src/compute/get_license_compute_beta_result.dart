@@ -32,7 +32,7 @@ class GetLicenseComputeBetaResult {
   /// [resourceRequirements] Required.
   /// [selfLink] Server-defined URL for the resource.
   /// [transferable] If false, licenses will not be copied from the source resource when creating an image from a disk, disk from snapshot, or snapshot from disk.
-  GetLicenseComputeBetaResult({
+  const GetLicenseComputeBetaResult({
     required this.chargesUseFee,
     required this.creationTimestamp,
     required this.description,

@@ -39,7 +39,7 @@ class ChannelEncoderSettingsAudioDescription {
   /// [name] The name of this audio description.
   /// [remixSettings] Optional.
   /// [streamName] Stream name RTMP destinations (URLs of type rtmp://)
-  ChannelEncoderSettingsAudioDescription({
+  const ChannelEncoderSettingsAudioDescription({
     this.audioNormalizationSettings,
     required this.audioSelectorName,
     this.audioType,

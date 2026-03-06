@@ -15,7 +15,7 @@ class GetResourcePolicyResult {
   /// [policy] The [policy][1] for the resource.
   /// [region] Required.
   /// [resourceArn] Required.
-  GetResourcePolicyResult({
+  const GetResourcePolicyResult({
     required this.id,
     required this.policy,
     required this.region,

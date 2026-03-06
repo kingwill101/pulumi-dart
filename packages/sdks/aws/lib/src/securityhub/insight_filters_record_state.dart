@@ -9,7 +9,7 @@ class InsightFiltersRecordState {
   /// Creates a new [InsightFiltersRecordState].
   /// [comparison] Required.
   /// [value] Required.
-  InsightFiltersRecordState({
+  const InsightFiltersRecordState({
     required this.comparison,
     required this.value,
   });

@@ -69,7 +69,7 @@ class GetInstanceResult {
   /// [state] The state of this Memcached instance.
   /// [updateTime] The time the instance was updated.
   /// [zones] Zones in which Memcached nodes should be provisioned. Memcached nodes will be equally distributed across these zones. If not provided, the service will by default create nodes in all zones in the region for the instance.
-  GetInstanceResult({
+  const GetInstanceResult({
     required this.authorizedNetwork,
     required this.createTime,
     required this.discoveryEndpoint,

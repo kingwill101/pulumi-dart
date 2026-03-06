@@ -24,7 +24,7 @@ class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTran
   /// [bucketSize] Size of each bucket (except for minimum and maximum buckets).
   /// [lowerBound] Lower bound value of buckets.
   /// [upperBound] Upper bound value of buckets.
-  PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfig({
+  const PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfig({
     required this.bucketSize,
     required this.lowerBound,
     required this.upperBound,

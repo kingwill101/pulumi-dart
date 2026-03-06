@@ -52,7 +52,7 @@ class DataSourceState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [type] The type of the data source. See the [AWS Documentation](https://docs.aws.amazon.com/quicksight/latest/APIReference/API_CreateDataSource.html#QS-CreateDataSource-request-Type) for the complete list of valid values.
   /// [vpcConnectionProperties] Use this parameter only when you want Amazon QuickSight to use a VPC connection when connecting to your underlying source. See VPC Connection Properties below for more details.
-  DataSourceState({
+  const DataSourceState({
     this.arn,
     this.awsAccountId,
     this.credentials,

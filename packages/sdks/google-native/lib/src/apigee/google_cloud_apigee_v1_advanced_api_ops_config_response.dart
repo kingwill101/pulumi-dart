@@ -9,7 +9,7 @@ class GoogleCloudApigeeV1AdvancedApiOpsConfigResponse {
 
   /// Creates a new [GoogleCloudApigeeV1AdvancedApiOpsConfigResponse].
   /// [enabled] Flag that specifies whether the Advanced API Ops add-on is enabled.
-  GoogleCloudApigeeV1AdvancedApiOpsConfigResponse({
+  const GoogleCloudApigeeV1AdvancedApiOpsConfigResponse({
     required this.enabled,
   });
 

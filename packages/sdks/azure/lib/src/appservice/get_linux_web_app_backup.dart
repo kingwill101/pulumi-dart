@@ -18,7 +18,7 @@ class GetLinuxWebAppBackup {
   /// [name] The name of this Linux Web App.
   /// [schedules] A `schedule` block as defined below.
   /// [storageAccountUrl] The SAS URL to the container.
-  GetLinuxWebAppBackup({
+  const GetLinuxWebAppBackup({
     required this.enabled,
     required this.name,
     required this.schedules,

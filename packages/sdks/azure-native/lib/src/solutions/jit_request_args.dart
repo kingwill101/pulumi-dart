@@ -32,7 +32,7 @@ class JitRequestArgs {
   /// [location] Resource location
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags
-  JitRequestArgs({
+  const JitRequestArgs({
     required this.applicationResourceId,
     required this.jitAuthorizationPolicies,
     this.jitRequestName,

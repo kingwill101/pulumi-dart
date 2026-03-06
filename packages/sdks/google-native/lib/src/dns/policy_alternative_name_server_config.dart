@@ -11,7 +11,7 @@ class PolicyAlternativeNameServerConfig {
   /// Creates a new [PolicyAlternativeNameServerConfig].
   /// [kind] Optional.
   /// [targetNameServers] Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
-  PolicyAlternativeNameServerConfig({
+  const PolicyAlternativeNameServerConfig({
     this.kind,
     this.targetNameServers,
   });

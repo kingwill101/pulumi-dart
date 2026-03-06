@@ -22,7 +22,7 @@ class JavaComponentArgs {
   /// [name] Name of the Java Component.
   /// [properties] Java Component resource specific properties
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  JavaComponentArgs({
+  const JavaComponentArgs({
     required this.environmentName,
     this.name,
     this.properties,

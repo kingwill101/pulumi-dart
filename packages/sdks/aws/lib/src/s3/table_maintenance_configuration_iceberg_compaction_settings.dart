@@ -9,7 +9,7 @@ class TableMaintenanceConfigurationIcebergCompactionSettings {
 
   /// Creates a new [TableMaintenanceConfigurationIcebergCompactionSettings].
   /// [targetFileSizeMb] Data objects smaller than this size may be combined with others to improve query performance.
-  TableMaintenanceConfigurationIcebergCompactionSettings({
+  const TableMaintenanceConfigurationIcebergCompactionSettings({
     required this.targetFileSizeMb,
   });
 

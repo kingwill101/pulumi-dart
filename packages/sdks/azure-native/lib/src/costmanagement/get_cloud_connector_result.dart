@@ -63,7 +63,7 @@ class GetCloudConnectorResult {
   /// [status] Connector status
   /// [subscriptionId] Billing SubscriptionId
   /// [type] Connector type
-  GetCloudConnectorResult({
+  const GetCloudConnectorResult({
     required this.azureApiVersion,
     this.billingModel,
     required this.collectionInfo,

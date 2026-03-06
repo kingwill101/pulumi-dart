@@ -15,7 +15,7 @@ class GetGreyTagRoutesRouteScRule {
   /// [condition] The Conditional Patterns for Grayscale Rules.
   /// [items] A list of conditions items.
   /// [path] The path corresponding to the grayscale rule.
-  GetGreyTagRoutesRouteScRule({
+  const GetGreyTagRoutesRouteScRule({
     required this.condition,
     required this.items,
     required this.path,

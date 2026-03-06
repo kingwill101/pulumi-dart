@@ -12,7 +12,7 @@ class State {
   /// Creates a new [State].
   /// [code] Status code of the Instance.
   /// [name] Status code of the Instance.
-  State({
+  const State({
     this.code,
     this.name,
   });

@@ -12,7 +12,7 @@ class GetManagedOpArgs {
 
   /// Creates a new [GetManagedOpArgs].
   /// [managedOpsName] Name of the resource.
-  GetManagedOpArgs({
+  const GetManagedOpArgs({
     required this.managedOpsName,
   });
 

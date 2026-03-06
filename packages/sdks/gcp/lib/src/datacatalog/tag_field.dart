@@ -33,7 +33,7 @@ class TagField {
   /// [order] (Output)
   /// [stringValue] Holds the value for a tag field with string type.
   /// [timestampValue] Holds the value for a tag field with timestamp type.
-  TagField({
+  const TagField({
     this.boolValue,
     this.displayName,
     this.doubleValue,

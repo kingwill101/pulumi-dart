@@ -47,7 +47,7 @@ class GetTrafficMirrorSessionsSession {
   /// [trafficMirrorTargetId] The ID of the mirror destination. You can specify only an ENI or a Server Load Balancer (SLB) instance as a mirror destination.
   /// [trafficMirrorTargetType] The type of the mirror destination. Valid values: `NetworkInterface` or `SLB`. `NetworkInterface`: an ENI. `SLB`: an internal-facing SLB instance
   /// [virtualNetworkId] You can specify VNIs to distinguish different mirrored traffic.
-  GetTrafficMirrorSessionsSession({
+  const GetTrafficMirrorSessionsSession({
     required this.enabled,
     required this.id,
     required this.packetLength,

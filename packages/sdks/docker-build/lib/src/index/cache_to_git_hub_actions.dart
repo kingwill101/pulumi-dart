@@ -33,7 +33,7 @@ class CacheToGitHubActions {
   /// [scope] The scope to use for cache keys. Defaults to `buildkit`.
   /// [token] The GitHub Actions token to use. This is not a personal access tokens
   /// [url] The cache server URL to use for artifacts.
-  CacheToGitHubActions({
+  const CacheToGitHubActions({
     this.ignoreError,
     this.mode,
     this.scope,

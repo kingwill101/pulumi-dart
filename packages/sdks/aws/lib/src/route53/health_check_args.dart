@@ -81,7 +81,7 @@ class HealthCheckArgs {
   /// [tags] A map of tags to assign to the health check. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger an in-place update of the CloudWatch alarm arguments. Use this argument to synchronize the health check when an alarm is changed. See example above.
   /// [type] The protocol to use when performing health checks. Valid values are `HTTP`, `HTTPS`, `HTTP_STR_MATCH`, `HTTPS_STR_MATCH`, `TCP`, `CALCULATED`, `CLOUDWATCH_METRIC` and `RECOVERY_CONTROL`.
-  HealthCheckArgs({
+  const HealthCheckArgs({
     this.childHealthThreshold,
     this.childHealthchecks,
     this.cloudwatchAlarmName,

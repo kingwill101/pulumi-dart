@@ -32,7 +32,7 @@ class GetSecurityPoliciesArgs {
   /// [securityPolicyName] The name of the resource.
   /// [status] The status of the resource. Valid values : `Available`, `Configuring`.
   /// [tags] Optional.
-  GetSecurityPoliciesArgs({
+  const GetSecurityPoliciesArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -25,7 +25,7 @@ class NetworkInsightsAnalysisForwardPathComponentRouteTableRoute {
   /// [origin] Optional.
   /// [transitGatewayId] Optional.
   /// [vpcPeeringConnectionId] Optional.
-  NetworkInsightsAnalysisForwardPathComponentRouteTableRoute({
+  const NetworkInsightsAnalysisForwardPathComponentRouteTableRoute({
     this.destinationCidr,
     this.destinationPrefixListId,
     this.egressOnlyInternetGatewayId,

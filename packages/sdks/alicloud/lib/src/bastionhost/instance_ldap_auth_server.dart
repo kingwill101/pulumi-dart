@@ -41,7 +41,7 @@ class InstanceLdapAuthServer {
   /// [port] The port that is used to access the LDAP server.
   /// [server] The address of the LDAP server.
   /// [standbyServer] The address of the secondary LDAP server.
-  InstanceLdapAuthServer({
+  const InstanceLdapAuthServer({
     required this.account,
     required this.baseDn,
     this.emailMapping,

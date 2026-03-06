@@ -26,7 +26,7 @@ class GetSystemGroupsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetSystemGroupsResult({
+  const GetSystemGroupsResult({
     required this.groups,
     required this.id,
     required this.ids,

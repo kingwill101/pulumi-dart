@@ -12,7 +12,7 @@ class SpecificationResponse {
   /// Creates a new [SpecificationResponse].
   /// [name] Name of the specification.
   /// [value] Value of the specification.
-  SpecificationResponse({
+  const SpecificationResponse({
     required this.name,
     required this.value,
   });

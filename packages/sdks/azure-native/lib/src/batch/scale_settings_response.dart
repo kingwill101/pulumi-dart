@@ -14,7 +14,7 @@ class ScaleSettingsResponse {
   /// Creates a new [ScaleSettingsResponse].
   /// [autoScale] This property and fixedScale are mutually exclusive and one of the properties must be specified.
   /// [fixedScale] This property and autoScale are mutually exclusive and one of the properties must be specified.
-  ScaleSettingsResponse({
+  const ScaleSettingsResponse({
     this.autoScale,
     this.fixedScale,
   });

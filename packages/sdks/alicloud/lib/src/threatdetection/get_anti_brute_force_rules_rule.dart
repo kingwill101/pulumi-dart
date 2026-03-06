@@ -29,7 +29,7 @@ class GetAntiBruteForceRulesRule {
   /// [id] The ID of the defense rule.
   /// [span] The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
   /// [uuidLists] An array consisting of the UUIDs of servers to which the defense rule is applied.
-  GetAntiBruteForceRulesRule({
+  const GetAntiBruteForceRulesRule({
     required this.antiBruteForceRuleId,
     required this.antiBruteForceRuleName,
     required this.defaultRule,

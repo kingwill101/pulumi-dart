@@ -13,7 +13,7 @@ class AutoscaleSettingNotification {
   /// Creates a new [AutoscaleSettingNotification].
   /// [email] A `email` block as defined below.
   /// [webhooks] One or more `webhook` blocks as defined below.
-  AutoscaleSettingNotification({
+  const AutoscaleSettingNotification({
     this.email,
     this.webhooks,
   });

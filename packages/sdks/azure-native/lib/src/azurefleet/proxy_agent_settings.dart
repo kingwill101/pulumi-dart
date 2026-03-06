@@ -21,7 +21,7 @@ class ProxyAgentSettings {
   /// [enabled] Specifies whether ProxyAgent feature should be enabled on the virtual machine
   /// [keyIncarnationId] Increase the value of this property allows user to reset the key used for
   /// [mode] Specifies the mode that ProxyAgent will execute on if the feature is enabled.
-  ProxyAgentSettings({
+  const ProxyAgentSettings({
     this.enabled,
     this.keyIncarnationId,
     this.mode,

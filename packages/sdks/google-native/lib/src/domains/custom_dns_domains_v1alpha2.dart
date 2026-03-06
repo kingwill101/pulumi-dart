@@ -13,7 +13,7 @@ class CustomDnsDomainsV1alpha2 {
   /// Creates a new [CustomDnsDomainsV1alpha2].
   /// [dsRecords] The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled.
   /// [nameServers] A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format.
-  CustomDnsDomainsV1alpha2({
+  const CustomDnsDomainsV1alpha2({
     this.dsRecords,
     required this.nameServers,
   });

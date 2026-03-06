@@ -24,7 +24,7 @@ class GovernedServiceItemResponse {
   /// [policyAction] Enforcement mode for policy. AuditOnly, Enforce, or None.
   /// [serviceId] Service ID
   /// [serviceName] Service name.
-  GovernedServiceItemResponse({
+  const GovernedServiceItemResponse({
     this.enforcement,
     required this.initiatives,
     this.option,

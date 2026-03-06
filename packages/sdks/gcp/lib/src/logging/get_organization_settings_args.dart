@@ -12,7 +12,7 @@ class GetOrganizationSettingsArgs {
 
   /// Creates a new [GetOrganizationSettingsArgs].
   /// [organization] The ID of the organization for which to retrieve settings.
-  GetOrganizationSettingsArgs({
+  const GetOrganizationSettingsArgs({
     required this.organization,
   });
 

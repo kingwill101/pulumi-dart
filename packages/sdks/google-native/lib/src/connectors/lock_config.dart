@@ -12,7 +12,7 @@ class LockConfig {
   /// Creates a new [LockConfig].
   /// [locked] Indicates whether or not the connection is locked.
   /// [reason] Describes why a connection is locked.
-  LockConfig({
+  const LockConfig({
     this.locked,
     this.reason,
   });

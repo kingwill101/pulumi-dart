@@ -126,7 +126,7 @@ class InstanceArgs {
   /// [sqlNetworkArchitecture] Optional.
   /// [state] The current serving state of the Cloud SQL instance.
   /// [suspensionReason] If the instance state is SUSPENDED, the reason for the suspension.
-  InstanceArgs({
+  const InstanceArgs({
     this.backendType,
     this.connectionName,
     this.currentDiskSize,

@@ -34,7 +34,7 @@ class SecurityProfileArgs {
   /// [profileConfig] Customized profile configuration that computes the security score.
   /// [scoringConfigs] List of profile scoring configs in this revision.
   /// [securityProfileId] Required. The ID to use for the SecurityProfile, which will become the final component of the action's resource name. This value should be 1-63 characters and validated by "(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$)".
-  SecurityProfileArgs({
+  const SecurityProfileArgs({
     this.description,
     this.displayName,
     this.environments,

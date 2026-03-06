@@ -22,7 +22,7 @@ class WorkspacePrivateEndpointConnectionArgs {
   /// [privateLinkServiceConnectionState] A collection of information about the state of the connection between service consumer and provider.
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [workspaceName] The name of workspace resource.
-  WorkspacePrivateEndpointConnectionArgs({
+  const WorkspacePrivateEndpointConnectionArgs({
     this.privateEndpointConnectionName,
     required this.privateLinkServiceConnectionState,
     required this.resourceGroupName,

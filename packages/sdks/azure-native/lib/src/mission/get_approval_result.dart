@@ -48,7 +48,7 @@ class GetApprovalResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [ticketId] Ticket ID for the approval request
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetApprovalResult({
+  const GetApprovalResult({
     this.approvers,
     required this.azureApiVersion,
     this.createdAt,

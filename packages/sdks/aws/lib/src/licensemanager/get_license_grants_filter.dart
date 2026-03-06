@@ -129,7 +129,7 @@ class GetLicenseGrantsFilter {
   /// Creates a new [GetLicenseGrantsFilter].
   /// [name] Name of the field to filter by, as defined by
   /// [values] Set of values that are accepted for the given field.
-  GetLicenseGrantsFilter({
+  const GetLicenseGrantsFilter({
     required this.name,
     required this.values,
   });

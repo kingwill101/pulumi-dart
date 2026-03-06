@@ -15,7 +15,7 @@ class GetEventBusArgs {
   /// Creates a new [GetEventBusArgs].
   /// [name] Name of the event bus.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  GetEventBusArgs({
+  const GetEventBusArgs({
     required this.name,
     this.region,
   });

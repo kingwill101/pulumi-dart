@@ -32,7 +32,7 @@ class GetGatewayVpnAttachmentsAttachmentIkeConfig {
   /// [localId] The identifier of the local end of the tunnel (Alibaba Cloud side), which is used for the first phase of negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the tunnel.**LocalId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
   /// [psk] The pre-shared key is used for identity authentication between the tunnel and the tunnel peer.-The key can be 1 to 100 characters in length. It supports numbers, upper and lower case English letters, and characters on the right. It cannot contain spaces. '''~! \'@#$%^& *()_-+ ={}[]|;:',./? '''-If you do not specify a pre-shared key, the system randomly generates a 16-bit string as the pre-shared key. &gt; The pre-shared key of the tunnel and the tunnel peer must be the same, otherwise the system cannot establish the tunnel normally.
   /// [remoteId] Identifier of the tunnel peer, which is used for the first-stage negotiation. The length is limited to 100 characters and cannot contain spaces. The default value is the IP address of the user gateway associated with the tunnel.- **RemoteId** supports the FQDN format. If you use the FQDN format, we recommend that you select **aggressive** (barbaric mode) as the negotiation mode.
-  GetGatewayVpnAttachmentsAttachmentIkeConfig({
+  const GetGatewayVpnAttachmentsAttachmentIkeConfig({
     required this.ikeAuthAlg,
     required this.ikeEncAlg,
     required this.ikeLifetime,

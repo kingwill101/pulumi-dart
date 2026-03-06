@@ -12,7 +12,7 @@ class OutboundConnectionConnectionProperties {
   /// Creates a new [OutboundConnectionConnectionProperties].
   /// [crossClusterSearch] Configuration block for cross cluster search.
   /// [endpoint] The endpoint of the remote domain, is only set when `connection_mode` is `VPC_ENDPOINT` and `accept_connection` is `TRUE`.
-  OutboundConnectionConnectionProperties({
+  const OutboundConnectionConnectionProperties({
     this.crossClusterSearch,
     this.endpoint,
   });

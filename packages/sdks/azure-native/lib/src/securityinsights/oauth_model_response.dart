@@ -55,7 +55,7 @@ class OAuthModelResponse {
   /// [tokenEndpointHeaders] The token endpoint headers.
   /// [tokenEndpointQueryParameters] The token endpoint query parameters.
   /// [type] Type of paging
-  OAuthModelResponse({
+  const OAuthModelResponse({
     this.accessTokenPrepend,
     this.authorizationCode,
     this.authorizationEndpoint,

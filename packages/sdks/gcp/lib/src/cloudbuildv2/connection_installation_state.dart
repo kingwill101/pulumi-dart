@@ -17,7 +17,7 @@ class ConnectionInstallationState {
   /// [actionUri] (Output)
   /// [message] (Output)
   /// [stage] (Output)
-  ConnectionInstallationState({
+  const ConnectionInstallationState({
     this.actionUri,
     this.message,
     this.stage,

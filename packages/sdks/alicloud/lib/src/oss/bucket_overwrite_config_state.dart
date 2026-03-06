@@ -13,7 +13,7 @@ class BucketOverwriteConfigState {
   /// Creates a new [BucketOverwriteConfigState].
   /// [bucket] The name of the bucket
   /// [rules] Forbid overwrite rule See `rule` below.
-  BucketOverwriteConfigState({
+  const BucketOverwriteConfigState({
     this.bucket,
     this.rules,
   });

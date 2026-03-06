@@ -15,7 +15,7 @@ class VirtualNetworkGatewayBgpSettings {
   /// [asn] The Autonomous System Number (ASN) to use as part of the BGP.
   /// [peerWeight] The weight added to routes which have been learned through BGP peering. Valid values can be between `0` and `100`.
   /// [peeringAddresses] A list of `peering_addresses` blocks as defined below. Only one `peering_addresses` block can be specified except when `active_active` of this Virtual Network Gateway is `true`.
-  VirtualNetworkGatewayBgpSettings({
+  const VirtualNetworkGatewayBgpSettings({
     this.asn,
     this.peerWeight,
     this.peeringAddresses,

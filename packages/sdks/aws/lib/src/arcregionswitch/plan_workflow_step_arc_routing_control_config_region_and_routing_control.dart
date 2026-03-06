@@ -12,7 +12,7 @@ class PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl {
   /// Creates a new [PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl].
   /// [region] AWS region.
   /// [routingControls] List of routing controls. See Routing Control below.
-  PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl({
+  const PlanWorkflowStepArcRoutingControlConfigRegionAndRoutingControl({
     required this.region,
     this.routingControls,
   });

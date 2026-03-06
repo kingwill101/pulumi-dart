@@ -13,7 +13,7 @@ class GetExtendedLocationsResult {
   /// [extendedLocations] The available extended locations for the Azure Location.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
-  GetExtendedLocationsResult({
+  const GetExtendedLocationsResult({
     required this.extendedLocations,
     required this.id,
     required this.location,

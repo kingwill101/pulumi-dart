@@ -10,7 +10,7 @@ class SecurityGatewayApplicationUpstreamExternal {
 
   /// Creates a new [SecurityGatewayApplicationUpstreamExternal].
   /// [endpoints] List of the endpoints to forward traffic to.
-  SecurityGatewayApplicationUpstreamExternal({
+  const SecurityGatewayApplicationUpstreamExternal({
     required this.endpoints,
   });
 

@@ -18,7 +18,7 @@ class VnetRouteResponse {
   /// [bgpConnections] The list of references to HubBgpConnection objects.
   /// [staticRoutes] List of all Static Routes.
   /// [staticRoutesConfig] Configuration for static routes on this HubVnetConnection.
-  VnetRouteResponse({
+  const VnetRouteResponse({
     required this.bgpConnections,
     this.staticRoutes,
     this.staticRoutesConfig,

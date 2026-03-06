@@ -9,7 +9,7 @@ class EcKeyTypeResponse {
 
   /// Creates a new [EcKeyTypeResponse].
   /// [signatureAlgorithm] Optional. A signature algorithm that must be used. If this is omitted, any EC-based signature algorithm will be allowed.
-  EcKeyTypeResponse({
+  const EcKeyTypeResponse({
     required this.signatureAlgorithm,
   });
 

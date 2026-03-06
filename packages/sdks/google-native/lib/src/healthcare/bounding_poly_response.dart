@@ -13,7 +13,7 @@ class BoundingPolyResponse {
   /// Creates a new [BoundingPolyResponse].
   /// [label] A description of this polygon.
   /// [vertices] List of the vertices of this polygon.
-  BoundingPolyResponse({
+  const BoundingPolyResponse({
     required this.label,
     required this.vertices,
   });

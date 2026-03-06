@@ -8,7 +8,7 @@ class DataSourceVpcConnectionProperties {
 
   /// Creates a new [DataSourceVpcConnectionProperties].
   /// [vpcConnectionArn] The Amazon Resource Name (ARN) for the VPC connection.
-  DataSourceVpcConnectionProperties({
+  const DataSourceVpcConnectionProperties({
     required this.vpcConnectionArn,
   });
 

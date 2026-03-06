@@ -58,7 +58,7 @@ class LoadBalancingRuleResponse {
   /// [protocol] The reference to the transport protocol used by the load balancing rule.
   /// [provisioningState] The provisioning state of the load balancing rule resource.
   /// [type] Type of the resource.
-  LoadBalancingRuleResponse({
+  const LoadBalancingRuleResponse({
     this.backendAddressPool,
     this.backendAddressPools,
     this.backendPort,

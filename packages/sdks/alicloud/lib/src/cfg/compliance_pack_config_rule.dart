@@ -12,7 +12,7 @@ class CompliancePackConfigRule {
   /// Creates a new [CompliancePackConfigRule].
   /// [configRuleParameters] A list of Config Rule Parameters. See `config_rule_parameters` below.
   /// [managedRuleIdentifier] The Managed Rule Identifier.
-  CompliancePackConfigRule({
+  const CompliancePackConfigRule({
     this.configRuleParameters,
     required this.managedRuleIdentifier,
   });

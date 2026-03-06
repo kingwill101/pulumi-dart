@@ -48,7 +48,7 @@ class SecurityServiceArgs {
   /// [server] The security service host name or IP address.
   /// [type] The security service type - can either be active\_directory,
   /// [user] The security service user or group name that is used by the
-  SecurityServiceArgs({
+  const SecurityServiceArgs({
     this.description,
     this.dnsIp,
     this.domain,

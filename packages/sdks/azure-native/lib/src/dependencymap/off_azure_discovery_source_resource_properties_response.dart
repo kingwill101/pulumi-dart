@@ -16,7 +16,7 @@ class OffAzureDiscoverySourceResourcePropertiesResponse {
   /// [provisioningState] Provisioning state of Discovery Source resource.
   /// [sourceId] Source ArmId of Discovery Source resource
   /// [sourceType] Source type of the discoverySource
-  OffAzureDiscoverySourceResourcePropertiesResponse({
+  const OffAzureDiscoverySourceResourcePropertiesResponse({
     required this.provisioningState,
     required this.sourceId,
     required this.sourceType,

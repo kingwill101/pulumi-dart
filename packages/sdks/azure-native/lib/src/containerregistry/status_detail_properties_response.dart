@@ -21,7 +21,7 @@ class StatusDetailPropertiesResponse {
   /// [description] The description of the status.
   /// [timestamp] The timestamp of the status.
   /// [type] The component of the connected registry corresponding to the status.
-  StatusDetailPropertiesResponse({
+  const StatusDetailPropertiesResponse({
     required this.code,
     required this.correlationId,
     required this.description,

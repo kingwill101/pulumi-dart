@@ -12,7 +12,7 @@ class ContainerHostBatchBindMountEntryResponse {
   /// Creates a new [ContainerHostBatchBindMountEntryResponse].
   /// [isReadOnly] For Linux, if you mount this path as a read/write mode, this does not mean that all users in container have the read/write access for the path, it depends on the access in host VM. If this path is mounted read-only, all users within the container will not be able to modify the path.
   /// [source] The paths which will be mounted to container task's container.
-  ContainerHostBatchBindMountEntryResponse({
+  const ContainerHostBatchBindMountEntryResponse({
     this.isReadOnly,
     this.source,
   });

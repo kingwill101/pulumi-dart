@@ -58,7 +58,7 @@ class GetPatchBaselineResult {
   /// [rejectedPatches] List of rejected patches.
   /// [rejectedPatchesAction] Action specified to take on patches included in the `rejected_patches` list.
   /// [sources] Information about the patches to use to update the managed nodes, including target operating systems and source repositories.
-  GetPatchBaselineResult({
+  const GetPatchBaselineResult({
     required this.approvalRules,
     required this.approvedPatches,
     required this.approvedPatchesComplianceLevel,

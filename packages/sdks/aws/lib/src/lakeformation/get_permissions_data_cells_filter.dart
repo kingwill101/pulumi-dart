@@ -17,7 +17,7 @@ class GetPermissionsDataCellsFilter {
   /// [name] The name of the data cells filter.
   /// [tableCatalogId] The ID of the Data Catalog.
   /// [tableName] The name of the table.
-  GetPermissionsDataCellsFilter({
+  const GetPermissionsDataCellsFilter({
     required this.databaseName,
     required this.name,
     required this.tableCatalogId,

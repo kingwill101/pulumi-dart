@@ -22,7 +22,7 @@ class AFDTargetGroupArgs {
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [targetEndpoints] TargetEndpoint list referenced by this target group.
   /// [targetGroupName] Name of the Target Group under the profile.
-  AFDTargetGroupArgs({
+  const AFDTargetGroupArgs({
     required this.profileName,
     required this.resourceGroupName,
     required this.targetEndpoints,

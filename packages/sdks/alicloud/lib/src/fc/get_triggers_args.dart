@@ -24,7 +24,7 @@ class GetTriggersArgs {
   /// [nameRegex] A regex string to filter results by FC trigger name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [serviceName] FC service name.
-  GetTriggersArgs({
+  const GetTriggersArgs({
     required this.functionName,
     this.ids,
     this.nameRegex,

@@ -49,7 +49,7 @@ class GetZoneResult {
   /// [tags] A map of tags assigned to the Hosted Zone.
   /// [vpcId] Optional.
   /// [zoneId] The Hosted Zone identifier.
-  GetZoneResult({
+  const GetZoneResult({
     required this.arn,
     required this.callerReference,
     required this.comment,

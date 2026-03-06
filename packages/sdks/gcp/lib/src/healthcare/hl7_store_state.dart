@@ -60,7 +60,7 @@ class Hl7StoreState {
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [rejectDuplicateMessage] Determines whether duplicate messages are allowed.
   /// [selfLink] The fully qualified name of this dataset
-  Hl7StoreState({
+  const Hl7StoreState({
     this.dataset,
     this.effectiveLabels,
     this.labels,

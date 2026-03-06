@@ -30,7 +30,7 @@ class AppVersionSnapshotToolDataStoreToolModalityConfig {
   /// [modalityType] (Output)
   /// [rewriterConfigs] (Output)
   /// [summarizationConfigs] (Output)
-  AppVersionSnapshotToolDataStoreToolModalityConfig({
+  const AppVersionSnapshotToolDataStoreToolModalityConfig({
     this.groundingConfigs,
     this.modalityType,
     this.rewriterConfigs,

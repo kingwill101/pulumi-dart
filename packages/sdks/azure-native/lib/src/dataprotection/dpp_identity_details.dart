@@ -12,7 +12,7 @@ class DppIdentityDetails {
   /// Creates a new [DppIdentityDetails].
   /// [type] The identityType which can be either SystemAssigned, UserAssigned, 'SystemAssigned,UserAssigned' or None
   /// [userAssignedIdentities] Gets or sets the user assigned identities.
-  DppIdentityDetails({
+  const DppIdentityDetails({
     this.type,
     this.userAssignedIdentities,
   });

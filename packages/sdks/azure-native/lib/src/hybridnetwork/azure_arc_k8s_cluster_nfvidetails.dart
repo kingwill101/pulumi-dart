@@ -17,7 +17,7 @@ class AzureArcK8sClusterNFVIDetails {
   /// [customLocationReference] The reference to the custom location.
   /// [name] Name of the nfvi.
   /// [nfviType] The NFVI type.
-  AzureArcK8sClusterNFVIDetails({
+  const AzureArcK8sClusterNFVIDetails({
     this.customLocationReference,
     this.name,
     required this.nfviType,

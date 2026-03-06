@@ -9,7 +9,7 @@ class ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSch
   /// Creates a new [ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap].
   /// [database] Optional.
   /// [schemas] Optional.
-  ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap({
+  const ConnectToTargetOracleAzureDbForPostgreSqlSyncTaskOutputResponseDatabaseSchemaMap({
     this.database,
     this.schemas,
   });

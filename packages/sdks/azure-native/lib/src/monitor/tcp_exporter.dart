@@ -9,7 +9,7 @@ class TcpExporter {
 
   /// Creates a new [TcpExporter].
   /// [url] TCP url to export.
-  TcpExporter({
+  const TcpExporter({
     required this.url,
   });
 

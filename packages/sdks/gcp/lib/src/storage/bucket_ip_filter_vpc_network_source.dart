@@ -11,7 +11,7 @@ class BucketIpFilterVpcNetworkSource {
   /// Creates a new [BucketIpFilterVpcNetworkSource].
   /// [allowedIpCidrRanges] The list of public or private IPv4 and IPv6 CIDR ranges that can access the bucket.
   /// [network] Name of the network. Format: `projects/PROJECT_ID/global/networks/NETWORK_NAME`
-  BucketIpFilterVpcNetworkSource({
+  const BucketIpFilterVpcNetworkSource({
     required this.allowedIpCidrRanges,
     required this.network,
   });

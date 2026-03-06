@@ -39,7 +39,7 @@ class GithubActionConfigurationResponse {
   /// [registryInfo] Registry configurations.
   /// [runtimeStack] Runtime stack
   /// [runtimeVersion] Runtime version
-  GithubActionConfigurationResponse({
+  const GithubActionConfigurationResponse({
     this.azureCredentials,
     this.buildEnvironmentVariables,
     this.contextPath,

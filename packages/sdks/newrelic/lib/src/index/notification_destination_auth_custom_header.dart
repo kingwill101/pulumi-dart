@@ -11,7 +11,7 @@ class NotificationDestinationAuthCustomHeader {
   /// Creates a new [NotificationDestinationAuthCustomHeader].
   /// [key] The notification property key.
   /// [value] The notification property value.
-  NotificationDestinationAuthCustomHeader({
+  const NotificationDestinationAuthCustomHeader({
     required this.key,
     required this.value,
   });

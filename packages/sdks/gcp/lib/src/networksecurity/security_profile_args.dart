@@ -55,7 +55,7 @@ class SecurityProfileArgs {
   /// [threatPreventionProfile] The threat prevention configuration for the security profile.
   /// [type] The type of security profile.
   /// [urlFilteringProfile] The url filtering configuration for the security profile.
-  SecurityProfileArgs({
+  const SecurityProfileArgs({
     this.customInterceptProfile,
     this.customMirroringProfile,
     this.description,

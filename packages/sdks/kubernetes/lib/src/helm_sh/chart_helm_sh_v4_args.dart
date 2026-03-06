@@ -59,7 +59,7 @@ class ChartHelmShV4Args {
   /// [values] Custom values set for the release.
   /// [verify] Verify the chart's integrity.
   /// [version] Specify the chart version to install. If this is not specified, the latest version is installed.
-  ChartHelmShV4Args({
+  const ChartHelmShV4Args({
     required this.chart,
     this.dependencyUpdate,
     this.devel,

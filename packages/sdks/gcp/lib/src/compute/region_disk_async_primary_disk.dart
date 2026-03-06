@@ -8,7 +8,7 @@ class RegionDiskAsyncPrimaryDisk {
 
   /// Creates a new [RegionDiskAsyncPrimaryDisk].
   /// [disk] Primary disk for asynchronous disk replication.
-  RegionDiskAsyncPrimaryDisk({
+  const RegionDiskAsyncPrimaryDisk({
     required this.disk,
   });
 

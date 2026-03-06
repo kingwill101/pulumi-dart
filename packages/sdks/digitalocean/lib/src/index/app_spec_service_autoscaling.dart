@@ -15,7 +15,7 @@ class AppSpecServiceAutoscaling {
   /// [maxInstanceCount] The maximum amount of instances for this component. Must be more than min_instance_count.
   /// [metrics] The metrics that the component is scaled on.
   /// [minInstanceCount] The minimum amount of instances for this component. Must be less than max_instance_count.
-  AppSpecServiceAutoscaling({
+  const AppSpecServiceAutoscaling({
     required this.maxInstanceCount,
     required this.metrics,
     required this.minInstanceCount,

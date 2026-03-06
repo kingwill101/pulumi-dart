@@ -19,7 +19,7 @@ class VirtualMachineScaleSetExtensionResponse {
   /// [name] The name of the extension.
   /// [properties] Describes the properties of a Virtual Machine Scale Set Extension.
   /// [type] Resource type
-  VirtualMachineScaleSetExtensionResponse({
+  const VirtualMachineScaleSetExtensionResponse({
     required this.id,
     this.name,
     this.properties,

@@ -14,7 +14,7 @@ class PlanScanSetting {
   /// [malwareScanner] Malware scanner to use for the scan setting. Currently only `GUARDDUTY` is supported.
   /// [resourceTypes] List of resource types to apply the scan setting to. Valid values are `EBS`, `EC2`, `S3` and `ALL`.
   /// [scannerRoleArn] ARN of the IAM role that AWS Backup uses to scan resources. See [the AWS documentation](https://docs.aws.amazon.com/guardduty/latest/ug/malware-protection-backup-iam-permissions.html) for details.
-  PlanScanSetting({
+  const PlanScanSetting({
     required this.malwareScanner,
     required this.resourceTypes,
     required this.scannerRoleArn,

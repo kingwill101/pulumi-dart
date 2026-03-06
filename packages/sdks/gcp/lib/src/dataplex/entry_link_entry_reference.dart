@@ -17,7 +17,7 @@ class EntryLinkEntryReference {
   /// [name] The relative resource name of the referenced Entry, of the form:
   /// [path] The path in the Entry that is referenced in the Entry Link.
   /// [type] The reference type of the Entry.
-  EntryLinkEntryReference({
+  const EntryLinkEntryReference({
     required this.name,
     this.path,
     this.type,

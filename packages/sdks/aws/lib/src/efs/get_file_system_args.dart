@@ -21,7 +21,7 @@ class GetFileSystemArgs {
   /// [fileSystemId] ID that identifies the file system (e.g., fs-ccfc0d65).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Restricts the list to the file system with these tags.
-  GetFileSystemArgs({
+  const GetFileSystemArgs({
     this.creationToken,
     this.fileSystemId,
     this.region,

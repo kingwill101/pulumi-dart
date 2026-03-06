@@ -37,7 +37,7 @@ class AccountConnectorArgs {
   /// [location] The location of the resource.
   /// [project] The ID of the project in which the resource belongs.
   /// [providerOauthConfig] ProviderOAuthConfig is the OAuth config for a provider.
-  AccountConnectorArgs({
+  const AccountConnectorArgs({
     required this.accountConnectorId,
     this.annotations,
     this.labels,

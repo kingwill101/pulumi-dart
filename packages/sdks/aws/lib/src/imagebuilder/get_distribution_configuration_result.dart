@@ -33,7 +33,7 @@ class GetDistributionConfigurationResult {
   /// [name] Name of the distribution configuration.
   /// [region] AWS Region of distribution.
   /// [tags] Key-value map of resource tags for the distribution configuration.
-  GetDistributionConfigurationResult({
+  const GetDistributionConfigurationResult({
     required this.arn,
     required this.dateCreated,
     required this.dateUpdated,

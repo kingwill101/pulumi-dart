@@ -30,7 +30,7 @@ class GetDesktopTypesArgs {
   /// [memorySize] The Memory size. Unit: MiB.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `SUFFICIENT`.
-  GetDesktopTypesArgs({
+  const GetDesktopTypesArgs({
     this.cpuCount,
     this.gpuCount,
     this.ids,

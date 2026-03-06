@@ -30,7 +30,7 @@ class GetServiceTemplateSpecVolumeSecret {
   /// [defaultMode] Mode bits to use on created files by default. Must be a value between 0000
   /// [items] If unspecified, the volume will expose a file whose name is the
   /// [secretName] The name of the secret in Cloud Secret Manager. By default, the secret
-  GetServiceTemplateSpecVolumeSecret({
+  const GetServiceTemplateSpecVolumeSecret({
     required this.defaultMode,
     required this.items,
     required this.secretName,

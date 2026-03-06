@@ -18,7 +18,7 @@ class GetClusterContinuousBackupInfo {
   /// [enabledTime] When ContinuousBackup was most recently enabled. Set to null if ContinuousBackup is not enabled.
   /// [encryptionInfos] Output only. The encryption information for the WALs and backups required for ContinuousBackup.
   /// [schedules] Days of the week on which a continuous backup is taken. Output only field. Ignored if passed into the request.
-  GetClusterContinuousBackupInfo({
+  const GetClusterContinuousBackupInfo({
     required this.earliestRestorableTime,
     required this.enabledTime,
     required this.encryptionInfos,

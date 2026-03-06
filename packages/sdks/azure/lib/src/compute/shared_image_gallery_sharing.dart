@@ -16,7 +16,7 @@ class SharedImageGallerySharing {
   /// Creates a new [SharedImageGallerySharing].
   /// [communityGallery] A `community_gallery` block as defined below. Changing this forces a new resource to be created.
   /// [permission] The permission of the Shared Image Gallery when sharing. Possible values are `Community`, `Groups` and `Private`. Changing this forces a new resource to be created.
-  SharedImageGallerySharing({
+  const SharedImageGallerySharing({
     this.communityGallery,
     required this.permission,
   });

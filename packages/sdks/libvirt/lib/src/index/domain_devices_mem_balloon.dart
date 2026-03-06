@@ -33,7 +33,7 @@ class DomainDevicesMemBalloon {
   /// [freePageReporting] Enables reporting of free pages by the memory balloon device, assisting with memory management.
   /// [model] Sets the model for the memory balloon device, determining its specific implementation details.
   /// [stats] Configures statistics collection for the memory balloon device, enabling performance monitoring.
-  DomainDevicesMemBalloon({
+  const DomainDevicesMemBalloon({
     this.acpi,
     this.address,
     this.alias,

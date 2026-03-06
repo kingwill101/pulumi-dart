@@ -8,7 +8,7 @@ class BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects {
 
   /// Creates a new [BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects].
   /// [status] Whether the existing objects should be replicated. Either `"Enabled"` or `"Disabled"`.
-  BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects({
+  const BucketReplicationConfigRuleSourceSelectionCriteriaSseKmsEncryptedObjects({
     required this.status,
   });
 

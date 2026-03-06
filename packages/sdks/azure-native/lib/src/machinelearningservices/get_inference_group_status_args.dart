@@ -21,7 +21,7 @@ class GetInferenceGroupStatusArgs {
   /// [poolName] InferencePool name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Name of Azure Machine Learning workspace.
-  GetInferenceGroupStatusArgs({
+  const GetInferenceGroupStatusArgs({
     required this.groupName,
     required this.poolName,
     required this.resourceGroupName,

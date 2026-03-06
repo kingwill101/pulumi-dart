@@ -12,7 +12,7 @@ class CustomDomainProperties {
   /// Creates a new [CustomDomainProperties].
   /// [certName] The bound certificate name of domain.
   /// [thumbprint] The thumbprint of bound certificate.
-  CustomDomainProperties({
+  const CustomDomainProperties({
     this.certName,
     this.thumbprint,
   });

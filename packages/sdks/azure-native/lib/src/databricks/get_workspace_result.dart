@@ -107,7 +107,7 @@ class GetWorkspaceResult {
   /// [updatedBy] Indicates the Object ID, PUID and Application ID of entity that last updated the workspace.
   /// [workspaceId] The unique identifier of the databricks workspace in databricks control plane.
   /// [workspaceUrl] The workspace URL which is of the format 'adb-{workspaceId}.{random}.azuredatabricks.net'
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     this.accessConnector,
     this.authorizations,
     required this.azureApiVersion,

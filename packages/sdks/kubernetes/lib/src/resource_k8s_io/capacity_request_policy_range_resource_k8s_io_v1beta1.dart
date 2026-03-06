@@ -28,7 +28,7 @@ class CapacityRequestPolicyRangeResourceK8sIoV1beta1 {
   /// [max] Max defines the upper limit for capacity that can be requested.
   /// [min] Min specifies the minimum capacity allowed for a consumption request.
   /// [step] Step defines the step size between valid capacity amounts within the range.
-  CapacityRequestPolicyRangeResourceK8sIoV1beta1({
+  const CapacityRequestPolicyRangeResourceK8sIoV1beta1({
     this.max,
     required this.min,
     this.step,

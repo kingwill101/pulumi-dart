@@ -15,7 +15,7 @@ class GetDatabaseMysqlArgs {
   /// Creates a new [GetDatabaseMysqlArgs].
   /// [databaseId] The ID of the MySQL database. Deprecated: Use id instead.
   /// [id] The ID of the MySQL database. Mutually exclusive with `database_id`.
-  GetDatabaseMysqlArgs({
+  const GetDatabaseMysqlArgs({
     this.databaseId,
     this.id,
   });

@@ -26,7 +26,7 @@ class GetMetricRuleTemplatesTemplateAlertTemplate {
   /// [ruleName] The name of the alert rule.
   /// [selector] Required.
   /// [webhook] The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
-  GetMetricRuleTemplatesTemplateAlertTemplate({
+  const GetMetricRuleTemplatesTemplateAlertTemplate({
     required this.category,
     required this.escalations,
     required this.metricName,

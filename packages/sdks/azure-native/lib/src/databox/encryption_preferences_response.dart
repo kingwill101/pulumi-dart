@@ -12,7 +12,7 @@ class EncryptionPreferencesResponse {
   /// Creates a new [EncryptionPreferencesResponse].
   /// [doubleEncryption] Defines secondary layer of software-based encryption enablement.
   /// [hardwareEncryption] Defines Hardware level encryption (Only for disk)
-  EncryptionPreferencesResponse({
+  const EncryptionPreferencesResponse({
     this.doubleEncryption,
     this.hardwareEncryption,
   });

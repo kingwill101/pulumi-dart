@@ -15,7 +15,7 @@ class ListAzureDataTransferApprovedSchemasArgs {
   /// Creates a new [ListAzureDataTransferApprovedSchemasArgs].
   /// [direction] The direction pipeline to filter approved schemas.
   /// [pipeline] The name of the pipeline to filter approved schemas.
-  ListAzureDataTransferApprovedSchemasArgs({
+  const ListAzureDataTransferApprovedSchemasArgs({
     this.direction,
     this.pipeline,
   });

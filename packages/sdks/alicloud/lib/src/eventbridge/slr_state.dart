@@ -8,7 +8,7 @@ class SlrState {
 
   /// Creates a new [SlrState].
   /// [productName] Optional.
-  SlrState({
+  const SlrState({
     this.productName,
   });
 

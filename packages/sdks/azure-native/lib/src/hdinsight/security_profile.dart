@@ -33,7 +33,7 @@ class SecurityProfile {
   /// [ldapsUrls] The LDAPS protocol URLs to communicate with the Active Directory.
   /// [msiResourceId] User assigned identity that has permissions to read and create cluster-related artifacts in the user's AADDS.
   /// [organizationalUnitDN] The organizational unit within the Active Directory to place the cluster and service accounts.
-  SecurityProfile({
+  const SecurityProfile({
     this.aaddsResourceId,
     this.clusterUsersGroupDNs,
     this.directoryType,

@@ -12,7 +12,7 @@ class NetworkPoliciesResponse {
   /// Creates a new [NetworkPoliciesResponse].
   /// [egress] Egress policy for the network.
   /// [ingress] Ingress policy for the network.
-  NetworkPoliciesResponse({
+  const NetworkPoliciesResponse({
     this.egress,
     this.ingress,
   });

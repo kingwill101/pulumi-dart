@@ -18,7 +18,7 @@ class KafkaTopicMapBatchingResponse {
   /// [latencyMs] The latency of message batching.
   /// [maxBytes] The maximum bytes to send in a batch.
   /// [maxMessages] The maximum messages to send in a batch.
-  KafkaTopicMapBatchingResponse({
+  const KafkaTopicMapBatchingResponse({
     this.enabled,
     this.latencyMs,
     this.maxBytes,

@@ -34,7 +34,7 @@ class AiReasoningEngineArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of the reasoning engine. eg us-central1
   /// [spec] Optional. Configurations of the ReasoningEngine.
-  AiReasoningEngineArgs({
+  const AiReasoningEngineArgs({
     this.description,
     required this.displayName,
     this.encryptionSpec,

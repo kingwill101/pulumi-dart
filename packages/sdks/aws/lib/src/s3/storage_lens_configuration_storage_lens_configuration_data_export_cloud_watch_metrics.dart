@@ -8,7 +8,7 @@ class StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetric
 
   /// Creates a new [StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics].
   /// [enabled] Whether CloudWatch publishing for S3 Storage Lens metrics is enabled.
-  StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics({
+  const StorageLensConfigurationStorageLensConfigurationDataExportCloudWatchMetrics({
     required this.enabled,
   });
 

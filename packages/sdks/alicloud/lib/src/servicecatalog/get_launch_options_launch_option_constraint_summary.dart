@@ -11,7 +11,7 @@ class GetLaunchOptionsLaunchOptionConstraintSummary {
   /// Creates a new [GetLaunchOptionsLaunchOptionConstraintSummary].
   /// [constraintType] Constraint type.The value is Launch, which indicates that the constraint is started.
   /// [description] Constraint description.
-  GetLaunchOptionsLaunchOptionConstraintSummary({
+  const GetLaunchOptionsLaunchOptionConstraintSummary({
     required this.constraintType,
     required this.description,
   });

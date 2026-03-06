@@ -9,7 +9,7 @@ class DataSetColumnGroup {
 
   /// Creates a new [DataSetColumnGroup].
   /// [geoSpatialColumnGroup] Geospatial column group that denotes a hierarchy. See geo_spatial_column_group.
-  DataSetColumnGroup({
+  const DataSetColumnGroup({
     this.geoSpatialColumnGroup,
   });
 

@@ -18,7 +18,7 @@ class GetProjectArgs {
   /// [projectName] The name of the Project resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [storageMoverName] The name of the Storage Mover resource.
-  GetProjectArgs({
+  const GetProjectArgs({
     required this.projectName,
     required this.resourceGroupName,
     required this.storageMoverName,

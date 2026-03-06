@@ -37,7 +37,7 @@ class ExascaleDatabaseStorageVaultState {
   /// [tags] A mapping of tags which should be assigned to the Exadata Database Storage Vault.
   /// [timeZone] The time zone that you want to use for the Exadata Database Storage Vault. Changing this forces a new Exadata Database Storage Vault to be created. For details, see [Time Zones](https://docs.oracle.com/en/cloud/paas/base-database/time-zone/).
   /// [zones] Exadata Database Storage Vault zones. Changing this forces a new Exadata Database Storage Vault to be created.
-  ExascaleDatabaseStorageVaultState({
+  const ExascaleDatabaseStorageVaultState({
     this.additionalFlashCachePercentage,
     this.description,
     this.displayName,

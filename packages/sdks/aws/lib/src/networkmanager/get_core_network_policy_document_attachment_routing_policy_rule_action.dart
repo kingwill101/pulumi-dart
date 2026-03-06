@@ -8,7 +8,7 @@ class GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction {
 
   /// Creates a new [GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction].
   /// [associateRoutingPolicies] Set of routing policy names to associate when the conditions match.
-  GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction({
+  const GetCoreNetworkPolicyDocumentAttachmentRoutingPolicyRuleAction({
     required this.associateRoutingPolicies,
   });
 

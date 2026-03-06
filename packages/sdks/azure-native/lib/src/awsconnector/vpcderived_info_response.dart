@@ -18,7 +18,7 @@ class VPCDerivedInfoResponse {
   /// [securityGroupIds] &lt;p&gt;The list of security group IDs associated with the VPC endpoints for the domain.&lt;/p&gt;
   /// [subnetIds] &lt;p&gt;A list of subnet IDs associated with the VPC endpoints for the domain.&lt;/p&gt;
   /// [vpcId] &lt;p&gt;The ID for your VPC. Amazon VPC generates this value when you create a VPC.&lt;/p&gt;
-  VPCDerivedInfoResponse({
+  const VPCDerivedInfoResponse({
     this.availabilityZones,
     this.securityGroupIds,
     this.subnetIds,

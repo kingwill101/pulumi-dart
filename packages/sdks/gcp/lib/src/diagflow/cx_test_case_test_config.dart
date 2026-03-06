@@ -18,7 +18,7 @@ class CxTestCaseTestConfig {
   /// [flow] Flow name to start the test case with.
   /// [page] The page to start the test case with.
   /// [trackingParameters] Session parameters to be compared when calculating differences.
-  CxTestCaseTestConfig({
+  const CxTestCaseTestConfig({
     this.flow,
     this.page,
     this.trackingParameters,

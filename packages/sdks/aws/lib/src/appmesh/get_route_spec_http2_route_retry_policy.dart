@@ -14,7 +14,7 @@ class GetRouteSpecHttp2RouteRetryPolicy {
   /// [maxRetries] Required.
   /// [perRetryTimeouts] Required.
   /// [tcpRetryEvents] Required.
-  GetRouteSpecHttp2RouteRetryPolicy({
+  const GetRouteSpecHttp2RouteRetryPolicy({
     required this.httpRetryEvents,
     required this.maxRetries,
     required this.perRetryTimeouts,

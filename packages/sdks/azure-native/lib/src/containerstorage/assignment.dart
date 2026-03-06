@@ -9,7 +9,7 @@ class Assignment {
 
   /// Creates a new [Assignment].
   /// [id] Resource id for the assigned resource
-  Assignment({
+  const Assignment({
     required this.id,
   });
 

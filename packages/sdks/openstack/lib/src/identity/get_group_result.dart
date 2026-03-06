@@ -20,7 +20,7 @@ class GetGroupResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [name] See Argument Reference above.
   /// [region] See Argument Reference above.
-  GetGroupResult({
+  const GetGroupResult({
     required this.description,
     required this.domainId,
     required this.id,

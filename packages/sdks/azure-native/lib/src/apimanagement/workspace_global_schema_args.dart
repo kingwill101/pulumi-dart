@@ -30,7 +30,7 @@ class WorkspaceGlobalSchemaArgs {
   /// [serviceName] The name of the API Management service.
   /// [value] Json-encoded string for non json-based schema.
   /// [workspaceId] Workspace identifier. Must be unique in the current API Management service instance.
-  WorkspaceGlobalSchemaArgs({
+  const WorkspaceGlobalSchemaArgs({
     this.description,
     required this.resourceGroupName,
     this.schemaId,

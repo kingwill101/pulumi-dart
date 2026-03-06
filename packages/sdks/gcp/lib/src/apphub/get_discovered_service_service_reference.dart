@@ -11,7 +11,7 @@ class GetDiscoveredServiceServiceReference {
   /// Creates a new [GetDiscoveredServiceServiceReference].
   /// [path] Additional path under the resource URI.
   /// [uri] The underlying resource URI.
-  GetDiscoveredServiceServiceReference({
+  const GetDiscoveredServiceServiceReference({
     required this.path,
     required this.uri,
   });

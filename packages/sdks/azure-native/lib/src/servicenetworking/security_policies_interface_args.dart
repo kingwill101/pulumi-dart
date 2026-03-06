@@ -28,7 +28,7 @@ class SecurityPoliciesInterfaceArgs {
   /// [tags] Resource tags.
   /// [trafficControllerName] traffic controller name for path
   /// [wafPolicy] Web Application Firewall Policy of the Traffic Controller Security Policy. Single Security Policy can have only one policy type set.
-  SecurityPoliciesInterfaceArgs({
+  const SecurityPoliciesInterfaceArgs({
     this.location,
     required this.resourceGroupName,
     this.securityPolicyName,

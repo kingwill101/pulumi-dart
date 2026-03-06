@@ -52,7 +52,7 @@ class DataCollectionRuleArgs {
   /// [resourceGroupName] The name of the Resource Group where the Data Collection Rule should exist. Changing this forces a new Data Collection Rule to be created.
   /// [streamDeclarations] A `stream_declaration` block as defined below.
   /// [tags] A mapping of tags which should be assigned to the Data Collection Rule.
-  DataCollectionRuleArgs({
+  const DataCollectionRuleArgs({
     this.dataCollectionEndpointId,
     required this.dataFlows,
     this.dataSources,

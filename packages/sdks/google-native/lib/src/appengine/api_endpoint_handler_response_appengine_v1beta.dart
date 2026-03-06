@@ -9,7 +9,7 @@ class ApiEndpointHandlerResponseAppengineV1beta {
 
   /// Creates a new [ApiEndpointHandlerResponseAppengineV1beta].
   /// [scriptPath] Path to the script from the application root directory.
-  ApiEndpointHandlerResponseAppengineV1beta({
+  const ApiEndpointHandlerResponseAppengineV1beta({
     required this.scriptPath,
   });
 

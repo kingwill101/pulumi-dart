@@ -15,7 +15,7 @@ class AvailableSolutionTemplateVersionResponse {
   /// [isConfigured] Has this solution template version been configured
   /// [latestConfigRevision] Latest Configuration Revision
   /// [solutionTemplateVersion] Solution template Version
-  AvailableSolutionTemplateVersionResponse({
+  const AvailableSolutionTemplateVersionResponse({
     required this.isConfigured,
     required this.latestConfigRevision,
     required this.solutionTemplateVersion,

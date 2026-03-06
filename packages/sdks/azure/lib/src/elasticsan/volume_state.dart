@@ -33,7 +33,7 @@ class VolumeState {
   /// [targetPortalPort] The iSCSI Target Portal Port of the Elastic SAN Volume.
   /// [volumeGroupId] Specifies the Volume Group ID within which this Elastic SAN Volume should exist. Changing this forces a new resource to be created.
   /// [volumeId] The UUID of the Elastic SAN Volume.
-  VolumeState({
+  const VolumeState({
     this.createSource,
     this.name,
     this.sizeInGib,

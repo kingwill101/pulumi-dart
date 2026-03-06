@@ -19,7 +19,7 @@ class GetContentitemArgs {
   /// [location] Required.
   /// [project] Optional.
   /// [view] Optional.
-  GetContentitemArgs({
+  const GetContentitemArgs({
     required this.contentitemId,
     required this.lakeId,
     required this.location,

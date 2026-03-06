@@ -28,7 +28,7 @@ class RegionNetworkFirewallPolicyArgs {
   /// [policyType] Policy type is used to determine which resources (networks) the policy can be associated with.
   /// [project] The ID of the project in which the resource belongs.
   /// [region] The region of this resource.
-  RegionNetworkFirewallPolicyArgs({
+  const RegionNetworkFirewallPolicyArgs({
     this.description,
     this.name,
     this.policyType,

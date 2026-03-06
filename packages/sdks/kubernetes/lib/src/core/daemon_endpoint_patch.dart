@@ -9,7 +9,7 @@ class DaemonEndpointPatch {
 
   /// Creates a new [DaemonEndpointPatch].
   /// [port] Port number of the given endpoint.
-  DaemonEndpointPatch({
+  const DaemonEndpointPatch({
     this.port,
   });
 

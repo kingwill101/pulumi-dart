@@ -39,7 +39,7 @@ class V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV
   /// [path] Required. The absolute path of the file within the VM.
   /// [permissions] Consists of three octal digits which represent, in
   /// [state] Required. Desired state of the file.
-  V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile({
+  const V2PolicyOrchestratorForOrganizationOrchestratedResourceOsPolicyAssignmentV1PayloadOsPolicyResourceGroupResourceFile({
     this.content,
     this.file,
     required this.path,

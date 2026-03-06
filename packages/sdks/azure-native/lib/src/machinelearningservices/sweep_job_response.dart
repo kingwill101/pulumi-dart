@@ -86,7 +86,7 @@ class SweepJobResponse {
   /// [status] Status of the job.
   /// [tags] Tag dictionary. Tags can be added, removed, and updated.
   /// [trial] [Required] Trial component definition.
-  SweepJobResponse({
+  const SweepJobResponse({
     this.componentId,
     this.computeId,
     this.description,

@@ -26,7 +26,7 @@ class ContinuousDeploymentPolicyState {
   /// [lastModifiedTime] Date and time the continuous deployment policy was last modified.
   /// [stagingDistributionDnsNames] CloudFront domain name of the staging distribution. See `staging_distribution_dns_names`.
   /// [trafficConfig] Parameters for routing production traffic from primary to staging distributions. See `traffic_config`.
-  ContinuousDeploymentPolicyState({
+  const ContinuousDeploymentPolicyState({
     this.arn,
     this.enabled,
     this.etag,

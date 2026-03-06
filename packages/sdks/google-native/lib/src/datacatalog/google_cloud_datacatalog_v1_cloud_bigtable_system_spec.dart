@@ -9,7 +9,7 @@ class GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
 
   /// Creates a new [GoogleCloudDatacatalogV1CloudBigtableSystemSpec].
   /// [instanceDisplayName] Display name of the Instance. This is user specified and different from the resource name.
-  GoogleCloudDatacatalogV1CloudBigtableSystemSpec({
+  const GoogleCloudDatacatalogV1CloudBigtableSystemSpec({
     this.instanceDisplayName,
   });
 

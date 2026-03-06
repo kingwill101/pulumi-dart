@@ -9,7 +9,7 @@ class ConnectorKafkaCluster {
 
   /// Creates a new [ConnectorKafkaCluster].
   /// [apacheKafkaCluster] The Apache Kafka cluster to which the connector is connected. See `apache_kafka_cluster` Block for details.
-  ConnectorKafkaCluster({
+  const ConnectorKafkaCluster({
     required this.apacheKafkaCluster,
   });
 

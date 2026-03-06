@@ -62,7 +62,7 @@ class ServiceConfigResponse {
   /// [uri] URI of the Service deployed.
   /// [vpcConnector] The Serverless VPC Access connector that this cloud function can connect to. The format of this field is `projects/*/locations/*/connectors/*`.
   /// [vpcConnectorEgressSettings] The egress settings for the connector, controlling what traffic is diverted through it.
-  ServiceConfigResponse({
+  const ServiceConfigResponse({
     required this.allTrafficOnLatestRevision,
     required this.availableCpu,
     required this.availableMemory,

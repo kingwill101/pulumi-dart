@@ -8,7 +8,7 @@ class DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot {
 
   /// Creates a new [DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot].
   /// [name] Configures the name attribute for the snapshot used in network storage operations.
-  DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot({
+  const DomainDevicesDiskMirrorBackingStoreSourceNetworkSnapshot({
     required this.name,
   });
 

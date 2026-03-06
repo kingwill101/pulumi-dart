@@ -35,7 +35,7 @@ class GradientaiAgentFunction {
   /// [updatedAt] Updated At timestamp for the Agent
   /// [url] Url of the Deployment
   /// [uuid] API Key value
-  GradientaiAgentFunction({
+  const GradientaiAgentFunction({
     this.apiKey,
     this.createdAt,
     this.description,

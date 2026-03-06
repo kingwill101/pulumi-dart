@@ -29,7 +29,7 @@ class ApplicationUpgradePolicy {
   /// [rollingUpgradeMonitoringPolicy] The policy used for monitoring the application upgrade
   /// [upgradeMode] The mode used to monitor health during a rolling upgrade. The values are Monitored, and UnmonitoredAuto.
   /// [upgradeReplicaSetCheckTimeout] The maximum amount of time to block processing of an upgrade domain and prevent loss of availability when there are unexpected issues. When this timeout expires, processing of the upgrade domain will proceed regardless of availability loss issues. The timeout is reset at the start of each upgrade domain. Valid values are between 0 and 42949672925 inclusive. (unsigned 32-bit integer).
-  ApplicationUpgradePolicy({
+  const ApplicationUpgradePolicy({
     this.applicationHealthPolicy,
     this.forceRestart,
     this.instanceCloseDelayDuration,

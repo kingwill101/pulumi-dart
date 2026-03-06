@@ -48,7 +48,7 @@ class GetIpAllocationResult {
   /// [tags] Resource tags.
   /// [type] Resource type.
   /// [virtualNetwork] The VirtualNetwork that using the prefix of this IpAllocation resource.
-  GetIpAllocationResult({
+  const GetIpAllocationResult({
     this.allocationTags,
     required this.azureApiVersion,
     required this.etag,

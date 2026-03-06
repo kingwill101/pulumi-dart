@@ -40,7 +40,7 @@ class DatabaseState {
   /// [instanceId] The instance ID. You can call the DescribeDBInstances operation to query the instance ID.
   /// [name] The attribute has been deprecated from 1.267.0 and using `data_base_name` instead.
   /// [status] The status of the resource
-  DatabaseState({
+  const DatabaseState({
     this.characterSet,
     this.dataBaseName,
     this.description,

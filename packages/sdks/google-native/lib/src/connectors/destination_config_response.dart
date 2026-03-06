@@ -13,7 +13,7 @@ class DestinationConfigResponse {
   /// Creates a new [DestinationConfigResponse].
   /// [destinations] The destinations for the key.
   /// [key] The key is the destination identifier that is supported by the Connector.
-  DestinationConfigResponse({
+  const DestinationConfigResponse({
     required this.destinations,
     required this.key,
   });

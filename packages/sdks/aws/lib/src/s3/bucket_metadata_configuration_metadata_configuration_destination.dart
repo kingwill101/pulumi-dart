@@ -14,7 +14,7 @@ class BucketMetadataConfigurationMetadataConfigurationDestination {
   /// [tableBucketArn] ARN of the table bucket where the metadata configuration is stored.
   /// [tableBucketType] Type of the table bucket where the metadata configuration is stored.
   /// [tableNamespace] Namespace in the table bucket where the metadata tables for the metadata configuration are stored.
-  BucketMetadataConfigurationMetadataConfigurationDestination({
+  const BucketMetadataConfigurationMetadataConfigurationDestination({
     required this.tableBucketArn,
     required this.tableBucketType,
     required this.tableNamespace,

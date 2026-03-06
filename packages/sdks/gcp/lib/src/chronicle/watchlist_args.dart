@@ -48,7 +48,7 @@ class WatchlistArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [watchlistId] Optional. The ID to use for the watchlist,
   /// [watchlistUserPreferences] A collection of user preferences for watchlist UI configuration.
-  WatchlistArgs({
+  const WatchlistArgs({
     this.description,
     required this.displayName,
     required this.entityPopulationMechanism,

@@ -14,7 +14,7 @@ class EndpointPrivateDnsZoneGroup {
   /// [id] The ID of the Private DNS Zone Config.
   /// [name] Specifies the Name of the Private DNS Zone Group.
   /// [privateDnsZoneIds] Specifies the list of Private DNS Zones to include within the `private_dns_zone_group`.
-  EndpointPrivateDnsZoneGroup({
+  const EndpointPrivateDnsZoneGroup({
     this.id,
     required this.name,
     required this.privateDnsZoneIds,

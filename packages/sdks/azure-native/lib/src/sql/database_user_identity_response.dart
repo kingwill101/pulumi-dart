@@ -12,7 +12,7 @@ class DatabaseUserIdentityResponse {
   /// Creates a new [DatabaseUserIdentityResponse].
   /// [clientId] The Azure Active Directory client id.
   /// [principalId] The Azure Active Directory principal id.
-  DatabaseUserIdentityResponse({
+  const DatabaseUserIdentityResponse({
     required this.clientId,
     required this.principalId,
   });

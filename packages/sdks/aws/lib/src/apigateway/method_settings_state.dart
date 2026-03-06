@@ -22,7 +22,7 @@ class MethodSettingsState {
   /// [restApi] ID of the REST API
   /// [settings] Settings block, see below.
   /// [stageName] Name of the stage
-  MethodSettingsState({
+  const MethodSettingsState({
     this.methodPath,
     this.region,
     this.restApi,

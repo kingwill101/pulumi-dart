@@ -12,7 +12,7 @@ class ServiceAccount {
   /// Creates a new [ServiceAccount].
   /// [email] Email address of the service account. If empty, default Compute service account will be used.
   /// [scope] The list of scopes to be made available for this service account. If empty, access to all Cloud APIs will be allowed.
-  ServiceAccount({
+  const ServiceAccount({
     this.email,
     this.scope,
   });

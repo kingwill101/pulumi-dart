@@ -13,7 +13,7 @@ class GetImageComputeBetaArgs {
   /// Creates a new [GetImageComputeBetaArgs].
   /// [image] Required.
   /// [project] Optional.
-  GetImageComputeBetaArgs({
+  const GetImageComputeBetaArgs({
     required this.image,
     this.project,
   });

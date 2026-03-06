@@ -103,7 +103,7 @@ class GetSqlVirtualMachineResult {
   /// [virtualMachineResourceId] ARM Resource id of underlying virtual machine created from SQL marketplace image.
   /// [wsfcDomainCredentials] Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
   /// [wsfcStaticIp] Domain credentials for setting up Windows Server Failover Cluster for SQL availability group.
-  GetSqlVirtualMachineResult({
+  const GetSqlVirtualMachineResult({
     required this.additionalVmPatch,
     this.assessmentSettings,
     this.autoBackupSettings,

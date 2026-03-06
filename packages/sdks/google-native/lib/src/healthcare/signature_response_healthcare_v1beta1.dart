@@ -19,7 +19,7 @@ class SignatureResponseHealthcareV1beta1 {
   /// [metadata] Optional. Metadata associated with the user's signature. For example, the user's name or the user's title.
   /// [signatureTime] Optional. Timestamp of the signature.
   /// [userId] User's UUID provided by the client.
-  SignatureResponseHealthcareV1beta1({
+  const SignatureResponseHealthcareV1beta1({
     required this.image,
     required this.metadata,
     required this.signatureTime,

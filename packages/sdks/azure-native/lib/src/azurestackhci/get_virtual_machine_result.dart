@@ -69,7 +69,7 @@ class GetVirtualMachineResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [vmId] Unique identifier for the vm resource.
-  GetVirtualMachineResult({
+  const GetVirtualMachineResult({
     required this.azureApiVersion,
     this.extendedLocation,
     this.guestAgentProfile,

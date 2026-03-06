@@ -30,7 +30,7 @@ class ConfigManagementGitConfigResponseGkehubV1alpha {
   /// [syncRepo] The URL of the Git repository to use as the source of truth.
   /// [syncRev] Git revision (tag or hash) to check out. Default HEAD.
   /// [syncWaitSecs] Period in seconds between consecutive syncs. Default: 15.
-  ConfigManagementGitConfigResponseGkehubV1alpha({
+  const ConfigManagementGitConfigResponseGkehubV1alpha({
     required this.gcpServiceAccountEmail,
     required this.httpsProxy,
     required this.policyDir,

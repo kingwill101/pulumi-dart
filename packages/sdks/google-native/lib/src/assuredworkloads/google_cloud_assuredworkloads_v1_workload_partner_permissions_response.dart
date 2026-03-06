@@ -15,7 +15,7 @@ class GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse {
   /// [assuredWorkloadsMonitoring] Optional. Allow partner to view violation alerts.
   /// [dataLogsViewer] Allow the partner to view inspectability logs and monitoring violations.
   /// [serviceAccessApprover] Optional. Allow partner to view access approval logs.
-  GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse({
+  const GoogleCloudAssuredworkloadsV1WorkloadPartnerPermissionsResponse({
     required this.assuredWorkloadsMonitoring,
     required this.dataLogsViewer,
     required this.serviceAccessApprover,

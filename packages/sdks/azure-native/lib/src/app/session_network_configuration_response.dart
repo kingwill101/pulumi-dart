@@ -9,7 +9,7 @@ class SessionNetworkConfigurationResponse {
 
   /// Creates a new [SessionNetworkConfigurationResponse].
   /// [status] Network status for the sessions.
-  SessionNetworkConfigurationResponse({
+  const SessionNetworkConfigurationResponse({
     this.status,
   });
 

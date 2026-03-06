@@ -33,7 +33,7 @@ class DscConfigurationArgs {
   /// [name] Specifies the name of the DSC Configuration. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which the DSC Configuration is created. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  DscConfigurationArgs({
+  const DscConfigurationArgs({
     required this.automationAccountName,
     required this.contentEmbedded,
     this.description,

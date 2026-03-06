@@ -11,7 +11,7 @@ class BucketOwnershipControlsRule {
 
   /// Creates a new [BucketOwnershipControlsRule].
   /// [objectOwnership] Object ownership. Valid values: `BucketOwnerPreferred`, `ObjectWriter` or `BucketOwnerEnforced`
-  BucketOwnershipControlsRule({
+  const BucketOwnershipControlsRule({
     required this.objectOwnership,
   });
 

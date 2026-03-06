@@ -54,7 +54,7 @@ class GetIntegrationAccountSchemaResult {
   /// [tags] The resource tags.
   /// [targetNamespace] The target namespace of the schema.
   /// [type] Gets the resource type.
-  GetIntegrationAccountSchemaResult({
+  const GetIntegrationAccountSchemaResult({
     required this.azureApiVersion,
     required this.changedTime,
     this.content,

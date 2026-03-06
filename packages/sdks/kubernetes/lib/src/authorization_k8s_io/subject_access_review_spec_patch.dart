@@ -26,7 +26,7 @@ class SubjectAccessReviewSpecPatch {
   /// [resourceAttributes] ResourceAuthorizationAttributes describes information for a resource access request
   /// [uid] UID information about the requesting user.
   /// [user] User is the user you're testing for. If you specify "User" but not "Groups", then is it interpreted as "What if User were not a member of any groups
-  SubjectAccessReviewSpecPatch({
+  const SubjectAccessReviewSpecPatch({
     this.extra,
     this.groups,
     this.nonResourceAttributes,

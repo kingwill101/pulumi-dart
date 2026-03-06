@@ -46,7 +46,7 @@ class GetGradientaiAgentsAgentModel {
   /// [url] URL of the Model
   /// [usecases] List of Usecases for the Model
   /// [versions] URL of the Model
-  GetGradientaiAgentsAgentModel({
+  const GetGradientaiAgentsAgentModel({
     this.agreements,
     required this.createdAt,
     this.inferenceName,

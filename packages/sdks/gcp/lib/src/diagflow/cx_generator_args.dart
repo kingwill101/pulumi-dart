@@ -41,7 +41,7 @@ class CxGeneratorArgs {
   /// [parent] The agent to create a Generator for.
   /// [placeholders] List of custom placeholders in the prompt text.
   /// [promptText] Prompt for the LLM model.
-  CxGeneratorArgs({
+  const CxGeneratorArgs({
     required this.displayName,
     this.languageCode,
     this.llmModelSettings,

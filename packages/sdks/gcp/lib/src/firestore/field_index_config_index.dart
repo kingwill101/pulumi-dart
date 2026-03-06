@@ -22,7 +22,7 @@ class FieldIndexConfigIndex {
   /// [arrayConfig] Indicates that this field supports operations on arrayValues. Only one of `order` and `arrayConfig` can
   /// [order] Indicates that this field supports ordering by the specified order or comparing using =, &lt;, &lt;=, &gt;, &gt;=, !=.
   /// [queryScope] The scope at which a query is run. Collection scoped queries require you specify
-  FieldIndexConfigIndex({
+  const FieldIndexConfigIndex({
     this.arrayConfig,
     this.order,
     this.queryScope,

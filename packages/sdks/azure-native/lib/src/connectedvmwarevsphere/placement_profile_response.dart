@@ -18,7 +18,7 @@ class PlacementProfileResponse {
   /// [datastoreId] Gets or sets the ARM Id of the datastore resource on which the data for the virtual machine will be kept.
   /// [hostId] Gets or sets the ARM Id of the host resource on which this virtual machine will deploy.
   /// [resourcePoolId] Gets or sets the ARM Id of the resourcePool resource on which this virtual machine will deploy.
-  PlacementProfileResponse({
+  const PlacementProfileResponse({
     this.clusterId,
     this.datastoreId,
     this.hostId,

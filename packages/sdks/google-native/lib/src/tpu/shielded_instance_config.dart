@@ -9,7 +9,7 @@ class ShieldedInstanceConfig {
 
   /// Creates a new [ShieldedInstanceConfig].
   /// [enableSecureBoot] Defines whether the instance has Secure Boot enabled.
-  ShieldedInstanceConfig({
+  const ShieldedInstanceConfig({
     this.enableSecureBoot,
   });
 

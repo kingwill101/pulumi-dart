@@ -8,7 +8,7 @@ class ReservedInstanceOperationLock {
 
   /// Creates a new [ReservedInstanceOperationLock].
   /// [lockReason] The reason why the reserved instance was locked.
-  ReservedInstanceOperationLock({
+  const ReservedInstanceOperationLock({
     this.lockReason,
   });
 

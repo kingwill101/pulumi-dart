@@ -15,7 +15,7 @@ class GetDeploymentResourcePoolResult {
   /// [createTime] Timestamp when this DeploymentResourcePool was created.
   /// [dedicatedResources] The underlying DedicatedResources that the DeploymentResourcePool uses.
   /// [name] Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}`
-  GetDeploymentResourcePoolResult({
+  const GetDeploymentResourcePoolResult({
     required this.createTime,
     required this.dedicatedResources,
     required this.name,

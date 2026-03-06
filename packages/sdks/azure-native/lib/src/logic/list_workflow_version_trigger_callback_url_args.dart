@@ -27,7 +27,7 @@ class ListWorkflowVersionTriggerCallbackUrlArgs {
   /// [triggerName] The workflow trigger name.
   /// [versionId] The workflow versionId.
   /// [workflowName] The workflow name.
-  ListWorkflowVersionTriggerCallbackUrlArgs({
+  const ListWorkflowVersionTriggerCallbackUrlArgs({
     this.keyType,
     this.notAfter,
     required this.resourceGroupName,

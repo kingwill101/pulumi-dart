@@ -12,7 +12,7 @@ class GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportR
   /// Creates a new [GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse].
   /// [message] Additional information about the BigQuery exporting.
   /// [state] Execution state for the BigQuery exporting.
-  GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse({
+  const GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResultResponse({
     required this.message,
     required this.state,
   });

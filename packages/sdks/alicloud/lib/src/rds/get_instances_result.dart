@@ -51,7 +51,7 @@ class GetInstancesResult {
   /// [totalCount] Required.
   /// [vpcId] ID of the VPC the instance belongs to.
   /// [vswitchId] ID of the vSwitch the instance belongs to.
-  GetInstancesResult({
+  const GetInstancesResult({
     this.connectionMode,
     this.dbType,
     this.enableDetails,

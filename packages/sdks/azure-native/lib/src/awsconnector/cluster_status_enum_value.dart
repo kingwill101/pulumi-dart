@@ -9,7 +9,7 @@ class ClusterStatusEnumValue {
 
   /// Creates a new [ClusterStatusEnumValue].
   /// [value] Property value
-  ClusterStatusEnumValue({
+  const ClusterStatusEnumValue({
     this.value,
   });
 

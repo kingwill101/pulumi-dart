@@ -17,7 +17,7 @@ class GoogleCloudDiscoveryengineV1alphaConversationMessageResponse {
   /// [createTime] Message creation timestamp.
   /// [reply] Search reply.
   /// [userInput] User text input.
-  GoogleCloudDiscoveryengineV1alphaConversationMessageResponse({
+  const GoogleCloudDiscoveryengineV1alphaConversationMessageResponse({
     required this.createTime,
     required this.reply,
     required this.userInput,

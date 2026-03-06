@@ -17,7 +17,7 @@ class SiteApplianceProperties {
   /// [agentDetails] Gets or sets the on-premises agent details.
   /// [applianceName] Gets or sets the Appliance Name.
   /// [servicePrincipalIdentityDetails] Gets or sets the service principal identity details used by agent for  communication              to the service.
-  SiteApplianceProperties({
+  const SiteApplianceProperties({
     this.agentDetails,
     this.applianceName,
     this.servicePrincipalIdentityDetails,

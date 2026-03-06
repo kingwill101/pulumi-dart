@@ -9,7 +9,7 @@ class KeyPolicy {
 
   /// Creates a new [KeyPolicy].
   /// [keyExpirationPeriodInDays] The key expiration period in days.
-  KeyPolicy({
+  const KeyPolicy({
     required this.keyExpirationPeriodInDays,
   });
 

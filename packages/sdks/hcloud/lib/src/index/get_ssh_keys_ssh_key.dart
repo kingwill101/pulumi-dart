@@ -20,7 +20,7 @@ class GetSshKeysSshKey {
   /// [labels] User-defined [labels](https://docs.hetzner.cloud/reference/cloud#labels) (key-value pairs) for the resource.
   /// [name] Name of the SSH Key.
   /// [publicKey] Public key of the SSH Key pair.
-  GetSshKeysSshKey({
+  const GetSshKeysSshKey({
     required this.fingerprint,
     required this.id,
     required this.labels,

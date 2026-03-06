@@ -11,7 +11,7 @@ class AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText {
   /// Creates a new [AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText].
   /// [content] The localized content of this question
   /// [languageCode] The language code of this question content
-  AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText({
+  const AccessPackageAssignmentPolicyQuestionChoiceDisplayValueLocalizedText({
     required this.content,
     required this.languageCode,
   });

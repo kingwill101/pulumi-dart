@@ -9,7 +9,7 @@ class JobComparatorEnumValue {
 
   /// Creates a new [JobComparatorEnumValue].
   /// [value] Property value
-  JobComparatorEnumValue({
+  const JobComparatorEnumValue({
     this.value,
   });
 

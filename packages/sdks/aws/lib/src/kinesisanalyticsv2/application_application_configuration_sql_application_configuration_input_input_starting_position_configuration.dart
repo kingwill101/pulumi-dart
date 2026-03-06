@@ -8,7 +8,7 @@ class ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputSt
 
   /// Creates a new [ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration].
   /// [inputStartingPosition] The starting position on the stream. Valid values: `LAST_STOPPED_POINT`, `NOW`, `TRIM_HORIZON`.
-  ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration({
+  const ApplicationApplicationConfigurationSqlApplicationConfigurationInputInputStartingPositionConfiguration({
     this.inputStartingPosition,
   });
 

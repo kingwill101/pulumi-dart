@@ -34,7 +34,7 @@ class GetTrailsResult {
   /// [outputFile] Optional.
   /// [status] The status of the ActionTrail Trail.
   /// [trails] A list of ActionTrail Trails. Each element contains the following attributes:
-  GetTrailsResult({
+  const GetTrailsResult({
     required this.actiontrails,
     required this.id,
     required this.ids,

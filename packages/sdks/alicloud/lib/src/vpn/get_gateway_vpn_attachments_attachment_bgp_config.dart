@@ -17,7 +17,7 @@ class GetGatewayVpnAttachmentsAttachmentBgpConfig {
   /// [localBgpIp] The local BGP address of the tunnel (on the Alibaba Cloud side). This address is an IP address in the BGP network segment.
   /// [status] The status of the resource. Valid values: `init`, `active`, `attaching`, `attached`, `detaching`, `financialLocked`, `provisioning`, `updating`, `upgrading`, `deleted`.
   /// [tunnelCidr] The BGP network segment of the tunnel. The network segment must be a network segment with a mask length of 30 in 169.254.0.0/16, and cannot be 169.254.0.0/30, 169.254.1.0/30, 169.254.2.0/30, 169.254.3.0/30, 169.254.4.0/30, 169.254.5.0/30, 169.254.6.0/30, and 169.254.169.252/30.&gt; the network segments of two tunnels under an IPsec connection cannot be the same.
-  GetGatewayVpnAttachmentsAttachmentBgpConfig({
+  const GetGatewayVpnAttachmentsAttachmentBgpConfig({
     required this.localAsn,
     required this.localBgpIp,
     required this.status,

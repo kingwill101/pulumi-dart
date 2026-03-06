@@ -44,7 +44,7 @@ class PrimaryEndpointState {
   /// [sslConnectionString] The SSL connection string.
   /// [sslEnabled] Specifies how to modify the SSL encryption status. Valid values: `Disable`, `Enable`, `Update`.
   /// [sslExpireTime] The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
-  PrimaryEndpointState({
+  const PrimaryEndpointState({
     this.connectionPrefix,
     this.dbClusterId,
     this.dbEndpointDescription,

@@ -12,7 +12,7 @@ class EndpointMatcherMetadataLabelMatcherMetadataLabels {
   /// Creates a new [EndpointMatcherMetadataLabelMatcherMetadataLabels].
   /// [labelName] Label name presented as key in xDS Node Metadata.
   /// [labelValue] Label value presented as value corresponding to the above key, in xDS Node Metadata.
-  EndpointMatcherMetadataLabelMatcherMetadataLabels({
+  const EndpointMatcherMetadataLabelMatcherMetadataLabels({
     required this.labelName,
     required this.labelValue,
   });

@@ -15,7 +15,7 @@ class GuestSubscriptionArgs {
   /// Creates a new [GuestSubscriptionArgs].
   /// [guestSubscriptionId] The name of the GuestSubscription
   /// [location] The name of the Azure region.
-  GuestSubscriptionArgs({
+  const GuestSubscriptionArgs({
     this.guestSubscriptionId,
     required this.location,
   });

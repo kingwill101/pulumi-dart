@@ -33,7 +33,7 @@ class WorkspaceRepositoryConfiguration {
   /// [rootFolder] Root folder to use in the repository
   /// [tenantId] The VSTS tenant ID
   /// [type] Type of workspace repositoryID configuration. Example WorkspaceVSTSConfiguration, WorkspaceGitHubConfiguration
-  WorkspaceRepositoryConfiguration({
+  const WorkspaceRepositoryConfiguration({
     this.accountName,
     this.collaborationBranch,
     this.hostName,

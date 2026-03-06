@@ -18,7 +18,7 @@ class GetClusterShard {
   /// [nodes] Set of nodes in this shard.
   /// [numNodes] Number of individual nodes in this shard.
   /// [slots] Keyspace for this shard. Example: `0-16383`.
-  GetClusterShard({
+  const GetClusterShard({
     required this.name,
     required this.nodes,
     required this.numNodes,

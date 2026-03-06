@@ -9,7 +9,7 @@ class CounterPatchResourceK8sIoV1beta1 {
 
   /// Creates a new [CounterPatchResourceK8sIoV1beta1].
   /// [value] Value defines how much of a certain device counter is available.
-  CounterPatchResourceK8sIoV1beta1({
+  const CounterPatchResourceK8sIoV1beta1({
     this.value,
   });
 

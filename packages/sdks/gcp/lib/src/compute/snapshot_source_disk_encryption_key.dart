@@ -22,7 +22,7 @@ class SnapshotSourceDiskEncryptionKey {
   /// [kmsKeyServiceAccount] The service account used for the encryption request for the given KMS key.
   /// [rawKey] Specifies a 256-bit customer-supplied encryption key, encoded in
   /// [rsaEncryptedKey] Specifies an encryption key stored in Google Cloud KMS, encoded in
-  SnapshotSourceDiskEncryptionKey({
+  const SnapshotSourceDiskEncryptionKey({
     this.kmsKeySelfLink,
     this.kmsKeyServiceAccount,
     this.rawKey,

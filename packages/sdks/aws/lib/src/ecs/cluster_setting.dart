@@ -11,7 +11,7 @@ class ClusterSetting {
   /// Creates a new [ClusterSetting].
   /// [name] Name of the setting to manage. Valid values: `containerInsights`.
   /// [value] Value to assign to the setting. Valid values: `enhanced`, `enabled`, `disabled`.
-  ClusterSetting({
+  const ClusterSetting({
     required this.name,
     required this.value,
   });

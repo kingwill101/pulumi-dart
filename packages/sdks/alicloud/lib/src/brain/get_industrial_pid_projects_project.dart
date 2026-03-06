@@ -20,7 +20,7 @@ class GetIndustrialPidProjectsProject {
   /// [pidProjectDesc] The description of Pid Project.
   /// [pidProjectId] The ID of Pid Project.
   /// [pidProjectName] The name of Pid Project.
-  GetIndustrialPidProjectsProject({
+  const GetIndustrialPidProjectsProject({
     required this.id,
     required this.pidOrganizationId,
     required this.pidProjectDesc,

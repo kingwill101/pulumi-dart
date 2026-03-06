@@ -21,7 +21,7 @@ class BucketRequestPaymentConfigurationArgs {
   /// [expectedBucketOwner] Account ID of the expected bucket owner.
   /// [payer] Specifies who pays for the download and request fees. Valid values: `BucketOwner`, `Requester`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  BucketRequestPaymentConfigurationArgs({
+  const BucketRequestPaymentConfigurationArgs({
     required this.bucket,
     this.expectedBucketOwner,
     required this.payer,

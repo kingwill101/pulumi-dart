@@ -12,7 +12,7 @@ class AccountNetworkProfileNodeManagementAccess {
   /// Creates a new [AccountNetworkProfileNodeManagementAccess].
   /// [defaultAction] Specifies the default action for the node management access. Possible values are `Allow` and `Deny`. Defaults to `Deny`.
   /// [ipRules] One or more `ip_rule` blocks as defined below.
-  AccountNetworkProfileNodeManagementAccess({
+  const AccountNetworkProfileNodeManagementAccess({
     this.defaultAction,
     this.ipRules,
   });

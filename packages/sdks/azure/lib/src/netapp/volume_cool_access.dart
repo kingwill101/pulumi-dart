@@ -14,7 +14,7 @@ class VolumeCoolAccess {
   /// [coolnessPeriodInDays] The coolness period in days for the volume. Possible vales are between `2` and `183`.
   /// [retrievalPolicy] The cool access retrieval policy for the volume. Possible values are `Default`, `Never` and `OnRead`.
   /// [tieringPolicy] The cool access tiering policy for the volume. Possible values are `Auto` and `SnapshotOnly`.
-  VolumeCoolAccess({
+  const VolumeCoolAccess({
     required this.coolnessPeriodInDays,
     required this.retrievalPolicy,
     required this.tieringPolicy,

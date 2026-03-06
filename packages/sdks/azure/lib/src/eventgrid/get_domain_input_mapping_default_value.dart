@@ -14,7 +14,7 @@ class GetDomainInputMappingDefaultValue {
   /// [dataVersion] Specifies the default data version of the EventGrid Event associated with the domain.
   /// [eventType] Specifies the default event type of the EventGrid Event associated with the domain.
   /// [subject] Specifies the default subject of the EventGrid Event associated with the domain.
-  GetDomainInputMappingDefaultValue({
+  const GetDomainInputMappingDefaultValue({
     required this.dataVersion,
     required this.eventType,
     required this.subject,

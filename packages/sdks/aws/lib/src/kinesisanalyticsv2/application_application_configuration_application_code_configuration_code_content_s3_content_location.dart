@@ -14,7 +14,7 @@ class ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContent
   /// [bucketArn] The ARN for the S3 bucket containing the application code.
   /// [fileKey] The file key for the object containing the application code.
   /// [objectVersion] The version of the object containing the application code.
-  ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation({
+  const ApplicationApplicationConfigurationApplicationCodeConfigurationCodeContentS3ContentLocation({
     required this.bucketArn,
     required this.fileKey,
     this.objectVersion,

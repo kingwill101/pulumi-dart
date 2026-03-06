@@ -9,7 +9,7 @@ class SessionLoggerLogConfiguration {
 
   /// Creates a new [SessionLoggerLogConfiguration].
   /// [s3] Configuration block for S3 log delivery. See S3 Configuration below.
-  SessionLoggerLogConfiguration({
+  const SessionLoggerLogConfiguration({
     this.s3,
   });
 

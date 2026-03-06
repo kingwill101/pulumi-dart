@@ -15,7 +15,7 @@ class GetEc2RouteTableArgs {
   /// Creates a new [GetEc2RouteTableArgs].
   /// [name] Name of Ec2RouteTable
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2RouteTableArgs({
+  const GetEc2RouteTableArgs({
     required this.name,
     required this.resourceGroupName,
   });

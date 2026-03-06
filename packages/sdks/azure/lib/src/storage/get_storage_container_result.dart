@@ -34,7 +34,7 @@ class GetStorageContainerResult {
   /// [resourceManagerId] Required.
   /// [storageAccountId] Optional.
   /// [storageAccountName] Optional.
-  GetStorageContainerResult({
+  const GetStorageContainerResult({
     required this.containerAccessType,
     required this.defaultEncryptionScope,
     required this.encryptionScopeOverrideEnabled,

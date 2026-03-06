@@ -15,7 +15,7 @@ class GetZonesArgs {
   /// Creates a new [GetZonesArgs].
   /// [fileSystemType] The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetZonesArgs({
+  const GetZonesArgs({
     this.fileSystemType,
     this.outputFile,
   });

@@ -7,7 +7,7 @@ class ContainerGroupContainerLivenessProbeExec {
 
   /// Creates a new [ContainerGroupContainerLivenessProbeExec].
   /// [commands] Optional.
-  ContainerGroupContainerLivenessProbeExec({
+  const ContainerGroupContainerLivenessProbeExec({
     this.commands,
   });
 

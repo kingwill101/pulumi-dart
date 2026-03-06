@@ -37,7 +37,7 @@ class ClusterArgs {
   /// [releaseEip] Optional.
   /// [size] Optional.
   /// [vswitchId] Required.
-  ClusterArgs({
+  const ClusterArgs({
     required this.cidrBlock,
     this.diskCategory,
     this.diskSize,

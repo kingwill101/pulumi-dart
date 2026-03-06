@@ -74,7 +74,7 @@ class IntegrationRuntimeSsisState {
   /// [pipelineExternalComputeScale] One `pipeline_external_compute_scale` block as defined below.
   /// [proxy] A `proxy` block as defined below.
   /// [vnetIntegration] A `vnet_integration` block as defined below.
-  IntegrationRuntimeSsisState({
+  const IntegrationRuntimeSsisState({
     this.catalogInfo,
     this.copyComputeScale,
     this.credentialName,

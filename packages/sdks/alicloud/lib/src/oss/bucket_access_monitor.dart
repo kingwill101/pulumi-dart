@@ -8,7 +8,7 @@ class BucketAccessMonitor {
 
   /// Creates a new [BucketAccessMonitor].
   /// [status] The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
-  BucketAccessMonitor({
+  const BucketAccessMonitor({
     this.status,
   });
 

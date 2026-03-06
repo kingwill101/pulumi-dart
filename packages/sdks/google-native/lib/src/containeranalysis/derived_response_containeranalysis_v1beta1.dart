@@ -20,7 +20,7 @@ class DerivedResponseContaineranalysisV1beta1 {
   /// [distance] The number of layers by which this image differs from the associated image basis.
   /// [fingerprint] The fingerprint of the derived image.
   /// [layerInfo] This contains layer-specific metadata, if populated it has length "distance" and is ordered with [distance] being the layer immediately following the base image and [1] being the final layer.
-  DerivedResponseContaineranalysisV1beta1({
+  const DerivedResponseContaineranalysisV1beta1({
     required this.baseResourceUrl,
     required this.distance,
     required this.fingerprint,

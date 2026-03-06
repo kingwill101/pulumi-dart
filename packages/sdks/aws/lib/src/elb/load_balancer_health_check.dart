@@ -23,7 +23,7 @@ class LoadBalancerHealthCheck {
   /// [target] The target of the check. Valid pattern is "${PROTOCOL}:${PORT}${PATH}", where PROTOCOL
   /// [timeout] The length of time before the check times out.
   /// [unhealthyThreshold] The number of checks before the instance is declared unhealthy.
-  LoadBalancerHealthCheck({
+  const LoadBalancerHealthCheck({
     required this.healthyThreshold,
     required this.interval,
     required this.target,

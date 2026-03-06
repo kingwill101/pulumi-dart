@@ -35,7 +35,7 @@ class EndpointGroupState {
   /// [tenantId] The owner of the group. Required if admin wants to
   /// [type] The type of the endpoints in the group. A valid value is subnet, cidr, network, router, or vlan.
   /// [valueSpecs] Map of additional options.
-  EndpointGroupState({
+  const EndpointGroupState({
     this.description,
     this.endpoints,
     this.name,

@@ -40,7 +40,7 @@ class Connection {
   /// [privateKeyPassword] The password to use in case the private key is encrypted.
   /// [proxy] The connection settings for the bastion/proxy host.
   /// [user] The user that we should use for the connection.
-  Connection({
+  const Connection({
     this.agentSocketPath,
     this.dialErrorLimit,
     required this.host,

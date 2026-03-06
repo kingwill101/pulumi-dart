@@ -40,7 +40,7 @@ class GetZoneRecordsArgs {
   /// [tag] The tag used to search for DNS records.
   /// [userClientIp] The IP address of the client.
   /// [zoneId] The ID of the private zone.
-  GetZoneRecordsArgs({
+  const GetZoneRecordsArgs({
     this.ids,
     this.keyword,
     this.lang,

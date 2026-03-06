@@ -33,7 +33,7 @@ class GetServerBackupPlansPlan {
   /// [instanceId] The ID of ECS Instance.
   /// [retention] Backup retention days, the minimum is 1.
   /// [schedule] Backup strategy.
-  GetServerBackupPlansPlan({
+  const GetServerBackupPlansPlan({
     required this.createTime,
     required this.details,
     required this.disabled,

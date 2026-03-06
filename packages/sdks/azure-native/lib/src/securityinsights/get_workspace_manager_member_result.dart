@@ -30,7 +30,7 @@ class GetWorkspaceManagerMemberResult {
   /// [targetWorkspaceResourceId] Fully qualified resource ID of the target Sentinel workspace joining the given Sentinel workspace manager
   /// [targetWorkspaceTenantId] Tenant id of the target Sentinel workspace joining the given Sentinel workspace manager
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetWorkspaceManagerMemberResult({
+  const GetWorkspaceManagerMemberResult({
     required this.azureApiVersion,
     required this.etag,
     required this.id,

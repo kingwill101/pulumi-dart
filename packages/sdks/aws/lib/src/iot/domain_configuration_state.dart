@@ -53,7 +53,7 @@ class DomainConfigurationState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [tlsConfig] An object that specifies the TLS configuration for a domain. See the `tls_config` Block below for details.
   /// [validationCertificateArn] The certificate used to validate the server certificate and prove domain name ownership. This certificate must be signed by a public certificate authority. This value is not required for Amazon Web Services-managed domains.
-  DomainConfigurationState({
+  const DomainConfigurationState({
     this.applicationProtocol,
     this.arn,
     this.authenticationType,

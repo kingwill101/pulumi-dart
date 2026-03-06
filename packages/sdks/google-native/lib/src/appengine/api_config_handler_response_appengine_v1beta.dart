@@ -21,7 +21,7 @@ class ApiConfigHandlerResponseAppengineV1beta {
   /// [script] Path to the script from the application root directory.
   /// [securityLevel] Security (HTTPS) enforcement for this URL.
   /// [url] URL to serve the endpoint at.
-  ApiConfigHandlerResponseAppengineV1beta({
+  const ApiConfigHandlerResponseAppengineV1beta({
     required this.authFailAction,
     required this.login,
     required this.script,

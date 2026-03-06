@@ -12,7 +12,7 @@ class SubnetNetworkSecurityGroupAssociationState {
   /// Creates a new [SubnetNetworkSecurityGroupAssociationState].
   /// [networkSecurityGroupId] The ID of the Network Security Group which should be associated with the Subnet. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the Subnet. Changing this forces a new resource to be created.
-  SubnetNetworkSecurityGroupAssociationState({
+  const SubnetNetworkSecurityGroupAssociationState({
     this.networkSecurityGroupId,
     this.subnetId,
   });

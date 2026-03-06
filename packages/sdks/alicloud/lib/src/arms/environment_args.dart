@@ -42,7 +42,7 @@ class EnvironmentArgs {
   /// [managedType] Hosting type:
   /// [resourceGroupId] The ID of the resource group.
   /// [tags] The tag of the resource.
-  EnvironmentArgs({
+  const EnvironmentArgs({
     this.aliyunLang,
     this.bindResourceId,
     this.dropMetrics,

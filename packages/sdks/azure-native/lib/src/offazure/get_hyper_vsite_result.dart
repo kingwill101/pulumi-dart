@@ -33,7 +33,7 @@ class GetHyperVSiteResult {
   /// [systemData] Metadata pertaining to creation and last modification of the resource.
   /// [tags] Optional.
   /// [type] Type of resource. Type = Microsoft.OffAzure/HyperVSites.
-  GetHyperVSiteResult({
+  const GetHyperVSiteResult({
     required this.azureApiVersion,
     this.eTag,
     required this.id,

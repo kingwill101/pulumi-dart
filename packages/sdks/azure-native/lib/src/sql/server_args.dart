@@ -59,7 +59,7 @@ class ServerArgs {
   /// [serverName] The name of the server.
   /// [tags] Resource tags.
   /// [version] The version of the server.
-  ServerArgs({
+  const ServerArgs({
     this.administratorLogin,
     this.administratorLoginPassword,
     this.administrators,

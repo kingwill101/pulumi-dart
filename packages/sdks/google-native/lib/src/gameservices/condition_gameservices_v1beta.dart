@@ -24,7 +24,7 @@ class ConditionGameservicesV1beta {
   /// [svc] Trusted attributes discharged by the service.
   /// [sys] Trusted attributes supplied by any service that owns resources and uses the IAM system for access control.
   /// [values] The objects of the condition.
-  ConditionGameservicesV1beta({
+  const ConditionGameservicesV1beta({
     this.iam,
     this.op,
     this.svc,

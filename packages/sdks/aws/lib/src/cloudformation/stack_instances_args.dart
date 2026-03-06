@@ -40,7 +40,7 @@ class StackInstancesArgs {
   /// [regions] Regions where you want to create stack instances in the specified `accounts`.
   /// [retainStacks] Whether to remove the stack instances from the stack set, but not delete the stacks. You can't reassociate a retained stack or add an existing, saved stack to a new stack set. To retain the stack, ensure `retain_stacks = true` has been successfully applied _before_ an apply that would destroy the resource. Defaults to `false`.
   /// [stackSetName] Name of the stack set.
-  StackInstancesArgs({
+  const StackInstancesArgs({
     this.accounts,
     this.callAs,
     this.deploymentTargets,

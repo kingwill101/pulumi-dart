@@ -14,7 +14,7 @@ class Installation {
   /// Creates a new [Installation].
   /// [license] Licenses that have been declared by the authors of the package.
   /// [location] All of the places within the filesystem versions of this package have been found.
-  Installation({
+  const Installation({
     this.license,
     this.location,
   });

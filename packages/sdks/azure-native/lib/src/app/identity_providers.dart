@@ -39,7 +39,7 @@ class IdentityProviders {
   /// [gitHub] The configuration settings of the GitHub provider.
   /// [google] The configuration settings of the Google provider.
   /// [twitter] The configuration settings of the Twitter provider.
-  IdentityProviders({
+  const IdentityProviders({
     this.apple,
     this.azureActiveDirectory,
     this.azureStaticWebApps,

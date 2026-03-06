@@ -12,7 +12,7 @@ class FilterFileDetailsResponse {
   /// Creates a new [FilterFileDetailsResponse].
   /// [filterFilePath] Path of the file that contains the details of all items to transfer.
   /// [filterFileType] Type of the filter file.
-  FilterFileDetailsResponse({
+  const FilterFileDetailsResponse({
     required this.filterFilePath,
     required this.filterFileType,
   });

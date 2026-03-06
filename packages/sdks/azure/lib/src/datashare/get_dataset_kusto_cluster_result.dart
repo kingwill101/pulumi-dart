@@ -21,7 +21,7 @@ class GetDatasetKustoClusterResult {
   /// [kustoClusterLocation] The location of the Kusto Cluster.
   /// [name] Required.
   /// [shareId] Required.
-  GetDatasetKustoClusterResult({
+  const GetDatasetKustoClusterResult({
     required this.displayName,
     required this.id,
     required this.kustoClusterId,

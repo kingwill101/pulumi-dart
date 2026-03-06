@@ -12,7 +12,7 @@ class ResourceMap {
   /// Creates a new [ResourceMap].
   /// [from] Resource Map Key.
   /// [to] Resource Map Value.
-  ResourceMap({
+  const ResourceMap({
     required this.from,
     required this.to,
   });

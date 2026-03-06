@@ -12,7 +12,7 @@ class ManagedClusterBootstrapProfile {
   /// Creates a new [ManagedClusterBootstrapProfile].
   /// [artifactSource] The artifact source. The source where the artifacts are downloaded from.
   /// [containerRegistryId] The resource Id of Azure Container Registry. The registry must have private network access, premium SKU and zone redundancy.
-  ManagedClusterBootstrapProfile({
+  const ManagedClusterBootstrapProfile({
     this.artifactSource,
     this.containerRegistryId,
   });

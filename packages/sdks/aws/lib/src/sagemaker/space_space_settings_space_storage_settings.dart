@@ -9,7 +9,7 @@ class SpaceSpaceSettingsSpaceStorageSettings {
 
   /// Creates a new [SpaceSpaceSettingsSpaceStorageSettings].
   /// [ebsStorageSettings] A collection of EBS storage settings for a space. See `ebs_storage_settings` Block below.
-  SpaceSpaceSettingsSpaceStorageSettings({
+  const SpaceSpaceSettingsSpaceStorageSettings({
     required this.ebsStorageSettings,
   });
 

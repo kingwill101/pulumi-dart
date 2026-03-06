@@ -55,7 +55,7 @@ class AgentAgentActionGroupArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [skipResourceInUseCheck] Whether the in-use check is skipped when deleting the action group.
   /// [timeouts] Optional.
-  AgentAgentActionGroupArgs({
+  const AgentAgentActionGroupArgs({
     this.actionGroupExecutor,
     required this.actionGroupName,
     this.actionGroupState,

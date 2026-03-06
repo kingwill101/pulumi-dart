@@ -12,7 +12,7 @@ class VirtualSwitchConfigurationOverrides {
   /// Creates a new [VirtualSwitchConfigurationOverrides].
   /// [enableIov] Enable IoV for Virtual Switch
   /// [loadBalancingAlgorithm] Load Balancing Algorithm for Virtual Switch
-  VirtualSwitchConfigurationOverrides({
+  const VirtualSwitchConfigurationOverrides({
     this.enableIov,
     this.loadBalancingAlgorithm,
   });

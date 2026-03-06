@@ -9,7 +9,7 @@ class AcceptedAudiences {
 
   /// Creates a new [AcceptedAudiences].
   /// [value] GUID or valid URL representing an accepted audience.
-  AcceptedAudiences({
+  const AcceptedAudiences({
     this.value,
   });
 

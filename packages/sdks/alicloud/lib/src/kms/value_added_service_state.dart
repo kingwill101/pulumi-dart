@@ -37,7 +37,7 @@ class ValueAddedServiceState {
   /// [renewStatus] The renewal status of the specified instance. Valid values:
   /// [status] The status of the resource
   /// [valueAddedService] value added service type, Instance Backup 1 default key rotation 2 Expert service 3
-  ValueAddedServiceState({
+  const ValueAddedServiceState({
     this.createTime,
     this.paymentType,
     this.period,

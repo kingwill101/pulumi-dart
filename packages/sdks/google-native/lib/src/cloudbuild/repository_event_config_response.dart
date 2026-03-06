@@ -20,7 +20,7 @@ class RepositoryEventConfigResponse {
   /// [push] Filter to match changes in refs like branches, tags.
   /// [repository] The resource name of the Repo API resource.
   /// [repositoryType] The type of the SCM vendor the repository points to.
-  RepositoryEventConfigResponse({
+  const RepositoryEventConfigResponse({
     required this.pullRequest,
     required this.push,
     required this.repository,

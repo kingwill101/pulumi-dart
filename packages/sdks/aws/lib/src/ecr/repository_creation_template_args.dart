@@ -44,7 +44,7 @@ class RepositoryCreationTemplateArgs {
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [repositoryPolicy] The registry policy document to apply to any created repositories. This is a JSON formatted string. For more information about building IAM policy documents with Terraform, see the AWS IAM Policy Document Guide.
   /// [resourceTags] A map of tags to assign to any created repositories.
-  RepositoryCreationTemplateArgs({
+  const RepositoryCreationTemplateArgs({
     required this.appliedFors,
     this.customRoleArn,
     this.description,

@@ -9,7 +9,7 @@ class WorkloadMetadataConfigResponse {
 
   /// Creates a new [WorkloadMetadataConfigResponse].
   /// [mode] Mode is the configuration for how to expose metadata to workloads running on the node pool.
-  WorkloadMetadataConfigResponse({
+  const WorkloadMetadataConfigResponse({
     required this.mode,
   });
 

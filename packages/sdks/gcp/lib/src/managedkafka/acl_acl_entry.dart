@@ -20,7 +20,7 @@ class AclAclEntry {
   /// [operation] The operation type. Allowed values are (case insensitive): ALL, READ,
   /// [permissionType] The permission type. Accepted values are (case insensitive): ALLOW, DENY.
   /// [principal] The principal. Specified as Google Cloud account, with the Kafka StandardAuthorizer prefix User:". For example: "User:test-kafka-client@test-project.iam.gserviceaccount.com". Can be the wildcard "User:*" to refer to all users.
-  AclAclEntry({
+  const AclAclEntry({
     this.host,
     required this.operation,
     this.permissionType,

@@ -14,7 +14,7 @@ class AlertProcessingRuleActionGroupScheduleRecurrenceWeekly {
   /// [daysOfWeeks] Specifies a list of dayOfWeek to recurrence. Possible values are `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, and `Saturday`.
   /// [endTime] Specifies the recurrence end time (H:M:S).
   /// [startTime] Specifies the recurrence start time (H:M:S).
-  AlertProcessingRuleActionGroupScheduleRecurrenceWeekly({
+  const AlertProcessingRuleActionGroupScheduleRecurrenceWeekly({
     required this.daysOfWeeks,
     this.endTime,
     this.startTime,

@@ -14,7 +14,7 @@ class KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl {
   /// [adminGroupObjectIds] A list of Object IDs of Azure Active Directory Groups which should have Admin Role on the Cluster.
   /// [azureRbacEnabled] Is Role Based Access Control based on Azure AD enabled?
   /// [tenantId] The Tenant ID used for Azure Active Directory Application. If this isn't specified the Tenant ID of the current Subscription is used.
-  KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl({
+  const KubernetesClusterAzureActiveDirectoryRoleBasedAccessControl({
     this.adminGroupObjectIds,
     this.azureRbacEnabled,
     this.tenantId,

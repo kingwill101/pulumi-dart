@@ -51,7 +51,7 @@ class BillingProfilePropertiesShipTo {
   /// [phoneNumber] Phone number.
   /// [postalCode] Postal code.
   /// [region] Address region.
-  BillingProfilePropertiesShipTo({
+  const BillingProfilePropertiesShipTo({
     required this.addressLine1,
     this.addressLine2,
     this.addressLine3,

@@ -22,7 +22,7 @@ class InboundSamlSsoProfileArgs {
   /// [displayName] Human-readable name of the SAML SSO profile.
   /// [idpConfig] SAML identity provider configuration.
   /// [spConfig] SAML service provider configuration for this SAML SSO profile. These are the service provider details provided by Google that should be configured on the corresponding identity provider.
-  InboundSamlSsoProfileArgs({
+  const InboundSamlSsoProfileArgs({
     this.customer,
     this.displayName,
     this.idpConfig,

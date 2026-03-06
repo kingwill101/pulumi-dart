@@ -8,7 +8,7 @@ class GetControlFolderIntelligenceConfigTrialConfig {
 
   /// Creates a new [GetControlFolderIntelligenceConfigTrialConfig].
   /// [expireTime] The time at which the trial expires.
-  GetControlFolderIntelligenceConfigTrialConfig({
+  const GetControlFolderIntelligenceConfigTrialConfig({
     required this.expireTime,
   });
 

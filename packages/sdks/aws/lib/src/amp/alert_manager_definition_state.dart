@@ -15,7 +15,7 @@ class AlertManagerDefinitionState {
   /// [definition] the alert manager definition that you want to be applied. See more [in AWS Docs](https://docs.aws.amazon.com/prometheus/latest/userguide/AMP-alert-manager.html).
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [workspaceId] ID of the prometheus workspace the alert manager definition should be linked to
-  AlertManagerDefinitionState({
+  const AlertManagerDefinitionState({
     this.definition,
     this.region,
     this.workspaceId,

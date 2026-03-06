@@ -9,7 +9,7 @@ class HostingEnvironmentProfile {
 
   /// Creates a new [HostingEnvironmentProfile].
   /// [id] Resource ID of the App Service Environment.
-  HostingEnvironmentProfile({
+  const HostingEnvironmentProfile({
     this.id,
   });
 

@@ -28,7 +28,7 @@ class BlobInventoryPolicyFilterResponse {
   /// [includeDeleted] For 'Container' definition.objectType the definition.schemaFields must include 'Deleted, Version, DeletedTime and RemainingRetentionDays'. For 'Blob' definition.objectType and HNS enabled storage accounts the definition.schemaFields must include 'DeletionId, Deleted, DeletedTime and RemainingRetentionDays' and for Hns disabled accounts the definition.schemaFields must include 'Deleted and RemainingRetentionDays', else it must be excluded.
   /// [includeSnapshots] Includes blob snapshots in blob inventory when value is set to true. The definition.schemaFields value 'Snapshot' is required if this property is set to true, else it must be excluded.
   /// [prefixMatch] An array of strings with maximum 10 blob prefixes to be included in the inventory.
-  BlobInventoryPolicyFilterResponse({
+  const BlobInventoryPolicyFilterResponse({
     this.blobTypes,
     this.creationTime,
     this.excludePrefix,

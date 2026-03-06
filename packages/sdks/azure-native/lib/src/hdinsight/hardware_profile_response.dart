@@ -9,7 +9,7 @@ class HardwareProfileResponse {
 
   /// Creates a new [HardwareProfileResponse].
   /// [vmSize] The size of the VM
-  HardwareProfileResponse({
+  const HardwareProfileResponse({
     this.vmSize,
   });
 

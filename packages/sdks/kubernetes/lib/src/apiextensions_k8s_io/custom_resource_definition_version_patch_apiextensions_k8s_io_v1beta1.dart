@@ -33,7 +33,7 @@ class CustomResourceDefinitionVersionPatchApiextensionsK8sIoV1beta1 {
   /// [served] served is a flag enabling/disabling this version from being served via REST APIs
   /// [storage] storage indicates this version should be used when persisting custom resources to storage. There must be exactly one version with storage=true.
   /// [subresources] subresources specify what subresources this version of the defined custom resource have. Top-level and per-version subresources are mutually exclusive. Per-version subresources must not all be set to identical values (top-level subresources should be used instead).
-  CustomResourceDefinitionVersionPatchApiextensionsK8sIoV1beta1({
+  const CustomResourceDefinitionVersionPatchApiextensionsK8sIoV1beta1({
     this.additionalPrinterColumns,
     this.deprecated,
     this.deprecationWarning,

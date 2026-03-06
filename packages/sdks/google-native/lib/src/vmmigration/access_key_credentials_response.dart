@@ -15,7 +15,7 @@ class AccessKeyCredentialsResponse {
   /// [accessKeyId] AWS access key ID.
   /// [secretAccessKey] Input only. AWS secret access key.
   /// [sessionToken] Input only. AWS session token. Used only when AWS security token service (STS) is responsible for creating the temporary credentials.
-  AccessKeyCredentialsResponse({
+  const AccessKeyCredentialsResponse({
     required this.accessKeyId,
     required this.secretAccessKey,
     required this.sessionToken,

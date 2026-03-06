@@ -48,7 +48,7 @@ class PolicyFileShareState {
   /// [retentionYearly] Configures the policy yearly retention as documented in the `retention_yearly` block below.
   /// [snapshotRetentionInDays] The number of days to retain the snapshots. Defaults to `0`.
   /// [timezone] Specifies the timezone. [the possible values are defined here](https://jackstromberg.com/2017/01/list-of-time-zones-consumed-by-azure/). Defaults to `UTC`
-  PolicyFileShareState({
+  const PolicyFileShareState({
     this.backup,
     this.backupTier,
     this.name,

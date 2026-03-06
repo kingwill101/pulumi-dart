@@ -15,7 +15,7 @@ class AadAuthenticationParameters {
   /// [aadAudience] AAD Vpn authentication parameter AAD audience.
   /// [aadIssuer] AAD Vpn authentication parameter AAD issuer.
   /// [aadTenant] AAD Vpn authentication parameter AAD tenant.
-  AadAuthenticationParameters({
+  const AadAuthenticationParameters({
     this.aadAudience,
     this.aadIssuer,
     this.aadTenant,

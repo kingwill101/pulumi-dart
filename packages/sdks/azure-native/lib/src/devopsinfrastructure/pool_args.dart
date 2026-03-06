@@ -46,7 +46,7 @@ class PoolArgs {
   /// [provisioningState] The status of the current operation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  PoolArgs({
+  const PoolArgs({
     required this.agentProfile,
     required this.devCenterProjectResourceId,
     required this.fabricProfile,

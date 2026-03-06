@@ -17,7 +17,7 @@ class GetReleaseResult {
   /// [name] Format: `projects/{project_id}/releases/{release_id}`
   /// [rulesetName] Name of the `Ruleset` referred to by this `Release`. The `Ruleset` must exist for the `Release` to be created.
   /// [updateTime] Time the release was updated.
-  GetReleaseResult({
+  const GetReleaseResult({
     required this.createTime,
     required this.name,
     required this.rulesetName,

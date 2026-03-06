@@ -13,7 +13,7 @@ class SubnetworkParams {
 
   /// Creates a new [SubnetworkParams].
   /// [resourceManagerTags] Resource manager tags to be bound to the subnetwork. Tag keys and values have the
-  SubnetworkParams({
+  const SubnetworkParams({
     this.resourceManagerTags,
   });
 

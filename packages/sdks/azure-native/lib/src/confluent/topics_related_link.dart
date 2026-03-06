@@ -9,7 +9,7 @@ class TopicsRelatedLink {
 
   /// Creates a new [TopicsRelatedLink].
   /// [related] Relationship of the topic
-  TopicsRelatedLink({
+  const TopicsRelatedLink({
     this.related,
   });
 

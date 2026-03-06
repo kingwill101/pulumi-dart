@@ -27,7 +27,7 @@ class GetEtlsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [project] Project Name
   /// [size] Specify the number of data processing tasks returned by the query
-  GetEtlsArgs({
+  const GetEtlsArgs({
     this.ids,
     required this.logstore,
     this.offset,

@@ -10,7 +10,7 @@ class VectorEmbeddingPolicyResponse {
 
   /// Creates a new [VectorEmbeddingPolicyResponse].
   /// [vectorEmbeddings] List of vector embeddings
-  VectorEmbeddingPolicyResponse({
+  const VectorEmbeddingPolicyResponse({
     this.vectorEmbeddings,
   });
 

@@ -11,7 +11,7 @@ class BuildMetadata {
   /// [finishedOn] Optional.
   /// [invocationId] Optional.
   /// [startedOn] Optional.
-  BuildMetadata({
+  const BuildMetadata({
     this.finishedOn,
     this.invocationId,
     this.startedOn,

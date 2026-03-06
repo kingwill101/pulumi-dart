@@ -13,7 +13,7 @@ class NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag {
   /// Creates a new [NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag].
   /// [name] Name of the secure tag, created with TagManager's TagValue API.
   /// [state] (Output)
-  NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag({
+  const NetworkFirewallPolicyPacketMirroringRuleTargetSecureTag({
     this.name,
     this.state,
   });

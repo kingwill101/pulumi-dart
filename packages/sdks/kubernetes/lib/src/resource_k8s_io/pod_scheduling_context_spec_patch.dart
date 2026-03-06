@@ -14,7 +14,7 @@ class PodSchedulingContextSpecPatch {
   /// Creates a new [PodSchedulingContextSpecPatch].
   /// [potentialNodes] PotentialNodes lists nodes where the Pod might be able to run.
   /// [selectedNode] SelectedNode is the node for which allocation of ResourceClaims that are referenced by the Pod and that use "WaitForFirstConsumer" allocation is to be attempted.
-  PodSchedulingContextSpecPatch({
+  const PodSchedulingContextSpecPatch({
     this.potentialNodes,
     this.selectedNode,
   });

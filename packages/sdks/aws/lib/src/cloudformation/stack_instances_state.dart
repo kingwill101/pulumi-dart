@@ -44,7 +44,7 @@ class StackInstancesState {
   /// [stackInstanceSummaries] List of stack instances created from an organizational unit deployment target. This may not always be set depending on whether CloudFormation returns summaries for your configuration. See `stack_instance_summaries`.
   /// [stackSetId] Name or unique ID of the stack set that the stack instance is associated with.
   /// [stackSetName] Name of the stack set.
-  StackInstancesState({
+  const StackInstancesState({
     this.accounts,
     this.callAs,
     this.deploymentTargets,

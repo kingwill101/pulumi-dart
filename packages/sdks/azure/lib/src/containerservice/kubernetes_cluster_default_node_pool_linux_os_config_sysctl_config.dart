@@ -92,7 +92,7 @@ class KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig {
   /// [vmMaxMapCount] The sysctl setting vm.max_map_count. Must be between `65530` and `262144`.
   /// [vmSwappiness] The sysctl setting vm.swappiness. Must be between `0` and `100`.
   /// [vmVfsCachePressure] The sysctl setting vm.vfs_cache_pressure. Must be between `0` and `100`.
-  KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig({
+  const KubernetesClusterDefaultNodePoolLinuxOsConfigSysctlConfig({
     this.fsAioMaxNr,
     this.fsFileMax,
     this.fsInotifyMaxUserWatches,

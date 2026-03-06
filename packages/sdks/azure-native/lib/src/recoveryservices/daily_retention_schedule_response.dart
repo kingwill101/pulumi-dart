@@ -13,7 +13,7 @@ class DailyRetentionScheduleResponse {
   /// Creates a new [DailyRetentionScheduleResponse].
   /// [retentionDuration] Retention duration of retention Policy.
   /// [retentionTimes] Retention times of retention policy.
-  DailyRetentionScheduleResponse({
+  const DailyRetentionScheduleResponse({
     this.retentionDuration,
     this.retentionTimes,
   });

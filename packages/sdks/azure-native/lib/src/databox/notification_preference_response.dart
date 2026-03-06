@@ -12,7 +12,7 @@ class NotificationPreferenceResponse {
   /// Creates a new [NotificationPreferenceResponse].
   /// [sendNotification] Notification is required or not.
   /// [stageName] Name of the stage.
-  NotificationPreferenceResponse({
+  const NotificationPreferenceResponse({
     required this.sendNotification,
     required this.stageName,
   });

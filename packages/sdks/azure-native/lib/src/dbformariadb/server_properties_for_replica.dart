@@ -30,7 +30,7 @@ class ServerPropertiesForReplica {
   /// [sslEnforcement] Enable ssl enforcement or not when connect to server.
   /// [storageProfile] Storage profile of a server.
   /// [version] Server version.
-  ServerPropertiesForReplica({
+  const ServerPropertiesForReplica({
     required this.createMode,
     this.minimalTlsVersion,
     this.publicNetworkAccess,

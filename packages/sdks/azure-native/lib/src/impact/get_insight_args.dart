@@ -15,7 +15,7 @@ class GetInsightArgs {
   /// Creates a new [GetInsightArgs].
   /// [insightName] Name of the insight
   /// [workloadImpactName] workloadImpact resource
-  GetInsightArgs({
+  const GetInsightArgs({
     required this.insightName,
     required this.workloadImpactName,
   });

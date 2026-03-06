@@ -20,7 +20,7 @@ class CloudControlParameterSpecSubParameterValidation {
   /// [allowedValues] Allowed set of values for the parameter.
   /// [intRange] Number range for number parameters.
   /// [regexpPattern] Regular Expression Validator for parameter values.
-  CloudControlParameterSpecSubParameterValidation({
+  const CloudControlParameterSpecSubParameterValidation({
     this.allowedValues,
     this.intRange,
     this.regexpPattern,

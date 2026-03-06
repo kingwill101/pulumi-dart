@@ -9,7 +9,7 @@ class ManagedIdentityResponse {
 
   /// Creates a new [ManagedIdentityResponse].
   /// [userAssignedIdentity] The user assigned identity.
-  ManagedIdentityResponse({
+  const ManagedIdentityResponse({
     this.userAssignedIdentity,
   });
 

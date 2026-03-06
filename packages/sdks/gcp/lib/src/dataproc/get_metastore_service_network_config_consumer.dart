@@ -14,7 +14,7 @@ class GetMetastoreServiceNetworkConfigConsumer {
   /// Creates a new [GetMetastoreServiceNetworkConfigConsumer].
   /// [endpointUri] The URI of the endpoint used to access the metastore service.
   /// [subnetwork] The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint.
-  GetMetastoreServiceNetworkConfigConsumer({
+  const GetMetastoreServiceNetworkConfigConsumer({
     required this.endpointUri,
     required this.subnetwork,
   });

@@ -13,7 +13,7 @@ class ConnectorCapacity {
   /// Creates a new [ConnectorCapacity].
   /// [autoscaling] Information about the auto scaling parameters for the connector. See `autoscaling` Block for details.
   /// [provisionedCapacity] Details about a fixed capacity allocated to a connector. See `provisioned_capacity` Block for details.
-  ConnectorCapacity({
+  const ConnectorCapacity({
     this.autoscaling,
     this.provisionedCapacity,
   });

@@ -21,7 +21,7 @@ class GetRaiPolicyArgs {
   /// [raiPolicyName] Name of the Rai Policy.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] Azure Machine Learning Workspace Name
-  GetRaiPolicyArgs({
+  const GetRaiPolicyArgs({
     required this.endpointName,
     required this.raiPolicyName,
     required this.resourceGroupName,

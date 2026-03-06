@@ -11,7 +11,7 @@ class ConfigurationStoreEncryption {
   /// Creates a new [ConfigurationStoreEncryption].
   /// [identityClientId] Specifies the client ID of the identity which will be used to access key vault.
   /// [keyVaultKeyIdentifier] Specifies the URI of the key vault key used to encrypt data.
-  ConfigurationStoreEncryption({
+  const ConfigurationStoreEncryption({
     this.identityClientId,
     this.keyVaultKeyIdentifier,
   });

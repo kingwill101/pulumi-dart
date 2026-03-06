@@ -18,7 +18,7 @@ class GraphAPIComputeRegionalServiceResourceResponse {
   /// [location] The location name.
   /// [name] The regional service name.
   /// [status] Describes the status of a service.
-  GraphAPIComputeRegionalServiceResourceResponse({
+  const GraphAPIComputeRegionalServiceResourceResponse({
     required this.graphApiComputeEndpoint,
     required this.location,
     required this.name,

@@ -19,7 +19,7 @@ class GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Args {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Args({
+  const GetFeaturestoreEntityTypeIamPolicyAiplatformV1beta1Args({
     required this.entityTypeId,
     required this.featurestoreId,
     required this.location,

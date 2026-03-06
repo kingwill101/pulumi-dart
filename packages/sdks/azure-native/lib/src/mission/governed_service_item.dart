@@ -18,7 +18,7 @@ class GovernedServiceItem {
   /// [option] Governance option for this service (Allow, Deny, ExceptionOnly, or NotApplicable).
   /// [policyAction] Enforcement mode for policy. AuditOnly, Enforce, or None.
   /// [serviceId] Service ID
-  GovernedServiceItem({
+  const GovernedServiceItem({
     this.enforcement,
     this.option,
     this.policyAction,

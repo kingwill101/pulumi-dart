@@ -11,7 +11,7 @@ class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId {
   /// Creates a new [PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId].
   /// [namespaceId] If not empty, the ID of the namespace to which the entities belong.
   /// [projectId] The ID of the project to which the entities belong.
-  PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId({
+  const PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId({
     this.namespaceId,
     required this.projectId,
   });

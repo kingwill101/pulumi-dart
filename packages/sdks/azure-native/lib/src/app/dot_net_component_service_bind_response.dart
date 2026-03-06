@@ -12,7 +12,7 @@ class DotNetComponentServiceBindResponse {
   /// Creates a new [DotNetComponentServiceBindResponse].
   /// [name] Name of the service bind
   /// [serviceId] Resource id of the target service
-  DotNetComponentServiceBindResponse({
+  const DotNetComponentServiceBindResponse({
     this.name,
     this.serviceId,
   });

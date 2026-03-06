@@ -36,7 +36,7 @@ class GetChainsChain {
   /// [modifiedTime] The modification time of delivery chain description.
   /// [scopeId] Delivery chain scope ID.
   /// [scopeType] Delivery chain scope type.
-  GetChainsChain({
+  const GetChainsChain({
     required this.chainConfigs,
     required this.chainId,
     required this.chainName,

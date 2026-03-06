@@ -10,7 +10,7 @@ class ConversationProfileHumanAgentHandoffConfig {
 
   /// Creates a new [ConversationProfileHumanAgentHandoffConfig].
   /// [livePersonConfig] Config for using LivePerson.
-  ConversationProfileHumanAgentHandoffConfig({
+  const ConversationProfileHumanAgentHandoffConfig({
     this.livePersonConfig,
   });
 

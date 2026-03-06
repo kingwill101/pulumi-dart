@@ -23,7 +23,7 @@ class SourceArgs {
   /// [displayName] The source's display name. A source's display name must be unique amongst its siblings, for example, two sources with the same parent can't share the same display name. The display name must have a length between 1 and 64 characters (inclusive).
   /// [name] The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}"
   /// [organizationId] Required.
-  SourceArgs({
+  const SourceArgs({
     this.canonicalName,
     this.description,
     this.displayName,

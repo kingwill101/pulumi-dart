@@ -12,7 +12,7 @@ class StatefulEngineOptions {
   /// Creates a new [StatefulEngineOptions].
   /// [ruleOrder] Property ruleOrder
   /// [streamExceptionPolicy] Property streamExceptionPolicy
-  StatefulEngineOptions({
+  const StatefulEngineOptions({
     this.ruleOrder,
     this.streamExceptionPolicy,
   });

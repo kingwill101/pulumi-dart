@@ -27,7 +27,7 @@ class GetSyncGroupResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [uniqueId] Unique Id
-  GetSyncGroupResult({
+  const GetSyncGroupResult({
     required this.azureApiVersion,
     required this.id,
     required this.name,

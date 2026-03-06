@@ -28,7 +28,7 @@ class DiJobTableMappingTransformationRule {
   /// [ruleActionType] Action type, optional enumeration value:
   /// [ruleName] Rule Name
   /// [ruleTargetType] Target type of action, optional enumeration value:
-  DiJobTableMappingTransformationRule({
+  const DiJobTableMappingTransformationRule({
     this.ruleActionType,
     this.ruleName,
     this.ruleTargetType,

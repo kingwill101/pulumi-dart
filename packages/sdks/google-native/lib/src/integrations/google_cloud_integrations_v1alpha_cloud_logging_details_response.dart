@@ -12,7 +12,7 @@ class GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse {
   /// Creates a new [GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse].
   /// [cloudLoggingSeverity] Optional. Severity selected by the customer for the logs to be sent to Cloud Logging, for the integration version getting executed.
   /// [enableCloudLogging] Optional. Status of whether Cloud Logging is enabled or not for the integration version getting executed.
-  GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse({
+  const GoogleCloudIntegrationsV1alphaCloudLoggingDetailsResponse({
     required this.cloudLoggingSeverity,
     required this.enableCloudLogging,
   });

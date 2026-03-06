@@ -20,7 +20,7 @@ class RequestContract {
   /// [headers] Collection of operation request headers.
   /// [queryParameters] Collection of operation request query parameters.
   /// [representations] Collection of operation request representations.
-  RequestContract({
+  const RequestContract({
     this.description,
     this.headers,
     this.queryParameters,

@@ -27,7 +27,7 @@ class RouterRouteArgs {
   /// [nextHop] IP address of the next hop gateway.  Changing
   /// [region] The region in which to obtain the V2 networking client.
   /// [routerId] ID of the router this routing entry belongs to. Changing
-  RouterRouteArgs({
+  const RouterRouteArgs({
     required this.destinationCidr,
     required this.nextHop,
     this.region,

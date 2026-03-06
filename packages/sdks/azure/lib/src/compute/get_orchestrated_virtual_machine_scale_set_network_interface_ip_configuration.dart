@@ -33,7 +33,7 @@ class GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration {
   /// [publicIpAddresses] The virtual machines scale set IP Configuration's PublicIPAddress configuration. The `public_ip_address` is documented below.
   /// [subnetId] The identifier of the subnet.
   /// [version] The Internet Protocol Version of the public IP address.
-  GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration({
+  const GetOrchestratedVirtualMachineScaleSetNetworkInterfaceIpConfiguration({
     required this.applicationGatewayBackendAddressPoolIds,
     required this.applicationSecurityGroupIds,
     required this.loadBalancerBackendAddressPoolIds,

@@ -38,7 +38,7 @@ class GetSourceMigrationcenterV1alpha1Result {
   /// [state] The state of the source.
   /// [type] Data source type.
   /// [updateTime] The timestamp when the source was last updated.
-  GetSourceMigrationcenterV1alpha1Result({
+  const GetSourceMigrationcenterV1alpha1Result({
     required this.createTime,
     required this.description,
     required this.displayName,

@@ -10,7 +10,7 @@ class UpdateGroupResponse {
 
   /// Creates a new [UpdateGroupResponse].
   /// [name] Name of the group.
-  UpdateGroupResponse({
+  const UpdateGroupResponse({
     required this.name,
   });
 

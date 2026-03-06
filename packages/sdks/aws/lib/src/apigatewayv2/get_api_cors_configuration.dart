@@ -23,7 +23,7 @@ class GetApiCorsConfiguration {
   /// [allowOrigins] Set of allowed origins.
   /// [exposeHeaders] Set of exposed HTTP headers.
   /// [maxAge] Number of seconds that the browser should cache preflight request results.
-  GetApiCorsConfiguration({
+  const GetApiCorsConfiguration({
     required this.allowCredentials,
     required this.allowHeaders,
     required this.allowMethods,

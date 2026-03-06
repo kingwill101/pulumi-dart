@@ -46,7 +46,7 @@ class GetRuntimeResult {
   /// [state] Runtime state.
   /// [updateTime] Runtime update time.
   /// [virtualMachine] Use a Compute Engine VM image to start the managed notebook instance.
-  GetRuntimeResult({
+  const GetRuntimeResult({
     required this.accessConfig,
     required this.createTime,
     required this.healthState,

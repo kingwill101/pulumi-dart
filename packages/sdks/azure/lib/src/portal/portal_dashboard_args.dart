@@ -26,7 +26,7 @@ class PortalDashboardArgs {
   /// [name] Specifies the name of the Shared Dashboard. Changing this forces a new resource to be created.
   /// [resourceGroupName] The name of the resource group in which to create the dashboard. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
-  PortalDashboardArgs({
+  const PortalDashboardArgs({
     required this.dashboardProperties,
     this.location,
     this.name,

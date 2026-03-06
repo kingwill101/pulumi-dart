@@ -8,7 +8,7 @@ class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHan
 
   /// Creates a new [CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff].
   /// [metadata] Custom metadata. Dialogflow doesn't impose any structure on this.
-  CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff({
+  const CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessageLiveAgentHandoff({
     this.metadata,
   });
 

@@ -32,7 +32,7 @@ class GetAppGroupsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [resourceGroupId] The Resource Group ID.
   /// [type] Application type. Valid Values: `standard`, `enhanced`.
-  GetAppGroupsArgs({
+  const GetAppGroupsArgs({
     this.enableDetails,
     this.ids,
     this.instanceId,

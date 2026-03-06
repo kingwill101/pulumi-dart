@@ -65,7 +65,7 @@ class GetGlobalAddressResult {
   /// [status] The status of the address, which can be one of RESERVING, RESERVED, or IN_USE. An address that is RESERVING is currently in the process of being reserved. A RESERVED address is currently reserved and available to use. An IN_USE address is currently being used by another resource and is not available.
   /// [subnetwork] The URL of the subnetwork in which to reserve the address. If an IP address is specified, it must be within the subnetwork's IP range. This field can only be used with INTERNAL type with a GCE_ENDPOINT or DNS_RESOLVER purpose.
   /// [users] The URLs of the resources that are using this address.
-  GetGlobalAddressResult({
+  const GetGlobalAddressResult({
     required this.address,
     required this.addressType,
     required this.creationTimestamp,

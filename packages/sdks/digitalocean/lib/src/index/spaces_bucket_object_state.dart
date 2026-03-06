@@ -62,7 +62,7 @@ class SpacesBucketObjectState {
   /// [source] The path to a file that will be read and uploaded as raw bytes for the object content.
   /// [versionId] A unique version ID value for the object, if bucket versioning is enabled.
   /// [websiteRedirect] Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
-  SpacesBucketObjectState({
+  const SpacesBucketObjectState({
     this.acl,
     this.bucket,
     this.cacheControl,

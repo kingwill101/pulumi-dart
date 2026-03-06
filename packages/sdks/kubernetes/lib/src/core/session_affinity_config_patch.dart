@@ -10,7 +10,7 @@ class SessionAffinityConfigPatch {
 
   /// Creates a new [SessionAffinityConfigPatch].
   /// [clientIP] clientIP contains the configurations of Client IP based session affinity.
-  SessionAffinityConfigPatch({
+  const SessionAffinityConfigPatch({
     this.clientIP,
   });
 

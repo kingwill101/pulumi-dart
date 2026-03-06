@@ -38,7 +38,7 @@ class GetTrialResult {
   /// [startTime] Time at which the trial was started.
   /// [state] The detailed state of a trial.
   /// [trialInfeasible] If true, the parameters in this trial are not attempted again.
-  GetTrialResult({
+  const GetTrialResult({
     required this.clientId,
     required this.endTime,
     required this.finalMeasurement,

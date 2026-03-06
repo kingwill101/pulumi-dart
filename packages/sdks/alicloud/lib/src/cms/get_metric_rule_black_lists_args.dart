@@ -33,7 +33,7 @@ class GetMetricRuleBlackListsArgs {
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [pageNumber] Optional.
   /// [pageSize] Optional.
-  GetMetricRuleBlackListsArgs({
+  const GetMetricRuleBlackListsArgs({
     this.category,
     this.ids,
     this.metricRuleBlackListId,

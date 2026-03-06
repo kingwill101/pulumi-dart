@@ -13,7 +13,7 @@ class VirtualGatewaySpecListenerTlsValidationTrust {
   /// Creates a new [VirtualGatewaySpecListenerTlsValidationTrust].
   /// [file] TLS validation context trust for a local file certificate.
   /// [sds] TLS validation context trust for a [Secret Discovery Service](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#secret-discovery-service-sds) certificate.
-  VirtualGatewaySpecListenerTlsValidationTrust({
+  const VirtualGatewaySpecListenerTlsValidationTrust({
     this.file,
     this.sds,
   });

@@ -27,7 +27,7 @@ class EndpointPort {
   /// [name] name represents the name of this port. All ports in an EndpointSlice must have a unique name. If the EndpointSlice is derived from a Kubernetes service, this corresponds to the Service.ports[].name. Name must either be an empty string or pass DNS_LABEL validation: * must be no more than 63 characters long. * must consist of lower case alphanumeric characters or '-'. * must start and end with an alphanumeric character. Default is empty string.
   /// [port] port represents the port number of the endpoint. If the EndpointSlice is derived from a Kubernetes service, this must be set to the service's target port. EndpointSlices used for other purposes may have a nil port.
   /// [protocol] protocol represents the IP protocol for this port. Must be UDP, TCP, or SCTP. Default is TCP.
-  EndpointPort({
+  const EndpointPort({
     this.appProtocol,
     this.name,
     this.port,

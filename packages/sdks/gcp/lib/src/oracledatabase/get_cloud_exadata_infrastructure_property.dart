@@ -108,7 +108,7 @@ class GetCloudExadataInfrastructureProperty {
   /// [storageCount] The number of Cloud Exadata storage servers for the Exadata Infrastructure.
   /// [storageServerVersion] The software version of the storage servers (cells) in the Exadata
   /// [totalStorageSizeGb] The total storage allocated to the Exadata Infrastructure
-  GetCloudExadataInfrastructureProperty({
+  const GetCloudExadataInfrastructureProperty({
     required this.activatedStorageCount,
     required this.additionalStorageCount,
     required this.availableStorageSizeGb,

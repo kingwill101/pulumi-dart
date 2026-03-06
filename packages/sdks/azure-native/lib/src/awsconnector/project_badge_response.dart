@@ -12,7 +12,7 @@ class ProjectBadgeResponse {
   /// Creates a new [ProjectBadgeResponse].
   /// [badgeEnabled] &lt;p&gt;Set this to true to generate a publicly accessible URL for your project's build badge.&lt;/p&gt;
   /// [badgeRequestUrl] &lt;p&gt;The publicly-accessible URL through which you can access the build badge for your project. &lt;/p&gt;
-  ProjectBadgeResponse({
+  const ProjectBadgeResponse({
     this.badgeEnabled,
     this.badgeRequestUrl,
   });

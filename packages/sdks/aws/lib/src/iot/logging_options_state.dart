@@ -18,7 +18,7 @@ class LoggingOptionsState {
   /// [disableAllLogs] If `true` all logs are disabled. The default is `false`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [roleArn] The ARN of the role that allows IoT to write to Cloudwatch logs.
-  LoggingOptionsState({
+  const LoggingOptionsState({
     this.defaultLogLevel,
     this.disableAllLogs,
     this.region,

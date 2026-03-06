@@ -10,7 +10,7 @@ class AiReasoningEngineSpecSourceCodeSpecInlineSource {
 
   /// Creates a new [AiReasoningEngineSpecSourceCodeSpecInlineSource].
   /// [sourceArchive] Required. Input only.
-  AiReasoningEngineSpecSourceCodeSpecInlineSource({
+  const AiReasoningEngineSpecSourceCodeSpecInlineSource({
     this.sourceArchive,
   });
 

@@ -18,7 +18,7 @@ class FrontdoorCustomDomainTls {
   /// [cdnFrontdoorSecretId] Resource ID of the Front Door Secret.
   /// [certificateType] Defines the source of the SSL certificate. Possible values include `CustomerCertificate` and `ManagedCertificate`. Defaults to `ManagedCertificate`.
   /// [minimumTlsVersion] TLS protocol version that will be used for Https. Possible values are `TLS12`. Defaults to `TLS12`.
-  FrontdoorCustomDomainTls({
+  const FrontdoorCustomDomainTls({
     this.cdnFrontdoorSecretId,
     this.certificateType,
     this.minimumTlsVersion,

@@ -15,7 +15,7 @@ class AutoScaleVCoreSkuResponse {
   /// [capacity] The capacity of an auto scale v-core resource.
   /// [name] Name of the SKU level.
   /// [tier] The name of the Azure pricing tier to which the SKU applies.
-  AutoScaleVCoreSkuResponse({
+  const AutoScaleVCoreSkuResponse({
     this.capacity,
     required this.name,
     this.tier,

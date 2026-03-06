@@ -15,7 +15,7 @@ class ListWorkspaceKeysArgs {
   /// Creates a new [ListWorkspaceKeysArgs].
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [workspaceName] The name of the quantum workspace resource.
-  ListWorkspaceKeysArgs({
+  const ListWorkspaceKeysArgs({
     required this.resourceGroupName,
     required this.workspaceName,
   });

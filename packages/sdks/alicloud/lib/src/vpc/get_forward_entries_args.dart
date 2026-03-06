@@ -42,7 +42,7 @@ class GetForwardEntriesArgs {
   /// [nameRegex] A regex string to filter results by forward entry name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of farward entry. Valid value `Available`, `Deleting` and `Pending`.
-  GetForwardEntriesArgs({
+  const GetForwardEntriesArgs({
     this.externalIp,
     this.externalPort,
     this.forwardEntryName,

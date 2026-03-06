@@ -16,7 +16,7 @@ class HDInsightProperties {
   /// [address] Public IP address of the master node of the cluster.
   /// [administratorAccount] Admin credentials for master node of the cluster
   /// [sshPort] Port open for ssh connections on the master node of the cluster.
-  HDInsightProperties({
+  const HDInsightProperties({
     this.address,
     this.administratorAccount,
     this.sshPort,

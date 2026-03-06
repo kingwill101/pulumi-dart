@@ -26,7 +26,7 @@ class RoleAssignmentState {
   /// [region] The region in which to obtain the V3 Keystone client.
   /// [roleId] The role to assign.
   /// [userId] The user to assign the role to.
-  RoleAssignmentState({
+  const RoleAssignmentState({
     this.domainId,
     this.groupId,
     this.projectId,

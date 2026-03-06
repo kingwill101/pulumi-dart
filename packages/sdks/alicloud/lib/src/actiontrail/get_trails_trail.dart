@@ -36,7 +36,7 @@ class GetTrailsTrail {
   /// [status] Filter the results by status of the ActionTrail Trail. Valid values: `Disable`, `Enable`, `Fresh`.
   /// [trailName] The name of the ActionTrail Trail.
   /// [trailRegion] The regions to which the trail is applied.
-  GetTrailsTrail({
+  const GetTrailsTrail({
     required this.eventRw,
     required this.id,
     required this.isOrganizationTrail,

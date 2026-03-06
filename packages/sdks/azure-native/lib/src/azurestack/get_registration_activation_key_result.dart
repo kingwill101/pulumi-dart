@@ -8,7 +8,7 @@ class GetRegistrationActivationKeyResult {
 
   /// Creates a new [GetRegistrationActivationKeyResult].
   /// [activationKey] Azure Stack activation key.
-  GetRegistrationActivationKeyResult({
+  const GetRegistrationActivationKeyResult({
     this.activationKey,
   });
 

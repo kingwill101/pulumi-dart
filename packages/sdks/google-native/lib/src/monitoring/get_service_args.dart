@@ -15,7 +15,7 @@ class GetServiceArgs {
   /// [serviceId] Required.
   /// [v3Id] Required.
   /// [v3Id1] Required.
-  GetServiceArgs({
+  const GetServiceArgs({
     required this.serviceId,
     required this.v3Id,
     required this.v3Id1,

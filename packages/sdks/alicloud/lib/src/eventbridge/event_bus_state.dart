@@ -12,7 +12,7 @@ class EventBusState {
   /// Creates a new [EventBusState].
   /// [description] The description of event bus.
   /// [eventBusName] The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
-  EventBusState({
+  const EventBusState({
     this.description,
     this.eventBusName,
   });

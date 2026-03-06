@@ -33,7 +33,7 @@ class PublicDelegatedPrefixPublicDelegatedSubPrefixResponse {
   /// [name] The name of the sub public delegated prefix.
   /// [region] The region of the sub public delegated prefix if it is regional. If absent, the sub prefix is global.
   /// [status] The status of the sub public delegated prefix.
-  PublicDelegatedPrefixPublicDelegatedSubPrefixResponse({
+  const PublicDelegatedPrefixPublicDelegatedSubPrefixResponse({
     required this.allocatablePrefixLength,
     required this.delegateeProject,
     required this.description,

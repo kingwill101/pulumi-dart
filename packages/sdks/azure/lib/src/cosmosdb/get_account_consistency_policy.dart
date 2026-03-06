@@ -14,7 +14,7 @@ class GetAccountConsistencyPolicy {
   /// [consistencyLevel] The Consistency Level used by this CosmosDB Account.
   /// [maxIntervalInSeconds] The amount of staleness (in seconds) tolerated when the consistency level is Bounded Staleness.
   /// [maxStalenessPrefix] The number of stale requests tolerated when the consistency level is Bounded Staleness.
-  GetAccountConsistencyPolicy({
+  const GetAccountConsistencyPolicy({
     required this.consistencyLevel,
     required this.maxIntervalInSeconds,
     required this.maxStalenessPrefix,

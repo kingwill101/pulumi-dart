@@ -14,7 +14,7 @@ class ManagedIdentity {
   /// Creates a new [ManagedIdentity].
   /// [type] The type of managed identity for the resource.
   /// [userAssignedIdentities] The list of user identities associated with the resource. The user identity dictionary key references will be ARM resource ids in the form:
-  ManagedIdentity({
+  const ManagedIdentity({
     this.type,
     this.userAssignedIdentities,
   });

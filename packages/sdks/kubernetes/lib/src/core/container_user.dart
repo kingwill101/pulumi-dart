@@ -10,7 +10,7 @@ class ContainerUser {
 
   /// Creates a new [ContainerUser].
   /// [linux] Linux holds user identity information initially attached to the first process of the containers in Linux. Note that the actual running identity can be changed if the process has enough privilege to do so.
-  ContainerUser({
+  const ContainerUser({
     this.linux,
   });
 

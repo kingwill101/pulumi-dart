@@ -38,7 +38,7 @@ class GetRouteResult {
   /// [specs] Route specification. See the `aws.appmesh.Route` resource for details.
   /// [tags] Map of tags.
   /// [virtualRouterName] Required.
-  GetRouteResult({
+  const GetRouteResult({
     required this.arn,
     required this.createdDate,
     required this.id,

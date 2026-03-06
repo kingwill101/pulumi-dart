@@ -55,7 +55,7 @@ class CertificateTemplateState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [updateTime] Output only. The time at which this CertificateTemplate was updated.
-  CertificateTemplateState({
+  const CertificateTemplateState({
     this.createTime,
     this.description,
     this.effectiveLabels,

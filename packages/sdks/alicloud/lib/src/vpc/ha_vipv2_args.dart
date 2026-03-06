@@ -32,7 +32,7 @@ class HaVipv2Args {
   /// [resourceGroupId] The ID of the resource group to which the HAVIP belongs.
   /// [tags] The tags of HaVip.
   /// [vswitchId] The switch ID to which the HaVip instance belongs
-  HaVipv2Args({
+  const HaVipv2Args({
     this.description,
     this.haVipName,
     this.havipName,

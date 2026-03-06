@@ -35,7 +35,7 @@ class GetTagKeyResult {
   /// [purposeData] Optional. Purpose data corresponds to the policy system that the tag is intended for. See documentation for `Purpose` for formatting of this field. Purpose data cannot be changed once set.
   /// [shortName] Immutable. The user friendly name for a TagKey. The short name should be unique for TagKeys within the same tag namespace. The short name must be 1-63 characters, beginning and ending with an alphanumeric character ([a-z0-9A-Z]) with dashes (-), underscores (_), dots (.), and alphanumerics between.
   /// [updateTime] Update time.
-  GetTagKeyResult({
+  const GetTagKeyResult({
     required this.createTime,
     required this.description,
     required this.etag,

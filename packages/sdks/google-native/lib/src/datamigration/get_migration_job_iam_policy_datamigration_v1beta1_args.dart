@@ -17,7 +17,7 @@ class GetMigrationJobIamPolicyDatamigrationV1beta1Args {
   /// [migrationJobId] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetMigrationJobIamPolicyDatamigrationV1beta1Args({
+  const GetMigrationJobIamPolicyDatamigrationV1beta1Args({
     required this.location,
     required this.migrationJobId,
     this.optionsRequestedPolicyVersion,

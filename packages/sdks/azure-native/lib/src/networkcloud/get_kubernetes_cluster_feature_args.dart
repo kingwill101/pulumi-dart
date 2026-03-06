@@ -18,7 +18,7 @@ class GetKubernetesClusterFeatureArgs {
   /// [featureName] The name of the feature.
   /// [kubernetesClusterName] The name of the Kubernetes cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetKubernetesClusterFeatureArgs({
+  const GetKubernetesClusterFeatureArgs({
     required this.featureName,
     required this.kubernetesClusterName,
     required this.resourceGroupName,

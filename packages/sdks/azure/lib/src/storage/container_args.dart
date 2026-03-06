@@ -36,7 +36,7 @@ class ContainerArgs {
   /// [name] The name of the Container which should be created within the Storage Account. Changing this forces a new resource to be created.
   /// [storageAccountId] The name of the Storage Account where the Container should be created.
   /// [storageAccountName] The name of the Storage Account where the Container should be created. This property is deprecated in favour of `storage_account_id`.
-  ContainerArgs({
+  const ContainerArgs({
     this.containerAccessType,
     this.defaultEncryptionScope,
     this.encryptionScopeOverrideEnabled,

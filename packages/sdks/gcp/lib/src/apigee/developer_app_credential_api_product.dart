@@ -12,7 +12,7 @@ class DeveloperAppCredentialApiProduct {
   /// Creates a new [DeveloperAppCredentialApiProduct].
   /// [apiproduct] (Output)
   /// [status] Status of the credential. Valid values include approved or revoked.
-  DeveloperAppCredentialApiProduct({
+  const DeveloperAppCredentialApiProduct({
     this.apiproduct,
     this.status,
   });

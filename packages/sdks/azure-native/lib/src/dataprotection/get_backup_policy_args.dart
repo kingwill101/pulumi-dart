@@ -17,7 +17,7 @@ class GetBackupPolicyArgs {
   /// [backupPolicyName] Required.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [vaultName] The name of the backup vault.
-  GetBackupPolicyArgs({
+  const GetBackupPolicyArgs({
     required this.backupPolicyName,
     required this.resourceGroupName,
     required this.vaultName,

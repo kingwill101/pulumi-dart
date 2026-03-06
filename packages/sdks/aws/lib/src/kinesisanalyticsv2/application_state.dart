@@ -59,7 +59,7 @@ class ApplicationState {
   /// [tags] A map of tags to assign to the application. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [versionId] The current application version. Kinesis Data Analytics updates the `version_id` each time the application is updated.
-  ApplicationState({
+  const ApplicationState({
     this.applicationConfiguration,
     this.applicationMode,
     this.arn,

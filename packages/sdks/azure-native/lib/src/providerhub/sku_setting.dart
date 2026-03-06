@@ -45,7 +45,7 @@ class SkuSetting {
   /// [requiredQuotaIds] The required quota ids.
   /// [size] The size.
   /// [tier] The tier.
-  SkuSetting({
+  const SkuSetting({
     this.capabilities,
     this.capacity,
     this.costs,

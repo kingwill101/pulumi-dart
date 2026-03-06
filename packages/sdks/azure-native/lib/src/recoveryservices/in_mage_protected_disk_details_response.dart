@@ -72,7 +72,7 @@ class InMageProtectedDiskDetailsResponse {
   /// [rpoInSeconds] The RPO in seconds.
   /// [sourceDataInMB] The source data transit in MB.
   /// [targetDataInMB] The target data transit in MB.
-  InMageProtectedDiskDetailsResponse({
+  const InMageProtectedDiskDetailsResponse({
     this.diskCapacityInBytes,
     this.diskId,
     this.diskName,

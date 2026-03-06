@@ -60,7 +60,7 @@ class PipeArgs {
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [target] Target resource of the pipe (typically an ARN).
   /// [targetParameters] Parameters to configure a target for your pipe. Detailed below.
-  PipeArgs({
+  const PipeArgs({
     this.description,
     this.desiredState,
     this.enrichment,

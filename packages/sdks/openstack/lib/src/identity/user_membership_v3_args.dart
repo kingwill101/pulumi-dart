@@ -21,7 +21,7 @@ class UserMembershipV3Args {
   /// [groupId] The UUID of group to which the user will be added.
   /// [region] The region in which to obtain the V3 Identity client.
   /// [userId] The UUID of user to use. Changing this creates a new user membership.
-  UserMembershipV3Args({
+  const UserMembershipV3Args({
     required this.groupId,
     this.region,
     required this.userId,

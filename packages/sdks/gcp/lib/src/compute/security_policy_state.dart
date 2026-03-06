@@ -67,7 +67,7 @@ class SecurityPolicyState {
   /// [rules] The set of rules that belong to this policy. There must always be a default
   /// [selfLink] The URI of the created resource.
   /// [type] The type indicates the intended use of the security policy. This field can be set only at resource creation time.
-  SecurityPolicyState({
+  const SecurityPolicyState({
     this.adaptiveProtectionConfig,
     this.advancedOptionsConfig,
     this.description,

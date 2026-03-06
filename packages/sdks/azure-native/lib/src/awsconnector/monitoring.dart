@@ -10,7 +10,7 @@ class Monitoring {
 
   /// Creates a new [Monitoring].
   /// [state] &lt;p&gt;Indicates whether detailed monitoring is enabled. Otherwise, basic monitoring is enabled.&lt;/p&gt;
-  Monitoring({
+  const Monitoring({
     this.state,
   });
 

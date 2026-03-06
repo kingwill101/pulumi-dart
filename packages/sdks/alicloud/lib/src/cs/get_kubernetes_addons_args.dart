@@ -18,7 +18,7 @@ class GetKubernetesAddonsArgs {
   /// [clusterId] The id of kubernetes cluster.
   /// [ids] A list of addon IDs. The id of addon consists of the cluster id and the addon name, with the structure &lt;cluster_ud&gt;:&lt;addon_name&gt;.
   /// [nameRegex] A regex string to filter results by addon name.
-  GetKubernetesAddonsArgs({
+  const GetKubernetesAddonsArgs({
     required this.clusterId,
     this.ids,
     this.nameRegex,

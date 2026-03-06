@@ -39,7 +39,7 @@ class SSISPackageLocationResponse {
   /// [packagePassword] Password of the package.
   /// [packagePath] The SSIS package path. Type: string (or Expression with resultType string).
   /// [type] The type of SSIS package location.
-  SSISPackageLocationResponse({
+  const SSISPackageLocationResponse({
     this.accessCredential,
     this.childPackages,
     this.configurationAccessCredential,

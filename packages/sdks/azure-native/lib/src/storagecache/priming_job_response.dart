@@ -24,7 +24,7 @@ class PrimingJobResponse {
   /// [primingJobPercentComplete] The current progress of the priming job, as a percentage.
   /// [primingJobState] The state of the priming operation.
   /// [primingJobStatus] The status code of the priming job.
-  PrimingJobResponse({
+  const PrimingJobResponse({
     required this.primingJobDetails,
     required this.primingJobId,
     required this.primingJobName,

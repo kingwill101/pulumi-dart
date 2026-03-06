@@ -35,7 +35,7 @@ class GetGroupMembershipsMembership {
   /// [roles] The MembershipRoles that apply to the Membership. Structure is documented below.
   /// [type] The type of the membership.
   /// [updateTime] The time when the Membership was last updated.
-  GetGroupMembershipsMembership({
+  const GetGroupMembershipsMembership({
     required this.createIgnoreAlreadyExists,
     required this.createTime,
     required this.group,

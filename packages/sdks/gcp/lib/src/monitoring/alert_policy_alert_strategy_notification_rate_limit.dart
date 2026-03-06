@@ -9,7 +9,7 @@ class AlertPolicyAlertStrategyNotificationRateLimit {
 
   /// Creates a new [AlertPolicyAlertStrategyNotificationRateLimit].
   /// [period] Not more than one notification per period.
-  AlertPolicyAlertStrategyNotificationRateLimit({
+  const AlertPolicyAlertStrategyNotificationRateLimit({
     this.period,
   });
 

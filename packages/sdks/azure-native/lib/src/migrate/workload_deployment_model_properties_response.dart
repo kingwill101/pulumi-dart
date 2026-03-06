@@ -60,7 +60,7 @@ class WorkloadDeploymentModelPropertiesResponse {
   /// [testMigrationStatus] Gets or sets the test migrate state.
   /// [testMigrationStatusDescription] Gets or sets the Test migrate state description.
   /// [workloadInstanceProperties] Workload instance model properties.
-  WorkloadDeploymentModelPropertiesResponse({
+  const WorkloadDeploymentModelPropertiesResponse({
     required this.allowedOperations,
     required this.correlationId,
     required this.currentJob,

@@ -16,7 +16,7 @@ class GetFoldersFolder {
   /// [folderPath] Folder Path.
   /// [id] The Folder ID.
   /// [projectId] The ID of the project.
-  GetFoldersFolder({
+  const GetFoldersFolder({
     required this.folderId,
     required this.folderPath,
     required this.id,

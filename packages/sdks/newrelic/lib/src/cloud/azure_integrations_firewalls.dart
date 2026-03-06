@@ -11,7 +11,7 @@ class AzureIntegrationsFirewalls {
   /// Creates a new [AzureIntegrationsFirewalls].
   /// [metricsPollingInterval] The data polling interval in seconds
   /// [resourceGroups] Specify each Resource group associated with the resources that you want to monitor. Filter values are case-sensitive
-  AzureIntegrationsFirewalls({
+  const AzureIntegrationsFirewalls({
     this.metricsPollingInterval,
     this.resourceGroups,
   });

@@ -16,7 +16,7 @@ class GeoFilter {
   /// [action] Action of the geo filter, i.e. allow or block access.
   /// [countryCodes] Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
   /// [relativePath] Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
-  GeoFilter({
+  const GeoFilter({
     required this.action,
     required this.countryCodes,
     required this.relativePath,

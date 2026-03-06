@@ -18,7 +18,7 @@ class PluginAttachmentState {
   /// [groupId] The group that the api belongs to.
   /// [pluginId] The plugin that attaches to the api.
   /// [stageName] Stage that the plugin attaches to.
-  PluginAttachmentState({
+  const PluginAttachmentState({
     this.apiId,
     this.groupId,
     this.pluginId,

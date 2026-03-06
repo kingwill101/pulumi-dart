@@ -9,7 +9,7 @@ class DomainDevicesInterfaceCoalesce {
 
   /// Creates a new [DomainDevicesInterfaceCoalesce].
   /// [rx] Controls the coalescing settings specifically for received network packets at the interface.
-  DomainDevicesInterfaceCoalesce({
+  const DomainDevicesInterfaceCoalesce({
     this.rx,
   });
 

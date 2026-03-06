@@ -62,7 +62,7 @@ class TransitGatewayState {
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
   /// [transitGatewayCidrBlocks] One or more IPv4 or IPv6 CIDR blocks for the transit gateway. Must be a size /24 CIDR block or larger for IPv4, or a size /64 CIDR block or larger for IPv6.
   /// [vpnEcmpSupport] Whether VPN Equal Cost Multipath Protocol support is enabled. Valid values: `disable`, `enable`. Default value: `enable`.
-  TransitGatewayState({
+  const TransitGatewayState({
     this.amazonSideAsn,
     this.arn,
     this.associationDefaultRouteTableId,

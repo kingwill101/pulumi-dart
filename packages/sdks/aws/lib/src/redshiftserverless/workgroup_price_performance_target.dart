@@ -11,7 +11,7 @@ class WorkgroupPricePerformanceTarget {
   /// Creates a new [WorkgroupPricePerformanceTarget].
   /// [enabled] Whether to enable price-performance scaling.
   /// [level] The price-performance scaling level. Valid values are `1` (LOW_COST), `25` (ECONOMICAL), `50` (BALANCED), `75` (RESOURCEFUL), and `100` (HIGH_PERFORMANCE).
-  WorkgroupPricePerformanceTarget({
+  const WorkgroupPricePerformanceTarget({
     required this.enabled,
     this.level,
   });

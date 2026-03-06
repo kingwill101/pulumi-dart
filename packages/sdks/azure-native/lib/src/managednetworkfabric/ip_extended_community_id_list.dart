@@ -9,7 +9,7 @@ class IpExtendedCommunityIdList {
 
   /// Creates a new [IpExtendedCommunityIdList].
   /// [ipExtendedCommunityIds] List of IP Extended Community resource IDs.
-  IpExtendedCommunityIdList({
+  const IpExtendedCommunityIdList({
     this.ipExtendedCommunityIds,
   });
 

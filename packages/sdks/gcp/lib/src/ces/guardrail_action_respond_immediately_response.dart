@@ -12,7 +12,7 @@ class GuardrailActionRespondImmediatelyResponse {
   /// Creates a new [GuardrailActionRespondImmediatelyResponse].
   /// [disabled] Whether the response is disabled. Disabled responses are not used by the
   /// [text] Text for the agent to respond with.
-  GuardrailActionRespondImmediatelyResponse({
+  const GuardrailActionRespondImmediatelyResponse({
     this.disabled,
     required this.text,
   });

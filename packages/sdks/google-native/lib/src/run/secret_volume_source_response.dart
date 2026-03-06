@@ -19,7 +19,7 @@ class SecretVolumeSourceResponse {
   /// [items] A list of secret versions to mount in the volume. If no items are specified, the volume will expose a file with the same name as the secret name. The contents of the file will be the data in the latest version of the secret. If items are specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify both a key and a path.
   /// [optional] Not supported by Cloud Run.
   /// [secretName] The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
-  SecretVolumeSourceResponse({
+  const SecretVolumeSourceResponse({
     required this.defaultMode,
     required this.items,
     required this.optional,

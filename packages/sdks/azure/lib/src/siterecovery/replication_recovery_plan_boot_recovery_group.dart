@@ -16,7 +16,7 @@ class ReplicationRecoveryPlanBootRecoveryGroup {
   /// [postActions] one or more `action` block as defined below. which will be executed after the group recovery.
   /// [preActions] one or more `action` block as defined below. which will be executed before the group recovery.
   /// [replicatedProtectedItems] One or more protected VM IDs.
-  ReplicationRecoveryPlanBootRecoveryGroup({
+  const ReplicationRecoveryPlanBootRecoveryGroup({
     this.postActions,
     this.preActions,
     this.replicatedProtectedItems,

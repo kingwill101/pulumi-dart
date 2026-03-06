@@ -60,7 +60,7 @@ class GetPartnerNamespaceResult {
   /// [systemData] The system metadata relating to the Event Grid resource.
   /// [tags] Tags of the resource.
   /// [type] Type of the resource.
-  GetPartnerNamespaceResult({
+  const GetPartnerNamespaceResult({
     required this.azureApiVersion,
     this.disableLocalAuth,
     required this.endpoint,

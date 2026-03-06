@@ -9,7 +9,7 @@ class CmkProfileResponse {
 
   /// Creates a new [CmkProfileResponse].
   /// [keyUri] URI of Key in AKV
-  CmkProfileResponse({
+  const CmkProfileResponse({
     required this.keyUri,
   });
 

@@ -47,7 +47,7 @@ class PublicIpPrefixArgs {
   /// [skuTier] The SKU Tier that should be used for the Public IP. Possible values are `Regional` and `Global`. Defaults to `Regional`. Changing this forces a new resource to be created.
   /// [tags] A mapping of tags to assign to the resource.
   /// [zones] Specifies a list of Availability Zones in which this Public IP Prefix should be located. Changing this forces a new Public IP Prefix to be created.
-  PublicIpPrefixArgs({
+  const PublicIpPrefixArgs({
     this.customIpPrefixId,
     this.ipVersion,
     this.location,

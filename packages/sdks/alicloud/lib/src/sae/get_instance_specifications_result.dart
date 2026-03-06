@@ -16,7 +16,7 @@ class GetInstanceSpecificationsResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [specifications] Required.
-  GetInstanceSpecificationsResult({
+  const GetInstanceSpecificationsResult({
     required this.id,
     required this.ids,
     this.outputFile,

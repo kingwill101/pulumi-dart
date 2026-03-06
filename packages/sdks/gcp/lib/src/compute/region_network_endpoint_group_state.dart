@@ -77,7 +77,7 @@ class RegionNetworkEndpointGroupState {
   /// [selfLink] The URI of the created resource.
   /// [serverlessDeployment] This field is only used for SERVERLESS NEGs.
   /// [subnetwork] This field is only used for PSC NEGs.
-  RegionNetworkEndpointGroupState({
+  const RegionNetworkEndpointGroupState({
     this.appEngine,
     this.cloudFunction,
     this.cloudRun,

@@ -14,7 +14,7 @@ class GraphQLApiEnhancedMetricsConfig {
   /// [dataSourceLevelMetricsBehavior] How data source metrics will be emitted to CloudWatch. Valid values: `FULL_REQUEST_DATA_SOURCE_METRICS`, `PER_DATA_SOURCE_METRICS`
   /// [operationLevelMetricsConfig] How operation metrics will be emitted to CloudWatch. Valid values: `ENABLED`, `DISABLED`
   /// [resolverLevelMetricsBehavior] How resolver metrics will be emitted to CloudWatch. Valid values: `FULL_REQUEST_RESOLVER_METRICS`, `PER_RESOLVER_METRICS`
-  GraphQLApiEnhancedMetricsConfig({
+  const GraphQLApiEnhancedMetricsConfig({
     required this.dataSourceLevelMetricsBehavior,
     required this.operationLevelMetricsConfig,
     required this.resolverLevelMetricsBehavior,

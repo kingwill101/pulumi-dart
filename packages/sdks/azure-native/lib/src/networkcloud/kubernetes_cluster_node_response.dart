@@ -61,7 +61,7 @@ class KubernetesClusterNodeResponse {
   /// [role] The role of this node in the cluster.
   /// [taints] The list of taints that have been assigned to the agent pool containing this node.
   /// [vmSkuName] The VM SKU name that was used to create this cluster node.
-  KubernetesClusterNodeResponse({
+  const KubernetesClusterNodeResponse({
     required this.agentPoolId,
     required this.availabilityZone,
     required this.bareMetalMachineId,

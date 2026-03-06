@@ -11,7 +11,7 @@ class FilterFilterCriteriaVulnerablePackageArchitecture {
   /// Creates a new [FilterFilterCriteriaVulnerablePackageArchitecture].
   /// [comparison] (Required) The comparison operator. Valid values: `EQUALS`.
   /// [value] (Required) The value to filter on.
-  FilterFilterCriteriaVulnerablePackageArchitecture({
+  const FilterFilterCriteriaVulnerablePackageArchitecture({
     required this.comparison,
     required this.value,
   });

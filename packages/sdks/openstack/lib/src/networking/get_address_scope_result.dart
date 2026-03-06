@@ -22,7 +22,7 @@ class GetAddressScopeResult {
   /// [projectId] See Argument Reference above.
   /// [region] Optional.
   /// [shared] See Argument Reference above.
-  GetAddressScopeResult({
+  const GetAddressScopeResult({
     required this.id,
     this.ipVersion,
     this.name,

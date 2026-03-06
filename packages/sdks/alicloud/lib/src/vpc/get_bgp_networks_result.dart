@@ -20,7 +20,7 @@ class GetBgpNetworksResult {
   /// [outputFile] Optional.
   /// [routerId] Optional.
   /// [status] Optional.
-  GetBgpNetworksResult({
+  const GetBgpNetworksResult({
     required this.id,
     required this.ids,
     required this.networks,

@@ -27,7 +27,7 @@ class FolderNotificationConfigArgs {
   /// [folder] Numerical ID of the parent folder.
   /// [pubsubTopic] The Pub/Sub topic to send notifications to. Its format is
   /// [streamingConfig] The config for triggering streaming-based notifications.
-  FolderNotificationConfigArgs({
+  const FolderNotificationConfigArgs({
     required this.configId,
     this.description,
     required this.folder,

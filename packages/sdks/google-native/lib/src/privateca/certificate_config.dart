@@ -18,7 +18,7 @@ class CertificateConfig {
   /// [publicKey] Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
   /// [subjectConfig] Specifies some of the values in a certificate that are related to the subject.
   /// [x509Config] Describes how some of the technical X.509 fields in a certificate should be populated.
-  CertificateConfig({
+  const CertificateConfig({
     this.publicKey,
     required this.subjectConfig,
     required this.x509Config,

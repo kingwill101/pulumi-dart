@@ -34,7 +34,7 @@ class Ec2RouteTablePropertiesResponse {
   /// [provisioningState] The status of the last operation.
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  Ec2RouteTablePropertiesResponse({
+  const Ec2RouteTablePropertiesResponse({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

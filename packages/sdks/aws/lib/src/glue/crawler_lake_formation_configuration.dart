@@ -11,7 +11,7 @@ class CrawlerLakeFormationConfiguration {
   /// Creates a new [CrawlerLakeFormationConfiguration].
   /// [accountId] Required for cross account crawls. For same account crawls as the target data, this can omitted.
   /// [useLakeFormationCredentials] Specifies whether to use Lake Formation credentials for the crawler instead of the IAM role credentials.
-  CrawlerLakeFormationConfiguration({
+  const CrawlerLakeFormationConfiguration({
     this.accountId,
     this.useLakeFormationCredentials,
   });

@@ -35,7 +35,7 @@ class GetNatGatewayResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetNatGatewayResult({
+  const GetNatGatewayResult({
     required this.azureApiVersion,
     this.extendedLocation,
     required this.id,

@@ -8,7 +8,7 @@ class AiFeatureOnlineStoreEmbeddingManagement {
 
   /// Creates a new [AiFeatureOnlineStoreEmbeddingManagement].
   /// [enabled] Enable embedding management.
-  AiFeatureOnlineStoreEmbeddingManagement({
+  const AiFeatureOnlineStoreEmbeddingManagement({
     this.enabled,
   });
 

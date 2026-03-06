@@ -23,7 +23,7 @@ class GrpcRouteRuleAction {
   /// [faultInjectionPolicy] The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure.
   /// [retryPolicy] Specifies the retry policy associated with this route.
   /// [timeout] Specifies the timeout for selected route.
-  GrpcRouteRuleAction({
+  const GrpcRouteRuleAction({
     this.destinations,
     this.faultInjectionPolicy,
     this.retryPolicy,

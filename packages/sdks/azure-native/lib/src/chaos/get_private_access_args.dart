@@ -15,7 +15,7 @@ class GetPrivateAccessArgs {
   /// Creates a new [GetPrivateAccessArgs].
   /// [privateAccessName] The name of the private access resource that is being created. Supported characters for the name are a-z, A-Z, 0-9, _ and -. The maximum name length is 80 characters.
   /// [resourceGroupName] String that represents an Azure resource group.
-  GetPrivateAccessArgs({
+  const GetPrivateAccessArgs({
     required this.privateAccessName,
     required this.resourceGroupName,
   });

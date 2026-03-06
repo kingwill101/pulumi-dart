@@ -13,7 +13,7 @@ class FleetObservabilityLoggingConfigResponse {
   /// Creates a new [FleetObservabilityLoggingConfigResponse].
   /// [defaultConfig] Specified if applying the default routing config to logs not specified in other configs.
   /// [fleetScopeLogsConfig] Specified if applying the routing config to all logs for all fleet scopes.
-  FleetObservabilityLoggingConfigResponse({
+  const FleetObservabilityLoggingConfigResponse({
     required this.defaultConfig,
     required this.fleetScopeLogsConfig,
   });

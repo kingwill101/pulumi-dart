@@ -28,7 +28,7 @@ class NetworkProfile {
   /// [serviceCidr] Azure Spring Apps service reserved CIDR
   /// [serviceRuntimeNetworkResourceGroup] Name of the resource group containing network resources of Azure Spring Apps Service Runtime
   /// [serviceRuntimeSubnetId] Fully qualified resource Id of the subnet to host Azure Spring Apps Service Runtime
-  NetworkProfile({
+  const NetworkProfile({
     this.appNetworkResourceGroup,
     this.appSubnetId,
     this.ingressConfig,

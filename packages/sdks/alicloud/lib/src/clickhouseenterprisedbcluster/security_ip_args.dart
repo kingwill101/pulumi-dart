@@ -18,7 +18,7 @@ class SecurityIpArgs {
   /// [dbInstanceId] The cluster ID.
   /// [groupName] The whitelist name.
   /// [securityIpList] The IP address list under the whitelist group.
-  SecurityIpArgs({
+  const SecurityIpArgs({
     required this.dbInstanceId,
     required this.groupName,
     required this.securityIpList,

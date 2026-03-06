@@ -18,7 +18,7 @@ class ListIntegrationAccountAssemblyContentCallbackUrlArgs {
   /// [assemblyArtifactName] The assembly artifact name.
   /// [integrationAccountName] The integration account name.
   /// [resourceGroupName] The resource group name.
-  ListIntegrationAccountAssemblyContentCallbackUrlArgs({
+  const ListIntegrationAccountAssemblyContentCallbackUrlArgs({
     required this.assemblyArtifactName,
     required this.integrationAccountName,
     required this.resourceGroupName,

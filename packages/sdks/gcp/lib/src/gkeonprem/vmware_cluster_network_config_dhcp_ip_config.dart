@@ -9,7 +9,7 @@ class VMwareClusterNetworkConfigDhcpIpConfig {
 
   /// Creates a new [VMwareClusterNetworkConfigDhcpIpConfig].
   /// [enabled] enabled is a flag to mark if DHCP IP allocation is
-  VMwareClusterNetworkConfigDhcpIpConfig({
+  const VMwareClusterNetworkConfigDhcpIpConfig({
     required this.enabled,
   });
 

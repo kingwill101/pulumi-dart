@@ -18,7 +18,7 @@ class CiphertextArgs {
   /// [encryptionContext] The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
   /// [keyId] The globally unique ID of the CMK.
   /// [plaintext] The plaintext to be encrypted which must be encoded in Base64.
-  CiphertextArgs({
+  const CiphertextArgs({
     this.encryptionContext,
     required this.keyId,
     required this.plaintext,

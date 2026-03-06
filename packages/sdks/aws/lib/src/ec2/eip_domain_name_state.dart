@@ -21,7 +21,7 @@ class EipDomainNameState {
   /// [ptrRecord] The DNS pointer (PTR) record for the IP address.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [timeouts] Optional.
-  EipDomainNameState({
+  const EipDomainNameState({
     this.allocationId,
     this.domainName,
     this.ptrRecord,

@@ -14,7 +14,7 @@ class DomainFeaturesSmm {
   /// [state] Configures the state of the SMM feature, indicating whether it is active.
   /// [tseg] Configures the Memory Type Range Register (MTRR) for SMM, providing control over memory regions.
   /// [tsegUnit] Sets the unit of the TSEG (Trusted Secure Environment Group) size for SMM configuration.
-  DomainFeaturesSmm({
+  const DomainFeaturesSmm({
     this.state,
     this.tseg,
     this.tsegUnit,

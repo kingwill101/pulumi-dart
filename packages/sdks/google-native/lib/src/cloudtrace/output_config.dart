@@ -9,7 +9,7 @@ class OutputConfig {
 
   /// Creates a new [OutputConfig].
   /// [destination] The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
-  OutputConfig({
+  const OutputConfig({
     this.destination,
   });
 

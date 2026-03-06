@@ -11,7 +11,7 @@ class DnsManagedZoneIamMemberCondition {
   /// [description] Optional.
   /// [expression] Required.
   /// [title] Required.
-  DnsManagedZoneIamMemberCondition({
+  const DnsManagedZoneIamMemberCondition({
     this.description,
     required this.expression,
     required this.title,

@@ -24,7 +24,7 @@ class BasicThresholdArgs {
   /// [instanceType] The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
   /// [internetIp] The IP address of the public IP address asset.
   /// [pps] The current message number cleaning threshold. Unit: pps.
-  BasicThresholdArgs({
+  const BasicThresholdArgs({
     required this.bps,
     required this.instanceId,
     required this.instanceType,

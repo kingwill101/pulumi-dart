@@ -11,7 +11,7 @@ class GetBucketReplicationConfigurationRuleFilterTag {
   /// Creates a new [GetBucketReplicationConfigurationRuleFilterTag].
   /// [key] The key of the tag.
   /// [value] The value of the tag.
-  GetBucketReplicationConfigurationRuleFilterTag({
+  const GetBucketReplicationConfigurationRuleFilterTag({
     required this.key,
     required this.value,
   });

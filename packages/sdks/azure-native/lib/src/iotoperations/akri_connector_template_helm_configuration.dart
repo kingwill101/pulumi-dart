@@ -14,7 +14,7 @@ class AkriConnectorTemplateHelmConfiguration {
   /// Creates a new [AkriConnectorTemplateHelmConfiguration].
   /// [helmConfigurationSettings] The Helm configuration settings.
   /// [runtimeConfigurationType] Runtime configuration types.
-  AkriConnectorTemplateHelmConfiguration({
+  const AkriConnectorTemplateHelmConfiguration({
     required this.helmConfigurationSettings,
     required this.runtimeConfigurationType,
   });

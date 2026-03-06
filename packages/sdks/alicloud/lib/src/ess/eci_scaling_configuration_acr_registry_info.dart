@@ -21,7 +21,7 @@ class EciScalingConfigurationAcrRegistryInfo {
   /// [instanceId] The ID of Container Registry Enterprise Edition instance. It is required
   /// [instanceName] The name of Container Registry Enterprise Edition instance. It is required when `acr_registry_info` is
   /// [regionId] The region ID of Container Registry Enterprise Edition instance. It is required
-  EciScalingConfigurationAcrRegistryInfo({
+  const EciScalingConfigurationAcrRegistryInfo({
     this.domains,
     this.instanceId,
     this.instanceName,

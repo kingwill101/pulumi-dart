@@ -11,7 +11,7 @@ class LinuxVirtualMachineAdditionalCapabilities {
   /// Creates a new [LinuxVirtualMachineAdditionalCapabilities].
   /// [hibernationEnabled] Whether to enable the hibernation capability or not.
   /// [ultraSsdEnabled] Should the capacity to enable Data Disks of the `UltraSSD_LRS` storage account type be supported on this Virtual Machine? Defaults to `false`.
-  LinuxVirtualMachineAdditionalCapabilities({
+  const LinuxVirtualMachineAdditionalCapabilities({
     this.hibernationEnabled,
     this.ultraSsdEnabled,
   });

@@ -30,7 +30,7 @@ class GetEcsSnapshotGroupsArgs {
   /// [snapshotGroupName] The name of the snapshot-consistent group.
   /// [status] The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
   /// [tags] A mapping of tags to assign to the snapshot group.
-  GetEcsSnapshotGroupsArgs({
+  const GetEcsSnapshotGroupsArgs({
     this.ids,
     this.instanceId,
     this.nameRegex,

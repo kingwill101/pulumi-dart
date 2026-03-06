@@ -15,7 +15,7 @@ class TimelineErrorResponse {
   /// [errorMessage] the error message
   /// [kind] the query kind
   /// [queryId] the query id
-  TimelineErrorResponse({
+  const TimelineErrorResponse({
     required this.errorMessage,
     required this.kind,
     this.queryId,

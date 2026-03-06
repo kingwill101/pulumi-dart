@@ -32,7 +32,7 @@ class GetCustomConnectorResult {
   /// [logo] Optional. Logo of the resource.
   /// [name] Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector}
   /// [updateTime] Updated time.
-  GetCustomConnectorResult({
+  const GetCustomConnectorResult({
     required this.createTime,
     required this.customConnectorType,
     required this.description,

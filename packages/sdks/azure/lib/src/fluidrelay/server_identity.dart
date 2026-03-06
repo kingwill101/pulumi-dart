@@ -17,7 +17,7 @@ class ServerIdentity {
   /// [principalId] The Principal ID for the Service Principal associated with the Identity of this Fluid Relay Server.
   /// [tenantId] The Tenant ID for the Service Principal associated with the Identity of this Fluid Relay Server.
   /// [type] Specifies the type of Managed Service Identity that should be configured on this Fluid Relay Service. Possible values are `SystemAssigned`,`UserAssigned` and `SystemAssigned, UserAssigned`.
-  ServerIdentity({
+  const ServerIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

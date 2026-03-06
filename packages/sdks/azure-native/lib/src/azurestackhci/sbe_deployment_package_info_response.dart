@@ -15,7 +15,7 @@ class SbeDeploymentPackageInfoResponse {
   /// [code] SBE deployment validation code.
   /// [message] A detailed message that explains the SBE package validation result.
   /// [sbeManifest] This represents discovered update results for matching updates and store it as SBE manifest.
-  SbeDeploymentPackageInfoResponse({
+  const SbeDeploymentPackageInfoResponse({
     required this.code,
     required this.message,
     required this.sbeManifest,

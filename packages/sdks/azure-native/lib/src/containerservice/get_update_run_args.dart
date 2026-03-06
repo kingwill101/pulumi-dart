@@ -18,7 +18,7 @@ class GetUpdateRunArgs {
   /// [fleetName] The name of the Fleet resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [updateRunName] The name of the UpdateRun resource.
-  GetUpdateRunArgs({
+  const GetUpdateRunArgs({
     required this.fleetName,
     required this.resourceGroupName,
     required this.updateRunName,

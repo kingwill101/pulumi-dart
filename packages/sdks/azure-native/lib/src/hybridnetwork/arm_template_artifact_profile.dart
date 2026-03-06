@@ -12,7 +12,7 @@ class ArmTemplateArtifactProfile {
   /// Creates a new [ArmTemplateArtifactProfile].
   /// [templateName] Template name.
   /// [templateVersion] Template version.
-  ArmTemplateArtifactProfile({
+  const ArmTemplateArtifactProfile({
     this.templateName,
     this.templateVersion,
   });

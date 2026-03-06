@@ -11,7 +11,7 @@ class GetClusterInitialUser {
   /// Creates a new [GetClusterInitialUser].
   /// [password] The initial password for the user.
   /// [user] The database username.
-  GetClusterInitialUser({
+  const GetClusterInitialUser({
     required this.password,
     required this.user,
   });

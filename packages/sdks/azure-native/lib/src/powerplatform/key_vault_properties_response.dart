@@ -13,7 +13,7 @@ class KeyVaultPropertiesResponse {
   /// Creates a new [KeyVaultPropertiesResponse].
   /// [id] Uri of KeyVault
   /// [key] Identity of the secret that includes name and version.
-  KeyVaultPropertiesResponse({
+  const KeyVaultPropertiesResponse({
     this.id,
     this.key,
   });

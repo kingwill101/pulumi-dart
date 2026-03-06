@@ -12,7 +12,7 @@ class IPAddressSpaceResponse {
   /// Creates a new [IPAddressSpaceResponse].
   /// [addressSpace] Address Space
   /// [resourceId] Resource Id
-  IPAddressSpaceResponse({
+  const IPAddressSpaceResponse({
     this.addressSpace,
     this.resourceId,
   });

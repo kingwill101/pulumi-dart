@@ -13,7 +13,7 @@ class DomainDevicesInterfaceSourceHostdev {
   /// Creates a new [DomainDevicesInterfaceSourceHostdev].
   /// [pci] Specifies the source configuration for the PCI device being passed through.
   /// [usb] Specifies the source attributes for the USB subsystem device, detailing its origin.
-  DomainDevicesInterfaceSourceHostdev({
+  const DomainDevicesInterfaceSourceHostdev({
     this.pci,
     this.usb,
   });

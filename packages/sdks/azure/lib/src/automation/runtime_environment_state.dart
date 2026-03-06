@@ -30,7 +30,7 @@ class RuntimeEnvironmentState {
   /// [runtimeLanguage] The programming language used by the Automation Runtime Environment. Possible values are `Python` and `PowerShell`. Changing this forces a new Automation Runtime Environment to be created.
   /// [runtimeVersion] The version of the runtime environment. Changing this forces a new Automation Runtime Environment to be created.
   /// [tags] A mapping of tags which should be assigned to the Automation Runtime Environment.
-  RuntimeEnvironmentState({
+  const RuntimeEnvironmentState({
     this.automationAccountId,
     this.description,
     this.location,

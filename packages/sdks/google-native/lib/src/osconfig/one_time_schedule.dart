@@ -9,7 +9,7 @@ class OneTimeSchedule {
 
   /// Creates a new [OneTimeSchedule].
   /// [executeTime] The desired patch job execution time.
-  OneTimeSchedule({
+  const OneTimeSchedule({
     required this.executeTime,
   });
 

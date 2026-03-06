@@ -21,7 +21,7 @@ class GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse {
   /// [l7psc] L7 private service connection for this resource.
   /// [type] The type of hosting used by the gateway.
   /// [uri] Server-defined URI for this resource.
-  GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse({
+  const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse({
     required this.appGateway,
     required this.ingressPort,
     required this.l7psc,

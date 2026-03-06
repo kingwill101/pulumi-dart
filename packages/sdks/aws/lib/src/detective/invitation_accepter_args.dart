@@ -15,7 +15,7 @@ class InvitationAccepterArgs {
   /// Creates a new [InvitationAccepterArgs].
   /// [graphArn] ARN of the behavior graph that the member account is accepting the invitation for.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InvitationAccepterArgs({
+  const InvitationAccepterArgs({
     required this.graphArn,
     this.region,
   });

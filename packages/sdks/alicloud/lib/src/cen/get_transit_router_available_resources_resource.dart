@@ -17,7 +17,7 @@ class GetTransitRouterAvailableResourcesResource {
   /// [masterZones] The list of primary zones.
   /// [slaveZones] The list of secondary zones.
   /// [supportMulticast] Specifies whether to query only the zones in which the multicast feature is supported.
-  GetTransitRouterAvailableResourcesResource({
+  const GetTransitRouterAvailableResourcesResource({
     required this.availableZones,
     required this.masterZones,
     required this.slaveZones,

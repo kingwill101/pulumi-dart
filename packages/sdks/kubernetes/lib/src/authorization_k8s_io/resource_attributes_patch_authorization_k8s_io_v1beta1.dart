@@ -27,7 +27,7 @@ class ResourceAttributesPatchAuthorizationK8sIoV1beta1 {
   /// [subresource] Subresource is one of the existing resource types.  "" means none.
   /// [verb] Verb is a kubernetes resource API verb, like: get, list, watch, create, update, delete, proxy.  "*" means all.
   /// [version] Version is the API Version of the Resource.  "*" means all.
-  ResourceAttributesPatchAuthorizationK8sIoV1beta1({
+  const ResourceAttributesPatchAuthorizationK8sIoV1beta1({
     this.group,
     this.name,
     this.namespace,

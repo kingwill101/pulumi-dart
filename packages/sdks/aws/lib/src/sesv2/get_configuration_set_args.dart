@@ -18,7 +18,7 @@ class GetConfigurationSetArgs {
   /// [configurationSetName] The name of the configuration set.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Key-value map of resource tags for the container recipe.
-  GetConfigurationSetArgs({
+  const GetConfigurationSetArgs({
     required this.configurationSetName,
     this.region,
     this.tags,

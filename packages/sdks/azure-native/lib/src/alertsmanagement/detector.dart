@@ -12,7 +12,7 @@ class Detector {
   /// Creates a new [Detector].
   /// [id] The detector id.
   /// [parameters] The detector's parameters.'
-  Detector({
+  const Detector({
     required this.id,
     this.parameters,
   });

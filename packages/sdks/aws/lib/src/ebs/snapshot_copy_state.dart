@@ -61,7 +61,7 @@ class SnapshotCopyState {
   /// [temporaryRestoreDays] Specifies the number of days for which to temporarily restore an archived snapshot. Required for temporary restores only. The snapshot will be automatically re-archived after this period.
   /// [volumeId] Optional.
   /// [volumeSize] The size of the drive in GiBs.
-  SnapshotCopyState({
+  const SnapshotCopyState({
     this.arn,
     this.completionDurationMinutes,
     this.dataEncryptionKeyId,

@@ -37,7 +37,7 @@ class GetScopeRbacRoleBindingGkehubV1betaResult {
   /// [uid] Google-generated UUID for this resource. This is unique across all rbacrolebinding resources. If a rbacrolebinding resource is deleted and another resource with the same name is created, it gets a different uid.
   /// [updateTime] When the rbacrolebinding was last updated.
   /// [user] user is the name of the user as seen by the kubernetes cluster, example "alice" or "alice@domain.tld"
-  GetScopeRbacRoleBindingGkehubV1betaResult({
+  const GetScopeRbacRoleBindingGkehubV1betaResult({
     required this.createTime,
     required this.deleteTime,
     required this.group,

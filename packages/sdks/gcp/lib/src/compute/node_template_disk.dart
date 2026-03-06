@@ -14,7 +14,7 @@ class NodeTemplateDisk {
   /// [diskCount] Specifies the number of such disks.
   /// [diskSizeGb] Specifies the size of the disk in base-2 GB.
   /// [diskType] Specifies the desired disk type on the node. This disk type must be a local storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be the name of the disk type and not its URL.
-  NodeTemplateDisk({
+  const NodeTemplateDisk({
     this.diskCount,
     this.diskSizeGb,
     this.diskType,

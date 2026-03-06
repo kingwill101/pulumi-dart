@@ -42,7 +42,7 @@ class GetSharedImageVersionResult {
   /// [sortVersionsBySemver] Optional.
   /// [tags] A mapping of tags assigned to the Shared Image.
   /// [targetRegions] One or more `target_region` blocks as documented below.
-  GetSharedImageVersionResult({
+  const GetSharedImageVersionResult({
     required this.excludeFromLatest,
     required this.galleryName,
     required this.id,

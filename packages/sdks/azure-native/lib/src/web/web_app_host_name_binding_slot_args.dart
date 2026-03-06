@@ -52,7 +52,7 @@ class WebAppHostNameBindingSlotArgs {
   /// [slot] Name of the deployment slot. If a slot is not specified, the API will create a binding for the production slot.
   /// [sslState] SSL type
   /// [thumbprint] SSL certificate thumbprint
-  WebAppHostNameBindingSlotArgs({
+  const WebAppHostNameBindingSlotArgs({
     this.azureResourceName,
     this.azureResourceType,
     this.customHostNameDnsRecordType,

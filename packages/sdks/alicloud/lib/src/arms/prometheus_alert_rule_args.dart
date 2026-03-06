@@ -41,7 +41,7 @@ class PrometheusAlertRuleArgs {
   /// [notifyType] The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
   /// [prometheusAlertRuleName] The name of the resource.
   /// [type] The type of the alert rule.
-  PrometheusAlertRuleArgs({
+  const PrometheusAlertRuleArgs({
     this.annotations,
     required this.clusterId,
     this.dispatchRuleId,

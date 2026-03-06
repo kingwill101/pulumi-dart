@@ -15,7 +15,7 @@ class PlanData {
   /// [billingCycle] different billing cycles like MONTHLY/WEEKLY
   /// [planId] plan id as published by Liftr.PAN
   /// [usageType] different usage type like PAYG/COMMITTED
-  PlanData({
+  const PlanData({
     required this.billingCycle,
     required this.planId,
     this.usageType,

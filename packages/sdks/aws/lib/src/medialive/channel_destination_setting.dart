@@ -17,7 +17,7 @@ class ChannelDestinationSetting {
   /// [streamName] Stream name RTMP destinations (URLs of type rtmp://)
   /// [url] A URL specifying a destination.
   /// [username] Username for destination.
-  ChannelDestinationSetting({
+  const ChannelDestinationSetting({
     this.passwordParam,
     this.streamName,
     this.url,

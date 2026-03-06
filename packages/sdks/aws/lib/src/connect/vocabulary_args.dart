@@ -28,7 +28,7 @@ class VocabularyArgs {
   /// [name] A unique name of the custom vocabulary. Must not be more than 140 characters.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [tags] Tags to apply to the vocabulary. If configured with a provider
-  VocabularyArgs({
+  const VocabularyArgs({
     required this.content,
     required this.instanceId,
     required this.languageCode,

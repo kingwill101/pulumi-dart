@@ -9,7 +9,7 @@ class VirtualNetworkBgpCommunities {
 
   /// Creates a new [VirtualNetworkBgpCommunities].
   /// [virtualNetworkCommunity] The BGP community associated with the virtual network.
-  VirtualNetworkBgpCommunities({
+  const VirtualNetworkBgpCommunities({
     required this.virtualNetworkCommunity,
   });
 

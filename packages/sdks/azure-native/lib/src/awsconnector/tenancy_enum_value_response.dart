@@ -9,7 +9,7 @@ class TenancyEnumValueResponse {
 
   /// Creates a new [TenancyEnumValueResponse].
   /// [value] Property value
-  TenancyEnumValueResponse({
+  const TenancyEnumValueResponse({
     this.value,
   });
 

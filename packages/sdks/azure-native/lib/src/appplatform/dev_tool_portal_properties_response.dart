@@ -27,7 +27,7 @@ class DevToolPortalPropertiesResponse {
   /// [public] Indicates whether the resource exposes public endpoint
   /// [ssoProperties] Single sign-on related configuration
   /// [url] URL of the resource, exposed when 'public' is true.
-  DevToolPortalPropertiesResponse({
+  const DevToolPortalPropertiesResponse({
     required this.components,
     this.features,
     required this.provisioningState,

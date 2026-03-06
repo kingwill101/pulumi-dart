@@ -16,7 +16,7 @@ class GetDataSetPhysicalTableMapRelationalTable {
   /// [inputColumns] Required.
   /// [name] Required.
   /// [schema] Required.
-  GetDataSetPhysicalTableMapRelationalTable({
+  const GetDataSetPhysicalTableMapRelationalTable({
     required this.catalog,
     required this.dataSourceArn,
     required this.inputColumns,

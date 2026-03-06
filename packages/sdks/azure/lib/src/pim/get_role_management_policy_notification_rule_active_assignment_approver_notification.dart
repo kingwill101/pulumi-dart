@@ -14,7 +14,7 @@ class GetRoleManagementPolicyNotificationRuleActiveAssignmentApproverNotificatio
   /// [additionalRecipients] A list of additional email addresses that will receive these notifications.
   /// [defaultRecipients] (Boolean) Should the default recipients receive these notifications.
   /// [notificationLevel] (String) What level of notifications should be sent. Either `All` or `Critical`.
-  GetRoleManagementPolicyNotificationRuleActiveAssignmentApproverNotification({
+  const GetRoleManagementPolicyNotificationRuleActiveAssignmentApproverNotification({
     required this.additionalRecipients,
     required this.defaultRecipients,
     required this.notificationLevel,

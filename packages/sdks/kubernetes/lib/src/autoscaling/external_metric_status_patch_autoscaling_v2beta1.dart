@@ -19,7 +19,7 @@ class ExternalMetricStatusPatchAutoscalingV2beta1 {
   /// [currentValue] currentValue is the current value of the metric (as a quantity)
   /// [metricName] metricName is the name of a metric used for autoscaling in metric system.
   /// [metricSelector] metricSelector is used to identify a specific time series within a given metric.
-  ExternalMetricStatusPatchAutoscalingV2beta1({
+  const ExternalMetricStatusPatchAutoscalingV2beta1({
     this.currentAverageValue,
     this.currentValue,
     this.metricName,

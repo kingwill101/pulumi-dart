@@ -15,7 +15,7 @@ class GetPoolArgs {
   /// Creates a new [GetPoolArgs].
   /// [name] Name of the ltm monitor
   /// [partition] partition of the ltm monitor
-  GetPoolArgs({
+  const GetPoolArgs({
     required this.name,
     required this.partition,
   });

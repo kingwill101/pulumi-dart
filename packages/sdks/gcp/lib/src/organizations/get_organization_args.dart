@@ -17,7 +17,7 @@ class GetOrganizationArgs {
   /// Creates a new [GetOrganizationArgs].
   /// [domain] The domain name of the Organization.
   /// [organization] The Organization's numeric ID, including an optional `organizations/` prefix.
-  GetOrganizationArgs({
+  const GetOrganizationArgs({
     this.domain,
     this.organization,
   });

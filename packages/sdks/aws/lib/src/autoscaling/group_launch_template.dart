@@ -14,7 +14,7 @@ class GroupLaunchTemplate {
   /// [id] ID of the launch template. Conflicts with `name`.
   /// [name] Name of the launch template. Conflicts with `id`.
   /// [version] Template version. Can be version number, `$Latest`, or `$Default`. (Default: `$Default`).
-  GroupLaunchTemplate({
+  const GroupLaunchTemplate({
     this.id,
     this.name,
     this.version,

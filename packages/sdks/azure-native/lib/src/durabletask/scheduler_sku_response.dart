@@ -15,7 +15,7 @@ class SchedulerSkuResponse {
   /// [capacity] The SKU capacity. This allows scale out/in for the resource and impacts zone redundancy
   /// [name] The name of the SKU
   /// [redundancyState] Indicates whether the current SKU configuration is zone redundant
-  SchedulerSkuResponse({
+  const SchedulerSkuResponse({
     this.capacity,
     required this.name,
     required this.redundancyState,

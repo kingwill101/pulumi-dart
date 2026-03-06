@@ -13,7 +13,7 @@ class ExecStep {
   /// Creates a new [ExecStep].
   /// [linuxExecStepConfig] The ExecStepConfig for all Linux VMs targeted by the PatchJob.
   /// [windowsExecStepConfig] The ExecStepConfig for all Windows VMs targeted by the PatchJob.
-  ExecStep({
+  const ExecStep({
     this.linuxExecStepConfig,
     this.windowsExecStepConfig,
   });

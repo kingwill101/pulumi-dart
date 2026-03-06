@@ -18,7 +18,7 @@ class IgnitionState {
   /// [name] Name for this ignition resource
   /// [path] Full path to the generated ignition file
   /// [size] Size of the file in bytes
-  IgnitionState({
+  const IgnitionState({
     this.content,
     this.name,
     this.path,

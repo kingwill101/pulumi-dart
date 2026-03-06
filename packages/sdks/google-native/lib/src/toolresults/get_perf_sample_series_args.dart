@@ -19,7 +19,7 @@ class GetPerfSampleSeriesArgs {
   /// [project] Optional.
   /// [sampleSeriesId] Required.
   /// [stepId] Required.
-  GetPerfSampleSeriesArgs({
+  const GetPerfSampleSeriesArgs({
     required this.executionId,
     required this.historyId,
     this.project,

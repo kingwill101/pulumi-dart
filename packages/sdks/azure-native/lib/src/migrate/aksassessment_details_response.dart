@@ -33,7 +33,7 @@ class AKSAssessmentDetailsResponse {
   /// [updatedTimestamp] Gets date and time when assessment was last updated.
   /// [webAppCount] Gets the number of web apps.
   /// [webServerCount] Gets the number of web servers.
-  AKSAssessmentDetailsResponse({
+  const AKSAssessmentDetailsResponse({
     required this.confidenceRatingInPercentage,
     required this.createdTimestamp,
     required this.machineCount,

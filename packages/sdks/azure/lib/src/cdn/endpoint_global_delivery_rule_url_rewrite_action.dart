@@ -14,7 +14,7 @@ class EndpointGlobalDeliveryRuleUrlRewriteAction {
   /// [destination] This value must start with a `/` and can't be longer than 260 characters.
   /// [preserveUnmatchedPath] Whether preserve an unmatched path. Defaults to `true`.
   /// [sourcePattern] This value must start with a `/` and can't be longer than 260 characters.
-  EndpointGlobalDeliveryRuleUrlRewriteAction({
+  const EndpointGlobalDeliveryRuleUrlRewriteAction({
     required this.destination,
     this.preserveUnmatchedPath,
     required this.sourcePattern,

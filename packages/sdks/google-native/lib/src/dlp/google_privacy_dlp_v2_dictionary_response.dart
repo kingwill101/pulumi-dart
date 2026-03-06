@@ -14,7 +14,7 @@ class GooglePrivacyDlpV2DictionaryResponse {
   /// Creates a new [GooglePrivacyDlpV2DictionaryResponse].
   /// [cloudStoragePath] Newline-delimited file of words in Cloud Storage. Only a single file is accepted.
   /// [wordList] List of words or phrases to search for.
-  GooglePrivacyDlpV2DictionaryResponse({
+  const GooglePrivacyDlpV2DictionaryResponse({
     required this.cloudStoragePath,
     required this.wordList,
   });

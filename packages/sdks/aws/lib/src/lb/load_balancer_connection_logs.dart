@@ -14,7 +14,7 @@ class LoadBalancerConnectionLogs {
   /// [bucket] S3 bucket name to store the logs in.
   /// [enabled] Boolean to enable / disable `connection_logs`. Defaults to `false`, even when `bucket` is specified.
   /// [prefix] S3 bucket prefix. Logs are stored in the root if not configured.
-  LoadBalancerConnectionLogs({
+  const LoadBalancerConnectionLogs({
     required this.bucket,
     this.enabled,
     this.prefix,

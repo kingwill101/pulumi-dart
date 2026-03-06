@@ -55,7 +55,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
   /// [project] The project to which the resource belongs. If it
   /// [properties] Various properties of Exadata Infrastructure.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  GetCloudExadataInfrastructuresCloudExadataInfrastructure({
+  const GetCloudExadataInfrastructuresCloudExadataInfrastructure({
     required this.cloudExadataInfrastructureId,
     required this.createTime,
     required this.deletionProtection,

@@ -34,7 +34,7 @@ class TenantOauthIdpConfigArgs {
   /// [name] The name of the OauthIdpConfig. Must start with `oidc.`.
   /// [project] The ID of the project in which the resource belongs.
   /// [tenant] The name of the tenant where this OIDC IDP configuration resource exists
-  TenantOauthIdpConfigArgs({
+  const TenantOauthIdpConfigArgs({
     required this.clientId,
     this.clientSecret,
     required this.displayName,

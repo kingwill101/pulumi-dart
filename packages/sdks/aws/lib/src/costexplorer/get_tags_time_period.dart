@@ -11,7 +11,7 @@ class GetTagsTimePeriod {
   /// Creates a new [GetTagsTimePeriod].
   /// [end] Beginning of the time period.
   /// [start] End of the time period.
-  GetTagsTimePeriod({
+  const GetTagsTimePeriod({
     required this.end,
     required this.start,
   });

@@ -38,7 +38,7 @@ class GetAzureLargeStorageInstanceResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetAzureLargeStorageInstanceResult({
+  const GetAzureLargeStorageInstanceResult({
     required this.azureApiVersion,
     this.azureLargeStorageInstanceUniqueIdentifier,
     required this.id,

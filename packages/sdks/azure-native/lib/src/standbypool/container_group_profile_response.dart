@@ -12,7 +12,7 @@ class ContainerGroupProfileResponse {
   /// Creates a new [ContainerGroupProfileResponse].
   /// [id] Specifies container group profile id of standby container groups.
   /// [revision] Specifies revision of container group profile.
-  ContainerGroupProfileResponse({
+  const ContainerGroupProfileResponse({
     required this.id,
     this.revision,
   });

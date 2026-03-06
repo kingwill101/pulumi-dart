@@ -15,7 +15,7 @@ class GetFlexibleServerArgs {
   /// Creates a new [GetFlexibleServerArgs].
   /// [name] Specifies the name of the MySQL Flexible Server.
   /// [resourceGroupName] The name of the resource group for the MySQL Flexible Server.
-  GetFlexibleServerArgs({
+  const GetFlexibleServerArgs({
     required this.name,
     required this.resourceGroupName,
   });

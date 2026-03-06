@@ -15,7 +15,7 @@ class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType {
   /// Creates a new [PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType].
   /// [infoType] Type of information the findings limit applies to. Only one limit per infoType should be provided. If InfoTypeLimit does
   /// [maxFindings] Max findings limit for the given infoType.
-  PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType({
+  const PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType({
     this.infoType,
     required this.maxFindings,
   });

@@ -11,7 +11,7 @@ class DefaultRolloutSpecificationMediumTrafficResponse {
   /// Creates a new [DefaultRolloutSpecificationMediumTrafficResponse].
   /// [regions] Optional.
   /// [waitDuration] The wait duration.
-  DefaultRolloutSpecificationMediumTrafficResponse({
+  const DefaultRolloutSpecificationMediumTrafficResponse({
     this.regions,
     this.waitDuration,
   });

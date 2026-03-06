@@ -12,7 +12,7 @@ class LaunchTemplateCapacityReservationSpecification {
   /// Creates a new [LaunchTemplateCapacityReservationSpecification].
   /// [capacityReservationPreference] Indicates the instance's Capacity Reservation preferences. Can be `capacity-reservations-only`, `open` or `none`. If `capacity_reservation_id` or `capacity_reservation_resource_group_arn` is specified in `capacity_reservation_target` block, either omit `capacity_reservation_preference` or set it to `capacity-reservations-only`.
   /// [capacityReservationTarget] Used to target a specific Capacity Reservation:
-  LaunchTemplateCapacityReservationSpecification({
+  const LaunchTemplateCapacityReservationSpecification({
     this.capacityReservationPreference,
     this.capacityReservationTarget,
   });

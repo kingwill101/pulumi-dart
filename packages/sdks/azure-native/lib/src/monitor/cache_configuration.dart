@@ -12,7 +12,7 @@ class CacheConfiguration {
   /// Creates a new [CacheConfiguration].
   /// [maxStorageUsage] Max storage usage in megabytes.
   /// [retentionPeriod] Retention period in minutes.
-  CacheConfiguration({
+  const CacheConfiguration({
     this.maxStorageUsage,
     this.retentionPeriod,
   });

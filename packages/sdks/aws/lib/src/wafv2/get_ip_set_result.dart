@@ -26,7 +26,7 @@ class GetIpSetResult {
   /// [name] Required.
   /// [region] Required.
   /// [scope] Required.
-  GetIpSetResult({
+  const GetIpSetResult({
     required this.addresses,
     required this.arn,
     required this.description,

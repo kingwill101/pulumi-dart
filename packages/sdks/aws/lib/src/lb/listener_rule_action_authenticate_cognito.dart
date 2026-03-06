@@ -29,7 +29,7 @@ class ListenerRuleActionAuthenticateCognito {
   /// [userPoolArn] The ARN of the Cognito user pool.
   /// [userPoolClientId] The ID of the Cognito user pool client.
   /// [userPoolDomain] The domain prefix or fully-qualified domain name of the Cognito user pool.
-  ListenerRuleActionAuthenticateCognito({
+  const ListenerRuleActionAuthenticateCognito({
     this.authenticationRequestExtraParams,
     this.onUnauthenticatedRequest,
     this.scope,

@@ -19,7 +19,7 @@ class AppAudioProcessingConfigSynthesizeSpeechConfig {
   /// [languageCode] The identifier for this object. Format specified above.
   /// [speakingRate] The speaking rate/speed in the range [0.25, 2.0]. 1.0 is the normal native
   /// [voice] The name of the voice. If not set, the service will choose a
-  AppAudioProcessingConfigSynthesizeSpeechConfig({
+  const AppAudioProcessingConfigSynthesizeSpeechConfig({
     required this.languageCode,
     this.speakingRate,
     this.voice,

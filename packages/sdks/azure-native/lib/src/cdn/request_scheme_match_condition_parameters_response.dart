@@ -21,7 +21,7 @@ class RequestSchemeMatchConditionParametersResponse {
   /// [operator] Describes operator to be matched
   /// [transforms] List of transforms
   /// [typeName] Expected value is 'DeliveryRuleRequestSchemeConditionParameters'.
-  RequestSchemeMatchConditionParametersResponse({
+  const RequestSchemeMatchConditionParametersResponse({
     this.matchValues,
     this.negateCondition,
     required this.operator,

@@ -87,7 +87,7 @@ class FirewallPolicyWithRulesPredefinedRule {
   /// [targetSecureTags] (Output)
   /// [targetServiceAccounts] (Output)
   /// [tlsInspect] (Output)
-  FirewallPolicyWithRulesPredefinedRule({
+  const FirewallPolicyWithRulesPredefinedRule({
     this.action,
     this.description,
     this.direction,

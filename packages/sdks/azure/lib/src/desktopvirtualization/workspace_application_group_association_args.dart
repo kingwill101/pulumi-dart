@@ -15,7 +15,7 @@ class WorkspaceApplicationGroupAssociationArgs {
   /// Creates a new [WorkspaceApplicationGroupAssociationArgs].
   /// [applicationGroupId] The resource ID for the Virtual Desktop Application Group. Changing this forces a new resource to be created.
   /// [workspaceId] The resource ID for the Virtual Desktop Workspace. Changing this forces a new resource to be created.
-  WorkspaceApplicationGroupAssociationArgs({
+  const WorkspaceApplicationGroupAssociationArgs({
     required this.applicationGroupId,
     required this.workspaceId,
   });

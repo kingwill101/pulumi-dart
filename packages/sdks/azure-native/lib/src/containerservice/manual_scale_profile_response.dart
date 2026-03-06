@@ -12,7 +12,7 @@ class ManualScaleProfileResponse {
   /// Creates a new [ManualScaleProfileResponse].
   /// [count] Number of nodes.
   /// [size] VM size that AKS will use when creating and scaling e.g. 'Standard_E4s_v3', 'Standard_E16s_v3' or 'Standard_D16s_v5'.
-  ManualScaleProfileResponse({
+  const ManualScaleProfileResponse({
     this.count,
     this.size,
   });

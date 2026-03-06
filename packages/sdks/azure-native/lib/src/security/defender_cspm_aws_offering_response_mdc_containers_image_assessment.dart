@@ -12,7 +12,7 @@ class DefenderCspmAwsOfferingResponseMdcContainersImageAssessment {
   /// Creates a new [DefenderCspmAwsOfferingResponseMdcContainersImageAssessment].
   /// [cloudRoleArn] The cloud role ARN in AWS for this feature
   /// [enabled] Is Microsoft Defender container image assessment enabled
-  DefenderCspmAwsOfferingResponseMdcContainersImageAssessment({
+  const DefenderCspmAwsOfferingResponseMdcContainersImageAssessment({
     this.cloudRoleArn,
     this.enabled,
   });

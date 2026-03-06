@@ -51,7 +51,7 @@ class AppProfileArgs {
   /// [rowAffinity] Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
   /// [singleClusterRouting] Use a single-cluster routing policy.
   /// [standardIsolation] The standard options used for isolating this app profile's traffic from other use cases.
-  AppProfileArgs({
+  const AppProfileArgs({
     required this.appProfileId,
     this.dataBoostIsolationReadOnly,
     this.description,

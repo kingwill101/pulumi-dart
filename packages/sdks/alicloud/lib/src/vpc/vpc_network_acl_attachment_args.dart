@@ -18,7 +18,7 @@ class VpcNetworkAclAttachmentArgs {
   /// [networkAclId] The ID of the network ACL instance.
   /// [resourceId] The ID of the associated  vswitch instance.
   /// [resourceType] The type of the associated resource. Valid values: `VSwitch`.
-  VpcNetworkAclAttachmentArgs({
+  const VpcNetworkAclAttachmentArgs({
     required this.networkAclId,
     required this.resourceId,
     required this.resourceType,

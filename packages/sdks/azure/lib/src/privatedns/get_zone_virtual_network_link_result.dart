@@ -26,7 +26,7 @@ class GetZoneVirtualNetworkLinkResult {
   /// [resourceGroupName] Required.
   /// [tags] A mapping of tags to assign to the resource.
   /// [virtualNetworkId] The ID of the Virtual Network that is linked to the DNS Zone.
-  GetZoneVirtualNetworkLinkResult({
+  const GetZoneVirtualNetworkLinkResult({
     required this.id,
     required this.name,
     required this.privateDnsZoneName,

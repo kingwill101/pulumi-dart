@@ -21,7 +21,7 @@ class GetLifecyclePoliciesArgs {
   /// [ids] A list of Lifecycle Policy IDs.
   /// [nameRegex] A regex string to filter results by Lifecycle Policy name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetLifecyclePoliciesArgs({
+  const GetLifecyclePoliciesArgs({
     required this.fileSystemId,
     this.ids,
     this.nameRegex,

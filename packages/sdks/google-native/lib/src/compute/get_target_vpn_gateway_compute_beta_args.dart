@@ -15,7 +15,7 @@ class GetTargetVpnGatewayComputeBetaArgs {
   /// [project] Optional.
   /// [region] Required.
   /// [targetVpnGateway] Required.
-  GetTargetVpnGatewayComputeBetaArgs({
+  const GetTargetVpnGatewayComputeBetaArgs({
     this.project,
     required this.region,
     required this.targetVpnGateway,

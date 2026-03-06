@@ -23,7 +23,7 @@ class GetFactoryVstsConfiguration {
   /// [repositoryName] The name of the git repository.
   /// [rootFolder] The root folder within the repository.
   /// [tenantId] The Tenant ID associated with the VSTS account.
-  GetFactoryVstsConfiguration({
+  const GetFactoryVstsConfiguration({
     required this.accountName,
     required this.branchName,
     required this.projectName,

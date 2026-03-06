@@ -9,7 +9,7 @@ class PubSubConfig {
 
   /// Creates a new [PubSubConfig].
   /// [topic] The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed.
-  PubSubConfig({
+  const PubSubConfig({
     this.topic,
   });
 

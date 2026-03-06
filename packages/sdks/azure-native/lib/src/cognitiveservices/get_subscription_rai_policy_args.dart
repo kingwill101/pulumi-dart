@@ -12,7 +12,7 @@ class GetSubscriptionRaiPolicyArgs {
 
   /// Creates a new [GetSubscriptionRaiPolicyArgs].
   /// [raiPolicyName] The name of the RaiPolicy associated with the Cognitive Services Account
-  GetSubscriptionRaiPolicyArgs({
+  const GetSubscriptionRaiPolicyArgs({
     required this.raiPolicyName,
   });
 

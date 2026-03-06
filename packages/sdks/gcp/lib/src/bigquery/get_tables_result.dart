@@ -17,7 +17,7 @@ class GetTablesResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [project] Optional.
   /// [tables] A list of all retrieved BigQuery tables. Structure is defined below.
-  GetTablesResult({
+  const GetTablesResult({
     required this.datasetId,
     required this.id,
     this.project,

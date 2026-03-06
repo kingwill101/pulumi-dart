@@ -18,7 +18,7 @@ class GetGatewayArgs {
   /// [gatewayId] Gateway entity identifier. Must be unique in the current API Management service instance. Must not have value 'managed'
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [serviceName] The name of the API Management service.
-  GetGatewayArgs({
+  const GetGatewayArgs({
     required this.gatewayId,
     required this.resourceGroupName,
     required this.serviceName,

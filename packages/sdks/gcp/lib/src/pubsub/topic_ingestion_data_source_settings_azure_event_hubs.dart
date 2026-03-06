@@ -28,7 +28,7 @@ class TopicIngestionDataSourceSettingsAzureEventHubs {
   /// [resourceGroup] The name of the resource group within an Azure subscription.
   /// [subscriptionId] The Azure event hub subscription ID to use for ingestion.
   /// [tenantId] The Azure event hub tenant ID to use for ingestion.
-  TopicIngestionDataSourceSettingsAzureEventHubs({
+  const TopicIngestionDataSourceSettingsAzureEventHubs({
     this.clientId,
     this.eventHub,
     this.gcpServiceAccount,

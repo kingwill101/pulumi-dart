@@ -12,7 +12,7 @@ class VirtualNetworkSwiftConnectionState {
   /// Creates a new [VirtualNetworkSwiftConnectionState].
   /// [appServiceId] The ID of the App Service or Function App to associate to the VNet. Changing this forces a new resource to be created.
   /// [subnetId] The ID of the subnet the app service will be associated to (the subnet must have a `service_delegation` configured for `Microsoft.Web/serverFarms`).
-  VirtualNetworkSwiftConnectionState({
+  const VirtualNetworkSwiftConnectionState({
     this.appServiceId,
     this.subnetId,
   });

@@ -39,7 +39,7 @@ class GooglePrivacyDlpV2CustomInfoTypeResponse {
   /// [sensitivityScore] Sensitivity for this CustomInfoType. If this CustomInfoType extends an existing InfoType, the sensitivity here will take precedence over that of the original InfoType. If unset for a CustomInfoType, it will default to HIGH. This only applies to data profiling.
   /// [storedType] Load an existing `StoredInfoType` resource for use in `InspectDataSource`. Not currently supported in `InspectContent`.
   /// [surrogateType] Message for detecting output from deidentification transformations that support reversing.
-  GooglePrivacyDlpV2CustomInfoTypeResponse({
+  const GooglePrivacyDlpV2CustomInfoTypeResponse({
     required this.detectionRules,
     required this.dictionary,
     required this.exclusionType,

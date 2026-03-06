@@ -11,7 +11,7 @@ class LinkedServiceSnowflakeKeyVaultPassword {
   /// Creates a new [LinkedServiceSnowflakeKeyVaultPassword].
   /// [linkedServiceName] Specifies the name of an existing Key Vault Data Factory Linked Service.
   /// [secretName] Specifies the secret name in Azure Key Vault that stores Snowflake password.
-  LinkedServiceSnowflakeKeyVaultPassword({
+  const LinkedServiceSnowflakeKeyVaultPassword({
     required this.linkedServiceName,
     required this.secretName,
   });

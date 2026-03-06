@@ -18,7 +18,7 @@ class GetRaiPolicyArgs {
   /// [accountName] The name of Cognitive Services account.
   /// [raiPolicyName] The name of the RaiPolicy associated with the Cognitive Services Account
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetRaiPolicyArgs({
+  const GetRaiPolicyArgs({
     required this.accountName,
     required this.raiPolicyName,
     required this.resourceGroupName,

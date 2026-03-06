@@ -15,7 +15,7 @@ class GetRecordArgs {
   /// Creates a new [GetRecordArgs].
   /// [domain] The domain name of the record.
   /// [name] The name of the record.
-  GetRecordArgs({
+  const GetRecordArgs({
     required this.domain,
     required this.name,
   });

@@ -24,7 +24,7 @@ class CloudControlParameterSpecSubParameterDefaultValue {
   /// [oneofValue] Sub-parameter values.
   /// [stringListValue] A list of strings.
   /// [stringValue] Represents a string value.
-  CloudControlParameterSpecSubParameterDefaultValue({
+  const CloudControlParameterSpecSubParameterDefaultValue({
     this.boolValue,
     this.numberValue,
     this.oneofValue,

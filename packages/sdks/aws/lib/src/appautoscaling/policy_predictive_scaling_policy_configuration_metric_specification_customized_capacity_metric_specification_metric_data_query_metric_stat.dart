@@ -15,7 +15,7 @@ class PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCap
   /// [metric] Structure that defines the CloudWatch metric to return, including the metric name, namespace, and dimensions.
   /// [stat] Statistic of the metrics to return.
   /// [unit] Unit of the metrics to return.
-  PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat({
+  const PolicyPredictiveScalingPolicyConfigurationMetricSpecificationCustomizedCapacityMetricSpecificationMetricDataQueryMetricStat({
     required this.metric,
     required this.stat,
     this.unit,

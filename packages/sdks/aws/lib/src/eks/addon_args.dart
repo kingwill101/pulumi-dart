@@ -57,7 +57,7 @@ class AddonArgs {
   /// [resolveConflictsOnUpdate] How to resolve field value conflicts for an Amazon EKS add-on if you've changed a value from the Amazon EKS default value. Valid values are `NONE`, `OVERWRITE`, and `PRESERVE`. For more details see the [UpdateAddon](https://docs.aws.amazon.com/eks/latest/APIReference/API_UpdateAddon.html) API Documentation.
   /// [serviceAccountRoleArn] The Amazon Resource Name (ARN) of an
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
-  AddonArgs({
+  const AddonArgs({
     required this.addonName,
     this.addonVersion,
     required this.clusterName,

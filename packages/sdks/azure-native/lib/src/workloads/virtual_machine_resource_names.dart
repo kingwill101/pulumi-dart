@@ -22,7 +22,7 @@ class VirtualMachineResourceNames {
   /// [networkInterfaces] The list of network interface name objects for the selected virtual machine. Currently, only one network interface is supported per virtual machine.
   /// [osDiskName] The full name for OS disk attached to the VM. If this value is not provided, it will be named by ARM as per its default naming standards (prefixed with vm name). There is only one OS disk attached per Virtual Machine.
   /// [vmName] The full name for virtual machine. The length of this field can be upto 64 characters. If name is not provided, service uses a default name based on the deployment type. For SingleServer, default name is {SID}vm. In case of HA-AvZone systems, default name will be {SID}{app/ascs/db}z{a/b}vm with an incrementor at the end in case of more than 1 vm per layer. For distributed and HA-AvSet systems, default name will be {SID}{app/ascs/db}vm with an incrementor at the end in case of more than 1 vm per layer.
-  VirtualMachineResourceNames({
+  const VirtualMachineResourceNames({
     this.dataDiskNames,
     this.hostName,
     this.networkInterfaces,

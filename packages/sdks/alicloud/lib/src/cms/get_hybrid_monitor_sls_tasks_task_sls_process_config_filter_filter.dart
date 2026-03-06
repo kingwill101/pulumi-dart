@@ -12,7 +12,7 @@ class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
   /// [operator] The method that is used to filter logs imported from Log Service.
   /// [slsKeyName] Required.
   /// [value] Required.
-  GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter({
+  const GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter({
     required this.operator,
     required this.slsKeyName,
     required this.value,

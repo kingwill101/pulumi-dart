@@ -34,7 +34,7 @@ class WorkforceState {
   /// [subdomain] The subdomain for your OIDC Identity Provider.
   /// [workforceName] The name of the Workforce (must be unique).
   /// [workforceVpcConfig] configure a workforce using VPC. see Workforce VPC Config details below.
-  WorkforceState({
+  const WorkforceState({
     this.arn,
     this.cognitoConfig,
     this.oidcConfig,

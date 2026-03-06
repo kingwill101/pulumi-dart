@@ -9,7 +9,7 @@ class DataCollectionEndpointResponseNetworkAcls {
 
   /// Creates a new [DataCollectionEndpointResponseNetworkAcls].
   /// [publicNetworkAccess] The configuration to set whether network access from public internet to the endpoints are allowed.
-  DataCollectionEndpointResponseNetworkAcls({
+  const DataCollectionEndpointResponseNetworkAcls({
     this.publicNetworkAccess,
   });
 

@@ -23,7 +23,7 @@ class OrderV1Meta {
   /// [mode] The mode to use for key generation.
   /// [name] The name of the secret set by the user.
   /// [payloadContentType] The media type for the content of the secrets payload. Must be one of `text/plain`, `text/plain;charset=utf-8`, `text/plain; charset=utf-8`, `application/octet-stream`, `application/pkcs8`.
-  OrderV1Meta({
+  const OrderV1Meta({
     required this.algorithm,
     required this.bitLength,
     this.expiration,

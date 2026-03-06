@@ -30,7 +30,7 @@ class ServerConfigurationsManagementSettings {
   /// [sqlInstanceSettings] SQL Instance settings.
   /// [sqlStorageUpdateSettings] SQL storage update settings.
   /// [sqlWorkloadTypeUpdateSettings] SQL workload type settings.
-  ServerConfigurationsManagementSettings({
+  const ServerConfigurationsManagementSettings({
     this.additionalFeaturesServerConfigurations,
     this.azureAdAuthenticationSettings,
     this.sqlConnectivityUpdateSettings,

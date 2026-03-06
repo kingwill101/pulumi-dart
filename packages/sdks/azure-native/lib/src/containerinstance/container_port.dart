@@ -12,7 +12,7 @@ class ContainerPort {
   /// Creates a new [ContainerPort].
   /// [port] The port number exposed within the container group.
   /// [protocol] The protocol associated with the port.
-  ContainerPort({
+  const ContainerPort({
     required this.port,
     this.protocol,
   });

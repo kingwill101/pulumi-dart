@@ -44,7 +44,7 @@ class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions {
   /// Creates a new [ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions].
   /// [endTimeBehavior] The exclusion window end time behavior. One of: **UNTIL_END_OF_SUPPORT**. One and and one of `end_time_behavior` and `end_time` should be specified.
   /// [scope] The scope of automatic upgrades to restrict in the exclusion window. One of: **NO_UPGRADES | NO_MINOR_UPGRADES | NO_MINOR_OR_NODE_UPGRADES**
-  ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions({
+  const ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions({
     this.endTimeBehavior,
     required this.scope,
   });

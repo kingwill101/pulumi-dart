@@ -51,7 +51,7 @@ class GetCosmosDbDataConnectionResult {
   /// [retrievalStartDate] Optional. If defined, the data connection retrieves Cosmos DB documents created or updated after the specified retrieval start date.
   /// [tableName] The case-sensitive name of the existing target table in your cluster. Retrieved data is ingested into this table.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetCosmosDbDataConnectionResult({
+  const GetCosmosDbDataConnectionResult({
     required this.azureApiVersion,
     required this.cosmosDbAccountResourceId,
     required this.cosmosDbContainer,

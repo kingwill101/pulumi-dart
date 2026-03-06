@@ -12,7 +12,7 @@ class RegistryListCredentialsResultResponse {
   /// [location] Required.
   /// [passwords] Optional.
   /// [username] Required.
-  RegistryListCredentialsResultResponse({
+  const RegistryListCredentialsResultResponse({
     required this.location,
     this.passwords,
     required this.username,

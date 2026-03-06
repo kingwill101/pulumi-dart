@@ -18,7 +18,7 @@ class GetGremlinResourceGremlinDatabaseArgs {
   /// [accountName] Cosmos DB database account name.
   /// [databaseName] Cosmos DB database name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetGremlinResourceGremlinDatabaseArgs({
+  const GetGremlinResourceGremlinDatabaseArgs({
     required this.accountName,
     required this.databaseName,
     required this.resourceGroupName,

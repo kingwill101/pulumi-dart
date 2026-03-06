@@ -36,7 +36,7 @@ class SiteSpnPropertiesResponse {
   /// [objectId] Gets or sets the object Id of the service principal with which the on-premise
   /// [rawCertData] Gets or sets the raw certificate data for building certificate expiry flows.
   /// [tenantId] Gets or sets the tenant Id for the service principal with which the
-  SiteSpnPropertiesResponse({
+  const SiteSpnPropertiesResponse({
     this.aadAuthority,
     this.applicationId,
     this.audience,

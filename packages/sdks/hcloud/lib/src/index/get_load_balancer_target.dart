@@ -14,7 +14,7 @@ class GetLoadBalancerTarget {
   /// [labelSelector] (string) Label Selector to add a group of resources based on the label.
   /// [serverId] (int) ID of the server which should be a target for this Load Balancer.
   /// [type] (string) Type of the target. `server` or `label_selector`
-  GetLoadBalancerTarget({
+  const GetLoadBalancerTarget({
     required this.labelSelector,
     required this.serverId,
     required this.type,

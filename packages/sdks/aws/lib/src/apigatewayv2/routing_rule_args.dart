@@ -28,7 +28,7 @@ class RoutingRuleArgs {
   /// [domainName] Domain name. Must be between 1 and 512 characters in length.
   /// [priority] The order of rule evaluation. Priority is evaluated from the lowest value to the highest value. Rules can't have the same priority. Value must be between 1 and 1,000,000.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  RoutingRuleArgs({
+  const RoutingRuleArgs({
     required this.actions,
     required this.conditions,
     required this.domainName,

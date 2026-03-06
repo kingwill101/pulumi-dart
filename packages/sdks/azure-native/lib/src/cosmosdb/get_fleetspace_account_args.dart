@@ -21,7 +21,7 @@ class GetFleetspaceAccountArgs {
   /// [fleetspaceAccountName] Cosmos DB fleetspace account name.
   /// [fleetspaceName] Cosmos DB fleetspace name. Needs to be unique under a fleet.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetFleetspaceAccountArgs({
+  const GetFleetspaceAccountArgs({
     required this.fleetName,
     required this.fleetspaceAccountName,
     required this.fleetspaceName,

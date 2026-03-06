@@ -44,7 +44,7 @@ class BatchOperationsJobArgs {
   /// [putMetadata] allows batch operations to update metadata for objects in bucket
   /// [putObjectHold] allows to update temporary hold or eventBased hold for objects in bucket.
   /// [rewriteObject] allows to update encryption key for objects in bucket.
-  BatchOperationsJobArgs({
+  const BatchOperationsJobArgs({
     this.bucketList,
     this.deleteObject,
     this.deleteProtection,

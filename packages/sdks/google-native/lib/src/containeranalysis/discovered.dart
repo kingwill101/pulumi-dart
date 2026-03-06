@@ -34,7 +34,7 @@ class Discovered {
   /// [continuousAnalysis] Whether the resource is continuously analyzed.
   /// [cpe] The CPE of the resource being scanned.
   /// [lastScanTime] The last time this resource was scanned.
-  Discovered({
+  const Discovered({
     this.analysisCompleted,
     this.analysisError,
     this.analysisStatus,

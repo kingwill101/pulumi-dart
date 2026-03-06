@@ -34,7 +34,7 @@ class ConsumerQuotaOverrideState {
   /// [overrideValue] The overriding quota limit value. Can be any nonnegative integer, or -1 (unlimited quota).
   /// [project] The ID of the project in which the resource belongs.
   /// [service] The service that the metrics belong to, e.g. `compute.googleapis.com`.
-  ConsumerQuotaOverrideState({
+  const ConsumerQuotaOverrideState({
     this.dimensions,
     this.force,
     this.limit,

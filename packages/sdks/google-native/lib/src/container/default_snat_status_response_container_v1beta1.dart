@@ -9,7 +9,7 @@ class DefaultSnatStatusResponseContainerV1beta1 {
 
   /// Creates a new [DefaultSnatStatusResponseContainerV1beta1].
   /// [disabled] Disables cluster default sNAT rules.
-  DefaultSnatStatusResponseContainerV1beta1({
+  const DefaultSnatStatusResponseContainerV1beta1({
     required this.disabled,
   });
 

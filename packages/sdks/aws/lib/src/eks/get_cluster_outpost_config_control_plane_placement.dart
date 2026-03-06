@@ -8,7 +8,7 @@ class GetClusterOutpostConfigControlPlanePlacement {
 
   /// Creates a new [GetClusterOutpostConfigControlPlanePlacement].
   /// [groupName] The name of the placement group for the Kubernetes control plane instances.
-  GetClusterOutpostConfigControlPlanePlacement({
+  const GetClusterOutpostConfigControlPlanePlacement({
     required this.groupName,
   });
 

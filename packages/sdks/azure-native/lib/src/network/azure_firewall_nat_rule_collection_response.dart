@@ -29,7 +29,7 @@ class AzureFirewallNatRuleCollectionResponse {
   /// [priority] Priority of the NAT rule collection resource.
   /// [provisioningState] The provisioning state of the NAT rule collection resource.
   /// [rules] Collection of rules used by a NAT rule collection.
-  AzureFirewallNatRuleCollectionResponse({
+  const AzureFirewallNatRuleCollectionResponse({
     this.action,
     required this.etag,
     this.id,

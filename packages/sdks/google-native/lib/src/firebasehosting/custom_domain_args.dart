@@ -29,7 +29,7 @@ class CustomDomainArgs {
   /// [project] Optional.
   /// [redirectTarget] A domain name that this `CustomDomain` should direct traffic towards. If specified, Hosting will respond to requests against this custom domain with an HTTP 301 code, and route traffic to the specified `redirect_target` instead.
   /// [siteId] Required.
-  CustomDomainArgs({
+  const CustomDomainArgs({
     this.annotations,
     this.certPreference,
     required this.customDomainId,

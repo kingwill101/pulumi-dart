@@ -20,7 +20,7 @@ class UserSettingsAssociationArgs {
   /// [portalArn] ARN of the portal to associate with the user settings. Forces replacement if changed.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [userSettingsArn] ARN of the user settings to associate with the portal. Forces replacement if changed.
-  UserSettingsAssociationArgs({
+  const UserSettingsAssociationArgs({
     required this.portalArn,
     this.region,
     required this.userSettingsArn,

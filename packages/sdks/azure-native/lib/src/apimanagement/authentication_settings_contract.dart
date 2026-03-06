@@ -20,7 +20,7 @@ class AuthenticationSettingsContract {
   /// [oAuth2AuthenticationSettings] Collection of OAuth2 authentication settings included into this API.
   /// [openid] OpenID Connect Authentication Settings
   /// [openidAuthenticationSettings] Collection of Open ID Connect authentication settings included into this API.
-  AuthenticationSettingsContract({
+  const AuthenticationSettingsContract({
     this.oAuth2,
     this.oAuth2AuthenticationSettings,
     this.openid,

@@ -26,7 +26,7 @@ class GetIpFirewallRuleResult {
   /// [provisioningState] Resource provisioning state
   /// [startIpAddress] The start IP address of the firewall rule. Must be IPv4 format
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetIpFirewallRuleResult({
+  const GetIpFirewallRuleResult({
     required this.azureApiVersion,
     this.endIpAddress,
     required this.id,

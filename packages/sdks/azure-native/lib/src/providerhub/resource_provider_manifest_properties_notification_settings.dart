@@ -9,7 +9,7 @@ class ResourceProviderManifestPropertiesNotificationSettings {
 
   /// Creates a new [ResourceProviderManifestPropertiesNotificationSettings].
   /// [subscriberSettings] Optional.
-  ResourceProviderManifestPropertiesNotificationSettings({
+  const ResourceProviderManifestPropertiesNotificationSettings({
     this.subscriberSettings,
   });
 

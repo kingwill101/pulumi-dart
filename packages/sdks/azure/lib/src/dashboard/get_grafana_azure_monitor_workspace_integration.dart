@@ -7,7 +7,7 @@ class GetGrafanaAzureMonitorWorkspaceIntegration {
 
   /// Creates a new [GetGrafanaAzureMonitorWorkspaceIntegration].
   /// [resourceId] Required.
-  GetGrafanaAzureMonitorWorkspaceIntegration({
+  const GetGrafanaAzureMonitorWorkspaceIntegration({
     required this.resourceId,
   });
 

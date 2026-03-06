@@ -19,7 +19,7 @@ class GetBucketObjectsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [matchGlob] Optional.
   /// [prefix] Optional.
-  GetBucketObjectsResult({
+  const GetBucketObjectsResult({
     required this.bucket,
     required this.bucketObjects,
     required this.id,

@@ -44,7 +44,7 @@ class GetHandshakesHandshake {
   /// [status] The status of handshake, valid values: `Accepted`, `Cancelled`, `Declined`, `Deleted`, `Expired` and `Pending`.
   /// [targetEntity] The ID or logon email address of the invited account.
   /// [targetType] The type of the invited account.
-  GetHandshakesHandshake({
+  const GetHandshakesHandshake({
     required this.expireTime,
     required this.handshakeId,
     required this.id,

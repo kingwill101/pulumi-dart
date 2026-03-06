@@ -24,7 +24,7 @@ class AssetDiscoveryStatus {
   /// [state] Output only. Current state of the asset. Possible values: STATE_UNSPECIFIED, ACTIVE, CREATING, DELETING, ACTION_REQUIRED
   /// [stats] Data Stats of the asset reported by discovery.
   /// [updateTime] Output only. The time when the asset was last updated.
-  AssetDiscoveryStatus({
+  const AssetDiscoveryStatus({
     this.lastRunDuration,
     this.lastRunTime,
     this.message,

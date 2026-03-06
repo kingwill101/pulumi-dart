@@ -19,7 +19,7 @@ class GetDbNodesArgs {
   /// [cloudVmCluster] The ID of the VM Cluster.
   /// [location] The location of the resource.
   /// [project] The project in which the resource belongs. If it
-  GetDbNodesArgs({
+  const GetDbNodesArgs({
     required this.cloudVmCluster,
     required this.location,
     this.project,

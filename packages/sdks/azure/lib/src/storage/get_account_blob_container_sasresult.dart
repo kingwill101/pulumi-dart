@@ -36,7 +36,7 @@ class GetAccountBlobContainerSASResult {
   /// [permissions] Required.
   /// [sas] The computed Blob Container Shared Access Signature (SAS). The delimiter character ('?') for the query string is the prefix of `sas`.
   /// [start] Required.
-  GetAccountBlobContainerSASResult({
+  const GetAccountBlobContainerSASResult({
     this.cacheControl,
     required this.connectionString,
     required this.containerName,

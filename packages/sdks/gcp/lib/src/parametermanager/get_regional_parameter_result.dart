@@ -34,7 +34,7 @@ class GetRegionalParameterResult {
   /// [project] Optional.
   /// [pulumiLabels] Required.
   /// [updateTime] Required.
-  GetRegionalParameterResult({
+  const GetRegionalParameterResult({
     required this.createTime,
     required this.effectiveLabels,
     required this.format,

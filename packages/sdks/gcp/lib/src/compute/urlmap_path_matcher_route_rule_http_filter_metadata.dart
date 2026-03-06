@@ -17,7 +17,7 @@ class URLMapPathMatcherRouteRuleHttpFilterMetadata {
   /// [config] The configuration needed to enable the networkservices.HttpFilter resource.
   /// [configTypeUrl] The fully qualified versioned proto3 type url of the protobuf that the filter expects for its contextual settings,
   /// [filterName] Name of the networkservices.HttpFilter resource this configuration belongs to.
-  URLMapPathMatcherRouteRuleHttpFilterMetadata({
+  const URLMapPathMatcherRouteRuleHttpFilterMetadata({
     this.config,
     this.configTypeUrl,
     this.filterName,

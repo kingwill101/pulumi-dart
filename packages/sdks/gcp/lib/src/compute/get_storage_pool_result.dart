@@ -48,7 +48,7 @@ class GetStoragePoolResult {
   /// [statuses] Required.
   /// [storagePoolType] Required.
   /// [zone] Required.
-  GetStoragePoolResult({
+  const GetStoragePoolResult({
     required this.capacityProvisioningType,
     required this.creationTimestamp,
     required this.deletionProtection,

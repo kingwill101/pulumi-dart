@@ -16,7 +16,7 @@ class IpSetState {
   /// [arn] The ARN of the WAF IPSet.
   /// [ipSetDescriptors] One or more pairs specifying the IP address type (IPV4 or IPV6) and the IP address range (in CIDR format) from which web requests originate.
   /// [name] The name or description of the IPSet.
-  IpSetState({
+  const IpSetState({
     this.arn,
     this.ipSetDescriptors,
     this.name,

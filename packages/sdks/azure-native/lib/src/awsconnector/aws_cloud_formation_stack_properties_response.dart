@@ -77,7 +77,7 @@ class AwsCloudFormationStackPropertiesResponse {
   /// [templateBody] Property templateBody
   /// [templateURL] Property templateURL
   /// [timeoutInMinutes] Property timeoutInMinutes
-  AwsCloudFormationStackPropertiesResponse({
+  const AwsCloudFormationStackPropertiesResponse({
     this.capabilities,
     this.changeSetId,
     this.creationTime,

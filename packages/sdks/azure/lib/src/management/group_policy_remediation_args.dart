@@ -33,7 +33,7 @@ class GroupPolicyRemediationArgs {
   /// [policyAssignmentId] The ID of the Policy Assignment that should be remediated.
   /// [policyDefinitionReferenceId] The unique ID for the policy definition reference within the policy set definition that should be remediated. Required when the policy assignment being remediated assigns a policy set definition.
   /// [resourceCount] Determines the max number of resources that can be remediated by the remediation job. If not provided, the default resource count is used.
-  GroupPolicyRemediationArgs({
+  const GroupPolicyRemediationArgs({
     this.failurePercentage,
     this.locationFilters,
     required this.managementGroupId,

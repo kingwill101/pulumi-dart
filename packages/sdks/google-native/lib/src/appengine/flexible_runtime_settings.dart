@@ -12,7 +12,7 @@ class FlexibleRuntimeSettings {
   /// Creates a new [FlexibleRuntimeSettings].
   /// [operatingSystem] The operating system of the application runtime.
   /// [runtimeVersion] The runtime version of an App Engine flexible application.
-  FlexibleRuntimeSettings({
+  const FlexibleRuntimeSettings({
     this.operatingSystem,
     this.runtimeVersion,
   });

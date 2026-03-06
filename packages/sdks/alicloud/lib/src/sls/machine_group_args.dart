@@ -38,7 +38,7 @@ class MachineGroupArgs {
   /// [machineIdentifyType] The identifier type of the machine group. Valid values:
   /// [machineLists] The identification information of the machine group.
   /// [projectName] The name of the project.
-  MachineGroupArgs({
+  const MachineGroupArgs({
     this.groupAttribute,
     required this.groupName,
     this.groupType,

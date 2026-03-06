@@ -10,7 +10,7 @@ class ContainerGroupInitContainerSecurityContext {
   /// Creates a new [ContainerGroupInitContainerSecurityContext].
   /// [capabilities] Optional.
   /// [runAsUser] Optional.
-  ContainerGroupInitContainerSecurityContext({
+  const ContainerGroupInitContainerSecurityContext({
     this.capabilities,
     this.runAsUser,
   });

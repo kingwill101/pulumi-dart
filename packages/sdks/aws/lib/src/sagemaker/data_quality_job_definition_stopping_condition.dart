@@ -8,7 +8,7 @@ class DataQualityJobDefinitionStoppingCondition {
 
   /// Creates a new [DataQualityJobDefinitionStoppingCondition].
   /// [maxRuntimeInSeconds] The maximum runtime allowed in seconds.
-  DataQualityJobDefinitionStoppingCondition({
+  const DataQualityJobDefinitionStoppingCondition({
     this.maxRuntimeInSeconds,
   });
 

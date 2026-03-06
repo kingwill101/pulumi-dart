@@ -24,7 +24,7 @@ class CloudControlParameterSpecSubParameterValidationAllowedValuesValue {
   /// [oneofValue] Sub-parameter values.
   /// [stringListValue] A list of strings.
   /// [stringValue] Represents a string value.
-  CloudControlParameterSpecSubParameterValidationAllowedValuesValue({
+  const CloudControlParameterSpecSubParameterValidationAllowedValuesValue({
     this.boolValue,
     this.numberValue,
     this.oneofValue,

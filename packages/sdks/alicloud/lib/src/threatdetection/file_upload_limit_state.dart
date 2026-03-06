@@ -9,7 +9,7 @@ class FileUploadLimitState {
 
   /// Creates a new [FileUploadLimitState].
   /// [limit] File Upload Threshold.
-  FileUploadLimitState({
+  const FileUploadLimitState({
     this.limit,
   });
 

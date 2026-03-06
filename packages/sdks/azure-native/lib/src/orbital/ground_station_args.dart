@@ -43,7 +43,7 @@ class GroundStationArgs {
   /// [providerName] Ground station provider name.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [tags] Resource tags.
-  GroundStationArgs({
+  const GroundStationArgs({
     this.altitudeMeters,
     required this.capabilities,
     this.city,

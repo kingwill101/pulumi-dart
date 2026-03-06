@@ -9,7 +9,7 @@ class GetClustersClusterOperationPolicy {
 
   /// Creates a new [GetClustersClusterOperationPolicy].
   /// [clusterAutoUpgrade] Cluster automatic upgrade.
-  GetClustersClusterOperationPolicy({
+  const GetClustersClusterOperationPolicy({
     required this.clusterAutoUpgrade,
   });
 

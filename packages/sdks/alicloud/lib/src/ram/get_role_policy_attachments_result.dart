@@ -20,7 +20,7 @@ class GetRolePolicyAttachmentsResult {
   /// [ids] A list of Role Policy Attachment IDs.
   /// [outputFile] Optional.
   /// [roleName] Required.
-  GetRolePolicyAttachmentsResult({
+  const GetRolePolicyAttachmentsResult({
     required this.attachments,
     required this.id,
     required this.ids,

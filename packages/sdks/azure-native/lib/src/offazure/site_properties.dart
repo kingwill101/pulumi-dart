@@ -20,7 +20,7 @@ class SiteProperties {
   /// [applianceName] Appliance Name.
   /// [discoverySolutionId] ARM ID of migration hub solution for SDS.
   /// [servicePrincipalIdentityDetails] Service principal identity details used by agent for communication to the service.
-  SiteProperties({
+  const SiteProperties({
     this.agentDetails,
     this.applianceName,
     this.discoverySolutionId,

@@ -18,7 +18,7 @@ class ExecutedValidationResponse {
   /// [status] This property specifies the status of the validationProfile of the image version.
   /// [type] This property specifies the type of image version validation.
   /// [version] This property specifies the valid version of the validation.
-  ExecutedValidationResponse({
+  const ExecutedValidationResponse({
     this.executionTime,
     required this.status,
     this.type,

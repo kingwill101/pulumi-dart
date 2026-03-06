@@ -41,7 +41,7 @@ class RegionAutoscalerState {
   /// [region] URL of the region where the instance group resides.
   /// [selfLink] The URI of the created resource.
   /// [target] URL of the managed instance group that this autoscaler will scale.
-  RegionAutoscalerState({
+  const RegionAutoscalerState({
     this.autoscalingPolicy,
     this.creationTimestamp,
     this.description,

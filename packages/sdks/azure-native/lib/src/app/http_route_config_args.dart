@@ -22,7 +22,7 @@ class HttpRouteConfigArgs {
   /// [httpRouteName] Name of the Http Route Config Resource.
   /// [properties] Http Route Config properties
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  HttpRouteConfigArgs({
+  const HttpRouteConfigArgs({
     required this.environmentName,
     this.httpRouteName,
     this.properties,

@@ -15,7 +15,7 @@ class VolumeMountResponse {
   /// [mountPath] The path within the container where the volume should be mounted. Must not contain colon (:).
   /// [name] The name of the volume mount.
   /// [readOnly] The flag indicating whether the volume mount is read-only.
-  VolumeMountResponse({
+  const VolumeMountResponse({
     required this.mountPath,
     required this.name,
     this.readOnly,

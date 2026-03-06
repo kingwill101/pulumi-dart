@@ -16,7 +16,7 @@ class ServiceNetworkConfiguration {
   /// [egressConfiguration] Network configuration settings for outbound message traffic. See Egress Configuration below for more details.
   /// [ingressConfiguration] Network configuration settings for inbound network traffic. See Ingress Configuration below for more details.
   /// [ipAddressType] App Runner provides you with the option to choose between Internet Protocol version 4 (IPv4) and dual stack (IPv4 and IPv6) for your incoming public network configuration. Valid values: `IPV4`, `DUAL_STACK`. Default: `IPV4`.
-  ServiceNetworkConfiguration({
+  const ServiceNetworkConfiguration({
     this.egressConfiguration,
     this.ingressConfiguration,
     this.ipAddressType,

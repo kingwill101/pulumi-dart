@@ -7,7 +7,7 @@ class PlanWorkflowStepGlobalAuroraConfigUngraceful {
 
   /// Creates a new [PlanWorkflowStepGlobalAuroraConfigUngraceful].
   /// [ungraceful] Required.
-  PlanWorkflowStepGlobalAuroraConfigUngraceful({
+  const PlanWorkflowStepGlobalAuroraConfigUngraceful({
     required this.ungraceful,
   });
 

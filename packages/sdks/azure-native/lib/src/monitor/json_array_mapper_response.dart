@@ -17,7 +17,7 @@ class JsonArrayMapperResponse {
   /// [destinationField] Define a destination field to which the parsed output will be written. The output is a map, it's keys is the given keys array and the matching values are the parsed json array elements.
   /// [keys] Define the names of the keys in the resulting map. The input json array elements are mapped in order, one for every key.
   /// [sourceField] Define a source field from which a json array will be read and parsed to it's elements. The number of elements in the json array is expected to be the same as the length of keys.
-  JsonArrayMapperResponse({
+  const JsonArrayMapperResponse({
     this.destinationField,
     required this.keys,
     this.sourceField,

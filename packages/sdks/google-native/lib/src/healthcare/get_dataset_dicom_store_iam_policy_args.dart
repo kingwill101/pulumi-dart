@@ -19,7 +19,7 @@ class GetDatasetDicomStoreIamPolicyArgs {
   /// [location] Required.
   /// [optionsRequestedPolicyVersion] Optional.
   /// [project] Optional.
-  GetDatasetDicomStoreIamPolicyArgs({
+  const GetDatasetDicomStoreIamPolicyArgs({
     required this.datasetId,
     required this.dicomStoreId,
     required this.location,

@@ -13,7 +13,7 @@ class IntegrationRuntimeCustomSetupScriptProperties {
   /// Creates a new [IntegrationRuntimeCustomSetupScriptProperties].
   /// [blobContainerUri] The URI of the Azure blob container that contains the custom setup script.
   /// [sasToken] The SAS token of the Azure blob container.
-  IntegrationRuntimeCustomSetupScriptProperties({
+  const IntegrationRuntimeCustomSetupScriptProperties({
     this.blobContainerUri,
     this.sasToken,
   });

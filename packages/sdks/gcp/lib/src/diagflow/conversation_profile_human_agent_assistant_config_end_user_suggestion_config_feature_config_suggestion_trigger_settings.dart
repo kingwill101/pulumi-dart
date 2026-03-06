@@ -11,7 +11,7 @@ class ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeature
   /// Creates a new [ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings].
   /// [noSmallTalk] Do not trigger if last utterance is small talk.
   /// [onlyEndUser] Only trigger suggestion if participant role of last utterance is END_USER.
-  ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings({
+  const ConversationProfileHumanAgentAssistantConfigEndUserSuggestionConfigFeatureConfigSuggestionTriggerSettings({
     this.noSmallTalk,
     this.onlyEndUser,
   });

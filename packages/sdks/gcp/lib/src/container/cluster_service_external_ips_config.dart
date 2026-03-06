@@ -8,7 +8,7 @@ class ClusterServiceExternalIpsConfig {
 
   /// Creates a new [ClusterServiceExternalIpsConfig].
   /// [enabled] Controls whether external ips specified by a service will be allowed. It is enabled by default.
-  ClusterServiceExternalIpsConfig({
+  const ClusterServiceExternalIpsConfig({
     required this.enabled,
   });
 

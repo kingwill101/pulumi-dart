@@ -8,7 +8,7 @@ class SecurityPolicyDdosProtectionConfigComputeBeta {
 
   /// Creates a new [SecurityPolicyDdosProtectionConfigComputeBeta].
   /// [ddosProtection] Optional.
-  SecurityPolicyDdosProtectionConfigComputeBeta({
+  const SecurityPolicyDdosProtectionConfigComputeBeta({
     this.ddosProtection,
   });
 

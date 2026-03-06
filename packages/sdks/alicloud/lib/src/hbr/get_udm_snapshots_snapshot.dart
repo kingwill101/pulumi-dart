@@ -29,7 +29,7 @@ class GetUdmSnapshotsSnapshot {
   /// [sourceType] Data source type. Only UDM_ECS and UDM_ECS_DISK are supported.
   /// [startTime] Start Time
   /// [udmSnapshotId] The first ID of the resource
-  GetUdmSnapshotsSnapshot({
+  const GetUdmSnapshotsSnapshot({
     required this.createTime,
     required this.diskId,
     required this.id,

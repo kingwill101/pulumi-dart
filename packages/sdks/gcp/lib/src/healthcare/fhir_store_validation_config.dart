@@ -30,7 +30,7 @@ class FhirStoreValidationConfig {
   /// [disableReferenceTypeValidation] Whether to disable reference type validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against reference type requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
   /// [disableRequiredFieldValidation] Whether to disable required fields validation for incoming resources. The default value is false. Set this to true to disable checking incoming resources for conformance against required fields requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
   /// [enabledImplementationGuides] A list of implementation guide URLs in this FHIR store that are used to configure the profiles to use for validation.
-  FhirStoreValidationConfig({
+  const FhirStoreValidationConfig({
     this.disableFhirpathValidation,
     this.disableProfileValidation,
     this.disableReferenceTypeValidation,

@@ -11,7 +11,7 @@ class MonitorDowntimeEndRepeat {
   /// Creates a new [MonitorDowntimeEndRepeat].
   /// [onDate] A date, on which the Monitor Downtime's repeat cycle is expected to end.
   /// [onRepeat] Number of repetitions after which the Monitor Downtime's repeat cycle is expected to end.
-  MonitorDowntimeEndRepeat({
+  const MonitorDowntimeEndRepeat({
     this.onDate,
     this.onRepeat,
   });

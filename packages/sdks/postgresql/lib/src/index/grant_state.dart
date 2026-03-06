@@ -30,7 +30,7 @@ class GrantState {
   /// [role] The name of the role to grant privileges on, Set it to "public" for all roles.
   /// [schema] The database schema to grant privileges on for this role (Required except if object_type is "database")
   /// [withGrantOption] Whether the recipient of these privileges can grant the same privileges to others. Defaults to false.
-  GrantState({
+  const GrantState({
     this.columns,
     this.database,
     this.objectType,

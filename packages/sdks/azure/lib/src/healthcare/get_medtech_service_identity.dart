@@ -16,7 +16,7 @@ class GetMedtechServiceIdentity {
   /// [principalId] The Principal ID of the System Assigned Managed Service Identity that is configured on this Healthcare Med Tech Service.
   /// [tenantId] The Tenant ID of the System Assigned Managed Service Identity that is configured on this Healthcare Med Tech Service.
   /// [type] The type of identity used for the Healthcare Med Tech Service. Possible values are `SystemAssigned`.
-  GetMedtechServiceIdentity({
+  const GetMedtechServiceIdentity({
     required this.identityIds,
     required this.principalId,
     required this.tenantId,

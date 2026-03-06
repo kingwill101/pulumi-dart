@@ -8,7 +8,7 @@ class ScheduleTargetDeadLetterConfig {
 
   /// Creates a new [ScheduleTargetDeadLetterConfig].
   /// [arn] ARN of the SQS queue specified as the destination for the dead-letter queue.
-  ScheduleTargetDeadLetterConfig({
+  const ScheduleTargetDeadLetterConfig({
     required this.arn,
   });
 

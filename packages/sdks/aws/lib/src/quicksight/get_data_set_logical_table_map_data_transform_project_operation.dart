@@ -7,7 +7,7 @@ class GetDataSetLogicalTableMapDataTransformProjectOperation {
 
   /// Creates a new [GetDataSetLogicalTableMapDataTransformProjectOperation].
   /// [projectedColumns] Required.
-  GetDataSetLogicalTableMapDataTransformProjectOperation({
+  const GetDataSetLogicalTableMapDataTransformProjectOperation({
     required this.projectedColumns,
   });
 

@@ -11,7 +11,7 @@ class GetVirtualNodeSpecListenerTlValidationTrust {
   /// Creates a new [GetVirtualNodeSpecListenerTlValidationTrust].
   /// [files] Required.
   /// [sds] Required.
-  GetVirtualNodeSpecListenerTlValidationTrust({
+  const GetVirtualNodeSpecListenerTlValidationTrust({
     required this.files,
     required this.sds,
   });

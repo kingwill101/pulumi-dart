@@ -15,7 +15,7 @@ class GetEntryGroupIamPolicyDatacatalogV1beta1Args {
   /// [entryGroupId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEntryGroupIamPolicyDatacatalogV1beta1Args({
+  const GetEntryGroupIamPolicyDatacatalogV1beta1Args({
     required this.entryGroupId,
     required this.location,
     this.project,

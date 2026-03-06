@@ -27,7 +27,7 @@ class FirewallIpConfiguration {
   /// [privateIpAddress] The private IP address associated with the Firewall.
   /// [publicIpAddressId] The ID of the Public IP Address associated with the firewall.
   /// [subnetId] Reference to the subnet associated with the IP Configuration. Changing this forces a new resource to be created.
-  FirewallIpConfiguration({
+  const FirewallIpConfiguration({
     required this.name,
     this.privateIpAddress,
     this.publicIpAddressId,

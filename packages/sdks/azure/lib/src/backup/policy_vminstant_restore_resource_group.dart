@@ -11,7 +11,7 @@ class PolicyVMInstantRestoreResourceGroup {
   /// Creates a new [PolicyVMInstantRestoreResourceGroup].
   /// [prefix] The prefix for the `instant_restore_resource_group` name.
   /// [suffix] The suffix for the `instant_restore_resource_group` name.
-  PolicyVMInstantRestoreResourceGroup({
+  const PolicyVMInstantRestoreResourceGroup({
     required this.prefix,
     this.suffix,
   });

@@ -47,7 +47,7 @@ class DatabricksNotebookActivityResponse {
   /// [state] Activity state. This is an optional property and if not provided, the state will be Active by default.
   /// [type] Type of activity.
   /// [userProperties] Activity user properties.
-  DatabricksNotebookActivityResponse({
+  const DatabricksNotebookActivityResponse({
     this.baseParameters,
     this.dependsOn,
     this.description,

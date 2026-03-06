@@ -31,7 +31,7 @@ class S3ControlMultiRegionAccessPointPolicyDocumentProperties {
   /// [awsTags] AWS Tags
   /// [publicCloudConnectorsResourceId] Public Cloud Connectors Resource ID
   /// [publicCloudResourceName] Public Cloud Resource Name
-  S3ControlMultiRegionAccessPointPolicyDocumentProperties({
+  const S3ControlMultiRegionAccessPointPolicyDocumentProperties({
     this.arn,
     this.awsAccountId,
     this.awsProperties,

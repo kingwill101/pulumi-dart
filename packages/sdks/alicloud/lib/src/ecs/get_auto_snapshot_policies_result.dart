@@ -24,7 +24,7 @@ class GetAutoSnapshotPoliciesResult {
   /// [policies] Required.
   /// [status] Optional.
   /// [tags] Optional.
-  GetAutoSnapshotPoliciesResult({
+  const GetAutoSnapshotPoliciesResult({
     required this.id,
     required this.ids,
     this.nameRegex,

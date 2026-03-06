@@ -15,7 +15,7 @@ class HubBillingInfoFormat {
   /// [maxUnits] The maximum number of units can be used.  One unit is 10,000 Profiles and 100,000 Interactions.
   /// [minUnits] The minimum number of units will be billed. One unit is 10,000 Profiles and 100,000 Interactions.
   /// [skuName] The sku name.
-  HubBillingInfoFormat({
+  const HubBillingInfoFormat({
     this.maxUnits,
     this.minUnits,
     this.skuName,

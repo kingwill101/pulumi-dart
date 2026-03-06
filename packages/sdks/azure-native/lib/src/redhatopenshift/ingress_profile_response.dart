@@ -15,7 +15,7 @@ class IngressProfileResponse {
   /// [ip] The IP of the ingress.
   /// [name] The ingress profile name.
   /// [visibility] Ingress visibility.
-  IngressProfileResponse({
+  const IngressProfileResponse({
     required this.ip,
     this.name,
     this.visibility,

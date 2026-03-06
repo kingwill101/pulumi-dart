@@ -18,7 +18,7 @@ class CriterionResponse {
   /// [community] List of BGP communities which this criteria matches.
   /// [matchCondition] Match condition to apply RouteMap rules.
   /// [routePrefix] List of route prefixes which this criteria matches.
-  CriterionResponse({
+  const CriterionResponse({
     this.asPath,
     this.community,
     this.matchCondition,

@@ -13,7 +13,7 @@ class ListIntegrationAccountKeyVaultKeysResult {
   /// Creates a new [ListIntegrationAccountKeyVaultKeysResult].
   /// [skipToken] The skip token.
   /// [value] The key vault keys.
-  ListIntegrationAccountKeyVaultKeysResult({
+  const ListIntegrationAccountKeyVaultKeysResult({
     this.skipToken,
     this.value,
   });

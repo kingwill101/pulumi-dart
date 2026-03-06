@@ -228,7 +228,7 @@ class ClusterNodePoolNodeConfig {
   /// [taints] A list of [Kubernetes taints](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/)
   /// [windowsNodeConfig] Windows node configuration, currently supporting OSVersion [attribute](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/NodeConfig#osversion). The value must be one of [OS_VERSION_UNSPECIFIED, OS_VERSION_LTSC2019, OS_VERSION_LTSC2022]. For example:
   /// [workloadMetadataConfig] Metadata configuration to expose to workloads on the node pool.
-  ClusterNodePoolNodeConfig({
+  const ClusterNodePoolNodeConfig({
     this.advancedMachineFeatures,
     this.bootDisk,
     this.bootDiskKmsKey,

@@ -36,7 +36,7 @@ class GetHcVpnGatewayResult {
   /// [selfLink] Required.
   /// [stackType] Required.
   /// [vpnInterfaces] Required.
-  GetHcVpnGatewayResult({
+  const GetHcVpnGatewayResult({
     required this.description,
     required this.effectiveLabels,
     required this.gatewayIpVersion,

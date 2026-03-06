@@ -29,7 +29,7 @@ class VpcBlockPublicAccessExclusionArgs {
   /// [tags] A map of tags to assign to the exclusion. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
   /// [vpcId] Id of the VPC to which this exclusion applies. Either this or the subnet_id needs to be provided.
-  VpcBlockPublicAccessExclusionArgs({
+  const VpcBlockPublicAccessExclusionArgs({
     required this.internetGatewayExclusionMode,
     this.region,
     this.subnetId,

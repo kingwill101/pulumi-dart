@@ -26,7 +26,7 @@ class GetTrafficMarkingPoliciesResult {
   /// [policies] Required.
   /// [status] Optional.
   /// [transitRouterId] Required.
-  GetTrafficMarkingPoliciesResult({
+  const GetTrafficMarkingPoliciesResult({
     this.description,
     required this.id,
     required this.ids,

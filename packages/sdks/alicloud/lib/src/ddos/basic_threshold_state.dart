@@ -27,7 +27,7 @@ class BasicThresholdState {
   /// [maxBps] Maximum flow cleaning threshold. Unit: Mbps.
   /// [maxPps] The maximum number of messages cleaning threshold. Unit: pps.
   /// [pps] The current message number cleaning threshold. Unit: pps.
-  BasicThresholdState({
+  const BasicThresholdState({
     this.bps,
     this.instanceId,
     this.instanceType,

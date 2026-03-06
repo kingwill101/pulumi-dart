@@ -23,7 +23,7 @@ class NodeGroupSecurityGroupArgs {
   /// [eksCluster] The EKS cluster associated with the worker node group
   /// [tags] Key-value mapping of tags to apply to this security group.
   /// [vpcId] The VPC in which to create the worker node group.
-  NodeGroupSecurityGroupArgs({
+  const NodeGroupSecurityGroupArgs({
     required this.clusterSecurityGroup,
     required this.eksCluster,
     this.tags,

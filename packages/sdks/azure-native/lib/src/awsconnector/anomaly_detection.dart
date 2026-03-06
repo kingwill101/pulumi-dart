@@ -14,7 +14,7 @@ class AnomalyDetection {
   /// Creates a new [AnomalyDetection].
   /// [mitigationInEffect] &lt;p&gt;Indicates whether anomaly mitigation is in progress.&lt;/p&gt;
   /// [result] &lt;p&gt;The latest anomaly detection result.&lt;/p&gt;
-  AnomalyDetection({
+  const AnomalyDetection({
     this.mitigationInEffect,
     this.result,
   });

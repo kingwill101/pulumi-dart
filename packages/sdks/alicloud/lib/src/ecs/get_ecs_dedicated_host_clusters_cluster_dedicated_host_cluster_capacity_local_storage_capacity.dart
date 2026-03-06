@@ -14,7 +14,7 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorage
   /// [availableDisk] The available capacity of the local disk. Unit: `GiB`.
   /// [dataDiskCategory] The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
   /// [totalDisk] The total capacity of the local disk. Unit: `GiB`.
-  GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity({
+  const GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity({
     required this.availableDisk,
     required this.dataDiskCategory,
     required this.totalDisk,

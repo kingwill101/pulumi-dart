@@ -26,7 +26,7 @@ class TransformSummary {
   /// [kind] Type of transform.
   /// [name] User provided name for this transform instance.
   /// [outputCollectionName] User names for all collection outputs to this transform.
-  TransformSummary({
+  const TransformSummary({
     this.displayData,
     this.id,
     this.inputCollectionName,

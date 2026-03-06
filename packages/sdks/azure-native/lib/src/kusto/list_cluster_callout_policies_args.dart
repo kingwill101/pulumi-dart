@@ -15,7 +15,7 @@ class ListClusterCalloutPoliciesArgs {
   /// Creates a new [ListClusterCalloutPoliciesArgs].
   /// [clusterName] The name of the Kusto cluster.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListClusterCalloutPoliciesArgs({
+  const ListClusterCalloutPoliciesArgs({
     required this.clusterName,
     required this.resourceGroupName,
   });

@@ -63,7 +63,7 @@ class ReplicationConfigurationTemplateArgs {
   /// [tags] Set of tags to be associated with the Replication Configuration Template resource.
   /// [timeouts] Optional.
   /// [useDedicatedReplicationServer] Whether to use a dedicated Replication Server in the replication staging area.
-  ReplicationConfigurationTemplateArgs({
+  const ReplicationConfigurationTemplateArgs({
     required this.associateDefaultSecurityGroup,
     this.autoReplicateNewDisks,
     required this.bandwidthThrottling,

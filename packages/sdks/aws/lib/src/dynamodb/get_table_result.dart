@@ -66,7 +66,7 @@ class GetTableResult {
   /// [ttl] Required.
   /// [warmThroughputs] Required.
   /// [writeCapacity] Required.
-  GetTableResult({
+  const GetTableResult({
     required this.arn,
     required this.attributes,
     required this.billingMode,

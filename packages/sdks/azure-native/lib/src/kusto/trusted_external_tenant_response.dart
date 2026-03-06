@@ -9,7 +9,7 @@ class TrustedExternalTenantResponse {
 
   /// Creates a new [TrustedExternalTenantResponse].
   /// [value] GUID representing an external tenant.
-  TrustedExternalTenantResponse({
+  const TrustedExternalTenantResponse({
     this.value,
   });
 

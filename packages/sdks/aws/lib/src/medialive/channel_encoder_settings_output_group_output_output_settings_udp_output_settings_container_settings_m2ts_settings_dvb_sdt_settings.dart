@@ -13,7 +13,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsCont
   /// [repInterval] Optional.
   /// [serviceName] Optional.
   /// [serviceProviderName] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsUdpOutputSettingsContainerSettingsM2tsSettingsDvbSdtSettings({
     this.outputSdt,
     this.repInterval,
     this.serviceName,

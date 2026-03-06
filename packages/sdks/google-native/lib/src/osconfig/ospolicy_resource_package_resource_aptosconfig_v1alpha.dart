@@ -9,7 +9,7 @@ class OSPolicyResourcePackageResourceAPTOsconfigV1alpha {
 
   /// Creates a new [OSPolicyResourcePackageResourceAPTOsconfigV1alpha].
   /// [name] Package name.
-  OSPolicyResourcePackageResourceAPTOsconfigV1alpha({
+  const OSPolicyResourcePackageResourceAPTOsconfigV1alpha({
     required this.name,
   });
 

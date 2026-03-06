@@ -50,7 +50,7 @@ class MaintenanceWindowTaskArgs {
   /// [taskInvocationParameters] Configuration block with parameters for task execution.
   /// [taskType] The type of task being registered. Valid values: `AUTOMATION`, `LAMBDA`, `RUN_COMMAND` or `STEP_FUNCTIONS`.
   /// [windowId] The Id of the maintenance window to register the task with.
-  MaintenanceWindowTaskArgs({
+  const MaintenanceWindowTaskArgs({
     this.cutoffBehavior,
     this.description,
     this.maxConcurrency,

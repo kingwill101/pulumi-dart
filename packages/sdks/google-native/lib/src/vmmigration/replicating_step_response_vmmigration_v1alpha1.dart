@@ -18,7 +18,7 @@ class ReplicatingStepResponseVmmigrationV1alpha1 {
   /// [lastTwoMinutesAverageBytesPerSecond] The source disks replication rate for the last 2 minutes in bytes per second.
   /// [replicatedBytes] Replicated bytes in the step.
   /// [totalBytes] Total bytes to be handled in the step.
-  ReplicatingStepResponseVmmigrationV1alpha1({
+  const ReplicatingStepResponseVmmigrationV1alpha1({
     required this.lastThirtyMinutesAverageBytesPerSecond,
     required this.lastTwoMinutesAverageBytesPerSecond,
     required this.replicatedBytes,

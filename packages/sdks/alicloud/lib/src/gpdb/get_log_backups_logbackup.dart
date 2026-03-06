@@ -26,7 +26,7 @@ class GetLogBackupsLogbackup {
   /// [logTime] The log timestamp.
   /// [recordTotal] Total number of records.
   /// [segmentName] The node name.
-  GetLogBackupsLogbackup({
+  const GetLogBackupsLogbackup({
     required this.dbInstanceId,
     required this.logBackupId,
     required this.logFileName,

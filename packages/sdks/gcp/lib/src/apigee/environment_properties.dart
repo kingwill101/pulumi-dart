@@ -10,7 +10,7 @@ class EnvironmentProperties {
 
   /// Creates a new [EnvironmentProperties].
   /// [properties] List of all properties in the object.
-  EnvironmentProperties({
+  const EnvironmentProperties({
     this.properties,
   });
 

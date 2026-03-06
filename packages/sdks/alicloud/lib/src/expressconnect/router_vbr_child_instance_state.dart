@@ -32,7 +32,7 @@ class RouterVbrChildInstanceState {
   /// [description] Resource attribute fields that represent descriptive information
   /// [ecrId] ID of the representative leased line gateway instance.
   /// [status] Binding relationship status of leased line gateway subinstances.
-  RouterVbrChildInstanceState({
+  const RouterVbrChildInstanceState({
     this.childInstanceId,
     this.childInstanceOwnerId,
     this.childInstanceRegionId,

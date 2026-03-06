@@ -16,7 +16,7 @@ class ClusterClusterConfigInitializationAction {
   /// Creates a new [ClusterClusterConfigInitializationAction].
   /// [script] The script to be executed during initialization of the cluster.
   /// [timeoutSec] The maximum duration (in seconds) which `script` is
-  ClusterClusterConfigInitializationAction({
+  const ClusterClusterConfigInitializationAction({
     required this.script,
     this.timeoutSec,
   });

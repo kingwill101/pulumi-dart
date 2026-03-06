@@ -25,7 +25,7 @@ class ComputeInstanceContainerResponse {
   /// [name] Name of the ComputeInstance container.
   /// [network] network of this container.
   /// [services] services of this containers.
-  ComputeInstanceContainerResponse({
+  const ComputeInstanceContainerResponse({
     this.autosave,
     this.environment,
     this.gpu,

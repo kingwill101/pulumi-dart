@@ -33,7 +33,7 @@ class AccountArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [scalableExecution] When enabled, Playwright client workers can connect to cloud-hosted browsers. This can increase the number of parallel workers for a test run, significantly minimizing test completion durations.
   /// [tags] Resource tags.
-  AccountArgs({
+  const AccountArgs({
     this.accountName,
     this.localAuth,
     this.location,

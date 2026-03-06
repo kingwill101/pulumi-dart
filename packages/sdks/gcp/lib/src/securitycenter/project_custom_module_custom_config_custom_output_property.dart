@@ -14,7 +14,7 @@ class ProjectCustomModuleCustomConfigCustomOutputProperty {
   /// Creates a new [ProjectCustomModuleCustomConfigCustomOutputProperty].
   /// [name] Name of the property for the custom output.
   /// [valueExpression] The CEL expression for the custom output. A resource property can be specified
-  ProjectCustomModuleCustomConfigCustomOutputProperty({
+  const ProjectCustomModuleCustomConfigCustomOutputProperty({
     this.name,
     this.valueExpression,
   });

@@ -14,7 +14,7 @@ class ClusterNodePoolNodeConfigTaint {
   /// [effect] Effect for taint. Accepted values are `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, and `NO_EXECUTE`.
   /// [key] Key for taint.
   /// [value] Value for taint.
-  ClusterNodePoolNodeConfigTaint({
+  const ClusterNodePoolNodeConfigTaint({
     required this.effect,
     required this.key,
     required this.value,

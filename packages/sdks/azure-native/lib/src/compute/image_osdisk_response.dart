@@ -35,7 +35,7 @@ class ImageOSDiskResponse {
   /// [osType] This property allows you to specify the type of the OS that is included in the disk if creating a VM from a custom image. Possible values are: **Windows,** **Linux.**
   /// [snapshot] The snapshot.
   /// [storageAccountType] Specifies the storage account type for the managed disk. NOTE: UltraSSD_LRS can only be used with data disks, it cannot be used with OS Disk.
-  ImageOSDiskResponse({
+  const ImageOSDiskResponse({
     this.blobUri,
     this.caching,
     this.diskEncryptionSet,

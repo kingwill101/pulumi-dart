@@ -11,7 +11,7 @@ class ProfileMonitorConfigCustomHeader {
   /// Creates a new [ProfileMonitorConfigCustomHeader].
   /// [name] The name of the custom header.
   /// [value] The value of custom header. Applicable for HTTP and HTTPS protocol.
-  ProfileMonitorConfigCustomHeader({
+  const ProfileMonitorConfigCustomHeader({
     required this.name,
     required this.value,
   });

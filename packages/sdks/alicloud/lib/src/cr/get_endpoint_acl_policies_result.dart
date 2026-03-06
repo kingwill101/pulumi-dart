@@ -20,7 +20,7 @@ class GetEndpointAclPoliciesResult {
   /// [instanceId] Required.
   /// [outputFile] Optional.
   /// [policies] Required.
-  GetEndpointAclPoliciesResult({
+  const GetEndpointAclPoliciesResult({
     required this.endpointType,
     required this.id,
     required this.ids,

@@ -19,7 +19,7 @@ class SqlDedicatedGatewayServiceResourceCreateUpdateProperties {
   /// [instanceCount] Instance count for the service.
   /// [instanceSize] Instance type for the service.
   /// [serviceType] ServiceType for the service.
-  SqlDedicatedGatewayServiceResourceCreateUpdateProperties({
+  const SqlDedicatedGatewayServiceResourceCreateUpdateProperties({
     this.dedicatedGatewayType,
     this.instanceCount,
     this.instanceSize,

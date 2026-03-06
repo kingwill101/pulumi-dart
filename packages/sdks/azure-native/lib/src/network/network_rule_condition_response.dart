@@ -34,7 +34,7 @@ class NetworkRuleConditionResponse {
   /// [ruleConditionType] Rule Condition Type.
   /// [sourceAddresses] List of source IP addresses for this rule.
   /// [sourceIpGroups] List of source IpGroups for this rule.
-  NetworkRuleConditionResponse({
+  const NetworkRuleConditionResponse({
     this.description,
     this.destinationAddresses,
     this.destinationIpGroups,

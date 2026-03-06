@@ -12,7 +12,7 @@ class DaprServiceBindMetadataResponse {
   /// Creates a new [DaprServiceBindMetadataResponse].
   /// [name] Service bind metadata property name.
   /// [value] Service bind metadata property value.
-  DaprServiceBindMetadataResponse({
+  const DaprServiceBindMetadataResponse({
     this.name,
     this.value,
   });

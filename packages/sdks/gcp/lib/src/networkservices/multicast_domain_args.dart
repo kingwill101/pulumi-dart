@@ -45,7 +45,7 @@ class MulticastDomainArgs {
   /// [multicastDomainGroup] The multicast domain group this domain should be associated with.
   /// [multicastDomainId] A unique name for the multicast domain.
   /// [project] The ID of the project in which the resource belongs.
-  MulticastDomainArgs({
+  const MulticastDomainArgs({
     required this.adminNetwork,
     required this.connectionConfig,
     this.description,

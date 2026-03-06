@@ -20,7 +20,7 @@ class CanaryRunConfig {
   /// [ephemeralStorage] Amount of ephemeral storage (in MB) allocated for the canary run during execution. Defaults to 1024.
   /// [memoryInMb] Maximum amount of memory available to the canary while it is running, in MB. The value you specify must be a multiple of 64.
   /// [timeoutInSeconds] Number of seconds the canary is allowed to run before it must stop. If you omit this field, the frequency of the canary is used, up to a maximum of 840 (14 minutes).
-  CanaryRunConfig({
+  const CanaryRunConfig({
     this.activeTracing,
     this.environmentVariables,
     this.ephemeralStorage,

@@ -18,7 +18,7 @@ class GetConfigArgs {
   /// Creates a new [GetConfigArgs].
   /// [name] The name of the Runtime Configurator configuration.
   /// [project] The project in which the resource belongs. If it
-  GetConfigArgs({
+  const GetConfigArgs({
     required this.name,
     this.project,
   });

@@ -57,7 +57,7 @@ class ExascaleDbStorageVaultProperties {
   /// [timeZone] Represents a time zone from the
   /// [vmClusterCount] (Output)
   /// [vmClusterIds] (Output)
-  ExascaleDbStorageVaultProperties({
+  const ExascaleDbStorageVaultProperties({
     this.additionalFlashCachePercent,
     this.attachedShapeAttributes,
     this.availableShapeAttributes,

@@ -12,7 +12,7 @@ class GoogleCloudAiplatformV1ModelSourceInfoResponse {
   /// Creates a new [GoogleCloudAiplatformV1ModelSourceInfoResponse].
   /// [copy] If this Model is copy of another Model. If true then source_type pertains to the original.
   /// [sourceType] Type of the model source.
-  GoogleCloudAiplatformV1ModelSourceInfoResponse({
+  const GoogleCloudAiplatformV1ModelSourceInfoResponse({
     required this.copy,
     required this.sourceType,
   });

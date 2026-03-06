@@ -33,7 +33,7 @@ class EndpointAuthorizationState {
   /// [grantor] The Amazon Web Services account ID of the cluster owner.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [vpcIds] The virtual private cloud (VPC) identifiers to grant access to. If none are specified all VPCs in shared account are allowed.
-  EndpointAuthorizationState({
+  const EndpointAuthorizationState({
     this.account,
     this.allowedAllVpcs,
     this.clusterIdentifier,

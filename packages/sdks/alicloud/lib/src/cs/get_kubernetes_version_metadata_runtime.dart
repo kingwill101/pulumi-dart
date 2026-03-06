@@ -11,7 +11,7 @@ class GetKubernetesVersionMetadataRuntime {
   /// Creates a new [GetKubernetesVersionMetadataRuntime].
   /// [name] The runtime name.
   /// [version] The runtime version.
-  GetKubernetesVersionMetadataRuntime({
+  const GetKubernetesVersionMetadataRuntime({
     required this.name,
     required this.version,
   });

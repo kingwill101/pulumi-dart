@@ -18,7 +18,7 @@ class MLFlowModelJobOutputResponse {
   /// [jobOutputType] Enum to determine the Job Output Type.
   /// [mode] Output Asset Delivery Mode.
   /// [uri] Output Asset URI.
-  MLFlowModelJobOutputResponse({
+  const MLFlowModelJobOutputResponse({
     this.description,
     required this.jobOutputType,
     this.mode,

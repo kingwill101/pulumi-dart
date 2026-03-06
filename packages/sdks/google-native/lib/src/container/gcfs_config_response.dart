@@ -9,7 +9,7 @@ class GcfsConfigResponse {
 
   /// Creates a new [GcfsConfigResponse].
   /// [enabled] Whether to use GCFS.
-  GcfsConfigResponse({
+  const GcfsConfigResponse({
     required this.enabled,
   });
 

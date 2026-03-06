@@ -81,7 +81,7 @@ class GetOrderableDbInstanceArgs {
   /// [supportsStorageAutoscaling] Enable this to ensure Amazon RDS can automatically scale storage for DB instances that use the specified DB instance class.
   /// [supportsStorageEncryption] Enable this to ensure a DB instance supports encrypted storage.
   /// [vpc] Boolean that indicates whether to show only VPC or non-VPC offerings.
-  GetOrderableDbInstanceArgs({
+  const GetOrderableDbInstanceArgs({
     this.availabilityZoneGroup,
     required this.engine,
     this.engineLatestVersion,

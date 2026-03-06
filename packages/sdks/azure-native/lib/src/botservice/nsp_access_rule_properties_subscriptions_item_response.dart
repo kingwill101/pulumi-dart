@@ -9,7 +9,7 @@ class NspAccessRulePropertiesSubscriptionsItemResponse {
 
   /// Creates a new [NspAccessRulePropertiesSubscriptionsItemResponse].
   /// [id] Fully qualified identifier of subscription
-  NspAccessRulePropertiesSubscriptionsItemResponse({
+  const NspAccessRulePropertiesSubscriptionsItemResponse({
     this.id,
   });
 

@@ -15,7 +15,7 @@ class PrincipalDefinition {
   /// [attributes] A list of key-value pairs that match the attributes of the clients. The attributes are case-sensitive and must match the attributes provided by the clients during authentication.
   /// [clientids] A list of client IDs that match the clients. The client IDs are case-sensitive and must match the client IDs provided by the clients during connection.
   /// [usernames] A list of usernames that match the clients. The usernames are case-sensitive and must match the usernames provided by the clients during authentication.
-  PrincipalDefinition({
+  const PrincipalDefinition({
     this.attributes,
     this.clientids,
     this.usernames,

@@ -8,7 +8,7 @@ class GetRepositoryImageScanningConfiguration {
 
   /// Creates a new [GetRepositoryImageScanningConfiguration].
   /// [scanOnPush] Whether images are scanned after being pushed to the repository.
-  GetRepositoryImageScanningConfiguration({
+  const GetRepositoryImageScanningConfiguration({
     required this.scanOnPush,
   });
 

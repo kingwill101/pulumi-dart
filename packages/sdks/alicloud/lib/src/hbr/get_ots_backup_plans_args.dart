@@ -27,7 +27,7 @@ class GetOtsBackupPlansArgs {
   /// [planId] The ID of the backup plan.
   /// [planName] The ID of the backup plan.
   /// [vaultId] The ID of backup vault the OtsBackupPlan used.
-  GetOtsBackupPlansArgs({
+  const GetOtsBackupPlansArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

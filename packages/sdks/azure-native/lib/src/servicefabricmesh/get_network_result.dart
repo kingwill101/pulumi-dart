@@ -27,7 +27,7 @@ class GetNetworkResult {
   /// [properties] Describes properties of a network resource.
   /// [tags] Resource tags.
   /// [type] The type of the resource. Ex- Microsoft.Compute/virtualMachines or Microsoft.Storage/storageAccounts.
-  GetNetworkResult({
+  const GetNetworkResult({
     required this.azureApiVersion,
     required this.id,
     required this.location,

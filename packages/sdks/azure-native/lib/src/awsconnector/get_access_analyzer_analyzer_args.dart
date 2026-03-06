@@ -15,7 +15,7 @@ class GetAccessAnalyzerAnalyzerArgs {
   /// Creates a new [GetAccessAnalyzerAnalyzerArgs].
   /// [name] Name of AccessAnalyzerAnalyzer
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAccessAnalyzerAnalyzerArgs({
+  const GetAccessAnalyzerAnalyzerArgs({
     required this.name,
     required this.resourceGroupName,
   });

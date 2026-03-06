@@ -12,7 +12,7 @@ class GuestCredential {
   /// Creates a new [GuestCredential].
   /// [password] The password to connect with the guest.
   /// [username] The username to connect with the guest.
-  GuestCredential({
+  const GuestCredential({
     this.password,
     this.username,
   });

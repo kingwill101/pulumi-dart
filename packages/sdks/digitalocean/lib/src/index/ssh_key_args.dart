@@ -16,7 +16,7 @@ class SshKeyArgs {
   /// Creates a new [SshKeyArgs].
   /// [name] The name of the SSH key for identification
   /// [publicKey] The public key. If this is a file, it
-  SshKeyArgs({
+  const SshKeyArgs({
     this.name,
     required this.publicKey,
   });

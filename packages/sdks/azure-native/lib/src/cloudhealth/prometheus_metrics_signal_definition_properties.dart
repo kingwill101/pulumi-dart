@@ -32,7 +32,7 @@ class PrometheusMetricsSignalDefinitionProperties {
   /// [refreshInterval] Interval in which the signal is being evaluated. Defaults to PT1M (1 minute).
   /// [signalKind] Supported signal kinds as discriminator
   /// [timeGrain] Time range of signal. ISO duration format like PT10M.
-  PrometheusMetricsSignalDefinitionProperties({
+  const PrometheusMetricsSignalDefinitionProperties({
     this.dataUnit,
     this.displayName,
     required this.evaluationRules,

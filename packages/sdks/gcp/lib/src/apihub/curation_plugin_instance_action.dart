@@ -17,7 +17,7 @@ class CurationPluginInstanceAction {
   /// Creates a new [CurationPluginInstanceAction].
   /// [actionId] (Output)
   /// [pluginInstance] (Output)
-  CurationPluginInstanceAction({
+  const CurationPluginInstanceAction({
     this.actionId,
     this.pluginInstance,
   });

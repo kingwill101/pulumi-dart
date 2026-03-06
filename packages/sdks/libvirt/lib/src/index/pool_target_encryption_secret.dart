@@ -11,7 +11,7 @@ class PoolTargetEncryptionSecret {
   /// Creates a new [PoolTargetEncryptionSecret].
   /// [type] Defines the type of the secret used for encryption purposes.
   /// [uuid] Sets the universally unique identifier (UUID) for the encryption secret.
-  PoolTargetEncryptionSecret({
+  const PoolTargetEncryptionSecret({
     required this.type,
     this.uuid,
   });

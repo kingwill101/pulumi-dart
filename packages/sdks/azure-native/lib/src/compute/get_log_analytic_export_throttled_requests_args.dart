@@ -36,7 +36,7 @@ class GetLogAnalyticExportThrottledRequestsArgs {
   /// [groupByUserAgent] Group query result by User Agent.
   /// [location] The name of Azure region.
   /// [toTime] To time of the query
-  GetLogAnalyticExportThrottledRequestsArgs({
+  const GetLogAnalyticExportThrottledRequestsArgs({
     required this.blobContainerSasUri,
     required this.fromTime,
     this.groupByClientApplicationId,

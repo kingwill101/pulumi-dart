@@ -66,7 +66,7 @@ class PostureDeploymentState {
   /// [state] State of the posture deployment. A posture deployment can be in the following terminal states:
   /// [targetResource] The resource on which the posture should be deployed. This can be in one of the following formats:
   /// [updateTime] Time the posture deployment was updated in UTC.
-  PostureDeploymentState({
+  const PostureDeploymentState({
     this.createTime,
     this.description,
     this.desiredPostureId,

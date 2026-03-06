@@ -11,7 +11,7 @@ class ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsS
   /// [audioRenditionSets] Optional.
   /// [nielsenId3Behavior] Optional.
   /// [timedMetadataBehavior] Optional.
-  ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings({
+  const ChannelEncoderSettingsOutputGroupOutputOutputSettingsHlsOutputSettingsHlsSettingsFmp4HlsSettings({
     this.audioRenditionSets,
     this.nielsenId3Behavior,
     this.timedMetadataBehavior,

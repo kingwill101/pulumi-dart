@@ -25,7 +25,7 @@ class AiLogicConfigGenerativeLanguageConfig {
   /// [apiKey] The value of the API key. The API key must have
   /// [apiKeyWo] **NOTE:** This field is write-only and its value will not be updated in state as part of read operations.
   /// [apiKeyWoVersion] Triggers update of 'api_key_wo' write-only. Increment this value when an update to 'api_key_wo' is needed. For more info see [updating write-only arguments](https://www.terraform.io/docs/providers/google/guides/using_write_only_arguments.html#updating-write-only-arguments)
-  AiLogicConfigGenerativeLanguageConfig({
+  const AiLogicConfigGenerativeLanguageConfig({
     this.apiKey,
     this.apiKeyWo,
     this.apiKeyWoVersion,

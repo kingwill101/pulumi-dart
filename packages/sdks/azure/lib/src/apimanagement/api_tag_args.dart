@@ -15,7 +15,7 @@ class ApiTagArgs {
   /// Creates a new [ApiTagArgs].
   /// [apiId] The ID of the API Management API. Changing this forces a new API Management API Tag to be created.
   /// [name] The name of the tag. It must be known in the API Management instance. Changing this forces a new API Management API Tag to be created.
-  ApiTagArgs({
+  const ApiTagArgs({
     required this.apiId,
     this.name,
   });

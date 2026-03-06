@@ -48,7 +48,7 @@ class TargetGroupHealthCheck {
   /// [protocol] Protocol the load balancer uses when performing health checks on targets.
   /// [timeout] Amount of time, in seconds, during which no response from a target means a failed health check. The range is 2–120 seconds. For target groups with a protocol of HTTP, the default is 6 seconds. For target groups with a protocol of TCP, TLS or HTTPS, the default is 10 seconds. For target groups with a protocol of GENEVE, the default is 5 seconds. If the target type is lambda, the default is 30 seconds.
   /// [unhealthyThreshold] Number of consecutive health check failures required before considering a target unhealthy. The range is 2-10. Defaults to 3.
-  TargetGroupHealthCheck({
+  const TargetGroupHealthCheck({
     this.enabled,
     this.healthyThreshold,
     this.interval,

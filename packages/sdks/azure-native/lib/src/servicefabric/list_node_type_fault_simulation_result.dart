@@ -13,7 +13,7 @@ class ListNodeTypeFaultSimulationResult {
   /// Creates a new [ListNodeTypeFaultSimulationResult].
   /// [nextLink] The link to the next page of items
   /// [value] The FaultSimulation items on this page
-  ListNodeTypeFaultSimulationResult({
+  const ListNodeTypeFaultSimulationResult({
     this.nextLink,
     required this.value,
   });

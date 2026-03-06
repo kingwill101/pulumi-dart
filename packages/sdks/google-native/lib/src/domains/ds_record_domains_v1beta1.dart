@@ -20,7 +20,7 @@ class DsRecordDomainsV1beta1 {
   /// [digest] The digest generated from the referenced DNSKEY.
   /// [digestType] The hash function used to generate the digest of the referenced DNSKEY.
   /// [keyTag] The key tag of the record. Must be set in range 0 -- 65535.
-  DsRecordDomainsV1beta1({
+  const DsRecordDomainsV1beta1({
     this.algorithm,
     this.digest,
     this.digestType,

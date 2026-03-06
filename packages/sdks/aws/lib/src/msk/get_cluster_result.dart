@@ -59,7 +59,7 @@ class GetClusterResult {
   /// [tags] Map of key-value pairs assigned to the cluster.
   /// [zookeeperConnectString] A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster. The returned values are sorted alphbetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
   /// [zookeeperConnectStringTls] A comma separated list of one or more hostname:port pairs to use to connect to the Apache Zookeeper cluster via TLS. The returned values are sorted alphabetically. The AWS API may not return all endpoints, so this value is not guaranteed to be stable across applies.
-  GetClusterResult({
+  const GetClusterResult({
     required this.arn,
     required this.bootstrapBrokers,
     required this.bootstrapBrokersPublicSaslIam,

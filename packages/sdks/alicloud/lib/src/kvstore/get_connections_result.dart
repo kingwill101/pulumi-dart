@@ -18,7 +18,7 @@ class GetConnectionsResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [ids] A list of Tair (Redis OSS-Compatible) And Memcache (KVStore) Instance ids.
   /// [outputFile] Optional.
-  GetConnectionsResult({
+  const GetConnectionsResult({
     required this.connections,
     required this.id,
     required this.ids,

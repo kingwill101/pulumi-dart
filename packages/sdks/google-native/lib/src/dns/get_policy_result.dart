@@ -28,7 +28,7 @@ class GetPolicyResult {
   /// [kind] Required.
   /// [name] User-assigned name for this policy.
   /// [networks] List of network names specifying networks to which this policy is applied.
-  GetPolicyResult({
+  const GetPolicyResult({
     required this.alternativeNameServerConfig,
     required this.description,
     required this.enableInboundForwarding,

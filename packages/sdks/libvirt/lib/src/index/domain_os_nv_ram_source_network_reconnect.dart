@@ -8,7 +8,7 @@ class DomainOsNvRamSourceNetworkReconnect {
 
   /// Creates a new [DomainOsNvRamSourceNetworkReconnect].
   /// [delay] Sets the delay duration before attempting to reconnect to a network storage source after a failure.
-  DomainOsNvRamSourceNetworkReconnect({
+  const DomainOsNvRamSourceNetworkReconnect({
     required this.delay,
   });
 

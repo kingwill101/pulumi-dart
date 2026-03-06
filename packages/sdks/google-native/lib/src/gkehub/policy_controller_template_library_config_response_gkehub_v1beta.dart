@@ -9,7 +9,7 @@ class PolicyControllerTemplateLibraryConfigResponseGkehubV1beta {
 
   /// Creates a new [PolicyControllerTemplateLibraryConfigResponseGkehubV1beta].
   /// [installation] Configures the manner in which the template library is installed on the cluster.
-  PolicyControllerTemplateLibraryConfigResponseGkehubV1beta({
+  const PolicyControllerTemplateLibraryConfigResponseGkehubV1beta({
     required this.installation,
   });
 

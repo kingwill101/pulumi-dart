@@ -23,7 +23,7 @@ class ClusterContinuousBackupInfo {
   /// [enabledTime] (Output)
   /// [encryptionInfos] (Output)
   /// [schedules] (Output)
-  ClusterContinuousBackupInfo({
+  const ClusterContinuousBackupInfo({
     this.earliestRestorableTime,
     this.enabledTime,
     this.encryptionInfos,

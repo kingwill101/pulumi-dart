@@ -15,7 +15,7 @@ class GetClusterManagerArgs {
   /// Creates a new [GetClusterManagerArgs].
   /// [clusterManagerName] The name of the cluster manager.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetClusterManagerArgs({
+  const GetClusterManagerArgs({
     required this.clusterManagerName,
     required this.resourceGroupName,
   });

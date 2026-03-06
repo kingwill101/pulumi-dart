@@ -12,7 +12,7 @@ class ScaleRuleAuthResponse {
   /// Creates a new [ScaleRuleAuthResponse].
   /// [secretRef] Name of the Azure Spring Apps App Instance secret from which to pull the auth params.
   /// [triggerParameter] Trigger Parameter that uses the secret
-  ScaleRuleAuthResponse({
+  const ScaleRuleAuthResponse({
     this.secretRef,
     this.triggerParameter,
   });

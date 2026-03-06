@@ -16,7 +16,7 @@ class GetDelegationSetResult {
   /// [callerReference] Caller Reference of the delegation set.
   /// [id] Required.
   /// [nameServers] List of DNS name servers for the delegation set.
-  GetDelegationSetResult({
+  const GetDelegationSetResult({
     required this.arn,
     required this.callerReference,
     required this.id,

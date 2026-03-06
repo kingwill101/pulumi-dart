@@ -19,7 +19,7 @@ class VariableAtManagementGroupArgs {
   /// [columns] Variable column definitions.
   /// [managementGroupId] The ID of the management group.
   /// [variableName] The name of the variable to operate on.
-  VariableAtManagementGroupArgs({
+  const VariableAtManagementGroupArgs({
     required this.columns,
     required this.managementGroupId,
     this.variableName,

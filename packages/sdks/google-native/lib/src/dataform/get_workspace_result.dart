@@ -8,7 +8,7 @@ class GetWorkspaceResult {
 
   /// Creates a new [GetWorkspaceResult].
   /// [name] The workspace's name.
-  GetWorkspaceResult({
+  const GetWorkspaceResult({
     required this.name,
   });
 

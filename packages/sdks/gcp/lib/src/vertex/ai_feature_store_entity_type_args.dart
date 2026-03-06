@@ -33,7 +33,7 @@ class AiFeatureStoreEntityTypeArgs {
   /// [monitoringConfig] The default monitoring configuration for all Features under this EntityType.
   /// [name] The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
   /// [offlineStorageTtlDays] Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
-  AiFeatureStoreEntityTypeArgs({
+  const AiFeatureStoreEntityTypeArgs({
     this.description,
     required this.featurestore,
     this.labels,

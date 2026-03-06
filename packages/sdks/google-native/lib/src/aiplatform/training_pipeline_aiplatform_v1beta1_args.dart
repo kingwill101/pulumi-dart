@@ -43,7 +43,7 @@ class TrainingPipelineAiplatformV1beta1Args {
   /// [project] Optional.
   /// [trainingTaskDefinition] A Google Cloud Storage path to the YAML file that defines the training task which is responsible for producing the model artifact, and may also include additional auxiliary work. The definition files that can be used here are found in gs://google-cloud-aiplatform/schema/trainingjob/definition/. Note: The URI given on output will be immutable and probably different, including the URI scheme, than the one given on input. The output URI will point to a location where the user only has a read access.
   /// [trainingTaskInputs] The training task's parameter(s), as specified in the training_task_definition's `inputs`.
-  TrainingPipelineAiplatformV1beta1Args({
+  const TrainingPipelineAiplatformV1beta1Args({
     required this.displayName,
     this.encryptionSpec,
     this.inputDataConfig,

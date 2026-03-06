@@ -13,7 +13,7 @@ class DomainDevicesInterfaceBandwidth {
   /// Creates a new [DomainDevicesInterfaceBandwidth].
   /// [inbound] Defines outbound bandwidth settings for the interface, managing traffic shaping and quality of service for outgoing traffic.
   /// [outbound] Defines outbound bandwidth settings for the interface, managing traffic shaping and quality of service for outgoing traffic.
-  DomainDevicesInterfaceBandwidth({
+  const DomainDevicesInterfaceBandwidth({
     this.inbound,
     this.outbound,
   });

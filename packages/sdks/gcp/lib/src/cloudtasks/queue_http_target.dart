@@ -42,7 +42,7 @@ class QueueHttpTarget {
   /// [oauthToken] If specified, an OAuth token is generated and attached as the Authorization header in the HTTP request.
   /// [oidcToken] If specified, an OIDC token is generated and attached as an Authorization header in the HTTP request.
   /// [uriOverride] URI override.
-  QueueHttpTarget({
+  const QueueHttpTarget({
     this.headerOverrides,
     this.httpMethod,
     this.oauthToken,

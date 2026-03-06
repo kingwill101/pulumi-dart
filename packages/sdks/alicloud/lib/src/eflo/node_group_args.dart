@@ -56,7 +56,7 @@ class NodeGroupArgs {
   /// [vpdSubnets] Cluster subnet list
   /// [vswitchZoneId] Zone ID of the switch
   /// [zoneId] Zone ID
-  NodeGroupArgs({
+  const NodeGroupArgs({
     required this.az,
     required this.clusterId,
     this.ignoreFailedNodeTasks,

@@ -13,7 +13,7 @@ class WebAppIdentityProviderDetailsIdentityCenterConfig {
   /// [applicationArn] Optional.
   /// [instanceArn] ARN of the IAM Identity Center used for the web app.
   /// [role] ARN of an identity bearer role for your web app.
-  WebAppIdentityProviderDetailsIdentityCenterConfig({
+  const WebAppIdentityProviderDetailsIdentityCenterConfig({
     this.applicationArn,
     this.instanceArn,
     this.role,

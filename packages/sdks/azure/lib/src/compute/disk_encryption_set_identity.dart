@@ -19,7 +19,7 @@ class DiskEncryptionSetIdentity {
   /// [principalId] The (Client) ID of the Service Principal.
   /// [tenantId] The ID of the Tenant the Service Principal is assigned in.
   /// [type] The type of Managed Service Identity that is configured on this Disk Encryption Set. Possible values are `SystemAssigned`, `UserAssigned`, `SystemAssigned, UserAssigned` (to enable both).
-  DiskEncryptionSetIdentity({
+  const DiskEncryptionSetIdentity({
     this.identityIds,
     this.principalId,
     this.tenantId,

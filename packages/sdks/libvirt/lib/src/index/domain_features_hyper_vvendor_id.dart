@@ -8,7 +8,7 @@ class DomainFeaturesHyperVVendorId {
 
   /// Creates a new [DomainFeaturesHyperVVendorId].
   /// [value] Sets the value for the vendor ID used in Hyper-V.
-  DomainFeaturesHyperVVendorId({
+  const DomainFeaturesHyperVVendorId({
     this.value,
   });
 

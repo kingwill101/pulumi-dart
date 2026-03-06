@@ -12,7 +12,7 @@ class TimeoutPolicyResponse {
   /// Creates a new [TimeoutPolicyResponse].
   /// [connectionTimeoutInSeconds] Timeout, in seconds, for a request to initiate a connection
   /// [responseTimeoutInSeconds] Timeout, in seconds, for a request to respond
-  TimeoutPolicyResponse({
+  const TimeoutPolicyResponse({
     this.connectionTimeoutInSeconds,
     this.responseTimeoutInSeconds,
   });

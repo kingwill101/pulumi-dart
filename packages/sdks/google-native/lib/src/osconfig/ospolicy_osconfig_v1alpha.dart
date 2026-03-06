@@ -23,7 +23,7 @@ class OSPolicyOsconfigV1alpha {
   /// [id] The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment.
   /// [mode] Policy mode
   /// [resourceGroups] List of resource groups for the policy. For a particular VM, resource groups are evaluated in the order specified and the first resource group that is applicable is selected and the rest are ignored. If none of the resource groups are applicable for a VM, the VM is considered to be non-compliant w.r.t this policy. This behavior can be toggled by the flag `allow_no_resource_group_match`
-  OSPolicyOsconfigV1alpha({
+  const OSPolicyOsconfigV1alpha({
     this.allowNoResourceGroupMatch,
     this.description,
     required this.id,

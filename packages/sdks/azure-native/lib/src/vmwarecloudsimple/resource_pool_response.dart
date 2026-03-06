@@ -24,7 +24,7 @@ class ResourcePoolResponse {
   /// [name] {ResourcePoolName}
   /// [privateCloudId] The Private Cloud Id
   /// [type] {resourceProviderNamespace}/{resourceType}
-  ResourcePoolResponse({
+  const ResourcePoolResponse({
     required this.fullName,
     required this.id,
     required this.location,

@@ -12,7 +12,7 @@ class PrivateLinkServiceConnection {
   /// Creates a new [PrivateLinkServiceConnection].
   /// [groupIds] The ID(s) of the group(s) obtained from the remote resource that this private endpoint should connect to. Required on PUT (CreateOrUpdate) requests.
   /// [privateLinkServiceId] The resource id of the private link service. Required on PUT (CreateOrUpdate) requests.
-  PrivateLinkServiceConnection({
+  const PrivateLinkServiceConnection({
     this.groupIds,
     this.privateLinkServiceId,
   });

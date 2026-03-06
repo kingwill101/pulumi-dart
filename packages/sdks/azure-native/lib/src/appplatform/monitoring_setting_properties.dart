@@ -19,7 +19,7 @@ class MonitoringSettingProperties {
   /// [appInsightsSamplingRate] Indicates the sampling rate of application insight agent, should be in range [0.0, 100.0]
   /// [error] Error when apply Monitoring Setting changes.
   /// [traceEnabled] Indicates whether enable the trace functionality, which will be deprecated since api version 2020-11-01-preview. Please leverage appInsightsInstrumentationKey to indicate if monitoringSettings enabled or not
-  MonitoringSettingProperties({
+  const MonitoringSettingProperties({
     this.appInsightsInstrumentationKey,
     this.appInsightsSamplingRate,
     this.error,

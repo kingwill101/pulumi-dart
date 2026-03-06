@@ -12,7 +12,7 @@ class DomainDevicesHostdevSubsysPciSource {
   /// Creates a new [DomainDevicesHostdevSubsysPciSource].
   /// [address] Defines the address settings for the PCI device source.
   /// [writeFiltering] Controls whether write filtering is enabled for the PCI device source.
-  DomainDevicesHostdevSubsysPciSource({
+  const DomainDevicesHostdevSubsysPciSource({
     this.address,
     this.writeFiltering,
   });

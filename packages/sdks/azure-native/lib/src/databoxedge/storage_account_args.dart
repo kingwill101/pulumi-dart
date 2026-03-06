@@ -30,7 +30,7 @@ class StorageAccountArgs {
   /// [storageAccountCredentialId] Storage Account Credential Id
   /// [storageAccountName] The StorageAccount name.
   /// [storageAccountStatus] Current status of the storage account
-  StorageAccountArgs({
+  const StorageAccountArgs({
     required this.dataPolicy,
     this.description,
     required this.deviceName,

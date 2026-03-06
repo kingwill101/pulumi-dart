@@ -15,7 +15,7 @@ class KeyResponse {
   /// [keyName] Automation key name.
   /// [permissions] Automation key permissions.
   /// [value] Value of the Automation Key used for registration.
-  KeyResponse({
+  const KeyResponse({
     required this.keyName,
     required this.permissions,
     required this.value,

@@ -24,7 +24,7 @@ class GetDbClustersArgs {
   /// [ids] A list of DBCluster IDs.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
   /// [status] The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
-  GetDbClustersArgs({
+  const GetDbClustersArgs({
     this.dbClusterDescription,
     this.enableDetails,
     this.ids,

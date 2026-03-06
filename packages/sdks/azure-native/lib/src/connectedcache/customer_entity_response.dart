@@ -57,7 +57,7 @@ class CustomerEntityResponse {
   /// [shouldMigrate] Customer resource flag for migration.
   /// [synchWithAzureAttemptsCount] Customer resource sync attempts.
   /// [verifySignupCode] Customer resource flag for requiring verification of signup code as boolean.
-  CustomerEntityResponse({
+  const CustomerEntityResponse({
     this.clientTenantId,
     this.contactEmail,
     this.contactName,

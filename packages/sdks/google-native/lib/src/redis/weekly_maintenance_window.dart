@@ -14,7 +14,7 @@ class WeeklyMaintenanceWindow {
   /// Creates a new [WeeklyMaintenanceWindow].
   /// [day] The day of week that maintenance updates occur.
   /// [startTime] Start time of the window in UTC time.
-  WeeklyMaintenanceWindow({
+  const WeeklyMaintenanceWindow({
     required this.day,
     required this.startTime,
   });

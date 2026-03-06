@@ -14,7 +14,7 @@ class GetOfferAccessTokenResult {
   /// [accessToken] The access token.
   /// [diskId] The disk id.
   /// [status] The access token creation status.
-  GetOfferAccessTokenResult({
+  const GetOfferAccessTokenResult({
     required this.accessToken,
     this.diskId,
     this.status,

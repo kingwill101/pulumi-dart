@@ -29,7 +29,7 @@ class GetIpsecServersServerIkeConfig {
   /// [ikeVersion] The IKE version.
   /// [localId] IPsec server identifier. Supports the format of FQDN and IP address. The public IP address of the VPN gateway is selected by default.
   /// [remoteId] The peer identifier. Supports the format of FQDN and IP address, which is empty by default.
-  GetIpsecServersServerIkeConfig({
+  const GetIpsecServersServerIkeConfig({
     required this.ikeAuthAlg,
     required this.ikeEncAlg,
     required this.ikeLifetime,

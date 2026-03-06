@@ -18,7 +18,7 @@ class PortfolioArgs {
   /// [description] The description of the portfolio
   /// [portfolioName] The name of the portfolio
   /// [providerName] The provider name of the portfolio
-  PortfolioArgs({
+  const PortfolioArgs({
     this.description,
     required this.portfolioName,
     required this.providerName,

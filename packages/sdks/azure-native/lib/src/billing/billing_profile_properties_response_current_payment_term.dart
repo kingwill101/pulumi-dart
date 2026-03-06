@@ -18,7 +18,7 @@ class BillingProfilePropertiesResponseCurrentPaymentTerm {
   /// [isDefault] Indicates payment term is the standard payment term.
   /// [startDate] The date on when the defined 'Payment Term' will be effective from and is always in UTC.
   /// [term] Represents duration in netXX format. Always in days.
-  BillingProfilePropertiesResponseCurrentPaymentTerm({
+  const BillingProfilePropertiesResponseCurrentPaymentTerm({
     this.endDate,
     required this.isDefault,
     this.startDate,

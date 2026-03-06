@@ -20,7 +20,7 @@ class GetServerCustomImagesResult {
   /// [nameRegex] Optional.
   /// [names] Required.
   /// [outputFile] Optional.
-  GetServerCustomImagesResult({
+  const GetServerCustomImagesResult({
     required this.id,
     required this.ids,
     required this.images,

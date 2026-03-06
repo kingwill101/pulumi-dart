@@ -7,7 +7,7 @@ class OriginRequestPolicyQueryStringsConfigQueryStrings {
 
   /// Creates a new [OriginRequestPolicyQueryStringsConfigQueryStrings].
   /// [items] Optional.
-  OriginRequestPolicyQueryStringsConfigQueryStrings({
+  const OriginRequestPolicyQueryStringsConfigQueryStrings({
     this.items,
   });
 

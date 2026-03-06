@@ -11,7 +11,7 @@ class DbInstanceDesiredSecurityIpList {
   /// Creates a new [DbInstanceDesiredSecurityIpList].
   /// [groupName] Security group name.
   /// [securityIpList] The IP list of Security group. Each single IP value should be Separated by comma.
-  DbInstanceDesiredSecurityIpList({
+  const DbInstanceDesiredSecurityIpList({
     this.groupName,
     this.securityIpList,
   });

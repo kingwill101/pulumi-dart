@@ -16,7 +16,7 @@ class ActionIpExtendedCommunityPropertiesResponse {
   /// [add] List of IP Extended Community IDs.
   /// [delete] List of IP Extended Community IDs.
   /// [set] List of IP Extended Community IDs.
-  ActionIpExtendedCommunityPropertiesResponse({
+  const ActionIpExtendedCommunityPropertiesResponse({
     this.add,
     this.delete,
     this.set,

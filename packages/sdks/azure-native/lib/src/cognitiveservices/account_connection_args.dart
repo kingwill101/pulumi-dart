@@ -22,7 +22,7 @@ class AccountConnectionArgs {
   /// [connectionName] Friendly name of the connection
   /// [properties] Connection property base schema.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  AccountConnectionArgs({
+  const AccountConnectionArgs({
     required this.accountName,
     this.connectionName,
     required this.properties,

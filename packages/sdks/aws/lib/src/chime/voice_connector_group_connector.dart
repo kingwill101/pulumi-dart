@@ -11,7 +11,7 @@ class VoiceConnectorGroupConnector {
   /// Creates a new [VoiceConnectorGroupConnector].
   /// [priority] The priority associated with the Amazon Chime Voice Connector, with 1 being the highest priority. Higher priority Amazon Chime Voice Connectors are attempted first.
   /// [voiceConnectorId] The Amazon Chime Voice Connector ID.
-  VoiceConnectorGroupConnector({
+  const VoiceConnectorGroupConnector({
     required this.priority,
     required this.voiceConnectorId,
   });

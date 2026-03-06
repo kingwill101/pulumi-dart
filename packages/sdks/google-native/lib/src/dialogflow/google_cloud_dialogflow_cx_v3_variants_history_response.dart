@@ -13,7 +13,7 @@ class GoogleCloudDialogflowCxV3VariantsHistoryResponse {
   /// Creates a new [GoogleCloudDialogflowCxV3VariantsHistoryResponse].
   /// [updateTime] Update time of the variants.
   /// [versionVariants] The flow versions as the variants.
-  GoogleCloudDialogflowCxV3VariantsHistoryResponse({
+  const GoogleCloudDialogflowCxV3VariantsHistoryResponse({
     required this.updateTime,
     required this.versionVariants,
   });

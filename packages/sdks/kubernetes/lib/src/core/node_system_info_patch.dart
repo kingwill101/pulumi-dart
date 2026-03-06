@@ -40,7 +40,7 @@ class NodeSystemInfoPatch {
   /// [osImage] OS Image reported by the node from /etc/os-release (e.g. Debian GNU/Linux 7 (wheezy)).
   /// [swap] Swap Info reported by the node.
   /// [systemUUID] SystemUUID reported by the node. For unique machine identification MachineID is preferred. This field is specific to Red Hat hosts https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/rhsm/uuid
-  NodeSystemInfoPatch({
+  const NodeSystemInfoPatch({
     this.architecture,
     this.bootID,
     this.containerRuntimeVersion,

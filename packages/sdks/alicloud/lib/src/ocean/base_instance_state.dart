@@ -134,7 +134,7 @@ class BaseInstanceState {
   /// [status] The status of the resource
   /// [upgradeSpecNative] Valid values:
   /// [zones] Information about the zone where the cluster is deployed.
-  BaseInstanceState({
+  const BaseInstanceState({
     this.autoRenew,
     this.autoRenewPeriod,
     this.backupRetainMode,

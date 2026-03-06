@@ -12,7 +12,7 @@ class SaasProperties {
   /// Creates a new [SaasProperties].
   /// [saasResourceId] Resource ID of the SaaS offer purchased from the marketplace.
   /// [saasSubscriptionId] Subscription ID of the SaaS offer purchased from the marketplace.
-  SaasProperties({
+  const SaasProperties({
     this.saasResourceId,
     this.saasSubscriptionId,
   });

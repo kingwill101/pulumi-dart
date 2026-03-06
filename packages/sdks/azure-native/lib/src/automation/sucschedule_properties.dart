@@ -46,7 +46,7 @@ class SUCScheduleProperties {
   /// [nextRunOffsetMinutes] Gets or sets the next run time's offset in minutes.
   /// [startTime] Gets or sets the start time of the schedule.
   /// [timeZone] Gets or sets the time zone of the schedule.
-  SUCScheduleProperties({
+  const SUCScheduleProperties({
     this.advancedSchedule,
     this.creationTime,
     this.description,

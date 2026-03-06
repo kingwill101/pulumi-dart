@@ -59,7 +59,7 @@ class GetSQuotaInfoResult {
   /// [refreshInterval] (Output) The reset time interval for the quota. Refresh interval applies to rate quota only. Example: "minute" for per minute, "day" for per day, or "10 seconds" for every 10 seconds.
   /// [service] Required.
   /// [serviceRequestQuotaUri] (Output) URI to the page where users can request more quota for the cloud service, for example: `https://console.cloud.google.com/iam-admin/quotas`.
-  GetSQuotaInfoResult({
+  const GetSQuotaInfoResult({
     required this.containerType,
     required this.dimensions,
     required this.dimensionsInfos,

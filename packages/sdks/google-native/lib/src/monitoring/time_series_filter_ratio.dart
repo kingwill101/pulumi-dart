@@ -25,7 +25,7 @@ class TimeSeriesFilterRatio {
   /// [pickTimeSeriesFilter] Ranking based time series filter.
   /// [secondaryAggregation] Apply a second aggregation after the ratio is computed.
   /// [statisticalTimeSeriesFilter] Statistics based time series filter. Note: This field is deprecated and completely ignored by the API.
-  TimeSeriesFilterRatio({
+  const TimeSeriesFilterRatio({
     this.denominator,
     this.numerator,
     this.pickTimeSeriesFilter,

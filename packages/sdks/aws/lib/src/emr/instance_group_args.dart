@@ -209,7 +209,7 @@ class InstanceGroupArgs {
   /// [instanceType] The EC2 instance type for all instances in the instance group. Changing this forces a new resource to be created.
   /// [name] Human friendly name given to the instance group. Changing this forces a new resource to be created.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
-  InstanceGroupArgs({
+  const InstanceGroupArgs({
     this.autoscalingPolicy,
     this.bidPrice,
     required this.clusterId,

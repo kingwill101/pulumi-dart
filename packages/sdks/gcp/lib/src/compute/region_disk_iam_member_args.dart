@@ -43,7 +43,7 @@ class RegionDiskIamMemberArgs {
   /// [project] The ID of the project in which the resource belongs.
   /// [region] A reference to the region where the disk resides. Used to find the parent resource to bind the IAM policy to. If not specified,
   /// [role] The role that should be applied. Only one
-  RegionDiskIamMemberArgs({
+  const RegionDiskIamMemberArgs({
     this.condition,
     required this.member,
     this.name,

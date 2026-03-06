@@ -121,7 +121,7 @@ class GcpIntegrationsArgs {
   /// [storage] Storage integration. See Integration blocks below for details.
   /// [virtualMachines] Virtual machines integration. See Integration blocks below for details.
   /// [vpcAccess] VPC Access integration. See Integration blocks below for details.
-  GcpIntegrationsArgs({
+  const GcpIntegrationsArgs({
     this.accountId,
     this.alloyDb,
     this.appEngine,

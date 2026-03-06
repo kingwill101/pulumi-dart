@@ -17,7 +17,7 @@ class InstanceFleetInstanceTypeConfigEbsConfig {
   /// [size] The volume size, in gibibytes (GiB).
   /// [type] The volume type. Valid options are `gp2`, `io1`, `standard` and `st1`. See [EBS Volume Types](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/EBSVolumeTypes.html).
   /// [volumesPerInstance] The number of EBS volumes with this configuration to attach to each EC2 instance in the instance group (default is 1)
-  InstanceFleetInstanceTypeConfigEbsConfig({
+  const InstanceFleetInstanceTypeConfigEbsConfig({
     this.iops,
     required this.size,
     required this.type,

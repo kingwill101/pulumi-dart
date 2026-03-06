@@ -17,7 +17,7 @@ class GetDomainsDomain {
   /// [domain] The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
   /// [id] The ID of the Ga Domain.
   /// [status] The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
-  GetDomainsDomain({
+  const GetDomainsDomain({
     required this.acceleratorId,
     required this.domain,
     required this.id,

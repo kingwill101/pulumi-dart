@@ -21,7 +21,7 @@ class CxGeneratorModelParameter {
   /// [temperature] The temperature used for sampling. Temperature sampling occurs after both topP and topK have been applied.
   /// [topK] If set, the sampling process in each step is limited to the topK tokens with highest probabilities.
   /// [topP] If set, only the tokens comprising the top topP probability mass are considered.
-  CxGeneratorModelParameter({
+  const CxGeneratorModelParameter({
     this.maxDecodeSteps,
     this.temperature,
     this.topK,

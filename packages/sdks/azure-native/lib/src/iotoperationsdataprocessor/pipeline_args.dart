@@ -42,7 +42,7 @@ class PipelineArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [stages] Map of stage ids to stage configurations for all pipeline processing and output stages.
   /// [tags] Resource tags.
-  PipelineArgs({
+  const PipelineArgs({
     this.description,
     required this.enabled,
     required this.extendedLocation,

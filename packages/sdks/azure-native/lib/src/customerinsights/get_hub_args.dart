@@ -15,7 +15,7 @@ class GetHubArgs {
   /// Creates a new [GetHubArgs].
   /// [hubName] The name of the hub.
   /// [resourceGroupName] The name of the resource group.
-  GetHubArgs({
+  const GetHubArgs({
     required this.hubName,
     required this.resourceGroupName,
   });

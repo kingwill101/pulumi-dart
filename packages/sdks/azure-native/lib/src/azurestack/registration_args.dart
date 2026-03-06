@@ -21,7 +21,7 @@ class RegistrationArgs {
   /// [registrationName] Name of the Azure Stack registration.
   /// [registrationToken] The token identifying registered Azure Stack
   /// [resourceGroup] Name of the resource group.
-  RegistrationArgs({
+  const RegistrationArgs({
     this.location,
     this.registrationName,
     required this.registrationToken,

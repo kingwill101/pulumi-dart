@@ -9,7 +9,7 @@ class DelegateAccountState {
 
   /// Creates a new [DelegateAccountState].
   /// [accountId] Delegate administrator account Id
-  DelegateAccountState({
+  const DelegateAccountState({
     this.accountId,
   });
 

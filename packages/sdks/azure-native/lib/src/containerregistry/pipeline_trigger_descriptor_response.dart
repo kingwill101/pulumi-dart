@@ -9,7 +9,7 @@ class PipelineTriggerDescriptorResponse {
 
   /// Creates a new [PipelineTriggerDescriptorResponse].
   /// [sourceTrigger] The source trigger that caused the pipeline run.
-  PipelineTriggerDescriptorResponse({
+  const PipelineTriggerDescriptorResponse({
     this.sourceTrigger,
   });
 

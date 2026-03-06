@@ -21,7 +21,7 @@ class ClusterProfile {
   /// [pullSecret] The pull secret for the cluster.
   /// [resourceGroupId] The ID of the cluster resource group.
   /// [version] The version of the cluster.
-  ClusterProfile({
+  const ClusterProfile({
     this.domain,
     this.fipsValidatedModules,
     this.pullSecret,

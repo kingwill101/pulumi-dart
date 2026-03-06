@@ -15,7 +15,7 @@ class VirtualNetworkStatusResponse {
   /// [errorCode] VirtualNetwork provisioning error code
   /// [errorMessage] Descriptive error message
   /// [provisioningStatus] Optional.
-  VirtualNetworkStatusResponse({
+  const VirtualNetworkStatusResponse({
     this.errorCode,
     this.errorMessage,
     this.provisioningStatus,

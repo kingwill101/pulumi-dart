@@ -61,7 +61,7 @@ class GetScheduleResult {
   /// [startedRunCount] The number of runs started by this schedule.
   /// [state] The state of this Schedule.
   /// [updateTime] Timestamp when this Schedule was updated.
-  GetScheduleResult({
+  const GetScheduleResult({
     required this.allowQueueing,
     required this.catchUp,
     required this.createPipelineJobRequest,

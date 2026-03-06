@@ -12,7 +12,7 @@ class PlanWorkflowStepEksResourceScalingConfigScalingResource {
   /// Creates a new [PlanWorkflowStepEksResourceScalingConfigScalingResource].
   /// [namespace] Kubernetes namespace.
   /// [resources] Set of resources to scale. See Resources below.
-  PlanWorkflowStepEksResourceScalingConfigScalingResource({
+  const PlanWorkflowStepEksResourceScalingConfigScalingResource({
     required this.namespace,
     this.resources,
   });

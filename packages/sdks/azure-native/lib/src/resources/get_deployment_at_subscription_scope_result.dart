@@ -27,7 +27,7 @@ class GetDeploymentAtSubscriptionScopeResult {
   /// [properties] Deployment properties.
   /// [tags] Deployment tags
   /// [type] The type of the deployment.
-  GetDeploymentAtSubscriptionScopeResult({
+  const GetDeploymentAtSubscriptionScopeResult({
     required this.azureApiVersion,
     required this.id,
     this.location,

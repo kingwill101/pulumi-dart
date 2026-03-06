@@ -56,7 +56,7 @@ class GetPrivateStoreCollectionOfferResult {
   /// [type] The type of the resource.
   /// [uniqueOfferId] Offers unique id
   /// [updateSuppressedDueIdempotence] Indicating whether the offer was not updated to db (true = not updated). If the allow list is identical to the existed one in db, the offer would not be updated.
-  GetPrivateStoreCollectionOfferResult({
+  const GetPrivateStoreCollectionOfferResult({
     required this.azureApiVersion,
     required this.createdAt,
     this.eTag,

@@ -43,7 +43,7 @@ class WorkforcePoolArgs {
   /// [parent] Immutable. The resource name of the parent. Format: `organizations/{org-id}`.
   /// [sessionDuration] Duration that the Google Cloud access tokens, console sign-in sessions,
   /// [workforcePoolId] The name of the pool. The ID must be a globally unique string of 6 to 63 lowercase letters,
-  WorkforcePoolArgs({
+  const WorkforcePoolArgs({
     this.accessRestrictions,
     this.description,
     this.disabled,

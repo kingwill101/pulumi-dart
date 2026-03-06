@@ -42,7 +42,7 @@ class KmsconfigState {
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
   /// [serviceAccount] The Service account which needs to have access to the  provided KMS key.
-  KmsconfigState({
+  const KmsconfigState({
     this.cryptoKeyName,
     this.description,
     this.effectiveLabels,

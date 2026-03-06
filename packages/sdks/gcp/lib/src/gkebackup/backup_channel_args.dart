@@ -35,7 +35,7 @@ class BackupChannelArgs {
   /// [location] The region of the Backup Channel.
   /// [name] The full name of the BackupChannel Resource.
   /// [project] The ID of the project in which the resource belongs.
-  BackupChannelArgs({
+  const BackupChannelArgs({
     this.description,
     required this.destinationProject,
     this.labels,

@@ -15,7 +15,7 @@ class GetAzureTrafficCollectorArgs {
   /// Creates a new [GetAzureTrafficCollectorArgs].
   /// [azureTrafficCollectorName] Azure Traffic Collector name
   /// [resourceGroupName] The name of the resource group.
-  GetAzureTrafficCollectorArgs({
+  const GetAzureTrafficCollectorArgs({
     required this.azureTrafficCollectorName,
     required this.resourceGroupName,
   });

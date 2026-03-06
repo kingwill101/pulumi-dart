@@ -14,7 +14,7 @@ class GetLaunchConfigurationMetadataOption {
   /// [httpEndpoint] State of the metadata service: `enabled`, `disabled`.
   /// [httpPutResponseHopLimit] The desired HTTP PUT response hop limit for instance metadata requests.
   /// [httpTokens] If session tokens are required: `optional`, `required`.
-  GetLaunchConfigurationMetadataOption({
+  const GetLaunchConfigurationMetadataOption({
     required this.httpEndpoint,
     required this.httpPutResponseHopLimit,
     required this.httpTokens,

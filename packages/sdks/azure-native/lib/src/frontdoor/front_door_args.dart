@@ -51,7 +51,7 @@ class FrontDoorArgs {
   /// [resourceGroupName] Name of the Resource group within the Azure subscription.
   /// [routingRules] Routing rules associated with this Front Door.
   /// [tags] Resource tags.
-  FrontDoorArgs({
+  const FrontDoorArgs({
     this.backendPools,
     this.backendPoolsSettings,
     this.enabledState,

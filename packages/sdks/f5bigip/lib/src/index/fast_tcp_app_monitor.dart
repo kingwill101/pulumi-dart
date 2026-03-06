@@ -8,7 +8,7 @@ class FastTcpAppMonitor {
 
   /// Creates a new [FastTcpAppMonitor].
   /// [interval] Set the time between health checks,in seconds for FAST-Generated Pool Monitor.
-  FastTcpAppMonitor({
+  const FastTcpAppMonitor({
     this.interval,
   });
 

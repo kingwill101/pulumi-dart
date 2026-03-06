@@ -14,7 +14,7 @@ class GetFlexibleServerMaintenanceWindow {
   /// [dayOfWeek] The day of week of the maintenance window.
   /// [startHour] The start hour of the maintenance window.
   /// [startMinute] The start minute of the maintenance window.
-  GetFlexibleServerMaintenanceWindow({
+  const GetFlexibleServerMaintenanceWindow({
     required this.dayOfWeek,
     required this.startHour,
     required this.startMinute,

@@ -29,7 +29,7 @@ class PipeTargetParametersEcsTaskParametersOverrides {
   /// [inferenceAcceleratorOverrides] List of Elastic Inference accelerator overrides for the task. Detailed below.
   /// [memory] The hard limit (in MiB) of memory to present to the container, instead of the default value from the task definition. If your container attempts to exceed the memory specified here, the container is killed. You must also specify a container name.
   /// [taskRoleArn] The Amazon Resource Name (ARN) of the IAM role that containers in this task can assume. All containers in this task are granted the permissions that are specified in this role.
-  PipeTargetParametersEcsTaskParametersOverrides({
+  const PipeTargetParametersEcsTaskParametersOverrides({
     this.containerOverrides,
     this.cpu,
     this.ephemeralStorage,

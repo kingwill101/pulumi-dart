@@ -14,7 +14,7 @@ class PermissionScopeResponse {
   /// [permissions] The permissions for the local user. Possible values include: Read (r), Write (w), Delete (d), List (l), Create (c), Modify Ownership (o), and Modify Permissions (p).
   /// [resourceName] The name of resource, normally the container name or the file share name, used by the local user.
   /// [service] The service used by the local user, e.g. blob, file.
-  PermissionScopeResponse({
+  const PermissionScopeResponse({
     required this.permissions,
     required this.resourceName,
     required this.service,

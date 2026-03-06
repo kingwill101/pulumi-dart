@@ -16,7 +16,7 @@ class EdgeCacheOriginAwsV4Authentication {
   /// [accessKeyId] The access key ID your origin uses to identify the key.
   /// [originRegion] The name of the AWS region that your origin is in.
   /// [secretAccessKeyVersion] The Secret Manager secret version of the secret access key used by your origin.
-  EdgeCacheOriginAwsV4Authentication({
+  const EdgeCacheOriginAwsV4Authentication({
     required this.accessKeyId,
     required this.originRegion,
     required this.secretAccessKeyVersion,

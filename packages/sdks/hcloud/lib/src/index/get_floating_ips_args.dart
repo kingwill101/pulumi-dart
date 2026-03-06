@@ -12,7 +12,7 @@ class GetFloatingIpsArgs {
 
   /// Creates a new [GetFloatingIpsArgs].
   /// [withSelector] [Label selector](https://docs.hetzner.cloud/reference/cloud#label-selector)
-  GetFloatingIpsArgs({
+  const GetFloatingIpsArgs({
     this.withSelector,
   });
 

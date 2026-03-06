@@ -37,7 +37,7 @@ class DatastoreArgs {
   /// [resourceGroupName] The Resource Group Name.
   /// [tags] Gets or sets the Resource tags.
   /// [vCenterId] Gets or sets the ARM Id of the vCenter resource in which this datastore resides.
-  DatastoreArgs({
+  const DatastoreArgs({
     this.datastoreName,
     this.extendedLocation,
     this.inventoryItemId,

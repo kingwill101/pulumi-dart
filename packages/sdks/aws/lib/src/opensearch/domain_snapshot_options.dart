@@ -8,7 +8,7 @@ class DomainSnapshotOptions {
 
   /// Creates a new [DomainSnapshotOptions].
   /// [automatedSnapshotStartHour] Hour during which the service takes an automated daily snapshot of the indices in the domain.
-  DomainSnapshotOptions({
+  const DomainSnapshotOptions({
     required this.automatedSnapshotStartHour,
   });
 

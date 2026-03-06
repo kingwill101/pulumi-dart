@@ -24,7 +24,7 @@ class DeploymentState {
   /// [restApi] REST API identifier.
   /// [triggers] Map of arbitrary keys and values that, when changed, will trigger a redeployment.
   /// [variables] Map to set on the related stage.
-  DeploymentState({
+  const DeploymentState({
     this.createdDate,
     this.description,
     this.region,

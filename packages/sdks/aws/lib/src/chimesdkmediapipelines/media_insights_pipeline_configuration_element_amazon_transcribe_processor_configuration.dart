@@ -41,7 +41,7 @@ class MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfigur
   /// [vocabularyFilterMethod] Method for applying a vocabulary filter to Transcript events.
   /// [vocabularyFilterName] Name of the custom vocabulary filter to use when processing Transcript events.
   /// [vocabularyName] Name of the custom vocabulary to use when processing Transcript events.
-  MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration({
+  const MediaInsightsPipelineConfigurationElementAmazonTranscribeProcessorConfiguration({
     this.contentIdentificationType,
     this.contentRedactionType,
     this.enablePartialResultsStabilization,

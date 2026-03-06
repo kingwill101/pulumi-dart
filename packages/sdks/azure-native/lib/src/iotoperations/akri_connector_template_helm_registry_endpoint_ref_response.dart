@@ -13,7 +13,7 @@ class AkriConnectorTemplateHelmRegistryEndpointRefResponse {
   /// Creates a new [AkriConnectorTemplateHelmRegistryEndpointRefResponse].
   /// [registryEndpointRef] The name of the registry endpoint.
   /// [registrySettingsType] AkriConnectorTemplateHelmRegistrySettingsType values.
-  AkriConnectorTemplateHelmRegistryEndpointRefResponse({
+  const AkriConnectorTemplateHelmRegistryEndpointRefResponse({
     required this.registryEndpointRef,
     required this.registrySettingsType,
   });

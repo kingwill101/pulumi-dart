@@ -21,7 +21,7 @@ class GetClustersArgs {
   /// [nameRegex] A regex string to apply to the cluster name.
   /// [outputFile] The name of file that can save the collection of clusters after running `pulumi preview`.
   /// [tags] A mapping of tags to assign to the resource.
-  GetClustersArgs({
+  const GetClustersArgs({
     this.ids,
     this.nameRegex,
     this.outputFile,

@@ -33,7 +33,7 @@ class GetVirtualNetworkPeeringResult {
   /// [remoteVirtualNetworkId] The full Azure resource ID of the remote virtual network.
   /// [useRemoteGateways] Controls if remote gateways can be used on the local virtual network.
   /// [virtualNetworkId] Required.
-  GetVirtualNetworkPeeringResult({
+  const GetVirtualNetworkPeeringResult({
     required this.allowForwardedTraffic,
     required this.allowGatewayTransit,
     required this.allowVirtualNetworkAccess,

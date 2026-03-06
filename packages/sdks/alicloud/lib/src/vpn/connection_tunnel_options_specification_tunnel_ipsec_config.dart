@@ -13,7 +13,7 @@ class ConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
   /// [ipsecEncAlg] Optional.
   /// [ipsecLifetime] Optional.
   /// [ipsecPfs] Optional.
-  ConnectionTunnelOptionsSpecificationTunnelIpsecConfig({
+  const ConnectionTunnelOptionsSpecificationTunnelIpsecConfig({
     this.ipsecAuthAlg,
     this.ipsecEncAlg,
     this.ipsecLifetime,

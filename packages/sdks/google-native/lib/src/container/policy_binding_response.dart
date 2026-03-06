@@ -9,7 +9,7 @@ class PolicyBindingResponse {
 
   /// Creates a new [PolicyBindingResponse].
   /// [name] The relative resource name of the binauthz platform policy to audit. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`.
-  PolicyBindingResponse({
+  const PolicyBindingResponse({
     required this.name,
   });
 

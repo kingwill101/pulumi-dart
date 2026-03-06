@@ -18,7 +18,7 @@ class GetExtensionArgs {
   /// [clusterName] The name of the cluster.
   /// [extensionName] The name of the cluster extension.
   /// [resourceGroupName] The name of the resource group.
-  GetExtensionArgs({
+  const GetExtensionArgs({
     required this.clusterName,
     required this.extensionName,
     required this.resourceGroupName,

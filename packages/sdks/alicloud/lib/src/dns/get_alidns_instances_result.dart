@@ -24,7 +24,7 @@ class GetAlidnsInstancesResult {
   /// [lang] Optional.
   /// [outputFile] Optional.
   /// [userClientIp] Optional.
-  GetAlidnsInstancesResult({
+  const GetAlidnsInstancesResult({
     this.domainType,
     required this.id,
     required this.ids,

@@ -23,7 +23,7 @@ class SqlAvailabilityGroupReplicaResourcePropertiesResponse {
   /// [replicaName] The replica name.
   /// [replicaResourceId] Resource id of this replica. This is required for a distributed availability group, in which case it describes the location of the availability group that hosts one replica in the DAG. In a non-distributed availability group this field is optional but can be used to store the Azure resource id for AG.
   /// [state] null
-  SqlAvailabilityGroupReplicaResourcePropertiesResponse({
+  const SqlAvailabilityGroupReplicaResourcePropertiesResponse({
     this.configure,
     required this.replicaId,
     this.replicaName,

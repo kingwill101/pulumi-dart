@@ -22,7 +22,7 @@ class ImageTemplateShellCustomizer {
   /// [scriptUri] URI of the shell script to be run for customizing. It can be a github link, SAS URI for Azure Storage, etc
   /// [sha256Checksum] SHA256 checksum of the shell script provided in the scriptUri field
   /// [type] The type of customization tool you want to use on the Image. For example, "Shell" can be shell customizer
-  ImageTemplateShellCustomizer({
+  const ImageTemplateShellCustomizer({
     this.inline,
     this.name,
     this.scriptUri,

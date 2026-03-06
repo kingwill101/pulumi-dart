@@ -13,7 +13,7 @@ class GoogleCloudDialogflowV2beta1IntentMessageRbmText {
   /// Creates a new [GoogleCloudDialogflowV2beta1IntentMessageRbmText].
   /// [rbmSuggestion] Optional. One or more suggestions to show to the user.
   /// [text] Text sent and displayed to the user.
-  GoogleCloudDialogflowV2beta1IntentMessageRbmText({
+  const GoogleCloudDialogflowV2beta1IntentMessageRbmText({
     this.rbmSuggestion,
     required this.text,
   });

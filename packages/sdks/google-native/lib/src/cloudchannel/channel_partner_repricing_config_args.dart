@@ -17,7 +17,7 @@ class ChannelPartnerRepricingConfigArgs {
   /// [accountId] Required.
   /// [channelPartnerLinkId] Required.
   /// [repricingConfig] The configuration for bill modifications made by a reseller before sending it to ChannelPartner.
-  ChannelPartnerRepricingConfigArgs({
+  const ChannelPartnerRepricingConfigArgs({
     required this.accountId,
     required this.channelPartnerLinkId,
     required this.repricingConfig,

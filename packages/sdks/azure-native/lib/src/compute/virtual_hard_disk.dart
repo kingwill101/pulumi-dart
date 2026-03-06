@@ -9,7 +9,7 @@ class VirtualHardDisk {
 
   /// Creates a new [VirtualHardDisk].
   /// [uri] Specifies the virtual hard disk's uri.
-  VirtualHardDisk({
+  const VirtualHardDisk({
     this.uri,
   });
 

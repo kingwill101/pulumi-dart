@@ -11,7 +11,7 @@ class GetRegionInstanceGroupManagerAllInstancesConfig {
   /// Creates a new [GetRegionInstanceGroupManagerAllInstancesConfig].
   /// [labels] The label key-value pairs that you want to patch onto the instance,
   /// [metadata] The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
-  GetRegionInstanceGroupManagerAllInstancesConfig({
+  const GetRegionInstanceGroupManagerAllInstancesConfig({
     required this.labels,
     required this.metadata,
   });

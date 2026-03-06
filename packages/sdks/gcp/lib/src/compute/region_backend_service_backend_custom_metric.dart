@@ -23,7 +23,7 @@ class RegionBackendServiceBackendCustomMetric {
   /// [dryRun] If true, the metric data is not used for load balancing.
   /// [maxUtilization] Optional parameter to define a target utilization for the Custom Metrics
   /// [name] Name of a custom utilization signal. The name must be 1-64 characters
-  RegionBackendServiceBackendCustomMetric({
+  const RegionBackendServiceBackendCustomMetric({
     required this.dryRun,
     this.maxUtilization,
     required this.name,

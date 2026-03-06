@@ -30,7 +30,7 @@ class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule {
   /// [excludeInfoTypes] Set of infoTypes for which findings would affect this rule.
   /// [matchingType] How the rule is applied. See the documentation for more information: https://cloud.google.com/dlp/docs/reference/rest/v2/InspectConfig#MatchingType
   /// [regex] Regular expression which defines the rule.
-  PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule({
+  const PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule({
     this.dictionary,
     this.excludeByHotword,
     this.excludeInfoTypes,

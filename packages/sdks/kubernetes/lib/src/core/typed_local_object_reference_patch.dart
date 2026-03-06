@@ -15,7 +15,7 @@ class TypedLocalObjectReferencePatch {
   /// [apiGroup] APIGroup is the group for the resource being referenced. If APIGroup is not specified, the specified Kind must be in the core API group. For any other third-party types, APIGroup is required.
   /// [kind] Kind is the type of resource being referenced
   /// [name] Name is the name of resource being referenced
-  TypedLocalObjectReferencePatch({
+  const TypedLocalObjectReferencePatch({
     this.apiGroup,
     this.kind,
     this.name,

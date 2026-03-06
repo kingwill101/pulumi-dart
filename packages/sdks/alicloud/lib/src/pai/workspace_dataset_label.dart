@@ -11,7 +11,7 @@ class WorkspaceDatasetLabel {
   /// Creates a new [WorkspaceDatasetLabel].
   /// [key] The key of the tag. The length is limited to 128 bytes. "=" and "," are not supported.
   /// [value] The value of the tag. The length is limited to 128 bytes. "=" and "," are not supported.
-  WorkspaceDatasetLabel({
+  const WorkspaceDatasetLabel({
     this.key,
     this.value,
   });

@@ -25,7 +25,7 @@ class JobConfigMuxStream {
   /// [fileName] The name of the generated file.
   /// [key] A unique key for this multiplexed stream.
   /// [segmentSettings] Segment settings for ts, fmp4 and vtt.
-  JobConfigMuxStream({
+  const JobConfigMuxStream({
     this.container,
     this.elementaryStreams,
     this.encryptionId,

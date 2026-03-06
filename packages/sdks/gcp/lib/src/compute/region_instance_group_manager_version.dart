@@ -18,7 +18,7 @@ class RegionInstanceGroupManagerVersion {
   /// [instanceTemplate] The full URL to an instance template from which all new instances of this version will be created.
   /// [name] Version name.
   /// [targetSize] The number of instances calculated as a fixed number or a percentage depending on the settings. Structure is documented below.
-  RegionInstanceGroupManagerVersion({
+  const RegionInstanceGroupManagerVersion({
     required this.instanceTemplate,
     this.name,
     this.targetSize,

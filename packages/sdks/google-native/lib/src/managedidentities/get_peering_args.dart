@@ -13,7 +13,7 @@ class GetPeeringArgs {
   /// Creates a new [GetPeeringArgs].
   /// [peeringId] Required.
   /// [project] Optional.
-  GetPeeringArgs({
+  const GetPeeringArgs({
     required this.peeringId,
     this.project,
   });

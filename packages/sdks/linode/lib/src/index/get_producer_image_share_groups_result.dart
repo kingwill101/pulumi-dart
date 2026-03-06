@@ -19,7 +19,7 @@ class GetProducerImageShareGroupsResult {
   /// [imageShareGroups] Optional.
   /// [order] Optional.
   /// [orderBy] Optional.
-  GetProducerImageShareGroupsResult({
+  const GetProducerImageShareGroupsResult({
     this.filters,
     required this.id,
     this.imageShareGroups,

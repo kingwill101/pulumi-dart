@@ -15,7 +15,7 @@ class GetPublicIPArgs {
   /// Creates a new [GetPublicIPArgs].
   /// [name] Specifies the name of the public IP address.
   /// [resourceGroupName] Specifies the name of the resource group.
-  GetPublicIPArgs({
+  const GetPublicIPArgs({
     required this.name,
     required this.resourceGroupName,
   });

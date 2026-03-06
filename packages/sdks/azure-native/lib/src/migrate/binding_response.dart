@@ -29,7 +29,7 @@ class BindingResponse {
   /// [port] Gets or sets the application port.
   /// [portMapping] WebApplication port mapping.
   /// [protocol] Gets or sets the protocol.
-  BindingResponse({
+  const BindingResponse({
     this.cert,
     this.hostName,
     required this.id,

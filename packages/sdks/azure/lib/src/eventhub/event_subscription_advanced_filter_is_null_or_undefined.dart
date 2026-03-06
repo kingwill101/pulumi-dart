@@ -8,7 +8,7 @@ class EventSubscriptionAdvancedFilterIsNullOrUndefined {
 
   /// Creates a new [EventSubscriptionAdvancedFilterIsNullOrUndefined].
   /// [key] Specifies the field within the event data that you want to use for filtering. Type of the field can be a number, boolean, or string.
-  EventSubscriptionAdvancedFilterIsNullOrUndefined({
+  const EventSubscriptionAdvancedFilterIsNullOrUndefined({
     required this.key,
   });
 

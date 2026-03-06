@@ -14,7 +14,7 @@ class Grant {
   /// Creates a new [Grant].
   /// [grantee] &lt;p&gt;The person being granted permissions.&lt;/p&gt;
   /// [permission] &lt;p&gt;Specifies the permission given to the grantee.&lt;/p&gt;
-  Grant({
+  const Grant({
     this.grantee,
     this.permission,
   });

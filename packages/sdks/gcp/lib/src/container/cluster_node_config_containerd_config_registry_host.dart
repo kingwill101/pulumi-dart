@@ -12,7 +12,7 @@ class ClusterNodeConfigContainerdConfigRegistryHost {
   /// Creates a new [ClusterNodeConfigContainerdConfigRegistryHost].
   /// [hosts] Configures a list of host-specific configurations for the server.
   /// [server] Defines the host name of the registry server.
-  ClusterNodeConfigContainerdConfigRegistryHost({
+  const ClusterNodeConfigContainerdConfigRegistryHost({
     this.hosts,
     required this.server,
   });

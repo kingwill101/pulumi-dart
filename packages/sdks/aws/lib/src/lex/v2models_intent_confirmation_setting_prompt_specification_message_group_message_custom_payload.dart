@@ -8,7 +8,7 @@ class V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageCus
 
   /// Creates a new [V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageCustomPayload].
   /// [value] String that is sent to your application.
-  V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageCustomPayload({
+  const V2modelsIntentConfirmationSettingPromptSpecificationMessageGroupMessageCustomPayload({
     required this.value,
   });
 

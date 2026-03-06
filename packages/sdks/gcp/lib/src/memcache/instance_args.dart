@@ -68,7 +68,7 @@ class InstanceArgs {
   /// [region] The region of the Memcache instance. If it is not provided, the provider region is used.
   /// [reservedIpRangeIds] Contains the name of allocated IP address ranges associated with
   /// [zones] Zones where memcache nodes should be provisioned.  If not
-  InstanceArgs({
+  const InstanceArgs({
     this.authorizedNetwork,
     this.deletionProtection,
     this.displayName,

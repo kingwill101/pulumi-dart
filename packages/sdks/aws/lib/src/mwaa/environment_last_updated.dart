@@ -14,7 +14,7 @@ class EnvironmentLastUpdated {
   /// [createdAt] The Created At date of the MWAA Environment
   /// [errors] Optional.
   /// [status] The status of the Amazon MWAA Environment
-  EnvironmentLastUpdated({
+  const EnvironmentLastUpdated({
     this.createdAt,
     this.errors,
     this.status,

@@ -28,7 +28,7 @@ class GetPublicIpAddressPoolsResult {
   /// [publicIpAddressPoolIds] Optional.
   /// [publicIpAddressPoolName] Optional.
   /// [status] Optional.
-  GetPublicIpAddressPoolsResult({
+  const GetPublicIpAddressPoolsResult({
     required this.id,
     required this.ids,
     this.isp,

@@ -50,7 +50,7 @@ class RepositoryAssociationState {
   /// [stateReason] A description of why the repository association is in the current state.
   /// [tags] Optional.
   /// [tagsAll] Optional.
-  RepositoryAssociationState({
+  const RepositoryAssociationState({
     this.arn,
     this.associationId,
     this.connectionArn,

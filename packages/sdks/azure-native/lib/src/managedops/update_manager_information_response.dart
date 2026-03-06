@@ -9,7 +9,7 @@ class UpdateManagerInformationResponse {
 
   /// Creates a new [UpdateManagerInformationResponse].
   /// [enablementStatus] Indicates whether the service is enabled.
-  UpdateManagerInformationResponse({
+  const UpdateManagerInformationResponse({
     required this.enablementStatus,
   });
 

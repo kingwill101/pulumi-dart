@@ -9,7 +9,7 @@ class PipelineResponseFolder {
 
   /// Creates a new [PipelineResponseFolder].
   /// [name] The name of the folder that this Pipeline is in.
-  PipelineResponseFolder({
+  const PipelineResponseFolder({
     this.name,
   });
 

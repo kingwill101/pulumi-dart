@@ -11,7 +11,7 @@ class GuardrailActionTransferAgent {
 
   /// Creates a new [GuardrailActionTransferAgent].
   /// [agent] The name of the agent to transfer the conversation to. The agent must be
-  GuardrailActionTransferAgent({
+  const GuardrailActionTransferAgent({
     required this.agent,
   });
 

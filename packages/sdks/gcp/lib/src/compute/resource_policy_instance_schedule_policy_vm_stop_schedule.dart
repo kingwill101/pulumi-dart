@@ -8,7 +8,7 @@ class ResourcePolicyInstanceSchedulePolicyVmStopSchedule {
 
   /// Creates a new [ResourcePolicyInstanceSchedulePolicyVmStopSchedule].
   /// [schedule] Specifies the frequency for the operation, using the unix-cron format.
-  ResourcePolicyInstanceSchedulePolicyVmStopSchedule({
+  const ResourcePolicyInstanceSchedulePolicyVmStopSchedule({
     required this.schedule,
   });
 

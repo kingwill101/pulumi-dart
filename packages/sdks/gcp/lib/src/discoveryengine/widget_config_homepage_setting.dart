@@ -10,7 +10,7 @@ class WidgetConfigHomepageSetting {
 
   /// Creates a new [WidgetConfigHomepageSetting].
   /// [shortcuts] The shortcuts to display on the homepage.
-  WidgetConfigHomepageSetting({
+  const WidgetConfigHomepageSetting({
     this.shortcuts,
   });
 

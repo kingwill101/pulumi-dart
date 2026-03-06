@@ -14,7 +14,7 @@ class TriggerRecurrenceSchedule {
   /// [atTheseHours] Specifies a list of hours when the trigger should run. Valid values are between 0 and 23.
   /// [atTheseMinutes] Specifies a list of minutes when the trigger should run. Valid values are between 0 and 59.
   /// [onTheseDays] Specifies a list of days when the trigger should run. Valid values include `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday`, and `Sunday`.
-  TriggerRecurrenceSchedule({
+  const TriggerRecurrenceSchedule({
     this.atTheseHours,
     this.atTheseMinutes,
     this.onTheseDays,

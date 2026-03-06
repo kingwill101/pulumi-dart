@@ -13,7 +13,7 @@ class IfConditionResponse {
   /// Creates a new [IfConditionResponse].
   /// [condition] Condition predicate to evaluate each object. See https://aka.ms/storagetaskconditions for valid properties and operators.
   /// [operations] List of operations to execute when the condition predicate satisfies.
-  IfConditionResponse({
+  const IfConditionResponse({
     required this.condition,
     required this.operations,
   });

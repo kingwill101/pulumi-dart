@@ -15,7 +15,7 @@ class GetAttestationAtResourceGroupArgs {
   /// Creates a new [GetAttestationAtResourceGroupArgs].
   /// [attestationName] The name of the attestation.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetAttestationAtResourceGroupArgs({
+  const GetAttestationAtResourceGroupArgs({
     required this.attestationName,
     required this.resourceGroupName,
   });

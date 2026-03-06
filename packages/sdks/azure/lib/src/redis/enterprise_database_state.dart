@@ -44,7 +44,7 @@ class EnterpriseDatabaseState {
   /// [port] TCP port of the database endpoint. Specified at create time. Defaults to an available port. Changing this forces a new Redis Enterprise Database to be created. Defaults to `10000`.
   /// [primaryAccessKey] The Primary Access Key for the Redis Enterprise Database Instance.
   /// [secondaryAccessKey] The Secondary Access Key for the Redis Enterprise Database Instance.
-  EnterpriseDatabaseState({
+  const EnterpriseDatabaseState({
     this.clientProtocol,
     this.clusterId,
     this.clusteringPolicy,

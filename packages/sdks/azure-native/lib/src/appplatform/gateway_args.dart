@@ -26,7 +26,7 @@ class GatewayArgs {
   /// [resourceGroupName] The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
   /// [serviceName] The name of the Service resource.
   /// [sku] Sku of the Spring Cloud Gateway resource
-  GatewayArgs({
+  const GatewayArgs({
     this.gatewayName,
     this.properties,
     required this.resourceGroupName,

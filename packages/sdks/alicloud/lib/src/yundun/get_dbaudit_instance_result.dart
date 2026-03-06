@@ -22,7 +22,7 @@ class GetDBAuditInstanceResult {
   /// [instances] Required.
   /// [outputFile] Optional.
   /// [tags] Optional.
-  GetDBAuditInstanceResult({
+  const GetDBAuditInstanceResult({
     this.descriptionRegex,
     required this.descriptions,
     required this.id,

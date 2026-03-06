@@ -28,7 +28,7 @@ class LoggingConfigurationState {
   /// [state] State of the Logging Configuration.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  LoggingConfigurationState({
+  const LoggingConfigurationState({
     this.arn,
     this.destinationConfiguration,
     this.name,

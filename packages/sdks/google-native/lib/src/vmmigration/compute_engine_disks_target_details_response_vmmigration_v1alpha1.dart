@@ -17,7 +17,7 @@ class ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1 {
   /// [disks] The details of each created Persistent Disk.
   /// [disksTargetDetails] Details of the disks-only migration target.
   /// [vmTargetDetails] Details for the VM the migrated data disks are attached to.
-  ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1({
+  const ComputeEngineDisksTargetDetailsResponseVmmigrationV1alpha1({
     required this.disks,
     required this.disksTargetDetails,
     required this.vmTargetDetails,

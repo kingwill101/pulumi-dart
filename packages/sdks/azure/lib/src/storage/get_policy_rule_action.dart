@@ -17,7 +17,7 @@ class GetPolicyRuleAction {
   /// [baseBlobs] A `base_blob` block as documented below.
   /// [snapshots] A `snapshot` block as documented below.
   /// [versions] A `version` block as documented below.
-  GetPolicyRuleAction({
+  const GetPolicyRuleAction({
     required this.baseBlobs,
     required this.snapshots,
     required this.versions,

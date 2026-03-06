@@ -32,7 +32,7 @@ class TenantArgs {
   /// [displayName] Human friendly display name of the tenant.
   /// [enableEmailLinkSignin] Whether to enable email link user authentication.
   /// [project] The ID of the project in which the resource belongs.
-  TenantArgs({
+  const TenantArgs({
     this.allowPasswordSignup,
     this.client,
     this.disableAuth,

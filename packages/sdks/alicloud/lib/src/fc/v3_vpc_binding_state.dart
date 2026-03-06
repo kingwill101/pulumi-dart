@@ -12,7 +12,7 @@ class V3VpcBindingState {
   /// Creates a new [V3VpcBindingState].
   /// [functionName] Function Name
   /// [vpcId] VPC instance ID
-  V3VpcBindingState({
+  const V3VpcBindingState({
     this.functionName,
     this.vpcId,
   });

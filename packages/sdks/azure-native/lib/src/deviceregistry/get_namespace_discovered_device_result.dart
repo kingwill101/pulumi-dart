@@ -62,7 +62,7 @@ class GetNamespaceDiscoveredDeviceResult {
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
   /// [version] An integer that is incremented each time the resource is modified.
-  GetNamespaceDiscoveredDeviceResult({
+  const GetNamespaceDiscoveredDeviceResult({
     this.attributes,
     required this.azureApiVersion,
     required this.discoveryId,

@@ -109,7 +109,7 @@ class V3FunctionArgs {
   /// [tags] The tag of the resource
   /// [timeout] The maximum running time of the function, in seconds.
   /// [vpcConfig] VPC configuration. After this parameter is configured, the function can access the specified VPC resources. See `vpc_config` below.
-  V3FunctionArgs({
+  const V3FunctionArgs({
     this.code,
     this.cpu,
     this.customContainerConfig,

@@ -12,7 +12,7 @@ class ListSaasResourceAccessTokenArgs {
 
   /// Creates a new [ListSaasResourceAccessTokenArgs].
   /// [resourceId] The Saas resource ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000)
-  ListSaasResourceAccessTokenArgs({
+  const ListSaasResourceAccessTokenArgs({
     required this.resourceId,
   });
 

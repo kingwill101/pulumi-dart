@@ -91,7 +91,7 @@ class GetJobResult {
   /// [tempFiles] A set of files the system should be aware of that are used for temporary storage. These temporary files will be removed on job completion. No duplicates are allowed. No file patterns are supported. The supported files are: Google Cloud Storage: storage.googleapis.com/{bucket}/{object} bucket.storage.googleapis.com/{object}
   /// [transformNameMapping] The map of transform name prefixes of the job to be replaced to the corresponding name prefixes of the new job.
   /// [type] The type of Cloud Dataflow job.
-  GetJobResult({
+  const GetJobResult({
     required this.clientRequestId,
     required this.createTime,
     required this.createdFromSnapshotId,

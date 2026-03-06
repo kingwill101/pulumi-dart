@@ -14,7 +14,7 @@ class GetSchemaDiscoveryengineV1betaResult {
   /// [jsonSchema] The JSON representation of the schema.
   /// [name] Immutable. The full resource name of the schema, in the format of `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store}/schemas/{schema}`. This field must be a UTF-8 encoded string with a length limit of 1024 characters.
   /// [structSchema] The structured representation of the schema.
-  GetSchemaDiscoveryengineV1betaResult({
+  const GetSchemaDiscoveryengineV1betaResult({
     required this.jsonSchema,
     required this.name,
     required this.structSchema,

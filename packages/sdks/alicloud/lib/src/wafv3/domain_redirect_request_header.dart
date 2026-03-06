@@ -11,7 +11,7 @@ class DomainRedirectRequestHeader {
   /// Creates a new [DomainRedirectRequestHeader].
   /// [key] Specified custom request header fields
   /// [value] Customize the value of the request header field.
-  DomainRedirectRequestHeader({
+  const DomainRedirectRequestHeader({
     this.key,
     this.value,
   });

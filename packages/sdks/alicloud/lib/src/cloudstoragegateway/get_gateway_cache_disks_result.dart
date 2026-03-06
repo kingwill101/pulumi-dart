@@ -20,7 +20,7 @@ class GetGatewayCacheDisksResult {
   /// [ids] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetGatewayCacheDisksResult({
+  const GetGatewayCacheDisksResult({
     required this.disks,
     required this.gatewayId,
     required this.id,

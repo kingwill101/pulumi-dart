@@ -13,7 +13,7 @@ class GetClusterLogDeliveryConfiguration {
   /// [destinationType] Required.
   /// [logFormat] Required.
   /// [logType] Required.
-  GetClusterLogDeliveryConfiguration({
+  const GetClusterLogDeliveryConfiguration({
     required this.destination,
     required this.destinationType,
     required this.logFormat,

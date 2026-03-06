@@ -37,7 +37,7 @@ class GitHubOwnerPropertiesResponse {
   /// [provisioningState] The provisioning state of the resource.
   /// [provisioningStatusMessage] Gets or sets resource status message.
   /// [provisioningStatusUpdateTimeUtc] Gets or sets time when resource was last checked.
-  GitHubOwnerPropertiesResponse({
+  const GitHubOwnerPropertiesResponse({
     required this.gitHubInternalId,
     this.onboardingState,
     required this.ownerUrl,

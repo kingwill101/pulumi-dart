@@ -18,7 +18,7 @@ class CloudTieringCachePerformanceResponse {
   /// [cacheHitBytesPercent] Percentage of total bytes (hit + miss) that were served from the local server
   /// [cacheMissBytes] Count of bytes that were served from the cloud
   /// [lastUpdatedTimestamp] Last updated timestamp
-  CloudTieringCachePerformanceResponse({
+  const CloudTieringCachePerformanceResponse({
     required this.cacheHitBytes,
     required this.cacheHitBytesPercent,
     required this.cacheMissBytes,

@@ -9,7 +9,7 @@ class BareMetalManualLbConfigResponse {
 
   /// Creates a new [BareMetalManualLbConfigResponse].
   /// [enabled] Whether manual load balancing is enabled.
-  BareMetalManualLbConfigResponse({
+  const BareMetalManualLbConfigResponse({
     required this.enabled,
   });
 

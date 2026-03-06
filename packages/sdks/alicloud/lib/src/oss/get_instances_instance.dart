@@ -157,7 +157,7 @@ class GetInstancesInstance {
   /// [tableQuota] (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
   /// [tags] A map of tags assigned to the instance. It must be in the format:
   /// [userId] The user id of the instance.
-  GetInstancesInstance({
+  const GetInstancesInstance({
     required this.clusterType,
     required this.createTime,
     required this.description,

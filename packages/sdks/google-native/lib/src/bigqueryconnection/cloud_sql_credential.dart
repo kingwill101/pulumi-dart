@@ -12,7 +12,7 @@ class CloudSqlCredential {
   /// Creates a new [CloudSqlCredential].
   /// [password] The password for the credential.
   /// [username] The username for the credential.
-  CloudSqlCredential({
+  const CloudSqlCredential({
     this.password,
     this.username,
   });

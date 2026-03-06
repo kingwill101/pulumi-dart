@@ -40,7 +40,7 @@ class CostCategoryState {
   /// [splitChargeRules] Configuration block for the split charge rules used to allocate your charges between your Cost Category values. See below.
   /// [tags] Key-value mapping of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] A map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  CostCategoryState({
+  const CostCategoryState({
     this.arn,
     this.defaultValue,
     this.effectiveEnd,

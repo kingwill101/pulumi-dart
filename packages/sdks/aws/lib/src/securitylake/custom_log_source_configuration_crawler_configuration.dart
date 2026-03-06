@@ -8,7 +8,7 @@ class CustomLogSourceConfigurationCrawlerConfiguration {
 
   /// Creates a new [CustomLogSourceConfigurationCrawlerConfiguration].
   /// [roleArn] The Amazon Resource Name (ARN) of the AWS Identity and Access Management (IAM) role to be used by the AWS Glue crawler.
-  CustomLogSourceConfigurationCrawlerConfiguration({
+  const CustomLogSourceConfigurationCrawlerConfiguration({
     required this.roleArn,
   });
 

@@ -12,7 +12,7 @@ class PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingC
   /// Creates a new [PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl].
   /// [region] AWS region.
   /// [routingControls] List of routing controls. See Routing Control below.
-  PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl({
+  const PlanWorkflowStepParallelConfigStepArcRoutingControlConfigRegionAndRoutingControl({
     required this.region,
     this.routingControls,
   });

@@ -16,7 +16,7 @@ class GetCloudVmClustersResult {
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [location] Required.
   /// [project] Optional.
-  GetCloudVmClustersResult({
+  const GetCloudVmClustersResult({
     required this.cloudVmClusters,
     required this.id,
     required this.location,

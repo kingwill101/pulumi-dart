@@ -50,7 +50,7 @@ class GetServiceEndpointPolicyResult {
   /// [subnets] A collection of references to subnets.
   /// [tags] Resource tags.
   /// [type] Resource type.
-  GetServiceEndpointPolicyResult({
+  const GetServiceEndpointPolicyResult({
     required this.azureApiVersion,
     this.contextualServiceEndpointPolicies,
     required this.etag,

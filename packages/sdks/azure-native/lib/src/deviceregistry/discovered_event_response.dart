@@ -22,7 +22,7 @@ class DiscoveredEventResponse {
   /// [lastUpdatedOn] UTC timestamp indicating when the event was added or modified.
   /// [name] The name of the event.
   /// [topic] Object that describes the topic information for the specific event.
-  DiscoveredEventResponse({
+  const DiscoveredEventResponse({
     this.eventConfiguration,
     required this.eventNotifier,
     this.lastUpdatedOn,

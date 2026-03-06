@@ -31,7 +31,7 @@ class ManagedNetworkSettings {
   /// [managedNetworkKind] The Kind of the managed network. Users can switch from V1 to V2 for granular access controls, but cannot switch back to V1 once V2 is enabled.
   /// [outboundRules] Optional.
   /// [status] Status of the Provisioning for the managed network of a machine learning workspace.
-  ManagedNetworkSettings({
+  const ManagedNetworkSettings({
     this.enableFirewallLog,
     this.enableNetworkMonitor,
     this.firewallPublicIpAddress,

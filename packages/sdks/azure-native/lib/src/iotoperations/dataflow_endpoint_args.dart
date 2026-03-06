@@ -26,7 +26,7 @@ class DataflowEndpointArgs {
   /// [instanceName] Name of instance.
   /// [properties] The resource-specific properties for this resource.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  DataflowEndpointArgs({
+  const DataflowEndpointArgs({
     this.dataflowEndpointName,
     required this.extendedLocation,
     required this.instanceName,

@@ -41,7 +41,7 @@ class ServerExtendedAuditingPolicyArgs {
   /// [storageAccountAccessKeyIsSecondary] Is `storage_account_access_key` value the storage's secondary key?
   /// [storageAccountSubscriptionId] The ID of the Subscription containing the Storage Account.
   /// [storageEndpoint] The blob storage endpoint (e.g. &lt;https://example.blob.core.windows.net&gt;). This blob storage will hold all extended auditing logs.
-  ServerExtendedAuditingPolicyArgs({
+  const ServerExtendedAuditingPolicyArgs({
     this.auditActionsAndGroups,
     this.enabled,
     this.logMonitoringEnabled,

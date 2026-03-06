@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2SaveFindings {
 
   /// Creates a new [GooglePrivacyDlpV2SaveFindings].
   /// [outputConfig] Location to store findings outside of DLP.
-  GooglePrivacyDlpV2SaveFindings({
+  const GooglePrivacyDlpV2SaveFindings({
     this.outputConfig,
   });
 

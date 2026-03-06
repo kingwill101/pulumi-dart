@@ -27,7 +27,7 @@ class StaticSiteUserProvidedFunctionAppResponse {
   /// [kind] Kind of resource.
   /// [name] Resource Name.
   /// [type] Resource type.
-  StaticSiteUserProvidedFunctionAppResponse({
+  const StaticSiteUserProvidedFunctionAppResponse({
     required this.createdOn,
     this.functionAppRegion,
     this.functionAppResourceId,

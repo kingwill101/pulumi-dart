@@ -21,7 +21,7 @@ class ListNotificationHubKeysArgs {
   /// [namespaceName] Namespace name
   /// [notificationHubName] Notification Hub name
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  ListNotificationHubKeysArgs({
+  const ListNotificationHubKeysArgs({
     required this.authorizationRuleName,
     required this.namespaceName,
     required this.notificationHubName,

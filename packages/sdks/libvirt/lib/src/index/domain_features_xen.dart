@@ -13,7 +13,7 @@ class DomainFeaturesXen {
   /// Creates a new [DomainFeaturesXen].
   /// [e820host] Enables the use of the e820 memory map for the Xen hypervisor, improving memory management.
   /// [passthrough] Configures the passthrough feature for Xen, allowing direct access to host devices from the guest.
-  DomainFeaturesXen({
+  const DomainFeaturesXen({
     this.e820host,
     this.passthrough,
   });

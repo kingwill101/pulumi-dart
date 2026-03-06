@@ -12,7 +12,7 @@ class Label {
   /// Creates a new [Label].
   /// [key] The key of the label.
   /// [value] The value of the label.
-  Label({
+  const Label({
     required this.key,
     required this.value,
   });

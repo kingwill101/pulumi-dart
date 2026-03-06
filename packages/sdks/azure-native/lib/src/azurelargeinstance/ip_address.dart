@@ -9,7 +9,7 @@ class IpAddress {
 
   /// Creates a new [IpAddress].
   /// [ipAddress] Specifies the IP address of the network interface.
-  IpAddress({
+  const IpAddress({
     this.ipAddress,
   });
 

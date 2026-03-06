@@ -19,7 +19,7 @@ class SnapshotSettingsArgs {
   /// Creates a new [SnapshotSettingsArgs].
   /// [project] The ID of the project in which the resource belongs.
   /// [storageLocation] Policy of which storage location is going to be resolved, and additional data
-  SnapshotSettingsArgs({
+  const SnapshotSettingsArgs({
     this.project,
     required this.storageLocation,
   });

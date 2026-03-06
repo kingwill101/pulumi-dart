@@ -12,7 +12,7 @@ class AzureFirewallApplicationRuleProtocolResponse {
   /// Creates a new [AzureFirewallApplicationRuleProtocolResponse].
   /// [port] Port number for the protocol, cannot be greater than 64000. This field is optional.
   /// [protocolType] Protocol type.
-  AzureFirewallApplicationRuleProtocolResponse({
+  const AzureFirewallApplicationRuleProtocolResponse({
     this.port,
     this.protocolType,
   });

@@ -33,7 +33,7 @@ class FaqArgs {
   /// [roleArn] The Amazon Resource Name (ARN) of a role with permission to access the S3 bucket that contains the FAQs. For more information, see [IAM Roles for Amazon Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
   /// [s3Path] The S3 location of the FAQ input data. Detailed below.
   /// [tags] Optional.
-  FaqArgs({
+  const FaqArgs({
     this.description,
     this.fileFormat,
     required this.indexId,

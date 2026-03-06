@@ -24,7 +24,7 @@ class AppGroupQuota {
   /// [docSize] Storage Size. Unit: GB.
   /// [qps] Search request. Unit: times/second.
   /// [spec] Specification. Valid values:
-  AppGroupQuota({
+  const AppGroupQuota({
     required this.computeResource,
     required this.docSize,
     this.qps,

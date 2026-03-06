@@ -10,7 +10,7 @@ class GooglePrivacyDlpV2SensitivityScore {
 
   /// Creates a new [GooglePrivacyDlpV2SensitivityScore].
   /// [score] The sensitivity score applied to the resource.
-  GooglePrivacyDlpV2SensitivityScore({
+  const GooglePrivacyDlpV2SensitivityScore({
     this.score,
   });
 

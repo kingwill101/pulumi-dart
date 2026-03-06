@@ -9,7 +9,7 @@ class UniqueKeyResponse {
 
   /// Creates a new [UniqueKeyResponse].
   /// [paths] List of paths must be unique for each document in the Azure Cosmos DB service
-  UniqueKeyResponse({
+  const UniqueKeyResponse({
     this.paths,
   });
 

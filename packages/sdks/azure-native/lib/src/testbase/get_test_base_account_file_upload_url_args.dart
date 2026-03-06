@@ -21,7 +21,7 @@ class GetTestBaseAccountFileUploadUrlArgs {
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [resourceType] Resource type for file uploading.
   /// [testBaseAccountName] The resource name of the Test Base Account.
-  GetTestBaseAccountFileUploadUrlArgs({
+  const GetTestBaseAccountFileUploadUrlArgs({
     this.blobName,
     required this.resourceGroupName,
     this.resourceType,

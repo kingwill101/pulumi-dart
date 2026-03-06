@@ -37,7 +37,7 @@ class MarkupRuleArgs {
   /// [name] Markup rule name.
   /// [percentage] The markup percentage of the rule.
   /// [startDate] Starting date of the markup rule.
-  MarkupRuleArgs({
+  const MarkupRuleArgs({
     required this.billingAccountId,
     required this.billingProfileId,
     required this.customerDetails,

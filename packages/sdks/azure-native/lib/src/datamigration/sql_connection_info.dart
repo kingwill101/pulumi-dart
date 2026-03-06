@@ -49,7 +49,7 @@ class SqlConnectionInfo {
   /// [trustServerCertificate] Whether to trust the server certificate
   /// [type] Type of connection info
   /// [userName] User name
-  SqlConnectionInfo({
+  const SqlConnectionInfo({
     this.additionalSettings,
     this.authentication,
     required this.dataSource,

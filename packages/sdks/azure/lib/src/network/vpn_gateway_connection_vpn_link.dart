@@ -55,7 +55,7 @@ class VpnGatewayConnectionVpnLink {
   /// [routeWeight] Routing weight for this VPN Link Connection. Defaults to `0`.
   /// [sharedKey] SharedKey for this VPN Link Connection.
   /// [vpnSiteLinkId] The ID of the connected VPN Site Link. Changing this forces a new VPN Gateway Connection to be created.
-  VpnGatewayConnectionVpnLink({
+  const VpnGatewayConnectionVpnLink({
     this.bandwidthMbps,
     this.bgpEnabled,
     this.connectionMode,

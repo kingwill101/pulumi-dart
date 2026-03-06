@@ -12,7 +12,7 @@ class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek {
   /// Creates a new [GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek].
   /// [day] The day of the week to create the snapshot. e.g. MONDAY Possible values: ["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
   /// [startTime] Time within the window to start the operations.
-  GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek({
+  const GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek({
     required this.day,
     required this.startTime,
   });

@@ -15,7 +15,7 @@ class GetVirtualNetworkArgs {
   /// Creates a new [GetVirtualNetworkArgs].
   /// [name] Specifies the name of the Virtual Network.
   /// [resourceGroupName] Specifies the name of the resource group the Virtual Network is located in.
-  GetVirtualNetworkArgs({
+  const GetVirtualNetworkArgs({
     required this.name,
     required this.resourceGroupName,
   });

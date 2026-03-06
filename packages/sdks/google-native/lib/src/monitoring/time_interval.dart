@@ -12,7 +12,7 @@ class TimeInterval {
   /// Creates a new [TimeInterval].
   /// [endTime] The end of the time interval.
   /// [startTime] Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time.
-  TimeInterval({
+  const TimeInterval({
     required this.endTime,
     this.startTime,
   });

@@ -23,7 +23,7 @@ class GetServerFirewallRulesRule {
   /// [port] The port range of the firewall rule.
   /// [remark] The remarks of the firewall rule.
   /// [ruleProtocol] The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
-  GetServerFirewallRulesRule({
+  const GetServerFirewallRulesRule({
     required this.firewallRuleId,
     required this.id,
     required this.instanceId,

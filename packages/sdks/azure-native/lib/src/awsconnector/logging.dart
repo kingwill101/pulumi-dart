@@ -19,7 +19,7 @@ class Logging {
   /// [clusterLogging] &lt;p&gt;The cluster control plane logging configuration for your cluster.&lt;/p&gt;
   /// [includeCookies] Specifies whether you want CloudFront to include cookies in access logs, specify ``true`` for ``IncludeCookies``. If you choose to include cookies in logs, CloudFront logs all cookies regardless of how you configure the cache behaviors for this distribution. If you don't want to include cookies when you create a distribution or if you want to disable include cookies for an existing distribution, specify ``false`` for ``IncludeCookies``.
   /// [prefix] An optional string that you want CloudFront to prefix to the access log ``filenames`` for this distribution, for example, ``myprefix/``. If you want to enable logging, but you don't want to specify a prefix, you still must include an empty ``Prefix`` element in the ``Logging`` element.
-  Logging({
+  const Logging({
     this.bucket,
     this.clusterLogging,
     this.includeCookies,

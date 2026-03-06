@@ -24,7 +24,7 @@ class BackupInstancePostgresqlFlexibleServerState {
   /// [protectionState] The protection state of the Backup Instance PostgreSQL Flexible Server.
   /// [serverId] The ID of the source server. Changing this forces a new resource to be created.
   /// [vaultId] The ID of the Backup Vault within which the PostgreSQL Flexible Server Backup Instance should exist. Changing this forces a new resource to be created.
-  BackupInstancePostgresqlFlexibleServerState({
+  const BackupInstancePostgresqlFlexibleServerState({
     this.backupPolicyId,
     this.location,
     this.name,

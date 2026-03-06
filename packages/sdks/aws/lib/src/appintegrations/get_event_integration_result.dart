@@ -29,7 +29,7 @@ class GetEventIntegrationResult {
   /// [name] Required.
   /// [region] Required.
   /// [tags] Metadata that you can assign to help organize the report plans you create.
-  GetEventIntegrationResult({
+  const GetEventIntegrationResult({
     required this.arn,
     required this.description,
     required this.eventFilters,

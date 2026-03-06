@@ -23,7 +23,7 @@ class GetInstanceArgs {
   /// [location] The name of the location of the instance. This
   /// [name] The name of a Filestore instance.
   /// [project] The project in which the resource belongs. If it
-  GetInstanceArgs({
+  const GetInstanceArgs({
     this.location,
     required this.name,
     this.project,

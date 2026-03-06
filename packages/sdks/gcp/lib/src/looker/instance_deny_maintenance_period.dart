@@ -20,7 +20,7 @@ class InstanceDenyMaintenancePeriod {
   /// [endDate] Required. Start date of the deny maintenance period
   /// [startDate] Required. Start date of the deny maintenance period
   /// [time] Required. Start time of the window in UTC time.
-  InstanceDenyMaintenancePeriod({
+  const InstanceDenyMaintenancePeriod({
     required this.endDate,
     required this.startDate,
     required this.time,

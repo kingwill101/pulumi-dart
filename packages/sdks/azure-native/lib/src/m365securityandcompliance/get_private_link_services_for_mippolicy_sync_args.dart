@@ -15,7 +15,7 @@ class GetPrivateLinkServicesForMIPPolicySyncArgs {
   /// Creates a new [GetPrivateLinkServicesForMIPPolicySyncArgs].
   /// [resourceGroupName] The name of the resource group that contains the service instance.
   /// [resourceName] The name of the service instance.
-  GetPrivateLinkServicesForMIPPolicySyncArgs({
+  const GetPrivateLinkServicesForMIPPolicySyncArgs({
     required this.resourceGroupName,
     required this.resourceName,
   });

@@ -21,7 +21,7 @@ class GetEnvServiceMonitorsArgs {
   /// [ids] A list of ARMS Env Service Monitor IDs.
   /// [nameRegex] A regex string to filter results by ARMS Env Service Monitor name.
   /// [outputFile] File name where to save data source results (after running `pulumi preview`).
-  GetEnvServiceMonitorsArgs({
+  const GetEnvServiceMonitorsArgs({
     required this.environmentId,
     this.ids,
     this.nameRegex,

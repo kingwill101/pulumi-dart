@@ -10,7 +10,7 @@ class VolumeNodeAffinity {
 
   /// Creates a new [VolumeNodeAffinity].
   /// [required] required specifies hard node constraints that must be met.
-  VolumeNodeAffinity({
+  const VolumeNodeAffinity({
     this.required,
   });
 

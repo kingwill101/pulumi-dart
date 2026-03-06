@@ -11,7 +11,7 @@ class ClusterNodeGroupAckConfigNodeSelector {
   /// Creates a new [ClusterNodeGroupAckConfigNodeSelector].
   /// [key] The tag key for this scaling rule specific metrics trigger.
   /// [value] The tag value for this scaling rule specific metrics trigger.
-  ClusterNodeGroupAckConfigNodeSelector({
+  const ClusterNodeGroupAckConfigNodeSelector({
     required this.key,
     this.value,
   });

@@ -25,7 +25,7 @@ class GetServerConfigResult {
   /// [validImageTypes] List of valid image types.
   /// [validMasterVersions] List of valid master versions, in descending order.
   /// [validNodeVersions] List of valid node upgrade target versions, in descending order.
-  GetServerConfigResult({
+  const GetServerConfigResult({
     required this.channels,
     required this.defaultClusterVersion,
     required this.defaultImageType,

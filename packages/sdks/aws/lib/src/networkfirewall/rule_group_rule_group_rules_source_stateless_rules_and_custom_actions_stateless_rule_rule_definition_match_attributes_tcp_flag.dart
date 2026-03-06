@@ -13,7 +13,7 @@ class RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRu
   /// Creates a new [RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag].
   /// [flags] Set of flags to look for in a packet. This setting can only specify values that are also specified in `masks`.
   /// [masks] Set of flags to consider in the inspection. To inspect all flags, leave this empty.
-  RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag({
+  const RuleGroupRuleGroupRulesSourceStatelessRulesAndCustomActionsStatelessRuleRuleDefinitionMatchAttributesTcpFlag({
     required this.flags,
     this.masks,
   });

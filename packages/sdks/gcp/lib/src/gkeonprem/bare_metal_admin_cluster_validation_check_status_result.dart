@@ -24,7 +24,7 @@ class BareMetalAdminClusterValidationCheckStatusResult {
   /// [details] (Output)
   /// [options] (Output)
   /// [reason] (Output)
-  BareMetalAdminClusterValidationCheckStatusResult({
+  const BareMetalAdminClusterValidationCheckStatusResult({
     this.category,
     this.description,
     this.details,

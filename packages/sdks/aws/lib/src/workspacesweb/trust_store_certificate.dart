@@ -23,7 +23,7 @@ class TrustStoreCertificate {
   /// [notValidBefore] Date and time when the certificate becomes valid in RFC3339 format.
   /// [subject] Certificate subject.
   /// [thumbprint] Certificate thumbprint.
-  TrustStoreCertificate({
+  const TrustStoreCertificate({
     required this.body,
     this.issuer,
     this.notValidAfter,

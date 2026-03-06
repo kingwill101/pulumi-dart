@@ -24,7 +24,7 @@ class GetAccountsResult {
   /// [names] Required.
   /// [outputFile] Optional.
   /// [status] Optional.
-  GetAccountsResult({
+  const GetAccountsResult({
     required this.accounts,
     required this.dbInstanceId,
     required this.id,

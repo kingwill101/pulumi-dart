@@ -95,7 +95,7 @@ class GetKubernetesClusterResult {
   /// [systemData] Azure Resource Manager metadata containing createdBy and modifiedBy information.
   /// [tags] Resource tags.
   /// [type] The type of the resource. E.g. "Microsoft.Compute/virtualMachines" or "Microsoft.Storage/storageAccounts"
-  GetKubernetesClusterResult({
+  const GetKubernetesClusterResult({
     this.aadConfiguration,
     this.administratorConfiguration,
     required this.attachedNetworkIds,

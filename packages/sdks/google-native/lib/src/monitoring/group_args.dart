@@ -23,7 +23,7 @@ class GroupArgs {
   /// [isCluster] If true, the members of this group are considered to be a cluster. The system can perform additional analysis on groups that are clusters.
   /// [parentName] The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "".
   /// [project] Optional.
-  GroupArgs({
+  const GroupArgs({
     this.displayName,
     this.filter,
     this.isCluster,

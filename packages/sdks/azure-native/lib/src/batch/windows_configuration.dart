@@ -9,7 +9,7 @@ class WindowsConfiguration {
 
   /// Creates a new [WindowsConfiguration].
   /// [enableAutomaticUpdates] If omitted, the default value is true.
-  WindowsConfiguration({
+  const WindowsConfiguration({
     this.enableAutomaticUpdates,
   });
 

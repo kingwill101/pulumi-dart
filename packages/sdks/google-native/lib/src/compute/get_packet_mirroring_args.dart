@@ -15,7 +15,7 @@ class GetPacketMirroringArgs {
   /// [packetMirroring] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetPacketMirroringArgs({
+  const GetPacketMirroringArgs({
     required this.packetMirroring,
     this.project,
     required this.region,

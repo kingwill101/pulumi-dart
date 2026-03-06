@@ -31,7 +31,7 @@ class ServiceLevelState {
   /// [objective] The objective of the SLI, only one can be defined.
   /// [sliGuid] The unique entity identifier of the Service Level Indicator in New Relic.
   /// [sliId] The unique entity identifier of the Service Level Indicator.
-  ServiceLevelState({
+  const ServiceLevelState({
     this.description,
     this.events,
     this.guid,

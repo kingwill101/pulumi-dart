@@ -14,7 +14,7 @@ class GetCachePatchSchedule {
   /// [dayOfWeek] the Weekday name for the patch item
   /// [maintenanceWindow] The ISO 8601 timespan which specifies the amount of time the Redis Cache can be updated.
   /// [startHourUtc] The Start Hour for maintenance in UTC
-  GetCachePatchSchedule({
+  const GetCachePatchSchedule({
     required this.dayOfWeek,
     required this.maintenanceWindow,
     required this.startHourUtc,

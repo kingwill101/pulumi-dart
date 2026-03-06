@@ -9,7 +9,7 @@ class Metrics {
 
   /// Creates a new [Metrics].
   /// [prometheusPort] The prometheus port to expose the metrics.
-  Metrics({
+  const Metrics({
     this.prometheusPort,
   });
 

@@ -35,7 +35,7 @@ class GetGlobalAddressResult {
   /// [status] Indicates if the address is used. Possible values are: RESERVED or IN_USE.
   /// [subnetwork] Required.
   /// [users] Required.
-  GetGlobalAddressResult({
+  const GetGlobalAddressResult({
     required this.address,
     required this.addressType,
     required this.id,

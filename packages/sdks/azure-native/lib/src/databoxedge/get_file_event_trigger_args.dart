@@ -18,7 +18,7 @@ class GetFileEventTriggerArgs {
   /// [deviceName] The device name.
   /// [name] The trigger name.
   /// [resourceGroupName] The resource group name.
-  GetFileEventTriggerArgs({
+  const GetFileEventTriggerArgs({
     required this.deviceName,
     required this.name,
     required this.resourceGroupName,

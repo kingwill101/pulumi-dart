@@ -22,7 +22,7 @@ class GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   /// [statistic] Optional. The aggregate metric to evaluate.
   /// [strictMaxEnabled] Optional. Whether column statistic needs to be strictly lesser than ('&lt;') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false.
   /// [strictMinEnabled] Optional. Whether column statistic needs to be strictly greater than ('&gt;') the minimum, or if equality is allowed.Only relevant if a min_value has been defined. Default = false.
-  GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation({
+  const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation({
     this.maxValue,
     this.minValue,
     this.statistic,

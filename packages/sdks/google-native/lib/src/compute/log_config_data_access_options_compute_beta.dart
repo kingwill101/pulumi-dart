@@ -10,7 +10,7 @@ class LogConfigDataAccessOptionsComputeBeta {
 
   /// Creates a new [LogConfigDataAccessOptionsComputeBeta].
   /// [logMode] This is deprecated and has no effect. Do not use.
-  LogConfigDataAccessOptionsComputeBeta({
+  const LogConfigDataAccessOptionsComputeBeta({
     this.logMode,
   });
 

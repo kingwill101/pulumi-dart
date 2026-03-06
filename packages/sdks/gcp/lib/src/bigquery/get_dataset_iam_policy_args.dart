@@ -16,7 +16,7 @@ class GetDatasetIamPolicyArgs {
   /// Creates a new [GetDatasetIamPolicyArgs].
   /// [datasetId] The dataset ID.
   /// [project] The ID of the project in which the resource belongs.
-  GetDatasetIamPolicyArgs({
+  const GetDatasetIamPolicyArgs({
     required this.datasetId,
     this.project,
   });

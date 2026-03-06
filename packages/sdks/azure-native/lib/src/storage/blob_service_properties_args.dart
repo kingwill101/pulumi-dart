@@ -50,7 +50,7 @@ class BlobServicePropertiesArgs {
   /// [lastAccessTimeTrackingPolicy] The blob service property to configure last access time based tracking policy.
   /// [resourceGroupName] The name of the resource group within the user's subscription. The name is case insensitive.
   /// [restorePolicy] The blob service properties for blob restore policy.
-  BlobServicePropertiesArgs({
+  const BlobServicePropertiesArgs({
     required this.accountName,
     this.automaticSnapshotPolicyEnabled,
     this.blobServicesName,

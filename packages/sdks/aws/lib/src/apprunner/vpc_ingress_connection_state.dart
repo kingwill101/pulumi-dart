@@ -34,7 +34,7 @@ class VpcIngressConnectionState {
   /// [status] The current status of the VPC Ingress Connection.
   /// [tags] Key-value map of resource tags. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [tagsAll] Map of tags assigned to the resource, including those inherited from the provider `default_tags` configuration block.
-  VpcIngressConnectionState({
+  const VpcIngressConnectionState({
     this.arn,
     this.domainName,
     this.ingressVpcConfiguration,

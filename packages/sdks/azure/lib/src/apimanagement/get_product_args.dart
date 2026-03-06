@@ -18,7 +18,7 @@ class GetProductArgs {
   /// [apiManagementName] The Name of the API Management Service in which this Product exists.
   /// [productId] The Identifier for the API Management Product.
   /// [resourceGroupName] The Name of the Resource Group in which the API Management Service exists.
-  GetProductArgs({
+  const GetProductArgs({
     required this.apiManagementName,
     required this.productId,
     required this.resourceGroupName,

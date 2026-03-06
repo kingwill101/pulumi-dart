@@ -11,7 +11,7 @@ class GetV1IamPolicyArgs {
 
   /// Creates a new [GetV1IamPolicyArgs].
   /// [v1Id] Required.
-  GetV1IamPolicyArgs({
+  const GetV1IamPolicyArgs({
     required this.v1Id,
   });
 

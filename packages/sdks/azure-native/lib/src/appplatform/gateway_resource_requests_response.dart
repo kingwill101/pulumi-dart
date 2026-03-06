@@ -12,7 +12,7 @@ class GatewayResourceRequestsResponse {
   /// Creates a new [GatewayResourceRequestsResponse].
   /// [cpu] Cpu allocated to each Spring Cloud Gateway instance.
   /// [memory] Memory allocated to each Spring Cloud Gateway instance.
-  GatewayResourceRequestsResponse({
+  const GatewayResourceRequestsResponse({
     this.cpu,
     this.memory,
   });

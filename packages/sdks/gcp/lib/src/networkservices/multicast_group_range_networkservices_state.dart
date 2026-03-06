@@ -108,7 +108,7 @@ class MulticastGroupRangeNetworkservicesState {
   /// [states] (Output)
   /// [uniqueId] [Output only] The Google-generated UUID for the resource. This value is
   /// [updateTime] [Output only] The timestamp when the multicast group range was most
-  MulticastGroupRangeNetworkservicesState({
+  const MulticastGroupRangeNetworkservicesState({
     this.consumerAcceptLists,
     this.createTime,
     this.description,

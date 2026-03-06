@@ -186,7 +186,7 @@ class GetNodeTypeResult {
   /// [vmSharedGalleryImageId] Indicates the resource id of the vm shared galleries image. This parameter is used for custom vm image.
   /// [vmSize] The size of virtual machines in the pool. All virtual machines in a pool are the same size. For example, Standard_D3.
   /// [zones] Specifies the availability zones where the node type would span across. If the cluster is not spanning across availability zones, initiates az migration for the cluster.
-  GetNodeTypeResult({
+  const GetNodeTypeResult({
     this.additionalDataDisks,
     this.additionalNetworkInterfaceConfigurations,
     this.applicationPorts,

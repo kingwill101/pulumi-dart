@@ -12,7 +12,7 @@ class LakeHouseArtifactResponse {
   /// Creates a new [LakeHouseArtifactResponse].
   /// [artifactName] [Required] OneLake artifact name
   /// [artifactType] Enum to determine OneLake artifact type.
-  LakeHouseArtifactResponse({
+  const LakeHouseArtifactResponse({
     required this.artifactName,
     required this.artifactType,
   });

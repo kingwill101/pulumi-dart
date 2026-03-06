@@ -10,7 +10,7 @@ class GoogleCloudContentwarehouseV1PropertyArray {
 
   /// Creates a new [GoogleCloudContentwarehouseV1PropertyArray].
   /// [properties] List of property values.
-  GoogleCloudContentwarehouseV1PropertyArray({
+  const GoogleCloudContentwarehouseV1PropertyArray({
     this.properties,
   });
 

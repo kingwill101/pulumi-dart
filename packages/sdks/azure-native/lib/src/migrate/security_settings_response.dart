@@ -12,7 +12,7 @@ class SecuritySettingsResponse {
   /// Creates a new [SecuritySettingsResponse].
   /// [serverSecurityCostPerServerPerYear] Physical servers per administrator.
   /// [sqlServerSecurityCostPerServerPerYear] Virtual machines per administrator.
-  SecuritySettingsResponse({
+  const SecuritySettingsResponse({
     required this.serverSecurityCostPerServerPerYear,
     required this.sqlServerSecurityCostPerServerPerYear,
   });

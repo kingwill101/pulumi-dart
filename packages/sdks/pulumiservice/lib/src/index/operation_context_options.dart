@@ -17,7 +17,7 @@ class OperationContextOptions {
   /// [shell] The shell to use to run commands during the deployment. Defaults to 'bash'.
   /// [skipInstallDependencies] Skip the default dependency installation step - use this to customize the dependency installation (e.g. if using yarn or poetry)
   /// [skipIntermediateDeployments] Skip intermediate deployments (Consolidate multiple deployments of the same type into one deployment)
-  OperationContextOptions({
+  const OperationContextOptions({
     this.deleteAfterDestroy,
     this.shell,
     this.skipInstallDependencies,

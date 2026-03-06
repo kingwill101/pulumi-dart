@@ -9,7 +9,7 @@ class RemediationConfigurationExecutionControls {
 
   /// Creates a new [RemediationConfigurationExecutionControls].
   /// [ssmControls] Configuration block for SSM controls. See below.
-  RemediationConfigurationExecutionControls({
+  const RemediationConfigurationExecutionControls({
     this.ssmControls,
   });
 

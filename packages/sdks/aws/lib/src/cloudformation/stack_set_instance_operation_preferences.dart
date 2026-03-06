@@ -26,7 +26,7 @@ class StackSetInstanceOperationPreferences {
   /// [maxConcurrentPercentage] Maximum percentage of accounts in which to perform this operation at one time.
   /// [regionConcurrencyType] Concurrency type of deploying StackSets operations in Regions, could be in parallel or one Region at a time. Valid values are `SEQUENTIAL` and `PARALLEL`.
   /// [regionOrders] Order of the Regions in where you want to perform the stack operation.
-  StackSetInstanceOperationPreferences({
+  const StackSetInstanceOperationPreferences({
     this.concurrencyMode,
     this.failureToleranceCount,
     this.failureTolerancePercentage,

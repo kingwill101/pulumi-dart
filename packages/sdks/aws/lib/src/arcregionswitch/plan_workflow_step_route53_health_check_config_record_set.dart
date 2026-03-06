@@ -11,7 +11,7 @@ class PlanWorkflowStepRoute53HealthCheckConfigRecordSet {
   /// Creates a new [PlanWorkflowStepRoute53HealthCheckConfigRecordSet].
   /// [recordSetIdentifier] Record set identifier.
   /// [region] AWS region.
-  PlanWorkflowStepRoute53HealthCheckConfigRecordSet({
+  const PlanWorkflowStepRoute53HealthCheckConfigRecordSet({
     required this.recordSetIdentifier,
     required this.region,
   });

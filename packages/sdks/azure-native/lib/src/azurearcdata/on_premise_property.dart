@@ -15,7 +15,7 @@ class OnPremiseProperty {
   /// [id] A globally unique ID identifying the associated Kubernetes cluster
   /// [publicSigningKey] Certificate that contains the Kubernetes cluster public key used to verify signing
   /// [signingCertificateThumbprint] Unique thumbprint returned to customer to verify the certificate being uploaded
-  OnPremiseProperty({
+  const OnPremiseProperty({
     required this.id,
     required this.publicSigningKey,
     this.signingCertificateThumbprint,

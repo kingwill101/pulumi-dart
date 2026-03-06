@@ -15,7 +15,7 @@ class BucketServerSideEncryptionConfigurationRule {
   /// [applyServerSideEncryptionByDefault] Single object for setting server-side encryption by default. See below.
   /// [blockedEncryptionTypes] List of server-side encryption types to block for object uploads. Valid values are `SSE-C` (blocks uploads using server-side encryption with customer-provided keys) and `NONE` (unblocks all encryption types). Starting in March 2026, Amazon S3 will automatically block SSE-C uploads for all new buckets.
   /// [bucketKeyEnabled] Whether or not to use [Amazon S3 Bucket Keys](https://docs.aws.amazon.com/AmazonS3/latest/dev/bucket-key.html) for SSE-KMS.
-  BucketServerSideEncryptionConfigurationRule({
+  const BucketServerSideEncryptionConfigurationRule({
     this.applyServerSideEncryptionByDefault,
     this.blockedEncryptionTypes,
     this.bucketKeyEnabled,

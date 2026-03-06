@@ -23,7 +23,7 @@ class KafkaClusterRoles {
   /// [kafkaManagementNode] A `kafka_management_node` block as defined below.
   /// [workerNode] A `worker_node` block as defined below.
   /// [zookeeperNode] A `zookeeper_node` block as defined below.
-  KafkaClusterRoles({
+  const KafkaClusterRoles({
     required this.headNode,
     this.kafkaManagementNode,
     required this.workerNode,

@@ -15,7 +15,7 @@ class BindingResourceProperties {
   /// [bindingParameters] Binding parameters of the Binding resource
   /// [key] The key of the bound resource
   /// [resourceId] The Azure resource id of the bound resource
-  BindingResourceProperties({
+  const BindingResourceProperties({
     this.bindingParameters,
     this.key,
     this.resourceId,

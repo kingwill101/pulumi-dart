@@ -9,7 +9,7 @@ class GalleryImageStatusDownloadStatusResponse {
 
   /// Creates a new [GalleryImageStatusDownloadStatusResponse].
   /// [downloadSizeInMB] The downloaded sized of the image in MB
-  GalleryImageStatusDownloadStatusResponse({
+  const GalleryImageStatusDownloadStatusResponse({
     this.downloadSizeInMB,
   });
 

@@ -30,7 +30,7 @@ class RouteServerPeerArgs {
   /// [routeServerEndpointId] The ID of the route server endpoint for which to create a peer.
   /// [tags] A map of tags to assign to the resource. If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level.
   /// [timeouts] Optional.
-  RouteServerPeerArgs({
+  const RouteServerPeerArgs({
     required this.bgpOptions,
     required this.peerAddress,
     this.region,

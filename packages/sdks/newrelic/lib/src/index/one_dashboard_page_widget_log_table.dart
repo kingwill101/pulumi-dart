@@ -64,7 +64,7 @@ class OneDashboardPageWidgetLogTable {
   /// [width] (Optional) Width of the widget.  Valid values are `1` to `12` inclusive.  Defaults to `4`.
   /// [yAxisLeftMax] Optional.
   /// [yAxisLeftMin] , `y_axis_left_max` - (Optional) Adjust the Y axis to display the data within certain values by setting a minimum and maximum value for the axis for line charts and area charts. If no customization option is selected, dashboards automatically displays the full Y axis from 0 to the top value plus a margin.
-  OneDashboardPageWidgetLogTable({
+  const OneDashboardPageWidgetLogTable({
     this.colors,
     required this.column,
     this.dataFormats,

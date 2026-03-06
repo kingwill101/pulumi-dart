@@ -18,7 +18,7 @@ class GetMultiRegionAccessPointsResult {
   /// [accountId] Optional.
   /// [id] The provider-assigned unique ID for this managed resource.
   /// [region] Name of the Region.
-  GetMultiRegionAccessPointsResult({
+  const GetMultiRegionAccessPointsResult({
     required this.accessPoints,
     this.accountId,
     required this.id,

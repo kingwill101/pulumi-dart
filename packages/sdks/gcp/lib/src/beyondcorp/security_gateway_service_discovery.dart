@@ -10,7 +10,7 @@ class SecurityGatewayServiceDiscovery {
 
   /// Creates a new [SecurityGatewayServiceDiscovery].
   /// [apiGateway] External API configuration.
-  SecurityGatewayServiceDiscovery({
+  const SecurityGatewayServiceDiscovery({
     this.apiGateway,
   });
 

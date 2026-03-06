@@ -18,7 +18,7 @@ class SubscriptionNetworkManagerConnectionArgs {
   /// [description] A description of the network manager connection.
   /// [networkManagerConnectionName] Name for the network manager connection.
   /// [networkManagerId] Network Manager Id.
-  SubscriptionNetworkManagerConnectionArgs({
+  const SubscriptionNetworkManagerConnectionArgs({
     this.description,
     this.networkManagerConnectionName,
     this.networkManagerId,

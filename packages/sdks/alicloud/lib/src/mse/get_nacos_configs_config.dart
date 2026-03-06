@@ -38,7 +38,7 @@ class GetNacosConfigsConfig {
   /// [md5] The message digest of the configuration.
   /// [tags] The tags of the configuration.
   /// [type] The format of the configuration. Supported formats include TEXT, JSON, and XML.
-  GetNacosConfigsConfig({
+  const GetNacosConfigsConfig({
     required this.appName,
     required this.betaIps,
     required this.content,

@@ -41,7 +41,7 @@ class SslCertState {
   /// [project] The ID of the project in which the resource belongs. If it
   /// [serverCaCert] The CA cert of the server this client cert was generated from.
   /// [sha1Fingerprint] The SHA1 Fingerprint of the certificate.
-  SslCertState({
+  const SslCertState({
     this.cert,
     this.certSerialNumber,
     this.commonName,

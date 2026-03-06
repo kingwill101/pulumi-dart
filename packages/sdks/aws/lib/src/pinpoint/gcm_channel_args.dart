@@ -25,7 +25,7 @@ class GcmChannelArgs {
   /// [enabled] Whether the channel is enabled or disabled. Defaults to `true`.
   /// [region] Region where this resource will be [managed](https://docs.aws.amazon.com/general/latest/gr/rande.html#regional-endpoints). Defaults to the Region set in the provider configuration.
   /// [serviceJson] Optional.
-  GcmChannelArgs({
+  const GcmChannelArgs({
     this.apiKey,
     required this.applicationId,
     this.defaultAuthenticationMethod,

@@ -9,7 +9,7 @@ class VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames {
 
   /// Creates a new [VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames].
   /// [match] Criteria for determining a SAN's match.
-  VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames({
+  const VirtualNodeSpecListenerTlsValidationSubjectAlternativeNames({
     required this.match,
   });
 

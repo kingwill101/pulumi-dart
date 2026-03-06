@@ -19,7 +19,7 @@ class MachineExtensionInstanceView {
   /// [status] Instance view status.
   /// [type] Specifies the type of the extension; an example is "CustomScriptExtension".
   /// [typeHandlerVersion] Specifies the version of the script handler.
-  MachineExtensionInstanceView({
+  const MachineExtensionInstanceView({
     this.name,
     this.status,
     this.type,

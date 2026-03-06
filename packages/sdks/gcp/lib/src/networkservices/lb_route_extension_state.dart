@@ -50,7 +50,7 @@ class LbRouteExtensionState {
   /// [name] Name of the LbRouteExtension resource in the following format: projects/{project}/locations/{location}/lbRouteExtensions/{lbRouteExtension}
   /// [project] The ID of the project in which the resource belongs.
   /// [pulumiLabels] The combination of labels configured directly on the resource
-  LbRouteExtensionState({
+  const LbRouteExtensionState({
     this.description,
     this.effectiveLabels,
     this.extensionChains,

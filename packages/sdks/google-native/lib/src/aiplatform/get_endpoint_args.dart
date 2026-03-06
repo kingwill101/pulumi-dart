@@ -15,7 +15,7 @@ class GetEndpointArgs {
   /// [endpointId] Required.
   /// [location] Required.
   /// [project] Optional.
-  GetEndpointArgs({
+  const GetEndpointArgs({
     required this.endpointId,
     required this.location,
     this.project,

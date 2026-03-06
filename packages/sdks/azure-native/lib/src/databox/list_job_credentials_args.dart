@@ -15,7 +15,7 @@ class ListJobCredentialsArgs {
   /// Creates a new [ListJobCredentialsArgs].
   /// [jobName] The name of the job Resource within the specified resource group. job names must be between 3 and 24 characters in length and use any alphanumeric and underscore only
   /// [resourceGroupName] The Resource Group Name
-  ListJobCredentialsArgs({
+  const ListJobCredentialsArgs({
     required this.jobName,
     required this.resourceGroupName,
   });

@@ -48,7 +48,7 @@ class OtsBackupPlanArgs {
   /// [rules] The backup plan rule. See the following `Block rules`. **Note:** Required while source_type equals `OTS_TABLE`.
   /// [schedule] Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
   /// [vaultId] The ID of backup vault.
-  OtsBackupPlanArgs({
+  const OtsBackupPlanArgs({
     required this.backupType,
     this.crossAccountRoleName,
     this.crossAccountType,

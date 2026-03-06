@@ -21,7 +21,7 @@ class GetManagedClusterServiceArgs {
   /// [clusterName] The name of the cluster resource.
   /// [resourceGroupName] The name of the resource group.
   /// [serviceName] The name of the service resource in the format of {applicationName}~{serviceName}.
-  GetManagedClusterServiceArgs({
+  const GetManagedClusterServiceArgs({
     required this.applicationName,
     required this.clusterName,
     required this.resourceGroupName,

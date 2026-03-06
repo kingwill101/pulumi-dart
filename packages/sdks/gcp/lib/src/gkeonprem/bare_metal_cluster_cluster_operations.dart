@@ -8,7 +8,7 @@ class BareMetalClusterClusterOperations {
 
   /// Creates a new [BareMetalClusterClusterOperations].
   /// [enableApplicationLogs] Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics).
-  BareMetalClusterClusterOperations({
+  const BareMetalClusterClusterOperations({
     this.enableApplicationLogs,
   });
 

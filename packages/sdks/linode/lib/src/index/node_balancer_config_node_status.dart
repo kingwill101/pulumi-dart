@@ -11,7 +11,7 @@ class NodeBalancerConfigNodeStatus {
   /// Creates a new [NodeBalancerConfigNodeStatus].
   /// [down] The number of backends considered to be 'DOWN' and unhealthy. These are not in rotation, and not serving requests.
   /// [up] The number of backends considered to be 'UP' and healthy, and that are serving requests.
-  NodeBalancerConfigNodeStatus({
+  const NodeBalancerConfigNodeStatus({
     required this.down,
     required this.up,
   });

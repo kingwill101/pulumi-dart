@@ -44,7 +44,7 @@ class GetHttpHealthCheckResult {
   /// [selfLinkWithId] Server-defined URL for this resource with the resource id.
   /// [timeoutSec] How long (in seconds) to wait before claiming failure. The default value is 5 seconds. It is invalid for timeoutSec to have greater value than checkIntervalSec.
   /// [unhealthyThreshold] A so-far healthy instance will be marked unhealthy after this many consecutive failures. The default value is 2.
-  GetHttpHealthCheckResult({
+  const GetHttpHealthCheckResult({
     required this.checkIntervalSec,
     required this.creationTimestamp,
     required this.description,

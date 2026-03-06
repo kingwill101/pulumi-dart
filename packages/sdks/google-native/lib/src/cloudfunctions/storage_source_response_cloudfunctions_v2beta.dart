@@ -15,7 +15,7 @@ class StorageSourceResponseCloudfunctionsV2beta {
   /// [bucket] Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
   /// [generation] Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used.
   /// [object_] Google Cloud Storage object containing the source. This object must be a gzipped archive file (`.tar.gz`) containing source to build.
-  StorageSourceResponseCloudfunctionsV2beta({
+  const StorageSourceResponseCloudfunctionsV2beta({
     required this.bucket,
     required this.generation,
     required this.object_,

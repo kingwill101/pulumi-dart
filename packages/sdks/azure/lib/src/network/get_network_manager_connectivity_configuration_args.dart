@@ -15,7 +15,7 @@ class GetNetworkManagerConnectivityConfigurationArgs {
   /// Creates a new [GetNetworkManagerConnectivityConfigurationArgs].
   /// [name] The name of this Network Manager Connectivity Configuration.
   /// [networkManagerId] The ID of the Network Manager.
-  GetNetworkManagerConnectivityConfigurationArgs({
+  const GetNetworkManagerConnectivityConfigurationArgs({
     required this.name,
     required this.networkManagerId,
   });

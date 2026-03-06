@@ -12,7 +12,7 @@ class NamespacedNameResponse {
   /// Creates a new [NamespacedNameResponse].
   /// [name] Optional. The name of the Kubernetes resource.
   /// [namespace] Optional. The Namespace of the Kubernetes resource.
-  NamespacedNameResponse({
+  const NamespacedNameResponse({
     required this.name,
     required this.namespace,
   });

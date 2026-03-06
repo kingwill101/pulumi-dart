@@ -22,7 +22,7 @@ class GetNamespaceDisasterRecoveryConfigArgs {
   /// [namespaceId] The ID of the Service Bus Namespace.
   /// [namespaceName] Optional.
   /// [resourceGroupName] Optional.
-  GetNamespaceDisasterRecoveryConfigArgs({
+  const GetNamespaceDisasterRecoveryConfigArgs({
     this.aliasAuthorizationRuleId,
     required this.name,
     this.namespaceId,

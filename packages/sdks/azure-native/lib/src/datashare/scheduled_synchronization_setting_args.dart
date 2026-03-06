@@ -31,7 +31,7 @@ class ScheduledSynchronizationSettingArgs {
   /// [shareName] The name of the share to add the synchronization setting to.
   /// [synchronizationSettingName] The name of the synchronizationSetting.
   /// [synchronizationTime] Synchronization time
-  ScheduledSynchronizationSettingArgs({
+  const ScheduledSynchronizationSettingArgs({
     required this.accountName,
     required this.kind,
     required this.recurrenceInterval,

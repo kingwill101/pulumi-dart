@@ -54,7 +54,7 @@ class OriginArgs {
   /// [profileName] Name of the Azure Front Door Standard or Azure Front Door Premium or CDN profile which is unique within the resource group.
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
   /// [weight] Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
-  OriginArgs({
+  const OriginArgs({
     this.enabled,
     required this.endpointName,
     required this.hostName,

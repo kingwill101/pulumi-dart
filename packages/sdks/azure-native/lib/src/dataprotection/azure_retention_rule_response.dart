@@ -16,7 +16,7 @@ class AzureRetentionRuleResponse {
   /// [lifecycles] Required.
   /// [name] Required.
   /// [objectType] Expected value is 'AzureRetentionRule'.
-  AzureRetentionRuleResponse({
+  const AzureRetentionRuleResponse({
     this.isDefault,
     required this.lifecycles,
     required this.name,

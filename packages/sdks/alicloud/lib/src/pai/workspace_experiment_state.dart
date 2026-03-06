@@ -21,7 +21,7 @@ class WorkspaceExperimentState {
   /// [createTime] GmtCreateTime is time when this entity is created.
   /// [experimentName] Name is the name of the experiment, unique in a namespace
   /// [workspaceId] WorkspaceId is the workspace id which contains the experiment
-  WorkspaceExperimentState({
+  const WorkspaceExperimentState({
     this.accessibility,
     this.artifactUri,
     this.createTime,

@@ -22,7 +22,7 @@ class PluginActionsConfig {
   /// [displayName] The display name of the action.
   /// [id] The id of the action.
   /// [triggerMode] The trigger mode supported by the action.
-  PluginActionsConfig({
+  const PluginActionsConfig({
     required this.description,
     required this.displayName,
     required this.id,

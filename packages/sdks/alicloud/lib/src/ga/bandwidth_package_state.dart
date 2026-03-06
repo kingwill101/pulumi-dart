@@ -67,7 +67,7 @@ class BandwidthPackageState {
   /// [status] The status of the Bandwidth Package.
   /// [tags] A mapping of tags to assign to the resource.
   /// [type] The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
-  BandwidthPackageState({
+  const BandwidthPackageState({
     this.autoPay,
     this.autoRenewDuration,
     this.autoUseCoupon,

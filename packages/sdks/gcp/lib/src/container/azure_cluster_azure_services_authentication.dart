@@ -11,7 +11,7 @@ class AzureClusterAzureServicesAuthentication {
   /// Creates a new [AzureClusterAzureServicesAuthentication].
   /// [applicationId] The Azure Active Directory Application ID for Authentication configuration.
   /// [tenantId] The Azure Active Directory Tenant ID for Authentication configuration.
-  AzureClusterAzureServicesAuthentication({
+  const AzureClusterAzureServicesAuthentication({
     required this.applicationId,
     required this.tenantId,
   });

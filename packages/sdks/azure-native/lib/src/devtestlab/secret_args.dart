@@ -30,7 +30,7 @@ class SecretArgs {
   /// [tags] The tags of the resource.
   /// [userName] The name of the user profile.
   /// [value] The value of the secret for secret creation.
-  SecretArgs({
+  const SecretArgs({
     required this.labName,
     this.location,
     this.name,

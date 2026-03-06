@@ -15,7 +15,7 @@ class GetClusterDataprocV1beta2Args {
   /// [clusterName] Required.
   /// [project] Optional.
   /// [region] Required.
-  GetClusterDataprocV1beta2Args({
+  const GetClusterDataprocV1beta2Args({
     required this.clusterName,
     this.project,
     required this.region,

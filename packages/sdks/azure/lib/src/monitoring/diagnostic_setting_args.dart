@@ -64,7 +64,7 @@ class DiagnosticSettingArgs {
   /// [partnerSolutionId] The ID of the market partner solution where Diagnostics Data should be sent. For potential partner integrations, [click to learn more about partner integration](https://learn.microsoft.com/en-us/azure/partner-solutions/overview).
   /// [storageAccountId] The ID of the Storage Account where logs should be sent.
   /// [targetResourceId] The ID of an existing Resource on which to configure Diagnostic Settings. Changing this forces a new resource to be created.
-  DiagnosticSettingArgs({
+  const DiagnosticSettingArgs({
     this.enabledLogs,
     this.enabledMetrics,
     this.eventhubAuthorizationRuleId,

@@ -11,7 +11,7 @@ class AutoscaleSettingNotificationWebhook {
   /// Creates a new [AutoscaleSettingNotificationWebhook].
   /// [properties] A map of settings.
   /// [serviceUri] The HTTPS URI which should receive scale notifications.
-  AutoscaleSettingNotificationWebhook({
+  const AutoscaleSettingNotificationWebhook({
     this.properties,
     required this.serviceUri,
   });

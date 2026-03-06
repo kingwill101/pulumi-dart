@@ -7,7 +7,7 @@ class ProviderFeaturesLogAnalyticsWorkspace {
 
   /// Creates a new [ProviderFeaturesLogAnalyticsWorkspace].
   /// [permanentlyDeleteOnDestroy] Optional.
-  ProviderFeaturesLogAnalyticsWorkspace({
+  const ProviderFeaturesLogAnalyticsWorkspace({
     this.permanentlyDeleteOnDestroy,
   });
 

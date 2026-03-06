@@ -62,7 +62,7 @@ class GetSubnetResult {
   /// [subnetpoolId] Required.
   /// [tags] Optional.
   /// [tenantId] Required.
-  GetSubnetResult({
+  const GetSubnetResult({
     required this.allTags,
     required this.allocationPools,
     required this.cidr,

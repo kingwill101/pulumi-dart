@@ -97,7 +97,7 @@ class AppHostingBackendState {
   /// [uid] System-assigned, unique identifier.
   /// [updateTime] Time at which the backend was last updated.
   /// [uri] The primary URI to communicate with the backend.
-  AppHostingBackendState({
+  const AppHostingBackendState({
     this.annotations,
     this.appId,
     this.backendId,

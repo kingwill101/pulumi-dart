@@ -10,7 +10,7 @@ class GetPlanStage {
   /// Creates a new [GetPlanStage].
   /// [durationInMinutes] Required.
   /// [targets] Required.
-  GetPlanStage({
+  const GetPlanStage({
     required this.durationInMinutes,
     required this.targets,
   });

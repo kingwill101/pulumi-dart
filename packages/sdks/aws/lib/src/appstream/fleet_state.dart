@@ -79,7 +79,7 @@ class FleetState {
   /// [tags] Map of tags to attach to AppStream instances.
   /// [tagsAll] Optional.
   /// [vpcConfig] Configuration block for the VPC configuration for the image builder. See below.
-  FleetState({
+  const FleetState({
     this.arn,
     this.computeCapacity,
     this.createdTime,

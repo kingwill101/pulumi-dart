@@ -15,7 +15,7 @@ class GetEc2NetworkAclArgs {
   /// Creates a new [GetEc2NetworkAclArgs].
   /// [name] Name of Ec2NetworkAcl
   /// [resourceGroupName] The name of the resource group. The name is case insensitive.
-  GetEc2NetworkAclArgs({
+  const GetEc2NetworkAclArgs({
     required this.name,
     required this.resourceGroupName,
   });

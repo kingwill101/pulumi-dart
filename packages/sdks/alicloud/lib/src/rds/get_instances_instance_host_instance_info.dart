@@ -26,7 +26,7 @@ class GetInstancesInstanceHostInstanceInfo {
   /// [regionId] The region ID of the instance.
   /// [syncStatus] The synchronization status.
   /// [zoneId] The ID of the zone.
-  GetInstancesInstanceHostInstanceInfo({
+  const GetInstancesInstanceHostInstanceInfo({
     required this.dataSyncTime,
     required this.logSyncTime,
     required this.nodeId,

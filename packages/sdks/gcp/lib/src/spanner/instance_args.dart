@@ -65,7 +65,7 @@ class InstanceArgs {
   /// [numNodes] Optional.
   /// [processingUnits] Optional.
   /// [project] The ID of the project in which the resource belongs.
-  InstanceArgs({
+  const InstanceArgs({
     this.autoscalingConfig,
     required this.config,
     this.defaultBackupScheduleType,

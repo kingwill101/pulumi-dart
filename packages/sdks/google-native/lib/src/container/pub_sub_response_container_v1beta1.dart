@@ -16,7 +16,7 @@ class PubSubResponseContainerV1beta1 {
   /// [enabled] Enable notifications for Pub/Sub.
   /// [filter] Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent
   /// [topic] The desired Pub/Sub topic to which notifications will be sent by GKE. Format is `projects/{project}/topics/{topic}`.
-  PubSubResponseContainerV1beta1({
+  const PubSubResponseContainerV1beta1({
     required this.enabled,
     required this.filter,
     required this.topic,

@@ -11,7 +11,7 @@ class AutoSnapshotPolicyCopyEncryptionConfiguration {
   /// Creates a new [AutoSnapshotPolicyCopyEncryptionConfiguration].
   /// [encrypted] Whether to enable encryption for cross-region snapshot replication. Default value: `false`. Valid values: `true`, `false`.
   /// [kmsKeyId] The ID of the Key Management Service (KMS) key used to encrypt snapshots in cross-region snapshot replication.
-  AutoSnapshotPolicyCopyEncryptionConfiguration({
+  const AutoSnapshotPolicyCopyEncryptionConfiguration({
     this.encrypted,
     this.kmsKeyId,
   });

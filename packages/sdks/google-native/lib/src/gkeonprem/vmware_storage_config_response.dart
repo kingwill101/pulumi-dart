@@ -9,7 +9,7 @@ class VmwareStorageConfigResponse {
 
   /// Creates a new [VmwareStorageConfigResponse].
   /// [vsphereCsiDisabled] Whether or not to deploy vSphere CSI components in the VMware user cluster. Enabled by default.
-  VmwareStorageConfigResponse({
+  const VmwareStorageConfigResponse({
     required this.vsphereCsiDisabled,
   });
 
